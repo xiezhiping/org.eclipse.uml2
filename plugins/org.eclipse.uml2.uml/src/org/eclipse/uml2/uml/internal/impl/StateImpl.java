@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.28 2006/05/24 20:54:28 khussey Exp $
+ * $Id: StateImpl.java,v 1.29 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -306,6 +306,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -449,6 +450,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
+
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -595,6 +597,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
+
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -621,6 +624,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -645,6 +649,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -669,6 +674,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
+
 		return StateOperations.isComposite(this);
 	}
 
@@ -678,6 +684,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isOrthogonal() {
+
 		return StateOperations.isOrthogonal(this);
 	}
 
@@ -687,6 +694,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSimple() {
+
 		return StateOperations.isSimple(this);
 	}
 
@@ -696,6 +704,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSubmachineState() {
+
 		return StateOperations.isSubmachineState(this);
 	}
 
@@ -754,6 +763,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setSubmachine(StateMachine newSubmachine) {
+
 		if (newSubmachine != submachine) {
 			NotificationChain msgs = null;
 			if (submachine != null)
@@ -923,6 +933,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setRedefinedState(State newRedefinedState) {
+
 		State oldRedefinedState = redefinedState;
 		redefinedState = newRedefinedState;
 		if (eNotificationRequired())
@@ -999,6 +1010,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setStateInvariant(Constraint newStateInvariant) {
+
 		if (newStateInvariant != stateInvariant) {
 			NotificationChain msgs = null;
 			if (stateInvariant != null)
@@ -1105,6 +1117,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setEntry(Behavior newEntry) {
+
 		if (newEntry != entry) {
 			NotificationChain msgs = null;
 			if (entry != null)
@@ -1201,6 +1214,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setExit(Behavior newExit) {
+
 		if (newExit != exit) {
 			NotificationChain msgs = null;
 			if (exit != null)
@@ -1300,6 +1314,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setDoActivity(Behavior newDoActivity) {
+
 		if (newDoActivity != doActivity) {
 			NotificationChain msgs = null;
 			if (doActivity != null)
@@ -2176,6 +2191,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

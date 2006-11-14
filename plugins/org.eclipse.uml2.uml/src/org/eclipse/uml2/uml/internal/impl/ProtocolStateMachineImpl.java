@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.23 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.24 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,6 +99,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,6 +126,7 @@ public class TimeExpressionImpl
 	 * @generated
 	 */
 	public void setExpr(ValueSpecification newExpr) {
+
 		ValueSpecification oldExpr = expr;
 		expr = newExpr;
 		if (eNotificationRequired())

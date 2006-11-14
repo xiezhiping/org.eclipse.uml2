@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.15 2006/05/24 20:54:28 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.16 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,6 +142,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -225,6 +226,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
+
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -279,6 +281,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefault(ParameterableElement newDefault) {
+
 		ParameterableElement oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired())
@@ -334,6 +337,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
+
 		if (newSignature != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
 			if (EcoreUtil.isAncestor(this, newSignature))
@@ -441,6 +445,7 @@ public class TemplateParameterImpl
 	 */
 	public void setOwnedParameteredElement(
 			ParameterableElement newOwnedParameteredElement) {
+
 		if (newOwnedParameteredElement != ownedParameteredElement) {
 			NotificationChain msgs = null;
 			if (ownedParameteredElement != null)
@@ -554,6 +559,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setOwnedDefault(ParameterableElement newOwnedDefault) {
+
 		if (newOwnedDefault != ownedDefault) {
 			NotificationChain msgs = null;
 			if (ownedDefault != null)
@@ -820,6 +826,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateSignature signature = basicGetSignature();
 		if (signature != null) {
 			return signature;

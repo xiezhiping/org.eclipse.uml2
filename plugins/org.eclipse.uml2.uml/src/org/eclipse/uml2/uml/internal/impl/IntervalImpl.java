@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalImpl.java,v 1.10 2006/04/10 19:16:19 khussey Exp $
+ * $Id: IntervalImpl.java,v 1.11 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -117,6 +117,7 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public void setMin(ValueSpecification newMin) {
+
 		ValueSpecification oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
@@ -158,6 +159,7 @@ public class IntervalImpl
 	 * @generated
 	 */
 	public void setMax(ValueSpecification newMax) {
+
 		ValueSpecification oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())

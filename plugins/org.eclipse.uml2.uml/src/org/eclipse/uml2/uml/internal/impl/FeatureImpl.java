@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.13 2006/05/24 20:54:28 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,6 +94,7 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiersGen() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -184,6 +185,7 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
+
 		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
 		if (newIsStatic)
 			eFlags |= IS_STATIC_EFLAG;

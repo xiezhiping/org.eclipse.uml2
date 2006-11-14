@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.22 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,6 +119,7 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -151,6 +152,7 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
+
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -232,6 +234,7 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
+
 		if (newInsertAt != insertAt) {
 			NotificationChain msgs = null;
 			if (insertAt != null)

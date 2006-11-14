@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.30 2006/05/24 20:54:28 khussey Exp $
+ * $Id: PackageImpl.java,v 1.31 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -247,6 +247,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -317,6 +318,7 @@ public class PackageImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
+
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -357,6 +359,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
+
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -382,6 +385,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -526,6 +530,7 @@ public class PackageImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -574,6 +579,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1714,6 +1720,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -1819,6 +1826,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		org.eclipse.uml2.uml.Package nestingPackage = basicGetNestingPackage();
 		if (nestingPackage != null) {
 			return nestingPackage;

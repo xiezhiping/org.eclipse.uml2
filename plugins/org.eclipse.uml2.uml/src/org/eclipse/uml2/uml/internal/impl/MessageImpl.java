@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
+ * $Id: MessageImpl.java,v 1.21 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,6 +186,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -210,6 +211,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageKind getMessageKind() {
+
 		return MessageOperations.getMessageKind(this);
 	}
 
@@ -228,6 +230,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setMessageSort(MessageSort newMessageSort) {
+
 		MessageSort oldMessageSort = messageSort;
 		messageSort = newMessageSort == null
 			? MESSAGE_SORT_EDEFAULT
@@ -272,6 +275,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setReceiveEvent(MessageEnd newReceiveEvent) {
+
 		MessageEnd oldReceiveEvent = receiveEvent;
 		receiveEvent = newReceiveEvent;
 		if (eNotificationRequired())
@@ -314,6 +318,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setSendEvent(MessageEnd newSendEvent) {
+
 		MessageEnd oldSendEvent = sendEvent;
 		sendEvent = newSendEvent;
 		if (eNotificationRequired())
@@ -355,6 +360,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setConnector(Connector newConnector) {
+
 		Connector oldConnector = connector;
 		connector = newConnector;
 		if (eNotificationRequired())
@@ -404,6 +410,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
+
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
@@ -504,6 +511,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NamedElement basicGetSignature() {
+
 		return MessageOperations.getSignature(this);
 	}
 
@@ -880,6 +888,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Interaction interaction = basicGetInteraction();
 		if (interaction != null) {
 			return interaction;

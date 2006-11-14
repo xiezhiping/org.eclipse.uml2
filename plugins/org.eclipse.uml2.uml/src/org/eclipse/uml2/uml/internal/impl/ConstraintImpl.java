@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.18 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.19 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,6 +113,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -211,6 +212,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
+
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -288,6 +290,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setContext(Namespace newContext) {
+
 		if (newContext != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
 			if (EcoreUtil.isAncestor(this, newContext))
@@ -680,6 +683,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Namespace context = basicGetContext();
 		if (context != null) {
 			return context;

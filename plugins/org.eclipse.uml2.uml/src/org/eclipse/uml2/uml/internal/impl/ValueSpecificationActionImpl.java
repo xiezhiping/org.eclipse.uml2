@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationActionImpl.java,v 1.21 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ValueSpecificationActionImpl.java,v 1.22 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,6 +109,7 @@ public class ValueSpecificationActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -194,6 +195,7 @@ public class ValueSpecificationActionImpl
 	 * @generated
 	 */
 	public void setValue(ValueSpecification newValue) {
+
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -300,6 +302,7 @@ public class ValueSpecificationActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)

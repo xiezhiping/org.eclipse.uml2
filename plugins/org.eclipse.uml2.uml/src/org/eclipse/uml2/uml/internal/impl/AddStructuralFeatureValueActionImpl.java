@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.21 2006/05/24 20:54:27 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.22 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,6 +119,7 @@ public class AddStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -152,6 +153,7 @@ public class AddStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
+
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -240,6 +242,7 @@ public class AddStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
+
 		if (newInsertAt != insertAt) {
 			NotificationChain msgs = null;
 			if (insertAt != null)

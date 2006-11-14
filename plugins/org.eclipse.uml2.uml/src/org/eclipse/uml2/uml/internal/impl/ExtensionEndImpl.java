@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.19 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.20 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,6 +98,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
+
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
@@ -121,6 +122,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return ExtensionEndOperations.getLower(this);
 	}
 
@@ -130,6 +132,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		ExtensionEndOperations.setLower(this, newLower);
 	}
 

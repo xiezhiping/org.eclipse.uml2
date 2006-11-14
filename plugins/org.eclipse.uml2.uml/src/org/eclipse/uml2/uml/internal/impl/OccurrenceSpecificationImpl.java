@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.17 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,6 +180,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setEvent(Event newEvent) {
+
 		Event oldEvent = event;
 		event = newEvent;
 		if (eNotificationRequired())

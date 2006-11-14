@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.13 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,6 +97,7 @@ public class LiteralIntegerImpl
 	 * @generated
 	 */
 	public void setValue(int newValue) {
+
 		int oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())

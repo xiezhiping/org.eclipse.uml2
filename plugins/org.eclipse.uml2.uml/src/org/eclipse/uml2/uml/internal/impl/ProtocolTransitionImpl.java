@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.31 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.32 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -177,6 +177,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
+
 		Constraint oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired())
@@ -231,6 +232,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setPostCondition(Constraint newPostCondition) {
+
 		Constraint oldPostCondition = postCondition;
 		postCondition = newPostCondition;
 		if (eNotificationRequired())
@@ -416,6 +418,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setPreCondition(Constraint newPreCondition) {
+
 		Constraint oldPreCondition = preCondition;
 		preCondition = newPreCondition;
 		if (eNotificationRequired())

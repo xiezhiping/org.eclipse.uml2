@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.10 2006/05/24 20:54:27 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.11 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -65,6 +65,7 @@ public abstract class RelationshipImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

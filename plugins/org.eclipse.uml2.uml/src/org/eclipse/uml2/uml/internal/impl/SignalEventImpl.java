@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalEventImpl.java,v 1.10 2006/04/10 19:16:19 khussey Exp $
+ * $Id: SignalEventImpl.java,v 1.11 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,6 +105,7 @@ public class SignalEventImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
+
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())

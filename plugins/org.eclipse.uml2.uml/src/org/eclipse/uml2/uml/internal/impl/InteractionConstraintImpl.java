@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.19 2006/05/24 20:54:28 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.20 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,6 +109,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -196,6 +197,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public void setMinint(ValueSpecification newMinint) {
+
 		if (newMinint != minint) {
 			NotificationChain msgs = null;
 			if (minint != null)
@@ -298,6 +300,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public void setMaxint(ValueSpecification newMaxint) {
+
 		if (newMaxint != maxint) {
 			NotificationChain msgs = null;
 			if (maxint != null)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.29 2006/06/12 14:23:17 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.30 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -195,6 +195,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -221,6 +222,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -277,6 +279,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -514,6 +517,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getImportedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -563,6 +567,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getSubgroups() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -587,6 +592,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getContainedNodes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -643,6 +649,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public EList getContainedEdges() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -828,6 +835,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public void setMustIsolate(boolean newMustIsolate) {
+
 		boolean oldMustIsolate = (eFlags & MUST_ISOLATE_EFLAG) != 0;
 		if (newMustIsolate)
 			eFlags |= MUST_ISOLATE_EFLAG;
@@ -1817,6 +1825,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
+
 		return null;
 	}
 
@@ -1859,6 +1868,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		if (isSetSuperGroup()) {
 			return basicGetSuperGroup();
 		}

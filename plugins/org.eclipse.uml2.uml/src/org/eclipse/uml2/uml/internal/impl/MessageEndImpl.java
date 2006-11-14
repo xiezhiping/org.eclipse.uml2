@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageEndImpl.java,v 1.10 2006/04/10 19:16:18 khussey Exp $
+ * $Id: MessageEndImpl.java,v 1.11 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,6 +104,7 @@ public abstract class MessageEndImpl
 	 * @generated
 	 */
 	public void setMessage(Message newMessage) {
+
 		Message oldMessage = message;
 		message = newMessage;
 		if (eNotificationRequired())

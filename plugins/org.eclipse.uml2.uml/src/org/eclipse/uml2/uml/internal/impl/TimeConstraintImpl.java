@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.19 2006/05/08 17:46:10 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.20 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,6 +105,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public void setFirstEvent(boolean newFirstEvent) {
+
 		boolean oldFirstEvent = (eFlags & FIRST_EVENT_EFLAG) != 0;
 		if (newFirstEvent)
 			eFlags |= FIRST_EVENT_EFLAG;
@@ -197,6 +198,7 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
+
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)

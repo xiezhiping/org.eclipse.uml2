@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImageImpl.java,v 1.4 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ImageImpl.java,v 1.5 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -162,6 +162,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setContent(String newContent) {
+
 		String oldContent = content;
 		content = newContent;
 		boolean oldContentESet = (eFlags & CONTENT_ESETFLAG) != 0;
@@ -212,6 +213,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setLocation(String newLocation) {
+
 		String oldLocation = location;
 		location = newLocation;
 		boolean oldLocationESet = (eFlags & LOCATION_ESETFLAG) != 0;
@@ -263,6 +265,7 @@ public class ImageImpl
 	 * @generated
 	 */
 	public void setFormat(String newFormat) {
+
 		String oldFormat = format;
 		format = newFormat;
 		boolean oldFormatESet = (eFlags & FORMAT_ESETFLAG) != 0;

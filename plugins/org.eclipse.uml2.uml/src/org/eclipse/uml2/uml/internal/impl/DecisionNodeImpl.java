@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,6 +113,7 @@ public class DecisionNodeImpl
 	 * @generated
 	 */
 	public void setDecisionInput(Behavior newDecisionInput) {
+
 		Behavior oldDecisionInput = decisionInput;
 		decisionInput = newDecisionInput;
 		if (eNotificationRequired())

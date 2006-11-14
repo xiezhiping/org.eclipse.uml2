@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.24 2006/05/08 17:46:10 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.25 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,6 +166,7 @@ public class ExtensionImpl
 	 * @generated
 	 */
 	public boolean isRequired() {
+
 		return ExtensionOperations.isRequired(this);
 	}
 
@@ -187,6 +188,7 @@ public class ExtensionImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class basicGetMetaclass() {
+
 		return ExtensionOperations.getMetaclass(this);
 	}
 

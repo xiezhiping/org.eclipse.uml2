@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.27 2006/05/24 20:54:27 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.28 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -143,6 +143,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -169,6 +170,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -297,6 +299,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
+
 		Behavior oldClassifierBehavior = classifierBehavior;
 		classifierBehavior = newClassifierBehavior;
 		if (eNotificationRequired())

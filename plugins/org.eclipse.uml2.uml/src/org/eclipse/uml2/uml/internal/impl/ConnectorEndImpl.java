@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.14 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,6 +110,7 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public Property basicGetDefiningEnd() {
+
 		return ConnectorEndOperations.getDefiningEnd(this);
 	}
 
@@ -147,6 +148,7 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public void setPartWithPort(Property newPartWithPort) {
+
 		Property oldPartWithPort = partWithPort;
 		partWithPort = newPartWithPort;
 		if (eNotificationRequired())
@@ -211,6 +213,7 @@ public class ConnectorEndImpl
 	 * @generated
 	 */
 	public void setRole(ConnectableElement newRole) {
+
 		if (newRole != role) {
 			NotificationChain msgs = null;
 			if (role != null)

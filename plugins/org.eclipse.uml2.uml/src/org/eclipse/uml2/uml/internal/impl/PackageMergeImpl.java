@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.12 2006/05/24 20:54:27 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.13 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,6 +90,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -113,6 +114,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -164,6 +166,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public void setMergedPackage(org.eclipse.uml2.uml.Package newMergedPackage) {
+
 		org.eclipse.uml2.uml.Package oldMergedPackage = mergedPackage;
 		mergedPackage = newMergedPackage;
 		if (eNotificationRequired())
@@ -216,6 +219,7 @@ public class PackageMergeImpl
 	 */
 	public void setReceivingPackage(
 			org.eclipse.uml2.uml.Package newReceivingPackage) {
+
 		if (newReceivingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE && newReceivingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newReceivingPackage))
@@ -464,6 +468,7 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		org.eclipse.uml2.uml.Package receivingPackage = basicGetReceivingPackage();
 		if (receivingPackage != null) {
 			return receivingPackage;

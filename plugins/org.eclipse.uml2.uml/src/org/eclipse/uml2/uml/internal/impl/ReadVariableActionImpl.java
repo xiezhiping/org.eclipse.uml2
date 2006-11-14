@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableActionImpl.java,v 1.20 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ReadVariableActionImpl.java,v 1.21 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,6 +98,7 @@ public class ReadVariableActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -181,6 +182,7 @@ public class ReadVariableActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)

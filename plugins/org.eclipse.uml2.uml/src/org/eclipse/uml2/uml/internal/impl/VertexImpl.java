@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
+ * $Id: VertexImpl.java,v 1.17 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,6 +234,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
+
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -509,6 +510,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

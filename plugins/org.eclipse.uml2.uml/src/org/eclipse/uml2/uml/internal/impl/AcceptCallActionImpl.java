@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.16 2006/05/24 20:54:27 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.17 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,6 +98,7 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -187,6 +188,7 @@ public class AcceptCallActionImpl
 	 * @generated
 	 */
 	public void setReturnInformation(OutputPin newReturnInformation) {
+
 		if (newReturnInformation != returnInformation) {
 			NotificationChain msgs = null;
 			if (returnInformation != null)

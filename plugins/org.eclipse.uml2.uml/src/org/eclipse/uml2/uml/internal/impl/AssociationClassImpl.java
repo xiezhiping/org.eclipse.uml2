@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.26 2006/05/24 20:54:27 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.27 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,6 +156,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -182,6 +183,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList getMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -206,6 +208,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList getFeatures() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -230,6 +233,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -382,6 +386,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
+
 		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
 		if (newIsDerived)
 			eFlags |= IS_DERIVED_EFLAG;
@@ -400,6 +405,7 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList getEndTypes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,

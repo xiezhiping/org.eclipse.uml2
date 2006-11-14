@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.22 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -143,6 +143,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -168,6 +169,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -200,6 +202,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setIsDirect(boolean newIsDirect) {
+
 		boolean oldIsDirect = (eFlags & IS_DIRECT_EFLAG) != 0;
 		if (newIsDirect)
 			eFlags |= IS_DIRECT_EFLAG;
@@ -248,6 +251,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
+
 		Classifier oldClassifier = classifier;
 		classifier = newClassifier;
 		if (eNotificationRequired())
@@ -326,6 +330,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -432,6 +437,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
+
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)

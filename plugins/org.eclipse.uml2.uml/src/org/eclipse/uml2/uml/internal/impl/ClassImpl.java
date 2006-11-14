@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.36 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ClassImpl.java,v 1.37 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,6 +219,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -243,6 +244,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -368,6 +370,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
+
 		Behavior oldClassifierBehavior = classifierBehavior;
 		classifierBehavior = newClassifierBehavior;
 		if (eNotificationRequired())
@@ -528,6 +531,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList getFeatures() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -551,6 +555,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList getAttributes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -848,6 +853,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setIsActive(boolean newIsActive) {
+
 		boolean oldIsActive = (eFlags & IS_ACTIVE_EFLAG) != 0;
 		if (newIsActive)
 			eFlags |= IS_ACTIVE_EFLAG;
@@ -965,6 +971,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList getExtensions() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -1100,6 +1107,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
+
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;

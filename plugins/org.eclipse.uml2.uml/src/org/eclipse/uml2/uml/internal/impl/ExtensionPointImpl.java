@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.13 2006/04/10 19:16:18 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.14 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,6 +112,7 @@ public class ExtensionPointImpl
 	 * @generated
 	 */
 	public void setUseCase(UseCase newUseCase) {
+
 		if (newUseCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, newUseCase))

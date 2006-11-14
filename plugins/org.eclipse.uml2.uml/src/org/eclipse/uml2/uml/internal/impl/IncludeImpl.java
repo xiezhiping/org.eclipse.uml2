@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.15 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,6 +95,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -120,6 +121,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -143,6 +145,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -193,6 +196,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setAddition(UseCase newAddition) {
+
 		UseCase oldAddition = addition;
 		addition = newAddition;
 		if (eNotificationRequired())
@@ -242,6 +246,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
+
 		if (newIncludingCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, newIncludingCase))

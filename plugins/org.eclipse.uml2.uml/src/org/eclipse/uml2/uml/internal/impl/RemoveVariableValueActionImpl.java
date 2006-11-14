@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.22 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,6 +119,7 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -151,6 +152,7 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public void setIsRemoveDuplicates(boolean newIsRemoveDuplicates) {
+
 		boolean oldIsRemoveDuplicates = (eFlags & IS_REMOVE_DUPLICATES_EFLAG) != 0;
 		if (newIsRemoveDuplicates)
 			eFlags |= IS_REMOVE_DUPLICATES_EFLAG;
@@ -232,6 +234,7 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public void setRemoveAt(InputPin newRemoveAt) {
+
 		if (newRemoveAt != removeAt) {
 			NotificationChain msgs = null;
 			if (removeAt != null)

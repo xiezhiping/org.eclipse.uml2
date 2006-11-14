@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.20 2006/05/24 20:54:27 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.21 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,6 +95,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -180,6 +181,7 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public void setInvariant(Constraint newInvariant) {
+
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
 			if (invariant != null)

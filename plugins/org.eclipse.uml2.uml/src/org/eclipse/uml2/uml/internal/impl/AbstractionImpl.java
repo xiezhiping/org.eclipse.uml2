@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.17 2006/05/24 20:54:27 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.18 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,6 +91,7 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -174,6 +175,7 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public void setMapping(OpaqueExpression newMapping) {
+
 		if (newMapping != mapping) {
 			NotificationChain msgs = null;
 			if (mapping != null)

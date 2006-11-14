@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.8 2006/04/10 19:16:18 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.9 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,6 +112,7 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
+
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -158,6 +159,7 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
+
 		InputPin oldInsertAt = insertAt;
 		insertAt = newInsertAt;
 		if (eNotificationRequired())

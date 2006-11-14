@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.19 2006/05/24 20:54:28 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.20 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -228,6 +228,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -286,6 +287,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContextsGen() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -385,6 +387,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
+
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -402,6 +405,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiersGen() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -506,6 +510,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
+
 		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
 		if (newIsStatic)
 			eFlags |= IS_STATIC_EFLAG;
@@ -524,6 +529,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -619,6 +625,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
+
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;
@@ -688,6 +695,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
+
 		CallConcurrencyKind oldConcurrency = concurrency;
 		concurrency = newConcurrency == null
 			? CONCURRENCY_EDEFAULT

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.9 2006/04/10 19:16:21 khussey Exp $
+ * $Id: CommentImpl.java,v 1.10 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,6 +116,7 @@ public class CommentImpl
 	 * @generated
 	 */
 	public void setBody(String newBody) {
+
 		String oldBody = body;
 		body = newBody;
 		boolean oldBodyESet = (eFlags & BODY_ESETFLAG) != 0;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.22 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -178,6 +178,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public EList getInGroups() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -202,6 +203,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -228,6 +230,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -287,6 +290,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
+
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
@@ -390,6 +394,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
+
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
@@ -467,6 +472,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setTarget(ActivityNode newTarget) {
+
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -594,6 +600,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setGuard(ValueSpecification newGuard) {
+
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -693,6 +700,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setWeight(ValueSpecification newWeight) {
+
 		if (newWeight != weight) {
 			NotificationChain msgs = null;
 			if (weight != null)
@@ -783,6 +791,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setInterrupts(InterruptibleActivityRegion newInterrupts) {
+
 		if (newInterrupts != interrupts) {
 			NotificationChain msgs = null;
 			if (interrupts != null)
@@ -862,6 +871,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setSource(ActivityNode newSource) {
+
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -1300,6 +1310,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;

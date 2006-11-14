@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.18 2006/04/10 19:16:19 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.19 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,6 +149,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeploymentLocation(String newDeploymentLocation) {
+
 		String oldDeploymentLocation = deploymentLocation;
 		deploymentLocation = newDeploymentLocation;
 		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
@@ -202,6 +203,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setExecutionLocation(String newExecutionLocation) {
+
 		String oldExecutionLocation = executionLocation;
 		executionLocation = newExecutionLocation;
 		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
@@ -281,6 +283,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeployment(Deployment newDeployment) {
+
 		if (newDeployment != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
 			if (EcoreUtil.isAncestor(this, newDeployment))

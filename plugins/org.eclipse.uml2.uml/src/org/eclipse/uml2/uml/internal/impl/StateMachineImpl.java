@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.25 2006/05/24 20:54:27 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.26 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,6 +139,7 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -164,6 +165,7 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

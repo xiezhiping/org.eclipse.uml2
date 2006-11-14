@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.11 2006/04/10 19:16:21 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.12 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,6 +138,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
+
 		InputPin oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
@@ -179,6 +180,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public void setEnd(Property newEnd) {
+
 		Property oldEnd = end;
 		end = newEnd;
 		if (eNotificationRequired())

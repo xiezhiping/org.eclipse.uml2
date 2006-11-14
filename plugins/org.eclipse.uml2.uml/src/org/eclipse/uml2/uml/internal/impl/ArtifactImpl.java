@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.25 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.26 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -173,6 +173,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -198,6 +199,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -222,6 +224,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public EList getFeatures() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -245,6 +248,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public EList getAttributes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -292,6 +296,7 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public void setFileName(String newFileName) {
+
 		String oldFileName = fileName;
 		fileName = newFileName;
 		boolean oldFileNameESet = (eFlags & FILE_NAME_ESETFLAG) != 0;

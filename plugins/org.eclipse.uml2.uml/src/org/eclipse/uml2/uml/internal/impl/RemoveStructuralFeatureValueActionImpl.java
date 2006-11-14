@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.22 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -119,6 +119,7 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -158,6 +159,7 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public void setIsRemoveDuplicates(boolean newIsRemoveDuplicates) {
+
 		boolean oldIsRemoveDuplicates = (eFlags & IS_REMOVE_DUPLICATES_EFLAG) != 0;
 		if (newIsRemoveDuplicates)
 			eFlags |= IS_REMOVE_DUPLICATES_EFLAG;
@@ -248,6 +250,7 @@ public class RemoveStructuralFeatureValueActionImpl
 	 * @generated
 	 */
 	public void setRemoveAt(InputPin newRemoveAt) {
+
 		if (newRemoveAt != removeAt) {
 			NotificationChain msgs = null;
 			if (removeAt != null)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.14 2006/05/24 20:54:28 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.15 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -141,6 +141,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -164,6 +165,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -196,6 +198,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setIsSubstitutable(boolean newIsSubstitutable) {
+
 		boolean oldIsSubstitutable = (eFlags & IS_SUBSTITUTABLE_EFLAG) != 0;
 		if (newIsSubstitutable)
 			eFlags |= IS_SUBSTITUTABLE_EFLAG;
@@ -272,6 +275,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setGeneral(Classifier newGeneral) {
+
 		Classifier oldGeneral = general;
 		general = newGeneral;
 		if (eNotificationRequired())
@@ -364,6 +368,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setSpecific(Classifier newSpecific) {
+
 		if (newSpecific != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecific))
@@ -670,6 +675,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		Classifier specific = basicGetSpecific();
 		if (specific != null) {
 			return specific;

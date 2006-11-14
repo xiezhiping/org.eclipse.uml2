@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.23 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,6 +170,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -204,6 +205,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -231,6 +233,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
+
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -249,6 +252,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getUpper() {
+
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -258,6 +262,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
+
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -267,6 +272,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -276,6 +282,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -348,6 +355,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
+
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -455,6 +463,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
+
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)

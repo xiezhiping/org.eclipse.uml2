@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringImpl.java,v 1.12 2006/10/10 20:41:28 khussey Exp $
+ * $Id: LiteralStringImpl.java,v 1.13 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,6 +106,7 @@ public class LiteralStringImpl
 	 * @generated
 	 */
 	public void setValue(String newValue) {
+
 		String oldValue = value;
 		value = newValue;
 		boolean oldValueESet = (eFlags & VALUE_ESETFLAG) != 0;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.22 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.23 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -185,6 +185,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList getSubgroups() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -210,6 +211,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -235,6 +237,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList getContainedNodes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -291,6 +294,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList getContainedEdges() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -382,6 +386,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setInActivity(Activity newInActivity) {
+
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
@@ -418,6 +423,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setIsDimension(boolean newIsDimension) {
+
 		boolean oldIsDimension = (eFlags & IS_DIMENSION_EFLAG) != 0;
 		if (newIsDimension)
 			eFlags |= IS_DIMENSION_EFLAG;
@@ -445,6 +451,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setIsExternal(boolean newIsExternal) {
+
 		boolean oldIsExternal = (eFlags & IS_EXTERNAL_EFLAG) != 0;
 		if (newIsExternal)
 			eFlags |= IS_EXTERNAL_EFLAG;
@@ -640,6 +647,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
+
 		if (newSuperPartition != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperPartition))
@@ -696,6 +704,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setRepresents(Element newRepresents) {
+
 		Element oldRepresents = represents;
 		represents = newRepresents;
 		if (eNotificationRequired())
@@ -1225,6 +1234,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
+
 		ActivityPartition superPartition = basicGetSuperPartition();
 		if (superPartition != null) {
 			return superPartition;
@@ -1271,6 +1281,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		if (isSetSuperGroup()) {
 			return basicGetSuperGroup();
 		}

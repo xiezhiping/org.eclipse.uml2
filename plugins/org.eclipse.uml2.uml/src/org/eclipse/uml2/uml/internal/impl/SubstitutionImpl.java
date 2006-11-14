@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -171,6 +171,7 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
+
 		Classifier oldContract = contract;
 		contract = newContract;
 		if (eNotificationRequired())
@@ -238,6 +239,7 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
+
 		if (newSubstitutingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))

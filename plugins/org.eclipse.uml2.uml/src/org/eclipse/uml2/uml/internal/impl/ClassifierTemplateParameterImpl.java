@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.16 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.17 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,6 +128,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setAllowSubstitutable(boolean newAllowSubstitutable) {
+
 		boolean oldAllowSubstitutable = (eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0;
 		if (newAllowSubstitutable)
 			eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
@@ -176,6 +177,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefaultClassifier(Classifier newDefaultClassifier) {
+
 		Classifier oldDefaultClassifier = defaultClassifier;
 		defaultClassifier = newDefaultClassifier;
 		if (eNotificationRequired())
@@ -221,6 +223,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setConstrainingClassifier(Classifier newConstrainingClassifier) {
+
 		Classifier oldConstrainingClassifier = constrainingClassifier;
 		constrainingClassifier = newConstrainingClassifier;
 		if (eNotificationRequired())
@@ -316,6 +319,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
+
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)

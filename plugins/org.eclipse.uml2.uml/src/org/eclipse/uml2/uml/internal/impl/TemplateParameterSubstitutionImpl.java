@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.17 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,6 +122,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -195,6 +196,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setFormal(TemplateParameter newFormal) {
+
 		TemplateParameter oldFormal = formal;
 		formal = newFormal;
 		if (eNotificationRequired())
@@ -271,6 +273,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
+
 		if (newTemplateBinding != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplateBinding))
@@ -544,6 +547,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateBinding templateBinding = basicGetTemplateBinding();
 		if (templateBinding != null) {
 			return templateBinding;

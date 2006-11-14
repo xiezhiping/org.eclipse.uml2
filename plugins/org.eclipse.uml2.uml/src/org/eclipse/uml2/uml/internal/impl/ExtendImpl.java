@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.19 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.20 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,6 +128,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList getRelatedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -153,6 +154,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -176,6 +178,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -199,6 +202,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -251,6 +255,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setExtendedCase(UseCase newExtendedCase) {
+
 		UseCase oldExtendedCase = extendedCase;
 		extendedCase = newExtendedCase;
 		if (eNotificationRequired())
@@ -325,6 +330,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setCondition(Constraint newCondition) {
+
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
@@ -448,6 +454,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setExtension(UseCase newExtension) {
+
 		if (newExtension != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION && newExtension != null)) {
 			if (EcoreUtil.isAncestor(this, newExtension))

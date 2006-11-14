@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -173,6 +173,7 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
+
 		Interface oldContract = contract;
 		contract = newContract;
 		if (eNotificationRequired())
@@ -243,6 +244,7 @@ public class InterfaceRealizationImpl
 	 */
 	public void setImplementingClassifier(
 			BehavioredClassifier newImplementingClassifier) {
+
 		if (newImplementingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newImplementingClassifier))

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.28 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.29 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,6 +200,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -224,6 +225,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -341,6 +343,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
+
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;
@@ -367,6 +370,7 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
+
 		boolean oldIsSingleExecution = (eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0;
 		if (newIsSingleExecution)
 			eFlags |= IS_SINGLE_EXECUTION_EFLAG;

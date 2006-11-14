@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.14 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.15 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,6 +166,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -191,6 +192,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -242,6 +244,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public void setType(Association newType) {
+
 		Association oldType = type;
 		type = newType;
 		if (eNotificationRequired())
@@ -329,6 +332,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public void setKind(ConnectorKind newKind) {
+
 		ConnectorKind oldKind = kind;
 		kind = newKind == null
 			? KIND_EDEFAULT

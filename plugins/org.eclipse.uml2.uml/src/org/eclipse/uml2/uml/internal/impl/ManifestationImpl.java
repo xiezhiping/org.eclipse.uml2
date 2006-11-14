@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.12 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.13 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -139,6 +139,7 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
+
 		PackageableElement oldUtilizedElement = utilizedElement;
 		utilizedElement = newUtilizedElement;
 		if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.15 2006/05/24 20:54:28 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.16 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,7 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -160,6 +161,7 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContextsGen() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -259,6 +261,7 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
+
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;

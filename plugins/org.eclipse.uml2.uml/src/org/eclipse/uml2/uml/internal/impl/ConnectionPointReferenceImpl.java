@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.15 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.16 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -232,6 +232,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
+
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
@@ -564,6 +565,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		State state = basicGetState();
 		if (state != null) {
 			return state;

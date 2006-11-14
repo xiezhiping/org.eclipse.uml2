@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.35 2006/05/24 20:54:27 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.36 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -409,6 +409,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -488,6 +489,7 @@ public class PropertyImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
+
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -532,6 +534,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -627,6 +630,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getDeployedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -799,6 +803,7 @@ public class PropertyImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -859,6 +864,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -885,6 +891,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -968,6 +975,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
+
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
 			if (association != null)
@@ -1029,6 +1037,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
+
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
@@ -1065,6 +1074,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
+
 		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
 		if (newIsDerived)
 			eFlags |= IS_DERIVED_EFLAG;
@@ -1091,6 +1101,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsDerivedUnion(boolean newIsDerivedUnion) {
+
 		boolean oldIsDerivedUnion = (eFlags & IS_DERIVED_UNION_EFLAG) != 0;
 		if (newIsDerivedUnion)
 			eFlags |= IS_DERIVED_UNION_EFLAG;
@@ -1109,6 +1120,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public String getDefault() {
+
 		return PropertyOperations.getDefault(this);
 	}
 
@@ -1118,6 +1130,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefault(String newDefault) {
+
 		PropertyOperations.setDefault(this, newDefault);
 	}
 
@@ -1127,6 +1140,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void unsetDefault() {
+
 		PropertyOperations.unsetDefault(this);
 	}
 
@@ -1136,6 +1150,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetDefault() {
+
 		return PropertyOperations.isSetDefault(this);
 	}
 
@@ -1154,6 +1169,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
+
 		AggregationKind oldAggregation = aggregation;
 		aggregation = newAggregation == null
 			? AGGREGATION_EDEFAULT
@@ -1170,6 +1186,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
+
 		return PropertyOperations.isComposite(this);
 	}
 
@@ -1179,6 +1196,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsComposite(boolean newIsComposite) {
+
 		PropertyOperations.setIsComposite(this, newIsComposite);
 	}
 
@@ -1300,6 +1318,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
+
 		if (newOwningAssociation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
@@ -1389,6 +1408,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
+
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -1443,6 +1463,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property basicGetOpposite() {
+
 		return PropertyOperations.getOpposite(this);
 	}
 
@@ -1452,6 +1473,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setOpposite(Property newOpposite) {
+
 		PropertyOperations.setOpposite(this, newOpposite);
 	}
 
@@ -1613,6 +1635,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
+
 		if (newAssociationEnd != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
 			if (EcoreUtil.isAncestor(this, newAssociationEnd))
@@ -1649,6 +1672,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
+
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;
@@ -2711,6 +2735,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2789,6 +2814,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;

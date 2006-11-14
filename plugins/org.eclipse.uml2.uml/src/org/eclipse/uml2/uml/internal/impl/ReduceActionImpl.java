@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.17 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,6 +142,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -166,6 +167,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -215,6 +217,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setReducer(Behavior newReducer) {
+
 		Behavior oldReducer = reducer;
 		reducer = newReducer;
 		if (eNotificationRequired())
@@ -288,6 +291,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -389,6 +393,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setCollection(InputPin newCollection) {
+
 		if (newCollection != collection) {
 			NotificationChain msgs = null;
 			if (collection != null)
@@ -448,6 +453,7 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;

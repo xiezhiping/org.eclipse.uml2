@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.15 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,6 +127,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setKind(PseudostateKind newKind) {
+
 		PseudostateKind oldKind = kind;
 		kind = newKind == null
 			? KIND_EDEFAULT
@@ -178,6 +179,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
+
 		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine))
@@ -241,6 +243,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
+
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PSEUDOSTATE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
@@ -672,6 +675,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		StateMachine stateMachine = basicGetStateMachine();
 		if (stateMachine != null) {
 			return stateMachine;
@@ -707,6 +711,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		State state = basicGetState();
 		if (state != null) {
 			return state;

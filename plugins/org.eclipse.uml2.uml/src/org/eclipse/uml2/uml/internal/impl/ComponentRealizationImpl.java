@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.14 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.15 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -203,6 +203,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setAbstraction(Component newAbstraction) {
+
 		if (newAbstraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
@@ -258,6 +259,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setRealizingClassifier(Classifier newRealizingClassifier) {
+
 		Classifier oldRealizingClassifier = realizingClassifier;
 		realizingClassifier = newRealizingClassifier;
 		if (eNotificationRequired())
@@ -598,6 +600,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		Component abstraction = basicGetAbstraction();
 		if (abstraction != null) {
 			return abstraction;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.18 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,6 +91,7 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -178,6 +179,7 @@ public class ChangeEventImpl
 	 * @generated
 	 */
 	public void setChangeExpression(ValueSpecification newChangeExpression) {
+
 		if (newChangeExpression != changeExpression) {
 			NotificationChain msgs = null;
 			if (changeExpression != null)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.13 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.14 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,6 +156,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setHandlerBody(ExecutableNode newHandlerBody) {
+
 		ExecutableNode oldHandlerBody = handlerBody;
 		handlerBody = newHandlerBody;
 		if (eNotificationRequired())
@@ -199,6 +200,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setExceptionInput(ObjectNode newExceptionInput) {
+
 		ObjectNode oldExceptionInput = exceptionInput;
 		exceptionInput = newExceptionInput;
 		if (eNotificationRequired())
@@ -292,6 +294,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
+
 		if (newProtectedNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
 			if (EcoreUtil.isAncestor(this, newProtectedNode))
@@ -540,6 +543,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		ExecutableNode protectedNode = basicGetProtectedNode();
 		if (protectedNode != null) {
 			return protectedNode;

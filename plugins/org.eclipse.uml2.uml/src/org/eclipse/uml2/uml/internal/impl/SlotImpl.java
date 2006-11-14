@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
+ * $Id: SlotImpl.java,v 1.18 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,6 +106,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,6 +166,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
+
 		if (newOwningInstance != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningInstance))
@@ -221,6 +223,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public void setDefiningFeature(StructuralFeature newDefiningFeature) {
+
 		StructuralFeature oldDefiningFeature = definingFeature;
 		definingFeature = newDefiningFeature;
 		if (eNotificationRequired())
@@ -490,6 +493,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		InstanceSpecification owningInstance = basicGetOwningInstance();
 		if (owningInstance != null) {
 			return owningInstance;

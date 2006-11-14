@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.22 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,6 +110,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -192,6 +193,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
+
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -269,6 +271,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
+
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())

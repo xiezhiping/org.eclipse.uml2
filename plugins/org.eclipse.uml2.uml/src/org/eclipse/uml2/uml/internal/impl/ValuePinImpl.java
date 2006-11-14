@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.22 2006/05/16 15:07:26 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.23 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,6 +150,7 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public void setValue(ValueSpecification newValue) {
+
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)

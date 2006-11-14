@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.23 2006/05/24 20:54:28 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.24 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -201,6 +201,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -223,6 +224,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -254,6 +256,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public void setIsTestedFirst(boolean newIsTestedFirst) {
+
 		boolean oldIsTestedFirst = (eFlags & IS_TESTED_FIRST_EFLAG) != 0;
 		if (newIsTestedFirst)
 			eFlags |= IS_TESTED_FIRST_EFLAG;
@@ -384,6 +387,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public void setDecider(OutputPin newDecider) {
+
 		OutputPin oldDecider = decider;
 		decider = newDecider;
 		if (eNotificationRequired())

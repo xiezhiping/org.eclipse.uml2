@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.13 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.14 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,6 +150,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setIsMulticast(boolean newIsMulticast) {
+
 		boolean oldIsMulticast = (eFlags & IS_MULTICAST_EFLAG) != 0;
 		if (newIsMulticast)
 			eFlags |= IS_MULTICAST_EFLAG;
@@ -177,6 +178,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setIsMultireceive(boolean newIsMultireceive) {
+
 		boolean oldIsMultireceive = (eFlags & IS_MULTIRECEIVE_EFLAG) != 0;
 		if (newIsMultireceive)
 			eFlags |= IS_MULTIRECEIVE_EFLAG;
@@ -223,6 +225,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setTransformation(Behavior newTransformation) {
+
 		Behavior oldTransformation = transformation;
 		transformation = newTransformation;
 		if (eNotificationRequired())
@@ -266,6 +269,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
+
 		Behavior oldSelection = selection;
 		selection = newSelection;
 		if (eNotificationRequired())

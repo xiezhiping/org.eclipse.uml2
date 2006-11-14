@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.27 2006/05/24 20:54:27 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.28 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -187,6 +187,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -212,6 +213,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -237,6 +239,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -275,6 +278,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public void setIsReentrant(boolean newIsReentrant) {
+
 		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
 		if (newIsReentrant)
 			eFlags |= IS_REENTRANT_EFLAG;
@@ -408,6 +412,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public BehavioredClassifier basicGetContext() {
+
 		return BehaviorOperations.getContext(this);
 	}
 
@@ -658,6 +663,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public void setSpecification(BehavioralFeature newSpecification) {
+
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)

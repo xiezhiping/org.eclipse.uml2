@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.24 2006/05/24 20:54:28 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.25 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,6 +168,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public EList getAttributes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -192,6 +193,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -217,6 +219,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -242,6 +245,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public EList getFeatures() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -593,6 +597,7 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
+
 		if (newProtocol != protocol) {
 			NotificationChain msgs = null;
 			if (protocol != null)

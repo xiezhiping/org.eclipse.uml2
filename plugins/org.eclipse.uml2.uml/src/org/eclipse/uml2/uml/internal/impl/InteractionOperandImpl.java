@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.19 2006/05/24 20:54:27 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.20 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -143,6 +143,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -300,6 +301,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
+
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
@@ -363,6 +365,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
+
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
@@ -391,6 +394,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -475,6 +479,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public void setGuard(InteractionConstraint newGuard) {
+
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -1034,6 +1039,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;

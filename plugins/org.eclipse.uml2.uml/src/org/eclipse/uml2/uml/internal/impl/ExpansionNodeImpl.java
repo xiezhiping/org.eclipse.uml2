@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.15 2006/04/10 19:16:19 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.16 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -147,6 +147,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsOutput(ExpansionRegion newRegionAsOutput) {
+
 		if (newRegionAsOutput != regionAsOutput) {
 			NotificationChain msgs = null;
 			if (regionAsOutput != null)
@@ -223,6 +224,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsInput(ExpansionRegion newRegionAsInput) {
+
 		if (newRegionAsInput != regionAsInput) {
 			NotificationChain msgs = null;
 			if (regionAsInput != null)

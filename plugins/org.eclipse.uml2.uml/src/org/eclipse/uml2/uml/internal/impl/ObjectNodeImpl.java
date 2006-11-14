@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.20 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.21 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -206,6 +206,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
+
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
@@ -220,6 +221,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -253,6 +255,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
+
 		ObjectNodeOrderingKind oldOrdering = ordering;
 		ordering = newOrdering == null
 			? ORDERING_EDEFAULT
@@ -278,6 +281,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setIsControlType(boolean newIsControlType) {
+
 		boolean oldIsControlType = (eFlags & IS_CONTROL_TYPE_EFLAG) != 0;
 		if (newIsControlType)
 			eFlags |= IS_CONTROL_TYPE_EFLAG;
@@ -357,6 +361,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setUpperBound(ValueSpecification newUpperBound) {
+
 		if (newUpperBound != upperBound) {
 			NotificationChain msgs = null;
 			if (upperBound != null)
@@ -468,6 +473,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
+
 		Behavior oldSelection = selection;
 		selection = newSelection;
 		if (eNotificationRequired())

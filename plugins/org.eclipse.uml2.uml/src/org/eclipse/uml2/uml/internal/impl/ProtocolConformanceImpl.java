@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.12 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.13 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,6 +91,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -115,6 +116,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -167,6 +169,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public void setGeneralMachine(ProtocolStateMachine newGeneralMachine) {
+
 		ProtocolStateMachine oldGeneralMachine = generalMachine;
 		generalMachine = newGeneralMachine;
 		if (eNotificationRequired())
@@ -217,6 +220,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
+
 		if (newSpecificMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecificMachine))
@@ -465,6 +469,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		ProtocolStateMachine specificMachine = basicGetSpecificMachine();
 		if (specificMachine != null) {
 			return specificMachine;

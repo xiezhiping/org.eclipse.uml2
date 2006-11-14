@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.21 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -133,6 +133,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -213,6 +214,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
+
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
@@ -277,6 +279,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -307,6 +310,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -380,6 +384,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getInheritedParameters() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache
@@ -825,6 +830,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;

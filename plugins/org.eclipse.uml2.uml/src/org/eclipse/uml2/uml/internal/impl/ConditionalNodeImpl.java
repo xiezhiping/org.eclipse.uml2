@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.21 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -155,6 +155,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -179,6 +180,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -211,6 +213,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public void setIsDeterminate(boolean newIsDeterminate) {
+
 		boolean oldIsDeterminate = (eFlags & IS_DETERMINATE_EFLAG) != 0;
 		if (newIsDeterminate)
 			eFlags |= IS_DETERMINATE_EFLAG;
@@ -238,6 +241,7 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public void setIsAssured(boolean newIsAssured) {
+
 		boolean oldIsAssured = (eFlags & IS_ASSURED_EFLAG) != 0;
 		if (newIsAssured)
 			eFlags |= IS_ASSURED_EFLAG;

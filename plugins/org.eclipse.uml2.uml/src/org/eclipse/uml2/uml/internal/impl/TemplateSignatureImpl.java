@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.16 2006/05/24 20:54:28 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.17 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,6 +110,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -185,6 +186,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
+
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
@@ -474,6 +476,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;

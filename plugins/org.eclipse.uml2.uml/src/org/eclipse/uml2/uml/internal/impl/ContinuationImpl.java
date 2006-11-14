@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationImpl.java,v 1.12 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.13 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,6 +102,7 @@ public class ContinuationImpl
 	 * @generated
 	 */
 	public void setSetting(boolean newSetting) {
+
 		boolean oldSetting = (eFlags & SETTING_EFLAG) != 0;
 		if (newSetting)
 			eFlags |= SETTING_EFLAG;

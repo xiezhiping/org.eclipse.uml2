@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.23 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,6 +124,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -147,6 +148,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -265,6 +267,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setUnmarshallType(Classifier newUnmarshallType) {
+
 		Classifier oldUnmarshallType = unmarshallType;
 		unmarshallType = newUnmarshallType;
 		if (eNotificationRequired())
@@ -339,6 +342,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
+
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)

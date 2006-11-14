@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.13 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,6 +150,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -173,6 +174,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -205,6 +207,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
+
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -231,6 +234,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setAlias(String newAlias) {
+
 		String oldAlias = alias;
 		alias = newAlias;
 		boolean oldAliasESet = (eFlags & ALIAS_ESETFLAG) != 0;
@@ -301,6 +305,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setImportedElement(PackageableElement newImportedElement) {
+
 		PackageableElement oldImportedElement = importedElement;
 		importedElement = newImportedElement;
 		if (eNotificationRequired())
@@ -351,6 +356,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
+
 		if (newImportingNamespace != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, newImportingNamespace))
@@ -670,6 +676,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		Namespace importingNamespace = basicGetImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;

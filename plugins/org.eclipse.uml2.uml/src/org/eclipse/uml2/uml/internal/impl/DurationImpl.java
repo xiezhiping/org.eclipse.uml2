@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.13 2006/04/10 19:16:21 khussey Exp $
+ * $Id: DurationImpl.java,v 1.14 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,6 +125,7 @@ public class DurationImpl
 	 * @generated
 	 */
 	public void setExpr(ValueSpecification newExpr) {
+
 		ValueSpecification oldExpr = expr;
 		expr = newExpr;
 		if (eNotificationRequired())

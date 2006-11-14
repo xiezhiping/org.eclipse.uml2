@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.21 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.22 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,6 +122,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -152,6 +153,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -252,6 +254,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
+
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -378,6 +381,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -455,6 +459,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
+
 		Property oldQualifier = qualifier;
 		qualifier = newQualifier;
 		if (eNotificationRequired())

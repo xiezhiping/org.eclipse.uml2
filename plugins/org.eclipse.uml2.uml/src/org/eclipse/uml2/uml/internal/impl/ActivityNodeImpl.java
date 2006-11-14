@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.17 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.18 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -153,6 +153,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getInGroups() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -177,6 +178,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -323,6 +325,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
+
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
@@ -386,6 +389,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
+
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
@@ -902,6 +906,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.22 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,6 +122,7 @@ public abstract class CallActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -153,6 +154,7 @@ public abstract class CallActionImpl
 	 * @generated
 	 */
 	public void setIsSynchronous(boolean newIsSynchronous) {
+
 		boolean oldIsSynchronous = (eFlags & IS_SYNCHRONOUS_EFLAG) != 0;
 		if (newIsSynchronous)
 			eFlags |= IS_SYNCHRONOUS_EFLAG;

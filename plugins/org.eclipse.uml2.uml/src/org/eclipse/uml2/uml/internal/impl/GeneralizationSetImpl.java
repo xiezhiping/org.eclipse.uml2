@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.13 2006/04/10 19:16:19 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.14 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -154,6 +154,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setIsCovering(boolean newIsCovering) {
+
 		boolean oldIsCovering = (eFlags & IS_COVERING_EFLAG) != 0;
 		if (newIsCovering)
 			eFlags |= IS_COVERING_EFLAG;
@@ -181,6 +182,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setIsDisjoint(boolean newIsDisjoint) {
+
 		boolean oldIsDisjoint = (eFlags & IS_DISJOINT_EFLAG) != 0;
 		if (newIsDisjoint)
 			eFlags |= IS_DISJOINT_EFLAG;
@@ -249,6 +251,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setPowertype(Classifier newPowertype) {
+
 		if (newPowertype != powertype) {
 			NotificationChain msgs = null;
 			if (powertype != null)

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.36 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.37 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -299,6 +299,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -355,6 +356,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContextsGen() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -451,6 +453,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
+
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -556,6 +559,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -635,6 +639,7 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
+
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -675,6 +680,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
+
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -762,6 +768,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -921,6 +928,7 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -981,6 +989,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getFeatures() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1034,6 +1043,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1057,6 +1067,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1082,6 +1093,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getAttributes() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1219,6 +1231,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
+
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;
@@ -1294,6 +1307,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getInheritedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -1387,6 +1401,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList getGenerals() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -1621,6 +1636,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setRepresentation(CollaborationUse newRepresentation) {
+
 		CollaborationUse oldRepresentation = representation;
 		representation = newRepresentation;
 		if (eNotificationRequired())
@@ -2771,6 +2787,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2794,6 +2811,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		if (package_ != null) {
 			return package_;

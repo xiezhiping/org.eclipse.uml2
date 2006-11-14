@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.22 2006/05/24 20:54:28 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.23 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -214,6 +214,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -270,6 +271,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -396,6 +398,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
+
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -434,6 +437,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setKind(TransitionKind newKind) {
+
 		TransitionKind oldKind = kind;
 		kind = newKind == null
 			? KIND_EDEFAULT
@@ -485,6 +489,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
+
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -560,6 +565,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setTarget(Vertex newTarget) {
+
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -611,6 +617,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setRedefinedTransition(Transition newRedefinedTransition) {
+
 		Transition oldRedefinedTransition = redefinedTransition;
 		redefinedTransition = newRedefinedTransition;
 		if (eNotificationRequired())
@@ -653,6 +660,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
+
 		Constraint oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired())
@@ -757,6 +765,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setEffect(Behavior newEffect) {
+
 		if (newEffect != effect) {
 			NotificationChain msgs = null;
 			if (effect != null)
@@ -899,6 +908,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setSource(Vertex newSource) {
+
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -1517,6 +1527,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

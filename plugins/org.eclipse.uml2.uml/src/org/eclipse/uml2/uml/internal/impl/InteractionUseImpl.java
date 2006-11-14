@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.20 2006/05/24 20:54:28 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.21 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,6 +122,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -174,6 +175,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public void setRefersTo(Interaction newRefersTo) {
+
 		Interaction oldRefersTo = refersTo;
 		refersTo = newRefersTo;
 		if (eNotificationRequired())

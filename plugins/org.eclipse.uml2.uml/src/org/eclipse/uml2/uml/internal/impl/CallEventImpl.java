@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallEventImpl.java,v 1.10 2006/04/10 19:16:20 khussey Exp $
+ * $Id: CallEventImpl.java,v 1.11 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,6 +106,7 @@ public class CallEventImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
+
 		Operation oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired())

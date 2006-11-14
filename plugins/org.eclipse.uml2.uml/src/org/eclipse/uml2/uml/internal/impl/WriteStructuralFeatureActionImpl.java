@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.22 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,6 +98,7 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -184,6 +185,7 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
+
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)

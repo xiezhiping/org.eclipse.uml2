@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.12 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.13 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,6 +112,7 @@ public class ExecutionOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setExecution(ExecutionSpecification newExecution) {
+
 		ExecutionSpecification oldExecution = execution;
 		execution = newExecution;
 		if (eNotificationRequired())
@@ -155,6 +156,7 @@ public class ExecutionOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setEventGen(Event newEvent) {
+
 		Event oldEvent = event;
 		event = newEvent;
 		if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.24 2006/05/24 20:54:28 khussey Exp $
+ * $Id: PinImpl.java,v 1.25 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,6 +200,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -233,6 +234,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -259,6 +261,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
+
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -276,6 +279,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public int getUpper() {
+
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -285,6 +289,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
+
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -294,6 +299,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -303,6 +309,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -372,6 +379,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
+
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -473,6 +481,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
+
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -523,6 +532,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsControl(boolean newIsControl) {
+
 		boolean oldIsControl = (eFlags & IS_CONTROL_EFLAG) != 0;
 		if (newIsControl)
 			eFlags |= IS_CONTROL_EFLAG;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.22 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,6 +110,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -162,6 +163,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
+
 		Operation oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired())
@@ -237,6 +239,7 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
+
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)

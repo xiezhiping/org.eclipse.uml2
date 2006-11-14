@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorExecutionSpecificationImpl.java,v 1.12 2006/04/10 19:16:18 khussey Exp $
+ * $Id: BehaviorExecutionSpecificationImpl.java,v 1.13 2006/11/14 18:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,6 +108,7 @@ public class BehaviorExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
+
 		Behavior oldBehavior = behavior;
 		behavior = newBehavior;
 		if (eNotificationRequired())

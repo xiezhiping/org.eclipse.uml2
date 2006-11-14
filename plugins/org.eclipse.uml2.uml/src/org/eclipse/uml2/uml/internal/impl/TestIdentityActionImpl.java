@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.22 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,6 +121,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -145,6 +146,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public EList getOutputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -227,6 +229,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setFirst(InputPin newFirst) {
+
 		if (newFirst != first) {
 			NotificationChain msgs = null;
 			if (first != null)
@@ -336,6 +339,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setSecond(InputPin newSecond) {
+
 		if (newSecond != second) {
 			NotificationChain msgs = null;
 			if (second != null)
@@ -445,6 +449,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
+
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)

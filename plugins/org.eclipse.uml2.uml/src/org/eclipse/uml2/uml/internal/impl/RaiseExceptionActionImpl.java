@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.21 2006/05/24 20:54:28 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.22 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,6 +91,7 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public EList getInputs() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -177,6 +178,7 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 */
 	public void setException(InputPin newException) {
+
 		if (newException != exception) {
 			NotificationChain msgs = null;
 			if (exception != null)

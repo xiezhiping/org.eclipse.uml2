@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.14 2006/04/10 19:16:18 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.15 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -117,6 +117,7 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public void setParameter(Parameter newParameter) {
+
 		Parameter oldParameter = parameter;
 		parameter = newParameter;
 		if (eNotificationRequired())

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.11 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ModelImpl.java,v 1.12 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,6 +106,7 @@ public class ModelImpl
 	 * @generated
 	 */
 	public void setViewpoint(String newViewpoint) {
+
 		String oldViewpoint = viewpoint;
 		viewpoint = newViewpoint;
 		boolean oldViewpointESet = (eFlags & VIEWPOINT_ESETFLAG) != 0;

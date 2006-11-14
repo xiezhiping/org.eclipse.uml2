@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.22 2006/05/24 20:54:27 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.23 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -233,6 +233,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
+
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
@@ -247,6 +248,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -281,6 +283,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -308,6 +311,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
+
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -326,6 +330,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public int getUpper() {
+
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -335,6 +340,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
+
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -344,6 +350,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -353,6 +360,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -425,6 +433,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
+
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -532,6 +541,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
+
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -585,6 +595,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
+
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;

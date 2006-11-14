@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.30 2006/05/24 20:54:28 khussey Exp $
+ * $Id: OperationImpl.java,v 1.31 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -350,6 +350,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
+
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -429,6 +430,7 @@ public class OperationImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
+
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -460,6 +462,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -605,6 +608,7 @@ public class OperationImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -653,6 +657,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRedefinitionContexts() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -682,6 +687,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getFeaturingClassifiers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -708,6 +714,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -756,6 +763,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsQuery(boolean newIsQuery) {
+
 		boolean oldIsQuery = (eFlags & IS_QUERY_EFLAG) != 0;
 		if (newIsQuery)
 			eFlags |= IS_QUERY_EFLAG;
@@ -773,6 +781,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isOrdered() {
+
 		return OperationOperations.isOrdered(this);
 	}
 
@@ -782,6 +791,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		OperationOperations.setIsOrdered(this, newIsOrdered);
 	}
 
@@ -791,6 +801,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isUnique() {
+
 		return OperationOperations.isUnique(this);
 	}
 
@@ -800,6 +811,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
+
 		OperationOperations.setIsUnique(this, newIsUnique);
 	}
 
@@ -809,6 +821,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return OperationOperations.getLower(this);
 	}
 
@@ -818,6 +831,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		OperationOperations.setLower(this, newLower);
 	}
 
@@ -827,6 +841,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getUpper() {
+
 		return OperationOperations.getUpper(this);
 	}
 
@@ -836,6 +851,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
+
 		OperationOperations.setUpper(this, newUpper);
 	}
 
@@ -880,6 +896,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setClass_(org.eclipse.uml2.uml.Class newClass) {
+
 		if (newClass != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS && newClass != null)) {
 			if (EcoreUtil.isAncestor(this, newClass))
@@ -1143,6 +1160,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
+
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
@@ -1198,6 +1216,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setBodyCondition(Constraint newBodyCondition) {
+
 		Constraint oldBodyCondition = bodyCondition;
 		bodyCondition = newBodyCondition;
 		if (eNotificationRequired())
@@ -1256,6 +1275,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Type basicGetType() {
+
 		return OperationOperations.getType(this);
 	}
 
@@ -1265,6 +1285,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
+
 		OperationOperations.setType(this, newType);
 	}
 
@@ -1309,6 +1330,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setInterface(Interface newInterface) {
+
 		if (newInterface != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
 			if (EcoreUtil.isAncestor(this, newInterface))
@@ -2285,6 +2307,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2372,6 +2395,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;

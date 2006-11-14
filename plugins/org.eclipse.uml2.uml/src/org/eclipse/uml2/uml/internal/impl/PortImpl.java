@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.22 2006/05/24 20:54:27 khussey Exp $
+ * $Id: PortImpl.java,v 1.23 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -160,6 +160,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList getRedefinedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -194,6 +195,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setIsBehavior(boolean newIsBehavior) {
+
 		boolean oldIsBehavior = (eFlags & IS_BEHAVIOR_EFLAG) != 0;
 		if (newIsBehavior)
 			eFlags |= IS_BEHAVIOR_EFLAG;
@@ -220,6 +222,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setIsService(boolean newIsService) {
+
 		boolean oldIsService = (eFlags & IS_SERVICE_EFLAG) != 0;
 		if (newIsService)
 			eFlags |= IS_SERVICE_EFLAG;
@@ -237,6 +240,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList getRequireds() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -324,6 +328,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList getProvideds() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -396,6 +401,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
+
 		ProtocolStateMachine oldProtocol = protocol;
 		protocol = newProtocol;
 		if (eNotificationRequired())

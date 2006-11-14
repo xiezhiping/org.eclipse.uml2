@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.23 2006/05/24 20:54:27 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.24 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -186,6 +186,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -219,6 +220,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setName(String newName) {
+
 		String oldName = name;
 		name = newName;
 		boolean oldNameESet = (eFlags & NAME_ESETFLAG) != 0;
@@ -269,6 +271,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
+
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -313,6 +316,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public String getQualifiedName() {
+
 		return NamedElementOperations.getQualifiedName(this);
 	}
 
@@ -429,6 +433,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setNameExpression(StringExpression newNameExpression) {
+
 		if (newNameExpression != nameExpression) {
 			NotificationChain msgs = null;
 			if (nameExpression != null)
@@ -785,6 +790,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespaceGen() {
+
 		return null;
 	}
 
@@ -838,6 +844,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		if (isSetNamespace()) {
 			return basicGetNamespace();
 		}

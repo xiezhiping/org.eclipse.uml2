@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.12 2006/04/10 19:16:19 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.13 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,6 +97,7 @@ public class LiteralBooleanImpl
 	 * @generated
 	 */
 	public void setValue(boolean newValue) {
+
 		boolean oldValue = (eFlags & VALUE_EFLAG) != 0;
 		if (newValue)
 			eFlags |= VALUE_EFLAG;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.19 2006/05/24 20:54:27 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.20 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,6 +126,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -271,6 +272,7 @@ public class StringExpressionImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
+
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -428,6 +430,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
+
 		if (newOwningExpression != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
@@ -930,6 +933,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		StringExpression owningExpression = basicGetOwningExpression();
 		if (owningExpression != null) {
 			return owningExpression;

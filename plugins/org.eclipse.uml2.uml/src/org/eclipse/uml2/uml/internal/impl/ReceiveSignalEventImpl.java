@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveSignalEventImpl.java,v 1.5 2006/04/10 19:16:20 khussey Exp $
+ * $Id: ReceiveSignalEventImpl.java,v 1.6 2006/11/14 18:02:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,6 +106,7 @@ public class ReceiveSignalEventImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
+
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())

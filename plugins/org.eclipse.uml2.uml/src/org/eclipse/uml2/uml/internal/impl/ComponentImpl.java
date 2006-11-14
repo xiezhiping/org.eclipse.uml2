@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.28 2006/10/10 20:41:28 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.29 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -140,6 +140,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getOwnedMembers() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,6 +166,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -198,6 +200,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public void setIsIndirectlyInstantiated(boolean newIsIndirectlyInstantiated) {
+
 		boolean oldIsIndirectlyInstantiated = (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG) != 0;
 		if (newIsIndirectlyInstantiated)
 			eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
@@ -216,6 +219,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getRequireds() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,
@@ -261,6 +265,7 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList getProvideds() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			EList result = (EList) cache.get(this,

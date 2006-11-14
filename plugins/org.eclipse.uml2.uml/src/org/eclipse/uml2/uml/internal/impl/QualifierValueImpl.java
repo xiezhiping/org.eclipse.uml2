@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.8 2006/04/10 19:16:19 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.9 2006/11/14 18:02:17 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,6 +121,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
+
 		Property oldQualifier = qualifier;
 		qualifier = newQualifier;
 		if (eNotificationRequired())
@@ -162,6 +163,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
+
 		InputPin oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())

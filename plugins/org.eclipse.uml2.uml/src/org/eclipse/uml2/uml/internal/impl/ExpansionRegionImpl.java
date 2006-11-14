@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.16 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.17 2006/11/14 18:02:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,6 +135,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public void setMode(ExpansionKind newMode) {
+
 		ExpansionKind oldMode = mode;
 		mode = newMode == null
 			? MODE_EDEFAULT

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.18 2006/10/25 18:12:15 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.19 2006/11/14 18:02:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -118,6 +118,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public EList getTargets() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -143,6 +144,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public EList getSources() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -196,6 +198,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public void setAppliedProfile(Profile newAppliedProfile) {
+
 		Profile oldAppliedProfile = appliedProfile;
 		appliedProfile = newAppliedProfile;
 		if (eNotificationRequired())
@@ -220,6 +223,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public void setIsStrict(boolean newIsStrict) {
+
 		boolean oldIsStrict = (eFlags & IS_STRICT_EFLAG) != 0;
 		if (newIsStrict)
 			eFlags |= IS_STRICT_EFLAG;
@@ -275,6 +279,7 @@ public class ProfileApplicationImpl
 	 */
 	public void setApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage) {
+
 		if (newApplyingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newApplyingPackage))
@@ -570,6 +575,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public Element basicGetOwner() {
+
 		org.eclipse.uml2.uml.Package applyingPackage = basicGetApplyingPackage();
 		if (applyingPackage != null) {
 			return applyingPackage;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.31 2006/05/24 20:54:27 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.32 2006/11/14 18:02:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -310,6 +310,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public EList getOwnedElements() {
+
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -343,6 +344,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
+
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -369,6 +371,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
+
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -386,6 +389,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public int getUpper() {
+
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -395,6 +399,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
+
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -404,6 +409,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public int getLower() {
+
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -413,6 +419,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
+
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -483,6 +490,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
+
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -585,6 +593,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
+
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -712,6 +721,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDirection(ParameterDirectionKind newDirection) {
+
 		ParameterDirectionKind oldDirection = direction;
 		direction = newDirection == null
 			? DIRECTION_EDEFAULT
@@ -728,6 +738,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public String getDefault() {
+
 		return ParameterOperations.getDefault(this);
 	}
 
@@ -737,6 +748,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDefault(String newDefault) {
+
 		ParameterOperations.setDefault(this, newDefault);
 	}
 
@@ -746,6 +758,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void unsetDefault() {
+
 		ParameterOperations.unsetDefault(this);
 	}
 
@@ -755,6 +768,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public boolean isSetDefault() {
+
 		return ParameterOperations.isSetDefault(this);
 	}
 
@@ -825,6 +839,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
+
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -876,6 +891,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setIsException(boolean newIsException) {
+
 		boolean oldIsException = (eFlags & IS_EXCEPTION_EFLAG) != 0;
 		if (newIsException)
 			eFlags |= IS_EXCEPTION_EFLAG;
@@ -903,6 +919,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setIsStream(boolean newIsStream) {
+
 		boolean oldIsStream = (eFlags & IS_STREAM_EFLAG) != 0;
 		if (newIsStream)
 			eFlags |= IS_STREAM_EFLAG;
@@ -929,6 +946,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setEffect(ParameterEffectKind newEffect) {
+
 		ParameterEffectKind oldEffect = effect;
 		effect = newEffect == null
 			? EFFECT_EDEFAULT
@@ -1696,6 +1714,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespace() {
+
 		Operation operation = basicGetOperation();
 		if (operation != null) {
 			return operation;
