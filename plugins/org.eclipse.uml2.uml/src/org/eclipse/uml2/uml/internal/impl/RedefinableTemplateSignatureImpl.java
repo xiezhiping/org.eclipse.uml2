@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.21 2006/11/14 18:02:19 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.22 2006/11/17 15:48:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -432,6 +432,32 @@ public class RedefinableTemplateSignatureImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setClassifier(Classifier newClassifier) {
+		if (newClassifier != eInternalContainer()) {
+			if (EcoreUtil.isAncestor(this, newClassifier))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newClassifier != null)
+				msgs = ((InternalEList) newClassifier
+					.getOwnedTemplateSignature()).basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newClassifier,
+				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
+				newClassifier, newClassifier));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean validateOwnElements(DiagnosticChain diagnostics, Map context) {
@@ -638,6 +664,16 @@ public class RedefinableTemplateSignatureImpl
 				return;
 		}
 		eDynamicSet(featureID, newValue);
+	}
+
+	public void eDynamicSet(int featureID, Object newValue) {
+
+		if (featureID == UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER) {
+			setClassifier((Classifier) newValue);
+			return;
+		}
+
+		super.eDynamicSet(featureID, newValue);
 	}
 
 	/**

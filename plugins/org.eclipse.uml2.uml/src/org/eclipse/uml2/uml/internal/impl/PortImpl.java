@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.23 2006/11/14 18:02:16 khussey Exp $
+ * $Id: PortImpl.java,v 1.24 2006/11/17 15:48:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -757,6 +757,16 @@ public class PortImpl
 				return;
 		}
 		eDynamicSet(featureID, newValue);
+	}
+
+	public void eDynamicSet(int featureID, Object newValue) {
+
+		if (featureID == UMLPackage.PORT__CLASS) {
+			setClass_((org.eclipse.uml2.uml.Class) newValue);
+			return;
+		}
+
+		super.eDynamicSet(featureID, newValue);
 	}
 
 	/**

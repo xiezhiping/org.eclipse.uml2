@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.36 2006/11/14 18:02:16 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.37 2006/11/17 15:48:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1227,6 +1227,31 @@ public class PropertyImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setClass_(org.eclipse.uml2.uml.Class newClass) {
+		if (newClass != eInternalContainer()) {
+			if (EcoreUtil.isAncestor(this, newClass))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newClass != null)
+				msgs = ((InternalEList) newClass.getOwnedAttributes())
+					.basicAdd(this, msgs);
+			msgs = eBasicSetContainer((InternalEObject) newClass,
+				UMLPackage.PROPERTY__CLASS, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.PROPERTY__CLASS, newClass, newClass));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList getRedefinedProperties() {
@@ -2386,6 +2411,16 @@ public class PropertyImpl
 				return;
 		}
 		eDynamicSet(featureID, newValue);
+	}
+
+	public void eDynamicSet(int featureID, Object newValue) {
+
+		if (featureID == UMLPackage.PROPERTY__CLASS) {
+			setClass_((org.eclipse.uml2.uml.Class) newValue);
+			return;
+		}
+
+		super.eDynamicSet(featureID, newValue);
 	}
 
 	/**
