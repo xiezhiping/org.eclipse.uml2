@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetaclassAction.java,v 1.3 2006/10/10 20:40:49 khussey Exp $
+ * $Id: ReferenceMetaclassAction.java,v 1.4 2006/11/21 22:37:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
@@ -61,20 +62,32 @@ public class ReferenceMetaclassAction
 			List choiceOfValues = new ArrayList();
 
 			try {
-				Resource resource = profile.eResource().getResourceSet()
-					.getResource(URI.createURI(UMLResource.UML_METAMODEL_URI),
-						true);
+				ResourceSet resourceSet = profile.eResource().getResourceSet();
 
-				for (Iterator contents = resource.getAllContents(); contents
+				try {
+					resourceSet.getResource(URI
+						.createURI(UMLResource.UML_METAMODEL_URI), true);
+				} catch (Exception e) {
+					// ignore
+				}
+
+				for (Iterator resources = resourceSet.getResources().iterator(); resources
 					.hasNext();) {
 
-					Object object = contents.next();
+					Resource resource = (Resource) resources.next();
 
-					if (object instanceof org.eclipse.uml2.uml.Class
-						&& ((org.eclipse.uml2.uml.Class) object).isMetaclass()
-						&& !referencedMetaclasses.contains(object)) {
+					for (Iterator contents = resource.getAllContents(); contents
+						.hasNext();) {
 
-						choiceOfValues.add(object);
+						Object object = contents.next();
+
+						if (object instanceof org.eclipse.uml2.uml.Class
+							&& ((org.eclipse.uml2.uml.Class) object)
+								.isMetaclass()
+							&& !referencedMetaclasses.contains(object)) {
+
+							choiceOfValues.add(object);
+						}
 					}
 				}
 			} catch (Exception e) {
