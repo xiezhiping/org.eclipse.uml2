@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.38 2006/10/20 23:49:00 khussey Exp $
+ * $Id: UMLUtil.java,v 1.39 2006/11/21 22:37:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -6817,6 +6817,25 @@ public class UMLUtil
 
 	protected static EClassifier getEClassifier(
 			org.eclipse.uml2.uml.Class metaclass) {
+		Resource eResource = metaclass.eResource();
+
+		if (eResource == null
+			|| !UMLResource.UML_METAMODEL_URI.equals(eResource.getURI())) {
+
+			Model model = metaclass.getModel();
+
+			if (model != null) {
+				EPackage ePackage = EPackage.Registry.INSTANCE
+					.getEPackage((String) getTaggedValue(model, "Ecore" // $NON-NLS-1$
+						+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
+						TAG_DEFINITION__NS_URI));
+
+				if (ePackage != null) {
+					return ePackage.getEClassifier(metaclass.getName());
+				}
+			}
+		}
+
 		return UMLPackage.eINSTANCE.getEClassifier(metaclass.getName());
 	}
 
