@@ -8,17 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.10 2006/11/08 20:27:23 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.11 2006/11/29 02:00:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Namespace;
@@ -308,10 +309,12 @@ public class StateMachineOperations
 	public static boolean isConsistentWith(StateMachine stateMachine,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(stateMachine)) {
+		if (redefinee != null
+			&& redefinee.isRedefinitionContextValid(stateMachine)) {
+
 			StateMachine redefineeStateMachine = (StateMachine) redefinee;
 
-			List regions = stateMachine.getRegions();
+			EList allRegions = getAllRegions(stateMachine);
 
 			for (Iterator redefineeRegions = redefineeStateMachine.getRegions()
 				.iterator(); redefineeRegions.hasNext();) {
@@ -319,7 +322,7 @@ public class StateMachineOperations
 				Region redefineeRegion = (Region) redefineeRegions.next();
 				Region extendedRegion = redefineeRegion.getExtendedRegion();
 
-				if (regions.contains(extendedRegion)
+				if (allRegions.contains(extendedRegion)
 					&& !extendedRegion.isConsistentWith(redefineeRegion)) {
 
 					return false;
@@ -330,6 +333,45 @@ public class StateMachineOperations
 		}
 
 		return false;
+	}
+
+	protected static EList getAllExtendedStateMachines(
+			StateMachine stateMachine, EList allExtendedStateMachines) {
+
+		for (Iterator extendedStateMachines = stateMachine
+			.getExtendedStateMachines().iterator(); extendedStateMachines
+			.hasNext();) {
+
+			StateMachine extendedStateMachine = (StateMachine) extendedStateMachines
+				.next();
+
+			if (allExtendedStateMachines.add(extendedStateMachine)) {
+				getAllExtendedStateMachines(extendedStateMachine,
+					allExtendedStateMachines);
+			}
+		}
+
+		return allExtendedStateMachines;
+	}
+
+	protected static EList getAllExtendedStateMachines(StateMachine stateMachine) {
+		return getAllExtendedStateMachines(stateMachine,
+			new UniqueEList.FastCompare());
+	}
+
+	protected static EList getAllRegions(StateMachine stateMachine) {
+		EList allRegions = new UniqueEList.FastCompare(stateMachine
+			.getRegions());
+
+		for (Iterator allExtendedStateMachines = getAllExtendedStateMachines(
+			stateMachine).iterator(); allExtendedStateMachines.hasNext();) {
+
+			allRegions.addAll(((StateMachine) allExtendedStateMachines.next())
+				.getRegions());
+		}
+
+		return RedefinableElementOperations
+			.excludeRedefinedElements(allRegions);
 	}
 
 } // StateMachineOperations

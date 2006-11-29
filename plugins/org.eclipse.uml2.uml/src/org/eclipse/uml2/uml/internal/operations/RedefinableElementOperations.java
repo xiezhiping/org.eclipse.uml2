@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.7 2006/03/13 20:50:41 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.8 2006/11/29 02:00:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -199,6 +200,52 @@ public class RedefinableElementOperations
 	public static boolean isConsistentWith(
 			RedefinableElement redefinableElement, RedefinableElement redefinee) {
 		return false;
+	}
+
+	protected static EList getAllRedefinedElements(
+			RedefinableElement redefinableElement, EList allRedefinedElements) {
+
+		for (Iterator redefinedElements = redefinableElement
+			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
+
+			Object redefinedElement = redefinedElements.next();
+
+			if (allRedefinedElements.add(redefinedElement)) {
+				getAllRedefinedElements((RedefinableElement) redefinedElement,
+					allRedefinedElements);
+			}
+		}
+
+		return allRedefinedElements;
+	}
+
+	protected static EList getAllRedefinedElements(
+			RedefinableElement redefinableElement) {
+		return getAllRedefinedElements(redefinableElement,
+			new UniqueEList.FastCompare());
+	}
+
+	protected static EList excludeRedefinedElements(EList redefineableElements) {
+		EList allRedefinedElements = new UniqueEList.FastCompare();
+
+		for (Iterator re = redefineableElements.iterator(); re.hasNext();) {
+			Object redefineableElement = re.next();
+
+			if (redefineableElement instanceof RedefinableElement) {
+				getAllRedefinedElements(
+					(RedefinableElement) redefineableElement,
+					allRedefinedElements);
+			}
+		}
+
+		for (Iterator re = redefineableElements.iterator(); re.hasNext();) {
+
+			if (allRedefinedElements.contains(re.next())) {
+				re.remove();
+			}
+		}
+
+		return redefineableElements;
 	}
 
 } // RedefinableElementOperations

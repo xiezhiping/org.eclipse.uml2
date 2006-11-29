@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.8 2006/10/10 20:41:29 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.9 2006/11/29 02:00:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -17,6 +17,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -24,6 +26,7 @@ import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.Vertex;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -354,13 +357,51 @@ public class TransitionOperations
 	public static boolean isConsistentWith(Transition transition,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(transition)) {
-			Transition trans = (Transition) redefinee;
-			return transition.getSource() == trans.getSource()
-				&& transition.getTriggers().equals(trans.getTriggers());
+		if (redefinee != null
+			&& redefinee.isRedefinitionContextValid(transition)) {
+
+			Transition redefineeTransition = (Transition) redefinee;
+
+			EList sources = new UniqueEList.FastCompare();
+
+			Vertex source = transition.getSource();
+
+			if (source != null) {
+				sources.add(source);
+			}
+
+			Vertex redefineeSource = redefineeTransition.getSource();
+
+			if (redefineeSource != null) {
+				sources.add(redefineeSource);
+			}
+
+			return RedefinableElementOperations.excludeRedefinedElements(
+				sources).size() < 2
+				&& transition.getTriggers().equals(
+					redefineeTransition.getTriggers());
 		}
 
 		return false;
+	}
+
+	protected static EList getAllRedefinedTransitions(Transition transition,
+			EList allRedefinedTransitions) {
+		Transition redefinedTransition = transition.getRedefinedTransition();
+
+		if (redefinedTransition != null
+			&& allRedefinedTransitions.add(redefinedTransition)) {
+
+			getAllRedefinedTransitions(redefinedTransition,
+				allRedefinedTransitions);
+		}
+
+		return allRedefinedTransitions;
+	}
+
+	protected static EList getAllRedefinedTransitions(Transition transition) {
+		return getAllRedefinedTransitions(transition,
+			new UniqueEList.FastCompare());
 	}
 
 } // TransitionOperations

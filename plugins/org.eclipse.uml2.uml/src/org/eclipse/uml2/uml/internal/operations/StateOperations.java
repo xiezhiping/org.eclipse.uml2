@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.7 2006/04/05 13:50:02 khussey Exp $
+ * $Id: StateOperations.java,v 1.8 2006/11/29 02:00:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -319,10 +320,14 @@ public class StateOperations
 	 */
 	public static boolean isRedefinitionContextValid(State state,
 			State redefined) {
-		Region container = state.getContainer();
 
-		if (container != null && redefined != null) {
-			return container.getExtendedRegion() == redefined.getContainer();
+		if (redefined != null) {
+			Region container = state.getContainer();
+
+			if (container != null) {
+				return RegionOperations.getAllExtendedRegions(container)
+					.contains(redefined.getContainer());
+			}
 		}
 
 		return false;
@@ -340,29 +345,25 @@ public class StateOperations
 	public static boolean isConsistentWith(State state,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(state)) {
+		if (redefinee != null && redefinee.isRedefinitionContextValid(state)) {
 			State redefineeState = (State) redefinee;
 
-			if (state.isSimple()) {
-				return redefineeState.isComposite();
-			} else if (state.isComposite()) {
-				EList regions = state.getRegions();
+			EList allRegions = getAllRegions(state);
 
-				for (Iterator redefineeRegions = redefineeState.getRegions()
-					.iterator(); redefineeRegions.hasNext();) {
+			for (Iterator redefineeRegions = redefineeState.getRegions()
+				.iterator(); redefineeRegions.hasNext();) {
 
-					Region redefineeRegion = (Region) redefineeRegions.next();
-					Region extendedRegion = redefineeRegion.getExtendedRegion();
+				Region redefineeRegion = (Region) redefineeRegions.next();
+				Region extendedRegion = redefineeRegion.getExtendedRegion();
 
-					if (regions.contains(extendedRegion)
-						&& !extendedRegion.isConsistentWith(redefineeRegion)) {
+				if (allRegions.contains(extendedRegion)
+					&& !extendedRegion.isConsistentWith(redefineeRegion)) {
 
-						return false;
-					}
+					return false;
 				}
-
-				return true;
 			}
+
+			return true;
 		}
 
 		return false;
@@ -383,6 +384,34 @@ public class StateOperations
 		return container == null
 			? null
 			: container.containingStateMachine();
+	}
+
+	protected static EList getAllRedefinedStates(State state,
+			EList allRedefinedStates) {
+		State redefinedState = state.getRedefinedState();
+
+		if (redefinedState != null && allRedefinedStates.add(redefinedState)) {
+			getAllRedefinedStates(redefinedState, allRedefinedStates);
+		}
+
+		return allRedefinedStates;
+	}
+
+	protected static EList getAllRedefinedStates(State state) {
+		return getAllRedefinedStates(state, new UniqueEList.FastCompare());
+	}
+
+	protected static EList getAllRegions(State state) {
+		EList allRegions = new UniqueEList.FastCompare(state.getRegions());
+
+		for (Iterator allRedefinedStates = getAllRedefinedStates(state)
+			.iterator(); allRedefinedStates.hasNext();) {
+
+			allRegions.addAll(((State) allRedefinedStates).getRegions());
+		}
+
+		return RedefinableElementOperations
+			.excludeRedefinedElements(allRegions);
 	}
 
 } // StateOperations

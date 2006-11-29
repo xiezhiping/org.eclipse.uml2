@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.8 2006/01/05 22:43:25 khussey Exp $
+ * $Id: RegionOperations.java,v 1.9 2006/11/29 02:00:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -238,17 +239,23 @@ public class RegionOperations
 	 */
 	public static boolean isRedefinitionContextValid(Region region,
 			Region redefined) {
-		StateMachine stateMachine = region.getStateMachine();
 
-		if (stateMachine != null) {
-			return stateMachine.getExtendedStateMachines().contains(
-				redefined.getStateMachine());
-		} else {
-			State state = redefined.getState();
+		if (redefined != null) {
+			StateMachine stateMachine = region.getStateMachine();
 
-			return state != null
-				&& state.getRedefinedState() == redefined.getState();
+			if (stateMachine != null) {
+				return StateMachineOperations.getAllExtendedStateMachines(
+					stateMachine).contains(redefined.getStateMachine());
+			} else {
+				State state = region.getState();
+
+				return state != null
+					&& StateOperations.getAllRedefinedStates(state).contains(
+						redefined.getState());
+			}
 		}
+
+		return false;
 	}
 
 	/**
@@ -320,38 +327,93 @@ public class RegionOperations
 	public static boolean isConsistentWith(Region region,
 			RedefinableElement redefinee) {
 
-		if (redefinee.isRedefinitionContextValid(region)) {
+		if (redefinee != null && redefinee.isRedefinitionContextValid(region)) {
 			Region redefineeRegion = (Region) redefinee;
 
-			EList subvertices = region.getSubvertices();
+			EList allSubvertices = getAllSubvertices(region);
 
 			for (Iterator redefineeSubvertices = redefineeRegion
 				.getSubvertices().iterator(); redefineeSubvertices.hasNext();) {
 
-				Vertex subvertex = (Vertex) redefineeSubvertices.next();
+				Vertex redefineeSubvertex = (Vertex) redefineeSubvertices
+					.next();
 
-				if (subvertex instanceof State
-					&& subvertices.contains(((State) subvertex)
-						.getRedefinedState())) {
+				if (redefineeSubvertex instanceof State) {
+					State redefinedState = ((State) redefineeSubvertex)
+						.getRedefinedState();
 
-					return true;
+					if (redefinedState != null
+						&& !allSubvertices.contains(redefinedState)) {
+
+						return false;
+					}
 				}
 			}
 
-			EList transitions = region.getTransitions();
+			EList allTransitions = getAllTransitions(region);
 
 			for (Iterator redefineeTransitions = redefineeRegion
 				.getTransitions().iterator(); redefineeTransitions.hasNext();) {
 
-				if (transitions.contains(((Transition) redefineeTransitions
-					.next()).getRedefinedTransition())) {
+				Transition redefinedTransition = ((Transition) redefineeTransitions
+					.next()).getRedefinedTransition();
 
-					return true;
+				if (redefinedTransition != null
+					&& !allTransitions.contains(redefinedTransition)) {
+
+					return false;
 				}
 			}
+
+			return true;
 		}
 
 		return false;
+	}
+
+	protected static EList getAllExtendedRegions(Region region,
+			EList allExtendedRegions) {
+		Region extendedRegion = region.getExtendedRegion();
+
+		if (extendedRegion != null && allExtendedRegions.add(extendedRegion)) {
+			getAllExtendedRegions(extendedRegion, allExtendedRegions);
+		}
+
+		return allExtendedRegions;
+	}
+
+	protected static EList getAllExtendedRegions(Region region) {
+		return getAllExtendedRegions(region, new UniqueEList.FastCompare());
+	}
+
+	protected static EList getAllSubvertices(Region region) {
+		EList allSubvertices = new UniqueEList.FastCompare(region
+			.getSubvertices());
+
+		for (Iterator allExtendedRegions = getAllExtendedRegions(region)
+			.iterator(); allExtendedRegions.hasNext();) {
+
+			allSubvertices.addAll(((Region) allExtendedRegions.next())
+				.getSubvertices());
+		}
+
+		return RedefinableElementOperations
+			.excludeRedefinedElements(allSubvertices);
+	}
+
+	protected static EList getAllTransitions(Region region) {
+		EList allTransitions = new UniqueEList.FastCompare(region
+			.getTransitions());
+
+		for (Iterator allExtendedRegions = getAllExtendedRegions(region)
+			.iterator(); allExtendedRegions.hasNext();) {
+
+			allTransitions.addAll(((Region) allExtendedRegions.next())
+				.getTransitions());
+		}
+
+		return RedefinableElementOperations
+			.excludeRedefinedElements(allTransitions);
 	}
 
 } // RegionOperations
