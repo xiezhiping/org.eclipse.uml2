@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportTypeAction.java,v 1.1 2006/11/30 05:15:31 khussey Exp $
+ * $Id: ImportTypeAction.java,v 1.2 2006/11/30 17:00:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -65,7 +65,7 @@ public class ImportTypeAction
 		if (resourceSet != null) {
 
 			try {
-				Resource resource = resourceSet.getResource(URI
+				resourceSet.getResource(URI
 					.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI),
 					true);
 			} catch (Exception e) {
@@ -73,7 +73,7 @@ public class ImportTypeAction
 			}
 
 			try {
-				Resource resource = resourceSet.getResource(URI
+				resourceSet.getResource(URI
 					.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI),
 					true);
 			} catch (Exception e) {
@@ -81,7 +81,7 @@ public class ImportTypeAction
 			}
 
 			try {
-				Resource resource = resourceSet.getResource(URI
+				resourceSet.getResource(URI
 					.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
 					true);
 			} catch (Exception e) {
@@ -89,7 +89,7 @@ public class ImportTypeAction
 			}
 
 			try {
-				Resource resource = resourceSet.getResource(URI
+				resourceSet.getResource(URI
 					.createURI(UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI),
 					true);
 			} catch (Exception e) {
