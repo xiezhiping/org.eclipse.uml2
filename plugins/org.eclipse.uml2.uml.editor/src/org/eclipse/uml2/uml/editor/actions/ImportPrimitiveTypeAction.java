@@ -8,161 +8,41 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportPrimitiveTypeAction.java,v 1.2 2006/10/10 20:40:49 khussey Exp $
+ * $Id: ImportPrimitiveTypeAction.java,v 1.3 2006/11/30 05:15:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.emf.common.command.UnexecutableCommand;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.uml2.common.edit.command.ChangeCommand;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PrimitiveType;
-import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
-import org.eclipse.uml2.uml.resource.UMLResource;
 
 public class ImportPrimitiveTypeAction
-		extends UMLCommandAction {
+		extends ImportTypeAction {
 
 	public ImportPrimitiveTypeAction() {
 		super();
 	}
 
-	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+	protected List getChoiceOfValues(Package package_) {
+		List choiceOfValues = super.getChoiceOfValues(package_);
 
-		if (collection.size() == 1
-			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
+		for (Iterator cov = choiceOfValues.iterator(); cov.hasNext();) {
+			Object type = cov.next();
 
-			return IdentityCommand.INSTANCE;
+			if (!(type instanceof PrimitiveType)) {
+				cov.remove();
+			}
 		}
 
-		return UnexecutableCommand.INSTANCE;
+		return choiceOfValues;
 	}
 
-	public void run(IAction action) {
-
-		if (command != UnexecutableCommand.INSTANCE) {
-			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
-				.iterator().next();
-
-			List choiceOfValues = new ArrayList();
-
-			Resource eResource = package_.eResource();
-			ResourceSet resourceSet = eResource == null
-				? null
-				: eResource.getResourceSet();
-
-			if (resourceSet != null) {
-
-				try {
-					Resource resource = resourceSet
-						.getResource(
-							URI
-								.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI),
-							true);
-
-					for (Iterator contents = resource.getAllContents(); contents
-						.hasNext();) {
-
-						Object object = contents.next();
-
-						if (object instanceof PrimitiveType
-							&& !package_.getImportedElements().contains(object)) {
-
-							choiceOfValues.add(object);
-						}
-					}
-				} catch (Exception e) {
-					// ignore
-				}
-
-				try {
-					Resource resource = resourceSet
-						.getResource(
-							URI
-								.createURI(UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI),
-							true);
-
-					for (Iterator contents = resource.getAllContents(); contents
-						.hasNext();) {
-
-						Object object = contents.next();
-
-						if (object instanceof PrimitiveType
-							&& !package_.getImportedElements().contains(object)) {
-
-							choiceOfValues.add(object);
-						}
-					}
-				} catch (Exception e) {
-					// ignore
-				}
-
-				try {
-					Resource resource = resourceSet
-						.getResource(
-							URI
-								.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
-							true);
-
-					for (Iterator contents = resource.getAllContents(); contents
-						.hasNext();) {
-
-						Object object = contents.next();
-
-						if (object instanceof PrimitiveType
-							&& !package_.getImportedElements().contains(object)) {
-
-							choiceOfValues.add(object);
-						}
-					}
-				} catch (Exception e) {
-					// ignore
-				}
-			}
-
-			Collections.sort(choiceOfValues, new TextComparator());
-
-			String label = UMLEditorPlugin.INSTANCE
-				.getString("_UI_ImportPrimitiveTypeActionCommand_label"); //$NON-NLS-1$
-
-			final FeatureEditorDialog dialog = new FeatureEditorDialog(
-				workbenchPart.getSite().getShell(), getLabelProvider(),
-				package_, UMLPackage.Literals.PACKAGEABLE_ELEMENT,
-				Collections.EMPTY_LIST, label, choiceOfValues);
-			dialog.open();
-
-			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
-				editingDomain.getCommandStack().execute(
-					new ChangeCommand(editingDomain, new Runnable() {
-
-						public void run() {
-
-							for (Iterator primitiveTypes = dialog.getResult()
-								.iterator(); primitiveTypes.hasNext();) {
-
-								package_.createElementImport(
-									(PrimitiveType) primitiveTypes.next(),
-									VisibilityKind.PUBLIC_LITERAL);
-							}
-						}
-					}, label));
-			}
-		}
+	protected String getActionCommandLabel() {
+		return UMLEditorPlugin.INSTANCE
+			.getString("_UI_ImportPrimitiveTypeActionCommand_label"); //$NON-NLS-1$
 	}
 
 }

@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.8 2006/05/02 21:42:26 khussey Exp $
+ $Id: plugin.xml,v 1.9 2006/11/30 05:15:31 khussey Exp $
 -->
 
 <plugin>
@@ -142,11 +142,11 @@
         </enablement>
       </action>
       <action
-         label="%_UI_ImportPrimitiveTypeAction_label"
-         class="org.eclipse.uml2.uml.editor.actions.ImportPrimitiveTypeAction"
+         label="%_UI_ImportTypeAction_label"
+         class="org.eclipse.uml2.uml.editor.actions.ImportTypeAction"
          menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.uml.editor.PackageMenuID/additions"
          enablesFor="1"
-         id="org.eclipse.uml2.uml.editor.ImportPrimitiveTypeActionID">
+         id="org.eclipse.uml2.uml.editor.ImportTypeActionID">
         <enablement>
           <objectClass
              name="org.eclipse.uml2.uml.Package">
