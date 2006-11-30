@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.4 2006/04/25 20:58:28 khussey Exp $
+ $Id: plugin.xml,v 1.5 2006/11/30 05:16:16 khussey Exp $
 -->
 
 <plugin>
@@ -121,6 +121,18 @@
          menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID/additions"
          enablesFor="1"
          id="org.eclipse.uml2.examples.uml.ui.GenerateEcorePrimitiveTypesActionID">
+        <enablement>
+          <objectClass
+             name="org.eclipse.uml2.uml.Model">
+          </objectClass>
+        </enablement>
+      </action>
+       <action
+         label="%_UI_XMLAction_label"
+         class="org.eclipse.uml2.examples.uml.ui.actions.GenerateXMLPrimitiveTypesAction"
+         menubarPath="org.eclipse.uml2.umlMenuID/org.eclipse.uml2.examples.uml.ui.GenerateMenuID/org.eclipse.uml2.examples.uml.ui.PrimitiveTypesMenuID/additions"
+         enablesFor="1"
+         id="org.eclipse.uml2.examples.uml.ui.GenerateXMLPrimitiveTypesActionID">
         <enablement>
           <objectClass
              name="org.eclipse.uml2.uml.Model">

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.4 2006/11/30 05:16:16 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -42,33 +42,33 @@ public class GenerateEcoreStereotypesAction
 							profile, UMLPackage.Literals.PACKAGE);
 						generateExtension(ePackageStereotype, packageMetaclass,
 							false);
-						PrimitiveType stringPrimitiveType = getImportedUMLPrimitiveType(
+						PrimitiveType stringUMLPrimitiveType = getImportedUMLPrimitiveType(
 							profile, "String"); //$NON-NLS-1$
 						generateOwnedAttribute(ePackageStereotype,
 							"packageName", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(ePackageStereotype, "nsPrefix", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(ePackageStereotype, "nsURI", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(ePackageStereotype,
 							"basePackage", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(ePackageStereotype, "prefix", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 
 						Stereotype eNamedElementStereotype = generateOwnedStereotype(
 							profile, "ENamedElement", true); //$NON-NLS-1$
 						generateOwnedAttribute(eNamedElementStereotype,
 							"xmlName", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 
 						Stereotype eClassifierStereotype = generateOwnedStereotype(
 							profile, "EClassifier", true); //$NON-NLS-1$
 						generateGeneralization(eClassifierStereotype,
 							eNamedElementStereotype);
 						generateOwnedAttribute(eClassifierStereotype,
-							"instanceClassName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"instanceClassName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
 						Enumeration contentKindEnumeration = generateOwnedEnumeration(
 							profile, "ContentKind"); //$NON-NLS-1$
@@ -88,14 +88,18 @@ public class GenerateEcoreStereotypesAction
 							profile, UMLPackage.Literals.CLASS);
 						org.eclipse.uml2.uml.Class interfaceMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.INTERFACE);
+						org.eclipse.uml2.uml.Class dataTypeMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.DATA_TYPE);
 						generateExtension(eClassStereotype, classMetaclass,
 							false);
 						generateExtension(eClassStereotype, interfaceMetaclass,
 							false);
+						generateExtension(eClassStereotype, dataTypeMetaclass,
+							false);
 						generateGeneralization(eClassStereotype,
 							eClassifierStereotype);
 						generateOwnedAttribute(eClassStereotype, "className", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(eClassStereotype,
 							"xmlContentKind", //$NON-NLS-1$
 							contentKindEnumeration, 0, 1);
@@ -112,7 +116,7 @@ public class GenerateEcoreStereotypesAction
 							eClassifierStereotype);
 						generateOwnedAttribute(eDataTypeStereotype,
 							"dataTypeName", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 
 						Stereotype eEnumStereotype = generateOwnedStereotype(
 							profile, "EEnum", false); //$NON-NLS-1$
@@ -125,7 +129,7 @@ public class GenerateEcoreStereotypesAction
 						generateGeneralization(eEnumStereotype,
 							eNamedElementStereotype);
 						generateOwnedAttribute(eEnumStereotype, "enumName", //$NON-NLS-1$
-							stringPrimitiveType, 0, 1);
+							stringUMLPrimitiveType, 0, 1);
 
 						Stereotype eEnumLiteralStereotype = generateOwnedStereotype(
 							profile, "EEnumLiteral", false); //$NON-NLS-1$
@@ -138,7 +142,7 @@ public class GenerateEcoreStereotypesAction
 						generateGeneralization(eEnumLiteralStereotype,
 							eNamedElementStereotype);
 						generateOwnedAttribute(eEnumLiteralStereotype,
-							"enumLiteralName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"enumLiteralName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
 						Stereotype eOperationStereotype = generateOwnedStereotype(
 							profile, "EOperation", false); //$NON-NLS-1$
@@ -149,7 +153,7 @@ public class GenerateEcoreStereotypesAction
 						generateExtension(eOperationStereotype,
 							operationMetaclass, false);
 						generateOwnedAttribute(eOperationStereotype,
-							"operationName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"operationName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
 						Stereotype eParameterStereotype = generateOwnedStereotype(
 							profile, "EParameter", false); //$NON-NLS-1$
@@ -160,7 +164,7 @@ public class GenerateEcoreStereotypesAction
 						generateExtension(eParameterStereotype,
 							parameterMetaclass, false);
 						generateOwnedAttribute(eParameterStereotype,
-							"parameterName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"parameterName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
 						Enumeration featureKindEnumeration = generateOwnedEnumeration(
 							profile, "FeatureKind"); //$NON-NLS-1$
@@ -203,7 +207,7 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedAttribute(eStructuralFeatureStereotype,
 							"isUnsettable", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eStructuralFeatureStereotype,
-							"xmlNamespace", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"xmlNamespace", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eStructuralFeatureStereotype,
 							"xmlFeatureKind", featureKindEnumeration, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eStructuralFeatureStereotype,
@@ -220,7 +224,7 @@ public class GenerateEcoreStereotypesAction
 						generateGeneralization(eAttributeStereotype,
 							eStructuralFeatureStereotype);
 						generateOwnedAttribute(eAttributeStereotype,
-							"attributeName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"attributeName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eAttributeStereotype,
 							"isID", booleanPrimitiveType, 0, 1); //$NON-NLS-1$
 
@@ -233,7 +237,7 @@ public class GenerateEcoreStereotypesAction
 						generateGeneralization(eReferenceStereotype,
 							eStructuralFeatureStereotype);
 						generateOwnedAttribute(eReferenceStereotype,
-							"referenceName", stringPrimitiveType, 0, 1); //$NON-NLS-1$
+							"referenceName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 						generateOwnedAttribute(eReferenceStereotype,
 							"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
 							.setBooleanDefaultValue(true);
