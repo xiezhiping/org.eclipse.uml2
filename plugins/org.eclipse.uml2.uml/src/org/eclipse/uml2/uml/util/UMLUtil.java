@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.40 2006/11/30 05:16:55 khussey Exp $
+ * $Id: UMLUtil.java,v 1.41 2006/11/30 16:43:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5159,10 +5159,10 @@ public class UMLUtil
 
 			if (ePackage != null) {
 				Classifier classifier = eClass.isInterface()
-					? UMLFactory.eINSTANCE.createInterface()
+					? (Classifier) UMLFactory.eINSTANCE.createInterface()
 					: (ExtendedMetaData.INSTANCE.getSimpleFeature(eClass) == null
-						? UMLFactory.eINSTANCE.createClass()
-						: UMLFactory.eINSTANCE.createDataType());
+						? (Classifier) UMLFactory.eINSTANCE.createClass()
+						: (Classifier) UMLFactory.eINSTANCE.createDataType());
 				eModelElementToElementMap.put(eClass, classifier);
 
 				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(ePackage);
