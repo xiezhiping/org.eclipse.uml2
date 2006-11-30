@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResource.java,v 1.5 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UMLResource.java,v 1.6 2006/11/30 05:16:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -65,6 +65,8 @@ public interface UMLResource
 	String LIBRARIES_PATHMAP = "pathmap://UML_LIBRARIES/"; //$NON-NLS-1$
 
 	String ECORE_PRIMITIVE_TYPES_LIBRARY_URI = LIBRARIES_PATHMAP + "EcorePrimitiveTypes." + LIBRARY_FILE_EXTENSION; //$NON-NLS-1$
+
+	String XML_PRIMITIVE_TYPES_LIBRARY_URI = LIBRARIES_PATHMAP + "XMLPrimitiveTypes." + LIBRARY_FILE_EXTENSION; //$NON-NLS-1$
 
 	String JAVA_PRIMITIVE_TYPES_LIBRARY_URI = LIBRARIES_PATHMAP + "JavaPrimitiveTypes." + LIBRARY_FILE_EXTENSION; //$NON-NLS-1$
 

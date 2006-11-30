@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.39 2006/11/21 22:37:51 khussey Exp $
+ * $Id: UMLUtil.java,v 1.40 2006/11/30 05:16:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2239,6 +2239,9 @@ public class UMLUtil
 
 						eType = EcorePackage.eINSTANCE.getEClassifier(type
 							.getName());
+					} else if (qualifiedName.startsWith("XMLPrimitiveTypes::")) { //$NON-NLS-1$
+						eType = XMLTypePackage.eINSTANCE.getEClassifier(type
+							.getName());
 					}
 				}
 
@@ -2494,6 +2497,19 @@ public class UMLUtil
 								specificEClass.getESuperTypes().add(
 									generalEClass);
 							}
+						}
+					}
+				} else if (specificEClassifier instanceof EDataType) {
+					EDataType specificEDataType = (EDataType) specificEClassifier;
+					Classifier general = generalization.getGeneral();
+
+					if (general != null) {
+						EClassifier generalEClassifier = (EClassifier) doSwitch(general);
+
+						if (generalEClassifier instanceof EDataType) {
+							ExtendedMetaData.INSTANCE.setBaseType(
+								specificEDataType,
+								(EDataType) generalEClassifier);
 						}
 					}
 				}
@@ -2755,12 +2771,39 @@ public class UMLUtil
 		/*
 		 * (non-Javadoc)
 		 * 
+		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseDataType(org.eclipse.uml2.uml.DataType)
+		 */
+		public Object caseDataType(DataType dataType) {
+			org.eclipse.uml2.uml.Package package_ = dataType
+				.getNearestPackage();
+
+			if (package_ != null) {
+				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+				elementToEModelElementMap.put(dataType, eClass);
+
+				EPackage ePackage = (EPackage) doSwitch(package_);
+				ePackage.getEClassifiers().add(eClass);
+
+				setName(eClass, dataType);
+
+				defaultCase(dataType);
+
+				return eClass;
+			}
+
+			return super.caseDataType(dataType);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
 		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseProperty(org.eclipse.uml2.uml.Property)
 		 */
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
 			if (namespace instanceof org.eclipse.uml2.uml.Class
+				|| namespace instanceof DataType
 				|| namespace instanceof Interface) {
 
 				EStructuralFeature eStructuralFeature = null;
@@ -5008,12 +5051,39 @@ public class UMLUtil
 			return null;
 		}
 
+		protected Model getXMLPrimitiveTypesLibrary(EModelElement eModelElement) {
+			Resource eResource = eModelElement.eResource();
+
+			if (eResource != null) {
+				ResourceSet resourceSet = eResource.getResourceSet();
+
+				if (resourceSet != null) {
+					return (Model) load(
+						resourceSet,
+						URI
+							.createURI(UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI),
+						UMLPackage.Literals.MODEL);
+				}
+			}
+
+			return null;
+		}
+
 		protected PrimitiveType getEcorePrimitiveType(
 				EModelElement eModelElement, String name) {
 			Model ecorePrimitiveTypesLibrary = getEcorePrimitiveTypesLibrary(eModelElement);
 
 			return ecorePrimitiveTypesLibrary != null
 				? (PrimitiveType) ecorePrimitiveTypesLibrary.getOwnedType(name)
+				: null;
+		}
+
+		protected PrimitiveType getXMLPrimitiveType(
+				EModelElement eModelElement, String name) {
+			Model xmlPrimitiveTypesLibrary = getXMLPrimitiveTypesLibrary(eModelElement);
+
+			return xmlPrimitiveTypesLibrary != null
+				? (PrimitiveType) xmlPrimitiveTypesLibrary.getOwnedType(name)
 				: null;
 		}
 
@@ -5030,80 +5100,7 @@ public class UMLUtil
 						String nsURI = ePackage.getNsURI();
 
 						if (XMLTypePackage.eNS_URI.equals(nsURI)) {
-							String instanceClassName = eType
-								.getInstanceClassName();
-
-							if ("java.math.BigDecimal".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBIG_DECIMAL
-										.getName());
-							} else if ("java.math.BigInteger".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBIG_INTEGER
-										.getName());
-							} else if ("boolean".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBOOLEAN.getName());
-							} else if ("java.lang.Boolean".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBOOLEAN_OBJECT
-										.getName());
-							} else if ("byte".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBYTE.getName());
-							} else if ("byte[]".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBYTE_ARRAY.getName());
-							} else if ("java.lang.Byte".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EBYTE_OBJECT
-										.getName());
-							} else if ("double".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EDOUBLE.getName());
-							} else if ("java.lang.Double".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EDOUBLE_OBJECT
-										.getName());
-							} else if ("java.util.List".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EE_LIST.getName());
-							} else if ("float".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EFLOAT.getName());
-							} else if ("java.lang.Float".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EFLOAT_OBJECT
-										.getName());
-							} else if ("int".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EINT.getName());
-							} else if ("java.lang.Integer".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EINTEGER_OBJECT
-										.getName());
-							} else if ("java.lang.Object".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.EJAVA_OBJECT
-										.getName());
-							} else if ("long".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.ELONG.getName());
-							} else if ("java.lang.Long".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.ELONG_OBJECT
-										.getName());
-							} else if ("short".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.ESHORT.getName());
-							} else if ("java.lang.Short".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.ESHORT_OBJECT
-										.getName());
-							} else if ("java.lang.String".equals(instanceClassName)) { //$NON-NLS-1$
-								type = getEcorePrimitiveType(eModelElement,
-									EcorePackage.Literals.ESTRING.getName());
-							}
+							type = getXMLPrimitiveType(eModelElement, name);
 						} else if (EcorePackage.eNS_URI.equals(nsURI)) {
 							type = getEcorePrimitiveType(eModelElement, name);
 						}
@@ -5162,8 +5159,10 @@ public class UMLUtil
 
 			if (ePackage != null) {
 				Classifier classifier = eClass.isInterface()
-					? (Classifier) UMLFactory.eINSTANCE.createInterface()
-					: (Classifier) UMLFactory.eINSTANCE.createClass();
+					? UMLFactory.eINSTANCE.createInterface()
+					: (ExtendedMetaData.INSTANCE.getSimpleFeature(eClass) == null
+						? UMLFactory.eINSTANCE.createClass()
+						: UMLFactory.eINSTANCE.createDataType());
 				eModelElementToElementMap.put(eClass, classifier);
 
 				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) doSwitch(ePackage);
@@ -5172,8 +5171,7 @@ public class UMLUtil
 				classifier.setName(eClass.getName());
 
 				if (!eClass.isInterface()) {
-					((org.eclipse.uml2.uml.Class) classifier)
-						.setIsAbstract(eClass.isAbstract());
+					classifier.setIsAbstract(eClass.isAbstract());
 				}
 
 				for (Iterator eSuperTypes = eClass.getESuperTypes().iterator(); eSuperTypes
@@ -5221,6 +5219,17 @@ public class UMLUtil
 				package_.getOwnedTypes().add(primitiveType);
 
 				primitiveType.setName(eDataType.getName());
+
+				EDataType baseType = ExtendedMetaData.INSTANCE
+					.getBaseType(eDataType);
+
+				if (baseType != null) {
+					Classifier generalClassifier = (Classifier) doSwitch(baseType);
+
+					if (!primitiveType.allParents().contains(generalClassifier)) {
+						primitiveType.createGeneralization(generalClassifier);
+					}
+				}
 
 				defaultCase(eDataType);
 
@@ -5813,14 +5822,18 @@ public class UMLUtil
 				}
 
 				public Object caseDataType(DataType dataType) {
-					Stereotype eDataTypeStereotype = getEcoreStereotype(
-						eClassifier, STEREOTYPE__E_DATA_TYPE);
+					Stereotype eClassStereotype = getEcoreStereotype(
+						eClassifier, STEREOTYPE__E_CLASS);
 
-					if (eDataTypeStereotype != null) {
-						safeApplyStereotype(dataType, eDataTypeStereotype);
+					if (eClassStereotype != null) {
+						safeApplyStereotype(dataType, eClassStereotype);
+
+						processEcoreTaggedValue(dataType, eClassStereotype,
+							TAG_DEFINITION__XML_CONTENT_KIND, eClassifier,
+							null, options, diagnostics, context);
 					}
 
-					return eDataTypeStereotype;
+					return eClassStereotype;
 				}
 
 				public Object caseInterface(Interface interface_) {
@@ -5836,6 +5849,17 @@ public class UMLUtil
 					}
 
 					return eClassStereotype;
+				}
+
+				public Object casePrimitiveType(PrimitiveType primitiveType) {
+					Stereotype eDataTypeStereotype = getEcoreStereotype(
+						eClassifier, STEREOTYPE__E_DATA_TYPE);
+
+					if (eDataTypeStereotype != null) {
+						safeApplyStereotype(primitiveType, eDataTypeStereotype);
+					}
+
+					return eDataTypeStereotype;
 				}
 			}.doSwitch(element);
 
