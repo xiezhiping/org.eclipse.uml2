@@ -784,7 +784,7 @@ public class Class
   protected final String TEXT_766 = "(";
   protected final String TEXT_767 = "new";
   protected final String TEXT_768 = ", msgs);" + NL + "\t\t\tif (msgs != null) msgs.dispatch();" + NL + "\t\t}";
-  protected final String TEXT_769 = NL + "\t\telse" + NL + "    \t{";
+  protected final String TEXT_769 = NL + "\t\telse" + NL + "\t\t{";
   protected final String TEXT_770 = NL + "\t\t\tboolean old";
   protected final String TEXT_771 = "ESet = eVirtualIsSet(";
   protected final String TEXT_772 = ");";
@@ -807,7 +807,7 @@ public class Class
   protected final String TEXT_789 = ", new";
   protected final String TEXT_790 = ", !old";
   protected final String TEXT_791 = "ESet));";
-  protected final String TEXT_792 = NL + "    \t}";
+  protected final String TEXT_792 = NL + "\t\t}";
   protected final String TEXT_793 = NL + "\t\telse if (eNotificationRequired())" + NL + "\t\t\teNotify(new ";
   protected final String TEXT_794 = "(this, ";
   protected final String TEXT_795 = ".SET, ";
@@ -1052,7 +1052,7 @@ public class Class
   protected final String TEXT_1034 = ", ";
   protected final String TEXT_1035 = ".class, msgs);";
   protected final String TEXT_1036 = NL + "\t\t\tmsgs = basicUnset";
-  protected final String TEXT_1037 = "(msgs);" + NL + "\t\t\tif (msgs != null) msgs.dispatch();" + NL + "\t\t}" + NL + "\t\telse" + NL + "    \t{";
+  protected final String TEXT_1037 = "(msgs);" + NL + "\t\t\tif (msgs != null) msgs.dispatch();" + NL + "\t\t}" + NL + "\t\telse" + NL + "\t\t{";
   protected final String TEXT_1038 = NL + "\t\t\tboolean old";
   protected final String TEXT_1039 = "ESet = eVirtualIsSet(";
   protected final String TEXT_1040 = ");";
@@ -1073,7 +1073,7 @@ public class Class
   protected final String TEXT_1055 = ".UNSET, ";
   protected final String TEXT_1056 = ", null, null, old";
   protected final String TEXT_1057 = "ESet));";
-  protected final String TEXT_1058 = NL + "    \t}";
+  protected final String TEXT_1058 = NL + "\t\t}";
   protected final String TEXT_1059 = NL + "\t\t";
   protected final String TEXT_1060 = " old";
   protected final String TEXT_1061 = " = (";
