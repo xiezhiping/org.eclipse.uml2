@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.41 2006/11/30 16:43:00 khussey Exp $
+ * $Id: UMLUtil.java,v 1.42 2006/12/06 13:46:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -373,7 +373,7 @@ public class UMLUtil
 
 		protected final Map resultingToMergedEObjectMap = new LinkedHashMap();
 
-		private final Map copierMap = new LinkedHashMap();
+		private final Map<EObject, EObject> copierMap = new LinkedHashMap();
 
 		/*
 		 * (non-Javadoc)
@@ -416,7 +416,7 @@ public class UMLUtil
 		 * 
 		 * @see java.util.HashMap#get(java.lang.Object)
 		 */
-		public Object get(Object key) {
+		public EObject get(EObject key) {
 			return copierMap.get(key);
 		}
 
@@ -443,7 +443,7 @@ public class UMLUtil
 		 * 
 		 * @see java.util.HashMap#put(K, V)
 		 */
-		public Object put(Object key, Object value) {
+		public EObject put(EObject key, EObject value) {
 			return copierMap.put(key, value);
 		}
 
@@ -461,7 +461,7 @@ public class UMLUtil
 		 * 
 		 * @see java.util.HashMap#remove(java.lang.Object)
 		 */
-		public Object remove(Object key) {
+		public EObject remove(EObject key) {
 			return copierMap.remove(key);
 		}
 
@@ -3687,7 +3687,7 @@ public class UMLUtil
 								getEAnnotation(eModelElement,
 									ANNOTATION__SUBSETS, true).getReferences()
 									.add(
-										elementToEModelElementMap
+										(EObject) elementToEModelElementMap
 											.get(subsettedProperty));
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__SUBSETTING_PROPERTIES))
