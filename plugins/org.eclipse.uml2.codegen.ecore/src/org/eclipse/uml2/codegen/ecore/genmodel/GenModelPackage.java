@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.19 2006/11/08 17:22:22 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.20 2006/12/07 13:45:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -132,6 +132,15 @@ public interface GenModelPackage
 	int GEN_CLASS__GEN_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_PACKAGE;
 
 	/**
+	 * The feature id for the '<em><b>Gen Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASS__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASS__GEN_TYPE_PARAMETERS;
+
+	/**
 	 * The feature id for the '<em><b>Provider</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,6 +241,15 @@ public interface GenModelPackage
 	int GEN_CLASSIFIER__GEN_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE;
 
 	/**
+	 * The feature id for the '<em><b>Gen Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_CLASSIFIER__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS;
+
+	/**
 	 * The number of structural features of the '<em>Gen Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -267,6 +285,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_DATA_TYPE__GEN_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__GEN_PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Gen Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_DATA_TYPE__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_DATA_TYPE__GEN_TYPE_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Data Type</b></em>' reference.
@@ -315,6 +342,15 @@ public interface GenModelPackage
 	int GEN_ENUM__GEN_PACKAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_PACKAGE;
 
 	/**
+	 * The feature id for the '<em><b>Gen Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__GEN_TYPE_PARAMETERS;
+
+	/**
 	 * The feature id for the '<em><b>Ecore Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,6 +358,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_ENUM__ECORE_DATA_TYPE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__ECORE_DATA_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Type Safe Enum Compatible</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_ENUM__TYPE_SAFE_ENUM_COMPATIBLE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_ENUM__TYPE_SAFE_ENUM_COMPATIBLE;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Enum</b></em>' reference.
@@ -1011,6 +1056,15 @@ public interface GenModelPackage
 	int GEN_MODEL__FACADE_HELPER_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FACADE_HELPER_CLASS;
 
 	/**
+	 * The feature id for the '<em><b>Compliance Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__COMPLIANCE_LEVEL = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COMPLIANCE_LEVEL;
+
+	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1127,6 +1181,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_OPERATION__GEN_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_PARAMETERS;
+
+	/**
+	 * The feature id for the '<em><b>Gen Type Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_OPERATION__GEN_TYPE_PARAMETERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_OPERATION__GEN_TYPE_PARAMETERS;
 
 	/**
 	 * The feature id for the '<em><b>Cache Adapter Scope</b></em>' attribute.
