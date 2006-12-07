@@ -2,7 +2,6 @@
 currentPath=$PWD
 
 # export JAVA_HOME=/opt/sun-java2-5.0
-export JAVA_HOME_1_4=/opt/ibm-java2-1.4
 
 # The eclipse directory
 eclipseDir=$1
