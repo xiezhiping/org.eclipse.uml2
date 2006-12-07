@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenEnumItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
+ * $Id: GenEnumItemProvider.java,v 1.3 2006/12/07 13:45:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.uml2.codegen.ecore.genmodel.GenEnum;
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
 /**

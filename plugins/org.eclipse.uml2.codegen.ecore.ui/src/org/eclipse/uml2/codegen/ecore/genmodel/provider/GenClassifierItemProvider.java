@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierItemProvider.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
+ * $Id: GenClassifierItemProvider.java,v 1.3 2006/12/07 13:45:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
+import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.provider.GenBaseItemProvider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -29,7 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
-import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+//import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
 
@@ -76,6 +78,23 @@ public class GenClassifierItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures
+				.add(GenModelPackage.Literals.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS);
+		}
+		return childrenFeatures;
+	}
+
+	/**
 	 * This returns GenClassifier.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,9 +125,13 @@ public class GenClassifierItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenClassifier.class)) {
-			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
+			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
+				return;
+			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
