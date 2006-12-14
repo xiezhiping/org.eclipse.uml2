@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.5 2006/10/10 20:40:47 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.6 2006/12/14 15:48:22 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -63,7 +63,7 @@ public abstract class GenerateProfileAction
 
 	protected PrimitiveType getImportedUMLPrimitiveType(
 			org.eclipse.uml2.uml.Package package_, String name) {
-		Model umlPrimitiveTypes = (Model) UML2Util.load(package_.eResource()
+		Model umlPrimitiveTypes = UML2Util.load(package_.eResource()
 			.getResourceSet(), URI
 			.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI),
 			UMLPackage.Literals.MODEL);
@@ -80,8 +80,9 @@ public abstract class GenerateProfileAction
 
 	protected org.eclipse.uml2.uml.Class getReferencedUMLMetaclass(
 			Profile profile, EClass eClass) {
-		Model umlMetamodel = (Model) UML2Util.load(profile.eResource()
-			.getResourceSet(), URI.createURI(UMLResource.UML_METAMODEL_URI),
+		Model umlMetamodel = UML2Util.load(
+			profile.eResource().getResourceSet(), URI
+				.createURI(UMLResource.UML_METAMODEL_URI),
 			UMLPackage.Literals.MODEL);
 
 		if (!profile.getReferencedMetamodels().contains(umlMetamodel)) {
@@ -102,16 +103,17 @@ public abstract class GenerateProfileAction
 
 	protected Extension generateExtension(final Stereotype stereotype,
 			final org.eclipse.uml2.uml.Class metaclass, boolean required) {
-		Extension extension = (Extension) UML2Util.findEObject(EcoreUtil
-			.getObjectsByType(stereotype.getProfile().getOwnedTypes(),
-				UMLPackage.Literals.EXTENSION), new UML2Util.EObjectMatcher() {
+		Extension extension = UML2Util.findEObject(EcoreUtil
+			.<Extension> getObjectsByType(stereotype.getProfile()
+				.getOwnedTypes(), UMLPackage.Literals.EXTENSION),
+			new UML2Util.EObjectMatcher() {
 
-			public boolean matches(EObject eObject) {
-				Extension extension = (Extension) eObject;
-				return extension.getMetaclass() == metaclass
-					&& extension.metaclassEnd().getClass_() == stereotype;
-			}
-		});
+				public boolean matches(EObject eObject) {
+					Extension extension = (Extension) eObject;
+					return extension.getMetaclass() == metaclass
+						&& extension.metaclassEnd().getClass_() == stereotype;
+				}
+			});
 
 		if (extension == null) {
 			extension = stereotype.createExtension(metaclass, required);
@@ -151,7 +153,7 @@ public abstract class GenerateProfileAction
 	}
 
 	protected Image generateIcon(Stereotype stereotype, final String location) {
-		Image icon = (Image) UML2Util.findEObject(stereotype.getIcons(),
+		Image icon = UML2Util.findEObject(stereotype.getIcons(),
 			new UML2Util.EObjectMatcher() {
 
 				public boolean matches(EObject eObject) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertModelAction.java,v 1.2 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ConvertModelAction.java,v 1.3 2006/12/14 15:48:22 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -48,8 +48,8 @@ public abstract class ConvertModelAction
 
 	protected Profile applyProfile(org.eclipse.uml2.uml.Package package_,
 			String uri) {
-		Profile profile = (Profile) UML2Util.load(package_.eResource()
-			.getResourceSet(), URI.createURI(uri), UMLPackage.Literals.PROFILE);
+		Profile profile = UML2Util.load(package_.eResource().getResourceSet(),
+			URI.createURI(uri), UMLPackage.Literals.PROFILE);
 
 		if (profile != null && !package_.isProfileApplied(profile)) {
 			package_.applyProfile(profile);
