@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CodeGenEcoreUIPlugin.java,v 1.2 2005/05/25 21:24:23 khussey Exp $
+ * $Id: CodeGenEcoreUIPlugin.java,v 1.3 2006/12/14 15:45:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.ui;
 
@@ -28,13 +28,6 @@ import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
  */
 public final class CodeGenEcoreUIPlugin
 		extends EMFPlugin {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Keep track of the singleton.
