@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.43 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UMLUtil.java,v 1.44 2006/12/14 21:18:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -776,7 +776,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseAssociation(Association association) {
-					Association matchingAssociation = findEObject(
+					Association matchingAssociation = (Association) findEObject(
 						getMatchCandidates(association), new NameMatcher(
 							association) {
 
@@ -819,7 +819,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseClass(org.eclipse.uml2.uml.Class class_) {
-					org.eclipse.uml2.uml.Class matchingClass = findEObject(
+					org.eclipse.uml2.uml.Class matchingClass = (org.eclipse.uml2.uml.Class) findEObject(
 						getMatchCandidates(class_), new NameMatcher(class_));
 
 					return matchingClass == null
@@ -829,7 +829,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseComment(Comment comment) {
-					Comment matchingComment = findEObject(
+					Comment matchingComment = (Comment) findEObject(
 						getMatchCandidates(comment), new BodyMatcher(comment));
 
 					return matchingComment == null
@@ -839,7 +839,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseConstraint(Constraint constraint) {
-					Constraint matchingConstraint = findEObject(
+					Constraint matchingConstraint = (Constraint) findEObject(
 						getMatchCandidates(constraint), new NameMatcher(
 							constraint));
 
@@ -850,7 +850,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseDataType(DataType dataType) {
-					DataType matchingDataType = findEObject(
+					DataType matchingDataType = (DataType) findEObject(
 						getMatchCandidates(dataType), new NameMatcher(dataType));
 
 					return matchingDataType == null
@@ -868,7 +868,7 @@ public class UMLUtil
 						return directedRelationship;
 					}
 
-					DirectedRelationship matchingDirectedRelationship = findEObject(
+					DirectedRelationship matchingDirectedRelationship = (DirectedRelationship) findEObject(
 						getMatchCandidates(directedRelationship),
 						new EClassMatcher(directedRelationship) {
 
@@ -911,7 +911,7 @@ public class UMLUtil
 				@Override
 				public EObject caseEnumerationLiteral(
 						EnumerationLiteral enumerationLiteral) {
-					EnumerationLiteral matchingEnumerationLiteral = findEObject(
+					EnumerationLiteral matchingEnumerationLiteral = (EnumerationLiteral) findEObject(
 						getMatchCandidates(enumerationLiteral),
 						new NameMatcher(enumerationLiteral));
 
@@ -922,7 +922,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseOperation(Operation operation) {
-					Operation matchingOperation = findEObject(
+					Operation matchingOperation = (Operation) findEObject(
 						getMatchCandidates(operation), new NameMatcher(
 							operation) {
 
@@ -972,7 +972,7 @@ public class UMLUtil
 					if (mergedPackages.contains(package_)) {
 						matchingPackage = receivingPackage;
 					} else {
-						matchingPackage = findEObject(
+						matchingPackage = (org.eclipse.uml2.uml.Package) findEObject(
 							getMatchCandidates(package_), new NameMatcher(
 								package_));
 					}
@@ -984,7 +984,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseParameter(Parameter parameter) {
-					Parameter matchingParameter = findEObject(
+					Parameter matchingParameter = (Parameter) findEObject(
 						getMatchCandidates(parameter), new NameMatcher(
 							parameter));
 
@@ -995,7 +995,7 @@ public class UMLUtil
 
 				@Override
 				public EObject caseProperty(Property property) {
-					Property matchingProperty = findEObject(
+					Property matchingProperty = (Property) findEObject(
 						getMatchCandidates(property), new NameMatcher(property));
 
 					return matchingProperty == null
@@ -1019,7 +1019,7 @@ public class UMLUtil
 					if (theEClass.eContainer() != modelPackage) {
 
 						if (theEClass == EcorePackage.Literals.EANNOTATION) {
-							EAnnotation matchingEAnnotation = findEObject(
+							EAnnotation matchingEAnnotation = (EAnnotation) findEObject(
 								getMatchCandidates(theEObject),
 								new SourceMatcher((EAnnotation) theEObject));
 
@@ -1028,7 +1028,7 @@ public class UMLUtil
 							}
 						} else if (theEClass == EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY) {
 							@SuppressWarnings("unchecked")
-							BasicEMap.Entry<String, String> matchingEntry = findEObject(
+							BasicEMap.Entry<String, String> matchingEntry = (BasicEMap.Entry<String, String>) findEObject(
 								getMatchCandidates(theEObject),
 								new KeyMatcher(
 									(BasicEMap.Entry<String, String>) theEObject));
@@ -6798,12 +6798,14 @@ public class UMLUtil
 	protected static Property getTagDefinition(Stereotype stereotype,
 			final String propertyName) {
 
-		return findEObject(stereotype.getAllAttributes(), new EObjectMatcher() {
+		return (Property) findEObject(stereotype.getAllAttributes(),
+			new EObjectMatcher() {
 
-			public boolean matches(EObject eObject) {
-				return safeEquals(((Property) eObject).getName(), propertyName);
-			}
-		});
+				public boolean matches(EObject eObject) {
+					return safeEquals(((Property) eObject).getName(),
+						propertyName);
+				}
+			});
 	}
 
 	protected static Object getTaggedValue(Element element,
@@ -6963,7 +6965,8 @@ public class UMLUtil
 	protected static <F extends Feature> Collection<F> findValidRedefinitions(
 			Collection<F> redefinedFeatures, F redefiningFeature,
 			final String name, Classifier redefinitionContext) {
-		F redefinedFeature = findEObject(redefinitionContext.getFeatures(),
+		@SuppressWarnings("unchecked")
+		F redefinedFeature = (F) findEObject(redefinitionContext.getFeatures(),
 			new EClassMatcher(redefiningFeature) {
 
 				@Override
@@ -7028,7 +7031,7 @@ public class UMLUtil
 			Collection<Property> subsettedProperties,
 			Property subsettingProperty, final String name,
 			Classifier subsettingContext) {
-		Property subsettedProperty = findEObject(subsettingContext
+		Property subsettedProperty = (Property) findEObject(subsettingContext
 			.getAttributes(), new EClassMatcher(subsettingProperty) {
 
 			@Override
