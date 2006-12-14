@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.26 2006/12/14 15:47:32 khussey Exp $
+ * $Id: UML2Util.java,v 1.27 2006/12/14 21:18:16 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -677,7 +677,7 @@ public class UML2Util {
 	 *            The matcher to be used.
 	 * @return The first object that matches the criteria.
 	 */
-	public static <T> T findEObject(Collection<? extends EObject> eObjects,
+	public static EObject findEObject(Collection<? extends EObject> eObjects,
 			EObjectMatcher filter) {
 		return findEObject(eObjects.iterator(), filter);
 	}
@@ -692,16 +692,14 @@ public class UML2Util {
 	 *            The matcher to be used.
 	 * @return The first object that matches the criteria.
 	 */
-	public static <T> T findEObject(Iterator<? extends EObject> iterator,
+	public static EObject findEObject(Iterator<? extends EObject> iterator,
 			EObjectMatcher filter) {
 
 		while (iterator.hasNext()) {
 			EObject eObject = iterator.next();
 
 			if (filter.matches(eObject)) {
-				@SuppressWarnings("unchecked")
-				T t = (T) eObject;
-				return t;
+				return eObject;
 			}
 		}
 
