@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: LinkEndData.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,7 @@ public interface LinkEndData
 	 * @model type="org.eclipse.uml2.uml.QualifierValue" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getQualifiers();
+	EList<QualifierValue> getQualifiers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.QualifierValue} and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
@@ -129,7 +129,7 @@ public interface LinkEndData
 	 * @generated
 	 */
 	boolean validatePropertyIsAssociationEnd(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,7 +141,8 @@ public interface LinkEndData
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameType(DiagnosticChain diagnostics, Map context);
+	boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,7 +154,8 @@ public interface LinkEndData
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,7 +167,8 @@ public interface LinkEndData
 	 * @model
 	 * @generated
 	 */
-	boolean validateQualifiers(DiagnosticChain diagnostics, Map context);
+	boolean validateQualifiers(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,6 +180,7 @@ public interface LinkEndData
 	 * @model
 	 * @generated
 	 */
-	boolean validateEndObjectInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateEndObjectInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // LinkEndData

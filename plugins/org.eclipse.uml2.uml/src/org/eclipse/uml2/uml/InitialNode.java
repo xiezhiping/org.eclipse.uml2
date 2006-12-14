@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InitialNode.java,v 1.2 2006/05/12 20:38:06 khussey Exp $
+ * $Id: InitialNode.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,8 @@ public interface InitialNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoIncomingEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,6 +56,7 @@ public interface InitialNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateControlEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateControlEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // InitialNode

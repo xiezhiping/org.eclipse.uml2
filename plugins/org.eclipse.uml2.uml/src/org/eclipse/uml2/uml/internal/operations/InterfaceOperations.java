@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceOperations.java,v 1.9 2006/04/05 19:26:35 khussey Exp $
+ * $Id: InterfaceOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -68,12 +67,11 @@ public class InterfaceOperations
 	 * @generated NOT
 	 */
 	public static boolean validateVisibility(Interface interface_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-		for (Iterator features = interface_.getFeatures().iterator(); features
-			.hasNext();) {
+		for (Feature feature : interface_.getFeatures()) {
 
-			if (((Feature) features.next()).getVisibility() != VisibilityKind.PUBLIC_LITERAL) {
+			if (feature.getVisibility() != VisibilityKind.PUBLIC_LITERAL) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
@@ -97,8 +95,8 @@ public class InterfaceOperations
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(Interface interface_,
-			String name, EList parameterNames, EList parameterTypes,
-			Type returnType) {
+			String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, Type returnType) {
 		return TypeOperations.createOwnedOperation(interface_, name,
 			parameterNames, parameterTypes, returnType);
 	}

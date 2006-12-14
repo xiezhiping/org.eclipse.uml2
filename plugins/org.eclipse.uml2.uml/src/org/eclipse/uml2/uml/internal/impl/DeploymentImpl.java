@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.19 2006/11/14 18:02:20 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.20 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -35,6 +35,8 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DeployedArtifact;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentSpecification;
@@ -76,7 +78,7 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList deployedArtifacts = null;
+	protected EList<DeployedArtifact> deployedArtifacts = null;
 
 	/**
 	 * The cached value of the '{@link #getConfigurations() <em>Configuration</em>}' containment reference list.
@@ -86,7 +88,7 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList configurations = null;
+	protected EList<DeploymentSpecification> configurations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,6 +104,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DEPLOYMENT;
 	}
@@ -111,23 +114,25 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.DEPLOYMENT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DEPLOYMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -136,9 +141,9 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuppliers() {
+	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList(
+			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this, UMLPackage.DEPLOYMENT__SUPPLIER,
 				null, SUPPLIER_ESUBSETS);
 		}
@@ -150,9 +155,9 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClients() {
+	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
 				NamedElement.class, this, UMLPackage.DEPLOYMENT__CLIENT, null,
 				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
@@ -164,9 +169,9 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDeployedArtifacts() {
+	public EList<DeployedArtifact> getDeployedArtifacts() {
 		if (deployedArtifacts == null) {
-			deployedArtifacts = new SubsetSupersetEObjectResolvingEList(
+			deployedArtifacts = new SubsetSupersetEObjectResolvingEList<DeployedArtifact>(
 				DeployedArtifact.class, this,
 				UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT,
 				DEPLOYED_ARTIFACT_ESUPERSETS, null);
@@ -190,9 +195,7 @@ public class DeploymentImpl
 	 */
 	public DeployedArtifact getDeployedArtifact(String name,
 			boolean ignoreCase, EClass eClass) {
-		deployedArtifactLoop : for (Iterator i = getDeployedArtifacts()
-			.iterator(); i.hasNext();) {
-			DeployedArtifact deployedArtifact = (DeployedArtifact) i.next();
+		deployedArtifactLoop : for (DeployedArtifact deployedArtifact : getDeployedArtifacts()) {
 			if (eClass != null && !eClass.isInstance(deployedArtifact))
 				continue deployedArtifactLoop;
 			if (name != null && !(ignoreCase
@@ -209,9 +212,9 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConfigurations() {
+	public EList<DeploymentSpecification> getConfigurations() {
 		if (configurations == null) {
-			configurations = new EObjectContainmentWithInverseEList.Resolving(
+			configurations = new EObjectContainmentWithInverseEList.Resolving<DeploymentSpecification>(
 				DeploymentSpecification.class, this,
 				UMLPackage.DEPLOYMENT__CONFIGURATION,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT);
@@ -248,10 +251,7 @@ public class DeploymentImpl
 	 */
 	public DeploymentSpecification getConfiguration(String name,
 			boolean ignoreCase, boolean createOnDemand) {
-		configurationLoop : for (Iterator i = getConfigurations().iterator(); i
-			.hasNext();) {
-			DeploymentSpecification configuration = (DeploymentSpecification) i
-				.next();
+		configurationLoop : for (DeploymentSpecification configuration : getConfigurations()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(configuration.getName())
 				: name.equals(configuration.getName())))
@@ -298,7 +298,7 @@ public class DeploymentImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newLocation != null) {
-				EList clients = getClients();
+				EList<NamedElement> clients = getClients();
 				if (!clients.contains(newLocation)) {
 					clients.add(newLocation);
 				}
@@ -340,15 +340,17 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -363,10 +365,11 @@ public class DeploymentImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT :
-				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				return ((InternalEList) getConfigurations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getConfigurations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -380,18 +383,19 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
@@ -399,10 +403,10 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPLOYMENT__CLIENT :
-				return ((InternalEList) getClients()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				return ((InternalEList) getConfigurations()).basicRemove(
+				return ((InternalEList<?>) getConfigurations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicSetLocation(null, msgs);
@@ -415,6 +419,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -435,6 +440,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
@@ -498,15 +504,19 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__NAME :
 				setName((String) newValue);
@@ -516,7 +526,8 @@ public class DeploymentImpl
 				return;
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -529,19 +540,23 @@ public class DeploymentImpl
 				return;
 			case UMLPackage.DEPLOYMENT__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
 				getDeployedArtifacts().clear();
-				getDeployedArtifacts().addAll((Collection) newValue);
+				getDeployedArtifacts().addAll(
+					(Collection<? extends DeployedArtifact>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				getConfigurations().clear();
-				getConfigurations().addAll((Collection) newValue);
+				getConfigurations().addAll(
+					(Collection<? extends DeploymentSpecification>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				setLocation((DeploymentTarget) newValue);
@@ -555,6 +570,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
@@ -605,6 +621,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
@@ -703,6 +720,7 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.DEPLOYMENT__CONFIGURATION);

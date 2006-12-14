@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.18 2006/11/14 18:02:17 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.19 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -34,7 +34,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
@@ -72,7 +74,7 @@ public class ParameterSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<Parameter> parameters = null;
 
 	/**
 	 * The cached value of the '{@link #getConditions() <em>Condition</em>}' containment reference list.
@@ -82,7 +84,7 @@ public class ParameterSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList conditions = null;
+	protected EList<Constraint> conditions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,6 +100,7 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PARAMETER_SET;
 	}
@@ -107,23 +110,25 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.PARAMETER_SET__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.PARAMETER_SET__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -132,9 +137,9 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getParameters() {
+	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectWithInverseResolvingEList.ManyInverse(
+			parameters = new EObjectWithInverseResolvingEList.ManyInverse<Parameter>(
 				Parameter.class, this, UMLPackage.PARAMETER_SET__PARAMETER,
 				UMLPackage.PARAMETER__PARAMETER_SET);
 		}
@@ -156,9 +161,7 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public Parameter getParameter(String name, Type type, boolean ignoreCase) {
-		parameterLoop : for (Iterator i = getParameters().iterator(); i
-			.hasNext();) {
-			Parameter parameter = (Parameter) i.next();
+		parameterLoop : for (Parameter parameter : getParameters()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(parameter.getName())
 				: name.equals(parameter.getName())))
@@ -175,9 +178,9 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConditions() {
+	public EList<Constraint> getConditions() {
 		if (conditions == null) {
-			conditions = new EObjectContainmentEList.Resolving(
+			conditions = new EObjectContainmentEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.PARAMETER_SET__CONDITION);
 		}
 		return conditions;
@@ -221,9 +224,7 @@ public class ParameterSetImpl
 	 */
 	public Constraint getCondition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		conditionLoop : for (Iterator i = getConditions().iterator(); i
-			.hasNext();) {
-			Constraint condition = (Constraint) i.next();
+		conditionLoop : for (Constraint condition : getConditions()) {
 			if (eClass != null && !eClass.isInstance(condition))
 				continue conditionLoop;
 			if (name != null && !(ignoreCase
@@ -243,7 +244,7 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public boolean validateSameParameterizedEntity(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ParameterSetOperations.validateSameParameterizedEntity(this,
 			diagnostics, context);
 	}
@@ -253,7 +254,8 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInput(DiagnosticChain diagnostics, Map context) {
+	public boolean validateInput(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ParameterSetOperations.validateInput(this, diagnostics, context);
 	}
 
@@ -263,7 +265,7 @@ public class ParameterSetImpl
 	 * @generated
 	 */
 	public boolean validateTwoParameterSets(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ParameterSetOperations.validateTwoParameterSets(this,
 			diagnostics, context);
 	}
@@ -273,18 +275,20 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__PARAMETER :
-				return ((InternalEList) getParameters()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getParameters())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -294,26 +298,27 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PARAMETER_SET__PARAMETER :
-				return ((InternalEList) getParameters()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getParameters()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PARAMETER_SET__CONDITION :
-				return ((InternalEList) getConditions()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getConditions()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -323,6 +328,7 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
@@ -364,15 +370,19 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PARAMETER_SET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PARAMETER_SET__NAME :
 				setName((String) newValue);
@@ -382,18 +392,21 @@ public class ParameterSetImpl
 				return;
 			case UMLPackage.PARAMETER_SET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PARAMETER_SET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PARAMETER_SET__PARAMETER :
 				getParameters().clear();
-				getParameters().addAll((Collection) newValue);
+				getParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.PARAMETER_SET__CONDITION :
 				getConditions().clear();
-				getConditions().addAll((Collection) newValue);
+				getConditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -404,6 +417,7 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
@@ -439,6 +453,7 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PARAMETER_SET__EANNOTATIONS :
@@ -490,6 +505,7 @@ public class ParameterSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PARAMETER_SET__CONDITION);

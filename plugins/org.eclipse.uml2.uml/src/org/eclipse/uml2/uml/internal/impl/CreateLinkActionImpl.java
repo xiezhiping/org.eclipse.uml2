@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.14 2006/04/10 19:16:19 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,6 +59,7 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CREATE_LINK_ACTION;
 	}
@@ -68,9 +69,9 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEndData() {
+	public EList<LinkEndData> getEndData() {
 		if (endData == null) {
-			endData = new EObjectContainmentEList.Resolving(
+			endData = new EObjectContainmentEList.Resolving<LinkEndData>(
 				LinkEndCreationData.class, this,
 				UMLPackage.CREATE_LINK_ACTION__END_DATA);
 		}
@@ -82,6 +83,7 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LinkEndData createEndData() {
 		LinkEndCreationData newEndData = (LinkEndCreationData) create(UMLPackage.Literals.LINK_END_CREATION_DATA);
 		getEndData().add(newEndData);
@@ -103,7 +105,7 @@ public class CreateLinkActionImpl
 	 * @generated
 	 */
 	public boolean validateAssociationNotAbstract(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return CreateLinkActionOperations.validateAssociationNotAbstract(this,
 			diagnostics, context);
 	}
@@ -113,6 +115,7 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS :
@@ -196,6 +199,7 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CREATE_LINK_ACTION__EANNOTATIONS :

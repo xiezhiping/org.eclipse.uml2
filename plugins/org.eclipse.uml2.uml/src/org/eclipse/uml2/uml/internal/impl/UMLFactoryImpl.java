@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.15 2006/10/10 20:41:28 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -277,6 +277,7 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case UMLPackage.COMMENT :
@@ -686,6 +687,7 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case UMLPackage.VISIBILITY_KIND :
@@ -738,6 +740,7 @@ public class UMLFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case UMLPackage.VISIBILITY_KIND :
@@ -3217,6 +3220,7 @@ public class UMLFactoryImpl
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static UMLPackage getPackage() {
 		return UMLPackage.eINSTANCE;
 	}

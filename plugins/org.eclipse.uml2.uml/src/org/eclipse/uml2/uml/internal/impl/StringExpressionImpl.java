@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.20 2006/11/14 18:02:16 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.21 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,7 +37,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -45,6 +48,7 @@ import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.StringExpressionOperations;
@@ -80,7 +84,7 @@ public class StringExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList templateBindings = null;
+	protected EList<TemplateBinding> templateBindings = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -100,7 +104,7 @@ public class StringExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList subExpressions = null;
+	protected EList<StringExpression> subExpressions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,6 +120,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STRING_EXPRESSION;
 	}
@@ -125,23 +130,25 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -150,9 +157,9 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTemplateBindings() {
+	public EList<TemplateBinding> getTemplateBindings() {
 		if (templateBindings == null) {
-			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving<TemplateBinding>(
 				TemplateBinding.class, this,
 				UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
 				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
@@ -189,9 +196,7 @@ public class StringExpressionImpl
 	 */
 	public TemplateBinding getTemplateBinding(TemplateSignature signature,
 			boolean createOnDemand) {
-		templateBindingLoop : for (Iterator i = getTemplateBindings()
-			.iterator(); i.hasNext();) {
-			TemplateBinding templateBinding = (TemplateBinding) i.next();
+		templateBindingLoop : for (TemplateBinding templateBinding : getTemplateBindings()) {
 			if (signature != null
 				&& !signature.equals(templateBinding.getSignature()))
 				continue templateBindingLoop;
@@ -332,9 +337,9 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubExpressions() {
+	public EList<StringExpression> getSubExpressions() {
 		if (subExpressions == null) {
-			subExpressions = new EObjectContainmentWithInverseEList.Resolving(
+			subExpressions = new EObjectContainmentWithInverseEList.Resolving<StringExpression>(
 				StringExpression.class, this,
 				UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION,
 				UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION);
@@ -373,9 +378,7 @@ public class StringExpressionImpl
 	 */
 	public StringExpression getSubExpression(String name, Type type,
 			boolean ignoreCase, boolean createOnDemand) {
-		subExpressionLoop : for (Iterator i = getSubExpressions().iterator(); i
-			.hasNext();) {
-			StringExpression subExpression = (StringExpression) i.next();
+		subExpressionLoop : for (StringExpression subExpression : getSubExpressions()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(subExpression.getName())
 				: name.equals(subExpression.getName())))
@@ -458,12 +461,13 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList parameterableElements() {
+	public EList<ParameterableElement> parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-					.get(0));
+			@SuppressWarnings("unchecked")
+			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
+				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
 					.getEOperations().get(0),
@@ -489,7 +493,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOperands(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOperands(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return StringExpressionOperations.validateOperands(this, diagnostics,
 			context);
 	}
@@ -500,7 +505,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public boolean validateSubexpressions(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return StringExpressionOperations.validateSubexpressions(this,
 			diagnostics, context);
 	}
@@ -519,15 +524,17 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -542,8 +549,8 @@ public class StringExpressionImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -555,8 +562,8 @@ public class StringExpressionImpl
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return ((InternalEList) getSubExpressions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubExpressions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -571,18 +578,19 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -590,15 +598,15 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
-				return ((InternalEList) getOperands()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return ((InternalEList) getSubExpressions()).basicRemove(
+				return ((InternalEList<?>) getSubExpressions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return basicSetOwningExpression(null, msgs);
@@ -611,6 +619,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -631,6 +640,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
@@ -696,15 +706,19 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__NAME :
 				setName((String) newValue);
@@ -714,7 +728,8 @@ public class StringExpressionImpl
 				return;
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -733,18 +748,21 @@ public class StringExpressionImpl
 				return;
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				getOperands().clear();
-				getOperands().addAll((Collection) newValue);
+				getOperands().addAll(
+					(Collection<? extends ValueSpecification>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				getSubExpressions().clear();
-				getSubExpressions().addAll((Collection) newValue);
+				getSubExpressions().addAll(
+					(Collection<? extends StringExpression>) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				setOwningExpression((StringExpression) newValue);
@@ -758,6 +776,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
@@ -814,6 +833,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
@@ -866,7 +886,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
@@ -885,7 +906,8 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
@@ -920,6 +942,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING)
@@ -946,6 +969,7 @@ public class StringExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION);

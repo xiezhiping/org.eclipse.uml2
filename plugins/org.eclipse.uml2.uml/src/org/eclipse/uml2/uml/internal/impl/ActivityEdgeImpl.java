@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.22 2006/11/14 18:02:20 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.23 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -43,6 +43,8 @@ import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -112,7 +114,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedEdges = null;
+	protected EList<ActivityEdge> redefinedEdges = null;
 
 	/**
 	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
@@ -122,7 +124,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inPartitions = null;
+	protected EList<ActivityPartition> inPartitions = null;
 
 	/**
 	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
@@ -168,6 +170,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTIVITY_EDGE;
 	}
@@ -177,24 +180,25 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInGroups() {
+	public EList<ActivityGroup> getInGroups() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inGroups = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP);
+			@SuppressWarnings("unchecked")
+			EList<ActivityGroup> inGroups = (EList<ActivityGroup>) cache.get(
+				eResource, this, UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP);
 			if (inGroups == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP,
-					inGroups = new DerivedUnionEObjectEList(
+					inGroups = new DerivedUnionEObjectEList<ActivityGroup>(
 						ActivityGroup.class, this,
 						UMLPackage.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS));
 			}
 			return inGroups;
 		}
-		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
-			UMLPackage.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS);
+		return new DerivedUnionEObjectEList<ActivityGroup>(ActivityGroup.class,
+			this, UMLPackage.ACTIVITY_EDGE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
 
 	/**
@@ -202,24 +206,30 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT,
 			REDEFINED_ELEMENT_ESUBSETS);
 	}
@@ -229,23 +239,25 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -316,9 +328,9 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInPartitions() {
+	public EList<ActivityPartition> getInPartitions() {
 		if (inPartitions == null) {
-			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse(
+			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse<ActivityPartition>(
 				ActivityPartition.class, this,
 				UMLPackage.ACTIVITY_EDGE__IN_PARTITION,
 				UMLPackage.ACTIVITY_PARTITION__EDGE);
@@ -341,9 +353,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public ActivityPartition getInPartition(String name, boolean ignoreCase) {
-		inPartitionLoop : for (Iterator i = getInPartitions().iterator(); i
-			.hasNext();) {
-			ActivityPartition inPartition = (ActivityPartition) i.next();
+		inPartitionLoop : for (ActivityPartition inPartition : getInPartitions()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(inPartition.getName())
 				: name.equals(inPartition.getName())))
@@ -497,10 +507,11 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedEdges() {
+	public EList<ActivityEdge> getRedefinedEdges() {
 		if (redefinedEdges == null) {
-			redefinedEdges = new EObjectResolvingEList(ActivityEdge.class,
-				this, UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
+			redefinedEdges = new EObjectResolvingEList<ActivityEdge>(
+				ActivityEdge.class, this,
+				UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
 		}
 		return redefinedEdges;
 	}
@@ -521,9 +532,7 @@ public abstract class ActivityEdgeImpl
 	 */
 	public ActivityEdge getRedefinedEdge(String name, boolean ignoreCase,
 			EClass eClass) {
-		redefinedEdgeLoop : for (Iterator i = getRedefinedEdges().iterator(); i
-			.hasNext();) {
-			ActivityEdge redefinedEdge = (ActivityEdge) i.next();
+		redefinedEdgeLoop : for (ActivityEdge redefinedEdge : getRedefinedEdges()) {
 			if (eClass != null && !eClass.isInstance(redefinedEdge))
 				continue redefinedEdgeLoop;
 			if (name != null && !(ignoreCase
@@ -897,7 +906,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public boolean validateSourceAndTarget(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityEdgeOperations.validateSourceAndTarget(this,
 			diagnostics, context);
 	}
@@ -907,7 +916,8 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityEdgeOperations.validateOwned(this, diagnostics, context);
 	}
 
@@ -917,7 +927,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public boolean validateStructuredNode(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityEdgeOperations.validateStructuredNode(this, diagnostics,
 			context);
 	}
@@ -927,15 +937,17 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				if (source != null)
 					msgs = ((InternalEObject) source).eInverseRemove(this,
@@ -949,8 +961,8 @@ public abstract class ActivityEdgeImpl
 						msgs);
 				return basicSetTarget((ActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
 				if (interrupts != null)
 					msgs = ((InternalEObject) interrupts)
@@ -978,18 +990,19 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
@@ -997,7 +1010,7 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return basicSetTarget(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				return basicSetGuard(null, msgs);
@@ -1018,6 +1031,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -1037,6 +1051,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
@@ -1116,15 +1131,19 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				setName((String) newValue);
@@ -1134,7 +1153,8 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -1150,11 +1170,13 @@ public abstract class ActivityEdgeImpl
 				return;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
-				getRedefinedEdges().addAll((Collection) newValue);
+				getRedefinedEdges().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__GUARD :
 				setGuard((ValueSpecification) newValue);
@@ -1180,6 +1202,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
@@ -1239,6 +1262,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
@@ -1323,6 +1347,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY);
 	}
@@ -1342,6 +1367,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE);
@@ -1389,6 +1415,7 @@ public abstract class ActivityEdgeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.ACTIVITY_EDGE__GUARD)

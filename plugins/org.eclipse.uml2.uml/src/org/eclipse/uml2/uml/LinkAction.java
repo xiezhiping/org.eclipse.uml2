@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: LinkAction.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface LinkAction
 	 * @model type="org.eclipse.uml2.uml.LinkEndData" containment="true" resolveProxies="true" lower="2" ordered="false"
 	 * @generated
 	 */
-	EList getEndData();
+	EList<LinkEndData> getEndData();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.LinkEndData} and appends it to the '<em><b>End Data</b></em>' containment reference list.
@@ -93,7 +93,7 @@ public interface LinkAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getInputValues();
+	EList<InputPin> getInputValues();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Input Value</b></em>' containment reference list.
@@ -158,7 +158,8 @@ public interface LinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameAssociation(DiagnosticChain diagnostics, Map context);
+	boolean validateSameAssociation(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,7 +171,8 @@ public interface LinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotStatic(DiagnosticChain diagnostics, Map context);
+	boolean validateNotStatic(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,7 +189,8 @@ public interface LinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSamePins(DiagnosticChain diagnostics, Map context);
+	boolean validateSamePins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

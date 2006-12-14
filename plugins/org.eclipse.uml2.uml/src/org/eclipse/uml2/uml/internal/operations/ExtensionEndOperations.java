@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.12 2006/10/10 20:41:29 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,7 +63,7 @@ public class ExtensionEndOperations
 	 * @generated
 	 */
 	public static boolean validateMultiplicity(ExtensionEnd extensionEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -95,7 +95,7 @@ public class ExtensionEndOperations
 	 * @generated
 	 */
 	public static boolean validateAggregation(ExtensionEnd extensionEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

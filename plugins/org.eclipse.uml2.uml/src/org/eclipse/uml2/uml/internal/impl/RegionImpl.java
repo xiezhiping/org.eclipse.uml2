@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.24 2006/11/14 18:02:16 khussey Exp $
+ * $Id: RegionImpl.java,v 1.25 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -40,8 +40,13 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
@@ -109,7 +114,7 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList subvertices = null;
+	protected EList<Vertex> subvertices = null;
 
 	/**
 	 * The cached value of the '{@link #getTransitions() <em>Transition</em>}' containment reference list.
@@ -119,7 +124,7 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList transitions = null;
+	protected EList<Transition> transitions = null;
 
 	/**
 	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
@@ -145,6 +150,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.REGION;
 	}
@@ -154,24 +160,30 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.REGION__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.REGION__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.REGION__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
@@ -191,9 +203,7 @@ public class RegionImpl
 	 */
 	public RedefinableElement getRedefinedElement(String name,
 			boolean ignoreCase, EClass eClass) {
-		redefinedElementLoop : for (Iterator i = getRedefinedElements()
-			.iterator(); i.hasNext();) {
-			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
 			if (eClass != null && !eClass.isInstance(redefinedElement))
 				continue redefinedElementLoop;
 			if (name != null && !(ignoreCase
@@ -210,23 +220,24 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getRedefinitionContexts() {
+	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Classifier> result = (EList<Classifier>) cache.get(this,
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 
 			if (result == null) {
 				Classifier redefinitionContext = redefinitionContext();
-				List redefinitionContexts = redefinitionContext == null
-					? Collections.EMPTY_LIST
+				List<Classifier> redefinitionContexts = redefinitionContext == null
+					? Collections.<Classifier> emptyList()
 					: Collections.singletonList(redefinitionContext);
 				cache
 					.put(
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						result = new EcoreEList.UnmodifiableEList(
+						result = new EcoreEList.UnmodifiableEList<Classifier>(
 							this,
 							UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 							redefinitionContexts.size(), redefinitionContexts
@@ -237,10 +248,10 @@ public class RegionImpl
 		}
 
 		Classifier redefinitionContext = redefinitionContext();
-		List redefinitionContexts = redefinitionContext == null
-			? Collections.EMPTY_LIST
+		List<Classifier> redefinitionContexts = redefinitionContext == null
+			? Collections.<Classifier> emptyList()
 			: Collections.singletonList(redefinitionContext);
-		return new EcoreEList.UnmodifiableEList(this,
+		return new EcoreEList.UnmodifiableEList<Classifier>(this,
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			redefinitionContexts.size(), redefinitionContexts.toArray());
 	}
@@ -261,9 +272,7 @@ public class RegionImpl
 	 */
 	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
 			EClass eClass) {
-		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
-			.iterator(); i.hasNext();) {
-			Classifier redefinitionContext = (Classifier) i.next();
+		redefinitionContextLoop : for (Classifier redefinitionContext : getRedefinitionContexts()) {
 			if (eClass != null && !eClass.isInstance(redefinitionContext))
 				continue redefinitionContextLoop;
 			if (name != null && !(ignoreCase
@@ -316,26 +325,29 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedMembers() {
+	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedMembers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 			if (ownedMembers == null) {
 				cache
-					.put(eResource, this,
+					.put(
+						eResource,
+						this,
 						UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
-						ownedMembers = new DerivedUnionEObjectEList(
+						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
 							NamedElement.class, this,
 							UMLPackage.REGION__OWNED_MEMBER,
 							OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.REGION__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.REGION__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -343,9 +355,9 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubvertices() {
+	public EList<Vertex> getSubvertices() {
 		if (subvertices == null) {
-			subvertices = new EObjectContainmentWithInverseEList.Resolving(
+			subvertices = new EObjectContainmentWithInverseEList.Resolving<Vertex>(
 				Vertex.class, this, UMLPackage.REGION__SUBVERTEX,
 				UMLPackage.VERTEX__CONTAINER);
 		}
@@ -381,9 +393,7 @@ public class RegionImpl
 	 */
 	public Vertex getSubvertex(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand) {
-		subvertexLoop : for (Iterator i = getSubvertices().iterator(); i
-			.hasNext();) {
-			Vertex subvertex = (Vertex) i.next();
+		subvertexLoop : for (Vertex subvertex : getSubvertices()) {
 			if (eClass != null && !eClass.isInstance(subvertex))
 				continue subvertexLoop;
 			if (name != null && !(ignoreCase
@@ -402,9 +412,9 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTransitions() {
+	public EList<Transition> getTransitions() {
 		if (transitions == null) {
-			transitions = new EObjectContainmentWithInverseEList.Resolving(
+			transitions = new EObjectContainmentWithInverseEList.Resolving<Transition>(
 				Transition.class, this, UMLPackage.REGION__TRANSITION,
 				UMLPackage.TRANSITION__CONTAINER);
 		}
@@ -449,9 +459,7 @@ public class RegionImpl
 	 */
 	public Transition getTransition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		transitionLoop : for (Iterator i = getTransitions().iterator(); i
-			.hasNext();) {
-			Transition transition = (Transition) i.next();
+		transitionLoop : for (Transition transition : getTransitions()) {
 			if (eClass != null && !eClass.isInstance(transition))
 				continue transitionLoop;
 			if (name != null && !(ignoreCase
@@ -640,7 +648,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionContextValid(
 			this, diagnostics, context);
 	}
@@ -651,7 +659,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(
 			this, diagnostics, context);
 	}
@@ -685,7 +693,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean validateInitialVertex(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RegionOperations.validateInitialVertex(this, diagnostics,
 			context);
 	}
@@ -696,7 +704,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean validateDeepHistoryVertex(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RegionOperations.validateDeepHistoryVertex(this, diagnostics,
 			context);
 	}
@@ -707,7 +715,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean validateShallowHistoryVertex(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RegionOperations.validateShallowHistoryVertex(this, diagnostics,
 			context);
 	}
@@ -717,7 +725,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return RegionOperations.validateOwned(this, diagnostics, context);
 	}
 
@@ -762,30 +771,32 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__SUBVERTEX :
-				return ((InternalEList) getSubvertices()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubvertices())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__TRANSITION :
-				return ((InternalEList) getTransitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTransitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -803,35 +814,36 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.REGION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.REGION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.REGION__SUBVERTEX :
-				return ((InternalEList) getSubvertices()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getSubvertices()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.REGION__TRANSITION :
-				return ((InternalEList) getTransitions()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getTransitions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				return basicSetState(null, msgs);
 			case UMLPackage.REGION__STATE_MACHINE :
@@ -845,6 +857,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -863,6 +876,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
@@ -936,15 +950,19 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.REGION__NAME :
 				setName((String) newValue);
@@ -954,33 +972,39 @@ public class RegionImpl
 				return;
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.REGION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REGION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.REGION__SUBVERTEX :
 				getSubvertices().clear();
-				getSubvertices().addAll((Collection) newValue);
+				getSubvertices()
+					.addAll((Collection<? extends Vertex>) newValue);
 				return;
 			case UMLPackage.REGION__TRANSITION :
 				getTransitions().clear();
-				getTransitions().addAll((Collection) newValue);
+				getTransitions().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.REGION__STATE :
 				setState((State) newValue);
@@ -1000,6 +1024,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
@@ -1056,6 +1081,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
@@ -1118,7 +1144,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.REGION__IS_LEAF :
@@ -1139,7 +1166,8 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
@@ -1160,6 +1188,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1219,6 +1248,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.REGION__SUBVERTEX)
@@ -1248,6 +1278,7 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.REGION__STATE)
 			|| eIsSet(UMLPackage.REGION__STATE_MACHINE);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValue.java,v 1.2 2006/05/12 20:38:07 khussey Exp $
+ * $Id: QualifierValue.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -100,7 +100,8 @@ public interface QualifierValue
 	 * @model
 	 * @generated
 	 */
-	boolean validateQualifierAttribute(DiagnosticChain diagnostics, Map context);
+	boolean validateQualifierAttribute(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,7 +113,8 @@ public interface QualifierValue
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeOfQualifier(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeOfQualifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,6 +127,6 @@ public interface QualifierValue
 	 * @generated
 	 */
 	boolean validateMultiplicityOfQualifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // QualifierValue

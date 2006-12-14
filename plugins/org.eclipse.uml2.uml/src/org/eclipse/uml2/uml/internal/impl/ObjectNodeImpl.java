@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.21 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.22 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,8 +37,14 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ObjectNode;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
 import org.eclipse.uml2.uml.State;
@@ -143,7 +149,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inStates = null;
+	protected EList<State> inStates = null;
 
 	/**
 	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
@@ -169,6 +175,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OBJECT_NODE;
 	}
@@ -220,23 +227,25 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.OBJECT_NODE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.OBJECT_NODE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.OBJECT_NODE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -403,9 +412,9 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInStates() {
+	public EList<State> getInStates() {
 		if (inStates == null) {
-			inStates = new EObjectResolvingEList(State.class, this,
+			inStates = new EObjectResolvingEList<State>(State.class, this,
 				UMLPackage.OBJECT_NODE__IN_STATE);
 		}
 		return inStates;
@@ -426,8 +435,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public State getInState(String name, boolean ignoreCase, EClass eClass) {
-		inStateLoop : for (Iterator i = getInStates().iterator(); i.hasNext();) {
-			State inState = (State) i.next();
+		inStateLoop : for (State inState : getInStates()) {
 			if (eClass != null && !eClass.isInstance(inState))
 				continue inStateLoop;
 			if (name != null && !(ignoreCase
@@ -488,7 +496,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public boolean validateObjectFlowEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectNodeOperations.validateObjectFlowEdges(this, diagnostics,
 			context);
 	}
@@ -498,7 +506,8 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotUnique(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNotUnique(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ObjectNodeOperations.validateNotUnique(this, diagnostics,
 			context);
 	}
@@ -509,7 +518,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public boolean validateSelectionBehavior(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectNodeOperations.validateSelectionBehavior(this,
 			diagnostics, context);
 	}
@@ -520,7 +529,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public boolean validateInputOutputParameter(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectNodeOperations.validateInputOutputParameter(this,
 			diagnostics, context);
 	}
@@ -530,18 +539,19 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
@@ -549,16 +559,16 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.OBJECT_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -571,6 +581,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
@@ -656,15 +667,19 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__NAME :
 				setName((String) newValue);
@@ -674,7 +689,8 @@ public abstract class ObjectNodeImpl
 				return;
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -690,23 +706,29 @@ public abstract class ObjectNodeImpl
 				return;
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) newValue);
@@ -722,7 +744,7 @@ public abstract class ObjectNodeImpl
 				return;
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				getInStates().clear();
-				getInStates().addAll((Collection) newValue);
+				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__SELECTION :
 				setSelection((Behavior) newValue);
@@ -736,6 +758,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
@@ -807,6 +830,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
@@ -876,7 +900,8 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.OBJECT_NODE__TYPE :
@@ -893,7 +918,8 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == TypedElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.TYPED_ELEMENT__TYPE :
@@ -910,6 +936,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -941,6 +968,7 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.OBJECT_NODE__UPPER_BOUND);

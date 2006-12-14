@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Actor.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
+ * $Id: Actor.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,8 @@ public interface Actor
 	 * @model
 	 * @generated
 	 */
-	boolean validateAssociations(DiagnosticChain diagnostics, Map context);
+	boolean validateAssociations(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -60,6 +61,7 @@ public interface Actor
 	 * @model
 	 * @generated
 	 */
-	boolean validateMustHaveName(DiagnosticChain diagnostics, Map context);
+	boolean validateMustHaveName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Actor

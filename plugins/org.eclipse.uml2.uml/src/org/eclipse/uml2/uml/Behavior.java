@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.17 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Behavior.java,v 1.18 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -90,7 +90,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedBehaviors();
+	EList<Behavior> getRedefinedBehaviors();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Behavior</b></em>' reference list.
@@ -130,7 +130,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedParameters();
+	EList<Parameter> getOwnedParameters();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Parameter}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -198,7 +198,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getPreconditions();
+	EList<Constraint> getPreconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' containment reference list.
@@ -262,7 +262,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getPostconditions();
+	EList<Constraint> getPostconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' containment reference list.
@@ -326,7 +326,7 @@ public interface Behavior
 	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedParameterSets();
+	EList<ParameterSet> getOwnedParameterSets();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ParameterSet}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.
@@ -401,7 +401,8 @@ public interface Behavior
 	 * @model
 	 * @generated
 	 */
-	boolean validateParametersMatch(DiagnosticChain diagnostics, Map context);
+	boolean validateParametersMatch(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -414,7 +415,7 @@ public interface Behavior
 	 * @generated
 	 */
 	boolean validateFeatureOfContextClassifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -426,7 +427,8 @@ public interface Behavior
 	 * @model
 	 * @generated
 	 */
-	boolean validateMustRealize(DiagnosticChain diagnostics, Map context);
+	boolean validateMustRealize(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -438,6 +440,7 @@ public interface Behavior
 	 * @model
 	 * @generated
 	 */
-	boolean validateMostOneBehaviour(DiagnosticChain diagnostics, Map context);
+	boolean validateMostOneBehaviour(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Behavior

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalAction.java,v 1.2 2006/05/12 20:38:03 khussey Exp $
+ * $Id: BroadcastSignalAction.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,8 @@ public interface BroadcastSignalAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberAndOrder(DiagnosticChain diagnostics, Map context);
+	boolean validateNumberAndOrder(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,6 +88,6 @@ public interface BroadcastSignalAction
 	 * @generated
 	 */
 	boolean validateTypeOrderingMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // BroadcastSignalAction

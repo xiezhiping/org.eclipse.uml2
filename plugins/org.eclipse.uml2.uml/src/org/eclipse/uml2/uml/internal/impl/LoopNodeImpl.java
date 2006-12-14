@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.24 2006/11/14 18:02:20 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.25 2006/12/14 15:49:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -38,14 +38,25 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.LoopNode;
 import org.eclipse.uml2.uml.OutputPin;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.LoopNodeOperations;
@@ -105,7 +116,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodyParts = null;
+	protected EList<ExecutableNode> bodyParts = null;
 
 	/**
 	 * The cached value of the '{@link #getSetupParts() <em>Setup Part</em>}' reference list.
@@ -115,7 +126,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList setupParts = null;
+	protected EList<ExecutableNode> setupParts = null;
 
 	/**
 	 * The cached value of the '{@link #getDecider() <em>Decider</em>}' reference.
@@ -135,7 +146,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList tests = null;
+	protected EList<ExecutableNode> tests = null;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
@@ -145,7 +156,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList results = null;
+	protected EList<OutputPin> results = null;
 
 	/**
 	 * The cached value of the '{@link #getLoopVariables() <em>Loop Variable</em>}' reference list.
@@ -155,7 +166,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList loopVariables = null;
+	protected EList<OutputPin> loopVariables = null;
 
 	/**
 	 * The cached value of the '{@link #getBodyOutputs() <em>Body Output</em>}' reference list.
@@ -165,7 +176,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodyOutputs = null;
+	protected EList<OutputPin> bodyOutputs = null;
 
 	/**
 	 * The cached value of the '{@link #getLoopVariableInputs() <em>Loop Variable Input</em>}' containment reference list.
@@ -175,7 +186,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList loopVariableInputs = null;
+	protected EList<InputPin> loopVariableInputs = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +202,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LOOP_NODE;
 	}
@@ -200,21 +212,23 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
+	public EList<OutputPin> getOutputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList outputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__OUTPUT);
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
 			if (outputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
-					outputs = new DerivedUnionEObjectEList(OutputPin.class,
-						this, UMLPackage.LOOP_NODE__OUTPUT, OUTPUT_ESUBSETS));
+					outputs = new DerivedUnionEObjectEList<OutputPin>(
+						OutputPin.class, this, UMLPackage.LOOP_NODE__OUTPUT,
+						OUTPUT_ESUBSETS));
 			}
 			return outputs;
 		}
-		return new DerivedUnionEObjectEList(OutputPin.class, this,
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
 			UMLPackage.LOOP_NODE__OUTPUT, OUTPUT_ESUBSETS);
 	}
 
@@ -223,21 +237,23 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
+	public EList<InputPin> getInputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__INPUT);
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
-					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
-						UMLPackage.LOOP_NODE__INPUT, INPUT_ESUBSETS));
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this, UMLPackage.LOOP_NODE__INPUT,
+						INPUT_ESUBSETS));
 			}
 			return inputs;
 		}
-		return new DerivedUnionEObjectEList(InputPin.class, this,
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
 			UMLPackage.LOOP_NODE__INPUT, INPUT_ESUBSETS);
 	}
 
@@ -274,10 +290,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodyParts() {
+	public EList<ExecutableNode> getBodyParts() {
 		if (bodyParts == null) {
-			bodyParts = new EObjectResolvingEList(ExecutableNode.class, this,
-				UMLPackage.LOOP_NODE__BODY_PART);
+			bodyParts = new EObjectResolvingEList<ExecutableNode>(
+				ExecutableNode.class, this, UMLPackage.LOOP_NODE__BODY_PART);
 		}
 		return bodyParts;
 	}
@@ -298,8 +314,7 @@ public class LoopNodeImpl
 	 */
 	public ExecutableNode getBodyPart(String name, boolean ignoreCase,
 			EClass eClass) {
-		bodyPartLoop : for (Iterator i = getBodyParts().iterator(); i.hasNext();) {
-			ExecutableNode bodyPart = (ExecutableNode) i.next();
+		bodyPartLoop : for (ExecutableNode bodyPart : getBodyParts()) {
 			if (eClass != null && !eClass.isInstance(bodyPart))
 				continue bodyPartLoop;
 			if (name != null && !(ignoreCase
@@ -316,10 +331,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSetupParts() {
+	public EList<ExecutableNode> getSetupParts() {
 		if (setupParts == null) {
-			setupParts = new EObjectResolvingEList(ExecutableNode.class, this,
-				UMLPackage.LOOP_NODE__SETUP_PART);
+			setupParts = new EObjectResolvingEList<ExecutableNode>(
+				ExecutableNode.class, this, UMLPackage.LOOP_NODE__SETUP_PART);
 		}
 		return setupParts;
 	}
@@ -340,9 +355,7 @@ public class LoopNodeImpl
 	 */
 	public ExecutableNode getSetupPart(String name, boolean ignoreCase,
 			EClass eClass) {
-		setupPartLoop : for (Iterator i = getSetupParts().iterator(); i
-			.hasNext();) {
-			ExecutableNode setupPart = (ExecutableNode) i.next();
+		setupPartLoop : for (ExecutableNode setupPart : getSetupParts()) {
 			if (eClass != null && !eClass.isInstance(setupPart))
 				continue setupPartLoop;
 			if (name != null && !(ignoreCase
@@ -401,10 +414,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTests() {
+	public EList<ExecutableNode> getTests() {
 		if (tests == null) {
-			tests = new EObjectResolvingEList(ExecutableNode.class, this,
-				UMLPackage.LOOP_NODE__TEST);
+			tests = new EObjectResolvingEList<ExecutableNode>(
+				ExecutableNode.class, this, UMLPackage.LOOP_NODE__TEST);
 		}
 		return tests;
 	}
@@ -424,8 +437,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public ExecutableNode getTest(String name, boolean ignoreCase, EClass eClass) {
-		testLoop : for (Iterator i = getTests().iterator(); i.hasNext();) {
-			ExecutableNode test = (ExecutableNode) i.next();
+		testLoop : for (ExecutableNode test : getTests()) {
 			if (eClass != null && !eClass.isInstance(test))
 				continue testLoop;
 			if (name != null && !(ignoreCase
@@ -442,10 +454,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getResults() {
+	public EList<OutputPin> getResults() {
 		if (results == null) {
-			results = new EObjectContainmentEList.Resolving(OutputPin.class,
-				this, UMLPackage.LOOP_NODE__RESULT);
+			results = new EObjectContainmentEList.Resolving<OutputPin>(
+				OutputPin.class, this, UMLPackage.LOOP_NODE__RESULT);
 		}
 		return results;
 	}
@@ -481,8 +493,7 @@ public class LoopNodeImpl
 	 */
 	public OutputPin getResult(String name, Type type, boolean ignoreCase,
 			boolean createOnDemand) {
-		resultLoop : for (Iterator i = getResults().iterator(); i.hasNext();) {
-			OutputPin result = (OutputPin) i.next();
+		resultLoop : for (OutputPin result : getResults()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(result.getName())
 				: name.equals(result.getName())))
@@ -501,10 +512,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLoopVariables() {
+	public EList<OutputPin> getLoopVariables() {
 		if (loopVariables == null) {
-			loopVariables = new EObjectResolvingEList(OutputPin.class, this,
-				UMLPackage.LOOP_NODE__LOOP_VARIABLE);
+			loopVariables = new EObjectResolvingEList<OutputPin>(
+				OutputPin.class, this, UMLPackage.LOOP_NODE__LOOP_VARIABLE);
 		}
 		return loopVariables;
 	}
@@ -524,9 +535,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public OutputPin getLoopVariable(String name, Type type, boolean ignoreCase) {
-		loopVariableLoop : for (Iterator i = getLoopVariables().iterator(); i
-			.hasNext();) {
-			OutputPin loopVariable = (OutputPin) i.next();
+		loopVariableLoop : for (OutputPin loopVariable : getLoopVariables()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(loopVariable.getName())
 				: name.equals(loopVariable.getName())))
@@ -543,10 +552,10 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodyOutputs() {
+	public EList<OutputPin> getBodyOutputs() {
 		if (bodyOutputs == null) {
-			bodyOutputs = new EObjectResolvingEList(OutputPin.class, this,
-				UMLPackage.LOOP_NODE__BODY_OUTPUT);
+			bodyOutputs = new EObjectResolvingEList<OutputPin>(OutputPin.class,
+				this, UMLPackage.LOOP_NODE__BODY_OUTPUT);
 		}
 		return bodyOutputs;
 	}
@@ -566,9 +575,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public OutputPin getBodyOutput(String name, Type type, boolean ignoreCase) {
-		bodyOutputLoop : for (Iterator i = getBodyOutputs().iterator(); i
-			.hasNext();) {
-			OutputPin bodyOutput = (OutputPin) i.next();
+		bodyOutputLoop : for (OutputPin bodyOutput : getBodyOutputs()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(bodyOutput.getName())
 				: name.equals(bodyOutput.getName())))
@@ -585,9 +592,9 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLoopVariableInputs() {
+	public EList<InputPin> getLoopVariableInputs() {
 		if (loopVariableInputs == null) {
-			loopVariableInputs = new EObjectContainmentEList.Resolving(
+			loopVariableInputs = new EObjectContainmentEList.Resolving<InputPin>(
 				InputPin.class, this, UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);
 		}
 		return loopVariableInputs;
@@ -635,9 +642,7 @@ public class LoopNodeImpl
 	 */
 	public InputPin getLoopVariableInput(String name, Type type,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		loopVariableInputLoop : for (Iterator i = getLoopVariableInputs()
-			.iterator(); i.hasNext();) {
-			InputPin loopVariableInput = (InputPin) i.next();
+		loopVariableInputLoop : for (InputPin loopVariableInput : getLoopVariableInputs()) {
 			if (eClass != null && !eClass.isInstance(loopVariableInput))
 				continue loopVariableInputLoop;
 			if (name != null && !(ignoreCase
@@ -658,7 +663,8 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInputEdges(DiagnosticChain diagnostics, Map context) {
+	public boolean validateInputEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return LoopNodeOperations
 			.validateInputEdges(this, diagnostics, context);
 	}
@@ -669,7 +675,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public boolean validateBodyOutputPins(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LoopNodeOperations.validateBodyOutputPins(this, diagnostics,
 			context);
 	}
@@ -680,7 +686,7 @@ public class LoopNodeImpl
 	 * @generated
 	 */
 	public boolean validateResultNoIncoming(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LoopNodeOperations.validateResultNoIncoming(this, diagnostics,
 			context);
 	}
@@ -690,18 +696,19 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
@@ -709,50 +716,52 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 			case UMLPackage.LOOP_NODE__VARIABLE :
-				return ((InternalEList) getVariables()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.LOOP_NODE__EDGE :
-				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.LOOP_NODE__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.LOOP_NODE__RESULT :
-				return ((InternalEList) getResults()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getResults()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
-				return ((InternalEList) getLoopVariableInputs()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLoopVariableInputs())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -762,6 +771,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
@@ -899,15 +909,19 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__NAME :
 				setName((String) newValue);
@@ -917,7 +931,8 @@ public class LoopNodeImpl
 				return;
 			case UMLPackage.LOOP_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -933,99 +948,120 @@ public class LoopNodeImpl
 				return;
 			case UMLPackage.LOOP_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__VARIABLE :
 				getVariables().clear();
-				getVariables().addAll((Collection) newValue);
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__EDGE :
 				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
+				getEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
 				setMustIsolate(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.LOOP_NODE__NODE :
 				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
 				setIsTestedFirst(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				getBodyParts().clear();
-				getBodyParts().addAll((Collection) newValue);
+				getBodyParts().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__SETUP_PART :
 				getSetupParts().clear();
-				getSetupParts().addAll((Collection) newValue);
+				getSetupParts().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__DECIDER :
 				setDecider((OutputPin) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__TEST :
 				getTests().clear();
-				getTests().addAll((Collection) newValue);
+				getTests().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__RESULT :
 				getResults().clear();
-				getResults().addAll((Collection) newValue);
+				getResults().addAll((Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
 				getLoopVariables().clear();
-				getLoopVariables().addAll((Collection) newValue);
+				getLoopVariables().addAll(
+					(Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__BODY_OUTPUT :
 				getBodyOutputs().clear();
-				getBodyOutputs().addAll((Collection) newValue);
+				getBodyOutputs().addAll(
+					(Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 				getLoopVariableInputs().clear();
-				getLoopVariableInputs().addAll((Collection) newValue);
+				getLoopVariableInputs().addAll(
+					(Collection<? extends InputPin>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1036,6 +1072,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
@@ -1149,6 +1186,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LOOP_NODE__EANNOTATIONS :
@@ -1269,6 +1307,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1295,6 +1334,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOutputs() {
 		return super.isSetOutputs() || eIsSet(UMLPackage.LOOP_NODE__RESULT);
 	}
@@ -1314,6 +1354,7 @@ public class LoopNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetInputs() {
 		return super.isSetInputs()
 			|| eIsSet(UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT);

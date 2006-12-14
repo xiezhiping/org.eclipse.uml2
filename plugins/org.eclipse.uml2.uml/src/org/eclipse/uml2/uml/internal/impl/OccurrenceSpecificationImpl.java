@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.17 2006/11/14 18:02:16 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.18 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
@@ -65,7 +67,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList toBefores = null;
+	protected EList<GeneralOrdering> toBefores = null;
 
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
@@ -85,7 +87,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList toAfters = null;
+	protected EList<GeneralOrdering> toAfters = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +103,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OCCURRENCE_SPECIFICATION;
 	}
@@ -110,9 +113,9 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getToBefores() {
+	public EList<GeneralOrdering> getToBefores() {
 		if (toBefores == null) {
-			toBefores = new EObjectWithInverseResolvingEList(
+			toBefores = new EObjectWithInverseResolvingEList<GeneralOrdering>(
 				GeneralOrdering.class, this,
 				UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE,
 				UMLPackage.GENERAL_ORDERING__AFTER);
@@ -135,8 +138,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public GeneralOrdering getToBefore(String name, boolean ignoreCase) {
-		toBeforeLoop : for (Iterator i = getToBefores().iterator(); i.hasNext();) {
-			GeneralOrdering toBefore = (GeneralOrdering) i.next();
+		toBeforeLoop : for (GeneralOrdering toBefore : getToBefores()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(toBefore.getName())
 				: name.equals(toBefore.getName())))
@@ -194,9 +196,9 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getToAfters() {
+	public EList<GeneralOrdering> getToAfters() {
 		if (toAfters == null) {
-			toAfters = new EObjectWithInverseResolvingEList(
+			toAfters = new EObjectWithInverseResolvingEList<GeneralOrdering>(
 				GeneralOrdering.class, this,
 				UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER,
 				UMLPackage.GENERAL_ORDERING__BEFORE);
@@ -219,8 +221,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public GeneralOrdering getToAfter(String name, boolean ignoreCase) {
-		toAfterLoop : for (Iterator i = getToAfters().iterator(); i.hasNext();) {
-			GeneralOrdering toAfter = (GeneralOrdering) i.next();
+		toAfterLoop : for (GeneralOrdering toAfter : getToAfters()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(toAfter.getName())
 				: name.equals(toAfter.getName())))
@@ -235,9 +236,9 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCovereds() {
+	public EList<Lifeline> getCovereds() {
 		if (covereds == null) {
-			covereds = new EObjectWithInverseResolvingEList.ManyInverse(
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse<Lifeline>(
 				Lifeline.class, this,
 				UMLPackage.OCCURRENCE_SPECIFICATION__COVERED,
 				UMLPackage.LIFELINE__COVERED_BY);
@@ -250,6 +251,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Lifeline getCovered(String name) {
 		return getCovered(name, false);
 	}
@@ -259,9 +261,9 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Lifeline getCovered(String name, boolean ignoreCase) {
-		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
-			Lifeline covered = (Lifeline) i.next();
+		coveredLoop : for (Lifeline covered : getCovereds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(covered.getName())
 				: name.equals(covered.getName())))
@@ -285,17 +287,20 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
-				return ((InternalEList) getCovereds()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCovereds())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -307,10 +312,11 @@ public class OccurrenceSpecificationImpl
 				return basicSetEnclosingOperand((InteractionOperand) otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				return ((InternalEList) getToBefores())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getToBefores())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-				return ((InternalEList) getToAfters()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getToAfters())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -320,35 +326,36 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
-				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				return ((InternalEList) getGeneralOrderings()).basicRemove(
+				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				return ((InternalEList) getToBefores()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getToBefores()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
-				return ((InternalEList) getToAfters()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getToAfters()).basicRemove(otherEnd,
 					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -359,6 +366,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
@@ -416,15 +424,19 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -434,18 +446,20 @@ public class OccurrenceSpecificationImpl
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -455,14 +469,16 @@ public class OccurrenceSpecificationImpl
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				getToBefores().clear();
-				getToBefores().addAll((Collection) newValue);
+				getToBefores().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EVENT :
 				setEvent((Event) newValue);
 				return;
 			case UMLPackage.OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
-				getToAfters().addAll((Collection) newValue);
+				getToAfters().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -473,6 +489,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :
@@ -523,6 +540,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OCCURRENCE_SPECIFICATION__EANNOTATIONS :

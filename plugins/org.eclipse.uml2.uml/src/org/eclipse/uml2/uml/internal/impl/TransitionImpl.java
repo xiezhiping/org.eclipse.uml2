@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.23 2006/11/14 18:02:16 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.24 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -43,9 +43,13 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseE
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
@@ -178,7 +182,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList triggers = null;
+	protected EList<Trigger> triggers = null;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -204,6 +208,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.TRANSITION;
 	}
@@ -213,24 +218,30 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.TRANSITION__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.TRANSITION__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.TRANSITION__REDEFINED_ELEMENT,
 			REDEFINED_ELEMENT_ESUBSETS);
 	}
@@ -251,9 +262,7 @@ public class TransitionImpl
 	 */
 	public RedefinableElement getRedefinedElement(String name,
 			boolean ignoreCase, EClass eClass) {
-		redefinedElementLoop : for (Iterator i = getRedefinedElements()
-			.iterator(); i.hasNext();) {
-			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
 			if (eClass != null && !eClass.isInstance(redefinedElement))
 				continue redefinedElementLoop;
 			if (name != null && !(ignoreCase
@@ -270,23 +279,25 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.TRANSITION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.TRANSITION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.TRANSITION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -295,9 +306,9 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedRules() {
+	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.TRANSITION__OWNED_RULE,
 				null, OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 		}
@@ -309,23 +320,25 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getRedefinitionContexts() {
+	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Classifier> result = (EList<Classifier>) cache.get(this,
 				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 
 			if (result == null) {
 				Classifier redefinitionContext = redefinitionContext();
-				List redefinitionContexts = redefinitionContext == null
-					? Collections.EMPTY_LIST
-					: Collections.singletonList(redefinitionContext);
+				List<Classifier> redefinitionContexts = redefinitionContext == null
+					? Collections.<Classifier> emptyList()
+					: Collections
+						.<Classifier> singletonList(redefinitionContext);
 				cache
 					.put(
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						result = new EcoreEList.UnmodifiableEList(
+						result = new EcoreEList.UnmodifiableEList<Classifier>(
 							this,
 							UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 							redefinitionContexts.size(), redefinitionContexts
@@ -336,10 +349,10 @@ public class TransitionImpl
 		}
 
 		Classifier redefinitionContext = redefinitionContext();
-		List redefinitionContexts = redefinitionContext == null
-			? Collections.EMPTY_LIST
+		List<Classifier> redefinitionContexts = redefinitionContext == null
+			? Collections.<Classifier> emptyList()
 			: Collections.singletonList(redefinitionContext);
-		return new EcoreEList.UnmodifiableEList(this,
+		return new EcoreEList.UnmodifiableEList<Classifier>(this,
 			UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			redefinitionContexts.size(), redefinitionContexts.toArray());
 	}
@@ -360,9 +373,7 @@ public class TransitionImpl
 	 */
 	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
 			EClass eClass) {
-		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
-			.iterator(); i.hasNext();) {
-			Classifier redefinitionContext = (Classifier) i.next();
+		redefinitionContextLoop : for (Classifier redefinitionContext : getRedefinitionContexts()) {
 			if (eClass != null && !eClass.isInstance(redefinitionContext))
 				continue redefinitionContextLoop;
 			if (name != null && !(ignoreCase
@@ -670,7 +681,7 @@ public class TransitionImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newGuard != null) {
-				EList ownedRules = getOwnedRules();
+				EList<Constraint> ownedRules = getOwnedRules();
 				if (!ownedRules.contains(newGuard)) {
 					ownedRules.add(newGuard);
 				}
@@ -803,10 +814,10 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTriggers() {
+	public EList<Trigger> getTriggers() {
 		if (triggers == null) {
-			triggers = new EObjectContainmentEList.Resolving(Trigger.class,
-				this, UMLPackage.TRANSITION__TRIGGER);
+			triggers = new EObjectContainmentEList.Resolving<Trigger>(
+				Trigger.class, this, UMLPackage.TRANSITION__TRIGGER);
 		}
 		return triggers;
 	}
@@ -840,8 +851,7 @@ public class TransitionImpl
 	 */
 	public Trigger getTrigger(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		triggerLoop : for (Iterator i = getTriggers().iterator(); i.hasNext();) {
-			Trigger trigger = (Trigger) i.next();
+		triggerLoop : for (Trigger trigger : getTriggers()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(trigger.getName())
 				: name.equals(trigger.getName())))
@@ -932,7 +942,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionContextValid(
 			this, diagnostics, context);
 	}
@@ -943,7 +953,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(
 			this, diagnostics, context);
 	}
@@ -954,7 +964,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateForkSegmentGuards(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateForkSegmentGuards(this,
 			diagnostics, context);
 	}
@@ -965,7 +975,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateJoinSegmentGuards(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateJoinSegmentGuards(this,
 			diagnostics, context);
 	}
@@ -976,7 +986,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateForkSegmentState(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateForkSegmentState(this, diagnostics,
 			context);
 	}
@@ -987,7 +997,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateJoinSegmentState(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateJoinSegmentState(this, diagnostics,
 			context);
 	}
@@ -998,7 +1008,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateOutgoingPseudostates(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateOutgoingPseudostates(this,
 			diagnostics, context);
 	}
@@ -1009,7 +1019,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateInitialTransition(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateInitialTransition(this,
 			diagnostics, context);
 	}
@@ -1020,7 +1030,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean validateSignaturesCompatible(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return TransitionOperations.validateSignaturesCompatible(this,
 			diagnostics, context);
 	}
@@ -1067,24 +1077,26 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1108,29 +1120,30 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.TRANSITION__TARGET :
@@ -1138,7 +1151,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.TRANSITION__TRIGGER :
-				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.TRANSITION__SOURCE :
 				return basicSetSource(null, msgs);
@@ -1151,6 +1164,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -1166,6 +1180,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
@@ -1251,15 +1266,19 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TRANSITION__NAME :
 				setName((String) newValue);
@@ -1269,22 +1288,26 @@ public class TransitionImpl
 				return;
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.TRANSITION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -1309,7 +1332,7 @@ public class TransitionImpl
 				return;
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
-				getTriggers().addAll((Collection) newValue);
+				getTriggers().addAll((Collection<? extends Trigger>) newValue);
 				return;
 			case UMLPackage.TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -1323,6 +1346,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
@@ -1388,6 +1412,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
@@ -1456,7 +1481,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.TRANSITION__IS_LEAF :
@@ -1477,7 +1503,8 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
@@ -1498,6 +1525,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1540,6 +1568,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.TRANSITION__CONTAINER);
@@ -1584,6 +1613,7 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.TRANSITION__EFFECT);

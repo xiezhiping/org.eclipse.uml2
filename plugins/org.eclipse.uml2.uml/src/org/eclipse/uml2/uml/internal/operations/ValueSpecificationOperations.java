@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.9 2006/11/08 20:26:58 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -168,8 +168,9 @@ public class ValueSpecificationOperations
 
 	protected static void setValue(ValueSpecification valueSpecification,
 			final String newValue) {
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseDuration(Duration duration) {
 				ValueSpecification expr = duration.getExpr();
 				return expr == null || expr instanceof Duration
@@ -177,6 +178,7 @@ public class ValueSpecificationOperations
 					: doSwitch(expr);
 			}
 
+			@Override
 			public Object caseInstanceValue(InstanceValue instanceValue) {
 				Type type = instanceValue.getType();
 
@@ -202,30 +204,35 @@ public class ValueSpecificationOperations
 				return instanceValue;
 			}
 
+			@Override
 			public Object caseLiteralBoolean(LiteralBoolean literalBoolean) {
 				literalBoolean.setValue(Boolean.valueOf(newValue)
 					.booleanValue());
 				return literalBoolean;
 			}
 
+			@Override
 			public Object caseLiteralInteger(LiteralInteger literalInteger) {
 				literalInteger.setValue(Integer.parseInt(newValue));
 				return literalInteger;
 			}
 
+			@Override
 			public Object caseLiteralString(LiteralString literalString) {
 				literalString.setValue(newValue);
 				return literalString;
 			}
 
+			@Override
 			public Object caseLiteralUnlimitedNatural(
 					LiteralUnlimitedNatural literalUnlimitedNatural) {
 				literalUnlimitedNatural.setValue(Integer.parseInt(newValue));
 				return literalUnlimitedNatural;
 			}
 
+			@Override
 			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
-				EList bodies = opaqueExpression.getBodies();
+				EList<String> bodies = opaqueExpression.getBodies();
 
 				if (bodies.isEmpty()) {
 					bodies.add(newValue);
@@ -236,6 +243,7 @@ public class ValueSpecificationOperations
 				return opaqueExpression;
 			}
 
+			@Override
 			public Object caseTimeExpression(TimeExpression timeExpression) {
 				ValueSpecification expr = timeExpression.getExpr();
 				return expr == null || expr instanceof TimeExpression
@@ -243,6 +251,7 @@ public class ValueSpecificationOperations
 					: doSwitch(expr);
 			}
 
+			@Override
 			public Object defaultCase(EObject eObject) {
 				throw new UnsupportedOperationException();
 			}

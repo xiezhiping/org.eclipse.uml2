@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Relationship.java,v 1.4 2006/05/24 20:54:29 khussey Exp $
+ * $Id: Relationship.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,6 +50,6 @@ public interface Relationship
 	 * @model type="org.eclipse.uml2.uml.Element" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRelatedElements();
+	EList<Element> getRelatedElements();
 
 } // Relationship

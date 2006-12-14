@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementOperations.java,v 1.3 2006/10/11 16:30:16 khussey Exp $
+ * $Id: ConnectableElementOperations.java,v 1.4 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -35,9 +33,9 @@ public class ConnectableElementOperations
 		super();
 	}
 
-	protected static EList getRequiredInterfaces(
+	protected static EList<Interface> getRequiredInterfaces(
 			ConnectableElement connectableElement) {
-		EList requiredInterfaces = new UniqueEList.FastCompare();
+		EList<Interface> requiredInterfaces = new UniqueEList.FastCompare<Interface>();
 
 		if (connectableElement instanceof Port) {
 			requiredInterfaces.addAll(((Port) connectableElement)
@@ -53,11 +51,8 @@ public class ConnectableElementOperations
 				ComponentOperations.usedInterfaces(null, classifier, true,
 					requiredInterfaces);
 
-				for (Iterator allParents = classifier.allParents().iterator(); allParents
-					.hasNext();) {
-
-					ComponentOperations.usedInterfaces(null,
-						(Classifier) allParents.next(), true,
+				for (Classifier parent : classifier.allParents()) {
+					ComponentOperations.usedInterfaces(null, parent, true,
 						requiredInterfaces);
 				}
 			}
@@ -65,13 +60,10 @@ public class ConnectableElementOperations
 
 		for (int i = 0, size = requiredInterfaces.size(); i < size; i++) {
 
-			for (Iterator allParents = ((Interface) requiredInterfaces.get(i))
-				.allParents().iterator(); allParents.hasNext();) {
-
-				Object parent = allParents.next();
+			for (Classifier parent : requiredInterfaces.get(i).allParents()) {
 
 				if (parent instanceof Interface) {
-					requiredInterfaces.add(parent);
+					requiredInterfaces.add((Interface) parent);
 				}
 			}
 		}
@@ -79,9 +71,9 @@ public class ConnectableElementOperations
 		return ECollections.unmodifiableEList(requiredInterfaces);
 	}
 
-	protected static EList getProvidedInterfaces(
+	protected static EList<Interface> getProvidedInterfaces(
 			ConnectableElement connectableElement) {
-		EList providedInterfaces = new UniqueEList.FastCompare();
+		EList<Interface> providedInterfaces = new UniqueEList.FastCompare<Interface>();
 
 		if (connectableElement instanceof Port) {
 			providedInterfaces.addAll(((Port) connectableElement)
@@ -93,17 +85,14 @@ public class ConnectableElementOperations
 				ComponentOperations.getAllProvideds((Component) type,
 					providedInterfaces);
 			} else if (type instanceof Interface) {
-				providedInterfaces.add(type);
+				providedInterfaces.add((Interface) type);
 			} else if (type instanceof Classifier) {
 				Classifier classifier = (Classifier) type;
 				ComponentOperations.realizedInterfaces(null, classifier, true,
 					providedInterfaces);
 
-				for (Iterator allParents = classifier.allParents().iterator(); allParents
-					.hasNext();) {
-
-					ComponentOperations.realizedInterfaces(null,
-						(Classifier) allParents.next(), true,
+				for (Classifier parent : classifier.allParents()) {
+					ComponentOperations.realizedInterfaces(null, parent, true,
 						providedInterfaces);
 				}
 			}
@@ -111,13 +100,10 @@ public class ConnectableElementOperations
 
 		for (int i = 0, size = providedInterfaces.size(); i < size; i++) {
 
-			for (Iterator allParents = ((Interface) providedInterfaces.get(i))
-				.allParents().iterator(); allParents.hasNext();) {
-
-				Object parent = allParents.next();
+			for (Classifier parent : providedInterfaces.get(i).allParents()) {
 
 				if (parent instanceof Interface) {
-					providedInterfaces.add(parent);
+					providedInterfaces.add((Interface) parent);
 				}
 			}
 		}

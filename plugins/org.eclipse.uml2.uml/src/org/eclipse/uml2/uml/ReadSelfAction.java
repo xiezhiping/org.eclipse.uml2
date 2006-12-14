@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfAction.java,v 1.7 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ReadSelfAction.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -86,7 +86,8 @@ public interface ReadSelfAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateContained(DiagnosticChain diagnostics, Map context);
+	boolean validateContained(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +99,8 @@ public interface ReadSelfAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotStatic(DiagnosticChain diagnostics, Map context);
+	boolean validateNotStatic(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,7 +112,8 @@ public interface ReadSelfAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateType(DiagnosticChain diagnostics, Map context);
+	boolean validateType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,6 +125,7 @@ public interface ReadSelfAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReadSelfAction

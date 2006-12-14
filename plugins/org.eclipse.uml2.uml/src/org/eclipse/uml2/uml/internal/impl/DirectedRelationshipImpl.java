@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.11 2006/11/14 18:02:20 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.12 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,7 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DIRECTED_RELATIONSHIP;
 	}
@@ -66,22 +67,24 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
 						UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DIRECTED_RELATIONSHIP__SOURCE, null);
 	}
 
@@ -90,24 +93,26 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
 						RELATED_ELEMENT_ESUBSETS));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT,
 			RELATED_ELEMENT_ESUBSETS);
 	}
@@ -117,22 +122,24 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
 						UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DIRECTED_RELATIONSHIP__TARGET, null);
 	}
 
@@ -141,6 +148,7 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
@@ -168,6 +176,7 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
@@ -214,6 +223,7 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRelatedElements() {
 		return super.isSetRelatedElements() || isSetSources() || isSetTargets();
 	}

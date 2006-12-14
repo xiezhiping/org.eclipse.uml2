@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSet.java,v 1.9 2006/06/07 21:39:13 khussey Exp $
+ * $Id: GeneralizationSet.java,v 1.10 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -138,7 +138,7 @@ public interface GeneralizationSet
 	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="generalizationSet" ordered="false"
 	 * @generated
 	 */
-	EList getGeneralizations();
+	EList<Generalization> getGeneralizations();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Generalization} with the specified '<em><b>General</b></em>' from the '<em><b>Generalization</b></em>' reference list.
@@ -162,7 +162,7 @@ public interface GeneralizationSet
 	 * @generated
 	 */
 	boolean validateGeneralizationSameClassifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,6 +175,6 @@ public interface GeneralizationSet
 	 * @generated
 	 */
 	boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // GeneralizationSet

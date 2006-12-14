@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.7 2006/05/12 20:38:08 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,7 @@ public interface EncapsulatedClassifier
 	 * @model type="org.eclipse.uml2.uml.Port" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedPorts();
+	EList<Port> getOwnedPorts();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Port}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Port</b></em>' reference list.

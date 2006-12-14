@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: InvocationAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface InvocationAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getArguments();
+	EList<InputPin> getArguments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
@@ -148,6 +148,7 @@ public interface InvocationAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateOnPortReceiver(DiagnosticChain diagnostics, Map context);
+	boolean validateOnPortReceiver(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // InvocationAction

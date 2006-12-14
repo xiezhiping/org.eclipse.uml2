@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElement.java,v 1.4 2006/05/12 20:38:04 khussey Exp $
+ * $Id: ConnectableElement.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,6 +53,6 @@ public interface ConnectableElement
 	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" opposite="role"
 	 * @generated
 	 */
-	EList getEnds();
+	EList<ConnectorEnd> getEnds();
 
 } // ConnectableElement

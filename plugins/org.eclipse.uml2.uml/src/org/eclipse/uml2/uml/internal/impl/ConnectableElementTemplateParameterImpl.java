@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER;
 	}
@@ -115,6 +116,7 @@ public class ConnectableElementTemplateParameterImpl
 		return msgs;
 	}
 
+	@Override
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
 
@@ -183,6 +185,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS :
@@ -224,6 +227,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS :

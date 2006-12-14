@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHelperImpl.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLHelperImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -25,6 +25,7 @@ public class XMI2UMLHelperImpl
 		super(resource);
 	}
 
+	@Override
 	public String getHREF(EObject obj) {
 		String href = super.getHREF(obj);
 

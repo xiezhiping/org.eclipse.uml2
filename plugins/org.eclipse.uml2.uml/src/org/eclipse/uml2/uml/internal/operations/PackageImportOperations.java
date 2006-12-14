@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportOperations.java,v 1.5 2006/03/13 20:50:41 khussey Exp $
+ * $Id: PackageImportOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -60,7 +60,7 @@ public class PackageImportOperations
 	 * @generated NOT
 	 */
 	public static boolean validatePublicOrPrivate(PackageImport packageImport,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		VisibilityKind visibility = packageImport.getVisibility();

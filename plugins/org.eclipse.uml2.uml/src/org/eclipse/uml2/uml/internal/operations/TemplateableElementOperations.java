@@ -8,15 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementOperations.java,v 1.6 2006/01/27 04:55:56 khussey Exp $
+ * $Id: TemplateableElementOperations.java,v 1.7 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
-import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.TemplateableElement;
 
@@ -56,17 +56,14 @@ public class TemplateableElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList parameterableElements(
+	public static EList<ParameterableElement> parameterableElements(
 			TemplateableElement templateableElement) {
-		EList parameterableElements = new UniqueEList.FastCompare();
+		EList<ParameterableElement> parameterableElements = new UniqueEList.FastCompare<ParameterableElement>();
 
-		for (Iterator allOwnedElements = templateableElement.allOwnedElements()
-			.iterator(); allOwnedElements.hasNext();) {
-
-			Object ownedElement = allOwnedElements.next();
+		for (Element ownedElement : templateableElement.allOwnedElements()) {
 
 			if (ownedElement instanceof ParameterableElement) {
-				parameterableElements.add(ownedElement);
+				parameterableElements.add((ParameterableElement) ownedElement);
 			}
 		}
 

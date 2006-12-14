@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.6 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -165,7 +165,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateQualifierAttribute(DiagnosticChain diagnostics, Map context);
+	boolean validateQualifierAttribute(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -178,7 +179,7 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @generated
 	 */
 	boolean validateAssociationOfAssociation(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,7 +191,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateEndsOfAssociation(DiagnosticChain diagnostics, Map context);
+	boolean validateEndsOfAssociation(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,7 +204,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeOfObject(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeOfObject(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,7 +218,7 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfQualifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -228,7 +231,7 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfObject(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,7 +243,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameType(DiagnosticChain diagnostics, Map context);
+	boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,6 +257,6 @@ public interface ReadLinkObjectEndQualifierAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfResult(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ReadLinkObjectEndQualifierAction

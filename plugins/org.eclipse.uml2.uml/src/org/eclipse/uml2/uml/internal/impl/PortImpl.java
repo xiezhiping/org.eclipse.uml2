@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.24 2006/11/17 15:48:50 khussey Exp $
+ * $Id: PortImpl.java,v 1.25 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -36,13 +36,18 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
@@ -123,7 +128,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedPorts = null;
+	protected EList<Port> redefinedPorts = null;
 
 	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' reference.
@@ -150,6 +155,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PORT;
 	}
@@ -159,25 +165,31 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.PORT__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.PORT__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
-			UMLPackage.PORT__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this, UMLPackage.PORT__REDEFINED_ELEMENT,
+			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -239,11 +251,12 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRequireds() {
+	public EList<Interface> getRequireds() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
 				UMLPackage.Literals.PORT__REQUIRED);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PORT__REQUIRED,
@@ -269,8 +282,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public Interface getRequired(String name, boolean ignoreCase) {
-		requiredLoop : for (Iterator i = getRequireds().iterator(); i.hasNext();) {
-			Interface required = (Interface) i.next();
+		requiredLoop : for (Interface required : getRequireds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(required.getName())
 				: name.equals(required.getName())))
@@ -285,9 +297,9 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedPorts() {
+	public EList<Port> getRedefinedPorts() {
 		if (redefinedPorts == null) {
-			redefinedPorts = new EObjectResolvingEList(Port.class, this,
+			redefinedPorts = new EObjectResolvingEList<Port>(Port.class, this,
 				UMLPackage.PORT__REDEFINED_PORT);
 		}
 		return redefinedPorts;
@@ -308,9 +320,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public Port getRedefinedPort(String name, Type type, boolean ignoreCase) {
-		redefinedPortLoop : for (Iterator i = getRedefinedPorts().iterator(); i
-			.hasNext();) {
-			Port redefinedPort = (Port) i.next();
+		redefinedPortLoop : for (Port redefinedPort : getRedefinedPorts()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(redefinedPort.getName())
 				: name.equals(redefinedPort.getName())))
@@ -327,11 +337,12 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getProvideds() {
+	public EList<Interface> getProvideds() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Interface> result = (EList<Interface>) cache.get(this,
 				UMLPackage.Literals.PORT__PROVIDED);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PORT__PROVIDED,
@@ -357,8 +368,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public Interface getProvided(String name, boolean ignoreCase) {
-		providedLoop : for (Iterator i = getProvideds().iterator(); i.hasNext();) {
-			Interface provided = (Interface) i.next();
+		providedLoop : for (Interface provided : getProvideds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(provided.getName())
 				: name.equals(provided.getName())))
@@ -416,7 +426,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public boolean validateRequiredInterfaces(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PortOperations.validateRequiredInterfaces(this, diagnostics,
 			context);
 	}
@@ -427,7 +437,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public boolean validatePortAggregation(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PortOperations.validatePortAggregation(this, diagnostics,
 			context);
 	}
@@ -438,7 +448,7 @@ public class PortImpl
 	 * @generated
 	 */
 	public boolean validatePortDestroyed(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PortOperations.validatePortDestroyed(this, diagnostics, context);
 	}
 
@@ -447,7 +457,8 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDefaultValue(DiagnosticChain diagnostics, Map context) {
+	public boolean validateDefaultValue(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PortOperations.validateDefaultValue(this, diagnostics, context);
 	}
 
@@ -456,6 +467,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
@@ -623,15 +635,19 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PORT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PORT__NAME :
 				setName((String) newValue);
@@ -641,7 +657,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PORT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -684,15 +701,17 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__END :
 				getEnds().clear();
-				getEnds().addAll((Collection) newValue);
+				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.PORT__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll((Collection) newValue);
+				getDeployments().addAll(
+					(Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.PORT__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -717,7 +736,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
-				getRedefinedProperties().addAll((Collection) newValue);
+				getRedefinedProperties().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) newValue);
@@ -730,14 +750,16 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
-				getSubsettedProperties().addAll((Collection) newValue);
+				getSubsettedProperties().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__ASSOCIATION :
 				setAssociation((Association) newValue);
 				return;
 			case UMLPackage.PORT__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll((Collection) newValue);
+				getQualifiers().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PORT__ASSOCIATION_END :
 				setAssociationEnd((Property) newValue);
@@ -750,7 +772,8 @@ public class PortImpl
 				return;
 			case UMLPackage.PORT__REDEFINED_PORT :
 				getRedefinedPorts().clear();
-				getRedefinedPorts().addAll((Collection) newValue);
+				getRedefinedPorts().addAll(
+					(Collection<? extends Port>) newValue);
 				return;
 			case UMLPackage.PORT__PROTOCOL :
 				setProtocol((ProtocolStateMachine) newValue);
@@ -759,6 +782,7 @@ public class PortImpl
 		eDynamicSet(featureID, newValue);
 	}
 
+	@Override
 	public void eDynamicSet(int featureID, Object newValue) {
 
 		if (featureID == UMLPackage.PORT__CLASS) {
@@ -774,6 +798,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
@@ -905,6 +930,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PORT__EANNOTATIONS :
@@ -1023,6 +1049,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1052,6 +1079,7 @@ public class PortImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.PORT__REDEFINED_PORT);

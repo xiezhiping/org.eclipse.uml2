@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Stereotype.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface Stereotype
 	 * @model type="org.eclipse.uml2.uml.Image" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getIcons();
+	EList<Image> getIcons();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Image} and appends it to the '<em><b>Icon</b></em>' containment reference list.
@@ -78,7 +78,8 @@ public interface Stereotype
 	 * @model
 	 * @generated
 	 */
-	boolean validateNameNotClash(DiagnosticChain diagnostics, Map context);
+	boolean validateNameNotClash(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,7 +91,8 @@ public interface Stereotype
 	 * @model
 	 * @generated
 	 */
-	boolean validateGeneralize(DiagnosticChain diagnostics, Map context);
+	boolean validateGeneralize(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,7 +148,7 @@ public interface Stereotype
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
-	EList getExtendedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,7 +159,7 @@ public interface Stereotype
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
-	EList getAllExtendedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->

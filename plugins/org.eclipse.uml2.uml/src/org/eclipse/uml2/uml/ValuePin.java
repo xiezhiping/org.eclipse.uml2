@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePin.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ValuePin.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -89,7 +89,8 @@ public interface ValuePin
 	 * @model
 	 * @generated
 	 */
-	boolean validateCompatibleType(DiagnosticChain diagnostics, Map context);
+	boolean validateCompatibleType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +102,7 @@ public interface ValuePin
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoIncomingEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ValuePin

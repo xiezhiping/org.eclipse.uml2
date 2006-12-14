@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.17 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Parameter.java,v 1.18 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -67,7 +67,7 @@ public interface Parameter
 	 * @model type="org.eclipse.uml2.uml.ParameterSet" opposite="parameter" ordered="false"
 	 * @generated
 	 */
-	EList getParameterSets();
+	EList<ParameterSet> getParameterSets();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ParameterSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Parameter Set</b></em>' reference list.
@@ -342,7 +342,8 @@ public interface Parameter
 	 * @model
 	 * @generated
 	 */
-	boolean validateConnectorEnd(DiagnosticChain diagnostics, Map context);
+	boolean validateConnectorEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -354,7 +355,8 @@ public interface Parameter
 	 * @model
 	 * @generated
 	 */
-	boolean validateStreamAndException(DiagnosticChain diagnostics, Map context);
+	boolean validateStreamAndException(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,7 +368,8 @@ public interface Parameter
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotException(DiagnosticChain diagnostics, Map context);
+	boolean validateNotException(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -378,7 +381,8 @@ public interface Parameter
 	 * @model
 	 * @generated
 	 */
-	boolean validateReentrantBehaviors(DiagnosticChain diagnostics, Map context);
+	boolean validateReentrantBehaviors(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -390,7 +394,8 @@ public interface Parameter
 	 * @model
 	 * @generated
 	 */
-	boolean validateInAndOut(DiagnosticChain diagnostics, Map context);
+	boolean validateInAndOut(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

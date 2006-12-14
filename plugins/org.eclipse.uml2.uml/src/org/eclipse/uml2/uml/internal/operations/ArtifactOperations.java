@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactOperations.java,v 1.6 2006/03/07 20:25:17 khussey Exp $
+ * $Id: ArtifactOperations.java,v 1.7 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,8 +52,8 @@ public class ArtifactOperations
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(Artifact artifact,
-			String name, EList parameterNames, EList parameterTypes,
-			Type returnType) {
+			String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, Type returnType) {
 		return TypeOperations.createOwnedOperation(artifact, name,
 			parameterNames, parameterTypes, returnType);
 	}

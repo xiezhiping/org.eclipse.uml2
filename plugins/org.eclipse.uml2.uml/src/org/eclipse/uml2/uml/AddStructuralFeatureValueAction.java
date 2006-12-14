@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddStructuralFeatureValueAction.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
+ * $Id: AddStructuralFeatureValueAction.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -137,6 +137,6 @@ public interface AddStructuralFeatureValueAction
 	 * @generated
 	 */
 	boolean validateUnlimitedNaturalAndMultiplicity(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // AddStructuralFeatureValueAction

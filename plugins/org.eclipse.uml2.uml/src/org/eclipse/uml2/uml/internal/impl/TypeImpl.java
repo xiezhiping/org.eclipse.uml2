@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.19 2006/11/17 15:48:50 khussey Exp $
+ * $Id: TypeImpl.java,v 1.20 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
@@ -23,6 +24,8 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -67,6 +70,7 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.TYPE;
 	}
@@ -121,8 +125,8 @@ public abstract class TypeImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newPackage != null)
-				msgs = ((InternalEList) newPackage.getOwnedTypes()).basicAdd(
-					this, msgs);
+				msgs = ((InternalEList<Type>) newPackage.getOwnedTypes())
+					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newPackage,
 				UMLPackage.TYPE__PACKAGE, msgs);
 			if (msgs != null)
@@ -152,11 +156,12 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAssociations() {
+	public EList<Association> getAssociations() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.TYPE
-				.getEOperations().get(1));
+			@SuppressWarnings("unchecked")
+			EList<Association> result = (EList<Association>) cache.get(this,
+				UMLPackage.Literals.TYPE.getEOperations().get(1));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.TYPE.getEOperations()
 					.get(1), result = TypeOperations.getAssociations(this));
@@ -180,6 +185,7 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
@@ -229,15 +235,19 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.TYPE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.TYPE__NAME :
 				setName((String) newValue);
@@ -247,7 +257,8 @@ public abstract class TypeImpl
 				return;
 			case UMLPackage.TYPE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.TYPE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -270,6 +281,7 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
@@ -308,6 +320,7 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.TYPE__EANNOTATIONS :
@@ -362,6 +375,7 @@ public abstract class TypeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.TYPE__PACKAGE);
 	}

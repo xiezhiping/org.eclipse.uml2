@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPinImpl.java,v 1.3 2006/05/16 15:07:26 khussey Exp $
+ * $Id: OutputPinImpl.java,v 1.4 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class OutputPinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OUTPUT_PIN;
 	}
@@ -60,7 +61,7 @@ public class OutputPinImpl
 	 * @generated
 	 */
 	public boolean validateIncomingEdgesStructuredOnly(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return OutputPinOperations.validateIncomingEdgesStructuredOnly(this,
 			diagnostics, context);
 	}

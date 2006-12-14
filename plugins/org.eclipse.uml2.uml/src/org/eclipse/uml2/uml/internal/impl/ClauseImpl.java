@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.12 2006/11/14 18:02:16 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.13 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Clause;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.Type;
@@ -70,7 +71,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList tests = null;
+	protected EList<ExecutableNode> tests = null;
 
 	/**
 	 * The cached value of the '{@link #getBodies() <em>Body</em>}' reference list.
@@ -80,7 +81,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodies = null;
+	protected EList<ExecutableNode> bodies = null;
 
 	/**
 	 * The cached value of the '{@link #getPredecessorClauses() <em>Predecessor Clause</em>}' reference list.
@@ -90,7 +91,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList predecessorClauses = null;
+	protected EList<Clause> predecessorClauses = null;
 
 	/**
 	 * The cached value of the '{@link #getSuccessorClauses() <em>Successor Clause</em>}' reference list.
@@ -100,7 +101,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList successorClauses = null;
+	protected EList<Clause> successorClauses = null;
 
 	/**
 	 * The cached value of the '{@link #getDecider() <em>Decider</em>}' reference.
@@ -120,7 +121,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodyOutputs = null;
+	protected EList<OutputPin> bodyOutputs = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,6 +137,7 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CLAUSE;
 	}
@@ -145,10 +147,10 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTests() {
+	public EList<ExecutableNode> getTests() {
 		if (tests == null) {
-			tests = new EObjectResolvingEList(ExecutableNode.class, this,
-				UMLPackage.CLAUSE__TEST);
+			tests = new EObjectResolvingEList<ExecutableNode>(
+				ExecutableNode.class, this, UMLPackage.CLAUSE__TEST);
 		}
 		return tests;
 	}
@@ -168,8 +170,7 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public ExecutableNode getTest(String name, boolean ignoreCase, EClass eClass) {
-		testLoop : for (Iterator i = getTests().iterator(); i.hasNext();) {
-			ExecutableNode test = (ExecutableNode) i.next();
+		testLoop : for (ExecutableNode test : getTests()) {
 			if (eClass != null && !eClass.isInstance(test))
 				continue testLoop;
 			if (name != null && !(ignoreCase
@@ -186,10 +187,10 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodies() {
+	public EList<ExecutableNode> getBodies() {
 		if (bodies == null) {
-			bodies = new EObjectResolvingEList(ExecutableNode.class, this,
-				UMLPackage.CLAUSE__BODY);
+			bodies = new EObjectResolvingEList<ExecutableNode>(
+				ExecutableNode.class, this, UMLPackage.CLAUSE__BODY);
 		}
 		return bodies;
 	}
@@ -209,8 +210,7 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public ExecutableNode getBody(String name, boolean ignoreCase, EClass eClass) {
-		bodyLoop : for (Iterator i = getBodies().iterator(); i.hasNext();) {
-			ExecutableNode body = (ExecutableNode) i.next();
+		bodyLoop : for (ExecutableNode body : getBodies()) {
 			if (eClass != null && !eClass.isInstance(body))
 				continue bodyLoop;
 			if (name != null && !(ignoreCase
@@ -227,9 +227,9 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPredecessorClauses() {
+	public EList<Clause> getPredecessorClauses() {
 		if (predecessorClauses == null) {
-			predecessorClauses = new EObjectWithInverseResolvingEList.ManyInverse(
+			predecessorClauses = new EObjectWithInverseResolvingEList.ManyInverse<Clause>(
 				Clause.class, this, UMLPackage.CLAUSE__PREDECESSOR_CLAUSE,
 				UMLPackage.CLAUSE__SUCCESSOR_CLAUSE);
 		}
@@ -241,9 +241,9 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuccessorClauses() {
+	public EList<Clause> getSuccessorClauses() {
 		if (successorClauses == null) {
-			successorClauses = new EObjectWithInverseResolvingEList.ManyInverse(
+			successorClauses = new EObjectWithInverseResolvingEList.ManyInverse<Clause>(
 				Clause.class, this, UMLPackage.CLAUSE__SUCCESSOR_CLAUSE,
 				UMLPackage.CLAUSE__PREDECESSOR_CLAUSE);
 		}
@@ -297,10 +297,10 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodyOutputs() {
+	public EList<OutputPin> getBodyOutputs() {
 		if (bodyOutputs == null) {
-			bodyOutputs = new EObjectResolvingEList(OutputPin.class, this,
-				UMLPackage.CLAUSE__BODY_OUTPUT);
+			bodyOutputs = new EObjectResolvingEList<OutputPin>(OutputPin.class,
+				this, UMLPackage.CLAUSE__BODY_OUTPUT);
 		}
 		return bodyOutputs;
 	}
@@ -320,9 +320,7 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public OutputPin getBodyOutput(String name, Type type, boolean ignoreCase) {
-		bodyOutputLoop : for (Iterator i = getBodyOutputs().iterator(); i
-			.hasNext();) {
-			OutputPin bodyOutput = (OutputPin) i.next();
+		bodyOutputLoop : for (OutputPin bodyOutput : getBodyOutputs()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(bodyOutput.getName())
 				: name.equals(bodyOutput.getName())))
@@ -340,7 +338,7 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public boolean validateDeciderOutput(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ClauseOperations.validateDeciderOutput(this, diagnostics,
 			context);
 	}
@@ -351,7 +349,7 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public boolean validateBodyOutputPins(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ClauseOperations.validateBodyOutputPins(this, diagnostics,
 			context);
 	}
@@ -361,18 +359,20 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
-				return ((InternalEList) getPredecessorClauses()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPredecessorClauses())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
-				return ((InternalEList) getSuccessorClauses()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSuccessorClauses())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -382,20 +382,21 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
-				return ((InternalEList) getPredecessorClauses()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getPredecessorClauses())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
-				return ((InternalEList) getSuccessorClauses()).basicRemove(
+				return ((InternalEList<?>) getSuccessorClauses()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -406,6 +407,7 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
@@ -441,38 +443,47 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CLAUSE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CLAUSE__TEST :
 				getTests().clear();
-				getTests().addAll((Collection) newValue);
+				getTests().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.CLAUSE__BODY :
 				getBodies().clear();
-				getBodies().addAll((Collection) newValue);
+				getBodies().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 			case UMLPackage.CLAUSE__PREDECESSOR_CLAUSE :
 				getPredecessorClauses().clear();
-				getPredecessorClauses().addAll((Collection) newValue);
+				getPredecessorClauses().addAll(
+					(Collection<? extends Clause>) newValue);
 				return;
 			case UMLPackage.CLAUSE__SUCCESSOR_CLAUSE :
 				getSuccessorClauses().clear();
-				getSuccessorClauses().addAll((Collection) newValue);
+				getSuccessorClauses().addAll(
+					(Collection<? extends Clause>) newValue);
 				return;
 			case UMLPackage.CLAUSE__DECIDER :
 				setDecider((OutputPin) newValue);
 				return;
 			case UMLPackage.CLAUSE__BODY_OUTPUT :
 				getBodyOutputs().clear();
-				getBodyOutputs().addAll((Collection) newValue);
+				getBodyOutputs().addAll(
+					(Collection<? extends OutputPin>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -483,6 +494,7 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :
@@ -518,6 +530,7 @@ public class ClauseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CLAUSE__EANNOTATIONS :

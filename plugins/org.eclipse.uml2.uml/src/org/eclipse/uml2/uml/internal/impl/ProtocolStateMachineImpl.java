@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.24 2006/11/14 18:02:15 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.25 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -35,14 +35,38 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
+import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterSet;
+import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolConformance;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
+import org.eclipse.uml2.uml.Pseudostate;
+import org.eclipse.uml2.uml.Reception;
+import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.ProtocolStateMachineOperations;
@@ -73,7 +97,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList conformances = null;
+	protected EList<ProtocolConformance> conformances = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -89,6 +113,7 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PROTOCOL_STATE_MACHINE;
 	}
@@ -98,23 +123,25 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ELEMENT,
 			OWNED_ELEMENT_ESUBSETS);
 	}
@@ -124,9 +151,9 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConformances() {
+	public EList<ProtocolConformance> getConformances() {
 		if (conformances == null) {
-			conformances = new EObjectContainmentWithInverseEList.Resolving(
+			conformances = new EObjectContainmentWithInverseEList.Resolving<ProtocolConformance>(
 				ProtocolConformance.class, this,
 				UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE,
 				UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE);
@@ -165,9 +192,7 @@ public class ProtocolStateMachineImpl
 	 */
 	public ProtocolConformance getConformance(
 			ProtocolStateMachine generalMachine, boolean createOnDemand) {
-		conformanceLoop : for (Iterator i = getConformances().iterator(); i
-			.hasNext();) {
-			ProtocolConformance conformance = (ProtocolConformance) i.next();
+		conformanceLoop : for (ProtocolConformance conformance : getConformances()) {
 			if (generalMachine != null
 				&& !generalMachine.equals(conformance.getGeneralMachine()))
 				continue conformanceLoop;
@@ -184,7 +209,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 */
 	public boolean validateProtocolTransitions(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolStateMachineOperations.validateProtocolTransitions(this,
 			diagnostics, context);
 	}
@@ -194,7 +219,8 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEntryExitDo(DiagnosticChain diagnostics, Map context) {
+	public boolean validateEntryExitDo(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ProtocolStateMachineOperations.validateEntryExitDo(this,
 			diagnostics, context);
 	}
@@ -205,7 +231,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 */
 	public boolean validateDeepOrShallowHistory(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolStateMachineOperations.validateDeepOrShallowHistory(
 			this, diagnostics, context);
 	}
@@ -216,7 +242,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 */
 	public boolean validatePortsConnected(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolStateMachineOperations.validatePortsConnected(this,
 			diagnostics, context);
 	}
@@ -227,7 +253,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 */
 	public boolean validateClassifierContext(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolStateMachineOperations.validateClassifierContext(this,
 			diagnostics, context);
 	}
@@ -237,24 +263,26 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -269,8 +297,8 @@ public class ProtocolStateMachineImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -282,22 +310,23 @@ public class ProtocolStateMachineImpl
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
-				return ((InternalEList) getPowertypeExtents()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
-				return ((InternalEList) getSubstitutions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION :
-				return ((InternalEList) getInterfaceRealizations()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterfaceRealizations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedOperations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
 				if (specification != null)
 					msgs = ((InternalEObject) specification).eInverseRemove(
@@ -305,16 +334,17 @@ public class ProtocolStateMachineImpl
 						BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
-				return ((InternalEList) getRegions()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getRegions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
-				return ((InternalEList) getSubmachineStates()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubmachineStates())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
-				return ((InternalEList) getConnectionPoints()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getConnectionPoints())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
-				return ((InternalEList) getConformances()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getConformances())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -324,105 +354,106 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicRemove(
+				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
-				return ((InternalEList) getPowertypeExtents()).basicRemove(
+				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
-				return ((InternalEList) getSubstitutions()).basicRemove(
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
-				return ((InternalEList) getCollaborationUses()).basicRemove(
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
+				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
-				return ((InternalEList) getOwnedAttributes()).basicRemove(
+				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR :
-				return ((InternalEList) getOwnedConnectors()).basicRemove(
+				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR :
-				return ((InternalEList) getOwnedBehaviors()).basicRemove(
+				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION :
-				return ((InternalEList) getInterfaceRealizations())
+				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
-				return ((InternalEList) getOwnedTriggers()).basicRemove(
+				return ((InternalEList<?>) getOwnedTriggers()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
-				return ((InternalEList) getNestedClassifiers()).basicRemove(
+				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
-				return ((InternalEList) getOwnedOperations()).basicRemove(
+				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
-				return ((InternalEList) getOwnedReceptions()).basicRemove(
+				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
-				return ((InternalEList) getOwnedParameters()).basicRemove(
+				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
-				return ((InternalEList) getPreconditions()).basicRemove(
+				return ((InternalEList<?>) getPreconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
-				return ((InternalEList) getPostconditions()).basicRemove(
+				return ((InternalEList<?>) getPostconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
-				return ((InternalEList) getOwnedParameterSets()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedParameterSets())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
-				return ((InternalEList) getRegions()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getRegions()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
-				return ((InternalEList) getSubmachineStates()).basicRemove(
+				return ((InternalEList<?>) getSubmachineStates()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
-				return ((InternalEList) getConnectionPoints()).basicRemove(
+				return ((InternalEList<?>) getConnectionPoints()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
-				return ((InternalEList) getConformances()).basicRemove(
+				return ((InternalEList<?>) getConformances()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -433,6 +464,7 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
@@ -604,15 +636,19 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME :
 				setName((String) newValue);
@@ -622,22 +658,26 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -653,7 +693,8 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -663,130 +704,156 @@ public class ProtocolStateMachineImpl
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection) newValue);
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection) newValue);
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll((Collection) newValue);
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection) newValue);
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll((Collection) newValue);
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection) newValue);
+				getOwnedAttributes().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection) newValue);
+				getOwnedConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PORT :
 				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection) newValue);
+				getOwnedPorts().addAll((Collection<? extends Port>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll((Collection) newValue);
+				getOwnedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__INTERFACE_REALIZATION :
 				getInterfaceRealizations().clear();
-				getInterfaceRealizations().addAll((Collection) newValue);
+				getInterfaceRealizations().addAll(
+					(Collection<? extends InterfaceRealization>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
-				getOwnedTriggers().addAll((Collection) newValue);
+				getOwnedTriggers().addAll(
+					(Collection<? extends Trigger>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll((Collection) newValue);
+				getNestedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses().addAll((Collection) newValue);
+				getSuperClasses()
+					.addAll(
+						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_ACTIVE :
 				setIsActive(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll((Collection) newValue);
+				getOwnedReceptions().addAll(
+					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll((Collection) newValue);
+				getRedefinedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll((Collection) newValue);
+				getOwnedParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__PRECONDITION :
 				getPreconditions().clear();
-				getPreconditions().addAll((Collection) newValue);
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__POSTCONDITION :
 				getPostconditions().clear();
-				getPostconditions().addAll((Collection) newValue);
+				getPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll((Collection) newValue);
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__REGION :
 				getRegions().clear();
-				getRegions().addAll((Collection) newValue);
+				getRegions().addAll((Collection<? extends Region>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__SUBMACHINE_STATE :
 				getSubmachineStates().clear();
-				getSubmachineStates().addAll((Collection) newValue);
+				getSubmachineStates().addAll(
+					(Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONNECTION_POINT :
 				getConnectionPoints().clear();
-				getConnectionPoints().addAll((Collection) newValue);
+				getConnectionPoints().addAll(
+					(Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EXTENDED_STATE_MACHINE :
 				getExtendedStateMachines().clear();
-				getExtendedStateMachines().addAll((Collection) newValue);
+				getExtendedStateMachines().addAll(
+					(Collection<? extends StateMachine>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE :
 				getConformances().clear();
-				getConformances().addAll((Collection) newValue);
+				getConformances().addAll(
+					(Collection<? extends ProtocolConformance>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -797,6 +864,7 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
@@ -955,6 +1023,7 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_STATE_MACHINE__EANNOTATIONS :
@@ -1128,6 +1197,7 @@ public class ProtocolStateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE);

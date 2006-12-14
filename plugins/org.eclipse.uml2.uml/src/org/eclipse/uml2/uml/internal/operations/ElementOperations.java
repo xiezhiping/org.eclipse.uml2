@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.47 2006/10/25 18:12:15 khussey Exp $
+ * $Id: ElementOperations.java,v 1.48 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -51,6 +52,7 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
@@ -127,7 +129,7 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static boolean validateNotOwnSelf(Element element,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (EcoreUtil.isAncestor(element, element.getOwner())) {
@@ -156,7 +158,7 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static boolean validateHasOwner(Element element,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (element.mustBeOwned() && element.getOwner() == null) {
@@ -180,14 +182,10 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getStereotypeApplications(Element element) {
-		EList stereotypeApplications = new UniqueEList.FastCompare();
+	public static EList<EObject> getStereotypeApplications(Element element) {
+		EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
 
-		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-			element).iterator(); nonNavigableInverseReferences.hasNext();) {
-
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next();
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
 
 			if (setting.getEStructuralFeature().getName().startsWith(
 				Extension.METACLASS_ROLE_PREFIX)) {
@@ -211,12 +209,8 @@ public class ElementOperations
 	public static EObject getStereotypeApplication(Element element,
 			Stereotype stereotype) {
 
-		for (Iterator stereotypeApplications = element
-			.getStereotypeApplications().iterator(); stereotypeApplications
-			.hasNext();) {
-
-			EObject stereotypeApplication = (EObject) stereotypeApplications
-				.next();
+		for (EObject stereotypeApplication : element
+			.getStereotypeApplications()) {
 
 			if (getStereotype(stereotypeApplication) == stereotype) {
 				return stereotypeApplication;
@@ -231,28 +225,22 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getRequiredStereotypes(Element element) {
+	public static EList<Stereotype> getRequiredStereotypes(Element element) {
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			EList requiredStereotypes = new UniqueEList.FastCompare();
+			EList<Stereotype> requiredStereotypes = new UniqueEList.FastCompare<Stereotype>();
 
-			for (Iterator allProfileApplications = package_
-				.getAllProfileApplications().iterator(); allProfileApplications
-				.hasNext();) {
+			for (ProfileApplication profileApplication : package_
+				.getAllProfileApplications()) {
 
-				ProfileApplication profileApplication = (ProfileApplication) allProfileApplications
-					.next();
 				Profile appliedProfile = profileApplication.getAppliedProfile();
 
 				if (appliedProfile != null) {
 
-					for (Iterator ownedStereotypes = appliedProfile
-						.getOwnedStereotypes().iterator(); ownedStereotypes
-						.hasNext();) {
+					for (Stereotype stereotype : appliedProfile
+						.getOwnedStereotypes()) {
 
-						Stereotype stereotype = (Stereotype) ownedStereotypes
-							.next();
 						ENamedElement appliedDefinition = profileApplication
 							.getAppliedDefinition(stereotype);
 
@@ -273,7 +261,7 @@ public class ElementOperations
 			return ECollections.unmodifiableEList(requiredStereotypes);
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.emptyEList();
 	}
 
 	/**
@@ -284,11 +272,7 @@ public class ElementOperations
 	public static Stereotype getRequiredStereotype(Element element,
 			String qualifiedName) {
 
-		for (Iterator requiredStereotypes = element.getRequiredStereotypes()
-			.iterator(); requiredStereotypes.hasNext();) {
-
-			Stereotype requiredStereotype = (Stereotype) requiredStereotypes
-				.next();
+		for (Stereotype requiredStereotype : element.getRequiredStereotypes()) {
 
 			if (safeEquals(requiredStereotype.getQualifiedName(), qualifiedName)) {
 				return requiredStereotype;
@@ -303,14 +287,10 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAppliedStereotypes(Element element) {
-		EList appliedStereotypes = new UniqueEList.FastCompare();
+	public static EList<Stereotype> getAppliedStereotypes(Element element) {
+		EList<Stereotype> appliedStereotypes = new UniqueEList.FastCompare<Stereotype>();
 
-		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-			element).iterator(); nonNavigableInverseReferences.hasNext();) {
-
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next();
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
 
 			if (setting.getEStructuralFeature().getName().startsWith(
 				Extension.METACLASS_ROLE_PREFIX)) {
@@ -334,11 +314,7 @@ public class ElementOperations
 	public static Stereotype getAppliedStereotype(Element element,
 			String qualifiedName) {
 
-		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
-			.iterator(); appliedStereotypes.hasNext();) {
-
-			Stereotype appliedStereotype = (Stereotype) appliedStereotypes
-				.next();
+		for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
 
 			if (safeEquals(appliedStereotype.getQualifiedName(), qualifiedName)) {
 				return appliedStereotype;
@@ -353,15 +329,11 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAppliedSubstereotypes(Element element,
+	public static EList<Stereotype> getAppliedSubstereotypes(Element element,
 			Stereotype stereotype) {
-		EList appliedSubstereotypes = new UniqueEList.FastCompare();
+		EList<Stereotype> appliedSubstereotypes = new UniqueEList.FastCompare<Stereotype>();
 
-		for (Iterator appliedStereotypes = element.getAppliedStereotypes()
-			.iterator(); appliedStereotypes.hasNext();) {
-
-			Stereotype appliedStereotype = (Stereotype) appliedStereotypes
-				.next();
+		for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
 
 			if (appliedStereotype.allParents().contains(stereotype)) {
 				appliedSubstereotypes.add(appliedStereotype);
@@ -379,11 +351,8 @@ public class ElementOperations
 	public static Stereotype getAppliedSubstereotype(Element element,
 			Stereotype stereotype, String qualifiedName) {
 
-		for (Iterator appliedSubstereotypes = element.getAppliedSubstereotypes(
-			stereotype).iterator(); appliedSubstereotypes.hasNext();) {
-
-			Stereotype appliedSubstereotype = (Stereotype) appliedSubstereotypes
-				.next();
+		for (Stereotype appliedSubstereotype : element
+			.getAppliedSubstereotypes(stereotype)) {
 
 			if (safeEquals(appliedSubstereotype.getQualifiedName(),
 				qualifiedName)) {
@@ -451,9 +420,11 @@ public class ElementOperations
 					} else {
 
 						if (eStructuralFeature.isMany()) {
-							List list = eObject == null
-								? Collections.EMPTY_LIST
-								: (List) eObject.eGet(eStructuralFeature);
+							@SuppressWarnings("unchecked")
+							List<Object> list = eObject == null
+								? Collections.emptyList()
+								: (List<Object>) eObject
+									.eGet(eStructuralFeature);
 
 							return index == -1
 								? !list.isEmpty()
@@ -544,9 +515,10 @@ public class ElementOperations
 				Object value = null;
 
 				if (eStructuralFeature.isMany()) {
-					List list = eObject == null
-						? Collections.EMPTY_LIST
-						: (List) eObject.eGet(eStructuralFeature);
+					@SuppressWarnings("unchecked")
+					List<Object> list = eObject == null
+						? Collections.emptyList()
+						: (List<Object>) eObject.eGet(eStructuralFeature);
 
 					value = index == -1
 						? list
@@ -562,7 +534,7 @@ public class ElementOperations
 						.getEAnnotation(UMLPackage.eNS_URI);
 
 					if (eAnnotation != null) {
-						EList references = eAnnotation.getReferences();
+						EList<EObject> references = eAnnotation.getReferences();
 
 						if (references.size() > 0) {
 							Object reference = references.get(0);
@@ -646,7 +618,9 @@ public class ElementOperations
 				eClass = (EClass) eType;
 
 				if (eStructuralFeature.isMany()) {
-					List list = (List) eObject.eGet(eStructuralFeature);
+					@SuppressWarnings("unchecked")
+					List<Object> list = (List<Object>) eObject
+						.eGet(eStructuralFeature);
 					int size = list.size();
 
 					if (size <= index) {
@@ -686,9 +660,11 @@ public class ElementOperations
 						EClass eClassType = (EClass) eType;
 
 						if (newValue instanceof List) {
+							@SuppressWarnings("unchecked")
+							Iterator<Object> j = ((List<Object>) newValue)
+								.iterator();
 
-							for (Iterator j = ((List) newValue).iterator(); j
-								.hasNext();) {
+							while (j.hasNext()) {
 
 								if (!eClassType.isInstance(j.next())) {
 									throw new IllegalArgumentException(String
@@ -705,12 +681,14 @@ public class ElementOperations
 							.getEFactoryInstance();
 
 						if (newValue instanceof List) {
-							newValue = new ArrayList((List) newValue);
+							@SuppressWarnings("unchecked")
+							List<Object> newList = new ArrayList<Object>(
+								(List<Object>) newValue);
 
 							if (eDataType instanceof EEnum) {
 								EEnum eEnum = (EEnum) eDataType;
 
-								for (ListIterator li = ((List) newValue)
+								for (ListIterator<Object> li = newList
 									.listIterator(); li.hasNext();) {
 
 									Object item = li.next();
@@ -723,7 +701,7 @@ public class ElementOperations
 								}
 							}
 
-							for (ListIterator li = ((List) newValue)
+							for (ListIterator<Object> li = newList
 								.listIterator(); li.hasNext();) {
 
 								Object item = li.next();
@@ -739,6 +717,8 @@ public class ElementOperations
 									}
 								}
 							}
+
+							newValue = newList;
 						} else {
 
 							if (eDataType instanceof EEnum) {
@@ -780,7 +760,9 @@ public class ElementOperations
 								.valueOf(newValue));
 						}
 					} else {
-						List list = (List) eObject.eGet(eStructuralFeature);
+						@SuppressWarnings("unchecked")
+						List<Object> list = (List<Object>) eObject
+							.eGet(eStructuralFeature);
 
 						for (int j = list.size(); j < index; j++) {
 							list.add(j, eStructuralFeature.getDefaultValue());
@@ -814,7 +796,7 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getRelationships(Element element) {
+	public static EList<Relationship> getRelationships(Element element) {
 		return getRelationships(element, UMLPackage.Literals.RELATIONSHIP);
 	}
 
@@ -823,18 +805,16 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getRelationships(Element element, EClass eClass) {
-		EList relationships = new UniqueEList.FastCompare();
+	public static EList<Relationship> getRelationships(Element element,
+			EClass eClass) {
+		EList<Relationship> relationships = new UniqueEList.FastCompare<Relationship>();
 
-		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-			element).iterator(); nonNavigableInverseReferences.hasNext();) {
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
 
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next();
 			EObject eObject = setting.getEObject();
 
 			if (eClass.isInstance(eObject)) {
-				relationships.add(eObject);
+				relationships.add((Relationship) eObject);
 			} else if (eObject instanceof Property) {
 				Association association = ((Property) eObject).getAssociation();
 
@@ -844,10 +824,7 @@ public class ElementOperations
 			}
 		}
 
-		for (Iterator eAllReferences = element.eClass().getEAllReferences()
-			.iterator(); eAllReferences.hasNext();) {
-
-			EReference eReference = (EReference) eAllReferences.next();
+		for (EReference eReference : element.eClass().getEAllReferences()) {
 
 			if (!eReference.isDerived() && element.eIsSet(eReference)) {
 				EClass eReferenceType = eReference.getEReferenceType();
@@ -855,26 +832,30 @@ public class ElementOperations
 				if (eClass.isSuperTypeOf(eReferenceType)) {
 
 					if (eReference.isMany()) {
-						relationships.addAll((List) element.eGet(eReference));
+						@SuppressWarnings("unchecked")
+						List<Relationship> values = (List<Relationship>) element
+							.eGet(eReference);
+						relationships.addAll(values);
 					} else {
-						relationships.add(element.eGet(eReference));
+						relationships.add((Relationship) element
+							.eGet(eReference));
 					}
 				} else if (eReferenceType.isSuperTypeOf(eClass)) {
 					Object value = element.eGet(eReference);
 
 					if (eReference.isMany()) {
+						@SuppressWarnings("unchecked")
+						Iterator<Object> i = ((List<Object>) value).iterator();
 
-						for (Iterator i = ((List) value).iterator(); i
-							.hasNext();) {
-
+						while (i.hasNext()) {
 							value = i.next();
 
 							if (eClass.isInstance(value)) {
-								relationships.add(value);
+								relationships.add((Relationship) value);
 							}
 						}
 					} else if (eClass.isInstance(value)) {
-						relationships.add(value);
+						relationships.add((Relationship) value);
 					}
 				}
 			}
@@ -888,7 +869,8 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getSourceDirectedRelationships(Element element) {
+	public static EList<DirectedRelationship> getSourceDirectedRelationships(
+			Element element) {
 		return getSourceDirectedRelationships(element,
 			UMLPackage.Literals.DIRECTED_RELATIONSHIP);
 	}
@@ -898,12 +880,12 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getSourceDirectedRelationships(Element element,
-			EClass eClass) {
-		EList sourceDirectedRelationships = new UniqueEList.FastCompare();
+	public static EList<DirectedRelationship> getSourceDirectedRelationships(
+			Element element, EClass eClass) {
+		EList<DirectedRelationship> sourceDirectedRelationships = new UniqueEList.FastCompare<DirectedRelationship>();
 
-		for (Iterator directedRelationships = getRelationships(element, eClass)
-			.iterator(); directedRelationships.hasNext();) {
+		for (Iterator<Relationship> directedRelationships = getRelationships(
+			element, eClass).iterator(); directedRelationships.hasNext();) {
 
 			DirectedRelationship directedRelationship = (DirectedRelationship) directedRelationships
 				.next();
@@ -921,7 +903,8 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getTargetDirectedRelationships(Element element) {
+	public static EList<DirectedRelationship> getTargetDirectedRelationships(
+			Element element) {
 		return getTargetDirectedRelationships(element,
 			UMLPackage.Literals.DIRECTED_RELATIONSHIP);
 	}
@@ -931,12 +914,12 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getTargetDirectedRelationships(Element element,
-			EClass eClass) {
-		EList targetDirectedRelationships = new UniqueEList.FastCompare();
+	public static EList<DirectedRelationship> getTargetDirectedRelationships(
+			Element element, EClass eClass) {
+		EList<DirectedRelationship> targetDirectedRelationships = new UniqueEList.FastCompare<DirectedRelationship>();
 
-		for (Iterator directedRelationships = getRelationships(element, eClass)
-			.iterator(); directedRelationships.hasNext();) {
+		for (Iterator<Relationship> directedRelationships = getRelationships(
+			element, eClass).iterator(); directedRelationships.hasNext();) {
 
 			DirectedRelationship directedRelationship = (DirectedRelationship) directedRelationships
 				.next();
@@ -954,24 +937,26 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getKeywords(Element element) {
+	public static EList<String> getKeywords(Element element) {
 		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
 
 		if (eAnnotation != null) {
-			EMap details = eAnnotation.getDetails();
+			EMap<String, String> details = eAnnotation.getDetails();
 
 			if (!details.isEmpty()) {
-				EList keywords = new UniqueEList();
+				EList<String> keywords = new UniqueEList<String>();
 
-				for (Iterator d = details.iterator(); d.hasNext();) {
-					keywords.add(((Map.Entry) d.next()).getKey());
+				for (Iterator<Map.Entry<String, String>> d = details.iterator(); d
+					.hasNext();) {
+
+					keywords.add(d.next().getKey());
 				}
 
 				return ECollections.unmodifiableEList(keywords);
 			}
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.emptyEList();
 	}
 
 	/**
@@ -980,8 +965,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static boolean addKeyword(Element element, String keyword) {
-		EMap details = getEAnnotation(element, UMLPackage.eNS_URI, true)
-			.getDetails();
+		EMap<String, String> details = getEAnnotation(element,
+			UMLPackage.eNS_URI, true).getDetails();
 
 		if (!details.containsKey(keyword)) {
 			details.put(keyword, null);
@@ -1000,7 +985,7 @@ public class ElementOperations
 		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
 
 		if (eAnnotation != null) {
-			EMap details = eAnnotation.getDetails();
+			EMap<String, String> details = eAnnotation.getDetails();
 
 			if (details.containsKey(keyword)) {
 				details.removeKey(keyword);
@@ -1052,10 +1037,7 @@ public class ElementOperations
 	protected static Extension getExtension(Element element,
 			Stereotype stereotype) {
 
-		for (Iterator allAttributes = stereotype.getAllAttributes().iterator(); allAttributes
-			.hasNext();) {
-
-			Property attribute = (Property) allAttributes.next();
+		for (Property attribute : stereotype.getAllAttributes()) {
 			Association association = attribute.getAssociation();
 
 			if (association instanceof Extension) {
@@ -1153,33 +1135,25 @@ public class ElementOperations
 		return element.getStereotypeApplication(stereotype) != null;
 	}
 
-	protected static EList applyAllStereotypes(Element element,
-			Map definitions, EList stereotypeApplications) {
+	protected static EList<EObject> applyAllStereotypes(Element element,
+			Map<EClassifier, Map<Stereotype, EClass>> definitions,
+			EList<EObject> stereotypeApplications) {
 
 		if (!element.eIsProxy()) {
 
-			for (Iterator stereotypeEntries = definitions.entrySet().iterator(); stereotypeEntries
-				.hasNext();) {
+			for (Map.Entry<EClassifier, Map<Stereotype, EClass>> stereotypeEntry : definitions
+				.entrySet()) {
 
-				Map.Entry stereotypeEntry = (Map.Entry) stereotypeEntries
-					.next();
+				if (stereotypeEntry.getKey().isInstance(element)) {
 
-				if (((EClassifier) stereotypeEntry.getKey())
-					.isInstance(element)) {
+					for (Map.Entry<Stereotype, EClass> definitionEntry : stereotypeEntry
+						.getValue().entrySet()) {
 
-					for (Iterator definitionEntries = ((Map) stereotypeEntry
-						.getValue()).entrySet().iterator(); definitionEntries
-						.hasNext();) {
-
-						Map.Entry definitionEntry = (Map.Entry) definitionEntries
-							.next();
-
-						if (!element
-							.isStereotypeApplied((Stereotype) definitionEntry
-								.getKey())) {
+						if (!element.isStereotypeApplied(definitionEntry
+							.getKey())) {
 
 							stereotypeApplications.add(applyStereotype(element,
-								(EClass) definitionEntry.getValue()));
+								definitionEntry.getValue()));
 						}
 					}
 				}
@@ -1189,18 +1163,19 @@ public class ElementOperations
 		return stereotypeApplications;
 	}
 
-	protected static EList applyAllStereotypes(Element element,
-			Map definitions, boolean resolve) {
-		EList stereotypeApplications = new UniqueEList.FastCompare();
+	protected static EList<EObject> applyAllStereotypes(Element element,
+			Map<EClassifier, Map<Stereotype, EClass>> definitions,
+			boolean resolve) {
+		EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
 
 		applyAllStereotypes(element, definitions, stereotypeApplications);
 
 		if (!element.eContents().isEmpty()) {
 
-			for (Iterator allContents = EcoreUtil.getAllContents(element,
-				resolve); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
+				element, resolve); allContents.hasNext();) {
 
-				EObject eObject = (EObject) allContents.next();
+				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
 					applyAllStereotypes((Element) eObject, definitions,
@@ -1212,33 +1187,27 @@ public class ElementOperations
 		return stereotypeApplications;
 	}
 
-	public static EList applyAllRequiredStereotypes(Element element) {
+	public static EList<EObject> applyAllRequiredStereotypes(Element element) {
 		return applyAllRequiredStereotypes(element, true);
 	}
 
-	public static EList applyAllRequiredStereotypes(Element element,
+	public static EList<EObject> applyAllRequiredStereotypes(Element element,
 			boolean resolve) {
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			Map definitions = new HashMap();
+			Map<EClassifier, Map<Stereotype, EClass>> definitions = new HashMap<EClassifier, Map<Stereotype, EClass>>();
 
-			for (Iterator allProfileApplications = package_
-				.getAllProfileApplications().iterator(); allProfileApplications
-				.hasNext();) {
+			for (ProfileApplication profileApplication : package_
+				.getAllProfileApplications()) {
 
-				ProfileApplication profileApplication = (ProfileApplication) allProfileApplications
-					.next();
 				Profile appliedProfile = profileApplication.getAppliedProfile();
 
 				if (appliedProfile != null) {
 
-					for (Iterator ownedExtensions = appliedProfile
-						.getOwnedExtensions(true).iterator(); ownedExtensions
-						.hasNext();) {
+					for (Extension ownedExtension : appliedProfile
+						.getOwnedExtensions(true)) {
 
-						Extension ownedExtension = (Extension) ownedExtensions
-							.next();
 						org.eclipse.uml2.uml.Class metaclass = ownedExtension
 							.getMetaclass();
 
@@ -1257,19 +1226,21 @@ public class ElementOperations
 										&& !((EClass) appliedDefinition)
 											.isAbstract()) {
 
-										Map stereotypes = (Map) definitions
+										Map<Stereotype, EClass> stereotypes = definitions
 											.get(eClassifier);
 
 										if (stereotypes == null) {
-											definitions.put(eClassifier,
-												stereotypes = new HashMap());
+											definitions
+												.put(
+													eClassifier,
+													stereotypes = new HashMap<Stereotype, EClass>());
 										}
 
 										if (!stereotypes
 											.containsKey(stereotype)) {
 
 											stereotypes.put(stereotype,
-												appliedDefinition);
+												(EClass) appliedDefinition);
 										}
 									}
 								}
@@ -1284,7 +1255,7 @@ public class ElementOperations
 			}
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.emptyEList();
 	}
 
 	/**
@@ -1304,15 +1275,13 @@ public class ElementOperations
 		return applyStereotype(element, definition);
 	}
 
-	protected static EList unapplyAllNonApplicableStereotypes(Element element,
-			EList nonApplicableStereotypes) {
+	protected static EList<EObject> unapplyAllNonApplicableStereotypes(
+			Element element, EList<EObject> nonApplicableStereotypes) {
 
 		if (!element.eIsProxy()) {
 
-			for (Iterator sa = element.getStereotypeApplications().iterator(); sa
-				.hasNext();) {
-
-				EObject stereotypeApplication = (EObject) sa.next();
+			for (EObject stereotypeApplication : element
+				.getStereotypeApplications()) {
 
 				if (!element
 					.isStereotypeApplicable(getStereotype(stereotypeApplication))) {
@@ -1327,22 +1296,23 @@ public class ElementOperations
 		return nonApplicableStereotypes;
 	}
 
-	public static EList unapplyAllNonApplicableStereotypes(Element element) {
+	public static EList<EObject> unapplyAllNonApplicableStereotypes(
+			Element element) {
 		return unapplyAllNonApplicableStereotypes(element, true);
 	}
 
-	public static EList unapplyAllNonApplicableStereotypes(Element element,
-			boolean resolve) {
-		EList nonApplicableStereotypes = new UniqueEList.FastCompare();
+	public static EList<EObject> unapplyAllNonApplicableStereotypes(
+			Element element, boolean resolve) {
+		EList<EObject> nonApplicableStereotypes = new UniqueEList.FastCompare<EObject>();
 
 		unapplyAllNonApplicableStereotypes(element, nonApplicableStereotypes);
 
 		if (!element.eContents().isEmpty()) {
 
-			for (Iterator allContents = EcoreUtil.getAllContents(element,
-				resolve); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = EcoreUtil.getAllContents(
+				element, resolve); allContents.hasNext();) {
 
-				EObject eObject = (EObject) allContents.next();
+				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
 					unapplyAllNonApplicableStereotypes((Element) eObject,
@@ -1383,28 +1353,22 @@ public class ElementOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getApplicableStereotypes(Element element) {
+	public static EList<Stereotype> getApplicableStereotypes(Element element) {
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 
 		if (package_ != null) {
-			EList applicableStereotypes = new UniqueEList.FastCompare();
+			EList<Stereotype> applicableStereotypes = new UniqueEList.FastCompare<Stereotype>();
 
-			for (Iterator allProfileApplications = package_
-				.getAllProfileApplications().iterator(); allProfileApplications
-				.hasNext();) {
+			for (ProfileApplication profileApplication : package_
+				.getAllProfileApplications()) {
 
-				ProfileApplication profileApplication = (ProfileApplication) allProfileApplications
-					.next();
 				Profile appliedProfile = profileApplication.getAppliedProfile();
 
 				if (appliedProfile != null) {
 
-					for (Iterator ownedStereotypes = appliedProfile
-						.getOwnedStereotypes().iterator(); ownedStereotypes
-						.hasNext();) {
+					for (Stereotype stereotype : appliedProfile
+						.getOwnedStereotypes()) {
 
-						Stereotype stereotype = (Stereotype) ownedStereotypes
-							.next();
 						ENamedElement appliedDefinition = profileApplication
 							.getAppliedDefinition(stereotype);
 
@@ -1421,7 +1385,7 @@ public class ElementOperations
 			return ECollections.unmodifiableEList(applicableStereotypes);
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.emptyEList();
 	}
 
 	/**
@@ -1432,12 +1396,8 @@ public class ElementOperations
 	public static Stereotype getApplicableStereotype(Element element,
 			String qualifiedName) {
 
-		for (Iterator applicableStereotypes = element
-			.getApplicableStereotypes().iterator(); applicableStereotypes
-			.hasNext();) {
-
-			Stereotype applicableStereotype = (Stereotype) applicableStereotypes
-				.next();
+		for (Stereotype applicableStereotype : element
+			.getApplicableStereotypes()) {
 
 			if (safeEquals(applicableStereotype.getQualifiedName(),
 				qualifiedName)) {
@@ -1484,20 +1444,20 @@ public class ElementOperations
 			}
 		} else {
 
-			for (Iterator allContents = getAllContents(ancestorEObject, true,
-				false); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = getAllContents(
+				ancestorEObject, true, false); allContents.hasNext();) {
 
-				Object object = allContents.next();
+				EObject eObject = allContents.next();
 
-				if (object instanceof Element) {
-					destroyAll(((Element) object).getStereotypeApplications());
+				if (eObject instanceof Element) {
+					destroyAll(((Element) eObject).getStereotypeApplications());
 				}
 			}
 
-			for (Iterator allContents = getAllContents(ancestorEObject, true,
-				false); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = getAllContents(
+				ancestorEObject, true, false); allContents.hasNext();) {
 
-				EObject eObject = (EObject) allContents.next();
+				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
 					removeReferences(eObject, ancestorEObject);
@@ -1506,13 +1466,13 @@ public class ElementOperations
 				}
 			}
 
-			for (Iterator allContents = getAllContents(ancestorEObject, true,
-				false); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = getAllContents(
+				ancestorEObject, true, false); allContents.hasNext();) {
 
-				Object object = allContents.next();
+				EObject eObject = allContents.next();
 
-				if (object instanceof Element) {
-					((Element) object).eAdapters().clear();
+				if (eObject instanceof Element) {
+					eObject.eAdapters().clear();
 				}
 			}
 		}
@@ -1520,20 +1480,17 @@ public class ElementOperations
 		EcoreUtil.remove(ancestorEObject);
 	}
 
-	protected static void destroyAll(Collection eObjects) {
+	protected static void destroyAll(Collection<EObject> eObjects) {
 
-		for (Iterator o = eObjects.iterator(); o.hasNext();) {
-			destroy((EObject) o.next());
+		for (Iterator<EObject> o = eObjects.iterator(); o.hasNext();) {
+			destroy(o.next());
 		}
 	}
 
-	protected static EList allOwnedElements(Element element,
-			EList allOwnedElements) {
+	protected static EList<Element> allOwnedElements(Element element,
+			EList<Element> allOwnedElements) {
 
-		for (Iterator ownedElements = element.getOwnedElements().iterator(); ownedElements
-			.hasNext();) {
-
-			Element ownedElement = (Element) ownedElements.next();
+		for (Element ownedElement : element.getOwnedElements()) {
 
 			if (allOwnedElements.add(ownedElement)) {
 				allOwnedElements(ownedElement, allOwnedElements);
@@ -1552,9 +1509,9 @@ public class ElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allOwnedElements(Element element) {
+	public static EList<Element> allOwnedElements(Element element) {
 		return ECollections.unmodifiableEList(allOwnedElements(element,
-			new UniqueEList.FastCompare()));
+			new UniqueEList.FastCompare<Element>()));
 	}
 
 	/**

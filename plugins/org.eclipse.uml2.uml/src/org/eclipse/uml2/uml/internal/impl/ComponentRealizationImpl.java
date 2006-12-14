@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.15 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.16 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,8 +33,10 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -87,6 +90,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.COMPONENT_REALIZATION;
 	}
@@ -108,9 +112,9 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClients() {
+	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
 				NamedElement.class, this,
 				UMLPackage.COMPONENT_REALIZATION__CLIENT, null,
 				CLIENT_ESUBSETS, UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
@@ -133,9 +137,9 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuppliers() {
+	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList(
+			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this,
 				UMLPackage.COMPONENT_REALIZATION__SUPPLIER, null,
 				SUPPLIER_ESUBSETS);
@@ -188,7 +192,7 @@ public class ComponentRealizationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newAbstraction != null) {
-				EList clients = getClients();
+				EList<NamedElement> clients = getClients();
 				if (!clients.contains(newAbstraction)) {
 					clients.add(newAbstraction);
 				}
@@ -270,7 +274,7 @@ public class ComponentRealizationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newRealizingClassifier != null) {
-				EList suppliers = getSuppliers();
+				EList<NamedElement> suppliers = getSuppliers();
 				if (!suppliers.contains(newRealizingClassifier)) {
 					suppliers.add(newRealizingClassifier);
 				}
@@ -283,15 +287,17 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -306,7 +312,8 @@ public class ComponentRealizationImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -320,18 +327,19 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
@@ -339,7 +347,7 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
-				return ((InternalEList) getClients()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				return basicSetMapping(null, msgs);
@@ -354,6 +362,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -373,6 +382,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
@@ -440,15 +450,19 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
 				setName((String) newValue);
@@ -458,7 +472,8 @@ public class ComponentRealizationImpl
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -471,11 +486,13 @@ public class ComponentRealizationImpl
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
@@ -495,6 +512,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
@@ -545,6 +563,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
@@ -613,6 +632,7 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.COMPONENT_REALIZATION__ABSTRACTION);

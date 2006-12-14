@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.25 2006/11/14 18:02:19 khussey Exp $
+ * $Id: PinImpl.java,v 1.26 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -36,11 +37,18 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
 import org.eclipse.uml2.uml.Pin;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -190,6 +198,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PIN;
 	}
@@ -199,23 +208,24 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.PIN__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.PIN__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.PIN__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -549,7 +559,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGt0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGt0(this,
 			diagnostics, context);
 	}
@@ -559,7 +570,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateLowerGe0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateLowerGe0(this,
 			diagnostics, context);
 	}
@@ -569,7 +581,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGeLower(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this,
 			diagnostics, context);
 	}
@@ -580,7 +593,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationNoSideEffects(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
 	}
@@ -591,7 +604,7 @@ public class PinImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationConstant(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
 	}
@@ -664,7 +677,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateControlPins(DiagnosticChain diagnostics, Map context) {
+	public boolean validateControlPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PinOperations.validateControlPins(this, diagnostics, context);
 	}
 
@@ -673,18 +687,19 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PIN__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
@@ -692,16 +707,16 @@ public class PinImpl
 			case UMLPackage.PIN__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.PIN__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PIN__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PIN__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -718,6 +733,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
@@ -827,15 +843,19 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PIN__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PIN__NAME :
 				setName((String) newValue);
@@ -845,7 +865,8 @@ public class PinImpl
 				return;
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -861,23 +882,29 @@ public class PinImpl
 				return;
 			case UMLPackage.PIN__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.PIN__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.PIN__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.PIN__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.PIN__TYPE :
 				setType((Type) newValue);
@@ -893,7 +920,7 @@ public class PinImpl
 				return;
 			case UMLPackage.PIN__IN_STATE :
 				getInStates().clear();
-				getInStates().addAll((Collection) newValue);
+				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.PIN__SELECTION :
 				setSelection((Behavior) newValue);
@@ -928,6 +955,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
@@ -1020,6 +1048,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
@@ -1103,7 +1132,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PIN__IS_ORDERED :
@@ -1130,7 +1160,8 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
@@ -1157,6 +1188,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1190,6 +1222,7 @@ public class PinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PIN__UPPER_VALUE)

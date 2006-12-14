@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
+ * $Id: StateMachine.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.Region" opposite="stateMachine" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getRegions();
+	EList<Region> getRegions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Region}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Region</b></em>' containment reference list.
@@ -113,7 +113,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.State" opposite="submachine" ordered="false"
 	 * @generated
 	 */
-	EList getSubmachineStates();
+	EList<State> getSubmachineStates();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>Submachine State</b></em>' reference list.
@@ -154,7 +154,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="stateMachine" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConnectionPoints();
+	EList<Pseudostate> getConnectionPoints();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Pseudostate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
@@ -205,7 +205,7 @@ public interface StateMachine
 	 * @model type="org.eclipse.uml2.uml.StateMachine" ordered="false"
 	 * @generated
 	 */
-	EList getExtendedStateMachines();
+	EList<StateMachine> getExtendedStateMachines();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.StateMachine} with the specified '<em><b>Name</b></em>' from the '<em><b>Extended State Machine</b></em>' reference list.
@@ -242,7 +242,8 @@ public interface StateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateClassifierContext(DiagnosticChain diagnostics, Map context);
+	boolean validateClassifierContext(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -254,7 +255,8 @@ public interface StateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateContextClassifier(DiagnosticChain diagnostics, Map context);
+	boolean validateContextClassifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,7 +268,8 @@ public interface StateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateConnectionPoints(DiagnosticChain diagnostics, Map context);
+	boolean validateConnectionPoints(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -278,7 +281,8 @@ public interface StateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateMethod(DiagnosticChain diagnostics, Map context);
+	boolean validateMethod(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

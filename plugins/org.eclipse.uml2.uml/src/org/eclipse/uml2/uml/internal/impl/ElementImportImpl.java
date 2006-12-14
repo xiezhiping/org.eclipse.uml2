@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Namespace;
@@ -140,6 +142,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ELEMENT_IMPORT;
 	}
@@ -149,22 +152,24 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.ELEMENT_IMPORT__TARGET, TARGET_ESUBSETS));
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.ELEMENT_IMPORT__TARGET,
+						TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ELEMENT_IMPORT__TARGET, TARGET_ESUBSETS);
 	}
 
@@ -173,22 +178,24 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.ELEMENT_IMPORT__SOURCE, SOURCE_ESUBSETS));
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.ELEMENT_IMPORT__SOURCE,
+						SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ELEMENT_IMPORT__SOURCE, SOURCE_ESUBSETS);
 	}
 
@@ -385,7 +392,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public boolean validateVisibilityPublicOrPrivate(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ElementImportOperations.validateVisibilityPublicOrPrivate(this,
 			diagnostics, context);
 	}
@@ -396,7 +403,7 @@ public class ElementImportImpl
 	 * @generated
 	 */
 	public boolean validateImportedElementIsPublic(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ElementImportOperations.validateImportedElementIsPublic(this,
 			diagnostics, context);
 	}
@@ -415,12 +422,14 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -434,14 +443,15 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE :
 				return basicSetImportingNamespace(null, msgs);
@@ -454,6 +464,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -470,6 +481,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
@@ -509,15 +521,19 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ELEMENT_IMPORT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
 				setVisibility((VisibilityKind) newValue);
@@ -540,6 +556,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
@@ -569,6 +586,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT_IMPORT__EANNOTATIONS :
@@ -602,6 +620,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -633,6 +652,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetTargets() {
 		return super.isSetTargets()
 			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTED_ELEMENT);
@@ -665,6 +685,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetSources() {
 		return super.isSetSources()
 			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
@@ -689,6 +710,7 @@ public class ElementImportImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);

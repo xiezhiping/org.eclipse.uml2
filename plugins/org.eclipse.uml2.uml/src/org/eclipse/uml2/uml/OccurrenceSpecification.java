@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecification.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
+ * $Id: OccurrenceSpecification.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface OccurrenceSpecification
 	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" opposite="after" ordered="false"
 	 * @generated
 	 */
-	EList getToBefores();
+	EList<GeneralOrdering> getToBefores();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To Before</b></em>' reference list.
@@ -121,7 +121,7 @@ public interface OccurrenceSpecification
 	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" opposite="before" ordered="false"
 	 * @generated
 	 */
-	EList getToAfters();
+	EList<GeneralOrdering> getToAfters();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.GeneralOrdering} with the specified '<em><b>Name</b></em>' from the '<em><b>To After</b></em>' reference list.

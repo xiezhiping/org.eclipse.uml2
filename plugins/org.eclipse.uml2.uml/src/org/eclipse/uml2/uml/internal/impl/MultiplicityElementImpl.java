@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.23 2006/11/14 18:02:17 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.24 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Type;
@@ -160,6 +162,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MULTIPLICITY_ELEMENT;
 	}
@@ -169,23 +172,25 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.MULTIPLICITY_ELEMENT__OWNED_ELEMENT,
 			OWNED_ELEMENT_ESUBSETS);
 	}
@@ -507,7 +512,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGt0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGt0(this,
 			diagnostics, context);
 	}
@@ -517,7 +523,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateLowerGe0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateLowerGe0(this,
 			diagnostics, context);
 	}
@@ -527,7 +534,8 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGeLower(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this,
 			diagnostics, context);
 	}
@@ -538,7 +546,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationNoSideEffects(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
 	}
@@ -549,7 +557,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationConstant(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
 	}
@@ -622,14 +630,15 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				return basicSetUpperValue(null, msgs);
@@ -644,6 +653,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
@@ -685,15 +695,19 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
 				setIsOrdered(((Boolean) newValue).booleanValue());
@@ -722,6 +736,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
@@ -757,6 +772,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__EANNOTATIONS :
@@ -788,6 +804,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -819,6 +836,7 @@ public abstract class MultiplicityElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE)

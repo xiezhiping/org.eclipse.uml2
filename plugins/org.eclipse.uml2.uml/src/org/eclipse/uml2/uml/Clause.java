@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.5 2006/02/22 20:48:15 khussey Exp $
+ * $Id: Clause.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	EList getTests();
+	EList<ExecutableNode> getTests();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
@@ -100,7 +100,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	EList getBodies();
+	EList<ExecutableNode> getBodies();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body</b></em>' reference list.
@@ -141,7 +141,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.Clause" opposite="successorClause" ordered="false"
 	 * @generated
 	 */
-	EList getPredecessorClauses();
+	EList<Clause> getPredecessorClauses();
 
 	/**
 	 * Returns the value of the '<em><b>Successor Clause</b></em>' reference list.
@@ -158,7 +158,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.Clause" opposite="predecessorClause" ordered="false"
 	 * @generated
 	 */
-	EList getSuccessorClauses();
+	EList<Clause> getSuccessorClauses();
 
 	/**
 	 * Returns the value of the '<em><b>Decider</b></em>' reference.
@@ -198,7 +198,7 @@ public interface Clause
 	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
-	EList getBodyOutputs();
+	EList<OutputPin> getBodyOutputs();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Body Output</b></em>' reference list.
@@ -235,7 +235,8 @@ public interface Clause
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeciderOutput(DiagnosticChain diagnostics, Map context);
+	boolean validateDeciderOutput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,6 +248,7 @@ public interface Clause
 	 * @model
 	 * @generated
 	 */
-	boolean validateBodyOutputPins(DiagnosticChain diagnostics, Map context);
+	boolean validateBodyOutputPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Clause

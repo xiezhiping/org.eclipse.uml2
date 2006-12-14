@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinOperations.java,v 1.5 2006/05/16 15:07:25 khussey Exp $
+ * $Id: ValuePinOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -59,7 +59,7 @@ public class ValuePinOperations
 	 * @generated
 	 */
 	public static boolean validateCompatibleType(ValuePin valuePin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -91,7 +91,7 @@ public class ValuePinOperations
 	 * @generated
 	 */
 	public static boolean validateNoIncomingEdges(ValuePin valuePin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

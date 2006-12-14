@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.29 2006/11/29 02:00:12 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.30 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -77,6 +76,7 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
+import org.eclipse.uml2.uml.MessageEvent;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -160,17 +160,16 @@ public class UML22UMLResourceHandler
 	protected static final String TAG_DEFINITION__SYMBOL = "symbol"; //$NON-NLS-1$
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
-		return (AnyType) resource.getEObjectToExtensionMap().get(eObject);
+		return resource.getEObjectToExtensionMap().get(eObject);
 	}
 
 	protected AnyType putExtension(XMLResource resource, EObject eObject,
 			AnyType extension) {
-		return (AnyType) resource.getEObjectToExtensionMap().put(eObject,
-			extension);
+		return resource.getEObjectToExtensionMap().put(eObject, extension);
 	}
 
 	protected AnyType removeExtension(XMLResource resource, EObject eObject) {
-		return (AnyType) resource.getEObjectToExtensionMap().remove(eObject);
+		return resource.getEObjectToExtensionMap().remove(eObject);
 	}
 
 	protected Object getValue(FeatureMap featureMap, String name) {
@@ -179,8 +178,9 @@ public class UML22UMLResourceHandler
 
 	protected Object getValue(FeatureMap featureMap, String name, boolean remove) {
 
-		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
-			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
+		for (Iterator<FeatureMap.Entry> entries = featureMap.iterator(); entries
+			.hasNext();) {
+			FeatureMap.Entry entry = entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
 
@@ -195,16 +195,17 @@ public class UML22UMLResourceHandler
 		return null;
 	}
 
-	protected Collection getValues(FeatureMap featureMap, String name) {
+	protected Collection<Object> getValues(FeatureMap featureMap, String name) {
 		return getValues(featureMap, name, false);
 	}
 
-	protected Collection getValues(FeatureMap featureMap, String name,
+	protected Collection<Object> getValues(FeatureMap featureMap, String name,
 			boolean remove) {
-		Collection values = new UniqueEList.FastCompare();
+		Collection<Object> values = new UniqueEList.FastCompare<Object>();
 
-		for (Iterator entries = featureMap.iterator(); entries.hasNext();) {
-			FeatureMap.Entry entry = (FeatureMap.Entry) entries.next();
+		for (Iterator<FeatureMap.Entry> entries = featureMap.iterator(); entries
+			.hasNext();) {
+			FeatureMap.Entry entry = entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
 
@@ -223,12 +224,12 @@ public class UML22UMLResourceHandler
 
 		if (internalEObject != null && internalEObject.eIsProxy()) {
 			URI eProxyURI = internalEObject.eProxyURI();
-			URI uri = (URI) UML22UMLExtendedMetaData.getURIMap().get(
+			URI uri = UML22UMLExtendedMetaData.getURIMap().get(
 				eProxyURI.trimFragment());
 
 			if (uri != null) {
-				String fragment = (String) UML22UMLExtendedMetaData
-					.getFragmentMap().get(eProxyURI.fragment());
+				String fragment = UML22UMLExtendedMetaData.getFragmentMap()
+					.get(eProxyURI.fragment());
 
 				if (fragment != null) {
 					internalEObject.eSetProxyURI(uri.appendFragment(fragment));
@@ -251,22 +252,19 @@ public class UML22UMLResourceHandler
 				resource.setID(newEObject, resource.getID(eObject));
 			}
 
-			for (Iterator eAllStructuralFeatures = eObject.eClass()
-				.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-				.hasNext();) {
-
-				EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eAllStructuralFeatures
-					.next();
+			for (EStructuralFeature eStructuralFeature : eObject.eClass()
+				.getEAllStructuralFeatures()) {
 
 				if (eStructuralFeature.isChangeable()
-					&& eStructuralFeature.getEOpposite() == null
+					&& ((EStructuralFeature.Internal) eStructuralFeature)
+						.getEOpposite() == null
 					&& eObject.eIsSet(eStructuralFeature)) {
 
 					try {
 						newEObject.eSet(
 							eClass.getEStructuralFeature(eStructuralFeature
 								.getName()), eStructuralFeature.isMany()
-								? ((InternalEList) eObject
+								? ((InternalEList<?>) eObject
 									.eGet(eStructuralFeature)).basicList()
 								: eObject.eGet(eStructuralFeature));
 					} catch (Exception e) {
@@ -275,12 +273,10 @@ public class UML22UMLResourceHandler
 				}
 			}
 
-			for (Iterator inverseReferences = UML2Util.getInverseReferences(
-				eObject).iterator(); inverseReferences.hasNext();) {
+			for (EStructuralFeature.Setting inverseReference : UML2Util
+				.getInverseReferences(eObject)) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) inverseReferences
-					.next();
-				EStructuralFeature eStructuralFeature = setting
+				EStructuralFeature eStructuralFeature = inverseReference
 					.getEStructuralFeature();
 
 				if (eStructuralFeature.isChangeable()) {
@@ -288,10 +284,12 @@ public class UML22UMLResourceHandler
 					try {
 
 						if (eStructuralFeature.isMany()) {
-							List values = (List) setting.get(false);
+							@SuppressWarnings("unchecked")
+							List<EObject> values = (List<EObject>) inverseReference
+								.get(false);
 							values.set(values.indexOf(eObject), newEObject);
 						} else {
-							setting.set(newEObject);
+							inverseReference.set(newEObject);
 						}
 					} catch (Exception e) {
 						UMLPlugin.INSTANCE.log(e);
@@ -314,7 +312,7 @@ public class UML22UMLResourceHandler
 			ResourceSet resourceSet = eResource.getResourceSet();
 
 			if (resourceSet != null) {
-				return (Profile) UML2Util.load(resourceSet, URI
+				return UML2Util.load(resourceSet, URI
 					.createURI(UML22UMLResource.UML2_PROFILE_URI),
 					UMLPackage.Literals.PROFILE);
 			}
@@ -331,21 +329,23 @@ public class UML22UMLResourceHandler
 			: null;
 	}
 
+	@Override
 	public void postLoad(final XMLResource resource, InputStream inputStream,
-			Map options) {
-		final EList resourceContents = resource.getContents();
+			Map<?, ?> options) {
+		final EList<EObject> resourceContents = resource.getContents();
 
-		final List annotationsToRemove = new ArrayList();
+		final List<EAnnotation> annotationsToRemove = new ArrayList<EAnnotation>();
 
-		final Map destructionEvents = new HashMap();
-		final Map executionEvents = new HashMap();
-		final Map sendEvents = new HashMap();
-		final Map receiveEvents = new HashMap();
+		final Map<org.eclipse.uml2.uml.Package, DestructionEvent> destructionEvents = new HashMap<org.eclipse.uml2.uml.Package, DestructionEvent>();
+		final Map<org.eclipse.uml2.uml.Package, ExecutionEvent> executionEvents = new HashMap<org.eclipse.uml2.uml.Package, ExecutionEvent>();
+		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> sendEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
+		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> receiveEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
 
-		final List packagesRequiringStereotypes = new ArrayList();
+		final List<org.eclipse.uml2.uml.Package> packagesRequiringStereotypes = new ArrayList<org.eclipse.uml2.uml.Package>();
 
-		UMLSwitch umlSwitch = new UMLSwitch() {
+		UMLSwitch<Object> umlSwitch = new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseAction(Action action) {
 				AnyType extension = getExtension(resource, action);
 
@@ -363,6 +363,7 @@ public class UML22UMLResourceHandler
 				return super.caseAction(action);
 			}
 
+			@Override
 			public Object caseActivity(Activity activity) {
 				AnyType extension = getExtension(resource, activity);
 
@@ -392,36 +393,33 @@ public class UML22UMLResourceHandler
 				return super.caseActivity(activity);
 			}
 
+			@Override
 			public Object caseBehavioralFeature(
 					BehavioralFeature behavioralFeature) {
 				AnyType extension = getExtension(resource, behavioralFeature);
 
 				if (extension != null) {
-					EList ownedParameters = behavioralFeature
+					EList<Parameter> ownedParameters = behavioralFeature
 						.getOwnedParameters();
+					List<Object> returnResult = new ArrayList<Object>(
+						getValues(extension.getMixed(), "returnResult", true)); //$NON-NLS-1$
 
-					List returnResult = Arrays.asList(getValues(
-						extension.getMixed(), "returnResult", true).toArray()); //$NON-NLS-1$
-
-					for (ListIterator values = returnResult
+					for (ListIterator<Object> values = returnResult
 						.listIterator(returnResult.size()); values
 						.hasPrevious();) {
 
 						Object value = values.previous();
 
 						if (value instanceof Parameter) {
-							ownedParameters.add(0, value);
+							ownedParameters.add(0, (Parameter) value);
 						}
 					}
 
-					for (Iterator values = getValues(extension.getMixed(),
-						"formalParameter", true) //$NON-NLS-1$
-						.iterator(); values.hasNext();) {
-
-						Object value = values.next();
+					for (Object value : getValues(extension.getMixed(),
+						"formalParameter", true)) { //$NON-NLS-1$
 
 						if (value instanceof Parameter) {
-							ownedParameters.add(value);
+							ownedParameters.add((Parameter) value);
 						}
 					}
 				}
@@ -429,22 +427,20 @@ public class UML22UMLResourceHandler
 				return super.caseBehavioralFeature(behavioralFeature);
 			}
 
+			@Override
 			public Object caseBehavioredClassifier(
 					BehavioredClassifier behavioredClassifier) {
 				AnyType extension = getExtension(resource, behavioredClassifier);
 
 				if (extension != null) {
-					EList ownedBehaviors = behavioredClassifier
+					EList<Behavior> ownedBehaviors = behavioredClassifier
 						.getOwnedBehaviors();
 
-					for (Iterator values = getValues(extension.getMixed(),
-						"ownedStateMachine", true) //$NON-NLS-1$
-						.iterator(); values.hasNext();) {
-
-						Object value = values.next();
+					for (Object value : getValues(extension.getMixed(),
+						"ownedStateMachine", true)) { //$NON-NLS-1$
 
 						if (value instanceof StateMachine) {
-							ownedBehaviors.add(value);
+							ownedBehaviors.add((StateMachine) value);
 						}
 					}
 				}
@@ -452,6 +448,7 @@ public class UML22UMLResourceHandler
 				return super.caseBehavioredClassifier(behavioredClassifier);
 			}
 
+			@Override
 			public Object caseCallBehaviorAction(
 					CallBehaviorAction callBehaviorAction) {
 				AnyType extension = getExtension(resource, callBehaviorAction);
@@ -473,6 +470,7 @@ public class UML22UMLResourceHandler
 				return super.caseCallBehaviorAction(callBehaviorAction);
 			}
 
+			@Override
 			public Object caseComment(Comment comment) {
 				AnyType extension = getExtension(resource, comment);
 
@@ -497,6 +495,7 @@ public class UML22UMLResourceHandler
 				return super.caseComment(comment);
 			}
 
+			@Override
 			public Object caseDuration(Duration duration) {
 				AnyType extension = getExtension(resource, duration);
 
@@ -505,8 +504,8 @@ public class UML22UMLResourceHandler
 						.equals(getValue(extension.getAnyAttribute(),
 							"isFirstTime"))); //$NON-NLS-1$
 
-					Collection values = getValues(extension.getAnyAttribute(),
-						"event", true); //$NON-NLS-1$
+					Collection<Object> values = getValues(extension
+						.getAnyAttribute(), "event", true); //$NON-NLS-1$
 
 					if (!values.isEmpty()) {
 						DurationObservation durationObservation = (DurationObservation) duration
@@ -514,19 +513,19 @@ public class UML22UMLResourceHandler
 								duration.getName(),
 								UMLPackage.Literals.DURATION_OBSERVATION);
 
-						EList events = durationObservation.getEvents();
-						EList firstEvents = durationObservation
+						EList<NamedElement> events = durationObservation
+							.getEvents();
+						EList<Boolean> firstEvents = durationObservation
 							.getFirstEvents();
 
-						for (Iterator v = values.iterator(); v.hasNext();) {
-							Object value = v.next();
+						for (Object value : values) {
 
 							if (value instanceof String) {
 								EObject eObject = resource
 									.getEObject((String) value);
 
 								if (eObject instanceof NamedElement) {
-									events.add(eObject);
+									events.add((NamedElement) eObject);
 									firstEvents.add(isFirstEvent);
 								}
 							}
@@ -539,6 +538,7 @@ public class UML22UMLResourceHandler
 				return super.caseDuration(duration);
 			}
 
+			@Override
 			public Object caseElement(Element element) {
 				EAnnotation keywordsAnnotation = element
 					.getEAnnotation("keywords"); //$NON-NLS-1$
@@ -553,7 +553,8 @@ public class UML22UMLResourceHandler
 				if (appliedStereotypesAnnotation != null) {
 					annotationsToRemove.add(appliedStereotypesAnnotation);
 
-					EList contents = appliedStereotypesAnnotation.getContents();
+					EList<EObject> contents = appliedStereotypesAnnotation
+						.getContents();
 
 					for (int i = contents.size(); i > 0;) {
 						InternalEObject stereotypeApplication = (InternalEObject) contents
@@ -568,13 +569,14 @@ public class UML22UMLResourceHandler
 				return super.caseElement(element);
 			}
 
+			@Override
 			public Object caseExecutionOccurrenceSpecification(
 					ExecutionOccurrenceSpecification executionOccurrenceSpecification) {
 				org.eclipse.uml2.uml.Package nearestPackage = executionOccurrenceSpecification
 					.getNearestPackage();
 
 				if (nearestPackage != null) {
-					ExecutionEvent executionEvent = (ExecutionEvent) executionEvents
+					ExecutionEvent executionEvent = executionEvents
 						.get(nearestPackage);
 
 					if (executionEvent == null) {
@@ -592,6 +594,7 @@ public class UML22UMLResourceHandler
 				return executionOccurrenceSpecification;
 			}
 
+			@Override
 			public Object caseExpression(Expression expression) {
 				AnyType extension = getExtension(resource, expression);
 
@@ -641,6 +644,7 @@ public class UML22UMLResourceHandler
 				return super.caseExpression(expression);
 			}
 
+			@Override
 			public Object caseExtensionEnd(ExtensionEnd extensionEnd) {
 				String name = extensionEnd.getName();
 
@@ -662,6 +666,7 @@ public class UML22UMLResourceHandler
 				return super.caseExtensionEnd(extensionEnd);
 			}
 
+			@Override
 			public Object caseInteractionUse(InteractionUse interactionUse) {
 				AnyType extension = getExtension(resource, interactionUse);
 
@@ -670,16 +675,18 @@ public class UML22UMLResourceHandler
 						"argument", true); //$NON-NLS-1$
 
 					if (value instanceof InputPin) {
+						InputPin inputValue = (InputPin) value;
 						((OpaqueAction) interactionUse.createArgument(
-							((InputPin) value).getName(),
+							inputValue.getName(),
 							UMLPackage.Literals.OPAQUE_ACTION))
-							.getInputValues().add(value);
+							.getInputValues().add(inputValue);
 					}
 				}
 
 				return super.caseInteractionUse(interactionUse);
 			}
 
+			@Override
 			public Object caseMultiplicityElement(
 					MultiplicityElement multiplicityElement) {
 				AnyType extension = getExtension(resource, multiplicityElement);
@@ -697,6 +704,7 @@ public class UML22UMLResourceHandler
 				return super.caseMultiplicityElement(multiplicityElement);
 			}
 
+			@Override
 			public Object caseMessage(Message message) {
 				AnyType extension = getExtension(resource, message);
 
@@ -728,6 +736,7 @@ public class UML22UMLResourceHandler
 				return super.caseMessage(message);
 			}
 
+			@Override
 			public Object caseMessageEnd(MessageEnd messageEnd) {
 				AnyType extension = getExtension(resource, messageEnd);
 
@@ -758,6 +767,7 @@ public class UML22UMLResourceHandler
 				return super.caseMessageEnd(messageEnd);
 			}
 
+			@Override
 			public Object caseMessageOccurrenceSpecification(
 					MessageOccurrenceSpecification messageOccurrenceSpecification) {
 				caseMessageEnd(messageOccurrenceSpecification);
@@ -770,7 +780,8 @@ public class UML22UMLResourceHandler
 				Message message = messageOccurrenceSpecification.getMessage();
 
 				if (message == null) {
-					Collection values = Collections.EMPTY_LIST;
+					Collection<Object> values = Collections
+						.<Object> emptyList();
 
 					if (extension != null) {
 						values = getValues(extension.getAnyAttribute(),
@@ -789,8 +800,7 @@ public class UML22UMLResourceHandler
 							resource));
 					} else {
 
-						for (Iterator v = values.iterator(); v.hasNext();) {
-							Object value = v.next();
+						for (Object value : values) {
 
 							if (value instanceof String) {
 								EObject eObject = resource
@@ -841,7 +851,7 @@ public class UML22UMLResourceHandler
 							: null;
 
 						if (message.getSendEvent() == messageOccurrenceSpecification) {
-							Map nearestSendEvents = (Map) sendEvents
+							Map<NamedElement, MessageEvent> nearestSendEvents = sendEvents
 								.get(nearestPackage);
 
 							switch (message.getMessageSort().getValue()) {
@@ -868,7 +878,7 @@ public class UML22UMLResourceHandler
 												sendEvents
 													.put(
 														nearestPackage,
-														nearestSendEvents = new HashMap());
+														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
 											}
 
 											nearestSendEvents.put(signature,
@@ -901,7 +911,7 @@ public class UML22UMLResourceHandler
 												sendEvents
 													.put(
 														nearestPackage,
-														nearestSendEvents = new HashMap());
+														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
 											}
 
 											nearestSendEvents.put(signature,
@@ -914,7 +924,7 @@ public class UML22UMLResourceHandler
 									break;
 							}
 						} else if (message.getReceiveEvent() == messageOccurrenceSpecification) {
-							Map nearestReceiveEvents = (Map) receiveEvents
+							Map<NamedElement, MessageEvent> nearestReceiveEvents = receiveEvents
 								.get(nearestPackage);
 
 							switch (message.getMessageSort().getValue()) {
@@ -941,7 +951,7 @@ public class UML22UMLResourceHandler
 												receiveEvents
 													.put(
 														nearestPackage,
-														nearestReceiveEvents = new HashMap());
+														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
 											}
 
 											nearestReceiveEvents.put(signature,
@@ -974,7 +984,7 @@ public class UML22UMLResourceHandler
 												receiveEvents
 													.put(
 														nearestPackage,
-														nearestReceiveEvents = new HashMap());
+														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
 											}
 
 											nearestReceiveEvents.put(signature,
@@ -990,7 +1000,7 @@ public class UML22UMLResourceHandler
 					}
 
 					if (extension != null) {
-						Collection values = getValues(extension
+						Collection<Object> values = getValues(extension
 							.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
 
 						if (values.isEmpty()) {
@@ -998,8 +1008,7 @@ public class UML22UMLResourceHandler
 								"finishExec", true); //$NON-NLS-1$
 						}
 
-						for (Iterator v = values.iterator(); v.hasNext();) {
-							Object value = v.next();
+						for (Object value : values) {
 
 							if (value instanceof String) {
 								EObject eObject = resource
@@ -1041,19 +1050,19 @@ public class UML22UMLResourceHandler
 				return messageOccurrenceSpecification;
 			}
 
+			@Override
 			public Object caseNamespace(Namespace namespace) {
 				AnyType extension = getExtension(resource, namespace);
 
 				if (extension != null) {
-					EList packageImports = namespace.getPackageImports();
+					EList<PackageImport> packageImports = namespace
+						.getPackageImports();
 
-					for (Iterator values = getValues(extension.getMixed(),
-						"packageImport", true).iterator(); values.hasNext();) { //$NON-NLS-1$
-
-						Object value = values.next();
+					for (Object value : getValues(extension.getMixed(),
+						"packageImport", true)) { //$NON-NLS-1$
 
 						if (value instanceof PackageImport) {
-							packageImports.add(value);
+							packageImports.add((PackageImport) value);
 						}
 					}
 				}
@@ -1061,6 +1070,7 @@ public class UML22UMLResourceHandler
 				return super.caseNamespace(namespace);
 			}
 
+			@Override
 			public Object caseOccurrenceSpecification(
 					OccurrenceSpecification occurrenceSpecification) {
 
@@ -1069,7 +1079,7 @@ public class UML22UMLResourceHandler
 						.getNearestPackage();
 
 					if (nearestPackage != null) {
-						DestructionEvent destructionEvent = (DestructionEvent) destructionEvents
+						DestructionEvent destructionEvent = destructionEvents
 							.get(nearestPackage);
 
 						if (destructionEvent == null) {
@@ -1091,6 +1101,7 @@ public class UML22UMLResourceHandler
 				return occurrenceSpecification;
 			}
 
+			@Override
 			public Object caseOpaqueAction(OpaqueAction opaqueAction) {
 				AnyType extension = getExtension(resource, opaqueAction);
 
@@ -1125,6 +1136,7 @@ public class UML22UMLResourceHandler
 				return super.caseOpaqueAction(opaqueAction);
 			}
 
+			@Override
 			public Object caseOpaqueExpression(OpaqueExpression opaqueExpression) {
 				AnyType extension = getExtension(resource, opaqueExpression);
 
@@ -1133,13 +1145,13 @@ public class UML22UMLResourceHandler
 						"body", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
-						opaqueExpression.getBodies().add(value);
+						opaqueExpression.getBodies().add((String) value);
 					}
 
 					Stereotype stereotype = getUML2Stereotype(opaqueExpression,
 						STEREOTYPE__EXPRESSION);
 
-					Collection values = getValues(extension.getMixed(),
+					Collection<Object> values = getValues(extension.getMixed(),
 						"operand", true); //$NON-NLS-1$
 
 					if (!values.isEmpty()) {
@@ -1147,14 +1159,17 @@ public class UML22UMLResourceHandler
 						if (UMLUtil.safeApplyStereotype(opaqueExpression,
 							stereotype) != null) {
 
-							EList operands = (EList) opaqueExpression.getValue(
-								stereotype, TAG_DEFINITION__OPERAND);
+							@SuppressWarnings("unchecked")
+							EList<ValueSpecification> operands = (EList<ValueSpecification>) opaqueExpression
+								.getValue(stereotype, TAG_DEFINITION__OPERAND);
 
-							for (Iterator v = values.iterator(); v.hasNext();) {
+							for (Iterator<Object> v = values.iterator(); v
+								.hasNext();) {
+
 								value = v.next();
 
 								if (value instanceof ValueSpecification) {
-									operands.add(value);
+									operands.add((ValueSpecification) value);
 								}
 							}
 						}
@@ -1172,6 +1187,7 @@ public class UML22UMLResourceHandler
 				return super.caseOpaqueExpression(opaqueExpression);
 			}
 
+			@Override
 			public Object caseOperation(Operation operation) {
 				Parameter returnResult = operation.getReturnResult();
 
@@ -1182,6 +1198,7 @@ public class UML22UMLResourceHandler
 				return super.caseOperation(operation);
 			}
 
+			@Override
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				AnyType extension = getExtension(resource, packageableElement);
@@ -1199,6 +1216,7 @@ public class UML22UMLResourceHandler
 				return super.casePackageableElement(packageableElement);
 			}
 
+			@Override
 			public Object caseProfileApplication(
 					ProfileApplication profileApplication) {
 				caseElement(profileApplication);
@@ -1241,8 +1259,9 @@ public class UML22UMLResourceHandler
 				if (attributesAnnotation != null) {
 					attributesAnnotation.setSource(UMLPackage.eNS_URI);
 
-					EMap details = attributesAnnotation.getDetails();
-					String version = (String) details.get("version"); //$NON-NLS-1$
+					EMap<String, String> details = attributesAnnotation
+						.getDetails();
+					String version = details.get("version"); //$NON-NLS-1$
 
 					if (!UML2Util.isEmpty(version)) {
 						Profile appliedProfile = profileApplication
@@ -1258,7 +1277,8 @@ public class UML22UMLResourceHandler
 								.getEAnnotation(UMLPackage.eNS_URI);
 
 							if (eAnnotation != null) {
-								EList contents = eAnnotation.getContents();
+								EList<EObject> contents = eAnnotation
+									.getContents();
 
 								for (int i = contents.size(); i > 0;) {
 									EPackage ePackage = (EPackage) contents
@@ -1297,6 +1317,7 @@ public class UML22UMLResourceHandler
 				return profileApplication;
 			}
 
+			@Override
 			public Object caseProfile(Profile profile) {
 				caseNamespace(profile);
 				casePackageableElement(profile);
@@ -1317,8 +1338,9 @@ public class UML22UMLResourceHandler
 				if (ePackagesAnnotation != null) {
 					ePackagesAnnotation.setSource(UMLPackage.eNS_URI);
 
-					new EcoreSwitch() {
+					new EcoreSwitch<Object>() {
 
+						@Override
 						public Object caseEClass(EClass eClass) {
 							EAnnotation stereotypeAnnotation = eClass
 								.getEAnnotation("stereotype"); //$NON-NLS-1$
@@ -1327,7 +1349,7 @@ public class UML22UMLResourceHandler
 								stereotypeAnnotation
 									.setSource(UMLPackage.eNS_URI);
 
-								EList references = stereotypeAnnotation
+								EList<EObject> references = stereotypeAnnotation
 									.getReferences();
 
 								if (!references.isEmpty()) {
@@ -1336,12 +1358,9 @@ public class UML22UMLResourceHandler
 									if (reference instanceof Stereotype) {
 										Stereotype stereotype = (Stereotype) reference;
 
-										for (Iterator ownedAttributes = stereotype
-											.getOwnedAttributes().iterator(); ownedAttributes
-											.hasNext();) {
+										for (Property ownedAttribute : stereotype
+											.getOwnedAttributes()) {
 
-											Property ownedAttribute = (Property) ownedAttributes
-												.next();
 											String name = ownedAttribute
 												.getName();
 
@@ -1380,26 +1399,24 @@ public class UML22UMLResourceHandler
 							return super.caseEClass(eClass);
 						}
 
+						@Override
 						public Object caseEEnum(EEnum eEnum) {
 
-							for (Iterator eLiterals = eEnum.getELiterals()
-								.iterator(); eLiterals.hasNext();) {
-
-								EAnnotation enumerationLiteralAnnotation = ((EEnumLiteral) eLiterals
-									.next())
+							for (EEnumLiteral eLiteral : eEnum.getELiterals()) {
+								EAnnotation enumerationLiteralAnnotation = eLiteral
 									.getEAnnotation("enumerationLiteral"); //$NON-NLS-1$
 
 								if (enumerationLiteralAnnotation != null) {
 									annotationsToRemove
 										.add(enumerationLiteralAnnotation);
 
-									EList eEnumReferences = UML2Util
+									EList<EObject> eEnumReferences = UML2Util
 										.getEAnnotation(eEnum,
 											UMLPackage.eNS_URI, true)
 										.getReferences();
 
 									if (eEnumReferences.isEmpty()) {
-										EList eEnumLiteralReferences = enumerationLiteralAnnotation
+										EList<EObject> eEnumLiteralReferences = enumerationLiteralAnnotation
 											.getReferences();
 
 										if (!eEnumLiteralReferences.isEmpty()) {
@@ -1419,12 +1436,11 @@ public class UML22UMLResourceHandler
 							return super.caseEEnum(eEnum);
 						}
 
+						@Override
 						public Object defaultCase(EObject eObject) {
 
-							for (Iterator eContents = eObject.eContents()
-								.iterator(); eContents.hasNext();) {
-
-								doSwitch((EObject) eContents.next());
+							for (EObject eContent : eObject.eContents()) {
+								doSwitch(eContent);
 							}
 
 							return eObject;
@@ -1435,6 +1451,7 @@ public class UML22UMLResourceHandler
 				return profile;
 			}
 
+			@Override
 			public Object caseProperty(Property property) {
 
 				if (property.eGet(UMLPackage.Literals.PROPERTY__ASSOCIATION,
@@ -1451,6 +1468,7 @@ public class UML22UMLResourceHandler
 				return super.caseProperty(property);
 			}
 
+			@Override
 			public Object caseRealization(Realization realization) {
 				AnyType extension = getExtension(resource, realization);
 
@@ -1462,6 +1480,7 @@ public class UML22UMLResourceHandler
 				return super.caseRealization(realization);
 			}
 
+			@Override
 			public Object caseTemplateParameter(
 					TemplateParameter templateParameter) {
 				AnyType extension = getExtension(resource, templateParameter);
@@ -1536,6 +1555,7 @@ public class UML22UMLResourceHandler
 				return super.caseTemplateParameter(templateParameter);
 			}
 
+			@Override
 			public Object caseTemplateSignature(
 					TemplateSignature templateSignature) {
 				AnyType extension = getExtension(resource, templateSignature);
@@ -1544,27 +1564,28 @@ public class UML22UMLResourceHandler
 					Stereotype stereotype = getUML2Stereotype(
 						templateSignature, STEREOTYPE__TEMPLATE_SIGNATURE);
 
-					Collection values = getValues(extension.getAnyAttribute(),
-						"nestedSignature", true); //$NON-NLS-1$
+					Collection<Object> values = getValues(extension
+						.getAnyAttribute(), "nestedSignature", true); //$NON-NLS-1$
 
 					if (!values.isEmpty()) {
 
 						if (UMLUtil.safeApplyStereotype(templateSignature,
 							stereotype) != null) {
 
-							EList nestedSignatures = (EList) templateSignature
+							@SuppressWarnings("unchecked")
+							EList<TemplateSignature> nestedSignatures = (EList<TemplateSignature>) templateSignature
 								.getValue(stereotype,
 									TAG_DEFINITION__NESTED_SIGNATURE);
 
-							for (Iterator v = values.iterator(); v.hasNext();) {
-								Object value = v.next();
+							for (Object value : values) {
 
 								if (value instanceof String) {
 									EObject eObject = resource
 										.getEObject((String) value);
 
 									if (eObject instanceof TemplateSignature) {
-										nestedSignatures.add(eObject);
+										nestedSignatures
+											.add((TemplateSignature) eObject);
 									}
 								}
 							}
@@ -1588,6 +1609,7 @@ public class UML22UMLResourceHandler
 				return super.caseTemplateSignature(templateSignature);
 			}
 
+			@Override
 			public Object caseTimeExpression(TimeExpression timeExpression) {
 				AnyType extension = getExtension(resource, timeExpression);
 
@@ -1616,11 +1638,12 @@ public class UML22UMLResourceHandler
 				return super.caseTimeExpression(timeExpression);
 			}
 
+			@Override
 			public Object caseTransition(Transition transition) {
 				Constraint guard = transition.getGuard();
 
 				if (guard != null) {
-					EList ownedRules = transition.getOwnedRules();
+					EList<Constraint> ownedRules = transition.getOwnedRules();
 
 					if (!ownedRules.contains(guard)) {
 						ownedRules.add(guard);
@@ -1630,6 +1653,7 @@ public class UML22UMLResourceHandler
 				return super.caseTransition(transition);
 			}
 
+			@Override
 			public Object caseTrigger(Trigger trigger) {
 				Event event = null;
 				AnyType extension = getExtension(resource, trigger);
@@ -1713,6 +1737,7 @@ public class UML22UMLResourceHandler
 				return super.caseTrigger(trigger);
 			}
 
+			@Override
 			public Object defaultCase(EObject eObject) {
 				AnyType extension = getExtension(resource, eObject);
 
@@ -1737,22 +1762,20 @@ public class UML22UMLResourceHandler
 					}
 				}
 
-				for (Iterator eAllReferences = eObject.eClass()
-					.getEAllReferences().iterator(); eAllReferences.hasNext();) {
-
-					EReference eReference = (EReference) eAllReferences.next();
+				for (EReference eReference : eObject.eClass()
+					.getEAllReferences()) {
 
 					if (!eReference.isDerived() && !eReference.isContainer()
 						&& !eReference.isContainment()
 						&& eObject.eIsSet(eReference)) {
 
 						if (eReference.isMany()) {
+							@SuppressWarnings("unchecked")
+							InternalEList<InternalEObject> values = (InternalEList<InternalEObject>) eObject
+								.eGet(eReference);
 
-							for (Iterator values = ((InternalEList) eObject
-								.eGet(eReference)).basicIterator(); values
-								.hasNext();) {
-
-								handleProxy((InternalEObject) values.next());
+							for (InternalEObject value : values) {
+								handleProxy(value);
 							}
 						} else {
 							handleProxy((InternalEObject) eObject.eGet(
@@ -1761,10 +1784,8 @@ public class UML22UMLResourceHandler
 					}
 				}
 
-				for (Iterator eContents = eObject.eContents().iterator(); eContents
-					.hasNext();) {
-
-					doSwitch((EObject) eContents.next());
+				for (EObject eContent : eObject.eContents()) {
+					doSwitch(eContent);
 				}
 
 				return eObject;
@@ -1772,17 +1793,15 @@ public class UML22UMLResourceHandler
 		};
 
 		for (int i = 0; i < resourceContents.size(); i++) {
-			umlSwitch.doSwitch((EObject) resourceContents.get(i));
+			umlSwitch.doSwitch(resourceContents.get(i));
 		}
 
-		for (Iterator atr = annotationsToRemove.iterator(); atr.hasNext();) {
-			((EAnnotation) atr.next()).setEModelElement(null);
+		for (EAnnotation eAnnotation : annotationsToRemove) {
+			eAnnotation.setEModelElement(null);
 		}
 
-		for (Iterator prs = packagesRequiringStereotypes.iterator(); prs
-			.hasNext();) {
-
-			ElementOperations.applyAllRequiredStereotypes((Element) prs.next());
+		for (org.eclipse.uml2.uml.Package package_ : packagesRequiringStereotypes) {
+			ElementOperations.applyAllRequiredStereotypes(package_);
 		}
 	}
 }

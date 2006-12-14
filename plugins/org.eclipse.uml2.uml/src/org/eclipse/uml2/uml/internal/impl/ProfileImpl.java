@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.25 2006/05/08 17:46:11 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.26 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
@@ -38,15 +38,24 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -82,7 +91,7 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList metaclassReferences = null;
+	protected EList<ElementImport> metaclassReferences = null;
 
 	/**
 	 * The cached value of the '{@link #getMetamodelReferences() <em>Metamodel Reference</em>}' reference list.
@@ -92,7 +101,7 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList metamodelReferences = null;
+	protected EList<PackageImport> metamodelReferences = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,6 +117,7 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PROFILE;
 	}
@@ -117,9 +127,9 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackagedElements() {
+	public EList<PackageableElement> getPackagedElements() {
 		if (packagedElements == null) {
-			packagedElements = new EObjectContainmentEList.Resolving(
+			packagedElements = new EObjectContainmentEList.Resolving<PackageableElement>(
 				PackageableElement.class, this,
 				UMLPackage.PROFILE__PACKAGED_ELEMENT);
 		}
@@ -131,9 +141,9 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getElementImports() {
+	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
-			elementImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			elementImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<ElementImport>(
 				ElementImport.class, this, UMLPackage.PROFILE__ELEMENT_IMPORT,
 				null, ELEMENT_IMPORT_ESUBSETS,
 				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
@@ -156,9 +166,9 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackageImports() {
+	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
-			packageImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			packageImports = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<PackageImport>(
 				PackageImport.class, this, UMLPackage.PROFILE__PACKAGE_IMPORT,
 				null, PACKAGE_IMPORT_ESUBSETS,
 				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
@@ -211,24 +221,29 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getOwnedStereotypes() {
+	public EList<Stereotype> getOwnedStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedStereotypes = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE);
+			@SuppressWarnings("unchecked")
+			EList<Stereotype> ownedStereotypes = (EList<Stereotype>) cache.get(
+				eResource, this, UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE);
 			if (ownedStereotypes == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE,
-					ownedStereotypes = new DerivedSubsetEObjectEList(
-						Stereotype.class, this,
-						UMLPackage.PROFILE__OWNED_STEREOTYPE,
-						OWNED_STEREOTYPE_ESUPERSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE,
+						ownedStereotypes = new DerivedSubsetEObjectEList<Stereotype>(
+							Stereotype.class, this,
+							UMLPackage.PROFILE__OWNED_STEREOTYPE,
+							OWNED_STEREOTYPE_ESUPERSETS));
 			}
 			return ownedStereotypes;
 		}
-		return new DerivedSubsetEObjectEList(Stereotype.class, this,
-			UMLPackage.PROFILE__OWNED_STEREOTYPE, OWNED_STEREOTYPE_ESUPERSETS);
+		return new DerivedSubsetEObjectEList<Stereotype>(Stereotype.class,
+			this, UMLPackage.PROFILE__OWNED_STEREOTYPE,
+			OWNED_STEREOTYPE_ESUPERSETS);
 	}
 
 	/**
@@ -260,9 +275,7 @@ public class ProfileImpl
 	 */
 	public Stereotype getOwnedStereotype(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		ownedStereotypeLoop : for (Iterator i = getOwnedStereotypes()
-			.iterator(); i.hasNext();) {
-			Stereotype ownedStereotype = (Stereotype) i.next();
+		ownedStereotypeLoop : for (Stereotype ownedStereotype : getOwnedStereotypes()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(ownedStereotype.getName())
 				: name.equals(ownedStereotype.getName())))
@@ -279,9 +292,9 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMetaclassReferences() {
+	public EList<ElementImport> getMetaclassReferences() {
 		if (metaclassReferences == null) {
-			metaclassReferences = new SubsetSupersetEObjectResolvingEList(
+			metaclassReferences = new SubsetSupersetEObjectResolvingEList<ElementImport>(
 				ElementImport.class, this,
 				UMLPackage.PROFILE__METACLASS_REFERENCE,
 				METACLASS_REFERENCE_ESUPERSETS, null);
@@ -320,9 +333,7 @@ public class ProfileImpl
 	 */
 	public ElementImport getMetaclassReference(
 			PackageableElement importedElement, boolean createOnDemand) {
-		metaclassReferenceLoop : for (Iterator i = getMetaclassReferences()
-			.iterator(); i.hasNext();) {
-			ElementImport metaclassReference = (ElementImport) i.next();
+		metaclassReferenceLoop : for (ElementImport metaclassReference : getMetaclassReferences()) {
 			if (importedElement != null
 				&& !importedElement.equals(metaclassReference
 					.getImportedElement()))
@@ -339,9 +350,9 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMetamodelReferences() {
+	public EList<PackageImport> getMetamodelReferences() {
 		if (metamodelReferences == null) {
-			metamodelReferences = new SubsetSupersetEObjectResolvingEList(
+			metamodelReferences = new SubsetSupersetEObjectResolvingEList<PackageImport>(
 				PackageImport.class, this,
 				UMLPackage.PROFILE__METAMODEL_REFERENCE,
 				METAMODEL_REFERENCE_ESUPERSETS, null);
@@ -380,9 +391,7 @@ public class ProfileImpl
 	 */
 	public PackageImport getMetamodelReference(
 			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
-		metamodelReferenceLoop : for (Iterator i = getMetamodelReferences()
-			.iterator(); i.hasNext();) {
-			PackageImport metamodelReference = (PackageImport) i.next();
+		metamodelReferenceLoop : for (PackageImport metamodelReference : getMetamodelReferences()) {
 			if (importedPackage != null
 				&& !importedPackage.equals(metamodelReference
 					.getImportedPackage()))
@@ -400,7 +409,7 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public boolean validateMetaclassReferenceNotSpecialized(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ProfileOperations.validateMetaclassReferenceNotSpecialized(this,
 			diagnostics, context);
 	}
@@ -411,7 +420,7 @@ public class ProfileImpl
 	 * @generated
 	 */
 	public boolean validateReferencesSameMetamodel(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProfileOperations.validateReferencesSameMetamodel(this,
 			diagnostics, context);
 	}
@@ -475,11 +484,12 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReferencedMetaclasses() {
+	public EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PROFILE
-				.getEOperations().get(8));
+			@SuppressWarnings("unchecked")
+			EList<org.eclipse.uml2.uml.Class> result = (EList<org.eclipse.uml2.uml.Class>) cache
+				.get(this, UMLPackage.Literals.PROFILE.getEOperations().get(8));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
 					.get(8), result = ProfileOperations
@@ -495,11 +505,12 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReferencedMetamodels() {
+	public EList<Model> getReferencedMetamodels() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PROFILE
-				.getEOperations().get(9));
+			@SuppressWarnings("unchecked")
+			EList<Model> result = (EList<Model>) cache.get(this,
+				UMLPackage.Literals.PROFILE.getEOperations().get(9));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
 					.get(9), result = ProfileOperations
@@ -515,7 +526,7 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedExtensions(boolean requiredOnly) {
+	public EList<Extension> getOwnedExtensions(boolean requiredOnly) {
 		return ProfileOperations.getOwnedExtensions(this, requiredOnly);
 	}
 
@@ -524,24 +535,26 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -556,8 +569,8 @@ public class ProfileImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -567,11 +580,11 @@ public class ProfileImpl
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
-				return ((InternalEList) getPackageMerges()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageMerges())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROFILE__PROFILE_APPLICATION :
-				return ((InternalEList) getProfileApplications()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getProfileApplications())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -581,47 +594,48 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROFILE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
-				return ((InternalEList) getPackageMerges()).basicRemove(
+				return ((InternalEList<?>) getPackageMerges()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__PACKAGED_ELEMENT :
-				return ((InternalEList) getPackagedElements()).basicRemove(
+				return ((InternalEList<?>) getPackagedElements()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROFILE__PROFILE_APPLICATION :
-				return ((InternalEList) getProfileApplications()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getProfileApplications())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -631,6 +645,7 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
@@ -714,15 +729,19 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROFILE__NAME :
 				setName((String) newValue);
@@ -732,22 +751,26 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PROFILE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PROFILE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -757,45 +780,54 @@ public class ProfileImpl
 				return;
 			case UMLPackage.PROFILE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_TYPE :
 				getOwnedTypes().clear();
-				getOwnedTypes().addAll((Collection) newValue);
+				getOwnedTypes().addAll((Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.PROFILE__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll((Collection) newValue);
+				getPackageMerges().addAll(
+					(Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.PROFILE__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
-				getPackagedElements().addAll((Collection) newValue);
+				getPackagedElements().addAll(
+					(Collection<? extends PackageableElement>) newValue);
 				return;
 			case UMLPackage.PROFILE__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages().addAll((Collection) newValue);
+				getNestedPackages()
+					.addAll(
+						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.PROFILE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
 			case UMLPackage.PROFILE__PROFILE_APPLICATION :
 				getProfileApplications().clear();
-				getProfileApplications().addAll((Collection) newValue);
+				getProfileApplications().addAll(
+					(Collection<? extends ProfileApplication>) newValue);
 				return;
 			case UMLPackage.PROFILE__OWNED_STEREOTYPE :
 				getOwnedStereotypes().clear();
-				getOwnedStereotypes().addAll((Collection) newValue);
+				getOwnedStereotypes().addAll(
+					(Collection<? extends Stereotype>) newValue);
 				return;
 			case UMLPackage.PROFILE__METACLASS_REFERENCE :
 				getMetaclassReferences().clear();
-				getMetaclassReferences().addAll((Collection) newValue);
+				getMetaclassReferences().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
 				getMetamodelReferences().clear();
-				getMetamodelReferences().addAll((Collection) newValue);
+				getMetamodelReferences().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -806,6 +838,7 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :
@@ -883,6 +916,7 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROFILE__EANNOTATIONS :

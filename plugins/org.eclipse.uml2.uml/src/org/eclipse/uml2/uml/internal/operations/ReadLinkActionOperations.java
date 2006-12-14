@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionOperations.java,v 1.4 2006/01/05 22:43:24 khussey Exp $
+ * $Id: ReadLinkActionOperations.java,v 1.5 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -62,7 +62,7 @@ public class ReadLinkActionOperations
 	 * @generated
 	 */
 	public static boolean validateOneOpenEnd(ReadLinkAction readLinkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -98,7 +98,7 @@ public class ReadLinkActionOperations
 	 */
 	public static boolean validateTypeAndOrdering(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -133,7 +133,7 @@ public class ReadLinkActionOperations
 	 */
 	public static boolean validateCompatibleMultiplicity(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -168,7 +168,7 @@ public class ReadLinkActionOperations
 	 */
 	public static boolean validateNavigableOpenEnd(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -207,7 +207,7 @@ public class ReadLinkActionOperations
 	 * @generated
 	 */
 	public static boolean validateVisibility(ReadLinkAction readLinkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

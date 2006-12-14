@@ -8,18 +8,21 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveSignalEventImpl.java,v 1.6 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ReceiveSignalEventImpl.java,v 1.7 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StringExpression;
@@ -68,6 +71,7 @@ public class ReceiveSignalEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.RECEIVE_SIGNAL_EVENT;
 	}
@@ -120,6 +124,7 @@ public class ReceiveSignalEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS :
@@ -169,15 +174,19 @@ public class ReceiveSignalEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__NAME :
 				setName((String) newValue);
@@ -187,7 +196,8 @@ public class ReceiveSignalEventImpl
 				return;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -210,6 +220,7 @@ public class ReceiveSignalEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS :
@@ -248,6 +259,7 @@ public class ReceiveSignalEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECEIVE_SIGNAL_EVENT__EANNOTATIONS :

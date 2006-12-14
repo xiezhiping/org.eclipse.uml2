@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.35 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ElementImpl.java,v 1.36 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -41,8 +41,10 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -75,7 +77,7 @@ public abstract class ElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ownedComments = null;
+	protected EList<Comment> ownedComments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,6 +93,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ELEMENT;
 	}
@@ -100,23 +103,24 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.ELEMENT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -125,9 +129,9 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedComments() {
+	public EList<Comment> getOwnedComments() {
 		if (ownedComments == null) {
-			ownedComments = new EObjectContainmentEList.Resolving(
+			ownedComments = new EObjectContainmentEList.Resolving<Comment>(
 				Comment.class, this, UMLPackage.ELEMENT__OWNED_COMMENT);
 		}
 		return ownedComments;
@@ -149,7 +153,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNotOwnSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ElementOperations.validateNotOwnSelf(this, diagnostics, context);
 	}
 
@@ -158,7 +163,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHasOwner(DiagnosticChain diagnostics, Map context) {
+	public boolean validateHasOwner(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ElementOperations.validateHasOwner(this, diagnostics, context);
 	}
 
@@ -167,11 +173,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getStereotypeApplications() {
+	public EList<EObject> getStereotypeApplications() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(16));
+			@SuppressWarnings("unchecked")
+			EList<EObject> result = (EList<EObject>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(16));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(16), result = ElementOperations
@@ -196,11 +203,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRequiredStereotypes() {
+	public EList<Stereotype> getRequiredStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(18));
+			@SuppressWarnings("unchecked")
+			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(18));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(18), result = ElementOperations
@@ -225,11 +233,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAppliedStereotypes() {
+	public EList<Stereotype> getAppliedStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(20));
+			@SuppressWarnings("unchecked")
+			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(20));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(20), result = ElementOperations
@@ -254,7 +263,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAppliedSubstereotypes(Stereotype stereotype) {
+	public EList<Stereotype> getAppliedSubstereotypes(Stereotype stereotype) {
 		return ElementOperations.getAppliedSubstereotypes(this, stereotype);
 	}
 
@@ -311,11 +320,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelationships() {
+	public EList<Relationship> getRelationships() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(28));
+			@SuppressWarnings("unchecked")
+			EList<Relationship> result = (EList<Relationship>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(28));
 			if (result == null) {
 				cache
 					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
@@ -332,7 +342,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelationships(EClass eClass) {
+	public EList<Relationship> getRelationships(EClass eClass) {
 		return ElementOperations.getRelationships(this, eClass);
 	}
 
@@ -341,11 +351,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSourceDirectedRelationships() {
+	public EList<DirectedRelationship> getSourceDirectedRelationships() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(30));
+			@SuppressWarnings("unchecked")
+			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
+				.get(this, UMLPackage.Literals.ELEMENT.getEOperations().get(30));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(30), result = ElementOperations
@@ -361,7 +372,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSourceDirectedRelationships(EClass eClass) {
+	public EList<DirectedRelationship> getSourceDirectedRelationships(
+			EClass eClass) {
 		return ElementOperations.getSourceDirectedRelationships(this, eClass);
 	}
 
@@ -370,11 +382,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargetDirectedRelationships() {
+	public EList<DirectedRelationship> getTargetDirectedRelationships() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(32));
+			@SuppressWarnings("unchecked")
+			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
+				.get(this, UMLPackage.Literals.ELEMENT.getEOperations().get(32));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(32), result = ElementOperations
@@ -390,7 +403,8 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargetDirectedRelationships(EClass eClass) {
+	public EList<DirectedRelationship> getTargetDirectedRelationships(
+			EClass eClass) {
 		return ElementOperations.getTargetDirectedRelationships(this, eClass);
 	}
 
@@ -399,10 +413,11 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getKeywords() {
+	public EList<String> getKeywords() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(eResource(), this,
+			@SuppressWarnings("unchecked")
+			EList<String> result = (EList<String>) cache.get(eResource(), this,
 				UMLPackage.Literals.ELEMENT.getEOperations().get(4));
 			if (result == null) {
 				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
@@ -500,11 +515,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getApplicableStereotypes() {
+	public EList<Stereotype> getApplicableStereotypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(14));
+			@SuppressWarnings("unchecked")
+			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(14));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
 					.get(14), result = ElementOperations
@@ -547,11 +563,12 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList allOwnedElements() {
+	public EList<Element> allOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.ELEMENT
-				.getEOperations().get(34));
+			@SuppressWarnings("unchecked")
+			EList<Element> result = (EList<Element>) cache.get(this,
+				UMLPackage.Literals.ELEMENT.getEOperations().get(34));
 			if (result == null) {
 				cache
 					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
@@ -577,14 +594,15 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -595,6 +613,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
@@ -616,15 +635,19 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -635,6 +658,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
@@ -652,6 +676,7 @@ public abstract class ElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ELEMENT__EANNOTATIONS :
@@ -750,6 +775,7 @@ public abstract class ElementImpl
 		return basicGetOwner() != null;
 	}
 
+	@Override
 	public NotificationChain eBasicSetContainer(InternalEObject newContainer,
 			int newContainerFeatureID, NotificationChain msgs) {
 		msgs = super.eBasicSetContainer(newContainer, newContainerFeatureID,
@@ -770,8 +796,9 @@ public abstract class ElementImpl
 
 	private static final int ADAPTING = 1 << 7;
 
-	public EList eAdapters() {
-		EList eAdapters = super.eAdapters();
+	@Override
+	public EList<Adapter> eAdapters() {
+		EList<Adapter> eAdapters = super.eAdapters();
 
 		if ((eFlags & ADAPTING) == 0 && eAdapters.isEmpty()) {
 			CacheAdapter cacheAdapter = getCacheAdapter();
@@ -786,6 +813,7 @@ public abstract class ElementImpl
 		return eAdapters;
 	}
 
+	@Override
 	public void eSetDeliver(boolean deliver) {
 
 		if (deliver) {
@@ -799,16 +827,18 @@ public abstract class ElementImpl
 		super.eSetDeliver(deliver);
 	}
 
+	@Override
 	public boolean eNotificationRequired() {
 		return getCacheAdapter() == null
 			? super.eNotificationRequired()
 			: eDeliver();
 	}
 
+	@Override
 	public void eNotify(Notification notification) {
 
 		if (eDeliver()) {
-			BasicEList eBasicAdapters = eBasicAdapters();
+			BasicEList<Adapter> eBasicAdapters = eBasicAdapters();
 
 			if (eBasicAdapters == null || eBasicAdapters.isEmpty()) {
 				CacheAdapter cacheAdapter = getCacheAdapter();

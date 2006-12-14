@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueAction.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: RemoveVariableValueAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -128,6 +128,7 @@ public interface RemoveVariableValueAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateUnlimitedNatural(DiagnosticChain diagnostics, Map context);
+	boolean validateUnlimitedNatural(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // RemoveVariableValueAction

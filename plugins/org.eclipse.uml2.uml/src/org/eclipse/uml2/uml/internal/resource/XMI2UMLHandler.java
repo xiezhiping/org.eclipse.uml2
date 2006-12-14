@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHandler.java,v 1.4 2006/10/18 18:30:51 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.5 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -49,10 +49,11 @@ public class XMI2UMLHandler
 
 	protected final static String IDREF_ATTRIB = XMIResource.XMI_NS + ':' + XMI_IDREF;
 
-	public XMI2UMLHandler(XMLResource xmiResource, XMLHelper helper, Map options) {
+	public XMI2UMLHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
 
+	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
@@ -80,6 +81,7 @@ public class XMI2UMLHandler
 		super.handleProxy(proxy, uriLiteral);
 	}
 
+	@Override
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
@@ -94,6 +96,7 @@ public class XMI2UMLHandler
 		}
 	}
 
+	@Override
 	public void endElement(String uri, String localName, String name) {
 
 		if (types.peek() == ECORE_EXTENSION_TYPE) {
@@ -106,6 +109,7 @@ public class XMI2UMLHandler
 		}
 	}
 
+	@Override
 	protected void setAttribValue(EObject object, String name, String value) {
 
 		if (IDREF_ATTRIB.equals(name)

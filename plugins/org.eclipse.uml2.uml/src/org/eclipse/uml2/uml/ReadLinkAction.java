@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -87,7 +87,8 @@ public interface ReadLinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneOpenEnd(DiagnosticChain diagnostics, Map context);
+	boolean validateOneOpenEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,7 +103,8 @@ public interface ReadLinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeAndOrdering(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeAndOrdering(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,7 +119,7 @@ public interface ReadLinkAction
 	 * @generated
 	 */
 	boolean validateCompatibleMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,7 +133,8 @@ public interface ReadLinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNavigableOpenEnd(DiagnosticChain diagnostics, Map context);
+	boolean validateNavigableOpenEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,6 +153,7 @@ public interface ReadLinkAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateVisibility(DiagnosticChain diagnostics, Map context);
+	boolean validateVisibility(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReadLinkAction

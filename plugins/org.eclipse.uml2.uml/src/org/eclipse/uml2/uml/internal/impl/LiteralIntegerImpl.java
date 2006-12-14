@@ -8,16 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.13 2006/11/14 18:02:17 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.14 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.LiteralInteger;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -78,6 +81,7 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LITERAL_INTEGER;
 	}
@@ -138,6 +142,7 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.LITERAL_INTEGER__EANNOTATIONS :
@@ -189,15 +194,19 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.LITERAL_INTEGER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LITERAL_INTEGER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LITERAL_INTEGER__NAME :
 				setName((String) newValue);
@@ -207,7 +216,8 @@ public class LiteralIntegerImpl
 				return;
 			case UMLPackage.LITERAL_INTEGER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.LITERAL_INTEGER__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -233,6 +243,7 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LITERAL_INTEGER__EANNOTATIONS :
@@ -274,6 +285,7 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LITERAL_INTEGER__EANNOTATIONS :
@@ -316,6 +328,7 @@ public class LiteralIntegerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

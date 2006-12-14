@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.24 2006/11/14 18:02:18 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.25 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Dependency;
@@ -150,7 +151,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList clientDependencies = null;
+	protected EList<Dependency> clientDependencies = null;
 
 	/**
 	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
@@ -176,6 +177,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.NAMED_ELEMENT;
 	}
@@ -185,23 +187,25 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -325,9 +329,9 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClientDependencies() {
+	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
-			clientDependencies = new EObjectWithInverseResolvingEList.ManyInverse(
+			clientDependencies = new EObjectWithInverseResolvingEList.ManyInverse<Dependency>(
 				Dependency.class, this,
 				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY,
 				UMLPackage.DEPENDENCY__CLIENT);
@@ -351,9 +355,7 @@ public abstract class NamedElementImpl
 	 */
 	public Dependency getClientDependency(String name, boolean ignoreCase,
 			EClass eClass) {
-		clientDependencyLoop : for (Iterator i = getClientDependencies()
-			.iterator(); i.hasNext();) {
-			Dependency clientDependency = (Dependency) i.next();
+		clientDependencyLoop : for (Dependency clientDependency : getClientDependencies()) {
 			if (eClass != null && !eClass.isInstance(clientDependency))
 				continue clientDependencyLoop;
 			if (name != null && !(ignoreCase
@@ -475,7 +477,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public boolean validateHasNoQualifiedName(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return NamedElementOperations.validateHasNoQualifiedName(this,
 			diagnostics, context);
 	}
@@ -486,7 +488,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public boolean validateHasQualifiedName(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return NamedElementOperations.validateHasQualifiedName(this,
 			diagnostics, context);
 	}
@@ -497,7 +499,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public boolean validateVisibilityNeedsOwnership(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return NamedElementOperations.validateVisibilityNeedsOwnership(this,
 			diagnostics, context);
 	}
@@ -534,10 +536,11 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList allNamespaces() {
+	public EList<Namespace> allNamespaces() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Namespace> result = (EList<Namespace>) cache.get(this,
 				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(7));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
@@ -572,11 +575,13 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList allOwningPackages() {
+	public EList<org.eclipse.uml2.uml.Package> allOwningPackages() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(10));
+			@SuppressWarnings("unchecked")
+			EList<org.eclipse.uml2.uml.Package> result = (EList<org.eclipse.uml2.uml.Package>) cache
+				.get(this, UMLPackage.Literals.NAMED_ELEMENT.getEOperations()
+					.get(10));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
 					.getEOperations().get(10), result = NamedElementOperations
@@ -592,15 +597,17 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -610,18 +617,19 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 		}
@@ -633,6 +641,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
@@ -670,15 +679,19 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				setName((String) newValue);
@@ -688,7 +701,8 @@ public abstract class NamedElementImpl
 				return;
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -702,6 +716,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
@@ -731,6 +746,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
@@ -765,6 +781,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -856,6 +873,7 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetNamespace();
 	}
@@ -877,11 +895,13 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION);
 	}
 
+	@Override
 	public String eURIFragmentSegment(EStructuralFeature eStructuralFeature,
 			EObject eObject) {
 
@@ -891,10 +911,7 @@ public abstract class NamedElementImpl
 			if (!UML2Util.isEmpty(name)) {
 				int count = 0;
 
-				for (Iterator eContents = eContents().iterator(); eContents
-					.hasNext();) {
-
-					Object otherEObject = eContents.next();
+				for (EObject otherEObject : eContents()) {
 
 					if (otherEObject == eObject) {
 						break;

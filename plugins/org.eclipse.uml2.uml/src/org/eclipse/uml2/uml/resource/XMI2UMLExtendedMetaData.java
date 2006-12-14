@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLExtendedMetaData.java,v 1.3 2006/10/18 18:30:51 khussey Exp $
+ * $Id: XMI2UMLExtendedMetaData.java,v 1.4 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -23,12 +23,12 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class XMI2UMLExtendedMetaData
 		extends BasicExtendedMetaData {
 
-	protected static Map uriMap = null;
+	protected static Map<URI, URI> uriMap = null;
 
-	public static Map getURIMap() {
+	public static Map<URI, URI> getURIMap() {
 
 		if (uriMap == null) {
-			uriMap = new HashMap();
+			uriMap = new HashMap<URI, URI>();
 
 			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI), URI
 				.createURI(UMLResource.STANDARD_PROFILE_URI));
@@ -43,6 +43,7 @@ public class XMI2UMLExtendedMetaData
 		super(registry);
 	}
 
+	@Override
 	public String getNamespace(EPackage ePackage) {
 
 		if (ePackage == UMLPackage.eINSTANCE) {
@@ -55,6 +56,7 @@ public class XMI2UMLExtendedMetaData
 			: namespace;
 	}
 
+	@Override
 	public EPackage getPackage(String namespace) {
 
 		return XMI2UMLResource.UML_METAMODEL_NS_URI.equals(namespace)

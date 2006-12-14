@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.28 2006/11/14 18:02:17 khussey Exp $
+ * $Id: VariableImpl.java,v 1.29 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,6 +38,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -173,6 +177,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.VARIABLE;
 	}
@@ -182,23 +187,25 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.VARIABLE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.VARIABLE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.VARIABLE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -645,7 +652,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGt0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGt0(this,
 			diagnostics, context);
 	}
@@ -655,7 +663,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateLowerGe0(DiagnosticChain diagnostics, Map context) {
+	public boolean validateLowerGe0(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateLowerGe0(this,
 			diagnostics, context);
 	}
@@ -665,7 +674,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context) {
+	public boolean validateUpperGeLower(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return MultiplicityElementOperations.validateUpperGeLower(this,
 			diagnostics, context);
 	}
@@ -676,7 +686,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationNoSideEffects(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationNoSideEffects(this, diagnostics, context);
 	}
@@ -687,7 +697,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationConstant(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return MultiplicityElementOperations
 			.validateValueSpecificationConstant(this, diagnostics, context);
 	}
@@ -760,7 +770,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return VariableOperations.validateOwned(this, diagnostics, context);
 	}
 
@@ -778,15 +789,17 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -801,7 +814,8 @@ public class VariableImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.VARIABLE__END :
-				return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -819,18 +833,19 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
@@ -838,7 +853,8 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.VARIABLE__END :
-				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.VARIABLE__LOWER_VALUE :
@@ -856,6 +872,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -879,6 +896,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
@@ -958,15 +976,19 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.VARIABLE__NAME :
 				setName((String) newValue);
@@ -976,7 +998,8 @@ public class VariableImpl
 				return;
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -992,7 +1015,7 @@ public class VariableImpl
 				return;
 			case UMLPackage.VARIABLE__END :
 				getEnds().clear();
-				getEnds().addAll((Collection) newValue);
+				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				setIsOrdered(((Boolean) newValue).booleanValue());
@@ -1027,6 +1050,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
@@ -1092,6 +1116,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
@@ -1150,7 +1175,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.VARIABLE__IS_ORDERED :
@@ -1177,7 +1203,8 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
@@ -1204,6 +1231,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1235,6 +1263,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.VARIABLE__UPPER_VALUE)
@@ -1264,6 +1293,7 @@ public class VariableImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.VARIABLE__SCOPE)
 			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE);

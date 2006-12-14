@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUse.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: CollaborationUse.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,7 +84,7 @@ public interface CollaborationUse
 	 * @model type="org.eclipse.uml2.uml.Dependency" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getRoleBindings();
+	EList<Dependency> getRoleBindings();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Dependency}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Role Binding</b></em>' containment reference list.
@@ -145,7 +145,8 @@ public interface CollaborationUse
 	 * @model
 	 * @generated
 	 */
-	boolean validateClientElements(DiagnosticChain diagnostics, Map context);
+	boolean validateClientElements(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -157,7 +158,8 @@ public interface CollaborationUse
 	 * @model
 	 * @generated
 	 */
-	boolean validateEveryRole(DiagnosticChain diagnostics, Map context);
+	boolean validateEveryRole(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,6 +171,7 @@ public interface CollaborationUse
 	 * @model
 	 * @generated
 	 */
-	boolean validateConnectors(DiagnosticChain diagnostics, Map context);
+	boolean validateConnectors(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // CollaborationUse

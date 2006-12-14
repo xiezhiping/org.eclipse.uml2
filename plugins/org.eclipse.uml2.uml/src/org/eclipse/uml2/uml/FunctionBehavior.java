@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FunctionBehavior.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: FunctionBehavior.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,8 @@ public interface FunctionBehavior
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneOutputParameter(DiagnosticChain diagnostics, Map context);
+	boolean validateOneOutputParameter(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,6 +62,7 @@ public interface FunctionBehavior
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypesOfParameters(DiagnosticChain diagnostics, Map context);
+	boolean validateTypesOfParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // FunctionBehavior

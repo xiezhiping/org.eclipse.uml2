@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndOperations.java,v 1.7 2006/02/23 17:36:26 khussey Exp $
+ * $Id: ConnectorEndOperations.java,v 1.8 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -69,7 +69,7 @@ public class ConnectorEndOperations
 	 * @generated
 	 */
 	public static boolean validateMultiplicity(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -101,7 +101,7 @@ public class ConnectorEndOperations
 	 * @generated
 	 */
 	public static boolean validatePartWithPortEmpty(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -133,7 +133,8 @@ public class ConnectorEndOperations
 	 * @generated
 	 */
 	public static boolean validateRoleAndPartWithPort(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics, Map context) {
+			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -165,7 +166,7 @@ public class ConnectorEndOperations
 	 * @generated
 	 */
 	public static boolean validateSelfPartWithPort(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -200,13 +201,13 @@ public class ConnectorEndOperations
 			Association type = connector.getType();
 
 			if (type != null) {
-				List ends = ((InternalEList) connector.getEnds()).basicList();
-				List memberEnds = ((InternalEList) type.getMemberEnds())
-					.basicList();
+				List<ConnectorEnd> ends = ((InternalEList<ConnectorEnd>) connector
+					.getEnds()).basicList();
+				List<Property> memberEnds = ((InternalEList<Property>) type
+					.getMemberEnds()).basicList();
 
 				if (ends.size() == memberEnds.size()) {
-					return (Property) memberEnds
-						.get(ends.indexOf(connectorEnd));
+					return memberEnds.get(ends.indexOf(connectorEnd));
 				}
 			}
 		}

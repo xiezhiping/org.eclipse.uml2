@@ -8,25 +8,30 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentImpl.java,v 1.13 2006/04/10 19:16:21 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentImpl.java,v 1.14 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConsiderIgnoreFragment;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Gate;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionOperatorKind;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -59,7 +64,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList messages = null;
+	protected EList<NamedElement> messages = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,6 +80,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONSIDER_IGNORE_FRAGMENT;
 	}
@@ -84,9 +90,10 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMessages() {
+	public EList<NamedElement> getMessages() {
 		if (messages == null) {
-			messages = new EObjectResolvingEList(NamedElement.class, this,
+			messages = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this,
 				UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE);
 		}
 		return messages;
@@ -108,8 +115,7 @@ public class ConsiderIgnoreFragmentImpl
 	 */
 	public NamedElement getMessage(String name, boolean ignoreCase,
 			EClass eClass) {
-		messageLoop : for (Iterator i = getMessages().iterator(); i.hasNext();) {
-			NamedElement message = (NamedElement) i.next();
+		messageLoop : for (NamedElement message : getMessages()) {
 			if (eClass != null && !eClass.isInstance(message))
 				continue messageLoop;
 			if (name != null && !(ignoreCase
@@ -127,7 +133,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * @generated
 	 */
 	public boolean validateConsiderOrIgnore(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConsiderIgnoreFragmentOperations.validateConsiderOrIgnore(this,
 			diagnostics, context);
 	}
@@ -137,7 +143,8 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateType(DiagnosticChain diagnostics, Map context) {
+	public boolean validateType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ConsiderIgnoreFragmentOperations.validateType(this, diagnostics,
 			context);
 	}
@@ -147,6 +154,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
@@ -204,15 +212,19 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME :
 				setName((String) newValue);
@@ -222,18 +234,20 @@ public class ConsiderIgnoreFragmentImpl
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -246,15 +260,18 @@ public class ConsiderIgnoreFragmentImpl
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__OPERAND :
 				getOperands().clear();
-				getOperands().addAll((Collection) newValue);
+				getOperands().addAll(
+					(Collection<? extends InteractionOperand>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__CFRAGMENT_GATE :
 				getCfragmentGates().clear();
-				getCfragmentGates().addAll((Collection) newValue);
+				getCfragmentGates().addAll(
+					(Collection<? extends Gate>) newValue);
 				return;
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__MESSAGE :
 				getMessages().clear();
-				getMessages().addAll((Collection) newValue);
+				getMessages().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -265,6 +282,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :
@@ -318,6 +336,7 @@ public class ConsiderIgnoreFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT__EANNOTATIONS :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEnd.java,v 1.2 2006/05/12 20:38:08 khussey Exp $
+ * $Id: ExtensionEnd.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,8 @@ public interface ExtensionEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -56,6 +57,7 @@ public interface ExtensionEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validateAggregation(DiagnosticChain diagnostics, Map context);
+	boolean validateAggregation(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ExtensionEnd

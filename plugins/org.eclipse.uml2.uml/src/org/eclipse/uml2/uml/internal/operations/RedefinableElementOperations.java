@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.8 2006/11/29 02:00:49 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.9 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -67,14 +68,11 @@ public class RedefinableElementOperations
 	 */
 	public static boolean validateRedefinitionContextValid(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = true;
 
-		for (Iterator redefinedElements = redefinableElement
-			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
-
-			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
-				.next();
+		for (RedefinableElement redefinedElement : redefinableElement
+			.getRedefinedElements()) {
 
 			if (!redefinableElement
 				.isRedefinitionContextValid(redefinedElement)) {
@@ -113,14 +111,11 @@ public class RedefinableElementOperations
 	 */
 	public static boolean validateRedefinitionConsistent(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = true;
 
-		for (Iterator redefinedElements = redefinableElement
-			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
-
-			RedefinableElement redefinedElement = (RedefinableElement) redefinedElements
-				.next();
+		for (RedefinableElement redefinedElement : redefinableElement
+			.getRedefinedElements()) {
 
 			if (!redefinedElement.isConsistentWith(redefinableElement)) {
 				result = false;
@@ -158,24 +153,19 @@ public class RedefinableElementOperations
 	public static boolean isRedefinitionContextValid(
 			RedefinableElement redefinableElement,
 			RedefinableElement redefinable) {
-		EList redefinableRedefinitionContexts = redefinable
+		EList<Classifier> rRedefinitionContexts = redefinable
 			.getRedefinitionContexts();
 
-		for (Iterator redefinitionContexts = redefinableElement
-			.getRedefinitionContexts().iterator(); redefinitionContexts
-			.hasNext();) {
+		for (Classifier reRedefinitionContext : redefinableElement
+			.getRedefinitionContexts()) {
 
-			EList redefinitionContextAllParents = ((Classifier) redefinitionContexts
-				.next()).allParents();
+			EList<Classifier> reRedefinitionContextAllParents = reRedefinitionContext
+				.allParents();
 
-			for (Iterator rrc = redefinableRedefinitionContexts.iterator(); rrc
-				.hasNext();) {
+			for (Classifier rRedefinitionContext : rRedefinitionContexts) {
 
-				Classifier redefinableRedefinitionContext = (Classifier) rrc
-					.next();
-
-				if (redefinitionContextAllParents
-					.contains(redefinableRedefinitionContext)) {
+				if (reRedefinitionContextAllParents
+					.contains(rRedefinitionContext)) {
 
 					return true;
 				}
@@ -202,43 +192,41 @@ public class RedefinableElementOperations
 		return false;
 	}
 
-	protected static EList getAllRedefinedElements(
-			RedefinableElement redefinableElement, EList allRedefinedElements) {
+	protected static EList<RedefinableElement> getAllRedefinedElements(
+			RedefinableElement redefinableElement,
+			EList<RedefinableElement> allRedefinedElements) {
 
-		for (Iterator redefinedElements = redefinableElement
-			.getRedefinedElements().iterator(); redefinedElements.hasNext();) {
-
-			Object redefinedElement = redefinedElements.next();
+		for (RedefinableElement redefinedElement : redefinableElement
+			.getRedefinedElements()) {
 
 			if (allRedefinedElements.add(redefinedElement)) {
-				getAllRedefinedElements((RedefinableElement) redefinedElement,
-					allRedefinedElements);
+				getAllRedefinedElements(redefinedElement, allRedefinedElements);
 			}
 		}
 
 		return allRedefinedElements;
 	}
 
-	protected static EList getAllRedefinedElements(
+	protected static EList<RedefinableElement> getAllRedefinedElements(
 			RedefinableElement redefinableElement) {
 		return getAllRedefinedElements(redefinableElement,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<RedefinableElement>());
 	}
 
-	protected static EList excludeRedefinedElements(EList redefineableElements) {
-		EList allRedefinedElements = new UniqueEList.FastCompare();
+	protected static <E extends Element> EList<E> excludeRedefinedElements(
+			EList<E> redefineableElements) {
+		EList<RedefinableElement> allRedefinedElements = new UniqueEList.FastCompare<RedefinableElement>();
 
-		for (Iterator re = redefineableElements.iterator(); re.hasNext();) {
-			Object redefineableElement = re.next();
+		for (Element redefinableElement : redefineableElements) {
 
-			if (redefineableElement instanceof RedefinableElement) {
+			if (redefinableElement instanceof RedefinableElement) {
 				getAllRedefinedElements(
-					(RedefinableElement) redefineableElement,
+					(RedefinableElement) redefinableElement,
 					allRedefinedElements);
 			}
 		}
 
-		for (Iterator re = redefineableElements.iterator(); re.hasNext();) {
+		for (Iterator<?> re = redefineableElements.iterator(); re.hasNext();) {
 
 			if (allRedefinedElements.contains(re.next())) {
 				re.remove();

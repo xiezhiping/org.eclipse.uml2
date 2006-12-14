@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.28 2006/10/10 20:41:29 khussey Exp $
+ * $Id: PackageOperations.java,v 1.29 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -49,6 +50,7 @@ import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.PackageImport;
@@ -95,6 +97,8 @@ public class PackageOperations
 	protected static class StereotypeApplicationCopier
 			extends EcoreUtil.Copier {
 
+		private static final long serialVersionUID = 1L;
+
 		protected final Profile profile;
 
 		protected StereotypeApplicationCopier(Profile profile) {
@@ -103,6 +107,7 @@ public class PackageOperations
 			this.profile = profile;
 		}
 
+		@Override
 		protected EObject createCopy(EObject eObject) {
 			Element baseElement = getBaseElement(eObject);
 			return baseElement == null
@@ -110,16 +115,19 @@ public class PackageOperations
 				: applyStereotype(baseElement, getTarget(eObject.eClass()));
 		}
 
+		@Override
 		protected EClass getTarget(EClass eClass) {
 			return (EClass) profile.getDefinition(getNamedElement(eClass));
 		}
 
+		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
 			return (EStructuralFeature) profile
 				.getDefinition(getNamedElement(eStructuralFeature));
 		}
 
+		@Override
 		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
 				EObject copyEObject) {
 
@@ -148,10 +156,12 @@ public class PackageOperations
 				.getEFactoryInstance();
 
 			if (targetEAttribute.isMany()) {
-				EList copyValues = (EList) copyEObject.eGet(targetEAttribute);
+				@SuppressWarnings("unchecked")
+				EList<Object> copyValues = (EList<Object>) copyEObject
+					.eGet(targetEAttribute);
 
 				if (eAttribute.isMany()) {
-					EList values = (EList) eObject.eGet(eAttribute);
+					EList<?> values = (EList<?>) eObject.eGet(eAttribute);
 
 					for (int i = 0, size = values.size(); i < size; i++) {
 						copyValues.add(i, targetEFactory.createFromString(
@@ -167,7 +177,7 @@ public class PackageOperations
 				copyEObject.eSet(targetEAttribute, targetEFactory
 					.createFromString(targetEDataType, eFactory
 						.convertToString(eDataType, eAttribute.isMany()
-							? ((EList) eObject.eGet(eAttribute)).get(0)
+							? ((EList<?>) eObject.eGet(eAttribute)).get(0)
 							: eObject.eGet(eAttribute))));
 			}
 		}
@@ -178,29 +188,33 @@ public class PackageOperations
 			EEnum targetEEnum = (EEnum) targetEAttribute.getEAttributeType();
 
 			if (targetEAttribute.isMany()) {
-				EList copyValues = (EList) copyEObject.eGet(targetEAttribute);
+				@SuppressWarnings("unchecked")
+				EList<EEnumLiteral> copyValues = (EList<EEnumLiteral>) copyEObject
+					.eGet(targetEAttribute);
 
 				if (eAttribute.isMany()) {
-					EList values = (EList) eObject.eGet(eAttribute);
+					@SuppressWarnings("unchecked")
+					EList<EEnumLiteral> values = (EList<EEnumLiteral>) eObject
+						.eGet(eAttribute);
 
 					for (int i = 0, size = values.size(); i < size; i++) {
-						copyValues.add(i, targetEEnum.getEEnumLiteral(
-							((EEnumLiteral) values.get(i)).getName())
-							.getInstance());
+						copyValues.add(i, targetEEnum.getEEnumLiteral(values
+							.get(i).getName()));
 					}
 				} else {
-					copyValues.add(targetEEnum.getEEnumLiteral(
-						((EEnumLiteral) eObject.eGet(eAttribute)).getName())
-						.getInstance());
+					copyValues.add(targetEEnum
+						.getEEnumLiteral(((EEnumLiteral) eObject
+							.eGet(eAttribute)).getName()));
 				}
 			} else {
 				copyEObject.eSet(targetEAttribute, targetEEnum.getEEnumLiteral(
 					((EEnumLiteral) (eAttribute.isMany()
-						? ((EList) eObject.eGet(eAttribute)).get(0)
+						? ((EList<?>) eObject.eGet(eAttribute)).get(0)
 						: eObject.eGet(eAttribute))).getName()).getInstance());
 			}
 		}
 
+		@Override
 		protected void copyContainment(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
@@ -211,11 +225,14 @@ public class PackageOperations
 					EReference targetEReference = (EReference) getTarget(eReference);
 
 					if (targetEReference.isMany()) {
-						EList copyValues = (EList) copyEObject
+						@SuppressWarnings("unchecked")
+						EList<EObject> copyValues = (EList<EObject>) copyEObject
 							.eGet(targetEReference);
 
 						if (eReference.isMany()) {
-							copyValues.addAll(copyAll((EList) value));
+							@SuppressWarnings("unchecked")
+							EList<EObject> values = (EList<EObject>) value;
+							copyValues.addAll(copyAll(values));
 						} else if (value != null) {
 							copyValues.add(copy((EObject) value));
 						}
@@ -231,6 +248,7 @@ public class PackageOperations
 			}
 		}
 
+		@Override
 		protected void copyReference(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
@@ -241,7 +259,8 @@ public class PackageOperations
 					EReference targetEReference = (EReference) getTarget(eReference);
 
 					if (targetEReference.isMany()) {
-						InternalEList copyValues = (InternalEList) copyEObject
+						@SuppressWarnings("unchecked")
+						InternalEList<EObject> copyValues = (InternalEList<EObject>) copyEObject
 							.eGet(targetEReference);
 
 						if (eReference.isMany()) {
@@ -249,16 +268,19 @@ public class PackageOperations
 								.getEOpposite();
 							int index = 0;
 
-							for (Iterator v = ((EList) value).iterator(); v
-								.hasNext();) {
+							@SuppressWarnings("unchecked")
+							Iterator<EObject> v = ((EList<EObject>) value)
+								.iterator();
 
+							while (v.hasNext()) {
 								value = v.next();
-								Object copyValue = get(value);
+								EObject copyValue = get(value);
 
 								if (copyValue == null) {
 
 									if (targetEOpposite == null) {
-										copyValues.addUnique(index++, value);
+										copyValues.addUnique(index++,
+											(EObject) value);
 									}
 								} else {
 
@@ -279,12 +301,12 @@ public class PackageOperations
 								}
 							}
 						} else if (value != null) {
-							Object copyValue = get(value);
+							EObject copyValue = get(value);
 
 							if (copyValue == null) {
 
 								if (targetEReference.getEOpposite() == null) {
-									copyValues.addUnique(value);
+									copyValues.addUnique((EObject) value);
 								}
 							} else {
 								copyValues.addUnique(copyValue);
@@ -293,7 +315,9 @@ public class PackageOperations
 					} else {
 
 						if (eReference.isMany()) {
-							value = ((EList) value).get(0);
+							@SuppressWarnings("unchecked")
+							EList<EObject> values = (EList<EObject>) value;
+							value = values.get(0);
 						}
 
 						Object copyValue = get(value);
@@ -334,13 +358,10 @@ public class PackageOperations
 	 */
 	public static boolean validateElementsPublicOrPrivate(
 			org.eclipse.uml2.uml.Package package_, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = true;
 
-		for (Iterator ownedElements = package_.getOwnedElements().iterator(); ownedElements
-			.hasNext();) {
-
-			Element ownedElement = (Element) ownedElements.next();
+		for (Element ownedElement : package_.getOwnedElements()) {
 
 			if (ownedElement instanceof NamedElement) {
 				VisibilityKind visibility = ((NamedElement) ownedElement)
@@ -425,8 +446,8 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList applyProfile(org.eclipse.uml2.uml.Package package_,
-			Profile profile) {
+	public static EList<EObject> applyProfile(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
 		if (profile == null) {
 			throw new IllegalArgumentException(String.valueOf(profile));
@@ -442,29 +463,25 @@ public class PackageOperations
 			package_.createProfileApplication().setAppliedProfile(profile);
 		}
 
-		EList stereotypeApplications = new UniqueEList.FastCompare();
+		EList<EObject> stereotypeApplications = new UniqueEList.FastCompare<EObject>();
 		StereotypeApplicationCopier copier = new StereotypeApplicationCopier(
 			profile);
 
-		for (Iterator allContents = getAllContents(package_, true, false); allContents
-			.hasNext();) {
+		for (TreeIterator<EObject> allContents = getAllContents(package_, true,
+			false); allContents.hasNext();) {
 
-			Object object = allContents.next();
+			EObject eObject = allContents.next();
 
-			if (object instanceof Element) {
-				Element element = (Element) object;
+			if (eObject instanceof Element) {
+				Element element = (Element) eObject;
 
 				if (element instanceof org.eclipse.uml2.uml.Package) {
 
-					for (Iterator profileApplications = ((org.eclipse.uml2.uml.Package) element)
-						.getProfileApplications().iterator(); profileApplications
-						.hasNext();) {
-
-						ProfileApplication profileApplication = (ProfileApplication) profileApplications
-							.next();
+					for (ProfileApplication profileApplication : ((org.eclipse.uml2.uml.Package) element)
+						.getProfileApplications()) {
 
 						if (profileApplication.getAppliedProfile() == profile) {
-							EList references = getEAnnotation(
+							EList<EObject> references = getEAnnotation(
 								profileApplication, UMLPackage.eNS_URI, true)
 								.getReferences();
 
@@ -477,10 +494,8 @@ public class PackageOperations
 					}
 				}
 
-				for (Iterator sa = element.getStereotypeApplications()
-					.iterator(); sa.hasNext();) {
-
-					EObject stereotypeApplication = (EObject) sa.next();
+				for (EObject stereotypeApplication : element
+					.getStereotypeApplications()) {
 					Stereotype stereotype = getStereotype(stereotypeApplication);
 
 					if (stereotype != null
@@ -492,7 +507,8 @@ public class PackageOperations
 								.eResource();
 
 							if (eResource != null) {
-								EList contents = eResource.getContents();
+								EList<EObject> contents = eResource
+									.getContents();
 
 								if (eResource == copy.eResource()) {
 									contents.move(contents
@@ -514,10 +530,8 @@ public class PackageOperations
 
 		destroyAll(stereotypeApplications);
 
-		EList requiredExtensions = profile.getOwnedExtensions(true);
-
-		return requiredExtensions.isEmpty()
-			? ECollections.EMPTY_ELIST
+		return profile.getOwnedExtensions(true).isEmpty()
+			? ECollections.<EObject> emptyEList()
 			: applyAllRequiredStereotypes(package_);
 	}
 
@@ -526,27 +540,24 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList unapplyProfile(org.eclipse.uml2.uml.Package package_,
-			Profile profile) {
+	public static EList<EObject> unapplyProfile(
+			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
 		if (profile == null || package_.getProfileApplication(profile) == null) {
 			throw new IllegalArgumentException(String.valueOf(profile));
 		}
 
-		EList profileApplications = new UniqueEList.FastCompare();
+		EList<ProfileApplication> profileApplications = new UniqueEList.FastCompare<ProfileApplication>();
 
-		for (Iterator allContents = getAllContents(package_, true, false); allContents
-			.hasNext();) {
+		for (TreeIterator<EObject> allContents = getAllContents(package_, true,
+			false); allContents.hasNext();) {
 
-			Object object = allContents.next();
+			EObject eObject = allContents.next();
 
-			if (object instanceof org.eclipse.uml2.uml.Package) {
+			if (eObject instanceof org.eclipse.uml2.uml.Package) {
 
-				for (Iterator pa = ((org.eclipse.uml2.uml.Package) object)
-					.getProfileApplications().iterator(); pa.hasNext();) {
-
-					ProfileApplication profileApplication = (ProfileApplication) pa
-						.next();
+				for (ProfileApplication profileApplication : ((org.eclipse.uml2.uml.Package) eObject)
+					.getProfileApplications()) {
 
 					if (profileApplication.getAppliedProfile() == profile) {
 						profileApplications.add(profileApplication);
@@ -558,18 +569,17 @@ public class PackageOperations
 		destroyAll(profileApplications);
 
 		return package_.getAllAppliedProfiles().contains(profile)
-			? ECollections.EMPTY_ELIST
+			? ECollections.<EObject> emptyEList()
 			: unapplyAllNonApplicableStereotypes(package_);
 	}
 
-	protected static EList getAppliedProfiles(
-			org.eclipse.uml2.uml.Package package_, EList appliedProfiles) {
+	protected static EList<Profile> getAppliedProfiles(
+			org.eclipse.uml2.uml.Package package_,
+			EList<Profile> appliedProfiles) {
 
-		for (Iterator profileApplications = package_.getProfileApplications()
-			.iterator(); profileApplications.hasNext();) {
-
-			Profile appliedProfile = ((ProfileApplication) profileApplications
-				.next()).getAppliedProfile();
+		for (ProfileApplication profileApplication : package_
+			.getProfileApplications()) {
+			Profile appliedProfile = profileApplication.getAppliedProfile();
 
 			if (appliedProfile != null) {
 				appliedProfiles.add(appliedProfile);
@@ -584,8 +594,10 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAppliedProfiles(org.eclipse.uml2.uml.Package package_) {
-		return getAppliedProfiles(package_, new UniqueEList.FastCompare());
+	public static EList<Profile> getAppliedProfiles(
+			org.eclipse.uml2.uml.Package package_) {
+		return getAppliedProfiles(package_,
+			new UniqueEList.FastCompare<Profile>());
 	}
 
 	/**
@@ -596,11 +608,10 @@ public class PackageOperations
 	public static Profile getAppliedProfile(
 			org.eclipse.uml2.uml.Package package_, String qualifiedName) {
 
-		for (Iterator profileApplications = package_.getProfileApplications()
-			.iterator(); profileApplications.hasNext();) {
+		for (ProfileApplication profileApplication : package_
+			.getProfileApplications()) {
 
-			Profile appliedProfile = ((ProfileApplication) profileApplications
-				.next()).getAppliedProfile();
+			Profile appliedProfile = profileApplication.getAppliedProfile();
 
 			if (appliedProfile != null
 				&& safeEquals(appliedProfile.getQualifiedName(), qualifiedName)) {
@@ -642,17 +653,16 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllProfileApplications(
+	public static EList<ProfileApplication> getAllProfileApplications(
 			org.eclipse.uml2.uml.Package package_) {
-		EList allProfileApplications = new UniqueEList.FastCompare(package_
-			.getProfileApplications());
+		EList<ProfileApplication> allProfileApplications = new UniqueEList.FastCompare<ProfileApplication>(
+			package_.getProfileApplications());
 
-		for (Iterator allOwningPackages = package_.allOwningPackages()
-			.iterator(); allOwningPackages.hasNext();) {
+		for (org.eclipse.uml2.uml.Package owningPackage : package_
+			.allOwningPackages()) {
 
-			allProfileApplications
-				.addAll(((org.eclipse.uml2.uml.Package) allOwningPackages
-					.next()).getProfileApplications());
+			allProfileApplications.addAll(owningPackage
+				.getProfileApplications());
 		}
 
 		return ECollections.unmodifiableEList(allProfileApplications);
@@ -666,11 +676,8 @@ public class PackageOperations
 	public static ProfileApplication getProfileApplication(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
 
-		for (Iterator profileApplications = package_.getProfileApplications()
-			.iterator(); profileApplications.hasNext();) {
-
-			ProfileApplication profileApplication = (ProfileApplication) profileApplications
-				.next();
+		for (ProfileApplication profileApplication : package_
+			.getProfileApplications()) {
 
 			if (profileApplication.getAppliedProfile() == profile) {
 				return profileApplication;
@@ -732,28 +739,25 @@ public class PackageOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllAppliedProfiles(
+	public static EList<Profile> getAllAppliedProfiles(
 			org.eclipse.uml2.uml.Package package_) {
-		EList allAppliedProfiles = getAppliedProfiles(package_,
-			new UniqueEList.FastCompare());
+		EList<Profile> allAppliedProfiles = getAppliedProfiles(package_,
+			new UniqueEList.FastCompare<Profile>());
 
-		for (Iterator allOwningPackages = package_.allOwningPackages()
-			.iterator(); allOwningPackages.hasNext();) {
+		for (org.eclipse.uml2.uml.Package owningPackage : package_
+			.allOwningPackages()) {
 
-			getAppliedProfiles((org.eclipse.uml2.uml.Package) allOwningPackages
-				.next(), allAppliedProfiles);
+			getAppliedProfiles(owningPackage, allAppliedProfiles);
 		}
 
 		return ECollections.unmodifiableEList(allAppliedProfiles);
 	}
 
-	protected static EList getAllImportedPackages(
-			org.eclipse.uml2.uml.Package package_, EList allImportedPackages) {
+	protected static EList<org.eclipse.uml2.uml.Package> getAllImportedPackages(
+			org.eclipse.uml2.uml.Package package_,
+			EList<org.eclipse.uml2.uml.Package> allImportedPackages) {
 
-		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
-			.hasNext();) {
-
-			PackageImport packageImport = (PackageImport) packageImports.next();
+		for (PackageImport packageImport : package_.getPackageImports()) {
 
 			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				org.eclipse.uml2.uml.Package importedPackage = packageImport
@@ -770,24 +774,20 @@ public class PackageOperations
 		return allImportedPackages;
 	}
 
-	protected static EList visibleMembers(
-			org.eclipse.uml2.uml.Package package_, EList visibleMembers) {
+	protected static EList<PackageableElement> visibleMembers(
+			org.eclipse.uml2.uml.Package package_,
+			EList<PackageableElement> visibleMembers) {
 
-		for (Iterator ownedMembers = package_.getOwnedMembers().iterator(); ownedMembers
-			.hasNext();) {
+		for (NamedElement ownedMember : package_.getOwnedMembers()) {
 
-			PackageableElement ownedMember = (PackageableElement) ownedMembers
-				.next();
+			if (ownedMember instanceof PackageableElement
+				&& ownedMember.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 
-			if (ownedMember.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
-				visibleMembers.add(ownedMember);
+				visibleMembers.add((PackageableElement) ownedMember);
 			}
 		}
 
-		for (Iterator elementImports = package_.getElementImports().iterator(); elementImports
-			.hasNext();) {
-
-			ElementImport elementImport = (ElementImport) elementImports.next();
+		for (ElementImport elementImport : package_.getElementImports()) {
 
 			if (elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				PackageableElement importedElement = elementImport
@@ -812,16 +812,16 @@ public class PackageOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList visibleMembers(org.eclipse.uml2.uml.Package package_) {
-		EList visibleMembers = visibleMembers(package_,
-			new UniqueEList.FastCompare());
+	public static EList<PackageableElement> visibleMembers(
+			org.eclipse.uml2.uml.Package package_) {
+		EList<PackageableElement> visibleMembers = visibleMembers(package_,
+			new UniqueEList.FastCompare<PackageableElement>());
 
-		for (Iterator allImportedPackages = getAllImportedPackages(package_,
-			new UniqueEList.FastCompare()).iterator(); allImportedPackages
-			.hasNext();) {
+		for (org.eclipse.uml2.uml.Package importedPackage : getAllImportedPackages(
+			package_,
+			new UniqueEList.FastCompare<org.eclipse.uml2.uml.Package>())) {
 
-			visibleMembers((org.eclipse.uml2.uml.Package) allImportedPackages
-				.next(), visibleMembers);
+			visibleMembers(importedPackage, visibleMembers);
 		}
 
 		return ECollections.unmodifiableEList(visibleMembers);
@@ -846,20 +846,14 @@ public class PackageOperations
 			return el.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
 		}
 
-		for (Iterator elementImports = package_.getElementImports().iterator(); elementImports
-			.hasNext();) {
-
-			ElementImport elementImport = (ElementImport) elementImports.next();
+		for (ElementImport elementImport : package_.getElementImports()) {
 
 			if (safeEquals(elementImport.getImportedElement(), el)) {
 				return elementImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL;
 			}
 		}
 
-		for (Iterator packageImports = package_.getPackageImports().iterator(); packageImports
-			.hasNext();) {
-
-			PackageImport packageImport = (PackageImport) packageImports.next();
+		for (PackageImport packageImport : package_.getPackageImports()) {
 
 			if (packageImport.getVisibility() == VisibilityKind.PUBLIC_LITERAL) {
 				org.eclipse.uml2.uml.Package importedPackage = packageImport
@@ -889,10 +883,7 @@ public class PackageOperations
 	protected static boolean containsSpecializations(
 			org.eclipse.uml2.uml.Package package_, Classifier classifier) {
 
-		for (Iterator ownedTypes = package_.getOwnedTypes().iterator(); ownedTypes
-			.hasNext();) {
-
-			Object ownedType = ownedTypes.next();
+		for (Type ownedType : package_.getOwnedTypes()) {
 
 			if (ownedType instanceof Classifier
 				&& ((Classifier) ownedType).allParents().contains(classifier)) {

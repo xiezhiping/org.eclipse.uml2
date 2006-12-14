@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragment.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
+ * $Id: CombinedFragment.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -85,7 +85,7 @@ public interface CombinedFragment
 	 * @model type="org.eclipse.uml2.uml.InteractionOperand" containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
-	EList getOperands();
+	EList<InteractionOperand> getOperands();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InteractionOperand}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Operand</b></em>' containment reference list.
@@ -136,7 +136,7 @@ public interface CombinedFragment
 	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getCfragmentGates();
+	EList<Gate> getCfragmentGates();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Gate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Cfragment Gate</b></em>' containment reference list.
@@ -184,7 +184,8 @@ public interface CombinedFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateOptLoopBreakNeg(DiagnosticChain diagnostics, Map context);
+	boolean validateOptLoopBreakNeg(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,7 +197,8 @@ public interface CombinedFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateMinintAndMaxint(DiagnosticChain diagnostics, Map context);
+	boolean validateMinintAndMaxint(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,7 +210,8 @@ public interface CombinedFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateBreak(DiagnosticChain diagnostics, Map context);
+	boolean validateBreak(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,6 +223,7 @@ public interface CombinedFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateConsiderAndIgnore(DiagnosticChain diagnostics, Map context);
+	boolean validateConsiderAndIgnore(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // CombinedFragment

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InitialNodeImpl.java,v 1.2 2005/11/23 20:01:18 khussey Exp $
+ * $Id: InitialNodeImpl.java,v 1.3 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class InitialNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INITIAL_NODE;
 	}
@@ -60,7 +61,7 @@ public class InitialNodeImpl
 	 * @generated
 	 */
 	public boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InitialNodeOperations.validateNoIncomingEdges(this, diagnostics,
 			context);
 	}
@@ -70,7 +71,8 @@ public class InitialNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateControlEdges(DiagnosticChain diagnostics, Map context) {
+	public boolean validateControlEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InitialNodeOperations.validateControlEdges(this, diagnostics,
 			context);
 	}

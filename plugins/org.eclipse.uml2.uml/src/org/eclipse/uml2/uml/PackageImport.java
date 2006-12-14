@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.6 2006/05/12 20:38:09 khussey Exp $
+ * $Id: PackageImport.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -132,6 +132,7 @@ public interface PackageImport
 	 * @model
 	 * @generated
 	 */
-	boolean validatePublicOrPrivate(DiagnosticChain diagnostics, Map context);
+	boolean validatePublicOrPrivate(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // PackageImport

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: WriteStructuralFeatureAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,6 +101,7 @@ public interface WriteStructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // WriteStructuralFeatureAction

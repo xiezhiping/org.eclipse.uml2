@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowOperations.java,v 1.5 2006/04/05 13:50:03 khussey Exp $
+ * $Id: ObjectFlowOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,7 +65,7 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateNoActions(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -98,7 +98,7 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateCompatibleTypes(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -130,7 +130,7 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateSameUpperBounds(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -162,7 +162,7 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateTarget(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -194,7 +194,8 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateTransformationBehaviour(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -226,7 +227,7 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateSelectionBehaviour(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -258,7 +259,8 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateInputAndOutputParameter(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -290,7 +292,8 @@ public class ObjectFlowOperations
 	 * @generated
 	 */
 	public static boolean validateIsMulticastOrIsMultireceive(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

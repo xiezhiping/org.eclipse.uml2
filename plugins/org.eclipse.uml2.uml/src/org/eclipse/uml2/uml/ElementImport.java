@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImport.java,v 1.7 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ElementImport.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -186,7 +186,7 @@ public interface ElementImport
 	 * @generated
 	 */
 	boolean validateVisibilityPublicOrPrivate(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,7 +199,7 @@ public interface ElementImport
 	 * @generated
 	 */
 	boolean validateImportedElementIsPublic(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

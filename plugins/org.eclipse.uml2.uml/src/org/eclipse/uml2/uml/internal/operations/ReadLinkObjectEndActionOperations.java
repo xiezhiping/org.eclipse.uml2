@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ReadLinkObjectEndActionOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,7 +65,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateProperty(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -98,7 +98,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateAssociationOfAssociation(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -131,7 +131,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateEndsOfAssociation(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -164,7 +164,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateTypeOfObject(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -197,7 +197,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateMultiplicityOfObject(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -230,7 +230,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateTypeOfResult(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -263,7 +263,7 @@ public class ReadLinkObjectEndActionOperations
 	 */
 	public static boolean validateMultiplicityOfResult(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

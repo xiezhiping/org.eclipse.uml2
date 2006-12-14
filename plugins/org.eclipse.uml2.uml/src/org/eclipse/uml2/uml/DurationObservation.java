@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservation.java,v 1.5 2006/04/05 13:49:57 khussey Exp $
+ * $Id: DurationObservation.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface DurationObservation
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" upper="2" ordered="false"
 	 * @generated
 	 */
-	EList getEvents();
+	EList<NamedElement> getEvents();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Event</b></em>' reference list.
@@ -95,7 +95,7 @@ public interface DurationObservation
 	 * @model type="boolean" default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
 	 * @generated
 	 */
-	EList getFirstEvents();
+	EList<Boolean> getFirstEvents();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +109,6 @@ public interface DurationObservation
 	 * @generated
 	 */
 	boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // DurationObservation

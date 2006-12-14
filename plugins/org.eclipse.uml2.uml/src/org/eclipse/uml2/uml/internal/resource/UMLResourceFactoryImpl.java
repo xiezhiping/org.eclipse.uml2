@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.8 2006/06/06 21:05:41 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.9 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -59,19 +59,20 @@ public class UMLResourceFactoryImpl
 		return result;
 	}
 
+	@Override
 	public Resource createResource(URI uri) {
 		UMLResource resource = (UMLResource) createResourceGen(uri);
 
 		resource.setXMIVersion("2.1"); //$NON-NLS-1$
 
-		Map defaultLoadOptions = resource.getDefaultLoadOptions();
+		Map<Object, Object> defaultLoadOptions = resource.getDefaultLoadOptions();
 
 		defaultLoadOptions.put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.TRUE);
 		defaultLoadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
-		Map defaultSaveOptions = resource.getDefaultSaveOptions();
+		Map<Object, Object> defaultSaveOptions = resource.getDefaultSaveOptions();
 
 		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 		defaultSaveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);

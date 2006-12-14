@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.8 2006/05/12 20:38:04 khussey Exp $
+ * $Id: Pseudostate.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -134,7 +134,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateInitialVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateInitialVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,7 +149,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateHistoryVertices(DiagnosticChain diagnostics, Map context);
+	boolean validateHistoryVertices(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,7 +164,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateJoinVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateJoinVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,7 +179,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateTransitionsIncoming(DiagnosticChain diagnostics, Map context);
+	boolean validateTransitionsIncoming(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,7 +194,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateForkVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateForkVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,7 +209,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateTransitionsOutgoing(DiagnosticChain diagnostics, Map context);
+	boolean validateTransitionsOutgoing(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,7 +224,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateJunctionVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateJunctionVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -232,7 +239,8 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateChoiceVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateChoiceVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -245,6 +253,7 @@ public interface Pseudostate
 	 * @model
 	 * @generated
 	 */
-	boolean validateOutgoingFromInitial(DiagnosticChain diagnostics, Map context);
+	boolean validateOutgoingFromInitial(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Pseudostate

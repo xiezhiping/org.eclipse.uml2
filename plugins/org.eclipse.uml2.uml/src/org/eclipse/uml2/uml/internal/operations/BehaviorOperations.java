@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.11 2006/05/05 19:36:07 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.12 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -70,13 +70,14 @@ public class BehaviorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateParametersMatch(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 		BehavioralFeature specification = behavior.getSpecification();
 
 		if (specification != null) {
-			EList behaviorOwnedParameters = behavior.getOwnedParameters();
-			EList specificationOwnedParameters = specification
+			EList<Parameter> behaviorOwnedParameters = behavior
+				.getOwnedParameters();
+			EList<Parameter> specificationOwnedParameters = specification
 				.getOwnedParameters();
 
 			if (behaviorOwnedParameters.size() != specificationOwnedParameters
@@ -84,14 +85,13 @@ public class BehaviorOperations
 
 				result = false;
 			} else {
-				Iterator bop = behaviorOwnedParameters.iterator();
-				Iterator sop = specificationOwnedParameters.iterator();
+				Iterator<Parameter> bop = behaviorOwnedParameters.iterator();
+				Iterator<Parameter> sop = specificationOwnedParameters
+					.iterator();
 
 				while (bop.hasNext() && sop.hasNext()) {
 
-					if (!ParameterOperations.matches((Parameter) bop.next(),
-						(Parameter) sop.next())) {
-
+					if (!ParameterOperations.matches(bop.next(), sop.next())) {
 						result = false;
 						break;
 					}
@@ -121,7 +121,7 @@ public class BehaviorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateFeatureOfContextClassifier(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		BehavioralFeature specification = behavior.getSpecification();
 
 		if (specification != null) {
@@ -160,7 +160,7 @@ public class BehaviorOperations
 	 * @generated
 	 */
 	public static boolean validateMustRealize(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -192,7 +192,7 @@ public class BehaviorOperations
 	 * @generated
 	 */
 	public static boolean validateMostOneBehaviour(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

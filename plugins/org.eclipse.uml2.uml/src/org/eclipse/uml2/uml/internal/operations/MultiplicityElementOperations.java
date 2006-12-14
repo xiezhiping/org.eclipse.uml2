@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.16 2006/10/10 20:41:29 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.17 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -79,7 +79,7 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean validateUpperGt0(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		int upperBound = multiplicityElement.upperBound();
@@ -114,7 +114,7 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean validateLowerGe0(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		int lowerBound = multiplicityElement.lowerBound();
@@ -149,7 +149,7 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean validateUpperGeLower(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		int upperBound = multiplicityElement.upperBound();
@@ -186,7 +186,7 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean validateValueSpecificationNoSideEffects(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -219,7 +219,7 @@ public class MultiplicityElementOperations
 	 */
 	public static boolean validateValueSpecificationConstant(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

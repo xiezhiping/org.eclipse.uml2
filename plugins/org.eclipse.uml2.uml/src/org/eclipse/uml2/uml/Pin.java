@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pin.java,v 1.4 2006/02/02 23:30:18 khussey Exp $
+ * $Id: Pin.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -76,6 +76,7 @@ public interface Pin
 	 * @model
 	 * @generated
 	 */
-	boolean validateControlPins(DiagnosticChain diagnostics, Map context);
+	boolean validateControlPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Pin

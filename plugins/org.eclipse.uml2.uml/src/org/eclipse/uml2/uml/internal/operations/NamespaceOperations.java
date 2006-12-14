@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.13 2006/04/24 22:15:46 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.14 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -82,7 +81,7 @@ public class NamespaceOperations
 	 * @generated NOT
 	 */
 	public static boolean validateMembersDistinguishable(Namespace namespace,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (!namespace.membersAreDistinguishable()) {
@@ -155,14 +154,13 @@ public class NamespaceOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getImportedElements(Namespace namespace) {
-		EList importedElements = new UniqueEList.FastCompare();
+	public static EList<PackageableElement> getImportedElements(
+			Namespace namespace) {
+		EList<PackageableElement> importedElements = new UniqueEList.FastCompare<PackageableElement>();
 
-		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
-			.hasNext();) {
-
-			PackageableElement importedElement = ((ElementImport) elementImports
-				.next()).getImportedElement();
+		for (ElementImport elementImport : namespace.getElementImports()) {
+			PackageableElement importedElement = elementImport
+				.getImportedElement();
 
 			if (importedElement != null) {
 				importedElements.add(importedElement);
@@ -177,14 +175,13 @@ public class NamespaceOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getImportedPackages(Namespace namespace) {
-		EList importedPackages = new UniqueEList.FastCompare();
+	public static EList<org.eclipse.uml2.uml.Package> getImportedPackages(
+			Namespace namespace) {
+		EList<org.eclipse.uml2.uml.Package> importedPackages = new UniqueEList.FastCompare<org.eclipse.uml2.uml.Package>();
 
-		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
-			.hasNext();) {
-
-			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
-				.next()).getImportedPackage();
+		for (PackageImport packageImport : namespace.getPackageImports()) {
+			org.eclipse.uml2.uml.Package importedPackage = packageImport
+				.getImportedPackage();
 
 			if (importedPackage != null) {
 				importedPackages.add(importedPackage);
@@ -205,38 +202,37 @@ public class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getImportedMembers(Namespace namespace) {
-		EList importedMembers = new UniqueEList.FastCompare();
+	public static EList<PackageableElement> getImportedMembers(
+			Namespace namespace) {
+		EList<PackageableElement> importedMembers = new UniqueEList.FastCompare<PackageableElement>();
 
-		for (Iterator elementImports = namespace.getElementImports().iterator(); elementImports
-			.hasNext();) {
-
-			PackageableElement importedElement = ((ElementImport) elementImports
-				.next()).getImportedElement();
+		for (ElementImport elementImport : namespace.getElementImports()) {
+			PackageableElement importedElement = elementImport
+				.getImportedElement();
 
 			if (importedElement != null) {
 				importedMembers.add(importedElement);
 			}
 		}
 
-		for (Iterator packageImports = namespace.getPackageImports().iterator(); packageImports
-			.hasNext();) {
-
-			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
-				.next()).getImportedPackage();
+		for (PackageImport packageImport : namespace.getPackageImports()) {
+			org.eclipse.uml2.uml.Package importedPackage = packageImport
+				.getImportedPackage();
 
 			if (importedPackage != null) {
 				importedMembers.addAll(importedPackage.visibleMembers());
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) namespace,
+		return new UnionEObjectEList<PackageableElement>(
+			(InternalEObject) namespace,
 			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, importedMembers
 				.size(), importedMembers.toArray());
 	}
 
-	protected static EList getNamesOfMember(Namespace namespace,
-			NamedElement element, EList namespaces, EList namesOfMember) {
+	protected static EList<String> getNamesOfMember(Namespace namespace,
+			NamedElement element, EList<Namespace> namespaces,
+			EList<String> namesOfMember) {
 
 		if (!namespaces.contains(namespace)) {
 			namespaces.add(namespace);
@@ -248,13 +244,10 @@ public class NamespaceOperations
 					namesOfMember.add(name);
 				}
 			} else {
-				EList elementImportNames = new UniqueEList();
+				EList<String> elementImportNames = new UniqueEList<String>();
 
-				for (Iterator elementImports = namespace.getElementImports()
-					.iterator(); elementImports.hasNext();) {
-
-					ElementImport elementImport = (ElementImport) elementImports
-						.next();
+				for (ElementImport elementImport : namespace
+					.getElementImports()) {
 
 					if (elementImport.getImportedElement() == element) {
 						String name = elementImport.getName();
@@ -267,12 +260,11 @@ public class NamespaceOperations
 
 				if (elementImportNames.isEmpty()) {
 
-					for (Iterator packageImports = namespace
-						.getPackageImports().iterator(); packageImports
-						.hasNext();) {
+					for (PackageImport packageImport : namespace
+						.getPackageImports()) {
 
-						org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) packageImports
-							.next()).getImportedPackage();
+						org.eclipse.uml2.uml.Package importedPackage = packageImport
+							.getImportedPackage();
 
 						if (importedPackage != null
 							&& importedPackage.visibleMembers().contains(
@@ -308,10 +300,11 @@ public class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getNamesOfMember(Namespace namespace,
+	public static EList<String> getNamesOfMember(Namespace namespace,
 			NamedElement element) {
 		return ECollections.unmodifiableEList(getNamesOfMember(namespace,
-			element, new UniqueEList.FastCompare(), new UniqueEList()));
+			element, new UniqueEList.FastCompare<Namespace>(),
+			new UniqueEList<String>()));
 	}
 
 	/**
@@ -326,15 +319,11 @@ public class NamespaceOperations
 	 * @generated NOT
 	 */
 	public static boolean membersAreDistinguishable(Namespace namespace) {
-		EList namespaceMembers = namespace.getMembers();
+		EList<NamedElement> namespaceMembers = namespace.getMembers();
 
-		for (Iterator members = namespaceMembers.iterator(); members.hasNext();) {
-			NamedElement member = (NamedElement) members.next();
+		for (NamedElement member : namespaceMembers) {
 
-			for (Iterator otherMembers = namespaceMembers.iterator(); otherMembers
-				.hasNext();) {
-
-				NamedElement otherMember = (NamedElement) otherMembers.next();
+			for (NamedElement otherMember : namespaceMembers) {
 
 				if (member != otherMember
 					&& !member.isDistinguishableFrom(otherMember, namespace)) {
@@ -357,21 +346,18 @@ public class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList importMembers(Namespace namespace, EList imps) {
-		EList importMembers = new UniqueEList.FastCompare();
+	public static EList<PackageableElement> importMembers(Namespace namespace,
+			EList<PackageableElement> imps) {
+		EList<PackageableElement> importMembers = new UniqueEList.FastCompare<PackageableElement>();
+		EList<NamedElement> ownedMembers = namespace.getOwnedMembers();
 
-		EList ownedMembers = namespace.getOwnedMembers();
+		excludeCollisionsLoop : for (PackageableElement excludeCollision : namespace
+			.excludeCollisions(imps)) {
 
-		excludeCollisionsLoop : for (Iterator excludeCollisions = namespace
-			.excludeCollisions(imps).iterator(); excludeCollisions.hasNext();) {
+			for (NamedElement ownedMember : ownedMembers) {
 
-			PackageableElement excludeCollision = (PackageableElement) excludeCollisions
-				.next();
-
-			for (Iterator om = ownedMembers.iterator(); om.hasNext();) {
-
-				if (!excludeCollision.isDistinguishableFrom(
-					(PackageableElement) om.next(), namespace)) {
+				if (!excludeCollision.isDistinguishableFrom(ownedMember,
+					namespace)) {
 
 					continue excludeCollisionsLoop;
 				}
@@ -392,14 +378,13 @@ public class NamespaceOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList excludeCollisions(Namespace namespace, EList imps) {
-		EList excludeCollisions = new UniqueEList.FastCompare();
+	public static EList<PackageableElement> excludeCollisions(
+			Namespace namespace, EList<PackageableElement> imps) {
+		EList<PackageableElement> excludeCollisions = new UniqueEList.FastCompare<PackageableElement>();
 
-		imps1Loop : for (Iterator imps1 = imps.iterator(); imps1.hasNext();) {
-			PackageableElement imp1 = (PackageableElement) imps1.next();
+		imps1Loop : for (PackageableElement imp1 : imps) {
 
-			for (Iterator imps2 = imps.iterator(); imps2.hasNext();) {
-				PackageableElement imp2 = (PackageableElement) imps2.next();
+			for (PackageableElement imp2 : imps) {
 
 				if (imp1 != imp2
 					&& !imp1.isDistinguishableFrom(imp2, namespace)) {

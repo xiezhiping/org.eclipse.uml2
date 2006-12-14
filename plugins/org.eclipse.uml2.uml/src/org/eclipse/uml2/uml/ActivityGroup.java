@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.11 2006/05/24 20:54:28 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.12 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="superGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getSubgroups();
+	EList<ActivityGroup> getSubgroups();
 
 	/**
 	 * Returns the value of the '<em><b>Super Group</b></em>' reference.
@@ -95,7 +95,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getContainedNodes();
+	EList<ActivityNode> getContainedNodes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Node</b></em>' reference list.
@@ -163,7 +163,7 @@ public interface ActivityGroup
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getContainedEdges();
+	EList<ActivityEdge> getContainedEdges();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Contained Edge</b></em>' reference list.
@@ -199,7 +199,8 @@ public interface ActivityGroup
 	 * @model
 	 * @generated
 	 */
-	boolean validateNodesAndEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNodesAndEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,7 +212,8 @@ public interface ActivityGroup
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotContained(DiagnosticChain diagnostics, Map context);
+	boolean validateNotContained(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,6 +225,7 @@ public interface ActivityGroup
 	 * @model
 	 * @generated
 	 */
-	boolean validateGroupOwned(DiagnosticChain diagnostics, Map context);
+	boolean validateGroupOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ActivityGroup

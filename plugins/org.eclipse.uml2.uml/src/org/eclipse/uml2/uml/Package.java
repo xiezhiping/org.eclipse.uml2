@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.17 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Package.java,v 1.18 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +66,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.PackageMerge" opposite="receivingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getPackageMerges();
+	EList<PackageMerge> getPackageMerges();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.PackageMerge}, with the specified '<em><b>Merged Package</b></em>', and appends it to the '<em><b>Package Merge</b></em>' containment reference list.
@@ -114,7 +115,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getPackagedElements();
+	EList<PackageableElement> getPackagedElements();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.PackageableElement}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -169,7 +170,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.Type" opposite="package" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedTypes();
+	EList<Type> getOwnedTypes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Type}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Type</b></em>' reference list.
@@ -224,7 +225,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.Package" opposite="nestingPackage" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getNestedPackages();
+	EList<Package> getNestedPackages();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
@@ -306,7 +307,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.ProfileApplication" opposite="applyingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getProfileApplications();
+	EList<ProfileApplication> getProfileApplications();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ProfileApplication} and appends it to the '<em><b>Profile Application</b></em>' containment reference list.
@@ -329,7 +330,7 @@ public interface Package
 	 * @generated
 	 */
 	boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
@@ -395,7 +396,7 @@ public interface Package
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
-	EList applyProfile(Profile profile);
+	EList<EObject> applyProfile(Profile profile);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -406,7 +407,7 @@ public interface Package
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
-	EList unapplyProfile(Profile profile);
+	EList<EObject> unapplyProfile(Profile profile);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -417,7 +418,7 @@ public interface Package
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
 	 * @generated
 	 */
-	EList getAppliedProfiles();
+	EList<Profile> getAppliedProfiles();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -450,7 +451,7 @@ public interface Package
 	 * @model kind="operation" type="org.eclipse.uml2.uml.ProfileApplication" ordered="false"
 	 * @generated
 	 */
-	EList getAllProfileApplications();
+	EList<ProfileApplication> getAllProfileApplications();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -505,7 +506,7 @@ public interface Package
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
 	 * @generated
 	 */
-	EList getAllAppliedProfiles();
+	EList<Profile> getAllAppliedProfiles();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -517,7 +518,7 @@ public interface Package
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" ordered="false"
 	 * @generated
 	 */
-	EList visibleMembers();
+	EList<PackageableElement> visibleMembers();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpression.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
+ * $Id: TimeExpression.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -78,7 +78,7 @@ public interface TimeExpression
 	 * @model type="org.eclipse.uml2.uml.Observation" ordered="false"
 	 * @generated
 	 */
-	EList getObservations();
+	EList<Observation> getObservations();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Observation} with the specified '<em><b>Name</b></em>' from the '<em><b>Observation</b></em>' reference list.

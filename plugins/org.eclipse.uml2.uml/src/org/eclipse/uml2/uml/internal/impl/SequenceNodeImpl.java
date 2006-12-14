@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.19 2006/05/08 17:46:11 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.20 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -25,11 +25,22 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.ExecutableNode;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.SequenceNode;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
@@ -57,7 +68,7 @@ public class SequenceNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList executableNodes = null;
+	protected EList<ExecutableNode> executableNodes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -73,6 +84,7 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.SEQUENCE_NODE;
 	}
@@ -82,9 +94,9 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExecutableNodes() {
+	public EList<ExecutableNode> getExecutableNodes() {
 		if (executableNodes == null) {
-			executableNodes = new EObjectContainmentEList.Resolving(
+			executableNodes = new EObjectContainmentEList.Resolving<ExecutableNode>(
 				ExecutableNode.class, this,
 				UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE);
 		}
@@ -120,9 +132,7 @@ public class SequenceNodeImpl
 	 */
 	public ExecutableNode getExecutableNode(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		executableNodeLoop : for (Iterator i = getExecutableNodes().iterator(); i
-			.hasNext();) {
-			ExecutableNode executableNode = (ExecutableNode) i.next();
+		executableNodeLoop : for (ExecutableNode executableNode : getExecutableNodes()) {
 			if (eClass != null && !eClass.isInstance(executableNode))
 				continue executableNodeLoop;
 			if (name != null && !(ignoreCase
@@ -150,18 +160,19 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_STRUCTURED_NODE :
@@ -169,46 +180,48 @@ public class SequenceNodeImpl
 			case UMLPackage.SEQUENCE_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
-				return ((InternalEList) getVariables()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.SEQUENCE_NODE__EDGE :
-				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEQUENCE_NODE__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
-				return ((InternalEList) getExecutableNodes()).basicRemove(
+				return ((InternalEList<?>) getExecutableNodes()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -219,6 +232,7 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
@@ -336,15 +350,19 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__NAME :
 				setName((String) newValue);
@@ -354,7 +372,8 @@ public class SequenceNodeImpl
 				return;
 			case UMLPackage.SEQUENCE_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -370,69 +389,85 @@ public class SequenceNodeImpl
 				return;
 			case UMLPackage.SEQUENCE_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__VARIABLE :
 				getVariables().clear();
-				getVariables().addAll((Collection) newValue);
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__EDGE :
 				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
+				getEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__MUST_ISOLATE :
 				setMustIsolate(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.SEQUENCE_NODE__NODE :
 				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.SEQUENCE_NODE__EXECUTABLE_NODE :
 				getExecutableNodes().clear();
-				getExecutableNodes().addAll((Collection) newValue);
+				getExecutableNodes().addAll(
+					(Collection<? extends ExecutableNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -443,6 +478,7 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
@@ -532,6 +568,7 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SEQUENCE_NODE__EANNOTATIONS :
@@ -635,8 +672,11 @@ public class SequenceNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getNodes() {
-		return getExecutableNodes();
+	@Override
+	public EList<ActivityNode> getNodes() {
+		@SuppressWarnings("unchecked")
+		EList<ActivityNode> executableNode = (EList<ActivityNode>) ((EList<?>) getExecutableNodes());
+		return executableNode;
 	}
 
 	/**

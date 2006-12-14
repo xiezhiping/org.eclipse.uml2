@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: TestIdentityAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -192,7 +192,8 @@ public interface TestIdentityAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoType(DiagnosticChain diagnostics, Map context);
+	boolean validateNoType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,7 +207,8 @@ public interface TestIdentityAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,6 +220,7 @@ public interface TestIdentityAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateResultIsBoolean(DiagnosticChain diagnostics, Map context);
+	boolean validateResultIsBoolean(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // TestIdentityAction

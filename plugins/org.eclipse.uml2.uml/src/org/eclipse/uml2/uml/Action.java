@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Action.java,v 1.12 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface Action
 	 * @model type="org.eclipse.uml2.uml.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	EList getOutputs();
+	EList<OutputPin> getOutputs();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output</b></em>' reference list.
@@ -98,7 +98,7 @@ public interface Action
 	 * @model type="org.eclipse.uml2.uml.InputPin" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	EList getInputs();
+	EList<InputPin> getInputs();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.InputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input</b></em>' reference list.
@@ -153,7 +153,7 @@ public interface Action
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getLocalPreconditions();
+	EList<Constraint> getLocalPreconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Local Precondition</b></em>' containment reference list.
@@ -217,7 +217,7 @@ public interface Action
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getLocalPostconditions();
+	EList<Constraint> getLocalPostconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Local Postcondition</b></em>' containment reference list.

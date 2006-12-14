@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.10 2006/02/02 19:23:40 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.11 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -21,7 +20,6 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.uml2.uml.Extension;
-import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
@@ -72,7 +70,7 @@ public class ExtensionOperations
 	 * @generated
 	 */
 	public static boolean validateNonOwnedEnd(Extension extension,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -104,7 +102,7 @@ public class ExtensionOperations
 	 * @generated
 	 */
 	public static boolean validateIsBinary(Extension extension,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -132,14 +130,10 @@ public class ExtensionOperations
 	 * @generated NOT
 	 */
 	public static Property getStereotypeEnd(Extension extension) {
-
-		for (Iterator ownedEnds = extension.getOwnedEnds().iterator(); ownedEnds
-			.hasNext();) {
-
-			return (Property) ownedEnds.next();
-		}
-
-		return null;
+		EList<Property> ownedEnds = extension.getOwnedEnds();
+		return ownedEnds.size() > 0
+			? ownedEnds.get(0)
+			: null;
 	}
 
 	/**
@@ -171,12 +165,9 @@ public class ExtensionOperations
 	 * @generated NOT
 	 */
 	public static Property metaclassEnd(Extension extension) {
-		EList ownedEnds = extension.getOwnedEnds();
+		EList<Property> ownedEnds = extension.getOwnedEnds();
 
-		for (Iterator memberEnds = extension.getMemberEnds().iterator(); memberEnds
-			.hasNext();) {
-
-			Property memberEnd = (Property) memberEnds.next();
+		for (Property memberEnd : extension.getMemberEnds()) {
 
 			if (!ownedEnds.contains(memberEnd)) {
 				return memberEnd;
@@ -220,9 +211,8 @@ public class ExtensionOperations
 	 * @generated NOT
 	 */
 	public static boolean isRequired(Extension extension) {
-		EList ownedEnds = extension.getOwnedEnds();
-		return ownedEnds.size() > 0
-			&& ((ExtensionEnd) ownedEnds.get(0)).lowerBound() == 1;
+		EList<Property> ownedEnds = extension.getOwnedEnds();
+		return ownedEnds.size() > 0 && ownedEnds.get(0).lowerBound() == 1;
 	}
 
 } // ExtensionOperations

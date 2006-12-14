@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPinOperations.java,v 1.1 2006/05/16 15:07:25 khussey Exp $
+ * $Id: OutputPinOperations.java,v 1.2 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,7 +58,8 @@ public class OutputPinOperations
 	 * @generated
 	 */
 	public static boolean validateIncomingEdgesStructuredOnly(
-			OutputPin outputPin, DiagnosticChain diagnostics, Map context) {
+			OutputPin outputPin, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

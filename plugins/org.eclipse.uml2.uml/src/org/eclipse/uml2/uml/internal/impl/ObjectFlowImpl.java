@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.14 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,14 +19,19 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.StringExpression;
@@ -131,6 +136,7 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OBJECT_FLOW;
 	}
@@ -283,7 +289,8 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoActions(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNoActions(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateNoActions(this, diagnostics,
 			context);
 	}
@@ -294,7 +301,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateCompatibleTypes(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateCompatibleTypes(this, diagnostics,
 			context);
 	}
@@ -305,7 +312,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateSameUpperBounds(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateSameUpperBounds(this, diagnostics,
 			context);
 	}
@@ -315,7 +322,8 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTarget(DiagnosticChain diagnostics, Map context) {
+	public boolean validateTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateTarget(this, diagnostics, context);
 	}
 
@@ -325,7 +333,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateTransformationBehaviour(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateTransformationBehaviour(this,
 			diagnostics, context);
 	}
@@ -336,7 +344,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateSelectionBehaviour(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateSelectionBehaviour(this,
 			diagnostics, context);
 	}
@@ -347,7 +355,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateInputAndOutputParameter(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ObjectFlowOperations.validateInputAndOutputParameter(this,
 			diagnostics, context);
 	}
@@ -358,7 +366,7 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public boolean validateIsMulticastOrIsMultireceive(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ObjectFlowOperations.validateIsMulticastOrIsMultireceive(this,
 			diagnostics, context);
 	}
@@ -368,6 +376,7 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
@@ -463,15 +472,19 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__NAME :
 				setName((String) newValue);
@@ -481,7 +494,8 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -497,11 +511,13 @@ public class ObjectFlowImpl
 				return;
 			case UMLPackage.OBJECT_FLOW__REDEFINED_EDGE :
 				getRedefinedEdges().clear();
-				getRedefinedEdges().addAll((Collection) newValue);
+				getRedefinedEdges().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__GUARD :
 				setGuard((ValueSpecification) newValue);
@@ -539,6 +555,7 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
@@ -610,6 +627,7 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OBJECT_FLOW__EANNOTATIONS :
@@ -678,6 +696,7 @@ public class ObjectFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

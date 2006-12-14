@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.15 2006/11/14 18:02:18 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.16 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -31,6 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Include;
@@ -85,6 +88,7 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INCLUDE;
 	}
@@ -94,24 +98,26 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.INCLUDE__RELATED_ELEMENT,
 						RELATED_ELEMENT_ESUBSETS));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INCLUDE__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
@@ -120,22 +126,24 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.INCLUDE__SOURCE, SOURCE_ESUBSETS));
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.INCLUDE__SOURCE,
+						SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INCLUDE__SOURCE, SOURCE_ESUBSETS);
 	}
 
@@ -144,22 +152,24 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.INCLUDE__TARGET, TARGET_ESUBSETS));
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.INCLUDE__TARGET,
+						TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INCLUDE__TARGET, TARGET_ESUBSETS);
 	}
 
@@ -273,15 +283,17 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -295,18 +307,19 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
@@ -320,6 +333,7 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -335,6 +349,7 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
@@ -386,15 +401,19 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INCLUDE__NAME :
 				setName((String) newValue);
@@ -404,7 +423,8 @@ public class IncludeImpl
 				return;
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -424,6 +444,7 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
@@ -459,6 +480,7 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
@@ -503,7 +525,8 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INCLUDE__RELATED_ELEMENT :
@@ -530,7 +553,8 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :

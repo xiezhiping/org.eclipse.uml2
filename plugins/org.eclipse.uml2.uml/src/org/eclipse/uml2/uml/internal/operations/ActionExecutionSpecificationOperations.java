@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationOperations.java,v 1.4 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ActionExecutionSpecificationOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -59,7 +59,7 @@ public class ActionExecutionSpecificationOperations
 	 */
 	public static boolean validateActionReferenced(
 			ActionExecutionSpecification actionExecutionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

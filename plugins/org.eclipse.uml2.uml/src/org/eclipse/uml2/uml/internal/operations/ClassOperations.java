@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.19 2006/05/09 17:53:38 khussey Exp $
+ * $Id: ClassOperations.java,v 1.20 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -80,7 +79,7 @@ public class ClassOperations
 	 */
 	public static boolean validatePassiveClass(
 			org.eclipse.uml2.uml.Class class_, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 
 		if (!class_.isActive() && !(class_.getOwnedReceptions().isEmpty())) {
 
@@ -104,34 +103,31 @@ public class ClassOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getExtensions(org.eclipse.uml2.uml.Class class_) {
-		EList extensions = ECollections.EMPTY_ELIST;
+	public static EList<Extension> getExtensions(
+			org.eclipse.uml2.uml.Class class_) {
+		EList<Extension> extensions = ECollections.<Extension> emptyEList();
 
 		if (class_.isMetaclass()) {
-			extensions = new UniqueEList.FastCompare();
+			extensions = new UniqueEList.FastCompare<Extension>();
 
-			for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-				class_).iterator(); nonNavigableInverseReferences.hasNext();) {
+			for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(class_)) {
 
-				EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-					.next();
-
-				if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
-					EObject eObject = setting.getEObject();
+				if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+					EObject eObject = nonNavigableInverseReference.getEObject();
 
 					if (eObject instanceof Property) {
 						Association association = ((Property) eObject)
 							.getAssociation();
 
 						if (association instanceof Extension) {
-							extensions.add(association);
+							extensions.add((Extension) association);
 						}
 					}
 				}
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) class_,
+		return new UnionEObjectEList<Extension>((InternalEObject) class_,
 			UMLPackage.Literals.CLASS__EXTENSION, extensions.size(), extensions
 				.toArray());
 	}
@@ -143,7 +139,8 @@ public class ClassOperations
 	 */
 	public static Operation createOwnedOperation(
 			org.eclipse.uml2.uml.Class class_, String name,
-			EList parameterNames, EList parameterTypes, Type returnType) {
+			EList<String> parameterNames, EList<Type> parameterTypes,
+			Type returnType) {
 		return TypeOperations.createOwnedOperation(class_, name,
 			parameterNames, parameterTypes, returnType);
 	}
@@ -167,15 +164,12 @@ public class ClassOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList inherit(org.eclipse.uml2.uml.Class class_, EList inhs) {
-		EList inherit = new UniqueEList.FastCompare();
+	public static EList<NamedElement> inherit(
+			org.eclipse.uml2.uml.Class class_, EList<NamedElement> inhs) {
+		EList<NamedElement> inherit = new UniqueEList.FastCompare<NamedElement>();
+		EList<RedefinableElement> redefinedElements = new UniqueEList.FastCompare<RedefinableElement>();
 
-		EList redefinedElements = new UniqueEList.FastCompare();
-
-		for (Iterator ownedMembers = class_.getOwnedMembers().iterator(); ownedMembers
-			.hasNext();) {
-
-			Object ownedMember = ownedMembers.next();
+		for (NamedElement ownedMember : class_.getOwnedMembers()) {
 
 			if (ownedMember instanceof RedefinableElement) {
 				redefinedElements.addAll(((RedefinableElement) ownedMember)
@@ -183,8 +177,7 @@ public class ClassOperations
 			}
 		}
 
-		for (Iterator i = inhs.iterator(); i.hasNext();) {
-			Object inh = i.next();
+		for (NamedElement inh : inhs) {
 
 			if (!redefinedElements.contains(inh)) {
 				inherit.add(inh);

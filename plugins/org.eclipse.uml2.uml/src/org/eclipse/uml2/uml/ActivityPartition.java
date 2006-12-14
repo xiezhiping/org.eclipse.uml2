@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.15 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.16 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -116,7 +116,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inPartition" ordered="false"
 	 * @generated
 	 */
-	EList getEdges();
+	EList<ActivityEdge> getEdges();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Edge</b></em>' reference list.
@@ -157,7 +157,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inPartition" ordered="false"
 	 * @generated
 	 */
-	EList getNodes();
+	EList<ActivityNode> getNodes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Node</b></em>' reference list.
@@ -198,7 +198,7 @@ public interface ActivityPartition
 	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="superPartition" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getSubpartitions();
+	EList<ActivityPartition> getSubpartitions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityPartition}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Subpartition</b></em>' containment reference list.
@@ -299,7 +299,7 @@ public interface ActivityPartition
 	 * @generated
 	 */
 	boolean validateDimensionNotContained(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -311,7 +311,8 @@ public interface ActivityPartition
 	 * @model
 	 * @generated
 	 */
-	boolean validateRepresentsPart(DiagnosticChain diagnostics, Map context);
+	boolean validateRepresentsPart(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -324,7 +325,7 @@ public interface ActivityPartition
 	 * @generated
 	 */
 	boolean validateRepresentsClassifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,6 +338,6 @@ public interface ActivityPartition
 	 * @generated
 	 */
 	boolean validateRepresentsPartAndIsContained(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ActivityPartition

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNode.java,v 1.9 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ObjectNode.java,v 1.10 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -154,7 +154,7 @@ public interface ObjectNode
 	 * @model type="org.eclipse.uml2.uml.State" ordered="false"
 	 * @generated
 	 */
-	EList getInStates();
+	EList<State> getInStates();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.State} with the specified '<em><b>Name</b></em>' from the '<em><b>In State</b></em>' reference list.
@@ -215,7 +215,8 @@ public interface ObjectNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateObjectFlowEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateObjectFlowEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -227,7 +228,8 @@ public interface ObjectNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotUnique(DiagnosticChain diagnostics, Map context);
+	boolean validateNotUnique(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,7 +241,8 @@ public interface ObjectNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateSelectionBehavior(DiagnosticChain diagnostics, Map context);
+	boolean validateSelectionBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,6 +255,6 @@ public interface ObjectNode
 	 * @generated
 	 */
 	boolean validateInputOutputParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ObjectNode

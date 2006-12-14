@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationData.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
+ * $Id: LinkEndCreationData.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,7 +101,8 @@ public interface LinkEndCreationData
 	 * @model
 	 * @generated
 	 */
-	boolean validateCreateLinkAction(DiagnosticChain diagnostics, Map context);
+	boolean validateCreateLinkAction(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,6 +122,7 @@ public interface LinkEndCreationData
 	 * @model
 	 * @generated
 	 */
-	boolean validateSingleInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateSingleInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // LinkEndCreationData

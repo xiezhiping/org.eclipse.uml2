@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReadIsClassifiedObjectAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -192,7 +192,8 @@ public interface ReadIsClassifiedObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicityOfInput(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicityOfInput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,7 +205,8 @@ public interface ReadIsClassifiedObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoType(DiagnosticChain diagnostics, Map context);
+	boolean validateNoType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,7 +219,7 @@ public interface ReadIsClassifiedObjectAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfOutput(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,6 +231,7 @@ public interface ReadIsClassifiedObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateBooleanResult(DiagnosticChain diagnostics, Map context);
+	boolean validateBooleanResult(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReadIsClassifiedObjectAction

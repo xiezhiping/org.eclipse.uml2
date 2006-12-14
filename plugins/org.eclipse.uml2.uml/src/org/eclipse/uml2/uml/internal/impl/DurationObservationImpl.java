@@ -8,22 +8,24 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservationImpl.java,v 1.5 2006/04/10 19:16:20 khussey Exp $
+ * $Id: DurationObservationImpl.java,v 1.6 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.StringExpression;
@@ -59,7 +61,7 @@ public class DurationObservationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList events = null;
+	protected EList<NamedElement> events = null;
 
 	/**
 	 * The cached value of the '{@link #getFirstEvents() <em>First Event</em>}' attribute list.
@@ -69,7 +71,7 @@ public class DurationObservationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList firstEvents = null;
+	protected EList<Boolean> firstEvents = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +87,7 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DURATION_OBSERVATION;
 	}
@@ -94,9 +97,10 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEvents() {
+	public EList<NamedElement> getEvents() {
 		if (events == null) {
-			events = new EObjectResolvingEList(NamedElement.class, this,
+			events = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this,
 				UMLPackage.DURATION_OBSERVATION__EVENT);
 		}
 		return events;
@@ -117,8 +121,7 @@ public class DurationObservationImpl
 	 * @generated
 	 */
 	public NamedElement getEvent(String name, boolean ignoreCase, EClass eClass) {
-		eventLoop : for (Iterator i = getEvents().iterator(); i.hasNext();) {
-			NamedElement event = (NamedElement) i.next();
+		eventLoop : for (NamedElement event : getEvents()) {
 			if (eClass != null && !eClass.isInstance(event))
 				continue eventLoop;
 			if (name != null && !(ignoreCase
@@ -135,10 +138,10 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFirstEvents() {
+	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList(Boolean.class, this,
-				UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
+				this, UMLPackage.DURATION_OBSERVATION__FIRST_EVENT);
 		}
 		return firstEvents;
 	}
@@ -149,7 +152,7 @@ public class DurationObservationImpl
 	 * @generated
 	 */
 	public boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return DurationObservationOperations.validateFirstEventMultiplicity(
 			this, diagnostics, context);
 	}
@@ -159,6 +162,7 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
@@ -208,15 +212,19 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME :
 				setName((String) newValue);
@@ -226,7 +234,8 @@ public class DurationObservationImpl
 				return;
 			case UMLPackage.DURATION_OBSERVATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -239,11 +248,13 @@ public class DurationObservationImpl
 				return;
 			case UMLPackage.DURATION_OBSERVATION__EVENT :
 				getEvents().clear();
-				getEvents().addAll((Collection) newValue);
+				getEvents().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DURATION_OBSERVATION__FIRST_EVENT :
 				getFirstEvents().clear();
-				getFirstEvents().addAll((Collection) newValue);
+				getFirstEvents().addAll(
+					(Collection<? extends Boolean>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -254,6 +265,7 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
@@ -295,6 +307,7 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_OBSERVATION__EANNOTATIONS :
@@ -337,6 +350,7 @@ public class DurationObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

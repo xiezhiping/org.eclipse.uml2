@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLLoadImpl.java,v 1.1 2006/04/06 04:30:32 khussey Exp $
+ * $Id: UML22UMLLoadImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -22,6 +22,7 @@ public class UML22UMLLoadImpl
 		super(helper);
 	}
 
+	@Override
 	protected DefaultHandler makeDefaultHandler() {
 		return new UML22UMLHandler(resource, helper, options);
 	}

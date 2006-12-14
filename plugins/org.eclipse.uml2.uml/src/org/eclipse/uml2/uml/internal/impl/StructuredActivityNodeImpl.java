@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.30 2006/11/14 18:02:15 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.31 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -40,9 +40,14 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.ExceptionHandler;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageImport;
@@ -99,7 +104,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList elementImports = null;
+	protected EList<ElementImport> elementImports = null;
 
 	/**
 	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
@@ -109,7 +114,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList packageImports = null;
+	protected EList<PackageImport> packageImports = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -119,7 +124,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ownedRules = null;
+	protected EList<Constraint> ownedRules = null;
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variable</em>}' containment reference list.
@@ -129,7 +134,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList variables = null;
+	protected EList<Variable> variables = null;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
@@ -139,7 +144,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList edges = null;
+	protected EList<ActivityEdge> edges = null;
 
 	/**
 	 * The default value of the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
@@ -169,7 +174,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList nodes = null;
+	protected EList<ActivityNode> nodes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,6 +190,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE;
 	}
@@ -194,24 +200,25 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_ELEMENT,
 			OWNED_ELEMENT_ESUBSETS);
 	}
@@ -221,25 +228,26 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedMembers() {
+	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedMembers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 			if (ownedMembers == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
-					ownedMembers = new DerivedUnionEObjectEList(
+					ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
 						NamedElement.class, this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
 						OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_MEMBER,
 			OWNED_MEMBER_ESUBSETS);
 	}
 
@@ -259,9 +267,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public NamedElement getOwnedMember(String name, boolean ignoreCase,
 			EClass eClass) {
-		ownedMemberLoop : for (Iterator i = getOwnedMembers().iterator(); i
-			.hasNext();) {
-			NamedElement ownedMember = (NamedElement) i.next();
+		ownedMemberLoop : for (NamedElement ownedMember : getOwnedMembers()) {
 			if (eClass != null && !eClass.isInstance(ownedMember))
 				continue ownedMemberLoop;
 			if (name != null && !(ignoreCase
@@ -278,24 +284,26 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMembers() {
+	public EList<NamedElement> getMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList members = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> members = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
 			if (members == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__MEMBER,
-					members = new DerivedUnionEObjectEList(NamedElement.class,
-						this, UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
+					members = new DerivedUnionEObjectEList<NamedElement>(
+						NamedElement.class, this,
+						UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER,
 						MEMBER_ESUBSETS));
 			}
 			return members;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER, MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.STRUCTURED_ACTIVITY_NODE__MEMBER, MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -313,8 +321,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public NamedElement getMember(String name, boolean ignoreCase, EClass eClass) {
-		memberLoop : for (Iterator i = getMembers().iterator(); i.hasNext();) {
-			NamedElement member = (NamedElement) i.next();
+		memberLoop : for (NamedElement member : getMembers()) {
 			if (eClass != null && !eClass.isInstance(member))
 				continue memberLoop;
 			if (name != null && !(ignoreCase
@@ -331,9 +338,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getElementImports() {
+	public EList<ElementImport> getElementImports() {
 		if (elementImports == null) {
-			elementImports = new EObjectContainmentWithInverseEList.Resolving(
+			elementImports = new EObjectContainmentWithInverseEList.Resolving<ElementImport>(
 				ElementImport.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT,
 				UMLPackage.ELEMENT_IMPORT__IMPORTING_NAMESPACE);
@@ -370,9 +377,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public ElementImport getElementImport(PackageableElement importedElement,
 			boolean createOnDemand) {
-		elementImportLoop : for (Iterator i = getElementImports().iterator(); i
-			.hasNext();) {
-			ElementImport elementImport = (ElementImport) i.next();
+		elementImportLoop : for (ElementImport elementImport : getElementImports()) {
 			if (importedElement != null
 				&& !importedElement.equals(elementImport.getImportedElement()))
 				continue elementImportLoop;
@@ -388,9 +393,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackageImports() {
+	public EList<PackageImport> getPackageImports() {
 		if (packageImports == null) {
-			packageImports = new EObjectContainmentWithInverseEList.Resolving(
+			packageImports = new EObjectContainmentWithInverseEList.Resolving<PackageImport>(
 				PackageImport.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT,
 				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE);
@@ -429,9 +434,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public PackageImport getPackageImport(
 			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand) {
-		packageImportLoop : for (Iterator i = getPackageImports().iterator(); i
-			.hasNext();) {
-			PackageImport packageImport = (PackageImport) i.next();
+		packageImportLoop : for (PackageImport packageImport : getPackageImports()) {
 			if (importedPackage != null
 				&& !importedPackage.equals(packageImport.getImportedPackage()))
 				continue packageImportLoop;
@@ -447,9 +450,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedRules() {
+	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new EObjectContainmentWithInverseEList.Resolving(
+			ownedRules = new EObjectContainmentWithInverseEList.Resolving<Constraint>(
 				Constraint.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE,
 				UMLPackage.CONSTRAINT__CONTEXT);
@@ -495,9 +498,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public Constraint getOwnedRule(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		ownedRuleLoop : for (Iterator i = getOwnedRules().iterator(); i
-			.hasNext();) {
-			Constraint ownedRule = (Constraint) i.next();
+		ownedRuleLoop : for (Constraint ownedRule : getOwnedRules()) {
 			if (eClass != null && !eClass.isInstance(ownedRule))
 				continue ownedRuleLoop;
 			if (name != null && !(ignoreCase
@@ -516,12 +517,13 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getImportedMembers() {
+	public EList<PackageableElement> getImportedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<PackageableElement> result = (EList<PackageableElement>) cache
+				.get(this, UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER);
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER,
 					result = NamespaceOperations.getImportedMembers(this));
@@ -547,9 +549,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public PackageableElement getImportedMember(String name,
 			boolean ignoreCase, EClass eClass) {
-		importedMemberLoop : for (Iterator i = getImportedMembers().iterator(); i
-			.hasNext();) {
-			PackageableElement importedMember = (PackageableElement) i.next();
+		importedMemberLoop : for (PackageableElement importedMember : getImportedMembers()) {
 			if (eClass != null && !eClass.isInstance(importedMember))
 				continue importedMemberLoop;
 			if (name != null && !(ignoreCase
@@ -566,24 +566,25 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubgroups() {
+	public EList<ActivityGroup> getSubgroups() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList subgroups = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
+			@SuppressWarnings("unchecked")
+			EList<ActivityGroup> subgroups = (EList<ActivityGroup>) cache.get(
+				eResource, this, UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
 			if (subgroups == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP,
-					subgroups = new DerivedUnionEObjectEList(
+					subgroups = new DerivedUnionEObjectEList<ActivityGroup>(
 						ActivityGroup.class, this,
 						UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null));
 			}
 			return subgroups;
 		}
-		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
-			UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null);
+		return new DerivedUnionEObjectEList<ActivityGroup>(ActivityGroup.class,
+			this, UMLPackage.STRUCTURED_ACTIVITY_NODE__SUBGROUP, null);
 	}
 
 	/**
@@ -591,25 +592,31 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedNodes() {
+	public EList<ActivityNode> getContainedNodes() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList containedNodes = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			@SuppressWarnings("unchecked")
+			EList<ActivityNode> containedNodes = (EList<ActivityNode>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-					containedNodes = new DerivedUnionEObjectEList(
-						ActivityNode.class, this,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
-						CONTAINED_NODE_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
+							ActivityNode.class,
+							this,
+							UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
+							CONTAINED_NODE_ESUBSETS));
 			}
 			return containedNodes;
 		}
-		return new DerivedUnionEObjectEList(ActivityNode.class, this,
-			UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
+		return new DerivedUnionEObjectEList<ActivityNode>(ActivityNode.class,
+			this, UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_NODE,
 			CONTAINED_NODE_ESUBSETS);
 	}
 
@@ -629,9 +636,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityNode getContainedNode(String name, boolean ignoreCase,
 			EClass eClass) {
-		containedNodeLoop : for (Iterator i = getContainedNodes().iterator(); i
-			.hasNext();) {
-			ActivityNode containedNode = (ActivityNode) i.next();
+		containedNodeLoop : for (ActivityNode containedNode : getContainedNodes()) {
 			if (eClass != null && !eClass.isInstance(containedNode))
 				continue containedNodeLoop;
 			if (name != null && !(ignoreCase
@@ -648,25 +653,31 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedEdges() {
+	public EList<ActivityEdge> getContainedEdges() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList containedEdges = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
+			@SuppressWarnings("unchecked")
+			EList<ActivityEdge> containedEdges = (EList<ActivityEdge>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
 			if (containedEdges == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
-					containedEdges = new DerivedUnionEObjectEList(
-						ActivityEdge.class, this,
-						UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
-						CONTAINED_EDGE_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+						containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
+							ActivityEdge.class,
+							this,
+							UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
+							CONTAINED_EDGE_ESUBSETS));
 			}
 			return containedEdges;
 		}
-		return new DerivedUnionEObjectEList(ActivityEdge.class, this,
-			UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
+		return new DerivedUnionEObjectEList<ActivityEdge>(ActivityEdge.class,
+			this, UMLPackage.STRUCTURED_ACTIVITY_NODE__CONTAINED_EDGE,
 			CONTAINED_EDGE_ESUBSETS);
 	}
 
@@ -686,9 +697,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityEdge getContainedEdge(String name, boolean ignoreCase,
 			EClass eClass) {
-		containedEdgeLoop : for (Iterator i = getContainedEdges().iterator(); i
-			.hasNext();) {
-			ActivityEdge containedEdge = (ActivityEdge) i.next();
+		containedEdgeLoop : for (ActivityEdge containedEdge : getContainedEdges()) {
 			if (eClass != null && !eClass.isInstance(containedEdge))
 				continue containedEdgeLoop;
 			if (name != null && !(ignoreCase
@@ -705,9 +714,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getVariables() {
+	public EList<Variable> getVariables() {
 		if (variables == null) {
-			variables = new EObjectContainmentWithInverseEList.Resolving(
+			variables = new EObjectContainmentWithInverseEList.Resolving<Variable>(
 				Variable.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 				UMLPackage.VARIABLE__SCOPE);
@@ -746,8 +755,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public Variable getVariable(String name, Type type, boolean ignoreCase,
 			boolean createOnDemand) {
-		variableLoop : for (Iterator i = getVariables().iterator(); i.hasNext();) {
-			Variable variable = (Variable) i.next();
+		variableLoop : for (Variable variable : getVariables()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(variable.getName())
 				: name.equals(variable.getName())))
@@ -766,9 +774,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getNodes() {
+	public EList<ActivityNode> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectContainmentWithInverseEList.Resolving(
+			nodes = new EObjectContainmentWithInverseEList.Resolving<ActivityNode>(
 				ActivityNode.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE,
 				UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE);
@@ -805,8 +813,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand) {
-		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
-			ActivityNode node = (ActivityNode) i.next();
+		nodeLoop : for (ActivityNode node : getNodes()) {
 			if (eClass != null && !eClass.isInstance(node))
 				continue nodeLoop;
 			if (name != null && !(ignoreCase
@@ -853,9 +860,9 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEdges() {
+	public EList<ActivityEdge> getEdges() {
 		if (edges == null) {
-			edges = new EObjectContainmentWithInverseEList.Resolving(
+			edges = new EObjectContainmentWithInverseEList.Resolving<ActivityEdge>(
 				ActivityEdge.class, this,
 				UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
 				UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE);
@@ -892,8 +899,7 @@ public class StructuredActivityNodeImpl
 	 */
 	public ActivityEdge getEdge(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand) {
-		edgeLoop : for (Iterator i = getEdges().iterator(); i.hasNext();) {
-			ActivityEdge edge = (ActivityEdge) i.next();
+		edgeLoop : for (ActivityEdge edge : getEdges()) {
 			if (eClass != null && !eClass.isInstance(edge))
 				continue edgeLoop;
 			if (name != null && !(ignoreCase
@@ -955,7 +961,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean validateMembersDistinguishable(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return NamespaceOperations.validateMembersDistinguishable(this,
 			diagnostics, context);
 	}
@@ -987,11 +993,13 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getImportedElements() {
+	public EList<PackageableElement> getImportedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.NAMESPACE.getEOperations().get(3));
+			@SuppressWarnings("unchecked")
+			EList<PackageableElement> result = (EList<PackageableElement>) cache
+				.get(this, UMLPackage.Literals.NAMESPACE.getEOperations()
+					.get(3));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
 					.get(3), result = NamespaceOperations
@@ -1007,11 +1015,13 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getImportedPackages() {
+	public EList<org.eclipse.uml2.uml.Package> getImportedPackages() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.NAMESPACE.getEOperations().get(4));
+			@SuppressWarnings("unchecked")
+			EList<org.eclipse.uml2.uml.Package> result = (EList<org.eclipse.uml2.uml.Package>) cache
+				.get(this, UMLPackage.Literals.NAMESPACE.getEOperations()
+					.get(4));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
 					.get(4), result = NamespaceOperations
@@ -1027,7 +1037,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getNamesOfMember(NamedElement element) {
+	public EList<String> getNamesOfMember(NamedElement element) {
 		return NamespaceOperations.getNamesOfMember(this, element);
 	}
 
@@ -1045,7 +1055,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList importMembers(EList imps) {
+	public EList<PackageableElement> importMembers(
+			EList<PackageableElement> imps) {
 		return NamespaceOperations.importMembers(this, imps);
 	}
 
@@ -1054,7 +1065,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList excludeCollisions(EList imps) {
+	public EList<PackageableElement> excludeCollisions(
+			EList<PackageableElement> imps) {
 		return NamespaceOperations.excludeCollisions(this, imps);
 	}
 
@@ -1064,7 +1076,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean validateNodesAndEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNodesAndEdges(this, diagnostics,
 			context);
 	}
@@ -1074,7 +1086,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotContained(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNotContained(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNotContained(this, diagnostics,
 			context);
 	}
@@ -1084,7 +1097,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGroupOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateGroupOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateGroupOwned(this, diagnostics,
 			context);
 	}
@@ -1094,7 +1108,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateEdges(DiagnosticChain diagnostics, Map context) {
+	public boolean validateEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return StructuredActivityNodeOperations.validateEdges(this,
 			diagnostics, context);
 	}
@@ -1104,15 +1119,17 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1123,39 +1140,42 @@ public class StructuredActivityNodeImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER :
-				return ((InternalEList) getHandlers()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
-				return ((InternalEList) getVariables())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
-				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
-				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1165,18 +1185,19 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE :
@@ -1184,44 +1205,46 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
-				return ((InternalEList) getVariables()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
-				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1231,6 +1254,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
@@ -1346,15 +1370,19 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME :
 				setName((String) newValue);
@@ -1364,7 +1392,8 @@ public class StructuredActivityNodeImpl
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -1380,65 +1409,80 @@ public class StructuredActivityNodeImpl
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE :
 				getVariables().clear();
-				getVariables().addAll((Collection) newValue);
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE :
 				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
+				getEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__MUST_ISOLATE :
 				setMustIsolate(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__NODE :
 				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1449,6 +1493,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
@@ -1535,6 +1580,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE__EANNOTATIONS :
@@ -1636,7 +1682,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Namespace.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT :
@@ -1679,7 +1726,8 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Namespace.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.NAMESPACE__ELEMENT_IMPORT :
@@ -1722,6 +1770,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1759,6 +1808,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.STRUCTURED_ACTIVITY_NODE__ELEMENT_IMPORT)
@@ -1883,6 +1933,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetSuperGroup() || isSetInActivity();
 	}

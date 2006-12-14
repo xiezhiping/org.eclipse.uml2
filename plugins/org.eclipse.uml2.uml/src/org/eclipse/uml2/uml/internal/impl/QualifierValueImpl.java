@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.9 2006/11/14 18:02:17 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.10 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,11 +19,13 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.QualifierValue;
@@ -83,6 +85,7 @@ public class QualifierValueImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.QUALIFIER_VALUE;
 	}
@@ -178,7 +181,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public boolean validateQualifierAttribute(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return QualifierValueOperations.validateQualifierAttribute(this,
 			diagnostics, context);
 	}
@@ -189,7 +192,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public boolean validateTypeOfQualifier(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return QualifierValueOperations.validateTypeOfQualifier(this,
 			diagnostics, context);
 	}
@@ -200,7 +203,7 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfQualifier(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return QualifierValueOperations.validateMultiplicityOfQualifier(this,
 			diagnostics, context);
 	}
@@ -210,6 +213,7 @@ public class QualifierValueImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.QUALIFIER_VALUE__EANNOTATIONS :
@@ -239,15 +243,19 @@ public class QualifierValueImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.QUALIFIER_VALUE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.QUALIFIER_VALUE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.QUALIFIER_VALUE__QUALIFIER :
 				setQualifier((Property) newValue);
@@ -264,6 +272,7 @@ public class QualifierValueImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.QUALIFIER_VALUE__EANNOTATIONS :
@@ -287,6 +296,7 @@ public class QualifierValueImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.QUALIFIER_VALUE__EANNOTATIONS :

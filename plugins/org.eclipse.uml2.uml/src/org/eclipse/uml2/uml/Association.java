@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Association.java,v 1.13 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -86,7 +86,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Type" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	EList getEndTypes();
+	EList<Type> getEndTypes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>End Type</b></em>' reference list.
@@ -127,7 +127,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="association" lower="2"
 	 * @generated
 	 */
-	EList getMemberEnds();
+	EList<Property> getMemberEnds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Member End</b></em>' reference list.
@@ -169,7 +169,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	EList getNavigableOwnedEnds();
+	EList<Property> getNavigableOwnedEnds();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Navigable Owned End</b></em>' reference list.
@@ -239,7 +239,7 @@ public interface Association
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedEnds();
+	EList<Property> getOwnedEnds();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned End</b></em>' containment reference list.
@@ -305,7 +305,7 @@ public interface Association
 	 * @generated
 	 */
 	boolean validateSpecializedEndNumber(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,7 +317,8 @@ public interface Association
 	 * @model
 	 * @generated
 	 */
-	boolean validateSpecializedEndTypes(DiagnosticChain diagnostics, Map context);
+	boolean validateSpecializedEndTypes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,7 +330,8 @@ public interface Association
 	 * @model
 	 * @generated
 	 */
-	boolean validateBinaryAssociations(DiagnosticChain diagnostics, Map context);
+	boolean validateBinaryAssociations(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -341,7 +343,8 @@ public interface Association
 	 * @model
 	 * @generated
 	 */
-	boolean validateAssociationEnds(DiagnosticChain diagnostics, Map context);
+	boolean validateAssociationEnds(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentOperations.java,v 1.5 2006/04/05 20:23:13 khussey Exp $
+ * $Id: CombinedFragmentOperations.java,v 1.6 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -67,7 +66,7 @@ public class CombinedFragmentOperations
 	 */
 	public static boolean validateOptLoopBreakNeg(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 
 		switch (combinedFragment.getInteractionOperator().getValue()) {
 			case InteractionOperatorKind.OPT :
@@ -109,15 +108,12 @@ public class CombinedFragmentOperations
 	 */
 	public static boolean validateMinintAndMaxint(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 
 		if (combinedFragment.getInteractionOperator() != InteractionOperatorKind.LOOP_LITERAL) {
 
-			for (Iterator operands = combinedFragment.getOperands().iterator(); operands
-				.hasNext();) {
-
-				InteractionConstraint guard = ((InteractionOperand) operands
-					.next()).getGuard();
+			for (InteractionOperand operand : combinedFragment.getOperands()) {
+				InteractionConstraint guard = operand.getGuard();
 
 				if (guard != null
 					&& (guard.getMinint() != null || guard.getMaxint() != null)) {
@@ -154,7 +150,7 @@ public class CombinedFragmentOperations
 	 * @generated
 	 */
 	public static boolean validateBreak(CombinedFragment combinedFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -187,7 +183,7 @@ public class CombinedFragmentOperations
 	 */
 	public static boolean validateConsiderAndIgnore(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

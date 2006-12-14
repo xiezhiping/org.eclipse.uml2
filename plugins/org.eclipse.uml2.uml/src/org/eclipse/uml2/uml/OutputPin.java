@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPin.java,v 1.2 2006/05/16 15:07:26 khussey Exp $
+ * $Id: OutputPin.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,6 @@ public interface OutputPin
 	 * @generated
 	 */
 	boolean validateIncomingEdgesStructuredOnly(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // OutputPin

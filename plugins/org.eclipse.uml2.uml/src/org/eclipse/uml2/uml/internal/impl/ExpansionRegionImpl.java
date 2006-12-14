@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.17 2006/11/14 18:02:20 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.18 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,13 +32,24 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.ExpansionKind;
 import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Variable;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.ExpansionRegionOperations;
@@ -90,7 +101,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inputElements = null;
+	protected EList<ExpansionNode> inputElements = null;
 
 	/**
 	 * The cached value of the '{@link #getOutputElements() <em>Output Element</em>}' reference list.
@@ -100,7 +111,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList outputElements = null;
+	protected EList<ExpansionNode> outputElements = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,6 +127,7 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXPANSION_REGION;
 	}
@@ -151,9 +163,9 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputElements() {
+	public EList<ExpansionNode> getInputElements() {
 		if (inputElements == null) {
-			inputElements = new EObjectWithInverseResolvingEList(
+			inputElements = new EObjectWithInverseResolvingEList<ExpansionNode>(
 				ExpansionNode.class, this,
 				UMLPackage.EXPANSION_REGION__INPUT_ELEMENT,
 				UMLPackage.EXPANSION_NODE__REGION_AS_INPUT);
@@ -177,9 +189,7 @@ public class ExpansionRegionImpl
 	 */
 	public ExpansionNode getInputElement(String name, Type type,
 			boolean ignoreCase) {
-		inputElementLoop : for (Iterator i = getInputElements().iterator(); i
-			.hasNext();) {
-			ExpansionNode inputElement = (ExpansionNode) i.next();
+		inputElementLoop : for (ExpansionNode inputElement : getInputElements()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(inputElement.getName())
 				: name.equals(inputElement.getName())))
@@ -196,9 +206,9 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputElements() {
+	public EList<ExpansionNode> getOutputElements() {
 		if (outputElements == null) {
-			outputElements = new EObjectWithInverseResolvingEList(
+			outputElements = new EObjectWithInverseResolvingEList<ExpansionNode>(
 				ExpansionNode.class, this,
 				UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT,
 				UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT);
@@ -222,9 +232,7 @@ public class ExpansionRegionImpl
 	 */
 	public ExpansionNode getOutputElement(String name, Type type,
 			boolean ignoreCase) {
-		outputElementLoop : for (Iterator i = getOutputElements().iterator(); i
-			.hasNext();) {
-			ExpansionNode outputElement = (ExpansionNode) i.next();
+		outputElementLoop : for (ExpansionNode outputElement : getOutputElements()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(outputElement.getName())
 				: name.equals(outputElement.getName())))
@@ -242,7 +250,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public boolean validateExpansionNodes(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ExpansionRegionOperations.validateExpansionNodes(this,
 			diagnostics, context);
 	}
@@ -252,15 +260,17 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -271,45 +281,48 @@ public class ExpansionRegionImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__HANDLER :
-				return ((InternalEList) getHandlers()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
-				return ((InternalEList) getVariables())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
-				return ((InternalEList) getEdges()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NODE :
-				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
-				return ((InternalEList) getInputElements()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInputElements())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
-				return ((InternalEList) getOutputElements()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutputElements())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -319,18 +332,19 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
@@ -338,49 +352,51 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
-				return ((InternalEList) getVariables()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getVariables()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__EDGE :
-				return ((InternalEList) getEdges()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
-				return ((InternalEList) getInputElements()).basicRemove(
+				return ((InternalEList<?>) getInputElements()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
-				return ((InternalEList) getOutputElements()).basicRemove(
+				return ((InternalEList<?>) getOutputElements()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -391,6 +407,7 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
@@ -512,15 +529,19 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__NAME :
 				setName((String) newValue);
@@ -530,7 +551,8 @@ public class ExpansionRegionImpl
 				return;
 			case UMLPackage.EXPANSION_REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -546,76 +568,93 @@ public class ExpansionRegionImpl
 				return;
 			case UMLPackage.EXPANSION_REGION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__VARIABLE :
 				getVariables().clear();
-				getVariables().addAll((Collection) newValue);
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				getEdges().clear();
-				getEdges().addAll((Collection) newValue);
+				getEdges()
+					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
 				setMustIsolate(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.EXPANSION_REGION__NODE :
 				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__MODE :
 				setMode((ExpansionKind) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				getInputElements().clear();
-				getInputElements().addAll((Collection) newValue);
+				getInputElements().addAll(
+					(Collection<? extends ExpansionNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
 				getOutputElements().clear();
-				getOutputElements().addAll((Collection) newValue);
+				getOutputElements().addAll(
+					(Collection<? extends ExpansionNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -626,6 +665,7 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
@@ -721,6 +761,7 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_REGION__EANNOTATIONS :
@@ -828,6 +869,7 @@ public class ExpansionRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

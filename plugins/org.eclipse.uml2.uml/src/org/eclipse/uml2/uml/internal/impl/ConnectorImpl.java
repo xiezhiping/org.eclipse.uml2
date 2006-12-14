@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.15 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -39,9 +39,11 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ConnectorKind;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
@@ -91,7 +93,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedConnectors = null;
+	protected EList<Connector> redefinedConnectors = null;
 
 	/**
 	 * The cached value of the '{@link #getEnds() <em>End</em>}' containment reference list.
@@ -101,7 +103,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ends = null;
+	protected EList<ConnectorEnd> ends = null;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -140,7 +142,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList contracts = null;
+	protected EList<Behavior> contracts = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,6 +158,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONNECTOR;
 	}
@@ -165,24 +168,30 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.CONNECTOR__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.CONNECTOR__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
@@ -191,23 +200,25 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.CONNECTOR__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.CONNECTOR__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.CONNECTOR__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -258,10 +269,11 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedConnectors() {
+	public EList<Connector> getRedefinedConnectors() {
 		if (redefinedConnectors == null) {
-			redefinedConnectors = new EObjectResolvingEList(Connector.class,
-				this, UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
+			redefinedConnectors = new EObjectResolvingEList<Connector>(
+				Connector.class, this,
+				UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
 		}
 		return redefinedConnectors;
 	}
@@ -281,9 +293,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public Connector getRedefinedConnector(String name, boolean ignoreCase) {
-		redefinedConnectorLoop : for (Iterator i = getRedefinedConnectors()
-			.iterator(); i.hasNext();) {
-			Connector redefinedConnector = (Connector) i.next();
+		redefinedConnectorLoop : for (Connector redefinedConnector : getRedefinedConnectors()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(redefinedConnector.getName())
 				: name.equals(redefinedConnector.getName())))
@@ -298,10 +308,10 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEnds() {
+	public EList<ConnectorEnd> getEnds() {
 		if (ends == null) {
-			ends = new EObjectContainmentEList.Resolving(ConnectorEnd.class,
-				this, UMLPackage.CONNECTOR__END);
+			ends = new EObjectContainmentEList.Resolving<ConnectorEnd>(
+				ConnectorEnd.class, this, UMLPackage.CONNECTOR__END);
 		}
 		return ends;
 	}
@@ -374,10 +384,10 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContracts() {
+	public EList<Behavior> getContracts() {
 		if (contracts == null) {
-			contracts = new EObjectResolvingEList(Behavior.class, this,
-				UMLPackage.CONNECTOR__CONTRACT);
+			contracts = new EObjectResolvingEList<Behavior>(Behavior.class,
+				this, UMLPackage.CONNECTOR__CONTRACT);
 		}
 		return contracts;
 	}
@@ -397,8 +407,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public Behavior getContract(String name, boolean ignoreCase, EClass eClass) {
-		contractLoop : for (Iterator i = getContracts().iterator(); i.hasNext();) {
-			Behavior contract = (Behavior) i.next();
+		contractLoop : for (Behavior contract : getContracts()) {
 			if (eClass != null && !eClass.isInstance(contract))
 				continue contractLoop;
 			if (name != null && !(ignoreCase
@@ -415,7 +424,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTypes(DiagnosticChain diagnostics, Map context) {
+	public boolean validateTypes(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ConnectorOperations.validateTypes(this, diagnostics, context);
 	}
 
@@ -424,7 +434,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateCompatible(DiagnosticChain diagnostics, Map context) {
+	public boolean validateCompatible(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ConnectorOperations.validateCompatible(this, diagnostics,
 			context);
 	}
@@ -434,7 +445,8 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateRoles(DiagnosticChain diagnostics, Map context) {
+	public boolean validateRoles(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ConnectorOperations.validateRoles(this, diagnostics, context);
 	}
 
@@ -444,7 +456,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean validateBetweenInterfacesPorts(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConnectorOperations.validateBetweenInterfacesPorts(this,
 			diagnostics, context);
 	}
@@ -455,7 +467,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean validateBetweenInterfacePortImplements(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ConnectorOperations.validateBetweenInterfacePortImplements(this,
 			diagnostics, context);
 	}
@@ -466,7 +478,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean validateBetweenInterfacePortSignature(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ConnectorOperations.validateBetweenInterfacePortSignature(this,
 			diagnostics, context);
 	}
@@ -477,7 +489,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean validateUnionSignatureCompatible(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ConnectorOperations.validateUnionSignatureCompatible(this,
 			diagnostics, context);
 	}
@@ -488,7 +500,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public boolean validateAssemblyConnector(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConnectorOperations.validateAssemblyConnector(this, diagnostics,
 			context);
 	}
@@ -498,22 +510,24 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTOR__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTOR__END :
-				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -523,6 +537,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
@@ -586,15 +601,19 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__NAME :
 				setName((String) newValue);
@@ -604,7 +623,8 @@ public class ConnectorImpl
 				return;
 			case UMLPackage.CONNECTOR__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -620,18 +640,20 @@ public class ConnectorImpl
 				return;
 			case UMLPackage.CONNECTOR__REDEFINED_CONNECTOR :
 				getRedefinedConnectors().clear();
-				getRedefinedConnectors().addAll((Collection) newValue);
+				getRedefinedConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__END :
 				getEnds().clear();
-				getEnds().addAll((Collection) newValue);
+				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.CONNECTOR__KIND :
 				setKind((ConnectorKind) newValue);
 				return;
 			case UMLPackage.CONNECTOR__CONTRACT :
 				getContracts().clear();
-				getContracts().addAll((Collection) newValue);
+				getContracts()
+					.addAll((Collection<? extends Behavior>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -642,6 +664,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
@@ -692,6 +715,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTOR__EANNOTATIONS :
@@ -747,6 +771,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -776,6 +801,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.CONNECTOR__REDEFINED_CONNECTOR);
@@ -798,6 +824,7 @@ public class ConnectorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements() || eIsSet(UMLPackage.CONNECTOR__END);
 	}

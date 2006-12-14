@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface InteractionFragment
 	 * @model type="org.eclipse.uml2.uml.Lifeline" opposite="coveredBy" ordered="false"
 	 * @generated
 	 */
-	EList getCovereds();
+	EList<Lifeline> getCovereds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Lifeline} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered</b></em>' reference list.
@@ -93,7 +93,7 @@ public interface InteractionFragment
 	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getGeneralOrderings();
+	EList<GeneralOrdering> getGeneralOrderings();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.GeneralOrdering}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>General Ordering</b></em>' containment reference list.

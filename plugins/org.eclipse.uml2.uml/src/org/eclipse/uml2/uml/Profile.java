@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.13 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Profile.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.Stereotype" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedStereotypes();
+	EList<Stereotype> getOwnedStereotypes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Stereotype}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -111,7 +111,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.ElementImport" ordered="false"
 	 * @generated
 	 */
-	EList getMetaclassReferences();
+	EList<ElementImport> getMetaclassReferences();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ElementImport}, with the specified '<em><b>Imported Element</b></em>', and appends it to the '<em><b>Metaclass Reference</b></em>' reference list.
@@ -161,7 +161,7 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.PackageImport" ordered="false"
 	 * @generated
 	 */
-	EList getMetamodelReferences();
+	EList<PackageImport> getMetamodelReferences();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.PackageImport}, with the specified '<em><b>Imported Package</b></em>', and appends it to the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -214,7 +214,7 @@ public interface Profile
 	 * @generated
 	 */
 	boolean validateMetaclassReferenceNotSpecialized(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -228,7 +228,7 @@ public interface Profile
 	 * @generated
 	 */
 	boolean validateReferencesSameMetamodel(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,7 +305,7 @@ public interface Profile
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
 	 * @generated
 	 */
-	EList getReferencedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -316,7 +316,7 @@ public interface Profile
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Model" ordered="false"
 	 * @generated
 	 */
-	EList getReferencedMetamodels();
+	EList<Model> getReferencedMetamodels();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,6 +327,6 @@ public interface Profile
 	 * @model type="org.eclipse.uml2.uml.Extension" ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
 	 * @generated
 	 */
-	EList getOwnedExtensions(boolean requiredOnly);
+	EList<Extension> getOwnedExtensions(boolean requiredOnly);
 
 } // Profile

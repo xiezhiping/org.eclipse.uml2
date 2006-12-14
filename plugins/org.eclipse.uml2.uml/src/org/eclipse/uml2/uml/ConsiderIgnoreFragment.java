@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragment.java,v 1.4 2006/05/12 20:38:10 khussey Exp $
+ * $Id: ConsiderIgnoreFragment.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface ConsiderIgnoreFragment
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false"
 	 * @generated
 	 */
-	EList getMessages();
+	EList<NamedElement> getMessages();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Message</b></em>' reference list.
@@ -92,7 +92,8 @@ public interface ConsiderIgnoreFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateConsiderOrIgnore(DiagnosticChain diagnostics, Map context);
+	boolean validateConsiderOrIgnore(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,6 +105,7 @@ public interface ConsiderIgnoreFragment
 	 * @model
 	 * @generated
 	 */
-	boolean validateType(DiagnosticChain diagnostics, Map context);
+	boolean validateType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ConsiderIgnoreFragment

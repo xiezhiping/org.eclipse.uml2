@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Artifact.java,v 1.11 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -111,7 +111,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getNestedArtifacts();
+	EList<Artifact> getNestedArtifacts();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Artifact}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Artifact</b></em>' containment reference list.
@@ -175,7 +175,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getManifestations();
+	EList<Manifestation> getManifestations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Manifestation}, with the specified '<em><b>Name</b></em>', and '<em><b>Utilized Element</b></em>', and appends it to the '<em><b>Manifestation</b></em>' containment reference list.
@@ -232,7 +232,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Operation" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedOperations();
+	EList<Operation> getOwnedOperations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Operation}, with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -245,8 +245,8 @@ public interface Artifact
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation createOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation createOwnedOperation(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -259,8 +259,8 @@ public interface Artifact
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation getOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation getOwnedOperation(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -275,8 +275,8 @@ public interface Artifact
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation getOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase,
+	Operation getOwnedOperation(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes, boolean ignoreCase,
 			boolean createOnDemand);
 
 	/**
@@ -294,7 +294,7 @@ public interface Artifact
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedAttributes();
+	EList<Property> getOwnedAttributes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -358,8 +358,8 @@ public interface Artifact
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
-	Operation createOwnedOperation(String name, EList parameterNames,
-			EList parameterTypes, Type returnType);
+	Operation createOwnedOperation(String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, Type returnType);
 
 	/**
 	 * <!-- begin-user-doc -->

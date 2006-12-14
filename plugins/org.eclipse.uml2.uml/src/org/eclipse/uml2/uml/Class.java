@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.13 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Class.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -66,7 +66,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Operation" opposite="class" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedOperations();
+	EList<Operation> getOwnedOperations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Operation}, with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', and appends it to the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -79,8 +79,8 @@ public interface Class
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation createOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation createOwnedOperation(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -93,8 +93,8 @@ public interface Class
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation getOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation getOwnedOperation(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Operation</b></em>' containment reference list.
@@ -109,8 +109,8 @@ public interface Class
 	 * @see #getOwnedOperations()
 	 * @generated
 	 */
-	Operation getOwnedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase,
+	Operation getOwnedOperation(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes, boolean ignoreCase,
 			boolean createOnDemand);
 
 	/**
@@ -126,7 +126,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getNestedClassifiers();
+	EList<Classifier> getNestedClassifiers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Classifier}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Classifier</b></em>' containment reference list.
@@ -179,7 +179,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Class" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getSuperClasses();
+	EList<Class> getSuperClasses();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Class} with the specified '<em><b>Name</b></em>' from the '<em><b>Super Class</b></em>' reference list.
@@ -244,7 +244,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedReceptions();
+	EList<Reception> getOwnedReceptions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Reception}, with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>', and appends it to the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -257,8 +257,8 @@ public interface Class
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
-	Reception createOwnedReception(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Reception createOwnedReception(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -271,8 +271,8 @@ public interface Class
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
-	Reception getOwnedReception(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Reception getOwnedReception(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Reception} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Owned Reception</b></em>' containment reference list.
@@ -287,8 +287,8 @@ public interface Class
 	 * @see #getOwnedReceptions()
 	 * @generated
 	 */
-	Reception getOwnedReception(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase,
+	Reception getOwnedReception(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes, boolean ignoreCase,
 			boolean createOnDemand);
 
 	/**
@@ -306,7 +306,7 @@ public interface Class
 	 * @model type="org.eclipse.uml2.uml.Extension" opposite="metaclass" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getExtensions();
+	EList<Extension> getExtensions();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Extension} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension</b></em>' reference list.
@@ -341,7 +341,8 @@ public interface Class
 	 * @model
 	 * @generated
 	 */
-	boolean validatePassiveClass(DiagnosticChain diagnostics, Map context);
+	boolean validatePassiveClass(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -352,8 +353,8 @@ public interface Class
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
-	Operation createOwnedOperation(String name, EList parameterNames,
-			EList parameterTypes, Type returnType);
+	Operation createOwnedOperation(String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, Type returnType);
 
 	/**
 	 * <!-- begin-user-doc -->

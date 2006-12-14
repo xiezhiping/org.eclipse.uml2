@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalState.java,v 1.2 2006/02/23 17:20:47 khussey Exp $
+ * $Id: FinalState.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,7 @@ public interface FinalState
 	 * @generated
 	 */
 	boolean validateNoOutgoingTransitions(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -56,7 +56,8 @@ public interface FinalState
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoRegions(DiagnosticChain diagnostics, Map context);
+	boolean validateNoRegions(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,7 +70,7 @@ public interface FinalState
 	 * @generated
 	 */
 	boolean validateCannotReferenceSubmachine(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,7 +82,8 @@ public interface FinalState
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoEntryBehavior(DiagnosticChain diagnostics, Map context);
+	boolean validateNoEntryBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,7 +95,8 @@ public interface FinalState
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoExitBehavior(DiagnosticChain diagnostics, Map context);
+	boolean validateNoExitBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,6 +108,7 @@ public interface FinalState
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoStateBehavior(DiagnosticChain diagnostics, Map context);
+	boolean validateNoStateBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // FinalState

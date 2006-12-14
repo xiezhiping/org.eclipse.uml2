@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.5 2006/01/25 18:51:32 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.uml2.uml.NamedElement;
@@ -59,7 +60,7 @@ public class ProfileApplicationOperations
 			.getEAnnotation(UMLPackage.eNS_URI);
 
 		if (eAnnotation != null) {
-			EList references = eAnnotation.getReferences();
+			EList<EObject> references = eAnnotation.getReferences();
 
 			if (references.size() > 0) {
 				return (EPackage) references.get(0);

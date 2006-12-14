@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.13 2006/05/26 16:34:03 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface StructuredActivityNode
 	 * @model type="org.eclipse.uml2.uml.Variable" opposite="scope" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getVariables();
+	EList<Variable> getVariables();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Variable}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Variable</b></em>' containment reference list.
@@ -118,7 +118,7 @@ public interface StructuredActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inStructuredNode" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getNodes();
+	EList<ActivityNode> getNodes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Node</b></em>' containment reference list.
@@ -199,7 +199,7 @@ public interface StructuredActivityNode
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inStructuredNode" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getEdges();
+	EList<ActivityEdge> getEdges();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityEdge}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Edge</b></em>' containment reference list.
@@ -249,6 +249,7 @@ public interface StructuredActivityNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // StructuredActivityNode

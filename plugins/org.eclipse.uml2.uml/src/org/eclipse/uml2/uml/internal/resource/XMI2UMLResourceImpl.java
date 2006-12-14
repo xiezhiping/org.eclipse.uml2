@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLResourceImpl.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLResourceImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -26,18 +26,22 @@ public class XMI2UMLResourceImpl
 		super(uri);
 	}
 
+	@Override
 	protected XMLHelper createXMLHelper() {
 		return new XMI2UMLHelperImpl(this);
 	}
 
+	@Override
 	protected XMLLoad createXMLLoad() {
 		return new XMI2UMLLoadImpl(createXMLHelper());
 	}
 
+	@Override
 	protected XMLSave createXMLSave() {
 		return new XMI2UMLSaveImpl(createXMLHelper());
 	}
 
+	@Override
 	protected boolean assignIDsWhileLoading() {
 		return false;
 	}

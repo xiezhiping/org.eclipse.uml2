@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.5 2006/03/13 20:50:41 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,7 +63,7 @@ public class ConstraintOperations
 	 * @generated NOT
 	 */
 	public static boolean validateNotApplyToSelf(Constraint constraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (constraint.getConstrainedElements().contains(constraint)) {
@@ -93,7 +93,8 @@ public class ConstraintOperations
 	 * @generated
 	 */
 	public static boolean validateValueSpecificationBoolean(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -125,7 +126,7 @@ public class ConstraintOperations
 	 * @generated
 	 */
 	public static boolean validateBooleanValue(Constraint constraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -157,7 +158,7 @@ public class ConstraintOperations
 	 * @generated
 	 */
 	public static boolean validateNoSideEffects(Constraint constraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -189,7 +190,7 @@ public class ConstraintOperations
 	 * @generated
 	 */
 	public static boolean validateNotAppliedToSelf(Constraint constraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

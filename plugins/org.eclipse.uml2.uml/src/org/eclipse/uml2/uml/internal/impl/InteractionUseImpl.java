@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.21 2006/11/14 18:02:17 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.22 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,11 +37,15 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Gate;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionUse;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -86,7 +90,7 @@ public class InteractionUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList actualGates = null;
+	protected EList<Gate> actualGates = null;
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
@@ -96,7 +100,7 @@ public class InteractionUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList arguments = null;
+	protected EList<Action> arguments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,6 +116,7 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERACTION_USE;
 	}
@@ -121,23 +126,25 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.INTERACTION_USE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.INTERACTION_USE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INTERACTION_USE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -189,10 +196,10 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getActualGates() {
+	public EList<Gate> getActualGates() {
 		if (actualGates == null) {
-			actualGates = new EObjectContainmentEList.Resolving(Gate.class,
-				this, UMLPackage.INTERACTION_USE__ACTUAL_GATE);
+			actualGates = new EObjectContainmentEList.Resolving<Gate>(
+				Gate.class, this, UMLPackage.INTERACTION_USE__ACTUAL_GATE);
 		}
 		return actualGates;
 	}
@@ -226,9 +233,7 @@ public class InteractionUseImpl
 	 */
 	public Gate getActualGate(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		actualGateLoop : for (Iterator i = getActualGates().iterator(); i
-			.hasNext();) {
-			Gate actualGate = (Gate) i.next();
+		actualGateLoop : for (Gate actualGate : getActualGates()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(actualGate.getName())
 				: name.equals(actualGate.getName())))
@@ -245,10 +250,10 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getArguments() {
+	public EList<Action> getArguments() {
 		if (arguments == null) {
-			arguments = new EObjectContainmentEList.Resolving(Action.class,
-				this, UMLPackage.INTERACTION_USE__ARGUMENT);
+			arguments = new EObjectContainmentEList.Resolving<Action>(
+				Action.class, this, UMLPackage.INTERACTION_USE__ARGUMENT);
 		}
 		return arguments;
 	}
@@ -282,8 +287,7 @@ public class InteractionUseImpl
 	 */
 	public Action getArgument(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand) {
-		argumentLoop : for (Iterator i = getArguments().iterator(); i.hasNext();) {
-			Action argument = (Action) i.next();
+		argumentLoop : for (Action argument : getArguments()) {
 			if (eClass != null && !eClass.isInstance(argument))
 				continue argumentLoop;
 			if (name != null && !(ignoreCase
@@ -302,7 +306,8 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGatesMatch(DiagnosticChain diagnostics, Map context) {
+	public boolean validateGatesMatch(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InteractionUseOperations.validateGatesMatch(this, diagnostics,
 			context);
 	}
@@ -312,7 +317,8 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAllLifelines(DiagnosticChain diagnostics, Map context) {
+	public boolean validateAllLifelines(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InteractionUseOperations.validateAllLifelines(this, diagnostics,
 			context);
 	}
@@ -323,7 +329,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public boolean validateArgumentsCorrespondToParameters(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return InteractionUseOperations
 			.validateArgumentsCorrespondToParameters(this, diagnostics, context);
 	}
@@ -334,7 +340,7 @@ public class InteractionUseImpl
 	 * @generated
 	 */
 	public boolean validateArgumentsAreConstants(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InteractionUseOperations.validateArgumentsAreConstants(this,
 			diagnostics, context);
 	}
@@ -344,36 +350,37 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_USE__COVERED :
-				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
-				return ((InternalEList) getGeneralOrderings()).basicRemove(
+				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_USE__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
-				return ((InternalEList) getActualGates()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getActualGates()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
-				return ((InternalEList) getArguments()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getArguments()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -383,6 +390,7 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
@@ -440,15 +448,19 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__NAME :
 				setName((String) newValue);
@@ -458,18 +470,20 @@ public class InteractionUseImpl
 				return;
 			case UMLPackage.INTERACTION_USE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -482,11 +496,11 @@ public class InteractionUseImpl
 				return;
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
 				getActualGates().clear();
-				getActualGates().addAll((Collection) newValue);
+				getActualGates().addAll((Collection<? extends Gate>) newValue);
 				return;
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
 				getArguments().clear();
-				getArguments().addAll((Collection) newValue);
+				getArguments().addAll((Collection<? extends Action>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -497,6 +511,7 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
@@ -547,6 +562,7 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_USE__EANNOTATIONS :
@@ -609,6 +625,7 @@ public class InteractionUseImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.INTERACTION_USE__ACTUAL_GATE);

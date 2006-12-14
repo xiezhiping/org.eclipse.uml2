@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.14 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Activity.java,v 1.15 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="inActivity" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getGroups();
+	EList<ActivityGroup> getGroups();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityGroup} and appends it to the '<em><b>Group</b></em>' containment reference list.
@@ -143,7 +143,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.StructuredActivityNode" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getStructuredNodes();
+	EList<StructuredActivityNode> getStructuredNodes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.StructuredActivityNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Structured Node</b></em>' reference list.
@@ -185,7 +185,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.Variable" opposite="activityScope" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getVariables();
+	EList<Variable> getVariables();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Variable}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Variable</b></em>' containment reference list.
@@ -241,7 +241,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="activity" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getNodes();
+	EList<ActivityNode> getNodes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityNode}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Node</b></em>' containment reference list.
@@ -296,7 +296,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="activity" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getEdges();
+	EList<ActivityEdge> getEdges();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityEdge}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Edge</b></em>' containment reference list.
@@ -349,7 +349,7 @@ public interface Activity
 	 * @model type="org.eclipse.uml2.uml.ActivityPartition" ordered="false"
 	 * @generated
 	 */
-	EList getPartitions();
+	EList<ActivityPartition> getPartitions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ActivityPartition}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Partition</b></em>' reference list.
@@ -397,7 +397,8 @@ public interface Activity
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoSupergroups(DiagnosticChain diagnostics, Map context);
+	boolean validateNoSupergroups(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -410,7 +411,7 @@ public interface Activity
 	 * @generated
 	 */
 	boolean validateActivityParameterNode(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -422,6 +423,7 @@ public interface Activity
 	 * @model
 	 * @generated
 	 */
-	boolean validateAutonomous(DiagnosticChain diagnostics, Map context);
+	boolean validateAutonomous(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Activity

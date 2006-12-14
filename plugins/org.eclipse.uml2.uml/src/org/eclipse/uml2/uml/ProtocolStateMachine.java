@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface ProtocolStateMachine
 	 * @model type="org.eclipse.uml2.uml.ProtocolConformance" opposite="specificMachine" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConformances();
+	EList<ProtocolConformance> getConformances();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ProtocolConformance}, with the specified '<em><b>General Machine</b></em>', and appends it to the '<em><b>Conformance</b></em>' containment reference list.
@@ -103,7 +103,8 @@ public interface ProtocolStateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateProtocolTransitions(DiagnosticChain diagnostics, Map context);
+	boolean validateProtocolTransitions(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,7 +118,8 @@ public interface ProtocolStateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validateEntryExitDo(DiagnosticChain diagnostics, Map context);
+	boolean validateEntryExitDo(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,7 +134,7 @@ public interface ProtocolStateMachine
 	 * @generated
 	 */
 	boolean validateDeepOrShallowHistory(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,6 +146,7 @@ public interface ProtocolStateMachine
 	 * @model
 	 * @generated
 	 */
-	boolean validatePortsConnected(DiagnosticChain diagnostics, Map context);
+	boolean validatePortsConnected(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ProtocolStateMachine

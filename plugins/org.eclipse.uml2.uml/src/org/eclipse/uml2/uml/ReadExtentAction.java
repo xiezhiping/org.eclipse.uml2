@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReadExtentAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -112,7 +112,8 @@ public interface ReadExtentAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeIsClassifier(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeIsClassifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,6 +126,6 @@ public interface ReadExtentAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfResult(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ReadExtentAction

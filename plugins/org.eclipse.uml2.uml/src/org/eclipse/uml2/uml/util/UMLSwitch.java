@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.11 2006/05/16 15:07:26 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.12 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -277,7 +277,7 @@ import org.eclipse.uml2.uml.WriteVariableAction;
  * @see org.eclipse.uml2.uml.UMLPackage
  * @generated
  */
-public class UMLSwitch {
+public class UMLSwitch<T> {
 
 	/**
 	 * The cached model package
@@ -306,7 +306,7 @@ public class UMLSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -317,14 +317,14 @@ public class UMLSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return eSuperTypes.isEmpty()
 				? defaultCase(theEObject)
-				: doSwitch((EClass) eSuperTypes.get(0), theEObject);
+				: doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -335,11 +335,11 @@ public class UMLSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case UMLPackage.COMMENT : {
 				Comment comment = (Comment) theEObject;
-				Object result = caseComment(comment);
+				T result = caseComment(comment);
 				if (result == null)
 					result = caseElement(comment);
 				if (result == null)
@@ -350,7 +350,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ELEMENT : {
 				Element element = (Element) theEObject;
-				Object result = caseElement(element);
+				T result = caseElement(element);
 				if (result == null)
 					result = caseEModelElement(element);
 				if (result == null)
@@ -359,7 +359,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PACKAGE : {
 				org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) theEObject;
-				Object result = casePackage(package_);
+				T result = casePackage(package_);
 				if (result == null)
 					result = caseNamespace(package_);
 				if (result == null)
@@ -380,7 +380,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PACKAGEABLE_ELEMENT : {
 				PackageableElement packageableElement = (PackageableElement) theEObject;
-				Object result = casePackageableElement(packageableElement);
+				T result = casePackageableElement(packageableElement);
 				if (result == null)
 					result = caseNamedElement(packageableElement);
 				if (result == null)
@@ -395,7 +395,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.NAMED_ELEMENT : {
 				NamedElement namedElement = (NamedElement) theEObject;
-				Object result = caseNamedElement(namedElement);
+				T result = caseNamedElement(namedElement);
 				if (result == null)
 					result = caseElement(namedElement);
 				if (result == null)
@@ -406,7 +406,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEPENDENCY : {
 				Dependency dependency = (Dependency) theEObject;
-				Object result = caseDependency(dependency);
+				T result = caseDependency(dependency);
 				if (result == null)
 					result = casePackageableElement(dependency);
 				if (result == null)
@@ -427,7 +427,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DIRECTED_RELATIONSHIP : {
 				DirectedRelationship directedRelationship = (DirectedRelationship) theEObject;
-				Object result = caseDirectedRelationship(directedRelationship);
+				T result = caseDirectedRelationship(directedRelationship);
 				if (result == null)
 					result = caseRelationship(directedRelationship);
 				if (result == null)
@@ -440,7 +440,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RELATIONSHIP : {
 				Relationship relationship = (Relationship) theEObject;
-				Object result = caseRelationship(relationship);
+				T result = caseRelationship(relationship);
 				if (result == null)
 					result = caseElement(relationship);
 				if (result == null)
@@ -451,7 +451,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.NAMESPACE : {
 				Namespace namespace = (Namespace) theEObject;
-				Object result = caseNamespace(namespace);
+				T result = caseNamespace(namespace);
 				if (result == null)
 					result = caseNamedElement(namespace);
 				if (result == null)
@@ -464,7 +464,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ELEMENT_IMPORT : {
 				ElementImport elementImport = (ElementImport) theEObject;
-				Object result = caseElementImport(elementImport);
+				T result = caseElementImport(elementImport);
 				if (result == null)
 					result = caseDirectedRelationship(elementImport);
 				if (result == null)
@@ -479,7 +479,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PACKAGE_IMPORT : {
 				PackageImport packageImport = (PackageImport) theEObject;
-				Object result = casePackageImport(packageImport);
+				T result = casePackageImport(packageImport);
 				if (result == null)
 					result = caseDirectedRelationship(packageImport);
 				if (result == null)
@@ -494,7 +494,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONSTRAINT : {
 				Constraint constraint = (Constraint) theEObject;
-				Object result = caseConstraint(constraint);
+				T result = caseConstraint(constraint);
 				if (result == null)
 					result = casePackageableElement(constraint);
 				if (result == null)
@@ -511,7 +511,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VALUE_SPECIFICATION : {
 				ValueSpecification valueSpecification = (ValueSpecification) theEObject;
-				Object result = caseValueSpecification(valueSpecification);
+				T result = caseValueSpecification(valueSpecification);
 				if (result == null)
 					result = casePackageableElement(valueSpecification);
 				if (result == null)
@@ -530,7 +530,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TYPED_ELEMENT : {
 				TypedElement typedElement = (TypedElement) theEObject;
-				Object result = caseTypedElement(typedElement);
+				T result = caseTypedElement(typedElement);
 				if (result == null)
 					result = caseNamedElement(typedElement);
 				if (result == null)
@@ -543,7 +543,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TYPE : {
 				Type type = (Type) theEObject;
-				Object result = caseType(type);
+				T result = caseType(type);
 				if (result == null)
 					result = casePackageableElement(type);
 				if (result == null)
@@ -560,7 +560,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ASSOCIATION : {
 				Association association = (Association) theEObject;
-				Object result = caseAssociation(association);
+				T result = caseAssociation(association);
 				if (result == null)
 					result = caseClassifier(association);
 				if (result == null)
@@ -589,7 +589,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLASSIFIER : {
 				Classifier classifier = (Classifier) theEObject;
-				Object result = caseClassifier(classifier);
+				T result = caseClassifier(classifier);
 				if (result == null)
 					result = caseNamespace(classifier);
 				if (result == null)
@@ -614,7 +614,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REDEFINABLE_ELEMENT : {
 				RedefinableElement redefinableElement = (RedefinableElement) theEObject;
-				Object result = caseRedefinableElement(redefinableElement);
+				T result = caseRedefinableElement(redefinableElement);
 				if (result == null)
 					result = caseNamedElement(redefinableElement);
 				if (result == null)
@@ -627,7 +627,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEMPLATEABLE_ELEMENT : {
 				TemplateableElement templateableElement = (TemplateableElement) theEObject;
-				Object result = caseTemplateableElement(templateableElement);
+				T result = caseTemplateableElement(templateableElement);
 				if (result == null)
 					result = caseElement(templateableElement);
 				if (result == null)
@@ -638,7 +638,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEMPLATE_BINDING : {
 				TemplateBinding templateBinding = (TemplateBinding) theEObject;
-				Object result = caseTemplateBinding(templateBinding);
+				T result = caseTemplateBinding(templateBinding);
 				if (result == null)
 					result = caseDirectedRelationship(templateBinding);
 				if (result == null)
@@ -653,7 +653,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEMPLATE_SIGNATURE : {
 				TemplateSignature templateSignature = (TemplateSignature) theEObject;
-				Object result = caseTemplateSignature(templateSignature);
+				T result = caseTemplateSignature(templateSignature);
 				if (result == null)
 					result = caseElement(templateSignature);
 				if (result == null)
@@ -664,7 +664,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEMPLATE_PARAMETER : {
 				TemplateParameter templateParameter = (TemplateParameter) theEObject;
-				Object result = caseTemplateParameter(templateParameter);
+				T result = caseTemplateParameter(templateParameter);
 				if (result == null)
 					result = caseElement(templateParameter);
 				if (result == null)
@@ -675,7 +675,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PARAMETERABLE_ELEMENT : {
 				ParameterableElement parameterableElement = (ParameterableElement) theEObject;
-				Object result = caseParameterableElement(parameterableElement);
+				T result = caseParameterableElement(parameterableElement);
 				if (result == null)
 					result = caseElement(parameterableElement);
 				if (result == null)
@@ -686,7 +686,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION : {
 				TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution) theEObject;
-				Object result = caseTemplateParameterSubstitution(templateParameterSubstitution);
+				T result = caseTemplateParameterSubstitution(templateParameterSubstitution);
 				if (result == null)
 					result = caseElement(templateParameterSubstitution);
 				if (result == null)
@@ -697,7 +697,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.GENERALIZATION : {
 				Generalization generalization = (Generalization) theEObject;
-				Object result = caseGeneralization(generalization);
+				T result = caseGeneralization(generalization);
 				if (result == null)
 					result = caseDirectedRelationship(generalization);
 				if (result == null)
@@ -712,7 +712,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.GENERALIZATION_SET : {
 				GeneralizationSet generalizationSet = (GeneralizationSet) theEObject;
-				Object result = caseGeneralizationSet(generalizationSet);
+				T result = caseGeneralizationSet(generalizationSet);
 				if (result == null)
 					result = casePackageableElement(generalizationSet);
 				if (result == null)
@@ -729,7 +729,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FEATURE : {
 				Feature feature = (Feature) theEObject;
-				Object result = caseFeature(feature);
+				T result = caseFeature(feature);
 				if (result == null)
 					result = caseRedefinableElement(feature);
 				if (result == null)
@@ -744,7 +744,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SUBSTITUTION : {
 				Substitution substitution = (Substitution) theEObject;
-				Object result = caseSubstitution(substitution);
+				T result = caseSubstitution(substitution);
 				if (result == null)
 					result = caseRealization(substitution);
 				if (result == null)
@@ -771,7 +771,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REALIZATION : {
 				Realization realization = (Realization) theEObject;
-				Object result = caseRealization(realization);
+				T result = caseRealization(realization);
 				if (result == null)
 					result = caseAbstraction(realization);
 				if (result == null)
@@ -796,7 +796,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ABSTRACTION : {
 				Abstraction abstraction = (Abstraction) theEObject;
-				Object result = caseAbstraction(abstraction);
+				T result = caseAbstraction(abstraction);
 				if (result == null)
 					result = caseDependency(abstraction);
 				if (result == null)
@@ -819,7 +819,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OPAQUE_EXPRESSION : {
 				OpaqueExpression opaqueExpression = (OpaqueExpression) theEObject;
-				Object result = caseOpaqueExpression(opaqueExpression);
+				T result = caseOpaqueExpression(opaqueExpression);
 				if (result == null)
 					result = caseValueSpecification(opaqueExpression);
 				if (result == null)
@@ -840,7 +840,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PARAMETER : {
 				Parameter parameter = (Parameter) theEObject;
-				Object result = caseParameter(parameter);
+				T result = caseParameter(parameter);
 				if (result == null)
 					result = caseConnectableElement(parameter);
 				if (result == null)
@@ -861,7 +861,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MULTIPLICITY_ELEMENT : {
 				MultiplicityElement multiplicityElement = (MultiplicityElement) theEObject;
-				Object result = caseMultiplicityElement(multiplicityElement);
+				T result = caseMultiplicityElement(multiplicityElement);
 				if (result == null)
 					result = caseElement(multiplicityElement);
 				if (result == null)
@@ -872,7 +872,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONNECTABLE_ELEMENT : {
 				ConnectableElement connectableElement = (ConnectableElement) theEObject;
-				Object result = caseConnectableElement(connectableElement);
+				T result = caseConnectableElement(connectableElement);
 				if (result == null)
 					result = caseTypedElement(connectableElement);
 				if (result == null)
@@ -889,7 +889,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONNECTOR_END : {
 				ConnectorEnd connectorEnd = (ConnectorEnd) theEObject;
-				Object result = caseConnectorEnd(connectorEnd);
+				T result = caseConnectorEnd(connectorEnd);
 				if (result == null)
 					result = caseMultiplicityElement(connectorEnd);
 				if (result == null)
@@ -902,7 +902,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROPERTY : {
 				Property property = (Property) theEObject;
-				Object result = caseProperty(property);
+				T result = caseProperty(property);
 				if (result == null)
 					result = caseStructuralFeature(property);
 				if (result == null)
@@ -933,7 +933,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEPLOYMENT_TARGET : {
 				DeploymentTarget deploymentTarget = (DeploymentTarget) theEObject;
-				Object result = caseDeploymentTarget(deploymentTarget);
+				T result = caseDeploymentTarget(deploymentTarget);
 				if (result == null)
 					result = caseNamedElement(deploymentTarget);
 				if (result == null)
@@ -946,7 +946,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEPLOYMENT : {
 				Deployment deployment = (Deployment) theEObject;
-				Object result = caseDeployment(deployment);
+				T result = caseDeployment(deployment);
 				if (result == null)
 					result = caseDependency(deployment);
 				if (result == null)
@@ -969,7 +969,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEPLOYED_ARTIFACT : {
 				DeployedArtifact deployedArtifact = (DeployedArtifact) theEObject;
-				Object result = caseDeployedArtifact(deployedArtifact);
+				T result = caseDeployedArtifact(deployedArtifact);
 				if (result == null)
 					result = caseNamedElement(deployedArtifact);
 				if (result == null)
@@ -982,7 +982,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEPLOYMENT_SPECIFICATION : {
 				DeploymentSpecification deploymentSpecification = (DeploymentSpecification) theEObject;
-				Object result = caseDeploymentSpecification(deploymentSpecification);
+				T result = caseDeploymentSpecification(deploymentSpecification);
 				if (result == null)
 					result = caseArtifact(deploymentSpecification);
 				if (result == null)
@@ -1013,7 +1013,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ARTIFACT : {
 				Artifact artifact = (Artifact) theEObject;
-				Object result = caseArtifact(artifact);
+				T result = caseArtifact(artifact);
 				if (result == null)
 					result = caseClassifier(artifact);
 				if (result == null)
@@ -1042,7 +1042,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MANIFESTATION : {
 				Manifestation manifestation = (Manifestation) theEObject;
-				Object result = caseManifestation(manifestation);
+				T result = caseManifestation(manifestation);
 				if (result == null)
 					result = caseAbstraction(manifestation);
 				if (result == null)
@@ -1067,7 +1067,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OPERATION : {
 				Operation operation = (Operation) theEObject;
-				Object result = caseOperation(operation);
+				T result = caseOperation(operation);
 				if (result == null)
 					result = caseBehavioralFeature(operation);
 				if (result == null)
@@ -1092,7 +1092,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.BEHAVIORAL_FEATURE : {
 				BehavioralFeature behavioralFeature = (BehavioralFeature) theEObject;
-				Object result = caseBehavioralFeature(behavioralFeature);
+				T result = caseBehavioralFeature(behavioralFeature);
 				if (result == null)
 					result = caseNamespace(behavioralFeature);
 				if (result == null)
@@ -1111,7 +1111,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.BEHAVIOR : {
 				Behavior behavior = (Behavior) theEObject;
-				Object result = caseBehavior(behavior);
+				T result = caseBehavior(behavior);
 				if (result == null)
 					result = caseClass(behavior);
 				if (result == null)
@@ -1146,7 +1146,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLASS : {
 				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) theEObject;
-				Object result = caseClass(class_);
+				T result = caseClass(class_);
 				if (result == null)
 					result = caseEncapsulatedClassifier(class_);
 				if (result == null)
@@ -1179,7 +1179,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.BEHAVIORED_CLASSIFIER : {
 				BehavioredClassifier behavioredClassifier = (BehavioredClassifier) theEObject;
-				Object result = caseBehavioredClassifier(behavioredClassifier);
+				T result = caseBehavioredClassifier(behavioredClassifier);
 				if (result == null)
 					result = caseClassifier(behavioredClassifier);
 				if (result == null)
@@ -1206,7 +1206,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERFACE_REALIZATION : {
 				InterfaceRealization interfaceRealization = (InterfaceRealization) theEObject;
-				Object result = caseInterfaceRealization(interfaceRealization);
+				T result = caseInterfaceRealization(interfaceRealization);
 				if (result == null)
 					result = caseRealization(interfaceRealization);
 				if (result == null)
@@ -1233,7 +1233,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERFACE : {
 				Interface interface_ = (Interface) theEObject;
-				Object result = caseInterface(interface_);
+				T result = caseInterface(interface_);
 				if (result == null)
 					result = caseClassifier(interface_);
 				if (result == null)
@@ -1260,7 +1260,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RECEPTION : {
 				Reception reception = (Reception) theEObject;
-				Object result = caseReception(reception);
+				T result = caseReception(reception);
 				if (result == null)
 					result = caseBehavioralFeature(reception);
 				if (result == null)
@@ -1281,7 +1281,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SIGNAL : {
 				Signal signal = (Signal) theEObject;
-				Object result = caseSignal(signal);
+				T result = caseSignal(signal);
 				if (result == null)
 					result = caseClassifier(signal);
 				if (result == null)
@@ -1308,7 +1308,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROTOCOL_STATE_MACHINE : {
 				ProtocolStateMachine protocolStateMachine = (ProtocolStateMachine) theEObject;
-				Object result = caseProtocolStateMachine(protocolStateMachine);
+				T result = caseProtocolStateMachine(protocolStateMachine);
 				if (result == null)
 					result = caseStateMachine(protocolStateMachine);
 				if (result == null)
@@ -1347,7 +1347,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STATE_MACHINE : {
 				StateMachine stateMachine = (StateMachine) theEObject;
-				Object result = caseStateMachine(stateMachine);
+				T result = caseStateMachine(stateMachine);
 				if (result == null)
 					result = caseBehavior(stateMachine);
 				if (result == null)
@@ -1384,7 +1384,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REGION : {
 				Region region = (Region) theEObject;
-				Object result = caseRegion(region);
+				T result = caseRegion(region);
 				if (result == null)
 					result = caseNamespace(region);
 				if (result == null)
@@ -1401,7 +1401,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VERTEX : {
 				Vertex vertex = (Vertex) theEObject;
-				Object result = caseVertex(vertex);
+				T result = caseVertex(vertex);
 				if (result == null)
 					result = caseNamedElement(vertex);
 				if (result == null)
@@ -1414,7 +1414,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TRANSITION : {
 				Transition transition = (Transition) theEObject;
-				Object result = caseTransition(transition);
+				T result = caseTransition(transition);
 				if (result == null)
 					result = caseNamespace(transition);
 				if (result == null)
@@ -1431,7 +1431,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TRIGGER : {
 				Trigger trigger = (Trigger) theEObject;
-				Object result = caseTrigger(trigger);
+				T result = caseTrigger(trigger);
 				if (result == null)
 					result = caseNamedElement(trigger);
 				if (result == null)
@@ -1444,7 +1444,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EVENT : {
 				Event event = (Event) theEObject;
-				Object result = caseEvent(event);
+				T result = caseEvent(event);
 				if (result == null)
 					result = casePackageableElement(event);
 				if (result == null)
@@ -1461,7 +1461,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PORT : {
 				Port port = (Port) theEObject;
-				Object result = casePort(port);
+				T result = casePort(port);
 				if (result == null)
 					result = caseProperty(port);
 				if (result == null)
@@ -1494,7 +1494,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STATE : {
 				State state = (State) theEObject;
-				Object result = caseState(state);
+				T result = caseState(state);
 				if (result == null)
 					result = caseNamespace(state);
 				if (result == null)
@@ -1513,7 +1513,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONNECTION_POINT_REFERENCE : {
 				ConnectionPointReference connectionPointReference = (ConnectionPointReference) theEObject;
-				Object result = caseConnectionPointReference(connectionPointReference);
+				T result = caseConnectionPointReference(connectionPointReference);
 				if (result == null)
 					result = caseVertex(connectionPointReference);
 				if (result == null)
@@ -1528,7 +1528,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PSEUDOSTATE : {
 				Pseudostate pseudostate = (Pseudostate) theEObject;
-				Object result = casePseudostate(pseudostate);
+				T result = casePseudostate(pseudostate);
 				if (result == null)
 					result = caseVertex(pseudostate);
 				if (result == null)
@@ -1543,7 +1543,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROTOCOL_CONFORMANCE : {
 				ProtocolConformance protocolConformance = (ProtocolConformance) theEObject;
-				Object result = caseProtocolConformance(protocolConformance);
+				T result = caseProtocolConformance(protocolConformance);
 				if (result == null)
 					result = caseDirectedRelationship(protocolConformance);
 				if (result == null)
@@ -1558,7 +1558,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ENCAPSULATED_CLASSIFIER : {
 				EncapsulatedClassifier encapsulatedClassifier = (EncapsulatedClassifier) theEObject;
-				Object result = caseEncapsulatedClassifier(encapsulatedClassifier);
+				T result = caseEncapsulatedClassifier(encapsulatedClassifier);
 				if (result == null)
 					result = caseStructuredClassifier(encapsulatedClassifier);
 				if (result == null)
@@ -1587,7 +1587,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STRUCTURED_CLASSIFIER : {
 				StructuredClassifier structuredClassifier = (StructuredClassifier) theEObject;
-				Object result = caseStructuredClassifier(structuredClassifier);
+				T result = caseStructuredClassifier(structuredClassifier);
 				if (result == null)
 					result = caseClassifier(structuredClassifier);
 				if (result == null)
@@ -1614,7 +1614,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONNECTOR : {
 				Connector connector = (Connector) theEObject;
-				Object result = caseConnector(connector);
+				T result = caseConnector(connector);
 				if (result == null)
 					result = caseFeature(connector);
 				if (result == null)
@@ -1631,7 +1631,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXTENSION : {
 				Extension extension = (Extension) theEObject;
-				Object result = caseExtension(extension);
+				T result = caseExtension(extension);
 				if (result == null)
 					result = caseAssociation(extension);
 				if (result == null)
@@ -1662,7 +1662,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXTENSION_END : {
 				ExtensionEnd extensionEnd = (ExtensionEnd) theEObject;
-				Object result = caseExtensionEnd(extensionEnd);
+				T result = caseExtensionEnd(extensionEnd);
 				if (result == null)
 					result = caseProperty(extensionEnd);
 				if (result == null)
@@ -1695,7 +1695,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STEREOTYPE : {
 				Stereotype stereotype = (Stereotype) theEObject;
-				Object result = caseStereotype(stereotype);
+				T result = caseStereotype(stereotype);
 				if (result == null)
 					result = caseClass(stereotype);
 				if (result == null)
@@ -1730,7 +1730,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.IMAGE : {
 				Image image = (Image) theEObject;
-				Object result = caseImage(image);
+				T result = caseImage(image);
 				if (result == null)
 					result = caseElement(image);
 				if (result == null)
@@ -1741,7 +1741,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROFILE : {
 				Profile profile = (Profile) theEObject;
-				Object result = caseProfile(profile);
+				T result = caseProfile(profile);
 				if (result == null)
 					result = casePackage(profile);
 				if (result == null)
@@ -1764,7 +1764,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MODEL : {
 				Model model = (Model) theEObject;
-				Object result = caseModel(model);
+				T result = caseModel(model);
 				if (result == null)
 					result = casePackage(model);
 				if (result == null)
@@ -1787,7 +1787,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PARAMETER_SET : {
 				ParameterSet parameterSet = (ParameterSet) theEObject;
-				Object result = caseParameterSet(parameterSet);
+				T result = caseParameterSet(parameterSet);
 				if (result == null)
 					result = caseNamedElement(parameterSet);
 				if (result == null)
@@ -1800,7 +1800,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DATA_TYPE : {
 				DataType dataType = (DataType) theEObject;
-				Object result = caseDataType(dataType);
+				T result = caseDataType(dataType);
 				if (result == null)
 					result = caseClassifier(dataType);
 				if (result == null)
@@ -1827,7 +1827,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER : {
 				OperationTemplateParameter operationTemplateParameter = (OperationTemplateParameter) theEObject;
-				Object result = caseOperationTemplateParameter(operationTemplateParameter);
+				T result = caseOperationTemplateParameter(operationTemplateParameter);
 				if (result == null)
 					result = caseTemplateParameter(operationTemplateParameter);
 				if (result == null)
@@ -1840,7 +1840,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STRUCTURAL_FEATURE : {
 				StructuralFeature structuralFeature = (StructuralFeature) theEObject;
-				Object result = caseStructuralFeature(structuralFeature);
+				T result = caseStructuralFeature(structuralFeature);
 				if (result == null)
 					result = caseFeature(structuralFeature);
 				if (result == null)
@@ -1861,7 +1861,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
 				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
-				Object result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
+				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
 				if (result == null)
 					result = caseTemplateParameter(connectableElementTemplateParameter);
 				if (result == null)
@@ -1874,7 +1874,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COLLABORATION_USE : {
 				CollaborationUse collaborationUse = (CollaborationUse) theEObject;
-				Object result = caseCollaborationUse(collaborationUse);
+				T result = caseCollaborationUse(collaborationUse);
 				if (result == null)
 					result = caseNamedElement(collaborationUse);
 				if (result == null)
@@ -1887,7 +1887,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COLLABORATION : {
 				Collaboration collaboration = (Collaboration) theEObject;
-				Object result = caseCollaboration(collaboration);
+				T result = caseCollaboration(collaboration);
 				if (result == null)
 					result = caseBehavioredClassifier(collaboration);
 				if (result == null)
@@ -1918,7 +1918,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.USE_CASE : {
 				UseCase useCase = (UseCase) theEObject;
-				Object result = caseUseCase(useCase);
+				T result = caseUseCase(useCase);
 				if (result == null)
 					result = caseBehavioredClassifier(useCase);
 				if (result == null)
@@ -1947,7 +1947,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INCLUDE : {
 				Include include = (Include) theEObject;
-				Object result = caseInclude(include);
+				T result = caseInclude(include);
 				if (result == null)
 					result = caseNamedElement(include);
 				if (result == null)
@@ -1964,7 +1964,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXTEND : {
 				Extend extend = (Extend) theEObject;
-				Object result = caseExtend(extend);
+				T result = caseExtend(extend);
 				if (result == null)
 					result = caseNamedElement(extend);
 				if (result == null)
@@ -1981,7 +1981,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXTENSION_POINT : {
 				ExtensionPoint extensionPoint = (ExtensionPoint) theEObject;
-				Object result = caseExtensionPoint(extensionPoint);
+				T result = caseExtensionPoint(extensionPoint);
 				if (result == null)
 					result = caseRedefinableElement(extensionPoint);
 				if (result == null)
@@ -1996,7 +1996,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE : {
 				RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature) theEObject;
-				Object result = caseRedefinableTemplateSignature(redefinableTemplateSignature);
+				T result = caseRedefinableTemplateSignature(redefinableTemplateSignature);
 				if (result == null)
 					result = caseRedefinableElement(redefinableTemplateSignature);
 				if (result == null)
@@ -2013,7 +2013,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER : {
 				ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter) theEObject;
-				Object result = caseClassifierTemplateParameter(classifierTemplateParameter);
+				T result = caseClassifierTemplateParameter(classifierTemplateParameter);
 				if (result == null)
 					result = caseTemplateParameter(classifierTemplateParameter);
 				if (result == null)
@@ -2026,7 +2026,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STRING_EXPRESSION : {
 				StringExpression stringExpression = (StringExpression) theEObject;
-				Object result = caseStringExpression(stringExpression);
+				T result = caseStringExpression(stringExpression);
 				if (result == null)
 					result = caseExpression(stringExpression);
 				if (result == null)
@@ -2051,7 +2051,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXPRESSION : {
 				Expression expression = (Expression) theEObject;
-				Object result = caseExpression(expression);
+				T result = caseExpression(expression);
 				if (result == null)
 					result = caseValueSpecification(expression);
 				if (result == null)
@@ -2072,7 +2072,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PACKAGE_MERGE : {
 				PackageMerge packageMerge = (PackageMerge) theEObject;
-				Object result = casePackageMerge(packageMerge);
+				T result = casePackageMerge(packageMerge);
 				if (result == null)
 					result = caseDirectedRelationship(packageMerge);
 				if (result == null)
@@ -2087,7 +2087,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROFILE_APPLICATION : {
 				ProfileApplication profileApplication = (ProfileApplication) theEObject;
-				Object result = caseProfileApplication(profileApplication);
+				T result = caseProfileApplication(profileApplication);
 				if (result == null)
 					result = caseDirectedRelationship(profileApplication);
 				if (result == null)
@@ -2102,7 +2102,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ENUMERATION : {
 				Enumeration enumeration = (Enumeration) theEObject;
-				Object result = caseEnumeration(enumeration);
+				T result = caseEnumeration(enumeration);
 				if (result == null)
 					result = caseDataType(enumeration);
 				if (result == null)
@@ -2131,7 +2131,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ENUMERATION_LITERAL : {
 				EnumerationLiteral enumerationLiteral = (EnumerationLiteral) theEObject;
-				Object result = caseEnumerationLiteral(enumerationLiteral);
+				T result = caseEnumerationLiteral(enumerationLiteral);
 				if (result == null)
 					result = caseInstanceSpecification(enumerationLiteral);
 				if (result == null)
@@ -2154,7 +2154,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INSTANCE_SPECIFICATION : {
 				InstanceSpecification instanceSpecification = (InstanceSpecification) theEObject;
-				Object result = caseInstanceSpecification(instanceSpecification);
+				T result = caseInstanceSpecification(instanceSpecification);
 				if (result == null)
 					result = caseDeploymentTarget(instanceSpecification);
 				if (result == null)
@@ -2175,7 +2175,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SLOT : {
 				Slot slot = (Slot) theEObject;
-				Object result = caseSlot(slot);
+				T result = caseSlot(slot);
 				if (result == null)
 					result = caseElement(slot);
 				if (result == null)
@@ -2186,7 +2186,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PRIMITIVE_TYPE : {
 				PrimitiveType primitiveType = (PrimitiveType) theEObject;
-				Object result = casePrimitiveType(primitiveType);
+				T result = casePrimitiveType(primitiveType);
 				if (result == null)
 					result = caseDataType(primitiveType);
 				if (result == null)
@@ -2215,7 +2215,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_SPECIFICATION : {
 				LiteralSpecification literalSpecification = (LiteralSpecification) theEObject;
-				Object result = caseLiteralSpecification(literalSpecification);
+				T result = caseLiteralSpecification(literalSpecification);
 				if (result == null)
 					result = caseValueSpecification(literalSpecification);
 				if (result == null)
@@ -2236,7 +2236,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_INTEGER : {
 				LiteralInteger literalInteger = (LiteralInteger) theEObject;
-				Object result = caseLiteralInteger(literalInteger);
+				T result = caseLiteralInteger(literalInteger);
 				if (result == null)
 					result = caseLiteralSpecification(literalInteger);
 				if (result == null)
@@ -2259,7 +2259,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_STRING : {
 				LiteralString literalString = (LiteralString) theEObject;
-				Object result = caseLiteralString(literalString);
+				T result = caseLiteralString(literalString);
 				if (result == null)
 					result = caseLiteralSpecification(literalString);
 				if (result == null)
@@ -2282,7 +2282,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_BOOLEAN : {
 				LiteralBoolean literalBoolean = (LiteralBoolean) theEObject;
-				Object result = caseLiteralBoolean(literalBoolean);
+				T result = caseLiteralBoolean(literalBoolean);
 				if (result == null)
 					result = caseLiteralSpecification(literalBoolean);
 				if (result == null)
@@ -2305,7 +2305,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_NULL : {
 				LiteralNull literalNull = (LiteralNull) theEObject;
-				Object result = caseLiteralNull(literalNull);
+				T result = caseLiteralNull(literalNull);
 				if (result == null)
 					result = caseLiteralSpecification(literalNull);
 				if (result == null)
@@ -2328,7 +2328,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INSTANCE_VALUE : {
 				InstanceValue instanceValue = (InstanceValue) theEObject;
-				Object result = caseInstanceValue(instanceValue);
+				T result = caseInstanceValue(instanceValue);
 				if (result == null)
 					result = caseValueSpecification(instanceValue);
 				if (result == null)
@@ -2349,7 +2349,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LITERAL_UNLIMITED_NATURAL : {
 				LiteralUnlimitedNatural literalUnlimitedNatural = (LiteralUnlimitedNatural) theEObject;
-				Object result = caseLiteralUnlimitedNatural(literalUnlimitedNatural);
+				T result = caseLiteralUnlimitedNatural(literalUnlimitedNatural);
 				if (result == null)
 					result = caseLiteralSpecification(literalUnlimitedNatural);
 				if (result == null)
@@ -2372,7 +2372,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OPAQUE_BEHAVIOR : {
 				OpaqueBehavior opaqueBehavior = (OpaqueBehavior) theEObject;
-				Object result = caseOpaqueBehavior(opaqueBehavior);
+				T result = caseOpaqueBehavior(opaqueBehavior);
 				if (result == null)
 					result = caseBehavior(opaqueBehavior);
 				if (result == null)
@@ -2409,7 +2409,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FUNCTION_BEHAVIOR : {
 				FunctionBehavior functionBehavior = (FunctionBehavior) theEObject;
-				Object result = caseFunctionBehavior(functionBehavior);
+				T result = caseFunctionBehavior(functionBehavior);
 				if (result == null)
 					result = caseOpaqueBehavior(functionBehavior);
 				if (result == null)
@@ -2448,7 +2448,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OPAQUE_ACTION : {
 				OpaqueAction opaqueAction = (OpaqueAction) theEObject;
-				Object result = caseOpaqueAction(opaqueAction);
+				T result = caseOpaqueAction(opaqueAction);
 				if (result == null)
 					result = caseAction(opaqueAction);
 				if (result == null)
@@ -2469,7 +2469,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTION : {
 				Action action = (Action) theEObject;
-				Object result = caseAction(action);
+				T result = caseAction(action);
 				if (result == null)
 					result = caseExecutableNode(action);
 				if (result == null)
@@ -2488,7 +2488,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXECUTABLE_NODE : {
 				ExecutableNode executableNode = (ExecutableNode) theEObject;
-				Object result = caseExecutableNode(executableNode);
+				T result = caseExecutableNode(executableNode);
 				if (result == null)
 					result = caseActivityNode(executableNode);
 				if (result == null)
@@ -2505,7 +2505,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_NODE : {
 				ActivityNode activityNode = (ActivityNode) theEObject;
-				Object result = caseActivityNode(activityNode);
+				T result = caseActivityNode(activityNode);
 				if (result == null)
 					result = caseRedefinableElement(activityNode);
 				if (result == null)
@@ -2520,7 +2520,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE : {
 				StructuredActivityNode structuredActivityNode = (StructuredActivityNode) theEObject;
-				Object result = caseStructuredActivityNode(structuredActivityNode);
+				T result = caseStructuredActivityNode(structuredActivityNode);
 				if (result == null)
 					result = caseAction(structuredActivityNode);
 				if (result == null)
@@ -2545,7 +2545,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_GROUP : {
 				ActivityGroup activityGroup = (ActivityGroup) theEObject;
-				Object result = caseActivityGroup(activityGroup);
+				T result = caseActivityGroup(activityGroup);
 				if (result == null)
 					result = caseElement(activityGroup);
 				if (result == null)
@@ -2556,7 +2556,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY : {
 				Activity activity = (Activity) theEObject;
-				Object result = caseActivity(activity);
+				T result = caseActivity(activity);
 				if (result == null)
 					result = caseBehavior(activity);
 				if (result == null)
@@ -2593,7 +2593,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VARIABLE : {
 				Variable variable = (Variable) theEObject;
-				Object result = caseVariable(variable);
+				T result = caseVariable(variable);
 				if (result == null)
 					result = caseConnectableElement(variable);
 				if (result == null)
@@ -2614,7 +2614,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_EDGE : {
 				ActivityEdge activityEdge = (ActivityEdge) theEObject;
-				Object result = caseActivityEdge(activityEdge);
+				T result = caseActivityEdge(activityEdge);
 				if (result == null)
 					result = caseRedefinableElement(activityEdge);
 				if (result == null)
@@ -2629,7 +2629,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_PARTITION : {
 				ActivityPartition activityPartition = (ActivityPartition) theEObject;
-				Object result = caseActivityPartition(activityPartition);
+				T result = caseActivityPartition(activityPartition);
 				if (result == null)
 					result = caseNamedElement(activityPartition);
 				if (result == null)
@@ -2644,7 +2644,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION : {
 				InterruptibleActivityRegion interruptibleActivityRegion = (InterruptibleActivityRegion) theEObject;
-				Object result = caseInterruptibleActivityRegion(interruptibleActivityRegion);
+				T result = caseInterruptibleActivityRegion(interruptibleActivityRegion);
 				if (result == null)
 					result = caseActivityGroup(interruptibleActivityRegion);
 				if (result == null)
@@ -2657,7 +2657,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXCEPTION_HANDLER : {
 				ExceptionHandler exceptionHandler = (ExceptionHandler) theEObject;
-				Object result = caseExceptionHandler(exceptionHandler);
+				T result = caseExceptionHandler(exceptionHandler);
 				if (result == null)
 					result = caseElement(exceptionHandler);
 				if (result == null)
@@ -2668,7 +2668,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OBJECT_NODE : {
 				ObjectNode objectNode = (ObjectNode) theEObject;
-				Object result = caseObjectNode(objectNode);
+				T result = caseObjectNode(objectNode);
 				if (result == null)
 					result = caseActivityNode(objectNode);
 				if (result == null)
@@ -2687,7 +2687,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OUTPUT_PIN : {
 				OutputPin outputPin = (OutputPin) theEObject;
-				Object result = caseOutputPin(outputPin);
+				T result = caseOutputPin(outputPin);
 				if (result == null)
 					result = casePin(outputPin);
 				if (result == null)
@@ -2712,7 +2712,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PIN : {
 				Pin pin = (Pin) theEObject;
-				Object result = casePin(pin);
+				T result = casePin(pin);
 				if (result == null)
 					result = caseObjectNode(pin);
 				if (result == null)
@@ -2735,7 +2735,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INPUT_PIN : {
 				InputPin inputPin = (InputPin) theEObject;
-				Object result = caseInputPin(inputPin);
+				T result = caseInputPin(inputPin);
 				if (result == null)
 					result = casePin(inputPin);
 				if (result == null)
@@ -2760,7 +2760,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CALL_ACTION : {
 				CallAction callAction = (CallAction) theEObject;
-				Object result = caseCallAction(callAction);
+				T result = caseCallAction(callAction);
 				if (result == null)
 					result = caseInvocationAction(callAction);
 				if (result == null)
@@ -2783,7 +2783,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INVOCATION_ACTION : {
 				InvocationAction invocationAction = (InvocationAction) theEObject;
-				Object result = caseInvocationAction(invocationAction);
+				T result = caseInvocationAction(invocationAction);
 				if (result == null)
 					result = caseAction(invocationAction);
 				if (result == null)
@@ -2804,7 +2804,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SEND_SIGNAL_ACTION : {
 				SendSignalAction sendSignalAction = (SendSignalAction) theEObject;
-				Object result = caseSendSignalAction(sendSignalAction);
+				T result = caseSendSignalAction(sendSignalAction);
 				if (result == null)
 					result = caseInvocationAction(sendSignalAction);
 				if (result == null)
@@ -2827,7 +2827,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CALL_OPERATION_ACTION : {
 				CallOperationAction callOperationAction = (CallOperationAction) theEObject;
-				Object result = caseCallOperationAction(callOperationAction);
+				T result = caseCallOperationAction(callOperationAction);
 				if (result == null)
 					result = caseCallAction(callOperationAction);
 				if (result == null)
@@ -2852,7 +2852,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CALL_BEHAVIOR_ACTION : {
 				CallBehaviorAction callBehaviorAction = (CallBehaviorAction) theEObject;
-				Object result = caseCallBehaviorAction(callBehaviorAction);
+				T result = caseCallBehaviorAction(callBehaviorAction);
 				if (result == null)
 					result = caseCallAction(callBehaviorAction);
 				if (result == null)
@@ -2877,7 +2877,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SEQUENCE_NODE : {
 				SequenceNode sequenceNode = (SequenceNode) theEObject;
-				Object result = caseSequenceNode(sequenceNode);
+				T result = caseSequenceNode(sequenceNode);
 				if (result == null)
 					result = caseStructuredActivityNode(sequenceNode);
 				if (result == null)
@@ -2904,7 +2904,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.USAGE : {
 				Usage usage = (Usage) theEObject;
-				Object result = caseUsage(usage);
+				T result = caseUsage(usage);
 				if (result == null)
 					result = caseDependency(usage);
 				if (result == null)
@@ -2927,7 +2927,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONTROL_NODE : {
 				ControlNode controlNode = (ControlNode) theEObject;
-				Object result = caseControlNode(controlNode);
+				T result = caseControlNode(controlNode);
 				if (result == null)
 					result = caseActivityNode(controlNode);
 				if (result == null)
@@ -2944,7 +2944,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONTROL_FLOW : {
 				ControlFlow controlFlow = (ControlFlow) theEObject;
-				Object result = caseControlFlow(controlFlow);
+				T result = caseControlFlow(controlFlow);
 				if (result == null)
 					result = caseActivityEdge(controlFlow);
 				if (result == null)
@@ -2961,7 +2961,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INITIAL_NODE : {
 				InitialNode initialNode = (InitialNode) theEObject;
-				Object result = caseInitialNode(initialNode);
+				T result = caseInitialNode(initialNode);
 				if (result == null)
 					result = caseControlNode(initialNode);
 				if (result == null)
@@ -2980,7 +2980,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_PARAMETER_NODE : {
 				ActivityParameterNode activityParameterNode = (ActivityParameterNode) theEObject;
-				Object result = caseActivityParameterNode(activityParameterNode);
+				T result = caseActivityParameterNode(activityParameterNode);
 				if (result == null)
 					result = caseObjectNode(activityParameterNode);
 				if (result == null)
@@ -3001,7 +3001,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VALUE_PIN : {
 				ValuePin valuePin = (ValuePin) theEObject;
-				Object result = caseValuePin(valuePin);
+				T result = caseValuePin(valuePin);
 				if (result == null)
 					result = caseInputPin(valuePin);
 				if (result == null)
@@ -3028,7 +3028,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MESSAGE : {
 				Message message = (Message) theEObject;
-				Object result = caseMessage(message);
+				T result = caseMessage(message);
 				if (result == null)
 					result = caseNamedElement(message);
 				if (result == null)
@@ -3041,7 +3041,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MESSAGE_END : {
 				MessageEnd messageEnd = (MessageEnd) theEObject;
-				Object result = caseMessageEnd(messageEnd);
+				T result = caseMessageEnd(messageEnd);
 				if (result == null)
 					result = caseNamedElement(messageEnd);
 				if (result == null)
@@ -3054,7 +3054,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERACTION : {
 				Interaction interaction = (Interaction) theEObject;
-				Object result = caseInteraction(interaction);
+				T result = caseInteraction(interaction);
 				if (result == null)
 					result = caseBehavior(interaction);
 				if (result == null)
@@ -3093,7 +3093,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERACTION_FRAGMENT : {
 				InteractionFragment interactionFragment = (InteractionFragment) theEObject;
-				Object result = caseInteractionFragment(interactionFragment);
+				T result = caseInteractionFragment(interactionFragment);
 				if (result == null)
 					result = caseNamedElement(interactionFragment);
 				if (result == null)
@@ -3106,7 +3106,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LIFELINE : {
 				Lifeline lifeline = (Lifeline) theEObject;
-				Object result = caseLifeline(lifeline);
+				T result = caseLifeline(lifeline);
 				if (result == null)
 					result = caseNamedElement(lifeline);
 				if (result == null)
@@ -3119,7 +3119,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PART_DECOMPOSITION : {
 				PartDecomposition partDecomposition = (PartDecomposition) theEObject;
-				Object result = casePartDecomposition(partDecomposition);
+				T result = casePartDecomposition(partDecomposition);
 				if (result == null)
 					result = caseInteractionUse(partDecomposition);
 				if (result == null)
@@ -3136,7 +3136,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERACTION_USE : {
 				InteractionUse interactionUse = (InteractionUse) theEObject;
-				Object result = caseInteractionUse(interactionUse);
+				T result = caseInteractionUse(interactionUse);
 				if (result == null)
 					result = caseInteractionFragment(interactionUse);
 				if (result == null)
@@ -3151,7 +3151,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.GATE : {
 				Gate gate = (Gate) theEObject;
-				Object result = caseGate(gate);
+				T result = caseGate(gate);
 				if (result == null)
 					result = caseMessageEnd(gate);
 				if (result == null)
@@ -3166,7 +3166,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.GENERAL_ORDERING : {
 				GeneralOrdering generalOrdering = (GeneralOrdering) theEObject;
-				Object result = caseGeneralOrdering(generalOrdering);
+				T result = caseGeneralOrdering(generalOrdering);
 				if (result == null)
 					result = caseNamedElement(generalOrdering);
 				if (result == null)
@@ -3179,7 +3179,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OCCURRENCE_SPECIFICATION : {
 				OccurrenceSpecification occurrenceSpecification = (OccurrenceSpecification) theEObject;
-				Object result = caseOccurrenceSpecification(occurrenceSpecification);
+				T result = caseOccurrenceSpecification(occurrenceSpecification);
 				if (result == null)
 					result = caseInteractionFragment(occurrenceSpecification);
 				if (result == null)
@@ -3194,7 +3194,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERACTION_OPERAND : {
 				InteractionOperand interactionOperand = (InteractionOperand) theEObject;
-				Object result = caseInteractionOperand(interactionOperand);
+				T result = caseInteractionOperand(interactionOperand);
 				if (result == null)
 					result = caseNamespace(interactionOperand);
 				if (result == null)
@@ -3211,7 +3211,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERACTION_CONSTRAINT : {
 				InteractionConstraint interactionConstraint = (InteractionConstraint) theEObject;
-				Object result = caseInteractionConstraint(interactionConstraint);
+				T result = caseInteractionConstraint(interactionConstraint);
 				if (result == null)
 					result = caseConstraint(interactionConstraint);
 				if (result == null)
@@ -3230,7 +3230,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXECUTION_SPECIFICATION : {
 				ExecutionSpecification executionSpecification = (ExecutionSpecification) theEObject;
-				Object result = caseExecutionSpecification(executionSpecification);
+				T result = caseExecutionSpecification(executionSpecification);
 				if (result == null)
 					result = caseInteractionFragment(executionSpecification);
 				if (result == null)
@@ -3245,7 +3245,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STATE_INVARIANT : {
 				StateInvariant stateInvariant = (StateInvariant) theEObject;
-				Object result = caseStateInvariant(stateInvariant);
+				T result = caseStateInvariant(stateInvariant);
 				if (result == null)
 					result = caseInteractionFragment(stateInvariant);
 				if (result == null)
@@ -3260,7 +3260,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTION_EXECUTION_SPECIFICATION : {
 				ActionExecutionSpecification actionExecutionSpecification = (ActionExecutionSpecification) theEObject;
-				Object result = caseActionExecutionSpecification(actionExecutionSpecification);
+				T result = caseActionExecutionSpecification(actionExecutionSpecification);
 				if (result == null)
 					result = caseExecutionSpecification(actionExecutionSpecification);
 				if (result == null)
@@ -3277,7 +3277,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION : {
 				BehaviorExecutionSpecification behaviorExecutionSpecification = (BehaviorExecutionSpecification) theEObject;
-				Object result = caseBehaviorExecutionSpecification(behaviorExecutionSpecification);
+				T result = caseBehaviorExecutionSpecification(behaviorExecutionSpecification);
 				if (result == null)
 					result = caseExecutionSpecification(behaviorExecutionSpecification);
 				if (result == null)
@@ -3294,7 +3294,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXECUTION_EVENT : {
 				ExecutionEvent executionEvent = (ExecutionEvent) theEObject;
-				Object result = caseExecutionEvent(executionEvent);
+				T result = caseExecutionEvent(executionEvent);
 				if (result == null)
 					result = caseEvent(executionEvent);
 				if (result == null)
@@ -3313,7 +3313,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CREATION_EVENT : {
 				CreationEvent creationEvent = (CreationEvent) theEObject;
-				Object result = caseCreationEvent(creationEvent);
+				T result = caseCreationEvent(creationEvent);
 				if (result == null)
 					result = caseEvent(creationEvent);
 				if (result == null)
@@ -3332,7 +3332,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DESTRUCTION_EVENT : {
 				DestructionEvent destructionEvent = (DestructionEvent) theEObject;
-				Object result = caseDestructionEvent(destructionEvent);
+				T result = caseDestructionEvent(destructionEvent);
 				if (result == null)
 					result = caseEvent(destructionEvent);
 				if (result == null)
@@ -3351,7 +3351,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SEND_OPERATION_EVENT : {
 				SendOperationEvent sendOperationEvent = (SendOperationEvent) theEObject;
-				Object result = caseSendOperationEvent(sendOperationEvent);
+				T result = caseSendOperationEvent(sendOperationEvent);
 				if (result == null)
 					result = caseMessageEvent(sendOperationEvent);
 				if (result == null)
@@ -3372,7 +3372,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MESSAGE_EVENT : {
 				MessageEvent messageEvent = (MessageEvent) theEObject;
-				Object result = caseMessageEvent(messageEvent);
+				T result = caseMessageEvent(messageEvent);
 				if (result == null)
 					result = caseEvent(messageEvent);
 				if (result == null)
@@ -3391,7 +3391,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SEND_SIGNAL_EVENT : {
 				SendSignalEvent sendSignalEvent = (SendSignalEvent) theEObject;
-				Object result = caseSendSignalEvent(sendSignalEvent);
+				T result = caseSendSignalEvent(sendSignalEvent);
 				if (result == null)
 					result = caseMessageEvent(sendSignalEvent);
 				if (result == null)
@@ -3412,7 +3412,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION : {
 				MessageOccurrenceSpecification messageOccurrenceSpecification = (MessageOccurrenceSpecification) theEObject;
-				Object result = caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
+				T result = caseMessageOccurrenceSpecification(messageOccurrenceSpecification);
 				if (result == null)
 					result = caseOccurrenceSpecification(messageOccurrenceSpecification);
 				if (result == null)
@@ -3431,7 +3431,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION : {
 				ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) theEObject;
-				Object result = caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
+				T result = caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
 				if (result == null)
 					result = caseOccurrenceSpecification(executionOccurrenceSpecification);
 				if (result == null)
@@ -3448,7 +3448,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RECEIVE_OPERATION_EVENT : {
 				ReceiveOperationEvent receiveOperationEvent = (ReceiveOperationEvent) theEObject;
-				Object result = caseReceiveOperationEvent(receiveOperationEvent);
+				T result = caseReceiveOperationEvent(receiveOperationEvent);
 				if (result == null)
 					result = caseMessageEvent(receiveOperationEvent);
 				if (result == null)
@@ -3469,7 +3469,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RECEIVE_SIGNAL_EVENT : {
 				ReceiveSignalEvent receiveSignalEvent = (ReceiveSignalEvent) theEObject;
-				Object result = caseReceiveSignalEvent(receiveSignalEvent);
+				T result = caseReceiveSignalEvent(receiveSignalEvent);
 				if (result == null)
 					result = caseMessageEvent(receiveSignalEvent);
 				if (result == null)
@@ -3490,7 +3490,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTOR : {
 				Actor actor = (Actor) theEObject;
-				Object result = caseActor(actor);
+				T result = caseActor(actor);
 				if (result == null)
 					result = caseBehavioredClassifier(actor);
 				if (result == null)
@@ -3519,7 +3519,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CALL_EVENT : {
 				CallEvent callEvent = (CallEvent) theEObject;
-				Object result = caseCallEvent(callEvent);
+				T result = caseCallEvent(callEvent);
 				if (result == null)
 					result = caseMessageEvent(callEvent);
 				if (result == null)
@@ -3540,7 +3540,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CHANGE_EVENT : {
 				ChangeEvent changeEvent = (ChangeEvent) theEObject;
-				Object result = caseChangeEvent(changeEvent);
+				T result = caseChangeEvent(changeEvent);
 				if (result == null)
 					result = caseEvent(changeEvent);
 				if (result == null)
@@ -3559,7 +3559,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SIGNAL_EVENT : {
 				SignalEvent signalEvent = (SignalEvent) theEObject;
-				Object result = caseSignalEvent(signalEvent);
+				T result = caseSignalEvent(signalEvent);
 				if (result == null)
 					result = caseMessageEvent(signalEvent);
 				if (result == null)
@@ -3580,7 +3580,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ANY_RECEIVE_EVENT : {
 				AnyReceiveEvent anyReceiveEvent = (AnyReceiveEvent) theEObject;
-				Object result = caseAnyReceiveEvent(anyReceiveEvent);
+				T result = caseAnyReceiveEvent(anyReceiveEvent);
 				if (result == null)
 					result = caseMessageEvent(anyReceiveEvent);
 				if (result == null)
@@ -3601,7 +3601,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FORK_NODE : {
 				ForkNode forkNode = (ForkNode) theEObject;
-				Object result = caseForkNode(forkNode);
+				T result = caseForkNode(forkNode);
 				if (result == null)
 					result = caseControlNode(forkNode);
 				if (result == null)
@@ -3620,7 +3620,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FLOW_FINAL_NODE : {
 				FlowFinalNode flowFinalNode = (FlowFinalNode) theEObject;
-				Object result = caseFlowFinalNode(flowFinalNode);
+				T result = caseFlowFinalNode(flowFinalNode);
 				if (result == null)
 					result = caseFinalNode(flowFinalNode);
 				if (result == null)
@@ -3641,7 +3641,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FINAL_NODE : {
 				FinalNode finalNode = (FinalNode) theEObject;
-				Object result = caseFinalNode(finalNode);
+				T result = caseFinalNode(finalNode);
 				if (result == null)
 					result = caseControlNode(finalNode);
 				if (result == null)
@@ -3660,7 +3660,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CENTRAL_BUFFER_NODE : {
 				CentralBufferNode centralBufferNode = (CentralBufferNode) theEObject;
-				Object result = caseCentralBufferNode(centralBufferNode);
+				T result = caseCentralBufferNode(centralBufferNode);
 				if (result == null)
 					result = caseObjectNode(centralBufferNode);
 				if (result == null)
@@ -3681,7 +3681,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.MERGE_NODE : {
 				MergeNode mergeNode = (MergeNode) theEObject;
-				Object result = caseMergeNode(mergeNode);
+				T result = caseMergeNode(mergeNode);
 				if (result == null)
 					result = caseControlNode(mergeNode);
 				if (result == null)
@@ -3700,7 +3700,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DECISION_NODE : {
 				DecisionNode decisionNode = (DecisionNode) theEObject;
-				Object result = caseDecisionNode(decisionNode);
+				T result = caseDecisionNode(decisionNode);
 				if (result == null)
 					result = caseControlNode(decisionNode);
 				if (result == null)
@@ -3719,7 +3719,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTIVITY_FINAL_NODE : {
 				ActivityFinalNode activityFinalNode = (ActivityFinalNode) theEObject;
-				Object result = caseActivityFinalNode(activityFinalNode);
+				T result = caseActivityFinalNode(activityFinalNode);
 				if (result == null)
 					result = caseFinalNode(activityFinalNode);
 				if (result == null)
@@ -3740,7 +3740,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COMPONENT_REALIZATION : {
 				ComponentRealization componentRealization = (ComponentRealization) theEObject;
-				Object result = caseComponentRealization(componentRealization);
+				T result = caseComponentRealization(componentRealization);
 				if (result == null)
 					result = caseRealization(componentRealization);
 				if (result == null)
@@ -3767,7 +3767,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COMPONENT : {
 				Component component = (Component) theEObject;
-				Object result = caseComponent(component);
+				T result = caseComponent(component);
 				if (result == null)
 					result = caseClass(component);
 				if (result == null)
@@ -3802,7 +3802,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.NODE : {
 				Node node = (Node) theEObject;
-				Object result = caseNode(node);
+				T result = caseNode(node);
 				if (result == null)
 					result = caseClass(node);
 				if (result == null)
@@ -3839,7 +3839,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DEVICE : {
 				Device device = (Device) theEObject;
-				Object result = caseDevice(device);
+				T result = caseDevice(device);
 				if (result == null)
 					result = caseNode(device);
 				if (result == null)
@@ -3878,7 +3878,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXECUTION_ENVIRONMENT : {
 				ExecutionEnvironment executionEnvironment = (ExecutionEnvironment) theEObject;
-				Object result = caseExecutionEnvironment(executionEnvironment);
+				T result = caseExecutionEnvironment(executionEnvironment);
 				if (result == null)
 					result = caseNode(executionEnvironment);
 				if (result == null)
@@ -3917,7 +3917,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COMMUNICATION_PATH : {
 				CommunicationPath communicationPath = (CommunicationPath) theEObject;
-				Object result = caseCommunicationPath(communicationPath);
+				T result = caseCommunicationPath(communicationPath);
 				if (result == null)
 					result = caseAssociation(communicationPath);
 				if (result == null)
@@ -3948,7 +3948,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.COMBINED_FRAGMENT : {
 				CombinedFragment combinedFragment = (CombinedFragment) theEObject;
-				Object result = caseCombinedFragment(combinedFragment);
+				T result = caseCombinedFragment(combinedFragment);
 				if (result == null)
 					result = caseInteractionFragment(combinedFragment);
 				if (result == null)
@@ -3963,7 +3963,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONTINUATION : {
 				Continuation continuation = (Continuation) theEObject;
-				Object result = caseContinuation(continuation);
+				T result = caseContinuation(continuation);
 				if (result == null)
 					result = caseInteractionFragment(continuation);
 				if (result == null)
@@ -3978,7 +3978,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONSIDER_IGNORE_FRAGMENT : {
 				ConsiderIgnoreFragment considerIgnoreFragment = (ConsiderIgnoreFragment) theEObject;
-				Object result = caseConsiderIgnoreFragment(considerIgnoreFragment);
+				T result = caseConsiderIgnoreFragment(considerIgnoreFragment);
 				if (result == null)
 					result = caseCombinedFragment(considerIgnoreFragment);
 				if (result == null)
@@ -3995,7 +3995,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CREATE_OBJECT_ACTION : {
 				CreateObjectAction createObjectAction = (CreateObjectAction) theEObject;
-				Object result = caseCreateObjectAction(createObjectAction);
+				T result = caseCreateObjectAction(createObjectAction);
 				if (result == null)
 					result = caseAction(createObjectAction);
 				if (result == null)
@@ -4016,7 +4016,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DESTROY_OBJECT_ACTION : {
 				DestroyObjectAction destroyObjectAction = (DestroyObjectAction) theEObject;
-				Object result = caseDestroyObjectAction(destroyObjectAction);
+				T result = caseDestroyObjectAction(destroyObjectAction);
 				if (result == null)
 					result = caseAction(destroyObjectAction);
 				if (result == null)
@@ -4037,7 +4037,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TEST_IDENTITY_ACTION : {
 				TestIdentityAction testIdentityAction = (TestIdentityAction) theEObject;
-				Object result = caseTestIdentityAction(testIdentityAction);
+				T result = caseTestIdentityAction(testIdentityAction);
 				if (result == null)
 					result = caseAction(testIdentityAction);
 				if (result == null)
@@ -4058,7 +4058,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_SELF_ACTION : {
 				ReadSelfAction readSelfAction = (ReadSelfAction) theEObject;
-				Object result = caseReadSelfAction(readSelfAction);
+				T result = caseReadSelfAction(readSelfAction);
 				if (result == null)
 					result = caseAction(readSelfAction);
 				if (result == null)
@@ -4079,7 +4079,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.STRUCTURAL_FEATURE_ACTION : {
 				StructuralFeatureAction structuralFeatureAction = (StructuralFeatureAction) theEObject;
-				Object result = caseStructuralFeatureAction(structuralFeatureAction);
+				T result = caseStructuralFeatureAction(structuralFeatureAction);
 				if (result == null)
 					result = caseAction(structuralFeatureAction);
 				if (result == null)
@@ -4100,7 +4100,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_STRUCTURAL_FEATURE_ACTION : {
 				ReadStructuralFeatureAction readStructuralFeatureAction = (ReadStructuralFeatureAction) theEObject;
-				Object result = caseReadStructuralFeatureAction(readStructuralFeatureAction);
+				T result = caseReadStructuralFeatureAction(readStructuralFeatureAction);
 				if (result == null)
 					result = caseStructuralFeatureAction(readStructuralFeatureAction);
 				if (result == null)
@@ -4123,7 +4123,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION : {
 				WriteStructuralFeatureAction writeStructuralFeatureAction = (WriteStructuralFeatureAction) theEObject;
-				Object result = caseWriteStructuralFeatureAction(writeStructuralFeatureAction);
+				T result = caseWriteStructuralFeatureAction(writeStructuralFeatureAction);
 				if (result == null)
 					result = caseStructuralFeatureAction(writeStructuralFeatureAction);
 				if (result == null)
@@ -4146,7 +4146,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLEAR_STRUCTURAL_FEATURE_ACTION : {
 				ClearStructuralFeatureAction clearStructuralFeatureAction = (ClearStructuralFeatureAction) theEObject;
-				Object result = caseClearStructuralFeatureAction(clearStructuralFeatureAction);
+				T result = caseClearStructuralFeatureAction(clearStructuralFeatureAction);
 				if (result == null)
 					result = caseStructuralFeatureAction(clearStructuralFeatureAction);
 				if (result == null)
@@ -4169,7 +4169,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION : {
 				RemoveStructuralFeatureValueAction removeStructuralFeatureValueAction = (RemoveStructuralFeatureValueAction) theEObject;
-				Object result = caseRemoveStructuralFeatureValueAction(removeStructuralFeatureValueAction);
+				T result = caseRemoveStructuralFeatureValueAction(removeStructuralFeatureValueAction);
 				if (result == null)
 					result = caseWriteStructuralFeatureAction(removeStructuralFeatureValueAction);
 				if (result == null)
@@ -4194,7 +4194,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION : {
 				AddStructuralFeatureValueAction addStructuralFeatureValueAction = (AddStructuralFeatureValueAction) theEObject;
-				Object result = caseAddStructuralFeatureValueAction(addStructuralFeatureValueAction);
+				T result = caseAddStructuralFeatureValueAction(addStructuralFeatureValueAction);
 				if (result == null)
 					result = caseWriteStructuralFeatureAction(addStructuralFeatureValueAction);
 				if (result == null)
@@ -4219,7 +4219,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LINK_ACTION : {
 				LinkAction linkAction = (LinkAction) theEObject;
-				Object result = caseLinkAction(linkAction);
+				T result = caseLinkAction(linkAction);
 				if (result == null)
 					result = caseAction(linkAction);
 				if (result == null)
@@ -4240,7 +4240,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LINK_END_DATA : {
 				LinkEndData linkEndData = (LinkEndData) theEObject;
-				Object result = caseLinkEndData(linkEndData);
+				T result = caseLinkEndData(linkEndData);
 				if (result == null)
 					result = caseElement(linkEndData);
 				if (result == null)
@@ -4251,7 +4251,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.QUALIFIER_VALUE : {
 				QualifierValue qualifierValue = (QualifierValue) theEObject;
-				Object result = caseQualifierValue(qualifierValue);
+				T result = caseQualifierValue(qualifierValue);
 				if (result == null)
 					result = caseElement(qualifierValue);
 				if (result == null)
@@ -4262,7 +4262,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_LINK_ACTION : {
 				ReadLinkAction readLinkAction = (ReadLinkAction) theEObject;
-				Object result = caseReadLinkAction(readLinkAction);
+				T result = caseReadLinkAction(readLinkAction);
 				if (result == null)
 					result = caseLinkAction(readLinkAction);
 				if (result == null)
@@ -4285,7 +4285,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LINK_END_CREATION_DATA : {
 				LinkEndCreationData linkEndCreationData = (LinkEndCreationData) theEObject;
-				Object result = caseLinkEndCreationData(linkEndCreationData);
+				T result = caseLinkEndCreationData(linkEndCreationData);
 				if (result == null)
 					result = caseLinkEndData(linkEndCreationData);
 				if (result == null)
@@ -4298,7 +4298,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CREATE_LINK_ACTION : {
 				CreateLinkAction createLinkAction = (CreateLinkAction) theEObject;
-				Object result = caseCreateLinkAction(createLinkAction);
+				T result = caseCreateLinkAction(createLinkAction);
 				if (result == null)
 					result = caseWriteLinkAction(createLinkAction);
 				if (result == null)
@@ -4323,7 +4323,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.WRITE_LINK_ACTION : {
 				WriteLinkAction writeLinkAction = (WriteLinkAction) theEObject;
-				Object result = caseWriteLinkAction(writeLinkAction);
+				T result = caseWriteLinkAction(writeLinkAction);
 				if (result == null)
 					result = caseLinkAction(writeLinkAction);
 				if (result == null)
@@ -4346,7 +4346,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DESTROY_LINK_ACTION : {
 				DestroyLinkAction destroyLinkAction = (DestroyLinkAction) theEObject;
-				Object result = caseDestroyLinkAction(destroyLinkAction);
+				T result = caseDestroyLinkAction(destroyLinkAction);
 				if (result == null)
 					result = caseWriteLinkAction(destroyLinkAction);
 				if (result == null)
@@ -4371,7 +4371,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LINK_END_DESTRUCTION_DATA : {
 				LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData) theEObject;
-				Object result = caseLinkEndDestructionData(linkEndDestructionData);
+				T result = caseLinkEndDestructionData(linkEndDestructionData);
 				if (result == null)
 					result = caseLinkEndData(linkEndDestructionData);
 				if (result == null)
@@ -4384,7 +4384,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLEAR_ASSOCIATION_ACTION : {
 				ClearAssociationAction clearAssociationAction = (ClearAssociationAction) theEObject;
-				Object result = caseClearAssociationAction(clearAssociationAction);
+				T result = caseClearAssociationAction(clearAssociationAction);
 				if (result == null)
 					result = caseAction(clearAssociationAction);
 				if (result == null)
@@ -4405,7 +4405,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.BROADCAST_SIGNAL_ACTION : {
 				BroadcastSignalAction broadcastSignalAction = (BroadcastSignalAction) theEObject;
-				Object result = caseBroadcastSignalAction(broadcastSignalAction);
+				T result = caseBroadcastSignalAction(broadcastSignalAction);
 				if (result == null)
 					result = caseInvocationAction(broadcastSignalAction);
 				if (result == null)
@@ -4428,7 +4428,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.SEND_OBJECT_ACTION : {
 				SendObjectAction sendObjectAction = (SendObjectAction) theEObject;
-				Object result = caseSendObjectAction(sendObjectAction);
+				T result = caseSendObjectAction(sendObjectAction);
 				if (result == null)
 					result = caseInvocationAction(sendObjectAction);
 				if (result == null)
@@ -4451,7 +4451,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VALUE_SPECIFICATION_ACTION : {
 				ValueSpecificationAction valueSpecificationAction = (ValueSpecificationAction) theEObject;
-				Object result = caseValueSpecificationAction(valueSpecificationAction);
+				T result = caseValueSpecificationAction(valueSpecificationAction);
 				if (result == null)
 					result = caseAction(valueSpecificationAction);
 				if (result == null)
@@ -4472,7 +4472,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TIME_EXPRESSION : {
 				TimeExpression timeExpression = (TimeExpression) theEObject;
-				Object result = caseTimeExpression(timeExpression);
+				T result = caseTimeExpression(timeExpression);
 				if (result == null)
 					result = caseValueSpecification(timeExpression);
 				if (result == null)
@@ -4493,7 +4493,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OBSERVATION : {
 				Observation observation = (Observation) theEObject;
-				Object result = caseObservation(observation);
+				T result = caseObservation(observation);
 				if (result == null)
 					result = casePackageableElement(observation);
 				if (result == null)
@@ -4510,7 +4510,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DURATION : {
 				Duration duration = (Duration) theEObject;
-				Object result = caseDuration(duration);
+				T result = caseDuration(duration);
 				if (result == null)
 					result = caseValueSpecification(duration);
 				if (result == null)
@@ -4531,7 +4531,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DURATION_INTERVAL : {
 				DurationInterval durationInterval = (DurationInterval) theEObject;
-				Object result = caseDurationInterval(durationInterval);
+				T result = caseDurationInterval(durationInterval);
 				if (result == null)
 					result = caseInterval(durationInterval);
 				if (result == null)
@@ -4554,7 +4554,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERVAL : {
 				Interval interval = (Interval) theEObject;
-				Object result = caseInterval(interval);
+				T result = caseInterval(interval);
 				if (result == null)
 					result = caseValueSpecification(interval);
 				if (result == null)
@@ -4575,7 +4575,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TIME_CONSTRAINT : {
 				TimeConstraint timeConstraint = (TimeConstraint) theEObject;
-				Object result = caseTimeConstraint(timeConstraint);
+				T result = caseTimeConstraint(timeConstraint);
 				if (result == null)
 					result = caseIntervalConstraint(timeConstraint);
 				if (result == null)
@@ -4596,7 +4596,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INTERVAL_CONSTRAINT : {
 				IntervalConstraint intervalConstraint = (IntervalConstraint) theEObject;
-				Object result = caseIntervalConstraint(intervalConstraint);
+				T result = caseIntervalConstraint(intervalConstraint);
 				if (result == null)
 					result = caseConstraint(intervalConstraint);
 				if (result == null)
@@ -4615,7 +4615,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TIME_INTERVAL : {
 				TimeInterval timeInterval = (TimeInterval) theEObject;
-				Object result = caseTimeInterval(timeInterval);
+				T result = caseTimeInterval(timeInterval);
 				if (result == null)
 					result = caseInterval(timeInterval);
 				if (result == null)
@@ -4638,7 +4638,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DURATION_CONSTRAINT : {
 				DurationConstraint durationConstraint = (DurationConstraint) theEObject;
-				Object result = caseDurationConstraint(durationConstraint);
+				T result = caseDurationConstraint(durationConstraint);
 				if (result == null)
 					result = caseIntervalConstraint(durationConstraint);
 				if (result == null)
@@ -4659,7 +4659,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TIME_OBSERVATION : {
 				TimeObservation timeObservation = (TimeObservation) theEObject;
-				Object result = caseTimeObservation(timeObservation);
+				T result = caseTimeObservation(timeObservation);
 				if (result == null)
 					result = caseObservation(timeObservation);
 				if (result == null)
@@ -4678,7 +4678,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DURATION_OBSERVATION : {
 				DurationObservation durationObservation = (DurationObservation) theEObject;
-				Object result = caseDurationObservation(durationObservation);
+				T result = caseDurationObservation(durationObservation);
 				if (result == null)
 					result = caseObservation(durationObservation);
 				if (result == null)
@@ -4697,7 +4697,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.FINAL_STATE : {
 				FinalState finalState = (FinalState) theEObject;
-				Object result = caseFinalState(finalState);
+				T result = caseFinalState(finalState);
 				if (result == null)
 					result = caseState(finalState);
 				if (result == null)
@@ -4718,7 +4718,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.TIME_EVENT : {
 				TimeEvent timeEvent = (TimeEvent) theEObject;
-				Object result = caseTimeEvent(timeEvent);
+				T result = caseTimeEvent(timeEvent);
 				if (result == null)
 					result = caseEvent(timeEvent);
 				if (result == null)
@@ -4737,7 +4737,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.VARIABLE_ACTION : {
 				VariableAction variableAction = (VariableAction) theEObject;
-				Object result = caseVariableAction(variableAction);
+				T result = caseVariableAction(variableAction);
 				if (result == null)
 					result = caseAction(variableAction);
 				if (result == null)
@@ -4758,7 +4758,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_VARIABLE_ACTION : {
 				ReadVariableAction readVariableAction = (ReadVariableAction) theEObject;
-				Object result = caseReadVariableAction(readVariableAction);
+				T result = caseReadVariableAction(readVariableAction);
 				if (result == null)
 					result = caseVariableAction(readVariableAction);
 				if (result == null)
@@ -4781,7 +4781,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.WRITE_VARIABLE_ACTION : {
 				WriteVariableAction writeVariableAction = (WriteVariableAction) theEObject;
-				Object result = caseWriteVariableAction(writeVariableAction);
+				T result = caseWriteVariableAction(writeVariableAction);
 				if (result == null)
 					result = caseVariableAction(writeVariableAction);
 				if (result == null)
@@ -4804,7 +4804,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLEAR_VARIABLE_ACTION : {
 				ClearVariableAction clearVariableAction = (ClearVariableAction) theEObject;
-				Object result = caseClearVariableAction(clearVariableAction);
+				T result = caseClearVariableAction(clearVariableAction);
 				if (result == null)
 					result = caseVariableAction(clearVariableAction);
 				if (result == null)
@@ -4827,7 +4827,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ADD_VARIABLE_VALUE_ACTION : {
 				AddVariableValueAction addVariableValueAction = (AddVariableValueAction) theEObject;
-				Object result = caseAddVariableValueAction(addVariableValueAction);
+				T result = caseAddVariableValueAction(addVariableValueAction);
 				if (result == null)
 					result = caseWriteVariableAction(addVariableValueAction);
 				if (result == null)
@@ -4852,7 +4852,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REMOVE_VARIABLE_VALUE_ACTION : {
 				RemoveVariableValueAction removeVariableValueAction = (RemoveVariableValueAction) theEObject;
-				Object result = caseRemoveVariableValueAction(removeVariableValueAction);
+				T result = caseRemoveVariableValueAction(removeVariableValueAction);
 				if (result == null)
 					result = caseWriteVariableAction(removeVariableValueAction);
 				if (result == null)
@@ -4877,7 +4877,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RAISE_EXCEPTION_ACTION : {
 				RaiseExceptionAction raiseExceptionAction = (RaiseExceptionAction) theEObject;
-				Object result = caseRaiseExceptionAction(raiseExceptionAction);
+				T result = caseRaiseExceptionAction(raiseExceptionAction);
 				if (result == null)
 					result = caseAction(raiseExceptionAction);
 				if (result == null)
@@ -4898,7 +4898,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACTION_INPUT_PIN : {
 				ActionInputPin actionInputPin = (ActionInputPin) theEObject;
-				Object result = caseActionInputPin(actionInputPin);
+				T result = caseActionInputPin(actionInputPin);
 				if (result == null)
 					result = caseInputPin(actionInputPin);
 				if (result == null)
@@ -4925,7 +4925,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INFORMATION_ITEM : {
 				InformationItem informationItem = (InformationItem) theEObject;
-				Object result = caseInformationItem(informationItem);
+				T result = caseInformationItem(informationItem);
 				if (result == null)
 					result = caseClassifier(informationItem);
 				if (result == null)
@@ -4952,7 +4952,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.INFORMATION_FLOW : {
 				InformationFlow informationFlow = (InformationFlow) theEObject;
-				Object result = caseInformationFlow(informationFlow);
+				T result = caseInformationFlow(informationFlow);
 				if (result == null)
 					result = casePackageableElement(informationFlow);
 				if (result == null)
@@ -4973,7 +4973,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_EXTENT_ACTION : {
 				ReadExtentAction readExtentAction = (ReadExtentAction) theEObject;
-				Object result = caseReadExtentAction(readExtentAction);
+				T result = caseReadExtentAction(readExtentAction);
 				if (result == null)
 					result = caseAction(readExtentAction);
 				if (result == null)
@@ -4994,7 +4994,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION : {
 				ReclassifyObjectAction reclassifyObjectAction = (ReclassifyObjectAction) theEObject;
-				Object result = caseReclassifyObjectAction(reclassifyObjectAction);
+				T result = caseReclassifyObjectAction(reclassifyObjectAction);
 				if (result == null)
 					result = caseAction(reclassifyObjectAction);
 				if (result == null)
@@ -5015,7 +5015,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION : {
 				ReadIsClassifiedObjectAction readIsClassifiedObjectAction = (ReadIsClassifiedObjectAction) theEObject;
-				Object result = caseReadIsClassifiedObjectAction(readIsClassifiedObjectAction);
+				T result = caseReadIsClassifiedObjectAction(readIsClassifiedObjectAction);
 				if (result == null)
 					result = caseAction(readIsClassifiedObjectAction);
 				if (result == null)
@@ -5036,7 +5036,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION : {
 				StartClassifierBehaviorAction startClassifierBehaviorAction = (StartClassifierBehaviorAction) theEObject;
-				Object result = caseStartClassifierBehaviorAction(startClassifierBehaviorAction);
+				T result = caseStartClassifierBehaviorAction(startClassifierBehaviorAction);
 				if (result == null)
 					result = caseAction(startClassifierBehaviorAction);
 				if (result == null)
@@ -5057,7 +5057,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_LINK_OBJECT_END_ACTION : {
 				ReadLinkObjectEndAction readLinkObjectEndAction = (ReadLinkObjectEndAction) theEObject;
-				Object result = caseReadLinkObjectEndAction(readLinkObjectEndAction);
+				T result = caseReadLinkObjectEndAction(readLinkObjectEndAction);
 				if (result == null)
 					result = caseAction(readLinkObjectEndAction);
 				if (result == null)
@@ -5078,7 +5078,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION : {
 				ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction = (ReadLinkObjectEndQualifierAction) theEObject;
-				Object result = caseReadLinkObjectEndQualifierAction(readLinkObjectEndQualifierAction);
+				T result = caseReadLinkObjectEndQualifierAction(readLinkObjectEndQualifierAction);
 				if (result == null)
 					result = caseAction(readLinkObjectEndQualifierAction);
 				if (result == null)
@@ -5099,7 +5099,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CREATE_LINK_OBJECT_ACTION : {
 				CreateLinkObjectAction createLinkObjectAction = (CreateLinkObjectAction) theEObject;
-				Object result = caseCreateLinkObjectAction(createLinkObjectAction);
+				T result = caseCreateLinkObjectAction(createLinkObjectAction);
 				if (result == null)
 					result = caseCreateLinkAction(createLinkObjectAction);
 				if (result == null)
@@ -5126,7 +5126,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACCEPT_EVENT_ACTION : {
 				AcceptEventAction acceptEventAction = (AcceptEventAction) theEObject;
-				Object result = caseAcceptEventAction(acceptEventAction);
+				T result = caseAcceptEventAction(acceptEventAction);
 				if (result == null)
 					result = caseAction(acceptEventAction);
 				if (result == null)
@@ -5147,7 +5147,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ACCEPT_CALL_ACTION : {
 				AcceptCallAction acceptCallAction = (AcceptCallAction) theEObject;
-				Object result = caseAcceptCallAction(acceptCallAction);
+				T result = caseAcceptCallAction(acceptCallAction);
 				if (result == null)
 					result = caseAcceptEventAction(acceptCallAction);
 				if (result == null)
@@ -5170,7 +5170,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REPLY_ACTION : {
 				ReplyAction replyAction = (ReplyAction) theEObject;
-				Object result = caseReplyAction(replyAction);
+				T result = caseReplyAction(replyAction);
 				if (result == null)
 					result = caseAction(replyAction);
 				if (result == null)
@@ -5191,7 +5191,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.UNMARSHALL_ACTION : {
 				UnmarshallAction unmarshallAction = (UnmarshallAction) theEObject;
-				Object result = caseUnmarshallAction(unmarshallAction);
+				T result = caseUnmarshallAction(unmarshallAction);
 				if (result == null)
 					result = caseAction(unmarshallAction);
 				if (result == null)
@@ -5212,7 +5212,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.REDUCE_ACTION : {
 				ReduceAction reduceAction = (ReduceAction) theEObject;
-				Object result = caseReduceAction(reduceAction);
+				T result = caseReduceAction(reduceAction);
 				if (result == null)
 					result = caseAction(reduceAction);
 				if (result == null)
@@ -5233,7 +5233,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.JOIN_NODE : {
 				JoinNode joinNode = (JoinNode) theEObject;
-				Object result = caseJoinNode(joinNode);
+				T result = caseJoinNode(joinNode);
 				if (result == null)
 					result = caseControlNode(joinNode);
 				if (result == null)
@@ -5252,7 +5252,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.DATA_STORE_NODE : {
 				DataStoreNode dataStoreNode = (DataStoreNode) theEObject;
-				Object result = caseDataStoreNode(dataStoreNode);
+				T result = caseDataStoreNode(dataStoreNode);
 				if (result == null)
 					result = caseCentralBufferNode(dataStoreNode);
 				if (result == null)
@@ -5275,7 +5275,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.OBJECT_FLOW : {
 				ObjectFlow objectFlow = (ObjectFlow) theEObject;
-				Object result = caseObjectFlow(objectFlow);
+				T result = caseObjectFlow(objectFlow);
 				if (result == null)
 					result = caseActivityEdge(objectFlow);
 				if (result == null)
@@ -5292,7 +5292,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CONDITIONAL_NODE : {
 				ConditionalNode conditionalNode = (ConditionalNode) theEObject;
-				Object result = caseConditionalNode(conditionalNode);
+				T result = caseConditionalNode(conditionalNode);
 				if (result == null)
 					result = caseStructuredActivityNode(conditionalNode);
 				if (result == null)
@@ -5319,7 +5319,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.CLAUSE : {
 				Clause clause = (Clause) theEObject;
-				Object result = caseClause(clause);
+				T result = caseClause(clause);
 				if (result == null)
 					result = caseElement(clause);
 				if (result == null)
@@ -5330,7 +5330,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.LOOP_NODE : {
 				LoopNode loopNode = (LoopNode) theEObject;
-				Object result = caseLoopNode(loopNode);
+				T result = caseLoopNode(loopNode);
 				if (result == null)
 					result = caseStructuredActivityNode(loopNode);
 				if (result == null)
@@ -5357,7 +5357,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXPANSION_NODE : {
 				ExpansionNode expansionNode = (ExpansionNode) theEObject;
-				Object result = caseExpansionNode(expansionNode);
+				T result = caseExpansionNode(expansionNode);
 				if (result == null)
 					result = caseObjectNode(expansionNode);
 				if (result == null)
@@ -5378,7 +5378,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.EXPANSION_REGION : {
 				ExpansionRegion expansionRegion = (ExpansionRegion) theEObject;
-				Object result = caseExpansionRegion(expansionRegion);
+				T result = caseExpansionRegion(expansionRegion);
 				if (result == null)
 					result = caseStructuredActivityNode(expansionRegion);
 				if (result == null)
@@ -5405,7 +5405,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.PROTOCOL_TRANSITION : {
 				ProtocolTransition protocolTransition = (ProtocolTransition) theEObject;
-				Object result = caseProtocolTransition(protocolTransition);
+				T result = caseProtocolTransition(protocolTransition);
 				if (result == null)
 					result = caseTransition(protocolTransition);
 				if (result == null)
@@ -5424,7 +5424,7 @@ public class UMLSwitch {
 			}
 			case UMLPackage.ASSOCIATION_CLASS : {
 				AssociationClass associationClass = (AssociationClass) theEObject;
-				Object result = caseAssociationClass(associationClass);
+				T result = caseAssociationClass(associationClass);
 				if (result == null)
 					result = caseClass(associationClass);
 				if (result == null)
@@ -5477,7 +5477,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseComment(Comment object) {
+	public T caseComment(Comment object) {
 		return null;
 	}
 
@@ -5492,7 +5492,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseElement(Element object) {
+	public T caseElement(Element object) {
 		return null;
 	}
 
@@ -5507,7 +5507,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDirectedRelationship(DirectedRelationship object) {
+	public T caseDirectedRelationship(DirectedRelationship object) {
 		return null;
 	}
 
@@ -5522,7 +5522,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRelationship(Relationship object) {
+	public T caseRelationship(Relationship object) {
 		return null;
 	}
 
@@ -5537,7 +5537,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralSpecification(LiteralSpecification object) {
+	public T caseLiteralSpecification(LiteralSpecification object) {
 		return null;
 	}
 
@@ -5552,7 +5552,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseValueSpecification(ValueSpecification object) {
+	public T caseValueSpecification(ValueSpecification object) {
 		return null;
 	}
 
@@ -5567,7 +5567,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypedElement(TypedElement object) {
+	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 
@@ -5582,7 +5582,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNamedElement(NamedElement object) {
+	public T caseNamedElement(NamedElement object) {
 		return null;
 	}
 
@@ -5597,7 +5597,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDependency(Dependency object) {
+	public T caseDependency(Dependency object) {
 		return null;
 	}
 
@@ -5612,7 +5612,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePackageableElement(PackageableElement object) {
+	public T casePackageableElement(PackageableElement object) {
 		return null;
 	}
 
@@ -5627,7 +5627,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParameterableElement(ParameterableElement object) {
+	public T caseParameterableElement(ParameterableElement object) {
 		return null;
 	}
 
@@ -5642,7 +5642,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemplateParameter(TemplateParameter object) {
+	public T caseTemplateParameter(TemplateParameter object) {
 		return null;
 	}
 
@@ -5657,7 +5657,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemplateSignature(TemplateSignature object) {
+	public T caseTemplateSignature(TemplateSignature object) {
 		return null;
 	}
 
@@ -5672,7 +5672,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemplateableElement(TemplateableElement object) {
+	public T caseTemplateableElement(TemplateableElement object) {
 		return null;
 	}
 
@@ -5687,7 +5687,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemplateBinding(TemplateBinding object) {
+	public T caseTemplateBinding(TemplateBinding object) {
 		return null;
 	}
 
@@ -5702,7 +5702,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemplateParameterSubstitution(
+	public T caseTemplateParameterSubstitution(
 			TemplateParameterSubstitution object) {
 		return null;
 	}
@@ -5718,7 +5718,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNamespace(Namespace object) {
+	public T caseNamespace(Namespace object) {
 		return null;
 	}
 
@@ -5733,7 +5733,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseElementImport(ElementImport object) {
+	public T caseElementImport(ElementImport object) {
 		return null;
 	}
 
@@ -5748,7 +5748,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePackageImport(PackageImport object) {
+	public T casePackageImport(PackageImport object) {
 		return null;
 	}
 
@@ -5763,7 +5763,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePackage(org.eclipse.uml2.uml.Package object) {
+	public T casePackage(org.eclipse.uml2.uml.Package object) {
 		return null;
 	}
 
@@ -5778,7 +5778,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePackageMerge(PackageMerge object) {
+	public T casePackageMerge(PackageMerge object) {
 		return null;
 	}
 
@@ -5793,7 +5793,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseType(Type object) {
+	public T caseType(Type object) {
 		return null;
 	}
 
@@ -5808,7 +5808,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProfileApplication(ProfileApplication object) {
+	public T caseProfileApplication(ProfileApplication object) {
 		return null;
 	}
 
@@ -5823,7 +5823,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProfile(Profile object) {
+	public T caseProfile(Profile object) {
 		return null;
 	}
 
@@ -5838,7 +5838,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStereotype(Stereotype object) {
+	public T caseStereotype(Stereotype object) {
 		return null;
 	}
 
@@ -5853,7 +5853,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClass(org.eclipse.uml2.uml.Class object) {
+	public T caseClass(org.eclipse.uml2.uml.Class object) {
 		return null;
 	}
 
@@ -5868,7 +5868,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBehavioredClassifier(BehavioredClassifier object) {
+	public T caseBehavioredClassifier(BehavioredClassifier object) {
 		return null;
 	}
 
@@ -5883,7 +5883,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClassifier(Classifier object) {
+	public T caseClassifier(Classifier object) {
 		return null;
 	}
 
@@ -5898,7 +5898,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRedefinableElement(RedefinableElement object) {
+	public T caseRedefinableElement(RedefinableElement object) {
 		return null;
 	}
 
@@ -5913,7 +5913,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGeneralization(Generalization object) {
+	public T caseGeneralization(Generalization object) {
 		return null;
 	}
 
@@ -5928,7 +5928,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGeneralizationSet(GeneralizationSet object) {
+	public T caseGeneralizationSet(GeneralizationSet object) {
 		return null;
 	}
 
@@ -5943,7 +5943,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFeature(Feature object) {
+	public T caseFeature(Feature object) {
 		return null;
 	}
 
@@ -5958,7 +5958,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUseCase(UseCase object) {
+	public T caseUseCase(UseCase object) {
 		return null;
 	}
 
@@ -5973,7 +5973,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInclude(Include object) {
+	public T caseInclude(Include object) {
 		return null;
 	}
 
@@ -5988,7 +5988,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExtend(Extend object) {
+	public T caseExtend(Extend object) {
 		return null;
 	}
 
@@ -6003,7 +6003,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConstraint(Constraint object) {
+	public T caseConstraint(Constraint object) {
 		return null;
 	}
 
@@ -6018,7 +6018,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExtensionPoint(ExtensionPoint object) {
+	public T caseExtensionPoint(ExtensionPoint object) {
 		return null;
 	}
 
@@ -6033,7 +6033,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSubstitution(Substitution object) {
+	public T caseSubstitution(Substitution object) {
 		return null;
 	}
 
@@ -6048,7 +6048,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRealization(Realization object) {
+	public T caseRealization(Realization object) {
 		return null;
 	}
 
@@ -6063,7 +6063,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAbstraction(Abstraction object) {
+	public T caseAbstraction(Abstraction object) {
 		return null;
 	}
 
@@ -6078,7 +6078,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOpaqueExpression(OpaqueExpression object) {
+	public T caseOpaqueExpression(OpaqueExpression object) {
 		return null;
 	}
 
@@ -6093,7 +6093,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParameter(Parameter object) {
+	public T caseParameter(Parameter object) {
 		return null;
 	}
 
@@ -6108,7 +6108,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMultiplicityElement(MultiplicityElement object) {
+	public T caseMultiplicityElement(MultiplicityElement object) {
 		return null;
 	}
 
@@ -6123,7 +6123,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConnectableElement(ConnectableElement object) {
+	public T caseConnectableElement(ConnectableElement object) {
 		return null;
 	}
 
@@ -6138,7 +6138,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConnectorEnd(ConnectorEnd object) {
+	public T caseConnectorEnd(ConnectorEnd object) {
 		return null;
 	}
 
@@ -6153,7 +6153,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProperty(Property object) {
+	public T caseProperty(Property object) {
 		return null;
 	}
 
@@ -6168,7 +6168,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDeploymentTarget(DeploymentTarget object) {
+	public T caseDeploymentTarget(DeploymentTarget object) {
 		return null;
 	}
 
@@ -6183,7 +6183,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDeployment(Deployment object) {
+	public T caseDeployment(Deployment object) {
 		return null;
 	}
 
@@ -6198,7 +6198,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDeployedArtifact(DeployedArtifact object) {
+	public T caseDeployedArtifact(DeployedArtifact object) {
 		return null;
 	}
 
@@ -6213,7 +6213,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDeploymentSpecification(DeploymentSpecification object) {
+	public T caseDeploymentSpecification(DeploymentSpecification object) {
 		return null;
 	}
 
@@ -6228,7 +6228,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseArtifact(Artifact object) {
+	public T caseArtifact(Artifact object) {
 		return null;
 	}
 
@@ -6243,7 +6243,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseManifestation(Manifestation object) {
+	public T caseManifestation(Manifestation object) {
 		return null;
 	}
 
@@ -6258,7 +6258,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOperation(Operation object) {
+	public T caseOperation(Operation object) {
 		return null;
 	}
 
@@ -6273,7 +6273,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBehavioralFeature(BehavioralFeature object) {
+	public T caseBehavioralFeature(BehavioralFeature object) {
 		return null;
 	}
 
@@ -6288,7 +6288,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBehavior(Behavior object) {
+	public T caseBehavior(Behavior object) {
 		return null;
 	}
 
@@ -6303,7 +6303,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParameterSet(ParameterSet object) {
+	public T caseParameterSet(ParameterSet object) {
 		return null;
 	}
 
@@ -6318,7 +6318,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDataType(DataType object) {
+	public T caseDataType(DataType object) {
 		return null;
 	}
 
@@ -6333,7 +6333,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInterface(Interface object) {
+	public T caseInterface(Interface object) {
 		return null;
 	}
 
@@ -6348,7 +6348,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReception(Reception object) {
+	public T caseReception(Reception object) {
 		return null;
 	}
 
@@ -6363,7 +6363,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSignal(Signal object) {
+	public T caseSignal(Signal object) {
 		return null;
 	}
 
@@ -6378,7 +6378,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProtocolStateMachine(ProtocolStateMachine object) {
+	public T caseProtocolStateMachine(ProtocolStateMachine object) {
 		return null;
 	}
 
@@ -6393,7 +6393,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStateMachine(StateMachine object) {
+	public T caseStateMachine(StateMachine object) {
 		return null;
 	}
 
@@ -6408,7 +6408,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRegion(Region object) {
+	public T caseRegion(Region object) {
 		return null;
 	}
 
@@ -6423,7 +6423,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseVertex(Vertex object) {
+	public T caseVertex(Vertex object) {
 		return null;
 	}
 
@@ -6438,7 +6438,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTransition(Transition object) {
+	public T caseTransition(Transition object) {
 		return null;
 	}
 
@@ -6453,7 +6453,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTrigger(Trigger object) {
+	public T caseTrigger(Trigger object) {
 		return null;
 	}
 
@@ -6468,7 +6468,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEvent(Event object) {
+	public T caseEvent(Event object) {
 		return null;
 	}
 
@@ -6483,7 +6483,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePort(Port object) {
+	public T casePort(Port object) {
 		return null;
 	}
 
@@ -6498,7 +6498,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseState(State object) {
+	public T caseState(State object) {
 		return null;
 	}
 
@@ -6513,7 +6513,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConnectionPointReference(ConnectionPointReference object) {
+	public T caseConnectionPointReference(ConnectionPointReference object) {
 		return null;
 	}
 
@@ -6528,7 +6528,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePseudostate(Pseudostate object) {
+	public T casePseudostate(Pseudostate object) {
 		return null;
 	}
 
@@ -6543,7 +6543,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProtocolConformance(ProtocolConformance object) {
+	public T caseProtocolConformance(ProtocolConformance object) {
 		return null;
 	}
 
@@ -6558,8 +6558,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOperationTemplateParameter(
-			OperationTemplateParameter object) {
+	public T caseOperationTemplateParameter(OperationTemplateParameter object) {
 		return null;
 	}
 
@@ -6574,7 +6573,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStructuralFeature(StructuralFeature object) {
+	public T caseStructuralFeature(StructuralFeature object) {
 		return null;
 	}
 
@@ -6589,7 +6588,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAssociation(Association object) {
+	public T caseAssociation(Association object) {
 		return null;
 	}
 
@@ -6604,7 +6603,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConnectableElementTemplateParameter(
+	public T caseConnectableElementTemplateParameter(
 			ConnectableElementTemplateParameter object) {
 		return null;
 	}
@@ -6620,7 +6619,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCollaborationUse(CollaborationUse object) {
+	public T caseCollaborationUse(CollaborationUse object) {
 		return null;
 	}
 
@@ -6635,7 +6634,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCollaboration(Collaboration object) {
+	public T caseCollaboration(Collaboration object) {
 		return null;
 	}
 
@@ -6650,7 +6649,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStructuredClassifier(StructuredClassifier object) {
+	public T caseStructuredClassifier(StructuredClassifier object) {
 		return null;
 	}
 
@@ -6665,7 +6664,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConnector(Connector object) {
+	public T caseConnector(Connector object) {
 		return null;
 	}
 
@@ -6680,7 +6679,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRedefinableTemplateSignature(
+	public T caseRedefinableTemplateSignature(
 			RedefinableTemplateSignature object) {
 		return null;
 	}
@@ -6696,8 +6695,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClassifierTemplateParameter(
-			ClassifierTemplateParameter object) {
+	public T caseClassifierTemplateParameter(ClassifierTemplateParameter object) {
 		return null;
 	}
 
@@ -6712,7 +6710,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInterfaceRealization(InterfaceRealization object) {
+	public T caseInterfaceRealization(InterfaceRealization object) {
 		return null;
 	}
 
@@ -6727,7 +6725,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+	public T caseEncapsulatedClassifier(EncapsulatedClassifier object) {
 		return null;
 	}
 
@@ -6742,7 +6740,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExtension(Extension object) {
+	public T caseExtension(Extension object) {
 		return null;
 	}
 
@@ -6757,7 +6755,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExtensionEnd(ExtensionEnd object) {
+	public T caseExtensionEnd(ExtensionEnd object) {
 		return null;
 	}
 
@@ -6772,7 +6770,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseImage(Image object) {
+	public T caseImage(Image object) {
 		return null;
 	}
 
@@ -6787,7 +6785,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStringExpression(StringExpression object) {
+	public T caseStringExpression(StringExpression object) {
 		return null;
 	}
 
@@ -6802,7 +6800,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExpression(Expression object) {
+	public T caseExpression(Expression object) {
 		return null;
 	}
 
@@ -6817,7 +6815,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralInteger(LiteralInteger object) {
+	public T caseLiteralInteger(LiteralInteger object) {
 		return null;
 	}
 
@@ -6832,7 +6830,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralString(LiteralString object) {
+	public T caseLiteralString(LiteralString object) {
 		return null;
 	}
 
@@ -6847,7 +6845,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralBoolean(LiteralBoolean object) {
+	public T caseLiteralBoolean(LiteralBoolean object) {
 		return null;
 	}
 
@@ -6862,7 +6860,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralNull(LiteralNull object) {
+	public T caseLiteralNull(LiteralNull object) {
 		return null;
 	}
 
@@ -6877,7 +6875,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSlot(Slot object) {
+	public T caseSlot(Slot object) {
 		return null;
 	}
 
@@ -6892,7 +6890,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInstanceSpecification(InstanceSpecification object) {
+	public T caseInstanceSpecification(InstanceSpecification object) {
 		return null;
 	}
 
@@ -6907,7 +6905,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEnumeration(Enumeration object) {
+	public T caseEnumeration(Enumeration object) {
 		return null;
 	}
 
@@ -6922,7 +6920,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEnumerationLiteral(EnumerationLiteral object) {
+	public T caseEnumerationLiteral(EnumerationLiteral object) {
 		return null;
 	}
 
@@ -6937,7 +6935,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePrimitiveType(PrimitiveType object) {
+	public T casePrimitiveType(PrimitiveType object) {
 		return null;
 	}
 
@@ -6952,7 +6950,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInstanceValue(InstanceValue object) {
+	public T caseInstanceValue(InstanceValue object) {
 		return null;
 	}
 
@@ -6967,7 +6965,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLiteralUnlimitedNatural(LiteralUnlimitedNatural object) {
+	public T caseLiteralUnlimitedNatural(LiteralUnlimitedNatural object) {
 		return null;
 	}
 
@@ -6982,7 +6980,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOpaqueBehavior(OpaqueBehavior object) {
+	public T caseOpaqueBehavior(OpaqueBehavior object) {
 		return null;
 	}
 
@@ -6997,7 +6995,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFunctionBehavior(FunctionBehavior object) {
+	public T caseFunctionBehavior(FunctionBehavior object) {
 		return null;
 	}
 
@@ -7012,7 +7010,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActor(Actor object) {
+	public T caseActor(Actor object) {
 		return null;
 	}
 
@@ -7027,7 +7025,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUsage(Usage object) {
+	public T caseUsage(Usage object) {
 		return null;
 	}
 
@@ -7042,7 +7040,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMessage(Message object) {
+	public T caseMessage(Message object) {
 		return null;
 	}
 
@@ -7057,7 +7055,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMessageEnd(MessageEnd object) {
+	public T caseMessageEnd(MessageEnd object) {
 		return null;
 	}
 
@@ -7072,7 +7070,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInteraction(Interaction object) {
+	public T caseInteraction(Interaction object) {
 		return null;
 	}
 
@@ -7087,7 +7085,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInteractionFragment(InteractionFragment object) {
+	public T caseInteractionFragment(InteractionFragment object) {
 		return null;
 	}
 
@@ -7102,7 +7100,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLifeline(Lifeline object) {
+	public T caseLifeline(Lifeline object) {
 		return null;
 	}
 
@@ -7117,7 +7115,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePartDecomposition(PartDecomposition object) {
+	public T casePartDecomposition(PartDecomposition object) {
 		return null;
 	}
 
@@ -7132,7 +7130,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInteractionUse(InteractionUse object) {
+	public T caseInteractionUse(InteractionUse object) {
 		return null;
 	}
 
@@ -7147,7 +7145,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGate(Gate object) {
+	public T caseGate(Gate object) {
 		return null;
 	}
 
@@ -7162,7 +7160,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAction(Action object) {
+	public T caseAction(Action object) {
 		return null;
 	}
 
@@ -7177,7 +7175,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExecutableNode(ExecutableNode object) {
+	public T caseExecutableNode(ExecutableNode object) {
 		return null;
 	}
 
@@ -7192,7 +7190,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityNode(ActivityNode object) {
+	public T caseActivityNode(ActivityNode object) {
 		return null;
 	}
 
@@ -7207,7 +7205,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityEdge(ActivityEdge object) {
+	public T caseActivityEdge(ActivityEdge object) {
 		return null;
 	}
 
@@ -7222,7 +7220,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivity(Activity object) {
+	public T caseActivity(Activity object) {
 		return null;
 	}
 
@@ -7237,7 +7235,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityPartition(ActivityPartition object) {
+	public T caseActivityPartition(ActivityPartition object) {
 		return null;
 	}
 
@@ -7252,7 +7250,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityGroup(ActivityGroup object) {
+	public T caseActivityGroup(ActivityGroup object) {
 		return null;
 	}
 
@@ -7267,7 +7265,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStructuredActivityNode(StructuredActivityNode object) {
+	public T caseStructuredActivityNode(StructuredActivityNode object) {
 		return null;
 	}
 
@@ -7282,7 +7280,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseVariable(Variable object) {
+	public T caseVariable(Variable object) {
 		return null;
 	}
 
@@ -7297,8 +7295,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInterruptibleActivityRegion(
-			InterruptibleActivityRegion object) {
+	public T caseInterruptibleActivityRegion(InterruptibleActivityRegion object) {
 		return null;
 	}
 
@@ -7313,7 +7310,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExceptionHandler(ExceptionHandler object) {
+	public T caseExceptionHandler(ExceptionHandler object) {
 		return null;
 	}
 
@@ -7328,7 +7325,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseObjectNode(ObjectNode object) {
+	public T caseObjectNode(ObjectNode object) {
 		return null;
 	}
 
@@ -7343,7 +7340,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOutputPin(OutputPin object) {
+	public T caseOutputPin(OutputPin object) {
 		return null;
 	}
 
@@ -7358,7 +7355,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePin(Pin object) {
+	public T casePin(Pin object) {
 		return null;
 	}
 
@@ -7373,7 +7370,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInputPin(InputPin object) {
+	public T caseInputPin(InputPin object) {
 		return null;
 	}
 
@@ -7388,7 +7385,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGeneralOrdering(GeneralOrdering object) {
+	public T caseGeneralOrdering(GeneralOrdering object) {
 		return null;
 	}
 
@@ -7403,7 +7400,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOccurrenceSpecification(OccurrenceSpecification object) {
+	public T caseOccurrenceSpecification(OccurrenceSpecification object) {
 		return null;
 	}
 
@@ -7418,7 +7415,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInteractionOperand(InteractionOperand object) {
+	public T caseInteractionOperand(InteractionOperand object) {
 		return null;
 	}
 
@@ -7433,7 +7430,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInteractionConstraint(InteractionConstraint object) {
+	public T caseInteractionConstraint(InteractionConstraint object) {
 		return null;
 	}
 
@@ -7448,7 +7445,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExecutionSpecification(ExecutionSpecification object) {
+	public T caseExecutionSpecification(ExecutionSpecification object) {
 		return null;
 	}
 
@@ -7463,7 +7460,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExecutionOccurrenceSpecification(
+	public T caseExecutionOccurrenceSpecification(
 			ExecutionOccurrenceSpecification object) {
 		return null;
 	}
@@ -7479,7 +7476,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExecutionEvent(ExecutionEvent object) {
+	public T caseExecutionEvent(ExecutionEvent object) {
 		return null;
 	}
 
@@ -7494,7 +7491,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStateInvariant(StateInvariant object) {
+	public T caseStateInvariant(StateInvariant object) {
 		return null;
 	}
 
@@ -7509,7 +7506,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActionExecutionSpecification(
+	public T caseActionExecutionSpecification(
 			ActionExecutionSpecification object) {
 		return null;
 	}
@@ -7525,7 +7522,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBehaviorExecutionSpecification(
+	public T caseBehaviorExecutionSpecification(
 			BehaviorExecutionSpecification object) {
 		return null;
 	}
@@ -7541,7 +7538,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCreationEvent(CreationEvent object) {
+	public T caseCreationEvent(CreationEvent object) {
 		return null;
 	}
 
@@ -7556,7 +7553,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDestructionEvent(DestructionEvent object) {
+	public T caseDestructionEvent(DestructionEvent object) {
 		return null;
 	}
 
@@ -7571,7 +7568,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSendOperationEvent(SendOperationEvent object) {
+	public T caseSendOperationEvent(SendOperationEvent object) {
 		return null;
 	}
 
@@ -7586,7 +7583,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMessageEvent(MessageEvent object) {
+	public T caseMessageEvent(MessageEvent object) {
 		return null;
 	}
 
@@ -7601,7 +7598,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSendSignalEvent(SendSignalEvent object) {
+	public T caseSendSignalEvent(SendSignalEvent object) {
 		return null;
 	}
 
@@ -7616,7 +7613,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMessageOccurrenceSpecification(
+	public T caseMessageOccurrenceSpecification(
 			MessageOccurrenceSpecification object) {
 		return null;
 	}
@@ -7632,7 +7629,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReceiveOperationEvent(ReceiveOperationEvent object) {
+	public T caseReceiveOperationEvent(ReceiveOperationEvent object) {
 		return null;
 	}
 
@@ -7647,7 +7644,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReceiveSignalEvent(ReceiveSignalEvent object) {
+	public T caseReceiveSignalEvent(ReceiveSignalEvent object) {
 		return null;
 	}
 
@@ -7662,7 +7659,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCombinedFragment(CombinedFragment object) {
+	public T caseCombinedFragment(CombinedFragment object) {
 		return null;
 	}
 
@@ -7677,7 +7674,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseContinuation(Continuation object) {
+	public T caseContinuation(Continuation object) {
 		return null;
 	}
 
@@ -7692,7 +7689,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
+	public T caseConsiderIgnoreFragment(ConsiderIgnoreFragment object) {
 		return null;
 	}
 
@@ -7707,7 +7704,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCallEvent(CallEvent object) {
+	public T caseCallEvent(CallEvent object) {
 		return null;
 	}
 
@@ -7722,7 +7719,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseChangeEvent(ChangeEvent object) {
+	public T caseChangeEvent(ChangeEvent object) {
 		return null;
 	}
 
@@ -7737,7 +7734,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSignalEvent(SignalEvent object) {
+	public T caseSignalEvent(SignalEvent object) {
 		return null;
 	}
 
@@ -7752,7 +7749,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAnyReceiveEvent(AnyReceiveEvent object) {
+	public T caseAnyReceiveEvent(AnyReceiveEvent object) {
 		return null;
 	}
 
@@ -7767,7 +7764,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCreateObjectAction(CreateObjectAction object) {
+	public T caseCreateObjectAction(CreateObjectAction object) {
 		return null;
 	}
 
@@ -7782,7 +7779,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDestroyObjectAction(DestroyObjectAction object) {
+	public T caseDestroyObjectAction(DestroyObjectAction object) {
 		return null;
 	}
 
@@ -7797,7 +7794,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTestIdentityAction(TestIdentityAction object) {
+	public T caseTestIdentityAction(TestIdentityAction object) {
 		return null;
 	}
 
@@ -7812,7 +7809,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadSelfAction(ReadSelfAction object) {
+	public T caseReadSelfAction(ReadSelfAction object) {
 		return null;
 	}
 
@@ -7827,7 +7824,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStructuralFeatureAction(StructuralFeatureAction object) {
+	public T caseStructuralFeatureAction(StructuralFeatureAction object) {
 		return null;
 	}
 
@@ -7842,8 +7839,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadStructuralFeatureAction(
-			ReadStructuralFeatureAction object) {
+	public T caseReadStructuralFeatureAction(ReadStructuralFeatureAction object) {
 		return null;
 	}
 
@@ -7858,7 +7854,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriteStructuralFeatureAction(
+	public T caseWriteStructuralFeatureAction(
 			WriteStructuralFeatureAction object) {
 		return null;
 	}
@@ -7874,7 +7870,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClearStructuralFeatureAction(
+	public T caseClearStructuralFeatureAction(
 			ClearStructuralFeatureAction object) {
 		return null;
 	}
@@ -7890,7 +7886,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRemoveStructuralFeatureValueAction(
+	public T caseRemoveStructuralFeatureValueAction(
 			RemoveStructuralFeatureValueAction object) {
 		return null;
 	}
@@ -7906,7 +7902,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddStructuralFeatureValueAction(
+	public T caseAddStructuralFeatureValueAction(
 			AddStructuralFeatureValueAction object) {
 		return null;
 	}
@@ -7922,7 +7918,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLinkAction(LinkAction object) {
+	public T caseLinkAction(LinkAction object) {
 		return null;
 	}
 
@@ -7937,7 +7933,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLinkEndData(LinkEndData object) {
+	public T caseLinkEndData(LinkEndData object) {
 		return null;
 	}
 
@@ -7952,7 +7948,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseQualifierValue(QualifierValue object) {
+	public T caseQualifierValue(QualifierValue object) {
 		return null;
 	}
 
@@ -7967,7 +7963,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadLinkAction(ReadLinkAction object) {
+	public T caseReadLinkAction(ReadLinkAction object) {
 		return null;
 	}
 
@@ -7982,7 +7978,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLinkEndCreationData(LinkEndCreationData object) {
+	public T caseLinkEndCreationData(LinkEndCreationData object) {
 		return null;
 	}
 
@@ -7997,7 +7993,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCreateLinkAction(CreateLinkAction object) {
+	public T caseCreateLinkAction(CreateLinkAction object) {
 		return null;
 	}
 
@@ -8012,7 +8008,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriteLinkAction(WriteLinkAction object) {
+	public T caseWriteLinkAction(WriteLinkAction object) {
 		return null;
 	}
 
@@ -8027,7 +8023,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDestroyLinkAction(DestroyLinkAction object) {
+	public T caseDestroyLinkAction(DestroyLinkAction object) {
 		return null;
 	}
 
@@ -8042,7 +8038,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLinkEndDestructionData(LinkEndDestructionData object) {
+	public T caseLinkEndDestructionData(LinkEndDestructionData object) {
 		return null;
 	}
 
@@ -8057,7 +8053,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClearAssociationAction(ClearAssociationAction object) {
+	public T caseClearAssociationAction(ClearAssociationAction object) {
 		return null;
 	}
 
@@ -8072,7 +8068,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBroadcastSignalAction(BroadcastSignalAction object) {
+	public T caseBroadcastSignalAction(BroadcastSignalAction object) {
 		return null;
 	}
 
@@ -8087,7 +8083,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInvocationAction(InvocationAction object) {
+	public T caseInvocationAction(InvocationAction object) {
 		return null;
 	}
 
@@ -8102,7 +8098,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSendObjectAction(SendObjectAction object) {
+	public T caseSendObjectAction(SendObjectAction object) {
 		return null;
 	}
 
@@ -8117,7 +8113,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseValueSpecificationAction(ValueSpecificationAction object) {
+	public T caseValueSpecificationAction(ValueSpecificationAction object) {
 		return null;
 	}
 
@@ -8132,7 +8128,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeExpression(TimeExpression object) {
+	public T caseTimeExpression(TimeExpression object) {
 		return null;
 	}
 
@@ -8147,7 +8143,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseObservation(Observation object) {
+	public T caseObservation(Observation object) {
 		return null;
 	}
 
@@ -8162,7 +8158,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDuration(Duration object) {
+	public T caseDuration(Duration object) {
 		return null;
 	}
 
@@ -8177,7 +8173,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseValuePin(ValuePin object) {
+	public T caseValuePin(ValuePin object) {
 		return null;
 	}
 
@@ -8192,7 +8188,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDurationInterval(DurationInterval object) {
+	public T caseDurationInterval(DurationInterval object) {
 		return null;
 	}
 
@@ -8207,7 +8203,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInterval(Interval object) {
+	public T caseInterval(Interval object) {
 		return null;
 	}
 
@@ -8222,7 +8218,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeConstraint(TimeConstraint object) {
+	public T caseTimeConstraint(TimeConstraint object) {
 		return null;
 	}
 
@@ -8237,7 +8233,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIntervalConstraint(IntervalConstraint object) {
+	public T caseIntervalConstraint(IntervalConstraint object) {
 		return null;
 	}
 
@@ -8252,7 +8248,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeInterval(TimeInterval object) {
+	public T caseTimeInterval(TimeInterval object) {
 		return null;
 	}
 
@@ -8267,7 +8263,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDurationConstraint(DurationConstraint object) {
+	public T caseDurationConstraint(DurationConstraint object) {
 		return null;
 	}
 
@@ -8282,7 +8278,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeObservation(TimeObservation object) {
+	public T caseTimeObservation(TimeObservation object) {
 		return null;
 	}
 
@@ -8297,7 +8293,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDurationObservation(DurationObservation object) {
+	public T caseDurationObservation(DurationObservation object) {
 		return null;
 	}
 
@@ -8312,7 +8308,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOpaqueAction(OpaqueAction object) {
+	public T caseOpaqueAction(OpaqueAction object) {
 		return null;
 	}
 
@@ -8327,7 +8323,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCallAction(CallAction object) {
+	public T caseCallAction(CallAction object) {
 		return null;
 	}
 
@@ -8342,7 +8338,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSendSignalAction(SendSignalAction object) {
+	public T caseSendSignalAction(SendSignalAction object) {
 		return null;
 	}
 
@@ -8357,7 +8353,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCallOperationAction(CallOperationAction object) {
+	public T caseCallOperationAction(CallOperationAction object) {
 		return null;
 	}
 
@@ -8372,7 +8368,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCallBehaviorAction(CallBehaviorAction object) {
+	public T caseCallBehaviorAction(CallBehaviorAction object) {
 		return null;
 	}
 
@@ -8387,7 +8383,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInformationItem(InformationItem object) {
+	public T caseInformationItem(InformationItem object) {
 		return null;
 	}
 
@@ -8402,7 +8398,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInformationFlow(InformationFlow object) {
+	public T caseInformationFlow(InformationFlow object) {
 		return null;
 	}
 
@@ -8417,7 +8413,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseModel(Model object) {
+	public T caseModel(Model object) {
 		return null;
 	}
 
@@ -8432,7 +8428,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseVariableAction(VariableAction object) {
+	public T caseVariableAction(VariableAction object) {
 		return null;
 	}
 
@@ -8447,7 +8443,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadVariableAction(ReadVariableAction object) {
+	public T caseReadVariableAction(ReadVariableAction object) {
 		return null;
 	}
 
@@ -8462,7 +8458,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseWriteVariableAction(WriteVariableAction object) {
+	public T caseWriteVariableAction(WriteVariableAction object) {
 		return null;
 	}
 
@@ -8477,7 +8473,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClearVariableAction(ClearVariableAction object) {
+	public T caseClearVariableAction(ClearVariableAction object) {
 		return null;
 	}
 
@@ -8492,7 +8488,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAddVariableValueAction(AddVariableValueAction object) {
+	public T caseAddVariableValueAction(AddVariableValueAction object) {
 		return null;
 	}
 
@@ -8507,7 +8503,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRemoveVariableValueAction(RemoveVariableValueAction object) {
+	public T caseRemoveVariableValueAction(RemoveVariableValueAction object) {
 		return null;
 	}
 
@@ -8522,7 +8518,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRaiseExceptionAction(RaiseExceptionAction object) {
+	public T caseRaiseExceptionAction(RaiseExceptionAction object) {
 		return null;
 	}
 
@@ -8537,7 +8533,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActionInputPin(ActionInputPin object) {
+	public T caseActionInputPin(ActionInputPin object) {
 		return null;
 	}
 
@@ -8552,7 +8548,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadExtentAction(ReadExtentAction object) {
+	public T caseReadExtentAction(ReadExtentAction object) {
 		return null;
 	}
 
@@ -8567,7 +8563,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReclassifyObjectAction(ReclassifyObjectAction object) {
+	public T caseReclassifyObjectAction(ReclassifyObjectAction object) {
 		return null;
 	}
 
@@ -8582,7 +8578,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadIsClassifiedObjectAction(
+	public T caseReadIsClassifiedObjectAction(
 			ReadIsClassifiedObjectAction object) {
 		return null;
 	}
@@ -8598,7 +8594,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStartClassifierBehaviorAction(
+	public T caseStartClassifierBehaviorAction(
 			StartClassifierBehaviorAction object) {
 		return null;
 	}
@@ -8614,7 +8610,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadLinkObjectEndAction(ReadLinkObjectEndAction object) {
+	public T caseReadLinkObjectEndAction(ReadLinkObjectEndAction object) {
 		return null;
 	}
 
@@ -8629,7 +8625,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReadLinkObjectEndQualifierAction(
+	public T caseReadLinkObjectEndQualifierAction(
 			ReadLinkObjectEndQualifierAction object) {
 		return null;
 	}
@@ -8645,7 +8641,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCreateLinkObjectAction(CreateLinkObjectAction object) {
+	public T caseCreateLinkObjectAction(CreateLinkObjectAction object) {
 		return null;
 	}
 
@@ -8660,7 +8656,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAcceptEventAction(AcceptEventAction object) {
+	public T caseAcceptEventAction(AcceptEventAction object) {
 		return null;
 	}
 
@@ -8675,7 +8671,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAcceptCallAction(AcceptCallAction object) {
+	public T caseAcceptCallAction(AcceptCallAction object) {
 		return null;
 	}
 
@@ -8690,7 +8686,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReplyAction(ReplyAction object) {
+	public T caseReplyAction(ReplyAction object) {
 		return null;
 	}
 
@@ -8705,7 +8701,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUnmarshallAction(UnmarshallAction object) {
+	public T caseUnmarshallAction(UnmarshallAction object) {
 		return null;
 	}
 
@@ -8720,7 +8716,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReduceAction(ReduceAction object) {
+	public T caseReduceAction(ReduceAction object) {
 		return null;
 	}
 
@@ -8735,7 +8731,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseControlNode(ControlNode object) {
+	public T caseControlNode(ControlNode object) {
 		return null;
 	}
 
@@ -8750,7 +8746,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseControlFlow(ControlFlow object) {
+	public T caseControlFlow(ControlFlow object) {
 		return null;
 	}
 
@@ -8765,7 +8761,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseInitialNode(InitialNode object) {
+	public T caseInitialNode(InitialNode object) {
 		return null;
 	}
 
@@ -8780,7 +8776,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityParameterNode(ActivityParameterNode object) {
+	public T caseActivityParameterNode(ActivityParameterNode object) {
 		return null;
 	}
 
@@ -8795,7 +8791,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseForkNode(ForkNode object) {
+	public T caseForkNode(ForkNode object) {
 		return null;
 	}
 
@@ -8810,7 +8806,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFlowFinalNode(FlowFinalNode object) {
+	public T caseFlowFinalNode(FlowFinalNode object) {
 		return null;
 	}
 
@@ -8825,7 +8821,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFinalNode(FinalNode object) {
+	public T caseFinalNode(FinalNode object) {
 		return null;
 	}
 
@@ -8840,7 +8836,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCentralBufferNode(CentralBufferNode object) {
+	public T caseCentralBufferNode(CentralBufferNode object) {
 		return null;
 	}
 
@@ -8855,7 +8851,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMergeNode(MergeNode object) {
+	public T caseMergeNode(MergeNode object) {
 		return null;
 	}
 
@@ -8870,7 +8866,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDecisionNode(DecisionNode object) {
+	public T caseDecisionNode(DecisionNode object) {
 		return null;
 	}
 
@@ -8885,7 +8881,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseActivityFinalNode(ActivityFinalNode object) {
+	public T caseActivityFinalNode(ActivityFinalNode object) {
 		return null;
 	}
 
@@ -8900,7 +8896,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseJoinNode(JoinNode object) {
+	public T caseJoinNode(JoinNode object) {
 		return null;
 	}
 
@@ -8915,7 +8911,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDataStoreNode(DataStoreNode object) {
+	public T caseDataStoreNode(DataStoreNode object) {
 		return null;
 	}
 
@@ -8930,7 +8926,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseObjectFlow(ObjectFlow object) {
+	public T caseObjectFlow(ObjectFlow object) {
 		return null;
 	}
 
@@ -8945,7 +8941,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSequenceNode(SequenceNode object) {
+	public T caseSequenceNode(SequenceNode object) {
 		return null;
 	}
 
@@ -8960,7 +8956,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConditionalNode(ConditionalNode object) {
+	public T caseConditionalNode(ConditionalNode object) {
 		return null;
 	}
 
@@ -8975,7 +8971,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseClause(Clause object) {
+	public T caseClause(Clause object) {
 		return null;
 	}
 
@@ -8990,7 +8986,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseLoopNode(LoopNode object) {
+	public T caseLoopNode(LoopNode object) {
 		return null;
 	}
 
@@ -9005,7 +9001,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExpansionNode(ExpansionNode object) {
+	public T caseExpansionNode(ExpansionNode object) {
 		return null;
 	}
 
@@ -9020,7 +9016,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExpansionRegion(ExpansionRegion object) {
+	public T caseExpansionRegion(ExpansionRegion object) {
 		return null;
 	}
 
@@ -9035,7 +9031,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseComponentRealization(ComponentRealization object) {
+	public T caseComponentRealization(ComponentRealization object) {
 		return null;
 	}
 
@@ -9050,7 +9046,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseComponent(Component object) {
+	public T caseComponent(Component object) {
 		return null;
 	}
 
@@ -9065,7 +9061,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNode(Node object) {
+	public T caseNode(Node object) {
 		return null;
 	}
 
@@ -9080,7 +9076,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDevice(Device object) {
+	public T caseDevice(Device object) {
 		return null;
 	}
 
@@ -9095,7 +9091,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExecutionEnvironment(ExecutionEnvironment object) {
+	public T caseExecutionEnvironment(ExecutionEnvironment object) {
 		return null;
 	}
 
@@ -9110,7 +9106,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCommunicationPath(CommunicationPath object) {
+	public T caseCommunicationPath(CommunicationPath object) {
 		return null;
 	}
 
@@ -9125,7 +9121,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFinalState(FinalState object) {
+	public T caseFinalState(FinalState object) {
 		return null;
 	}
 
@@ -9140,7 +9136,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeEvent(TimeEvent object) {
+	public T caseTimeEvent(TimeEvent object) {
 		return null;
 	}
 
@@ -9155,7 +9151,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProtocolTransition(ProtocolTransition object) {
+	public T caseProtocolTransition(ProtocolTransition object) {
 		return null;
 	}
 
@@ -9170,7 +9166,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAssociationClass(AssociationClass object) {
+	public T caseAssociationClass(AssociationClass object) {
 		return null;
 	}
 
@@ -9185,7 +9181,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -9200,7 +9196,7 @@ public class UMLSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

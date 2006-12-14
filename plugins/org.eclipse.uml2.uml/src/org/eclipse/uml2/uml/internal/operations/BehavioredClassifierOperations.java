@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.9 2006/03/08 19:03:02 khussey Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.10 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -68,7 +67,7 @@ public class BehavioredClassifierOperations
 	 */
 	public static boolean validateClassBehavior(
 			BehavioredClassifier behavioredClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -95,10 +94,10 @@ public class BehavioredClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getImplementedInterfaces(
+	public static EList<Interface> getImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier) {
 		return getRealizedInterfaces(behavioredClassifier,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<Interface>());
 	}
 
 	/**
@@ -106,21 +105,20 @@ public class BehavioredClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllImplementedInterfaces(
+	public static EList<Interface> getAllImplementedInterfaces(
 			BehavioredClassifier behavioredClassifier) {
 		return getAllRealizedInterfaces(behavioredClassifier,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<Interface>());
 	}
 
-	protected static EList getRealizedInterfaces(
-			BehavioredClassifier behavioredClassifier, EList realizedInterfaces) {
+	protected static EList<Interface> getRealizedInterfaces(
+			BehavioredClassifier behavioredClassifier,
+			EList<Interface> realizedInterfaces) {
 
-		for (Iterator interfaceRealizations = behavioredClassifier
-			.getInterfaceRealizations().iterator(); interfaceRealizations
-			.hasNext();) {
+		for (InterfaceRealization interfaceRealization : behavioredClassifier
+			.getInterfaceRealizations()) {
 
-			Interface contract = ((InterfaceRealization) interfaceRealizations
-				.next()).getContract();
+			Interface contract = interfaceRealization.getContract();
 
 			if (contract != null) {
 				realizedInterfaces.add(contract);
@@ -130,15 +128,12 @@ public class BehavioredClassifierOperations
 		return realizedInterfaces;
 	}
 
-	protected static EList getAllRealizedInterfaces(
+	protected static EList<Interface> getAllRealizedInterfaces(
 			BehavioredClassifier behavioredClassifier,
-			EList allRealizedInterfaces) {
+			EList<Interface> allRealizedInterfaces) {
 		getRealizedInterfaces(behavioredClassifier, allRealizedInterfaces);
 
-		for (Iterator allParents = behavioredClassifier.allParents().iterator(); allParents
-			.hasNext();) {
-
-			Classifier parent = (Classifier) allParents.next();
+		for (Classifier parent : behavioredClassifier.allParents()) {
 
 			if (parent instanceof BehavioredClassifier) {
 				getRealizedInterfaces((BehavioredClassifier) parent,

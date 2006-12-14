@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.9 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Extend.java,v 1.10 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -134,7 +134,7 @@ public interface Extend
 	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" required="true"
 	 * @generated
 	 */
-	EList getExtensionLocations();
+	EList<ExtensionPoint> getExtensionLocations();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExtensionPoint} with the specified '<em><b>Name</b></em>' from the '<em><b>Extension Location</b></em>' reference list.
@@ -198,6 +198,7 @@ public interface Extend
 	 * @model
 	 * @generated
 	 */
-	boolean validateExtensionPoints(DiagnosticChain diagnostics, Map context);
+	boolean validateExtensionPoints(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Extend

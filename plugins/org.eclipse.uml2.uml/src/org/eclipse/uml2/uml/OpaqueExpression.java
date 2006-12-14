@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.11 2006/10/10 20:41:28 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.12 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface OpaqueExpression
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
-	EList getBodies();
+	EList<String> getBodies();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getBodies <em>Body</em>}' attribute list.
@@ -99,7 +99,7 @@ public interface OpaqueExpression
 	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
-	EList getLanguages();
+	EList<String> getLanguages();
 
 	/**
 	 * Unsets the value of the '{@link org.eclipse.uml2.uml.OpaqueExpression#getLanguages <em>Language</em>}' attribute list.
@@ -171,7 +171,8 @@ public interface OpaqueExpression
 	 * @model
 	 * @generated
 	 */
-	boolean validateLanguageBodySize(DiagnosticChain diagnostics, Map context);
+	boolean validateLanguageBodySize(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,7 +186,7 @@ public interface OpaqueExpression
 	 * @generated
 	 */
 	boolean validateOnlyReturnResultParameters(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,7 +200,7 @@ public interface OpaqueExpression
 	 * @generated
 	 */
 	boolean validateOneReturnResultParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FunctionBehaviorImpl.java,v 1.2 2005/11/23 20:01:20 khussey Exp $
+ * $Id: FunctionBehaviorImpl.java,v 1.3 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class FunctionBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.FUNCTION_BEHAVIOR;
 	}
@@ -60,7 +61,7 @@ public class FunctionBehaviorImpl
 	 * @generated
 	 */
 	public boolean validateOneOutputParameter(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FunctionBehaviorOperations.validateOneOutputParameter(this,
 			diagnostics, context);
 	}
@@ -71,7 +72,7 @@ public class FunctionBehaviorImpl
 	 * @generated
 	 */
 	public boolean validateTypesOfParameters(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FunctionBehaviorOperations.validateTypesOfParameters(this,
 			diagnostics, context);
 	}

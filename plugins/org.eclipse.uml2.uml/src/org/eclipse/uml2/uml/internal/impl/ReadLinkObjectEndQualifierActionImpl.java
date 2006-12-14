@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.22 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.23 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -35,7 +36,15 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReadLinkObjectEndQualifierAction;
@@ -112,6 +121,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.READ_LINK_OBJECT_END_QUALIFIER_ACTION;
 	}
@@ -121,20 +131,21 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
+	public EList<InputPin> getInputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__INPUT);
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.ACTION__INPUT,
-						inputs = new DerivedUnionEObjectEList(
+						inputs = new DerivedUnionEObjectEList<InputPin>(
 							InputPin.class,
 							this,
 							UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT,
@@ -142,7 +153,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 			}
 			return inputs;
 		}
-		return new DerivedUnionEObjectEList(InputPin.class, this,
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
 			UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INPUT,
 			INPUT_ESUBSETS);
 	}
@@ -152,20 +163,21 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
+	public EList<OutputPin> getOutputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList outputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__OUTPUT);
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
 			if (outputs == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.ACTION__OUTPUT,
-						outputs = new DerivedUnionEObjectEList(
+						outputs = new DerivedUnionEObjectEList<OutputPin>(
 							OutputPin.class,
 							this,
 							UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT,
@@ -173,7 +185,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 			}
 			return outputs;
 		}
-		return new DerivedUnionEObjectEList(OutputPin.class, this,
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
 			UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTPUT,
 			OUTPUT_ESUBSETS);
 	}
@@ -475,7 +487,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateQualifierAttribute(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateQualifierAttribute(this, diagnostics, context);
 	}
@@ -486,7 +498,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateAssociationOfAssociation(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateAssociationOfAssociation(this, diagnostics, context);
 	}
@@ -497,7 +509,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateEndsOfAssociation(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateEndsOfAssociation(this, diagnostics, context);
 	}
@@ -507,7 +519,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTypeOfObject(DiagnosticChain diagnostics, Map context) {
+	public boolean validateTypeOfObject(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations.validateTypeOfObject(
 			this, diagnostics, context);
 	}
@@ -518,7 +531,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfQualifier(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateMultiplicityOfQualifier(this, diagnostics, context);
 	}
@@ -529,7 +542,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfObject(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateMultiplicityOfObject(this, diagnostics, context);
 	}
@@ -539,7 +552,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSameType(DiagnosticChain diagnostics, Map context) {
+	public boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations.validateSameType(
 			this, diagnostics, context);
 	}
@@ -550,7 +564,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfResult(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadLinkObjectEndQualifierActionOperations
 			.validateMultiplicityOfResult(this, diagnostics, context);
 	}
@@ -560,18 +574,19 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_STRUCTURED_NODE :
@@ -579,26 +594,26 @@ public class ReadLinkObjectEndQualifierActionImpl
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT :
 				return basicSetObject(null, msgs);
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT :
@@ -612,6 +627,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
@@ -703,15 +719,19 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME :
 				setName((String) newValue);
@@ -721,7 +741,8 @@ public class ReadLinkObjectEndQualifierActionImpl
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -737,35 +758,44 @@ public class ReadLinkObjectEndQualifierActionImpl
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT :
 				setObject((InputPin) newValue);
@@ -785,6 +815,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
@@ -856,6 +887,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__EANNOTATIONS :
@@ -943,6 +975,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetInputs() {
 		return super.isSetInputs()
 			|| eIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT);
@@ -963,6 +996,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
 			|| eIsSet(UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT);

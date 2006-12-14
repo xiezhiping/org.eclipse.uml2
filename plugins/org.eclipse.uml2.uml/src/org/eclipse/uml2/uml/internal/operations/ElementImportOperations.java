@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportOperations.java,v 1.7 2006/03/15 19:34:24 khussey Exp $
+ * $Id: ElementImportOperations.java,v 1.8 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -64,7 +64,7 @@ public class ElementImportOperations
 	 */
 	public static boolean validateVisibilityPublicOrPrivate(
 			ElementImport elementImport, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = true;
 
 		VisibilityKind visibility = elementImport.getVisibility();
@@ -102,7 +102,7 @@ public class ElementImportOperations
 	 */
 	public static boolean validateImportedElementIsPublic(
 			ElementImport elementImport, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = true;
 
 		PackageableElement importedElement = elementImport.getImportedElement();

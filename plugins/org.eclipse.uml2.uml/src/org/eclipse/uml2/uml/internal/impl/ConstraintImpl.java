@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.19 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.20 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -36,7 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
@@ -77,7 +80,7 @@ public class ConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList constrainedElements = null;
+	protected EList<Element> constrainedElements = null;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -103,6 +106,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONSTRAINT;
 	}
@@ -112,23 +116,25 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.CONSTRAINT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.CONSTRAINT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.CONSTRAINT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -137,10 +143,10 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConstrainedElements() {
+	public EList<Element> getConstrainedElements() {
 		if (constrainedElements == null) {
-			constrainedElements = new EObjectResolvingEList(Element.class,
-				this, UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
+			constrainedElements = new EObjectResolvingEList<Element>(
+				Element.class, this, UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT);
 		}
 		return constrainedElements;
 	}
@@ -317,7 +323,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public boolean validateNotApplyToSelf(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConstraintOperations.validateNotApplyToSelf(this, diagnostics,
 			context);
 	}
@@ -328,7 +334,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public boolean validateValueSpecificationBoolean(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return ConstraintOperations.validateValueSpecificationBoolean(this,
 			diagnostics, context);
 	}
@@ -338,7 +344,8 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBooleanValue(DiagnosticChain diagnostics, Map context) {
+	public boolean validateBooleanValue(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ConstraintOperations.validateBooleanValue(this, diagnostics,
 			context);
 	}
@@ -349,7 +356,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public boolean validateNoSideEffects(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConstraintOperations.validateNoSideEffects(this, diagnostics,
 			context);
 	}
@@ -360,7 +367,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public boolean validateNotAppliedToSelf(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConstraintOperations.validateNotAppliedToSelf(this, diagnostics,
 			context);
 	}
@@ -370,15 +377,17 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -405,18 +414,19 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -436,6 +446,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -455,6 +466,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
@@ -510,15 +522,19 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -528,7 +544,8 @@ public class ConstraintImpl
 				return;
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -541,7 +558,8 @@ public class ConstraintImpl
 				return;
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll((Collection) newValue);
+				getConstrainedElements().addAll(
+					(Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__SPECIFICATION :
 				setSpecification((ValueSpecification) newValue);
@@ -558,6 +576,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
@@ -602,6 +621,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
@@ -672,6 +692,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.CONSTRAINT__SPECIFICATION);
@@ -696,6 +717,7 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.CONSTRAINT__CONTEXT);
 	}

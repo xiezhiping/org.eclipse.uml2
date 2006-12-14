@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItem.java,v 1.5 2006/05/12 20:38:08 khussey Exp $
+ * $Id: InformationItem.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface InformationItem
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList getRepresenteds();
+	EList<Classifier> getRepresenteds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Represented</b></em>' reference list.
@@ -96,7 +96,8 @@ public interface InformationItem
 	 * @model
 	 * @generated
 	 */
-	boolean validateSourcesAndTargets(DiagnosticChain diagnostics, Map context);
+	boolean validateSourcesAndTargets(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,7 +109,8 @@ public interface InformationItem
 	 * @model
 	 * @generated
 	 */
-	boolean validateHasNo(DiagnosticChain diagnostics, Map context);
+	boolean validateHasNo(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,6 +122,7 @@ public interface InformationItem
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotInstantiable(DiagnosticChain diagnostics, Map context);
+	boolean validateNotInstantiable(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // InformationItem

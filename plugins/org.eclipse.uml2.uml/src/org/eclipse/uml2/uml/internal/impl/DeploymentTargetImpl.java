@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.19 2006/11/14 18:02:15 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.20 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -30,6 +30,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentTarget;
@@ -69,7 +70,7 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList deployments = null;
+	protected EList<Deployment> deployments = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,6 +86,7 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DEPLOYMENT_TARGET;
 	}
@@ -94,23 +96,25 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -119,9 +123,9 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClientDependencies() {
+	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
-			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
 				Dependency.class, this,
 				UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY, null,
 				CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
@@ -134,9 +138,9 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDeployments() {
+	public EList<Deployment> getDeployments() {
 		if (deployments == null) {
-			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Deployment>(
 				Deployment.class, this,
 				UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT,
 				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
@@ -173,9 +177,7 @@ public abstract class DeploymentTargetImpl
 	 */
 	public Deployment getDeployment(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		deploymentLoop : for (Iterator i = getDeployments().iterator(); i
-			.hasNext();) {
-			Deployment deployment = (Deployment) i.next();
+		deploymentLoop : for (Deployment deployment : getDeployments()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(deployment.getName())
 				: name.equals(deployment.getName())))
@@ -192,12 +194,14 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDeployedElements() {
+	public EList<PackageableElement> getDeployedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<PackageableElement> result = (EList<PackageableElement>) cache
+				.get(this,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
 				cache.put(this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
@@ -225,9 +229,7 @@ public abstract class DeploymentTargetImpl
 	 */
 	public PackageableElement getDeployedElement(String name,
 			boolean ignoreCase, EClass eClass) {
-		deployedElementLoop : for (Iterator i = getDeployedElements()
-			.iterator(); i.hasNext();) {
-			PackageableElement deployedElement = (PackageableElement) i.next();
+		deployedElementLoop : for (PackageableElement deployedElement : getDeployedElements()) {
 			if (eClass != null && !eClass.isInstance(deployedElement))
 				continue deployedElementLoop;
 			if (name != null && !(ignoreCase
@@ -244,18 +246,20 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -265,23 +269,24 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getDeployments()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -291,6 +296,7 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
@@ -332,15 +338,19 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				setName((String) newValue);
@@ -350,14 +360,16 @@ public abstract class DeploymentTargetImpl
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll((Collection) newValue);
+				getDeployments().addAll(
+					(Collection<? extends Deployment>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -368,6 +380,7 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
@@ -400,6 +413,7 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
@@ -471,6 +485,7 @@ public abstract class DeploymentTargetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT);

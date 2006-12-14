@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionKind.java,v 1.1 2005/11/14 22:25:59 khussey Exp $
+ * $Id: ExpansionKind.java,v 1.2 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ExpansionKind
-		extends AbstractEnumerator {
+public enum ExpansionKind
+		implements Enumerator {
+	/**
+	 * The '<em><b>Parallel</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PARALLEL
+	 * @generated
+	 * @ordered
+	 */
+	PARALLEL_LITERAL(0, "parallel", "parallel"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Iterative</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ITERATIVE
+	 * @generated
+	 * @ordered
+	 */
+	ITERATIVE_LITERAL(1, "iterative", "iterative"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Stream</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STREAM
+	 * @generated
+	 * @ordered
+	 */
+	STREAM_LITERAL(2, "stream", "stream"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Parallel</b></em>' literal value.
@@ -76,39 +105,6 @@ public final class ExpansionKind
 	public static final int STREAM = 2;
 
 	/**
-	 * The '<em><b>Parallel</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PARALLEL
-	 * @generated
-	 * @ordered
-	 */
-	public static final ExpansionKind PARALLEL_LITERAL = new ExpansionKind(
-		PARALLEL, "parallel", "parallel"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Iterative</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ITERATIVE
-	 * @generated
-	 * @ordered
-	 */
-	public static final ExpansionKind ITERATIVE_LITERAL = new ExpansionKind(
-		ITERATIVE, "iterative", "iterative"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Stream</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #STREAM
-	 * @generated
-	 * @ordered
-	 */
-	public static final ExpansionKind STREAM_LITERAL = new ExpansionKind(
-		STREAM, "stream", "stream"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Expansion Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,8 +119,8 @@ public final class ExpansionKind
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<ExpansionKind> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Expansion Kind</b></em>' literal with the specified literal value.
@@ -177,13 +173,74 @@ public final class ExpansionKind
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private ExpansionKind(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //ExpansionKind

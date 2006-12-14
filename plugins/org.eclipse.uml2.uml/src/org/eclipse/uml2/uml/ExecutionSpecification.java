@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecification.java,v 1.3 2006/05/12 20:38:09 khussey Exp $
+ * $Id: ExecutionSpecification.java,v 1.4 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -100,6 +100,7 @@ public interface ExecutionSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameLifeline(DiagnosticChain diagnostics, Map context);
+	boolean validateSameLifeline(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ExecutionSpecification

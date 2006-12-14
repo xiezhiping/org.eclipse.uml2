@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: UseCase.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -61,7 +61,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Include" opposite="includingCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getIncludes();
+	EList<Include> getIncludes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Include}, with the specified '<em><b>Name</b></em>', and '<em><b>Addition</b></em>', and appends it to the '<em><b>Include</b></em>' containment reference list.
@@ -117,7 +117,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Extend" opposite="extension" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getExtends();
+	EList<Extend> getExtends();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Extend}, with the specified '<em><b>Name</b></em>', and '<em><b>Extended Case</b></em>', and appends it to the '<em><b>Extend</b></em>' containment reference list.
@@ -173,7 +173,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" opposite="useCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getExtensionPoints();
+	EList<ExtensionPoint> getExtensionPoints();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ExtensionPoint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Extension Point</b></em>' containment reference list.
@@ -226,7 +226,7 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.Classifier" opposite="useCase" ordered="false"
 	 * @generated
 	 */
-	EList getSubjects();
+	EList<Classifier> getSubjects();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Subject</b></em>' reference list.
@@ -262,7 +262,8 @@ public interface UseCase
 	 * @model
 	 * @generated
 	 */
-	boolean validateMustHaveName(DiagnosticChain diagnostics, Map context);
+	boolean validateMustHaveName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -274,7 +275,8 @@ public interface UseCase
 	 * @model
 	 * @generated
 	 */
-	boolean validateBinaryAssociations(DiagnosticChain diagnostics, Map context);
+	boolean validateBinaryAssociations(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,7 +289,7 @@ public interface UseCase
 	 * @generated
 	 */
 	boolean validateNoAssociationToUseCase(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,7 +301,8 @@ public interface UseCase
 	 * @model
 	 * @generated
 	 */
-	boolean validateCannotIncludeSelf(DiagnosticChain diagnostics, Map context);
+	boolean validateCannotIncludeSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -311,6 +314,6 @@ public interface UseCase
 	 * @model type="org.eclipse.uml2.uml.UseCase" ordered="false"
 	 * @generated
 	 */
-	EList allIncludedUseCases();
+	EList<UseCase> allIncludedUseCases();
 
 } // UseCase

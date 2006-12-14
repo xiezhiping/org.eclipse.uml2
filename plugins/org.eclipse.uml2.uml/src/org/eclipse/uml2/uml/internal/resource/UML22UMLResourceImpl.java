@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLResourceImpl.java,v 1.2 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLResourceImpl.java,v 1.3 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -24,6 +24,7 @@ public class UML22UMLResourceImpl
 		super(uri);
 	}
 
+	@Override
 	protected XMLLoad createXMLLoad() {
 		return new UML22UMLLoadImpl(createXMLHelper());
 	}

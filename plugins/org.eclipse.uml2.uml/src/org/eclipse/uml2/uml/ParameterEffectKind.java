@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterEffectKind.java,v 1.2 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ParameterEffectKind.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,47 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ParameterEffectKind
-		extends AbstractEnumerator {
+public enum ParameterEffectKind
+		implements Enumerator {
+	/**
+	 * The '<em><b>Create</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CREATE
+	 * @generated
+	 * @ordered
+	 */
+	CREATE_LITERAL(0, "create", "create"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Read</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #READ
+	 * @generated
+	 * @ordered
+	 */
+	READ_LITERAL(1, "read", "read"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Update</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UPDATE
+	 * @generated
+	 * @ordered
+	 */
+	UPDATE_LITERAL(2, "update", "update"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Delete</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DELETE
+	 * @generated
+	 * @ordered
+	 */
+	DELETE_LITERAL(3, "delete", "delete"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Create</b></em>' literal value.
@@ -90,50 +129,6 @@ public final class ParameterEffectKind
 	public static final int DELETE = 3;
 
 	/**
-	 * The '<em><b>Create</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CREATE
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterEffectKind CREATE_LITERAL = new ParameterEffectKind(
-		CREATE, "create", "create"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Read</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #READ
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterEffectKind READ_LITERAL = new ParameterEffectKind(
-		READ, "read", "read"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Update</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #UPDATE
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterEffectKind UPDATE_LITERAL = new ParameterEffectKind(
-		UPDATE, "update", "update"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Delete</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DELETE
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterEffectKind DELETE_LITERAL = new ParameterEffectKind(
-		DELETE, "delete", "delete"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Parameter Effect Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,8 +143,8 @@ public final class ParameterEffectKind
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<ParameterEffectKind> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Parameter Effect Kind</b></em>' literal with the specified literal value.
@@ -204,13 +199,74 @@ public final class ParameterEffectKind
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private ParameterEffectKind(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //ParameterEffectKind

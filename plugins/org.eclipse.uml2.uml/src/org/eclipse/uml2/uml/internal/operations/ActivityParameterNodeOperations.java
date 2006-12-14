@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeOperations.java,v 1.6 2006/04/05 13:50:02 khussey Exp $
+ * $Id: ActivityParameterNodeOperations.java,v 1.7 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,7 +63,7 @@ public class ActivityParameterNodeOperations
 	 */
 	public static boolean validateHasParameters(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -96,7 +96,7 @@ public class ActivityParameterNodeOperations
 	 */
 	public static boolean validateSameType(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -129,7 +129,7 @@ public class ActivityParameterNodeOperations
 	 */
 	public static boolean validateNoEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -163,7 +163,7 @@ public class ActivityParameterNodeOperations
 	 */
 	public static boolean validateNoIncomingEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -197,7 +197,7 @@ public class ActivityParameterNodeOperations
 	 */
 	public static boolean validateNoOutgoingEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

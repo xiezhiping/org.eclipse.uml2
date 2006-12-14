@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.19 2006/10/10 20:41:28 khussey Exp $
+ * $Id: Component.java,v 1.20 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRequireds();
+	EList<Interface> getRequireds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
@@ -121,7 +121,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getProvideds();
+	EList<Interface> getProvideds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
@@ -159,7 +159,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getPackagedElements();
+	EList<PackageableElement> getPackagedElements();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.PackageableElement}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Packaged Element</b></em>' containment reference list.
@@ -214,7 +214,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getRealizations();
+	EList<ComponentRealization> getRealizations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ComponentRealization}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Realization</b></em>' containment reference list.
@@ -308,7 +308,7 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
-	EList realizedInterfaces(Classifier classifier);
+	EList<Interface> realizedInterfaces(Classifier classifier);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,6 +322,6 @@ public interface Component
 	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
-	EList usedInterfaces(Classifier classifier);
+	EList<Interface> usedInterfaces(Classifier classifier);
 
 } // Component

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperatorKind.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
+ * $Id: InteractionOperatorKind.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,127 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class InteractionOperatorKind
-		extends AbstractEnumerator {
+public enum InteractionOperatorKind
+		implements Enumerator {
+	/**
+	 * The '<em><b>Seq</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SEQ
+	 * @generated
+	 * @ordered
+	 */
+	SEQ_LITERAL(0, "seq", "seq"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Alt</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ALT
+	 * @generated
+	 * @ordered
+	 */
+	ALT_LITERAL(1, "alt", "alt"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Opt</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OPT
+	 * @generated
+	 * @ordered
+	 */
+	OPT_LITERAL(2, "opt", "opt"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Break</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BREAK
+	 * @generated
+	 * @ordered
+	 */
+	BREAK_LITERAL(3, "break", "break"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Par</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PAR
+	 * @generated
+	 * @ordered
+	 */
+	PAR_LITERAL(4, "par", "par"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Strict</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STRICT
+	 * @generated
+	 * @ordered
+	 */
+	STRICT_LITERAL(5, "strict", "strict"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Loop</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LOOP
+	 * @generated
+	 * @ordered
+	 */
+	LOOP_LITERAL(6, "loop", "loop"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Critical</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CRITICAL
+	 * @generated
+	 * @ordered
+	 */
+	CRITICAL_LITERAL(7, "critical", "critical"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Neg</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NEG
+	 * @generated
+	 * @ordered
+	 */
+	NEG_LITERAL(8, "neg", "neg"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Assert</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASSERT
+	 * @generated
+	 * @ordered
+	 */
+	ASSERT_LITERAL(9, "assert", "assert"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Ignore</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IGNORE
+	 * @generated
+	 * @ordered
+	 */
+	IGNORE_LITERAL(10, "ignore", "ignore"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Consider</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CONSIDER
+	 * @generated
+	 * @ordered
+	 */
+	CONSIDER_LITERAL(11, "consider", "consider"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Seq</b></em>' literal value.
@@ -202,138 +321,6 @@ public final class InteractionOperatorKind
 	public static final int CONSIDER = 11;
 
 	/**
-	 * The '<em><b>Seq</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SEQ
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind SEQ_LITERAL = new InteractionOperatorKind(
-		SEQ, "seq", "seq"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Alt</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ALT
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind ALT_LITERAL = new InteractionOperatorKind(
-		ALT, "alt", "alt"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Opt</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #OPT
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind OPT_LITERAL = new InteractionOperatorKind(
-		OPT, "opt", "opt"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Break</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BREAK
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind BREAK_LITERAL = new InteractionOperatorKind(
-		BREAK, "break", "break"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Par</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PAR
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind PAR_LITERAL = new InteractionOperatorKind(
-		PAR, "par", "par"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Strict</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #STRICT
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind STRICT_LITERAL = new InteractionOperatorKind(
-		STRICT, "strict", "strict"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Loop</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LOOP
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind LOOP_LITERAL = new InteractionOperatorKind(
-		LOOP, "loop", "loop"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Critical</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CRITICAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind CRITICAL_LITERAL = new InteractionOperatorKind(
-		CRITICAL, "critical", "critical"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Neg</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NEG
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind NEG_LITERAL = new InteractionOperatorKind(
-		NEG, "neg", "neg"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Assert</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ASSERT
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind ASSERT_LITERAL = new InteractionOperatorKind(
-		ASSERT, "assert", "assert"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Ignore</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IGNORE
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind IGNORE_LITERAL = new InteractionOperatorKind(
-		IGNORE, "ignore", "ignore"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Consider</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CONSIDER
-	 * @generated
-	 * @ordered
-	 */
-	public static final InteractionOperatorKind CONSIDER_LITERAL = new InteractionOperatorKind(
-		CONSIDER, "consider", "consider"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Interaction Operator Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -350,8 +337,8 @@ public final class InteractionOperatorKind
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<InteractionOperatorKind> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Interaction Operator Kind</b></em>' literal with the specified literal value.
@@ -422,13 +409,74 @@ public final class InteractionOperatorKind
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private InteractionOperatorKind(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //InteractionOperatorKind

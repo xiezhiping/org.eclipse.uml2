@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.14 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.ExecutableNode;
@@ -90,7 +91,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList exceptionTypes = null;
+	protected EList<Classifier> exceptionTypes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,6 +107,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXCEPTION_HANDLER;
 	}
@@ -215,9 +217,10 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExceptionTypes() {
+	public EList<Classifier> getExceptionTypes() {
 		if (exceptionTypes == null) {
-			exceptionTypes = new EObjectResolvingEList(Classifier.class, this,
+			exceptionTypes = new EObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE);
 		}
 		return exceptionTypes;
@@ -239,9 +242,7 @@ public class ExceptionHandlerImpl
 	 */
 	public Classifier getExceptionType(String name, boolean ignoreCase,
 			EClass eClass) {
-		exceptionTypeLoop : for (Iterator i = getExceptionTypes().iterator(); i
-			.hasNext();) {
-			Classifier exceptionType = (Classifier) i.next();
+		exceptionTypeLoop : for (Classifier exceptionType : getExceptionTypes()) {
 			if (eClass != null && !eClass.isInstance(exceptionType))
 				continue exceptionTypeLoop;
 			if (name != null && !(ignoreCase
@@ -323,7 +324,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public boolean validateExceptionBody(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ExceptionHandlerOperations.validateExceptionBody(this,
 			diagnostics, context);
 	}
@@ -333,7 +334,8 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResultPins(DiagnosticChain diagnostics, Map context) {
+	public boolean validateResultPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExceptionHandlerOperations.validateResultPins(this, diagnostics,
 			context);
 	}
@@ -343,7 +345,8 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOneInput(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOneInput(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExceptionHandlerOperations.validateOneInput(this, diagnostics,
 			context);
 	}
@@ -354,7 +357,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public boolean validateEdgeSourceTarget(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ExceptionHandlerOperations.validateEdgeSourceTarget(this,
 			diagnostics, context);
 	}
@@ -364,12 +367,14 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -383,14 +388,15 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				return basicSetProtectedNode(null, msgs);
@@ -403,6 +409,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -419,6 +426,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
@@ -454,15 +462,19 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
 				setHandlerBody((ExecutableNode) newValue);
@@ -472,7 +484,8 @@ public class ExceptionHandlerImpl
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				getExceptionTypes().clear();
-				getExceptionTypes().addAll((Collection) newValue);
+				getExceptionTypes().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				setProtectedNode((ExecutableNode) newValue);
@@ -486,6 +499,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
@@ -515,6 +529,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
@@ -556,6 +571,7 @@ public class ExceptionHandlerImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE);

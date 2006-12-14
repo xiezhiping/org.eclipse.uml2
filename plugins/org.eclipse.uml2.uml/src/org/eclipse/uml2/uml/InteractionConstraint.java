@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraint.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: InteractionConstraint.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -128,7 +128,8 @@ public interface InteractionConstraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateDynamicVariables(DiagnosticChain diagnostics, Map context);
+	boolean validateDynamicVariables(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,7 +141,8 @@ public interface InteractionConstraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateGlobalData(DiagnosticChain diagnostics, Map context);
+	boolean validateGlobalData(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,7 +154,8 @@ public interface InteractionConstraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateMinintMaxint(DiagnosticChain diagnostics, Map context);
+	boolean validateMinintMaxint(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,7 +167,8 @@ public interface InteractionConstraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateMinintNonNegative(DiagnosticChain diagnostics, Map context);
+	boolean validateMinintNonNegative(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,7 +180,8 @@ public interface InteractionConstraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateMaxintPositive(DiagnosticChain diagnostics, Map context);
+	boolean validateMaxintPositive(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +194,6 @@ public interface InteractionConstraint
 	 * @generated
 	 */
 	boolean validateMaxintGreaterEqualMinint(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // InteractionConstraint

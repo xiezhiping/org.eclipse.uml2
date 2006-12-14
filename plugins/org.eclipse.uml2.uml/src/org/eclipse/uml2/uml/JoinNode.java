@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNode.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
+ * $Id: JoinNode.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -117,7 +117,8 @@ public interface JoinNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneOutgoingEdge(DiagnosticChain diagnostics, Map context);
+	boolean validateOneOutgoingEdge(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -132,6 +133,7 @@ public interface JoinNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateIncomingObjectFlow(DiagnosticChain diagnostics, Map context);
+	boolean validateIncomingObjectFlow(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // JoinNode

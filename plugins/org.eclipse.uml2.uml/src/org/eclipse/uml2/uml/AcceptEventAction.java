@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.10 2006/05/26 16:34:03 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.11 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,7 +82,7 @@ public interface AcceptEventAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getResults();
+	EList<OutputPin> getResults();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Result</b></em>' containment reference list.
@@ -149,7 +149,7 @@ public interface AcceptEventAction
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getTriggers();
+	EList<Trigger> getTriggers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Trigger</b></em>' containment reference list.
@@ -196,7 +196,8 @@ public interface AcceptEventAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoInputPins(DiagnosticChain diagnostics, Map context);
+	boolean validateNoInputPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,7 +209,8 @@ public interface AcceptEventAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoOutputPins(DiagnosticChain diagnostics, Map context);
+	boolean validateNoOutputPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -220,7 +222,8 @@ public interface AcceptEventAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTriggerEvents(DiagnosticChain diagnostics, Map context);
+	boolean validateTriggerEvents(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -233,6 +236,6 @@ public interface AcceptEventAction
 	 * @generated
 	 */
 	boolean validateUnmarshallSignalEvents(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // AcceptEventAction

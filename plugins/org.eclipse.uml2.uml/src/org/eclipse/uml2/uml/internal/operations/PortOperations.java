@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.12 2006/10/11 16:30:15 khussey Exp $
+ * $Id: PortOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -76,7 +75,7 @@ public class PortOperations
 	 * @generated
 	 */
 	public static boolean validateRequiredInterfaces(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -108,7 +107,7 @@ public class PortOperations
 	 * @generated NOT
 	 */
 	public static boolean validatePortAggregation(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (port.getAggregation() != AggregationKind.COMPOSITE_LITERAL) {
 
@@ -137,7 +136,7 @@ public class PortOperations
 	 * @generated
 	 */
 	public static boolean validatePortDestroyed(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -169,7 +168,7 @@ public class PortOperations
 	 * @generated NOT
 	 */
 	public static boolean validateDefaultValue(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (port.getType() instanceof Interface
 			&& port.getDefaultValue() != null) {
@@ -194,28 +193,26 @@ public class PortOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getProvideds(Port port) {
-		EList provideds = new UniqueEList.FastCompare();
-
+	public static EList<Interface> getProvideds(Port port) {
+		EList<Interface> provideds = new UniqueEList.FastCompare<Interface>();
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
 
 		if (type instanceof Interface) {
-			provideds.add(type);
+			provideds.add((Interface) type);
 		} else if (type instanceof Classifier) {
 			Classifier classifier = (Classifier) port.getType();
 			ComponentOperations.realizedInterfaces(null, classifier, false,
 				provideds);
 
-			for (Iterator allParents = classifier.allParents().iterator(); allParents
-				.hasNext();) {
+			for (Classifier parent : classifier.allParents()) {
 
-				ComponentOperations.realizedInterfaces(null,
-					(Classifier) allParents.next(), false, provideds);
+				ComponentOperations.realizedInterfaces(null, parent, false,
+					provideds);
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) port,
+		return new UnionEObjectEList<Interface>((InternalEObject) port,
 			UMLPackage.Literals.PORT__PROVIDED, provideds.size(), provideds
 				.toArray());
 	}
@@ -225,9 +222,8 @@ public class PortOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getRequireds(Port port) {
-		EList requireds = new UniqueEList.FastCompare();
-
+	public static EList<Interface> getRequireds(Port port) {
+		EList<Interface> requireds = new UniqueEList.FastCompare<Interface>();
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
 
@@ -236,15 +232,13 @@ public class PortOperations
 			ComponentOperations.usedInterfaces(null, classifier, false,
 				requireds);
 
-			for (Iterator allParents = classifier.allParents().iterator(); allParents
-				.hasNext();) {
-
-				ComponentOperations.usedInterfaces(null,
-					(Classifier) allParents.next(), false, requireds);
+			for (Classifier parent : classifier.allParents()) {
+				ComponentOperations.usedInterfaces(null, parent, false,
+					requireds);
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) port,
+		return new UnionEObjectEList<Interface>((InternalEObject) port,
 			UMLPackage.Literals.PORT__REQUIRED, requireds.size(), requireds
 				.toArray());
 	}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionOperations.java,v 1.5 2006/01/05 22:43:25 khussey Exp $
+ * $Id: LinkActionOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,7 +65,7 @@ public class LinkActionOperations
 	 * @generated
 	 */
 	public static boolean validateSameAssociation(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -97,7 +97,7 @@ public class LinkActionOperations
 	 * @generated
 	 */
 	public static boolean validateNotStatic(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -134,7 +134,7 @@ public class LinkActionOperations
 	 * @generated
 	 */
 	public static boolean validateSamePins(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -166,10 +166,10 @@ public class LinkActionOperations
 	 * @generated NOT
 	 */
 	public static Association association(LinkAction linkAction) {
-		EList endData = linkAction.getEndData();
+		EList<LinkEndData> endData = linkAction.getEndData();
 
 		if (endData.size() > 0) {
-			Property end = ((LinkEndData) endData.get(0)).getEnd();
+			Property end = endData.get(0).getEnd();
 
 			if (end != null) {
 				return end.getAssociation();

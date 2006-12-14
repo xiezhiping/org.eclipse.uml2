@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.32 2006/11/17 15:48:50 khussey Exp $
+ * $Id: PackageImpl.java,v 1.33 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,7 +22,9 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -38,11 +39,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -111,7 +117,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList templateBindings = null;
+	protected EList<TemplateBinding> templateBindings = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -131,7 +137,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList packagedElements = null;
+	protected EList<PackageableElement> packagedElements = null;
 
 	/**
 	 * The cached value of the '{@link #getPackageMerges() <em>Package Merge</em>}' containment reference list.
@@ -141,7 +147,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList packageMerges = null;
+	protected EList<PackageMerge> packageMerges = null;
 
 	/**
 	 * The cached value of the '{@link #getProfileApplications() <em>Profile Application</em>}' containment reference list.
@@ -151,7 +157,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList profileApplications = null;
+	protected EList<ProfileApplication> profileApplications = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,6 +173,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PACKAGE;
 	}
@@ -384,23 +391,24 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.PACKAGE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.PACKAGE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.PACKAGE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -409,9 +417,9 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTemplateBindings() {
+	public EList<TemplateBinding> getTemplateBindings() {
 		if (templateBindings == null) {
-			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving<TemplateBinding>(
 				TemplateBinding.class, this,
 				UMLPackage.PACKAGE__TEMPLATE_BINDING,
 				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
@@ -448,9 +456,7 @@ public class PackageImpl
 	 */
 	public TemplateBinding getTemplateBinding(TemplateSignature signature,
 			boolean createOnDemand) {
-		templateBindingLoop : for (Iterator i = getTemplateBindings()
-			.iterator(); i.hasNext();) {
-			TemplateBinding templateBinding = (TemplateBinding) i.next();
+		templateBindingLoop : for (TemplateBinding templateBinding : getTemplateBindings()) {
 			if (signature != null
 				&& !signature.equals(templateBinding.getSignature()))
 				continue templateBindingLoop;
@@ -578,26 +584,29 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedMembers() {
+	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedMembers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 			if (ownedMembers == null) {
 				cache
-					.put(eResource, this,
+					.put(
+						eResource,
+						this,
 						UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
-						ownedMembers = new DerivedUnionEObjectEList(
+						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
 							NamedElement.class, this,
 							UMLPackage.PACKAGE__OWNED_MEMBER,
 							OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.PACKAGE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.PACKAGE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -605,9 +614,9 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackagedElements() {
+	public EList<PackageableElement> getPackagedElements() {
 		if (packagedElements == null) {
-			packagedElements = new EObjectContainmentEList.Resolving(
+			packagedElements = new EObjectContainmentEList.Resolving<PackageableElement>(
 				PackageableElement.class, this,
 				UMLPackage.PACKAGE__PACKAGED_ELEMENT);
 		}
@@ -643,9 +652,7 @@ public class PackageImpl
 	 */
 	public PackageableElement getPackagedElement(String name,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		packagedElementLoop : for (Iterator i = getPackagedElements()
-			.iterator(); i.hasNext();) {
-			PackageableElement packagedElement = (PackageableElement) i.next();
+		packagedElementLoop : for (PackageableElement packagedElement : getPackagedElements()) {
 			if (eClass != null && !eClass.isInstance(packagedElement))
 				continue packagedElementLoop;
 			if (name != null && !(ignoreCase
@@ -664,9 +671,9 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackageMerges() {
+	public EList<PackageMerge> getPackageMerges() {
 		if (packageMerges == null) {
-			packageMerges = new EObjectContainmentWithInverseEList.Resolving(
+			packageMerges = new EObjectContainmentWithInverseEList.Resolving<PackageMerge>(
 				PackageMerge.class, this, UMLPackage.PACKAGE__PACKAGE_MERGE,
 				UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE);
 		}
@@ -704,9 +711,7 @@ public class PackageImpl
 	 */
 	public PackageMerge getPackageMerge(
 			org.eclipse.uml2.uml.Package mergedPackage, boolean createOnDemand) {
-		packageMergeLoop : for (Iterator i = getPackageMerges().iterator(); i
-			.hasNext();) {
-			PackageMerge packageMerge = (PackageMerge) i.next();
+		packageMergeLoop : for (PackageMerge packageMerge : getPackageMerges()) {
 			if (mergedPackage != null
 				&& !mergedPackage.equals(packageMerge.getMergedPackage()))
 				continue packageMergeLoop;
@@ -722,22 +727,23 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getOwnedTypes() {
+	public EList<Type> getOwnedTypes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedTypes = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Type> ownedTypes = (EList<Type>) cache.get(eResource, this,
 				UMLPackage.Literals.PACKAGE__OWNED_TYPE);
 			if (ownedTypes == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.PACKAGE__OWNED_TYPE,
-					ownedTypes = new DerivedSubsetEObjectEList(Type.class,
-						this, UMLPackage.PACKAGE__OWNED_TYPE,
+					ownedTypes = new DerivedSubsetEObjectEList<Type>(
+						Type.class, this, UMLPackage.PACKAGE__OWNED_TYPE,
 						OWNED_TYPE_ESUPERSETS));
 			}
 			return ownedTypes;
 		}
-		return new DerivedSubsetEObjectEList(Type.class, this,
+		return new DerivedSubsetEObjectEList<Type>(Type.class, this,
 			UMLPackage.PACKAGE__OWNED_TYPE, OWNED_TYPE_ESUPERSETS);
 	}
 
@@ -770,9 +776,7 @@ public class PackageImpl
 	 */
 	public Type getOwnedType(String name, boolean ignoreCase, EClass eClass,
 			boolean createOnDemand) {
-		ownedTypeLoop : for (Iterator i = getOwnedTypes().iterator(); i
-			.hasNext();) {
-			Type ownedType = (Type) i.next();
+		ownedTypeLoop : for (Type ownedType : getOwnedTypes()) {
 			if (eClass != null && !eClass.isInstance(ownedType))
 				continue ownedTypeLoop;
 			if (name != null && !(ignoreCase
@@ -791,23 +795,28 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getNestedPackages() {
+	public EList<org.eclipse.uml2.uml.Package> getNestedPackages() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList nestedPackages = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.PACKAGE__NESTED_PACKAGE);
+			@SuppressWarnings("unchecked")
+			EList<org.eclipse.uml2.uml.Package> nestedPackages = (EList<org.eclipse.uml2.uml.Package>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.PACKAGE__NESTED_PACKAGE);
 			if (nestedPackages == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.PACKAGE__NESTED_PACKAGE,
-					nestedPackages = new DerivedSubsetEObjectEList(
-						org.eclipse.uml2.uml.Package.class, this,
-						UMLPackage.PACKAGE__NESTED_PACKAGE,
-						NESTED_PACKAGE_ESUPERSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.PACKAGE__NESTED_PACKAGE,
+						nestedPackages = new DerivedSubsetEObjectEList<org.eclipse.uml2.uml.Package>(
+							org.eclipse.uml2.uml.Package.class, this,
+							UMLPackage.PACKAGE__NESTED_PACKAGE,
+							NESTED_PACKAGE_ESUPERSETS));
 			}
 			return nestedPackages;
 		}
-		return new DerivedSubsetEObjectEList(
+		return new DerivedSubsetEObjectEList<org.eclipse.uml2.uml.Package>(
 			org.eclipse.uml2.uml.Package.class, this,
 			UMLPackage.PACKAGE__NESTED_PACKAGE, NESTED_PACKAGE_ESUPERSETS);
 	}
@@ -842,10 +851,7 @@ public class PackageImpl
 	 */
 	public org.eclipse.uml2.uml.Package getNestedPackage(String name,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		nestedPackageLoop : for (Iterator i = getNestedPackages().iterator(); i
-			.hasNext();) {
-			org.eclipse.uml2.uml.Package nestedPackage = (org.eclipse.uml2.uml.Package) i
-				.next();
+		nestedPackageLoop : for (org.eclipse.uml2.uml.Package nestedPackage : getNestedPackages()) {
 			if (eClass != null && !eClass.isInstance(nestedPackage))
 				continue nestedPackageLoop;
 			if (name != null && !(ignoreCase
@@ -897,8 +903,8 @@ public class PackageImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newNestingPackage != null)
-				msgs = ((InternalEList) newNestingPackage.getNestedPackages())
-					.basicAdd(this, msgs);
+				msgs = ((InternalEList<org.eclipse.uml2.uml.Package>) newNestingPackage
+					.getNestedPackages()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newNestingPackage,
 				UMLPackage.PACKAGE__NESTING_PACKAGE, msgs);
 			if (msgs != null)
@@ -914,9 +920,9 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getProfileApplications() {
+	public EList<ProfileApplication> getProfileApplications() {
 		if (profileApplications == null) {
-			profileApplications = new EObjectContainmentWithInverseEList.Resolving(
+			profileApplications = new EObjectContainmentWithInverseEList.Resolving<ProfileApplication>(
 				ProfileApplication.class, this,
 				UMLPackage.PACKAGE__PROFILE_APPLICATION,
 				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE);
@@ -958,12 +964,13 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList parameterableElements() {
+	public EList<ParameterableElement> parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-					.get(0));
+			@SuppressWarnings("unchecked")
+			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
+				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
 					.getEOperations().get(0),
@@ -990,7 +997,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public boolean validateElementsPublicOrPrivate(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PackageOperations.validateElementsPublicOrPrivate(this,
 			diagnostics, context);
 	}
@@ -1046,7 +1053,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList applyProfile(Profile profile) {
+	public EList<EObject> applyProfile(Profile profile) {
 		return PackageOperations.applyProfile(this, profile);
 	}
 
@@ -1055,7 +1062,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList unapplyProfile(Profile profile) {
+	public EList<EObject> unapplyProfile(Profile profile) {
 		return PackageOperations.unapplyProfile(this, profile);
 	}
 
@@ -1064,11 +1071,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAppliedProfiles() {
+	public EList<Profile> getAppliedProfiles() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(8));
+			@SuppressWarnings("unchecked")
+			EList<Profile> result = (EList<Profile>) cache.get(this,
+				UMLPackage.Literals.PACKAGE.getEOperations().get(8));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
 					.get(8), result = PackageOperations
@@ -1103,11 +1111,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAllProfileApplications() {
+	public EList<ProfileApplication> getAllProfileApplications() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(12));
+			@SuppressWarnings("unchecked")
+			EList<ProfileApplication> result = (EList<ProfileApplication>) cache
+				.get(this, UMLPackage.Literals.PACKAGE.getEOperations().get(12));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
 					.get(12), result = PackageOperations
@@ -1160,11 +1169,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAllAppliedProfiles() {
+	public EList<Profile> getAllAppliedProfiles() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(9));
+			@SuppressWarnings("unchecked")
+			EList<Profile> result = (EList<Profile>) cache.get(this,
+				UMLPackage.Literals.PACKAGE.getEOperations().get(9));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
 					.get(9), result = PackageOperations
@@ -1180,11 +1190,12 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList visibleMembers() {
+	public EList<PackageableElement> visibleMembers() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PACKAGE
-				.getEOperations().get(16));
+			@SuppressWarnings("unchecked")
+			EList<PackageableElement> result = (EList<PackageableElement>) cache
+				.get(this, UMLPackage.Literals.PACKAGE.getEOperations().get(16));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PACKAGE.getEOperations()
 					.get(16), result = PackageOperations.visibleMembers(this));
@@ -1217,24 +1228,26 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1249,8 +1262,8 @@ public class PackageImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -1260,11 +1273,11 @@ public class PackageImpl
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
-				return ((InternalEList) getPackageMerges()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageMerges())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
-				return ((InternalEList) getProfileApplications()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getProfileApplications())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1274,47 +1287,48 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PACKAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
-				return ((InternalEList) getPackageMerges()).basicRemove(
+				return ((InternalEList<?>) getPackageMerges()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
-				return ((InternalEList) getPackagedElements()).basicRemove(
+				return ((InternalEList<?>) getPackagedElements()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
-				return ((InternalEList) getProfileApplications()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getProfileApplications())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1324,6 +1338,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -1340,6 +1355,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
@@ -1417,15 +1433,19 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NAME :
 				setName((String) newValue);
@@ -1435,22 +1455,26 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PACKAGE__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PACKAGE__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1460,33 +1484,39 @@ public class PackageImpl
 				return;
 			case UMLPackage.PACKAGE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.PACKAGE__OWNED_TYPE :
 				getOwnedTypes().clear();
-				getOwnedTypes().addAll((Collection) newValue);
+				getOwnedTypes().addAll((Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.PACKAGE__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll((Collection) newValue);
+				getPackageMerges().addAll(
+					(Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.PACKAGE__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
-				getPackagedElements().addAll((Collection) newValue);
+				getPackagedElements().addAll(
+					(Collection<? extends PackageableElement>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages().addAll((Collection) newValue);
+				getNestedPackages()
+					.addAll(
+						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.PACKAGE__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
 			case UMLPackage.PACKAGE__PROFILE_APPLICATION :
 				getProfileApplications().clear();
-				getProfileApplications().addAll((Collection) newValue);
+				getProfileApplications().addAll(
+					(Collection<? extends ProfileApplication>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1497,6 +1527,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
@@ -1565,6 +1596,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PACKAGE__EANNOTATIONS :
@@ -1632,7 +1664,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
@@ -1667,7 +1700,8 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -1702,6 +1736,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1732,6 +1767,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER);
@@ -1758,6 +1794,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PACKAGE__TEMPLATE_BINDING)
@@ -1814,6 +1851,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.PACKAGE__PACKAGED_ELEMENT);
@@ -1838,6 +1876,7 @@ public class PackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.PACKAGE__NESTING_PACKAGE);

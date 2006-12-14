@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlowImpl.java,v 1.2 2005/11/23 20:01:19 khussey Exp $
+ * $Id: ControlFlowImpl.java,v 1.3 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class ControlFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONTROL_FLOW;
 	}
@@ -59,7 +60,8 @@ public class ControlFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateObjectNodes(DiagnosticChain diagnostics, Map context) {
+	public boolean validateObjectNodes(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ControlFlowOperations.validateObjectNodes(this, diagnostics,
 			context);
 	}

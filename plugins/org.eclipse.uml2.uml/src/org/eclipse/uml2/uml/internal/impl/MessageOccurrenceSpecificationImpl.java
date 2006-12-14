@@ -8,21 +8,26 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.13 2006/11/14 18:02:16 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.14 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Event;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
@@ -71,6 +76,7 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MESSAGE_OCCURRENCE_SPECIFICATION;
 	}
@@ -124,6 +130,7 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
@@ -185,15 +192,19 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -203,18 +214,20 @@ public class MessageOccurrenceSpecificationImpl
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -224,14 +237,16 @@ public class MessageOccurrenceSpecificationImpl
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_BEFORE :
 				getToBefores().clear();
-				getToBefores().addAll((Collection) newValue);
+				getToBefores().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EVENT :
 				setEvent((Event) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
-				getToAfters().addAll((Collection) newValue);
+				getToAfters().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE :
 				setMessage((Message) newValue);
@@ -245,6 +260,7 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
@@ -298,6 +314,7 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
@@ -348,7 +365,8 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE :
@@ -365,7 +383,8 @@ public class MessageOccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == MessageEnd.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.MESSAGE_END__MESSAGE :

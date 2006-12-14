@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataOperations.java,v 1.2 2006/01/05 22:43:24 khussey Exp $
+ * $Id: LinkEndDataOperations.java,v 1.3 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -62,7 +62,8 @@ public class LinkEndDataOperations
 	 * @generated
 	 */
 	public static boolean validatePropertyIsAssociationEnd(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -94,7 +95,7 @@ public class LinkEndDataOperations
 	 * @generated
 	 */
 	public static boolean validateSameType(LinkEndData linkEndData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -126,7 +127,7 @@ public class LinkEndDataOperations
 	 * @generated
 	 */
 	public static boolean validateMultiplicity(LinkEndData linkEndData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -158,7 +159,7 @@ public class LinkEndDataOperations
 	 * @generated
 	 */
 	public static boolean validateQualifiers(LinkEndData linkEndData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -190,7 +191,7 @@ public class LinkEndDataOperations
 	 * @generated
 	 */
 	public static boolean validateEndObjectInputPin(LinkEndData linkEndData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

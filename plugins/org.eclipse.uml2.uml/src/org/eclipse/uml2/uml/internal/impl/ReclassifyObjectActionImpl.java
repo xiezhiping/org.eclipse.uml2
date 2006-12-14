@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.22 2006/11/14 18:02:16 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.23 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,8 +37,16 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ReclassifyObjectAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
@@ -97,7 +105,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList oldClassifiers = null;
+	protected EList<Classifier> oldClassifiers = null;
 
 	/**
 	 * The cached value of the '{@link #getNewClassifiers() <em>New Classifier</em>}' reference list.
@@ -107,7 +115,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList newClassifiers = null;
+	protected EList<Classifier> newClassifiers = null;
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
@@ -133,6 +141,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.RECLASSIFY_OBJECT_ACTION;
 	}
@@ -142,22 +151,24 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
+	public EList<InputPin> getInputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__INPUT);
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
-					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this,
 						UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT,
 						INPUT_ESUBSETS));
 			}
 			return inputs;
 		}
-		return new DerivedUnionEObjectEList(InputPin.class, this,
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
 			UMLPackage.RECLASSIFY_OBJECT_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
@@ -194,9 +205,10 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOldClassifiers() {
+	public EList<Classifier> getOldClassifiers() {
 		if (oldClassifiers == null) {
-			oldClassifiers = new EObjectResolvingEList(Classifier.class, this,
+			oldClassifiers = new EObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER);
 		}
 		return oldClassifiers;
@@ -218,9 +230,7 @@ public class ReclassifyObjectActionImpl
 	 */
 	public Classifier getOldClassifier(String name, boolean ignoreCase,
 			EClass eClass) {
-		oldClassifierLoop : for (Iterator i = getOldClassifiers().iterator(); i
-			.hasNext();) {
-			Classifier oldClassifier = (Classifier) i.next();
+		oldClassifierLoop : for (Classifier oldClassifier : getOldClassifiers()) {
 			if (eClass != null && !eClass.isInstance(oldClassifier))
 				continue oldClassifierLoop;
 			if (name != null && !(ignoreCase
@@ -237,9 +247,10 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getNewClassifiers() {
+	public EList<Classifier> getNewClassifiers() {
 		if (newClassifiers == null) {
-			newClassifiers = new EObjectResolvingEList(Classifier.class, this,
+			newClassifiers = new EObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER);
 		}
 		return newClassifiers;
@@ -261,9 +272,7 @@ public class ReclassifyObjectActionImpl
 	 */
 	public Classifier getNewClassifier(String name, boolean ignoreCase,
 			EClass eClass) {
-		newClassifierLoop : for (Iterator i = getNewClassifiers().iterator(); i
-			.hasNext();) {
-			Classifier newClassifier = (Classifier) i.next();
+		newClassifierLoop : for (Classifier newClassifier : getNewClassifiers()) {
 			if (eClass != null && !eClass.isInstance(newClassifier))
 				continue newClassifierLoop;
 			if (name != null && !(ignoreCase
@@ -396,7 +405,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public boolean validateClassifierNotAbstract(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReclassifyObjectActionOperations.validateClassifierNotAbstract(
 			this, diagnostics, context);
 	}
@@ -406,7 +415,8 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMultiplicity(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReclassifyObjectActionOperations.validateMultiplicity(this,
 			diagnostics, context);
 	}
@@ -416,7 +426,8 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInputPin(DiagnosticChain diagnostics, Map context) {
+	public boolean validateInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReclassifyObjectActionOperations.validateInputPin(this,
 			diagnostics, context);
 	}
@@ -426,18 +437,19 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -445,26 +457,26 @@ public class ReclassifyObjectActionImpl
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT :
 				return basicSetObject(null, msgs);
 		}
@@ -476,6 +488,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
@@ -567,15 +580,19 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME :
 				setName((String) newValue);
@@ -585,7 +602,8 @@ public class ReclassifyObjectActionImpl
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -601,46 +619,57 @@ public class ReclassifyObjectActionImpl
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL :
 				setIsReplaceAll(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OLD_CLASSIFIER :
 				getOldClassifiers().clear();
-				getOldClassifiers().addAll((Collection) newValue);
+				getOldClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__NEW_CLASSIFIER :
 				getNewClassifiers().clear();
-				getNewClassifiers().addAll((Collection) newValue);
+				getNewClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT :
 				setObject((InputPin) newValue);
@@ -654,6 +683,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
@@ -728,6 +758,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECLASSIFY_OBJECT_ACTION__EANNOTATIONS :
@@ -807,6 +838,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -833,6 +865,7 @@ public class ReclassifyObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetInputs() {
 		return super.isSetInputs()
 			|| eIsSet(UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT);

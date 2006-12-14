@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.14 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Operation.java,v 1.15 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -231,7 +231,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
 	 * @generated
 	 */
-	EList getPreconditions();
+	EList<Constraint> getPreconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Precondition</b></em>' reference list.
@@ -295,7 +295,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
 	 * @generated
 	 */
-	EList getPostconditions();
+	EList<Constraint> getPostconditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Postcondition</b></em>' reference list.
@@ -359,7 +359,7 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedOperations();
+	EList<Operation> getRedefinedOperations();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
@@ -372,8 +372,8 @@ public interface Operation
 	 * @see #getRedefinedOperations()
 	 * @generated
 	 */
-	Operation getRedefinedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation getRedefinedOperation(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Redefined Operation</b></em>' reference list.
@@ -387,8 +387,9 @@ public interface Operation
 	 * @see #getRedefinedOperations()
 	 * @generated
 	 */
-	Operation getRedefinedOperation(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase);
+	Operation getRedefinedOperation(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes,
+			boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Datatype</b></em>' container reference.
@@ -528,7 +529,8 @@ public interface Operation
 	 * @model
 	 * @generated
 	 */
-	boolean validateAtMostOneReturn(DiagnosticChain diagnostics, Map context);
+	boolean validateAtMostOneReturn(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -540,7 +542,8 @@ public interface Operation
 	 * @model
 	 * @generated
 	 */
-	boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics, Map context);
+	boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -587,6 +590,6 @@ public interface Operation
 	 * @model type="org.eclipse.uml2.uml.Parameter" ordered="false"
 	 * @generated
 	 */
-	EList returnResult();
+	EList<Parameter> returnResult();
 
 } // Operation

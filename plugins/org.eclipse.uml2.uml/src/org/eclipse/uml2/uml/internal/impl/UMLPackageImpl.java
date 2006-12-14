@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackageImpl.java,v 1.17 2006/05/16 15:07:26 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.18 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -10939,6 +10939,7 @@ public class UMLPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void fixInstanceClass(EClassifier eClassifier) {
 		if (eClassifier.getInstanceClassName() == null) {
 			eClassifier

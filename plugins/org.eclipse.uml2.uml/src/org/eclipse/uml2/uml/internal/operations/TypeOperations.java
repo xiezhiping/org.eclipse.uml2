@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.14 2006/05/02 20:18:32 khussey Exp $
+ * $Id: TypeOperations.java,v 1.15 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -84,34 +82,42 @@ public class TypeOperations
 
 	protected static Property createOwnedProperty(Type type, final String name,
 			final Type propertyType, int lower, int upper) {
-		Property ownedProperty = (Property) new UMLSwitch() {
+		Property ownedProperty = new UMLSwitch<Property>() {
 
-			public Object caseArtifact(Artifact artifact) {
+			@Override
+			public Property caseArtifact(Artifact artifact) {
 				return artifact.createOwnedAttribute(name, propertyType);
 			}
 
-			public Object caseAssociation(Association association) {
+			@Override
+			public Property caseAssociation(Association association) {
 				return association.createOwnedEnd(name, propertyType);
 			}
 
-			public Object caseAssociationClass(AssociationClass associationClass) {
+			@Override
+			public Property caseAssociationClass(
+					AssociationClass associationClass) {
 				return associationClass
 					.createOwnedAttribute(name, propertyType);
 			}
 
-			public Object caseDataType(DataType dataType) {
+			@Override
+			public Property caseDataType(DataType dataType) {
 				return dataType.createOwnedAttribute(name, propertyType);
 			}
 
-			public Object caseInterface(Interface interface_) {
+			@Override
+			public Property caseInterface(Interface interface_) {
 				return interface_.createOwnedAttribute(name, propertyType);
 			}
 
-			public Object caseSignal(Signal signal) {
+			@Override
+			public Property caseSignal(Signal signal) {
 				return signal.createOwnedAttribute(name, propertyType);
 			}
 
-			public Object caseStructuredClassifier(
+			@Override
+			public Property caseStructuredClassifier(
 					StructuredClassifier structuredClassifier) {
 				return structuredClassifier.createOwnedAttribute(name,
 					propertyType);
@@ -144,7 +150,7 @@ public class TypeOperations
 			Association association, boolean isNavigable,
 			AggregationKind aggregation, String name, int lower, int upper,
 			Type endType) {
-		EList ownedAttributes = getOwnedAttributes(type);
+		EList<Property> ownedAttributes = getOwnedAttributes(type);
 		Property associationEnd = createOwnedProperty(ownedAttributes == null
 			|| !isNavigable
 			? association
@@ -209,17 +215,13 @@ public class TypeOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAssociations(Type type) {
-		EList associations = new UniqueEList.FastCompare();
+	public static EList<Association> getAssociations(Type type) {
+		EList<Association> associations = new UniqueEList.FastCompare<Association>();
 
-		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-			type).iterator(); nonNavigableInverseReferences.hasNext();) {
+		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(type)) {
 
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next();
-
-			if (setting.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
-				EObject eObject = setting.getEObject();
+			if (nonNavigableInverseReference.getEStructuralFeature() == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+				EObject eObject = nonNavigableInverseReference.getEObject();
 
 				if (eObject instanceof Property) {
 					Association association = ((Property) eObject)
@@ -236,31 +238,35 @@ public class TypeOperations
 	}
 
 	public static Operation createOwnedOperation(Type type, final String name,
-			final EList parameterNames, final EList parameterTypes,
-			Type returnType) {
+			final EList<String> parameterNames,
+			final EList<Type> parameterTypes, Type returnType) {
 
 		if (getOwnedOperations(type) == null) {
 			throw new UnsupportedOperationException();
 		}
 
-		Operation ownedOperation = (Operation) new UMLSwitch() {
+		Operation ownedOperation = new UMLSwitch<Operation>() {
 
-			public Object caseArtifact(Artifact artifact) {
+			@Override
+			public Operation caseArtifact(Artifact artifact) {
 				return artifact.createOwnedOperation(name, parameterNames,
 					parameterTypes);
 			}
 
-			public Object caseClass(org.eclipse.uml2.uml.Class class_) {
+			@Override
+			public Operation caseClass(org.eclipse.uml2.uml.Class class_) {
 				return class_.createOwnedOperation(name, parameterNames,
 					parameterTypes);
 			}
 
-			public Object caseDataType(DataType dataType) {
+			@Override
+			public Operation caseDataType(DataType dataType) {
 				return dataType.createOwnedOperation(name, parameterNames,
 					parameterTypes);
 			}
 
-			public Object caseInterface(Interface interface_) {
+			@Override
+			public Operation caseInterface(Interface interface_) {
 				return interface_.createOwnedOperation(name, parameterNames,
 					parameterTypes);
 			}

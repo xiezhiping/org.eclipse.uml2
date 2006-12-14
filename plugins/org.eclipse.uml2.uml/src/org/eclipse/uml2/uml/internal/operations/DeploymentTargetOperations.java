@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetOperations.java,v 1.7 2006/01/27 04:55:56 khussey Exp $
+ * $Id: DeploymentTargetOperations.java,v 1.8 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.emf.common.util.EList;
 
-import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
@@ -60,26 +59,21 @@ public class DeploymentTargetOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getDeployedElements(DeploymentTarget deploymentTarget) {
-		EList deployedElements = new UniqueEList.FastCompare();
+	public static EList<PackageableElement> getDeployedElements(
+			DeploymentTarget deploymentTarget) {
+		EList<PackageableElement> deployedElements = new UniqueEList.FastCompare<PackageableElement>();
 
-		for (Iterator deployments = deploymentTarget.getDeployments()
-			.iterator(); deployments.hasNext();) {
+		for (Deployment deployment : deploymentTarget.getDeployments()) {
 
-			for (Iterator deployedArtifacts = ((Deployment) deployments.next())
-				.getDeployedArtifacts().iterator(); deployedArtifacts.hasNext();) {
-
-				DeployedArtifact deployedArtifact = (DeployedArtifact) deployedArtifacts
-					.next();
+			for (DeployedArtifact deployedArtifact : deployment
+				.getDeployedArtifacts()) {
 
 				if (deployedArtifact instanceof Artifact) {
 
-					for (Iterator manifestations = ((Artifact) deployedArtifact)
-						.getManifestations().iterator(); manifestations
-						.hasNext();) {
+					for (Manifestation manifestation : ((Artifact) deployedArtifact)
+						.getManifestations()) {
 
-						PackageableElement utilizedElement = (PackageableElement) ((Manifestation) manifestations
-							.next())
+						PackageableElement utilizedElement = (PackageableElement) manifestation
 							.eGet(
 								UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT,
 								false);
@@ -92,7 +86,8 @@ public class DeploymentTargetOperations
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) deploymentTarget,
+		return new UnionEObjectEList<PackageableElement>(
+			(InternalEObject) deploymentTarget,
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 			deployedElements.size(), deployedElements.toArray());
 	}

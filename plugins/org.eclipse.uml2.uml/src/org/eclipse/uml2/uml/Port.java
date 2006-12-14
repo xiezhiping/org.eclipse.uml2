@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Port.java,v 1.7 2006/05/12 20:38:06 khussey Exp $
+ * $Id: Port.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -112,7 +112,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRequireds();
+	EList<Interface> getRequireds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Required</b></em>' reference list.
@@ -150,7 +150,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Port" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedPorts();
+	EList<Port> getRedefinedPorts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Redefined Port</b></em>' reference list.
@@ -191,7 +191,7 @@ public interface Port
 	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getProvideds();
+	EList<Interface> getProvideds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Interface} with the specified '<em><b>Name</b></em>' from the '<em><b>Provided</b></em>' reference list.
@@ -251,7 +251,8 @@ public interface Port
 	 * @model
 	 * @generated
 	 */
-	boolean validateRequiredInterfaces(DiagnosticChain diagnostics, Map context);
+	boolean validateRequiredInterfaces(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,7 +264,8 @@ public interface Port
 	 * @model
 	 * @generated
 	 */
-	boolean validatePortAggregation(DiagnosticChain diagnostics, Map context);
+	boolean validatePortAggregation(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -275,7 +277,8 @@ public interface Port
 	 * @model
 	 * @generated
 	 */
-	boolean validatePortDestroyed(DiagnosticChain diagnostics, Map context);
+	boolean validatePortDestroyed(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,6 +290,7 @@ public interface Port
 	 * @model
 	 * @generated
 	 */
-	boolean validateDefaultValue(DiagnosticChain diagnostics, Map context);
+	boolean validateDefaultValue(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Port

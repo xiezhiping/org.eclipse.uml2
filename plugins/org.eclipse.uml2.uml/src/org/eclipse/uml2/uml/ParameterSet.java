@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSet.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ParameterSet.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface ParameterSet
 	 * @model type="org.eclipse.uml2.uml.Parameter" opposite="parameterSet" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getParameters();
+	EList<Parameter> getParameters();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Parameter} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Parameter</b></em>' reference list.
@@ -99,7 +99,7 @@ public interface ParameterSet
 	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConditions();
+	EList<Constraint> getConditions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Condition</b></em>' containment reference list.
@@ -161,7 +161,7 @@ public interface ParameterSet
 	 * @generated
 	 */
 	boolean validateSameParameterizedEntity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,7 +173,8 @@ public interface ParameterSet
 	 * @model
 	 * @generated
 	 */
-	boolean validateInput(DiagnosticChain diagnostics, Map context);
+	boolean validateInput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,6 +186,7 @@ public interface ParameterSet
 	 * @model
 	 * @generated
 	 */
-	boolean validateTwoParameterSets(DiagnosticChain diagnostics, Map context);
+	boolean validateTwoParameterSets(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ParameterSet

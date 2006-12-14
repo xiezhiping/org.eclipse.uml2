@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.7 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Deployment.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Deployment
 	 * @model type="org.eclipse.uml2.uml.DeployedArtifact" ordered="false"
 	 * @generated
 	 */
-	EList getDeployedArtifacts();
+	EList<DeployedArtifact> getDeployedArtifacts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.DeployedArtifact} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Artifact</b></em>' reference list.
@@ -97,7 +97,7 @@ public interface Deployment
 	 * @model type="org.eclipse.uml2.uml.DeploymentSpecification" opposite="deployment" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConfigurations();
+	EList<DeploymentSpecification> getConfigurations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.DeploymentSpecification}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Configuration</b></em>' containment reference list.

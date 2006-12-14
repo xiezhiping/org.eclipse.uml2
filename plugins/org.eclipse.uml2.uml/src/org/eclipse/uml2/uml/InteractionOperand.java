@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperand.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: InteractionOperand.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,7 +95,7 @@ public interface InteractionOperand
 	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingOperand" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getFragments();
+	EList<InteractionFragment> getFragments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InteractionFragment}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Fragment</b></em>' containment reference list.
@@ -145,7 +145,8 @@ public interface InteractionOperand
 	 * @model
 	 * @generated
 	 */
-	boolean validateGuardDirectlyPrior(DiagnosticChain diagnostics, Map context);
+	boolean validateGuardDirectlyPrior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,6 +159,6 @@ public interface InteractionOperand
 	 * @generated
 	 */
 	boolean validateGuardContainReferences(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // InteractionOperand

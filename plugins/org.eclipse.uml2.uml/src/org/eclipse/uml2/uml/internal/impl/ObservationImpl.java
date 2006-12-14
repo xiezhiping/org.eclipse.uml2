@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObservationImpl.java,v 1.2 2006/01/04 17:47:24 khussey Exp $
+ * $Id: ObservationImpl.java,v 1.3 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -44,6 +44,7 @@ public abstract class ObservationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OBSERVATION;
 	}

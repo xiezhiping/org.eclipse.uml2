@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.18 2006/11/14 18:02:18 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.19 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,6 +33,8 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.StringExpression;
@@ -70,7 +73,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodies = null;
+	protected EList<String> bodies = null;
 
 	/**
 	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
@@ -80,7 +83,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList languages = null;
+	protected EList<String> languages = null;
 
 	/**
 	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
@@ -106,6 +109,7 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPAQUE_EXPRESSION;
 	}
@@ -115,9 +119,9 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodies() {
+	public EList<String> getBodies() {
 		if (bodies == null) {
-			bodies = new EDataTypeEList.Unsettable(String.class, this,
+			bodies = new EDataTypeEList.Unsettable<String>(String.class, this,
 				UMLPackage.OPAQUE_EXPRESSION__BODY);
 		}
 		return bodies;
@@ -130,7 +134,7 @@ public class OpaqueExpressionImpl
 	 */
 	public void unsetBodies() {
 		if (bodies != null)
-			((InternalEList.Unsettable) bodies).unset();
+			((InternalEList.Unsettable<?>) bodies).unset();
 	}
 
 	/**
@@ -139,7 +143,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		return bodies != null && ((InternalEList.Unsettable) bodies).isSet();
+		return bodies != null && ((InternalEList.Unsettable<?>) bodies).isSet();
 	}
 
 	/**
@@ -147,10 +151,10 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLanguages() {
+	public EList<String> getLanguages() {
 		if (languages == null) {
-			languages = new EDataTypeUniqueEList.Unsettable(String.class, this,
-				UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
+			languages = new EDataTypeUniqueEList.Unsettable<String>(
+				String.class, this, UMLPackage.OPAQUE_EXPRESSION__LANGUAGE);
 		}
 		return languages;
 	}
@@ -162,7 +166,7 @@ public class OpaqueExpressionImpl
 	 */
 	public void unsetLanguages() {
 		if (languages != null)
-			((InternalEList.Unsettable) languages).unset();
+			((InternalEList.Unsettable<?>) languages).unset();
 	}
 
 	/**
@@ -172,7 +176,7 @@ public class OpaqueExpressionImpl
 	 */
 	public boolean isSetLanguages() {
 		return languages != null
-			&& ((InternalEList.Unsettable) languages).isSet();
+			&& ((InternalEList.Unsettable<?>) languages).isSet();
 	}
 
 	/**
@@ -246,7 +250,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean validateLanguageBodySize(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return OpaqueExpressionOperations.validateLanguageBodySize(this,
 			diagnostics, context);
 	}
@@ -257,7 +261,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean validateOnlyReturnResultParameters(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return OpaqueExpressionOperations.validateOnlyReturnResultParameters(
 			this, diagnostics, context);
 	}
@@ -268,7 +272,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public boolean validateOneReturnResultParameter(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return OpaqueExpressionOperations.validateOneReturnResultParameter(
 			this, diagnostics, context);
 	}
@@ -323,6 +327,7 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
@@ -384,15 +389,19 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				setName((String) newValue);
@@ -402,7 +411,8 @@ public class OpaqueExpressionImpl
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -418,11 +428,11 @@ public class OpaqueExpressionImpl
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				getBodies().clear();
-				getBodies().addAll((Collection) newValue);
+				getBodies().addAll((Collection<? extends String>) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				getLanguages().clear();
-				getLanguages().addAll((Collection) newValue);
+				getLanguages().addAll((Collection<? extends String>) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
 				setBehavior((Behavior) newValue);
@@ -436,6 +446,7 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
@@ -483,6 +494,7 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
@@ -531,6 +543,7 @@ public class OpaqueExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

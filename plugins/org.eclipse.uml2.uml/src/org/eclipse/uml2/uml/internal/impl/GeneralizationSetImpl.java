@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.14 2006/11/14 18:02:16 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.StringExpression;
@@ -119,7 +121,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList generalizations = null;
+	protected EList<Generalization> generalizations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,6 +137,7 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.GENERALIZATION_SET;
 	}
@@ -277,9 +280,9 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getGeneralizations() {
+	public EList<Generalization> getGeneralizations() {
 		if (generalizations == null) {
-			generalizations = new EObjectWithInverseResolvingEList.ManyInverse(
+			generalizations = new EObjectWithInverseResolvingEList.ManyInverse<Generalization>(
 				Generalization.class, this,
 				UMLPackage.GENERALIZATION_SET__GENERALIZATION,
 				UMLPackage.GENERALIZATION__GENERALIZATION_SET);
@@ -293,9 +296,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public Generalization getGeneralization(Classifier general) {
-		generalizationLoop : for (Iterator i = getGeneralizations().iterator(); i
-			.hasNext();) {
-			Generalization generalization = (Generalization) i.next();
+		generalizationLoop : for (Generalization generalization : getGeneralizations()) {
 			if (general != null && !general.equals(generalization.getGeneral()))
 				continue generalizationLoop;
 			return generalization;
@@ -309,7 +310,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public boolean validateGeneralizationSameClassifier(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return GeneralizationSetOperations
 			.validateGeneralizationSameClassifier(this, diagnostics, context);
 	}
@@ -320,7 +321,7 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return GeneralizationSetOperations.validateMapsToGeneralizationSet(
 			this, diagnostics, context);
 	}
@@ -330,15 +331,17 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -359,8 +362,8 @@ public class GeneralizationSetImpl
 						Classifier.class, msgs);
 				return basicSetPowertype((Classifier) otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -370,18 +373,19 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__OWNING_TEMPLATE_PARAMETER :
@@ -391,7 +395,7 @@ public class GeneralizationSetImpl
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				return basicSetPowertype(null, msgs);
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicRemove(
+				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -402,6 +406,7 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
@@ -461,15 +466,19 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__NAME :
 				setName((String) newValue);
@@ -479,7 +488,8 @@ public class GeneralizationSetImpl
 				return;
 			case UMLPackage.GENERALIZATION_SET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -501,7 +511,8 @@ public class GeneralizationSetImpl
 				return;
 			case UMLPackage.GENERALIZATION_SET__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -512,6 +523,7 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
@@ -559,6 +571,7 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.GENERALIZATION_SET__EANNOTATIONS :
@@ -605,6 +618,7 @@ public class GeneralizationSetImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

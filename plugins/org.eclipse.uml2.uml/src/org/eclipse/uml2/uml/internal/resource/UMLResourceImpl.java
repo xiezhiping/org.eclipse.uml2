@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceImpl.java,v 1.3 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UMLResourceImpl.java,v 1.4 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -40,14 +40,17 @@ public class UMLResourceImpl
 		super(uri);
 	}
 
+	@Override
 	protected XMLLoad createXMLLoad() {
 		return new UMLLoadImpl(createXMLHelper());
 	}
 
+	@Override
 	protected boolean useIDAttributes() {
 		return false;
 	}
 
+	@Override
 	protected boolean useUUIDs() {
 		return true;
 	}

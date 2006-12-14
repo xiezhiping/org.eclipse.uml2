@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.11 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Lifeline.java,v 1.12 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -177,7 +177,7 @@ public interface Lifeline
 	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="covered" ordered="false"
 	 * @generated
 	 */
-	EList getCoveredBys();
+	EList<InteractionFragment> getCoveredBys();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.InteractionFragment} with the specified '<em><b>Name</b></em>' from the '<em><b>Covered By</b></em>' reference list.
@@ -215,7 +215,7 @@ public interface Lifeline
 	 * @generated
 	 */
 	boolean validateInteractionUsesShareLifeline(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,7 +229,8 @@ public interface Lifeline
 	 * @model
 	 * @generated
 	 */
-	boolean validateSelectorSpecified(DiagnosticChain diagnostics, Map context);
+	boolean validateSelectorSpecified(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +244,7 @@ public interface Lifeline
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameClassifier(DiagnosticChain diagnostics, Map context);
+	boolean validateSameClassifier(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Lifeline

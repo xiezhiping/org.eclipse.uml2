@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegion.java,v 1.7 2006/05/12 20:38:10 khussey Exp $
+ * $Id: ExpansionRegion.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface ExpansionRegion
 	 * @model type="org.eclipse.uml2.uml.ExpansionNode" opposite="regionAsInput" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getInputElements();
+	EList<ExpansionNode> getInputElements();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExpansionNode} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Input Element</b></em>' reference list.
@@ -133,7 +133,7 @@ public interface ExpansionRegion
 	 * @model type="org.eclipse.uml2.uml.ExpansionNode" opposite="regionAsOutput" ordered="false"
 	 * @generated
 	 */
-	EList getOutputElements();
+	EList<ExpansionNode> getOutputElements();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExpansionNode} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Output Element</b></em>' reference list.
@@ -170,6 +170,7 @@ public interface ExpansionRegion
 	 * @model
 	 * @generated
 	 */
-	boolean validateExpansionNodes(DiagnosticChain diagnostics, Map context);
+	boolean validateExpansionNodes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ExpansionRegion

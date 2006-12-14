@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PartDecomposition.java,v 1.3 2006/05/12 20:38:04 khussey Exp $
+ * $Id: PartDecomposition.java,v 1.4 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,7 +44,7 @@ public interface PartDecomposition
 	 * @generated
 	 */
 	boolean validatePartsOfInternalStructures(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -61,7 +61,8 @@ public interface PartDecomposition
 	 * @model
 	 * @generated
 	 */
-	boolean validateAssume(DiagnosticChain diagnostics, Map context);
+	boolean validateAssume(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -76,6 +77,6 @@ public interface PartDecomposition
 	 * @generated
 	 */
 	boolean validateCommutativityOfDecomposition(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // PartDecomposition

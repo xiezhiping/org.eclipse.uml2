@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLSaveImpl.java,v 1.1 2006/04/26 15:48:53 khussey Exp $
+ * $Id: XMI2UMLSaveImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -26,6 +26,7 @@ public class XMI2UMLSaveImpl
 		super(helper);
 	}
 
+	@Override
 	protected void saveContainedMany(EObject eObject,
 			EStructuralFeature eStructuralFeature) {
 

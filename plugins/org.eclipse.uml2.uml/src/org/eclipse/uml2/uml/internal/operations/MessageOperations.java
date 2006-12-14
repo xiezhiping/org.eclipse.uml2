@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOperations.java,v 1.9 2006/04/05 20:58:07 khussey Exp $
+ * $Id: MessageOperations.java,v 1.10 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -92,7 +92,7 @@ public class MessageOperations
 	 * @generated
 	 */
 	public static boolean validateSendingReceivingMessageEvent(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -124,7 +124,7 @@ public class MessageOperations
 	 * @generated
 	 */
 	public static boolean validateSignatureReferTo(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -156,22 +156,23 @@ public class MessageOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSignatureIsOperation(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 		NamedElement signature = message.getSignature();
 
 		if (signature instanceof Operation) {
-			EList arguments = message.getArguments();
+			EList<ValueSpecification> arguments = message.getArguments();
 
 			if (!arguments.isEmpty()) {
-				EList parameters = new UniqueEList.FastCompare(
+				EList<Parameter> parameters = new UniqueEList.FastCompare<Parameter>(
 					((Operation) signature).getOwnedParameters());
 
 				if (message.getMessageSort() == MessageSort.REPLY_LITERAL) {
 
-					for (Iterator p = parameters.iterator(); p.hasNext();) {
+					for (Iterator<Parameter> p = parameters.iterator(); p
+						.hasNext();) {
 
-						if (((Parameter) p.next()).getDirection() == ParameterDirectionKind.IN_LITERAL) {
+						if (p.next().getDirection() == ParameterDirectionKind.IN_LITERAL) {
 							p.remove();
 						}
 					}
@@ -180,13 +181,12 @@ public class MessageOperations
 				if (arguments.size() != parameters.size()) {
 					result = false;
 				} else {
-					Iterator a = arguments.iterator();
-					Iterator p = parameters.iterator();
+					Iterator<ValueSpecification> a = arguments.iterator();
+					Iterator<Parameter> p = parameters.iterator();
 
 					while (a.hasNext() && p.hasNext()) {
-						Type argumentType = ((ValueSpecification) a.next())
-							.getType();
-						Type parameterType = ((Parameter) p.next()).getType();
+						Type argumentType = a.next().getType();
+						Type parameterType = p.next().getType();
 
 						if (argumentType == null
 							? parameterType != null
@@ -223,26 +223,26 @@ public class MessageOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSignatureIsSignal(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 		NamedElement signature = message.getSignature();
 
 		if (signature instanceof Signal) {
-			EList arguments = message.getArguments();
+			EList<ValueSpecification> arguments = message.getArguments();
 
 			if (!arguments.isEmpty()) {
-				EList attributes = ((Signal) signature).getAttributes();
+				EList<Property> attributes = ((Signal) signature)
+					.getAttributes();
 
 				if (arguments.size() != attributes.size()) {
 					result = false;
 				} else {
-					Iterator ma = arguments.iterator();
-					Iterator sa = attributes.iterator();
+					Iterator<ValueSpecification> ma = arguments.iterator();
+					Iterator<Property> sa = attributes.iterator();
 
 					while (ma.hasNext() && sa.hasNext()) {
-						Type argumentType = ((ValueSpecification) ma.next())
-							.getType();
-						Type attributeType = ((Property) sa.next()).getType();
+						Type argumentType = ma.next().getType();
+						Type attributeType = sa.next().getType();
 
 						if (argumentType == null
 							? attributeType != null
@@ -284,7 +284,7 @@ public class MessageOperations
 	 * @generated
 	 */
 	public static boolean validateArguments(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -316,7 +316,7 @@ public class MessageOperations
 	 * @generated
 	 */
 	public static boolean validateCannotCrossBoundaries(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -348,7 +348,7 @@ public class MessageOperations
 	 * @generated
 	 */
 	public static boolean validateOccurrenceSpecifications(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -420,13 +420,15 @@ public class MessageOperations
 		if (messageEvent == null) {
 			return null;
 		} else {
-			return (NamedElement) new UMLSwitch() {
+			return (NamedElement) new UMLSwitch<Object>() {
 
+				@Override
 				public Object caseCallEvent(CallEvent callEvent) {
 					return callEvent.eGet(
 						UMLPackage.Literals.CALL_EVENT__OPERATION, false);
 				}
 
+				@Override
 				public Object caseReceiveOperationEvent(
 						ReceiveOperationEvent receiveOperationEvent) {
 					return receiveOperationEvent.eGet(
@@ -434,6 +436,7 @@ public class MessageOperations
 						false);
 				}
 
+				@Override
 				public Object caseReceiveSignalEvent(
 						ReceiveSignalEvent receiveSignalEvent) {
 					return receiveSignalEvent
@@ -441,6 +444,7 @@ public class MessageOperations
 							false);
 				}
 
+				@Override
 				public Object caseSendOperationEvent(
 						SendOperationEvent sendOperationEvent) {
 					return sendOperationEvent.eGet(
@@ -448,12 +452,14 @@ public class MessageOperations
 						false);
 				}
 
+				@Override
 				public Object caseSendSignalEvent(
 						SendSignalEvent sendSignalEvent) {
 					return sendSignalEvent.eGet(
 						UMLPackage.Literals.SEND_SIGNAL_EVENT__SIGNAL, false);
 				}
 
+				@Override
 				public Object caseSignalEvent(SignalEvent signalEvent) {
 					return signalEvent.eGet(
 						UMLPackage.Literals.SIGNAL_EVENT__SIGNAL, false);

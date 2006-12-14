@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationOperations.java,v 1.5 2006/04/05 20:23:13 khussey Exp $
+ * $Id: ExecutionSpecificationOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.util.UMLValidator;
@@ -60,15 +61,15 @@ public class ExecutionSpecificationOperations
 	 */
 	public static boolean validateSameLifeline(
 			ExecutionSpecification executionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		OccurrenceSpecification start = executionSpecification.getStart();
 
 		if (start != null) {
 			OccurrenceSpecification finish = executionSpecification.getFinish();
 
 			if (finish != null) {
-				EList startCovereds = start.getCovereds();
-				EList finishCovereds = finish.getCovereds();
+				EList<Lifeline> startCovereds = start.getCovereds();
+				EList<Lifeline> finishCovereds = finish.getCovereds();
 
 				if (!startCovereds.containsAll(finishCovereds)
 					|| !finishCovereds.containsAll(startCovereds)) {

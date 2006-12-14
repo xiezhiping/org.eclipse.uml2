@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreationEvent.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
+ * $Id: CreationEvent.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,6 +43,7 @@ public interface CreationEvent
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoOccurrenceAbove(DiagnosticChain diagnostics, Map context);
+	boolean validateNoOccurrenceAbove(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // CreationEvent

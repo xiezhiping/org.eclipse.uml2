@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.16 2006/11/14 18:02:17 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.17 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -32,6 +32,8 @@ import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -92,6 +94,7 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.REDEFINABLE_ELEMENT;
 	}
@@ -101,27 +104,30 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList(
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
 							RedefinableElement.class, this,
 							UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
 							null));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT, null);
 	}
 
@@ -141,9 +147,7 @@ public abstract class RedefinableElementImpl
 	 */
 	public RedefinableElement getRedefinedElement(String name,
 			boolean ignoreCase, EClass eClass) {
-		redefinedElementLoop : for (Iterator i = getRedefinedElements()
-			.iterator(); i.hasNext();) {
-			RedefinableElement redefinedElement = (RedefinableElement) i.next();
+		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
 			if (eClass != null && !eClass.isInstance(redefinedElement))
 				continue redefinedElementLoop;
 			if (name != null && !(ignoreCase
@@ -160,20 +164,24 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinitionContextsGen() {
+	public EList<Classifier> getRedefinitionContextsGen() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinitionContexts = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			@SuppressWarnings("unchecked")
+			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
+				.get(
+					eResource,
+					this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList(
+						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
 							Classifier.class,
 							this,
 							UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
@@ -181,7 +189,7 @@ public abstract class RedefinableElementImpl
 			}
 			return redefinitionContexts;
 		}
-		return new DerivedUnionEObjectEList(Classifier.class, this,
+		return new DerivedUnionEObjectEList<Classifier>(Classifier.class, this,
 			UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT, null);
 	}
 
@@ -191,19 +199,23 @@ public abstract class RedefinableElementImpl
 	 */
 	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.REDEFINABLE_ELEMENT__OWNER};
 
-	public EList getRedefinitionContexts() {
+	public EList<Classifier> getRedefinitionContexts() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinitionContexts = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			@SuppressWarnings("unchecked")
+			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
+				.get(
+					eResource,
+					this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedEObjectEList(
+						redefinitionContexts = new DerivedEObjectEList<Classifier>(
 							Classifier.class,
 							this,
 							UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
@@ -211,7 +223,7 @@ public abstract class RedefinableElementImpl
 			}
 			return redefinitionContexts;
 		}
-		return new DerivedEObjectEList(Classifier.class, this,
+		return new DerivedEObjectEList<Classifier>(Classifier.class, this,
 			UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
 			REDEFINITION_CONTEXT_ESUBSETS);
 	}
@@ -232,9 +244,7 @@ public abstract class RedefinableElementImpl
 	 */
 	public Classifier getRedefinitionContext(String name, boolean ignoreCase,
 			EClass eClass) {
-		redefinitionContextLoop : for (Iterator i = getRedefinitionContexts()
-			.iterator(); i.hasNext();) {
-			Classifier redefinitionContext = (Classifier) i.next();
+		redefinitionContextLoop : for (Classifier redefinitionContext : getRedefinitionContexts()) {
 			if (eClass != null && !eClass.isInstance(redefinitionContext))
 				continue redefinitionContextLoop;
 			if (name != null && !(ignoreCase
@@ -279,7 +289,7 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionContextValid(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionContextValid(
 			this, diagnostics, context);
 	}
@@ -290,7 +300,7 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return RedefinableElementOperations.validateRedefinitionConsistent(
 			this, diagnostics, context);
 	}
@@ -310,6 +320,7 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
@@ -355,15 +366,19 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME :
 				setName((String) newValue);
@@ -373,7 +388,8 @@ public abstract class RedefinableElementImpl
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -390,6 +406,7 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
@@ -422,6 +439,7 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.REDEFINABLE_ELEMENT__EANNOTATIONS :
@@ -471,6 +489,7 @@ public abstract class RedefinableElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: DestroyObjectAction.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -155,7 +155,8 @@ public interface DestroyObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,6 +168,7 @@ public interface DestroyObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoType(DiagnosticChain diagnostics, Map context);
+	boolean validateNoType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // DestroyObjectAction

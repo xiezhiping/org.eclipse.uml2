@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureOperations.java,v 1.6 2006/02/22 20:48:22 khussey Exp $
+ * $Id: BehavioralFeatureOperations.java,v 1.7 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -82,22 +82,20 @@ public class BehavioralFeatureOperations
 			BehavioralFeature behavioralFeature, NamedElement n, Namespace ns) {
 
 		if (n instanceof BehavioralFeature) {
-			EList namesOfMemberN = ns.getNamesOfMember(n);
+			EList<String> namesOfMemberN = ns.getNamesOfMember(n);
 
-			for (Iterator namesOfMemberBF = ns.getNamesOfMember(
-				behavioralFeature).iterator(); namesOfMemberBF.hasNext();) {
+			for (String nameOfMemberBF : ns.getNamesOfMember(behavioralFeature)) {
 
-				if (namesOfMemberN.contains(namesOfMemberBF.next())) {
-					Iterator bfParameters = behavioralFeature
+				if (namesOfMemberN.contains(nameOfMemberBF)) {
+					Iterator<Parameter> bfParameters = behavioralFeature
 						.getOwnedParameters().iterator();
-					Iterator nParameters = ((BehavioralFeature) n)
+					Iterator<Parameter> nParameters = ((BehavioralFeature) n)
 						.getOwnedParameters().iterator();
 
 					while (bfParameters.hasNext() && nParameters.hasNext()) {
 
-						if (!safeEquals(((Parameter) bfParameters.next())
-							.getType(), ((Parameter) nParameters.next())
-							.getType())) {
+						if (!safeEquals(bfParameters.next().getType(),
+							nParameters.next().getType())) {
 
 							return true;
 						}

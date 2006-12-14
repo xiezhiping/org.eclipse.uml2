@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.23 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.24 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,8 +29,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -81,6 +89,7 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.VALUE_PIN;
 	}
@@ -191,7 +200,7 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public boolean validateCompatibleType(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ValuePinOperations.validateCompatibleType(this, diagnostics,
 			context);
 	}
@@ -202,7 +211,7 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ValuePinOperations.validateNoIncomingEdges(this, diagnostics,
 			context);
 	}
@@ -212,18 +221,19 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
@@ -231,16 +241,16 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.VALUE_PIN__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -259,6 +269,7 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
@@ -372,15 +383,19 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__NAME :
 				setName((String) newValue);
@@ -390,7 +405,8 @@ public class ValuePinImpl
 				return;
 			case UMLPackage.VALUE_PIN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -406,23 +422,29 @@ public class ValuePinImpl
 				return;
 			case UMLPackage.VALUE_PIN__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__TYPE :
 				setType((Type) newValue);
@@ -438,7 +460,7 @@ public class ValuePinImpl
 				return;
 			case UMLPackage.VALUE_PIN__IN_STATE :
 				getInStates().clear();
-				getInStates().addAll((Collection) newValue);
+				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__SELECTION :
 				setSelection((Behavior) newValue);
@@ -476,6 +498,7 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :
@@ -571,6 +594,7 @@ public class ValuePinImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VALUE_PIN__EANNOTATIONS :

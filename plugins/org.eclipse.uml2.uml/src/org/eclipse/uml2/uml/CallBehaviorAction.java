@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorAction.java,v 1.2 2006/05/12 20:38:07 khussey Exp $
+ * $Id: CallBehaviorAction.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -75,7 +75,7 @@ public interface CallBehaviorAction
 	 * @generated
 	 */
 	boolean validateArgumentPinEqualParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,6 +88,6 @@ public interface CallBehaviorAction
 	 * @generated
 	 */
 	boolean validateResultPinEqualParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // CallBehaviorAction

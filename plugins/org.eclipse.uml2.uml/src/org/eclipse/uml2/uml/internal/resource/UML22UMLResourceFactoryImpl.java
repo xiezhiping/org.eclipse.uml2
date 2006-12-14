@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceFactoryImpl.java,v 1.6 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLResourceFactoryImpl.java,v 1.7 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -39,25 +39,34 @@ public class UML22UMLResourceFactoryImpl
 		super();
 	}
 
+	@Override
 	public Resource createResourceGen(URI uri) {
 		UML22UMLResource result = new UML22UMLResourceImpl(uri);
 		result.setEncoding(UML22UMLResource.DEFAULT_ENCODING);
 		return result;
 	}
 
+	@Override
 	public Resource createResource(URI uri) {
-		UML22UMLResource resource = (UML22UMLResource) super.createResource(uri);
+		UML22UMLResource resource = (UML22UMLResource) super
+			.createResource(uri);
 
-		Map defaultLoadOptions = resource.getDefaultLoadOptions();
+		Map<Object, Object> defaultLoadOptions = resource
+			.getDefaultLoadOptions();
 
-		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(EPackage.Registry.INSTANCE);
-		ePackageRegistry.put(UML22UMLResource.UML2_METAMODEL_NS_URI, UMLPackage.eINSTANCE);
-		ePackageRegistry.put("platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$
+		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
+			EPackage.Registry.INSTANCE);
+		ePackageRegistry.put(UML22UMLResource.UML2_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+		ePackageRegistry
+			.put(
+				"platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.setPackageRegistry(ePackageRegistry);
 
-		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(Ecore2XMLRegistry.INSTANCE);
+		Ecore2XMLRegistry ecore2xmlRegistry = new Ecore2XMLRegistryImpl(
+			Ecore2XMLRegistry.INSTANCE);
 		ecore2xmlRegistry
 			.put(
 				UML22UMLResource.UML2_METAMODEL_NS_URI,
@@ -70,11 +79,15 @@ public class UML22UMLResourceFactoryImpl
 								true).getContents(),
 						Ecore2XMLPackage.Literals.XML_MAP));
 
-		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetaData(ePackageRegistry, ecore2xmlRegistry);
+		ExtendedMetaData extendedMetaData = new UML22UMLExtendedMetaData(
+			ePackageRegistry, ecore2xmlRegistry);
 
-		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING, Boolean.FALSE);
-		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, new UML22UMLResourceHandler());
+		defaultLoadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
+			extendedMetaData);
+		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING,
+			Boolean.FALSE);
+		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER,
+			new UML22UMLResourceHandler());
 
 		return resource;
 	}

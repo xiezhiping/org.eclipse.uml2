@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.16 2006/11/14 18:02:16 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.17 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,6 +16,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -24,10 +25,17 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExpansionNode;
 import org.eclipse.uml2.uml.ExpansionRegion;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -87,6 +95,7 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXPANSION_NODE;
 	}
@@ -250,15 +259,17 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -269,17 +280,17 @@ public class ExpansionNodeImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT :
 				if (regionAsOutput != null)
 					msgs = ((InternalEObject) regionAsOutput).eInverseRemove(
@@ -301,18 +312,19 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
@@ -320,16 +332,16 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
@@ -346,6 +358,7 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
@@ -439,15 +452,19 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__NAME :
 				setName((String) newValue);
@@ -457,7 +474,8 @@ public class ExpansionNodeImpl
 				return;
 			case UMLPackage.EXPANSION_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -473,23 +491,29 @@ public class ExpansionNodeImpl
 				return;
 			case UMLPackage.EXPANSION_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__TYPE :
 				setType((Type) newValue);
@@ -505,7 +529,7 @@ public class ExpansionNodeImpl
 				return;
 			case UMLPackage.EXPANSION_NODE__IN_STATE :
 				getInStates().clear();
-				getInStates().addAll((Collection) newValue);
+				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__SELECTION :
 				setSelection((Behavior) newValue);
@@ -525,6 +549,7 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :
@@ -602,6 +627,7 @@ public class ExpansionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPANSION_NODE__EANNOTATIONS :

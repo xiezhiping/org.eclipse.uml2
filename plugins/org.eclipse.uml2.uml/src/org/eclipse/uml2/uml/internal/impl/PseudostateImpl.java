@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.15 2006/11/14 18:02:16 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,6 +29,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Pseudostate;
@@ -36,6 +39,7 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -96,6 +100,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PSEUDOSTATE;
 	}
@@ -270,7 +275,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateInitialVertex(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateInitialVertex(this, diagnostics,
 			context);
 	}
@@ -281,7 +286,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateHistoryVertices(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateHistoryVertices(this, diagnostics,
 			context);
 	}
@@ -291,7 +296,8 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateJoinVertex(DiagnosticChain diagnostics, Map context) {
+	public boolean validateJoinVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateJoinVertex(this, diagnostics,
 			context);
 	}
@@ -302,7 +308,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateTransitionsIncoming(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateTransitionsIncoming(this,
 			diagnostics, context);
 	}
@@ -312,7 +318,8 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateForkVertex(DiagnosticChain diagnostics, Map context) {
+	public boolean validateForkVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateForkVertex(this, diagnostics,
 			context);
 	}
@@ -323,7 +330,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateTransitionsOutgoing(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateTransitionsOutgoing(this,
 			diagnostics, context);
 	}
@@ -334,7 +341,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateJunctionVertex(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateJunctionVertex(this, diagnostics,
 			context);
 	}
@@ -344,7 +351,8 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateChoiceVertex(DiagnosticChain diagnostics, Map context) {
+	public boolean validateChoiceVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateChoiceVertex(this, diagnostics,
 			context);
 	}
@@ -355,7 +363,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public boolean validateOutgoingFromInitial(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PseudostateOperations.validateOutgoingFromInitial(this,
 			diagnostics, context);
 	}
@@ -365,20 +373,22 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (eInternalContainer() != null)
@@ -401,26 +411,27 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
@@ -436,6 +447,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -458,6 +470,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
@@ -513,15 +526,19 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__NAME :
 				setName((String) newValue);
@@ -531,18 +548,21 @@ public class PseudostateImpl
 				return;
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				setContainer((Region) newValue);
@@ -565,6 +585,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
@@ -612,6 +633,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
@@ -658,6 +680,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -700,6 +723,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.PSEUDOSTATE__STATE_MACHINE);
@@ -724,6 +748,7 @@ public class PseudostateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || eIsSet(UMLPackage.PSEUDOSTATE__STATE);
 	}

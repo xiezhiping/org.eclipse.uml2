@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecification.java,v 1.2 2006/05/12 20:38:10 khussey Exp $
+ * $Id: ActionExecutionSpecification.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,6 +74,7 @@ public interface ActionExecutionSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateActionReferenced(DiagnosticChain diagnostics, Map context);
+	boolean validateActionReferenced(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ActionExecutionSpecification

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.17 2006/11/14 18:02:16 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.18 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -82,6 +83,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTIVITY_GROUP;
 	}
@@ -91,24 +93,25 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubgroups() {
+	public EList<ActivityGroup> getSubgroups() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList subgroups = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
+			@SuppressWarnings("unchecked")
+			EList<ActivityGroup> subgroups = (EList<ActivityGroup>) cache.get(
+				eResource, this, UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP);
 			if (subgroups == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP,
-					subgroups = new DerivedUnionEObjectEList(
+					subgroups = new DerivedUnionEObjectEList<ActivityGroup>(
 						ActivityGroup.class, this,
 						UMLPackage.ACTIVITY_GROUP__SUBGROUP, null));
 			}
 			return subgroups;
 		}
-		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
-			UMLPackage.ACTIVITY_GROUP__SUBGROUP, null);
+		return new DerivedUnionEObjectEList<ActivityGroup>(ActivityGroup.class,
+			this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, null);
 	}
 
 	/**
@@ -116,23 +119,25 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -141,24 +146,29 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedNodes() {
+	public EList<ActivityNode> getContainedNodes() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList containedNodes = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			@SuppressWarnings("unchecked")
+			EList<ActivityNode> containedNodes = (EList<ActivityNode>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-					containedNodes = new DerivedUnionEObjectEList(
-						ActivityNode.class, this,
-						UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
+						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
+							ActivityNode.class, this,
+							UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null));
 			}
 			return containedNodes;
 		}
-		return new DerivedUnionEObjectEList(ActivityNode.class, this,
-			UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null);
+		return new DerivedUnionEObjectEList<ActivityNode>(ActivityNode.class,
+			this, UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE, null);
 	}
 
 	/**
@@ -177,9 +187,7 @@ public abstract class ActivityGroupImpl
 	 */
 	public ActivityNode getContainedNode(String name, boolean ignoreCase,
 			EClass eClass) {
-		containedNodeLoop : for (Iterator i = getContainedNodes().iterator(); i
-			.hasNext();) {
-			ActivityNode containedNode = (ActivityNode) i.next();
+		containedNodeLoop : for (ActivityNode containedNode : getContainedNodes()) {
 			if (eClass != null && !eClass.isInstance(containedNode))
 				continue containedNodeLoop;
 			if (name != null && !(ignoreCase
@@ -196,24 +204,29 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedEdges() {
+	public EList<ActivityEdge> getContainedEdges() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList containedEdges = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
+			@SuppressWarnings("unchecked")
+			EList<ActivityEdge> containedEdges = (EList<ActivityEdge>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE);
 			if (containedEdges == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
-					containedEdges = new DerivedUnionEObjectEList(
-						ActivityEdge.class, this,
-						UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE,
+						containedEdges = new DerivedUnionEObjectEList<ActivityEdge>(
+							ActivityEdge.class, this,
+							UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null));
 			}
 			return containedEdges;
 		}
-		return new DerivedUnionEObjectEList(ActivityEdge.class, this,
-			UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null);
+		return new DerivedUnionEObjectEList<ActivityEdge>(ActivityEdge.class,
+			this, UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE, null);
 	}
 
 	/**
@@ -232,9 +245,7 @@ public abstract class ActivityGroupImpl
 	 */
 	public ActivityEdge getContainedEdge(String name, boolean ignoreCase,
 			EClass eClass) {
-		containedEdgeLoop : for (Iterator i = getContainedEdges().iterator(); i
-			.hasNext();) {
-			ActivityEdge containedEdge = (ActivityEdge) i.next();
+		containedEdgeLoop : for (ActivityEdge containedEdge : getContainedEdges()) {
 			if (eClass != null && !eClass.isInstance(containedEdge))
 				continue containedEdgeLoop;
 			if (name != null && !(ignoreCase
@@ -315,7 +326,7 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public boolean validateNodesAndEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNodesAndEdges(this, diagnostics,
 			context);
 	}
@@ -325,7 +336,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotContained(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNotContained(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateNotContained(this, diagnostics,
 			context);
 	}
@@ -335,7 +347,8 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGroupOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateGroupOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityGroupOperations.validateGroupOwned(this, diagnostics,
 			context);
 	}
@@ -345,12 +358,14 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -364,14 +379,15 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
@@ -384,6 +400,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -399,6 +416,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
@@ -434,15 +452,19 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
@@ -456,6 +478,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
@@ -476,6 +499,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
@@ -526,6 +550,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements() || isSetSubgroups();
 	}
@@ -595,6 +620,7 @@ public abstract class ActivityGroupImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || isSetSuperGroup()
 			|| eIsSet(UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceAction.java,v 1.6 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReduceAction.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -193,7 +193,7 @@ public interface ReduceAction
 	 * @generated
 	 */
 	boolean validateInputTypeIsCollection(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,7 +206,7 @@ public interface ReduceAction
 	 * @generated
 	 */
 	boolean validateOutputTypesAreCompatible(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,6 +218,7 @@ public interface ReduceAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateReducerInputsOutput(DiagnosticChain diagnostics, Map context);
+	boolean validateReducerInputsOutput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReduceAction

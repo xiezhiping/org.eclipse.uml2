@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.19 2006/11/14 18:02:17 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.20 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,7 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionFragment;
@@ -113,7 +115,7 @@ public class LifelineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList coveredBys = null;
+	protected EList<InteractionFragment> coveredBys = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,6 +131,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LIFELINE;
 	}
@@ -150,23 +153,25 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.LIFELINE__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.LIFELINE__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.LIFELINE__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -426,9 +431,9 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCoveredBys() {
+	public EList<InteractionFragment> getCoveredBys() {
 		if (coveredBys == null) {
-			coveredBys = new EObjectWithInverseResolvingEList.ManyInverse(
+			coveredBys = new EObjectWithInverseResolvingEList.ManyInverse<InteractionFragment>(
 				InteractionFragment.class, this,
 				UMLPackage.LIFELINE__COVERED_BY,
 				UMLPackage.INTERACTION_FRAGMENT__COVERED);
@@ -452,9 +457,7 @@ public class LifelineImpl
 	 */
 	public InteractionFragment getCoveredBy(String name, boolean ignoreCase,
 			EClass eClass) {
-		coveredByLoop : for (Iterator i = getCoveredBys().iterator(); i
-			.hasNext();) {
-			InteractionFragment coveredBy = (InteractionFragment) i.next();
+		coveredByLoop : for (InteractionFragment coveredBy : getCoveredBys()) {
 			if (eClass != null && !eClass.isInstance(coveredBy))
 				continue coveredByLoop;
 			if (name != null && !(ignoreCase
@@ -472,7 +475,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public boolean validateInteractionUsesShareLifeline(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return LifelineOperations.validateInteractionUsesShareLifeline(this,
 			diagnostics, context);
 	}
@@ -483,7 +486,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public boolean validateSelectorSpecified(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LifelineOperations.validateSelectorSpecified(this, diagnostics,
 			context);
 	}
@@ -494,7 +497,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public boolean validateSameClassifier(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LifelineOperations.validateSameClassifier(this, diagnostics,
 			context);
 	}
@@ -504,22 +507,24 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInteraction((Interaction) otherEnd, msgs);
 			case UMLPackage.LIFELINE__COVERED_BY :
-				return ((InternalEList) getCoveredBys()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getCoveredBys())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -529,18 +534,19 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.LIFELINE__INTERACTION :
@@ -548,8 +554,8 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__SELECTOR :
 				return basicSetSelector(null, msgs);
 			case UMLPackage.LIFELINE__COVERED_BY :
-				return ((InternalEList) getCoveredBys()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getCoveredBys()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -559,6 +565,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -574,6 +581,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
@@ -629,15 +637,19 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LIFELINE__NAME :
 				setName((String) newValue);
@@ -647,7 +659,8 @@ public class LifelineImpl
 				return;
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -666,7 +679,8 @@ public class LifelineImpl
 				return;
 			case UMLPackage.LIFELINE__COVERED_BY :
 				getCoveredBys().clear();
-				getCoveredBys().addAll((Collection) newValue);
+				getCoveredBys().addAll(
+					(Collection<? extends InteractionFragment>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -677,6 +691,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
@@ -721,6 +736,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
@@ -779,6 +795,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.LIFELINE__INTERACTION);
@@ -801,6 +818,7 @@ public class LifelineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.LIFELINE__SELECTOR);

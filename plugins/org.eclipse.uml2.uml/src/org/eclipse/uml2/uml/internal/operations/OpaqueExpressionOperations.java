@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.12 2006/04/05 13:50:03 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -73,7 +72,7 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean validateLanguageBodySize(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -107,7 +106,7 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean validateOnlyReturnResultParameters(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -141,7 +140,7 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean validateOneReturnResultParameter(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -175,11 +174,10 @@ public class OpaqueExpressionOperations
 	 */
 	public static int value(OpaqueExpression opaqueExpression) {
 
-		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-			.hasNext();) {
+		for (String body : opaqueExpression.getBodies()) {
 
 			try {
-				return Integer.parseInt((String) bodies.next());
+				return Integer.parseInt(body);
 			} catch (NumberFormatException nfe) {
 				// ignore
 			}
@@ -199,11 +197,10 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean isIntegral(OpaqueExpression opaqueExpression) {
 
-		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-			.hasNext();) {
+		for (String body : opaqueExpression.getBodies()) {
 
 			try {
-				Integer.parseInt((String) bodies.next());
+				Integer.parseInt(body);
 				return true;
 			} catch (NumberFormatException nfe) {
 				// ignore
@@ -225,11 +222,10 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean isPositive(OpaqueExpression opaqueExpression) {
 
-		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-			.hasNext();) {
+		for (String body : opaqueExpression.getBodies()) {
 
 			try {
-				return Integer.parseInt((String) bodies.next()) > 0;
+				return Integer.parseInt(body) > 0;
 			} catch (NumberFormatException nfe) {
 				// ignore
 			}
@@ -250,11 +246,10 @@ public class OpaqueExpressionOperations
 	 */
 	public static boolean isNonNegative(OpaqueExpression opaqueExpression) {
 
-		for (Iterator bodies = opaqueExpression.getBodies().iterator(); bodies
-			.hasNext();) {
+		for (String body : opaqueExpression.getBodies()) {
 
 			try {
-				return Integer.parseInt((String) bodies.next()) >= 0;
+				return Integer.parseInt(body) >= 0;
 			} catch (NumberFormatException nfe) {
 				// ignore
 			}
@@ -273,10 +268,7 @@ public class OpaqueExpressionOperations
 
 		if (behavior != null) {
 
-			for (Iterator ownedParameters = behavior.getOwnedParameters()
-				.iterator(); ownedParameters.hasNext();) {
-
-				Parameter ownedParameter = (Parameter) ownedParameters.next();
+			for (Parameter ownedParameter : behavior.getOwnedParameters()) {
 
 				if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 					return ownedParameter;
@@ -293,10 +285,10 @@ public class OpaqueExpressionOperations
 	 * @generated NOT
 	 */
 	public static String stringValue(OpaqueExpression opaqueExpression) {
-		EList bodies = opaqueExpression.getBodies();
+		EList<String> bodies = opaqueExpression.getBodies();
 
 		return bodies.size() > 0
-			? (String) bodies.get(0)
+			? bodies.get(0)
 			: ValueSpecificationOperations.stringValue(opaqueExpression);
 	}
 

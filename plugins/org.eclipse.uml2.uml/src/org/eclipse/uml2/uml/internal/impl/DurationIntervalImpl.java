@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.12 2006/11/14 18:02:16 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.13 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,6 +56,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DURATION_INTERVAL;
 	}
@@ -102,6 +103,7 @@ public class DurationIntervalImpl
 
 	}
 
+	@Override
 	public void setMin(ValueSpecification newMin) {
 
 		if (newMin != null && !(newMin instanceof Duration)) {
@@ -162,6 +164,7 @@ public class DurationIntervalImpl
 
 	}
 
+	@Override
 	public void setMax(ValueSpecification newMax) {
 
 		if (newMax != null && !(newMax instanceof Duration)) {
@@ -185,6 +188,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DURATION_INTERVAL__EANNOTATIONS :
@@ -242,6 +246,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_INTERVAL__EANNOTATIONS :

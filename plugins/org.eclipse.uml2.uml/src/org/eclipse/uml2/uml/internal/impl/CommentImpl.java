@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.10 2006/11/14 18:02:20 khussey Exp $
+ * $Id: CommentImpl.java,v 1.11 2006/12/14 15:49:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -81,7 +82,7 @@ public class CommentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList annotatedElements = null;
+	protected EList<Element> annotatedElements = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,6 +98,7 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.COMMENT;
 	}
@@ -156,10 +158,10 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAnnotatedElements() {
+	public EList<Element> getAnnotatedElements() {
 		if (annotatedElements == null) {
-			annotatedElements = new EObjectResolvingEList(Element.class, this,
-				UMLPackage.COMMENT__ANNOTATED_ELEMENT);
+			annotatedElements = new EObjectResolvingEList<Element>(
+				Element.class, this, UMLPackage.COMMENT__ANNOTATED_ELEMENT);
 		}
 		return annotatedElements;
 	}
@@ -169,6 +171,7 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
@@ -194,22 +197,27 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COMMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COMMENT__BODY :
 				setBody((String) newValue);
 				return;
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				getAnnotatedElements().clear();
-				getAnnotatedElements().addAll((Collection) newValue);
+				getAnnotatedElements().addAll(
+					(Collection<? extends Element>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -220,6 +228,7 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
@@ -243,6 +252,7 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
@@ -267,6 +277,7 @@ public class CommentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

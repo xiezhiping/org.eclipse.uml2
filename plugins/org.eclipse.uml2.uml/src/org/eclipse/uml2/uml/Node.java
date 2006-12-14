@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Node.java,v 1.6 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Node.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface Node
 	 * @model type="org.eclipse.uml2.uml.Node" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getNestedNodes();
+	EList<Node> getNestedNodes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Node}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Node</b></em>' containment reference list.
@@ -118,6 +118,7 @@ public interface Node
 	 * @model
 	 * @generated
 	 */
-	boolean validateInternalStructure(DiagnosticChain diagnostics, Map context);
+	boolean validateInternalStructure(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Node

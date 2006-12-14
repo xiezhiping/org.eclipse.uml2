@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Expression.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,7 @@ public interface Expression
 	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOperands();
+	EList<ValueSpecification> getOperands();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Operand</b></em>' containment reference list.

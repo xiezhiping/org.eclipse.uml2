@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.42 2006/12/06 13:46:53 khussey Exp $
+ * $Id: UMLUtil.java,v 1.43 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
@@ -124,11 +126,7 @@ public class UMLUtil
 		 */
 		public static final QualifiedTextProvider DEFAULT = new QualifiedTextProvider();
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider#getText(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public String getText(EObject eObject) {
 
 			return eObject instanceof NamedElement
@@ -136,11 +134,7 @@ public class UMLUtil
 				: super.getText(eObject);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider#getSeparator()
-		 */
+		@Override
 		public String getSeparator() {
 			return NamedElement.SEPARATOR;
 		}
@@ -153,6 +147,8 @@ public class UMLUtil
 	 */
 	public static class PackageMerger
 			extends EcoreUtil.Copier {
+
+		private static final long serialVersionUID = 1L;
 
 		protected class BodyMatcher
 				extends EStructuralFeatureMatcher {
@@ -173,10 +169,11 @@ public class UMLUtil
 		protected class KeyMatcher
 				extends EClassMatcher {
 
-			protected KeyMatcher(BasicEMap.Entry entry) {
+			protected KeyMatcher(BasicEMap.Entry<String, String> entry) {
 				super((EObject) entry);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
 					&& safeEquals(((BasicEMap.Entry) eObject).getKey(),
@@ -191,6 +188,7 @@ public class UMLUtil
 				super(eObject);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
 					&& safeEquals(getResultingQName(eObject),
@@ -205,6 +203,7 @@ public class UMLUtil
 				super(valueSpecification);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
 					&& safeEquals(((ValueSpecification) eObject).stringValue(),
@@ -227,6 +226,7 @@ public class UMLUtil
 				super(typedElement);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
@@ -369,150 +369,113 @@ public class UMLUtil
 
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
 
-		protected Collection mergedPackages = null;
+		protected Collection<org.eclipse.uml2.uml.Package> mergedPackages = null;
 
-		protected final Map resultingToMergedEObjectMap = new LinkedHashMap();
+		protected final Map<EObject, List<EObject>> resultingToMergedEObjectMap = new LinkedHashMap<EObject, List<EObject>>();
 
-		private final Map<EObject, EObject> copierMap = new LinkedHashMap();
+		private final Map<EObject, EObject> copierMap = new LinkedHashMap<EObject, EObject>();
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#clear()
-		 */
+		@Override
 		public void clear() {
 			copierMap.clear();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#containsKey(java.lang.Object)
-		 */
+		@Override
 		public boolean containsKey(Object key) {
 			return copierMap.containsKey(key);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#containsValue(java.lang.Object)
-		 */
+		@Override
 		public boolean containsValue(Object value) {
 			return copierMap.containsValue(value);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#entrySet()
-		 */
-		public Set entrySet() {
+		@Override
+		public Set<Map.Entry<EObject, EObject>> entrySet() {
 			return copierMap.entrySet();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#get(java.lang.Object)
-		 */
-		public EObject get(EObject key) {
+		@Override
+		public EObject get(Object key) {
 			return copierMap.get(key);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#isEmpty()
-		 */
+		@Override
 		public boolean isEmpty() {
 			return copierMap.isEmpty();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#keySet()
-		 */
-		public Set keySet() {
+		@Override
+		public Set<EObject> keySet() {
 			return copierMap.keySet();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#put(K, V)
-		 */
+		@Override
 		public EObject put(EObject key, EObject value) {
 			return copierMap.put(key, value);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#putAll(java.util.Map)
-		 */
-		public void putAll(Map t) {
+		@Override
+		public void putAll(Map<? extends EObject, ? extends EObject> t) {
 			copierMap.putAll(t);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#remove(java.lang.Object)
-		 */
-		public EObject remove(EObject key) {
+		@Override
+		public EObject remove(Object key) {
 			return copierMap.remove(key);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#size()
-		 */
+		@Override
 		public int size() {
 			return copierMap.size();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see java.util.HashMap#values()
-		 */
-		public Collection values() {
+		@Override
+		public Collection<EObject> values() {
 			return copierMap.values();
 		}
 
-		protected List getMatchCandidates(EObject eObject) {
+		protected <EO extends EObject> List<EO> getMatchCandidates(EO eObject) {
 			Element baseElement = getBaseElement(eObject);
 
 			if (baseElement == null) {
 				EStructuralFeature eContainingFeature = eObject
 					.eContainingFeature();
 
-				return eContainingFeature.isMany()
-					? (List) ((EObject) get(eObject.eContainer()))
-						.eGet(eContainingFeature)
-					: Collections.singletonList(((EObject) get(eObject
-						.eContainer())).eGet(eContainingFeature));
+				if (eContainingFeature.isMany()) {
+					@SuppressWarnings("unchecked")
+					List<EO> values = (List<EO>) get(eObject.eContainer())
+						.eGet(eContainingFeature);
+					return values;
+				} else {
+					@SuppressWarnings("unchecked")
+					EO value = (EO) get(eObject.eContainer()).eGet(
+						eContainingFeature);
+					return Collections.<EO> singletonList(value);
+				}
 			} else {
-				return ((Element) get(baseElement)).getStereotypeApplications();
+				@SuppressWarnings("unchecked")
+				List<EO> stereotypeApplications = (List<EO>) ((Element) get(baseElement))
+					.getStereotypeApplications();
+				return stereotypeApplications;
 			}
 		}
 
-		protected List getMergedEObjects(EObject resultingEObject) {
-			Object mergedEObjects = resultingToMergedEObjectMap
+		protected <EO extends EObject> List<EO> getMergedEObjects(
+				EO resultingEObject) {
+			@SuppressWarnings("unchecked")
+			List<EO> mergedEObjects = (List<EO>) resultingToMergedEObjectMap
 				.get(resultingEObject);
 
 			return mergedEObjects == null
-				? Collections.singletonList(resultingEObject)
-				: (List) mergedEObjects;
+				? Collections.<EO> singletonList(resultingEObject)
+				: (List<EO>) mergedEObjects;
 		}
 
-		protected EObject getPreviouslyMergedEObject(EObject resultingEObject) {
-			List mergedEObjects = getMergedEObjects(resultingEObject);
-
-			return (EObject) mergedEObjects.get(mergedEObjects.size() - 1);
+		protected <EO extends EObject> EO getPreviouslyMergedEObject(
+				EO resultingEObject) {
+			List<EO> mergedEObjects = getMergedEObjects(resultingEObject);
+			return mergedEObjects.get(mergedEObjects.size() - 1);
 		}
 
 		protected String getResultingQName(EObject eObject) {
@@ -623,6 +586,7 @@ public class UMLUtil
 				&& mergedStructuralFeature.isReadOnly());
 		}
 
+		@Override
 		protected void copyAttribute(EAttribute eAttribute, EObject eObject,
 				EObject copyEObject) {
 
@@ -679,19 +643,21 @@ public class UMLUtil
 			}
 		}
 
+		@Override
 		protected void copyContainment(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
 			if (eObject != copyEObject) {
 
 				if (eReference.isMany()) {
-					InternalEList targetList = (InternalEList) copyEObject
+					@SuppressWarnings("unchecked")
+					List<EObject> sourceList = (List<EObject>) eObject
+						.eGet(eReference);
+					@SuppressWarnings("unchecked")
+					InternalEList<EObject> targetList = (InternalEList<EObject>) copyEObject
 						.eGet(getTarget(eReference));
 
-					for (Iterator i = ((List) eObject.eGet(eReference))
-						.iterator(); i.hasNext();) {
-
-						EObject childEObject = (EObject) i.next();
+					for (EObject childEObject : sourceList) {
 						EObject copyChildEObject = copy(childEObject);
 
 						if (childEObject != copyChildEObject) {
@@ -719,12 +685,10 @@ public class UMLUtil
 			Type mergedType = mergedTypedElement.getType();
 
 			if (receivingType != null && mergedType instanceof Classifier) {
-				EList allParents = ((Classifier) mergedType).allParents();
+				EList<Classifier> allParents = ((Classifier) mergedType)
+					.allParents();
 
-				for (Iterator mergedEObjects = getMergedEObjects(receivingType)
-					.iterator(); mergedEObjects.hasNext();) {
-
-					EObject mergedEObject = (EObject) mergedEObjects.next();
+				for (EObject mergedEObject : getMergedEObjects(receivingType)) {
 
 					if (findEObject(allParents, new ResultingQNameMatcher(
 						mergedEObject)) != null) {
@@ -743,6 +707,7 @@ public class UMLUtil
 				: resultingType);
 		}
 
+		@Override
 		protected void copyReference(EReference eReference, EObject eObject,
 				EObject copyEObject) {
 
@@ -752,17 +717,18 @@ public class UMLUtil
 					mergeTypedElement_Type((TypedElement) copyEObject,
 						(TypedElement) eObject);
 				} else if (eReference.isMany()) {
-					InternalEList targetList = (InternalEList) copyEObject
+					@SuppressWarnings("unchecked")
+					List<EObject> sourceList = (List<EObject>) eObject
+						.eGet(eReference);
+					@SuppressWarnings("unchecked")
+					InternalEList<EObject> targetList = (InternalEList<EObject>) copyEObject
 						.eGet(getTarget(eReference));
 
 					boolean isBidirectional = eReference.getEOpposite() != null;
 					int index = 0;
 
-					for (Iterator i = ((List) eObject.eGet(eReference))
-						.iterator(); i.hasNext();) {
-
-						Object referencedEObject = i.next();
-						Object copyReferencedEObject = get(referencedEObject);
+					for (EObject referencedEObject : sourceList) {
+						EObject copyReferencedEObject = get(referencedEObject);
 
 						if (copyReferencedEObject == null) {
 
@@ -804,33 +770,34 @@ public class UMLUtil
 			}
 		}
 
+		@Override
 		protected EObject createCopy(EObject eObject) {
-			return (EObject) new UMLSwitch() {
+			return new UMLSwitch<EObject>() {
 
-				public Object caseAssociation(Association association) {
-					Association matchingAssociation = (Association) findEObject(
+				@Override
+				public EObject caseAssociation(Association association) {
+					Association matchingAssociation = findEObject(
 						getMatchCandidates(association), new NameMatcher(
 							association) {
 
+							@Override
 							public boolean matches(EObject otherEObject) {
 
 								if (super.matches(otherEObject)) {
 									otherEObject = getPreviouslyMergedEObject(otherEObject);
 
-									List memberEnds = ((Association) eObject)
+									List<Property> memberEnds = ((Association) eObject)
 										.getMemberEnds();
-									List otherMemberEnds = ((Association) otherEObject)
+									List<Property> otherMemberEnds = ((Association) otherEObject)
 										.getMemberEnds();
 
 									if (memberEnds.size() == otherMemberEnds
 										.size()) {
 
-										for (Iterator i = memberEnds.iterator(); i
-											.hasNext();) {
+										for (Property memberEnd : memberEnds) {
 
 											if (findEObject(otherMemberEnds,
-												new TypeMatcher(
-													(TypedElement) i.next())) == null) {
+												new TypeMatcher(memberEnd)) == null) {
 
 												return false;
 											}
@@ -850,8 +817,9 @@ public class UMLUtil
 						: matchingAssociation;
 				}
 
-				public Object caseClass(org.eclipse.uml2.uml.Class class_) {
-					org.eclipse.uml2.uml.Class matchingClass = (org.eclipse.uml2.uml.Class) findEObject(
+				@Override
+				public EObject caseClass(org.eclipse.uml2.uml.Class class_) {
+					org.eclipse.uml2.uml.Class matchingClass = findEObject(
 						getMatchCandidates(class_), new NameMatcher(class_));
 
 					return matchingClass == null
@@ -859,8 +827,9 @@ public class UMLUtil
 						: matchingClass;
 				}
 
-				public Object caseComment(Comment comment) {
-					Comment matchingComment = (Comment) findEObject(
+				@Override
+				public EObject caseComment(Comment comment) {
+					Comment matchingComment = findEObject(
 						getMatchCandidates(comment), new BodyMatcher(comment));
 
 					return matchingComment == null
@@ -868,8 +837,9 @@ public class UMLUtil
 						: matchingComment;
 				}
 
-				public Object caseConstraint(Constraint constraint) {
-					Constraint matchingConstraint = (Constraint) findEObject(
+				@Override
+				public EObject caseConstraint(Constraint constraint) {
+					Constraint matchingConstraint = findEObject(
 						getMatchCandidates(constraint), new NameMatcher(
 							constraint));
 
@@ -878,8 +848,9 @@ public class UMLUtil
 						: matchingConstraint;
 				}
 
-				public Object caseDataType(DataType dataType) {
-					DataType matchingDataType = (DataType) findEObject(
+				@Override
+				public EObject caseDataType(DataType dataType) {
+					DataType matchingDataType = findEObject(
 						getMatchCandidates(dataType), new NameMatcher(dataType));
 
 					return matchingDataType == null
@@ -887,7 +858,8 @@ public class UMLUtil
 						: matchingDataType;
 				}
 
-				public Object caseDirectedRelationship(
+				@Override
+				public EObject caseDirectedRelationship(
 						DirectedRelationship directedRelationship) {
 
 					if (mergedPackages.containsAll(directedRelationship
@@ -896,28 +868,28 @@ public class UMLUtil
 						return directedRelationship;
 					}
 
-					DirectedRelationship matchingDirectedRelationship = (DirectedRelationship) findEObject(
+					DirectedRelationship matchingDirectedRelationship = findEObject(
 						getMatchCandidates(directedRelationship),
 						new EClassMatcher(directedRelationship) {
 
+							@Override
 							public boolean matches(EObject otherEObject) {
 
 								if (super.matches(otherEObject)) {
 									otherEObject = getPreviouslyMergedEObject(otherEObject);
 
-									List targets = ((DirectedRelationship) eObject)
+									List<Element> targets = ((DirectedRelationship) eObject)
 										.getTargets();
-									List otherTargets = ((DirectedRelationship) otherEObject)
+									List<Element> otherTargets = ((DirectedRelationship) otherEObject)
 										.getTargets();
 
 									if (targets.size() == otherTargets.size()) {
 
-										for (Iterator i = targets.iterator(); i
-											.hasNext();) {
+										for (Element target : targets) {
 
 											if (findEObject(otherTargets,
 												new ResultingQNameMatcher(
-													(EObject) i.next())) == null) {
+													target)) == null) {
 
 												return false;
 											}
@@ -936,9 +908,10 @@ public class UMLUtil
 						: matchingDirectedRelationship;
 				}
 
-				public Object caseEnumerationLiteral(
+				@Override
+				public EObject caseEnumerationLiteral(
 						EnumerationLiteral enumerationLiteral) {
-					EnumerationLiteral matchingEnumerationLiteral = (EnumerationLiteral) findEObject(
+					EnumerationLiteral matchingEnumerationLiteral = findEObject(
 						getMatchCandidates(enumerationLiteral),
 						new NameMatcher(enumerationLiteral));
 
@@ -947,19 +920,21 @@ public class UMLUtil
 						: matchingEnumerationLiteral;
 				}
 
-				public Object caseOperation(Operation operation) {
-					Operation matchingOperation = (Operation) findEObject(
+				@Override
+				public EObject caseOperation(Operation operation) {
+					Operation matchingOperation = findEObject(
 						getMatchCandidates(operation), new NameMatcher(
 							operation) {
 
+							@Override
 							public boolean matches(EObject otherEObject) {
 
 								if (super.matches(otherEObject)) {
 									otherEObject = getPreviouslyMergedEObject(otherEObject);
 
-									List ownedParameters = ((Operation) eObject)
+									List<Parameter> ownedParameters = ((Operation) eObject)
 										.getOwnedParameters();
-									List otherOwnedParameters = ((Operation) otherEObject)
+									List<Parameter> otherOwnedParameters = ((Operation) otherEObject)
 										.getOwnedParameters();
 
 									if (ownedParameters.size() == otherOwnedParameters
@@ -969,9 +944,8 @@ public class UMLUtil
 											.size(); i++) {
 
 											if (!new TypeMatcher(
-												(TypedElement) ownedParameters
-													.get(i))
-												.matches((EObject) otherOwnedParameters
+												ownedParameters.get(i))
+												.matches(otherOwnedParameters
 													.get(i))) {
 
 												return false;
@@ -991,13 +965,14 @@ public class UMLUtil
 						: matchingOperation;
 				}
 
-				public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+				@Override
+				public EObject casePackage(org.eclipse.uml2.uml.Package package_) {
 					org.eclipse.uml2.uml.Package matchingPackage = null;
 
 					if (mergedPackages.contains(package_)) {
 						matchingPackage = receivingPackage;
 					} else {
-						matchingPackage = (org.eclipse.uml2.uml.Package) findEObject(
+						matchingPackage = findEObject(
 							getMatchCandidates(package_), new NameMatcher(
 								package_));
 					}
@@ -1007,8 +982,9 @@ public class UMLUtil
 						: matchingPackage;
 				}
 
-				public Object caseParameter(Parameter parameter) {
-					Parameter matchingParameter = (Parameter) findEObject(
+				@Override
+				public EObject caseParameter(Parameter parameter) {
+					Parameter matchingParameter = findEObject(
 						getMatchCandidates(parameter), new NameMatcher(
 							parameter));
 
@@ -1017,8 +993,9 @@ public class UMLUtil
 						: matchingParameter;
 				}
 
-				public Object caseProperty(Property property) {
-					Property matchingProperty = (Property) findEObject(
+				@Override
+				public EObject caseProperty(Property property) {
+					Property matchingProperty = findEObject(
 						getMatchCandidates(property), new NameMatcher(property));
 
 					return matchingProperty == null
@@ -1026,7 +1003,8 @@ public class UMLUtil
 						: matchingProperty;
 				}
 
-				public Object defaultCase(EObject eObject) {
+				@Override
+				public EObject defaultCase(EObject eObject) {
 					Element baseElement = getBaseElement(eObject);
 
 					return baseElement == null
@@ -1035,12 +1013,13 @@ public class UMLUtil
 							getTarget(eObject.eClass()));
 				}
 
-				protected Object doSwitch(EClass theEClass, EObject theEObject) {
+				@Override
+				protected EObject doSwitch(EClass theEClass, EObject theEObject) {
 
 					if (theEClass.eContainer() != modelPackage) {
 
 						if (theEClass == EcorePackage.Literals.EANNOTATION) {
-							EAnnotation matchingEAnnotation = (EAnnotation) findEObject(
+							EAnnotation matchingEAnnotation = findEObject(
 								getMatchCandidates(theEObject),
 								new SourceMatcher((EAnnotation) theEObject));
 
@@ -1048,12 +1027,14 @@ public class UMLUtil
 								return matchingEAnnotation;
 							}
 						} else if (theEClass == EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY) {
-							BasicEMap.Entry matchingEntry = (BasicEMap.Entry) findEObject(
-								getMatchCandidates(theEObject), new KeyMatcher(
-									(BasicEMap.Entry) theEObject));
+							@SuppressWarnings("unchecked")
+							BasicEMap.Entry<String, String> matchingEntry = findEObject(
+								getMatchCandidates(theEObject),
+								new KeyMatcher(
+									(BasicEMap.Entry<String, String>) theEObject));
 
 							if (matchingEntry != null) {
-								return matchingEntry;
+								return (EObject) matchingEntry;
 							}
 						} else if (getStereotype(theEClass) != null) {
 							EObject matchingEObject = findEObject(
@@ -1071,21 +1052,20 @@ public class UMLUtil
 			}.doSwitch(eObject);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreUtil.Copier#copy(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public EObject copy(EObject eObject) {
 			EObject copyEObject = super.copy(eObject);
 
 			if (eObject != copyEObject) {
-				List mergedEObjects = (List) resultingToMergedEObjectMap
+				List<EObject> mergedEObjects = resultingToMergedEObjectMap
 					.get(copyEObject);
 
 				if (mergedEObjects == null) {
-					resultingToMergedEObjectMap.put(copyEObject,
-						mergedEObjects = new UniqueEList.FastCompare(1));
+					resultingToMergedEObjectMap
+						.put(
+							copyEObject,
+							mergedEObjects = new UniqueEList.FastCompare<EObject>(
+								1));
 				}
 
 				mergedEObjects.add(eObject);
@@ -1099,26 +1079,26 @@ public class UMLUtil
 			return copyEObject;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreUtil.Copier#copyAll(java.util.Collection)
-		 */
-		public Collection copyAll(Collection eObjects) {
-			Collection result = new ArrayList(eObjects.size());
+		@Override
+		public <T> Collection<T> copyAll(Collection<? extends T> eObjects) {
+			Collection<T> result = new ArrayList<T>(eObjects.size());
 
-			for (Iterator o = eObjects.iterator(); o.hasNext();) {
-				EObject eObject = (EObject) o.next();
-				result.add(copy(eObject));
+			for (Object object : eObjects) {
+				@SuppressWarnings("unchecked")
+				T copy = (T) copy((EObject) object);
+				result.add(copy);
 
-				for (Iterator eAllContents = eObject.eAllContents(); eAllContents
-					.hasNext();) {
+				for (TreeIterator<EObject> eAllContents = ((EObject) object)
+					.eAllContents(); eAllContents.hasNext();) {
 
-					EObject childEObject = (EObject) eAllContents.next();
+					EObject childEObject = eAllContents.next();
 
 					if (childEObject instanceof Element) {
-						result.addAll(super.copyAll(((Element) childEObject)
-							.getStereotypeApplications()));
+						@SuppressWarnings("unchecked")
+						Collection<T> copies = (Collection<T>) super
+							.copyAll(((Element) childEObject)
+								.getStereotypeApplications());
+						result.addAll(copies);
 					}
 				}
 			}
@@ -1126,20 +1106,19 @@ public class UMLUtil
 			return result;
 		}
 
-		protected Collection getAllMergedPackages(
+		protected Collection<org.eclipse.uml2.uml.Package> getAllMergedPackages(
 				org.eclipse.uml2.uml.Package package_) {
-			return getAllMergedPackages(package_, new UniqueEList.FastCompare());
+			return getAllMergedPackages(package_,
+				new UniqueEList.FastCompare<org.eclipse.uml2.uml.Package>());
 		}
 
-		private Collection getAllMergedPackages(
+		private Collection<org.eclipse.uml2.uml.Package> getAllMergedPackages(
 				org.eclipse.uml2.uml.Package package_,
-				Collection allMergedPackages) {
+				Collection<org.eclipse.uml2.uml.Package> allMergedPackages) {
 
-			for (Iterator packageMerges = package_.getPackageMerges()
-				.iterator(); packageMerges.hasNext();) {
-
-				org.eclipse.uml2.uml.Package mergedPackage = ((PackageMerge) packageMerges
-					.next()).getMergedPackage();
+			for (PackageMerge packageMerge : package_.getPackageMerges()) {
+				org.eclipse.uml2.uml.Package mergedPackage = packageMerge
+					.getMergedPackage();
 
 				if (mergedPackage != null) {
 					getAllMergedPackages(mergedPackage, allMergedPackages);
@@ -1151,29 +1130,24 @@ public class UMLUtil
 			return allMergedPackages;
 		}
 
-		protected void processDifferentPropertyStaticity(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processDifferentPropertyStaticity(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Object key = entry.getKey();
+			for (Map.Entry<EObject, List<EObject>> entry : resultingToMergedEObjectMap
+				.entrySet()) {
+				EObject key = entry.getKey();
 
 				if (key instanceof Property) {
 					Property property = (Property) key;
 
-					for (Iterator mergedProperties = ((List) entry.getValue())
-						.iterator(); mergedProperties.hasNext();) {
-
-						Property mergedProperty = (Property) mergedProperties
-							.next();
+					for (EObject mergedProperty : entry.getValue()) {
 
 						if (OPTION__REPORT.equals(options
 							.get(OPTION__DIFFERENT_PROPERTY_STATICITY))
 							&& diagnostics != null) {
 
-							if (property.isStatic() != mergedProperty
+							if (property.isStatic() != ((Property) mergedProperty)
 								.isStatic()) {
 
 								diagnostics
@@ -1195,29 +1169,24 @@ public class UMLUtil
 			}
 		}
 
-		protected void processDifferentPropertyUniqueness(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processDifferentPropertyUniqueness(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Object key = entry.getKey();
+			for (Map.Entry<EObject, List<EObject>> entry : resultingToMergedEObjectMap
+				.entrySet()) {
+				EObject key = entry.getKey();
 
 				if (key instanceof Property) {
 					Property property = (Property) key;
 
-					for (Iterator mergedProperties = ((List) entry.getValue())
-						.iterator(); mergedProperties.hasNext();) {
-
-						Property mergedProperty = (Property) mergedProperties
-							.next();
+					for (EObject mergedProperty : entry.getValue()) {
 
 						if (OPTION__REPORT.equals(options
 							.get(OPTION__DIFFERENT_PROPERTY_UNIQUENESS))
 							&& diagnostics != null) {
 
-							if (property.isUnique() != mergedProperty
+							if (property.isUnique() != ((Property) mergedProperty)
 								.isUnique()) {
 
 								diagnostics
@@ -1239,26 +1208,21 @@ public class UMLUtil
 			}
 		}
 
-		protected void processImplicitRedefinitions(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processImplicitRedefinitions(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator resultingEObjects = resultingToMergedEObjectMap
-				.keySet().iterator(); resultingEObjects.hasNext();) {
-
-				EObject resultingEObject = (EObject) resultingEObjects.next();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Feature) {
 					Feature redefiningFeature = (Feature) resultingEObject;
-					List redefinedFeatures = getRedefinedFeatures(redefiningFeature);
+					EList<Feature> redefinedFeatures = getRedefinedFeatures(redefiningFeature);
 
-					for (Iterator validRedefinitions = findValidRedefinitions(
-						redefiningFeature, redefiningFeature.getName())
-						.iterator(); validRedefinitions.hasNext();) {
+					for (Feature validRedefinition : findValidRedefinitions(
+						redefiningFeature, redefiningFeature.getName())) {
 
-						Feature redefinedFeature = (Feature) validRedefinitions
-							.next();
-
-						if (!redefinedFeatures.contains(redefinedFeature)) {
+						if (!redefinedFeatures.contains(validRedefinition)) {
 
 							if (OPTION__PROCESS.equals(options
 								.get(OPTION__IMPLICIT_REDEFINITIONS))) {
@@ -1275,12 +1239,12 @@ public class UMLUtil
 													getMessageSubstitutions(
 														context,
 														redefiningFeature,
-														redefinedFeature)),
+														validRedefinition)),
 											new Object[]{redefiningFeature,
-												redefinedFeature}));
+												validRedefinition}));
 								}
 
-								redefinedFeatures.add(redefinedFeature);
+								redefinedFeatures.add(validRedefinition);
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__IMPLICIT_REDEFINITIONS))
 								&& diagnostics != null) {
@@ -1295,9 +1259,9 @@ public class UMLUtil
 												"_UI_PackageMerger_ReportImplicitFeatureRedefinition_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, redefiningFeature,
-													redefinedFeature)),
+													validRedefinition)),
 										new Object[]{redefiningFeature,
-											redefinedFeature}));
+											validRedefinition}));
 							}
 						}
 					}
@@ -1305,22 +1269,18 @@ public class UMLUtil
 			}
 		}
 
-		protected void processInvalidRedefinitions(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processInvalidRedefinitions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator resultingEObjects = resultingToMergedEObjectMap
-				.keySet().iterator(); resultingEObjects.hasNext();) {
-
-				EObject resultingEObject = (EObject) resultingEObjects.next();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Feature) {
 					Feature redefiningFeature = (Feature) resultingEObject;
-					List redefinedFeatures = getRedefinedFeatures(redefiningFeature);
+					EList<Feature> redefinedFeatures = getRedefinedFeatures(redefiningFeature);
 
-					for (Iterator i = new ArrayList(redefinedFeatures)
-						.iterator(); i.hasNext();) {
-
-						Feature redefinedFeature = (Feature) i.next();
+					for (Feature redefinedFeature : new ArrayList<Feature>(
+						redefinedFeatures)) {
 
 						if (!UMLUtil.isRedefinitionValid(redefiningFeature,
 							redefinedFeature)) {
@@ -1371,16 +1331,12 @@ public class UMLUtil
 						if (OPTION__PROCESS.equals(options
 							.get(OPTION__INVALID_REDEFINITIONS))) {
 
-							Collection validRedefinitions = findValidRedefinitions(
+							Collection<Feature> validRedefinitions = findValidRedefinitions(
 								redefiningFeature, redefinedFeature.getName());
 
 							if (!validRedefinitions.isEmpty()) {
 
-								for (Iterator j = validRedefinitions.iterator(); j
-									.hasNext();) {
-
-									Feature validRedefinition = (Feature) j
-										.next();
+								for (Feature validRedefinition : validRedefinitions) {
 
 									if (!redefinedFeatures
 										.contains(validRedefinition)) {
@@ -1421,23 +1377,19 @@ public class UMLUtil
 			}
 		}
 
-		protected void processInvalidSubsets(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processInvalidSubsets(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator resultingEObjects = resultingToMergedEObjectMap
-				.keySet().iterator(); resultingEObjects.hasNext();) {
-
-				EObject resultingEObject = (EObject) resultingEObjects.next();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Property) {
 					Property subsettingProperty = (Property) resultingEObject;
-					List subsettedProperties = subsettingProperty
+					EList<Property> subsettedProperties = subsettingProperty
 						.getSubsettedProperties();
 
-					for (Iterator i = new ArrayList(subsettedProperties)
-						.iterator(); i.hasNext();) {
-
-						Property subsettedProperty = (Property) i.next();
+					for (Property subsettedProperty : new ArrayList<Property>(
+						subsettedProperties)) {
 
 						if (!UMLUtil.isSubsetValid(subsettingProperty,
 							subsettedProperty)) {
@@ -1489,15 +1441,12 @@ public class UMLUtil
 						if (OPTION__PROCESS.equals(options
 							.get(OPTION__INVALID_SUBSETS))) {
 
-							Collection validSubsets = findValidSubsets(
+							Collection<Property> validSubsets = findValidSubsets(
 								subsettingProperty, subsettedProperty.getName());
 
 							if (!validSubsets.isEmpty()) {
 
-								for (Iterator j = validSubsets.iterator(); j
-									.hasNext();) {
-
-									Property validSubset = (Property) j.next();
+								for (Property validSubset : validSubsets) {
 
 									if (!subsettedProperties
 										.contains(validSubset)) {
@@ -1536,14 +1485,12 @@ public class UMLUtil
 			}
 		}
 
-		protected void processEmptyUnions(Map options,
-				DiagnosticChain diagnostics, Map context) {
-			Map unionToSubsettingPropertyMap = new LinkedHashMap();
+		protected void processEmptyUnions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Map<Property, EList<Property>> unionToSubsettingPropertyMap = new LinkedHashMap<Property, EList<Property>>();
 
-			for (Iterator resultingEObjects = resultingToMergedEObjectMap
-				.keySet().iterator(); resultingEObjects.hasNext();) {
-
-				EObject resultingEObject = (EObject) resultingEObjects.next();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Property) {
 					Property property = (Property) resultingEObject;
@@ -1552,25 +1499,21 @@ public class UMLUtil
 						&& !unionToSubsettingPropertyMap.containsKey(property)) {
 
 						unionToSubsettingPropertyMap.put(property,
-							new UniqueEList.FastCompare());
+							new UniqueEList.FastCompare<Property>());
 					}
 
-					for (Iterator subsettedProperties = property
-						.getSubsettedProperties().iterator(); subsettedProperties
-						.hasNext();) {
-
-						Property subsettedProperty = (Property) subsettedProperties
-							.next();
+					for (Property subsettedProperty : property
+						.getSubsettedProperties()) {
 
 						if (subsettedProperty.isDerivedUnion()) {
-							List subsettingProperties = (List) unionToSubsettingPropertyMap
+							EList<Property> subsettingProperties = unionToSubsettingPropertyMap
 								.get(subsettedProperty);
 
 							if (subsettingProperties == null) {
 								unionToSubsettingPropertyMap
 									.put(
 										subsettedProperty,
-										subsettingProperties = new UniqueEList.FastCompare());
+										subsettingProperties = new UniqueEList.FastCompare<Property>());
 							}
 
 							subsettingProperties.add(property);
@@ -1579,13 +1522,11 @@ public class UMLUtil
 				}
 			}
 
-			for (Iterator entries = unionToSubsettingPropertyMap.entrySet()
-				.iterator(); entries.hasNext();) {
+			for (Map.Entry<Property, EList<Property>> entry : unionToSubsettingPropertyMap
+				.entrySet()) {
 
-				Map.Entry entry = (Map.Entry) entries.next();
-
-				if (((List) entry.getValue()).isEmpty()) {
-					Property unionProperty = (Property) entry.getKey();
+				if (entry.getValue().isEmpty()) {
+					Property unionProperty = entry.getKey();
 
 					if (OPTION__PROCESS.equals(options
 						.get(OPTION__EMPTY_UNIONS))) {
@@ -1625,32 +1566,30 @@ public class UMLUtil
 			}
 		}
 
-		protected void processRedundantGeneralizations(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processRedundantGeneralizations(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator resultingEObjects = resultingToMergedEObjectMap
-				.keySet().iterator(); resultingEObjects.hasNext();) {
-
-				EObject resultingEObject = (EObject) resultingEObjects.next();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Classifier) {
 					Classifier classifier = (Classifier) resultingEObject;
-					EList generalizations = classifier.getGeneralizations();
+					EList<Generalization> generalizations = classifier
+						.getGeneralizations();
 
-					for (Iterator i = new ArrayList(generalizations).iterator(); i
-						.hasNext();) {
-
-						Classifier general = ((Generalization) i.next())
-							.getGeneral();
+					for (Generalization generalization : new ArrayList<Generalization>(
+						generalizations)) {
+						Classifier general = generalization.getGeneral();
 
 						if (general != null) {
-							EList generalAllParents = general.allParents();
+							EList<Classifier> generalAllParents = general
+								.allParents();
 
-							for (Iterator j = generalizations.iterator(); j
-								.hasNext();) {
+							for (Iterator<Generalization> g = generalizations
+								.iterator(); g.hasNext();) {
 
-								Generalization otherGeneralization = (Generalization) j
-									.next();
+								Generalization otherGeneralization = g.next();
 								Classifier otherGeneral = otherGeneralization
 									.getGeneral();
 
@@ -1681,7 +1620,7 @@ public class UMLUtil
 														otherGeneral}));
 										}
 
-										j.remove();
+										g.remove();
 									} else if (OPTION__REPORT
 										.equals(options
 											.get(OPTION__REDUNDANT_GENERALIZATIONS))
@@ -1713,43 +1652,36 @@ public class UMLUtil
 			}
 		}
 
-		protected void processAssociationSpecializations(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processAssociationSpecializations(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				EObject resultingEObject = (EObject) entry.getKey();
+			for (EObject resultingEObject : resultingToMergedEObjectMap
+				.keySet()) {
 
 				if (resultingEObject instanceof Association) {
 					Association association = (Association) resultingEObject;
 
-					List generalAssociations = new UniqueEList.FastCompare();
+					EList<Association> generalAssociations = new UniqueEList.FastCompare<Association>();
 
-					for (Iterator memberEnds = association.getMemberEnds()
-						.iterator(); memberEnds.hasNext();) {
+					for (Property memberEnd : association.getMemberEnds()) {
 
-						Property memberEnd = (Property) memberEnds.next();
+						for (Property redefinedProperty : memberEnd
+							.getRedefinedProperties()) {
 
-						for (Iterator redefinedProperties = memberEnd
-							.getRedefinedProperties().iterator(); redefinedProperties
-							.hasNext();) {
-
-							Association redefinedAssociation = ((Property) redefinedProperties
-								.next()).getAssociation();
+							Association redefinedAssociation = redefinedProperty
+								.getAssociation();
 
 							if (redefinedAssociation != null) {
 								generalAssociations.add(redefinedAssociation);
 							}
 						}
 
-						for (Iterator subsettedProperties = memberEnd
-							.getSubsettedProperties().iterator(); subsettedProperties
-							.hasNext();) {
+						for (Property subsettedProperty : memberEnd
+							.getSubsettedProperties()) {
 
-							Association subsettedAssociation = ((Property) subsettedProperties
-								.next()).getAssociation();
+							Association subsettedAssociation = subsettedProperty
+								.getAssociation();
 
 							if (subsettedAssociation != null) {
 								generalAssociations.add(subsettedAssociation);
@@ -1757,13 +1689,10 @@ public class UMLUtil
 						}
 					}
 
-					for (Iterator i = generalAssociations.iterator(); i
-						.hasNext();) {
-
-						Association generalAssocation = (Association) i.next();
+					for (Association generalAssociation : generalAssociations) {
 
 						if (!association.allParents().contains(
-							generalAssocation)) {
+							generalAssociation)) {
 
 							if (OPTION__PROCESS.equals(options
 								.get(OPTION__ASSOCIATION_SPECIALIZATIONS))) {
@@ -1779,13 +1708,13 @@ public class UMLUtil
 													"_UI_PackageMerger_ProcessAssociationSpecialization_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, association,
-														generalAssocation)),
+														generalAssociation)),
 											new Object[]{association,
-												generalAssocation}));
+												generalAssociation}));
 								}
 
 								association
-									.createGeneralization(generalAssocation);
+									.createGeneralization(generalAssociation);
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__ASSOCIATION_SPECIALIZATIONS))
 								&& diagnostics != null) {
@@ -1800,9 +1729,9 @@ public class UMLUtil
 												"_UI_PackageMerger_ReportAssociationSpecialization_diagnostic", //$NON-NLS-1$
 												getMessageSubstitutions(
 													context, association,
-													generalAssocation)),
+													generalAssociation)),
 										new Object[]{association,
-											generalAssocation}));
+											generalAssociation}));
 							}
 						}
 					}
@@ -1810,24 +1739,20 @@ public class UMLUtil
 			}
 		}
 
-		protected void processCapabilities(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processCapabilities(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator entries = resultingToMergedEObjectMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				EObject resultingEObject = (EObject) entry.getKey();
+			for (Map.Entry<EObject, List<EObject>> entry : resultingToMergedEObjectMap
+				.entrySet()) {
+				EObject resultingEObject = entry.getKey();
 
 				if (resultingEObject instanceof RedefinableElement) {
 					org.eclipse.uml2.uml.Package resultingPackage = ((RedefinableElement) resultingEObject)
 						.getNearestPackage();
 
-					for (Iterator mergedEObjects = ((List) entry.getValue())
-						.iterator(); mergedEObjects.hasNext();) {
-
-						org.eclipse.uml2.uml.Package mergedPackage = ((Element) mergedEObjects
-							.next()).getNearestPackage();
+					for (EObject mergedEObject : entry.getValue()) {
+						org.eclipse.uml2.uml.Package mergedPackage = ((Element) mergedEObject)
+							.getNearestPackage();
 
 						if (OPTION__PROCESS.equals(options
 							.get(OPTION__CAPABILITIES))) {
@@ -1875,8 +1800,8 @@ public class UMLUtil
 			}
 		}
 
-		protected void processOptions(Map options, DiagnosticChain diagnostics,
-				Map context) {
+		protected void processOptions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__DIFFERENT_PROPERTY_STATICITY))) {
@@ -1943,8 +1868,9 @@ public class UMLUtil
 		 * @param context
 		 *            The cache of context-specific information.
 		 */
-		public void merge(org.eclipse.uml2.uml.Package package_, Map options,
-				DiagnosticChain diagnostics, Map context) {
+		public void merge(org.eclipse.uml2.uml.Package package_,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 			receivingPackage = package_;
 
 			mergedPackages = getAllMergedPackages(package_);
@@ -1965,7 +1891,7 @@ public class UMLUtil
 	 * elements.
 	 */
 	public static class UML2EcoreConverter
-			extends UMLSwitch
+			extends UMLSwitch<Object>
 			implements Converter {
 
 		protected class NameMatcher
@@ -1983,6 +1909,7 @@ public class UMLUtil
 				super(eTypedElement);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
 					&& safeEquals(((ETypedElement) eObject).getEType(),
@@ -1997,21 +1924,22 @@ public class UMLUtil
 				super(eOperation);
 			}
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
-					List eParameters = ((EOperation) eObject).getEParameters();
+					List<EParameter> eParameters = ((EOperation) eObject)
+						.getEParameters();
 					int eParametersSize = eParameters.size();
-					List otherEParameters = ((EOperation) otherEObject)
+					List<EParameter> otherEParameters = ((EOperation) otherEObject)
 						.getEParameters();
 
 					if (eParametersSize == otherEParameters.size()) {
 
 						for (int i = 0; i < eParametersSize; i++) {
 
-							if (!new ETypeMatcher((ETypedElement) eParameters
-								.get(i)).matches((EObject) otherEParameters
-								.get(i))) {
+							if (!new ETypeMatcher(eParameters.get(i))
+								.matches(otherEParameters.get(i))) {
 
 								return false;
 							}
@@ -2186,9 +2114,9 @@ public class UMLUtil
 		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 12;
 
-		protected final Map elementToEModelElementMap = new LinkedHashMap();
+		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
 
-		protected Collection packages = null;
+		protected Collection<org.eclipse.uml2.uml.Package> packages = null;
 
 		protected void setName(ENamedElement eNamedElement, String name,
 				boolean validate) {
@@ -2211,29 +2139,29 @@ public class UMLUtil
 				if (!isEmpty(qualifiedName) && type instanceof PrimitiveType) {
 
 					if ("UMLPrimitiveTypes::Boolean".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEBoolean();
+						eType = EcorePackage.Literals.EBOOLEAN;
 					} else if ("UMLPrimitiveTypes::Integer".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEInt();
+						eType = EcorePackage.Literals.EINT;
 					} else if ("UMLPrimitiveTypes::String".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEString();
+						eType = EcorePackage.Literals.ESTRING;
 					} else if ("UMLPrimitiveTypes::UnlimitedNatural".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEInt();
+						eType = EcorePackage.Literals.EINT;
 					} else if ("JavaPrimitiveTypes::boolean".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEBoolean();
+						eType = EcorePackage.Literals.EBOOLEAN;
 					} else if ("JavaPrimitiveTypes::byte".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEByte();
+						eType = EcorePackage.Literals.EBYTE;
 					} else if ("JavaPrimitiveTypes::char".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEChar();
+						eType = EcorePackage.Literals.ECHAR;
 					} else if ("JavaPrimitiveTypes::double".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEDouble();
+						eType = EcorePackage.Literals.EDOUBLE;
 					} else if ("JavaPrimitiveTypes::float".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEFloat();
+						eType = EcorePackage.Literals.EFLOAT;
 					} else if ("JavaPrimitiveTypes::int".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEInt();
+						eType = EcorePackage.Literals.EINT;
 					} else if ("JavaPrimitiveTypes::long".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getELong();
+						eType = EcorePackage.Literals.ELONG;
 					} else if ("JavaPrimitiveTypes::short".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.eINSTANCE.getEShort();
+						eType = EcorePackage.Literals.ESHORT;
 					} else if (qualifiedName
 						.startsWith("EcorePrimitiveTypes::")) { //$NON-NLS-1$
 
@@ -2267,11 +2195,7 @@ public class UMLUtil
 				+ NamedElement.SEPARATOR + name);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseClass(org.eclipse.uml2.uml.Class)
-		 */
+		@Override
 		public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 			org.eclipse.uml2.uml.Package package_ = class_.getNearestPackage();
 
@@ -2294,18 +2218,11 @@ public class UMLUtil
 			return super.caseClass(class_);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseComment(org.eclipse.uml2.uml.Comment)
-		 */
+		@Override
 		public Object caseComment(Comment comment) {
 
-			for (Iterator annotatedElements = comment.getAnnotatedElements()
-				.iterator(); annotatedElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) doSwitch((Element) annotatedElements
-					.next());
+			for (Element annotatedElement : comment.getAnnotatedElements()) {
+				EModelElement eModelElement = (EModelElement) doSwitch(annotatedElement);
 
 				if (eModelElement != null) {
 					addDocumentation(eModelElement, comment.getBody());
@@ -2315,11 +2232,7 @@ public class UMLUtil
 			return super.caseComment(comment);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseConstraint(org.eclipse.uml2.uml.Constraint)
-		 */
+		@Override
 		public Object caseConstraint(Constraint constraint) {
 			Namespace context = constraint.getContext();
 
@@ -2346,8 +2259,8 @@ public class UMLUtil
 
 								setName(eOperation, name, true);
 
-								eOperation.setEType(EcorePackage.eINSTANCE
-									.getEBoolean());
+								eOperation
+									.setEType(EcorePackage.Literals.EBOOLEAN);
 
 								EParameter eParameter = EcoreFactory.eINSTANCE
 									.createEParameter();
@@ -2355,8 +2268,8 @@ public class UMLUtil
 								eOperation.getEParameters().add(eParameter);
 
 								setName(eParameter, "diagnostics", false); //$NON-NLS-1$
-								eParameter.setEType(EcorePackage.eINSTANCE
-									.getEDiagnosticChain());
+								eParameter
+									.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
 
 								eParameter = EcoreFactory.eINSTANCE
 									.createEParameter();
@@ -2364,8 +2277,25 @@ public class UMLUtil
 								eOperation.getEParameters().add(eParameter);
 
 								setName(eParameter, "context", false); //$NON-NLS-1$
-								eParameter.setEType(EcorePackage.eINSTANCE
-									.getEMap());
+
+								EGenericType eGenericType = EcoreFactory.eINSTANCE
+									.createEGenericType();
+								eGenericType
+									.setEClassifier(EcorePackage.Literals.EMAP);
+								EGenericType eGenericKeyType = EcoreFactory.eINSTANCE
+									.createEGenericType();
+								eGenericKeyType
+									.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
+								eGenericType.getETypeArguments().add(
+									eGenericKeyType);
+								EGenericType eGenericValueType = EcoreFactory.eINSTANCE
+									.createEGenericType();
+								eGenericValueType
+									.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
+								eGenericType.getETypeArguments().add(
+									eGenericValueType);
+
+								eParameter.setEGenericType(eGenericType);
 
 								defaultCase(constraint);
 
@@ -2394,20 +2324,12 @@ public class UMLUtil
 			return super.caseConstraint(constraint);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEModelElement(org.eclipse.emf.ecore.EModelElement)
-		 */
+		@Override
 		public Object caseEModelElement(EModelElement eModelElement) {
 			return eModelElement;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEnumeration(org.eclipse.uml2.uml.Enumeration)
-		 */
+		@Override
 		public Object caseEnumeration(Enumeration enumeration) {
 			org.eclipse.uml2.uml.Package package_ = enumeration
 				.getNearestPackage();
@@ -2429,11 +2351,7 @@ public class UMLUtil
 			return super.caseEnumeration(enumeration);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseEnumerationLiteral(org.eclipse.uml2.uml.EnumerationLiteral)
-		 */
+		@Override
 		public Object caseEnumerationLiteral(
 				EnumerationLiteral enumerationLiteral) {
 			Enumeration enumeration = enumerationLiteral.getEnumeration();
@@ -2472,11 +2390,7 @@ public class UMLUtil
 			return super.caseEnumerationLiteral(enumerationLiteral);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseGeneralization(org.eclipse.uml2.uml.Generalization)
-		 */
+		@Override
 		public Object caseGeneralization(Generalization generalization) {
 			Classifier specific = generalization.getSpecific();
 
@@ -2518,11 +2432,7 @@ public class UMLUtil
 			return super.caseGeneralization(generalization);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseInterfaceRealization(org.eclipse.uml2.uml.InterfaceRealization)
-		 */
+		@Override
 		public Object caseInterfaceRealization(
 				InterfaceRealization interfaceRealization) {
 			BehavioredClassifier implementingClassifier = interfaceRealization
@@ -2549,11 +2459,7 @@ public class UMLUtil
 			return super.caseInterfaceRealization(interfaceRealization);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseInterface(org.eclipse.uml2.uml.Interface)
-		 */
+		@Override
 		public Object caseInterface(Interface interface_) {
 			org.eclipse.uml2.uml.Package package_ = interface_
 				.getNearestPackage();
@@ -2578,11 +2484,7 @@ public class UMLUtil
 			return super.caseInterface(interface_);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseMultiplicityElement(org.eclipse.uml2.uml.MultiplicityElement)
-		 */
+		@Override
 		public Object caseMultiplicityElement(
 				MultiplicityElement multiplicityElement) {
 			Object eModelElement = elementToEModelElementMap
@@ -2612,11 +2514,7 @@ public class UMLUtil
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseOperation(org.eclipse.uml2.uml.Operation)
-		 */
+		@Override
 		public Object caseOperation(Operation operation) {
 			Namespace namespace = operation.getNamespace();
 
@@ -2632,13 +2530,10 @@ public class UMLUtil
 
 				setName(eOperation, operation);
 
-				EList eExceptions = eOperation.getEExceptions();
+				EList<EClassifier> eExceptions = eOperation.getEExceptions();
 
-				for (Iterator raisedExceptions = operation
-					.getRaisedExceptions().iterator(); raisedExceptions
-					.hasNext();) {
-
-					EClassifier eType = getEType((Type) raisedExceptions.next());
+				for (Type raisedException : operation.getRaisedExceptions()) {
+					EClassifier eType = getEType(raisedException);
 
 					if (eType != null) {
 						eExceptions.add(eType);
@@ -2670,11 +2565,7 @@ public class UMLUtil
 			return super.caseOperation(operation);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#casePackage(org.eclipse.uml2.uml.Package)
-		 */
+		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 			EPackage ePackage = EcoreFactory.eINSTANCE.createEPackage();
 			elementToEModelElementMap.put(package_, ePackage);
@@ -2709,11 +2600,7 @@ public class UMLUtil
 			return ePackage;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseParameter(org.eclipse.uml2.uml.Parameter)
-		 */
+		@Override
 		public Object caseParameter(Parameter parameter) {
 			Operation operation = parameter.getOperation();
 
@@ -2740,11 +2627,7 @@ public class UMLUtil
 			return super.caseParameter(parameter);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#casePrimitiveType(org.eclipse.uml2.uml.PrimitiveType)
-		 */
+		@Override
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
 			org.eclipse.uml2.uml.Package package_ = primitiveType
 				.getNearestPackage();
@@ -2768,11 +2651,7 @@ public class UMLUtil
 			return super.casePrimitiveType(primitiveType);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseDataType(org.eclipse.uml2.uml.DataType)
-		 */
+		@Override
 		public Object caseDataType(DataType dataType) {
 			org.eclipse.uml2.uml.Package package_ = dataType
 				.getNearestPackage();
@@ -2794,11 +2673,7 @@ public class UMLUtil
 			return super.caseDataType(dataType);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseProperty(org.eclipse.uml2.uml.Property)
-		 */
+		@Override
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
@@ -2867,11 +2742,7 @@ public class UMLUtil
 			return super.caseProperty(property);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseTypedElement(org.eclipse.uml2.uml.TypedElement)
-		 */
+		@Override
 		public Object caseTypedElement(TypedElement typedElement) {
 			Object eModelElement = elementToEModelElementMap.get(typedElement);
 
@@ -2886,27 +2757,17 @@ public class UMLUtil
 			return super.caseTypedElement(typedElement);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public Object defaultCase(EObject eObject) {
 
-			for (Iterator eContents = eObject.eContents().iterator(); eContents
-				.hasNext();) {
-
-				doSwitch((EObject) eContents.next());
+			for (EObject eContent : eObject.eContents()) {
+				doSwitch(eContent);
 			}
 
 			return super.defaultCase(eObject);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public Object doSwitch(EObject eObject) {
 
 			if (!elementToEModelElementMap.containsKey(eObject)) {
@@ -2918,8 +2779,9 @@ public class UMLUtil
 
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Element element,
-				Stereotype stereotype, String propertyName, Map options,
-				DiagnosticChain diagnostics, Map context) {
+				Stereotype stereotype, String propertyName,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
 			if (element.hasValue(stereotype, propertyName)) {
 				Object value = element.getValue(stereotype, propertyName);
@@ -3147,19 +3009,22 @@ public class UMLUtil
 		}
 
 		protected void processEcoreTaggedValues(EClassifier eClassifier,
-				final Element element, final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
-			Stereotype eClassifierStereotype = (Stereotype) new EcoreSwitch() {
+				final Element element, final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+			Stereotype eClassifierStereotype = new EcoreSwitch<Stereotype>() {
 
-				public Object caseEClass(EClass eClass) {
+				@Override
+				public Stereotype caseEClass(EClass eClass) {
 					Stereotype eClassStereotype = getAppliedEcoreStereotype(
 						element, STEREOTYPE__E_CLASS);
 
 					if (eClassStereotype != null) {
-						processEcoreTaggedValue(eClass, EcorePackage.eINSTANCE
-							.getENamedElement_Name(), element,
-							eClassStereotype, TAG_DEFINITION__CLASS_NAME,
-							options, diagnostics, context);
+						processEcoreTaggedValue(eClass,
+							EcorePackage.Literals.ENAMED_ELEMENT__NAME,
+							element, eClassStereotype,
+							TAG_DEFINITION__CLASS_NAME, options, diagnostics,
+							context);
 
 						processEcoreTaggedValue(eClass, null, element,
 							eClassStereotype, TAG_DEFINITION__XML_CONTENT_KIND,
@@ -3169,13 +3034,14 @@ public class UMLUtil
 					return eClassStereotype;
 				}
 
-				public Object caseEDataType(EDataType eDataType) {
+				@Override
+				public Stereotype caseEDataType(EDataType eDataType) {
 					Stereotype eDataTypeStereotype = getAppliedEcoreStereotype(
 						element, STEREOTYPE__E_DATA_TYPE);
 
 					if (eDataTypeStereotype != null) {
 						processEcoreTaggedValue(eDataType,
-							EcorePackage.eINSTANCE.getENamedElement_Name(),
+							EcorePackage.Literals.ENAMED_ELEMENT__NAME,
 							element, eDataTypeStereotype,
 							TAG_DEFINITION__DATA_TYPE_NAME, options,
 							diagnostics, context);
@@ -3190,22 +3056,25 @@ public class UMLUtil
 					eClassifierStereotype, TAG_DEFINITION__XML_NAME, options,
 					diagnostics, context);
 
-				processEcoreTaggedValue(eClassifier, EcorePackage.eINSTANCE
-					.getEClassifier_InstanceClassName(), element,
-					eClassifierStereotype, TAG_DEFINITION__INSTANCE_CLASS_NAME,
-					options, diagnostics, context);
+				processEcoreTaggedValue(eClassifier,
+					EcorePackage.Literals.ECLASSIFIER__INSTANCE_CLASS_NAME,
+					element, eClassifierStereotype,
+					TAG_DEFINITION__INSTANCE_CLASS_NAME, options, diagnostics,
+					context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(EEnum eEnum, Element element,
-				Map options, DiagnosticChain diagnostics, Map context) {
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 			Stereotype eEnumStereotype = getAppliedEcoreStereotype(element,
 				STEREOTYPE__E_ENUM);
 
 			if (eEnumStereotype != null) {
-				processEcoreTaggedValue(eEnum, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), element, eEnumStereotype,
-					TAG_DEFINITION__ENUM_NAME, options, diagnostics, context);
+				processEcoreTaggedValue(eEnum,
+					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
+					eEnumStereotype, TAG_DEFINITION__ENUM_NAME, options,
+					diagnostics, context);
 
 				processEcoreTaggedValue(eEnum, null, element, eEnumStereotype,
 					TAG_DEFINITION__XML_NAME, options, diagnostics, context);
@@ -3213,53 +3082,55 @@ public class UMLUtil
 		}
 
 		protected void processEcoreTaggedValues(EEnumLiteral eEnumLiteral,
-				Element element, Map options, DiagnosticChain diagnostics,
-				Map context) {
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 			Stereotype eEnumLiteralStereotype = getAppliedEcoreStereotype(
 				element, STEREOTYPE__E_ENUM_LITERAL);
 
 			if (eEnumLiteralStereotype != null) {
-				processEcoreTaggedValue(eEnumLiteral, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), element, eEnumLiteralStereotype,
-					TAG_DEFINITION__ENUM_LITERAL_NAME, options, diagnostics,
-					context);
+				processEcoreTaggedValue(eEnumLiteral,
+					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
+					eEnumLiteralStereotype, TAG_DEFINITION__ENUM_LITERAL_NAME,
+					options, diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(EOperation eOperation,
-				Element element, Map options, DiagnosticChain diagnostics,
-				Map context) {
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 			Stereotype eOperationStereotype = getAppliedEcoreStereotype(
 				element, STEREOTYPE__E_OPERATION);
 
 			if (eOperationStereotype != null) {
-				processEcoreTaggedValue(eOperation, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), element, eOperationStereotype,
-					TAG_DEFINITION__OPERATION_NAME, options, diagnostics,
-					context);
+				processEcoreTaggedValue(eOperation,
+					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
+					eOperationStereotype, TAG_DEFINITION__OPERATION_NAME,
+					options, diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(EPackage ePackage,
-				Element element, Map options, DiagnosticChain diagnostics,
-				Map context) {
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 			Stereotype ePackageStereotype = getAppliedEcoreStereotype(element,
 				STEREOTYPE__E_PACKAGE);
 
 			if (ePackageStereotype != null) {
-				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), element, ePackageStereotype,
-					TAG_DEFINITION__PACKAGE_NAME, options, diagnostics, context);
+				processEcoreTaggedValue(ePackage,
+					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
+					ePackageStereotype, TAG_DEFINITION__PACKAGE_NAME, options,
+					diagnostics, context);
 
-				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getEPackage_NsPrefix(), element, ePackageStereotype,
-					TAG_DEFINITION__NS_PREFIX, options, diagnostics, context);
+				processEcoreTaggedValue(ePackage,
+					EcorePackage.Literals.EPACKAGE__NS_PREFIX, element,
+					ePackageStereotype, TAG_DEFINITION__NS_PREFIX, options,
+					diagnostics, context);
 
 				if (isEmpty(ePackage.getNsPrefix())) {
-					processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-						.getEPackage_NsPrefix(), element, ePackageStereotype,
-						TAG_DEFINITION__BASE_PACKAGE, options, diagnostics,
-						context);
+					processEcoreTaggedValue(ePackage,
+						EcorePackage.Literals.EPACKAGE__NS_PREFIX, element,
+						ePackageStereotype, TAG_DEFINITION__BASE_PACKAGE,
+						options, diagnostics, context);
 
 					String nsPrefix = ePackage.getNsPrefix();
 
@@ -3269,45 +3140,48 @@ public class UMLUtil
 					}
 				}
 
-				processEcoreTaggedValue(ePackage, EcorePackage.eINSTANCE
-					.getEPackage_NsURI(), element, ePackageStereotype,
-					TAG_DEFINITION__NS_URI, options, diagnostics, context);
+				processEcoreTaggedValue(ePackage,
+					EcorePackage.Literals.EPACKAGE__NS_URI, element,
+					ePackageStereotype, TAG_DEFINITION__NS_URI, options,
+					diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(EParameter eParameter,
-				Element element, Map options, DiagnosticChain diagnostics,
-				Map context) {
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 			Stereotype eParameterStereotype = getAppliedEcoreStereotype(
 				element, STEREOTYPE__E_PARAMETER);
 
 			if (eParameterStereotype != null) {
-				processEcoreTaggedValue(eParameter, EcorePackage.eINSTANCE
-					.getENamedElement_Name(), element, eParameterStereotype,
-					TAG_DEFINITION__PARAMETER_NAME, options, diagnostics,
-					context);
+				processEcoreTaggedValue(eParameter,
+					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
+					eParameterStereotype, TAG_DEFINITION__PARAMETER_NAME,
+					options, diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(
 				EStructuralFeature eStructuralFeature, final Element element,
-				final Map options, final DiagnosticChain diagnostics,
-				final Map context) {
-			Stereotype eStructuralFeatureStereotype = (Stereotype) new EcoreSwitch() {
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+			Stereotype eStructuralFeatureStereotype = new EcoreSwitch<Stereotype>() {
 
-				public Object caseEAttribute(EAttribute eAttribute) {
+				@Override
+				public Stereotype caseEAttribute(EAttribute eAttribute) {
 					Stereotype eAttributeStereotype = getAppliedEcoreStereotype(
 						element, STEREOTYPE__E_ATTRIBUTE);
 
 					if (eAttributeStereotype != null) {
 						processEcoreTaggedValue(eAttribute,
-							EcorePackage.eINSTANCE.getENamedElement_Name(),
+							EcorePackage.Literals.ENAMED_ELEMENT__NAME,
 							element, eAttributeStereotype,
 							TAG_DEFINITION__ATTRIBUTE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eAttribute,
-							EcorePackage.eINSTANCE.getEAttribute_ID(), element,
+							EcorePackage.Literals.EATTRIBUTE__ID, element,
 							eAttributeStereotype, TAG_DEFINITION__IS_ID,
 							options, diagnostics, context);
 					}
@@ -3315,21 +3189,21 @@ public class UMLUtil
 					return eAttributeStereotype;
 				}
 
-				public Object caseEReference(EReference eReference) {
+				@Override
+				public Stereotype caseEReference(EReference eReference) {
 					Stereotype eReferenceStereotype = getAppliedEcoreStereotype(
 						element, STEREOTYPE__E_REFERENCE);
 
 					if (eReferenceStereotype != null) {
 						processEcoreTaggedValue(eReference,
-							EcorePackage.eINSTANCE.getENamedElement_Name(),
+							EcorePackage.Literals.ENAMED_ELEMENT__NAME,
 							element, eReferenceStereotype,
 							TAG_DEFINITION__REFERENCE_NAME, options,
 							diagnostics, context);
 
 						processEcoreTaggedValue(eReference,
-							EcorePackage.eINSTANCE
-								.getEReference_ResolveProxies(), element,
-							eReferenceStereotype,
+							EcorePackage.Literals.EREFERENCE__RESOLVE_PROXIES,
+							element, eReferenceStereotype,
 							TAG_DEFINITION__IS_RESOLVE_PROXIES, options,
 							diagnostics, context);
 					}
@@ -3340,18 +3214,18 @@ public class UMLUtil
 
 			if (eStructuralFeatureStereotype != null) {
 				processEcoreTaggedValue(eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__TRANSIENT,
 					element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_TRANSIENT, options, diagnostics, context);
 
 				processEcoreTaggedValue(eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__UNSETTABLE,
 					element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_UNSETTABLE, options, diagnostics,
 					context);
 
 				processEcoreTaggedValue(eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__TRANSIENT,
 					element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_VOLATILE, options, diagnostics, context);
 
@@ -3375,66 +3249,71 @@ public class UMLUtil
 			}
 		}
 
-		protected void processEcoreTaggedValues(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processEcoreTaggedValues(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
+			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				EModelElement eModelElement = entry.getValue();
 
-				final Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+				new EcoreSwitch<Object>() {
 
-				new EcoreSwitch() {
-
+					@Override
 					public Object caseEClassifier(EClassifier eClassifier) {
-						processEcoreTaggedValues(eClassifier, (Element) entry
-							.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(eClassifier, entry.getKey(),
+							options, diagnostics, context);
 
 						return eClassifier;
 					}
 
+					@Override
 					public Object caseEEnum(EEnum eEnum) {
-						processEcoreTaggedValues(eEnum, (Element) entry
-							.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(eEnum, entry.getKey(),
+							options, diagnostics, context);
 
 						return eEnum;
 					}
 
+					@Override
 					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
-						processEcoreTaggedValues(eEnumLiteral, (Element) entry
-							.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(eEnumLiteral, entry.getKey(),
+							options, diagnostics, context);
 
 						return eEnumLiteral;
 					}
 
+					@Override
 					public Object caseEOperation(EOperation eOperation) {
-						processEcoreTaggedValues(eOperation, (Element) entry
-							.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(eOperation, entry.getKey(),
+							options, diagnostics, context);
 
 						return eOperation;
 					}
 
+					@Override
 					public Object caseEPackage(EPackage ePackage) {
 						processEcoreTaggedValues(
 
-						ePackage, (Element) entry.getKey(), options,
-							diagnostics, context);
+						ePackage, entry.getKey(), options, diagnostics, context);
 
 						return ePackage;
 					}
 
+					@Override
 					public Object caseEParameter(EParameter eParameter) {
-						processEcoreTaggedValues(eParameter, (Element) entry
-							.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(eParameter, entry.getKey(),
+							options, diagnostics, context);
 
 						return eParameter;
 					}
 
+					@Override
 					public Object caseEStructuralFeature(
 							EStructuralFeature eStructuralFeature) {
-						processEcoreTaggedValues(eStructuralFeature,
-							(Element) entry.getKey(), options, diagnostics,
-							context);
+						processEcoreTaggedValues(eStructuralFeature, entry
+							.getKey(), options, diagnostics, context);
 
 						return eStructuralFeature;
 					}
@@ -3443,27 +3322,21 @@ public class UMLUtil
 			}
 		}
 
-		protected void processRedefiningOperations(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processRedefiningOperations(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Element element = (Element) entry.getKey();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				Element element = entry.getKey();
+				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement instanceof EOperation
 					&& element instanceof Operation) {
 
 					Operation operation = (Operation) element;
 
-					for (Iterator redefinedOperations = operation
-						.getRedefinedOperations().iterator(); redefinedOperations
-						.hasNext();) {
-
-						Operation redefinedOperation = (Operation) redefinedOperations
-							.next();
+					for (Operation redefinedOperation : operation
+						.getRedefinedOperations()) {
 
 						EOperation eOperation = (EOperation) elementToEModelElementMap
 							.get(redefinedOperation);
@@ -3515,27 +3388,22 @@ public class UMLUtil
 			}
 		}
 
-		protected void processRedefiningProperties(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processRedefiningProperties(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
 
-				Map.Entry entry = (Map.Entry) entries.next();
-				Element element = (Element) entry.getKey();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+				Element element = entry.getKey();
+				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement instanceof EStructuralFeature
 					&& element instanceof Property) {
 
 					Property property = (Property) element;
 
-					for (Iterator redefinedProperties = property
-						.getRedefinedProperties().iterator(); redefinedProperties
-						.hasNext();) {
-
-						Property redefinedProperty = (Property) redefinedProperties
-							.next();
+					for (Property redefinedProperty : property
+						.getRedefinedProperties()) {
 
 						if (redefinedProperty.getOwningAssociation() == null) {
 							EStructuralFeature eStructuralFeature = (EStructuralFeature) elementToEModelElementMap
@@ -3596,12 +3464,7 @@ public class UMLUtil
 
 		protected boolean isCompositeSubset(Property property) {
 
-			for (Iterator subsettedProperties = property
-				.getSubsettedProperties().iterator(); subsettedProperties
-				.hasNext();) {
-
-				Property subsettedProperty = (Property) subsettedProperties
-					.next();
+			for (Property subsettedProperty : property.getSubsettedProperties()) {
 
 				if (subsettedProperty.isComposite()
 					|| isCompositeSubset(subsettedProperty)) {
@@ -3613,27 +3476,21 @@ public class UMLUtil
 			return false;
 		}
 
-		protected void processSubsettingProperties(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processSubsettingProperties(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Element element = (Element) entry.getKey();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				Element element = entry.getKey();
+				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement instanceof EStructuralFeature
 					&& element instanceof Property) {
 
 					Property property = (Property) element;
 
-					for (Iterator subsettedProperties = property
-						.getSubsettedProperties().iterator(); subsettedProperties
-						.hasNext();) {
-
-						Property subsettedProperty = (Property) subsettedProperties
-							.next();
+					for (Property subsettedProperty : property
+						.getSubsettedProperties()) {
 
 						if (subsettedProperty.getOwningAssociation() == null) {
 							EStructuralFeature subsettedEStructuralFeature = (EStructuralFeature) elementToEModelElementMap
@@ -3687,7 +3544,7 @@ public class UMLUtil
 								getEAnnotation(eModelElement,
 									ANNOTATION__SUBSETS, true).getReferences()
 									.add(
-										(EObject) elementToEModelElementMap
+										elementToEModelElementMap
 											.get(subsettedProperty));
 							} else if (OPTION__REPORT.equals(options
 								.get(OPTION__SUBSETTING_PROPERTIES))
@@ -3713,15 +3570,13 @@ public class UMLUtil
 			}
 		}
 
-		protected void processUnionProperties(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processUnionProperties(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Element element = (Element) entry.getKey();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				Element element = entry.getKey();
+				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement instanceof EStructuralFeature
 					&& element instanceof Property
@@ -3776,14 +3631,11 @@ public class UMLUtil
 			}
 		}
 
-		protected void processDerivedFeatures(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processDerivedFeatures(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
+			for (EModelElement eModelElement : elementToEModelElementMap
+				.values()) {
 
 				if (eModelElement instanceof EStructuralFeature) {
 					EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eModelElement;
@@ -3961,35 +3813,27 @@ public class UMLUtil
 			}
 		}
 
-		protected void processDuplicateOperations(Map options,
-				DiagnosticChain diagnostics, Map context) {
-			List operationsToDuplicate = new UniqueEList.FastCompare();
+		protected void processDuplicateOperations(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			List<EOperation> operationsToDuplicate = new UniqueEList.FastCompare<EOperation>();
 
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
+			for (EModelElement eModelElement : elementToEModelElementMap
+				.values()) {
 
 				if (eModelElement instanceof EClass) {
 					EClass eClass = (EClass) eModelElement;
 
-					for (Iterator eOperations = eClass.getEOperations()
-						.iterator(); eOperations.hasNext();) {
+					for (Iterator<EOperation> eOperations = eClass
+						.getEOperations().iterator(); eOperations.hasNext();) {
+						EOperation eOperation = eOperations.next();
 
-						EOperation eOperation = (EOperation) eOperations.next();
+						for (EOperation otherEOperation : eClass
+							.getEAllOperations()) {
 
-						for (Iterator eAllOperations = eClass
-							.getEAllOperations().iterator(); eAllOperations
-							.hasNext();) {
-
-							EOperation eAllOperation = (EOperation) eAllOperations
-								.next();
-
-							if (eAllOperation == eOperation) {
+							if (otherEOperation == eOperation) {
 								break;
 							} else if (new SignatureMatcher(eOperation)
-								.matches(eAllOperation)) {
+								.matches(otherEOperation)) {
 
 								if (OPTION__PROCESS.equals(options
 									.get(OPTION__DUPLICATE_OPERATIONS))) {
@@ -4006,23 +3850,25 @@ public class UMLUtil
 														getMessageSubstitutions(
 															context,
 															eOperation,
-															eAllOperation)),
+															otherEOperation)),
 												new Object[]{eClass,
-													eAllOperation}));
+													otherEOperation}));
 									}
 
 									operationsToDuplicate.add(eOperation);
 
-									ensureConformity(eOperation, eAllOperation);
+									ensureConformity(eOperation,
+										otherEOperation);
 
-									List redefinedOperations = getEAnnotation(
+									List<EObject> redefinedOperations = getEAnnotation(
 										eOperation, ANNOTATION__REDEFINES, true)
 										.getReferences();
 
 									if (!redefinedOperations
-										.contains(eAllOperation)) {
+										.contains(otherEOperation)) {
 
-										redefinedOperations.add(eAllOperation);
+										redefinedOperations
+											.add(otherEOperation);
 									}
 								} else if (OPTION__DISCARD.equals(options
 									.get(OPTION__DUPLICATE_OPERATIONS))) {
@@ -4039,9 +3885,9 @@ public class UMLUtil
 														getMessageSubstitutions(
 															context,
 															eOperation,
-															eAllOperation)),
+															otherEOperation)),
 												new Object[]{eClass,
-													eAllOperation}));
+													otherEOperation}));
 									}
 
 									eOperations.remove();
@@ -4060,9 +3906,9 @@ public class UMLUtil
 													"_UI_UML2EcoreConverter_ReportDuplicateOperation_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eOperation,
-														eAllOperation)),
+														otherEOperation)),
 											new Object[]{eOperation,
-												eAllOperation}));
+												otherEOperation}));
 								}
 							}
 						}
@@ -4070,49 +3916,35 @@ public class UMLUtil
 				}
 			}
 
-			for (Iterator eOperations = operationsToDuplicate.iterator(); eOperations
-				.hasNext();) {
-
-				EOperation eOperation = (EOperation) eOperations.next();
-
+			for (EOperation eOperation : operationsToDuplicate) {
 				getEAnnotation(eOperation.getEContainingClass(),
 					ANNOTATION__DUPLICATES, true).getContents().add(eOperation);
 			}
 		}
 
-		protected void processDuplicateOperationInheritance(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processDuplicateOperationInheritance(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
+			for (EModelElement eModelElement : elementToEModelElementMap
+				.values()) {
 
 				if (eModelElement instanceof EClass) {
 					EClass eClass = (EClass) eModelElement;
 
 					if (eClass.getESuperTypes().size() > 1) {
-						Iterator eSuperTypes = eClass.getESuperTypes()
+						Iterator<EClass> eSuperTypes = eClass.getESuperTypes()
 							.iterator();
 						eSuperTypes.next();
 
 						while (eSuperTypes.hasNext()) {
-							EClass mixinEClass = (EClass) eSuperTypes.next();
+							EClass mixinEClass = eSuperTypes.next();
 
-							mixinEOperationsLoop : for (Iterator mixinEOperations = mixinEClass
-								.getEAllOperations().iterator(); mixinEOperations
-								.hasNext();) {
+							mixinEOperationLoop : for (EOperation mixinEOperation : mixinEClass
+								.getEAllOperations()) {
 
-								EOperation mixinEOperation = (EOperation) mixinEOperations
-									.next();
-
-								for (Iterator eOperations = eClass
-									.getEAllOperations().iterator(); eOperations
-									.hasNext();) {
-
-									EOperation eOperation = (EOperation) eOperations
-										.next();
+								for (EOperation eOperation : eClass
+									.getEAllOperations()) {
 
 									if (eOperation == mixinEOperation) {
 										break;
@@ -4144,7 +3976,7 @@ public class UMLUtil
 
 											qualifyName(mixinEOperation);
 
-											List redefinedOperations = getEAnnotation(
+											List<EObject> redefinedOperations = getEAnnotation(
 												mixinEOperation,
 												ANNOTATION__REDEFINES, true)
 												.getReferences();
@@ -4179,7 +4011,7 @@ public class UMLUtil
 											}
 
 											eSuperTypes.remove();
-											break mixinEOperationsLoop;
+											break mixinEOperationLoop;
 										} else if (OPTION__REPORT
 											.equals(options
 												.get(OPTION__DUPLICATE_OPERATION_INHERITANCE))
@@ -4211,38 +4043,31 @@ public class UMLUtil
 			}
 		}
 
-		protected void processDuplicateFeatures(Map options,
-				DiagnosticChain diagnostics, Map context) {
-			List featuresToDuplicate = new UniqueEList.FastCompare();
-			List featuresToRemove = new UniqueEList.FastCompare();
+		protected void processDuplicateFeatures(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			EList<EStructuralFeature.Internal> featuresToDuplicate = new UniqueEList.FastCompare<EStructuralFeature.Internal>();
+			EList<EStructuralFeature> featuresToRemove = new UniqueEList.FastCompare<EStructuralFeature>();
 
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
+			for (EModelElement eModelElement : elementToEModelElementMap
+				.values()) {
 
 				if (eModelElement instanceof EClass) {
 					EClass eClass = (EClass) eModelElement;
 
-					for (Iterator eStructuralFeatures = eClass
+					for (Iterator<EStructuralFeature> eStructuralFeatures = eClass
 						.getEStructuralFeatures().iterator(); eStructuralFeatures
 						.hasNext();) {
 
 						EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eStructuralFeatures
 							.next();
 
-						for (Iterator eAllStructuralFeatures = eClass
-							.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-							.hasNext();) {
+						for (EStructuralFeature otherEStructuralFeature : eClass
+							.getEAllStructuralFeatures()) {
 
-							EStructuralFeature eAllStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-								.next();
-
-							if (eAllStructuralFeature == eStructuralFeature) {
+							if (otherEStructuralFeature == eStructuralFeature) {
 								break;
 							} else if (new NameMatcher(eStructuralFeature)
-								.matches(eAllStructuralFeature)) {
+								.matches(otherEStructuralFeature)) {
 
 								if (OPTION__PROCESS.equals(options
 									.get(OPTION__DUPLICATE_FEATURES))) {
@@ -4259,48 +4084,48 @@ public class UMLUtil
 														getMessageSubstitutions(
 															context,
 															eStructuralFeature,
-															eAllStructuralFeature)),
+															otherEStructuralFeature)),
 												new Object[]{
 													eStructuralFeature,
-													eAllStructuralFeature}));
+													otherEStructuralFeature}));
 									}
 
 									if (!featuresToDuplicate
 										.contains(eStructuralFeature)) {
 
-										EStructuralFeature duplicateEStructuralFeature = eAllStructuralFeature
+										EStructuralFeature.Internal duplicateEStructuralFeature = otherEStructuralFeature
 											.isDerived()
 											&& !eStructuralFeature.isDerived()
-											? eAllStructuralFeature
+											? (EStructuralFeature.Internal) otherEStructuralFeature
 											: eStructuralFeature;
 
 										if (DEBUG
-											&& duplicateEStructuralFeature == eAllStructuralFeature) {
+											&& duplicateEStructuralFeature == otherEStructuralFeature) {
 
 											System.err
 												.println("Non-derived feature " //$NON-NLS-1$
 													+ getQualifiedText(eStructuralFeature)
 													+ " is a duplicate of derived feature " //$NON-NLS-1$
-													+ getQualifiedText(eAllStructuralFeature));
+													+ getQualifiedText(otherEStructuralFeature));
 										}
 
 										featuresToDuplicate
 											.add(duplicateEStructuralFeature);
 
 										ensureConformity(eStructuralFeature,
-											eAllStructuralFeature);
+											otherEStructuralFeature);
 									}
 
-									EList redefinedFeatures = getEAnnotation(
+									EList<EObject> redefinedFeatures = getEAnnotation(
 										eStructuralFeature,
 										ANNOTATION__REDEFINES, true)
 										.getReferences();
 
 									if (!redefinedFeatures
-										.contains(eAllStructuralFeature)) {
+										.contains(otherEStructuralFeature)) {
 
 										redefinedFeatures
-											.add(eAllStructuralFeature);
+											.add(otherEStructuralFeature);
 									}
 								} else if (OPTION__DISCARD.equals(options
 									.get(OPTION__DUPLICATE_FEATURES))) {
@@ -4317,9 +4142,9 @@ public class UMLUtil
 														getMessageSubstitutions(
 															context,
 															eStructuralFeature,
-															eAllStructuralFeature)),
+															otherEStructuralFeature)),
 												new Object[]{eClass,
-													eAllStructuralFeature}));
+													otherEStructuralFeature}));
 									}
 
 									EReference eOpposite = eStructuralFeature
@@ -4346,9 +4171,9 @@ public class UMLUtil
 													getMessageSubstitutions(
 														context,
 														eStructuralFeature,
-														eAllStructuralFeature)),
+														otherEStructuralFeature)),
 											new Object[]{eStructuralFeature,
-												eAllStructuralFeature}));
+												otherEStructuralFeature}));
 								}
 							}
 						}
@@ -4356,12 +4181,7 @@ public class UMLUtil
 				}
 			}
 
-			for (Iterator eStructuralFeatures = featuresToDuplicate.iterator(); eStructuralFeatures
-				.hasNext();) {
-
-				EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eStructuralFeatures
-					.next();
-
+			for (EStructuralFeature.Internal eStructuralFeature : featuresToDuplicate) {
 				getEAnnotation(eStructuralFeature.getEContainingClass(),
 					ANNOTATION__DUPLICATES, true).getContents().add(
 					eStructuralFeature);
@@ -4382,11 +4202,7 @@ public class UMLUtil
 				}
 			}
 
-			for (Iterator eStructuralFeatures = featuresToRemove.iterator(); eStructuralFeatures
-				.hasNext();) {
-
-				EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
-					.next();
+			for (EStructuralFeature eStructuralFeature : featuresToRemove) {
 				EClass eContainingClass = eStructuralFeature
 					.getEContainingClass();
 
@@ -4397,39 +4213,29 @@ public class UMLUtil
 			}
 		}
 
-		protected void processDuplicateFeatureInheritance(Map options,
-				DiagnosticChain diagnostics, Map context) {
+		protected void processDuplicateFeatureInheritance(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 
-			for (Iterator eModelElements = elementToEModelElementMap.values()
-				.iterator(); eModelElements.hasNext();) {
-
-				EModelElement eModelElement = (EModelElement) eModelElements
-					.next();
+			for (EModelElement eModelElement : elementToEModelElementMap
+				.values()) {
 
 				if (eModelElement instanceof EClass) {
 					EClass eClass = (EClass) eModelElement;
 
 					if (eClass.getESuperTypes().size() > 1) {
-						Iterator eSuperTypes = eClass.getESuperTypes()
+						Iterator<EClass> eSuperTypes = eClass.getESuperTypes()
 							.iterator();
 						eSuperTypes.next();
 
 						while (eSuperTypes.hasNext()) {
-							EClass mixinEClass = (EClass) eSuperTypes.next();
+							EClass mixinEClass = eSuperTypes.next();
 
-							mixinEStructuralFeaturesLoop : for (Iterator mixinEStructuralFeatures = mixinEClass
-								.getEAllStructuralFeatures().iterator(); mixinEStructuralFeatures
-								.hasNext();) {
+							mixinEStructuralFeatureLoop : for (EStructuralFeature mixinEStructuralFeature : mixinEClass
+								.getEAllStructuralFeatures()) {
 
-								EStructuralFeature mixinEStructuralFeature = (EStructuralFeature) mixinEStructuralFeatures
-									.next();
-
-								for (Iterator eStructuralFeatures = eClass
-									.getEAllStructuralFeatures().iterator(); eStructuralFeatures
-									.hasNext();) {
-
-									EStructuralFeature eStructuralFeature = (EStructuralFeature) eStructuralFeatures
-										.next();
+								for (EStructuralFeature eStructuralFeature : eClass
+									.getEAllStructuralFeatures()) {
 
 									if (eStructuralFeature == mixinEStructuralFeature) {
 										break;
@@ -4462,7 +4268,7 @@ public class UMLUtil
 
 											qualifyName(mixinEStructuralFeature);
 
-											EList redefinedFeatures = getEAnnotation(
+											EList<EObject> redefinedFeatures = getEAnnotation(
 												mixinEStructuralFeature,
 												ANNOTATION__REDEFINES, true)
 												.getReferences();
@@ -4497,7 +4303,7 @@ public class UMLUtil
 											}
 
 											eSuperTypes.remove();
-											break mixinEStructuralFeaturesLoop;
+											break mixinEStructuralFeatureLoop;
 										} else if (OPTION__REPORT
 											.equals(options
 												.get(OPTION__DUPLICATE_FEATURE_INHERITANCE))
@@ -4529,14 +4335,11 @@ public class UMLUtil
 			}
 		}
 
-		protected void processSuperClassOrder(Map options,
-				DiagnosticChain diagnostics, Map context) {
-			Comparator eClassComparator = new Comparator() {
+		protected void processSuperClassOrder(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Comparator<EClass> eClassComparator = new Comparator<EClass>() {
 
-				public int compare(Object object, Object otherObject) {
-					EClass eClass = (EClass) object;
-					EClass otherEClass = (EClass) otherObject;
-
+				public int compare(EClass eClass, EClass otherEClass) {
 					int eAllStructuralFeaturesSize = eClass
 						.getEAllStructuralFeatures().size();
 					int otherEAllStructuralFeaturesSize = otherEClass
@@ -4550,41 +4353,38 @@ public class UMLUtil
 				}
 			};
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				Object key = entry.getKey();
-				Object value = entry.getValue();
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				Element key = entry.getKey();
+				EModelElement value = entry.getValue();
 
 				if (key instanceof Classifier && value instanceof EClass) {
 					EClass eClass = (EClass) value;
-					EList eSuperTypes = eClass.getESuperTypes();
+					EList<EClass> eSuperTypes = eClass.getESuperTypes();
 
-					List extendSuperClasses = new ArrayList();
-					List unspecifiedSuperClasses = new ArrayList();
-					List mixinSuperClasses = new ArrayList();
+					List<EClass> extendSuperClasses = new ArrayList<EClass>();
+					List<EClass> unspecifiedSuperClasses = new ArrayList<EClass>();
+					List<EClass> mixinSuperClasses = new ArrayList<EClass>();
 
-					for (Iterator generalizations = ((Classifier) key)
-						.getGeneralizations().iterator(); generalizations
-						.hasNext();) {
-
-						Generalization generalization = (Generalization) generalizations
-							.next();
+					for (Generalization generalization : ((Classifier) key)
+						.getGeneralizations()) {
 						Classifier general = generalization.getGeneral();
 
 						if (general != null) {
-							EModelElement eModelElement = (EModelElement) elementToEModelElementMap
+							EModelElement eModelElement = elementToEModelElementMap
 								.get(general);
 
 							if (eSuperTypes.contains(eModelElement)) {
 
 								if (generalization.hasKeyword("extend")) { //$NON-NLS-1$
-									extendSuperClasses.add(eModelElement);
+									extendSuperClasses
+										.add((EClass) eModelElement);
 								} else if (generalization.hasKeyword("mixin")) { //$NON-NLS-1$
-									mixinSuperClasses.add(eModelElement);
+									mixinSuperClasses
+										.add((EClass) eModelElement);
 								} else {
-									unspecifiedSuperClasses.add(eModelElement);
+									unspecifiedSuperClasses
+										.add((EClass) eModelElement);
 								}
 							}
 						}
@@ -4595,7 +4395,7 @@ public class UMLUtil
 					Collections.sort(unspecifiedSuperClasses, eClassComparator);
 					Collections.sort(mixinSuperClasses, eClassComparator);
 
-					List superClasses = new UniqueEList.FastCompare(
+					List<EClass> superClasses = new UniqueEList.FastCompare<EClass>(
 						extendSuperClasses);
 					superClasses.addAll(unspecifiedSuperClasses);
 					superClasses.addAll(mixinSuperClasses);
@@ -4619,10 +4419,10 @@ public class UMLUtil
 										new Object[]{eClass}));
 							}
 
-							for (ListIterator sc = superClasses.listIterator(); sc
-								.hasNext();) {
+							for (ListIterator<EClass> sc = superClasses
+								.listIterator(); sc.hasNext();) {
 
-								Object superClass = sc.next();
+								EClass superClass = sc.next();
 								eSuperTypes
 									.move(sc.previousIndex(), superClass);
 							}
@@ -4647,24 +4447,20 @@ public class UMLUtil
 			}
 		}
 
-		protected void processAnnotationDetails(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processAnnotationDetails(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = elementToEModelElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				final Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getValue();
+			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement != null) {
-					Element element = (Element) entry.getKey();
+					Element element = entry.getKey();
 
-					for (Iterator eAnnotations = element.getEAnnotations()
-						.iterator(); eAnnotations.hasNext();) {
-
-						EAnnotation eAnnotation = (EAnnotation) eAnnotations
-							.next();
-						EMap details = eAnnotation.getDetails();
+					for (EAnnotation eAnnotation : element.getEAnnotations()) {
+						EMap<String, String> details = eAnnotation.getDetails();
 
 						if (!details.isEmpty()) {
 
@@ -4712,8 +4508,8 @@ public class UMLUtil
 			}
 		}
 
-		protected void processOptions(Map options, DiagnosticChain diagnostics,
-				Map context) {
+		protected void processOptions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 			if (!OPTION__IGNORE
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
@@ -4780,27 +4576,22 @@ public class UMLUtil
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.Converter#convert(java.util.Collection,
-		 *      java.util.Map, org.eclipse.emf.common.util.DiagnosticChain,
-		 *      java.util.Map)
-		 */
-		public Collection convert(Collection eObjects, Map options,
-				DiagnosticChain diagnostics, Map context) {
+		public Collection<? extends EObject> convert(
+				Collection<? extends EObject> eObjects,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 			packages = EcoreUtil.getObjectsByType(eObjects,
 				UMLPackage.Literals.PACKAGE);
 
-			for (Iterator p = packages.iterator(); p.hasNext();) {
-				doSwitch((org.eclipse.uml2.uml.Package) p.next());
+			for (org.eclipse.uml2.uml.Package package_ : packages) {
+				doSwitch(package_);
 			}
 
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
 
-			return getRootContainers(EcoreUtil.getObjectsByType(
+			return getRootContainers(EcoreUtil.<EObject> getObjectsByType(
 				elementToEModelElementMap.values(),
 				EcorePackage.Literals.EPACKAGE));
 		}
@@ -4813,27 +4604,20 @@ public class UMLUtil
 	public static class Profile2EPackageConverter
 			extends UML2EcoreConverter {
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#casePackage(org.eclipse.uml2.uml.Package)
-		 */
+		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 
 			if (packages.contains(package_)) {
 				return super.casePackage(package_);
 			} else {
-				Object ePackage = doSwitch((Profile) packages.iterator().next());
+				EPackage ePackage = (EPackage) doSwitch(packages.iterator()
+					.next());
 				elementToEModelElementMap.put(package_, ePackage);
 				return ePackage;
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLSwitch#caseProfile(org.eclipse.uml2.uml.Profile)
-		 */
+		@Override
 		public Object caseProfile(Profile profile) {
 			EPackage ePackage = (EPackage) casePackage(profile);
 
@@ -4886,6 +4670,7 @@ public class UMLUtil
 			return ePackage;
 		}
 
+		@Override
 		protected EClassifier getEType(Type type) {
 
 			if (type instanceof org.eclipse.uml2.uml.Class) {
@@ -4903,11 +4688,13 @@ public class UMLUtil
 			return super.getEType(type);
 		}
 
+		@Override
 		protected void setName(final ENamedElement eNamedElement,
 				NamedElement namedElement) {
 
-			new UMLSwitch() {
+			new UMLSwitch<Object>() {
 
+				@Override
 				public Object caseClassifier(Classifier classifier) {
 					setName(eNamedElement, packages.contains(classifier
 						.getPackage())
@@ -4916,12 +4703,14 @@ public class UMLUtil
 					return classifier;
 				}
 
+				@Override
 				public Object caseEnumerationLiteral(
 						EnumerationLiteral enumerationLiteral) {
 					setName(eNamedElement, enumerationLiteral.getName(), false);
 					return enumerationLiteral;
 				}
 
+				@Override
 				public Object caseNamedElement(NamedElement namedElement) {
 					setName(eNamedElement, namedElement.getName(), true);
 					return namedElement;
@@ -4930,17 +4719,14 @@ public class UMLUtil
 			}.doSwitch(namedElement);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter#doSwitch(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public Object doSwitch(EObject eObject) {
-			Object eModelElement = super.doSwitch(eObject);
+			EObject eModelElement = (EObject) super.doSwitch(eObject);
 
 			if (eModelElement instanceof EClassifier) {
-				EList references = getEAnnotation((EClassifier) eModelElement,
-					UMLPackage.eNS_URI, true).getReferences();
+				EList<EObject> references = getEAnnotation(
+					(EClassifier) eModelElement, UMLPackage.eNS_URI, true)
+					.getReferences();
 
 				if (references.isEmpty()) {
 					references.add(eObject);
@@ -4956,7 +4742,7 @@ public class UMLUtil
 	 * elements.
 	 */
 	public static class Ecore2UMLConverter
-			extends EcoreSwitch
+			extends EcoreSwitch<Object>
 			implements Converter {
 
 		/**
@@ -5028,9 +4814,9 @@ public class UMLUtil
 		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 5;
 
-		protected final Map eModelElementToElementMap = new LinkedHashMap();
+		protected final Map<EModelElement, Element> eModelElementToElementMap = new LinkedHashMap<EModelElement, Element>();
 
-		protected Collection ePackages = null;
+		protected Collection<EPackage> ePackages = null;
 
 		protected Model getEcorePrimitiveTypesLibrary(
 				EModelElement eModelElement) {
@@ -5040,7 +4826,7 @@ public class UMLUtil
 				ResourceSet resourceSet = eResource.getResourceSet();
 
 				if (resourceSet != null) {
-					return (Model) load(
+					return load(
 						resourceSet,
 						URI
 							.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
@@ -5058,7 +4844,7 @@ public class UMLUtil
 				ResourceSet resourceSet = eResource.getResourceSet();
 
 				if (resourceSet != null) {
-					return (Model) load(
+					return load(
 						resourceSet,
 						URI
 							.createURI(UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI),
@@ -5119,11 +4905,7 @@ public class UMLUtil
 			return getType(eTypedElement, eTypedElement.getEType());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEAttribute(org.eclipse.emf.ecore.EAttribute)
-		 */
+		@Override
 		public Object caseEAttribute(EAttribute eAttribute) {
 			EClass eContainingClass = eAttribute.getEContainingClass();
 
@@ -5149,11 +4931,7 @@ public class UMLUtil
 			return super.caseEAttribute(eAttribute);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEClass(org.eclipse.emf.ecore.EClass)
-		 */
+		@Override
 		public Object caseEClass(EClass eClass) {
 			EPackage ePackage = eClass.getEPackage();
 
@@ -5174,10 +4952,7 @@ public class UMLUtil
 					classifier.setIsAbstract(eClass.isAbstract());
 				}
 
-				for (Iterator eSuperTypes = eClass.getESuperTypes().iterator(); eSuperTypes
-					.hasNext();) {
-
-					EClass eSuperType = (EClass) eSuperTypes.next();
+				for (EClass eSuperType : eClass.getESuperTypes()) {
 
 					if (eSuperType.isInterface()) {
 						((BehavioredClassifier) classifier)
@@ -5202,11 +4977,7 @@ public class UMLUtil
 			return super.caseEClass(eClass);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEDataType(org.eclipse.emf.ecore.EDataType)
-		 */
+		@Override
 		public Object caseEDataType(EDataType eDataType) {
 			EPackage ePackage = eDataType.getEPackage();
 
@@ -5239,11 +5010,7 @@ public class UMLUtil
 			return super.caseEDataType(eDataType);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEEnum(org.eclipse.emf.ecore.EEnum)
-		 */
+		@Override
 		public Object caseEEnum(EEnum eEnum) {
 			EPackage ePackage = eEnum.getEPackage();
 
@@ -5265,11 +5032,7 @@ public class UMLUtil
 			return super.caseEEnum(eEnum);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEEnumLiteral(org.eclipse.emf.ecore.EEnumLiteral)
-		 */
+		@Override
 		public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
 			EEnum eEnum = eEnumLiteral.getEEnum();
 
@@ -5299,20 +5062,12 @@ public class UMLUtil
 			return super.caseEEnumLiteral(eEnumLiteral);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEModelElement(org.eclipse.emf.ecore.EModelElement)
-		 */
+		@Override
 		public Object caseEModelElement(EModelElement eModelElement) {
 			return eModelElement;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEOperation(org.eclipse.emf.ecore.EOperation)
-		 */
+		@Override
 		public Object caseEOperation(EOperation eOperation) {
 			EClass eContainingClass = eOperation.getEContainingClass();
 
@@ -5332,13 +5087,10 @@ public class UMLUtil
 						eType));
 				}
 
-				EList raisedExceptions = operation.getRaisedExceptions();
+				EList<Type> raisedExceptions = operation.getRaisedExceptions();
 
-				for (Iterator eExceptions = eOperation.getEExceptions()
-					.iterator(); eExceptions.hasNext();) {
-
-					Type type = getType(eOperation, (EClassifier) eExceptions
-						.next());
+				for (EClassifier eException : eOperation.getEExceptions()) {
+					Type type = getType(eOperation, eException);
 
 					if (type != null) {
 						raisedExceptions.add(type);
@@ -5372,11 +5124,7 @@ public class UMLUtil
 			return super.caseEOperation(eOperation);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEPackage(org.eclipse.emf.ecore.EPackage)
-		 */
+		@Override
 		public Object caseEPackage(EPackage ePackage) {
 			org.eclipse.uml2.uml.Package package_ = ePackage.getESuperPackage() == null
 				? UMLFactory.eINSTANCE.createModel()
@@ -5399,11 +5147,7 @@ public class UMLUtil
 			return package_;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEParameter(org.eclipse.emf.ecore.EParameter)
-		 */
+		@Override
 		public Object caseEParameter(EParameter eParameter) {
 			EOperation eOperation = eParameter.getEOperation();
 
@@ -5426,11 +5170,7 @@ public class UMLUtil
 			return super.caseEParameter(eParameter);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseEReference(org.eclipse.emf.ecore.EReference)
-		 */
+		@Override
 		public Object caseEReference(EReference eReference) {
 			EClass eContainingClass = eReference.getEContainingClass();
 
@@ -5498,11 +5238,7 @@ public class UMLUtil
 			return super.caseEReference(eReference);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#caseETypedElement(org.eclipse.emf.ecore.ETypedElement)
-		 */
+		@Override
 		public Object caseETypedElement(ETypedElement eTypedElement) {
 			Object element = eModelElementToElementMap.get(eTypedElement);
 
@@ -5539,27 +5275,17 @@ public class UMLUtil
 			return super.caseETypedElement(eTypedElement);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public Object defaultCase(EObject eObject) {
 
-			for (Iterator eContents = eObject.eContents().iterator(); eContents
-				.hasNext();) {
-
-				doSwitch((EObject) eContents.next());
+			for (EObject eContent : eObject.eContents()) {
+				doSwitch(eContent);
 			}
 
 			return super.defaultCase(eObject);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.util.EcoreSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public Object doSwitch(EObject eObject) {
 
 			if (!eModelElementToElementMap.containsKey(eObject)) {
@@ -5576,7 +5302,7 @@ public class UMLUtil
 				ResourceSet resourceSet = eResource.getResourceSet();
 
 				if (resourceSet != null) {
-					return (Profile) load(resourceSet, URI
+					return load(resourceSet, URI
 						.createURI(UMLResource.ECORE_PROFILE_URI),
 						UMLPackage.Literals.PROFILE);
 				}
@@ -5597,8 +5323,9 @@ public class UMLUtil
 		protected void processEcoreTaggedValue(Element element,
 				Stereotype stereotype, String propertyName,
 				EModelElement eModelElement,
-				EStructuralFeature eStructuralFeature, Map options,
-				DiagnosticChain diagnostics, Map context) {
+				EStructuralFeature eStructuralFeature,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 			Object value = null;
 
 			if (eStructuralFeature != null) {
@@ -5783,8 +5510,8 @@ public class UMLUtil
 		}
 
 		protected void processEcoreTaggedValues(Element element,
-				EPackage ePackage, Map options, DiagnosticChain diagnostics,
-				Map context) {
+				EPackage ePackage, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 			Stereotype ePackageStereotype = getEcoreStereotype(ePackage,
 				STEREOTYPE__E_PACKAGE);
 
@@ -5792,21 +5519,26 @@ public class UMLUtil
 				safeApplyStereotype(element, ePackageStereotype);
 
 				processEcoreTaggedValue(element, ePackageStereotype,
-					TAG_DEFINITION__NS_PREFIX, ePackage, EcorePackage.eINSTANCE
-						.getEPackage_NsPrefix(), options, diagnostics, context);
+					TAG_DEFINITION__NS_PREFIX, ePackage,
+					EcorePackage.Literals.EPACKAGE__NS_PREFIX, options,
+					diagnostics, context);
 
 				processEcoreTaggedValue(element, ePackageStereotype,
-					TAG_DEFINITION__NS_URI, ePackage, EcorePackage.eINSTANCE
-						.getEPackage_NsURI(), options, diagnostics, context);
+					TAG_DEFINITION__NS_URI, ePackage,
+					EcorePackage.Literals.EPACKAGE__NS_URI, options,
+					diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(Element element,
-				final EClassifier eClassifier, final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
-			Stereotype eClassifierStereotype = (Stereotype) new UMLSwitch() {
+				final EClassifier eClassifier,
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+			Stereotype eClassifierStereotype = new UMLSwitch<Stereotype>() {
 
-				public Object caseClass(org.eclipse.uml2.uml.Class class_) {
+				@Override
+				public Stereotype caseClass(org.eclipse.uml2.uml.Class class_) {
 					Stereotype eClassStereotype = getEcoreStereotype(
 						eClassifier, STEREOTYPE__E_CLASS);
 
@@ -5821,7 +5553,8 @@ public class UMLUtil
 					return eClassStereotype;
 				}
 
-				public Object caseDataType(DataType dataType) {
+				@Override
+				public Stereotype caseDataType(DataType dataType) {
 					Stereotype eClassStereotype = getEcoreStereotype(
 						eClassifier, STEREOTYPE__E_CLASS);
 
@@ -5836,7 +5569,8 @@ public class UMLUtil
 					return eClassStereotype;
 				}
 
-				public Object caseInterface(Interface interface_) {
+				@Override
+				public Stereotype caseInterface(Interface interface_) {
 					Stereotype eClassStereotype = getEcoreStereotype(
 						eClassifier, STEREOTYPE__E_CLASS);
 
@@ -5851,7 +5585,8 @@ public class UMLUtil
 					return eClassStereotype;
 				}
 
-				public Object casePrimitiveType(PrimitiveType primitiveType) {
+				@Override
+				public Stereotype casePrimitiveType(PrimitiveType primitiveType) {
 					Stereotype eDataTypeStereotype = getEcoreStereotype(
 						eClassifier, STEREOTYPE__E_DATA_TYPE);
 
@@ -5870,17 +5605,20 @@ public class UMLUtil
 
 				processEcoreTaggedValue(element, eClassifierStereotype,
 					TAG_DEFINITION__INSTANCE_CLASS_NAME, eClassifier,
-					EcorePackage.eINSTANCE.getEClassifier_InstanceClassName(),
+					EcorePackage.Literals.ECLASSIFIER__INSTANCE_CLASS_NAME,
 					options, diagnostics, context);
 			}
 		}
 
 		protected void processEcoreTaggedValues(final Element element,
-				EStructuralFeature eStructuralFeature, final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
-			Stereotype eStructuralFeatureStereotype = (Stereotype) new EcoreSwitch() {
+				EStructuralFeature eStructuralFeature,
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+			Stereotype eStructuralFeatureStereotype = new EcoreSwitch<Stereotype>() {
 
-				public Object caseEAttribute(EAttribute eAttribute) {
+				@Override
+				public Stereotype caseEAttribute(EAttribute eAttribute) {
 					Stereotype eAttributeStereotype = getEcoreStereotype(
 						eAttribute, STEREOTYPE__E_ATTRIBUTE);
 
@@ -5889,14 +5627,15 @@ public class UMLUtil
 
 						processEcoreTaggedValue(element, eAttributeStereotype,
 							TAG_DEFINITION__IS_ID, eAttribute,
-							EcorePackage.eINSTANCE.getEAttribute_ID(), options,
+							EcorePackage.Literals.EATTRIBUTE__ID, options,
 							diagnostics, context);
 					}
 
 					return eAttributeStereotype;
 				}
 
-				public Object caseEReference(EReference eReference) {
+				@Override
+				public Stereotype caseEReference(EReference eReference) {
 					Stereotype eReferenceStereotype = getEcoreStereotype(
 						eReference, STEREOTYPE__E_REFERENCE);
 
@@ -5905,9 +5644,8 @@ public class UMLUtil
 
 						processEcoreTaggedValue(element, eReferenceStereotype,
 							TAG_DEFINITION__IS_RESOLVE_PROXIES, eReference,
-							EcorePackage.eINSTANCE
-								.getEReference_ResolveProxies(), options,
-							diagnostics, context);
+							EcorePackage.Literals.EREFERENCE__RESOLVE_PROXIES,
+							options, diagnostics, context);
 					}
 
 					return eReferenceStereotype;
@@ -5917,17 +5655,17 @@ public class UMLUtil
 			if (eStructuralFeatureStereotype != null) {
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_TRANSIENT, eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Transient(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__TRANSIENT,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_UNSETTABLE, eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Unsettable(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__UNSETTABLE,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_VOLATILE, eStructuralFeature,
-					EcorePackage.eINSTANCE.getEStructuralFeature_Volatile(),
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__VOLATILE,
 					options, diagnostics, context);
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
@@ -5948,18 +5686,20 @@ public class UMLUtil
 			}
 		}
 
-		protected void processEcoreTaggedValues(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processEcoreTaggedValues(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = eModelElementToElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
 
-				Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getKey();
-				final Element element = (Element) entry.getValue();
+				EModelElement eModelElement = entry.getKey();
+				final Element element = entry.getValue();
 
-				new EcoreSwitch() {
+				new EcoreSwitch<Object>() {
 
+					@Override
 					public Object caseEClassifier(EClassifier eClassifier) {
 						processEcoreTaggedValues(element, eClassifier, options,
 							diagnostics, context);
@@ -5967,6 +5707,7 @@ public class UMLUtil
 						return eClassifier;
 					}
 
+					@Override
 					public Object caseEDataType(EDataType eDataType) {
 						processEcoreTaggedValues(element, eDataType, options,
 							diagnostics, context);
@@ -5974,6 +5715,7 @@ public class UMLUtil
 						return eDataType;
 					}
 
+					@Override
 					public Object caseEEnum(EEnum eEnum) {
 						Stereotype eEnumStereotype = getEcoreStereotype(eEnum,
 							STEREOTYPE__E_ENUM);
@@ -5985,6 +5727,7 @@ public class UMLUtil
 						return eEnum;
 					}
 
+					@Override
 					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
 						Stereotype eEnumLiteralStereotype = getEcoreStereotype(
 							eEnumLiteral, STEREOTYPE__E_ENUM_LITERAL);
@@ -5996,6 +5739,7 @@ public class UMLUtil
 						return eEnumLiteral;
 					}
 
+					@Override
 					public Object caseEOperation(EOperation eOperation) {
 						Stereotype eOperationStereotype = getEcoreStereotype(
 							eOperation, STEREOTYPE__E_OPERATION);
@@ -6007,6 +5751,7 @@ public class UMLUtil
 						return eOperation;
 					}
 
+					@Override
 					public Object caseEPackage(EPackage ePackage) {
 						processEcoreTaggedValues(element, ePackage, options,
 							diagnostics, context);
@@ -6014,6 +5759,7 @@ public class UMLUtil
 						return ePackage;
 					}
 
+					@Override
 					public Object caseEParameter(EParameter eParameter) {
 						Stereotype eParameterStereotype = getEcoreStereotype(
 							eParameter, STEREOTYPE__E_PARAMETER);
@@ -6025,6 +5771,7 @@ public class UMLUtil
 						return eParameter;
 					}
 
+					@Override
 					public Object caseEStructuralFeature(
 							EStructuralFeature eStructuralFeature) {
 						processEcoreTaggedValues(element, eStructuralFeature,
@@ -6037,14 +5784,14 @@ public class UMLUtil
 			}
 		}
 
-		protected void processRedefinesAnnotations(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processRedefinesAnnotations(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = eModelElementToElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getKey();
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+				EModelElement eModelElement = entry.getKey();
 
 				if (eModelElement instanceof ETypedElement) {
 					EAnnotation redefinesEAnnotation = getEAnnotation(
@@ -6053,11 +5800,11 @@ public class UMLUtil
 					if (redefinesEAnnotation != null) {
 						Feature feature = (Feature) entry.getValue();
 
-						for (Iterator references = redefinesEAnnotation
-							.getReferences().iterator(); references.hasNext();) {
+						for (EObject reference : redefinesEAnnotation
+							.getReferences()) {
 
 							Feature redefinedFeature = (Feature) eModelElementToElementMap
-								.get(references.next());
+								.get(reference);
 
 							if (redefinedFeature != null
 								&& findValidRedefinitions(feature,
@@ -6110,14 +5857,14 @@ public class UMLUtil
 			}
 		}
 
-		protected void processSubsetsAnnotations(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processSubsetsAnnotations(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = eModelElementToElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getKey();
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+				EModelElement eModelElement = entry.getKey();
 
 				if (eModelElement instanceof EStructuralFeature) {
 					EAnnotation subsetsEAnnotation = getEAnnotation(
@@ -6126,11 +5873,11 @@ public class UMLUtil
 					if (subsetsEAnnotation != null) {
 						Property property = (Property) entry.getValue();
 
-						for (Iterator references = subsetsEAnnotation
-							.getReferences().iterator(); references.hasNext();) {
+						for (EObject reference : subsetsEAnnotation
+							.getReferences()) {
 
 							Property subsettedProperty = (Property) eModelElementToElementMap
-								.get(references.next());
+								.get(reference);
 
 							if (subsettedProperty != null
 								&& findValidSubsets(property,
@@ -6183,14 +5930,14 @@ public class UMLUtil
 			}
 		}
 
-		protected void processUnionAnnotations(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processUnionAnnotations(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = eModelElementToElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				EModelElement eModelElement = (EModelElement) entry.getKey();
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+				EModelElement eModelElement = entry.getKey();
 
 				if (eModelElement instanceof EStructuralFeature) {
 					EAnnotation unionEAnnotation = getEAnnotation(
@@ -6238,25 +5985,22 @@ public class UMLUtil
 			}
 		}
 
-		protected void processAnnotationDetails(final Map options,
-				final DiagnosticChain diagnostics, final Map context) {
+		protected void processAnnotationDetails(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
 
-			for (Iterator entries = eModelElementToElementMap.entrySet()
-				.iterator(); entries.hasNext();) {
-
-				final Map.Entry entry = (Map.Entry) entries.next();
-				Element element = (Element) entry.getValue();
+			for (final Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+				Element element = entry.getValue();
 
 				if (element != null) {
-					EModelElement eModelElement = (EModelElement) entry
-						.getKey();
+					EModelElement eModelElement = entry.getKey();
 
-					for (Iterator eAnnotations = eModelElement
-						.getEAnnotations().iterator(); eAnnotations.hasNext();) {
+					for (EAnnotation eAnnotation : eModelElement
+						.getEAnnotations()) {
 
-						EAnnotation eAnnotation = (EAnnotation) eAnnotations
-							.next();
-						EMap details = eAnnotation.getDetails();
+						EMap<String, String> details = eAnnotation.getDetails();
 
 						if (!details.isEmpty()) {
 
@@ -6304,8 +6048,8 @@ public class UMLUtil
 			}
 		}
 
-		protected void processOptions(Map options, DiagnosticChain diagnostics,
-				Map context) {
+		protected void processOptions(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 			if (!OPTION__IGNORE
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
@@ -6334,20 +6078,15 @@ public class UMLUtil
 			}
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.Converter#convert(java.util.Collection,
-		 *      java.util.Map, org.eclipse.emf.common.util.DiagnosticChain,
-		 *      java.util.Map)
-		 */
-		public Collection convert(Collection eObjects, Map options,
-				DiagnosticChain diagnostics, Map context) {
+		public Collection<? extends EObject> convert(
+				Collection<? extends EObject> eObjects,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
 			ePackages = EcoreUtil.getObjectsByType(eObjects,
-				EcorePackage.eINSTANCE.getEPackage());
+				EcorePackage.Literals.EPACKAGE);
 
-			for (Iterator ep = ePackages.iterator(); ep.hasNext();) {
-				doSwitch((EPackage) ep.next());
+			for (EPackage ePackage : ePackages) {
+				doSwitch(ePackage);
 			}
 
 			if (options != null) {
@@ -6355,7 +6094,7 @@ public class UMLUtil
 			}
 
 			return getRootContainers(EcoreUtil
-				.getObjectsByType(eModelElementToElementMap.values(),
+				.<EObject> getObjectsByType(eModelElementToElementMap.values(),
 					UMLPackage.Literals.PACKAGE));
 		}
 	}
@@ -6611,10 +6350,8 @@ public class UMLUtil
 
 		StringBuffer qualifiedName = new StringBuffer(name);
 
-		for (Iterator allNamespaces = namedElement.allNamespaces().iterator(); allNamespaces
-			.hasNext();) {
-
-			String namespaceName = ((Namespace) allNamespaces.next()).getName();
+		for (Namespace namespace : namedElement.allNamespaces()) {
+			String namespaceName = namespace.getName();
 
 			if (isEmpty(namespaceName)) {
 				return null;
@@ -6637,8 +6374,8 @@ public class UMLUtil
 	 *            The qualified name of the element(s) to be found.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(ResourceSet resourceSet,
-			String qualifiedName) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			ResourceSet resourceSet, String qualifiedName) {
 		return findNamedElements(resourceSet, qualifiedName, false);
 	}
 
@@ -6655,8 +6392,8 @@ public class UMLUtil
 	 *            Whether to ignore case when doing name comparisons.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(ResourceSet resourceSet,
-			String qualifiedName, boolean ignoreCase) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			ResourceSet resourceSet, String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resourceSet, qualifiedName, ignoreCase,
 			UMLPackage.Literals.NAMED_ELEMENT);
 	}
@@ -6676,29 +6413,29 @@ public class UMLUtil
 	 *            The type of the element(s) to be found.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(ResourceSet resourceSet,
-			String qualifiedName, boolean ignoreCase, EClass eClass) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			ResourceSet resourceSet, String qualifiedName, boolean ignoreCase,
+			EClass eClass) {
 
 		if (!isEmpty(qualifiedName)
 			&& UMLPackage.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
 
-			EList resources = resourceSet.getResources();
+			EList<Resource> resources = resourceSet.getResources();
 			int size = resources.size();
 
 			if (size > 0) {
-				EList namedElements = new UniqueEList.FastCompare();
+				EList<NE> namedElements = new UniqueEList.FastCompare<NE>();
 
 				for (int i = 0; i < size; i++) {
-					findNamedElements(((Resource) resources.get(i))
-						.getContents(), qualifiedName, ignoreCase, eClass,
-						namedElements);
+					findNamedElements(resources.get(i).getContents(),
+						qualifiedName, ignoreCase, eClass, namedElements);
 				}
 
 				return ECollections.unmodifiableEList(namedElements);
 			}
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.<NE> emptyEList();
 	}
 
 	/**
@@ -6711,8 +6448,8 @@ public class UMLUtil
 	 *            The qualified name of the element(s) to be found.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(Resource resource,
-			String qualifiedName) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			Resource resource, String qualifiedName) {
 		return findNamedElements(resource, qualifiedName, false);
 	}
 
@@ -6728,8 +6465,8 @@ public class UMLUtil
 	 *            Whether to ignore case when doing name comparisons.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(Resource resource,
-			String qualifiedName, boolean ignoreCase) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			Resource resource, String qualifiedName, boolean ignoreCase) {
 		return findNamedElements(resource, qualifiedName, ignoreCase,
 			UMLPackage.Literals.NAMED_ELEMENT);
 	}
@@ -6749,16 +6486,17 @@ public class UMLUtil
 	 *            The type of the element(s) to be found.
 	 * @return The named element(s).
 	 */
-	public static Collection findNamedElements(Resource resource,
-			String qualifiedName, boolean ignoreCase, EClass eClass) {
+	public static <NE extends NamedElement> Collection<NE> findNamedElements(
+			Resource resource, String qualifiedName, boolean ignoreCase,
+			EClass eClass) {
 
 		if (!isEmpty(qualifiedName)
 			&& UMLPackage.Literals.NAMED_ELEMENT.isSuperTypeOf(eClass)) {
 
-			EList contents = resource.getContents();
+			EList<EObject> contents = resource.getContents();
 
 			if (!contents.isEmpty()) {
-				EList namedElements = new UniqueEList.FastCompare();
+				EList<NE> namedElements = new UniqueEList.FastCompare<NE>();
 
 				findNamedElements(contents, qualifiedName, ignoreCase, eClass,
 					namedElements);
@@ -6767,21 +6505,17 @@ public class UMLUtil
 			}
 		}
 
-		return ECollections.EMPTY_ELIST;
+		return ECollections.<NE> emptyEList();
 	}
 
-	protected static Collection findNamedElements(Collection eObjects,
-			String qualifiedName, boolean ignoreCase, EClass eClass,
-			Collection namedElements) {
+	protected static <NE extends NamedElement> Collection<NE> findNamedElements(
+			Collection<? extends EObject> eObjects, String qualifiedName,
+			boolean ignoreCase, EClass eClass, Collection<NE> namedElements) {
 		int index = qualifiedName.indexOf(NamedElement.SEPARATOR);
 
 		if (index == -1) {
 
-			for (Iterator members = EcoreUtil
-				.getObjectsByType(eObjects, eClass).iterator(); members
-				.hasNext();) {
-
-				NamedElement member = (NamedElement) members.next();
+			for (NE member : EcoreUtil.<NE> getObjectsByType(eObjects, eClass)) {
 
 				if (ignoreCase
 					? qualifiedName.equalsIgnoreCase(member.getName())
@@ -6795,10 +6529,8 @@ public class UMLUtil
 			qualifiedName = qualifiedName.substring(index
 				+ NamedElement.SEPARATOR.length());
 
-			for (Iterator namespaces = EcoreUtil.getObjectsByType(eObjects,
-				UMLPackage.Literals.NAMESPACE).iterator(); namespaces.hasNext();) {
-
-				Namespace namespace = (Namespace) namespaces.next();
+			for (Namespace namespace : EcoreUtil.<Namespace> getObjectsByType(
+				eObjects, UMLPackage.Literals.NAMESPACE)) {
 
 				if (ignoreCase
 					? name.equalsIgnoreCase(namespace.getName())
@@ -6850,7 +6582,7 @@ public class UMLUtil
 
 			if (model != null) {
 				EPackage ePackage = EPackage.Registry.INSTANCE
-					.getEPackage((String) getTaggedValue(model, "Ecore" // $NON-NLS-1$
+					.getEPackage((String) getTaggedValue(model, "Ecore" //$NON-NLS-1$
 						+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
 						TAG_DEFINITION__NS_URI));
 
@@ -6870,10 +6602,10 @@ public class UMLUtil
 				.getEAnnotation(UMLPackage.eNS_URI);
 
 			if (eAnnotation != null) {
-				EList references = eAnnotation.getReferences();
+				EList<EObject> references = eAnnotation.getReferences();
 
 				if (!references.isEmpty()) {
-					Object reference = references.get(0);
+					EObject reference = references.get(0);
 
 					if (reference instanceof Classifier) {
 						return (NamedElement) reference;
@@ -6889,10 +6621,7 @@ public class UMLUtil
 			if (class_ != null) {
 				String name = definition.getName();
 
-				for (Iterator ownedAttributes = class_.getOwnedAttributes()
-					.iterator(); ownedAttributes.hasNext();) {
-
-					Property ownedAttribute = (Property) ownedAttributes.next();
+				for (Property ownedAttribute : class_.getOwnedAttributes()) {
 
 					if (safeEquals(getValidJavaIdentifier(ownedAttribute
 						.getName()), name)) {
@@ -6952,12 +6681,8 @@ public class UMLUtil
 
 			if (getStereotype(eClass) != null) {
 
-				for (Iterator eAllStructuralFeatures = eClass
-					.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-					.hasNext();) {
-
-					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-						.next();
+				for (EStructuralFeature eStructuralFeature : eClass
+					.getEAllStructuralFeatures()) {
 
 					if (eStructuralFeature.getName().startsWith(
 						Extension.METACLASS_ROLE_PREFIX)) {
@@ -6993,12 +6718,8 @@ public class UMLUtil
 
 			if (getStereotype(eClass) != null) {
 
-				for (Iterator eAllStructuralFeatures = eClass
-					.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-					.hasNext();) {
-
-					EStructuralFeature eStructuralFeature = (EStructuralFeature) eAllStructuralFeatures
-						.next();
+				for (EStructuralFeature eStructuralFeature : eClass
+					.getEAllStructuralFeatures()) {
 
 					if (eStructuralFeature.getName().startsWith(
 						Extension.METACLASS_ROLE_PREFIX)
@@ -7055,13 +6776,12 @@ public class UMLUtil
 					if (!nearestPackage.getAllAppliedProfiles().contains(
 						profile)) {
 
-						EList allOwningPackages = nearestPackage
+						EList<org.eclipse.uml2.uml.Package> allOwningPackages = nearestPackage
 							.allOwningPackages();
 						int size = allOwningPackages.size();
 
 						(size > 0
-							? (org.eclipse.uml2.uml.Package) allOwningPackages
-								.get(size - 1)
+							? allOwningPackages.get(size - 1)
 							: nearestPackage).applyProfile(profile);
 					}
 
@@ -7078,14 +6798,12 @@ public class UMLUtil
 	protected static Property getTagDefinition(Stereotype stereotype,
 			final String propertyName) {
 
-		return (Property) findEObject(stereotype.getAllAttributes(),
-			new EObjectMatcher() {
+		return findEObject(stereotype.getAllAttributes(), new EObjectMatcher() {
 
-				public boolean matches(EObject eObject) {
-					return safeEquals(((Property) eObject).getName(),
-						propertyName);
-				}
-			});
+			public boolean matches(EObject eObject) {
+				return safeEquals(((Property) eObject).getName(), propertyName);
+			}
+		});
 	}
 
 	protected static Object getTaggedValue(Element element,
@@ -7124,83 +6842,103 @@ public class UMLUtil
 		return false;
 	}
 
-	protected static EList getOwnedAttributes(Type type) {
+	protected static EList<Property> getOwnedAttributes(Type type) {
+		@SuppressWarnings("unchecked")
+		EList<Property> ownedAttributes = (EList<Property>) new UMLSwitch() {
 
-		return (EList) new UMLSwitch() {
-
+			@Override
 			public Object caseArtifact(Artifact artifact) {
 				return artifact.getOwnedAttributes();
 			}
 
+			@Override
 			public Object caseDataType(DataType dataType) {
 				return dataType.getOwnedAttributes();
 			}
 
+			@Override
 			public Object caseInterface(Interface interface_) {
 				return interface_.getOwnedAttributes();
 			}
 
+			@Override
 			public Object caseSignal(Signal signal) {
 				return signal.getOwnedAttributes();
 			}
 
+			@Override
 			public Object caseStructuredClassifier(
 					StructuredClassifier structuredClassifier) {
 				return structuredClassifier.getOwnedAttributes();
 			}
 
+			@Override
 			public Object doSwitch(EObject eObject) {
 				return eObject == null
 					? null
 					: super.doSwitch(eObject);
 			}
 		}.doSwitch(type);
+
+		return ownedAttributes;
 	}
 
-	protected static EList getOwnedOperations(Type type) {
+	protected static EList<Operation> getOwnedOperations(Type type) {
+		@SuppressWarnings("unchecked")
+		EList<Operation> ownedOperations = (EList<Operation>) new UMLSwitch() {
 
-		return (EList) new UMLSwitch() {
-
+			@Override
 			public Object caseArtifact(Artifact artifact) {
 				return artifact.getOwnedOperations();
 			}
 
+			@Override
 			public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 				return class_.getOwnedOperations();
 			}
 
+			@Override
 			public Object caseDataType(DataType dataType) {
 				return dataType.getOwnedOperations();
 			}
 
+			@Override
 			public Object caseInterface(Interface interface_) {
 				return interface_.getOwnedOperations();
 			}
 
+			@Override
 			public Object doSwitch(EObject eObject) {
 				return eObject == null
 					? null
 					: super.doSwitch(eObject);
 			}
 		}.doSwitch(type);
+
+		return ownedOperations;
 	}
 
-	protected static EList getRedefinedFeatures(Feature feature) {
+	protected static EList<Feature> getRedefinedFeatures(Feature feature) {
+		@SuppressWarnings("unchecked")
+		EList<Feature> redefinedFeatures = (EList<Feature>) new UMLSwitch() {
 
-		return (EList) new UMLSwitch() {
-
+			@Override
 			public Object caseOperation(Operation operation) {
 				return operation.getRedefinedOperations();
 			}
 
+			@Override
 			public Object caseProperty(Property property) {
 				return property.getRedefinedProperties();
 			}
 
+			@Override
 			public Object defaultCase(EObject eObject) {
-				return ECollections.EMPTY_ELIST;
+				return ECollections.<Feature> emptyEList();
 			}
 		}.doSwitch(feature);
+
+		return redefinedFeatures;
 	}
 
 	protected static boolean isRedefinitionValid(Feature redefiningFeature,
@@ -7208,48 +6946,47 @@ public class UMLUtil
 		return redefinedFeature.isConsistentWith(redefiningFeature);
 	}
 
-	protected static Collection findValidRedefinitions(
-			Feature redefiningFeature, String name) {
-		Collection redefinedFeatures = new UniqueEList.FastCompare();
+	protected static <F extends Feature> Collection<F> findValidRedefinitions(
+			F redefiningFeature, String name) {
+		Collection<F> redefinedFeatures = new UniqueEList.FastCompare<F>();
 
-		for (Iterator redefinitionContexts = redefiningFeature
-			.getRedefinitionContexts().iterator(); redefinitionContexts
-			.hasNext();) {
+		for (Classifier redefinitionContext : redefiningFeature
+			.getRedefinitionContexts()) {
 
 			findValidRedefinitions(redefinedFeatures, redefiningFeature, name,
-				(Classifier) redefinitionContexts.next());
+				redefinitionContext);
 		}
 
 		return redefinedFeatures;
 	}
 
-	protected static Collection findValidRedefinitions(
-			Collection redefinedFeatures, Feature redefiningFeature,
+	protected static <F extends Feature> Collection<F> findValidRedefinitions(
+			Collection<F> redefinedFeatures, F redefiningFeature,
 			final String name, Classifier redefinitionContext) {
-		Feature redefinedFeature = (Feature) findEObject(redefinitionContext
-			.getFeatures(), new EClassMatcher(redefiningFeature) {
+		F redefinedFeature = findEObject(redefinitionContext.getFeatures(),
+			new EClassMatcher(redefiningFeature) {
 
-			public boolean matches(EObject otherEObject) {
+				@Override
+				public boolean matches(EObject otherEObject) {
 
-				if (super.matches(otherEObject)) {
-					Feature otherFeature = (Feature) otherEObject;
+					if (super.matches(otherEObject)) {
+						Feature otherFeature = (Feature) otherEObject;
 
-					return eObject != otherFeature
-						&& safeEquals(otherFeature.getName(), name)
-						&& isRedefinitionValid((Feature) eObject, otherFeature);
+						return eObject != otherFeature
+							&& safeEquals(otherFeature.getName(), name)
+							&& isRedefinitionValid((Feature) eObject,
+								otherFeature);
+					}
+
+					return false;
 				}
-
-				return false;
-			}
-		});
+			});
 
 		if (redefinedFeature == null) {
 
-			for (Iterator generals = redefinitionContext.getGenerals()
-				.iterator(); generals.hasNext();) {
-
+			for (Classifier general : redefinitionContext.getGenerals()) {
 				findValidRedefinitions(redefinedFeatures, redefiningFeature,
-					name, (Classifier) generals.next());
+					name, general);
 			}
 		} else {
 			redefinedFeatures.add(redefinedFeature);
@@ -7261,18 +6998,11 @@ public class UMLUtil
 	protected static boolean isSubsetValid(Property subsettingProperty,
 			Property subsettedProperty) {
 
-		for (Iterator subsettingContexts = subsettingProperty
-			.subsettingContext().iterator(); subsettingContexts.hasNext();) {
+		for (Type subsettingContext : subsettingProperty.subsettingContext()) {
 
-			Classifier subsettingContext = (Classifier) subsettingContexts
-				.next();
+			for (Type subsettedContext : subsettedProperty.subsettingContext()) {
 
-			for (Iterator subsettedContexts = subsettedProperty
-				.subsettingContext().iterator(); subsettedContexts.hasNext();) {
-
-				if (!subsettingContext
-					.conformsTo((Classifier) subsettedContexts.next())) {
-
+				if (!subsettingContext.conformsTo(subsettedContext)) {
 					return false;
 				}
 			}
@@ -7281,26 +7011,27 @@ public class UMLUtil
 		return true;
 	}
 
-	protected static Collection findValidSubsets(Property subsettingProperty,
-			String name) {
-		Collection subsettedProperties = new UniqueEList.FastCompare();
+	protected static Collection<Property> findValidSubsets(
+			Property subsettingProperty, String name) {
+		Collection<Property> subsettedProperties = new UniqueEList.FastCompare<Property>();
 
-		for (Iterator subsettingContexts = subsettingProperty
-			.subsettingContext().iterator(); subsettingContexts.hasNext();) {
+		for (Type subsettingContext : subsettingProperty.subsettingContext()) {
 
 			findValidSubsets(subsettedProperties, subsettingProperty, name,
-				(Classifier) subsettingContexts.next());
+				(Classifier) subsettingContext);
 		}
 
 		return subsettedProperties;
 	}
 
-	protected static Collection findValidSubsets(
-			Collection subsettedProperties, Property subsettingProperty,
-			final String name, Classifier subsettingContext) {
-		Property subsettedProperty = (Property) findEObject(subsettingContext
+	protected static Collection<Property> findValidSubsets(
+			Collection<Property> subsettedProperties,
+			Property subsettingProperty, final String name,
+			Classifier subsettingContext) {
+		Property subsettedProperty = findEObject(subsettingContext
 			.getAttributes(), new EClassMatcher(subsettingProperty) {
 
+			@Override
 			public boolean matches(EObject otherEObject) {
 
 				if (super.matches(otherEObject)) {
@@ -7317,11 +7048,9 @@ public class UMLUtil
 
 		if (subsettedProperty == null) {
 
-			for (Iterator generals = subsettingContext.getGenerals().iterator(); generals
-				.hasNext();) {
-
+			for (Classifier general : subsettingContext.getGenerals()) {
 				findValidSubsets(subsettedProperties, subsettingProperty, name,
-					(Classifier) generals.next());
+					general);
 			}
 		} else {
 			subsettedProperties.add(subsettedProperty);
@@ -7340,10 +7069,11 @@ public class UMLUtil
 	 * @param options
 	 *            The options to use.
 	 */
-	public static void merge(org.eclipse.uml2.uml.Package package_, Map options) {
+	public static void merge(org.eclipse.uml2.uml.Package package_,
+			Map<String, String> options) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7415,10 +7145,11 @@ public class UMLUtil
 	 *            The cache of context-specific information.
 	 */
 	public static void merge(org.eclipse.uml2.uml.Package package_,
-			Map options, DiagnosticChain diagnostics, Map context) {
+			Map<String, String> options, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7485,11 +7216,11 @@ public class UMLUtil
 	 *            The options to use.
 	 * @return An Ecore representation of the package.
 	 */
-	public static Collection convertToEcore(
-			org.eclipse.uml2.uml.Package package_, Map options) {
+	public static Collection<EPackage> convertToEcore(
+			org.eclipse.uml2.uml.Package package_, Map<String, String> options) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7587,12 +7318,12 @@ public class UMLUtil
 	 *            The cache of context-specific information.
 	 * @return An Ecore representation of the package.
 	 */
-	public static Collection convertToEcore(
-			org.eclipse.uml2.uml.Package package_, Map options,
-			DiagnosticChain diagnostics, Map context) {
+	public static Collection<EPackage> convertToEcore(
+			org.eclipse.uml2.uml.Package package_, Map<String, String> options,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7671,8 +7402,12 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
-		return new UML2EcoreConverter().convert(
-			Collections.singleton(package_), options, diagnostics, context);
+		@SuppressWarnings("unchecked")
+		Collection<EPackage> ePackages = (Collection<EPackage>) new UML2EcoreConverter()
+			.convert(Collections.singletonList(package_), options, diagnostics,
+				context);
+
+		return ePackages;
 	}
 
 	/**
@@ -7686,10 +7421,11 @@ public class UMLUtil
 	 *            The options to use.
 	 * @return An Ecore representation of the profile.
 	 */
-	public static Collection convertToEcore(Profile profile, Map options) {
+	public static Collection<EPackage> convertToEcore(Profile profile,
+			Map<String, String> options) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7787,11 +7523,12 @@ public class UMLUtil
 	 *            The cache of context-specific information.
 	 * @return An Ecore representation of the profile.
 	 */
-	public static Collection convertToEcore(Profile profile, Map options,
-			DiagnosticChain diagnostics, Map context) {
+	public static Collection<EPackage> convertToEcore(Profile profile,
+			Map<String, String> options, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		if (!options
@@ -7870,14 +7607,16 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
-		Collection ePackages = new Profile2EPackageConverter().convert(
-			Collections.singleton(profile), options, null, null);
+		@SuppressWarnings("unchecked")
+		Collection<EPackage> ePackages = (Collection<EPackage>) new Profile2EPackageConverter()
+			.convert(Collections.singleton(profile), options, null, null);
 
-		for (Iterator allContents = EcoreUtil.getAllContents(ePackages); allContents
-			.hasNext();) {
+		for (TreeIterator<EObject> allContents = EcoreUtil
+			.getAllContents(ePackages); allContents.hasNext();) {
 
-			new EcoreSwitch() {
+			new EcoreSwitch<Object>() {
 
+				@Override
 				public Object caseEAttribute(EAttribute eAttribute) {
 
 					try {
@@ -7889,6 +7628,7 @@ public class UMLUtil
 					return eAttribute;
 				}
 
+				@Override
 				public Object caseEDataType(EDataType eDataType) {
 
 					try {
@@ -7902,7 +7642,7 @@ public class UMLUtil
 					return eDataType;
 				}
 
-			}.doSwitch((EObject) allContents.next());
+			}.doSwitch(allContents.next());
 		}
 
 		return ePackages;
@@ -7918,10 +7658,11 @@ public class UMLUtil
 	 *            The options to use.
 	 * @return A UML representation of the Ecore package.
 	 */
-	public static Collection convertFromEcore(EPackage ePackage, Map options) {
+	public static Collection<org.eclipse.uml2.uml.Package> convertFromEcore(
+			EPackage ePackage, Map<String, String> options) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
 		return convertFromEcore(ePackage, options, null, null);
@@ -7942,15 +7683,19 @@ public class UMLUtil
 	 *            The cache of context-specific information.
 	 * @return A UML representation of the Ecore package.
 	 */
-	public static Collection convertFromEcore(EPackage ePackage, Map options,
-			DiagnosticChain diagnostics, Map context) {
+	public static Collection<org.eclipse.uml2.uml.Package> convertFromEcore(
+			EPackage ePackage, Map<String, String> options,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (options == null) {
-			options = new HashMap();
+			options = new HashMap<String, String>();
 		}
 
-		return new Ecore2UMLConverter().convert(
-			Collections.singleton(ePackage), options, diagnostics, context);
+		@SuppressWarnings("unchecked")
+		Collection<org.eclipse.uml2.uml.Package> packages = (Collection<org.eclipse.uml2.uml.Package>) new Ecore2UMLConverter()
+			.convert(Collections.singleton(ePackage), options, diagnostics,
+				context);
+		return packages;
 	}
 
 }

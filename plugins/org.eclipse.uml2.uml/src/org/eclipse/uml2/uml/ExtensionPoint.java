@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPoint.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
+ * $Id: ExtensionPoint.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -76,6 +76,7 @@ public interface ExtensionPoint
 	 * @model
 	 * @generated
 	 */
-	boolean validateMustHaveName(DiagnosticChain diagnostics, Map context);
+	boolean validateMustHaveName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ExtensionPoint

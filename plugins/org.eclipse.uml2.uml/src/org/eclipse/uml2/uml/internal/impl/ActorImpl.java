@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActorImpl.java,v 1.2 2005/11/23 20:01:20 khussey Exp $
+ * $Id: ActorImpl.java,v 1.3 2006/12/14 15:49:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class ActorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTOR;
 	}
@@ -59,7 +60,8 @@ public class ActorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAssociations(DiagnosticChain diagnostics, Map context) {
+	public boolean validateAssociations(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActorOperations.validateAssociations(this, diagnostics, context);
 	}
 
@@ -68,7 +70,8 @@ public class ActorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMustHaveName(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMustHaveName(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActorOperations.validateMustHaveName(this, diagnostics, context);
 	}
 

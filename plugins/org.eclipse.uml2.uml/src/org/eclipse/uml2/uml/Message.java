@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Message.java,v 1.13 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Message.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -211,7 +211,7 @@ public interface Message
 	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getArguments();
+	EList<ValueSpecification> getArguments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
@@ -279,7 +279,7 @@ public interface Message
 	 * @generated
 	 */
 	boolean validateSendingReceivingMessageEvent(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,7 +291,8 @@ public interface Message
 	 * @model
 	 * @generated
 	 */
-	boolean validateSignatureReferTo(DiagnosticChain diagnostics, Map context);
+	boolean validateSignatureReferTo(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -304,7 +305,7 @@ public interface Message
 	 * @generated
 	 */
 	boolean validateSignatureIsOperation(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -316,7 +317,8 @@ public interface Message
 	 * @model
 	 * @generated
 	 */
-	boolean validateSignatureIsSignal(DiagnosticChain diagnostics, Map context);
+	boolean validateSignatureIsSignal(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -334,7 +336,8 @@ public interface Message
 	 * @model
 	 * @generated
 	 */
-	boolean validateArguments(DiagnosticChain diagnostics, Map context);
+	boolean validateArguments(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -347,7 +350,7 @@ public interface Message
 	 * @generated
 	 */
 	boolean validateCannotCrossBoundaries(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,6 +363,6 @@ public interface Message
 	 * @generated
 	 */
 	boolean validateOccurrenceSpecifications(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // Message

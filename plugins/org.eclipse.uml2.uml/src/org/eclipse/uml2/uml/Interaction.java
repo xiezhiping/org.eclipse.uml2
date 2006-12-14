@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Interaction.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Lifeline" opposite="interaction" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getLifelines();
+	EList<Lifeline> getLifelines();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Lifeline}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Lifeline</b></em>' containment reference list.
@@ -110,7 +110,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="enclosingInteraction" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getFragments();
+	EList<InteractionFragment> getFragments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InteractionFragment}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Fragment</b></em>' containment reference list.
@@ -163,7 +163,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Action" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getActions();
+	EList<Action> getActions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Action}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Action</b></em>' containment reference list.
@@ -217,7 +217,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getFormalGates();
+	EList<Gate> getFormalGates();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Gate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Formal Gate</b></em>' containment reference list.
@@ -269,7 +269,7 @@ public interface Interaction
 	 * @model type="org.eclipse.uml2.uml.Message" opposite="interaction" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getMessages();
+	EList<Message> getMessages();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Message}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Message</b></em>' containment reference list.

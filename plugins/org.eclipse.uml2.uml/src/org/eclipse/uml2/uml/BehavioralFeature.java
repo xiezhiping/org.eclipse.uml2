@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.13 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface BehavioralFeature
 	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedParameters();
+	EList<Parameter> getOwnedParameters();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Parameter}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Parameter</b></em>' containment reference list.
@@ -141,7 +141,7 @@ public interface BehavioralFeature
 	 * @model type="org.eclipse.uml2.uml.Behavior" opposite="specification" ordered="false"
 	 * @generated
 	 */
-	EList getMethods();
+	EList<Behavior> getMethods();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Method</b></em>' reference list.
@@ -210,7 +210,7 @@ public interface BehavioralFeature
 	 * @model type="org.eclipse.uml2.uml.Type" ordered="false"
 	 * @generated
 	 */
-	EList getRaisedExceptions();
+	EList<Type> getRaisedExceptions();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Type} with the specified '<em><b>Name</b></em>' from the '<em><b>Raised Exception</b></em>' reference list.
@@ -249,7 +249,7 @@ public interface BehavioralFeature
 	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedParameterSets();
+	EList<ParameterSet> getOwnedParameterSets();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ParameterSet}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Parameter Set</b></em>' containment reference list.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.9 2006/11/14 18:02:16 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.10 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,14 +19,17 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndCreationData;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.QualifierValue;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.internal.operations.LinkEndCreationDataOperations;
@@ -93,6 +96,7 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LINK_END_CREATION_DATA;
 	}
@@ -175,7 +179,7 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public boolean validateCreateLinkAction(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LinkEndCreationDataOperations.validateCreateLinkAction(this,
 			diagnostics, context);
 	}
@@ -186,7 +190,7 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public boolean validateSingleInputPin(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LinkEndCreationDataOperations.validateSingleInputPin(this,
 			diagnostics, context);
 	}
@@ -196,6 +200,7 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS :
@@ -235,15 +240,19 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__VALUE :
 				setValue((InputPin) newValue);
@@ -253,7 +262,8 @@ public class LinkEndCreationDataImpl
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll((Collection) newValue);
+				getQualifiers().addAll(
+					(Collection<? extends QualifierValue>) newValue);
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__IS_REPLACE_ALL :
 				setIsReplaceAll(((Boolean) newValue).booleanValue());
@@ -270,6 +280,7 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS :
@@ -302,6 +313,7 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_CREATION_DATA__EANNOTATIONS :
@@ -331,6 +343,7 @@ public class LinkEndCreationDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

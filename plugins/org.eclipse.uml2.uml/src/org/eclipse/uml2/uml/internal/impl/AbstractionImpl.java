@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.18 2006/11/14 18:02:18 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.19 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -31,7 +32,10 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Abstraction;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -81,6 +85,7 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ABSTRACTION;
 	}
@@ -90,23 +95,25 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.ABSTRACTION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.ABSTRACTION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ABSTRACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -215,18 +222,19 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
@@ -234,7 +242,7 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ABSTRACTION__CLIENT :
-				return ((InternalEList) getClients()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ABSTRACTION__MAPPING :
 				return basicSetMapping(null, msgs);
@@ -247,6 +255,7 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
@@ -306,15 +315,19 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__NAME :
 				setName((String) newValue);
@@ -324,7 +337,8 @@ public class AbstractionImpl
 				return;
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -337,11 +351,13 @@ public class AbstractionImpl
 				return;
 			case UMLPackage.ABSTRACTION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
@@ -355,6 +371,7 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
@@ -399,6 +416,7 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
@@ -462,6 +480,7 @@ public class AbstractionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.ABSTRACTION__MAPPING);

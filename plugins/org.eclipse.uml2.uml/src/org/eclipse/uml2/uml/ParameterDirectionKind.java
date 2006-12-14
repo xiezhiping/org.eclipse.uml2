@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterDirectionKind.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
+ * $Id: ParameterDirectionKind.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,47 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ParameterDirectionKind
-		extends AbstractEnumerator {
+public enum ParameterDirectionKind
+		implements Enumerator {
+	/**
+	 * The '<em><b>In</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IN
+	 * @generated
+	 * @ordered
+	 */
+	IN_LITERAL(0, "in", "in"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Inout</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INOUT
+	 * @generated
+	 * @ordered
+	 */
+	INOUT_LITERAL(1, "inout", "inout"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Out</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OUT
+	 * @generated
+	 * @ordered
+	 */
+	OUT_LITERAL(2, "out", "out"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Return</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RETURN
+	 * @generated
+	 * @ordered
+	 */
+	RETURN_LITERAL(3, "return", "return"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>In</b></em>' literal value.
@@ -90,50 +129,6 @@ public final class ParameterDirectionKind
 	public static final int RETURN = 3;
 
 	/**
-	 * The '<em><b>In</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IN
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterDirectionKind IN_LITERAL = new ParameterDirectionKind(
-		IN, "in", "in"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Inout</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INOUT
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterDirectionKind INOUT_LITERAL = new ParameterDirectionKind(
-		INOUT, "inout", "inout"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Out</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #OUT
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterDirectionKind OUT_LITERAL = new ParameterDirectionKind(
-		OUT, "out", "out"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Return</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RETURN
-	 * @generated
-	 * @ordered
-	 */
-	public static final ParameterDirectionKind RETURN_LITERAL = new ParameterDirectionKind(
-		RETURN, "return", "return"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Parameter Direction Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,8 +143,8 @@ public final class ParameterDirectionKind
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<ParameterDirectionKind> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Parameter Direction Kind</b></em>' literal with the specified literal value.
@@ -204,13 +199,74 @@ public final class ParameterDirectionKind
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private ParameterDirectionKind(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //ParameterDirectionKind

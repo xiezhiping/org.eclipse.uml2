@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateImpl.java,v 1.3 2006/02/23 17:20:47 khussey Exp $
+ * $Id: FinalStateImpl.java,v 1.4 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class FinalStateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.FINAL_STATE;
 	}
@@ -60,7 +61,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	public boolean validateNoOutgoingTransitions(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FinalStateOperations.validateNoOutgoingTransitions(this,
 			diagnostics, context);
 	}
@@ -70,7 +71,8 @@ public class FinalStateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoRegions(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNoRegions(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return FinalStateOperations.validateNoRegions(this, diagnostics,
 			context);
 	}
@@ -81,7 +83,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	public boolean validateCannotReferenceSubmachine(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return FinalStateOperations.validateCannotReferenceSubmachine(this,
 			diagnostics, context);
 	}
@@ -92,7 +94,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	public boolean validateNoEntryBehavior(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FinalStateOperations.validateNoEntryBehavior(this, diagnostics,
 			context);
 	}
@@ -103,7 +105,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	public boolean validateNoExitBehavior(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FinalStateOperations.validateNoExitBehavior(this, diagnostics,
 			context);
 	}
@@ -114,7 +116,7 @@ public class FinalStateImpl
 	 * @generated
 	 */
 	public boolean validateNoStateBehavior(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return FinalStateOperations.validateNoStateBehavior(this, diagnostics,
 			context);
 	}

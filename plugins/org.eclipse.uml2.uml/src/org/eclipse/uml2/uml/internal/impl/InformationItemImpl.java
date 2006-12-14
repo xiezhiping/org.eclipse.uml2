@@ -8,28 +8,38 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.16 2006/04/10 19:16:19 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.17 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.InformationItem;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.InformationItemOperations;
@@ -59,7 +69,7 @@ public class InformationItemImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList representeds = null;
+	protected EList<Classifier> representeds = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -75,6 +85,7 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INFORMATION_ITEM;
 	}
@@ -84,9 +95,10 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRepresenteds() {
+	public EList<Classifier> getRepresenteds() {
 		if (representeds == null) {
-			representeds = new EObjectResolvingEList(Classifier.class, this,
+			representeds = new EObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.INFORMATION_ITEM__REPRESENTED);
 		}
 		return representeds;
@@ -108,9 +120,7 @@ public class InformationItemImpl
 	 */
 	public Classifier getRepresented(String name, boolean ignoreCase,
 			EClass eClass) {
-		representedLoop : for (Iterator i = getRepresenteds().iterator(); i
-			.hasNext();) {
-			Classifier represented = (Classifier) i.next();
+		representedLoop : for (Classifier represented : getRepresenteds()) {
 			if (eClass != null && !eClass.isInstance(represented))
 				continue representedLoop;
 			if (name != null && !(ignoreCase
@@ -128,7 +138,7 @@ public class InformationItemImpl
 	 * @generated
 	 */
 	public boolean validateSourcesAndTargets(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InformationItemOperations.validateSourcesAndTargets(this,
 			diagnostics, context);
 	}
@@ -138,7 +148,8 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateHasNo(DiagnosticChain diagnostics, Map context) {
+	public boolean validateHasNo(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InformationItemOperations.validateHasNo(this, diagnostics,
 			context);
 	}
@@ -149,7 +160,7 @@ public class InformationItemImpl
 	 * @generated
 	 */
 	public boolean validateNotInstantiable(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InformationItemOperations.validateNotInstantiable(this,
 			diagnostics, context);
 	}
@@ -159,6 +170,7 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_ITEM__EANNOTATIONS :
@@ -266,15 +278,19 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_ITEM__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__NAME :
 				setName((String) newValue);
@@ -284,22 +300,26 @@ public class InformationItemImpl
 				return;
 			case UMLPackage.INFORMATION_ITEM__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -315,7 +335,8 @@ public class InformationItemImpl
 				return;
 			case UMLPackage.INFORMATION_ITEM__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -325,42 +346,50 @@ public class InformationItemImpl
 				return;
 			case UMLPackage.INFORMATION_ITEM__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection) newValue);
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection) newValue);
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll((Collection) newValue);
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection) newValue);
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll((Collection) newValue);
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__USE_CASE :
 				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__REPRESENTED :
 				getRepresenteds().clear();
-				getRepresenteds().addAll((Collection) newValue);
+				getRepresenteds().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -371,6 +400,7 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_ITEM__EANNOTATIONS :
@@ -460,6 +490,7 @@ public class InformationItemImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_ITEM__EANNOTATIONS :

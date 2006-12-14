@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.25 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.26 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -77,6 +76,7 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXTENSION;
 	}
@@ -86,18 +86,19 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedEndsGen() {
+	public EList<Property> getOwnedEndsGen() {
 		if (ownedEnds == null) {
-			ownedEnds = new EObjectContainmentWithInverseEList.Resolving(
+			ownedEnds = new EObjectContainmentWithInverseEList.Resolving<Property>(
 				ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
 				UMLPackage.PROPERTY__OWNING_ASSOCIATION);
 		}
 		return ownedEnds;
 	}
 
-	public EList getOwnedEnds() {
+	@Override
+	public EList<Property> getOwnedEnds() {
 		if (ownedEnds == null) {
-			ownedEnds = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			ownedEnds = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Property>(
 				ExtensionEnd.class, this, UMLPackage.EXTENSION__OWNED_END,
 				OWNED_END_ESUPERSETS, OWNED_END_ESUBSETS,
 				UMLPackage.PROPERTY__OWNING_ASSOCIATION);
@@ -110,6 +111,7 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property createOwnedEnd(String name, Type type) {
 		ExtensionEnd newOwnedEnd = (ExtensionEnd) create(UMLPackage.Literals.EXTENSION_END);
 		getOwnedEnds().add(newOwnedEnd);
@@ -125,6 +127,7 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property getOwnedEnd(String name, Type type) {
 		return getOwnedEnd(name, type, false, false);
 	}
@@ -136,8 +139,7 @@ public class ExtensionImpl
 	 */
 	public Property getOwnedEnd(String name, Type type, boolean ignoreCase,
 			boolean createOnDemand) {
-		ownedEndLoop : for (Iterator i = getOwnedEnds().iterator(); i.hasNext();) {
-			ExtensionEnd ownedEnd = (ExtensionEnd) i.next();
+		ownedEndLoop : for (Property ownedEnd : getOwnedEnds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(ownedEnd.getName())
 				: name.equals(ownedEnd.getName())))
@@ -197,7 +199,8 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNonOwnedEnd(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNonOwnedEnd(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExtensionOperations.validateNonOwnedEnd(this, diagnostics,
 			context);
 	}
@@ -207,7 +210,8 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIsBinary(DiagnosticChain diagnostics, Map context) {
+	public boolean validateIsBinary(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExtensionOperations.validateIsBinary(this, diagnostics, context);
 	}
 
@@ -243,6 +247,7 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION__EANNOTATIONS :
@@ -370,6 +375,7 @@ public class ExtensionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION__EANNOTATIONS :

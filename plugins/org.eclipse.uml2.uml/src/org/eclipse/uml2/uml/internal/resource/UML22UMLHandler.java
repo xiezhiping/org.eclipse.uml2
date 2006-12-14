@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML22UMLHandler.java,v 1.6 2006/04/26 15:48:53 khussey Exp $
+ * $Id: UML22UMLHandler.java,v 1.7 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
-import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
@@ -27,35 +26,33 @@ public class UML22UMLHandler
 		extends UMLHandler {
 
 	public UML22UMLHandler(XMLResource xmiResource, XMLHelper helper,
-			Map options) {
+			Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
 
+	@Override
 	protected void createObject(EObject peekObject, EStructuralFeature feature) {
 
 		if (!isNull()) {
 			String xsiType = getXSIType();
 
-			Map typeMap = xsiType == null
+			Map<String, Map<EClassifier, String>> featureToTypeMap = xsiType == null
 				? UML22UMLExtendedMetaData.getFeatureToTypeMap()
-				: (Map) UML22UMLExtendedMetaData.getTypeToTypeMap()
-					.get(xsiType);
-			typeMap = typeMap == null
+				: UML22UMLExtendedMetaData.getTypeToTypeMap().get(xsiType);
+
+			Map<EClassifier, String> typeMap = featureToTypeMap == null
 				? null
-				: (Map) typeMap.get(feature.getName());
+				: featureToTypeMap.get(feature.getName());
 
 			if (typeMap != null) {
 				EObject eObject = peekObject instanceof AnyType
 					? (EObject) objects.get(objects.size() - 2)
 					: peekObject;
 
-				for (Iterator entries = typeMap.entrySet().iterator(); entries
-					.hasNext();) {
+				for (Map.Entry<EClassifier, String> entry : typeMap.entrySet()) {
 
-					Map.Entry entry = (Map.Entry) entries.next();
-
-					if (((EClass) entry.getKey()).isInstance(eObject)) {
-						xsiType = (String) entry.getValue();
+					if (entry.getKey().isInstance(eObject)) {
+						xsiType = entry.getValue();
 						break;
 					}
 				}

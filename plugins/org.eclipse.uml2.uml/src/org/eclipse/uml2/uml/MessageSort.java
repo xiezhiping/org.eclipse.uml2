@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageSort.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
+ * $Id: MessageSort.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,67 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class MessageSort
-		extends AbstractEnumerator {
+public enum MessageSort
+		implements Enumerator {
+	/**
+	 * The '<em><b>Synch Call</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SYNCH_CALL
+	 * @generated
+	 * @ordered
+	 */
+	SYNCH_CALL_LITERAL(0, "synchCall", "synchCall"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Asynch Call</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASYNCH_CALL
+	 * @generated
+	 * @ordered
+	 */
+	ASYNCH_CALL_LITERAL(1, "asynchCall", "asynchCall"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Asynch Signal</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASYNCH_SIGNAL
+	 * @generated
+	 * @ordered
+	 */
+	ASYNCH_SIGNAL_LITERAL(2, "asynchSignal", "asynchSignal"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Create Message</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CREATE_MESSAGE
+	 * @generated
+	 * @ordered
+	 */
+	CREATE_MESSAGE_LITERAL(3, "createMessage", "createMessage"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Delete Message</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DELETE_MESSAGE
+	 * @generated
+	 * @ordered
+	 */
+	DELETE_MESSAGE_LITERAL(4, "deleteMessage", "deleteMessage"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Reply</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REPLY
+	 * @generated
+	 * @ordered
+	 */
+	REPLY_LITERAL(5, "reply", "reply"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Synch Call</b></em>' literal value.
@@ -120,72 +179,6 @@ public final class MessageSort
 	public static final int REPLY = 5;
 
 	/**
-	 * The '<em><b>Synch Call</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SYNCH_CALL
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort SYNCH_CALL_LITERAL = new MessageSort(
-		SYNCH_CALL, "synchCall", "synchCall"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Asynch Call</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ASYNCH_CALL
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort ASYNCH_CALL_LITERAL = new MessageSort(
-		ASYNCH_CALL, "asynchCall", "asynchCall"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Asynch Signal</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ASYNCH_SIGNAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort ASYNCH_SIGNAL_LITERAL = new MessageSort(
-		ASYNCH_SIGNAL, "asynchSignal", "asynchSignal"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Create Message</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CREATE_MESSAGE
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort CREATE_MESSAGE_LITERAL = new MessageSort(
-		CREATE_MESSAGE, "createMessage", "createMessage"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Delete Message</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DELETE_MESSAGE
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort DELETE_MESSAGE_LITERAL = new MessageSort(
-		DELETE_MESSAGE, "deleteMessage", "deleteMessage"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Reply</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #REPLY
-	 * @generated
-	 * @ordered
-	 */
-	public static final MessageSort REPLY_LITERAL = new MessageSort(REPLY,
-		"reply", "reply"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Message Sort</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,8 +194,8 @@ public final class MessageSort
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<MessageSort> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Message Sort</b></em>' literal with the specified literal value.
@@ -261,13 +254,74 @@ public final class MessageSort
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private MessageSort(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //MessageSort

@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.13 2006/05/02 14:55:08 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.14 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -26,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.ExtensionEnd;
@@ -83,7 +83,7 @@ public class StereotypeOperations
 	 * @generated
 	 */
 	public static boolean validateNameNotClash(Stereotype stereotype,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -115,7 +115,7 @@ public class StereotypeOperations
 	 * @generated
 	 */
 	public static boolean validateGeneralize(Stereotype stereotype,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -232,19 +232,17 @@ public class StereotypeOperations
 		return keyword;
 	}
 
-	protected static EList getExtendedMetaclasses(Stereotype stereotype,
-			EList extendedMetaclasses) {
+	protected static EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses(
+			Stereotype stereotype,
+			EList<org.eclipse.uml2.uml.Class> extendedMetaclasses) {
 
-		for (Iterator ownedAttributes = stereotype.getOwnedAttributes()
-			.iterator(); ownedAttributes.hasNext();) {
+		for (Property ownedAttribute : stereotype.getOwnedAttributes()) {
 
-			Property property = (Property) ownedAttributes.next();
-
-			if (property.getAssociation() instanceof Extension) {
-				Type type = property.getType();
+			if (ownedAttribute.getAssociation() instanceof Extension) {
+				Type type = ownedAttribute.getType();
 
 				if (type instanceof org.eclipse.uml2.uml.Class) {
-					extendedMetaclasses.add(type);
+					extendedMetaclasses.add((org.eclipse.uml2.uml.Class) type);
 				}
 			}
 		}
@@ -257,9 +255,11 @@ public class StereotypeOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getExtendedMetaclasses(Stereotype stereotype) {
+	public static EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses(
+			Stereotype stereotype) {
 		return ECollections.unmodifiableEList(getExtendedMetaclasses(
-			stereotype, new UniqueEList.FastCompare()));
+			stereotype,
+			new UniqueEList.FastCompare<org.eclipse.uml2.uml.Class>()));
 	}
 
 	/**
@@ -267,14 +267,13 @@ public class StereotypeOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllExtendedMetaclasses(Stereotype stereotype) {
-		EList allExtendedMetaclasses = getExtendedMetaclasses(stereotype,
-			new UniqueEList.FastCompare());
+	public static EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses(
+			Stereotype stereotype) {
+		EList<org.eclipse.uml2.uml.Class> allExtendedMetaclasses = getExtendedMetaclasses(
+			stereotype,
+			new UniqueEList.FastCompare<org.eclipse.uml2.uml.Class>());
 
-		for (Iterator allParents = stereotype.allParents().iterator(); allParents
-			.hasNext();) {
-
-			Object parent = allParents.next();
+		for (Classifier parent : stereotype.allParents()) {
 
 			if (parent instanceof Stereotype) {
 				getExtendedMetaclasses((Stereotype) parent,

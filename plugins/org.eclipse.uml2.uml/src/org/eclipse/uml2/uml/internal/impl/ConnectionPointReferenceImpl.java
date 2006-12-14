@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.16 2006/11/14 18:02:15 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.17 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,12 +32,15 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectionPointReference;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -71,7 +74,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList entries = null;
+	protected EList<Pseudostate> entries = null;
 
 	/**
 	 * The cached value of the '{@link #getExits() <em>Exit</em>}' reference list.
@@ -81,7 +84,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList exits = null;
+	protected EList<Pseudostate> exits = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -97,6 +100,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CONNECTION_POINT_REFERENCE;
 	}
@@ -118,10 +122,10 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEntries() {
+	public EList<Pseudostate> getEntries() {
 		if (entries == null) {
-			entries = new EObjectResolvingEList(Pseudostate.class, this,
-				UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
+			entries = new EObjectResolvingEList<Pseudostate>(Pseudostate.class,
+				this, UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY);
 		}
 		return entries;
 	}
@@ -141,8 +145,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Pseudostate getEntry(String name, boolean ignoreCase) {
-		entryLoop : for (Iterator i = getEntries().iterator(); i.hasNext();) {
-			Pseudostate entry = (Pseudostate) i.next();
+		entryLoop : for (Pseudostate entry : getEntries()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(entry.getName())
 				: name.equals(entry.getName())))
@@ -157,10 +160,10 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExits() {
+	public EList<Pseudostate> getExits() {
 		if (exits == null) {
-			exits = new EObjectResolvingEList(Pseudostate.class, this,
-				UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
+			exits = new EObjectResolvingEList<Pseudostate>(Pseudostate.class,
+				this, UMLPackage.CONNECTION_POINT_REFERENCE__EXIT);
 		}
 		return exits;
 	}
@@ -180,8 +183,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public Pseudostate getExit(String name, boolean ignoreCase) {
-		exitLoop : for (Iterator i = getExits().iterator(); i.hasNext();) {
-			Pseudostate exit = (Pseudostate) i.next();
+		exitLoop : for (Pseudostate exit : getExits()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(exit.getName())
 				: name.equals(exit.getName())))
@@ -260,7 +262,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public boolean validateEntryPseudostates(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConnectionPointReferenceOperations.validateEntryPseudostates(
 			this, diagnostics, context);
 	}
@@ -271,7 +273,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public boolean validateExitPseudostates(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ConnectionPointReferenceOperations.validateExitPseudostates(
 			this, diagnostics, context);
 	}
@@ -281,20 +283,22 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				if (eInternalContainer() != null)
@@ -313,26 +317,27 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
@@ -346,6 +351,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -364,6 +370,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
@@ -417,15 +424,19 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				setName((String) newValue);
@@ -435,29 +446,33 @@ public class ConnectionPointReferenceImpl
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				setContainer((Region) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				getEntries().clear();
-				getEntries().addAll((Collection) newValue);
+				getEntries().addAll(
+					(Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
 				getExits().clear();
-				getExits().addAll((Collection) newValue);
+				getExits().addAll((Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
 				setState((State) newValue);
@@ -471,6 +486,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
@@ -518,6 +534,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
@@ -578,6 +595,7 @@ public class ConnectionPointReferenceImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
 			|| eIsSet(UMLPackage.CONNECTION_POINT_REFERENCE__STATE);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlow.java,v 1.5 2006/05/12 20:38:04 khussey Exp $
+ * $Id: ObjectFlow.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -155,7 +155,8 @@ public interface ObjectFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoActions(DiagnosticChain diagnostics, Map context);
+	boolean validateNoActions(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,7 +169,8 @@ public interface ObjectFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateCompatibleTypes(DiagnosticChain diagnostics, Map context);
+	boolean validateCompatibleTypes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,7 +182,8 @@ public interface ObjectFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameUpperBounds(DiagnosticChain diagnostics, Map context);
+	boolean validateSameUpperBounds(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,7 +195,8 @@ public interface ObjectFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,7 +209,7 @@ public interface ObjectFlow
 	 * @generated
 	 */
 	boolean validateTransformationBehaviour(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,7 +221,8 @@ public interface ObjectFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateSelectionBehaviour(DiagnosticChain diagnostics, Map context);
+	boolean validateSelectionBehaviour(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,7 +235,7 @@ public interface ObjectFlow
 	 * @generated
 	 */
 	boolean validateInputAndOutputParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +248,6 @@ public interface ObjectFlow
 	 * @generated
 	 */
 	boolean validateIsMulticastOrIsMultireceive(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ObjectFlow

@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.17 2006/11/14 18:02:19 khussey Exp $
+ * $Id: VertexImpl.java,v 1.18 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
@@ -67,7 +69,7 @@ public abstract class VertexImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList outgoings = null;
+	protected EList<Transition> outgoings = null;
 
 	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
@@ -77,7 +79,7 @@ public abstract class VertexImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList incomings = null;
+	protected EList<Transition> incomings = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,6 +95,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.VERTEX;
 	}
@@ -114,10 +117,10 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutgoings() {
+	public EList<Transition> getOutgoings() {
 		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.VERTEX__OUTGOING,
+			outgoings = new EObjectWithInverseResolvingEList<Transition>(
+				Transition.class, this, UMLPackage.VERTEX__OUTGOING,
 				UMLPackage.TRANSITION__SOURCE);
 		}
 		return outgoings;
@@ -138,8 +141,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Transition getOutgoing(String name, boolean ignoreCase, EClass eClass) {
-		outgoingLoop : for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
-			Transition outgoing = (Transition) i.next();
+		outgoingLoop : for (Transition outgoing : getOutgoings()) {
 			if (eClass != null && !eClass.isInstance(outgoing))
 				continue outgoingLoop;
 			if (name != null && !(ignoreCase
@@ -156,10 +158,10 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getIncomings() {
+	public EList<Transition> getIncomings() {
 		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList(Transition.class,
-				this, UMLPackage.VERTEX__INCOMING,
+			incomings = new EObjectWithInverseResolvingEList<Transition>(
+				Transition.class, this, UMLPackage.VERTEX__INCOMING,
 				UMLPackage.TRANSITION__TARGET);
 		}
 		return incomings;
@@ -180,8 +182,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Transition getIncoming(String name, boolean ignoreCase, EClass eClass) {
-		incomingLoop : for (Iterator i = getIncomings().iterator(); i.hasNext();) {
-			Transition incoming = (Transition) i.next();
+		incomingLoop : for (Transition incoming : getIncomings()) {
 			if (eClass != null && !eClass.isInstance(incoming))
 				continue incomingLoop;
 			if (name != null && !(ignoreCase
@@ -269,20 +270,22 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
 				if (eInternalContainer() != null)
@@ -297,26 +300,27 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VERTEX__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.VERTEX__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.VERTEX__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicSetContainer(null, msgs);
 		}
@@ -328,6 +332,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -343,6 +348,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
@@ -388,15 +394,19 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.VERTEX__NAME :
 				setName((String) newValue);
@@ -406,18 +416,21 @@ public abstract class VertexImpl
 				return;
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.VERTEX__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.VERTEX__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
 				setContainer((Region) newValue);
@@ -431,6 +444,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
@@ -469,6 +483,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
@@ -523,6 +538,7 @@ public abstract class VertexImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.VERTEX__CONTAINER);
 	}

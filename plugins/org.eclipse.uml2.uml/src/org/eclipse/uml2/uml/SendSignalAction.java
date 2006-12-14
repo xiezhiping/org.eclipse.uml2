@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
+ * $Id: SendSignalAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -127,7 +127,8 @@ public interface SendSignalAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberOrder(DiagnosticChain diagnostics, Map context);
+	boolean validateNumberOrder(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,6 +141,6 @@ public interface SendSignalAction
 	 * @generated
 	 */
 	boolean validateTypeOrderingMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // SendSignalAction

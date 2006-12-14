@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Collaboration.java,v 1.5 2006/05/12 20:38:05 khussey Exp $
+ * $Id: Collaboration.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface Collaboration
 	 * @model type="org.eclipse.uml2.uml.ConnectableElement" ordered="false"
 	 * @generated
 	 */
-	EList getCollaborationRoles();
+	EList<ConnectableElement> getCollaborationRoles();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Collaboration Role</b></em>' reference list.

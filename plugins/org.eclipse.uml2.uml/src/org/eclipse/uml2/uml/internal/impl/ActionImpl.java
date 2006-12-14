@@ -8,17 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.25 2006/11/14 18:02:17 khussey Exp $
+ * $Id: ActionImpl.java,v 1.26 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,11 +31,18 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
@@ -74,7 +80,7 @@ public abstract class ActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList localPreconditions = null;
+	protected EList<Constraint> localPreconditions = null;
 
 	/**
 	 * The cached value of the '{@link #getLocalPostconditions() <em>Local Postcondition</em>}' containment reference list.
@@ -84,7 +90,7 @@ public abstract class ActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList localPostconditions = null;
+	protected EList<Constraint> localPostconditions = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,6 +106,7 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTION;
 	}
@@ -109,21 +116,24 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
+	public EList<OutputPin> getOutputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList outputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__OUTPUT);
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
 			if (outputs == null) {
-				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
-					outputs = new DerivedUnionEObjectEList(OutputPin.class,
-						this, UMLPackage.ACTION__OUTPUT, null));
+				cache
+					.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+						outputs = new DerivedUnionEObjectEList<OutputPin>(
+							OutputPin.class, this, UMLPackage.ACTION__OUTPUT,
+							null));
 			}
 			return outputs;
 		}
-		return new DerivedUnionEObjectEList(OutputPin.class, this,
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
 			UMLPackage.ACTION__OUTPUT, null);
 	}
 
@@ -142,8 +152,7 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public OutputPin getOutput(String name, Type type, boolean ignoreCase) {
-		outputLoop : for (Iterator i = getOutputs().iterator(); i.hasNext();) {
-			OutputPin output = (OutputPin) i.next();
+		outputLoop : for (OutputPin output : getOutputs()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(output.getName())
 				: name.equals(output.getName())))
@@ -174,23 +183,24 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.ACTION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.ACTION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.ACTION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -199,21 +209,22 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
+	public EList<InputPin> getInputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__INPUT);
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
-					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
-						UMLPackage.ACTION__INPUT, null));
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this, UMLPackage.ACTION__INPUT, null));
 			}
 			return inputs;
 		}
-		return new DerivedUnionEObjectEList(InputPin.class, this,
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
 			UMLPackage.ACTION__INPUT, null);
 	}
 
@@ -233,8 +244,7 @@ public abstract class ActionImpl
 	 */
 	public InputPin getInput(String name, Type type, boolean ignoreCase,
 			EClass eClass) {
-		inputLoop : for (Iterator i = getInputs().iterator(); i.hasNext();) {
-			InputPin input = (InputPin) i.next();
+		inputLoop : for (InputPin input : getInputs()) {
 			if (eClass != null && !eClass.isInstance(input))
 				continue inputLoop;
 			if (name != null && !(ignoreCase
@@ -277,9 +287,9 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLocalPreconditions() {
+	public EList<Constraint> getLocalPreconditions() {
 		if (localPreconditions == null) {
-			localPreconditions = new EObjectContainmentEList.Resolving(
+			localPreconditions = new EObjectContainmentEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.ACTION__LOCAL_PRECONDITION);
 		}
 		return localPreconditions;
@@ -323,9 +333,7 @@ public abstract class ActionImpl
 	 */
 	public Constraint getLocalPrecondition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		localPreconditionLoop : for (Iterator i = getLocalPreconditions()
-			.iterator(); i.hasNext();) {
-			Constraint localPrecondition = (Constraint) i.next();
+		localPreconditionLoop : for (Constraint localPrecondition : getLocalPreconditions()) {
 			if (eClass != null && !eClass.isInstance(localPrecondition))
 				continue localPreconditionLoop;
 			if (name != null && !(ignoreCase
@@ -344,9 +352,9 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLocalPostconditions() {
+	public EList<Constraint> getLocalPostconditions() {
 		if (localPostconditions == null) {
-			localPostconditions = new EObjectContainmentEList.Resolving(
+			localPostconditions = new EObjectContainmentEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.ACTION__LOCAL_POSTCONDITION);
 		}
 		return localPostconditions;
@@ -390,9 +398,7 @@ public abstract class ActionImpl
 	 */
 	public Constraint getLocalPostcondition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		localPostconditionLoop : for (Iterator i = getLocalPostconditions()
-			.iterator(); i.hasNext();) {
-			Constraint localPostcondition = (Constraint) i.next();
+		localPostconditionLoop : for (Constraint localPostcondition : getLocalPostconditions()) {
 			if (eClass != null && !eClass.isInstance(localPostcondition))
 				continue localPostconditionLoop;
 			if (name != null && !(ignoreCase
@@ -411,18 +417,19 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
@@ -430,26 +437,26 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTION__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -459,6 +466,7 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
@@ -538,15 +546,19 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTION__NAME :
 				setName((String) newValue);
@@ -556,7 +568,8 @@ public abstract class ActionImpl
 				return;
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -572,35 +585,44 @@ public abstract class ActionImpl
 				return;
 			case UMLPackage.ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -611,6 +633,7 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
@@ -673,6 +696,7 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
@@ -753,6 +777,7 @@ public abstract class ActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements() || isSetOutputs() || isSetInputs()
 			|| eIsSet(UMLPackage.ACTION__LOCAL_PRECONDITION)

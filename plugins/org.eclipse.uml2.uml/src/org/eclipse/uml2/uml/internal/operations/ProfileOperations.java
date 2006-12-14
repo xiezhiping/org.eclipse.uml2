@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.29 2006/10/10 20:41:29 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.30 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -100,24 +100,21 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static boolean validateMetaclassReferenceNotSpecialized(
-			Profile profile, DiagnosticChain diagnostics, Map context) {
+			Profile profile, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = true;
 
-		for (Iterator referencedMetaclasses = profile
-			.getReferencedMetaclasses().iterator(); result
-			&& referencedMetaclasses.hasNext();) {
+		for (org.eclipse.uml2.uml.Class referencedMetaclass : profile
+			.getReferencedMetaclasses()) {
 
-			org.eclipse.uml2.uml.Class referencedMetaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
-				.next();
+			for (TreeIterator<EObject> allContents = getAllContents(profile,
+				true, false); allContents.hasNext();) {
 
-			for (Iterator allContents = getAllContents(profile, true, false); allContents
-				.hasNext();) {
+				EObject eObject = allContents.next();
 
-				Object object = allContents.next();
-
-				if (object instanceof org.eclipse.uml2.uml.Package
+				if (eObject instanceof org.eclipse.uml2.uml.Package
 					&& containsSpecializations(
-						(org.eclipse.uml2.uml.Package) object,
+						(org.eclipse.uml2.uml.Package) eObject,
 						referencedMetaclass)) {
 
 					result = false;
@@ -127,12 +124,9 @@ public class ProfileOperations
 
 			if (result) {
 
-				for (Iterator allParents = referencedMetaclass.allParents()
-					.iterator(); allParents.hasNext();) {
+				for (Classifier parent : referencedMetaclass.allParents()) {
 
-					if (EcoreUtil.isAncestor(profile, (Classifier) allParents
-						.next())) {
-
+					if (EcoreUtil.isAncestor(profile, parent)) {
 						result = false;
 						break;
 					}
@@ -164,16 +158,14 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static boolean validateReferencesSameMetamodel(Profile profile,
-			DiagnosticChain diagnostics, Map context) {
-		EList metamodels = new UniqueEList.FastCompare(profile
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		EList<Model> metamodels = new UniqueEList.FastCompare<Model>(profile
 			.getReferencedMetamodels());
 
-		for (Iterator referencedMetaclasses = profile
-			.getReferencedMetaclasses().iterator(); referencedMetaclasses
-			.hasNext();) {
+		for (org.eclipse.uml2.uml.Class referencedMetaclass : profile
+			.getReferencedMetaclasses()) {
 
-			metamodels.add(((org.eclipse.uml2.uml.Class) referencedMetaclasses
-				.next()).getModel());
+			metamodels.add(referencedMetaclass.getModel());
 		}
 
 		if (metamodels.size() != 1) {
@@ -282,7 +274,7 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static EPackage define(Profile profile) {
-		Map options = new HashMap();
+		Map<String, String> options = new HashMap<String, String>();
 
 		options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
 			OPTION__PROCESS);
@@ -291,9 +283,9 @@ public class ProfileOperations
 		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			OPTION__PROCESS);
 
-		Collection ePackages = convertToEcore(profile, options);
+		Collection<EPackage> ePackages = convertToEcore(profile, options);
 		EPackage definition = ePackages.size() == 1
-			? (EPackage) ePackages.iterator().next()
+			? ePackages.iterator().next()
 			: null;
 
 		if (definition != null) {
@@ -313,7 +305,7 @@ public class ProfileOperations
 		EAnnotation eAnnotation = profile.getEAnnotation(UMLPackage.eNS_URI);
 
 		if (eAnnotation != null) {
-			EList contents = eAnnotation.getContents();
+			EList<EObject> contents = eAnnotation.getContents();
 
 			if (contents.size() > 0) {
 				return (EPackage) contents.get(0);
@@ -330,10 +322,9 @@ public class ProfileOperations
 
 			if (profileDefinition != null) {
 
-				for (Iterator eClassifiers = profileDefinition
-					.getEClassifiers().iterator(); eClassifiers.hasNext();) {
+				for (EClassifier eClassifier : profileDefinition
+					.getEClassifiers()) {
 
-					EClassifier eClassifier = (EClassifier) eClassifiers.next();
 					EAnnotation eAnnotation = eClassifier
 						.getEAnnotation(UMLPackage.eNS_URI);
 
@@ -385,17 +376,19 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getReferencedMetaclasses(Profile profile) {
-		EList referencedMetaclasses = new UniqueEList.FastCompare();
+	public static EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses(
+			Profile profile) {
+		EList<org.eclipse.uml2.uml.Class> referencedMetaclasses = new UniqueEList.FastCompare<org.eclipse.uml2.uml.Class>();
 
-		for (Iterator metaclassReferences = profile.getMetaclassReferences()
-			.iterator(); metaclassReferences.hasNext();) {
+		for (ElementImport metaclassReference : profile
+			.getMetaclassReferences()) {
 
-			PackageableElement importedElement = ((ElementImport) metaclassReferences
-				.next()).getImportedElement();
+			PackageableElement importedElement = metaclassReference
+				.getImportedElement();
 
 			if (importedElement != null) {
-				referencedMetaclasses.add(importedElement);
+				referencedMetaclasses
+					.add((org.eclipse.uml2.uml.Class) importedElement);
 			}
 		}
 
@@ -407,31 +400,28 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getReferencedMetamodels(Profile profile) {
-		EList referencedMetamodels = new UniqueEList.FastCompare();
+	public static EList<Model> getReferencedMetamodels(Profile profile) {
+		EList<Model> referencedMetamodels = new UniqueEList.FastCompare<Model>();
 
-		for (Iterator metamodelReferences = profile.getMetamodelReferences()
-			.iterator(); metamodelReferences.hasNext();) {
+		for (PackageImport metamodelReference : profile
+			.getMetamodelReferences()) {
 
-			org.eclipse.uml2.uml.Package importedPackage = ((PackageImport) metamodelReferences
-				.next()).getImportedPackage();
+			org.eclipse.uml2.uml.Package importedPackage = metamodelReference
+				.getImportedPackage();
 
 			if (importedPackage != null) {
-				referencedMetamodels.add(importedPackage);
+				referencedMetamodels.add((Model) importedPackage);
 			}
 		}
 
 		return ECollections.unmodifiableEList(referencedMetamodels);
 	}
 
-	protected static EList getOwnedExtensions(Profile profile,
-			boolean requiredOnly, EList ownedExtensions) {
+	protected static EList<Extension> getOwnedExtensions(Profile profile,
+			boolean requiredOnly, EList<Extension> ownedExtensions) {
 
-		for (Iterator extensions = EcoreUtil.getObjectsByType(
-			profile.getPackagedElements(), UMLPackage.Literals.EXTENSION)
-			.iterator(); extensions.hasNext();) {
-
-			Extension extension = (Extension) extensions.next();
+		for (Extension extension : EcoreUtil.<Extension> getObjectsByType(
+			profile.getPackagedElements(), UMLPackage.Literals.EXTENSION)) {
 
 			if (!requiredOnly || extension.isRequired()) {
 				ownedExtensions.add(extension);
@@ -446,9 +436,10 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getOwnedExtensions(Profile profile, boolean requiredOnly) {
+	public static EList<Extension> getOwnedExtensions(Profile profile,
+			boolean requiredOnly) {
 		return ECollections.unmodifiableEList(getOwnedExtensions(profile,
-			requiredOnly, new UniqueEList.FastCompare()));
+			requiredOnly, new UniqueEList.FastCompare<Extension>()));
 	}
 
 } // ProfileOperations

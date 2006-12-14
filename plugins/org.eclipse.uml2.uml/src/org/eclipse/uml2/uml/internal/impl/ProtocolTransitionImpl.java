@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.32 2006/11/14 18:02:20 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.33 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -25,6 +24,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -41,10 +41,14 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseE
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ProtocolTransition;
 import org.eclipse.uml2.uml.Region;
@@ -52,6 +56,7 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -113,6 +118,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PROTOCOL_TRANSITION;
 	}
@@ -122,9 +128,9 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedRules() {
+	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
 				Constraint.class, this,
 				UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE, null,
 				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
@@ -190,7 +196,7 @@ public class ProtocolTransitionImpl
 				setPreCondition(null);
 			}
 			if (newGuard != null) {
-				EList ownedRules = getOwnedRules();
+				EList<Constraint> ownedRules = getOwnedRules();
 				if (!ownedRules.contains(newGuard)) {
 					ownedRules.add(newGuard);
 				}
@@ -243,7 +249,7 @@ public class ProtocolTransitionImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newPostCondition != null) {
-				EList ownedRules = getOwnedRules();
+				EList<Constraint> ownedRules = getOwnedRules();
 				if (!ownedRules.contains(newPostCondition)) {
 					ownedRules.add(newPostCondition);
 				}
@@ -274,28 +280,32 @@ public class ProtocolTransitionImpl
 	}
 
 	protected static class ReferredEList
-			extends DerivedEObjectEList {
+			extends DerivedEObjectEList<Operation> {
 
-		protected ReferredEList(Class dataClass, InternalEObject owner,
+		protected ReferredEList(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] sourceFeatureIDs) {
 			super(dataClass, owner, featureID, sourceFeatureIDs);
 		}
 
-		public List basicList() {
+		@Override
+		public List<Operation> basicList() {
 			return new ReferredEList(dataClass, owner, featureID,
 				sourceFeatureIDs) {
 
-				public ListIterator listIterator(int index) {
+				@Override
+				public ListIterator<Operation> listIterator(int index) {
 					return basicListIterator(index);
 				}
 			};
 		}
 
+		@Override
 		protected boolean isIncluded(EStructuralFeature feature) {
 			return false;
 		}
 
-		protected Object derive(Object object) {
+		@Override
+		protected Operation derive(Object object) {
 			Event event = ((Trigger) object).getEvent();
 			return event instanceof CallEvent
 				? ((CallEvent) event).getOperation()
@@ -315,11 +325,13 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getReferreds() {
+	public EList<Operation> getReferreds() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList referreds = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Operation> referreds = (EList<Operation>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED);
 			if (referreds == null) {
 				cache.put(eResource, this,
@@ -335,12 +347,11 @@ public class ProtocolTransitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getReferred(String name, EList ownedParameterNames,
-			EList ownedParameterTypes) {
+	public Operation getReferred(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
 		return getReferred(name, ownedParameterNames, ownedParameterTypes,
 			false);
 	}
@@ -350,26 +361,25 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Operation getReferred(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase) {
-		referredLoop : for (Iterator i = getReferreds().iterator(); i.hasNext();) {
-			Operation referred = (Operation) i.next();
+	public Operation getReferred(String name,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes,
+			boolean ignoreCase) {
+		referredLoop : for (Operation referred : getReferreds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(referred.getName())
 				: name.equals(referred.getName())))
 				continue referredLoop;
-			EList ownedParameterList = referred.getOwnedParameters();
+			EList<Parameter> ownedParameterList = referred.getOwnedParameters();
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
 				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
 				continue referredLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
-				Parameter ownedParameter = (Parameter) ownedParameterList
-					.get(j);
+				Parameter ownedParameter = ownedParameterList.get(j);
 				if (ownedParameterNames != null
 					&& !(ignoreCase
-						? ((String) ownedParameterNames.get(j))
+						? (ownedParameterNames.get(j))
 							.equalsIgnoreCase(ownedParameter.getName())
 						: ownedParameterNames.get(j).equals(
 							ownedParameter.getName())))
@@ -441,7 +451,8 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBelongsToPsm(DiagnosticChain diagnostics, Map context) {
+	public boolean validateBelongsToPsm(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ProtocolTransitionOperations.validateBelongsToPsm(this,
 			diagnostics, context);
 	}
@@ -452,7 +463,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public boolean validateAssociatedActions(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolTransitionOperations.validateAssociatedActions(this,
 			diagnostics, context);
 	}
@@ -463,7 +474,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public boolean validateRefersToOperation(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ProtocolTransitionOperations.validateRefersToOperation(this,
 			diagnostics, context);
 	}
@@ -473,24 +484,26 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -514,29 +527,30 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
@@ -544,7 +558,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
-				return ((InternalEList) getTriggers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				return basicSetSource(null, msgs);
@@ -557,6 +571,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
@@ -652,15 +667,19 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
 				setName((String) newValue);
@@ -670,22 +689,26 @@ public class ProtocolTransitionImpl
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -710,7 +733,7 @@ public class ProtocolTransitionImpl
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
-				getTriggers().addAll((Collection) newValue);
+				getTriggers().addAll((Collection<? extends Trigger>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -730,6 +753,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
@@ -801,6 +825,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :

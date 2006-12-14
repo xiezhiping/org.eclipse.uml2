@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.9 2006/11/29 02:00:49 khussey Exp $
+ * $Id: RegionOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -79,7 +78,7 @@ public class RegionOperations
 	 * @generated
 	 */
 	public static boolean validateInitialVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -113,7 +112,7 @@ public class RegionOperations
 	 * @generated
 	 */
 	public static boolean validateDeepHistoryVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -147,7 +146,7 @@ public class RegionOperations
 	 * @generated
 	 */
 	public static boolean validateShallowHistoryVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -179,7 +178,7 @@ public class RegionOperations
 	 * @generated
 	 */
 	public static boolean validateOwned(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -329,14 +328,9 @@ public class RegionOperations
 
 		if (redefinee != null && redefinee.isRedefinitionContextValid(region)) {
 			Region redefineeRegion = (Region) redefinee;
+			EList<Vertex> allSubvertices = getAllSubvertices(region);
 
-			EList allSubvertices = getAllSubvertices(region);
-
-			for (Iterator redefineeSubvertices = redefineeRegion
-				.getSubvertices().iterator(); redefineeSubvertices.hasNext();) {
-
-				Vertex redefineeSubvertex = (Vertex) redefineeSubvertices
-					.next();
+			for (Vertex redefineeSubvertex : redefineeRegion.getSubvertices()) {
 
 				if (redefineeSubvertex instanceof State) {
 					State redefinedState = ((State) redefineeSubvertex)
@@ -350,13 +344,13 @@ public class RegionOperations
 				}
 			}
 
-			EList allTransitions = getAllTransitions(region);
+			EList<Transition> allTransitions = getAllTransitions(region);
 
-			for (Iterator redefineeTransitions = redefineeRegion
-				.getTransitions().iterator(); redefineeTransitions.hasNext();) {
+			for (Transition redefineeTransition : redefineeRegion
+				.getTransitions()) {
 
-				Transition redefinedTransition = ((Transition) redefineeTransitions
-					.next()).getRedefinedTransition();
+				Transition redefinedTransition = redefineeTransition
+					.getRedefinedTransition();
 
 				if (redefinedTransition != null
 					&& !allTransitions.contains(redefinedTransition)) {
@@ -371,8 +365,8 @@ public class RegionOperations
 		return false;
 	}
 
-	protected static EList getAllExtendedRegions(Region region,
-			EList allExtendedRegions) {
+	protected static EList<Region> getAllExtendedRegions(Region region,
+			EList<Region> allExtendedRegions) {
 		Region extendedRegion = region.getExtendedRegion();
 
 		if (extendedRegion != null && allExtendedRegions.add(extendedRegion)) {
@@ -382,34 +376,30 @@ public class RegionOperations
 		return allExtendedRegions;
 	}
 
-	protected static EList getAllExtendedRegions(Region region) {
-		return getAllExtendedRegions(region, new UniqueEList.FastCompare());
+	protected static EList<Region> getAllExtendedRegions(Region region) {
+		return getAllExtendedRegions(region,
+			new UniqueEList.FastCompare<Region>());
 	}
 
-	protected static EList getAllSubvertices(Region region) {
-		EList allSubvertices = new UniqueEList.FastCompare(region
-			.getSubvertices());
+	protected static EList<Vertex> getAllSubvertices(Region region) {
+		EList<Vertex> allSubvertices = new UniqueEList.FastCompare<Vertex>(
+			region.getSubvertices());
 
-		for (Iterator allExtendedRegions = getAllExtendedRegions(region)
-			.iterator(); allExtendedRegions.hasNext();) {
-
-			allSubvertices.addAll(((Region) allExtendedRegions.next())
-				.getSubvertices());
+		for (Region extendedRegion : getAllExtendedRegions(region)) {
+			allSubvertices.addAll(extendedRegion.getSubvertices());
 		}
 
 		return RedefinableElementOperations
 			.excludeRedefinedElements(allSubvertices);
 	}
 
-	protected static EList getAllTransitions(Region region) {
-		EList allTransitions = new UniqueEList.FastCompare(region
-			.getTransitions());
+	protected static EList<Transition> getAllTransitions(Region region) {
+		EList<Transition> allTransitions = new UniqueEList.FastCompare<Transition>(
+			region.getTransitions());
 
-		for (Iterator allExtendedRegions = getAllExtendedRegions(region)
-			.iterator(); allExtendedRegions.hasNext();) {
+		for (Region extendedRegion : getAllExtendedRegions(region)) {
 
-			allTransitions.addAll(((Region) allExtendedRegions.next())
-				.getTransitions());
+			allTransitions.addAll(extendedRegion.getTransitions());
 		}
 
 		return RedefinableElementOperations

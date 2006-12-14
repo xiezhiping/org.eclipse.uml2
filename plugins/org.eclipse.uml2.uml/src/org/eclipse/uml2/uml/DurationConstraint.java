@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.6 2006/05/12 20:38:05 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface DurationConstraint
 	 * @model type="boolean" default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
 	 * @generated
 	 */
-	EList getFirstEvents();
+	EList<Boolean> getFirstEvents();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,6 +67,6 @@ public interface DurationConstraint
 	 * @generated
 	 */
 	boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // DurationConstraint

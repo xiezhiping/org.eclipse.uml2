@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.10 2006/03/07 20:25:17 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.11 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
-import java.util.Iterator;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
@@ -58,8 +58,8 @@ public class DataTypeOperations
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(DataType dataType,
-			String name, EList parameterNames, EList parameterTypes,
-			Type returnType) {
+			String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, Type returnType) {
 		return TypeOperations.createOwnedOperation(dataType, name,
 			parameterNames, parameterTypes, returnType);
 	}
@@ -84,15 +84,12 @@ public class DataTypeOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList inherit(DataType dataType, EList inhs) {
-		EList inherit = new UniqueEList.FastCompare();
+	public static EList<NamedElement> inherit(DataType dataType,
+			EList<NamedElement> inhs) {
+		EList<NamedElement> inherit = new UniqueEList.FastCompare<NamedElement>();
+		EList<NamedElement> redefinedElements = new UniqueEList.FastCompare<NamedElement>();
 
-		EList redefinedElements = new UniqueEList.FastCompare();
-
-		for (Iterator ownedMembers = dataType.getOwnedMembers().iterator(); ownedMembers
-			.hasNext();) {
-
-			Object ownedMember = ownedMembers.next();
+		for (NamedElement ownedMember : dataType.getOwnedMembers()) {
 
 			if (ownedMember instanceof RedefinableElement) {
 				redefinedElements.addAll(((RedefinableElement) ownedMember)
@@ -100,8 +97,7 @@ public class DataTypeOperations
 			}
 		}
 
-		for (Iterator i = inhs.iterator(); i.hasNext();) {
-			Object inh = i.next();
+		for (NamedElement inh : inhs) {
 
 			if (!redefinedElements.contains(inh)) {
 				inherit.add(inh);

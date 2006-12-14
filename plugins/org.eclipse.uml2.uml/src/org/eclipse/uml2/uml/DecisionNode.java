@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNode.java,v 1.2 2006/05/12 20:38:09 khussey Exp $
+ * $Id: DecisionNode.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,8 @@ public interface DecisionNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneIncomingEdge(DiagnosticChain diagnostics, Map context);
+	boolean validateOneIncomingEdge(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,7 +87,8 @@ public interface DecisionNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateInputParameter(DiagnosticChain diagnostics, Map context);
+	boolean validateInputParameter(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,6 +100,7 @@ public interface DecisionNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // DecisionNode

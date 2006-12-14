@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.19 2006/11/14 18:02:18 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.20 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,11 +37,15 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.CombinedFragment;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Gate;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InteractionOperatorKind;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -96,7 +100,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList operands = null;
+	protected EList<InteractionOperand> operands = null;
 
 	/**
 	 * The cached value of the '{@link #getCfragmentGates() <em>Cfragment Gate</em>}' containment reference list.
@@ -106,7 +110,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList cfragmentGates = null;
+	protected EList<Gate> cfragmentGates = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,6 +126,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.COMBINED_FRAGMENT;
 	}
@@ -131,23 +136,25 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.COMBINED_FRAGMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -184,9 +191,9 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOperands() {
+	public EList<InteractionOperand> getOperands() {
 		if (operands == null) {
-			operands = new EObjectContainmentEList.Resolving(
+			operands = new EObjectContainmentEList.Resolving<InteractionOperand>(
 				InteractionOperand.class, this,
 				UMLPackage.COMBINED_FRAGMENT__OPERAND);
 		}
@@ -222,8 +229,7 @@ public class CombinedFragmentImpl
 	 */
 	public InteractionOperand getOperand(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		operandLoop : for (Iterator i = getOperands().iterator(); i.hasNext();) {
-			InteractionOperand operand = (InteractionOperand) i.next();
+		operandLoop : for (InteractionOperand operand : getOperands()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(operand.getName())
 				: name.equals(operand.getName())))
@@ -240,10 +246,10 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCfragmentGates() {
+	public EList<Gate> getCfragmentGates() {
 		if (cfragmentGates == null) {
-			cfragmentGates = new EObjectContainmentEList.Resolving(Gate.class,
-				this, UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
+			cfragmentGates = new EObjectContainmentEList.Resolving<Gate>(
+				Gate.class, this, UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE);
 		}
 		return cfragmentGates;
 	}
@@ -277,9 +283,7 @@ public class CombinedFragmentImpl
 	 */
 	public Gate getCfragmentGate(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		cfragmentGateLoop : for (Iterator i = getCfragmentGates().iterator(); i
-			.hasNext();) {
-			Gate cfragmentGate = (Gate) i.next();
+		cfragmentGateLoop : for (Gate cfragmentGate : getCfragmentGates()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(cfragmentGate.getName())
 				: name.equals(cfragmentGate.getName())))
@@ -297,7 +301,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public boolean validateOptLoopBreakNeg(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return CombinedFragmentOperations.validateOptLoopBreakNeg(this,
 			diagnostics, context);
 	}
@@ -308,7 +312,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public boolean validateMinintAndMaxint(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return CombinedFragmentOperations.validateMinintAndMaxint(this,
 			diagnostics, context);
 	}
@@ -318,7 +322,8 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateBreak(DiagnosticChain diagnostics, Map context) {
+	public boolean validateBreak(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return CombinedFragmentOperations.validateBreak(this, diagnostics,
 			context);
 	}
@@ -329,7 +334,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public boolean validateConsiderAndIgnore(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return CombinedFragmentOperations.validateConsiderAndIgnore(this,
 			diagnostics, context);
 	}
@@ -339,35 +344,36 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
-				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
-				return ((InternalEList) getGeneralOrderings()).basicRemove(
+				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
-				return ((InternalEList) getOperands()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
-				return ((InternalEList) getCfragmentGates()).basicRemove(
+				return ((InternalEList<?>) getCfragmentGates()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -378,6 +384,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
@@ -433,15 +440,19 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__NAME :
 				setName((String) newValue);
@@ -451,18 +462,20 @@ public class CombinedFragmentImpl
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -475,11 +488,13 @@ public class CombinedFragmentImpl
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				getOperands().clear();
-				getOperands().addAll((Collection) newValue);
+				getOperands().addAll(
+					(Collection<? extends InteractionOperand>) newValue);
 				return;
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
 				getCfragmentGates().clear();
-				getCfragmentGates().addAll((Collection) newValue);
+				getCfragmentGates().addAll(
+					(Collection<? extends Gate>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -490,6 +505,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
@@ -540,6 +556,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.COMBINED_FRAGMENT__EANNOTATIONS :
@@ -588,6 +605,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -619,6 +637,7 @@ public class CombinedFragmentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.COMBINED_FRAGMENT__OPERAND)

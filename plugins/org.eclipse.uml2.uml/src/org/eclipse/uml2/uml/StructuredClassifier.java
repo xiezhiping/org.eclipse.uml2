@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedAttributes();
+	EList<Property> getOwnedAttributes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.
@@ -127,7 +127,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getParts();
+	EList<Property> getParts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Part</b></em>' reference list.
@@ -168,7 +168,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRoles();
+	EList<ConnectableElement> getRoles();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ConnectableElement} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Role</b></em>' reference list.
@@ -210,7 +210,7 @@ public interface StructuredClassifier
 	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedConnectors();
+	EList<Connector> getOwnedConnectors();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Connector}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Connector</b></em>' containment reference list.
@@ -258,7 +258,8 @@ public interface StructuredClassifier
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicities(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicities(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

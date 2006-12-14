@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationImpl.java,v 1.13 2006/11/14 18:02:18 khussey Exp $
+ * $Id: ExecutionSpecificationImpl.java,v 1.14 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,14 +19,19 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
+import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -86,6 +91,7 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXECUTION_SPECIFICATION;
 	}
@@ -181,7 +187,8 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSameLifeline(DiagnosticChain diagnostics, Map context) {
+	public boolean validateSameLifeline(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExecutionSpecificationOperations.validateSameLifeline(this,
 			diagnostics, context);
 	}
@@ -191,6 +198,7 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS :
@@ -248,15 +256,19 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -266,18 +278,20 @@ public abstract class ExecutionSpecificationImpl
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -300,6 +314,7 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS :
@@ -347,6 +362,7 @@ public abstract class ExecutionSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_SPECIFICATION__EANNOTATIONS :

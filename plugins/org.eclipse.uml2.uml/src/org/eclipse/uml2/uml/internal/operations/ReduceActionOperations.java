@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionOperations.java,v 1.2 2006/01/05 22:43:26 khussey Exp $
+ * $Id: ReduceActionOperations.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -60,7 +60,8 @@ public class ReduceActionOperations
 	 * @generated
 	 */
 	public static boolean validateInputTypeIsCollection(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -92,7 +93,8 @@ public class ReduceActionOperations
 	 * @generated
 	 */
 	public static boolean validateOutputTypesAreCompatible(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -124,7 +126,8 @@ public class ReduceActionOperations
 	 * @generated
 	 */
 	public static boolean validateReducerInputsOutput(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

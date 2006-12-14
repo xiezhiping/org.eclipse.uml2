@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.14 2006/11/14 18:02:18 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.15 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,14 +19,25 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallBehaviorAction;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ExceptionHandler;
+import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
@@ -76,6 +87,7 @@ public class CallBehaviorActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.CALL_BEHAVIOR_ACTION;
 	}
@@ -130,7 +142,7 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public boolean validateArgumentPinEqualParameter(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return CallBehaviorActionOperations.validateArgumentPinEqualParameter(
 			this, diagnostics, context);
 	}
@@ -141,7 +153,7 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public boolean validateResultPinEqualParameter(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return CallBehaviorActionOperations.validateResultPinEqualParameter(
 			this, diagnostics, context);
 	}
@@ -152,7 +164,7 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public boolean validateTypeOrderingMultiplicity(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return CallBehaviorActionOperations.validateTypeOrderingMultiplicity(
 			this, diagnostics, context);
 	}
@@ -162,6 +174,7 @@ public class CallBehaviorActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
@@ -257,15 +270,19 @@ public class CallBehaviorActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME :
 				setName((String) newValue);
@@ -275,7 +292,8 @@ public class CallBehaviorActionImpl
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -291,39 +309,49 @@ public class CallBehaviorActionImpl
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ARGUMENT :
 				getArguments().clear();
-				getArguments().addAll((Collection) newValue);
+				getArguments()
+					.addAll((Collection<? extends InputPin>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__ON_PORT :
 				setOnPort((Port) newValue);
@@ -333,7 +361,7 @@ public class CallBehaviorActionImpl
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__RESULT :
 				getResults().clear();
-				getResults().addAll((Collection) newValue);
+				getResults().addAll((Collection<? extends OutputPin>) newValue);
 				return;
 			case UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR :
 				setBehavior((Behavior) newValue);
@@ -347,6 +375,7 @@ public class CallBehaviorActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :
@@ -424,6 +453,7 @@ public class CallBehaviorActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.CALL_BEHAVIOR_ACTION__EANNOTATIONS :

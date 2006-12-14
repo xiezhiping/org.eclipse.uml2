@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: StructuralFeatureAction.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -128,7 +128,8 @@ public interface StructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotStatic(DiagnosticChain diagnostics, Map context);
+	boolean validateNotStatic(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,7 +141,8 @@ public interface StructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameType(DiagnosticChain diagnostics, Map context);
+	boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,7 +154,8 @@ public interface StructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,7 +172,8 @@ public interface StructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateVisibility(DiagnosticChain diagnostics, Map context);
+	boolean validateVisibility(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -182,6 +186,6 @@ public interface StructuralFeatureAction
 	 * @generated
 	 */
 	boolean validateOneFeaturingClassifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // StructuralFeatureAction

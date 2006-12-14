@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Signal.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Signal.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface Signal
 	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getOwnedAttributes();
+	EList<Property> getOwnedAttributes();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Owned Attribute</b></em>' containment reference list.

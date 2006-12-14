@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RelationshipImpl.java,v 1.11 2006/11/14 18:02:18 khussey Exp $
+ * $Id: RelationshipImpl.java,v 1.12 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -55,6 +55,7 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.RELATIONSHIP;
 	}
@@ -64,23 +65,25 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.RELATIONSHIP__RELATED_ELEMENT, null));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.RELATIONSHIP__RELATED_ELEMENT, null);
 	}
 
@@ -89,6 +92,7 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.RELATIONSHIP__EANNOTATIONS :
@@ -112,6 +116,7 @@ public abstract class RelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RELATIONSHIP__EANNOTATIONS :

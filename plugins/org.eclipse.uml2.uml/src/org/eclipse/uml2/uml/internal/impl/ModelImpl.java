@@ -8,20 +8,31 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ModelImpl.java,v 1.12 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ModelImpl.java,v 1.13 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageMerge;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -87,6 +98,7 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MODEL;
 	}
@@ -157,6 +169,7 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
@@ -236,15 +249,19 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MODEL__NAME :
 				setName((String) newValue);
@@ -254,22 +271,26 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.MODEL__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.MODEL__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -279,33 +300,39 @@ public class ModelImpl
 				return;
 			case UMLPackage.MODEL__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.MODEL__OWNED_TYPE :
 				getOwnedTypes().clear();
-				getOwnedTypes().addAll((Collection) newValue);
+				getOwnedTypes().addAll((Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGE_MERGE :
 				getPackageMerges().clear();
-				getPackageMerges().addAll((Collection) newValue);
+				getPackageMerges().addAll(
+					(Collection<? extends PackageMerge>) newValue);
 				return;
 			case UMLPackage.MODEL__PACKAGED_ELEMENT :
 				getPackagedElements().clear();
-				getPackagedElements().addAll((Collection) newValue);
+				getPackagedElements().addAll(
+					(Collection<? extends PackageableElement>) newValue);
 				return;
 			case UMLPackage.MODEL__NESTED_PACKAGE :
 				getNestedPackages().clear();
-				getNestedPackages().addAll((Collection) newValue);
+				getNestedPackages()
+					.addAll(
+						(Collection<? extends org.eclipse.uml2.uml.Package>) newValue);
 				return;
 			case UMLPackage.MODEL__NESTING_PACKAGE :
 				setNestingPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
 			case UMLPackage.MODEL__PROFILE_APPLICATION :
 				getProfileApplications().clear();
-				getProfileApplications().addAll((Collection) newValue);
+				getProfileApplications().addAll(
+					(Collection<? extends ProfileApplication>) newValue);
 				return;
 			case UMLPackage.MODEL__VIEWPOINT :
 				setViewpoint((String) newValue);
@@ -319,6 +346,7 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
@@ -390,6 +418,7 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MODEL__EANNOTATIONS :
@@ -459,6 +488,7 @@ public class ModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

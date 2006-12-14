@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClass.java,v 1.3 2006/05/12 20:38:08 khussey Exp $
+ * $Id: AssociationClass.java,v 1.4 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,8 @@ public interface AssociationClass
 	 * @model
 	 * @generated
 	 */
-	boolean validateCannotBeDefined(DiagnosticChain diagnostics, Map context);
+	boolean validateCannotBeDefined(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -57,6 +58,6 @@ public interface AssociationClass
 	 * @model type="org.eclipse.uml2.uml.Property" lower="2" ordered="false"
 	 * @generated
 	 */
-	EList allConnections();
+	EList<Property> allConnections();
 
 } // AssociationClass

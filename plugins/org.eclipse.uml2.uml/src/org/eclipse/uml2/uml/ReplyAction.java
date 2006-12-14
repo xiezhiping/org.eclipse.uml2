@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ReplyAction.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -133,7 +133,7 @@ public interface ReplyAction
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getReplyValues();
+	EList<InputPin> getReplyValues();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Reply Value</b></em>' containment reference list.
@@ -198,7 +198,8 @@ public interface ReplyAction
 	 * @model
 	 * @generated
 	 */
-	boolean validatePinsMatchParameter(DiagnosticChain diagnostics, Map context);
+	boolean validatePinsMatchParameter(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -211,6 +212,6 @@ public interface ReplyAction
 	 * @generated
 	 */
 	boolean validateEventOnReplyToCallTrigger(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ReplyAction

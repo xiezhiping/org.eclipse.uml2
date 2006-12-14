@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -86,7 +86,8 @@ public interface AcceptCallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateResultPins(DiagnosticChain diagnostics, Map context);
+	boolean validateResultPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +99,8 @@ public interface AcceptCallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTriggerCallEvent(DiagnosticChain diagnostics, Map context);
+	boolean validateTriggerCallEvent(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -110,6 +112,7 @@ public interface AcceptCallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateUnmarshall(DiagnosticChain diagnostics, Map context);
+	boolean validateUnmarshall(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // AcceptCallAction

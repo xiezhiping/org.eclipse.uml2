@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ControlFlow.java,v 1.2 2006/05/12 20:38:07 khussey Exp $
+ * $Id: ControlFlow.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,6 +43,7 @@ public interface ControlFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateObjectNodes(DiagnosticChain diagnostics, Map context);
+	boolean validateObjectNodes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ControlFlow

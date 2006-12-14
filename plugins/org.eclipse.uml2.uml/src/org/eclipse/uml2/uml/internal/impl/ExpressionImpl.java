@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.18 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.19 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.StringExpression;
@@ -97,7 +99,7 @@ public class ExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList operands = null;
+	protected EList<ValueSpecification> operands = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,6 +115,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXPRESSION;
 	}
@@ -122,23 +125,25 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.EXPRESSION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.EXPRESSION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.EXPRESSION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -199,9 +204,9 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOperands() {
+	public EList<ValueSpecification> getOperands() {
 		if (operands == null) {
-			operands = new EObjectContainmentEList.Resolving(
+			operands = new EObjectContainmentEList.Resolving<ValueSpecification>(
 				ValueSpecification.class, this, UMLPackage.EXPRESSION__OPERAND);
 		}
 		return operands;
@@ -239,8 +244,7 @@ public class ExpressionImpl
 	 */
 	public ValueSpecification getOperand(String name, Type type,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		operandLoop : for (Iterator i = getOperands().iterator(); i.hasNext();) {
-			ValueSpecification operand = (ValueSpecification) i.next();
+		operandLoop : for (ValueSpecification operand : getOperands()) {
 			if (eClass != null && !eClass.isInstance(operand))
 				continue operandLoop;
 			if (name != null && !(ignoreCase
@@ -261,18 +265,19 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
@@ -280,7 +285,7 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.EXPRESSION__OPERAND :
-				return ((InternalEList) getOperands()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -291,6 +296,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
@@ -344,15 +350,19 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXPRESSION__NAME :
 				setName((String) newValue);
@@ -362,7 +372,8 @@ public class ExpressionImpl
 				return;
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -381,7 +392,8 @@ public class ExpressionImpl
 				return;
 			case UMLPackage.EXPRESSION__OPERAND :
 				getOperands().clear();
-				getOperands().addAll((Collection) newValue);
+				getOperands().addAll(
+					(Collection<? extends ValueSpecification>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -392,6 +404,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
@@ -436,6 +449,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
@@ -480,6 +494,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -511,6 +526,7 @@ public class ExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.EXPRESSION__OPERAND);

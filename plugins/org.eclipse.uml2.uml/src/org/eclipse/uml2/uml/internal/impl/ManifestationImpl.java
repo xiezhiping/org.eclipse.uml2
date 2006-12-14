@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.13 2006/11/14 18:02:20 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.14 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -26,6 +27,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -77,6 +80,7 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.MANIFESTATION;
 	}
@@ -86,9 +90,9 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuppliers() {
+	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList(
+			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this, UMLPackage.MANIFESTATION__SUPPLIER,
 				null, SUPPLIER_ESUBSETS);
 		}
@@ -150,7 +154,7 @@ public class ManifestationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newUtilizedElement != null) {
-				EList suppliers = getSuppliers();
+				EList<NamedElement> suppliers = getSuppliers();
 				if (!suppliers.contains(newUtilizedElement)) {
 					suppliers.add(newUtilizedElement);
 				}
@@ -163,6 +167,7 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
@@ -226,15 +231,19 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__NAME :
 				setName((String) newValue);
@@ -244,7 +253,8 @@ public class ManifestationImpl
 				return;
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -257,11 +267,13 @@ public class ManifestationImpl
 				return;
 			case UMLPackage.MANIFESTATION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
@@ -278,6 +290,7 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
@@ -325,6 +338,7 @@ public class ManifestationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :

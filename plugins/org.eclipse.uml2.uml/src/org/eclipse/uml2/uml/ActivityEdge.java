@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.13 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,7 +95,7 @@ public interface ActivityEdge
 	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="containedEdge" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getInGroups();
+	EList<ActivityGroup> getInGroups();
 
 	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
@@ -112,7 +112,7 @@ public interface ActivityEdge
 	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="edge" ordered="false"
 	 * @generated
 	 */
-	EList getInPartitions();
+	EList<ActivityPartition> getInPartitions();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityPartition} with the specified '<em><b>Name</b></em>' from the '<em><b>In Partition</b></em>' reference list.
@@ -204,7 +204,7 @@ public interface ActivityEdge
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedEdges();
+	EList<ActivityEdge> getRedefinedEdges();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Edge</b></em>' reference list.
@@ -370,7 +370,8 @@ public interface ActivityEdge
 	 * @model
 	 * @generated
 	 */
-	boolean validateSourceAndTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateSourceAndTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -382,7 +383,8 @@ public interface ActivityEdge
 	 * @model
 	 * @generated
 	 */
-	boolean validateOwned(DiagnosticChain diagnostics, Map context);
+	boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -394,6 +396,7 @@ public interface ActivityEdge
 	 * @model
 	 * @generated
 	 */
-	boolean validateStructuredNode(DiagnosticChain diagnostics, Map context);
+	boolean validateStructuredNode(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ActivityEdge

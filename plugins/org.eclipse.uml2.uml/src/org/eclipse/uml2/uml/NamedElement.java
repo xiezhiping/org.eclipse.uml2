@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.15 2006/05/26 16:34:03 khussey Exp $
+ * $Id: NamedElement.java,v 1.16 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -185,7 +185,7 @@ public interface NamedElement
 	 * @model type="org.eclipse.uml2.uml.Dependency" opposite="client" ordered="false"
 	 * @generated
 	 */
-	EList getClientDependencies();
+	EList<Dependency> getClientDependencies();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Dependency} with the specified '<em><b>Name</b></em>' from the '<em><b>Client Dependency</b></em>' reference list.
@@ -276,7 +276,8 @@ public interface NamedElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateHasNoQualifiedName(DiagnosticChain diagnostics, Map context);
+	boolean validateHasNoQualifiedName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -289,7 +290,8 @@ public interface NamedElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateHasQualifiedName(DiagnosticChain diagnostics, Map context);
+	boolean validateHasQualifiedName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,7 +304,7 @@ public interface NamedElement
 	 * @generated
 	 */
 	boolean validateVisibilityNeedsOwnership(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -350,7 +352,7 @@ public interface NamedElement
 	 * @model type="org.eclipse.uml2.uml.Namespace"
 	 * @generated
 	 */
-	EList allNamespaces();
+	EList<Namespace> allNamespaces();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -389,7 +391,7 @@ public interface NamedElement
 	 * @model type="org.eclipse.uml2.uml.Package" ordered="false"
 	 * @generated
 	 */
-	EList allOwningPackages();
+	EList<org.eclipse.uml2.uml.Package> allOwningPackages();
 
 	String SEPARATOR = "::"; //$NON-NLS-1$
 

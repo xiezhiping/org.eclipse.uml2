@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.6 2006/05/12 20:38:09 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface ConnectionPointReference
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" ordered="false"
 	 * @generated
 	 */
-	EList getEntries();
+	EList<Pseudostate> getEntries();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Entry</b></em>' reference list.
@@ -94,7 +94,7 @@ public interface ConnectionPointReference
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" ordered="false"
 	 * @generated
 	 */
-	EList getExits();
+	EList<Pseudostate> getExits();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Pseudostate} with the specified '<em><b>Name</b></em>' from the '<em><b>Exit</b></em>' reference list.
@@ -156,7 +156,8 @@ public interface ConnectionPointReference
 	 * @model
 	 * @generated
 	 */
-	boolean validateEntryPseudostates(DiagnosticChain diagnostics, Map context);
+	boolean validateEntryPseudostates(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,6 +169,7 @@ public interface ConnectionPointReference
 	 * @model
 	 * @generated
 	 */
-	boolean validateExitPseudostates(DiagnosticChain diagnostics, Map context);
+	boolean validateExitPseudostates(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ConnectionPointReference

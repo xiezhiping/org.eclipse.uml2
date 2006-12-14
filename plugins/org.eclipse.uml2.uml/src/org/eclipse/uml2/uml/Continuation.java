@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Continuation.java,v 1.4 2006/05/12 20:38:08 khussey Exp $
+ * $Id: Continuation.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -75,7 +75,8 @@ public interface Continuation
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameName(DiagnosticChain diagnostics, Map context);
+	boolean validateSameName(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,7 +88,8 @@ public interface Continuation
 	 * @model
 	 * @generated
 	 */
-	boolean validateGlobal(DiagnosticChain diagnostics, Map context);
+	boolean validateGlobal(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,6 +102,6 @@ public interface Continuation
 	 * @generated
 	 */
 	boolean validateFirstOrLastInteractionFragment(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // Continuation

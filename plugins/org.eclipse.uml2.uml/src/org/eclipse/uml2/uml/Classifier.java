@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.19 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Classifier.java,v 1.20 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -100,7 +100,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Generalization" opposite="specific" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getGeneralizations();
+	EList<Generalization> getGeneralizations();
 
 	/**
 	 * Returns the value of the '<em><b>Powertype Extent</b></em>' reference list.
@@ -117,7 +117,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.GeneralizationSet" opposite="powertype" ordered="false"
 	 * @generated
 	 */
-	EList getPowertypeExtents();
+	EList<GeneralizationSet> getPowertypeExtents();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.GeneralizationSet} with the specified '<em><b>Name</b></em>' from the '<em><b>Powertype Extent</b></em>' reference list.
@@ -158,7 +158,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Feature" opposite="featuringClassifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getFeatures();
+	EList<Feature> getFeatures();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Feature} with the specified '<em><b>Name</b></em>' from the '<em><b>Feature</b></em>' reference list.
@@ -197,7 +197,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getInheritedMembers();
+	EList<NamedElement> getInheritedMembers();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Inherited Member</b></em>' reference list.
@@ -237,7 +237,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedClassifiers();
+	EList<Classifier> getRedefinedClassifiers();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Classifier</b></em>' reference list.
@@ -278,7 +278,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getGenerals();
+	EList<Classifier> getGenerals();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>General</b></em>' reference list.
@@ -317,7 +317,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.UseCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedUseCases();
+	EList<UseCase> getOwnedUseCases();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.UseCase}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Use Case</b></em>' containment reference list.
@@ -370,7 +370,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.UseCase" opposite="subject" ordered="false"
 	 * @generated
 	 */
-	EList getUseCases();
+	EList<UseCase> getUseCases();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.UseCase} with the specified '<em><b>Name</b></em>' from the '<em><b>Use Case</b></em>' reference list.
@@ -410,7 +410,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Substitution" opposite="substitutingClassifier" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getSubstitutions();
+	EList<Substitution> getSubstitutions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Substitution}, with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', and appends it to the '<em><b>Substitution</b></em>' containment reference list.
@@ -464,7 +464,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getAttributes();
+	EList<Property> getAttributes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Attribute</b></em>' reference list.
@@ -542,7 +542,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.CollaborationUse" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getCollaborationUses();
+	EList<CollaborationUse> getCollaborationUses();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.CollaborationUse}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Collaboration Use</b></em>' containment reference list.
@@ -591,7 +591,7 @@ public interface Classifier
 	 * @generated
 	 */
 	boolean validateNoCyclesInGeneralization(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -603,7 +603,8 @@ public interface Classifier
 	 * @model
 	 * @generated
 	 */
-	boolean validateSpecializeType(DiagnosticChain diagnostics, Map context);
+	boolean validateSpecializeType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -616,7 +617,7 @@ public interface Classifier
 	 * @generated
 	 */
 	boolean validateGeneralizationHierarchies(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -629,7 +630,7 @@ public interface Classifier
 	 * @generated
 	 */
 	boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Generalization}, with the specified '<em><b>General</b></em>', and appends it to the '<em><b>Generalization</b></em>' containment reference list.
@@ -674,7 +675,7 @@ public interface Classifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	EList getAllAttributes();
+	EList<Property> getAllAttributes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,7 +686,7 @@ public interface Classifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
-	EList getOperations();
+	EList<Operation> getOperations();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -696,7 +697,7 @@ public interface Classifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Operation" ordered="false"
 	 * @generated
 	 */
-	EList getAllOperations();
+	EList<Operation> getAllOperations();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -707,8 +708,8 @@ public interface Classifier
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
 	 * @generated
 	 */
-	Operation getOperation(String name, EList parameterNames,
-			EList parameterTypes);
+	Operation getOperation(String name, EList<String> parameterNames,
+			EList<Type> parameterTypes);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -719,8 +720,8 @@ public interface Classifier
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.uml.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
 	 * @generated
 	 */
-	Operation getOperation(String name, EList parameterNames,
-			EList parameterTypes, boolean ignoreCase);
+	Operation getOperation(String name, EList<String> parameterNames,
+			EList<Type> parameterTypes, boolean ignoreCase);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -731,7 +732,7 @@ public interface Classifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
-	EList getUsedInterfaces();
+	EList<Interface> getUsedInterfaces();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -742,7 +743,7 @@ public interface Classifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
-	EList getAllUsedInterfaces();
+	EList<Interface> getAllUsedInterfaces();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -766,7 +767,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Feature" ordered="false"
 	 * @generated
 	 */
-	EList allFeatures();
+	EList<Feature> allFeatures();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -778,7 +779,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList parents();
+	EList<Classifier> parents();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -791,7 +792,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false" cRequired="true" cOrdered="false"
 	 * @generated
 	 */
-	EList inheritableMembers(Classifier c);
+	EList<NamedElement> inheritableMembers(Classifier c);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -829,7 +830,7 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false" inhsType="org.eclipse.uml2.uml.NamedElement" inhsMany="true" inhsOrdered="false"
 	 * @generated
 	 */
-	EList inherit(EList inhs);
+	EList<NamedElement> inherit(EList<NamedElement> inhs);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -841,6 +842,6 @@ public interface Classifier
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList allParents();
+	EList<Classifier> allParents();
 
 } // Classifier

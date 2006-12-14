@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.18 2006/11/14 18:02:19 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.19 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -39,7 +39,10 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DeployedArtifact;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -97,7 +100,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList classifiers = null;
+	protected EList<Classifier> classifiers = null;
 
 	/**
 	 * The cached value of the '{@link #getSlots() <em>Slot</em>}' containment reference list.
@@ -107,7 +110,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList slots = null;
+	protected EList<Slot> slots = null;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -133,6 +136,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INSTANCE_SPECIFICATION;
 	}
@@ -352,23 +356,25 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INSTANCE_SPECIFICATION__OWNED_ELEMENT,
 			OWNED_ELEMENT_ESUBSETS);
 	}
@@ -378,9 +384,10 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClassifiers() {
+	public EList<Classifier> getClassifiers() {
 		if (classifiers == null) {
-			classifiers = new EObjectResolvingEList(Classifier.class, this,
+			classifiers = new EObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER);
 		}
 		return classifiers;
@@ -402,9 +409,7 @@ public class InstanceSpecificationImpl
 	 */
 	public Classifier getClassifier(String name, boolean ignoreCase,
 			EClass eClass) {
-		classifierLoop : for (Iterator i = getClassifiers().iterator(); i
-			.hasNext();) {
-			Classifier classifier = (Classifier) i.next();
+		classifierLoop : for (Classifier classifier : getClassifiers()) {
 			if (eClass != null && !eClass.isInstance(classifier))
 				continue classifierLoop;
 			if (name != null && !(ignoreCase
@@ -530,9 +535,9 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSlots() {
+	public EList<Slot> getSlots() {
 		if (slots == null) {
-			slots = new EObjectContainmentWithInverseEList.Resolving(
+			slots = new EObjectContainmentWithInverseEList.Resolving<Slot>(
 				Slot.class, this, UMLPackage.INSTANCE_SPECIFICATION__SLOT,
 				UMLPackage.SLOT__OWNING_INSTANCE);
 		}
@@ -574,7 +579,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean validateDefiningFeature(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InstanceSpecificationOperations.validateDefiningFeature(this,
 			diagnostics, context);
 	}
@@ -585,7 +590,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean validateStructuralFeature(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InstanceSpecificationOperations.validateStructuralFeature(this,
 			diagnostics, context);
 	}
@@ -596,7 +601,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean validateDeploymentTarget(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InstanceSpecificationOperations.validateDeploymentTarget(this,
 			diagnostics, context);
 	}
@@ -607,7 +612,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public boolean validateDeploymentArtifact(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InstanceSpecificationOperations.validateDeploymentArtifact(this,
 			diagnostics, context);
 	}
@@ -617,18 +622,20 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -643,7 +650,8 @@ public class InstanceSpecificationImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
-				return ((InternalEList) getSlots()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSlots())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -653,29 +661,31 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getDeployments()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
-				return ((InternalEList) getSlots()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getSlots()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
 		}
@@ -687,6 +697,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -703,6 +714,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
@@ -760,15 +772,19 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME :
 				setName((String) newValue);
@@ -778,14 +794,16 @@ public class InstanceSpecificationImpl
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll((Collection) newValue);
+				getDeployments().addAll(
+					(Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -795,11 +813,12 @@ public class InstanceSpecificationImpl
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__CLASSIFIER :
 				getClassifiers().clear();
-				getClassifiers().addAll((Collection) newValue);
+				getClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__SLOT :
 				getSlots().clear();
-				getSlots().addAll((Collection) newValue);
+				getSlots().addAll((Collection<? extends Slot>) newValue);
 				return;
 			case UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION :
 				setSpecification((ValueSpecification) newValue);
@@ -813,6 +832,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
@@ -860,6 +880,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INSTANCE_SPECIFICATION__EANNOTATIONS :
@@ -908,7 +929,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
@@ -939,7 +961,8 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -970,6 +993,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -1000,6 +1024,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER);
@@ -1025,6 +1050,7 @@ public class InstanceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.INSTANCE_SPECIFICATION__SLOT)

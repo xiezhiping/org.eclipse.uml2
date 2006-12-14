@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.12 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.13 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,15 +19,25 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallConcurrencyKind;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -74,6 +84,7 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.RECEPTION;
 	}
@@ -125,7 +136,8 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotQuery(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNotQuery(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReceptionOperations.validateNotQuery(this, diagnostics, context);
 	}
 
@@ -134,6 +146,7 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.RECEPTION__EANNOTATIONS :
@@ -215,15 +228,19 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.RECEPTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.RECEPTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.RECEPTION__NAME :
 				setName((String) newValue);
@@ -233,22 +250,26 @@ public class ReceptionImpl
 				return;
 			case UMLPackage.RECEPTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.RECEPTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.RECEPTION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.RECEPTION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.RECEPTION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RECEPTION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -258,25 +279,28 @@ public class ReceptionImpl
 				return;
 			case UMLPackage.RECEPTION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll((Collection) newValue);
+				getOwnedParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.RECEPTION__IS_ABSTRACT :
 				setIsAbstract(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.RECEPTION__METHOD :
 				getMethods().clear();
-				getMethods().addAll((Collection) newValue);
+				getMethods().addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.RECEPTION__CONCURRENCY :
 				setConcurrency((CallConcurrencyKind) newValue);
 				return;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
-				getRaisedExceptions().addAll((Collection) newValue);
+				getRaisedExceptions().addAll(
+					(Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.RECEPTION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll((Collection) newValue);
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.RECEPTION__SIGNAL :
 				setSignal((Signal) newValue);
@@ -290,6 +314,7 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECEPTION__EANNOTATIONS :
@@ -355,6 +380,7 @@ public class ReceptionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.RECEPTION__EANNOTATIONS :

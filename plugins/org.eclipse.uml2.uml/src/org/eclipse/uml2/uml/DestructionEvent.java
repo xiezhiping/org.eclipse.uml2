@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestructionEvent.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
+ * $Id: DestructionEvent.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,6 @@ public interface DestructionEvent
 	 * @generated
 	 */
 	boolean validateNoOccurrenceSpecificationsBelow(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // DestructionEvent

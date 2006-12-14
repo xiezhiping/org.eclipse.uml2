@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.22 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Property.java,v 1.23 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -278,7 +278,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedProperties();
+	EList<Property> getRedefinedProperties();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Redefined Property</b></em>' reference list.
@@ -437,7 +437,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
 	 * @generated
 	 */
-	EList getSubsettedProperties();
+	EList<Property> getSubsettedProperties();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Property} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Subsetted Property</b></em>' reference list.
@@ -481,7 +481,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getQualifiers();
+	EList<Property> getQualifiers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Property}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Qualifier</b></em>' containment reference list.
@@ -575,7 +575,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -591,7 +591,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateSubsettingContextConforms(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -608,7 +608,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateRedefinedPropertyInherited(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -623,7 +623,8 @@ public interface Property
 	 * @model
 	 * @generated
 	 */
-	boolean validateSubsettingRules(DiagnosticChain diagnostics, Map context);
+	boolean validateSubsettingRules(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -635,7 +636,8 @@ public interface Property
 	 * @model
 	 * @generated
 	 */
-	boolean validateNavigableReadonly(DiagnosticChain diagnostics, Map context);
+	boolean validateNavigableReadonly(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -648,7 +650,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -661,7 +663,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateDerivedUnionIsReadOnly(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -674,7 +676,7 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateSubsettedPropertyNames(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -686,7 +688,8 @@ public interface Property
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeploymentTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateDeploymentTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -699,7 +702,8 @@ public interface Property
 	 * @model
 	 * @generated
 	 */
-	boolean validateBindingToAttribute(DiagnosticChain diagnostics, Map context);
+	boolean validateBindingToAttribute(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -803,7 +807,7 @@ public interface Property
 	 * @model type="org.eclipse.uml2.uml.Type" ordered="false"
 	 * @generated
 	 */
-	EList subsettingContext();
+	EList<Type> subsettingContext();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationAction.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ValueSpecificationAction.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -127,7 +127,8 @@ public interface ValueSpecificationAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateCompatibleType(DiagnosticChain diagnostics, Map context);
+	boolean validateCompatibleType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,6 +140,7 @@ public interface ValueSpecificationAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ValueSpecificationAction

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.37 2006/11/17 15:48:50 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.38 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -44,6 +44,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectableElementTemplateParameter;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -135,7 +136,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ends = null;
+	protected EList<ConnectorEnd> ends = null;
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -145,7 +146,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList deployments = null;
+	protected EList<Deployment> deployments = null;
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -155,7 +156,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList templateBindings = null;
+	protected EList<TemplateBinding> templateBindings = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -265,7 +266,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedProperties = null;
+	protected EList<Property> redefinedProperties = null;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
@@ -285,7 +286,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList subsettedProperties = null;
+	protected EList<Property> subsettedProperties = null;
 
 	/**
 	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
@@ -295,7 +296,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList qualifiers = null;
+	protected EList<Property> qualifiers = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -311,6 +312,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PROPERTY;
 	}
@@ -520,10 +522,11 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEnds() {
+	public EList<ConnectorEnd> getEnds() {
 		if (ends == null) {
-			ends = new EObjectWithInverseResolvingEList(ConnectorEnd.class,
-				this, UMLPackage.PROPERTY__END, UMLPackage.CONNECTOR_END__ROLE);
+			ends = new EObjectWithInverseResolvingEList<ConnectorEnd>(
+				ConnectorEnd.class, this, UMLPackage.PROPERTY__END,
+				UMLPackage.CONNECTOR_END__ROLE);
 		}
 		return ends;
 	}
@@ -533,23 +536,25 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.PROPERTY__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.PROPERTY__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.PROPERTY__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -558,9 +563,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClientDependencies() {
+	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
-			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
 				Dependency.class, this, UMLPackage.PROPERTY__CLIENT_DEPENDENCY,
 				null, CLIENT_DEPENDENCY_ESUBSETS, UMLPackage.DEPENDENCY__CLIENT);
 		}
@@ -572,9 +577,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDeployments() {
+	public EList<Deployment> getDeployments() {
 		if (deployments == null) {
-			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			deployments = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Deployment>(
 				Deployment.class, this, UMLPackage.PROPERTY__DEPLOYMENT,
 				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
 		}
@@ -610,9 +615,7 @@ public class PropertyImpl
 	 */
 	public Deployment getDeployment(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		deploymentLoop : for (Iterator i = getDeployments().iterator(); i
-			.hasNext();) {
-			Deployment deployment = (Deployment) i.next();
+		deploymentLoop : for (Deployment deployment : getDeployments()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(deployment.getName())
 				: name.equals(deployment.getName())))
@@ -629,12 +632,14 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDeployedElements() {
+	public EList<PackageableElement> getDeployedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<PackageableElement> result = (EList<PackageableElement>) cache
+				.get(this,
+					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
 				cache.put(this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
@@ -662,9 +667,7 @@ public class PropertyImpl
 	 */
 	public PackageableElement getDeployedElement(String name,
 			boolean ignoreCase, EClass eClass) {
-		deployedElementLoop : for (Iterator i = getDeployedElements()
-			.iterator(); i.hasNext();) {
-			PackageableElement deployedElement = (PackageableElement) i.next();
+		deployedElementLoop : for (PackageableElement deployedElement : getDeployedElements()) {
 			if (eClass != null && !eClass.isInstance(deployedElement))
 				continue deployedElementLoop;
 			if (name != null && !(ignoreCase
@@ -681,9 +684,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTemplateBindings() {
+	public EList<TemplateBinding> getTemplateBindings() {
 		if (templateBindings == null) {
-			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving<TemplateBinding>(
 				TemplateBinding.class, this,
 				UMLPackage.PROPERTY__TEMPLATE_BINDING,
 				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
@@ -720,9 +723,7 @@ public class PropertyImpl
 	 */
 	public TemplateBinding getTemplateBinding(TemplateSignature signature,
 			boolean createOnDemand) {
-		templateBindingLoop : for (Iterator i = getTemplateBindings()
-			.iterator(); i.hasNext();) {
-			TemplateBinding templateBinding = (TemplateBinding) i.next();
+		templateBindingLoop : for (TemplateBinding templateBinding : getTemplateBindings()) {
 			if (signature != null
 				&& !signature.equals(templateBinding.getSignature()))
 				continue templateBindingLoop;
@@ -863,24 +864,29 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiers() {
+	public EList<Classifier> getFeaturingClassifiers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList featuringClassifiers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			@SuppressWarnings("unchecked")
+			EList<Classifier> featuringClassifiers = (EList<Classifier>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-					featuringClassifiers = new DerivedUnionEObjectEList(
-						Classifier.class, this,
-						UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
-						FEATURING_CLASSIFIER_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+							Classifier.class, this,
+							UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
+							FEATURING_CLASSIFIER_ESUBSETS));
 			}
 			return featuringClassifiers;
 		}
-		return new DerivedUnionEObjectEList(Classifier.class, this,
+		return new DerivedUnionEObjectEList<Classifier>(Classifier.class, this,
 			UMLPackage.PROPERTY__FEATURING_CLASSIFIER,
 			FEATURING_CLASSIFIER_ESUBSETS);
 	}
@@ -890,24 +896,30 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.PROPERTY__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.PROPERTY__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.PROPERTY__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
@@ -1238,7 +1250,7 @@ public class PropertyImpl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newClass != null)
-				msgs = ((InternalEList) newClass.getOwnedAttributes())
+				msgs = ((InternalEList<Property>) newClass.getOwnedAttributes())
 					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newClass,
 				UMLPackage.PROPERTY__CLASS, msgs);
@@ -1254,10 +1266,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedProperties() {
+	public EList<Property> getRedefinedProperties() {
 		if (redefinedProperties == null) {
-			redefinedProperties = new EObjectResolvingEList(Property.class,
-				this, UMLPackage.PROPERTY__REDEFINED_PROPERTY);
+			redefinedProperties = new EObjectResolvingEList<Property>(
+				Property.class, this, UMLPackage.PROPERTY__REDEFINED_PROPERTY);
 		}
 		return redefinedProperties;
 	}
@@ -1278,9 +1290,7 @@ public class PropertyImpl
 	 */
 	public Property getRedefinedProperty(String name, Type type,
 			boolean ignoreCase, EClass eClass) {
-		redefinedPropertyLoop : for (Iterator i = getRedefinedProperties()
-			.iterator(); i.hasNext();) {
-			Property redefinedProperty = (Property) i.next();
+		redefinedPropertyLoop : for (Property redefinedProperty : getRedefinedProperties()) {
 			if (eClass != null && !eClass.isInstance(redefinedProperty))
 				continue redefinedPropertyLoop;
 			if (name != null && !(ignoreCase
@@ -1507,10 +1517,10 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSubsettedProperties() {
+	public EList<Property> getSubsettedProperties() {
 		if (subsettedProperties == null) {
-			subsettedProperties = new EObjectResolvingEList(Property.class,
-				this, UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
+			subsettedProperties = new EObjectResolvingEList<Property>(
+				Property.class, this, UMLPackage.PROPERTY__SUBSETTED_PROPERTY);
 		}
 		return subsettedProperties;
 	}
@@ -1531,9 +1541,7 @@ public class PropertyImpl
 	 */
 	public Property getSubsettedProperty(String name, Type type,
 			boolean ignoreCase, EClass eClass) {
-		subsettedPropertyLoop : for (Iterator i = getSubsettedProperties()
-			.iterator(); i.hasNext();) {
-			Property subsettedProperty = (Property) i.next();
+		subsettedPropertyLoop : for (Property subsettedProperty : getSubsettedProperties()) {
 			if (eClass != null && !eClass.isInstance(subsettedProperty))
 				continue subsettedPropertyLoop;
 			if (name != null && !(ignoreCase
@@ -1552,9 +1560,9 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getQualifiers() {
+	public EList<Property> getQualifiers() {
 		if (qualifiers == null) {
-			qualifiers = new EObjectContainmentWithInverseEList.Resolving(
+			qualifiers = new EObjectContainmentWithInverseEList.Resolving<Property>(
 				Property.class, this, UMLPackage.PROPERTY__QUALIFIER,
 				UMLPackage.PROPERTY__ASSOCIATION_END);
 		}
@@ -1601,9 +1609,7 @@ public class PropertyImpl
 	 */
 	public Property getQualifier(String name, Type type, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		qualifierLoop : for (Iterator i = getQualifiers().iterator(); i
-			.hasNext();) {
-			Property qualifier = (Property) i.next();
+		qualifierLoop : for (Property qualifier : getQualifiers()) {
 			if (eClass != null && !eClass.isInstance(qualifier))
 				continue qualifierLoop;
 			if (name != null && !(ignoreCase
@@ -1741,12 +1747,13 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList parameterableElements() {
+	public EList<ParameterableElement> parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-					.get(0));
+			@SuppressWarnings("unchecked")
+			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
+				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
 					.getEOperations().get(0),
@@ -1773,7 +1780,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfComposite(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateMultiplicityOfComposite(this,
 			diagnostics, context);
 	}
@@ -1784,7 +1791,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateSubsettingContextConforms(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return PropertyOperations.validateSubsettingContextConforms(this,
 			diagnostics, context);
 	}
@@ -1795,7 +1802,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateRedefinedPropertyInherited(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return PropertyOperations.validateRedefinedPropertyInherited(this,
 			diagnostics, context);
 	}
@@ -1806,7 +1813,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateSubsettingRules(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateSubsettingRules(this, diagnostics,
 			context);
 	}
@@ -1817,7 +1824,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateNavigableReadonly(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateNavigableReadonly(this, diagnostics,
 			context);
 	}
@@ -1828,7 +1835,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateDerivedUnionIsDerived(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateDerivedUnionIsDerived(this,
 			diagnostics, context);
 	}
@@ -1839,7 +1846,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateDerivedUnionIsReadOnly(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateDerivedUnionIsReadOnly(this,
 			diagnostics, context);
 	}
@@ -1850,7 +1857,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateSubsettedPropertyNames(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateSubsettedPropertyNames(this,
 			diagnostics, context);
 	}
@@ -1861,7 +1868,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateDeploymentTarget(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateDeploymentTarget(this, diagnostics,
 			context);
 	}
@@ -1872,7 +1879,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean validateBindingToAttribute(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return PropertyOperations.validateBindingToAttribute(this, diagnostics,
 			context);
 	}
@@ -1954,11 +1961,12 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList subsettingContext() {
+	public EList<Type> subsettingContext() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this, UMLPackage.Literals.PROPERTY
-				.getEOperations().get(26));
+			@SuppressWarnings("unchecked")
+			EList<Type> result = (EList<Type>) cache.get(this,
+				UMLPackage.Literals.PROPERTY.getEOperations().get(26));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROPERTY.getEOperations()
 					.get(26), result = PropertyOperations
@@ -1992,15 +2000,17 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -2015,13 +2025,14 @@ public class PropertyImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.PROPERTY__END :
-				return ((InternalEList) getEnds()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -2045,8 +2056,8 @@ public class PropertyImpl
 						msgs);
 				return basicSetAssociation((Association) otherEnd, msgs);
 			case UMLPackage.PROPERTY__QUALIFIER :
-				return ((InternalEList) getQualifiers()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getQualifiers())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -2060,18 +2071,19 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PROPERTY__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PROPERTY__UPPER_VALUE :
@@ -2083,12 +2095,13 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__END :
-				return ((InternalEList) getEnds()).basicRemove(otherEnd, msgs);
-			case UMLPackage.PROPERTY__DEPLOYMENT :
-				return ((InternalEList) getDeployments()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.PROPERTY__DEPLOYMENT :
+				return ((InternalEList<?>) getDeployments()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
@@ -2101,8 +2114,8 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__ASSOCIATION :
 				return basicSetAssociation(null, msgs);
 			case UMLPackage.PROPERTY__QUALIFIER :
-				return ((InternalEList) getQualifiers()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getQualifiers()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				return basicSetAssociationEnd(null, msgs);
 		}
@@ -2114,6 +2127,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -2141,6 +2155,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
@@ -2290,15 +2305,19 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.PROPERTY__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.PROPERTY__NAME :
 				setName((String) newValue);
@@ -2308,7 +2327,8 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.PROPERTY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -2351,15 +2371,17 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__END :
 				getEnds().clear();
-				getEnds().addAll((Collection) newValue);
+				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				getDeployments().clear();
-				getDeployments().addAll((Collection) newValue);
+				getDeployments().addAll(
+					(Collection<? extends Deployment>) newValue);
 				return;
 			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -2384,7 +2406,8 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
-				getRedefinedProperties().addAll((Collection) newValue);
+				getRedefinedProperties().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
 				setOwningAssociation((Association) newValue);
@@ -2397,14 +2420,16 @@ public class PropertyImpl
 				return;
 			case UMLPackage.PROPERTY__SUBSETTED_PROPERTY :
 				getSubsettedProperties().clear();
-				getSubsettedProperties().addAll((Collection) newValue);
+				getSubsettedProperties().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__ASSOCIATION :
 				setAssociation((Association) newValue);
 				return;
 			case UMLPackage.PROPERTY__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll((Collection) newValue);
+				getQualifiers().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.PROPERTY__ASSOCIATION_END :
 				setAssociationEnd((Property) newValue);
@@ -2413,6 +2438,7 @@ public class PropertyImpl
 		eDynamicSet(featureID, newValue);
 	}
 
+	@Override
 	public void eDynamicSet(int featureID, Object newValue) {
 
 		if (featureID == UMLPackage.PROPERTY__CLASS) {
@@ -2428,6 +2454,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
@@ -2547,6 +2574,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.PROPERTY__EANNOTATIONS :
@@ -2653,7 +2681,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
@@ -2700,7 +2729,8 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -2747,6 +2777,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -2787,6 +2818,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
@@ -2834,6 +2866,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PROPERTY__DEPLOYMENT)
@@ -2870,6 +2903,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.PROPERTY__CLASS)
 			|| eIsSet(UMLPackage.PROPERTY__DATATYPE)
@@ -2893,6 +2927,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
 			|| eIsSet(UMLPackage.PROPERTY__CLASS)
@@ -2915,6 +2950,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.PROPERTY__REDEFINED_PROPERTY);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.2 2006/04/05 13:49:57 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -119,7 +119,8 @@ public interface ConnectorEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -131,7 +132,8 @@ public interface ConnectorEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validatePartWithPortEmpty(DiagnosticChain diagnostics, Map context);
+	boolean validatePartWithPortEmpty(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,7 +145,8 @@ public interface ConnectorEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validateRoleAndPartWithPort(DiagnosticChain diagnostics, Map context);
+	boolean validateRoleAndPartWithPort(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,6 +158,7 @@ public interface ConnectorEnd
 	 * @model
 	 * @generated
 	 */
-	boolean validateSelfPartWithPort(DiagnosticChain diagnostics, Map context);
+	boolean validateSelfPartWithPort(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ConnectorEnd

@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.18 2006/11/14 18:02:17 khussey Exp $
+ * $Id: SlotImpl.java,v 1.19 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Slot;
@@ -80,7 +81,7 @@ public class SlotImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList values = null;
+	protected EList<ValueSpecification> values = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,6 +97,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.SLOT;
 	}
@@ -105,23 +107,24 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.SLOT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.SLOT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.SLOT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -238,9 +241,9 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getValues() {
+	public EList<ValueSpecification> getValues() {
 		if (values == null) {
-			values = new EObjectContainmentEList.Resolving(
+			values = new EObjectContainmentEList.Resolving<ValueSpecification>(
 				ValueSpecification.class, this, UMLPackage.SLOT__VALUE);
 		}
 		return values;
@@ -277,8 +280,7 @@ public class SlotImpl
 	 */
 	public ValueSpecification getValue(String name, Type type,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		valueLoop : for (Iterator i = getValues().iterator(); i.hasNext();) {
-			ValueSpecification value = (ValueSpecification) i.next();
+		valueLoop : for (ValueSpecification value : getValues()) {
 			if (eClass != null && !eClass.isInstance(value))
 				continue valueLoop;
 			if (name != null && !(ignoreCase
@@ -299,12 +301,14 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.SLOT__OWNING_INSTANCE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -319,18 +323,19 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SLOT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SLOT__VALUE :
-				return ((InternalEList) getValues())
-					.basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getValues()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.SLOT__OWNING_INSTANCE :
 				return basicSetOwningInstance(null, msgs);
 		}
@@ -342,6 +347,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -358,6 +364,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
@@ -389,22 +396,27 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SLOT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				setDefiningFeature((StructuralFeature) newValue);
 				return;
 			case UMLPackage.SLOT__VALUE :
 				getValues().clear();
-				getValues().addAll((Collection) newValue);
+				getValues().addAll(
+					(Collection<? extends ValueSpecification>) newValue);
 				return;
 			case UMLPackage.SLOT__OWNING_INSTANCE :
 				setOwningInstance((InstanceSpecification) newValue);
@@ -418,6 +430,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
@@ -444,6 +457,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
@@ -506,6 +520,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || eIsSet(UMLPackage.SLOT__OWNING_INSTANCE);
 	}
@@ -515,6 +530,7 @@ public class SlotImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements() || eIsSet(UMLPackage.SLOT__VALUE);
 	}

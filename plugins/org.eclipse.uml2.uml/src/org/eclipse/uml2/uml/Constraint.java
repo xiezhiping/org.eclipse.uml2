@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Constraint.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface Constraint
 	 * @model type="org.eclipse.uml2.uml.Element"
 	 * @generated
 	 */
-	EList getConstrainedElements();
+	EList<Element> getConstrainedElements();
 
 	/**
 	 * Returns the value of the '<em><b>Specification</b></em>' containment reference.
@@ -135,7 +135,8 @@ public interface Constraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotApplyToSelf(DiagnosticChain diagnostics, Map context);
+	boolean validateNotApplyToSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,7 +149,7 @@ public interface Constraint
 	 * @generated
 	 */
 	boolean validateValueSpecificationBoolean(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,7 +161,8 @@ public interface Constraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateBooleanValue(DiagnosticChain diagnostics, Map context);
+	boolean validateBooleanValue(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,7 +174,8 @@ public interface Constraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoSideEffects(DiagnosticChain diagnostics, Map context);
+	boolean validateNoSideEffects(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,6 +187,7 @@ public interface Constraint
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotAppliedToSelf(DiagnosticChain diagnostics, Map context);
+	boolean validateNotAppliedToSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Constraint

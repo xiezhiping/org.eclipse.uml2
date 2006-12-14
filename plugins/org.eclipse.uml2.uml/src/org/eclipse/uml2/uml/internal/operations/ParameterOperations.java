@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.17 2006/05/02 21:51:04 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.18 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -79,7 +79,7 @@ public class ParameterOperations
 	 * @generated
 	 */
 	public static boolean validateConnectorEnd(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -111,7 +111,7 @@ public class ParameterOperations
 	 * @generated
 	 */
 	public static boolean validateStreamAndException(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -143,7 +143,7 @@ public class ParameterOperations
 	 * @generated
 	 */
 	public static boolean validateNotException(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -175,7 +175,7 @@ public class ParameterOperations
 	 * @generated
 	 */
 	public static boolean validateReentrantBehaviors(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -207,7 +207,7 @@ public class ParameterOperations
 	 * @generated
 	 */
 	public static boolean validateInAndOut(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

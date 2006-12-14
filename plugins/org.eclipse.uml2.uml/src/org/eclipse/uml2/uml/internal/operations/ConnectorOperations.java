@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.9 2006/05/08 18:10:37 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.10 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -28,6 +27,7 @@ import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ConnectorKind;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
@@ -78,22 +78,22 @@ public class ConnectorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateTypes(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 		Association connectorType = connector.getType();
 
 		if (connectorType != null) {
-			Iterator ends = connector.getEnds().iterator();
-			Iterator memberEnds = connectorType.getMemberEnds().iterator();
+			Iterator<ConnectorEnd> ends = connector.getEnds().iterator();
+			Iterator<Property> memberEnds = connectorType.getMemberEnds()
+				.iterator();
 
 			while (ends.hasNext() && memberEnds.hasNext()) {
-				ConnectableElement role = ((ConnectorEnd) ends.next())
-					.getRole();
+				ConnectableElement role = ends.next().getRole();
 				Type type = role == null
 					? null
 					: role.getType();
 
-				Type memberEndType = ((Property) memberEnds.next()).getType();
+				Type memberEndType = memberEnds.next().getType();
 
 				if (type == null
 					? memberEndType != null
@@ -130,7 +130,7 @@ public class ConnectorOperations
 	 * @generated
 	 */
 	public static boolean validateCompatible(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -162,11 +162,11 @@ public class ConnectorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateRoles(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
-		Iterator ends = connector.getEnds().iterator();
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		Iterator<ConnectorEnd> ends = connector.getEnds().iterator();
 
 		while (ends.hasNext()) {
-			ConnectorEnd end = (ConnectorEnd) ends.next();
+			ConnectorEnd end = ends.next();
 			ConnectableElement role = end.getRole();
 
 			Element owner = null;
@@ -210,22 +210,22 @@ public class ConnectorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateBetweenInterfacesPorts(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
-		EList ends = connector.getEnds();
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		EList<ConnectorEnd> ends = connector.getEnds();
 
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
-			Collection required1 = ConnectableElementOperations
+			ConnectableElement role1 = ends.get(0).getRole();
+			EList<Interface> required1 = ConnectableElementOperations
 				.getRequiredInterfaces(role1);
-			Collection provided1 = ConnectableElementOperations
+			EList<Interface> provided1 = ConnectableElementOperations
 				.getProvidedInterfaces(role1);
 
-			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection required2 = ConnectableElementOperations
+			ConnectableElement role2 = ends.get(1).getRole();
+			EList<Interface> required2 = ConnectableElementOperations
 				.getRequiredInterfaces(role2);
-			Collection provided2 = ConnectableElementOperations
+			EList<Interface> provided2 = ConnectableElementOperations
 				.getProvidedInterfaces(role2);
 
 			if (intersect(provided2, required1)
@@ -258,19 +258,20 @@ public class ConnectorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateBetweenInterfacePortImplements(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
-		EList ends = connector.getEnds();
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		EList<ConnectorEnd> ends = connector.getEnds();
 
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectorEnd end1 = (ConnectorEnd) ends.get(0);
+			ConnectorEnd end1 = ends.get(0);
 			ConnectableElement role1 = end1.getRole();
 
-			ConnectorEnd end2 = (ConnectorEnd) ends.get(1);
+			ConnectorEnd end2 = ends.get(1);
 			ConnectableElement role2 = end2.getRole();
 
-			Collection provided1 = ConnectableElementOperations
+			EList<Interface> provided1 = ConnectableElementOperations
 				.getProvidedInterfaces(role1);
 
 			if (!provided1.isEmpty() && !(role2 instanceof Port)
@@ -315,23 +316,24 @@ public class ConnectorOperations
 	 */
 
 	public static boolean validateBetweenInterfacePortSignature(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = true;
-		EList ends = connector.getEnds();
+		EList<ConnectorEnd> ends = connector.getEnds();
 
 		if (connector.getKind() == ConnectorKind.DELEGATION_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
-			Collection required1 = ConnectableElementOperations
+			ConnectableElement role1 = ends.get(0).getRole();
+			EList<Interface> required1 = ConnectableElementOperations
 				.getRequiredInterfaces(role1);
-			Collection provided1 = ConnectableElementOperations
+			EList<Interface> provided1 = ConnectableElementOperations
 				.getProvidedInterfaces(role1);
 
-			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection required2 = ConnectableElementOperations
+			ConnectableElement role2 = ends.get(1).getRole();
+			EList<Interface> required2 = ConnectableElementOperations
 				.getRequiredInterfaces(role2);
-			Collection provided2 = ConnectableElementOperations
+			EList<Interface> provided2 = ConnectableElementOperations
 				.getProvidedInterfaces(role2);
 
 			if (!provided1.isEmpty() && !provided2.isEmpty()) {
@@ -369,7 +371,7 @@ public class ConnectorOperations
 	 * @generated
 	 */
 	public static boolean validateUnionSignatureCompatible(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -401,22 +403,22 @@ public class ConnectorOperations
 	 * @generated NOT
 	 */
 	public static boolean validateAssemblyConnector(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
-		EList ends = connector.getEnds();
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		EList<ConnectorEnd> ends = connector.getEnds();
 
 		if (connector.getKind() == ConnectorKind.ASSEMBLY_LITERAL
 			&& ends.size() == 2) {
 
-			ConnectableElement role1 = ((ConnectorEnd) ends.get(0)).getRole();
-			Collection required1 = ConnectableElementOperations
+			ConnectableElement role1 = ends.get(0).getRole();
+			EList<Interface> required1 = ConnectableElementOperations
 				.getRequiredInterfaces(role1);
-			Collection provided1 = ConnectableElementOperations
+			EList<Interface> provided1 = ConnectableElementOperations
 				.getProvidedInterfaces(role1);
 
-			ConnectableElement role2 = ((ConnectorEnd) ends.get(1)).getRole();
-			Collection required2 = ConnectableElementOperations
+			ConnectableElement role2 = ends.get(1).getRole();
+			EList<Interface> required2 = ConnectableElementOperations
 				.getRequiredInterfaces(role2);
-			Collection provided2 = ConnectableElementOperations
+			EList<Interface> provided2 = ConnectableElementOperations
 				.getProvidedInterfaces(role2);
 
 			if (!intersect(provided1, required2)

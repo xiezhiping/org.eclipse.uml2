@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkAction.java,v 1.3 2006/05/12 20:38:04 khussey Exp $
+ * $Id: CreateLinkAction.java,v 1.4 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,6 @@ public interface CreateLinkAction
 	 * @generated
 	 */
 	boolean validateAssociationNotAbstract(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // CreateLinkAction

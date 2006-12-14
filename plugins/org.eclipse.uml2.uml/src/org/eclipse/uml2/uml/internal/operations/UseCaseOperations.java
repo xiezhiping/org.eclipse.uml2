@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.10 2006/05/23 16:07:41 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.11 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -68,7 +68,7 @@ public class UseCaseOperations
 	 * @generated NOT
 	 */
 	public static boolean validateMustHaveName(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (isEmpty(useCase.getName())) {
 
@@ -97,11 +97,11 @@ public class UseCaseOperations
 	 * @generated NOT
 	 */
 	public static boolean validateBinaryAssociations(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-		for (Iterator a = useCase.getAssociations().iterator(); a.hasNext();) {
+		for (Association association : useCase.getAssociations()) {
 
-			if (!((Association) a.next()).isBinary()) {
+			if (!association.isBinary()) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
@@ -130,21 +130,21 @@ public class UseCaseOperations
 	 * @generated NOT
 	 */
 	public static boolean validateNoAssociationToUseCase(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-		for (Iterator a = useCase.getAssociations().iterator(); a.hasNext();) {
-			EList endTypes = ((Association) a.next()).getEndTypes();
+		for (Association association : useCase.getAssociations()) {
+			EList<Type> endTypes = association.getEndTypes();
 
 			if (endTypes.size() == 2) {
-				Type end1 = (Type) endTypes.get(0);
-				Type end2 = (Type) endTypes.get(1);
+				Type end1 = endTypes.get(0);
+				Type end2 = endTypes.get(1);
 
 				if (end1 instanceof UseCase && end2 instanceof UseCase) {
 					UseCase useCase1 = (UseCase) end1;
 					UseCase useCase2 = (UseCase) end2;
 
-					EList subjects = new UniqueEList.FastCompare(useCase1
-						.getSubjects());
+					EList<Classifier> subjects = new UniqueEList.FastCompare<Classifier>(
+						useCase1.getSubjects());
 					subjects.retainAll(useCase2.getSubjects());
 
 					if (!subjects.isEmpty()) {
@@ -182,7 +182,7 @@ public class UseCaseOperations
 	 * @generated NOT
 	 */
 	public static boolean validateCannotIncludeSelf(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 		if (useCase.allIncludedUseCases().contains(useCase)) {
 
@@ -202,13 +202,11 @@ public class UseCaseOperations
 		return true;
 	}
 
-	protected static EList allIncludedUseCases(UseCase useCase,
-			EList allIncludedUseCases) {
+	protected static EList<UseCase> allIncludedUseCases(UseCase useCase,
+			EList<UseCase> allIncludedUseCases) {
 
-		for (Iterator includes = useCase.getIncludes().iterator(); includes
-			.hasNext();) {
-
-			UseCase addition = ((Include) includes.next()).getAddition();
+		for (Include include : useCase.getIncludes()) {
+			UseCase addition = include.getAddition();
 
 			if (addition != null && allIncludedUseCases.add(addition)) {
 				allIncludedUseCases(addition, allIncludedUseCases);
@@ -227,9 +225,9 @@ public class UseCaseOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allIncludedUseCases(UseCase useCase) {
+	public static EList<UseCase> allIncludedUseCases(UseCase useCase) {
 		return ECollections.unmodifiableEList(allIncludedUseCases(useCase,
-			new UniqueEList.FastCompare()));
+			new UniqueEList.FastCompare<UseCase>()));
 	}
 
 } // UseCaseOperations

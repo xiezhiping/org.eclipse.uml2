@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNode.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
+ * $Id: LoopNode.java,v 1.12 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -92,7 +92,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	EList getBodyParts();
+	EList<ExecutableNode> getBodyParts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Body Part</b></em>' reference list.
@@ -131,7 +131,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	EList getSetupParts();
+	EList<ExecutableNode> getSetupParts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Setup Part</b></em>' reference list.
@@ -195,7 +195,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
 	 * @generated
 	 */
-	EList getTests();
+	EList<ExecutableNode> getTests();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ExecutableNode} with the specified '<em><b>Name</b></em>' from the '<em><b>Test</b></em>' reference list.
@@ -234,7 +234,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getResults();
+	EList<OutputPin> getResults();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Result</b></em>' containment reference list.
@@ -288,7 +288,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
-	EList getLoopVariables();
+	EList<OutputPin> getLoopVariables();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Loop Variable</b></em>' reference list.
@@ -328,7 +328,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.OutputPin"
 	 * @generated
 	 */
-	EList getBodyOutputs();
+	EList<OutputPin> getBodyOutputs();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.OutputPin} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Body Output</b></em>' reference list.
@@ -368,7 +368,7 @@ public interface LoopNode
 	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getLoopVariableInputs();
+	EList<InputPin> getLoopVariableInputs();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Loop Variable Input</b></em>' containment reference list.
@@ -433,7 +433,8 @@ public interface LoopNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateInputEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateInputEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -445,7 +446,8 @@ public interface LoopNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateBodyOutputPins(DiagnosticChain diagnostics, Map context);
+	boolean validateBodyOutputPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -457,6 +459,7 @@ public interface LoopNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateResultNoIncoming(DiagnosticChain diagnostics, Map context);
+	boolean validateResultNoIncoming(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // LoopNode

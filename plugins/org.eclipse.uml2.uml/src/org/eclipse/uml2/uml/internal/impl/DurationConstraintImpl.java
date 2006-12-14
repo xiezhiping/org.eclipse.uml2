@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.19 2006/11/14 18:02:19 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.20 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,7 +29,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DurationConstraint;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.DurationInterval;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
@@ -67,7 +71,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList firstEvents = null;
+	protected EList<Boolean> firstEvents = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,6 +87,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DURATION_CONSTRAINT;
 	}
@@ -92,10 +97,10 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFirstEvents() {
+	public EList<Boolean> getFirstEvents() {
 		if (firstEvents == null) {
-			firstEvents = new EDataTypeUniqueEList(Boolean.class, this,
-				UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
+			firstEvents = new EDataTypeUniqueEList<Boolean>(Boolean.class,
+				this, UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT);
 		}
 		return firstEvents;
 	}
@@ -164,6 +169,7 @@ public class DurationConstraintImpl
 		return msgs;
 	}
 
+	@Override
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 
@@ -210,6 +216,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
@@ -236,7 +243,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 */
 	public boolean validateFirstEventMultiplicity(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return DurationConstraintOperations.validateFirstEventMultiplicity(
 			this, diagnostics, context);
 	}
@@ -246,6 +253,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
@@ -303,15 +311,19 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -321,7 +333,8 @@ public class DurationConstraintImpl
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -334,7 +347,8 @@ public class DurationConstraintImpl
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll((Collection) newValue);
+				getConstrainedElements().addAll(
+					(Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__SPECIFICATION :
 				setSpecification((ValueSpecification) newValue);
@@ -344,7 +358,8 @@ public class DurationConstraintImpl
 				return;
 			case UMLPackage.DURATION_CONSTRAINT__FIRST_EVENT :
 				getFirstEvents().clear();
-				getFirstEvents().addAll((Collection) newValue);
+				getFirstEvents().addAll(
+					(Collection<? extends Boolean>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -355,6 +370,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
@@ -402,6 +418,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DURATION_CONSTRAINT__EANNOTATIONS :
@@ -449,6 +466,7 @@ public class DurationConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

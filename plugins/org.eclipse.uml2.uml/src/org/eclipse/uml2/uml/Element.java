@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.15 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Element.java,v 1.16 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,7 +63,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedElements();
+	EList<Element> getOwnedElements();
 
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
@@ -94,7 +94,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedComments();
+	EList<Comment> getOwnedComments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Comment} and appends it to the '<em><b>Owned Comment</b></em>' containment reference list.
@@ -116,7 +116,8 @@ public interface Element
 	 * @model
 	 * @generated
 	 */
-	boolean validateNotOwnSelf(DiagnosticChain diagnostics, Map context);
+	boolean validateNotOwnSelf(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,7 +129,8 @@ public interface Element
 	 * @model
 	 * @generated
 	 */
-	boolean validateHasOwner(DiagnosticChain diagnostics, Map context);
+	boolean validateHasOwner(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,7 +141,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.emf.ecore.EObject" ordered="false"
 	 * @generated
 	 */
-	EList getStereotypeApplications();
+	EList<EObject> getStereotypeApplications();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,7 +163,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
-	EList getRequiredStereotypes();
+	EList<Stereotype> getRequiredStereotypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,7 +185,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
-	EList getAppliedStereotypes();
+	EList<Stereotype> getAppliedStereotypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,7 +207,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Stereotype" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
-	EList getAppliedSubstereotypes(Stereotype stereotype);
+	EList<Stereotype> getAppliedSubstereotypes(Stereotype stereotype);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -272,7 +274,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Relationship" ordered="false"
 	 * @generated
 	 */
-	EList getRelationships();
+	EList<Relationship> getRelationships();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -283,7 +285,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
-	EList getRelationships(EClass eClass);
+	EList<Relationship> getRelationships(EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,7 +296,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
 	 * @generated
 	 */
-	EList getSourceDirectedRelationships();
+	EList<DirectedRelationship> getSourceDirectedRelationships();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,7 +307,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
-	EList getSourceDirectedRelationships(EClass eClass);
+	EList<DirectedRelationship> getSourceDirectedRelationships(EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -316,7 +318,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
 	 * @generated
 	 */
-	EList getTargetDirectedRelationships();
+	EList<DirectedRelationship> getTargetDirectedRelationships();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,7 +329,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
-	EList getTargetDirectedRelationships(EClass eClass);
+	EList<DirectedRelationship> getTargetDirectedRelationships(EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -338,7 +340,7 @@ public interface Element
 	 * @model kind="operation" type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
-	EList getKeywords();
+	EList<String> getKeywords();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -448,7 +450,7 @@ public interface Element
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
 	 * @generated
 	 */
-	EList getApplicableStereotypes();
+	EList<Stereotype> getApplicableStereotypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -493,7 +495,7 @@ public interface Element
 	 * @model type="org.eclipse.uml2.uml.Element" ordered="false"
 	 * @generated
 	 */
-	EList allOwnedElements();
+	EList<Element> allOwnedElements();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: CallOperationAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -128,7 +128,7 @@ public interface CallOperationAction
 	 * @generated
 	 */
 	boolean validateArgumentPinEqualParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,7 +141,7 @@ public interface CallOperationAction
 	 * @generated
 	 */
 	boolean validateResultPinEqualParameter(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +153,7 @@ public interface CallOperationAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeTargetPin(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeTargetPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // CallOperationAction

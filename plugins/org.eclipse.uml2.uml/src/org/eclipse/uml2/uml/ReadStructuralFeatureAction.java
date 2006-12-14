@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureAction.java,v 1.5 2006/05/26 16:34:02 khussey Exp $
+ * $Id: ReadStructuralFeatureAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -88,6 +88,7 @@ public interface ReadStructuralFeatureAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeAndOrdering(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeAndOrdering(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReadStructuralFeatureAction

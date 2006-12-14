@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
+ * $Id: InformationItemOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,7 +65,7 @@ public class InformationItemOperations
 	 */
 	public static boolean validateSourcesAndTargets(
 			InformationItem informationItem, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -97,7 +97,7 @@ public class InformationItemOperations
 	 * @generated
 	 */
 	public static boolean validateHasNo(InformationItem informationItem,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -130,7 +130,7 @@ public class InformationItemOperations
 	 */
 	public static boolean validateNotInstantiable(
 			InformationItem informationItem, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

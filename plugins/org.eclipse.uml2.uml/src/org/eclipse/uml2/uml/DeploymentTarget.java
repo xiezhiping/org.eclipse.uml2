@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface DeploymentTarget
 	 * @model type="org.eclipse.uml2.uml.Deployment" opposite="location" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getDeployments();
+	EList<Deployment> getDeployments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Deployment}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Deployment</b></em>' containment reference list.
@@ -106,7 +106,7 @@ public interface DeploymentTarget
 	 * @model type="org.eclipse.uml2.uml.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getDeployedElements();
+	EList<PackageableElement> getDeployedElements();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Deployed Element</b></em>' reference list.

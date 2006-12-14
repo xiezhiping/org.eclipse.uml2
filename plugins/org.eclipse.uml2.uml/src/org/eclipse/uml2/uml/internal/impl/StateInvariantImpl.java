@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.21 2006/11/14 18:02:18 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.22 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,8 +32,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.GeneralOrdering;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.Lifeline;
@@ -85,6 +88,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STATE_INVARIANT;
 	}
@@ -94,23 +98,25 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.STATE_INVARIANT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.STATE_INVARIANT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.STATE_INVARIANT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -229,9 +235,9 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getCovereds() {
+	public EList<Lifeline> getCovereds() {
 		if (covereds == null) {
-			covereds = new EObjectWithInverseResolvingEList.ManyInverse(
+			covereds = new EObjectWithInverseResolvingEList.ManyInverse<Lifeline>(
 				Lifeline.class, this, UMLPackage.STATE_INVARIANT__COVERED,
 				UMLPackage.LIFELINE__COVERED_BY);
 		}
@@ -243,6 +249,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Lifeline getCovered(String name) {
 		return getCovered(name, false);
 	}
@@ -252,9 +259,9 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Lifeline getCovered(String name, boolean ignoreCase) {
-		coveredLoop : for (Iterator i = getCovereds().iterator(); i.hasNext();) {
-			Lifeline covered = (Lifeline) i.next();
+		coveredLoop : for (Lifeline covered : getCovereds()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(covered.getName())
 				: name.equals(covered.getName())))
@@ -278,25 +285,26 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STATE_INVARIANT__COVERED :
-				return ((InternalEList) getCovereds()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
-				return ((InternalEList) getGeneralOrderings()).basicRemove(
+				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
@@ -313,6 +321,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
@@ -366,15 +375,19 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__NAME :
 				setName((String) newValue);
@@ -384,18 +397,20 @@ public class StateInvariantImpl
 				return;
 			case UMLPackage.STATE_INVARIANT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__COVERED :
 				getCovereds().clear();
-				getCovereds().addAll((Collection) newValue);
+				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__GENERAL_ORDERING :
 				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll((Collection) newValue);
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.STATE_INVARIANT__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -415,6 +430,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
@@ -459,6 +475,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STATE_INVARIANT__EANNOTATIONS :
@@ -517,6 +534,7 @@ public class StateInvariantImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.STATE_INVARIANT__INVARIANT);

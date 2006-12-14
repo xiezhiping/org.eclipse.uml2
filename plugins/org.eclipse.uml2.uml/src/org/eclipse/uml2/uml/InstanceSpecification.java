@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecification.java,v 1.7 2006/05/26 16:34:03 khussey Exp $
+ * $Id: InstanceSpecification.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface InstanceSpecification
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList getClassifiers();
+	EList<Classifier> getClassifiers();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Classifier</b></em>' reference list.
@@ -138,7 +138,7 @@ public interface InstanceSpecification
 	 * @model type="org.eclipse.uml2.uml.Slot" opposite="owningInstance" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getSlots();
+	EList<Slot> getSlots();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Slot} and appends it to the '<em><b>Slot</b></em>' containment reference list.
@@ -160,7 +160,8 @@ public interface InstanceSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateDefiningFeature(DiagnosticChain diagnostics, Map context);
+	boolean validateDefiningFeature(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,7 +173,8 @@ public interface InstanceSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateStructuralFeature(DiagnosticChain diagnostics, Map context);
+	boolean validateStructuralFeature(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,7 +186,8 @@ public interface InstanceSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeploymentTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateDeploymentTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,6 +199,7 @@ public interface InstanceSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeploymentArtifact(DiagnosticChain diagnostics, Map context);
+	boolean validateDeploymentArtifact(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // InstanceSpecification

@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.31 2006/11/14 18:02:17 khussey Exp $
+ * $Id: OperationImpl.java,v 1.32 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -41,16 +41,22 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallConcurrencyKind;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
@@ -126,7 +132,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList templateBindings = null;
+	protected EList<TemplateBinding> templateBindings = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -206,7 +212,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList preconditions = null;
+	protected EList<Constraint> preconditions = null;
 
 	/**
 	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
@@ -216,7 +222,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList postconditions = null;
+	protected EList<Constraint> postconditions = null;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedOperations() <em>Redefined Operation</em>}' reference list.
@@ -226,7 +232,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedOperations = null;
+	protected EList<Operation> redefinedOperations = null;
 
 	/**
 	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
@@ -252,6 +258,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPERATION;
 	}
@@ -461,23 +468,25 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.OPERATION__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.OPERATION__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.OPERATION__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -486,9 +495,9 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTemplateBindings() {
+	public EList<TemplateBinding> getTemplateBindings() {
 		if (templateBindings == null) {
-			templateBindings = new EObjectContainmentWithInverseEList.Resolving(
+			templateBindings = new EObjectContainmentWithInverseEList.Resolving<TemplateBinding>(
 				TemplateBinding.class, this,
 				UMLPackage.OPERATION__TEMPLATE_BINDING,
 				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
@@ -525,9 +534,7 @@ public class OperationImpl
 	 */
 	public TemplateBinding getTemplateBinding(TemplateSignature signature,
 			boolean createOnDemand) {
-		templateBindingLoop : for (Iterator i = getTemplateBindings()
-			.iterator(); i.hasNext();) {
-			TemplateBinding templateBinding = (TemplateBinding) i.next();
+		templateBindingLoop : for (TemplateBinding templateBinding : getTemplateBindings()) {
 			if (signature != null
 				&& !signature.equals(templateBinding.getSignature()))
 				continue templateBindingLoop;
@@ -656,27 +663,31 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinitionContexts() {
+	public EList<Classifier> getRedefinitionContexts() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinitionContexts = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
+			@SuppressWarnings("unchecked")
+			EList<Classifier> redefinitionContexts = (EList<Classifier>) cache
+				.get(
+					eResource,
+					this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT);
 			if (redefinitionContexts == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT,
-						redefinitionContexts = new DerivedUnionEObjectEList(
+						redefinitionContexts = new DerivedUnionEObjectEList<Classifier>(
 							Classifier.class, this,
 							UMLPackage.OPERATION__REDEFINITION_CONTEXT,
 							REDEFINITION_CONTEXT_ESUBSETS));
 			}
 			return redefinitionContexts;
 		}
-		return new DerivedUnionEObjectEList(Classifier.class, this,
+		return new DerivedUnionEObjectEList<Classifier>(Classifier.class, this,
 			UMLPackage.OPERATION__REDEFINITION_CONTEXT,
 			REDEFINITION_CONTEXT_ESUBSETS);
 	}
@@ -686,24 +697,29 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeaturingClassifiers() {
+	public EList<Classifier> getFeaturingClassifiers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList featuringClassifiers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
+			@SuppressWarnings("unchecked")
+			EList<Classifier> featuringClassifiers = (EList<Classifier>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER);
 			if (featuringClassifiers == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
-					featuringClassifiers = new DerivedUnionEObjectEList(
-						Classifier.class, this,
-						UMLPackage.OPERATION__FEATURING_CLASSIFIER,
-						FEATURING_CLASSIFIER_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER,
+						featuringClassifiers = new DerivedUnionEObjectEList<Classifier>(
+							Classifier.class, this,
+							UMLPackage.OPERATION__FEATURING_CLASSIFIER,
+							FEATURING_CLASSIFIER_ESUBSETS));
 			}
 			return featuringClassifiers;
 		}
-		return new DerivedUnionEObjectEList(Classifier.class, this,
+		return new DerivedUnionEObjectEList<Classifier>(Classifier.class, this,
 			UMLPackage.OPERATION__FEATURING_CLASSIFIER,
 			FEATURING_CLASSIFIER_ESUBSETS);
 	}
@@ -713,24 +729,30 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.OPERATION__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.OPERATION__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.OPERATION__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
 	}
 
@@ -739,9 +761,9 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedRules() {
+	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
-			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving(
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__OWNED_RULE, null,
 				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
 		}
@@ -923,9 +945,9 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPreconditions() {
+	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new SubsetSupersetEObjectResolvingEList(
+			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__PRECONDITION,
 				PRECONDITION_ESUPERSETS, null);
 		}
@@ -970,9 +992,7 @@ public class OperationImpl
 	 */
 	public Constraint getPrecondition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		preconditionLoop : for (Iterator i = getPreconditions().iterator(); i
-			.hasNext();) {
-			Constraint precondition = (Constraint) i.next();
+		preconditionLoop : for (Constraint precondition : getPreconditions()) {
 			if (eClass != null && !eClass.isInstance(precondition))
 				continue preconditionLoop;
 			if (name != null && !(ignoreCase
@@ -991,9 +1011,9 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPostconditions() {
+	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
-			postconditions = new SubsetSupersetEObjectResolvingEList(
+			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
 				Constraint.class, this, UMLPackage.OPERATION__POSTCONDITION,
 				POSTCONDITION_ESUPERSETS, null);
 		}
@@ -1038,9 +1058,7 @@ public class OperationImpl
 	 */
 	public Constraint getPostcondition(String name, boolean ignoreCase,
 			EClass eClass, boolean createOnDemand) {
-		postconditionLoop : for (Iterator i = getPostconditions().iterator(); i
-			.hasNext();) {
-			Constraint postcondition = (Constraint) i.next();
+		postconditionLoop : for (Constraint postcondition : getPostconditions()) {
 			if (eClass != null && !eClass.isInstance(postcondition))
 				continue postconditionLoop;
 			if (name != null && !(ignoreCase
@@ -1059,10 +1077,11 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedOperations() {
+	public EList<Operation> getRedefinedOperations() {
 		if (redefinedOperations == null) {
-			redefinedOperations = new EObjectResolvingEList(Operation.class,
-				this, UMLPackage.OPERATION__REDEFINED_OPERATION);
+			redefinedOperations = new EObjectResolvingEList<Operation>(
+				Operation.class, this,
+				UMLPackage.OPERATION__REDEFINED_OPERATION);
 		}
 		return redefinedOperations;
 	}
@@ -1073,7 +1092,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Operation getRedefinedOperation(String name,
-			EList ownedParameterNames, EList ownedParameterTypes) {
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes) {
 		return getRedefinedOperation(name, ownedParameterNames,
 			ownedParameterTypes, false);
 	}
@@ -1084,27 +1103,25 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Operation getRedefinedOperation(String name,
-			EList ownedParameterNames, EList ownedParameterTypes,
+			EList<String> ownedParameterNames, EList<Type> ownedParameterTypes,
 			boolean ignoreCase) {
-		redefinedOperationLoop : for (Iterator i = getRedefinedOperations()
-			.iterator(); i.hasNext();) {
-			Operation redefinedOperation = (Operation) i.next();
+		redefinedOperationLoop : for (Operation redefinedOperation : getRedefinedOperations()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(redefinedOperation.getName())
 				: name.equals(redefinedOperation.getName())))
 				continue redefinedOperationLoop;
-			EList ownedParameterList = redefinedOperation.getOwnedParameters();
+			EList<Parameter> ownedParameterList = redefinedOperation
+				.getOwnedParameters();
 			int ownedParameterListSize = ownedParameterList.size();
 			if (ownedParameterNames != null
 				&& ownedParameterNames.size() != ownedParameterListSize
 				|| (ownedParameterTypes != null && ownedParameterTypes.size() != ownedParameterListSize))
 				continue redefinedOperationLoop;
 			for (int j = 0; j < ownedParameterListSize; j++) {
-				Parameter ownedParameter = (Parameter) ownedParameterList
-					.get(j);
+				Parameter ownedParameter = ownedParameterList.get(j);
 				if (ownedParameterNames != null
 					&& !(ignoreCase
-						? ((String) ownedParameterNames.get(j))
+						? (ownedParameterNames.get(j))
 							.equalsIgnoreCase(ownedParameter.getName())
 						: ownedParameterNames.get(j).equals(
 							ownedParameter.getName())))
@@ -1227,7 +1244,7 @@ public class OperationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newBodyCondition != null) {
-				EList ownedRules = getOwnedRules();
+				EList<Constraint> ownedRules = getOwnedRules();
 				if (!ownedRules.contains(newBodyCondition)) {
 					ownedRules.add(newBodyCondition);
 				}
@@ -1357,9 +1374,9 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedParameters() {
+	public EList<Parameter> getOwnedParameters() {
 		if (ownedParameters == null) {
-			ownedParameters = new EObjectContainmentEList.Resolving(
+			ownedParameters = new EObjectContainmentEList.Resolving<Parameter>(
 				Parameter.class, this, UMLPackage.OPERATION__OWNED_PARAMETER);
 		}
 		return ownedParameters;
@@ -1370,6 +1387,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
 		getOwnedParameters().add(newOwnedParameter);
@@ -1385,6 +1403,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter getOwnedParameter(String name, Type type) {
 		return getOwnedParameter(name, type, false, false);
 	}
@@ -1394,11 +1413,10 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter getOwnedParameter(String name, Type type,
 			boolean ignoreCase, boolean createOnDemand) {
-		ownedParameterLoop : for (Iterator i = getOwnedParameters().iterator(); i
-			.hasNext();) {
-			Parameter ownedParameter = (Parameter) i.next();
+		ownedParameterLoop : for (Parameter ownedParameter : getOwnedParameters()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(ownedParameter.getName())
 				: name.equals(ownedParameter.getName())))
@@ -1426,10 +1444,10 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRaisedExceptions() {
+	public EList<Type> getRaisedExceptions() {
 		if (raisedExceptions == null) {
-			raisedExceptions = new EObjectResolvingEList(Type.class, this,
-				UMLPackage.OPERATION__RAISED_EXCEPTION);
+			raisedExceptions = new EObjectResolvingEList<Type>(Type.class,
+				this, UMLPackage.OPERATION__RAISED_EXCEPTION);
 		}
 		return raisedExceptions;
 	}
@@ -1439,6 +1457,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type getRaisedException(String name) {
 		return getRaisedException(name, false, null);
 	}
@@ -1448,11 +1467,10 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type getRaisedException(String name, boolean ignoreCase,
 			EClass eClass) {
-		raisedExceptionLoop : for (Iterator i = getRaisedExceptions()
-			.iterator(); i.hasNext();) {
-			Type raisedException = (Type) i.next();
+		raisedExceptionLoop : for (Type raisedException : getRaisedExceptions()) {
 			if (eClass != null && !eClass.isInstance(raisedException))
 				continue raisedExceptionLoop;
 			if (name != null && !(ignoreCase
@@ -1496,12 +1514,13 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList parameterableElements() {
+	public EList<ParameterableElement> parameterableElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT.getEOperations()
-					.get(0));
+			@SuppressWarnings("unchecked")
+			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
+				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
+					.getEOperations().get(0));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
 					.getEOperations().get(0),
@@ -1528,7 +1547,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean validateAtMostOneReturn(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return OperationOperations.validateAtMostOneReturn(this, diagnostics,
 			context);
 	}
@@ -1539,7 +1558,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean validateOnlyBodyForQuery(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return OperationOperations.validateOnlyBodyForQuery(this, diagnostics,
 			context);
 	}
@@ -1576,10 +1595,11 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList returnResult() {
+	public EList<Parameter> returnResult() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
-			EList result = (EList) cache.get(this,
+			@SuppressWarnings("unchecked")
+			EList<Parameter> result = (EList<Parameter>) cache.get(this,
 				UMLPackage.Literals.OPERATION.getEOperations().get(15));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.OPERATION.getEOperations()
@@ -1604,26 +1624,29 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getElementImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackageImports())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
-				return ((InternalEList) getMethods()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getMethods())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1638,8 +1661,8 @@ public class OperationImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -1670,44 +1693,45 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				return ((InternalEList) getOwnedParameters()).basicRemove(
+				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
-				return ((InternalEList) getMethods()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
-				return ((InternalEList) getOwnedParameterSets()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getOwnedParameterSets())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
@@ -1726,6 +1750,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -1755,6 +1780,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
@@ -1888,15 +1914,19 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OPERATION__NAME :
 				setName((String) newValue);
@@ -1906,22 +1936,26 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -1931,25 +1965,28 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll((Collection) newValue);
+				getOwnedParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				setIsAbstract(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.OPERATION__METHOD :
 				getMethods().clear();
-				getMethods().addAll((Collection) newValue);
+				getMethods().addAll((Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.OPERATION__CONCURRENCY :
 				setConcurrency((CallConcurrencyKind) newValue);
 				return;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				getRaisedExceptions().clear();
-				getRaisedExceptions().addAll((Collection) newValue);
+				getRaisedExceptions().addAll(
+					(Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll((Collection) newValue);
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1959,7 +1996,8 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -1987,15 +2025,18 @@ public class OperationImpl
 				return;
 			case UMLPackage.OPERATION__PRECONDITION :
 				getPreconditions().clear();
-				getPreconditions().addAll((Collection) newValue);
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__POSTCONDITION :
 				getPostconditions().clear();
-				getPostconditions().addAll((Collection) newValue);
+				getPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__REDEFINED_OPERATION :
 				getRedefinedOperations().clear();
-				getRedefinedOperations().addAll((Collection) newValue);
+				getRedefinedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.OPERATION__DATATYPE :
 				setDatatype((DataType) newValue);
@@ -2015,6 +2056,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
@@ -2128,6 +2170,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
@@ -2232,7 +2275,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
@@ -2261,7 +2305,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ParameterableElement.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -2290,6 +2335,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -2320,6 +2366,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner()
 			|| eIsSet(UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER);
@@ -2347,6 +2394,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING)
@@ -2382,6 +2430,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
 			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
@@ -2412,6 +2461,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS)
 			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
@@ -2433,6 +2483,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
@@ -2487,6 +2538,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.OPERATION__REDEFINED_OPERATION);

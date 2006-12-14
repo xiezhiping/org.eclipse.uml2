@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.17 2006/11/14 18:02:18 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.18 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERVAL_CONSTRAINT;
 	}
@@ -125,6 +126,7 @@ public class IntervalConstraintImpl
 		return msgs;
 	}
 
+	@Override
 	public NotificationChain basicSetSpecification(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 
@@ -169,6 +171,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
@@ -194,6 +197,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
@@ -249,6 +253,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :

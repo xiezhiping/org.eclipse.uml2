@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadVariableAction.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ReadVariableAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -88,7 +88,8 @@ public interface ReadVariableAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeAndOrdering(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeAndOrdering(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +102,6 @@ public interface ReadVariableAction
 	 * @generated
 	 */
 	boolean validateCompatibleMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // ReadVariableAction

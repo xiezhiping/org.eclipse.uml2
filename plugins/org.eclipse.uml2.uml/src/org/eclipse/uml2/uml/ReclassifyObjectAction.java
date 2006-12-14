@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -85,7 +85,7 @@ public interface ReclassifyObjectAction
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList getOldClassifiers();
+	EList<Classifier> getOldClassifiers();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Old Classifier</b></em>' reference list.
@@ -124,7 +124,7 @@ public interface ReclassifyObjectAction
 	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
 	 * @generated
 	 */
-	EList getNewClassifiers();
+	EList<Classifier> getNewClassifiers();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>New Classifier</b></em>' reference list.
@@ -211,7 +211,7 @@ public interface ReclassifyObjectAction
 	 * @generated
 	 */
 	boolean validateClassifierNotAbstract(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,7 +223,8 @@ public interface ReclassifyObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateMultiplicity(DiagnosticChain diagnostics, Map context);
+	boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,6 +236,7 @@ public interface ReclassifyObjectAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ReclassifyObjectAction

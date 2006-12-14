@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PartDecompositionImpl.java,v 1.2 2005/11/23 20:01:15 khussey Exp $
+ * $Id: PartDecompositionImpl.java,v 1.3 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -50,6 +50,7 @@ public class PartDecompositionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.PART_DECOMPOSITION;
 	}
@@ -60,7 +61,7 @@ public class PartDecompositionImpl
 	 * @generated
 	 */
 	public boolean validatePartsOfInternalStructures(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return PartDecompositionOperations.validatePartsOfInternalStructures(
 			this, diagnostics, context);
 	}
@@ -70,7 +71,8 @@ public class PartDecompositionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAssume(DiagnosticChain diagnostics, Map context) {
+	public boolean validateAssume(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return PartDecompositionOperations.validateAssume(this, diagnostics,
 			context);
 	}
@@ -81,7 +83,7 @@ public class PartDecompositionImpl
 	 * @generated
 	 */
 	public boolean validateCommutativityOfDecomposition(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return PartDecompositionOperations
 			.validateCommutativityOfDecomposition(this, diagnostics, context);
 	}

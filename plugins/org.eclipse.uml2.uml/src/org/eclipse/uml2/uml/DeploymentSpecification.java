@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecification.java,v 1.7 2006/05/12 20:38:07 khussey Exp $
+ * $Id: DeploymentSpecification.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -183,7 +183,8 @@ public interface DeploymentSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeployedElements(DiagnosticChain diagnostics, Map context);
+	boolean validateDeployedElements(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,6 +196,7 @@ public interface DeploymentSpecification
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeploymentTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateDeploymentTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // DeploymentSpecification

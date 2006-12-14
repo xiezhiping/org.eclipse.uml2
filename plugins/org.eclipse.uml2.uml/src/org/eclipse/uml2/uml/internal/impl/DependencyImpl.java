@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.15 2006/11/14 18:02:17 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
@@ -69,7 +70,7 @@ public class DependencyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList suppliers = null;
+	protected EList<NamedElement> suppliers = null;
 
 	/**
 	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
@@ -79,7 +80,7 @@ public class DependencyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList clients = null;
+	protected EList<NamedElement> clients = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -95,6 +96,7 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DEPENDENCY;
 	}
@@ -104,24 +106,26 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.DEPENDENCY__RELATED_ELEMENT,
 						RELATED_ELEMENT_ESUBSETS));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DEPENDENCY__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
@@ -130,22 +134,24 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.DEPENDENCY__SOURCE, SOURCE_ESUBSETS));
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.DEPENDENCY__SOURCE,
+						SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DEPENDENCY__SOURCE, SOURCE_ESUBSETS);
 	}
 
@@ -154,22 +160,24 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.DEPENDENCY__TARGET, TARGET_ESUBSETS));
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.DEPENDENCY__TARGET,
+						TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.DEPENDENCY__TARGET, TARGET_ESUBSETS);
 	}
 
@@ -178,10 +186,10 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuppliers() {
+	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new EObjectResolvingEList(NamedElement.class, this,
-				UMLPackage.DEPENDENCY__SUPPLIER);
+			suppliers = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this, UMLPackage.DEPENDENCY__SUPPLIER);
 		}
 		return suppliers;
 	}
@@ -202,8 +210,7 @@ public class DependencyImpl
 	 */
 	public NamedElement getSupplier(String name, boolean ignoreCase,
 			EClass eClass) {
-		supplierLoop : for (Iterator i = getSuppliers().iterator(); i.hasNext();) {
-			NamedElement supplier = (NamedElement) i.next();
+		supplierLoop : for (NamedElement supplier : getSuppliers()) {
 			if (eClass != null && !eClass.isInstance(supplier))
 				continue supplierLoop;
 			if (name != null && !(ignoreCase
@@ -220,9 +227,9 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClients() {
+	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new EObjectWithInverseResolvingEList.ManyInverse(
+			clients = new EObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
 				NamedElement.class, this, UMLPackage.DEPENDENCY__CLIENT,
 				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
 		}
@@ -244,8 +251,7 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public NamedElement getClient(String name, boolean ignoreCase, EClass eClass) {
-		clientLoop : for (Iterator i = getClients().iterator(); i.hasNext();) {
-			NamedElement client = (NamedElement) i.next();
+		clientLoop : for (NamedElement client : getClients()) {
 			if (eClass != null && !eClass.isInstance(client))
 				continue clientLoop;
 			if (name != null && !(ignoreCase
@@ -262,15 +268,17 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -285,7 +293,8 @@ public class DependencyImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.DEPENDENCY__CLIENT :
-				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -295,18 +304,19 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
@@ -314,7 +324,7 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.DEPENDENCY__CLIENT :
-				return ((InternalEList) getClients()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
 					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -325,6 +335,7 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
@@ -380,15 +391,19 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__NAME :
 				setName((String) newValue);
@@ -398,7 +413,8 @@ public class DependencyImpl
 				return;
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -411,11 +427,13 @@ public class DependencyImpl
 				return;
 			case UMLPackage.DEPENDENCY__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -426,6 +444,7 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
@@ -467,6 +486,7 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
@@ -515,7 +535,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.DEPENDENCY__RELATED_ELEMENT :
@@ -542,7 +563,8 @@ public class DependencyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.10 2006/05/24 20:54:29 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,7 +84,7 @@ public interface RedefinableElement
 	 * @model type="org.eclipse.uml2.uml.RedefinableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedElements();
+	EList<RedefinableElement> getRedefinedElements();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.RedefinableElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Element</b></em>' reference list.
@@ -124,7 +124,7 @@ public interface RedefinableElement
 	 * @model type="org.eclipse.uml2.uml.Classifier" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinitionContexts();
+	EList<Classifier> getRedefinitionContexts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefinition Context</b></em>' reference list.
@@ -162,7 +162,7 @@ public interface RedefinableElement
 	 * @generated
 	 */
 	boolean validateRedefinitionContextValid(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,7 +175,7 @@ public interface RedefinableElement
 	 * @generated
 	 */
 	boolean validateRedefinitionConsistent(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.13 2006/10/10 20:41:28 khussey Exp $
+ * $Id: Connector.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -87,7 +87,7 @@ public interface Connector
 	 * @model type="org.eclipse.uml2.uml.Connector" ordered="false"
 	 * @generated
 	 */
-	EList getRedefinedConnectors();
+	EList<Connector> getRedefinedConnectors();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Redefined Connector</b></em>' reference list.
@@ -125,7 +125,7 @@ public interface Connector
 	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" containment="true" resolveProxies="true" lower="2"
 	 * @generated
 	 */
-	EList getEnds();
+	EList<ConnectorEnd> getEnds();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ConnectorEnd} and appends it to the '<em><b>End</b></em>' containment reference list.
@@ -205,7 +205,7 @@ public interface Connector
 	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"
 	 * @generated
 	 */
-	EList getContracts();
+	EList<Behavior> getContracts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Behavior} with the specified '<em><b>Name</b></em>' from the '<em><b>Contract</b></em>' reference list.
@@ -241,7 +241,8 @@ public interface Connector
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypes(DiagnosticChain diagnostics, Map context);
+	boolean validateTypes(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -253,7 +254,8 @@ public interface Connector
 	 * @model
 	 * @generated
 	 */
-	boolean validateCompatible(DiagnosticChain diagnostics, Map context);
+	boolean validateCompatible(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -265,7 +267,8 @@ public interface Connector
 	 * @model
 	 * @generated
 	 */
-	boolean validateRoles(DiagnosticChain diagnostics, Map context);
+	boolean validateRoles(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -278,7 +281,7 @@ public interface Connector
 	 * @generated
 	 */
 	boolean validateBetweenInterfacesPorts(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -291,7 +294,7 @@ public interface Connector
 	 * @generated
 	 */
 	boolean validateBetweenInterfacePortImplements(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -304,7 +307,7 @@ public interface Connector
 	 * @generated
 	 */
 	boolean validateBetweenInterfacePortSignature(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -317,7 +320,7 @@ public interface Connector
 	 * @generated
 	 */
 	boolean validateUnionSignatureCompatible(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -329,6 +332,7 @@ public interface Connector
 	 * @model
 	 * @generated
 	 */
-	boolean validateAssemblyConnector(DiagnosticChain diagnostics, Map context);
+	boolean validateAssemblyConnector(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // Connector

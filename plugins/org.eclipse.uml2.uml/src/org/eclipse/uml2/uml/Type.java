@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.8 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Type.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -89,7 +89,7 @@ public interface Type
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Association" ordered="false"
 	 * @generated
 	 */
-	EList getAssociations();
+	EList<Association> getAssociations();
 
 	/**
 	 * <!-- begin-user-doc -->

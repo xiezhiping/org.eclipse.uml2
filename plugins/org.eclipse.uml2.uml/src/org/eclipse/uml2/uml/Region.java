@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Region.java,v 1.11 2006/05/26 16:34:02 khussey Exp $
+ * $Id: Region.java,v 1.12 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface Region
 	 * @model type="org.eclipse.uml2.uml.Vertex" opposite="container" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getSubvertices();
+	EList<Vertex> getSubvertices();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Vertex}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Subvertex</b></em>' containment reference list.
@@ -117,7 +117,7 @@ public interface Region
 	 * @model type="org.eclipse.uml2.uml.Transition" opposite="container" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getTransitions();
+	EList<Transition> getTransitions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Transition}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Transition</b></em>' containment reference list.
@@ -259,7 +259,8 @@ public interface Region
 	 * @model
 	 * @generated
 	 */
-	boolean validateInitialVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateInitialVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,7 +274,8 @@ public interface Region
 	 * @model
 	 * @generated
 	 */
-	boolean validateDeepHistoryVertex(DiagnosticChain diagnostics, Map context);
+	boolean validateDeepHistoryVertex(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -288,7 +290,7 @@ public interface Region
 	 * @generated
 	 */
 	boolean validateShallowHistoryVertex(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -300,7 +302,8 @@ public interface Region
 	 * @model
 	 * @generated
 	 */
-	boolean validateOwned(DiagnosticChain diagnostics, Map context);
+	boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandler.java,v 1.5 2006/03/15 19:33:55 khussey Exp $
+ * $Id: ExceptionHandler.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -109,7 +109,7 @@ public interface ExceptionHandler
 	 * @model type="org.eclipse.uml2.uml.Classifier" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getExceptionTypes();
+	EList<Classifier> getExceptionTypes();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Exception Type</b></em>' reference list.
@@ -172,7 +172,8 @@ public interface ExceptionHandler
 	 * @model
 	 * @generated
 	 */
-	boolean validateExceptionBody(DiagnosticChain diagnostics, Map context);
+	boolean validateExceptionBody(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -184,7 +185,8 @@ public interface ExceptionHandler
 	 * @model
 	 * @generated
 	 */
-	boolean validateResultPins(DiagnosticChain diagnostics, Map context);
+	boolean validateResultPins(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,7 +198,8 @@ public interface ExceptionHandler
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneInput(DiagnosticChain diagnostics, Map context);
+	boolean validateOneInput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +211,7 @@ public interface ExceptionHandler
 	 * @model
 	 * @generated
 	 */
-	boolean validateEdgeSourceTarget(DiagnosticChain diagnostics, Map context);
+	boolean validateEdgeSourceTarget(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ExceptionHandler

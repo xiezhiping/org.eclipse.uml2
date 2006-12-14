@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPin.java,v 1.5 2006/05/26 16:34:03 khussey Exp $
+ * $Id: ActionInputPin.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -88,7 +88,8 @@ public interface ActionInputPin
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneOutputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateOneOutputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,7 +101,8 @@ public interface ActionInputPin
 	 * @model
 	 * @generated
 	 */
-	boolean validateInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,6 +114,7 @@ public interface ActionInputPin
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoControlOrDataFlow(DiagnosticChain diagnostics, Map context);
+	boolean validateNoControlOrDataFlow(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ActionInputPin

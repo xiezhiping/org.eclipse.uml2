@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.20 2006/11/14 18:02:17 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.21 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -34,6 +35,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InteractionConstraint;
 import org.eclipse.uml2.uml.Namespace;
@@ -99,6 +102,7 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERACTION_CONSTRAINT;
 	}
@@ -108,23 +112,25 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INTERACTION_CONSTRAINT__OWNED_ELEMENT,
 			OWNED_ELEMENT_ESUBSETS);
 	}
@@ -341,7 +347,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public boolean validateDynamicVariables(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InteractionConstraintOperations.validateDynamicVariables(this,
 			diagnostics, context);
 	}
@@ -351,7 +357,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateGlobalData(DiagnosticChain diagnostics, Map context) {
+	public boolean validateGlobalData(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InteractionConstraintOperations.validateGlobalData(this,
 			diagnostics, context);
 	}
@@ -361,7 +368,8 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMinintMaxint(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMinintMaxint(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InteractionConstraintOperations.validateMinintMaxint(this,
 			diagnostics, context);
 	}
@@ -372,7 +380,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public boolean validateMinintNonNegative(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InteractionConstraintOperations.validateMinintNonNegative(this,
 			diagnostics, context);
 	}
@@ -383,7 +391,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public boolean validateMaxintPositive(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InteractionConstraintOperations.validateMaxintPositive(this,
 			diagnostics, context);
 	}
@@ -394,7 +402,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public boolean validateMaxintGreaterEqualMinint(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return InteractionConstraintOperations
 			.validateMaxintGreaterEqualMinint(this, diagnostics, context);
 	}
@@ -404,18 +412,19 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
@@ -439,6 +448,7 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
@@ -502,15 +512,19 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME :
 				setName((String) newValue);
@@ -520,7 +534,8 @@ public class InteractionConstraintImpl
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -533,7 +548,8 @@ public class InteractionConstraintImpl
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
-				getConstrainedElements().addAll((Collection) newValue);
+				getConstrainedElements().addAll(
+					(Collection<? extends Element>) newValue);
 				return;
 			case UMLPackage.INTERACTION_CONSTRAINT__SPECIFICATION :
 				setSpecification((ValueSpecification) newValue);
@@ -556,6 +572,7 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
@@ -606,6 +623,7 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERACTION_CONSTRAINT__EANNOTATIONS :
@@ -670,6 +688,7 @@ public class InteractionConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.INTERACTION_CONSTRAINT__MININT)

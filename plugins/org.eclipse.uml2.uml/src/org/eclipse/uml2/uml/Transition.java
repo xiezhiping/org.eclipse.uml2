@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.16 2006/10/10 20:41:28 khussey Exp $
+ * $Id: Transition.java,v 1.17 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -256,7 +256,7 @@ public interface Transition
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getTriggers();
+	EList<Trigger> getTriggers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Trigger</b></em>' containment reference list.
@@ -330,7 +330,8 @@ public interface Transition
 	 * @model
 	 * @generated
 	 */
-	boolean validateForkSegmentGuards(DiagnosticChain diagnostics, Map context);
+	boolean validateForkSegmentGuards(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -342,7 +343,8 @@ public interface Transition
 	 * @model
 	 * @generated
 	 */
-	boolean validateJoinSegmentGuards(DiagnosticChain diagnostics, Map context);
+	boolean validateJoinSegmentGuards(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -354,7 +356,8 @@ public interface Transition
 	 * @model
 	 * @generated
 	 */
-	boolean validateForkSegmentState(DiagnosticChain diagnostics, Map context);
+	boolean validateForkSegmentState(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -366,7 +369,8 @@ public interface Transition
 	 * @model
 	 * @generated
 	 */
-	boolean validateJoinSegmentState(DiagnosticChain diagnostics, Map context);
+	boolean validateJoinSegmentState(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -381,7 +385,7 @@ public interface Transition
 	 * @generated
 	 */
 	boolean validateOutgoingPseudostates(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -398,7 +402,8 @@ public interface Transition
 	 * @model
 	 * @generated
 	 */
-	boolean validateInitialTransition(DiagnosticChain diagnostics, Map context);
+	boolean validateInitialTransition(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -412,7 +417,7 @@ public interface Transition
 	 * @generated
 	 */
 	boolean validateSignaturesCompatible(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

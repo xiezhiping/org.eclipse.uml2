@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionOperations.java,v 1.5 2006/04/05 13:50:02 khussey Exp $
+ * $Id: CallOperationActionOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -62,7 +62,7 @@ public class CallOperationActionOperations
 	 */
 	public static boolean validateArgumentPinEqualParameter(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -95,7 +95,7 @@ public class CallOperationActionOperations
 	 */
 	public static boolean validateResultPinEqualParameter(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -128,7 +128,7 @@ public class CallOperationActionOperations
 	 */
 	public static boolean validateTypeTargetPin(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -162,7 +162,7 @@ public class CallOperationActionOperations
 	 */
 	public static boolean validateTypeOrderingMultiplicity(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message

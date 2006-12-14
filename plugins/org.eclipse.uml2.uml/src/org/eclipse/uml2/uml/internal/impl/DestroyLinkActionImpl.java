@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.14 2006/04/10 19:16:20 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.15 2006/12/14 15:49:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -53,6 +53,7 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.DESTROY_LINK_ACTION;
 	}
@@ -62,9 +63,9 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getEndData() {
+	public EList<LinkEndData> getEndData() {
 		if (endData == null) {
-			endData = new EObjectContainmentEList.Resolving(
+			endData = new EObjectContainmentEList.Resolving<LinkEndData>(
 				LinkEndDestructionData.class, this,
 				UMLPackage.DESTROY_LINK_ACTION__END_DATA);
 		}
@@ -76,6 +77,7 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LinkEndData createEndData() {
 		LinkEndDestructionData newEndData = (LinkEndDestructionData) create(UMLPackage.Literals.LINK_END_DESTRUCTION_DATA);
 		getEndData().add(newEndData);
@@ -96,6 +98,7 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS :
@@ -179,6 +182,7 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.DESTROY_LINK_ACTION__EANNOTATIONS :

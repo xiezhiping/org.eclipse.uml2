@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.27 2006/11/14 18:02:20 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.28 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -24,6 +23,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -37,18 +37,29 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedEObjectEList;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredClassifier;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.StructuredClassifierOperations;
@@ -85,7 +96,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ownedAttributes = null;
+	protected EList<Property> ownedAttributes = null;
 
 	/**
 	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
@@ -95,7 +106,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList ownedConnectors = null;
+	protected EList<Connector> ownedConnectors = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,6 +122,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.STRUCTURED_CLASSIFIER;
 	}
@@ -120,23 +132,26 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRoles() {
+	public EList<ConnectableElement> getRoles() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList roles = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE);
+			@SuppressWarnings("unchecked")
+			EList<ConnectableElement> roles = (EList<ConnectableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE);
 			if (roles == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.STRUCTURED_CLASSIFIER__ROLE,
-					roles = new DerivedUnionEObjectEList(
+					roles = new DerivedUnionEObjectEList<ConnectableElement>(
 						ConnectableElement.class, this,
 						UMLPackage.STRUCTURED_CLASSIFIER__ROLE, ROLE_ESUBSETS));
 			}
 			return roles;
 		}
-		return new DerivedUnionEObjectEList(ConnectableElement.class, this,
+		return new DerivedUnionEObjectEList<ConnectableElement>(
+			ConnectableElement.class, this,
 			UMLPackage.STRUCTURED_CLASSIFIER__ROLE, ROLE_ESUBSETS);
 	}
 
@@ -156,8 +171,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public ConnectableElement getRole(String name, Type type,
 			boolean ignoreCase, EClass eClass) {
-		roleLoop : for (Iterator i = getRoles().iterator(); i.hasNext();) {
-			ConnectableElement role = (ConnectableElement) i.next();
+		roleLoop : for (ConnectableElement role : getRoles()) {
 			if (eClass != null && !eClass.isInstance(role))
 				continue roleLoop;
 			if (name != null && !(ignoreCase
@@ -176,25 +190,26 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedMembers() {
+	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedMembers = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__OWNED_MEMBER);
 			if (ownedMembers == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__OWNED_MEMBER,
-					ownedMembers = new DerivedUnionEObjectEList(
+					ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
 						NamedElement.class, this,
 						UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
 						OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER,
 			OWNED_MEMBER_ESUBSETS);
 	}
 
@@ -203,23 +218,25 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributes() {
+	public EList<Property> getAttributes() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList attributes = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.CLASSIFIER__ATTRIBUTE);
+			@SuppressWarnings("unchecked")
+			EList<Property> attributes = (EList<Property>) cache.get(eResource,
+				this, UMLPackage.Literals.CLASSIFIER__ATTRIBUTE);
 			if (attributes == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.CLASSIFIER__ATTRIBUTE,
-					attributes = new DerivedUnionEObjectEList(Property.class,
-						this, UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
+					attributes = new DerivedUnionEObjectEList<Property>(
+						Property.class, this,
+						UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE,
 						ATTRIBUTE_ESUBSETS));
 			}
 			return attributes;
 		}
-		return new DerivedUnionEObjectEList(Property.class, this,
+		return new DerivedUnionEObjectEList<Property>(Property.class, this,
 			UMLPackage.STRUCTURED_CLASSIFIER__ATTRIBUTE, ATTRIBUTE_ESUBSETS);
 	}
 
@@ -228,24 +245,26 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMembers() {
+	public EList<NamedElement> getMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList members = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.NAMESPACE__MEMBER);
+			@SuppressWarnings("unchecked")
+			EList<NamedElement> members = (EList<NamedElement>) cache.get(
+				eResource, this, UMLPackage.Literals.NAMESPACE__MEMBER);
 			if (members == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.NAMESPACE__MEMBER,
-					members = new DerivedUnionEObjectEList(NamedElement.class,
-						this, UMLPackage.STRUCTURED_CLASSIFIER__MEMBER,
+					members = new DerivedUnionEObjectEList<NamedElement>(
+						NamedElement.class, this,
+						UMLPackage.STRUCTURED_CLASSIFIER__MEMBER,
 						MEMBER_ESUBSETS));
 			}
 			return members;
 		}
-		return new DerivedUnionEObjectEList(NamedElement.class, this,
-			UMLPackage.STRUCTURED_CLASSIFIER__MEMBER, MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
+			this, UMLPackage.STRUCTURED_CLASSIFIER__MEMBER, MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -253,23 +272,25 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getFeatures() {
+	public EList<Feature> getFeatures() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList features = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.CLASSIFIER__FEATURE);
+			@SuppressWarnings("unchecked")
+			EList<Feature> features = (EList<Feature>) cache.get(eResource,
+				this, UMLPackage.Literals.CLASSIFIER__FEATURE);
 			if (features == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.CLASSIFIER__FEATURE,
-					features = new DerivedUnionEObjectEList(Feature.class,
-						this, UMLPackage.STRUCTURED_CLASSIFIER__FEATURE,
+					features = new DerivedUnionEObjectEList<Feature>(
+						Feature.class, this,
+						UMLPackage.STRUCTURED_CLASSIFIER__FEATURE,
 						FEATURE_ESUBSETS));
 			}
 			return features;
 		}
-		return new DerivedUnionEObjectEList(Feature.class, this,
+		return new DerivedUnionEObjectEList<Feature>(Feature.class, this,
 			UMLPackage.STRUCTURED_CLASSIFIER__FEATURE, FEATURE_ESUBSETS);
 	}
 
@@ -278,9 +299,9 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedAttributes() {
+	public EList<Property> getOwnedAttributes() {
 		if (ownedAttributes == null) {
-			ownedAttributes = new EObjectContainmentEList.Resolving(
+			ownedAttributes = new EObjectContainmentEList.Resolving<Property>(
 				Property.class, this,
 				UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
 		}
@@ -327,9 +348,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public Property getOwnedAttribute(String name, Type type,
 			boolean ignoreCase, EClass eClass, boolean createOnDemand) {
-		ownedAttributeLoop : for (Iterator i = getOwnedAttributes().iterator(); i
-			.hasNext();) {
-			Property ownedAttribute = (Property) i.next();
+		ownedAttributeLoop : for (Property ownedAttribute : getOwnedAttributes()) {
 			if (eClass != null && !eClass.isInstance(ownedAttribute))
 				continue ownedAttributeLoop;
 			if (name != null && !(ignoreCase
@@ -346,26 +365,30 @@ public abstract class StructuredClassifierImpl
 	}
 
 	protected static class PartEList
-			extends DerivedEObjectEList {
+			extends DerivedEObjectEList<Property> {
 
-		protected PartEList(Class dataClass, InternalEObject owner,
+		protected PartEList(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] sourceFeatureIDs) {
 			super(dataClass, owner, featureID, sourceFeatureIDs);
 		}
 
-		public List basicList() {
+		@Override
+		public List<Property> basicList() {
 			return new PartEList(dataClass, owner, featureID, sourceFeatureIDs) {
 
-				public ListIterator listIterator(int index) {
+				@Override
+				public ListIterator<Property> listIterator(int index) {
 					return basicListIterator(index);
 				}
 			};
 		}
 
+		@Override
 		protected boolean isIncluded(EStructuralFeature feature) {
 			return false;
 		}
 
+		@Override
 		protected boolean isIncluded(Object object) {
 			return super.isIncluded(object)
 				&& ((Property) object).isComposite();
@@ -384,12 +407,13 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getParts() {
+	public EList<Property> getParts() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList parts = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART);
+			@SuppressWarnings("unchecked")
+			EList<Property> parts = (EList<Property>) cache.get(eResource,
+				this, UMLPackage.Literals.STRUCTURED_CLASSIFIER__PART);
 			if (parts == null) {
 				cache
 					.put(eResource, this,
@@ -420,8 +444,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public Property getPart(String name, Type type, boolean ignoreCase,
 			EClass eClass) {
-		partLoop : for (Iterator i = getParts().iterator(); i.hasNext();) {
-			Property part = (Property) i.next();
+		partLoop : for (Property part : getParts()) {
 			if (eClass != null && !eClass.isInstance(part))
 				continue partLoop;
 			if (name != null && !(ignoreCase
@@ -440,9 +463,9 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedConnectors() {
+	public EList<Connector> getOwnedConnectors() {
 		if (ownedConnectors == null) {
-			ownedConnectors = new EObjectContainmentEList.Resolving(
+			ownedConnectors = new EObjectContainmentEList.Resolving<Connector>(
 				Connector.class, this,
 				UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);
 		}
@@ -478,9 +501,7 @@ public abstract class StructuredClassifierImpl
 	 */
 	public Connector getOwnedConnector(String name, boolean ignoreCase,
 			boolean createOnDemand) {
-		ownedConnectorLoop : for (Iterator i = getOwnedConnectors().iterator(); i
-			.hasNext();) {
-			Connector ownedConnector = (Connector) i.next();
+		ownedConnectorLoop : for (Connector ownedConnector : getOwnedConnectors()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(ownedConnector.getName())
 				: name.equals(ownedConnector.getName())))
@@ -498,7 +519,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicities(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return StructuredClassifierOperations.validateMultiplicities(this,
 			diagnostics, context);
 	}
@@ -519,61 +540,62 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicRemove(
+				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT :
-				return ((InternalEList) getPowertypeExtents()).basicRemove(
+				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
-				return ((InternalEList) getSubstitutions()).basicRemove(
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
-				return ((InternalEList) getCollaborationUses()).basicRemove(
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
+				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
-				return ((InternalEList) getOwnedAttributes()).basicRemove(
+				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR :
-				return ((InternalEList) getOwnedConnectors()).basicRemove(
+				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -584,6 +606,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
@@ -697,15 +720,19 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME :
 				setName((String) newValue);
@@ -715,22 +742,26 @@ public abstract class StructuredClassifierImpl
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -746,7 +777,8 @@ public abstract class StructuredClassifierImpl
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -756,46 +788,55 @@ public abstract class StructuredClassifierImpl
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection) newValue);
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection) newValue);
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll((Collection) newValue);
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection) newValue);
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll((Collection) newValue);
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__USE_CASE :
 				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection) newValue);
+				getOwnedAttributes().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection) newValue);
+				getOwnedConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -806,6 +847,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
@@ -898,6 +940,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.STRUCTURED_CLASSIFIER__EANNOTATIONS :
@@ -1029,6 +1072,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
 			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE)
@@ -1050,6 +1094,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetAttributes() {
 		return super.isSetAttributes()
 			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE);
@@ -1075,6 +1120,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMembers() {
 		return super.isSetMembers() || isSetRoles();
 	}
@@ -1096,6 +1142,7 @@ public abstract class StructuredClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetFeatures() {
 		return super.isSetFeatures()
 			|| eIsSet(UMLPackage.STRUCTURED_CLASSIFIER__OWNED_CONNECTOR);

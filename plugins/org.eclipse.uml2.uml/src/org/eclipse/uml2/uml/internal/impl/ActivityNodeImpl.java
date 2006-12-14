@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.18 2006/11/14 18:02:17 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.19 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -43,6 +43,8 @@ import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -87,7 +89,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList outgoings = null;
+	protected EList<ActivityEdge> outgoings = null;
 
 	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
@@ -97,7 +99,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList incomings = null;
+	protected EList<ActivityEdge> incomings = null;
 
 	/**
 	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
@@ -107,7 +109,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inPartitions = null;
+	protected EList<ActivityPartition> inPartitions = null;
 
 	/**
 	 * The cached value of the '{@link #getInInterruptibleRegions() <em>In Interruptible Region</em>}' reference list.
@@ -117,7 +119,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList inInterruptibleRegions = null;
+	protected EList<InterruptibleActivityRegion> inInterruptibleRegions = null;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedNodes() <em>Redefined Node</em>}' reference list.
@@ -127,7 +129,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList redefinedNodes = null;
+	protected EList<ActivityNode> redefinedNodes = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,6 +145,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTIVITY_NODE;
 	}
@@ -152,24 +155,25 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInGroups() {
+	public EList<ActivityGroup> getInGroups() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inGroups = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP);
+			@SuppressWarnings("unchecked")
+			EList<ActivityGroup> inGroups = (EList<ActivityGroup>) cache.get(
+				eResource, this, UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP);
 			if (inGroups == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP,
-					inGroups = new DerivedUnionEObjectEList(
+					inGroups = new DerivedUnionEObjectEList<ActivityGroup>(
 						ActivityGroup.class, this,
 						UMLPackage.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS));
 			}
 			return inGroups;
 		}
-		return new DerivedUnionEObjectEList(ActivityGroup.class, this,
-			UMLPackage.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS);
+		return new DerivedUnionEObjectEList<ActivityGroup>(ActivityGroup.class,
+			this, UMLPackage.ACTIVITY_NODE__IN_GROUP, IN_GROUP_ESUBSETS);
 	}
 
 	/**
@@ -177,24 +181,30 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedElements() {
+	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList redefinedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
 			if (redefinedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-					redefinedElements = new DerivedUnionEObjectEList(
-						RedefinableElement.class, this,
-						UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
-						REDEFINED_ELEMENT_ESUBSETS));
+				cache
+					.put(
+						eResource,
+						this,
+						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
+						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
+							RedefinableElement.class, this,
+							UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
+							REDEFINED_ELEMENT_ESUBSETS));
 			}
 			return redefinedElements;
 		}
-		return new DerivedUnionEObjectEList(RedefinableElement.class, this,
+		return new DerivedUnionEObjectEList<RedefinableElement>(
+			RedefinableElement.class, this,
 			UMLPackage.ACTIVITY_NODE__REDEFINED_ELEMENT,
 			REDEFINED_ELEMENT_ESUBSETS);
 	}
@@ -204,9 +214,9 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutgoings() {
+	public EList<ActivityEdge> getOutgoings() {
 		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList(
+			outgoings = new EObjectWithInverseResolvingEList<ActivityEdge>(
 				ActivityEdge.class, this, UMLPackage.ACTIVITY_NODE__OUTGOING,
 				UMLPackage.ACTIVITY_EDGE__SOURCE);
 		}
@@ -229,8 +239,7 @@ public abstract class ActivityNodeImpl
 	 */
 	public ActivityEdge getOutgoing(String name, boolean ignoreCase,
 			EClass eClass) {
-		outgoingLoop : for (Iterator i = getOutgoings().iterator(); i.hasNext();) {
-			ActivityEdge outgoing = (ActivityEdge) i.next();
+		outgoingLoop : for (ActivityEdge outgoing : getOutgoings()) {
 			if (eClass != null && !eClass.isInstance(outgoing))
 				continue outgoingLoop;
 			if (name != null && !(ignoreCase
@@ -247,9 +256,9 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInPartitions() {
+	public EList<ActivityPartition> getInPartitions() {
 		if (inPartitions == null) {
-			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse(
+			inPartitions = new EObjectWithInverseResolvingEList.ManyInverse<ActivityPartition>(
 				ActivityPartition.class, this,
 				UMLPackage.ACTIVITY_NODE__IN_PARTITION,
 				UMLPackage.ACTIVITY_PARTITION__NODE);
@@ -272,9 +281,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public ActivityPartition getInPartition(String name, boolean ignoreCase) {
-		inPartitionLoop : for (Iterator i = getInPartitions().iterator(); i
-			.hasNext();) {
-			ActivityPartition inPartition = (ActivityPartition) i.next();
+		inPartitionLoop : for (ActivityPartition inPartition : getInPartitions()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(inPartition.getName())
 				: name.equals(inPartition.getName())))
@@ -415,9 +422,9 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getIncomings() {
+	public EList<ActivityEdge> getIncomings() {
 		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList(
+			incomings = new EObjectWithInverseResolvingEList<ActivityEdge>(
 				ActivityEdge.class, this, UMLPackage.ACTIVITY_NODE__INCOMING,
 				UMLPackage.ACTIVITY_EDGE__TARGET);
 		}
@@ -440,8 +447,7 @@ public abstract class ActivityNodeImpl
 	 */
 	public ActivityEdge getIncoming(String name, boolean ignoreCase,
 			EClass eClass) {
-		incomingLoop : for (Iterator i = getIncomings().iterator(); i.hasNext();) {
-			ActivityEdge incoming = (ActivityEdge) i.next();
+		incomingLoop : for (ActivityEdge incoming : getIncomings()) {
 			if (eClass != null && !eClass.isInstance(incoming))
 				continue incomingLoop;
 			if (name != null && !(ignoreCase
@@ -458,9 +464,9 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInInterruptibleRegions() {
+	public EList<InterruptibleActivityRegion> getInInterruptibleRegions() {
 		if (inInterruptibleRegions == null) {
-			inInterruptibleRegions = new EObjectWithInverseResolvingEList.ManyInverse(
+			inInterruptibleRegions = new EObjectWithInverseResolvingEList.ManyInverse<InterruptibleActivityRegion>(
 				InterruptibleActivityRegion.class, this,
 				UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION,
 				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);
@@ -473,10 +479,11 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRedefinedNodes() {
+	public EList<ActivityNode> getRedefinedNodes() {
 		if (redefinedNodes == null) {
-			redefinedNodes = new EObjectResolvingEList(ActivityNode.class,
-				this, UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
+			redefinedNodes = new EObjectResolvingEList<ActivityNode>(
+				ActivityNode.class, this,
+				UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);
 		}
 		return redefinedNodes;
 	}
@@ -497,9 +504,7 @@ public abstract class ActivityNodeImpl
 	 */
 	public ActivityNode getRedefinedNode(String name, boolean ignoreCase,
 			EClass eClass) {
-		redefinedNodeLoop : for (Iterator i = getRedefinedNodes().iterator(); i
-			.hasNext();) {
-			ActivityNode redefinedNode = (ActivityNode) i.next();
+		redefinedNodeLoop : for (ActivityNode redefinedNode : getRedefinedNodes()) {
 			if (eClass != null && !eClass.isInstance(redefinedNode))
 				continue redefinedNodeLoop;
 			if (name != null && !(ignoreCase
@@ -516,7 +521,8 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOwned(DiagnosticChain diagnostics, Map context) {
+	public boolean validateOwned(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityNodeOperations.validateOwned(this, diagnostics, context);
 	}
 
@@ -526,7 +532,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public boolean validateOwnedStructuredNode(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityNodeOperations.validateOwnedStructuredNode(this,
 			diagnostics, context);
 	}
@@ -536,15 +542,17 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -555,17 +563,17 @@ public abstract class ActivityNodeImpl
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivity((Activity) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				return ((InternalEList) getIncomings())
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -575,18 +583,19 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE :
@@ -594,16 +603,16 @@ public abstract class ActivityNodeImpl
 			case UMLPackage.ACTIVITY_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -614,6 +623,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -633,6 +643,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
@@ -698,15 +709,19 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__NAME :
 				setName((String) newValue);
@@ -716,7 +731,8 @@ public abstract class ActivityNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -732,23 +748,29 @@ public abstract class ActivityNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -759,6 +781,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
@@ -812,6 +835,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_NODE__EANNOTATIONS :
@@ -919,6 +943,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwner() {
 		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_NODE__ACTIVITY);
 	}
@@ -938,6 +963,7 @@ public abstract class ActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetRedefinedElements() {
 		return super.isSetRedefinedElements()
 			|| eIsSet(UMLPackage.ACTIVITY_NODE__REDEFINED_NODE);

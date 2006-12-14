@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.12 2006/10/11 16:30:15 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.13 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -26,6 +26,7 @@ import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Realization;
 import org.eclipse.uml2.uml.Port;
@@ -122,37 +123,35 @@ public class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList realizedInterfaces(Component component,
+	public static EList<Interface> realizedInterfaces(Component component,
 			Classifier classifier) {
 		return ECollections.unmodifiableEList(realizedInterfaces(component,
 			classifier, true));
 	}
 
-	protected static EList realizedInterfaces(Component component,
+	protected static EList<Interface> realizedInterfaces(Component component,
 			Classifier classifier, boolean resolve) {
 		return realizedInterfaces(component, classifier, resolve,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<Interface>());
 	}
 
-	protected static EList realizedInterfaces(Component component,
-			Classifier classifier, boolean resolve, EList realizedInterfaces) {
+	protected static EList<Interface> realizedInterfaces(Component component,
+			Classifier classifier, boolean resolve,
+			EList<Interface> realizedInterfaces) {
 
-		for (Iterator clientDependencies = classifier.getClientDependencies()
-			.iterator(); clientDependencies.hasNext();) {
+		for (Dependency clientDependency : classifier.getClientDependencies()) {
 
-			Dependency dependency = (Dependency) clientDependencies.next();
-
-			if (dependency instanceof Realization) {
-				Iterator suppliers = resolve
-					? dependency.getSuppliers().iterator()
-					: ((InternalEList) dependency.getSuppliers())
-						.basicIterator();
+			if (clientDependency instanceof Realization) {
+				Iterator<NamedElement> suppliers = resolve
+					? clientDependency.getSuppliers().iterator()
+					: ((InternalEList<NamedElement>) clientDependency
+						.getSuppliers()).basicIterator();
 
 				while (suppliers.hasNext()) {
-					Object supplier = suppliers.next();
+					NamedElement supplier = suppliers.next();
 
 					if (supplier instanceof Interface) {
-						realizedInterfaces.add(supplier);
+						realizedInterfaces.add((Interface) supplier);
 					}
 				}
 			}
@@ -172,37 +171,35 @@ public class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList usedInterfaces(Component component,
+	public static EList<Interface> usedInterfaces(Component component,
 			Classifier classifier) {
 		return ECollections.unmodifiableEList(usedInterfaces(component,
 			classifier, true));
 	}
 
-	protected static EList usedInterfaces(Component component,
+	protected static EList<Interface> usedInterfaces(Component component,
 			Classifier classifier, boolean resolve) {
 		return usedInterfaces(component, classifier, resolve,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<Interface>());
 	}
 
-	protected static EList usedInterfaces(Component component,
-			Classifier classifier, boolean resolve, EList usedInterfaces) {
+	protected static EList<Interface> usedInterfaces(Component component,
+			Classifier classifier, boolean resolve,
+			EList<Interface> usedInterfaces) {
 
-		for (Iterator clientDependencies = classifier.getClientDependencies()
-			.iterator(); clientDependencies.hasNext();) {
+		for (Dependency clientDependency : classifier.getClientDependencies()) {
 
-			Dependency dependency = (Dependency) clientDependencies.next();
-
-			if (dependency instanceof Usage) {
-				Iterator suppliers = resolve
-					? dependency.getSuppliers().iterator()
-					: ((InternalEList) dependency.getSuppliers())
-						.basicIterator();
+			if (clientDependency instanceof Usage) {
+				Iterator<NamedElement> suppliers = resolve
+					? clientDependency.getSuppliers().iterator()
+					: ((InternalEList<NamedElement>) clientDependency
+						.getSuppliers()).basicIterator();
 
 				while (suppliers.hasNext()) {
-					Object supplier = suppliers.next();
+					NamedElement supplier = suppliers.next();
 
 					if (supplier instanceof Interface) {
-						usedInterfaces.add(supplier);
+						usedInterfaces.add((Interface) supplier);
 					}
 				}
 			}
@@ -227,36 +224,29 @@ public class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getRequireds(Component component) {
-		EList requireds = usedInterfaces(component, component, false,
-			new UniqueEList.FastCompare());
+	public static EList<Interface> getRequireds(Component component) {
+		EList<Interface> requireds = usedInterfaces(component, component,
+			false, new UniqueEList.FastCompare<Interface>());
 
-		for (Iterator realizations = component.getRealizations().iterator(); realizations
-			.hasNext();) {
-
-			Classifier realizingClassifier = ((ComponentRealization) realizations
-				.next()).getRealizingClassifier();
+		for (ComponentRealization realization : component.getRealizations()) {
+			Classifier realizingClassifier = realization
+				.getRealizingClassifier();
 
 			if (realizingClassifier != null) {
 				usedInterfaces(component, realizingClassifier, false, requireds);
 
-				for (Iterator allParents = realizingClassifier.allParents()
-					.iterator(); allParents.hasNext();) {
-
-					usedInterfaces(component, (Classifier) allParents.next(),
-						false, requireds);
+				for (Classifier parent : realizingClassifier.allParents()) {
+					usedInterfaces(component, parent, false, requireds);
 				}
 			}
 		}
 
-		for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
-			.hasNext();) {
-
-			requireds.addAll(((InternalEList) ((Port) ownedPorts.next())
+		for (Port ownedPort : component.getOwnedPorts()) {
+			requireds.addAll(((InternalEList<Interface>) ownedPort
 				.getRequireds()).basicList());
 		}
 
-		return new UnionEObjectEList((InternalEObject) component,
+		return new UnionEObjectEList<Interface>((InternalEObject) component,
 			UMLPackage.Literals.COMPONENT__REQUIRED, requireds.size(),
 			requireds.toArray());
 	}
@@ -279,75 +269,60 @@ public class ComponentOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getProvideds(Component component) {
-		EList provideds = realizedInterfaces(component, component, false,
-			new UniqueEList.FastCompare());
+	public static EList<Interface> getProvideds(Component component) {
+		EList<Interface> provideds = realizedInterfaces(component, component,
+			false, new UniqueEList.FastCompare<Interface>());
 
-		for (Iterator realizations = component.getRealizations().iterator(); realizations
-			.hasNext();) {
-
-			Classifier realizingClassifier = ((ComponentRealization) realizations
-				.next()).getRealizingClassifier();
+		for (ComponentRealization realization : component.getRealizations()) {
+			Classifier realizingClassifier = realization
+				.getRealizingClassifier();
 
 			if (realizingClassifier != null) {
 				realizedInterfaces(component, realizingClassifier, false,
 					provideds);
 
-				for (Iterator allParents = realizingClassifier.allParents()
-					.iterator(); allParents.hasNext();) {
-
-					realizedInterfaces(component, (Classifier) allParents
-						.next(), false, provideds);
+				for (Classifier parent : realizingClassifier.allParents()) {
+					realizedInterfaces(component, parent, false, provideds);
 				}
 			}
 		}
 
-		for (Iterator ownedPorts = component.getOwnedPorts().iterator(); ownedPorts
-			.hasNext();) {
-
-			provideds.addAll(((InternalEList) ((Port) ownedPorts.next())
+		for (Port ownedPort : component.getOwnedPorts()) {
+			provideds.addAll(((InternalEList<Interface>) ownedPort
 				.getProvideds()).basicList());
 		}
 
-		return new UnionEObjectEList((InternalEObject) component,
+		return new UnionEObjectEList<Interface>((InternalEObject) component,
 			UMLPackage.Literals.COMPONENT__PROVIDED, provideds.size(),
 			provideds.toArray());
 	}
 
-	protected static EList getAllProvideds(Component component,
-			EList allProvideds) {
+	protected static EList<Interface> getAllProvideds(Component component,
+			EList<Interface> allProvideds) {
 		allProvideds.addAll(component.getProvideds());
 
-		for (Iterator allParents = component.allParents().iterator(); allParents
-			.hasNext();) {
-
-			Object parent = allParents.next();
+		for (Classifier parent : component.allParents()) {
 
 			if (parent instanceof Component) {
 				allProvideds.addAll(((Component) parent).getProvideds());
 			} else {
-				realizedInterfaces(component, (Classifier) parent, true,
-					allProvideds);
+				realizedInterfaces(component, parent, true, allProvideds);
 			}
 		}
 
 		return allProvideds;
 	}
 
-	protected static EList getAllRequireds(Component component,
-			EList allRequireds) {
+	protected static EList<Interface> getAllRequireds(Component component,
+			EList<Interface> allRequireds) {
 		allRequireds.addAll(component.getRequireds());
 
-		for (Iterator allParents = component.allParents().iterator(); allParents
-			.hasNext();) {
-
-			Object parent = allParents.next();
+		for (Classifier parent : component.allParents()) {
 
 			if (parent instanceof Component) {
 				allRequireds.addAll(((Component) parent).getRequireds());
 			} else {
-				usedInterfaces(component, (Classifier) parent, true,
-					allRequireds);
+				usedInterfaces(component, parent, true, allRequireds);
 			}
 		}
 

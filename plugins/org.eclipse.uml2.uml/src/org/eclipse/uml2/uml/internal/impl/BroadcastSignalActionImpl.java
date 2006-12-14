@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.15 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,13 +19,23 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.BroadcastSignalAction;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ExceptionHandler;
+import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.StringExpression;
@@ -76,6 +86,7 @@ public class BroadcastSignalActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.BROADCAST_SIGNAL_ACTION;
 	}
@@ -129,7 +140,7 @@ public class BroadcastSignalActionImpl
 	 * @generated
 	 */
 	public boolean validateNumberAndOrder(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return BroadcastSignalActionOperations.validateNumberAndOrder(this,
 			diagnostics, context);
 	}
@@ -140,7 +151,7 @@ public class BroadcastSignalActionImpl
 	 * @generated
 	 */
 	public boolean validateTypeOrderingMultiplicity(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return BroadcastSignalActionOperations
 			.validateTypeOrderingMultiplicity(this, diagnostics, context);
 	}
@@ -150,6 +161,7 @@ public class BroadcastSignalActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__EANNOTATIONS :
@@ -239,15 +251,19 @@ public class BroadcastSignalActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME :
 				setName((String) newValue);
@@ -257,7 +273,8 @@ public class BroadcastSignalActionImpl
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -273,39 +290,49 @@ public class BroadcastSignalActionImpl
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ARGUMENT :
 				getArguments().clear();
-				getArguments().addAll((Collection) newValue);
+				getArguments()
+					.addAll((Collection<? extends InputPin>) newValue);
 				return;
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__ON_PORT :
 				setOnPort((Port) newValue);
@@ -322,6 +349,7 @@ public class BroadcastSignalActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__EANNOTATIONS :
@@ -393,6 +421,7 @@ public class BroadcastSignalActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.BROADCAST_SIGNAL_ACTION__EANNOTATIONS :

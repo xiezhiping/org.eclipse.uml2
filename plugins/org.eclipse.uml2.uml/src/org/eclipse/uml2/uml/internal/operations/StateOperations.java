@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.8 2006/11/29 02:00:49 khussey Exp $
+ * $Id: StateOperations.java,v 1.9 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -78,7 +77,7 @@ public class StateOperations
 	 * @generated
 	 */
 	public static boolean validateSubmachineStates(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -112,7 +111,8 @@ public class StateOperations
 	 * @generated
 	 */
 	public static boolean validateDestinationsOrSourcesOfTransitions(
-			State state, DiagnosticChain diagnostics, Map context) {
+			State state, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -144,7 +144,7 @@ public class StateOperations
 	 * @generated
 	 */
 	public static boolean validateSubmachineOrRegions(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -176,7 +176,7 @@ public class StateOperations
 	 * @generated
 	 */
 	public static boolean validateCompositeStates(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -208,7 +208,7 @@ public class StateOperations
 	 * @generated
 	 */
 	public static boolean validateEntryOrExit(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -348,12 +348,9 @@ public class StateOperations
 		if (redefinee != null && redefinee.isRedefinitionContextValid(state)) {
 			State redefineeState = (State) redefinee;
 
-			EList allRegions = getAllRegions(state);
+			EList<Region> allRegions = getAllRegions(state);
 
-			for (Iterator redefineeRegions = redefineeState.getRegions()
-				.iterator(); redefineeRegions.hasNext();) {
-
-				Region redefineeRegion = (Region) redefineeRegions.next();
+			for (Region redefineeRegion : redefineeState.getRegions()) {
 				Region extendedRegion = redefineeRegion.getExtendedRegion();
 
 				if (allRegions.contains(extendedRegion)
@@ -386,8 +383,8 @@ public class StateOperations
 			: container.containingStateMachine();
 	}
 
-	protected static EList getAllRedefinedStates(State state,
-			EList allRedefinedStates) {
+	protected static EList<State> getAllRedefinedStates(State state,
+			EList<State> allRedefinedStates) {
 		State redefinedState = state.getRedefinedState();
 
 		if (redefinedState != null && allRedefinedStates.add(redefinedState)) {
@@ -397,17 +394,17 @@ public class StateOperations
 		return allRedefinedStates;
 	}
 
-	protected static EList getAllRedefinedStates(State state) {
-		return getAllRedefinedStates(state, new UniqueEList.FastCompare());
+	protected static EList<State> getAllRedefinedStates(State state) {
+		return getAllRedefinedStates(state,
+			new UniqueEList.FastCompare<State>());
 	}
 
-	protected static EList getAllRegions(State state) {
-		EList allRegions = new UniqueEList.FastCompare(state.getRegions());
+	protected static EList<Region> getAllRegions(State state) {
+		EList<Region> allRegions = new UniqueEList.FastCompare<Region>(state
+			.getRegions());
 
-		for (Iterator allRedefinedStates = getAllRedefinedStates(state)
-			.iterator(); allRedefinedStates.hasNext();) {
-
-			allRegions.addAll(((State) allRedefinedStates).getRegions());
+		for (State redefinedState : getAllRedefinedStates(state)) {
+			allRegions.addAll(redefinedState.getRegions());
 		}
 
 		return RedefinableElementOperations

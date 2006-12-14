@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.10 2006/03/08 19:03:02 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.11 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -72,7 +71,7 @@ public class AssociationOperations
 	 * @generated
 	 */
 	public static boolean validateSpecializedEndNumber(Association association,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -104,7 +103,7 @@ public class AssociationOperations
 	 * @generated
 	 */
 	public static boolean validateSpecializedEndTypes(Association association,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -136,7 +135,7 @@ public class AssociationOperations
 	 * @generated
 	 */
 	public static boolean validateBinaryAssociations(Association association,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -168,7 +167,7 @@ public class AssociationOperations
 	 * @generated
 	 */
 	public static boolean validateAssociationEnds(Association association,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -208,13 +207,11 @@ public class AssociationOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getEndTypes(Association association) {
-		EList endTypes = new UniqueEList.FastCompare();
+	public static EList<Type> getEndTypes(Association association) {
+		EList<Type> endTypes = new UniqueEList.FastCompare<Type>();
 
-		for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
-			.hasNext();) {
-
-			Type endType = (Type) ((Property) memberEnds.next()).eGet(
+		for (Property memberEnd : association.getMemberEnds()) {
+			Type endType = (Type) memberEnd.eGet(
 				UMLPackage.Literals.TYPED_ELEMENT__TYPE, false);
 
 			if (endType != null) {
@@ -222,7 +219,7 @@ public class AssociationOperations
 			}
 		}
 
-		return new UnionEObjectEList((InternalEObject) association,
+		return new UnionEObjectEList<Type>((InternalEObject) association,
 			UMLPackage.Literals.ASSOCIATION__END_TYPE, endTypes.size(),
 			endTypes.toArray());
 	}

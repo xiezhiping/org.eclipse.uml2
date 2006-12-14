@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.15 2006/05/26 16:34:02 khussey Exp $
+ * $Id: State.java,v 1.16 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -159,7 +159,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.ConnectionPointReference" opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConnections();
+	EList<ConnectionPointReference> getConnections();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.ConnectionPointReference}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Connection</b></em>' containment reference list.
@@ -212,7 +212,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getConnectionPoints();
+	EList<Pseudostate> getConnectionPoints();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Pseudostate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Connection Point</b></em>' containment reference list.
@@ -450,7 +450,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getDeferrableTriggers();
+	EList<Trigger> getDeferrableTriggers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Deferrable Trigger</b></em>' containment reference list.
@@ -503,7 +503,7 @@ public interface State
 	 * @model type="org.eclipse.uml2.uml.Region" opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getRegions();
+	EList<Region> getRegions();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Region}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Region</b></em>' containment reference list.
@@ -550,7 +550,8 @@ public interface State
 	 * @model
 	 * @generated
 	 */
-	boolean validateSubmachineStates(DiagnosticChain diagnostics, Map context);
+	boolean validateSubmachineStates(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -565,7 +566,7 @@ public interface State
 	 * @generated
 	 */
 	boolean validateDestinationsOrSourcesOfTransitions(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -577,7 +578,8 @@ public interface State
 	 * @model
 	 * @generated
 	 */
-	boolean validateSubmachineOrRegions(DiagnosticChain diagnostics, Map context);
+	boolean validateSubmachineOrRegions(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -589,7 +591,8 @@ public interface State
 	 * @model
 	 * @generated
 	 */
-	boolean validateCompositeStates(DiagnosticChain diagnostics, Map context);
+	boolean validateCompositeStates(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -601,7 +604,8 @@ public interface State
 	 * @model
 	 * @generated
 	 */
-	boolean validateEntryOrExit(DiagnosticChain diagnostics, Map context);
+	boolean validateEntryOrExit(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

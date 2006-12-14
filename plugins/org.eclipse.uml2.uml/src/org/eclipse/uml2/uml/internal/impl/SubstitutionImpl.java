@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -32,6 +33,8 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.StringExpression;
@@ -84,6 +87,7 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.SUBSTITUTION;
 	}
@@ -93,9 +97,9 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuppliers() {
+	public EList<NamedElement> getSuppliers() {
 		if (suppliers == null) {
-			suppliers = new SubsetSupersetEObjectResolvingEList(
+			suppliers = new SubsetSupersetEObjectResolvingEList<NamedElement>(
 				NamedElement.class, this, UMLPackage.SUBSTITUTION__SUPPLIER,
 				null, SUPPLIER_ESUBSETS);
 		}
@@ -117,9 +121,9 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getClients() {
+	public EList<NamedElement> getClients() {
 		if (clients == null) {
-			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse(
+			clients = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<NamedElement>(
 				NamedElement.class, this, UMLPackage.SUBSTITUTION__CLIENT,
 				null, CLIENT_ESUBSETS,
 				UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY);
@@ -181,7 +185,7 @@ public class SubstitutionImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newContract != null) {
-				EList suppliers = getSuppliers();
+				EList<NamedElement> suppliers = getSuppliers();
 				if (!suppliers.contains(newContract)) {
 					suppliers.add(newContract);
 				}
@@ -224,7 +228,7 @@ public class SubstitutionImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newSubstitutingClassifier != null) {
-				EList clients = getClients();
+				EList<NamedElement> clients = getClients();
 				if (!clients.contains(newSubstitutingClassifier)) {
 					clients.add(newSubstitutingClassifier);
 				}
@@ -268,15 +272,17 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -291,7 +297,8 @@ public class SubstitutionImpl
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT :
-				return ((InternalEList) getClients()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClients())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -306,18 +313,19 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
@@ -325,7 +333,7 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.SUBSTITUTION__CLIENT :
-				return ((InternalEList) getClients()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getClients()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				return basicSetMapping(null, msgs);
@@ -340,6 +348,7 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -360,6 +369,7 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
@@ -427,15 +437,19 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__NAME :
 				setName((String) newValue);
@@ -445,7 +459,8 @@ public class SubstitutionImpl
 				return;
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -458,11 +473,13 @@ public class SubstitutionImpl
 				return;
 			case UMLPackage.SUBSTITUTION__SUPPLIER :
 				getSuppliers().clear();
-				getSuppliers().addAll((Collection) newValue);
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				getClients().clear();
-				getClients().addAll((Collection) newValue);
+				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
@@ -482,6 +499,7 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
@@ -532,6 +550,7 @@ public class SubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :

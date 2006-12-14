@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.19 2006/10/10 20:41:28 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.20 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
@@ -23,12 +24,32 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
+import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.OpaqueBehavior;
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterSet;
+import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
@@ -57,7 +78,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bodies = null;
+	protected EList<String> bodies = null;
 
 	/**
 	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
@@ -67,7 +88,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList languages = null;
+	protected EList<String> languages = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,6 +104,7 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPAQUE_BEHAVIOR;
 	}
@@ -92,9 +114,9 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBodies() {
+	public EList<String> getBodies() {
 		if (bodies == null) {
-			bodies = new EDataTypeEList.Unsettable(String.class, this,
+			bodies = new EDataTypeEList.Unsettable<String>(String.class, this,
 				UMLPackage.OPAQUE_BEHAVIOR__BODY);
 		}
 		return bodies;
@@ -107,7 +129,7 @@ public class OpaqueBehaviorImpl
 	 */
 	public void unsetBodies() {
 		if (bodies != null)
-			((InternalEList.Unsettable) bodies).unset();
+			((InternalEList.Unsettable<?>) bodies).unset();
 	}
 
 	/**
@@ -116,7 +138,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 */
 	public boolean isSetBodies() {
-		return bodies != null && ((InternalEList.Unsettable) bodies).isSet();
+		return bodies != null && ((InternalEList.Unsettable<?>) bodies).isSet();
 	}
 
 	/**
@@ -124,10 +146,10 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getLanguages() {
+	public EList<String> getLanguages() {
 		if (languages == null) {
-			languages = new EDataTypeUniqueEList.Unsettable(String.class, this,
-				UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
+			languages = new EDataTypeUniqueEList.Unsettable<String>(
+				String.class, this, UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE);
 		}
 		return languages;
 	}
@@ -139,7 +161,7 @@ public class OpaqueBehaviorImpl
 	 */
 	public void unsetLanguages() {
 		if (languages != null)
-			((InternalEList.Unsettable) languages).unset();
+			((InternalEList.Unsettable<?>) languages).unset();
 	}
 
 	/**
@@ -149,7 +171,7 @@ public class OpaqueBehaviorImpl
 	 */
 	public boolean isSetLanguages() {
 		return languages != null
-			&& ((InternalEList.Unsettable) languages).isSet();
+			&& ((InternalEList.Unsettable<?>) languages).isSet();
 	}
 
 	/**
@@ -157,6 +179,7 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_BEHAVIOR__EANNOTATIONS :
@@ -322,15 +345,19 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_BEHAVIOR__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME :
 				setName((String) newValue);
@@ -340,22 +367,26 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -371,7 +402,8 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -381,118 +413,140 @@ public class OpaqueBehaviorImpl
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection) newValue);
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection) newValue);
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll((Collection) newValue);
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection) newValue);
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll((Collection) newValue);
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__USE_CASE :
 				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection) newValue);
+				getOwnedAttributes().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection) newValue);
+				getOwnedConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PORT :
 				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection) newValue);
+				getOwnedPorts().addAll((Collection<? extends Port>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_BEHAVIOR :
 				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll((Collection) newValue);
+				getOwnedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__INTERFACE_REALIZATION :
 				getInterfaceRealizations().clear();
-				getInterfaceRealizations().addAll((Collection) newValue);
+				getInterfaceRealizations().addAll(
+					(Collection<? extends InterfaceRealization>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_TRIGGER :
 				getOwnedTriggers().clear();
-				getOwnedTriggers().addAll((Collection) newValue);
+				getOwnedTriggers().addAll(
+					(Collection<? extends Trigger>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
-				getNestedClassifiers().addAll((Collection) newValue);
+				getNestedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_OPERATION :
 				getOwnedOperations().clear();
-				getOwnedOperations().addAll((Collection) newValue);
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				getSuperClasses().clear();
-				getSuperClasses().addAll((Collection) newValue);
+				getSuperClasses()
+					.addAll(
+						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
 				setIsActive(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll((Collection) newValue);
+				getOwnedReceptions().addAll(
+					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
 				setIsReentrant(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll((Collection) newValue);
+				getRedefinedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
-				getOwnedParameters().addAll((Collection) newValue);
+				getOwnedParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__PRECONDITION :
 				getPreconditions().clear();
-				getPreconditions().addAll((Collection) newValue);
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__POSTCONDITION :
 				getPostconditions().clear();
-				getPostconditions().addAll((Collection) newValue);
+				getPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll((Collection) newValue);
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__BODY :
 				getBodies().clear();
-				getBodies().addAll((Collection) newValue);
+				getBodies().addAll((Collection<? extends String>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__LANGUAGE :
 				getLanguages().clear();
-				getLanguages().addAll((Collection) newValue);
+				getLanguages().addAll((Collection<? extends String>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -503,6 +557,7 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_BEHAVIOR__EANNOTATIONS :
@@ -652,6 +707,7 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPAQUE_BEHAVIOR__EANNOTATIONS :
@@ -796,6 +852,7 @@ public class OpaqueBehaviorImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

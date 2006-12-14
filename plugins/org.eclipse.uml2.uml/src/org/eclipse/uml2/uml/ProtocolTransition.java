@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransition.java,v 1.15 2006/05/12 20:38:03 khussey Exp $
+ * $Id: ProtocolTransition.java,v 1.16 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -107,7 +107,7 @@ public interface ProtocolTransition
 	 * @model type="org.eclipse.uml2.uml.Operation" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList getReferreds();
+	EList<Operation> getReferreds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Referred</b></em>' reference list.
@@ -120,8 +120,8 @@ public interface ProtocolTransition
 	 * @see #getReferreds()
 	 * @generated
 	 */
-	Operation getReferred(String name, EList ownedParameterNames,
-			EList ownedParameterTypes);
+	Operation getReferred(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Operation} with the specified '<em><b>Name</b></em>', '<em><b>Owned Parameter Names</b></em>', and '<em><b>Owned Parameter Types</b></em>' from the '<em><b>Referred</b></em>' reference list.
@@ -135,8 +135,8 @@ public interface ProtocolTransition
 	 * @see #getReferreds()
 	 * @generated
 	 */
-	Operation getReferred(String name, EList ownedParameterNames,
-			EList ownedParameterTypes, boolean ignoreCase);
+	Operation getReferred(String name, EList<String> ownedParameterNames,
+			EList<Type> ownedParameterTypes, boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
@@ -173,7 +173,8 @@ public interface ProtocolTransition
 	 * @model
 	 * @generated
 	 */
-	boolean validateBelongsToPsm(DiagnosticChain diagnostics, Map context);
+	boolean validateBelongsToPsm(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,7 +186,8 @@ public interface ProtocolTransition
 	 * @model
 	 * @generated
 	 */
-	boolean validateAssociatedActions(DiagnosticChain diagnostics, Map context);
+	boolean validateAssociatedActions(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -197,6 +199,7 @@ public interface ProtocolTransition
 	 * @model
 	 * @generated
 	 */
-	boolean validateRefersToOperation(DiagnosticChain diagnostics, Map context);
+	boolean validateRefersToOperation(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ProtocolTransition

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallAction.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
+ * $Id: CallAction.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,7 @@ public interface CallAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getResults();
+	EList<OutputPin> getResults();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Result</b></em>' containment reference list.
@@ -134,7 +134,8 @@ public interface CallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSynchronousCall(DiagnosticChain diagnostics, Map context);
+	boolean validateSynchronousCall(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -146,7 +147,8 @@ public interface CallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberAndOrder(DiagnosticChain diagnostics, Map context);
+	boolean validateNumberAndOrder(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +161,6 @@ public interface CallAction
 	 * @generated
 	 */
 	boolean validateTypeOrderingMultiplicity(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // CallAction

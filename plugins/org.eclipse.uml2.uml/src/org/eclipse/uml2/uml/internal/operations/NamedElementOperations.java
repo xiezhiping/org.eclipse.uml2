@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.19 2006/11/08 20:26:30 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.20 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -79,7 +78,7 @@ public class NamedElementOperations
 	 * @generated
 	 */
 	public static boolean validateHasNoQualifiedName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -112,7 +111,7 @@ public class NamedElementOperations
 	 * @generated
 	 */
 	public static boolean validateHasQualifiedName(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -144,7 +143,8 @@ public class NamedElementOperations
 	 * @generated NOT
 	 */
 	public static boolean validateVisibilityNeedsOwnership(
-			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+			NamedElement namedElement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = true;
 
 		if (namedElement.getNamespace() == null
@@ -237,8 +237,8 @@ public class NamedElementOperations
 		return getQualifiedName(namedElement, namedElement.separator());
 	}
 
-	protected static EList allNamespaces(NamedElement namedElement,
-			EList allNamespaces) {
+	protected static EList<Namespace> allNamespaces(NamedElement namedElement,
+			EList<Namespace> allNamespaces) {
 		Namespace namespace = namedElement.getNamespace();
 
 		if (namespace != null && allNamespaces.add(namespace)) {
@@ -260,9 +260,9 @@ public class NamedElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allNamespaces(NamedElement namedElement) {
+	public static EList<Namespace> allNamespaces(NamedElement namedElement) {
 		return ECollections.unmodifiableEList(allNamespaces(namedElement,
-			new UniqueEList.FastCompare()));
+			new UniqueEList.FastCompare<Namespace>()));
 	}
 
 	/**
@@ -283,12 +283,11 @@ public class NamedElementOperations
 		EClass nEClass = n.eClass();
 
 		if (nEClass.isSuperTypeOf(eClass) || eClass.isSuperTypeOf(nEClass)) {
-			EList namesOfN = ns.getNamesOfMember(n);
+			EList<String> namesOfN = ns.getNamesOfMember(n);
 
-			for (Iterator namesOfMember = ns.getNamesOfMember(namedElement)
-				.iterator(); namesOfMember.hasNext();) {
+			for (String nameOfNamedElement : ns.getNamesOfMember(namedElement)) {
 
-				if (namesOfN.contains(namesOfMember.next())) {
+				if (namesOfN.contains(nameOfNamedElement)) {
 					return false;
 				}
 			}
@@ -319,13 +318,14 @@ public class NamedElementOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allOwningPackages(NamedElement namedElement) {
-		EList allOwningPackages = new UniqueEList.FastCompare();
+	public static EList<org.eclipse.uml2.uml.Package> allOwningPackages(
+			NamedElement namedElement) {
+		EList<org.eclipse.uml2.uml.Package> allOwningPackages = new UniqueEList.FastCompare<org.eclipse.uml2.uml.Package>();
 
 		while ((namedElement = (NamedElement) getOwningElement(namedElement,
 			UMLPackage.Literals.PACKAGE, true)) != null) {
 
-			allOwningPackages.add(namedElement);
+			allOwningPackages.add((org.eclipse.uml2.uml.Package) namedElement);
 		}
 
 		return ECollections.unmodifiableEList(allOwningPackages);

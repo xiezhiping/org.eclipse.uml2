@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.10 2006/06/07 21:39:13 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.Behavior" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedBehaviors();
+	EList<Behavior> getOwnedBehaviors();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Behavior}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Behavior</b></em>' containment reference list.
@@ -152,7 +152,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.InterfaceRealization" opposite="implementingClassifier" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getInterfaceRealizations();
+	EList<InterfaceRealization> getInterfaceRealizations();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.InterfaceRealization}, with the specified '<em><b>Name</b></em>', and '<em><b>Contract</b></em>', and appends it to the '<em><b>Interface Realization</b></em>' containment reference list.
@@ -207,7 +207,7 @@ public interface BehavioredClassifier
 	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getOwnedTriggers();
+	EList<Trigger> getOwnedTriggers();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
@@ -255,7 +255,8 @@ public interface BehavioredClassifier
 	 * @model
 	 * @generated
 	 */
-	boolean validateClassBehavior(DiagnosticChain diagnostics, Map context);
+	boolean validateClassBehavior(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -266,7 +267,7 @@ public interface BehavioredClassifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
-	EList getImplementedInterfaces();
+	EList<Interface> getImplementedInterfaces();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -277,6 +278,6 @@ public interface BehavioredClassifier
 	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
 	 * @generated
 	 */
-	EList getAllImplementedInterfaces();
+	EList<Interface> getAllImplementedInterfaces();
 
 } // BehavioredClassifier

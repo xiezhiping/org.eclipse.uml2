@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: XMI2UMLResourceFactoryImpl.java,v 1.3 2006/10/10 20:41:29 khussey Exp $
+ * $Id: XMI2UMLResourceFactoryImpl.java,v 1.4 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -30,12 +30,14 @@ public class XMI2UMLResourceFactoryImpl
 		super();
 	}
 
+	@Override
 	public Resource createResourceGen(URI uri) {
 		XMI2UMLResource result = new XMI2UMLResourceImpl(uri);
 		result.setEncoding(XMI2UMLResource.DEFAULT_ENCODING);
 		return result;
 	}
 
+	@Override
 	public Resource createResource(URI uri) {
 		XMI2UMLResource resource = (XMI2UMLResource) super.createResource(uri);
 
@@ -45,7 +47,7 @@ public class XMI2UMLResourceFactoryImpl
 		resource.getDefaultLoadOptions().put(
 			XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
 
-		Map defaultSaveOptions = resource.getDefaultSaveOptions();
+		Map<Object, Object> defaultSaveOptions = resource.getDefaultSaveOptions();
 
 		defaultSaveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA,
 			extendedMetaData);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergeNode.java,v 1.2 2006/05/12 20:38:04 khussey Exp $
+ * $Id: MergeNode.java,v 1.3 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,8 @@ public interface MergeNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateOneOutgoingEdge(DiagnosticChain diagnostics, Map context);
+	boolean validateOneOutgoingEdge(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,6 +56,7 @@ public interface MergeNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // MergeNode

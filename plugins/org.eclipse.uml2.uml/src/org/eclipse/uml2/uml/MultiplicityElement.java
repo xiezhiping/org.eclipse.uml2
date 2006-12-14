@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.15 2006/06/07 21:39:13 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.16 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -236,7 +236,8 @@ public interface MultiplicityElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateUpperGt0(DiagnosticChain diagnostics, Map context);
+	boolean validateUpperGt0(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,7 +249,8 @@ public interface MultiplicityElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateLowerGe0(DiagnosticChain diagnostics, Map context);
+	boolean validateLowerGe0(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,7 +262,8 @@ public interface MultiplicityElement
 	 * @model
 	 * @generated
 	 */
-	boolean validateUpperGeLower(DiagnosticChain diagnostics, Map context);
+	boolean validateUpperGeLower(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,7 +276,7 @@ public interface MultiplicityElement
 	 * @generated
 	 */
 	boolean validateValueSpecificationNoSideEffects(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,7 +289,7 @@ public interface MultiplicityElement
 	 * @generated
 	 */
 	boolean validateValueSpecificationConstant(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

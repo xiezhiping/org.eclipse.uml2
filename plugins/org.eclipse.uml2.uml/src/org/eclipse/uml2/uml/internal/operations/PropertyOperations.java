@@ -8,12 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.34 2006/10/10 20:41:29 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.35 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -113,7 +111,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateMultiplicityOfComposite(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		int upperBound = property.upperBound();
 
 		if (upperBound == LiteralUnlimitedNatural.UNLIMITED || upperBound > 1) {
@@ -151,23 +149,18 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSubsettingContextConforms(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
-		spLoop : for (Iterator sp = property.getSubsettedProperties()
-			.iterator(); sp.hasNext();) {
+		spLoop : for (Property subsettedProperty : property
+			.getSubsettedProperties()) {
 
-			Property subsettedProperty = (Property) sp.next();
+			for (Type subsettingContext : property.subsettingContext()) {
 
-			for (Iterator sc = property.subsettingContext().iterator(); sc
-				.hasNext();) {
+				for (Type spSubsettingContext : subsettedProperty
+					.subsettingContext()) {
 
-				Classifier subsettingContext = (Classifier) sc.next();
-
-				for (Iterator c = subsettedProperty.subsettingContext()
-					.iterator(); c.hasNext();) {
-
-					if (subsettingContext.conformsTo((Classifier) c.next())) {
+					if (subsettingContext.conformsTo(spSubsettingContext)) {
 						continue spLoop;
 					}
 				}
@@ -206,7 +199,7 @@ public class PropertyOperations
 	 * @generated
 	 */
 	public static boolean validateRedefinedPropertyInherited(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -241,16 +234,13 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSubsettingRules(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		Type type = property.getType();
 		int upperBound = property.upperBound();
 
-		for (Iterator subsettedProperties = property.getSubsettedProperties()
-			.iterator(); subsettedProperties.hasNext();) {
-
-			Property subsettedProperty = (Property) subsettedProperties.next();
+		for (Property subsettedProperty : property.getSubsettedProperties()) {
 			Type subsettedType = subsettedProperty.getType();
 			int subsettedUpperBound = subsettedProperty.upperBound();
 
@@ -289,7 +279,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateNavigableReadonly(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (property.isReadOnly() && property.getAssociation() != null
@@ -321,7 +311,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateDerivedUnionIsDerived(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (property.isDerivedUnion() && !property.isDerived()) {
@@ -351,7 +341,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateDerivedUnionIsReadOnly(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (property.isDerivedUnion() && !property.isReadOnly()) {
@@ -381,15 +371,12 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSubsettedPropertyNames(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		String name = property.getName();
 
-		for (Iterator subsettedProperties = property.getSubsettedProperties()
-			.iterator(); subsettedProperties.hasNext();) {
-
-			Property subsettedProperty = (Property) subsettedProperties.next();
+		for (Property subsettedProperty : property.getSubsettedProperties()) {
 
 			if (safeEquals(name, subsettedProperty.getName())) {
 				result = false;
@@ -422,7 +409,7 @@ public class PropertyOperations
 	 * @generated NOT
 	 */
 	public static boolean validateDeploymentTarget(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (!property.getDeployments().isEmpty()) {
@@ -459,7 +446,7 @@ public class PropertyOperations
 	 * @generated
 	 */
 	public static boolean validateBindingToAttribute(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -492,11 +479,8 @@ public class PropertyOperations
 	 */
 	public static boolean isAttribute(Property property, Property p) {
 
-		for (Iterator nonNavigableInverseReferences = getNonNavigableInverseReferences(
-			p).iterator(); nonNavigableInverseReferences.hasNext();) {
-
-			EObject eObject = ((EStructuralFeature.Setting) nonNavigableInverseReferences
-				.next()).getEObject();
+		for (EStructuralFeature.Setting nonNavigableInverseReference : getNonNavigableInverseReferences(p)) {
+			EObject eObject = nonNavigableInverseReference.getEObject();
 
 			if (eObject instanceof Classifier
 				&& ((Classifier) eObject).getAttributes().contains(p)) {
@@ -631,23 +615,20 @@ public class PropertyOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList subsettingContext(Property property) {
-		EList subsettingContext = new UniqueEList.FastCompare();
+	public static EList<Type> subsettingContext(Property property) {
+		EList<Type> subsettingContext = new UniqueEList.FastCompare<Type>();
 
 		Association association = property.getAssociation();
 
 		if (association == null) {
 			Namespace namespace = property.getNamespace();
 
-			if (namespace instanceof Classifier) {
-				subsettingContext.add(namespace);
+			if (namespace instanceof Type) {
+				subsettingContext.add((Type) namespace);
 			}
 		} else {
 
-			for (Iterator memberEnds = association.getMemberEnds().iterator(); memberEnds
-				.hasNext();) {
-
-				Property memberEnd = (Property) memberEnds.next();
+			for (Property memberEnd : association.getMemberEnds()) {
 
 				if (memberEnd != property) {
 					Type memberEndType = memberEnd.getType();
@@ -746,7 +727,7 @@ public class PropertyOperations
 			}
 		}
 
-		EList memberEnds = association.getMemberEnds();
+		EList<Property> memberEnds = association.getMemberEnds();
 
 		switch (memberEnds.size()) {
 			case 0 :
@@ -805,7 +786,8 @@ public class PropertyOperations
 				throw new IllegalStateException();
 			}
 
-			EList navigableOwnedEnds = association.getNavigableOwnedEnds();
+			EList<Property> navigableOwnedEnds = association
+				.getNavigableOwnedEnds();
 
 			if (isNavigable) {
 				navigableOwnedEnds.add(property);
@@ -825,13 +807,13 @@ public class PropertyOperations
 		Association association = property.getAssociation();
 
 		if (association != null) {
-			List memberEnds = association.getMemberEnds();
+			EList<Property> memberEnds = association.getMemberEnds();
 
 			if (memberEnds.size() == 2) {
 				int index = memberEnds.indexOf(property);
 
 				if (index != -1) {
-					return (Property) memberEnds.get(Math.abs(index - 1));
+					return memberEnds.get(Math.abs(index - 1));
 				}
 			}
 		}

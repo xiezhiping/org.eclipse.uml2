@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateKind.java,v 1.4 2006/05/12 20:38:09 khussey Exp $
+ * $Id: PseudostateKind.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,8 +30,107 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class PseudostateKind
-		extends AbstractEnumerator {
+public enum PseudostateKind
+		implements Enumerator {
+	/**
+	 * The '<em><b>Initial</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INITIAL
+	 * @generated
+	 * @ordered
+	 */
+	INITIAL_LITERAL(0, "initial", "initial"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Deep History</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DEEP_HISTORY
+	 * @generated
+	 * @ordered
+	 */
+	DEEP_HISTORY_LITERAL(1, "deepHistory", "deepHistory"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Shallow History</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SHALLOW_HISTORY
+	 * @generated
+	 * @ordered
+	 */
+	SHALLOW_HISTORY_LITERAL(2, "shallowHistory", "shallowHistory"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Join</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JOIN
+	 * @generated
+	 * @ordered
+	 */
+	JOIN_LITERAL(3, "join", "join"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Fork</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FORK
+	 * @generated
+	 * @ordered
+	 */
+	FORK_LITERAL(4, "fork", "fork"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Junction</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JUNCTION
+	 * @generated
+	 * @ordered
+	 */
+	JUNCTION_LITERAL(5, "junction", "junction"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Choice</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CHOICE
+	 * @generated
+	 * @ordered
+	 */
+	CHOICE_LITERAL(6, "choice", "choice"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Entry Point</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENTRY_POINT
+	 * @generated
+	 * @ordered
+	 */
+	ENTRY_POINT_LITERAL(7, "entryPoint", "entryPoint"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Exit Point</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EXIT_POINT
+	 * @generated
+	 * @ordered
+	 */
+	EXIT_POINT_LITERAL(8, "exitPoint", "exitPoint"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Terminate</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TERMINATE
+	 * @generated
+	 * @ordered
+	 */
+	TERMINATE_LITERAL(9, "terminate", "terminate"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Initial</b></em>' literal value.
@@ -175,116 +274,6 @@ public final class PseudostateKind
 	public static final int TERMINATE = 9;
 
 	/**
-	 * The '<em><b>Initial</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INITIAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind INITIAL_LITERAL = new PseudostateKind(
-		INITIAL, "initial", "initial"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Deep History</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DEEP_HISTORY
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind DEEP_HISTORY_LITERAL = new PseudostateKind(
-		DEEP_HISTORY, "deepHistory", "deepHistory"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Shallow History</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SHALLOW_HISTORY
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind SHALLOW_HISTORY_LITERAL = new PseudostateKind(
-		SHALLOW_HISTORY, "shallowHistory", "shallowHistory"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Join</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #JOIN
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind JOIN_LITERAL = new PseudostateKind(
-		JOIN, "join", "join"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Fork</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #FORK
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind FORK_LITERAL = new PseudostateKind(
-		FORK, "fork", "fork"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Junction</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #JUNCTION
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind JUNCTION_LITERAL = new PseudostateKind(
-		JUNCTION, "junction", "junction"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Choice</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CHOICE
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind CHOICE_LITERAL = new PseudostateKind(
-		CHOICE, "choice", "choice"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Entry Point</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ENTRY_POINT
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind ENTRY_POINT_LITERAL = new PseudostateKind(
-		ENTRY_POINT, "entryPoint", "entryPoint"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Exit Point</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EXIT_POINT
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind EXIT_POINT_LITERAL = new PseudostateKind(
-		EXIT_POINT, "exitPoint", "exitPoint"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Terminate</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TERMINATE
-	 * @generated
-	 * @ordered
-	 */
-	public static final PseudostateKind TERMINATE_LITERAL = new PseudostateKind(
-		TERMINATE, "terminate", "terminate"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Pseudostate Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -301,8 +290,8 @@ public final class PseudostateKind
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<PseudostateKind> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Pseudostate Kind</b></em>' literal with the specified literal value.
@@ -369,13 +358,74 @@ public final class PseudostateKind
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private PseudostateKind(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //PseudostateKind

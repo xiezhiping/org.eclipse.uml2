@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.18 2006/04/13 03:21:44 khussey Exp $
+ * $Id: ClassifierOperations.java,v 1.19 2006/12/14 15:49:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -39,6 +38,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
@@ -104,7 +104,8 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static boolean validateNoCyclesInGeneralization(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = true;
 
 		if (classifier.allParents().contains(classifier)) {
@@ -134,13 +135,10 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static boolean validateSpecializeType(Classifier classifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
-		for (Iterator parents = classifier.parents().iterator(); parents
-			.hasNext();) {
-
-			Classifier parent = (Classifier) parents.next();
+		for (Classifier parent : classifier.parents()) {
 
 			if (!classifier.maySpecializeType(parent)) {
 				result = false;
@@ -173,7 +171,8 @@ public class ClassifierOperations
 	 * @generated
 	 */
 	public static boolean validateGeneralizationHierarchies(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -205,7 +204,8 @@ public class ClassifierOperations
 	 * @generated
 	 */
 	public static boolean validateMapsToGeneralizationSet(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -232,16 +232,13 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllAttributes(Classifier classifier) {
-		EList allAttributes = new UniqueEList.FastCompare();
+	public static EList<Property> getAllAttributes(Classifier classifier) {
+		EList<Property> allAttributes = new UniqueEList.FastCompare<Property>();
 
-		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
-			.hasNext();) {
-
-			Object feature = allFeatures.next();
+		for (Feature feature : classifier.allFeatures()) {
 
 			if (feature instanceof Property) {
-				allAttributes.add(feature);
+				allAttributes.add((Property) feature);
 			}
 		}
 
@@ -253,16 +250,13 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getOperations(Classifier classifier) {
-		EList operations = new UniqueEList.FastCompare();
+	public static EList<Operation> getOperations(Classifier classifier) {
+		EList<Operation> operations = new UniqueEList.FastCompare<Operation>();
 
-		for (Iterator features = classifier.getFeatures().iterator(); features
-			.hasNext();) {
-
-			Object feature = features.next();
+		for (Feature feature : classifier.getFeatures()) {
 
 			if (feature instanceof Operation) {
-				operations.add(feature);
+				operations.add((Operation) feature);
 			}
 		}
 
@@ -274,16 +268,13 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllOperations(Classifier classifier) {
-		EList allOperations = new UniqueEList.FastCompare();
+	public static EList<Operation> getAllOperations(Classifier classifier) {
+		EList<Operation> allOperations = new UniqueEList.FastCompare<Operation>();
 
-		for (Iterator allFeatures = classifier.allFeatures().iterator(); allFeatures
-			.hasNext();) {
-
-			Object feature = allFeatures.next();
+		for (Feature feature : classifier.allFeatures()) {
 
 			if (feature instanceof Operation) {
-				allOperations.add(feature);
+				allOperations.add((Operation) feature);
 			}
 		}
 
@@ -296,7 +287,7 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static Operation getOperation(Classifier classifier, String name,
-			EList parameterNames, EList parameterTypes) {
+			EList<String> parameterNames, EList<Type> parameterTypes) {
 		return classifier.getOperation(name, parameterNames, parameterTypes,
 			false);
 	}
@@ -307,19 +298,18 @@ public class ClassifierOperations
 	 * @generated NOT
 	 */
 	public static Operation getOperation(Classifier classifier, String name,
-			EList parameterNames, EList parameterTypes, boolean ignoreCase) {
-		operationLoop : for (Iterator i = classifier.getOperations().iterator(); i
-			.hasNext();) {
-
-			Operation ownedOperation = (Operation) i.next();
+			EList<String> parameterNames, EList<Type> parameterTypes,
+			boolean ignoreCase) {
+		operationLoop : for (Operation operation : classifier.getOperations()) {
 
 			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(ownedOperation.getName())
-				: name.equals(ownedOperation.getName())))
+				? name.equalsIgnoreCase(operation.getName())
+				: name.equals(operation.getName())))
 
 				continue operationLoop;
 
-			EList ownedParameterList = ownedOperation.getOwnedParameters();
+			EList<Parameter> ownedParameterList = operation
+				.getOwnedParameters();
 			int ownedParameterListSize = ownedParameterList.size();
 
 			if (parameterNames != null
@@ -329,13 +319,12 @@ public class ClassifierOperations
 				continue operationLoop;
 
 			for (int j = 0; j < ownedParameterListSize; j++) {
-				Parameter ownedParameter = (Parameter) ownedParameterList
-					.get(j);
+				Parameter ownedParameter = ownedParameterList.get(j);
 
 				if (parameterNames != null
 					&& !(ignoreCase
-						? ((String) parameterNames.get(j))
-							.equalsIgnoreCase(ownedParameter.getName())
+						? parameterNames.get(j).equalsIgnoreCase(
+							ownedParameter.getName())
 						: parameterNames.get(j)
 							.equals(ownedParameter.getName())))
 
@@ -347,7 +336,7 @@ public class ClassifierOperations
 					continue operationLoop;
 			}
 
-			return ownedOperation;
+			return operation;
 		}
 
 		return null;
@@ -358,8 +347,9 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getUsedInterfaces(Classifier classifier) {
-		return getUsedInterfaces(classifier, new UniqueEList.FastCompare());
+	public static EList<Interface> getUsedInterfaces(Classifier classifier) {
+		return getUsedInterfaces(classifier,
+			new UniqueEList.FastCompare<Interface>());
 	}
 
 	/**
@@ -367,8 +357,9 @@ public class ClassifierOperations
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public static EList getAllUsedInterfaces(Classifier classifier) {
-		return getAllUsedInterfaces(classifier, new UniqueEList.FastCompare());
+	public static EList<Interface> getAllUsedInterfaces(Classifier classifier) {
+		return getAllUsedInterfaces(classifier,
+			new UniqueEList.FastCompare<Interface>());
 	}
 
 	/**
@@ -385,31 +376,36 @@ public class ClassifierOperations
 	}
 
 	protected static class GeneralEList
-			extends DerivedSubsetEObjectEList {
+			extends DerivedSubsetEObjectEList<Object> {
 
-		protected GeneralEList(Class dataClass, InternalEObject owner,
+		protected GeneralEList(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] sourceFeatureIDs) {
 			super(dataClass, owner, featureID, sourceFeatureIDs);
 		}
 
-		public List basicList() {
+		@Override
+		public List<Object> basicList() {
 			return new GeneralEList(dataClass, owner, featureID,
 				sourceFeatureIDs) {
 
-				public ListIterator listIterator(int index) {
+				@Override
+				public ListIterator<Object> listIterator(int index) {
 					return basicListIterator(index);
 				}
 			};
 		}
 
+		@Override
 		protected boolean isIncluded(EStructuralFeature feature) {
 			return false;
 		}
 
+		@Override
 		protected Object derive(Object object) {
 			return ((Generalization) object).getGeneral();
 		}
 
+		@Override
 		protected Object validate(int index, Object object) {
 			Generalization generalization = UMLFactory.eINSTANCE
 				.createGeneralization();
@@ -431,9 +427,11 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getGenerals(Classifier classifier) {
-		return new GeneralEList(Classifier.class, (InternalEObject) classifier,
-			UMLPackage.CLASSIFIER__GENERAL, GENERAL_ESUPERSETS);
+	@SuppressWarnings("unchecked")
+	public static EList<Classifier> getGenerals(Classifier classifier) {
+		return (EList<Classifier>) ((EList<?>) new GeneralEList(
+			Classifier.class, (InternalEObject) classifier,
+			UMLPackage.CLASSIFIER__GENERAL, GENERAL_ESUPERSETS));
 	}
 
 	/**
@@ -445,19 +443,17 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList getInheritedMembers(Classifier classifier) {
-		EList inheritedMembers = new UniqueEList.FastCompare();
+	public static EList<NamedElement> getInheritedMembers(Classifier classifier) {
+		EList<NamedElement> inheritedMembers = new UniqueEList.FastCompare<NamedElement>();
 
-		for (Iterator parents = classifier.parents().iterator(); parents
-			.hasNext();) {
-
-			inheritedMembers.addAll(((Classifier) parents.next())
-				.inheritableMembers(classifier));
+		for (Classifier parent : classifier.parents()) {
+			inheritedMembers.addAll(parent.inheritableMembers(classifier));
 		}
 
-		EList inherit = classifier.inherit(inheritedMembers);
+		EList<NamedElement> inherit = classifier.inherit(inheritedMembers);
 
-		return new UnionEObjectEList((InternalEObject) classifier,
+		return new UnionEObjectEList<NamedElement>(
+			(InternalEObject) classifier,
 			UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, inherit.size(),
 			inherit.toArray());
 	}
@@ -471,16 +467,13 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allFeatures(Classifier classifier) {
-		EList allFeatures = new UniqueEList.FastCompare();
+	public static EList<Feature> allFeatures(Classifier classifier) {
+		EList<Feature> allFeatures = new UniqueEList.FastCompare<Feature>();
 
-		for (Iterator members = classifier.getMembers().iterator(); members
-			.hasNext();) {
-
-			Object member = members.next();
+		for (NamedElement member : classifier.getMembers()) {
 
 			if (member instanceof Feature) {
-				allFeatures.add(member);
+				allFeatures.add((Feature) member);
 			}
 		}
 
@@ -496,14 +489,11 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList parents(Classifier classifier) {
-		EList parents = new UniqueEList.FastCompare();
+	public static EList<Classifier> parents(Classifier classifier) {
+		EList<Classifier> parents = new UniqueEList.FastCompare<Classifier>();
 
-		for (Iterator generalizations = classifier.getGeneralizations()
-			.iterator(); generalizations.hasNext();) {
-
-			Classifier general = ((Generalization) generalizations.next())
-				.getGeneral();
+		for (Generalization generalization : classifier.getGeneralizations()) {
+			Classifier general = generalization.getGeneral();
 
 			if (general != null) {
 				parents.add(general);
@@ -523,8 +513,9 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList inheritableMembers(Classifier classifier, Classifier c) {
-		EList inheritableMembers = new UniqueEList.FastCompare();
+	public static EList<NamedElement> inheritableMembers(Classifier classifier,
+			Classifier c) {
+		EList<NamedElement> inheritableMembers = new UniqueEList.FastCompare<NamedElement>();
 
 		if (c == classifier || !c.allParents().contains(classifier)
 			|| classifier.allParents().contains(c)) {
@@ -532,10 +523,7 @@ public class ClassifierOperations
 			return inheritableMembers;
 		}
 
-		for (Iterator members = classifier.getMembers().iterator(); members
-			.hasNext();) {
-
-			NamedElement member = (NamedElement) members.next();
+		for (NamedElement member : classifier.getMembers()) {
 
 			if (c.hasVisibilityOf(member)) {
 				inheritableMembers.add(member);
@@ -557,10 +545,7 @@ public class ClassifierOperations
 	 */
 	public static boolean hasVisibilityOf(Classifier classifier, NamedElement n) {
 
-		for (Iterator allParents = classifier.allParents().iterator(); allParents
-			.hasNext();) {
-
-			Classifier parent = (Classifier) allParents.next();
+		for (Classifier parent : classifier.allParents()) {
 
 			if (parent != classifier && parent.getMembers().contains(n)) {
 				return n.getVisibility() != VisibilityKind.PRIVATE_LITERAL;
@@ -593,16 +578,15 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList inherit(Classifier classifier, EList inhs) {
+	public static EList<NamedElement> inherit(Classifier classifier,
+			EList<NamedElement> inhs) {
 		return ECollections.unmodifiableEList(inhs);
 	}
 
-	protected static EList allParents(Classifier classifier, EList allParents) {
+	protected static EList<Classifier> allParents(Classifier classifier,
+			EList<Classifier> allParents) {
 
-		for (Iterator parents = classifier.parents().iterator(); parents
-			.hasNext();) {
-
-			Classifier parent = (Classifier) parents.next();
+		for (Classifier parent : classifier.parents()) {
 
 			if (allParents.add(parent)) {
 				allParents(parent, allParents);
@@ -621,9 +605,9 @@ public class ClassifierOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList allParents(Classifier classifier) {
+	public static EList<Classifier> allParents(Classifier classifier) {
 		return ECollections.unmodifiableEList(allParents(classifier,
-			new UniqueEList.FastCompare()));
+			new UniqueEList.FastCompare<Classifier>()));
 	}
 
 	/**
@@ -639,12 +623,9 @@ public class ClassifierOperations
 
 		if (classifier.getOwnedTemplateSignature() == null) {
 
-			for (Iterator allParents = classifier.allParents().iterator(); allParents
-				.hasNext();) {
+			for (Classifier parent : classifier.allParents()) {
 
-				if (((Classifier) allParents.next())
-					.getOwnedTemplateSignature() != null) {
-
+				if (parent.getOwnedTemplateSignature() != null) {
 					return true;
 				}
 			}
@@ -655,23 +636,17 @@ public class ClassifierOperations
 		return true;
 	}
 
-	protected static EList getUsedInterfaces(Classifier classifier,
-			EList usedInterfaces) {
+	protected static EList<Interface> getUsedInterfaces(Classifier classifier,
+			EList<Interface> usedInterfaces) {
 
-		for (Iterator clientDependencies = classifier.getClientDependencies()
-			.iterator(); clientDependencies.hasNext();) {
+		for (Dependency clientDependency : classifier.getClientDependencies()) {
 
-			Dependency dependency = (Dependency) clientDependencies.next();
+			if (clientDependency instanceof Usage) {
 
-			if (dependency instanceof Usage) {
-
-				for (Iterator suppliers = dependency.getSuppliers().iterator(); suppliers
-					.hasNext();) {
-
-					Object supplier = suppliers.next();
+				for (NamedElement supplier : clientDependency.getSuppliers()) {
 
 					if (supplier instanceof Interface) {
-						usedInterfaces.add(supplier);
+						usedInterfaces.add((Interface) supplier);
 					}
 				}
 			}
@@ -680,14 +655,12 @@ public class ClassifierOperations
 		return usedInterfaces;
 	}
 
-	protected static EList getAllUsedInterfaces(Classifier classifier,
-			EList allUsedInterfaces) {
+	protected static EList<Interface> getAllUsedInterfaces(
+			Classifier classifier, EList<Interface> allUsedInterfaces) {
 		getUsedInterfaces(classifier, allUsedInterfaces);
 
-		for (Iterator allParents = classifier.allParents().iterator(); allParents
-			.hasNext();) {
-
-			getUsedInterfaces((Classifier) allParents.next(), allUsedInterfaces);
+		for (Classifier parent : classifier.allParents()) {
+			getUsedInterfaces(parent, allUsedInterfaces);
 		}
 
 		return allUsedInterfaces;

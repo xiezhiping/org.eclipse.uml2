@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNode.java,v 1.4 2006/05/12 20:38:10 khussey Exp $
+ * $Id: ActivityParameterNode.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,8 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateHasParameters(DiagnosticChain diagnostics, Map context);
+	boolean validateHasParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,7 +87,8 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameType(DiagnosticChain diagnostics, Map context);
+	boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +100,8 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNoEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,7 +114,8 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoIncomingEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +128,7 @@ public interface ActivityParameterNode
 	 * @model
 	 * @generated
 	 */
-	boolean validateNoOutgoingEdges(DiagnosticChain diagnostics, Map context);
+	boolean validateNoOutgoingEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // ActivityParameterNode

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.15 2006/11/14 18:02:16 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -19,16 +19,24 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.ObjectNodeOrderingKind;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -79,6 +87,7 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ACTIVITY_PARAMETER_NODE;
 	}
@@ -133,7 +142,7 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public boolean validateHasParameters(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateHasParameters(this,
 			diagnostics, context);
 	}
@@ -143,7 +152,8 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSameType(DiagnosticChain diagnostics, Map context) {
+	public boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateSameType(this,
 			diagnostics, context);
 	}
@@ -153,7 +163,8 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoEdges(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNoEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateNoEdges(this,
 			diagnostics, context);
 	}
@@ -164,7 +175,7 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public boolean validateNoIncomingEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateNoIncomingEdges(this,
 			diagnostics, context);
 	}
@@ -175,7 +186,7 @@ public class ActivityParameterNodeImpl
 	 * @generated
 	 */
 	public boolean validateNoOutgoingEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateNoOutgoingEdges(this,
 			diagnostics, context);
 	}
@@ -185,6 +196,7 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS :
@@ -274,15 +286,19 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME :
 				setName((String) newValue);
@@ -292,7 +308,8 @@ public class ActivityParameterNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -308,23 +325,29 @@ public class ActivityParameterNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				setType((Type) newValue);
@@ -340,7 +363,7 @@ public class ActivityParameterNodeImpl
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IN_STATE :
 				getInStates().clear();
-				getInStates().addAll((Collection) newValue);
+				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__SELECTION :
 				setSelection((Behavior) newValue);
@@ -357,6 +380,7 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS :
@@ -431,6 +455,7 @@ public class ActivityParameterNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__EANNOTATIONS :

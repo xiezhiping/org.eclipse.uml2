@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.9 2006/05/26 16:34:02 khussey Exp $
+ * $Id: TimeEvent.java,v 1.10 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -117,7 +117,8 @@ public interface TimeEvent
 	 * @model
 	 * @generated
 	 */
-	boolean validateWhenNonNegative(DiagnosticChain diagnostics, Map context);
+	boolean validateWhenNonNegative(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,6 +130,7 @@ public interface TimeEvent
 	 * @model
 	 * @generated
 	 */
-	boolean validateStartingTime(DiagnosticChain diagnostics, Map context);
+	boolean validateStartingTime(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // TimeEvent

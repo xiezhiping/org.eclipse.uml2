@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.16 2006/05/16 15:07:26 khussey Exp $
+ * $Id: UMLValidator.java,v 1.17 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3559,6 +3559,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EPackage getEPackage() {
 		return UMLPackage.eINSTANCE;
 	}
@@ -3569,8 +3570,9 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected boolean validate(int classifierID, Object value,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		switch (classifierID) {
 			case UMLPackage.COMMENT :
 				return validateComment((Comment) value, diagnostics, context);
@@ -4337,7 +4339,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateComment(Comment comment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(comment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4363,7 +4365,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateElement(Element element,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(element,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4390,7 +4392,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateElement_validateNotOwnSelf(Element element,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return element.validateNotOwnSelf(diagnostics, context);
 	}
 
@@ -4401,7 +4403,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateElement_validateHasOwner(Element element,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return element.validateHasOwner(diagnostics, context);
 	}
 
@@ -4412,7 +4414,7 @@ public class UMLValidator
 	 */
 	public boolean validateDirectedRelationship(
 			DirectedRelationship directedRelationship,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			directedRelationship, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4439,7 +4441,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRelationship(Relationship relationship,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(relationship,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4467,7 +4469,7 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralSpecification(
 			LiteralSpecification literalSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			literalSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4504,7 +4506,7 @@ public class UMLValidator
 	 */
 	public boolean validateValueSpecification(
 			ValueSpecification valueSpecification, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(valueSpecification,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4540,7 +4542,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTypedElement(TypedElement typedElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(typedElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4576,7 +4578,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamedElement(NamedElement namedElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(namedElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4613,7 +4615,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamedElement_validateHasNoQualifiedName(
-			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+			NamedElement namedElement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return namedElement.validateHasNoQualifiedName(diagnostics, context);
 	}
 
@@ -4624,7 +4627,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamedElement_validateHasQualifiedName(
-			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+			NamedElement namedElement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return namedElement.validateHasQualifiedName(diagnostics, context);
 	}
 
@@ -4635,7 +4639,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamedElement_validateVisibilityNeedsOwnership(
-			NamedElement namedElement, DiagnosticChain diagnostics, Map context) {
+			NamedElement namedElement, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return namedElement.validateVisibilityNeedsOwnership(diagnostics,
 			context);
 	}
@@ -4646,7 +4651,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDependency(Dependency dependency,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(dependency,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4683,7 +4688,7 @@ public class UMLValidator
 	 */
 	public boolean validatePackageableElement(
 			PackageableElement packageableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(packageableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4720,7 +4725,7 @@ public class UMLValidator
 	 */
 	public boolean validateParameterableElement(
 			ParameterableElement parameterableElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			parameterableElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4748,7 +4753,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateParameter(
 			TemplateParameter templateParameter, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(templateParameter,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4780,7 +4785,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateParameter_validateMustBeCompatible(
 			TemplateParameter templateParameter, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return templateParameter.validateMustBeCompatible(diagnostics, context);
 	}
 
@@ -4791,7 +4796,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateSignature(
 			TemplateSignature templateSignature, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(templateSignature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4823,7 +4828,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateSignature_validateOwnElements(
 			TemplateSignature templateSignature, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return templateSignature.validateOwnElements(diagnostics, context);
 	}
 
@@ -4834,7 +4839,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateableElement(
 			TemplateableElement templateableElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			templateableElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4861,7 +4866,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTemplateBinding(TemplateBinding templateBinding,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(templateBinding,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4896,7 +4901,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateBinding_validateParameterSubstitutionFormal(
 			TemplateBinding templateBinding, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return templateBinding.validateParameterSubstitutionFormal(diagnostics,
 			context);
 	}
@@ -4909,7 +4914,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateBinding_validateOneParameterSubstitution(
 			TemplateBinding templateBinding, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return templateBinding.validateOneParameterSubstitution(diagnostics,
 			context);
 	}
@@ -4921,7 +4926,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateParameterSubstitution(
 			TemplateParameterSubstitution templateParameterSubstitution,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4953,7 +4958,7 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateParameterSubstitution_validateMustBeCompatible(
 			TemplateParameterSubstitution templateParameterSubstitution,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return templateParameterSubstitution.validateMustBeCompatible(
 			diagnostics, context);
 	}
@@ -4964,7 +4969,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamespace(Namespace namespace,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(namespace,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5004,7 +5009,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNamespace_validateMembersDistinguishable(
-			Namespace namespace, DiagnosticChain diagnostics, Map context) {
+			Namespace namespace, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return namespace.validateMembersDistinguishable(diagnostics, context);
 	}
 
@@ -5014,7 +5020,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateElementImport(ElementImport elementImport,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(elementImport,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5049,7 +5055,7 @@ public class UMLValidator
 	 */
 	public boolean validateElementImport_validateVisibilityPublicOrPrivate(
 			ElementImport elementImport, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return elementImport.validateVisibilityPublicOrPrivate(diagnostics,
 			context);
 	}
@@ -5062,7 +5068,7 @@ public class UMLValidator
 	 */
 	public boolean validateElementImport_validateImportedElementIsPublic(
 			ElementImport elementImport, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return elementImport.validateImportedElementIsPublic(diagnostics,
 			context);
 	}
@@ -5073,7 +5079,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePackageImport(PackageImport packageImport,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(packageImport,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5105,7 +5111,7 @@ public class UMLValidator
 	 */
 	public boolean validatePackageImport_validatePublicOrPrivate(
 			PackageImport packageImport, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return packageImport.validatePublicOrPrivate(diagnostics, context);
 	}
 
@@ -5115,7 +5121,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePackage(org.eclipse.uml2.uml.Package package_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(package_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5159,7 +5165,7 @@ public class UMLValidator
 	 */
 	public boolean validatePackage_validateElementsPublicOrPrivate(
 			org.eclipse.uml2.uml.Package package_, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return package_.validateElementsPublicOrPrivate(diagnostics, context);
 	}
 
@@ -5169,7 +5175,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePackageMerge(PackageMerge packageMerge,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(packageMerge,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5196,7 +5202,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateType(Type type, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(type, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -5232,7 +5238,7 @@ public class UMLValidator
 	 */
 	public boolean validateProfileApplication(
 			ProfileApplication profileApplication, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(profileApplication,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5259,7 +5265,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProfile(Profile profile,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(profile,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5307,7 +5313,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProfile_validateMetaclassReferenceNotSpecialized(
-			Profile profile, DiagnosticChain diagnostics, Map context) {
+			Profile profile, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return profile.validateMetaclassReferenceNotSpecialized(diagnostics,
 			context);
 	}
@@ -5319,7 +5326,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProfile_validateReferencesSameMetamodel(
-			Profile profile, DiagnosticChain diagnostics, Map context) {
+			Profile profile, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return profile.validateReferencesSameMetamodel(diagnostics, context);
 	}
 
@@ -5329,7 +5337,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStereotype(Stereotype stereotype,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(stereotype,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5402,7 +5410,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStereotype_validateNameNotClash(
-			Stereotype stereotype, DiagnosticChain diagnostics, Map context) {
+			Stereotype stereotype, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return stereotype.validateNameNotClash(diagnostics, context);
 	}
 
@@ -5413,7 +5422,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStereotype_validateGeneralize(Stereotype stereotype,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return stereotype.validateGeneralize(diagnostics, context);
 	}
 
@@ -5423,7 +5432,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClass(org.eclipse.uml2.uml.Class class_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(class_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5490,7 +5499,7 @@ public class UMLValidator
 	 */
 	public boolean validateClass_validatePassiveClass(
 			org.eclipse.uml2.uml.Class class_, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return class_.validatePassiveClass(diagnostics, context);
 	}
 
@@ -5501,7 +5510,7 @@ public class UMLValidator
 	 */
 	public boolean validateBehavioredClassifier(
 			BehavioredClassifier behavioredClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5563,7 +5572,7 @@ public class UMLValidator
 	 */
 	public boolean validateBehavioredClassifier_validateClassBehavior(
 			BehavioredClassifier behavioredClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return behavioredClassifier.validateClassBehavior(diagnostics, context);
 	}
 
@@ -5573,7 +5582,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClassifier(Classifier classifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(classifier,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5631,7 +5640,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClassifier_validateNoCyclesInGeneralization(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return classifier
 			.validateNoCyclesInGeneralization(diagnostics, context);
 	}
@@ -5643,7 +5653,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClassifier_validateSpecializeType(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return classifier.validateSpecializeType(diagnostics, context);
 	}
 
@@ -5654,7 +5665,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClassifier_validateGeneralizationHierarchies(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return classifier.validateGeneralizationHierarchies(diagnostics,
 			context);
 	}
@@ -5666,7 +5678,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClassifier_validateMapsToGeneralizationSet(
-			Classifier classifier, DiagnosticChain diagnostics, Map context) {
+			Classifier classifier, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return classifier.validateMapsToGeneralizationSet(diagnostics, context);
 	}
 
@@ -5677,7 +5690,7 @@ public class UMLValidator
 	 */
 	public boolean validateRedefinableElement(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(redefinableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5721,7 +5734,7 @@ public class UMLValidator
 	 */
 	public boolean validateRedefinableElement_validateRedefinitionContextValid(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return redefinableElement.validateRedefinitionContextValid(diagnostics,
 			context);
 	}
@@ -5734,7 +5747,7 @@ public class UMLValidator
 	 */
 	public boolean validateRedefinableElement_validateRedefinitionConsistent(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return redefinableElement.validateRedefinitionConsistent(diagnostics,
 			context);
 	}
@@ -5745,7 +5758,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateGeneralization(Generalization generalization,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(generalization,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5777,7 +5790,7 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralization_validateGeneralizationSameClassifier(
 			Generalization generalization, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return generalization.validateGeneralizationSameClassifier(diagnostics,
 			context);
 	}
@@ -5789,7 +5802,7 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralizationSet(
 			GeneralizationSet generalizationSet, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(generalizationSet,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5833,7 +5846,7 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralizationSet_validateGeneralizationSameClassifier(
 			GeneralizationSet generalizationSet, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return generalizationSet.validateGeneralizationSameClassifier(
 			diagnostics, context);
 	}
@@ -5846,7 +5859,7 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralizationSet_validateMapsToGeneralizationSet(
 			GeneralizationSet generalizationSet, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return generalizationSet.validateMapsToGeneralizationSet(diagnostics,
 			context);
 	}
@@ -5857,7 +5870,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFeature(Feature feature,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(feature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5898,7 +5911,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUseCase(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(useCase,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5970,7 +5983,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUseCase_validateMustHaveName(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return useCase.validateMustHaveName(diagnostics, context);
 	}
 
@@ -5981,7 +5994,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUseCase_validateBinaryAssociations(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return useCase.validateBinaryAssociations(diagnostics, context);
 	}
 
@@ -5992,7 +6005,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUseCase_validateNoAssociationToUseCase(
-			UseCase useCase, DiagnosticChain diagnostics, Map context) {
+			UseCase useCase, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return useCase.validateNoAssociationToUseCase(diagnostics, context);
 	}
 
@@ -6003,7 +6017,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUseCase_validateCannotIncludeSelf(UseCase useCase,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return useCase.validateCannotIncludeSelf(diagnostics, context);
 	}
 
@@ -6013,7 +6027,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInclude(Include include,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(include,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6048,7 +6062,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtend(Extend extend, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(extend,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6087,7 +6101,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtend_validateExtensionPoints(Extend extend,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return extend.validateExtensionPoints(diagnostics, context);
 	}
 
@@ -6097,7 +6111,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint(Constraint constraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(constraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6149,7 +6163,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint_validateNotApplyToSelf(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return constraint.validateNotApplyToSelf(diagnostics, context);
 	}
 
@@ -6160,7 +6175,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint_validateValueSpecificationBoolean(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return constraint.validateValueSpecificationBoolean(diagnostics,
 			context);
 	}
@@ -6172,7 +6188,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint_validateBooleanValue(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return constraint.validateBooleanValue(diagnostics, context);
 	}
 
@@ -6183,7 +6200,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint_validateNoSideEffects(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return constraint.validateNoSideEffects(diagnostics, context);
 	}
 
@@ -6194,7 +6212,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConstraint_validateNotAppliedToSelf(
-			Constraint constraint, DiagnosticChain diagnostics, Map context) {
+			Constraint constraint, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return constraint.validateNotAppliedToSelf(diagnostics, context);
 	}
 
@@ -6204,7 +6223,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtensionPoint(ExtensionPoint extensionPoint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(extensionPoint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6251,7 +6270,7 @@ public class UMLValidator
 	 */
 	public boolean validateExtensionPoint_validateMustHaveName(
 			ExtensionPoint extensionPoint, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return extensionPoint.validateMustHaveName(diagnostics, context);
 	}
 
@@ -6261,7 +6280,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSubstitution(Substitution substitution,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(substitution,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6297,7 +6316,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRealization(Realization realization,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(realization,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6333,7 +6352,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAbstraction(Abstraction abstraction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(abstraction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6369,7 +6388,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOpaqueExpression(OpaqueExpression opaqueExpression,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(opaqueExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6416,7 +6435,7 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueExpression_validateLanguageBodySize(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return opaqueExpression.validateLanguageBodySize(diagnostics, context);
 	}
 
@@ -6428,7 +6447,7 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueExpression_validateOnlyReturnResultParameters(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return opaqueExpression.validateOnlyReturnResultParameters(diagnostics,
 			context);
 	}
@@ -6441,7 +6460,7 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueExpression_validateOneReturnResultParameter(
 			OpaqueExpression opaqueExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return opaqueExpression.validateOneReturnResultParameter(diagnostics,
 			context);
 	}
@@ -6452,7 +6471,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(parameter,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6519,7 +6538,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter_validateConnectorEnd(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return parameter.validateConnectorEnd(diagnostics, context);
 	}
 
@@ -6530,7 +6549,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter_validateStreamAndException(
-			Parameter parameter, DiagnosticChain diagnostics, Map context) {
+			Parameter parameter, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return parameter.validateStreamAndException(diagnostics, context);
 	}
 
@@ -6541,7 +6561,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter_validateNotException(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return parameter.validateNotException(diagnostics, context);
 	}
 
@@ -6552,7 +6572,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter_validateReentrantBehaviors(
-			Parameter parameter, DiagnosticChain diagnostics, Map context) {
+			Parameter parameter, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return parameter.validateReentrantBehaviors(diagnostics, context);
 	}
 
@@ -6563,7 +6584,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameter_validateInAndOut(Parameter parameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return parameter.validateInAndOut(diagnostics, context);
 	}
 
@@ -6574,7 +6595,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6618,7 +6639,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement_validateUpperGt0(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return multiplicityElement.validateUpperGt0(diagnostics, context);
 	}
 
@@ -6630,7 +6651,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement_validateLowerGe0(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return multiplicityElement.validateLowerGe0(diagnostics, context);
 	}
 
@@ -6642,7 +6663,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement_validateUpperGeLower(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return multiplicityElement.validateUpperGeLower(diagnostics, context);
 	}
 
@@ -6654,7 +6675,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement_validateValueSpecificationNoSideEffects(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return multiplicityElement.validateValueSpecificationNoSideEffects(
 			diagnostics, context);
 	}
@@ -6667,7 +6688,7 @@ public class UMLValidator
 	 */
 	public boolean validateMultiplicityElement_validateValueSpecificationConstant(
 			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return multiplicityElement.validateValueSpecificationConstant(
 			diagnostics, context);
 	}
@@ -6679,7 +6700,7 @@ public class UMLValidator
 	 */
 	public boolean validateConnectableElement(
 			ConnectableElement connectableElement, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(connectableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6715,7 +6736,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorEnd(ConnectorEnd connectorEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(connectorEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6770,7 +6791,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorEnd_validateMultiplicity(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics, Map context) {
+			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connectorEnd.validateMultiplicity(diagnostics, context);
 	}
 
@@ -6781,7 +6803,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorEnd_validatePartWithPortEmpty(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics, Map context) {
+			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connectorEnd.validatePartWithPortEmpty(diagnostics, context);
 	}
 
@@ -6792,7 +6815,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorEnd_validateRoleAndPartWithPort(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics, Map context) {
+			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connectorEnd.validateRoleAndPartWithPort(diagnostics, context);
 	}
 
@@ -6803,7 +6827,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorEnd_validateSelfPartWithPort(
-			ConnectorEnd connectorEnd, DiagnosticChain diagnostics, Map context) {
+			ConnectorEnd connectorEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connectorEnd.validateSelfPartWithPort(diagnostics, context);
 	}
 
@@ -6813,7 +6838,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(property,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6901,7 +6926,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateMultiplicityOfComposite(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateMultiplicityOfComposite(diagnostics, context);
 	}
 
@@ -6912,7 +6938,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateSubsettingContextConforms(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateSubsettingContextConforms(diagnostics, context);
 	}
 
@@ -6923,7 +6950,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateRedefinedPropertyInherited(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property
 			.validateRedefinedPropertyInherited(diagnostics, context);
 	}
@@ -6935,7 +6963,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateSubsettingRules(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return property.validateSubsettingRules(diagnostics, context);
 	}
 
@@ -6946,7 +6974,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateNavigableReadonly(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateNavigableReadonly(diagnostics, context);
 	}
 
@@ -6957,7 +6986,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateDerivedUnionIsDerived(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateDerivedUnionIsDerived(diagnostics, context);
 	}
 
@@ -6968,7 +6998,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateDerivedUnionIsReadOnly(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateDerivedUnionIsReadOnly(diagnostics, context);
 	}
 
@@ -6979,7 +7010,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateSubsettedPropertyNames(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateSubsettedPropertyNames(diagnostics, context);
 	}
 
@@ -6990,7 +7022,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateDeploymentTarget(Property property,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return property.validateDeploymentTarget(diagnostics, context);
 	}
 
@@ -7001,7 +7033,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateProperty_validateBindingToAttribute(
-			Property property, DiagnosticChain diagnostics, Map context) {
+			Property property, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return property.validateBindingToAttribute(diagnostics, context);
 	}
 
@@ -7011,7 +7044,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDeploymentTarget(DeploymentTarget deploymentTarget,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(deploymentTarget,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7047,7 +7080,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDeployment(Deployment deployment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(deployment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7083,7 +7116,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDeployedArtifact(DeployedArtifact deployedArtifact,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(deployedArtifact,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7120,7 +7153,7 @@ public class UMLValidator
 	 */
 	public boolean validateDeploymentSpecification(
 			DeploymentSpecification deploymentSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -7185,7 +7218,7 @@ public class UMLValidator
 	 */
 	public boolean validateDeploymentSpecification_validateDeployedElements(
 			DeploymentSpecification deploymentSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return deploymentSpecification.validateDeployedElements(diagnostics,
 			context);
 	}
@@ -7198,7 +7231,7 @@ public class UMLValidator
 	 */
 	public boolean validateDeploymentSpecification_validateDeploymentTarget(
 			DeploymentSpecification deploymentSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return deploymentSpecification.validateDeploymentTarget(diagnostics,
 			context);
 	}
@@ -7209,7 +7242,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateArtifact(Artifact artifact,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(artifact,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7266,7 +7299,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateManifestation(Manifestation manifestation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(manifestation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7302,7 +7335,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOperation(Operation operation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(operation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7354,7 +7387,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOperation_validateAtMostOneReturn(
-			Operation operation, DiagnosticChain diagnostics, Map context) {
+			Operation operation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return operation.validateAtMostOneReturn(diagnostics, context);
 	}
 
@@ -7365,7 +7399,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOperation_validateOnlyBodyForQuery(
-			Operation operation, DiagnosticChain diagnostics, Map context) {
+			Operation operation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return operation.validateOnlyBodyForQuery(diagnostics, context);
 	}
 
@@ -7376,7 +7411,7 @@ public class UMLValidator
 	 */
 	public boolean validateBehavioralFeature(
 			BehavioralFeature behavioralFeature, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(behavioralFeature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7421,7 +7456,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBehavior(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(behavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7500,7 +7535,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBehavior_validateParametersMatch(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return behavior.validateParametersMatch(diagnostics, context);
 	}
 
@@ -7511,7 +7546,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBehavior_validateFeatureOfContextClassifier(
-			Behavior behavior, DiagnosticChain diagnostics, Map context) {
+			Behavior behavior, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return behavior
 			.validateFeatureOfContextClassifier(diagnostics, context);
 	}
@@ -7523,7 +7559,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBehavior_validateMustRealize(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return behavior.validateMustRealize(diagnostics, context);
 	}
 
@@ -7534,7 +7570,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBehavior_validateMostOneBehaviour(Behavior behavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return behavior.validateMostOneBehaviour(diagnostics, context);
 	}
 
@@ -7544,7 +7580,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameterSet(ParameterSet parameterSet,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(parameterSet,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7590,7 +7626,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameterSet_validateSameParameterizedEntity(
-			ParameterSet parameterSet, DiagnosticChain diagnostics, Map context) {
+			ParameterSet parameterSet, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return parameterSet.validateSameParameterizedEntity(diagnostics,
 			context);
 	}
@@ -7602,7 +7639,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameterSet_validateInput(
-			ParameterSet parameterSet, DiagnosticChain diagnostics, Map context) {
+			ParameterSet parameterSet, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return parameterSet.validateInput(diagnostics, context);
 	}
 
@@ -7613,7 +7651,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateParameterSet_validateTwoParameterSets(
-			ParameterSet parameterSet, DiagnosticChain diagnostics, Map context) {
+			ParameterSet parameterSet, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return parameterSet.validateTwoParameterSets(diagnostics, context);
 	}
 
@@ -7623,7 +7662,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDataType(DataType dataType,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(dataType,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7680,7 +7719,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInterface(Interface interface_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(interface_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7741,7 +7780,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInterface_validateVisibility(Interface interface_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interface_.validateVisibility(diagnostics, context);
 	}
 
@@ -7751,7 +7790,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReception(Reception reception,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(reception,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7800,7 +7839,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReception_validateNotQuery(Reception reception,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return reception.validateNotQuery(diagnostics, context);
 	}
 
@@ -7810,7 +7849,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSignal(Signal signal, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(signal,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7867,7 +7906,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
@@ -7971,7 +8010,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine_validateProtocolTransitions(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return protocolStateMachine.validateProtocolTransitions(diagnostics,
 			context);
 	}
@@ -7984,7 +8023,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine_validateEntryExitDo(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return protocolStateMachine.validateEntryExitDo(diagnostics, context);
 	}
 
@@ -7996,7 +8035,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine_validateDeepOrShallowHistory(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return protocolStateMachine.validateDeepOrShallowHistory(diagnostics,
 			context);
 	}
@@ -8009,7 +8048,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine_validatePortsConnected(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return protocolStateMachine
 			.validatePortsConnected(diagnostics, context);
 	}
@@ -8022,7 +8061,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolStateMachine_validateClassifierContext(
 			ProtocolStateMachine protocolStateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -8052,7 +8091,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateMachine(StateMachine stateMachine,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(stateMachine,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8143,7 +8182,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateMachine_validateClassifierContext(
-			StateMachine stateMachine, DiagnosticChain diagnostics, Map context) {
+			StateMachine stateMachine, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return stateMachine.validateClassifierContext(diagnostics, context);
 	}
 
@@ -8154,7 +8194,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateMachine_validateContextClassifier(
-			StateMachine stateMachine, DiagnosticChain diagnostics, Map context) {
+			StateMachine stateMachine, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return stateMachine.validateContextClassifier(diagnostics, context);
 	}
 
@@ -8165,7 +8206,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateMachine_validateConnectionPoints(
-			StateMachine stateMachine, DiagnosticChain diagnostics, Map context) {
+			StateMachine stateMachine, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return stateMachine.validateConnectionPoints(diagnostics, context);
 	}
 
@@ -8176,7 +8218,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateMachine_validateMethod(
-			StateMachine stateMachine, DiagnosticChain diagnostics, Map context) {
+			StateMachine stateMachine, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return stateMachine.validateMethod(diagnostics, context);
 	}
 
@@ -8186,7 +8229,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRegion(Region region, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(region,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8242,7 +8285,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRegion_validateInitialVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return region.validateInitialVertex(diagnostics, context);
 	}
 
@@ -8253,7 +8296,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRegion_validateDeepHistoryVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return region.validateDeepHistoryVertex(diagnostics, context);
 	}
 
@@ -8264,7 +8307,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRegion_validateShallowHistoryVertex(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return region.validateShallowHistoryVertex(diagnostics, context);
 	}
 
@@ -8275,7 +8318,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateRegion_validateOwned(Region region,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return region.validateOwned(diagnostics, context);
 	}
 
@@ -8285,7 +8328,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateVertex(Vertex vertex, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(vertex,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8320,7 +8363,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(transition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8387,7 +8430,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateForkSegmentGuards(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateForkSegmentGuards(diagnostics, context);
 	}
 
@@ -8398,7 +8442,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateJoinSegmentGuards(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateJoinSegmentGuards(diagnostics, context);
 	}
 
@@ -8409,7 +8454,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateForkSegmentState(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateForkSegmentState(diagnostics, context);
 	}
 
@@ -8420,7 +8466,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateJoinSegmentState(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateJoinSegmentState(diagnostics, context);
 	}
 
@@ -8431,7 +8478,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateOutgoingPseudostates(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateOutgoingPseudostates(diagnostics, context);
 	}
 
@@ -8442,7 +8490,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateInitialTransition(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateInitialTransition(diagnostics, context);
 	}
 
@@ -8453,7 +8502,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransition_validateSignaturesCompatible(
-			Transition transition, DiagnosticChain diagnostics, Map context) {
+			Transition transition, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return transition.validateSignaturesCompatible(diagnostics, context);
 	}
 
@@ -8463,7 +8513,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTrigger(Trigger trigger,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(trigger,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8498,7 +8548,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateEvent(Event event, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(event, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -8533,7 +8583,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePort(Port port, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(port, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -8632,7 +8682,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePort_validateRequiredInterfaces(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return port.validateRequiredInterfaces(diagnostics, context);
 	}
 
@@ -8643,7 +8693,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePort_validatePortAggregation(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return port.validatePortAggregation(diagnostics, context);
 	}
 
@@ -8654,7 +8704,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePort_validatePortDestroyed(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return port.validatePortDestroyed(diagnostics, context);
 	}
 
@@ -8665,7 +8715,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePort_validateDefaultValue(Port port,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return port.validateDefaultValue(diagnostics, context);
 	}
 
@@ -8675,7 +8725,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState(State state, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(state, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -8735,7 +8785,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState_validateSubmachineStates(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return state.validateSubmachineStates(diagnostics, context);
 	}
 
@@ -8746,7 +8796,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState_validateDestinationsOrSourcesOfTransitions(
-			State state, DiagnosticChain diagnostics, Map context) {
+			State state, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return state.validateDestinationsOrSourcesOfTransitions(diagnostics,
 			context);
 	}
@@ -8758,7 +8809,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState_validateSubmachineOrRegions(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return state.validateSubmachineOrRegions(diagnostics, context);
 	}
 
@@ -8769,7 +8820,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState_validateCompositeStates(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return state.validateCompositeStates(diagnostics, context);
 	}
 
@@ -8780,7 +8831,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateState_validateEntryOrExit(State state,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return state.validateEntryOrExit(diagnostics, context);
 	}
 
@@ -8791,7 +8842,7 @@ public class UMLValidator
 	 */
 	public boolean validateConnectionPointReference(
 			ConnectionPointReference connectionPointReference,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8835,7 +8886,7 @@ public class UMLValidator
 	 */
 	public boolean validateConnectionPointReference_validateEntryPseudostates(
 			ConnectionPointReference connectionPointReference,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return connectionPointReference.validateEntryPseudostates(diagnostics,
 			context);
 	}
@@ -8848,7 +8899,7 @@ public class UMLValidator
 	 */
 	public boolean validateConnectionPointReference_validateExitPseudostates(
 			ConnectionPointReference connectionPointReference,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return connectionPointReference.validateExitPseudostates(diagnostics,
 			context);
 	}
@@ -8859,7 +8910,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate(Pseudostate pseudostate,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pseudostate,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8923,7 +8974,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateInitialVertex(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateInitialVertex(diagnostics, context);
 	}
 
@@ -8934,7 +8986,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateHistoryVertices(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateHistoryVertices(diagnostics, context);
 	}
 
@@ -8945,7 +8998,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateJoinVertex(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateJoinVertex(diagnostics, context);
 	}
 
@@ -8956,7 +9010,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateTransitionsIncoming(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateTransitionsIncoming(diagnostics, context);
 	}
 
@@ -8967,7 +9022,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateForkVertex(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateForkVertex(diagnostics, context);
 	}
 
@@ -8978,7 +9034,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateTransitionsOutgoing(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateTransitionsOutgoing(diagnostics, context);
 	}
 
@@ -8989,7 +9046,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateJunctionVertex(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateJunctionVertex(diagnostics, context);
 	}
 
@@ -9000,7 +9058,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateChoiceVertex(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateChoiceVertex(diagnostics, context);
 	}
 
@@ -9011,7 +9070,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostate_validateOutgoingFromInitial(
-			Pseudostate pseudostate, DiagnosticChain diagnostics, Map context) {
+			Pseudostate pseudostate, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return pseudostate.validateOutgoingFromInitial(diagnostics, context);
 	}
 
@@ -9022,7 +9082,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolConformance(
 			ProtocolConformance protocolConformance,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			protocolConformance, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9050,7 +9110,7 @@ public class UMLValidator
 	 */
 	public boolean validateOperationTemplateParameter(
 			OperationTemplateParameter operationTemplateParameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			operationTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9081,7 +9141,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeature(
 			StructuralFeature structuralFeature, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(structuralFeature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9138,7 +9198,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociation(Association association,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(association,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9208,7 +9268,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociation_validateSpecializedEndNumber(
-			Association association, DiagnosticChain diagnostics, Map context) {
+			Association association, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return association.validateSpecializedEndNumber(diagnostics, context);
 	}
 
@@ -9219,7 +9280,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociation_validateSpecializedEndTypes(
-			Association association, DiagnosticChain diagnostics, Map context) {
+			Association association, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return association.validateSpecializedEndTypes(diagnostics, context);
 	}
 
@@ -9230,7 +9292,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociation_validateBinaryAssociations(
-			Association association, DiagnosticChain diagnostics, Map context) {
+			Association association, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return association.validateBinaryAssociations(diagnostics, context);
 	}
 
@@ -9241,7 +9304,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociation_validateAssociationEnds(
-			Association association, DiagnosticChain diagnostics, Map context) {
+			Association association, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return association.validateAssociationEnds(diagnostics, context);
 	}
 
@@ -9252,7 +9316,7 @@ public class UMLValidator
 	 */
 	public boolean validateConnectableElementTemplateParameter(
 			ConnectableElementTemplateParameter connectableElementTemplateParameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9282,7 +9346,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCollaborationUse(CollaborationUse collaborationUse,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(collaborationUse,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9329,7 +9393,7 @@ public class UMLValidator
 	 */
 	public boolean validateCollaborationUse_validateClientElements(
 			CollaborationUse collaborationUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return collaborationUse.validateClientElements(diagnostics, context);
 	}
 
@@ -9341,7 +9405,7 @@ public class UMLValidator
 	 */
 	public boolean validateCollaborationUse_validateEveryRole(
 			CollaborationUse collaborationUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return collaborationUse.validateEveryRole(diagnostics, context);
 	}
 
@@ -9353,7 +9417,7 @@ public class UMLValidator
 	 */
 	public boolean validateCollaborationUse_validateConnectors(
 			CollaborationUse collaborationUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return collaborationUse.validateConnectors(diagnostics, context);
 	}
 
@@ -9363,7 +9427,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCollaboration(Collaboration collaboration,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(collaboration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9427,7 +9491,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuredClassifier(
 			StructuredClassifier structuredClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9489,7 +9553,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuredClassifier_validateMultiplicities(
 			StructuredClassifier structuredClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuredClassifier
 			.validateMultiplicities(diagnostics, context);
 	}
@@ -9500,7 +9564,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(connector,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9567,7 +9631,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateTypes(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return connector.validateTypes(diagnostics, context);
 	}
 
@@ -9578,7 +9642,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateCompatible(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return connector.validateCompatible(diagnostics, context);
 	}
 
@@ -9589,7 +9653,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateRoles(Connector connector,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return connector.validateRoles(diagnostics, context);
 	}
 
@@ -9600,7 +9664,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateBetweenInterfacesPorts(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connector.validateBetweenInterfacesPorts(diagnostics, context);
 	}
 
@@ -9611,7 +9676,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateBetweenInterfacePortImplements(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connector.validateBetweenInterfacePortImplements(diagnostics,
 			context);
 	}
@@ -9623,7 +9689,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateBetweenInterfacePortSignature(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connector.validateBetweenInterfacePortSignature(diagnostics,
 			context);
 	}
@@ -9635,7 +9702,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateUnionSignatureCompatible(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connector.validateUnionSignatureCompatible(diagnostics, context);
 	}
 
@@ -9646,7 +9714,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnector_validateAssemblyConnector(
-			Connector connector, DiagnosticChain diagnostics, Map context) {
+			Connector connector, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return connector.validateAssemblyConnector(diagnostics, context);
 	}
 
@@ -9657,7 +9726,7 @@ public class UMLValidator
 	 */
 	public boolean validateRedefinableTemplateSignature(
 			RedefinableTemplateSignature redefinableTemplateSignature,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9707,7 +9776,7 @@ public class UMLValidator
 	 */
 	public boolean validateRedefinableTemplateSignature_validateInheritedParameters(
 			RedefinableTemplateSignature redefinableTemplateSignature,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return redefinableTemplateSignature.validateInheritedParameters(
 			diagnostics, context);
 	}
@@ -9719,7 +9788,7 @@ public class UMLValidator
 	 */
 	public boolean validateClassifierTemplateParameter(
 			ClassifierTemplateParameter classifierTemplateParameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9754,7 +9823,7 @@ public class UMLValidator
 	 */
 	public boolean validateClassifierTemplateParameter_validateHasConstrainingClassifier(
 			ClassifierTemplateParameter classifierTemplateParameter,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return classifierTemplateParameter.validateHasConstrainingClassifier(
 			diagnostics, context);
 	}
@@ -9766,7 +9835,7 @@ public class UMLValidator
 	 */
 	public boolean validateInterfaceRealization(
 			InterfaceRealization interfaceRealization,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			interfaceRealization, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9803,7 +9872,7 @@ public class UMLValidator
 	 */
 	public boolean validateEncapsulatedClassifier(
 			EncapsulatedClassifier encapsulatedClassifier,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9863,7 +9932,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtension(Extension extension,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(extension,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9939,7 +10008,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtension_validateNonOwnedEnd(Extension extension,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return extension.validateNonOwnedEnd(diagnostics, context);
 	}
 
@@ -9950,7 +10019,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtension_validateIsBinary(Extension extension,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return extension.validateIsBinary(diagnostics, context);
 	}
 
@@ -9960,7 +10029,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtensionEnd(ExtensionEnd extensionEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(extensionEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10054,7 +10123,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtensionEnd_validateMultiplicity(
-			ExtensionEnd extensionEnd, DiagnosticChain diagnostics, Map context) {
+			ExtensionEnd extensionEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return extensionEnd.validateMultiplicity(diagnostics, context);
 	}
 
@@ -10065,7 +10135,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExtensionEnd_validateAggregation(
-			ExtensionEnd extensionEnd, DiagnosticChain diagnostics, Map context) {
+			ExtensionEnd extensionEnd, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return extensionEnd.validateAggregation(diagnostics, context);
 	}
 
@@ -10075,7 +10146,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateImage(Image image, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(image, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -10101,7 +10172,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStringExpression(StringExpression stringExpression,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(stringExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10145,7 +10216,7 @@ public class UMLValidator
 	 */
 	public boolean validateStringExpression_validateOperands(
 			StringExpression stringExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return stringExpression.validateOperands(diagnostics, context);
 	}
 
@@ -10157,7 +10228,7 @@ public class UMLValidator
 	 */
 	public boolean validateStringExpression_validateSubexpressions(
 			StringExpression stringExpression, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return stringExpression.validateSubexpressions(diagnostics, context);
 	}
 
@@ -10167,7 +10238,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExpression(Expression expression,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(expression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10203,7 +10274,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLiteralInteger(LiteralInteger literalInteger,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(literalInteger,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10239,7 +10310,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLiteralString(LiteralString literalString,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(literalString,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10275,7 +10346,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLiteralBoolean(LiteralBoolean literalBoolean,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(literalBoolean,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10311,7 +10382,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLiteralNull(LiteralNull literalNull,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(literalNull,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10347,7 +10418,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSlot(Slot slot, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(slot, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -10374,7 +10445,7 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceSpecification(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10424,7 +10495,7 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceSpecification_validateDefiningFeature(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return instanceSpecification.validateDefiningFeature(diagnostics,
 			context);
 	}
@@ -10437,7 +10508,7 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceSpecification_validateStructuralFeature(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return instanceSpecification.validateStructuralFeature(diagnostics,
 			context);
 	}
@@ -10450,7 +10521,7 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceSpecification_validateDeploymentTarget(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return instanceSpecification.validateDeploymentTarget(diagnostics,
 			context);
 	}
@@ -10463,7 +10534,7 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceSpecification_validateDeploymentArtifact(
 			InstanceSpecification instanceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return instanceSpecification.validateDeploymentArtifact(diagnostics,
 			context);
 	}
@@ -10474,7 +10545,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateEnumeration(Enumeration enumeration,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(enumeration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10532,7 +10603,7 @@ public class UMLValidator
 	 */
 	public boolean validateEnumerationLiteral(
 			EnumerationLiteral enumerationLiteral, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(enumerationLiteral,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10580,7 +10651,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePrimitiveType(PrimitiveType primitiveType,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(primitiveType,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10637,7 +10708,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInstanceValue(InstanceValue instanceValue,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(instanceValue,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10674,7 +10745,7 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralUnlimitedNatural(
 			LiteralUnlimitedNatural literalUnlimitedNatural,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10710,7 +10781,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOpaqueBehavior(OpaqueBehavior opaqueBehavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(opaqueBehavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10788,7 +10859,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFunctionBehavior(FunctionBehavior functionBehavior,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(functionBehavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10874,7 +10945,7 @@ public class UMLValidator
 	 */
 	public boolean validateFunctionBehavior_validateOneOutputParameter(
 			FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return functionBehavior
 			.validateOneOutputParameter(diagnostics, context);
 	}
@@ -10887,7 +10958,7 @@ public class UMLValidator
 	 */
 	public boolean validateFunctionBehavior_validateTypesOfParameters(
 			FunctionBehavior functionBehavior, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return functionBehavior.validateTypesOfParameters(diagnostics, context);
 	}
 
@@ -10897,7 +10968,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActor(Actor actor, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(actor, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -10963,7 +11034,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActor_validateAssociations(Actor actor,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return actor.validateAssociations(diagnostics, context);
 	}
 
@@ -10974,7 +11045,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActor_validateMustHaveName(Actor actor,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return actor.validateMustHaveName(diagnostics, context);
 	}
 
@@ -10984,7 +11055,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUsage(Usage usage, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(usage, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -11019,7 +11090,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(message,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11076,7 +11147,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateSendingReceivingMessageEvent(
-			Message message, DiagnosticChain diagnostics, Map context) {
+			Message message, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return message.validateSendingReceivingMessageEvent(diagnostics,
 			context);
 	}
@@ -11088,7 +11160,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateSignatureReferTo(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return message.validateSignatureReferTo(diagnostics, context);
 	}
 
@@ -11099,7 +11171,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateSignatureIsOperation(
-			Message message, DiagnosticChain diagnostics, Map context) {
+			Message message, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return message.validateSignatureIsOperation(diagnostics, context);
 	}
 
@@ -11110,7 +11183,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateSignatureIsSignal(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return message.validateSignatureIsSignal(diagnostics, context);
 	}
 
@@ -11121,7 +11194,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateArguments(Message message,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return message.validateArguments(diagnostics, context);
 	}
 
@@ -11132,7 +11205,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateCannotCrossBoundaries(
-			Message message, DiagnosticChain diagnostics, Map context) {
+			Message message, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return message.validateCannotCrossBoundaries(diagnostics, context);
 	}
 
@@ -11143,7 +11217,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessage_validateOccurrenceSpecifications(
-			Message message, DiagnosticChain diagnostics, Map context) {
+			Message message, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return message.validateOccurrenceSpecifications(diagnostics, context);
 	}
 
@@ -11153,7 +11228,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessageEnd(MessageEnd messageEnd,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(messageEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11189,7 +11264,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInteraction(Interaction interaction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(interaction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11268,7 +11343,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionFragment(
 			InteractionFragment interactionFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			interactionFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11304,7 +11379,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLifeline(Lifeline lifeline,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(lifeline,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11350,7 +11425,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLifeline_validateInteractionUsesShareLifeline(
-			Lifeline lifeline, DiagnosticChain diagnostics, Map context) {
+			Lifeline lifeline, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return lifeline.validateInteractionUsesShareLifeline(diagnostics,
 			context);
 	}
@@ -11362,7 +11438,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLifeline_validateSelectorSpecified(
-			Lifeline lifeline, DiagnosticChain diagnostics, Map context) {
+			Lifeline lifeline, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return lifeline.validateSelectorSpecified(diagnostics, context);
 	}
 
@@ -11373,7 +11450,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLifeline_validateSameClassifier(Lifeline lifeline,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return lifeline.validateSameClassifier(diagnostics, context);
 	}
 
@@ -11384,7 +11461,7 @@ public class UMLValidator
 	 */
 	public boolean validatePartDecomposition(
 			PartDecomposition partDecomposition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(partDecomposition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11443,7 +11520,7 @@ public class UMLValidator
 	 */
 	public boolean validatePartDecomposition_validatePartsOfInternalStructures(
 			PartDecomposition partDecomposition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return partDecomposition.validatePartsOfInternalStructures(diagnostics,
 			context);
 	}
@@ -11456,7 +11533,7 @@ public class UMLValidator
 	 */
 	public boolean validatePartDecomposition_validateAssume(
 			PartDecomposition partDecomposition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return partDecomposition.validateAssume(diagnostics, context);
 	}
 
@@ -11468,7 +11545,7 @@ public class UMLValidator
 	 */
 	public boolean validatePartDecomposition_validateCommutativityOfDecomposition(
 			PartDecomposition partDecomposition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return partDecomposition.validateCommutativityOfDecomposition(
 			diagnostics, context);
 	}
@@ -11479,7 +11556,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInteractionUse(InteractionUse interactionUse,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(interactionUse,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11529,7 +11606,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionUse_validateGatesMatch(
 			InteractionUse interactionUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionUse.validateGatesMatch(diagnostics, context);
 	}
 
@@ -11541,7 +11618,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionUse_validateAllLifelines(
 			InteractionUse interactionUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionUse.validateAllLifelines(diagnostics, context);
 	}
 
@@ -11553,7 +11630,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionUse_validateArgumentsCorrespondToParameters(
 			InteractionUse interactionUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionUse.validateArgumentsCorrespondToParameters(
 			diagnostics, context);
 	}
@@ -11566,7 +11643,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionUse_validateArgumentsAreConstants(
 			InteractionUse interactionUse, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionUse.validateArgumentsAreConstants(diagnostics,
 			context);
 	}
@@ -11577,7 +11654,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateGate(Gate gate, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(gate, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -11619,7 +11696,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateGate_validateMessagesActualGate(Gate gate,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return gate.validateMessagesActualGate(diagnostics, context);
 	}
 
@@ -11630,7 +11707,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateGate_validateMessagesCombinedFragment(Gate gate,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return gate.validateMessagesCombinedFragment(diagnostics, context);
 	}
 
@@ -11640,7 +11717,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAction(Action action, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(action,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11687,7 +11764,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExecutableNode(ExecutableNode executableNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(executableNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11735,7 +11812,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityNode(ActivityNode activityNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activityNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11784,7 +11861,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityNode_validateOwned(
-			ActivityNode activityNode, DiagnosticChain diagnostics, Map context) {
+			ActivityNode activityNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activityNode.validateOwned(diagnostics, context);
 	}
 
@@ -11795,7 +11873,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityNode_validateOwnedStructuredNode(
-			ActivityNode activityNode, DiagnosticChain diagnostics, Map context) {
+			ActivityNode activityNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activityNode.validateOwnedStructuredNode(diagnostics, context);
 	}
 
@@ -11805,7 +11884,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityEdge(ActivityEdge activityEdge,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activityEdge,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11857,7 +11936,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityEdge_validateSourceAndTarget(
-			ActivityEdge activityEdge, DiagnosticChain diagnostics, Map context) {
+			ActivityEdge activityEdge, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activityEdge.validateSourceAndTarget(diagnostics, context);
 	}
 
@@ -11868,7 +11948,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityEdge_validateOwned(
-			ActivityEdge activityEdge, DiagnosticChain diagnostics, Map context) {
+			ActivityEdge activityEdge, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activityEdge.validateOwned(diagnostics, context);
 	}
 
@@ -11879,7 +11960,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityEdge_validateStructuredNode(
-			ActivityEdge activityEdge, DiagnosticChain diagnostics, Map context) {
+			ActivityEdge activityEdge, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activityEdge.validateStructuredNode(diagnostics, context);
 	}
 
@@ -11889,7 +11971,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivity(Activity activity,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activity,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11977,7 +12059,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivity_validateNoSupergroups(Activity activity,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activity.validateNoSupergroups(diagnostics, context);
 	}
 
@@ -11988,7 +12070,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivity_validateActivityParameterNode(
-			Activity activity, DiagnosticChain diagnostics, Map context) {
+			Activity activity, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return activity.validateActivityParameterNode(diagnostics, context);
 	}
 
@@ -11999,7 +12082,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivity_validateAutonomous(Activity activity,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activity.validateAutonomous(diagnostics, context);
 	}
 
@@ -12010,7 +12093,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityPartition(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activityPartition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12069,7 +12152,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityPartition_validateDimensionNotContained(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityPartition.validateDimensionNotContained(diagnostics,
 			context);
 	}
@@ -12082,7 +12165,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityPartition_validateRepresentsPart(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityPartition.validateRepresentsPart(diagnostics, context);
 	}
 
@@ -12094,7 +12177,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityPartition_validateRepresentsClassifier(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityPartition.validateRepresentsClassifier(diagnostics,
 			context);
 	}
@@ -12107,7 +12190,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityPartition_validateRepresentsPartAndIsContained(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityPartition.validateRepresentsPartAndIsContained(
 			diagnostics, context);
 	}
@@ -12118,7 +12201,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActivityGroup(ActivityGroup activityGroup,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activityGroup,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12156,7 +12239,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityGroup_validateNodesAndEdges(
 			ActivityGroup activityGroup, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityGroup.validateNodesAndEdges(diagnostics, context);
 	}
 
@@ -12168,7 +12251,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityGroup_validateNotContained(
 			ActivityGroup activityGroup, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityGroup.validateNotContained(diagnostics, context);
 	}
 
@@ -12180,7 +12263,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityGroup_validateGroupOwned(
 			ActivityGroup activityGroup, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return activityGroup.validateGroupOwned(diagnostics, context);
 	}
 
@@ -12191,7 +12274,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuredActivityNode(
 			StructuredActivityNode structuredActivityNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12256,7 +12339,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuredActivityNode_validateEdges(
 			StructuredActivityNode structuredActivityNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuredActivityNode.validateEdges(diagnostics, context);
 	}
 
@@ -12266,7 +12349,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateVariable(Variable variable,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(variable,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12321,7 +12404,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateVariable_validateOwned(Variable variable,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return variable.validateOwned(diagnostics, context);
 	}
 
@@ -12332,7 +12415,7 @@ public class UMLValidator
 	 */
 	public boolean validateInterruptibleActivityRegion(
 			InterruptibleActivityRegion interruptibleActivityRegion,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12373,7 +12456,7 @@ public class UMLValidator
 	 */
 	public boolean validateInterruptibleActivityRegion_validateInterruptingEdges(
 			InterruptibleActivityRegion interruptibleActivityRegion,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interruptibleActivityRegion.validateInterruptingEdges(
 			diagnostics, context);
 	}
@@ -12384,7 +12467,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExceptionHandler(ExceptionHandler exceptionHandler,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(exceptionHandler,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12425,7 +12508,7 @@ public class UMLValidator
 	 */
 	public boolean validateExceptionHandler_validateExceptionBody(
 			ExceptionHandler exceptionHandler, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return exceptionHandler.validateExceptionBody(diagnostics, context);
 	}
 
@@ -12437,7 +12520,7 @@ public class UMLValidator
 	 */
 	public boolean validateExceptionHandler_validateResultPins(
 			ExceptionHandler exceptionHandler, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return exceptionHandler.validateResultPins(diagnostics, context);
 	}
 
@@ -12449,7 +12532,7 @@ public class UMLValidator
 	 */
 	public boolean validateExceptionHandler_validateOneInput(
 			ExceptionHandler exceptionHandler, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return exceptionHandler.validateOneInput(diagnostics, context);
 	}
 
@@ -12461,7 +12544,7 @@ public class UMLValidator
 	 */
 	public boolean validateExceptionHandler_validateEdgeSourceTarget(
 			ExceptionHandler exceptionHandler, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return exceptionHandler.validateEdgeSourceTarget(diagnostics, context);
 	}
 
@@ -12471,7 +12554,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNode(ObjectNode objectNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(objectNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12532,7 +12615,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNode_validateObjectFlowEdges(
-			ObjectNode objectNode, DiagnosticChain diagnostics, Map context) {
+			ObjectNode objectNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectNode.validateObjectFlowEdges(diagnostics, context);
 	}
 
@@ -12543,7 +12627,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNode_validateNotUnique(ObjectNode objectNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return objectNode.validateNotUnique(diagnostics, context);
 	}
 
@@ -12554,7 +12638,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNode_validateSelectionBehavior(
-			ObjectNode objectNode, DiagnosticChain diagnostics, Map context) {
+			ObjectNode objectNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectNode.validateSelectionBehavior(diagnostics, context);
 	}
 
@@ -12565,7 +12650,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectNode_validateInputOutputParameter(
-			ObjectNode objectNode, DiagnosticChain diagnostics, Map context) {
+			ObjectNode objectNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectNode.validateInputOutputParameter(diagnostics, context);
 	}
 
@@ -12575,7 +12661,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOutputPin(OutputPin outputPin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(outputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12657,7 +12743,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOutputPin_validateIncomingEdgesStructuredOnly(
-			OutputPin outputPin, DiagnosticChain diagnostics, Map context) {
+			OutputPin outputPin, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return outputPin.validateIncomingEdgesStructuredOnly(diagnostics,
 			context);
 	}
@@ -12667,7 +12754,8 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePin(Pin pin, DiagnosticChain diagnostics, Map context) {
+	public boolean validatePin(Pin pin, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(pin, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -12743,7 +12831,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePin_validateControlPins(Pin pin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return pin.validateControlPins(diagnostics, context);
 	}
 
@@ -12753,7 +12841,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInputPin(InputPin inputPin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(inputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12835,7 +12923,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInputPin_validateOutgoingEdgesStructuredOnly(
-			InputPin inputPin, DiagnosticChain diagnostics, Map context) {
+			InputPin inputPin, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return inputPin.validateOutgoingEdgesStructuredOnly(diagnostics,
 			context);
 	}
@@ -12846,7 +12935,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateGeneralOrdering(GeneralOrdering generalOrdering,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(generalOrdering,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12883,7 +12972,7 @@ public class UMLValidator
 	 */
 	public boolean validateOccurrenceSpecification(
 			OccurrenceSpecification occurrenceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12920,7 +13009,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionOperand(
 			InteractionOperand interactionOperand, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(interactionOperand,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12967,7 +13056,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionOperand_validateGuardDirectlyPrior(
 			InteractionOperand interactionOperand, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionOperand.validateGuardDirectlyPrior(diagnostics,
 			context);
 	}
@@ -12980,7 +13069,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionOperand_validateGuardContainReferences(
 			InteractionOperand interactionOperand, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return interactionOperand.validateGuardContainReferences(diagnostics,
 			context);
 	}
@@ -12992,7 +13081,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13063,7 +13152,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateDynamicVariables(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateDynamicVariables(diagnostics,
 			context);
 	}
@@ -13076,7 +13165,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateGlobalData(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateGlobalData(diagnostics, context);
 	}
 
@@ -13088,7 +13177,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateMinintMaxint(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateMinintMaxint(diagnostics, context);
 	}
 
@@ -13100,7 +13189,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateMinintNonNegative(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateMinintNonNegative(diagnostics,
 			context);
 	}
@@ -13113,7 +13202,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateMaxintPositive(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateMaxintPositive(diagnostics,
 			context);
 	}
@@ -13126,7 +13215,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionConstraint_validateMaxintGreaterEqualMinint(
 			InteractionConstraint interactionConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return interactionConstraint.validateMaxintGreaterEqualMinint(
 			diagnostics, context);
 	}
@@ -13138,7 +13227,7 @@ public class UMLValidator
 	 */
 	public boolean validateExecutionSpecification(
 			ExecutionSpecification executionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13179,7 +13268,7 @@ public class UMLValidator
 	 */
 	public boolean validateExecutionSpecification_validateSameLifeline(
 			ExecutionSpecification executionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return executionSpecification
 			.validateSameLifeline(diagnostics, context);
 	}
@@ -13191,7 +13280,7 @@ public class UMLValidator
 	 */
 	public boolean validateExecutionOccurrenceSpecification(
 			ExecutionOccurrenceSpecification executionOccurrenceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13227,7 +13316,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExecutionEvent(ExecutionEvent executionEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(executionEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13263,7 +13352,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateStateInvariant(StateInvariant stateInvariant,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(stateInvariant,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13300,7 +13389,7 @@ public class UMLValidator
 	 */
 	public boolean validateActionExecutionSpecification(
 			ActionExecutionSpecification actionExecutionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13344,7 +13433,7 @@ public class UMLValidator
 	 */
 	public boolean validateActionExecutionSpecification_validateActionReferenced(
 			ActionExecutionSpecification actionExecutionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return actionExecutionSpecification.validateActionReferenced(
 			diagnostics, context);
 	}
@@ -13356,7 +13445,7 @@ public class UMLValidator
 	 */
 	public boolean validateBehaviorExecutionSpecification(
 			BehaviorExecutionSpecification behaviorExecutionSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13395,7 +13484,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCreationEvent(CreationEvent creationEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(creationEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13436,7 +13525,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreationEvent_validateNoOccurrenceAbove(
 			CreationEvent creationEvent, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return creationEvent.validateNoOccurrenceAbove(diagnostics, context);
 	}
 
@@ -13446,7 +13535,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDestructionEvent(DestructionEvent destructionEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(destructionEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13487,7 +13576,7 @@ public class UMLValidator
 	 */
 	public boolean validateDestructionEvent_validateNoOccurrenceSpecificationsBelow(
 			DestructionEvent destructionEvent, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return destructionEvent.validateNoOccurrenceSpecificationsBelow(
 			diagnostics, context);
 	}
@@ -13499,7 +13588,7 @@ public class UMLValidator
 	 */
 	public boolean validateSendOperationEvent(
 			SendOperationEvent sendOperationEvent, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(sendOperationEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13535,7 +13624,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessageEvent(MessageEvent messageEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(messageEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13571,7 +13660,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSendSignalEvent(SendSignalEvent sendSignalEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(sendSignalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13608,7 +13697,7 @@ public class UMLValidator
 	 */
 	public boolean validateMessageOccurrenceSpecification(
 			MessageOccurrenceSpecification messageOccurrenceSpecification,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13645,7 +13734,7 @@ public class UMLValidator
 	 */
 	public boolean validateReceiveOperationEvent(
 			ReceiveOperationEvent receiveOperationEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			receiveOperationEvent, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13682,7 +13771,7 @@ public class UMLValidator
 	 */
 	public boolean validateReceiveSignalEvent(
 			ReceiveSignalEvent receiveSignalEvent, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(receiveSignalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13718,7 +13807,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCombinedFragment(CombinedFragment combinedFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(combinedFragment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13768,7 +13857,7 @@ public class UMLValidator
 	 */
 	public boolean validateCombinedFragment_validateOptLoopBreakNeg(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return combinedFragment.validateOptLoopBreakNeg(diagnostics, context);
 	}
 
@@ -13780,7 +13869,7 @@ public class UMLValidator
 	 */
 	public boolean validateCombinedFragment_validateMinintAndMaxint(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return combinedFragment.validateMinintAndMaxint(diagnostics, context);
 	}
 
@@ -13792,7 +13881,7 @@ public class UMLValidator
 	 */
 	public boolean validateCombinedFragment_validateBreak(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return combinedFragment.validateBreak(diagnostics, context);
 	}
 
@@ -13804,7 +13893,7 @@ public class UMLValidator
 	 */
 	public boolean validateCombinedFragment_validateConsiderAndIgnore(
 			CombinedFragment combinedFragment, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return combinedFragment.validateConsiderAndIgnore(diagnostics, context);
 	}
 
@@ -13814,7 +13903,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateContinuation(Continuation continuation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(continuation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13860,7 +13949,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateContinuation_validateSameName(
-			Continuation continuation, DiagnosticChain diagnostics, Map context) {
+			Continuation continuation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return continuation.validateSameName(diagnostics, context);
 	}
 
@@ -13871,7 +13961,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateContinuation_validateGlobal(
-			Continuation continuation, DiagnosticChain diagnostics, Map context) {
+			Continuation continuation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return continuation.validateGlobal(diagnostics, context);
 	}
 
@@ -13882,7 +13973,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateContinuation_validateFirstOrLastInteractionFragment(
-			Continuation continuation, DiagnosticChain diagnostics, Map context) {
+			Continuation continuation, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return continuation.validateFirstOrLastInteractionFragment(diagnostics,
 			context);
 	}
@@ -13894,7 +13986,7 @@ public class UMLValidator
 	 */
 	public boolean validateConsiderIgnoreFragment(
 			ConsiderIgnoreFragment considerIgnoreFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13950,7 +14042,7 @@ public class UMLValidator
 	 */
 	public boolean validateConsiderIgnoreFragment_validateConsiderOrIgnore(
 			ConsiderIgnoreFragment considerIgnoreFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return considerIgnoreFragment.validateConsiderOrIgnore(diagnostics,
 			context);
 	}
@@ -13963,7 +14055,7 @@ public class UMLValidator
 	 */
 	public boolean validateConsiderIgnoreFragment_validateType(
 			ConsiderIgnoreFragment considerIgnoreFragment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return considerIgnoreFragment.validateType(diagnostics, context);
 	}
 
@@ -13973,7 +14065,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCallEvent(CallEvent callEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(callEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14009,7 +14101,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateChangeEvent(ChangeEvent changeEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(changeEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14045,7 +14137,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSignalEvent(SignalEvent signalEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(signalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14081,7 +14173,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAnyReceiveEvent(AnyReceiveEvent anyReceiveEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(anyReceiveEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14118,7 +14210,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateObjectAction(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(createObjectAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14180,7 +14272,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateObjectAction_validateClassifierNotAbstract(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return createObjectAction.validateClassifierNotAbstract(diagnostics,
 			context);
 	}
@@ -14193,7 +14285,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateObjectAction_validateClassifierNotAssociationClass(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return createObjectAction.validateClassifierNotAssociationClass(
 			diagnostics, context);
 	}
@@ -14206,7 +14298,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateObjectAction_validateSameType(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return createObjectAction.validateSameType(diagnostics, context);
 	}
 
@@ -14218,7 +14310,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateObjectAction_validateMultiplicity(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return createObjectAction.validateMultiplicity(diagnostics, context);
 	}
 
@@ -14229,7 +14321,7 @@ public class UMLValidator
 	 */
 	public boolean validateDestroyObjectAction(
 			DestroyObjectAction destroyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			destroyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14285,7 +14377,7 @@ public class UMLValidator
 	 */
 	public boolean validateDestroyObjectAction_validateMultiplicity(
 			DestroyObjectAction destroyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return destroyObjectAction.validateMultiplicity(diagnostics, context);
 	}
 
@@ -14297,7 +14389,7 @@ public class UMLValidator
 	 */
 	public boolean validateDestroyObjectAction_validateNoType(
 			DestroyObjectAction destroyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return destroyObjectAction.validateNoType(diagnostics, context);
 	}
 
@@ -14308,7 +14400,7 @@ public class UMLValidator
 	 */
 	public boolean validateTestIdentityAction(
 			TestIdentityAction testIdentityAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(testIdentityAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14367,7 +14459,7 @@ public class UMLValidator
 	 */
 	public boolean validateTestIdentityAction_validateNoType(
 			TestIdentityAction testIdentityAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return testIdentityAction.validateNoType(diagnostics, context);
 	}
 
@@ -14379,7 +14471,7 @@ public class UMLValidator
 	 */
 	public boolean validateTestIdentityAction_validateMultiplicity(
 			TestIdentityAction testIdentityAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return testIdentityAction.validateMultiplicity(diagnostics, context);
 	}
 
@@ -14391,7 +14483,7 @@ public class UMLValidator
 	 */
 	public boolean validateTestIdentityAction_validateResultIsBoolean(
 			TestIdentityAction testIdentityAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return testIdentityAction.validateResultIsBoolean(diagnostics, context);
 	}
 
@@ -14401,7 +14493,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReadSelfAction(ReadSelfAction readSelfAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(readSelfAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14463,7 +14555,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadSelfAction_validateContained(
 			ReadSelfAction readSelfAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readSelfAction.validateContained(diagnostics, context);
 	}
 
@@ -14475,7 +14567,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadSelfAction_validateNotStatic(
 			ReadSelfAction readSelfAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readSelfAction.validateNotStatic(diagnostics, context);
 	}
 
@@ -14487,7 +14579,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadSelfAction_validateType(
 			ReadSelfAction readSelfAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readSelfAction.validateType(diagnostics, context);
 	}
 
@@ -14499,7 +14591,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadSelfAction_validateMultiplicity(
 			ReadSelfAction readSelfAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readSelfAction.validateMultiplicity(diagnostics, context);
 	}
 
@@ -14510,7 +14602,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14575,7 +14667,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction_validateNotStatic(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuralFeatureAction.validateNotStatic(diagnostics, context);
 	}
 
@@ -14587,7 +14679,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction_validateSameType(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuralFeatureAction.validateSameType(diagnostics, context);
 	}
 
@@ -14599,7 +14691,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction_validateMultiplicity(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuralFeatureAction.validateMultiplicity(diagnostics,
 			context);
 	}
@@ -14612,7 +14704,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction_validateVisibility(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuralFeatureAction.validateVisibility(diagnostics, context);
 	}
 
@@ -14624,7 +14716,7 @@ public class UMLValidator
 	 */
 	public boolean validateStructuralFeatureAction_validateOneFeaturingClassifier(
 			StructuralFeatureAction structuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return structuralFeatureAction.validateOneFeaturingClassifier(
 			diagnostics, context);
 	}
@@ -14636,7 +14728,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadStructuralFeatureAction(
 			ReadStructuralFeatureAction readStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14704,7 +14796,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadStructuralFeatureAction_validateTypeAndOrdering(
 			ReadStructuralFeatureAction readStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readStructuralFeatureAction.validateTypeAndOrdering(diagnostics,
 			context);
 	}
@@ -14717,7 +14809,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadStructuralFeatureAction_validateMultiplicity(
 			ReadStructuralFeatureAction readStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -14748,7 +14840,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteStructuralFeatureAction(
 			WriteStructuralFeatureAction writeStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14816,7 +14908,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteStructuralFeatureAction_validateInputPin(
 			WriteStructuralFeatureAction writeStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return writeStructuralFeatureAction.validateInputPin(diagnostics,
 			context);
 	}
@@ -14829,7 +14921,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteStructuralFeatureAction_validateMultiplicity(
 			WriteStructuralFeatureAction writeStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -14860,7 +14952,7 @@ public class UMLValidator
 	 */
 	public boolean validateClearStructuralFeatureAction(
 			ClearStructuralFeatureAction clearStructuralFeatureAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14924,7 +15016,7 @@ public class UMLValidator
 	 */
 	public boolean validateRemoveStructuralFeatureValueAction(
 			RemoveStructuralFeatureValueAction removeStructuralFeatureValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14995,7 +15087,7 @@ public class UMLValidator
 	 */
 	public boolean validateRemoveStructuralFeatureValueAction_validateNonUniqueRemoval(
 			RemoveStructuralFeatureValueAction removeStructuralFeatureValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return removeStructuralFeatureValueAction.validateNonUniqueRemoval(
 			diagnostics, context);
 	}
@@ -15007,7 +15099,7 @@ public class UMLValidator
 	 */
 	public boolean validateAddStructuralFeatureValueAction(
 			AddStructuralFeatureValueAction addStructuralFeatureValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15078,7 +15170,7 @@ public class UMLValidator
 	 */
 	public boolean validateAddStructuralFeatureValueAction_validateUnlimitedNaturalAndMultiplicity(
 			AddStructuralFeatureValueAction addStructuralFeatureValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return addStructuralFeatureValueAction
 			.validateUnlimitedNaturalAndMultiplicity(diagnostics, context);
 	}
@@ -15089,7 +15181,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkAction(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(linkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15147,7 +15239,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkAction_validateSameAssociation(
-			LinkAction linkAction, DiagnosticChain diagnostics, Map context) {
+			LinkAction linkAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkAction.validateSameAssociation(diagnostics, context);
 	}
 
@@ -15158,7 +15251,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkAction_validateNotStatic(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkAction.validateNotStatic(diagnostics, context);
 	}
 
@@ -15169,7 +15262,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkAction_validateSamePins(LinkAction linkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkAction.validateSamePins(diagnostics, context);
 	}
 
@@ -15179,7 +15272,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData(LinkEndData linkEndData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(linkEndData,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15222,7 +15315,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData_validatePropertyIsAssociationEnd(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkEndData.validatePropertyIsAssociationEnd(diagnostics,
 			context);
 	}
@@ -15234,7 +15328,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData_validateSameType(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkEndData.validateSameType(diagnostics, context);
 	}
 
@@ -15245,7 +15340,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData_validateMultiplicity(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkEndData.validateMultiplicity(diagnostics, context);
 	}
 
@@ -15256,7 +15352,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData_validateQualifiers(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkEndData.validateQualifiers(diagnostics, context);
 	}
 
@@ -15267,7 +15364,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLinkEndData_validateEndObjectInputPin(
-			LinkEndData linkEndData, DiagnosticChain diagnostics, Map context) {
+			LinkEndData linkEndData, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return linkEndData.validateEndObjectInputPin(diagnostics, context);
 	}
 
@@ -15277,7 +15375,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateQualifierValue(QualifierValue qualifierValue,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(qualifierValue,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15315,7 +15413,7 @@ public class UMLValidator
 	 */
 	public boolean validateQualifierValue_validateQualifierAttribute(
 			QualifierValue qualifierValue, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return qualifierValue.validateQualifierAttribute(diagnostics, context);
 	}
 
@@ -15327,7 +15425,7 @@ public class UMLValidator
 	 */
 	public boolean validateQualifierValue_validateTypeOfQualifier(
 			QualifierValue qualifierValue, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return qualifierValue.validateTypeOfQualifier(diagnostics, context);
 	}
 
@@ -15339,7 +15437,7 @@ public class UMLValidator
 	 */
 	public boolean validateQualifierValue_validateMultiplicityOfQualifier(
 			QualifierValue qualifierValue, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return qualifierValue.validateMultiplicityOfQualifier(diagnostics,
 			context);
 	}
@@ -15350,7 +15448,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReadLinkAction(ReadLinkAction readLinkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(readLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15424,7 +15522,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction_validateOneOpenEnd(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readLinkAction.validateOneOpenEnd(diagnostics, context);
 	}
 
@@ -15436,7 +15534,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction_validateTypeAndOrdering(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readLinkAction.validateTypeAndOrdering(diagnostics, context);
 	}
 
@@ -15448,7 +15546,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction_validateCompatibleMultiplicity(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readLinkAction.validateCompatibleMultiplicity(diagnostics,
 			context);
 	}
@@ -15461,7 +15559,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction_validateNavigableOpenEnd(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readLinkAction.validateNavigableOpenEnd(diagnostics, context);
 	}
 
@@ -15473,7 +15571,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction_validateVisibility(
 			ReadLinkAction readLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readLinkAction.validateVisibility(diagnostics, context);
 	}
 
@@ -15484,7 +15582,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndCreationData(
 			LinkEndCreationData linkEndCreationData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15534,7 +15632,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndCreationData_validateCreateLinkAction(
 			LinkEndCreationData linkEndCreationData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkEndCreationData.validateCreateLinkAction(diagnostics,
 			context);
 	}
@@ -15547,7 +15645,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndCreationData_validateSingleInputPin(
 			LinkEndCreationData linkEndCreationData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkEndCreationData.validateSingleInputPin(diagnostics, context);
 	}
 
@@ -15557,7 +15655,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCreateLinkAction(CreateLinkAction createLinkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(createLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15622,7 +15720,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkAction_validateAssociationNotAbstract(
 			CreateLinkAction createLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return createLinkAction.validateAssociationNotAbstract(diagnostics,
 			context);
 	}
@@ -15633,7 +15731,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateWriteLinkAction(WriteLinkAction writeLinkAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(writeLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15695,7 +15793,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteLinkAction_validateAllowAccess(
 			WriteLinkAction writeLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return writeLinkAction.validateAllowAccess(diagnostics, context);
 	}
 
@@ -15706,7 +15804,7 @@ public class UMLValidator
 	 */
 	public boolean validateDestroyLinkAction(
 			DestroyLinkAction destroyLinkAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(destroyLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15767,7 +15865,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndDestructionData(
 			LinkEndDestructionData linkEndDestructionData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15817,7 +15915,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndDestructionData_validateDestroyLinkAction(
 			LinkEndDestructionData linkEndDestructionData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkEndDestructionData.validateDestroyLinkAction(diagnostics,
 			context);
 	}
@@ -15830,7 +15928,7 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndDestructionData_validateUnlimitedNaturalAndMultiplicity(
 			LinkEndDestructionData linkEndDestructionData,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return linkEndDestructionData.validateUnlimitedNaturalAndMultiplicity(
 			diagnostics, context);
 	}
@@ -15842,7 +15940,7 @@ public class UMLValidator
 	 */
 	public boolean validateClearAssociationAction(
 			ClearAssociationAction clearAssociationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15898,7 +15996,7 @@ public class UMLValidator
 	 */
 	public boolean validateClearAssociationAction_validateSameType(
 			ClearAssociationAction clearAssociationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return clearAssociationAction.validateSameType(diagnostics, context);
 	}
 
@@ -15910,7 +16008,7 @@ public class UMLValidator
 	 */
 	public boolean validateClearAssociationAction_validateMultiplicity(
 			ClearAssociationAction clearAssociationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return clearAssociationAction
 			.validateMultiplicity(diagnostics, context);
 	}
@@ -15922,7 +16020,7 @@ public class UMLValidator
 	 */
 	public boolean validateBroadcastSignalAction(
 			BroadcastSignalAction broadcastSignalAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15981,7 +16079,7 @@ public class UMLValidator
 	 */
 	public boolean validateBroadcastSignalAction_validateNumberAndOrder(
 			BroadcastSignalAction broadcastSignalAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return broadcastSignalAction.validateNumberAndOrder(diagnostics,
 			context);
 	}
@@ -15994,7 +16092,7 @@ public class UMLValidator
 	 */
 	public boolean validateBroadcastSignalAction_validateTypeOrderingMultiplicity(
 			BroadcastSignalAction broadcastSignalAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return broadcastSignalAction.validateTypeOrderingMultiplicity(
 			diagnostics, context);
 	}
@@ -16005,7 +16103,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInvocationAction(InvocationAction invocationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(invocationAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16058,7 +16156,7 @@ public class UMLValidator
 	 */
 	public boolean validateInvocationAction_validateOnPortReceiver(
 			InvocationAction invocationAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return invocationAction.validateOnPortReceiver(diagnostics, context);
 	}
 
@@ -16068,7 +16166,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSendObjectAction(SendObjectAction sendObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(sendObjectAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16120,7 +16218,7 @@ public class UMLValidator
 	 */
 	public boolean validateValueSpecificationAction(
 			ValueSpecificationAction valueSpecificationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16176,7 +16274,7 @@ public class UMLValidator
 	 */
 	public boolean validateValueSpecificationAction_validateCompatibleType(
 			ValueSpecificationAction valueSpecificationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return valueSpecificationAction.validateCompatibleType(diagnostics,
 			context);
 	}
@@ -16189,7 +16287,7 @@ public class UMLValidator
 	 */
 	public boolean validateValueSpecificationAction_validateMultiplicity(
 			ValueSpecificationAction valueSpecificationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return valueSpecificationAction.validateMultiplicity(diagnostics,
 			context);
 	}
@@ -16200,7 +16298,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeExpression(TimeExpression timeExpression,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(timeExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16236,7 +16334,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObservation(Observation observation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(observation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16272,7 +16370,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDuration(Duration duration,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(duration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16308,7 +16406,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateValuePin(ValuePin valuePin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(valuePin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16396,7 +16494,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateValuePin_validateCompatibleType(ValuePin valuePin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return valuePin.validateCompatibleType(diagnostics, context);
 	}
 
@@ -16407,7 +16505,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateValuePin_validateNoIncomingEdges(ValuePin valuePin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return valuePin.validateNoIncomingEdges(diagnostics, context);
 	}
 
@@ -16417,7 +16515,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDurationInterval(DurationInterval durationInterval,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(durationInterval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16453,7 +16551,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInterval(Interval interval,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(interval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16489,7 +16587,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeConstraint(TimeConstraint timeConstraint,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(timeConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16541,7 +16639,7 @@ public class UMLValidator
 	 */
 	public boolean validateIntervalConstraint(
 			IntervalConstraint intervalConstraint, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(intervalConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16592,7 +16690,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeInterval(TimeInterval timeInterval,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(timeInterval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16629,7 +16727,7 @@ public class UMLValidator
 	 */
 	public boolean validateDurationConstraint(
 			DurationConstraint durationConstraint, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(durationConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16685,7 +16783,7 @@ public class UMLValidator
 	 */
 	public boolean validateDurationConstraint_validateFirstEventMultiplicity(
 			DurationConstraint durationConstraint, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return durationConstraint.validateFirstEventMultiplicity(diagnostics,
 			context);
 	}
@@ -16696,7 +16794,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeObservation(TimeObservation timeObservation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(timeObservation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16733,7 +16831,7 @@ public class UMLValidator
 	 */
 	public boolean validateDurationObservation(
 			DurationObservation durationObservation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			durationObservation, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16774,7 +16872,7 @@ public class UMLValidator
 	 */
 	public boolean validateDurationObservation_validateFirstEventMultiplicity(
 			DurationObservation durationObservation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return durationObservation.validateFirstEventMultiplicity(diagnostics,
 			context);
 	}
@@ -16785,7 +16883,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateOpaqueAction(OpaqueAction opaqueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(opaqueAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16833,7 +16931,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCallAction(CallAction callAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(callAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16894,7 +16992,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCallAction_validateSynchronousCall(
-			CallAction callAction, DiagnosticChain diagnostics, Map context) {
+			CallAction callAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return callAction.validateSynchronousCall(diagnostics, context);
 	}
 
@@ -16905,7 +17004,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCallAction_validateNumberAndOrder(
-			CallAction callAction, DiagnosticChain diagnostics, Map context) {
+			CallAction callAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return callAction.validateNumberAndOrder(diagnostics, context);
 	}
 
@@ -16916,7 +17016,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateCallAction_validateTypeOrderingMultiplicity(
-			CallAction callAction, DiagnosticChain diagnostics, Map context) {
+			CallAction callAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return callAction
 			.validateTypeOrderingMultiplicity(diagnostics, context);
 	}
@@ -16927,7 +17028,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSendSignalAction(SendSignalAction sendSignalAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(sendSignalAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16986,7 +17087,7 @@ public class UMLValidator
 	 */
 	public boolean validateSendSignalAction_validateNumberOrder(
 			SendSignalAction sendSignalAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return sendSignalAction.validateNumberOrder(diagnostics, context);
 	}
 
@@ -16998,7 +17099,7 @@ public class UMLValidator
 	 */
 	public boolean validateSendSignalAction_validateTypeOrderingMultiplicity(
 			SendSignalAction sendSignalAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return sendSignalAction.validateTypeOrderingMultiplicity(diagnostics,
 			context);
 	}
@@ -17010,7 +17111,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallOperationAction(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17081,7 +17182,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallOperationAction_validateArgumentPinEqualParameter(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return callOperationAction.validateArgumentPinEqualParameter(
 			diagnostics, context);
 	}
@@ -17094,7 +17195,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallOperationAction_validateResultPinEqualParameter(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return callOperationAction.validateResultPinEqualParameter(diagnostics,
 			context);
 	}
@@ -17107,7 +17208,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallOperationAction_validateTypeTargetPin(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return callOperationAction.validateTypeTargetPin(diagnostics, context);
 	}
 
@@ -17119,7 +17220,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallOperationAction_validateTypeOrderingMultiplicity(
 			CallOperationAction callOperationAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -17150,7 +17251,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallBehaviorAction(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(callBehaviorAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17218,7 +17319,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallBehaviorAction_validateArgumentPinEqualParameter(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return callBehaviorAction.validateArgumentPinEqualParameter(
 			diagnostics, context);
 	}
@@ -17231,7 +17332,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallBehaviorAction_validateResultPinEqualParameter(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return callBehaviorAction.validateResultPinEqualParameter(diagnostics,
 			context);
 	}
@@ -17244,7 +17345,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallBehaviorAction_validateTypeOrderingMultiplicity(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -17274,7 +17375,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInformationItem(InformationItem informationItem,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(informationItem,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17342,7 +17443,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationItem_validateSourcesAndTargets(
 			InformationItem informationItem, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationItem.validateSourcesAndTargets(diagnostics, context);
 	}
 
@@ -17354,7 +17455,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationItem_validateHasNo(
 			InformationItem informationItem, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationItem.validateHasNo(diagnostics, context);
 	}
 
@@ -17366,7 +17467,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationItem_validateNotInstantiable(
 			InformationItem informationItem, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationItem.validateNotInstantiable(diagnostics, context);
 	}
 
@@ -17376,7 +17477,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInformationFlow(InformationFlow informationFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(informationFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17423,7 +17524,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationFlow_validateSourcesAndTargetsKind(
 			InformationFlow informationFlow, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationFlow.validateSourcesAndTargetsKind(diagnostics,
 			context);
 	}
@@ -17436,7 +17537,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationFlow_validateMustConform(
 			InformationFlow informationFlow, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationFlow.validateMustConform(diagnostics, context);
 	}
 
@@ -17448,7 +17549,7 @@ public class UMLValidator
 	 */
 	public boolean validateInformationFlow_validateConveyClassifiers(
 			InformationFlow informationFlow, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return informationFlow.validateConveyClassifiers(diagnostics, context);
 	}
 
@@ -17458,7 +17559,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateModel(Model model, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(model, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -17499,7 +17600,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateVariableAction(VariableAction variableAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(variableAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17552,7 +17653,7 @@ public class UMLValidator
 	 */
 	public boolean validateVariableAction_validateScopeOfVariable(
 			VariableAction variableAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return variableAction.validateScopeOfVariable(diagnostics, context);
 	}
 
@@ -17563,7 +17664,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadVariableAction(
 			ReadVariableAction readVariableAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(readVariableAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17622,7 +17723,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadVariableAction_validateTypeAndOrdering(
 			ReadVariableAction readVariableAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readVariableAction.validateTypeAndOrdering(diagnostics, context);
 	}
 
@@ -17634,7 +17735,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadVariableAction_validateCompatibleMultiplicity(
 			ReadVariableAction readVariableAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readVariableAction.validateCompatibleMultiplicity(diagnostics,
 			context);
 	}
@@ -17646,7 +17747,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteVariableAction(
 			WriteVariableAction writeVariableAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17705,7 +17806,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteVariableAction_validateSameType(
 			WriteVariableAction writeVariableAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return writeVariableAction.validateSameType(diagnostics, context);
 	}
 
@@ -17717,7 +17818,7 @@ public class UMLValidator
 	 */
 	public boolean validateWriteVariableAction_validateMultiplicity(
 			WriteVariableAction writeVariableAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return writeVariableAction.validateMultiplicity(diagnostics, context);
 	}
 
@@ -17728,7 +17829,7 @@ public class UMLValidator
 	 */
 	public boolean validateClearVariableAction(
 			ClearVariableAction clearVariableAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			clearVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17780,7 +17881,7 @@ public class UMLValidator
 	 */
 	public boolean validateAddVariableValueAction(
 			AddVariableValueAction addVariableValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17842,7 +17943,7 @@ public class UMLValidator
 	 */
 	public boolean validateAddVariableValueAction_validateSingleInputPin(
 			AddVariableValueAction addVariableValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return addVariableValueAction.validateSingleInputPin(diagnostics,
 			context);
 	}
@@ -17854,7 +17955,7 @@ public class UMLValidator
 	 */
 	public boolean validateRemoveVariableValueAction(
 			RemoveVariableValueAction removeVariableValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17916,7 +18017,7 @@ public class UMLValidator
 	 */
 	public boolean validateRemoveVariableValueAction_validateUnlimitedNatural(
 			RemoveVariableValueAction removeVariableValueAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return removeVariableValueAction.validateUnlimitedNatural(diagnostics,
 			context);
 	}
@@ -17928,7 +18029,7 @@ public class UMLValidator
 	 */
 	public boolean validateRaiseExceptionAction(
 			RaiseExceptionAction raiseExceptionAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			raiseExceptionAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17976,7 +18077,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateActionInputPin(ActionInputPin actionInputPin,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(actionInputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18068,7 +18169,7 @@ public class UMLValidator
 	 */
 	public boolean validateActionInputPin_validateOneOutputPin(
 			ActionInputPin actionInputPin, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return actionInputPin.validateOneOutputPin(diagnostics, context);
 	}
 
@@ -18080,7 +18181,7 @@ public class UMLValidator
 	 */
 	public boolean validateActionInputPin_validateInputPin(
 			ActionInputPin actionInputPin, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return actionInputPin.validateInputPin(diagnostics, context);
 	}
 
@@ -18092,7 +18193,7 @@ public class UMLValidator
 	 */
 	public boolean validateActionInputPin_validateNoControlOrDataFlow(
 			ActionInputPin actionInputPin, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return actionInputPin.validateNoControlOrDataFlow(diagnostics, context);
 	}
 
@@ -18102,7 +18203,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReadExtentAction(ReadExtentAction readExtentAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(readExtentAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18158,7 +18259,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadExtentAction_validateTypeIsClassifier(
 			ReadExtentAction readExtentAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readExtentAction.validateTypeIsClassifier(diagnostics, context);
 	}
 
@@ -18170,7 +18271,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadExtentAction_validateMultiplicityOfResult(
 			ReadExtentAction readExtentAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return readExtentAction.validateMultiplicityOfResult(diagnostics,
 			context);
 	}
@@ -18182,7 +18283,7 @@ public class UMLValidator
 	 */
 	public boolean validateReclassifyObjectAction(
 			ReclassifyObjectAction reclassifyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18241,7 +18342,7 @@ public class UMLValidator
 	 */
 	public boolean validateReclassifyObjectAction_validateClassifierNotAbstract(
 			ReclassifyObjectAction reclassifyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return reclassifyObjectAction.validateClassifierNotAbstract(
 			diagnostics, context);
 	}
@@ -18254,7 +18355,7 @@ public class UMLValidator
 	 */
 	public boolean validateReclassifyObjectAction_validateMultiplicity(
 			ReclassifyObjectAction reclassifyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return reclassifyObjectAction
 			.validateMultiplicity(diagnostics, context);
 	}
@@ -18267,7 +18368,7 @@ public class UMLValidator
 	 */
 	public boolean validateReclassifyObjectAction_validateInputPin(
 			ReclassifyObjectAction reclassifyObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return reclassifyObjectAction.validateInputPin(diagnostics, context);
 	}
 
@@ -18278,7 +18379,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadIsClassifiedObjectAction(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18340,7 +18441,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadIsClassifiedObjectAction_validateMultiplicityOfInput(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readIsClassifiedObjectAction.validateMultiplicityOfInput(
 			diagnostics, context);
 	}
@@ -18353,7 +18454,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadIsClassifiedObjectAction_validateNoType(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readIsClassifiedObjectAction
 			.validateNoType(diagnostics, context);
 	}
@@ -18366,7 +18467,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadIsClassifiedObjectAction_validateMultiplicityOfOutput(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readIsClassifiedObjectAction.validateMultiplicityOfOutput(
 			diagnostics, context);
 	}
@@ -18379,7 +18480,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadIsClassifiedObjectAction_validateBooleanResult(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readIsClassifiedObjectAction.validateBooleanResult(diagnostics,
 			context);
 	}
@@ -18391,7 +18492,7 @@ public class UMLValidator
 	 */
 	public boolean validateStartClassifierBehaviorAction(
 			StartClassifierBehaviorAction startClassifierBehaviorAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18447,7 +18548,7 @@ public class UMLValidator
 	 */
 	public boolean validateStartClassifierBehaviorAction_validateMultiplicity(
 			StartClassifierBehaviorAction startClassifierBehaviorAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return startClassifierBehaviorAction.validateMultiplicity(diagnostics,
 			context);
 	}
@@ -18460,7 +18561,7 @@ public class UMLValidator
 	 */
 	public boolean validateStartClassifierBehaviorAction_validateTypeHasClassifier(
 			StartClassifierBehaviorAction startClassifierBehaviorAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return startClassifierBehaviorAction.validateTypeHasClassifier(
 			diagnostics, context);
 	}
@@ -18472,7 +18573,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18543,7 +18644,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateProperty(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateProperty(diagnostics, context);
 	}
 
@@ -18555,7 +18656,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateAssociationOfAssociation(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateAssociationOfAssociation(
 			diagnostics, context);
 	}
@@ -18568,7 +18669,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateEndsOfAssociation(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateEndsOfAssociation(diagnostics,
 			context);
 	}
@@ -18581,7 +18682,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateTypeOfObject(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateTypeOfObject(diagnostics,
 			context);
 	}
@@ -18594,7 +18695,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateMultiplicityOfObject(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateMultiplicityOfObject(
 			diagnostics, context);
 	}
@@ -18607,7 +18708,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateTypeOfResult(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateTypeOfResult(diagnostics,
 			context);
 	}
@@ -18620,7 +18721,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndAction_validateMultiplicityOfResult(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndAction.validateMultiplicityOfResult(
 			diagnostics, context);
 	}
@@ -18632,7 +18733,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18706,7 +18807,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateQualifierAttribute(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateQualifierAttribute(
 			diagnostics, context);
 	}
@@ -18719,7 +18820,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateAssociationOfAssociation(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction
 			.validateAssociationOfAssociation(diagnostics, context);
 	}
@@ -18732,7 +18833,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateEndsOfAssociation(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateEndsOfAssociation(
 			diagnostics, context);
 	}
@@ -18745,7 +18846,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateTypeOfObject(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateTypeOfObject(
 			diagnostics, context);
 	}
@@ -18758,7 +18859,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateMultiplicityOfQualifier(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction
 			.validateMultiplicityOfQualifier(diagnostics, context);
 	}
@@ -18771,7 +18872,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateMultiplicityOfObject(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateMultiplicityOfObject(
 			diagnostics, context);
 	}
@@ -18784,7 +18885,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateSameType(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateSameType(diagnostics,
 			context);
 	}
@@ -18797,7 +18898,7 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkObjectEndQualifierAction_validateMultiplicityOfResult(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return readLinkObjectEndQualifierAction.validateMultiplicityOfResult(
 			diagnostics, context);
 	}
@@ -18809,7 +18910,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkObjectAction(
 			CreateLinkObjectAction createLinkObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18883,7 +18984,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkObjectAction_validateAssociationClass(
 			CreateLinkObjectAction createLinkObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return createLinkObjectAction.validateAssociationClass(diagnostics,
 			context);
 	}
@@ -18896,7 +18997,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkObjectAction_validateTypeOfResult(
 			CreateLinkObjectAction createLinkObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return createLinkObjectAction
 			.validateTypeOfResult(diagnostics, context);
 	}
@@ -18909,7 +19010,7 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkObjectAction_validateMultiplicity(
 			CreateLinkObjectAction createLinkObjectAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return createLinkObjectAction
 			.validateMultiplicity(diagnostics, context);
 	}
@@ -18921,7 +19022,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptEventAction(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(acceptEventAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18983,7 +19084,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptEventAction_validateNoInputPins(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptEventAction.validateNoInputPins(diagnostics, context);
 	}
 
@@ -18995,7 +19096,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptEventAction_validateNoOutputPins(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptEventAction.validateNoOutputPins(diagnostics, context);
 	}
 
@@ -19007,7 +19108,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptEventAction_validateTriggerEvents(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptEventAction.validateTriggerEvents(diagnostics, context);
 	}
 
@@ -19019,7 +19120,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptEventAction_validateUnmarshallSignalEvents(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptEventAction.validateUnmarshallSignalEvents(diagnostics,
 			context);
 	}
@@ -19030,7 +19131,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAcceptCallAction(AcceptCallAction acceptCallAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(acceptCallAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19101,7 +19202,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptCallAction_validateResultPins(
 			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptCallAction.validateResultPins(diagnostics, context);
 	}
 
@@ -19113,7 +19214,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptCallAction_validateTriggerCallEvent(
 			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptCallAction.validateTriggerCallEvent(diagnostics, context);
 	}
 
@@ -19125,7 +19226,7 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptCallAction_validateUnmarshall(
 			AcceptCallAction acceptCallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return acceptCallAction.validateUnmarshall(diagnostics, context);
 	}
 
@@ -19135,7 +19236,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReplyAction(ReplyAction replyAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(replyAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19190,7 +19291,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReplyAction_validatePinsMatchParameter(
-			ReplyAction replyAction, DiagnosticChain diagnostics, Map context) {
+			ReplyAction replyAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return replyAction.validatePinsMatchParameter(diagnostics, context);
 	}
 
@@ -19201,7 +19303,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReplyAction_validateEventOnReplyToCallTrigger(
-			ReplyAction replyAction, DiagnosticChain diagnostics, Map context) {
+			ReplyAction replyAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return replyAction.validateEventOnReplyToCallTrigger(diagnostics,
 			context);
 	}
@@ -19212,7 +19315,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUnmarshallAction(UnmarshallAction unmarshallAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(unmarshallAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19283,7 +19386,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateSameType(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateSameType(diagnostics, context);
 	}
 
@@ -19295,7 +19398,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateMultiplicityOfObject(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateMultiplicityOfObject(diagnostics,
 			context);
 	}
@@ -19308,7 +19411,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateNumberOfResult(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateNumberOfResult(diagnostics, context);
 	}
 
@@ -19320,7 +19423,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateTypeAndOrdering(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateTypeAndOrdering(diagnostics, context);
 	}
 
@@ -19332,7 +19435,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateMultiplicityOfResult(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateMultiplicityOfResult(diagnostics,
 			context);
 	}
@@ -19345,7 +19448,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateStructuralFeature(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateStructuralFeature(diagnostics, context);
 	}
 
@@ -19357,7 +19460,7 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction_validateUnmarshallTypeIsClassifier(
 			UnmarshallAction unmarshallAction, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return unmarshallAction.validateUnmarshallTypeIsClassifier(diagnostics,
 			context);
 	}
@@ -19368,7 +19471,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReduceAction(ReduceAction reduceAction,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(reduceAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19426,7 +19529,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReduceAction_validateInputTypeIsCollection(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return reduceAction.validateInputTypeIsCollection(diagnostics, context);
 	}
 
@@ -19437,7 +19541,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReduceAction_validateOutputTypesAreCompatible(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return reduceAction.validateOutputTypesAreCompatible(diagnostics,
 			context);
 	}
@@ -19449,7 +19554,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateReduceAction_validateReducerInputsOutput(
-			ReduceAction reduceAction, DiagnosticChain diagnostics, Map context) {
+			ReduceAction reduceAction, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return reduceAction.validateReducerInputsOutput(diagnostics, context);
 	}
 
@@ -19459,7 +19565,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateControlNode(ControlNode controlNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(controlNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19507,7 +19613,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateControlFlow(ControlFlow controlFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(controlFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19562,7 +19668,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateControlFlow_validateObjectNodes(
-			ControlFlow controlFlow, DiagnosticChain diagnostics, Map context) {
+			ControlFlow controlFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return controlFlow.validateObjectNodes(diagnostics, context);
 	}
 
@@ -19572,7 +19679,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInitialNode(InitialNode initialNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(initialNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19627,7 +19734,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInitialNode_validateNoIncomingEdges(
-			InitialNode initialNode, DiagnosticChain diagnostics, Map context) {
+			InitialNode initialNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return initialNode.validateNoIncomingEdges(diagnostics, context);
 	}
 
@@ -19638,7 +19746,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInitialNode_validateControlEdges(
-			InitialNode initialNode, DiagnosticChain diagnostics, Map context) {
+			InitialNode initialNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return initialNode.validateControlEdges(diagnostics, context);
 	}
 
@@ -19649,7 +19758,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19726,7 +19835,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode_validateHasParameters(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode
 			.validateHasParameters(diagnostics, context);
 	}
@@ -19739,7 +19848,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode_validateSameType(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode.validateSameType(diagnostics, context);
 	}
 
@@ -19751,7 +19860,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode_validateNoEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode.validateNoEdges(diagnostics, context);
 	}
 
@@ -19763,7 +19872,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode_validateNoIncomingEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode.validateNoIncomingEdges(diagnostics,
 			context);
 	}
@@ -19776,7 +19885,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityParameterNode_validateNoOutgoingEdges(
 			ActivityParameterNode activityParameterNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode.validateNoOutgoingEdges(diagnostics,
 			context);
 	}
@@ -19787,7 +19896,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateForkNode(ForkNode forkNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(forkNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19842,7 +19951,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateForkNode_validateOneIncomingEdge(ForkNode forkNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return forkNode.validateOneIncomingEdge(diagnostics, context);
 	}
 
@@ -19853,7 +19962,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateForkNode_validateEdges(ForkNode forkNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return forkNode.validateEdges(diagnostics, context);
 	}
 
@@ -19863,7 +19972,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFlowFinalNode(FlowFinalNode flowFinalNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(flowFinalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19914,7 +20023,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalNode(FinalNode finalNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(finalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19966,7 +20075,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalNode_validateNoOutgoingEdges(
-			FinalNode finalNode, DiagnosticChain diagnostics, Map context) {
+			FinalNode finalNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalNode.validateNoOutgoingEdges(diagnostics, context);
 	}
 
@@ -19977,7 +20087,7 @@ public class UMLValidator
 	 */
 	public boolean validateCentralBufferNode(
 			CentralBufferNode centralBufferNode, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(centralBufferNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20037,7 +20147,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMergeNode(MergeNode mergeNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(mergeNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20092,7 +20202,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMergeNode_validateOneOutgoingEdge(
-			MergeNode mergeNode, DiagnosticChain diagnostics, Map context) {
+			MergeNode mergeNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return mergeNode.validateOneOutgoingEdge(diagnostics, context);
 	}
 
@@ -20103,7 +20214,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMergeNode_validateEdges(MergeNode mergeNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return mergeNode.validateEdges(diagnostics, context);
 	}
 
@@ -20113,7 +20224,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDecisionNode(DecisionNode decisionNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(decisionNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20171,7 +20282,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDecisionNode_validateOneIncomingEdge(
-			DecisionNode decisionNode, DiagnosticChain diagnostics, Map context) {
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return decisionNode.validateOneIncomingEdge(diagnostics, context);
 	}
 
@@ -20182,7 +20294,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDecisionNode_validateInputParameter(
-			DecisionNode decisionNode, DiagnosticChain diagnostics, Map context) {
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return decisionNode.validateInputParameter(diagnostics, context);
 	}
 
@@ -20193,7 +20306,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDecisionNode_validateEdges(
-			DecisionNode decisionNode, DiagnosticChain diagnostics, Map context) {
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return decisionNode.validateEdges(diagnostics, context);
 	}
 
@@ -20204,7 +20318,7 @@ public class UMLValidator
 	 */
 	public boolean validateActivityFinalNode(
 			ActivityFinalNode activityFinalNode, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(activityFinalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20255,7 +20369,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateJoinNode(JoinNode joinNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(joinNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20310,7 +20424,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateJoinNode_validateOneOutgoingEdge(JoinNode joinNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return joinNode.validateOneOutgoingEdge(diagnostics, context);
 	}
 
@@ -20321,7 +20435,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateJoinNode_validateIncomingObjectFlow(
-			JoinNode joinNode, DiagnosticChain diagnostics, Map context) {
+			JoinNode joinNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return joinNode.validateIncomingObjectFlow(diagnostics, context);
 	}
 
@@ -20331,7 +20446,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDataStoreNode(DataStoreNode dataStoreNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(dataStoreNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20391,7 +20506,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(objectFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20467,7 +20582,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateNoActions(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return objectFlow.validateNoActions(diagnostics, context);
 	}
 
@@ -20478,7 +20593,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateCompatibleTypes(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateCompatibleTypes(diagnostics, context);
 	}
 
@@ -20489,7 +20605,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateSameUpperBounds(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateSameUpperBounds(diagnostics, context);
 	}
 
@@ -20500,7 +20617,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateTarget(ObjectFlow objectFlow,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return objectFlow.validateTarget(diagnostics, context);
 	}
 
@@ -20511,7 +20628,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateTransformationBehaviour(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateTransformationBehaviour(diagnostics, context);
 	}
 
@@ -20522,7 +20640,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateSelectionBehaviour(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateSelectionBehaviour(diagnostics, context);
 	}
 
@@ -20533,7 +20652,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateInputAndOutputParameter(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateInputAndOutputParameter(diagnostics, context);
 	}
 
@@ -20544,7 +20664,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateObjectFlow_validateIsMulticastOrIsMultireceive(
-			ObjectFlow objectFlow, DiagnosticChain diagnostics, Map context) {
+			ObjectFlow objectFlow, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return objectFlow.validateIsMulticastOrIsMultireceive(diagnostics,
 			context);
 	}
@@ -20555,7 +20676,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateSequenceNode(SequenceNode sequenceNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(sequenceNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20618,7 +20739,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConditionalNode(ConditionalNode conditionalNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(conditionalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20686,7 +20807,7 @@ public class UMLValidator
 	 */
 	public boolean validateConditionalNode_validateResultNoIncoming(
 			ConditionalNode conditionalNode, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return conditionalNode.validateResultNoIncoming(diagnostics, context);
 	}
 
@@ -20696,7 +20817,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClause(Clause clause, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(clause,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20729,7 +20850,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClause_validateDeciderOutput(Clause clause,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return clause.validateDeciderOutput(diagnostics, context);
 	}
 
@@ -20740,7 +20861,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateClause_validateBodyOutputPins(Clause clause,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return clause.validateBodyOutputPins(diagnostics, context);
 	}
 
@@ -20750,7 +20871,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLoopNode(LoopNode loopNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(loopNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20823,7 +20944,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLoopNode_validateInputEdges(LoopNode loopNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return loopNode.validateInputEdges(diagnostics, context);
 	}
 
@@ -20834,7 +20955,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLoopNode_validateBodyOutputPins(LoopNode loopNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return loopNode.validateBodyOutputPins(diagnostics, context);
 	}
 
@@ -20845,7 +20966,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateLoopNode_validateResultNoIncoming(LoopNode loopNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return loopNode.validateResultNoIncoming(diagnostics, context);
 	}
 
@@ -20855,7 +20976,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExpansionNode(ExpansionNode expansionNode,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(expansionNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20915,7 +21036,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExpansionRegion(ExpansionRegion expansionRegion,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(expansionRegion,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20983,7 +21104,7 @@ public class UMLValidator
 	 */
 	public boolean validateExpansionRegion_validateExpansionNodes(
 			ExpansionRegion expansionRegion, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return expansionRegion.validateExpansionNodes(diagnostics, context);
 	}
 
@@ -20994,7 +21115,7 @@ public class UMLValidator
 	 */
 	public boolean validateComponentRealization(
 			ComponentRealization componentRealization,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			componentRealization, diagnostics, context);
 		if (result || diagnostics != null)
@@ -21030,7 +21151,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateComponent(Component component,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(component,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21096,7 +21217,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNode(Node node, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(node, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -21165,7 +21286,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateNode_validateInternalStructure(Node node,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return node.validateInternalStructure(diagnostics, context);
 	}
 
@@ -21175,7 +21296,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateDevice(Device device, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(device,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21244,7 +21365,7 @@ public class UMLValidator
 	 */
 	public boolean validateExecutionEnvironment(
 			ExecutionEnvironment executionEnvironment,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(
 			executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -21314,7 +21435,7 @@ public class UMLValidator
 	 */
 	public boolean validateCommunicationPath(
 			CommunicationPath communicationPath, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(communicationPath,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21385,7 +21506,7 @@ public class UMLValidator
 	 */
 	public boolean validateCommunicationPath_validateAssociationEnds(
 			CommunicationPath communicationPath, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO override the constraint, if desired
 		// -> uncomment the scaffolding
 		// -> specify the condition that violates the constraint
@@ -21415,7 +21536,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState(FinalState finalState,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(finalState,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21494,7 +21615,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateNoOutgoingTransitions(
-			FinalState finalState, DiagnosticChain diagnostics, Map context) {
+			FinalState finalState, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalState.validateNoOutgoingTransitions(diagnostics, context);
 	}
 
@@ -21505,7 +21627,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateNoRegions(FinalState finalState,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return finalState.validateNoRegions(diagnostics, context);
 	}
 
@@ -21516,7 +21638,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateCannotReferenceSubmachine(
-			FinalState finalState, DiagnosticChain diagnostics, Map context) {
+			FinalState finalState, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalState.validateCannotReferenceSubmachine(diagnostics,
 			context);
 	}
@@ -21528,7 +21651,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateNoEntryBehavior(
-			FinalState finalState, DiagnosticChain diagnostics, Map context) {
+			FinalState finalState, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalState.validateNoEntryBehavior(diagnostics, context);
 	}
 
@@ -21539,7 +21663,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateNoExitBehavior(
-			FinalState finalState, DiagnosticChain diagnostics, Map context) {
+			FinalState finalState, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalState.validateNoExitBehavior(diagnostics, context);
 	}
 
@@ -21550,7 +21675,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateFinalState_validateNoStateBehavior(
-			FinalState finalState, DiagnosticChain diagnostics, Map context) {
+			FinalState finalState, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return finalState.validateNoStateBehavior(diagnostics, context);
 	}
 
@@ -21560,7 +21686,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeEvent(TimeEvent timeEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(timeEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21603,7 +21729,8 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeEvent_validateWhenNonNegative(
-			TimeEvent timeEvent, DiagnosticChain diagnostics, Map context) {
+			TimeEvent timeEvent, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return timeEvent.validateWhenNonNegative(diagnostics, context);
 	}
 
@@ -21614,7 +21741,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTimeEvent_validateStartingTime(TimeEvent timeEvent,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return timeEvent.validateStartingTime(diagnostics, context);
 	}
 
@@ -21625,7 +21752,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolTransition(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(protocolTransition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21702,7 +21829,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolTransition_validateBelongsToPsm(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return protocolTransition.validateBelongsToPsm(diagnostics, context);
 	}
 
@@ -21714,7 +21841,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolTransition_validateAssociatedActions(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return protocolTransition.validateAssociatedActions(diagnostics,
 			context);
 	}
@@ -21727,7 +21854,7 @@ public class UMLValidator
 	 */
 	public boolean validateProtocolTransition_validateRefersToOperation(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return protocolTransition.validateRefersToOperation(diagnostics,
 			context);
 	}
@@ -21738,7 +21865,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAssociationClass(AssociationClass associationClass,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(associationClass,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21821,7 +21948,7 @@ public class UMLValidator
 	 */
 	public boolean validateAssociationClass_validateCannotBeDefined(
 			AssociationClass associationClass, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return associationClass.validateCannotBeDefined(diagnostics, context);
 	}
 
@@ -21831,7 +21958,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateVisibilityKind(VisibilityKind visibilityKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21842,7 +21969,7 @@ public class UMLValidator
 	 */
 	public boolean validateCallConcurrencyKind(
 			CallConcurrencyKind callConcurrencyKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21852,7 +21979,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateTransitionKind(TransitionKind transitionKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validateTransitionKind_state_is_local(transitionKind,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21869,7 +21996,7 @@ public class UMLValidator
 	 */
 	public boolean validateTransitionKind_state_is_local(
 			TransitionKind transitionKind, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -21899,7 +22026,7 @@ public class UMLValidator
 	 */
 	public boolean validateTransitionKind_state_is_external(
 			TransitionKind transitionKind, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
@@ -21927,7 +22054,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validatePseudostateKind(PseudostateKind pseudostateKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21937,7 +22064,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateAggregationKind(AggregationKind aggregationKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21948,7 +22075,7 @@ public class UMLValidator
 	 */
 	public boolean validateParameterDirectionKind(
 			ParameterDirectionKind parameterDirectionKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21959,7 +22086,7 @@ public class UMLValidator
 	 */
 	public boolean validateParameterEffectKind(
 			ParameterEffectKind parameterEffectKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21969,7 +22096,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateConnectorKind(ConnectorKind connectorKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21979,7 +22106,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessageKind(MessageKind messageKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -21989,7 +22116,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateMessageSort(MessageSort messageSort,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22000,7 +22127,7 @@ public class UMLValidator
 	 */
 	public boolean validateObjectNodeOrderingKind(
 			ObjectNodeOrderingKind objectNodeOrderingKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22011,7 +22138,7 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionOperatorKind(
 			InteractionOperatorKind interactionOperatorKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22021,7 +22148,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateExpansionKind(ExpansionKind expansionKind,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22031,7 +22158,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateInteger(int integer, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22041,7 +22168,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateBoolean(boolean boolean_,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22051,7 +22178,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateString(String string, DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return true;
 	}
 
@@ -22061,7 +22188,7 @@ public class UMLValidator
 	 * @generated
 	 */
 	public boolean validateUnlimitedNatural(int unlimitedNatural,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

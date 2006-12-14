@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLHandler.java,v 1.1 2005/12/07 14:17:51 khussey Exp $
+ * $Id: UMLHandler.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -29,46 +28,42 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 
-
 public class UMLHandler
 		extends SAXXMIHandler {
 
-	protected final Map urisToProxies = new HashMap();
+	protected final Map<URI, Map<String, EObject>> urisToProxies = new HashMap<URI, Map<String, EObject>>();
 
-	public UMLHandler(XMLResource xmiResource, XMLHelper helper, Map options) {
+	public UMLHandler(XMLResource xmiResource, XMLHelper helper,
+			Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
 
+	@Override
 	public void endDocument() {
 		super.endDocument();
 
 		if (extendedMetaData != null) {
 
-			for (Iterator demandedPackages = extendedMetaData
-				.demandedPackages().iterator(); demandedPackages.hasNext();) {
-
-				EPackage ePackage = (EPackage) demandedPackages.next();
-				String nsURI = ePackage.getNsURI();
+			for (EPackage demandedPackage : extendedMetaData.demandedPackages()) {
+				String nsURI = demandedPackage.getNsURI();
 
 				if (nsURI != null) {
 
 					if (urisToLocations != null) {
-						URI locationURI = (URI) urisToLocations.get(nsURI);
+						URI locationURI = urisToLocations.get(nsURI);
 
 						if (locationURI != null) {
 							Resource resource = new ResourceImpl();
 							resource.setURI(locationURI);
-							resource.getContents().add(ePackage);
+							resource.getContents().add(demandedPackage);
 						}
 					}
 
-					for (Iterator entries = helper.getPrefixToNamespaceMap()
-						.iterator(); entries.hasNext();) {
-
-						Map.Entry entry = (Map.Entry) entries.next();
+					for (Map.Entry<String, String> entry : helper
+						.getPrefixToNamespaceMap()) {
 
 						if (nsURI.equals(entry.getValue())) {
-							ePackage.setNsPrefix((String) entry.getKey());
+							demandedPackage.setNsPrefix(entry.getKey());
 						}
 					}
 				}
@@ -76,6 +71,7 @@ public class UMLHandler
 		}
 	}
 
+	@Override
 	protected EObject validateCreateObjectFromFactory(EFactory factory,
 			String typeName, EObject newObject, EStructuralFeature feature) {
 
@@ -83,13 +79,15 @@ public class UMLHandler
 			&& newObject.eIsProxy() && !sameDocumentProxies.contains(newObject)) {
 
 			URI proxyURI = ((InternalEObject) newObject).eProxyURI();
-			Map typeNamesToProxies = (Map) urisToProxies.get(proxyURI);
+			Map<String, EObject> typeNamesToProxies = urisToProxies
+				.get(proxyURI);
 
 			if (typeNamesToProxies == null) {
-				urisToProxies.put(proxyURI, typeNamesToProxies = new HashMap());
+				urisToProxies.put(proxyURI,
+					typeNamesToProxies = new HashMap<String, EObject>());
 			}
 
-			EObject proxy = (EObject) typeNamesToProxies.get(typeName);
+			EObject proxy = typeNamesToProxies.get(typeName);
 
 			if (proxy == null) {
 				typeNamesToProxies.put(typeName, proxy = newObject);

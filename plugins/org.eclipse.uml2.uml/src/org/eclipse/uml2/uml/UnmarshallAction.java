@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallAction.java,v 1.8 2006/05/26 16:34:03 khussey Exp $
+ * $Id: UnmarshallAction.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface UnmarshallAction
 	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getResults();
+	EList<OutputPin> getResults();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.OutputPin}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Result</b></em>' containment reference list.
@@ -197,7 +197,8 @@ public interface UnmarshallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSameType(DiagnosticChain diagnostics, Map context);
+	boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,7 +211,7 @@ public interface UnmarshallAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfObject(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -222,7 +223,8 @@ public interface UnmarshallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateNumberOfResult(DiagnosticChain diagnostics, Map context);
+	boolean validateNumberOfResult(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,7 +236,8 @@ public interface UnmarshallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateTypeAndOrdering(DiagnosticChain diagnostics, Map context);
+	boolean validateTypeAndOrdering(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -248,7 +251,7 @@ public interface UnmarshallAction
 	 * @generated
 	 */
 	boolean validateMultiplicityOfResult(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -260,7 +263,8 @@ public interface UnmarshallAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateStructuralFeature(DiagnosticChain diagnostics, Map context);
+	boolean validateStructuralFeature(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,6 +277,6 @@ public interface UnmarshallAction
 	 * @generated
 	 */
 	boolean validateUnmarshallTypeIsClassifier(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // UnmarshallAction

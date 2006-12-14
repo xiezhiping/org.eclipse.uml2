@@ -8,16 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifierImpl.java,v 1.23 2006/05/08 17:46:10 khussey Exp $
+ * $Id: EncapsulatedClassifierImpl.java,v 1.24 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -25,17 +25,29 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedSubsetEObjectEList;
 import org.eclipse.uml2.uml.CollaborationUse;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.GeneralizationSet;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StringExpression;
+import org.eclipse.uml2.uml.Substitution;
+import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
@@ -80,6 +92,7 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.ENCAPSULATED_CLASSIFIER;
 	}
@@ -89,9 +102,9 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedAttributes() {
+	public EList<Property> getOwnedAttributes() {
 		if (ownedAttributes == null) {
-			ownedAttributes = new EObjectContainmentEList.Resolving(
+			ownedAttributes = new EObjectContainmentEList.Resolving<Property>(
 				Property.class, this,
 				UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE);
 		}
@@ -103,22 +116,24 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList getOwnedPorts() {
+	public EList<Port> getOwnedPorts() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedPorts = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Port> ownedPorts = (EList<Port>) cache.get(eResource, this,
 				UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT);
 			if (ownedPorts == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
-					ownedPorts = new DerivedSubsetEObjectEList(Port.class,
-						this, UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
+					ownedPorts = new DerivedSubsetEObjectEList<Port>(
+						Port.class, this,
+						UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 						OWNED_PORT_ESUPERSETS));
 			}
 			return ownedPorts;
 		}
-		return new DerivedSubsetEObjectEList(Port.class, this,
+		return new DerivedSubsetEObjectEList<Port>(Port.class, this,
 			UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT,
 			OWNED_PORT_ESUPERSETS);
 	}
@@ -154,9 +169,7 @@ public abstract class EncapsulatedClassifierImpl
 	 */
 	public Port getOwnedPort(String name, Type type, boolean ignoreCase,
 			boolean createOnDemand) {
-		ownedPortLoop : for (Iterator i = getOwnedPorts().iterator(); i
-			.hasNext();) {
-			Port ownedPort = (Port) i.next();
+		ownedPortLoop : for (Port ownedPort : getOwnedPorts()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(ownedPort.getName())
 				: name.equals(ownedPort.getName())))
@@ -175,61 +188,62 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
-				return ((InternalEList) getElementImports()).basicRemove(
+				return ((InternalEList<?>) getElementImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
-				return ((InternalEList) getPackageImports()).basicRemove(
+				return ((InternalEList<?>) getPackageImports()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
-				return ((InternalEList) getOwnedRules()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOwnedRules()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
-				return ((InternalEList) getTemplateBindings()).basicRemove(
+				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION :
-				return ((InternalEList) getGeneralizations()).basicRemove(
+				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT :
-				return ((InternalEList) getPowertypeExtents()).basicRemove(
+				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION :
-				return ((InternalEList) getSubstitutions()).basicRemove(
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
-				return ((InternalEList) getCollaborationUses()).basicRemove(
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE :
-				return ((InternalEList) getOwnedUseCases()).basicRemove(
+				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
-				return ((InternalEList) getUseCases()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
-				return ((InternalEList) getOwnedAttributes()).basicRemove(
+				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR :
-				return ((InternalEList) getOwnedConnectors()).basicRemove(
+				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -240,6 +254,7 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :
@@ -355,15 +370,19 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME :
 				setName((String) newValue);
@@ -373,22 +392,26 @@ public abstract class EncapsulatedClassifierImpl
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__ELEMENT_IMPORT :
 				getElementImports().clear();
-				getElementImports().addAll((Collection) newValue);
+				getElementImports().addAll(
+					(Collection<? extends ElementImport>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__PACKAGE_IMPORT :
 				getPackageImports().clear();
-				getPackageImports().addAll((Collection) newValue);
+				getPackageImports().addAll(
+					(Collection<? extends PackageImport>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_RULE :
 				getOwnedRules().clear();
-				getOwnedRules().addAll((Collection) newValue);
+				getOwnedRules().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
@@ -404,7 +427,8 @@ public abstract class EncapsulatedClassifierImpl
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
-				getTemplateBindings().addAll((Collection) newValue);
+				getTemplateBindings().addAll(
+					(Collection<? extends TemplateBinding>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) newValue);
@@ -414,50 +438,59 @@ public abstract class EncapsulatedClassifierImpl
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERALIZATION :
 				getGeneralizations().clear();
-				getGeneralizations().addAll((Collection) newValue);
+				getGeneralizations().addAll(
+					(Collection<? extends Generalization>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
-				getPowertypeExtents().addAll((Collection) newValue);
+				getPowertypeExtents().addAll(
+					(Collection<? extends GeneralizationSet>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REDEFINED_CLASSIFIER :
 				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll((Collection) newValue);
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__GENERAL :
 				getGenerals().clear();
-				getGenerals().addAll((Collection) newValue);
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__SUBSTITUTION :
 				getSubstitutions().clear();
-				getSubstitutions().addAll((Collection) newValue);
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__REPRESENTATION :
 				setRepresentation((CollaborationUse) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__COLLABORATION_USE :
 				getCollaborationUses().clear();
-				getCollaborationUses().addAll((Collection) newValue);
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
-				getOwnedUseCases().addAll((Collection) newValue);
+				getOwnedUseCases().addAll(
+					(Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__USE_CASE :
 				getUseCases().clear();
-				getUseCases().addAll((Collection) newValue);
+				getUseCases().addAll((Collection<? extends UseCase>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
-				getOwnedAttributes().addAll((Collection) newValue);
+				getOwnedAttributes().addAll(
+					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				getOwnedConnectors().addAll((Collection) newValue);
+				getOwnedConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__OWNED_PORT :
 				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection) newValue);
+				getOwnedPorts().addAll((Collection<? extends Port>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -468,6 +501,7 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :
@@ -563,6 +597,7 @@ public abstract class EncapsulatedClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.ENCAPSULATED_CLASSIFIER__EANNOTATIONS :

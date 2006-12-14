@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueAction.java,v 1.7 2006/05/26 16:34:02 khussey Exp $
+ * $Id: AddVariableValueAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -136,6 +136,7 @@ public interface AddVariableValueAction
 	 * @model
 	 * @generated
 	 */
-	boolean validateSingleInputPin(DiagnosticChain diagnostics, Map context);
+	boolean validateSingleInputPin(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // AddVariableValueAction

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Trigger.java,v 1.4 2006/05/12 20:38:03 khussey Exp $
+ * $Id: Trigger.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -77,7 +77,7 @@ public interface Trigger
 	 * @model type="org.eclipse.uml2.uml.Port" ordered="false"
 	 * @generated
 	 */
-	EList getPorts();
+	EList<Port> getPorts();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Port} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Port</b></em>' reference list.

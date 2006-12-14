@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUse.java,v 1.8 2006/05/26 16:34:02 khussey Exp $
+ * $Id: InteractionUse.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,7 @@ public interface InteractionUse
 	 * @model type="org.eclipse.uml2.uml.Gate" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList getActualGates();
+	EList<Gate> getActualGates();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Gate}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Actual Gate</b></em>' containment reference list.
@@ -133,7 +133,7 @@ public interface InteractionUse
 	 * @model type="org.eclipse.uml2.uml.Action" containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList getArguments();
+	EList<Action> getArguments();
 
 	/**
 	 * Creates a new {@link org.eclipse.uml2.uml.Action}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
@@ -183,7 +183,8 @@ public interface InteractionUse
 	 * @model
 	 * @generated
 	 */
-	boolean validateGatesMatch(DiagnosticChain diagnostics, Map context);
+	boolean validateGatesMatch(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,7 +196,8 @@ public interface InteractionUse
 	 * @model
 	 * @generated
 	 */
-	boolean validateAllLifelines(DiagnosticChain diagnostics, Map context);
+	boolean validateAllLifelines(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,7 +210,7 @@ public interface InteractionUse
 	 * @generated
 	 */
 	boolean validateArgumentsCorrespondToParameters(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,6 +223,6 @@ public interface InteractionUse
 	 * @generated
 	 */
 	boolean validateArgumentsAreConstants(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 } // InteractionUse

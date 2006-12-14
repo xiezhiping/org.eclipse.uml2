@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlow.java,v 1.5 2006/05/12 20:38:10 khussey Exp $
+ * $Id: InformationFlow.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,7 +62,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false"
 	 * @generated
 	 */
-	EList getRealizations();
+	EList<Relationship> getRealizations();
 
 	/**
 	 * Returns the value of the '<em><b>Conveyed</b></em>' reference list.
@@ -77,7 +77,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Classifier" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getConveyeds();
+	EList<Classifier> getConveyeds();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Conveyed</b></em>' reference list.
@@ -116,7 +116,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getInformationSources();
+	EList<NamedElement> getInformationSources();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Information Source</b></em>' reference list.
@@ -156,7 +156,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" ordered="false"
 	 * @generated
 	 */
-	EList getInformationTargets();
+	EList<NamedElement> getInformationTargets();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.NamedElement} with the specified '<em><b>Name</b></em>' from the '<em><b>Information Target</b></em>' reference list.
@@ -196,7 +196,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.ActivityEdge" ordered="false"
 	 * @generated
 	 */
-	EList getRealizingActivityEdges();
+	EList<ActivityEdge> getRealizingActivityEdges();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityEdge} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Activity Edge</b></em>' reference list.
@@ -236,7 +236,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Connector" ordered="false"
 	 * @generated
 	 */
-	EList getRealizingConnectors();
+	EList<Connector> getRealizingConnectors();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Connector} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Connector</b></em>' reference list.
@@ -274,7 +274,7 @@ public interface InformationFlow
 	 * @model type="org.eclipse.uml2.uml.Message" ordered="false"
 	 * @generated
 	 */
-	EList getRealizingMessages();
+	EList<Message> getRealizingMessages();
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Message} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Message</b></em>' reference list.
@@ -319,7 +319,7 @@ public interface InformationFlow
 	 * @generated
 	 */
 	boolean validateSourcesAndTargetsKind(DiagnosticChain diagnostics,
-			Map context);
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -331,7 +331,8 @@ public interface InformationFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateMustConform(DiagnosticChain diagnostics, Map context);
+	boolean validateMustConform(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,6 +346,7 @@ public interface InformationFlow
 	 * @model
 	 * @generated
 	 */
-	boolean validateConveyClassifiers(DiagnosticChain diagnostics, Map context);
+	boolean validateConveyClassifiers(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // InformationFlow

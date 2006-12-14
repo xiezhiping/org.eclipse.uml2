@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.20 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.21 2006/12/14 15:49:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -37,7 +37,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extend;
@@ -102,7 +104,7 @@ public class ExtendImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList extensionLocations = null;
+	protected EList<ExtensionPoint> extensionLocations = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,6 +120,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXTEND;
 	}
@@ -127,24 +130,26 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.EXTEND__RELATED_ELEMENT,
 						RELATED_ELEMENT_ESUBSETS));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.EXTEND__RELATED_ELEMENT, RELATED_ELEMENT_ESUBSETS);
 	}
 
@@ -153,22 +158,24 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.EXTEND__SOURCE, SOURCE_ESUBSETS));
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.EXTEND__SOURCE,
+						SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.EXTEND__SOURCE, SOURCE_ESUBSETS);
 	}
 
@@ -177,22 +184,24 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
-						UMLPackage.EXTEND__TARGET, TARGET_ESUBSETS));
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.EXTEND__TARGET,
+						TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.EXTEND__TARGET, TARGET_ESUBSETS);
 	}
 
@@ -201,23 +210,24 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOwnedElements() {
+	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList ownedElements = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
 			if (ownedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList(Element.class,
-						this, UMLPackage.EXTEND__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this, UMLPackage.EXTEND__OWNED_ELEMENT,
 						OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.EXTEND__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
 	}
 
@@ -377,9 +387,9 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExtensionLocations() {
+	public EList<ExtensionPoint> getExtensionLocations() {
 		if (extensionLocations == null) {
-			extensionLocations = new EObjectResolvingEList(
+			extensionLocations = new EObjectResolvingEList<ExtensionPoint>(
 				ExtensionPoint.class, this,
 				UMLPackage.EXTEND__EXTENSION_LOCATION);
 		}
@@ -401,9 +411,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public ExtensionPoint getExtensionLocation(String name, boolean ignoreCase) {
-		extensionLocationLoop : for (Iterator i = getExtensionLocations()
-			.iterator(); i.hasNext();) {
-			ExtensionPoint extensionLocation = (ExtensionPoint) i.next();
+		extensionLocationLoop : for (ExtensionPoint extensionLocation : getExtensionLocations()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(extensionLocation.getName())
 				: name.equals(extensionLocation.getName())))
@@ -481,7 +489,7 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public boolean validateExtensionPoints(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ExtendOperations.validateExtensionPoints(this, diagnostics,
 			context);
 	}
@@ -491,15 +499,17 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXTEND__EXTENSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -513,18 +523,19 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXTEND__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.EXTEND__CONDITION :
@@ -540,6 +551,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID) {
@@ -555,6 +567,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
@@ -612,15 +625,19 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.EXTEND__NAME :
 				setName((String) newValue);
@@ -630,7 +647,8 @@ public class ExtendImpl
 				return;
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -643,7 +661,8 @@ public class ExtendImpl
 				return;
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				getExtensionLocations().clear();
-				getExtensionLocations().addAll((Collection) newValue);
+				getExtensionLocations().addAll(
+					(Collection<? extends ExtensionPoint>) newValue);
 				return;
 			case UMLPackage.EXTEND__EXTENSION :
 				setExtension((UseCase) newValue);
@@ -657,6 +676,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
@@ -698,6 +718,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
@@ -747,7 +768,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.EXTEND__RELATED_ELEMENT :
@@ -774,7 +796,8 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :
@@ -871,6 +894,7 @@ public class ExtendImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.EXTEND__CONDITION);

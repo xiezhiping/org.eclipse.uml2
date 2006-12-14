@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.14 2006/11/14 18:02:17 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -57,6 +57,7 @@ public class OperationTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER;
 	}
@@ -114,6 +115,7 @@ public class OperationTemplateParameterImpl
 		return msgs;
 	}
 
+	@Override
 	public NotificationChain basicSetParameteredElement(
 			ParameterableElement newParameteredElement, NotificationChain msgs) {
 
@@ -180,6 +182,7 @@ public class OperationTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
@@ -221,6 +224,7 @@ public class OperationTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :

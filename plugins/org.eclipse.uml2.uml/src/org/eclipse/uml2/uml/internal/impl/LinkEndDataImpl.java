@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataImpl.java,v 1.12 2006/11/14 18:02:20 khussey Exp $
+ * $Id: LinkEndDataImpl.java,v 1.13 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.Property;
@@ -85,7 +87,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList qualifiers = null;
+	protected EList<QualifierValue> qualifiers = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,6 +103,7 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LINK_END_DATA;
 	}
@@ -194,9 +197,9 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getQualifiers() {
+	public EList<QualifierValue> getQualifiers() {
 		if (qualifiers == null) {
-			qualifiers = new EObjectContainmentEList.Resolving(
+			qualifiers = new EObjectContainmentEList.Resolving<QualifierValue>(
 				QualifierValue.class, this, UMLPackage.LINK_END_DATA__QUALIFIER);
 		}
 		return qualifiers;
@@ -219,7 +222,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public boolean validatePropertyIsAssociationEnd(
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return LinkEndDataOperations.validatePropertyIsAssociationEnd(this,
 			diagnostics, context);
 	}
@@ -229,7 +232,8 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSameType(DiagnosticChain diagnostics, Map context) {
+	public boolean validateSameType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return LinkEndDataOperations.validateSameType(this, diagnostics,
 			context);
 	}
@@ -239,7 +243,8 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMultiplicity(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return LinkEndDataOperations.validateMultiplicity(this, diagnostics,
 			context);
 	}
@@ -249,7 +254,8 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateQualifiers(DiagnosticChain diagnostics, Map context) {
+	public boolean validateQualifiers(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return LinkEndDataOperations.validateQualifiers(this, diagnostics,
 			context);
 	}
@@ -260,7 +266,7 @@ public class LinkEndDataImpl
 	 * @generated
 	 */
 	public boolean validateEndObjectInputPin(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return LinkEndDataOperations.validateEndObjectInputPin(this,
 			diagnostics, context);
 	}
@@ -270,18 +276,19 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
-				return ((InternalEList) getQualifiers()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getQualifiers()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -291,6 +298,7 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
@@ -322,15 +330,19 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.LINK_END_DATA__VALUE :
 				setValue((InputPin) newValue);
@@ -340,7 +352,8 @@ public class LinkEndDataImpl
 				return;
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
 				getQualifiers().clear();
-				getQualifiers().addAll((Collection) newValue);
+				getQualifiers().addAll(
+					(Collection<? extends QualifierValue>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -351,6 +364,7 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
@@ -377,6 +391,7 @@ public class LinkEndDataImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :

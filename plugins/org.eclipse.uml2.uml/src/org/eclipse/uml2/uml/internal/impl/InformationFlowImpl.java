@@ -8,18 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowImpl.java,v 1.13 2006/11/14 18:02:15 khussey Exp $
+ * $Id: InformationFlowImpl.java,v 1.14 2006/12/14 15:49:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 
@@ -30,7 +30,9 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InformationFlow;
@@ -78,7 +80,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList realizations = null;
+	protected EList<Relationship> realizations = null;
 
 	/**
 	 * The cached value of the '{@link #getConveyeds() <em>Conveyed</em>}' reference list.
@@ -88,7 +90,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList conveyeds = null;
+	protected EList<Classifier> conveyeds = null;
 
 	/**
 	 * The cached value of the '{@link #getInformationSources() <em>Information Source</em>}' reference list.
@@ -98,7 +100,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList informationSources = null;
+	protected EList<NamedElement> informationSources = null;
 
 	/**
 	 * The cached value of the '{@link #getInformationTargets() <em>Information Target</em>}' reference list.
@@ -108,7 +110,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList informationTargets = null;
+	protected EList<NamedElement> informationTargets = null;
 
 	/**
 	 * The cached value of the '{@link #getRealizingActivityEdges() <em>Realizing Activity Edge</em>}' reference list.
@@ -118,7 +120,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList realizingActivityEdges = null;
+	protected EList<ActivityEdge> realizingActivityEdges = null;
 
 	/**
 	 * The cached value of the '{@link #getRealizingConnectors() <em>Realizing Connector</em>}' reference list.
@@ -128,7 +130,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList realizingConnectors = null;
+	protected EList<Connector> realizingConnectors = null;
 
 	/**
 	 * The cached value of the '{@link #getRealizingMessages() <em>Realizing Message</em>}' reference list.
@@ -138,7 +140,7 @@ public class InformationFlowImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList realizingMessages = null;
+	protected EList<Message> realizingMessages = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,6 +156,7 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INFORMATION_FLOW;
 	}
@@ -163,24 +166,26 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRelatedElements() {
+	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList relatedElements = (EList) cache.get(eResource, this,
+			@SuppressWarnings("unchecked")
+			EList<Element> relatedElements = (EList<Element>) cache.get(
+				eResource, this,
 				UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT);
 			if (relatedElements == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.RELATIONSHIP__RELATED_ELEMENT,
-					relatedElements = new DerivedUnionEObjectEList(
+					relatedElements = new DerivedUnionEObjectEList<Element>(
 						Element.class, this,
 						UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
 						RELATED_ELEMENT_ESUBSETS));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT,
 			RELATED_ELEMENT_ESUBSETS);
 	}
@@ -190,22 +195,24 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSources() {
+	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList sources = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
+			@SuppressWarnings("unchecked")
+			EList<Element> sources = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE);
 			if (sources == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__SOURCE,
-					sources = new DerivedUnionEObjectEList(Element.class, this,
+					sources = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
 						UMLPackage.INFORMATION_FLOW__SOURCE, SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INFORMATION_FLOW__SOURCE, SOURCE_ESUBSETS);
 	}
 
@@ -214,22 +221,24 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getTargets() {
+	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList targets = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
+			@SuppressWarnings("unchecked")
+			EList<Element> targets = (EList<Element>) cache.get(eResource,
+				this, UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET);
 			if (targets == null) {
 				cache.put(eResource, this,
 					UMLPackage.Literals.DIRECTED_RELATIONSHIP__TARGET,
-					targets = new DerivedUnionEObjectEList(Element.class, this,
+					targets = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
 						UMLPackage.INFORMATION_FLOW__TARGET, TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList(Element.class, this,
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
 			UMLPackage.INFORMATION_FLOW__TARGET, TARGET_ESUBSETS);
 	}
 
@@ -238,9 +247,10 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRealizations() {
+	public EList<Relationship> getRealizations() {
 		if (realizations == null) {
-			realizations = new EObjectResolvingEList(Relationship.class, this,
+			realizations = new EObjectResolvingEList<Relationship>(
+				Relationship.class, this,
 				UMLPackage.INFORMATION_FLOW__REALIZATION);
 		}
 		return realizations;
@@ -251,10 +261,10 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConveyeds() {
+	public EList<Classifier> getConveyeds() {
 		if (conveyeds == null) {
-			conveyeds = new EObjectResolvingEList(Classifier.class, this,
-				UMLPackage.INFORMATION_FLOW__CONVEYED);
+			conveyeds = new EObjectResolvingEList<Classifier>(Classifier.class,
+				this, UMLPackage.INFORMATION_FLOW__CONVEYED);
 		}
 		return conveyeds;
 	}
@@ -274,8 +284,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Classifier getConveyed(String name, boolean ignoreCase, EClass eClass) {
-		conveyedLoop : for (Iterator i = getConveyeds().iterator(); i.hasNext();) {
-			Classifier conveyed = (Classifier) i.next();
+		conveyedLoop : for (Classifier conveyed : getConveyeds()) {
 			if (eClass != null && !eClass.isInstance(conveyed))
 				continue conveyedLoop;
 			if (name != null && !(ignoreCase
@@ -292,10 +301,11 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInformationSources() {
+	public EList<NamedElement> getInformationSources() {
 		if (informationSources == null) {
-			informationSources = new EObjectResolvingEList(NamedElement.class,
-				this, UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
+			informationSources = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this,
+				UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE);
 		}
 		return informationSources;
 	}
@@ -316,9 +326,7 @@ public class InformationFlowImpl
 	 */
 	public NamedElement getInformationSource(String name, boolean ignoreCase,
 			EClass eClass) {
-		informationSourceLoop : for (Iterator i = getInformationSources()
-			.iterator(); i.hasNext();) {
-			NamedElement informationSource = (NamedElement) i.next();
+		informationSourceLoop : for (NamedElement informationSource : getInformationSources()) {
 			if (eClass != null && !eClass.isInstance(informationSource))
 				continue informationSourceLoop;
 			if (name != null && !(ignoreCase
@@ -335,10 +343,11 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInformationTargets() {
+	public EList<NamedElement> getInformationTargets() {
 		if (informationTargets == null) {
-			informationTargets = new EObjectResolvingEList(NamedElement.class,
-				this, UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
+			informationTargets = new EObjectResolvingEList<NamedElement>(
+				NamedElement.class, this,
+				UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET);
 		}
 		return informationTargets;
 	}
@@ -359,9 +368,7 @@ public class InformationFlowImpl
 	 */
 	public NamedElement getInformationTarget(String name, boolean ignoreCase,
 			EClass eClass) {
-		informationTargetLoop : for (Iterator i = getInformationTargets()
-			.iterator(); i.hasNext();) {
-			NamedElement informationTarget = (NamedElement) i.next();
+		informationTargetLoop : for (NamedElement informationTarget : getInformationTargets()) {
 			if (eClass != null && !eClass.isInstance(informationTarget))
 				continue informationTargetLoop;
 			if (name != null && !(ignoreCase
@@ -378,9 +385,9 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRealizingActivityEdges() {
+	public EList<ActivityEdge> getRealizingActivityEdges() {
 		if (realizingActivityEdges == null) {
-			realizingActivityEdges = new EObjectResolvingEList(
+			realizingActivityEdges = new EObjectResolvingEList<ActivityEdge>(
 				ActivityEdge.class, this,
 				UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE);
 		}
@@ -403,9 +410,7 @@ public class InformationFlowImpl
 	 */
 	public ActivityEdge getRealizingActivityEdge(String name,
 			boolean ignoreCase, EClass eClass) {
-		realizingActivityEdgeLoop : for (Iterator i = getRealizingActivityEdges()
-			.iterator(); i.hasNext();) {
-			ActivityEdge realizingActivityEdge = (ActivityEdge) i.next();
+		realizingActivityEdgeLoop : for (ActivityEdge realizingActivityEdge : getRealizingActivityEdges()) {
 			if (eClass != null && !eClass.isInstance(realizingActivityEdge))
 				continue realizingActivityEdgeLoop;
 			if (name != null && !(ignoreCase
@@ -422,10 +427,11 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRealizingConnectors() {
+	public EList<Connector> getRealizingConnectors() {
 		if (realizingConnectors == null) {
-			realizingConnectors = new EObjectResolvingEList(Connector.class,
-				this, UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
+			realizingConnectors = new EObjectResolvingEList<Connector>(
+				Connector.class, this,
+				UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR);
 		}
 		return realizingConnectors;
 	}
@@ -445,9 +451,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Connector getRealizingConnector(String name, boolean ignoreCase) {
-		realizingConnectorLoop : for (Iterator i = getRealizingConnectors()
-			.iterator(); i.hasNext();) {
-			Connector realizingConnector = (Connector) i.next();
+		realizingConnectorLoop : for (Connector realizingConnector : getRealizingConnectors()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(realizingConnector.getName())
 				: name.equals(realizingConnector.getName())))
@@ -462,9 +466,10 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getRealizingMessages() {
+	public EList<Message> getRealizingMessages() {
 		if (realizingMessages == null) {
-			realizingMessages = new EObjectResolvingEList(Message.class, this,
+			realizingMessages = new EObjectResolvingEList<Message>(
+				Message.class, this,
 				UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE);
 		}
 		return realizingMessages;
@@ -485,9 +490,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public Message getRealizingMessage(String name, boolean ignoreCase) {
-		realizingMessageLoop : for (Iterator i = getRealizingMessages()
-			.iterator(); i.hasNext();) {
-			Message realizingMessage = (Message) i.next();
+		realizingMessageLoop : for (Message realizingMessage : getRealizingMessages()) {
 			if (name != null && !(ignoreCase
 				? name.equalsIgnoreCase(realizingMessage.getName())
 				: name.equals(realizingMessage.getName())))
@@ -503,7 +506,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public boolean validateSourcesAndTargetsKind(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InformationFlowOperations.validateSourcesAndTargetsKind(this,
 			diagnostics, context);
 	}
@@ -513,7 +516,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMustConform(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMustConform(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return InformationFlowOperations.validateMustConform(this, diagnostics,
 			context);
 	}
@@ -524,7 +528,7 @@ public class InformationFlowImpl
 	 * @generated
 	 */
 	public boolean validateConveyClassifiers(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InformationFlowOperations.validateConveyClassifiers(this,
 			diagnostics, context);
 	}
@@ -534,6 +538,7 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
@@ -599,15 +604,19 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				setName((String) newValue);
@@ -617,7 +626,8 @@ public class InformationFlowImpl
 				return;
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -630,31 +640,38 @@ public class InformationFlowImpl
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZATION :
 				getRealizations().clear();
-				getRealizations().addAll((Collection) newValue);
+				getRealizations().addAll(
+					(Collection<? extends Relationship>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				getConveyeds().clear();
-				getConveyeds().addAll((Collection) newValue);
+				getConveyeds().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
 				getInformationSources().clear();
-				getInformationSources().addAll((Collection) newValue);
+				getInformationSources().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
 				getInformationTargets().clear();
-				getInformationTargets().addAll((Collection) newValue);
+				getInformationTargets().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				getRealizingActivityEdges().clear();
-				getRealizingActivityEdges().addAll((Collection) newValue);
+				getRealizingActivityEdges().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR :
 				getRealizingConnectors().clear();
-				getRealizingConnectors().addAll((Collection) newValue);
+				getRealizingConnectors().addAll(
+					(Collection<? extends Connector>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_MESSAGE :
 				getRealizingMessages().clear();
-				getRealizingMessages().addAll((Collection) newValue);
+				getRealizingMessages().addAll(
+					(Collection<? extends Message>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -665,6 +682,7 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
@@ -721,6 +739,7 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
@@ -784,7 +803,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (derivedFeatureID) {
 				case UMLPackage.INFORMATION_FLOW__RELATED_ELEMENT :
@@ -811,7 +831,8 @@ public class InformationFlowImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Relationship.class) {
 			switch (baseFeatureID) {
 				case UMLPackage.RELATIONSHIP__RELATED_ELEMENT :

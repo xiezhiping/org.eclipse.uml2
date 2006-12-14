@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.9 2006/11/29 02:00:49 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.10 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -75,7 +75,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateForkSegmentGuards(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -107,7 +107,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateJoinSegmentGuards(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -139,7 +139,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateForkSegmentState(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -171,7 +171,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateJoinSegmentState(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -205,7 +205,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateOutgoingPseudostates(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -242,7 +242,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateInitialTransition(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -275,7 +275,7 @@ public class TransitionOperations
 	 * @generated
 	 */
 	public static boolean validateSignaturesCompatible(Transition transition,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -362,7 +362,7 @@ public class TransitionOperations
 
 			Transition redefineeTransition = (Transition) redefinee;
 
-			EList sources = new UniqueEList.FastCompare();
+			EList<Vertex> sources = new UniqueEList.FastCompare<Vertex>();
 
 			Vertex source = transition.getSource();
 
@@ -385,8 +385,8 @@ public class TransitionOperations
 		return false;
 	}
 
-	protected static EList getAllRedefinedTransitions(Transition transition,
-			EList allRedefinedTransitions) {
+	protected static EList<Transition> getAllRedefinedTransitions(
+			Transition transition, EList<Transition> allRedefinedTransitions) {
 		Transition redefinedTransition = transition.getRedefinedTransition();
 
 		if (redefinedTransition != null
@@ -399,9 +399,10 @@ public class TransitionOperations
 		return allRedefinedTransitions;
 	}
 
-	protected static EList getAllRedefinedTransitions(Transition transition) {
+	protected static EList<Transition> getAllRedefinedTransitions(
+			Transition transition) {
 		return getAllRedefinedTransitions(transition,
-			new UniqueEList.FastCompare());
+			new UniqueEList.FastCompare<Transition>());
 	}
 
 } // TransitionOperations

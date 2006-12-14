@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationOperations.java,v 1.12 2006/10/10 20:41:28 khussey Exp $
+ * $Id: OperationOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -84,7 +83,7 @@ public class OperationOperations
 	 * @generated
 	 */
 	public static boolean validateAtMostOneReturn(Operation operation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
@@ -116,7 +115,7 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static boolean validateOnlyBodyForQuery(Operation operation,
-			DiagnosticChain diagnostics, Map context) {
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = true;
 
 		if (operation.getBodyCondition() != null && !operation.isQuery()) {
@@ -235,13 +234,10 @@ public class OperationOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static EList returnResult(Operation operation) {
-		EList returnResult = new UniqueEList.FastCompare();
+	public static EList<Parameter> returnResult(Operation operation) {
+		EList<Parameter> returnResult = new UniqueEList.FastCompare<Parameter>();
 
-		for (Iterator ownedParameters = operation.getOwnedParameters()
-			.iterator(); ownedParameters.hasNext();) {
-
-			Parameter ownedParameter = (Parameter) ownedParameters.next();
+		for (Parameter ownedParameter : operation.getOwnedParameters()) {
 
 			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 				returnResult.add(ownedParameter);
@@ -340,10 +336,7 @@ public class OperationOperations
 	 */
 	public static Parameter getReturnResult(Operation operation) {
 
-		for (Iterator ownedParameters = operation.getOwnedParameters()
-			.iterator(); ownedParameters.hasNext();) {
-
-			Parameter ownedParameter = (Parameter) ownedParameters.next();
+		for (Parameter ownedParameter : operation.getOwnedParameters()) {
 
 			if (ownedParameter.getDirection() == ParameterDirectionKind.RETURN_LITERAL) {
 				return ownedParameter;
@@ -392,22 +385,21 @@ public class OperationOperations
 
 			Operation op = (Operation) redefinee;
 
-			EList ownedParameters = operation.getOwnedParameters();
+			EList<Parameter> ownedParameters = operation.getOwnedParameters();
 			int ownedParametersSize = ownedParameters.size();
-			EList opOwnedParameters = op.getOwnedParameters();
+			EList<Parameter> opOwnedParameters = op.getOwnedParameters();
 
-			EList returnResult = operation.returnResult();
+			EList<Parameter> returnResult = operation.returnResult();
 			int returnResultSize = returnResult.size();
-			EList opReturnResult = op.returnResult();
+			EList<Parameter> opReturnResult = op.returnResult();
 
 			if (ownedParametersSize == opOwnedParameters.size()
 				&& returnResultSize == opReturnResult.size()) {
 
 				for (int i = 0; i < ownedParametersSize; i++) {
-					Type opOwnedParameterType = ((Parameter) opOwnedParameters
-						.get(i)).getType();
-					Type ownedParameterType = ((Parameter) ownedParameters
-						.get(i)).getType();
+					Type opOwnedParameterType = opOwnedParameters.get(i)
+						.getType();
+					Type ownedParameterType = ownedParameters.get(i).getType();
 
 					if (opOwnedParameterType == null
 						? ownedParameterType != null
@@ -418,10 +410,8 @@ public class OperationOperations
 				}
 
 				for (int i = 0; i < returnResultSize; i++) {
-					Type opReturnResultType = ((Parameter) opReturnResult
-						.get(i)).getType();
-					Type returnResultType = ((Parameter) returnResult.get(i))
-						.getType();
+					Type opReturnResultType = opReturnResult.get(i).getType();
+					Type returnResultType = returnResult.get(i).getType();
 
 					if (opReturnResultType == null
 						? returnResultType != null

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.20 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.21 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,6 +61,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.EXTENSION_END;
 	}
@@ -150,7 +151,8 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMultiplicity(DiagnosticChain diagnostics, Map context) {
+	public boolean validateMultiplicity(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExtensionEndOperations.validateMultiplicity(this, diagnostics,
 			context);
 	}
@@ -160,7 +162,8 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateAggregation(DiagnosticChain diagnostics, Map context) {
+	public boolean validateAggregation(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ExtensionEndOperations.validateAggregation(this, diagnostics,
 			context);
 	}
@@ -179,6 +182,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_END__EANNOTATIONS :
@@ -328,6 +332,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.EXTENSION_END__EANNOTATIONS :

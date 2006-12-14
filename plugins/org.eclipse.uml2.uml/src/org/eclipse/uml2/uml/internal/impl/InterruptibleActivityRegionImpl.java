@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.16 2006/11/14 18:02:17 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.17 2006/12/14 15:49:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -36,6 +36,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -68,7 +69,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList nodes = null;
+	protected EList<ActivityNode> nodes = null;
 
 	/**
 	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edge</em>}' reference list.
@@ -78,7 +79,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList interruptingEdges = null;
+	protected EList<ActivityEdge> interruptingEdges = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,6 +95,7 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION;
 	}
@@ -103,20 +105,22 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getContainedNodes() {
+	public EList<ActivityNode> getContainedNodes() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList containedNodes = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
+			@SuppressWarnings("unchecked")
+			EList<ActivityNode> containedNodes = (EList<ActivityNode>) cache
+				.get(eResource, this,
+					UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE);
 			if (containedNodes == null) {
 				cache
 					.put(
 						eResource,
 						this,
 						UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE,
-						containedNodes = new DerivedUnionEObjectEList(
+						containedNodes = new DerivedUnionEObjectEList<ActivityNode>(
 							ActivityNode.class,
 							this,
 							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
@@ -124,8 +128,8 @@ public class InterruptibleActivityRegionImpl
 			}
 			return containedNodes;
 		}
-		return new DerivedUnionEObjectEList(ActivityNode.class, this,
-			UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
+		return new DerivedUnionEObjectEList<ActivityNode>(ActivityNode.class,
+			this, UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__CONTAINED_NODE,
 			CONTAINED_NODE_ESUBSETS);
 	}
 
@@ -134,9 +138,9 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getNodes() {
+	public EList<ActivityNode> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectWithInverseResolvingEList.ManyInverse(
+			nodes = new EObjectWithInverseResolvingEList.ManyInverse<ActivityNode>(
 				ActivityNode.class, this,
 				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE,
 				UMLPackage.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION);
@@ -159,8 +163,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public ActivityNode getNode(String name, boolean ignoreCase, EClass eClass) {
-		nodeLoop : for (Iterator i = getNodes().iterator(); i.hasNext();) {
-			ActivityNode node = (ActivityNode) i.next();
+		nodeLoop : for (ActivityNode node : getNodes()) {
 			if (eClass != null && !eClass.isInstance(node))
 				continue nodeLoop;
 			if (name != null && !(ignoreCase
@@ -177,9 +180,9 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInterruptingEdges() {
+	public EList<ActivityEdge> getInterruptingEdges() {
 		if (interruptingEdges == null) {
-			interruptingEdges = new EObjectWithInverseResolvingEList(
+			interruptingEdges = new EObjectWithInverseResolvingEList<ActivityEdge>(
 				ActivityEdge.class, this,
 				UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
 				UMLPackage.ACTIVITY_EDGE__INTERRUPTS);
@@ -203,9 +206,7 @@ public class InterruptibleActivityRegionImpl
 	 */
 	public ActivityEdge getInterruptingEdge(String name, boolean ignoreCase,
 			EClass eClass) {
-		interruptingEdgeLoop : for (Iterator i = getInterruptingEdges()
-			.iterator(); i.hasNext();) {
-			ActivityEdge interruptingEdge = (ActivityEdge) i.next();
+		interruptingEdgeLoop : for (ActivityEdge interruptingEdge : getInterruptingEdges()) {
 			if (eClass != null && !eClass.isInstance(interruptingEdge))
 				continue interruptingEdgeLoop;
 			if (name != null && !(ignoreCase
@@ -223,7 +224,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 */
 	public boolean validateInterruptingEdges(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return InterruptibleActivityRegionOperations.validateInterruptingEdges(
 			this, diagnostics, context);
 	}
@@ -233,21 +234,24 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicAdd(otherEnd,
-					msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInActivity((Activity) otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				return ((InternalEList) getNodes()).basicAdd(otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-				return ((InternalEList) getInterruptingEdges()).basicAdd(
-					otherEnd, msgs);
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterruptingEdges())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -257,21 +261,23 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
-				return ((InternalEList) getNodes()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
+					msgs);
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
-				return ((InternalEList) getInterruptingEdges()).basicRemove(
+				return ((InternalEList<?>) getInterruptingEdges()).basicRemove(
 					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -282,6 +288,7 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
@@ -321,26 +328,32 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE :
 				getNodes().clear();
-				getNodes().addAll((Collection) newValue);
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE :
 				getInterruptingEdges().clear();
-				getInterruptingEdges().addAll((Collection) newValue);
+				getInterruptingEdges().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -351,6 +364,7 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
@@ -377,6 +391,7 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__EANNOTATIONS :
@@ -421,6 +436,7 @@ public class InterruptibleActivityRegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetContainedNodes() {
 		return super.isSetContainedNodes()
 			|| eIsSet(UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__NODE);

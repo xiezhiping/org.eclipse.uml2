@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.22 2006/11/14 18:02:19 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.23 2006/12/14 15:49:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -35,8 +36,16 @@ import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.ReadIsClassifiedObjectAction;
 import org.eclipse.uml2.uml.StringExpression;
@@ -133,6 +142,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION;
 	}
@@ -142,23 +152,24 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getOutputs() {
+	public EList<OutputPin> getOutputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList outputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__OUTPUT);
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
 			if (outputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
-					outputs = new DerivedUnionEObjectEList(OutputPin.class,
-						this,
+					outputs = new DerivedUnionEObjectEList<OutputPin>(
+						OutputPin.class, this,
 						UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTPUT,
 						OUTPUT_ESUBSETS));
 			}
 			return outputs;
 		}
-		return new DerivedUnionEObjectEList(OutputPin.class, this,
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
 			UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTPUT,
 			OUTPUT_ESUBSETS);
 	}
@@ -168,22 +179,24 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getInputs() {
+	public EList<InputPin> getInputs() {
 
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
-			EList inputs = (EList) cache.get(eResource, this,
-				UMLPackage.Literals.ACTION__INPUT);
+			@SuppressWarnings("unchecked")
+			EList<InputPin> inputs = (EList<InputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__INPUT);
 			if (inputs == null) {
 				cache.put(eResource, this, UMLPackage.Literals.ACTION__INPUT,
-					inputs = new DerivedUnionEObjectEList(InputPin.class, this,
+					inputs = new DerivedUnionEObjectEList<InputPin>(
+						InputPin.class, this,
 						UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT,
 						INPUT_ESUBSETS));
 			}
 			return inputs;
 		}
-		return new DerivedUnionEObjectEList(InputPin.class, this,
+		return new DerivedUnionEObjectEList<InputPin>(InputPin.class, this,
 			UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INPUT, INPUT_ESUBSETS);
 	}
 
@@ -490,7 +503,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfInput(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadIsClassifiedObjectActionOperations
 			.validateMultiplicityOfInput(this, diagnostics, context);
 	}
@@ -500,7 +513,8 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNoType(DiagnosticChain diagnostics, Map context) {
+	public boolean validateNoType(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
 		return ReadIsClassifiedObjectActionOperations.validateNoType(this,
 			diagnostics, context);
 	}
@@ -511,7 +525,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public boolean validateMultiplicityOfOutput(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadIsClassifiedObjectActionOperations
 			.validateMultiplicityOfOutput(this, diagnostics, context);
 	}
@@ -522,7 +536,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public boolean validateBooleanResult(DiagnosticChain diagnostics,
-			Map context) {
+			Map<Object, Object> context) {
 		return ReadIsClassifiedObjectActionOperations.validateBooleanResult(
 			this, diagnostics, context);
 	}
@@ -532,18 +546,19 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS :
-				return ((InternalEList) getEAnnotations()).basicRemove(
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_COMMENT :
-				return ((InternalEList) getOwnedComments()).basicRemove(
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__CLIENT_DEPENDENCY :
-				return ((InternalEList) getClientDependencies()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_STRUCTURED_NODE :
@@ -551,26 +566,26 @@ public class ReadIsClassifiedObjectActionImpl
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING :
-				return ((InternalEList) getOutgoings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getOutgoings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING :
-				return ((InternalEList) getIncomings()).basicRemove(otherEnd,
-					msgs);
+				return ((InternalEList<?>) getIncomings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_PARTITION :
-				return ((InternalEList) getInPartitions()).basicRemove(
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList) getInInterruptibleRegions())
+				return ((InternalEList<?>) getInInterruptibleRegions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__HANDLER :
-				return ((InternalEList) getHandlers()).basicRemove(otherEnd,
+				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList) getLocalPreconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPreconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_POSTCONDITION :
-				return ((InternalEList) getLocalPostconditions()).basicRemove(
-					otherEnd, msgs);
+				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT :
 				return basicSetResult(null, msgs);
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT :
@@ -584,6 +599,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS :
@@ -679,15 +695,19 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS :
 				getEAnnotations().clear();
-				getEAnnotations().addAll((Collection) newValue);
+				getEAnnotations().addAll(
+					(Collection<? extends EAnnotation>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
-				getOwnedComments().addAll((Collection) newValue);
+				getOwnedComments().addAll(
+					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME :
 				setName((String) newValue);
@@ -697,7 +717,8 @@ public class ReadIsClassifiedObjectActionImpl
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
-				getClientDependencies().addAll((Collection) newValue);
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
@@ -713,35 +734,44 @@ public class ReadIsClassifiedObjectActionImpl
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OUTGOING :
 				getOutgoings().clear();
-				getOutgoings().addAll((Collection) newValue);
+				getOutgoings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__INCOMING :
 				getIncomings().clear();
-				getIncomings().addAll((Collection) newValue);
+				getIncomings().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_PARTITION :
 				getInPartitions().clear();
-				getInPartitions().addAll((Collection) newValue);
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IN_INTERRUPTIBLE_REGION :
 				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions().addAll((Collection) newValue);
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
-				getRedefinedNodes().addAll((Collection) newValue);
+				getRedefinedNodes().addAll(
+					(Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__HANDLER :
 				getHandlers().clear();
-				getHandlers().addAll((Collection) newValue);
+				getHandlers().addAll(
+					(Collection<? extends ExceptionHandler>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_PRECONDITION :
 				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll((Collection) newValue);
+				getLocalPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
-				getLocalPostconditions().addAll((Collection) newValue);
+				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT :
 				setIsDirect(((Boolean) newValue).booleanValue());
@@ -764,6 +794,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS :
@@ -838,6 +869,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__EANNOTATIONS :
@@ -917,6 +949,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -943,6 +976,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetOutputs() {
 		return super.isSetOutputs()
 			|| eIsSet(UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT);
@@ -963,6 +997,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetInputs() {
 		return super.isSetInputs()
 			|| eIsSet(UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionData.java,v 1.5 2006/05/12 20:38:08 khussey Exp $
+ * $Id: LinkEndDestructionData.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,7 +101,8 @@ public interface LinkEndDestructionData
 	 * @model
 	 * @generated
 	 */
-	boolean validateDestroyLinkAction(DiagnosticChain diagnostics, Map context);
+	boolean validateDestroyLinkAction(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,6 +115,6 @@ public interface LinkEndDestructionData
 	 * @generated
 	 */
 	boolean validateUnlimitedNaturalAndMultiplicity(
-			DiagnosticChain diagnostics, Map context);
+			DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // LinkEndDestructionData
