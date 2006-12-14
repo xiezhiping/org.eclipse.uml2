@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetEObjectContainmentWithInverseEList.java,v 1.3 2006/01/05 13:49:53 khussey Exp $
+ * $Id: SubsetEObjectContainmentWithInverseEList.java,v 1.4 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -16,77 +16,72 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
-/**
- * @deprecated Use SubsetSupersetEObjectContainmentWithInverseEList
- */
-public class SubsetEObjectContainmentWithInverseEList
-		extends SubsetEObjectContainmentEList {
+@Deprecated
+public class SubsetEObjectContainmentWithInverseEList<E>
+		extends SubsetEObjectContainmentEList<E> {
 
-	public static class Unsettable
-			extends SubsetEObjectContainmentWithInverseEList {
+	private static final long serialVersionUID = 1L;
 
-		public static class Resolving
-				extends Unsettable {
+	public static class Unsettable<E>
+			extends SubsetEObjectContainmentWithInverseEList<E> {
 
-			public Resolving(Class dataClass, InternalEObject owner,
+		private static final long serialVersionUID = 1L;
+
+		public static class Resolving<E>
+				extends Unsettable<E> {
+
+			private static final long serialVersionUID = 1L;
+
+			public Resolving(Class<?> dataClass, InternalEObject owner,
 					int featureID, int[] supersetFeatureIDs,
 					int inverseFeatureID) {
 				super(dataClass, owner, featureID, supersetFeatureIDs,
 					inverseFeatureID);
 			}
 
-			public Resolving(Class dataClass, InternalEObject owner,
+			public Resolving(Class<?> dataClass, InternalEObject owner,
 					int featureID, int supersetFeatureID, int inverseFeatureID) {
 				this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 					inverseFeatureID);
 			}
 
+			@Override
 			protected boolean hasProxies() {
 				return true;
 			}
 
-			protected Object resolve(int index, Object object) {
-				return resolve(index, (EObject) object);
+			@SuppressWarnings("unchecked")
+			@Override
+			protected E resolve(int index, E object) {
+				return (E) resolve(index, (EObject) object);
 			}
 		}
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs, int inverseFeatureID) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				inverseFeatureID);
 		}
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int supersetFeatureID, int inverseFeatureID) {
 			this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 				inverseFeatureID);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.common.util.BasicEList#didChange()
-		 */
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#isSet()
-		 */
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.EStructuralFeature.Setting#unset()
-		 */
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -102,33 +97,38 @@ public class SubsetEObjectContainmentWithInverseEList
 		}
 	}
 
-	public static class Resolving
-			extends SubsetEObjectContainmentWithInverseEList {
+	public static class Resolving<E>
+			extends SubsetEObjectContainmentWithInverseEList<E> {
 
-		public Resolving(Class dataClass, InternalEObject owner, int featureID,
-				int[] supersetFeatureIDs, int inverseFeatureID) {
+		private static final long serialVersionUID = 1L;
+
+		public Resolving(Class<?> dataClass, InternalEObject owner,
+				int featureID, int[] supersetFeatureIDs, int inverseFeatureID) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				inverseFeatureID);
 		}
 
-		public Resolving(Class dataClass, InternalEObject owner, int featureID,
-				int supersetFeatureID, int inverseFeatureID) {
+		public Resolving(Class<?> dataClass, InternalEObject owner,
+				int featureID, int supersetFeatureID, int inverseFeatureID) {
 			this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 				inverseFeatureID);
 		}
 
+		@Override
 		protected boolean hasProxies() {
 			return true;
 		}
 
-		protected Object resolve(int index, Object object) {
-			return resolve(index, (EObject) object);
+		@SuppressWarnings("unchecked")
+		@Override
+		protected E resolve(int index, E object) {
+			return (E) resolve(index, (EObject) object);
 		}
 	}
 
 	protected final int inverseFeatureID;
 
-	public SubsetEObjectContainmentWithInverseEList(Class dataClass,
+	public SubsetEObjectContainmentWithInverseEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
 			int inverseFeatureID) {
 		super(dataClass, owner, featureID, supersetFeatureIDs);
@@ -136,37 +136,25 @@ public class SubsetEObjectContainmentWithInverseEList
 		this.inverseFeatureID = inverseFeatureID;
 	}
 
-	public SubsetEObjectContainmentWithInverseEList(Class dataClass,
+	public SubsetEObjectContainmentWithInverseEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int supersetFeatureID,
 			int inverseFeatureID) {
 		this(dataClass, owner, featureID, new int[]{supersetFeatureID},
 			inverseFeatureID);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.util.EcoreEList#hasNavigableInverse()
-	 */
+	@Override
 	protected boolean hasNavigableInverse() {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.util.EcoreEList#getInverseFeatureID()
-	 */
+	@Override
 	public int getInverseFeatureID() {
 		return inverseFeatureID;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.ecore.util.EcoreEList#getInverseFeatureClass()
-	 */
-	public Class getInverseFeatureClass() {
+	@Override
+	public Class<?> getInverseFeatureClass() {
 		return dataClass;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.14 2006/11/08 20:25:42 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.15 2006/12/14 15:47:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.BasicEList;
@@ -28,6 +29,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -40,6 +42,8 @@ public class CacheAdapter
 
 	protected class InverseCrossReferencer
 			extends ECrossReferenceAdapter.InverseCrossReferencer {
+
+		private static final long serialVersionUID = 1L;
 
 		private URI normalizeURI(URI uri, Resource resourceContext) {
 			String fragment = uri.fragment();
@@ -73,10 +77,12 @@ public class CacheAdapter
 			return uri;
 		}
 
+		@Override
 		protected URI normalizeURI(URI uri, EObject objectContext) {
 			return normalizeURI(uri, objectContext.eResource());
 		}
 
+		@Override
 		protected void addProxy(EObject proxy, EObject context) {
 
 			if (proxy.eIsProxy()) {
@@ -93,10 +99,11 @@ public class CacheAdapter
 
 				URI uri = normalizeURI(((InternalEObject) proxy).eProxyURI(),
 					resource);
-				List proxies = (List) proxyMap.get(uri);
+				List<EObject> proxies = proxyMap.get(uri);
 
 				if (proxies == null) {
-					proxyMap.put(uri, proxies = new BasicEList.FastCompare());
+					proxyMap.put(uri,
+						proxies = new BasicEList.FastCompare<EObject>());
 				}
 
 				proxies.add(proxy);
@@ -122,14 +129,16 @@ public class CacheAdapter
 		return new CacheAdapter();
 	}
 
-	private final Map values = Collections.synchronizedMap(createHashMap());
+	private final Map<Resource, Map<EObject, Map<Object, Object>>> values = Collections
+		.synchronizedMap(this
+			.<Resource, Map<EObject, Map<Object, Object>>> createHashMap());
 
 	protected boolean adapting = false;
 
 	private URIConverter uriConverter = null;
 
 	public static CacheAdapter getCacheAdapter(Notifier notifier) {
-		List eAdapters = notifier.eAdapters();
+		List<Adapter> eAdapters = notifier.eAdapters();
 
 		for (int i = 0, size = eAdapters.size(); i < size; i++) {
 			Object adapter = eAdapters.get(i);
@@ -145,11 +154,11 @@ public class CacheAdapter
 	public CacheAdapter() {
 		super();
 
-		unloadedResources = new Set() {
+		unloadedResources = new Set<Resource>() {
 
-			Map map = new WeakHashMap();
+			Map<Resource, Object> map = new WeakHashMap<Resource, Object>();
 
-			public boolean add(Object o) {
+			public boolean add(Resource o) {
 
 				if (map.containsKey(o)) {
 					return false;
@@ -159,12 +168,12 @@ public class CacheAdapter
 				return true;
 			}
 
-			public boolean addAll(Collection c) {
+			public boolean addAll(Collection<? extends Resource> c) {
 				boolean result = false;
 
-				for (Iterator i = c.iterator(); i.hasNext();) {
+				for (Resource resource : c) {
 
-					if (add(i.next())) {
+					if (add(resource)) {
 						result = true;
 					}
 				}
@@ -180,7 +189,7 @@ public class CacheAdapter
 				return map.keySet().contains(o);
 			}
 
-			public boolean containsAll(Collection c) {
+			public boolean containsAll(Collection<?> c) {
 				return map.keySet().containsAll(c);
 			}
 
@@ -188,7 +197,7 @@ public class CacheAdapter
 				return map.keySet().isEmpty();
 			}
 
-			public Iterator iterator() {
+			public Iterator<Resource> iterator() {
 				return map.keySet().iterator();
 			}
 
@@ -196,11 +205,11 @@ public class CacheAdapter
 				return map.keySet().remove(o);
 			}
 
-			public boolean removeAll(Collection c) {
+			public boolean removeAll(Collection<?> c) {
 				return map.keySet().removeAll(c);
 			}
 
-			public boolean retainAll(Collection c) {
+			public boolean retainAll(Collection<?> c) {
 				return map.keySet().retainAll(c);
 			}
 
@@ -212,21 +221,22 @@ public class CacheAdapter
 				return map.keySet().toArray();
 			}
 
-			public Object[] toArray(Object[] a) {
+			public <T> T[] toArray(T[] a) {
 				return map.keySet().toArray(a);
 			}
 		};
 	}
 
-	protected Map createHashMap() {
-		return new HashMap();
+	protected <K, V> Map<K, V> createHashMap() {
+		return new HashMap<K, V>();
 	}
 
+	@Override
 	protected ECrossReferenceAdapter.InverseCrossReferencer createInverseCrossReferencer() {
 		return new InverseCrossReferencer();
 	}
 
-	protected boolean addAdapter(EList adapters) {
+	protected boolean addAdapter(EList<Adapter> adapters) {
 		return adapters.contains(this)
 			? false
 			: adapters.add(this);
@@ -244,6 +254,7 @@ public class CacheAdapter
 		return result;
 	}
 
+	@Override
 	protected void addAdapter(Notifier notifier) {
 		addAdapter(notifier.eAdapters());
 	}
@@ -267,13 +278,17 @@ public class CacheAdapter
 		}
 	}
 
-	public Collection getNonNavigableInverseReferences(EObject eObject) {
+	@Override
+	public Collection<EStructuralFeature.Setting> getNonNavigableInverseReferences(
+			EObject eObject) {
 		addAdapter(eObject);
 
 		return super.getNonNavigableInverseReferences(eObject);
 	}
 
-	public Collection getInverseReferences(EObject eObject) {
+	@Override
+	public Collection<EStructuralFeature.Setting> getInverseReferences(
+			EObject eObject) {
 		addAdapter(eObject);
 
 		return super.getInverseReferences(eObject);
@@ -283,6 +298,7 @@ public class CacheAdapter
 		inverseCrossReferencer.add(eObject);
 	}
 
+	@Override
 	public void setTarget(Notifier target) {
 
 		if (!adapting) {
@@ -290,6 +306,7 @@ public class CacheAdapter
 		}
 	}
 
+	@Override
 	protected void unsetTarget(EObject target) {
 		super.unsetTarget(target);
 
@@ -299,12 +316,14 @@ public class CacheAdapter
 		}
 	}
 
+	@Override
 	protected void unsetTarget(Resource target) {
 		super.unsetTarget(target);
 
 		clear(target);
 	}
 
+	@Override
 	public void notifyChanged(Notification msg) {
 		super.notifyChanged(msg);
 
@@ -365,10 +384,10 @@ public class CacheAdapter
 	}
 
 	public boolean containsKey(Resource resource, EObject eObject, Object key) {
-		Map resourceMap = (Map) values.get(resource);
+		Map<EObject, Map<Object, Object>> resourceMap = values.get(resource);
 
 		if (resourceMap != null) {
-			Map eObjectMap = (Map) resourceMap.get(eObject);
+			Map<Object, Object> eObjectMap = resourceMap.get(eObject);
 
 			if (eObjectMap != null) {
 				return eObjectMap.containsKey(key);
@@ -383,10 +402,10 @@ public class CacheAdapter
 	}
 
 	public Object get(Resource resource, EObject eObject, Object key) {
-		Map resourceMap = (Map) values.get(resource);
+		Map<EObject, Map<Object, Object>> resourceMap = values.get(resource);
 
 		if (resourceMap != null) {
-			Map eObjectMap = (Map) resourceMap.get(eObject);
+			Map<Object, Object> eObjectMap = resourceMap.get(eObject);
 
 			if (eObjectMap != null) {
 				return eObjectMap.get(key);
@@ -411,7 +430,7 @@ public class CacheAdapter
 			addAdapter(resource);
 		}
 
-		Map resourceMap = (Map) values.get(resource);
+		Map<EObject, Map<Object, Object>> resourceMap = values.get(resource);
 
 		if (resourceMap == null) {
 			resourceMap = createHashMap();
@@ -419,7 +438,7 @@ public class CacheAdapter
 			values.put(resource, resourceMap);
 		}
 
-		Map eObjectMap = (Map) resourceMap.get(eObject);
+		Map<Object, Object> eObjectMap = resourceMap.get(eObject);
 
 		if (eObjectMap == null) {
 			eObjectMap = createHashMap();
@@ -430,10 +449,12 @@ public class CacheAdapter
 		return eObjectMap.put(key, value);
 	}
 
+	@Override
 	protected boolean resolve() {
 		return false;
 	}
 
+	@Override
 	protected boolean isIncluded(EReference eReference) {
 		return super.isIncluded(eReference) && eReference.isChangeable();
 	}

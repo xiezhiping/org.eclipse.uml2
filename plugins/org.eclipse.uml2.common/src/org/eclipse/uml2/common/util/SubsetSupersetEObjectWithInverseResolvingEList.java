@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectWithInverseResolvingEList.java,v 1.2 2006/10/18 18:46:45 khussey Exp $
+ * $Id: SubsetSupersetEObjectWithInverseResolvingEList.java,v 1.3 2006/12/14 15:47:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,22 +19,29 @@ import org.eclipse.emf.ecore.InternalEObject;
 /**
  * @since 1.2
  */
-public class SubsetSupersetEObjectWithInverseResolvingEList
-		extends SubsetSupersetEObjectWithInverseEList {
+public class SubsetSupersetEObjectWithInverseResolvingEList<E>
+		extends SubsetSupersetEObjectWithInverseEList<E> {
 
-	public static class Unsettable
-			extends SubsetSupersetEObjectWithInverseResolvingEList {
+	private static final long serialVersionUID = 1L;
 
-		public static class ManyInverse
-				extends Unsettable {
+	public static class Unsettable<E>
+			extends SubsetSupersetEObjectWithInverseResolvingEList<E> {
 
-			public ManyInverse(Class dataClass, InternalEObject owner,
+		private static final long serialVersionUID = 1L;
+
+		public static class ManyInverse<E>
+				extends Unsettable<E> {
+
+			private static final long serialVersionUID = 1L;
+
+			public ManyInverse(Class<?> dataClass, InternalEObject owner,
 					int featureID, int[] supersetFeatureIDs,
 					int[] subsetFeatureIDs, int inverseFeatureID) {
 				super(dataClass, owner, featureID, supersetFeatureIDs,
 					subsetFeatureIDs, inverseFeatureID);
 			}
 
+			@Override
 			protected boolean hasManyInverse() {
 				return true;
 			}
@@ -42,21 +49,24 @@ public class SubsetSupersetEObjectWithInverseResolvingEList
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs,
 				int[] subsetFeatureIDs, int inverseFeatureID) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs, inverseFeatureID);
 		}
 
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -72,34 +82,40 @@ public class SubsetSupersetEObjectWithInverseResolvingEList
 		}
 	}
 
-	public static class ManyInverse
-			extends SubsetSupersetEObjectWithInverseResolvingEList {
+	public static class ManyInverse<E>
+			extends SubsetSupersetEObjectWithInverseResolvingEList<E> {
 
-		public ManyInverse(Class dataClass, InternalEObject owner,
+		private static final long serialVersionUID = 1L;
+
+		public ManyInverse(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs,
 				int[] subsetFeatureIDs, int inverseFeatureID) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs, inverseFeatureID);
 		}
 
+		@Override
 		protected boolean hasManyInverse() {
 			return true;
 		}
 	}
 
-	public SubsetSupersetEObjectWithInverseResolvingEList(Class dataClass,
+	public SubsetSupersetEObjectWithInverseResolvingEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
 			int[] subsetFeatureIDs, int inverseFeatureID) {
 		super(dataClass, owner, featureID, supersetFeatureIDs,
 			subsetFeatureIDs, inverseFeatureID);
 	}
 
+	@Override
 	protected boolean hasProxies() {
 		return true;
 	}
 
-	protected Object resolve(int index, Object object) {
-		return resolve(index, (EObject) object);
+	@SuppressWarnings("unchecked")
+	@Override
+	protected E resolve(int index, E object) {
+		return (E) resolve(index, (EObject) object);
 	}
 
 }

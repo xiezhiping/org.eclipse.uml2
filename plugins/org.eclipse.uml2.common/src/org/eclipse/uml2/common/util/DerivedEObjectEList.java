@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.10 2006/10/18 18:46:45 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.11 2006/12/14 15:47:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -36,27 +36,27 @@ import org.eclipse.emf.ecore.util.InternalEList;
 /**
  * @since 1.2
  */
-public class DerivedEObjectEList
-		extends AbstractSequentialList
-		implements EStructuralFeature.Setting, InternalEList.Unsettable {
+public class DerivedEObjectEList<E>
+		extends AbstractSequentialList<E>
+		implements EStructuralFeature.Setting, InternalEList.Unsettable<E> {
 
 	protected class DerivedListIterator
-			implements ListIterator {
+			implements ListIterator<E> {
 
 		protected int index = 0;
 
 		protected int featureIndex = 0;
 
-		protected ListIterator valuesIterator = null;
+		protected ListIterator<Object> valuesIterator = null;
 
 		protected EStructuralFeature preparedFeature = null;
 
-		protected EList preparedValues = new UniqueEList.FastCompare();
+		protected EList<Object> preparedValues = new UniqueEList.FastCompare<Object>();
 
 		protected int prepared = 0;
 
 		protected boolean scanNext(EStructuralFeature nextFeature,
-				ListIterator nextValuesIterator) {
+				ListIterator<Object> nextValuesIterator) {
 			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(nextFeature);
 
 			while (nextValuesIterator.hasNext()) {
@@ -99,7 +99,8 @@ public class DerivedEObjectEList
 						if (sourceFeature.isMany()
 							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							InternalEList valuesList = (InternalEList) value;
+							@SuppressWarnings("unchecked")
+							InternalEList<Object> valuesList = (InternalEList<Object>) value;
 
 							if (scanNext(sourceFeature, resolve()
 								? valuesList.listIterator()
@@ -145,7 +146,7 @@ public class DerivedEObjectEList
 			}
 		}
 
-		public Object next() {
+		public E next() {
 
 			if (hasNext()) {
 				prepared = 0;
@@ -159,7 +160,7 @@ public class DerivedEObjectEList
 
 		protected boolean scanPrevious(EStructuralFeature previousFeature,
 
-		ListIterator previousValuesIterator) {
+		ListIterator<Object> previousValuesIterator) {
 			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(previousFeature);
 
 			while (previousValuesIterator.hasPrevious()) {
@@ -197,7 +198,8 @@ public class DerivedEObjectEList
 						if (sourceFeature.isMany()
 							|| FeatureMapUtil.isFeatureMap(sourceFeature)) {
 
-							InternalEList valuesList = (InternalEList) value;
+							@SuppressWarnings("unchecked")
+							InternalEList<Object> valuesList = (InternalEList<Object>) value;
 							int valuesListSize = valuesList.size();
 
 							if (scanPrevious(sourceFeature, resolve()
@@ -241,7 +243,7 @@ public class DerivedEObjectEList
 			}
 		}
 
-		public Object previous() {
+		public E previous() {
 
 			if (prepared < -1 || hasPrevious()) {
 				prepared = 0;
@@ -282,10 +284,12 @@ public class DerivedEObjectEList
 	protected class EmptyDerivedListIterator
 			extends DerivedListIterator {
 
+		@Override
 		public boolean hasNext() {
 			return false;
 		}
 
+		@Override
 		public boolean hasPrevious() {
 			return false;
 		}
@@ -294,13 +298,14 @@ public class DerivedEObjectEList
 	protected class ResolvingDerivedListIterator
 			extends DerivedListIterator {
 
+		@Override
 		protected boolean resolve() {
 			return true;
 		}
 
 	}
 
-	protected final Class dataClass;
+	protected final Class<?> dataClass;
 
 	protected final InternalEObject owner;
 
@@ -308,7 +313,7 @@ public class DerivedEObjectEList
 
 	protected final int[] sourceFeatureIDs;
 
-	public DerivedEObjectEList(Class dataClass, InternalEObject owner,
+	public DerivedEObjectEList(Class<?> dataClass, InternalEObject owner,
 			int featureID, int[] sourceFeatureIDs) {
 		super();
 
@@ -338,23 +343,26 @@ public class DerivedEObjectEList
 		return !isEmpty();
 	}
 
+	@SuppressWarnings("unchecked")
 	public void set(Object newValue) {
 		clear();
-		addAll((List) newValue);
+		addAll((List<? extends E>) newValue);
 	}
 
 	public void unset() {
 		clear();
 	}
 
-	public ListIterator listIterator(int index) {
+	@Override
+	public ListIterator<E> listIterator(int index) {
 		return listIterator(index, true);
 	}
 
+	@Override
 	public int size() {
 
 		if (sourceFeatureIDs != null) {
-			EList values = new UniqueEList.FastCompare();
+			EList<Object> values = new UniqueEList.FastCompare<Object>();
 
 			for (int i = 0; i < sourceFeatureIDs.length; i++) {
 				int sourceFeatureID = sourceFeatureIDs[i];
@@ -379,7 +387,7 @@ public class DerivedEObjectEList
 					} else if (isIncluded(sourceFeature)) {
 
 						if (sourceFeature.isMany()) {
-							InternalEList valuesList = (InternalEList) value;
+							InternalEList<?> valuesList = (InternalEList<?>) value;
 
 							if (valuesList instanceof RandomAccess) {
 
@@ -388,7 +396,7 @@ public class DerivedEObjectEList
 								}
 							} else {
 
-								for (Iterator v = valuesList.basicIterator(); v
+								for (Iterator<?> v = valuesList.basicIterator(); v
 									.hasNext();) {
 
 									values.add(v.next());
@@ -400,7 +408,7 @@ public class DerivedEObjectEList
 					} else {
 
 						if (sourceFeature.isMany()) {
-							InternalEList valuesList = (InternalEList) value;
+							InternalEList<?> valuesList = (InternalEList<?>) value;
 
 							if (valuesList instanceof RandomAccess) {
 
@@ -413,7 +421,7 @@ public class DerivedEObjectEList
 								}
 							} else {
 
-								for (Iterator v = valuesList.basicIterator(); v
+								for (Iterator<?> v = valuesList.basicIterator(); v
 									.hasNext();) {
 
 									value = v.next();
@@ -436,6 +444,7 @@ public class DerivedEObjectEList
 		return 0;
 	}
 
+	@Override
 	public boolean isEmpty() {
 
 		if (sourceFeatureIDs != null) {
@@ -462,7 +471,7 @@ public class DerivedEObjectEList
 					} else if (isIncluded(sourceFeature)) {
 
 						if (sourceFeature.isMany()
-							? ((List) value).size() > 0
+							? ((List<?>) value).size() > 0
 							: value != null) {
 
 							return false;
@@ -470,7 +479,7 @@ public class DerivedEObjectEList
 					} else {
 
 						if (sourceFeature.isMany()) {
-							InternalEList valuesList = (InternalEList) value;
+							InternalEList<?> valuesList = (InternalEList<?>) value;
 
 							if (valuesList instanceof RandomAccess) {
 
@@ -482,7 +491,7 @@ public class DerivedEObjectEList
 								}
 							} else {
 
-								for (Iterator v = valuesList.basicIterator(); v
+								for (Iterator<?> v = valuesList.basicIterator(); v
 									.hasNext();) {
 
 									if (isIncluded(v.next())) {
@@ -501,6 +510,7 @@ public class DerivedEObjectEList
 		return true;
 	}
 
+	@Override
 	public boolean contains(Object object) {
 
 		if (sourceFeatureIDs != null) {
@@ -528,7 +538,7 @@ public class DerivedEObjectEList
 					} else if (isIncluded(sourceFeature)) {
 
 						if (sourceFeature.isMany()
-							? ((List) value).contains(object)
+							? ((List<?>) value).contains(object)
 							: value == object) {
 
 							return true;
@@ -536,7 +546,7 @@ public class DerivedEObjectEList
 					} else {
 
 						if (sourceFeature.isMany()) {
-							InternalEList valuesList = (InternalEList) value;
+							InternalEList<?> valuesList = (InternalEList<?>) value;
 
 							if (valuesList instanceof RandomAccess) {
 
@@ -551,7 +561,7 @@ public class DerivedEObjectEList
 								}
 							} else {
 
-								for (Iterator v = valuesList.basicIterator(); v
+								for (Iterator<?> v = valuesList.basicIterator(); v
 									.hasNext();) {
 
 									value = v.next();
@@ -574,29 +584,30 @@ public class DerivedEObjectEList
 		return false;
 	}
 
-	public Object basicGet(int index) {
+	public E basicGet(int index) {
 		return basicList().get(index);
 	}
 
-	public List basicList() {
-		return new DerivedEObjectEList(dataClass, owner, featureID,
+	public List<E> basicList() {
+		return new DerivedEObjectEList<E>(dataClass, owner, featureID,
 			sourceFeatureIDs) {
 
-			public ListIterator listIterator(int index) {
+			@Override
+			public ListIterator<E> listIterator(int index) {
 				return basicListIterator(index);
 			}
 		};
 	}
 
-	public Iterator basicIterator() {
+	public Iterator<E> basicIterator() {
 		return basicListIterator();
 	}
 
-	public ListIterator basicListIterator() {
+	public ListIterator<E> basicListIterator() {
 		return basicListIterator(0);
 	}
 
-	public ListIterator basicListIterator(int index) {
+	public ListIterator<E> basicListIterator(int index) {
 		return listIterator(index, false);
 	}
 
@@ -620,21 +631,21 @@ public class DerivedEObjectEList
 		owner.eNotify(notification);
 	}
 
-	public NotificationChain basicAdd(Object object,
-			NotificationChain notifications) {
+	public NotificationChain basicAdd(E object, NotificationChain notifications) {
 		addUnique(object);
 		return notifications;
 	}
 
-	public void add(int index, Object object) {
+	@Override
+	public void add(int index, E object) {
 		addUnique(index, object);
 	}
 
-	public void addUnique(Object object) {
+	public void addUnique(E object) {
 		addUnique(size(), object);
 	}
 
-	public void addUnique(int index, Object object) {
+	public void addUnique(int index, E object) {
 
 		if (isNotificationRequired()) {
 			boolean oldIsSet = isSet();
@@ -647,11 +658,12 @@ public class DerivedEObjectEList
 		}
 	}
 
-	public boolean addAll(int index, Collection objects) {
+	@Override
+	public boolean addAll(int index, Collection<? extends E> objects) {
 		return addAllUnique(index, objects);
 	}
 
-	public boolean addAllUnique(int index, Collection objects) {
+	public boolean addAllUnique(int index, Collection<? extends E> objects) {
 		int size = objects.size();
 
 		if (size > 0) {
@@ -676,11 +688,11 @@ public class DerivedEObjectEList
 		return false;
 	}
 
-	protected boolean doAddAllUnique(int index, Collection objects) {
+	protected boolean doAddAllUnique(int index, Collection<? extends E> objects) {
 		boolean modified = false;
-		ListIterator listIterator = listIterator(index);
+		ListIterator<E> listIterator = listIterator(index);
 
-		for (Iterator o = objects.iterator(); o.hasNext();) {
+		for (Iterator<? extends E> o = objects.iterator(); o.hasNext();) {
 			listIterator.add(validate(index, o.next()));
 			modified = true;
 		}
@@ -688,24 +700,28 @@ public class DerivedEObjectEList
 		return modified;
 	}
 
-	public Object remove(int index) {
+	@Override
+	public E remove(int index) {
 
 		if (isNotificationRequired()) {
 			boolean oldIsSet = isSet();
 			NotificationImpl notification = createNotification(
 				Notification.REMOVE, super.remove(index), null, index, oldIsSet);
 			dispatchNotification(notification);
-			return notification.getOldValue();
+			@SuppressWarnings("unchecked")
+			E oldValue = (E) notification.getOldValue();
+			return oldValue;
 		} else {
 			return super.remove(index);
 		}
 	}
 
-	public Object set(int index, Object object) {
+	@Override
+	public E set(int index, E object) {
 		return setUnique(index, object);
 	}
 
-	public Object setUnique(int index, Object object) {
+	public E setUnique(int index, E object) {
 
 		if (isNotificationRequired()) {
 			boolean oldIsSet = isSet();
@@ -713,7 +729,9 @@ public class DerivedEObjectEList
 				super.set(index, validate(index, object)), object, index,
 				oldIsSet);
 			dispatchNotification(notification);
-			return notification.getOldValue();
+			@SuppressWarnings("unchecked")
+			E oldValue = (E) notification.getOldValue();
+			return oldValue;
 		} else {
 			return super.set(index, validate(index, object));
 		}
@@ -723,7 +741,7 @@ public class DerivedEObjectEList
 		throw new UnsupportedOperationException();
 	}
 
-	public Object move(int newPosition, int oldPosition) {
+	public E move(int newPosition, int oldPosition) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -736,11 +754,12 @@ public class DerivedEObjectEList
 		return dataClass.isInstance(derive(object));
 	}
 
-	protected Object derive(Object object) {
-		return object;
+	@SuppressWarnings("unchecked")
+	protected E derive(Object object) {
+		return (E) object;
 	}
 
-	protected Object validate(int index, Object object) {
+	protected E validate(int index, E object) {
 
 		if (!dataClass.isInstance(object)) {
 			throw new IllegalArgumentException(String.valueOf(object));
@@ -749,19 +768,19 @@ public class DerivedEObjectEList
 		return object;
 	}
 
-	protected ListIterator newListIterator() {
+	protected ListIterator<E> newListIterator() {
 		return new DerivedListIterator();
 	}
 
-	protected ListIterator newResolvingListIterator() {
+	protected ListIterator<E> newResolvingListIterator() {
 		return new ResolvingDerivedListIterator();
 	}
 
-	protected ListIterator newEmptyListIterator() {
+	protected ListIterator<E> newEmptyListIterator() {
 		return new EmptyDerivedListIterator();
 	}
 
-	protected ListIterator listIterator(int index, boolean resolve) {
+	protected ListIterator<E> listIterator(int index, boolean resolve) {
 
 		if (sourceFeatureIDs == null || sourceFeatureIDs.length == 0) {
 
@@ -773,7 +792,7 @@ public class DerivedEObjectEList
 			return newEmptyListIterator();
 		}
 
-		ListIterator listIterator = resolve
+		ListIterator<E> listIterator = resolve
 			? newResolvingListIterator()
 			: newListIterator();
 

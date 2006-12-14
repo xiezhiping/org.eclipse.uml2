@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.7 2006/10/18 18:46:45 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.8 2006/12/14 15:47:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -24,14 +24,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
 /**
  * @since 1.2
  */
-public class DerivedSubsetEObjectEList
-		extends DerivedEObjectEList {
+public class DerivedSubsetEObjectEList<E>
+		extends DerivedEObjectEList<E> {
 
 	protected class DerivedSubsetListIterator
 			extends DerivedListIterator {
 
 		protected int expectedModCount = modCount;
 
+		@Override
 		public void remove() {
 			checkModCount();
 
@@ -56,6 +57,7 @@ public class DerivedSubsetEObjectEList
 			expectedModCount++;
 		}
 
+		@Override
 		public void set(Object element) {
 			checkModCount();
 
@@ -80,14 +82,16 @@ public class DerivedSubsetEObjectEList
 			expectedModCount++;
 		}
 
+		@Override
 		public void add(Object element) {
 			checkModCount();
 
 			if (valuesIterator == null) {
-				List valuesList = resolve()
-					? (List) owner.eGet(sourceFeatureIDs[featureIndex],
+				@SuppressWarnings("unchecked")
+				List<Object> valuesList = resolve()
+					? (List<Object>) owner.eGet(sourceFeatureIDs[featureIndex],
 						resolve(), true)
-					: ((InternalEList) owner.eGet(
+					: ((InternalEList<Object>) owner.eGet(
 						sourceFeatureIDs[featureIndex], resolve(), true))
 						.basicList();
 
@@ -125,6 +129,7 @@ public class DerivedSubsetEObjectEList
 	protected class ResolvingDerivedSubsetListIterator
 			extends DerivedSubsetListIterator {
 
+		@Override
 		protected boolean resolve() {
 			return true;
 		}
@@ -134,21 +139,24 @@ public class DerivedSubsetEObjectEList
 	protected class EmptyDerivedSubsetListIterator
 			extends EmptyDerivedListIterator {
 
+		@Override
 		public void remove() {
 			throw new IllegalStateException();
 		}
 
+		@Override
 		public void set(Object element) {
 			throw new IllegalStateException();
 		}
 
+		@Override
 		public void add(Object element) {
 			throw new IllegalStateException();
 		}
 
 	}
 
-	public DerivedSubsetEObjectEList(Class dataClass, InternalEObject owner,
+	public DerivedSubsetEObjectEList(Class<?> dataClass, InternalEObject owner,
 			int featureID, int[] sourceFeatureIDs) {
 		super(dataClass, owner, featureID, sourceFeatureIDs);
 
@@ -163,29 +171,35 @@ public class DerivedSubsetEObjectEList
 
 	}
 
-	public List basicList() {
+	@Override
+	public List<E> basicList() {
 
-		return new DerivedSubsetEObjectEList(dataClass, owner, featureID,
+		return new DerivedSubsetEObjectEList<E>(dataClass, owner, featureID,
 			sourceFeatureIDs) {
 
-			public ListIterator listIterator(int index) {
+			@Override
+			public ListIterator<E> listIterator(int index) {
 				return basicListIterator(index);
 			}
 		};
 	}
 
-	protected ListIterator newListIterator() {
+	@Override
+	protected ListIterator<E> newListIterator() {
 		return new DerivedSubsetListIterator();
 	}
 
-	protected ListIterator newResolvingListIterator() {
+	@Override
+	protected ListIterator<E> newResolvingListIterator() {
 		return new ResolvingDerivedSubsetListIterator();
 	}
 
-	protected ListIterator newEmptyListIterator() {
+	@Override
+	protected ListIterator<E> newEmptyListIterator() {
 		return new EmptyDerivedSubsetListIterator();
 	}
 
+	@Override
 	protected boolean isNotificationRequired() {
 		return owner.eNotificationRequired();
 	}

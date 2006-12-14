@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectResolvingEList.java,v 1.2 2006/10/18 18:46:45 khussey Exp $
+ * $Id: SubsetSupersetEObjectResolvingEList.java,v 1.3 2006/12/14 15:47:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,28 +19,35 @@ import org.eclipse.emf.ecore.InternalEObject;
 /**
  * @since 1.2
  */
-public class SubsetSupersetEObjectResolvingEList
-		extends SubsetSupersetEObjectEList {
+public class SubsetSupersetEObjectResolvingEList<E>
+		extends SubsetSupersetEObjectEList<E> {
 
-	public static class Unsettable
-			extends SubsetSupersetEObjectResolvingEList {
+	private static final long serialVersionUID = 1L;
+
+	public static class Unsettable<E>
+			extends SubsetSupersetEObjectResolvingEList<E> {
+
+		private static final long serialVersionUID = 1L;
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs);
 		}
 
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -56,18 +63,21 @@ public class SubsetSupersetEObjectResolvingEList
 		}
 	}
 
-	public SubsetSupersetEObjectResolvingEList(Class dataClass,
+	public SubsetSupersetEObjectResolvingEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
 			int[] subsetFeatureIDs) {
 		super(dataClass, owner, featureID, supersetFeatureIDs, subsetFeatureIDs);
 	}
 
+	@Override
 	protected boolean hasProxies() {
 		return true;
 	}
 
-	protected Object resolve(int index, Object object) {
-		return resolve(index, (EObject) object);
+	@SuppressWarnings("unchecked")
+	@Override
+	protected E resolve(int index, E object) {
+		return (E) resolve(index, (EObject) object);
 	}
 
 }

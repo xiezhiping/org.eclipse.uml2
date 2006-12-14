@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectContainmentEList.java,v 1.2 2006/10/18 18:46:45 khussey Exp $
+ * $Id: SubsetSupersetEObjectContainmentEList.java,v 1.3 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -22,47 +22,59 @@ import org.eclipse.emf.ecore.InternalEObject;
 /**
  * @since 1.2
  */
-public class SubsetSupersetEObjectContainmentEList
-		extends SubsetSupersetEObjectEList {
+public class SubsetSupersetEObjectContainmentEList<E>
+		extends SubsetSupersetEObjectEList<E> {
 
-	public static class Unsettable
-			extends SubsetSupersetEObjectContainmentEList {
+	private static final long serialVersionUID = 1L;
 
-		public static class Resolving
-				extends Unsettable {
+	public static class Unsettable<E>
+			extends SubsetSupersetEObjectContainmentEList<E> {
 
-			public Resolving(Class dataClass, InternalEObject owner,
+		private static final long serialVersionUID = 1L;
+
+		public static class Resolving<E>
+				extends Unsettable<E> {
+
+			private static final long serialVersionUID = 1L;
+
+			public Resolving(Class<?> dataClass, InternalEObject owner,
 					int featureID, int[] supersetFeatureIDs,
 					int[] subsetFeatureIDs) {
 				super(dataClass, owner, featureID, supersetFeatureIDs,
 					subsetFeatureIDs);
 			}
 
+			@Override
 			protected boolean hasProxies() {
 				return true;
 			}
 
-			protected Object resolve(int index, Object object) {
-				return resolve(index, (EObject) object);
+			@SuppressWarnings("unchecked")
+			@Override
+			protected E resolve(int index, E object) {
+				return (E) resolve(index, (EObject) object);
 			}
 		}
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs);
 		}
 
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -78,48 +90,58 @@ public class SubsetSupersetEObjectContainmentEList
 		}
 	}
 
-	public static class Resolving
-			extends SubsetSupersetEObjectContainmentEList {
+	public static class Resolving<E>
+			extends SubsetSupersetEObjectContainmentEList<E> {
 
-		public Resolving(Class dataClass, InternalEObject owner, int featureID,
-				int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
+		private static final long serialVersionUID = 1L;
+
+		public Resolving(Class<?> dataClass, InternalEObject owner,
+				int featureID, int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs);
 		}
 
+		@Override
 		protected boolean hasProxies() {
 			return true;
 		}
 
-		protected Object resolve(int index, Object object) {
-			return resolve(index, (EObject) object);
+		@SuppressWarnings("unchecked")
+		@Override
+		protected E resolve(int index, E object) {
+			return (E) resolve(index, (EObject) object);
 		}
 	}
 
-	public SubsetSupersetEObjectContainmentEList(Class dataClass,
+	public SubsetSupersetEObjectContainmentEList(Class<?> dataClass,
 			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
 			int[] subsetFeatureIDs) {
 		super(dataClass, owner, featureID, supersetFeatureIDs, subsetFeatureIDs);
 	}
 
+	@Override
 	protected boolean hasInverse() {
 		return true;
 	}
 
+	@Override
 	protected boolean hasNavigableInverse() {
 		return false;
 	}
 
+	@Override
 	protected boolean isContainment() {
 		return true;
 	}
 
-	public boolean addAll(Collection collection) {
-		return super.addAll(new ArrayList(collection));
+	@Override
+	public boolean addAll(Collection<? extends E> collection) {
+		return super.addAll(new ArrayList<E>(collection));
 	}
 
-	public boolean addAll(int index, Collection collection) {
-		return super.addAll(index, new ArrayList(collection));
+	@Override
+	public boolean addAll(int index, Collection<? extends E> collection) {
+		return super.addAll(index, new ArrayList<E>(collection));
 	}
 
 }

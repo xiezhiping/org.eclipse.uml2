@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectEList.java,v 1.3 2006/10/18 18:46:45 khussey Exp $
+ * $Id: SubsetSupersetEObjectEList.java,v 1.4 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -26,28 +26,35 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 /**
  * @since 1.2
  */
-public class SubsetSupersetEObjectEList
-		extends EObjectEList {
+public class SubsetSupersetEObjectEList<E>
+		extends EObjectEList<E> {
 
-	public static class Unsettable
-			extends SubsetSupersetEObjectEList {
+	private static final long serialVersionUID = 1L;
+
+	public static class Unsettable<E>
+			extends SubsetSupersetEObjectEList<E> {
+
+		private static final long serialVersionUID = 1L;
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
 			super(dataClass, owner, featureID, supersetFeatureIDs,
 				subsetFeatureIDs);
 		}
 
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -67,8 +74,9 @@ public class SubsetSupersetEObjectEList
 
 	protected final int[] subsetFeatureIDs;
 
-	public SubsetSupersetEObjectEList(Class dataClass, InternalEObject owner,
-			int featureID, int[] supersetFeatureIDs, int[] subsetFeatureIDs) {
+	public SubsetSupersetEObjectEList(Class<?> dataClass,
+			InternalEObject owner, int featureID, int[] supersetFeatureIDs,
+			int[] subsetFeatureIDs) {
 		super(dataClass, owner, featureID);
 
 		this.supersetFeatureIDs = supersetFeatureIDs;
@@ -89,7 +97,8 @@ public class SubsetSupersetEObjectEList
 					.getEStructuralFeature(supersetFeatureIDs[i]);
 
 				if (supersetEStructuralFeature.isMany()) {
-					EList supersetEList = (EList) owner
+					@SuppressWarnings("unchecked")
+					EList<Object> supersetEList = (EList<Object>) owner
 						.eGet(supersetEStructuralFeature);
 
 					if (!supersetEList.contains(object)) {
@@ -110,8 +119,10 @@ public class SubsetSupersetEObjectEList
 					.getEStructuralFeature(subsetFeatureIDs[i]);
 
 				if (subsetEStructuralFeature.isMany()) {
-					((EList) owner.eGet(subsetEStructuralFeature))
-						.remove(object);
+					@SuppressWarnings("unchecked")
+					EList<Object> list = ((EList<Object>) owner
+						.eGet(subsetEStructuralFeature));
+					list.remove(object);
 				} else if (object.equals(owner.eGet(subsetEStructuralFeature))) {
 					owner.eSet(subsetEStructuralFeature, null);
 				}
@@ -120,8 +131,8 @@ public class SubsetSupersetEObjectEList
 		}
 	}
 
-	public NotificationChain basicAdd(Object object,
-			NotificationChain notifications) {
+	@Override
+	public NotificationChain basicAdd(E object, NotificationChain notifications) {
 		notifications = super.basicAdd(object, notifications);
 
 		supersetAdd(object);
@@ -129,7 +140,8 @@ public class SubsetSupersetEObjectEList
 		return notifications;
 	}
 
-	public NotificationChain basicSet(int index, Object object,
+	@Override
+	public NotificationChain basicSet(int index, E object,
 			NotificationChain notifications) {
 		Object oldObject = data[index];
 
@@ -144,13 +156,15 @@ public class SubsetSupersetEObjectEList
 		return notifications;
 	}
 
-	public void add(int index, Object object) {
+	@Override
+	public void add(int index, E object) {
 		super.add(index, object);
 
 		supersetAdd(object);
 	}
 
-	public boolean add(Object object) {
+	@Override
+	public boolean add(E object) {
 		boolean result = super.add(object);
 
 		supersetAdd(object);
@@ -158,28 +172,33 @@ public class SubsetSupersetEObjectEList
 		return result;
 	}
 
-	public boolean addAll(Collection collection) {
+	@Override
+	public boolean addAll(Collection<? extends E> collection) {
 		boolean result = super.addAll(collection);
 
-		for (Iterator elements = collection.iterator(); elements.hasNext();) {
+		for (Iterator<? extends E> elements = collection.iterator(); elements
+			.hasNext();) {
 			supersetAdd(elements.next());
 		}
 
 		return result;
 	}
 
-	public boolean addAll(int index, Collection collection) {
+	@Override
+	public boolean addAll(int index, Collection<? extends E> collection) {
 		boolean result = super.addAll(index, collection);
 
-		for (Iterator elements = collection.iterator(); elements.hasNext();) {
+		for (Iterator<? extends E> elements = collection.iterator(); elements
+			.hasNext();) {
 			supersetAdd(elements.next());
 		}
 
 		return result;
 	}
 
-	public Object set(int index, Object object) {
-		Object result = super.set(index, object);
+	@Override
+	public E set(int index, E object) {
+		E result = super.set(index, object);
 
 		supersetAdd(object);
 
@@ -190,7 +209,8 @@ public class SubsetSupersetEObjectEList
 		return result;
 	}
 
-	protected void didRemove(int index, Object oldObject) {
+	@Override
+	protected void didRemove(int index, E oldObject) {
 		super.didRemove(index, oldObject);
 
 		subsetRemove(oldObject);

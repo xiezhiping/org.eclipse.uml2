@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnionEObjectEList.java,v 1.3 2005/09/09 19:16:42 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.4 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 
-/**
- * 
- */
-public class UnionEObjectEList
-		extends EcoreEList.UnmodifiableEList {
+public class UnionEObjectEList<E>
+		extends EcoreEList.UnmodifiableEList<E> {
+
+	private static final long serialVersionUID = 1L;
 
 	public UnionEObjectEList(InternalEObject owner,
 			EStructuralFeature eStructuralFeature, int size, Object[] data) {
@@ -37,11 +36,14 @@ public class UnionEObjectEList
 			: eObject;
 	}
 
-	protected Object resolve(int index, Object object) {
-		EObject resolved = resolveProxy((EObject) object);
+	@SuppressWarnings("unchecked")
+	@Override
+	protected E resolve(int index, E object) {
+		E resolved = (E) resolveProxy((EObject) object);
 
 		if (resolved != object) {
-			Object oldObject = data[index];
+			@SuppressWarnings("unchecked")
+			E oldObject = (E) data[index];
 			assign(index, validate(index, resolved));
 			didSet(index, resolved, oldObject);
 
@@ -51,18 +53,22 @@ public class UnionEObjectEList
 		}
 	}
 
+	@Override
 	protected boolean canContainNull() {
 		return false;
 	}
 
+	@Override
 	protected boolean isUnique() {
 		return true;
 	}
 
+	@Override
 	protected boolean useEquals() {
 		return false;
 	}
 
+	@Override
 	public boolean contains(Object object) {
 		boolean result = super.contains(object);
 
@@ -79,6 +85,7 @@ public class UnionEObjectEList
 		return result;
 	}
 
+	@Override
 	public int indexOf(Object object) {
 		int result = super.indexOf(object);
 
@@ -95,6 +102,7 @@ public class UnionEObjectEList
 		return result;
 	}
 
+	@Override
 	public int lastIndexOf(Object object) {
 		int result = super.lastIndexOf(object);
 
@@ -111,21 +119,24 @@ public class UnionEObjectEList
 		return result;
 	}
 
-	public Iterator iterator() {
+	@Override
+	public Iterator<E> iterator() {
 		return listIterator();
 	}
 
-	public ListIterator listIterator() {
-		return new EListIterator();
+	@Override
+	public ListIterator<E> listIterator() {
+		return new EListIterator<E>();
 	}
 
-	public ListIterator listIterator(int index) {
+	@Override
+	public ListIterator<E> listIterator(int index) {
 
 		if (index < 0 || index > size()) {
 			throw new BasicIndexOutOfBoundsException(index, size);
 		}
 
-		return new EListIterator(index);
+		return new EListIterator<E>(index);
 	}
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetEObjectEList.java,v 1.2 2006/01/05 13:49:53 khussey Exp $
+ * $Id: SupersetEObjectEList.java,v 1.3 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -19,50 +19,40 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
-/**
- * @deprecated Use SubsetSupersetEObjectEList
- */
-public class SupersetEObjectEList
-		extends EObjectEList {
+@Deprecated
+public class SupersetEObjectEList<E>
+		extends EObjectEList<E> {
 
-	public static class Unsettable
-			extends SupersetEObjectEList {
+	private static final long serialVersionUID = 1L;
+
+	public static class Unsettable<E>
+			extends SupersetEObjectEList<E> {
+
+		private static final long serialVersionUID = 1L;
 
 		protected boolean isSet;
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int[] subsetFeatureIDs) {
 			super(dataClass, owner, featureID, subsetFeatureIDs);
 		}
 
-		public Unsettable(Class dataClass, InternalEObject owner,
+		public Unsettable(Class<?> dataClass, InternalEObject owner,
 				int featureID, int subsetFeatureID) {
 			this(dataClass, owner, featureID, new int[]{subsetFeatureID});
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.common.util.BasicEList#didChange()
-		 */
+		@Override
 		protected void didChange() {
 			isSet = true;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#isSet()
-		 */
+		@Override
 		public boolean isSet() {
 			return isSet;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.emf.ecore.EStructuralFeature.Setting#unset()
-		 */
+		@Override
 		public void unset() {
 			super.unset();
 
@@ -80,14 +70,14 @@ public class SupersetEObjectEList
 
 	protected final int[] subsetFeatureIDs;
 
-	public SupersetEObjectEList(Class dataClass, InternalEObject owner,
+	public SupersetEObjectEList(Class<?> dataClass, InternalEObject owner,
 			int featureID, int[] subsetFeatureIDs) {
 		super(dataClass, owner, featureID);
 
 		this.subsetFeatureIDs = subsetFeatureIDs;
 	}
 
-	public SupersetEObjectEList(Class dataClass, InternalEObject owner,
+	public SupersetEObjectEList(Class<?> dataClass, InternalEObject owner,
 			int featureID, int subsetFeatureID) {
 		this(dataClass, owner, featureID, new int[]{subsetFeatureID});
 	}
@@ -101,7 +91,7 @@ public class SupersetEObjectEList
 					.getEStructuralFeature(subsetFeatureIDs[i]);
 
 				if (subsetEStructuralFeature.isMany()) {
-					((EList) owner.eGet(subsetEStructuralFeature))
+					((EList<?>) owner.eGet(subsetEStructuralFeature))
 						.remove(object);
 				} else if (object.equals(owner.eGet(subsetEStructuralFeature))) {
 					owner.eSet(subsetEStructuralFeature, null);
@@ -110,25 +100,15 @@ public class SupersetEObjectEList
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.util.BasicEList#didRemove(int,
-	 *      java.lang.Object)
-	 */
-	protected void didRemove(int index, Object oldObject) {
+	@Override
+	protected void didRemove(int index, E oldObject) {
 		super.didRemove(index, oldObject);
 
 		subsetRemove(oldObject);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.emf.common.notify.impl.NotifyingListImpl#basicSet(int,
-	 *      java.lang.Object, org.eclipse.emf.common.notify.NotificationChain)
-	 */
-	public NotificationChain basicSet(int index, Object object,
+	@Override
+	public NotificationChain basicSet(int index, E object,
 			NotificationChain notifications) {
 		Object oldObject = data[index];
 
@@ -141,13 +121,9 @@ public class SupersetEObjectEList
 		return notifications;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.List#set(int, java.lang.Object)
-	 */
-	public Object set(int index, Object object) {
-		Object result = super.set(index, object);
+	@Override
+	public E set(int index, E object) {
+		E result = super.set(index, object);
 
 		if (result != object) {
 			subsetRemove(result);

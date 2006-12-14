@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.25 2006/10/25 18:12:16 khussey Exp $
+ * $Id: UML2Util.java,v 1.26 2006/12/14 15:47:32 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -27,6 +27,7 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -47,7 +48,6 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -107,11 +107,6 @@ public class UML2Util {
 			this.eObject = eObject;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.EObjectMatcher#matches(org.eclipse.emf.ecore.EObject)
-		 */
 		public boolean matches(EObject otherEObject) {
 			return eObject == null
 				? false
@@ -147,13 +142,9 @@ public class UML2Util {
 			this.eStructuralFeature = eStructuralFeature;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.uml2.common.util.UML2Util.EClassMatcher#matches(org.eclipse.emf.ecore.EObject)
-		 */
+		@Override
 		public boolean matches(EObject otherEObject) {
-			return super.matches(eObject)
+			return super.matches(otherEObject)
 				&& safeEquals(eObject.eGet(eStructuralFeature), otherEObject
 					.eGet(eStructuralFeature));
 		}
@@ -180,8 +171,10 @@ public class UML2Util {
 		 *            The cache of context-specific information.
 		 * @return Another representation of the objects.
 		 */
-		Collection convert(Collection eObjects, Map options,
-				DiagnosticChain diagnostics, Map context);
+		Collection<? extends EObject> convert(
+				Collection<? extends EObject> eObjects,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context);
 
 	}
 
@@ -245,8 +238,8 @@ public class UML2Util {
 	/**
 	 * A cache of resource bundles.
 	 */
-	protected static final Map RESOURCE_BUNDLES = Collections
-		.synchronizedMap(new HashMap());
+	protected static final Map<Resource, Map<Locale, ResourceBundle>> RESOURCE_BUNDLES = Collections
+		.synchronizedMap(new HashMap<Resource, Map<Locale, ResourceBundle>>());
 
 	/**
 	 * The empty string.
@@ -295,9 +288,9 @@ public class UML2Util {
 	 * @return The candidate resource bundle URIs with the base URI and base
 	 *         segment in the locale.
 	 */
-	protected static List getResourceBundleURIs(URI baseURI, Locale locale,
-			String baseSegment) {
-		List resourceBundleURIs = new ArrayList();
+	protected static List<URI> getResourceBundleURIs(URI baseURI,
+			Locale locale, String baseSegment) {
+		List<URI> resourceBundleURIs = new ArrayList<URI>();
 		String language = locale.getLanguage();
 
 		if (language.length() > 0) {
@@ -338,8 +331,8 @@ public class UML2Util {
 	 * @return The candidate resource bundle URIs for the URI in the locale (if
 	 *         specified).
 	 */
-	protected static List getResourceBundleURIs(URI uri, Locale locale) {
-		List resourceBundleURIs = new ArrayList();
+	protected static List<URI> getResourceBundleURIs(URI uri, Locale locale) {
+		List<URI> resourceBundleURIs = new ArrayList<URI>();
 		URI baseURI = uri.trimSegments(1);
 		String baseSegment = uri.trimFileExtension().lastSegment();
 
@@ -379,11 +372,12 @@ public class UML2Util {
 		Resource resource = eObject.eResource();
 
 		if (resource != null) {
-			Map resourceBundles = (Map) RESOURCE_BUNDLES.get(resource);
+			Map<Locale, ResourceBundle> resourceBundles = RESOURCE_BUNDLES
+				.get(resource);
 
 			if (resourceBundles == null) {
 				RESOURCE_BUNDLES.put(resource, resourceBundles = Collections
-					.synchronizedMap(new HashMap()));
+					.synchronizedMap(new HashMap<Locale, ResourceBundle>()));
 			}
 
 			if (!resourceBundles.containsKey(locale)) {
@@ -393,9 +387,10 @@ public class UML2Util {
 					: resourceSet.getURIConverter();
 
 				URI uri = resource.getURI();
-				List resourceBundleURIs = getResourceBundleURIs(uri, locale);
+				List<URI> resourceBundleURIs = getResourceBundleURIs(uri,
+					locale);
 
-				if (EcorePlugin.IS_ECLIPSE_RUNNING) {
+				if (EMFPlugin.IS_ECLIPSE_RUNNING) {
 					URI normalizedURI = uriConverter.normalize(uri);
 					int segmentCount = normalizedURI.segmentCount();
 
@@ -410,7 +405,7 @@ public class UML2Util {
 							Bundle[] fragments = Platform.getFragments(bundle);
 
 							if (fragments != null) {
-								String[] trailingSegments = (String[]) normalizedURI
+								String[] trailingSegments = normalizedURI
 									.segmentsList().subList(2, segmentCount)
 									.toArray(new String[]{});
 
@@ -430,12 +425,12 @@ public class UML2Util {
 
 				ResourceBundle resourceBundle = null;
 
-				for (Iterator rbu = resourceBundleURIs.iterator(); rbu
+				for (Iterator<URI> rbu = resourceBundleURIs.iterator(); rbu
 					.hasNext();) {
 
 					try {
 						InputStream inputStream = uriConverter
-							.createInputStream((URI) rbu.next());
+							.createInputStream(rbu.next());
 						try {
 							resourceBundle = new PropertyResourceBundle(
 								inputStream);
@@ -451,7 +446,7 @@ public class UML2Util {
 				resourceBundles.put(locale, resourceBundle);
 			}
 
-			return (ResourceBundle) resourceBundles.get(locale);
+			return resourceBundles.get(locale);
 		}
 
 		return null;
@@ -570,7 +565,7 @@ public class UML2Util {
 			if (eContainingFeature.isMany()) {
 				qualifiedText.append(' ');
 
-				List list = (List) eObject.eContainer().eGet(
+				List<?> list = (List<?>) eObject.eContainer().eGet(
 					eContainingFeature, false);
 
 				qualifiedText.append('[');
@@ -587,7 +582,8 @@ public class UML2Util {
 		return qualifiedText;
 	}
 
-	protected static String getMessageSubstitution(Map context, Object object) {
+	protected static String getMessageSubstitution(Map<Object, Object> context,
+			Object object) {
 
 		if (object instanceof EObject) {
 			EObject eObject = (EObject) object;
@@ -621,19 +617,20 @@ public class UML2Util {
 		}
 	}
 
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0) {
+	protected static Object[] getMessageSubstitutions(
+			Map<Object, Object> context, Object object0) {
 		return new Object[]{getMessageSubstitution(context, object0)};
 	}
 
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0, Object object1) {
+	protected static Object[] getMessageSubstitutions(
+			Map<Object, Object> context, Object object0, Object object1) {
 		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1)};
 	}
 
-	protected static Object[] getMessageSubstitutions(Map context,
-			Object object0, Object object1, Object object2) {
+	protected static Object[] getMessageSubstitutions(
+			Map<Object, Object> context, Object object0, Object object1,
+			Object object2) {
 		return new Object[]{getMessageSubstitution(context, object0),
 			getMessageSubstitution(context, object1),
 			getMessageSubstitution(context, object2)};
@@ -680,7 +677,8 @@ public class UML2Util {
 	 *            The matcher to be used.
 	 * @return The first object that matches the criteria.
 	 */
-	public static EObject findEObject(Collection eObjects, EObjectMatcher filter) {
+	public static <T> T findEObject(Collection<? extends EObject> eObjects,
+			EObjectMatcher filter) {
 		return findEObject(eObjects.iterator(), filter);
 	}
 
@@ -694,13 +692,16 @@ public class UML2Util {
 	 *            The matcher to be used.
 	 * @return The first object that matches the criteria.
 	 */
-	public static EObject findEObject(Iterator iterator, EObjectMatcher filter) {
+	public static <T> T findEObject(Iterator<? extends EObject> iterator,
+			EObjectMatcher filter) {
 
 		while (iterator.hasNext()) {
-			EObject eObject = (EObject) iterator.next();
+			EObject eObject = iterator.next();
 
 			if (filter.matches(eObject)) {
-				return eObject;
+				@SuppressWarnings("unchecked")
+				T t = (T) eObject;
+				return t;
 			}
 		}
 
@@ -713,14 +714,15 @@ public class UML2Util {
 		if (eType == null || eType.equals(otherEType)) {
 			return eType;
 		} else {
-			return (EClassifier) new EcoreSwitch() {
+			return new EcoreSwitch<EClassifier>() {
 
-				public Object caseEClassifier(EClassifier eClassifier) {
-
+				@Override
+				public EClassifier caseEClassifier(EClassifier eClassifier) {
 					return EcorePackage.eINSTANCE.getEObject();
 				}
 
-				public Object caseEClass(EClass eClass) {
+				@Override
+				public EClassifier caseEClass(EClass eClass) {
 
 					if (otherEType instanceof EClass) {
 						EClass otherEClass = (EClass) otherEType;
@@ -731,23 +733,22 @@ public class UML2Util {
 							return otherEClass;
 						}
 
-						for (Iterator eAllSuperTypes = eClass
+						for (Iterator<EClass> eAllSuperTypes = eClass
 							.getEAllSuperTypes().iterator(); eAllSuperTypes
 							.hasNext();) {
 
-							EClass eSuperType = (EClass) eAllSuperTypes.next();
+							EClass eSuperType = eAllSuperTypes.next();
 
 							if (eSuperType.isSuperTypeOf(otherEClass)) {
 								return eSuperType;
 							}
 						}
 
-						for (Iterator otherEAllSuperTypes = otherEClass
+						for (Iterator<EClass> otherEAllSuperTypes = otherEClass
 							.getEAllSuperTypes().iterator(); otherEAllSuperTypes
 							.hasNext();) {
 
-							EClass otherESuperType = (EClass) otherEAllSuperTypes
-								.next();
+							EClass otherESuperType = otherEAllSuperTypes.next();
 
 							if (otherESuperType.isSuperTypeOf(eClass)) {
 								return otherESuperType;
@@ -758,7 +759,8 @@ public class UML2Util {
 					return super.caseEClass(eClass);
 				}
 
-				public Object caseEDataType(EDataType eDataType) {
+				@Override
+				public EClassifier caseEDataType(EDataType eDataType) {
 					return otherEType instanceof EDataType
 						&& eDataType.getInstanceClass().equals(
 							((EDataType) otherEType).getInstanceClass())
@@ -766,7 +768,8 @@ public class UML2Util {
 						: EcorePackage.eINSTANCE.getEJavaObject();
 				}
 
-				public Object caseEEnum(EEnum eEnum) {
+				@Override
+				public EClassifier caseEEnum(EEnum eEnum) {
 					return otherEType instanceof EEnum
 						? EcorePackage.eINSTANCE.getEEnumerator()
 						: EcorePackage.eINSTANCE.getEJavaObject();
@@ -942,7 +945,7 @@ public class UML2Util {
 	 *            The classifier in question.
 	 * @return The number of the instances of the classifier.
 	 */
-	public static int getInstanceCount(Iterator iterator,
+	public static int getInstanceCount(Iterator<?> iterator,
 			EClassifier eClassifier) {
 		int count = 0;
 
@@ -962,7 +965,7 @@ public class UML2Util {
 		if (isEmpty(constraint)) {
 			return false;
 		} else {
-			List constraints = new ArrayList(EcoreUtil
+			List<String> constraints = new ArrayList<String>(EcoreUtil
 				.getConstraints(eModelElement));
 
 			boolean result = constraints.add(constraint);
@@ -985,11 +988,12 @@ public class UML2Util {
 		}
 	}
 
-	protected static Collection getRootContainers(Collection eObjects) {
-		Collection rootContainers = new UniqueEList.FastCompare();
+	protected static Collection<EObject> getRootContainers(
+			Collection<? extends EObject> eObjects) {
+		Collection<EObject> rootContainers = new UniqueEList.FastCompare<EObject>();
 
-		for (Iterator i = eObjects.iterator(); i.hasNext();) {
-			rootContainers.add(EcoreUtil.getRootContainer((EObject) i.next()));
+		for (Iterator<? extends EObject> i = eObjects.iterator(); i.hasNext();) {
+			rootContainers.add(EcoreUtil.getRootContainer(i.next()));
 		}
 
 		return rootContainers;
@@ -1008,14 +1012,19 @@ public class UML2Util {
 	 *            Whether to copy contents while iterating.
 	 * @return A content tree iterator.
 	 */
-	public static TreeIterator getAllContents(EObject eObject,
+	public static <T> TreeIterator<T> getAllContents(EObject eObject,
 			boolean includeRoot, final boolean defensiveCopy) {
-		return new AbstractTreeIterator(eObject, includeRoot) {
+		return new AbstractTreeIterator<T>(eObject, includeRoot) {
 
-			protected Iterator getChildren(Object object) {
-				return defensiveCopy
-					? new ArrayList(((EObject) object).eContents()).iterator()
-					: ((EObject) object).eContents().iterator();
+			private static final long serialVersionUID = 1L;
+
+			@SuppressWarnings("unchecked")
+			@Override
+			protected Iterator<T> getChildren(Object object) {
+				return (Iterator<T>) (defensiveCopy
+					? new ArrayList<EObject>(((EObject) object).eContents())
+						.iterator()
+					: ((EObject) object).eContents().iterator());
 			}
 		};
 	}
@@ -1068,11 +1077,12 @@ public class UML2Util {
 	 *            The referenced object.
 	 * @return The non-navigable inverse references to the object.
 	 */
-	public static Collection getNonNavigableInverseReferences(EObject eObject) {
+	public static Collection<EStructuralFeature.Setting> getNonNavigableInverseReferences(
+			EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null
-			? Collections.EMPTY_LIST
+			? Collections.<EStructuralFeature.Setting> emptyList()
 			: crossReferenceAdapter.getNonNavigableInverseReferences(eObject);
 	}
 
@@ -1083,45 +1093,39 @@ public class UML2Util {
 	 *            The referenced object.
 	 * @return The inverse references to the object.
 	 */
-	public static Collection getInverseReferences(EObject eObject) {
+	public static Collection<EStructuralFeature.Setting> getInverseReferences(
+			EObject eObject) {
 		ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter
 			.getCrossReferenceAdapter(eObject);
 		return crossReferenceAdapter == null
-			? Collections.EMPTY_LIST
+			? Collections.<EStructuralFeature.Setting> emptyList()
 			: crossReferenceAdapter.getInverseReferences(eObject);
 	}
 
 	protected static void removeReferences(EObject eObject,
 			EObject ancestorEObject) {
-		List nonNavigableInverseReferences = new ArrayList(
-			getNonNavigableInverseReferences(eObject));
 
-		for (Iterator nnir = nonNavigableInverseReferences.iterator(); nnir
-			.hasNext();) {
+		for (EStructuralFeature.Setting nonNavigableInverseReference : new ArrayList<EStructuralFeature.Setting>(
+			getNonNavigableInverseReferences(eObject))) {
 
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) nnir
-				.next();
-
-			if (setting.getEStructuralFeature().isChangeable()
+			if (nonNavigableInverseReference.getEStructuralFeature()
+				.isChangeable()
 				&& (ancestorEObject == null || !EcoreUtil.isAncestor(
-					ancestorEObject, setting.getEObject()))) {
+					ancestorEObject, nonNavigableInverseReference.getEObject()))) {
 
-				EcoreUtil.remove(setting, eObject);
+				EcoreUtil.remove(nonNavigableInverseReference, eObject);
 			}
 		}
 
-		for (Iterator eAllReferences = eObject.eClass().getEAllReferences()
-			.iterator(); eAllReferences.hasNext();) {
-
-			EReference eReference = (EReference) eAllReferences.next();
+		for (EReference eReference : eObject.eClass().getEAllReferences()) {
 
 			if (eReference.isChangeable() && !eReference.isContainer()
 				&& !eReference.isContainment() && eObject.eIsSet(eReference)) {
 
 				if (eReference.isMany()) {
 
-					for (Iterator values = ((List) eObject.eGet(eReference))
-						.iterator(); values.hasNext();) {
+					for (Iterator<?> values = ((List<?>) eObject
+						.eGet(eReference)).iterator(); values.hasNext();) {
 
 						Object value = values.next();
 
@@ -1152,26 +1156,26 @@ public class UML2Util {
 			eObject.eAdapters().clear();
 		} else {
 
-			for (Iterator allContents = getAllContents(eObject, true, false); allContents
-				.hasNext();) {
+			for (Iterator<EObject> allContents = getAllContents(eObject, true,
+				false); allContents.hasNext();) {
 
-				removeReferences((EObject) allContents.next(), eObject);
+				removeReferences(allContents.next(), eObject);
 			}
 
-			for (Iterator allContents = getAllContents(eObject, true, false); allContents
-				.hasNext();) {
+			for (Iterator<EObject> allContents = getAllContents(eObject, true,
+				false); allContents.hasNext();) {
 
-				((EObject) allContents.next()).eAdapters().clear();
+				(allContents.next()).eAdapters().clear();
 			}
 		}
 
 		EcoreUtil.remove(eObject);
 	}
 
-	protected static void destroyAll(Collection eObjects) {
+	protected static void destroyAll(Collection<? extends EObject> eObjects) {
 
-		for (Iterator o = eObjects.iterator(); o.hasNext();) {
-			destroy((EObject) o.next());
+		for (Iterator<? extends EObject> o = eObjects.iterator(); o.hasNext();) {
+			destroy(o.next());
 		}
 	}
 
@@ -1188,29 +1192,20 @@ public class UML2Util {
 	 *            The class of the object to be retrieved.
 	 * @return The first instance of the class in the resource.
 	 */
-	public static Object load(ResourceSet resourceSet, URI uri, EClass eClass) {
+	public static <T> T load(ResourceSet resourceSet, URI uri, EClass eClass) {
 
 		try {
-			return EcoreUtil.getObjectByType(resourceSet.getResource(uri, true)
-				.getContents(), eClass);
+			@SuppressWarnings("unchecked")
+			T objectByType = (T) EcoreUtil.getObjectByType(resourceSet
+				.getResource(uri, true).getContents(), eClass);
+			return objectByType;
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	protected static boolean intersect(Collection collection,
-			Collection otherCollection) {
-
-		if (!collection.isEmpty() && !collection.isEmpty()) {
-
-			for (Iterator c = collection.iterator(); c.hasNext();) {
-
-				if (otherCollection.contains(c.next())) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+	protected static boolean intersect(Collection<?> collection,
+			Collection<?> otherCollection) {
+		return !Collections.disjoint(collection, otherCollection);
 	}
 }
