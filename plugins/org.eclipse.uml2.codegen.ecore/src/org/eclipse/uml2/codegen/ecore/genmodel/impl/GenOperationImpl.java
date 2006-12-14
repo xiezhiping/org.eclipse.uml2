@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.10 2005/12/12 21:43:54 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.11 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -48,13 +48,6 @@ public class GenOperationImpl
 		implements GenOperation {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
-
-	/**
 	 * The default value of the '{@link #getCacheAdapterScope() <em>Cache Adapter Scope</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,6 +81,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return GenModelPackage.Literals.GEN_OPERATION;
 	}
@@ -122,6 +116,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
@@ -135,6 +130,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
@@ -149,6 +145,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
@@ -163,6 +160,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
@@ -176,6 +174,7 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

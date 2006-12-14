@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.12 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.13 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -40,13 +40,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 public class GenPackageImpl
 		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenPackageImpl
 		implements GenPackage {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isResourceInterfaces() <em>Resource Interfaces</em>}' attribute.
@@ -102,6 +95,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return GenModelPackage.Literals.GEN_PACKAGE;
 	}
@@ -160,6 +154,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
@@ -177,6 +172,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
@@ -194,6 +190,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
@@ -211,6 +208,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
@@ -228,6 +226,7 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

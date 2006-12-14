@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenCacheAdapterScope.java,v 1.4 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenCacheAdapterScope.java,v 1.5 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.AbstractEnumerator;
 
 /**

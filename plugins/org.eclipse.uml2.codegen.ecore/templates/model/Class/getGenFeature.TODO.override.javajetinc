@@ -4,6 +4,9 @@
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
 		if (cache != null)
 		{
+      <%if (genModel.useGenerics() && genOperation.isUncheckedCast()) {%>
+			@SuppressWarnings("unchecked")
+      <%}%>
 			<%=genOperation.getObjectType()%> result = (<%=genOperation.getObjectType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (result == null)
 			{
@@ -20,6 +23,9 @@
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
 		if (cache != null) {
 			<%=genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")%> eResource = eResource();
+        <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
+			@SuppressWarnings("unchecked")
+        <%}%>
 			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (<%=genFeature.getSafeName()%> == null)
 			{
@@ -37,6 +43,9 @@
 			try
 			{
 				<%=genModel.getImportedName("java.lang.reflect.Method")%> method = getClass().getMethod("<%=genFeature.getGetAccessor()%>", null);<%=genModel.getNonNLS()%>
+            <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
+				@SuppressWarnings("unchecked")
+            <%}%>
 				<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, method);
 				if (<%=genFeature.getSafeName()%> == null)
 				{
@@ -50,6 +59,9 @@
 				// ignore
 			}
               <%} else {%>
+            <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
+				@SuppressWarnings("unchecked")
+            <%}%>
 			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (<%=genFeature.getSafeName()%> == null)
 			{

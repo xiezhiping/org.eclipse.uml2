@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.5 2006/04/10 19:15:59 khussey Exp $
+ * $Id: GenFeature.java,v 1.6 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -33,13 +33,6 @@ import java.util.List;
 public interface GenFeature
 		extends org.eclipse.emf.codegen.ecore.genmodel.GenFeature,
 		GenTypedElement {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Key</b></em>' attribute.

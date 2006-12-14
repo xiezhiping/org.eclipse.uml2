@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackageImpl.java,v 1.4 2005/12/12 21:43:54 khussey Exp $
+ * $Id: GenModelPackageImpl.java,v 1.5 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -47,13 +47,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
 public class GenModelPackageImpl
 		extends EPackageImpl
 		implements GenModelPackage {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -517,6 +510,10 @@ public class GenModelPackageImpl
 			.getEPackage(org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
 			.getEPackage(EcorePackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		genBaseEClass.getESuperTypes().add(theGenModelPackage_1.getGenBase());

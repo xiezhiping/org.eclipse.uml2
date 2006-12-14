@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.14 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenClass.java,v 1.15 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -31,13 +31,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public interface GenClass
 		extends org.eclipse.emf.codegen.ecore.genmodel.GenClass, GenClassifier {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	String getOperationsClassName();
 

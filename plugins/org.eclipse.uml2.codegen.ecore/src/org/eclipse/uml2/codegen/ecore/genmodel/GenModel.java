@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModel.java,v 1.3 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenModel.java,v 1.4 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -34,13 +34,6 @@ package org.eclipse.uml2.codegen.ecore.genmodel;
  */
 public interface GenModel
 		extends org.eclipse.emf.codegen.ecore.genmodel.GenModel, GenBase {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Returns the value of the '<em><b>Factory Methods</b></em>' attribute.

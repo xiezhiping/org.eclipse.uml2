@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelAdapterFactory.java,v 1.2 2005/05/25 21:24:30 khussey Exp $
+ * $Id: GenModelAdapterFactory.java,v 1.3 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -31,13 +31,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.*;
  */
 public class GenModelAdapterFactory
 		extends AdapterFactoryImpl {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The cached model package.
@@ -67,6 +60,7 @@ public class GenModelAdapterFactory
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -83,117 +77,142 @@ public class GenModelAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GenModelSwitch modelSwitch = new GenModelSwitch() {
+	protected GenModelSwitch<Adapter> modelSwitch = new GenModelSwitch<Adapter>() {
 
-		public Object caseGenBase(GenBase object) {
+		@Override
+		public Adapter caseGenBase(GenBase object) {
 			return createGenBaseAdapter();
 		}
 
-		public Object caseGenClass(GenClass object) {
+		@Override
+		public Adapter caseGenClass(GenClass object) {
 			return createGenClassAdapter();
 		}
 
-		public Object caseGenClassifier(GenClassifier object) {
+		@Override
+		public Adapter caseGenClassifier(GenClassifier object) {
 			return createGenClassifierAdapter();
 		}
 
-		public Object caseGenDataType(GenDataType object) {
+		@Override
+		public Adapter caseGenDataType(GenDataType object) {
 			return createGenDataTypeAdapter();
 		}
 
-		public Object caseGenEnum(GenEnum object) {
+		@Override
+		public Adapter caseGenEnum(GenEnum object) {
 			return createGenEnumAdapter();
 		}
 
-		public Object caseGenEnumLiteral(GenEnumLiteral object) {
+		@Override
+		public Adapter caseGenEnumLiteral(GenEnumLiteral object) {
 			return createGenEnumLiteralAdapter();
 		}
 
-		public Object caseGenFeature(GenFeature object) {
+		@Override
+		public Adapter caseGenFeature(GenFeature object) {
 			return createGenFeatureAdapter();
 		}
 
-		public Object caseGenModel(GenModel object) {
+		@Override
+		public Adapter caseGenModel(GenModel object) {
 			return createGenModelAdapter();
 		}
 
-		public Object caseGenOperation(GenOperation object) {
+		@Override
+		public Adapter caseGenOperation(GenOperation object) {
 			return createGenOperationAdapter();
 		}
 
-		public Object caseGenPackage(GenPackage object) {
+		@Override
+		public Adapter caseGenPackage(GenPackage object) {
 			return createGenPackageAdapter();
 		}
 
-		public Object caseGenParameter(GenParameter object) {
+		@Override
+		public Adapter caseGenParameter(GenParameter object) {
 			return createGenParameterAdapter();
 		}
 
-		public Object caseGenTypedElement(GenTypedElement object) {
+		@Override
+		public Adapter caseGenTypedElement(GenTypedElement object) {
 			return createGenTypedElementAdapter();
 		}
 
-		public Object caseGenModel_GenBase(
+		@Override
+		public Adapter caseGenModel_GenBase(
 				org.eclipse.emf.codegen.ecore.genmodel.GenBase object) {
 			return createGenModel_GenBaseAdapter();
 		}
 
-		public Object caseGenModel_GenClassifier(
+		@Override
+		public Adapter caseGenModel_GenClassifier(
 				org.eclipse.emf.codegen.ecore.genmodel.GenClassifier object) {
 			return createGenModel_GenClassifierAdapter();
 		}
 
-		public Object caseGenModel_GenClass(
+		@Override
+		public Adapter caseGenModel_GenClass(
 				org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
 			return createGenModel_GenClassAdapter();
 		}
 
-		public Object caseGenModel_GenDataType(
+		@Override
+		public Adapter caseGenModel_GenDataType(
 				org.eclipse.emf.codegen.ecore.genmodel.GenDataType object) {
 			return createGenModel_GenDataTypeAdapter();
 		}
 
-		public Object caseGenModel_GenEnum(
+		@Override
+		public Adapter caseGenModel_GenEnum(
 				org.eclipse.emf.codegen.ecore.genmodel.GenEnum object) {
 			return createGenModel_GenEnumAdapter();
 		}
 
-		public Object caseGenModel_GenEnumLiteral(
+		@Override
+		public Adapter caseGenModel_GenEnumLiteral(
 				org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral object) {
 			return createGenModel_GenEnumLiteralAdapter();
 		}
 
-		public Object caseGenModel_GenTypedElement(
+		@Override
+		public Adapter caseGenModel_GenTypedElement(
 				org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement object) {
 			return createGenModel_GenTypedElementAdapter();
 		}
 
-		public Object caseGenModel_GenFeature(
+		@Override
+		public Adapter caseGenModel_GenFeature(
 				org.eclipse.emf.codegen.ecore.genmodel.GenFeature object) {
 			return createGenModel_GenFeatureAdapter();
 		}
 
-		public Object caseGenModel_GenModel(
+		@Override
+		public Adapter caseGenModel_GenModel(
 				org.eclipse.emf.codegen.ecore.genmodel.GenModel object) {
 			return createGenModel_GenModelAdapter();
 		}
 
-		public Object caseGenModel_GenOperation(
+		@Override
+		public Adapter caseGenModel_GenOperation(
 				org.eclipse.emf.codegen.ecore.genmodel.GenOperation object) {
 			return createGenModel_GenOperationAdapter();
 		}
 
-		public Object caseGenModel_GenPackage(
+		@Override
+		public Adapter caseGenModel_GenPackage(
 				org.eclipse.emf.codegen.ecore.genmodel.GenPackage object) {
 			return createGenModel_GenPackageAdapter();
 		}
 
-		public Object caseGenModel_GenParameter(
+		@Override
+		public Adapter caseGenModel_GenParameter(
 				org.eclipse.emf.codegen.ecore.genmodel.GenParameter object) {
 			return createGenModel_GenParameterAdapter();
 		}
 
-		public Object defaultCase(EObject object) {
+		@Override
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};
@@ -206,8 +225,9 @@ public class GenModelAdapterFactory
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter) modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2006 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelFactoryImpl.java,v 1.4 2005/11/21 19:36:53 khussey Exp $
+ * $Id: GenModelFactoryImpl.java,v 1.5 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -33,13 +33,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.*;
 public class GenModelFactoryImpl
 		extends EFactoryImpl
 		implements GenModelFactory {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * Creates the default factory implementation.
@@ -75,6 +68,7 @@ public class GenModelFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case GenModelPackage.GEN_CLASS :
@@ -106,6 +100,7 @@ public class GenModelFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE :
@@ -122,6 +117,7 @@ public class GenModelFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case GenModelPackage.GEN_CACHE_ADAPTER_SCOPE :
@@ -264,6 +260,7 @@ public class GenModelFactoryImpl
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static GenModelPackage getPackage() {
 		return GenModelPackage.eINSTANCE;
 	}

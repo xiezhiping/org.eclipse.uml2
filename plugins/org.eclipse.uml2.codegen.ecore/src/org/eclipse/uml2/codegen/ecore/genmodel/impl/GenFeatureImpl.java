@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.18 2006/10/10 20:40:40 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.19 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -44,13 +45,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 public class GenFeatureImpl
 		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenFeatureImpl
 		implements GenFeature {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isKey() <em>Key</em>}' attribute.
@@ -86,6 +80,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return GenModelPackage.Literals.GEN_FEATURE;
 	}
@@ -120,6 +115,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__KEY :
@@ -135,6 +131,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__KEY :
@@ -149,6 +146,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__KEY :
@@ -163,6 +161,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_FEATURE__KEY :
@@ -176,6 +175,7 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -359,6 +359,29 @@ public class GenFeatureImpl
 		return super.getListItemType();
 	}
 
+	public String getListItemType() {
+		return getRedefinedListItemType();
+	}
+
+	public String getImportedType() {
+
+		if (isListType()) {
+
+			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
+				.iterator(); redefinedGenFeatures.hasNext();) {
+
+				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
+					.next();
+
+				if (getName().equals(redefinedGenFeature.getName())) {
+					return redefinedGenFeature.getImportedType();
+				}
+			}
+		}
+
+		return super.getImportedType();
+	}
+
 	public List getKeyGenFeatures() {
 		List keyGenFeatures = new ArrayList();
 
@@ -414,11 +437,24 @@ public class GenFeatureImpl
 					if (count == index) {
 
 						if (formal) {
-							keyFeatureParameter.append(keyGenFeature
-								.isListType()
-								? getGenModel().getImportedName(
-									"org.eclipse.emf.common.util.EList") //$NON-NLS-1$
-								: nestedKeyGenFeature.getImportedType());
+
+							if (keyGenFeature.isListType()) {
+								keyFeatureParameter.append(getGenModel()
+									.getImportedName(
+										"org.eclipse.emf.common.util.EList")); //$NON-NLS-1$
+
+								if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+									keyFeatureParameter.append('<');
+									keyFeatureParameter
+										.append(nestedKeyGenFeature
+											.getListItemType());
+									keyFeatureParameter.append('>');
+								}
+							} else {
+								keyFeatureParameter.append(nestedKeyGenFeature
+									.getImportedType());
+							}
+
 							keyFeatureParameter.append(' ');
 						}
 

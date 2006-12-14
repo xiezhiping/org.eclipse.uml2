@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.20 2006/12/07 13:45:23 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.21 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -34,13 +34,6 @@ import org.eclipse.emf.ecore.EPackage;
  */
 public interface GenModelPackage
 		extends EPackage {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The package name.

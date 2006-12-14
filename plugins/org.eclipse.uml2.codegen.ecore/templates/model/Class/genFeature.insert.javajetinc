@@ -59,10 +59,13 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
+	<%=genFeature.getListItemType()%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass);
 
     <%} else { int index = 0;%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
+      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+      <%}%>
+	public <%=genFeature.getListItemType()%> create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>, <%}%><%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass)
 	{
 		<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> new<%=genFeature.getCapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) create(eClass);
       <%if (genFeature.isListType()) {%>
@@ -132,10 +135,13 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
+	<%=genFeature.getListItemType()%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
 
     <%} else { int index = 0;%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
+      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+      <%}%>
+	public <%=genFeature.getListItemType()%> create<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
 	{
       <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
 		return create<%=genFeature.getCapName()%>(<%if (!keyGenFeatures.isEmpty()) {%><%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%>, <%}%><%=genFeature.getTypeGenClass().getQualifiedClassifierAccessor()%>);
@@ -200,10 +206,13 @@
 	 */
       <%}%>
       <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
+	<%=genFeature.getListItemType()%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>);
 
       <%} else {%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
+      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+      <%}%>
+	public <%=genFeature.getListItemType()%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%>)
 	{
 		return get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature, false)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, false<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, null<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, false<%}%>);
 	}
@@ -239,14 +248,22 @@
 	 */
     <%}%>
     <%if (!isImplementation) {%>
-	<%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>);
+	<%=genFeature.getListItemType()%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>);
 
     <%} else { int index = 0;%>
-	public <%=UML2GenModelUtil.getRedefinedListItemType(genFeature)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>)
+      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+      <%}%>
+	public <%=genFeature.getListItemType()%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>)
 	{
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+		<%=genFeature.getUncapName()%>Loop: for (<%=genModel.getImportedName(genFeature.getListItemType())%> <%=genFeature.getUncapName()%> : <%=genFeature.getGetAccessor()%>())
+		{
+      <%} else {%>
 		<%=genFeature.getUncapName()%>Loop: for (<%=genModel.getImportedName("java.util.Iterator")%> i = <%=genFeature.getGetAccessor()%>().iterator(); i.hasNext(); )
 		{
 			<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%> <%=genFeature.getUncapName()%> = (<%=genModel.getImportedName(genFeature.getQualifiedListItemType())%>) i.next();
+      <%}%>
       <%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>
 			if (eClass != null && !eClass.isInstance(<%=genFeature.getUncapName()%>))
 				continue <%=genFeature.getUncapName()%>Loop;
@@ -260,10 +277,10 @@
 				continue  <%=genFeature.getUncapName()%>Loop;
 			for (int j = 0; j < <%=keyGenFeature.getUncapName()%>ListSize; j++)
 			{
-				<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%> <%=keyGenFeature.getUncapName()%> = (<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%>) <%=keyGenFeature.getUncapName()%>List.get(j);
+				<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%> <%=keyGenFeature.getUncapName()%> = <%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>(<%=genModel.getImportedName(keyGenFeature.getQualifiedListItemType())%>) <%}%><%=keyGenFeature.getUncapName()%>List.get(j);
             <%for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();%>
               <%if (nestedKeyGenFeature.isStringType()) {%>
-				if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !(ignoreCase ? ((<%=genModel.getImportedName("java.lang.String")%>)<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j)).equalsIgnoreCase(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()) : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j).equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>())))
+				if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !(ignoreCase ? (<%if (genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>(<%=genModel.getImportedName("java.lang.String")%>)<%}%><%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j)).equalsIgnoreCase(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()) : <%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j).equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>())))
               <%} else {%>
 				if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.get(j).equals(<%=keyGenFeature.getUncapName()%>.<%=nestedKeyGenFeature.getGetAccessor()%>()))
               <%}%>
@@ -310,6 +327,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+  <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+  <%}%>
 	public boolean isSet<%=genFeature.getAccessorName()%>()
 	{
   <%if (!genFeature.isUnsettable()) {%>
@@ -357,26 +377,26 @@
     <%} else if (genFeature.isPrimitiveType() || genFeature.isEnumType()) {%>
       <%if (genClass.isField(genFeature)) {%>
         <%if (genClass.isFlag(genFeature)) {%>
-		return ((<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != 0) != <%=genFeature.getUpperName()%>_EDEFAULT;
+		return ((<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != 0) != <%=genFeature.getEDefault()%>;
         <%} else {%>
-		return <%=genFeature.getSafeName()%> != <%=genFeature.getUpperName()%>_EDEFAULT;
+		return <%=genFeature.getSafeName()%> != <%=genFeature.getEDefault()%>;
         <%}%>
       <%} else {%>
         <%if (genFeature.isEnumType() && genFeature.isField() && genClass.getImplementingGenModel(genFeature).isVirtualDelegation()) {%>
-		return eVirtualGet(<%=genClass.getQualifiedFeatureID(genFeature)%>, <%=genFeature.getUpperName()%>_EDEFAULT) != <%=genFeature.getUpperName()%>_EDEFAULT;
+		return eVirtualGet(<%=genClass.getQualifiedFeatureID(genFeature)%>, <%=genFeature.getEDefault()%>) != <%=genFeature.getEDefault()%>;
         <%} else {%>
-		return <%=genFeature.getGetAccessor()%>() != <%=genFeature.getUpperName()%>_EDEFAULT;
+		return <%=genFeature.getGetAccessor()%>() != <%=genFeature.getEDefault()%>;
         <%}%>
       <%}%>
     <%} else {//datatype%>
       <%if (genClass.isField(genFeature)) {%>
-		return <%=genFeature.getUpperName()%>_EDEFAULT == null ? <%=genFeature.getSafeName()%> != null : !<%=genFeature.getUpperName()%>_EDEFAULT.equals(<%=genFeature.getSafeName()%>);
+		return <%=genFeature.getEDefault()%> == null ? <%=genFeature.getSafeName()%> != null : !<%=genFeature.getEDefault()%>.equals(<%=genFeature.getSafeName()%>);
       <%} else {%>
         <%if (genFeature.isField() && genClass.getImplementingGenModel(genFeature).isVirtualDelegation()) {%>
-		<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>)eVirtualGet(<%=genClass.getQualifiedFeatureID(genFeature)%>, <%=genFeature.getUpperName()%>_EDEFAULT);
-		return <%=genFeature.getUpperName()%>_EDEFAULT == null ? <%=genFeature.getSafeName()%> != null : !<%=genFeature.getUpperName()%>_EDEFAULT.equals(<%=genFeature.getSafeName()%>);
+		<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>)eVirtualGet(<%=genClass.getQualifiedFeatureID(genFeature)%>, <%=genFeature.getEDefault()%>);
+		return <%=genFeature.getEDefault()%> == null ? <%=genFeature.getSafeName()%> != null : !<%=genFeature.getEDefault()%>.equals(<%=genFeature.getSafeName()%>);
         <%} else {%>
-		return <%=genFeature.getUpperName()%>_EDEFAULT == null ? <%=genFeature.getGetAccessor()%>() != null : !<%=genFeature.getUpperName()%>_EDEFAULT.equals(<%=genFeature.getGetAccessor()%>());
+		return <%=genFeature.getEDefault()%> == null ? <%=genFeature.getGetAccessor()%>() != null : !<%=genFeature.getEDefault()%>.equals(<%=genFeature.getGetAccessor()%>());
         <%}%>
       <%}%>
     <%}%>
@@ -388,7 +408,7 @@
         <%if (genModel.isVirtualDelegation()) {%>
 		<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>)eVirtualGet(<%=genClass.getQualifiedFeatureID(genFeature)%>);
         <%}%>
-		return <%=genFeature.getSafeName()%> != null && ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>.Unsettable)<%=genFeature.getSafeName()%>).isSet();
+		return <%=genFeature.getSafeName()%> != null && ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>.Unsettable<%=singleWildcard%>)<%=genFeature.getSafeName()%>).isSet();
       <%} else {%>
         <%if (genModel.isVirtualDelegation() && !genFeature.isPrimitiveType()) {%>
 		return eVirtualIsSet(<%=genClass.getQualifiedFeatureID(genFeature)%>);

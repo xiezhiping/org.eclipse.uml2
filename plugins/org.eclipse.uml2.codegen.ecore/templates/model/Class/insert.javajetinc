@@ -39,6 +39,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+         <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+	@Override
+         <%}%>
 	protected <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>Helper(<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%>)
 	{
           <%if (genClass.getExtendedGenFeatures().contains(genFeature)) {%>
@@ -55,7 +58,7 @@
                   <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
 		if (isSet<%=subsetGenFeature.getAccessorName()%>())
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -64,7 +67,7 @@
                     <%if (genClass.isField(subsetGenFeature)) {%>
 		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>))
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -73,7 +76,7 @@
 		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty())
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -128,6 +131,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+    <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+	@Override
+    <%}%>
 	public boolean isSet<%=genFeature.getAccessorName()%>()
 	{
     <%if (!UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).isEmpty()) { boolean first = true;%>
@@ -178,13 +184,22 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+	@Override
+      <%}%>
 	public <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>()
 	{
       <%if (genFeature.isListType()) {%>
         <%if (redefinitionGenFeature.isListType()) {%>
+          <%if (genModel.useGenerics() && !redefinitionGenFeature.getListItemType().equals(genFeature.getListItemType())) {%>
+		@SuppressWarnings("unchecked")
+		<%=genFeature.getImportedType()%> <%=redefinitionGenFeature.getUncapName()%> = (<%=genFeature.getImportedType()%>)((<%=genModel.getImportedName("org.eclipse.emf.common.util.EList") + "<?>"%>)<%=redefinitionGenFeature.getGetAccessor()%>());
+		return <%=redefinitionGenFeature.getUncapName()%>;
+          <%} else {%>
 		return <%=redefinitionGenFeature.getGetAccessor()%>();
+          <%}%>
         <%} else {%>
-		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
+		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType() + ">"%><%}%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
         <%}%>
       <%} else {%>
         <%if (redefinitionGenFeature.isListType()) {%>
@@ -202,6 +217,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+	@Override
+      <%}%>
 	public <%=genFeature.getImportedType()%> basicGet<%=genFeature.getAccessorName()%>()
 	{
       <%if (redefinitionGenFeature.isListType()) {%>
@@ -218,6 +236,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
+	@Override
+      <%}%>
 	public <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> basicSet<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedInternalType()%> new<%=genFeature.getCapName()%>, <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> msgs)
 	{
       <%if (!redefinitionGenFeature.isSet() || redefinitionGenFeature.isListType()) {%>
@@ -245,6 +266,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
+	@Override
+      <%}%>
 	public void set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType()%> new<%=genFeature.getCapName()%>)
 	{
       <%if (!redefinitionGenFeature.isSet() || redefinitionGenFeature.isListType()) {%>
@@ -269,7 +293,10 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+    <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genOperation) && !UML2GenModelUtil.isRedefinition(genOperation)) {%>
+	@Override
+    <%}%>
+	public <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{
     <%if (genOperation.isVoid()) {%>
 		<%=redefinitionGenOperation.getName()%>(<%=genOperation.getParameterNames(", ")%>);

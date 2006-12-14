@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.12 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.13 2006/12/14 15:45:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -54,13 +54,6 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 public class GenModelImpl
 		extends org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelImpl
 		implements GenModel {
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
 
 	/**
 	 * The default value of the '{@link #isFactoryMethods() <em>Factory Methods</em>}' attribute.
@@ -176,6 +169,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return GenModelPackage.Literals.GEN_MODEL;
 	}
@@ -312,6 +306,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
@@ -341,6 +336,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
@@ -367,6 +363,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
@@ -393,6 +390,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
@@ -416,6 +414,7 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
