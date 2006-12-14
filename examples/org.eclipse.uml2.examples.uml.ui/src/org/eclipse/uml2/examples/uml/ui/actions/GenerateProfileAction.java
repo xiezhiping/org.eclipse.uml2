@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.6 2006/12/14 15:48:22 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.7 2006/12/14 21:18:14 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -103,7 +103,7 @@ public abstract class GenerateProfileAction
 
 	protected Extension generateExtension(final Stereotype stereotype,
 			final org.eclipse.uml2.uml.Class metaclass, boolean required) {
-		Extension extension = UML2Util.findEObject(EcoreUtil
+		Extension extension = (Extension) UML2Util.findEObject(EcoreUtil
 			.<Extension> getObjectsByType(stereotype.getProfile()
 				.getOwnedTypes(), UMLPackage.Literals.EXTENSION),
 			new UML2Util.EObjectMatcher() {
@@ -153,7 +153,7 @@ public abstract class GenerateProfileAction
 	}
 
 	protected Image generateIcon(Stereotype stereotype, final String location) {
-		Image icon = UML2Util.findEObject(stereotype.getIcons(),
+		Image icon = (Image) UML2Util.findEObject(stereotype.getIcons(),
 			new UML2Util.EObjectMatcher() {
 
 				public boolean matches(EObject eObject) {
@@ -178,7 +178,7 @@ public abstract class GenerateProfileAction
 			xmiResource.setID(profile, UML2Util
 				.getXMIIdentifier((InternalEObject) profile));
 
-			for (TreeIterator eAllContents = profile.eAllContents(); eAllContents
+			for (TreeIterator<EObject> eAllContents = profile.eAllContents(); eAllContents
 				.hasNext();) {
 
 				InternalEObject internalEObject = (InternalEObject) eAllContents
