@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterPlugin.java,v 1.1 2006/02/09 01:25:22 khussey Exp $
+ * $Id: UMLImporterPlugin.java,v 1.2 2006/12/20 19:53:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -42,6 +42,7 @@ public final class UMLImporterPlugin
 	/*
 	 * Javadoc copied from base class.
 	 */
+	@Override
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}

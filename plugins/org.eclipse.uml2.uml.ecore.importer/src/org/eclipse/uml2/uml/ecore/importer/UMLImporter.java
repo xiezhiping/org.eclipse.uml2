@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.4 2006/05/29 17:49:50 khussey Exp $
+ * $Id: UMLImporter.java,v 1.5 2006/12/20 19:53:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -51,16 +51,18 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UMLImporter
 		extends ModelImporter {
 
-	protected final Map options = new HashMap();
+	protected final Map<String, String> options = new HashMap<String, String>();
 
-	public Map getOptions() {
+	public Map<String, String> getOptions() {
 		return options;
 	}
 
+	@Override
 	public String getID() {
 		return "org.eclipse.uml2.uml.ecore.importer"; //$NON-NLS-1$
 	}
 
+	@Override
 	public GenModel getGenModel() {
 
 		if (genModel == null) {
@@ -104,6 +106,7 @@ public class UMLImporter
 		return genModel;
 	}
 
+	@Override
 	protected Diagnostic doComputeEPackages(Monitor monitor)
 			throws Exception {
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
@@ -119,14 +122,15 @@ public class UMLImporter
 			monitor.subTask(UMLImporterPlugin.INSTANCE.getString(
 				"_UI_Loading_message", new Object[]{locationURIs})); //$NON-NLS-1$
 
-			Collection packages = new ArrayList();
+			Collection<org.eclipse.uml2.uml.Package> packages = new ArrayList<org.eclipse.uml2.uml.Package>();
 
 			ResourceSet umlResourceSet = createResourceSet();
 
 			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
-				packages.addAll(EcoreUtil.getObjectsByType(umlResourceSet
-					.getResource((URI) i.next(), true).getContents(),
-					UMLPackage.Literals.PACKAGE));
+				packages.addAll(EcoreUtil
+					.<org.eclipse.uml2.uml.Package> getObjectsByType(
+						umlResourceSet.getResource((URI) i.next(), true)
+							.getContents(), UMLPackage.Literals.PACKAGE));
 			}
 
 			EcoreUtil.resolveAll(umlResourceSet);
@@ -139,7 +143,7 @@ public class UMLImporter
 					.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
 				null);
 
-			Map context = new HashMap();
+			Map<Object, Object> context = new HashMap<Object, Object>();
 			context
 				.put(
 					org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider.class,
@@ -147,6 +151,7 @@ public class UMLImporter
 
 			getEPackages().addAll(new UMLUtil.UML2EcoreConverter() {
 
+				@Override
 				protected void processEcoreTaggedValues(EPackage ePackage,
 						Element element, Map options,
 						DiagnosticChain diagnostics, Map context) {
@@ -202,6 +207,7 @@ public class UMLImporter
 		return diagnostic;
 	}
 
+	@Override
 	public void adjustEPackage(Monitor monitor, EPackage ePackage) {
 		EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 		String name = ePackage.getName();
@@ -227,6 +233,7 @@ public class UMLImporter
 		ePackageInfo.setEcoreFileName(ecoreFileName);
 	}
 
+	@Override
 	protected void adjustGenModel(Monitor monitor) {
 		super.adjustGenModel(monitor);
 
@@ -240,6 +247,7 @@ public class UMLImporter
 		}
 	}
 
+	@Override
 	protected void handleOriginalGenModel()
 			throws DiagnosticException {
 		URI genModelURI = getOriginalGenModel().eResource().getURI();
@@ -268,6 +276,7 @@ public class UMLImporter
 				getConverterGenAnnotationSource(), true).getDetails().map());
 	}
 
+	@Override
 	public void prepareGenModelAndEPackages(Monitor monitor) {
 		super.prepareGenModelAndEPackages(monitor);
 
@@ -276,11 +285,12 @@ public class UMLImporter
 			getOptions());
 	}
 
+	@Override
 	public ResourceSet createResourceSet() {
 		ResourceSet resourceSet = super.createResourceSet();
 
-		Map extensionToFactoryMap = resourceSet.getResourceFactoryRegistry()
-			.getExtensionToFactoryMap();
+		Map<String, Object> extensionToFactoryMap = resourceSet
+			.getResourceFactoryRegistry().getExtensionToFactoryMap();
 
 		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
 			UML22UMLResource.Factory.INSTANCE);

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterWizard.java,v 1.1 2006/02/09 01:25:22 khussey Exp $
+ * $Id: UMLImporterWizard.java,v 1.2 2006/12/20 19:53:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -20,10 +20,12 @@ import org.eclipse.uml2.uml.ecore.importer.UMLImporter;
 public class UMLImporterWizard
 		extends ModelImporterWizard {
 
+	@Override
 	protected ModelConverter createModelConverter() {
 		return new UMLImporter();
 	}
 
+	@Override
 	public void addPages() {
 		UMLImporterDetailPage detailPage = new UMLImporterDetailPage(
 			getModelImporter(), "UMLImporterDetailPage"); //$NON-NLS-1$

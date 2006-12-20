@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterDetailPage.java,v 1.4 2006/10/10 20:57:36 khussey Exp $
+ * $Id: UMLImporterDetailPage.java,v 1.5 2006/12/20 19:53:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.importer.ModelImporter;
@@ -42,7 +41,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UMLImporterDetailPage
 		extends ModelImporterDetailPage {
 
-	protected final Map choiceLabels = new HashMap();
+	protected final Map<String, String> choiceLabels = new HashMap<String, String>();
 
 	protected final String discardChoiceLabel;
 
@@ -88,15 +87,12 @@ public class UMLImporterDetailPage
 			}
 		});
 
-		String choice = (String) getUMLImporter().getOptions().get(option);
+		String choice = getUMLImporter().getOptions().get(option);
 
-		for (Iterator entries = choiceLabels.entrySet().iterator(); entries
-			.hasNext();) {
-
-			Map.Entry entry = (Map.Entry) entries.next();
+		for (Map.Entry<String, String> entry : choiceLabels.entrySet()) {
 
 			if (entry.getValue().equals(choice)) {
-				initialChoice = (String) entry.getKey();
+				initialChoice = entry.getKey();
 				break;
 			}
 		}
@@ -110,6 +106,7 @@ public class UMLImporterDetailPage
 		button.setText(text);
 		button.addSelectionListener(new SelectionAdapter() {
 
+			@Override
 			public void widgetSelected(SelectionEvent se) {
 				Control[] children = optionsParent.getChildren();
 				for (int i = 0; i < children.length; i++) {
@@ -121,6 +118,7 @@ public class UMLImporterDetailPage
 		});
 	}
 
+	@Override
 	protected void addDetailControl(Composite parent) {
 		Group group = new Group(parent, SWT.SHADOW_ETCHED_IN);
 		group.setLayout(new GridLayout());
@@ -215,6 +213,7 @@ public class UMLImporterDetailPage
 
 		scrolledComposite.addControlListener(new ControlAdapter() {
 
+			@Override
 			public void controlResized(ControlEvent ce) {
 				scrolledComposite.setMinHeight(optionsComposite.computeSize(
 					SWT.DEFAULT, SWT.DEFAULT).y);
