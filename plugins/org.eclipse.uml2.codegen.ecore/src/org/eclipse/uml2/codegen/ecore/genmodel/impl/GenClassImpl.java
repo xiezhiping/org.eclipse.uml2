@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.32 2006/12/20 19:54:15 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.33 2006/12/20 20:52:45 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -21,7 +21,6 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -148,7 +147,7 @@ public class GenClassImpl
 	protected List<GenFeature> getImplementedGenFeatures(GenFeatureFilter filter) {
 		Map<String, GenFeature> implementedGenFeatures = new LinkedHashMap<String, GenFeature>();
 
-		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (EList<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (List<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
 
 			for (GenFeature unionGenFeature : UML2GenModelUtil
 				.getUnionGenFeatures(implementedGenClass)) {
@@ -318,7 +317,7 @@ public class GenClassImpl
 			GenOperationFilter filter) {
 		Map<String, GenOperation> implementedGenOperations = new LinkedHashMap<String, GenOperation>();
 
-		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (EList<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (List<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
 
 			for (GenOperation redefinedGenOperation : UML2GenModelUtil
 				.getRedefinedGenOperations(implementedGenClass)) {
