@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.13 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.14 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -434,58 +434,70 @@ public class GenModelImpl
 		return result.toString();
 	}
 
+	@Override
 	public GenClass createGenClass() {
 		return GenModelFactory.eINSTANCE.createGenClass();
 	}
 
+	@Override
 	public GenDataType createGenDataType() {
 		return GenModelFactory.eINSTANCE.createGenDataType();
 	}
 
+	@Override
 	public GenEnum createGenEnum() {
 		return GenModelFactory.eINSTANCE.createGenEnum();
 	}
 
+	@Override
 	public GenEnumLiteral createGenEnumLiteral() {
 		return GenModelFactory.eINSTANCE.createGenEnumLiteral();
 	}
 
+	@Override
 	public GenFeature createGenFeature() {
 		GenFeatureImpl genFeature = new GenFeatureImpl();
 		genFeature.setGenModel(this);
 		return genFeature;
 	}
 
+	@Override
 	public org.eclipse.emf.codegen.ecore.genmodel.GenModel createGenModel() {
 		return GenModelFactory.eINSTANCE.createGenModel();
 	}
 
+	@Override
 	public GenOperation createGenOperation() {
 		GenOperationImpl genOperation = new GenOperationImpl();
 		genOperation.setGenModel(this);
 		return genOperation;
 	}
 
+	@Override
 	public org.eclipse.emf.codegen.ecore.genmodel.GenPackage createGenPackage() {
 		return GenModelFactory.eINSTANCE.createGenPackage();
 	}
 
+	@Override
 	public GenParameter createGenParameter() {
 		return GenModelFactory.eINSTANCE.createGenParameter();
 	}
 
-	public List getEditRequiredPlugins() {
-		List result = super.getEditRequiredPlugins();
+	@Override
+	public List<String> getEditRequiredPlugins() {
+		List<String> result = super.getEditRequiredPlugins();
 		result.add("org.eclipse.uml2.common.edit"); //$NON-NLS-1$
 		return result;
 	}
 
-	public List getModelRequiredPlugins() {
-		List result = super.getModelRequiredPlugins();
+	@Override
+	public List<String> getModelRequiredPlugins() {
+		List<String> result = super.getModelRequiredPlugins();
 		result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
 		return result;
 	}
 
+	@Override
 	protected void reconcileSettings(
 			org.eclipse.emf.codegen.ecore.genmodel.GenModel oldGenModelVersion) {
 		super.reconcileSettings(oldGenModelVersion);

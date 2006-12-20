@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassGeneratorAdapter.java,v 1.1 2006/05/02 22:05:25 khussey Exp $
+ * $Id: GenClassGeneratorAdapter.java,v 1.2 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -25,6 +25,7 @@ public class GenClassGeneratorAdapter
 
 	private static JETEmitterDescriptor[] JET_EMITTER_DESCRIPTORS = null;
 
+	@Override
 	protected JETEmitterDescriptor[] getJETEmitterDescriptors() {
 
 		if (JET_EMITTER_DESCRIPTORS == null) {
@@ -54,6 +55,7 @@ public class GenClassGeneratorAdapter
 		super(generatorAdapterFactory);
 	}
 
+	@Override
 	protected void addClasspathEntries(JETEmitter jetEmitter)
 			throws JETException {
 		super.addClasspathEntries(jetEmitter);

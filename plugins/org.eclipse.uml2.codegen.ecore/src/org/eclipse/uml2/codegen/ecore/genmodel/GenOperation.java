@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperation.java,v 1.3 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenOperation.java,v 1.4 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -71,6 +71,6 @@ public interface GenOperation
 
 	boolean isRedefinition();
 
-	List/* GenOperation */getRedefinedGenOperations();
+	List<org.eclipse.emf.codegen.ecore.genmodel.GenOperation> getRedefinedGenOperations();
 
 } // GenOperation

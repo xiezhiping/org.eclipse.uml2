@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.19 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.20 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -194,24 +194,28 @@ public class GenFeatureImpl
 		this.genModel = genModel;
 	}
 
+	@Override
 	public GenClass getGenClass() {
 		return isDuplicate()
 			? findGenClass(Generator.getEcoreContainingClass(getEcoreFeature()))
 			: super.getGenClass();
 	}
 
+	@Override
 	public org.eclipse.emf.codegen.ecore.genmodel.GenModel getGenModel() {
 		return isDuplicate()
 			? genModel
 			: super.getGenModel();
 	}
 
+	@Override
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenFeature findGenFeature(
 			EStructuralFeature ecoreFeature) {
 
 		return UML2GenModelUtil.findGenFeature(getGenClass(), ecoreFeature);
 	}
 
+	@Override
 	public String getAccessorName() {
 		return isMapEntryFeature()
 			? "Typed" + getCapName() //$NON-NLS-1$
@@ -223,6 +227,7 @@ public class GenFeatureImpl
 					: getCapName()));
 	}
 
+	@Override
 	public String getSafeName() {
 		return isListType()
 			&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
@@ -230,6 +235,7 @@ public class GenFeatureImpl
 			: super.getSafeName();
 	}
 
+	@Override
 	public String getGetAccessor() {
 		String result = isBooleanType()
 			? "is" + getIsName() //$NON-NLS-1$
@@ -249,10 +255,8 @@ public class GenFeatureImpl
 			if (rootImplementsInterface != null
 				&& !rootImplementsInterface.isEObject()) {
 
-				for (Iterator i = rootImplementsInterface.getAllGenOperations()
-					.iterator(); i.hasNext();) {
-
-					GenOperation genOperation = (GenOperation) i.next();
+				for (GenOperation genOperation : (List<GenOperation>) rootImplementsInterface
+					.getAllGenOperations()) {
 
 					if (genOperation.getName().equals(result)
 						&& genOperation.getGenParameters().isEmpty()
@@ -286,14 +290,11 @@ public class GenFeatureImpl
 
 	public boolean isEffectiveContainsSubset() {
 
-		for (Iterator subsettedEcoreFeatures = Generator
-			.getSubsettedEcoreFeatures(getEcoreFeature()).iterator(); subsettedEcoreFeatures
-			.hasNext();) {
+		for (EStructuralFeature subsettedEcoreFeature : Generator
+			.getSubsettedEcoreFeatures(getEcoreFeature())) {
 
-			EStructuralFeature.Internal subsettedEcoreFeature = (EStructuralFeature.Internal) subsettedEcoreFeatures
-				.next();
-
-			if (subsettedEcoreFeature.isContainment()
+			if (((EStructuralFeature.Internal) subsettedEcoreFeature)
+				.isContainment()
 				&& !subsettedEcoreFeature.isDerived()) {
 
 				return true;
@@ -309,16 +310,13 @@ public class GenFeatureImpl
 			&& (isEffectiveContains() || isEffectiveContainsSubset());
 	}
 
-	public List getSubsettedGenFeatures() {
-		List subsettedGenFeatures = new ArrayList();
+	public List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getSubsettedGenFeatures() {
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> subsettedGenFeatures = new ArrayList<org.eclipse.emf.codegen.ecore.genmodel.GenFeature>();
 
-		for (Iterator subsettedEcoreFeatures = Generator
-			.getSubsettedEcoreFeatures(getEcoreFeature()).iterator(); subsettedEcoreFeatures
-			.hasNext();) {
+		for (EStructuralFeature subsettedEcoreFeature : Generator
+			.getSubsettedEcoreFeatures(getEcoreFeature())) {
 
-			subsettedGenFeatures
-				.add(findGenFeature((EStructuralFeature) subsettedEcoreFeatures
-					.next()));
+			subsettedGenFeatures.add(findGenFeature(subsettedEcoreFeature));
 		}
 
 		return subsettedGenFeatures;
@@ -328,16 +326,13 @@ public class GenFeatureImpl
 		return Generator.isRedefinition(getEcoreFeature());
 	}
 
-	public List getRedefinedGenFeatures() {
-		List redefinedGenFeatures = new ArrayList();
+	public List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getRedefinedGenFeatures() {
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> redefinedGenFeatures = new ArrayList<org.eclipse.emf.codegen.ecore.genmodel.GenFeature>();
 
-		for (Iterator redefinedEcoreFeatures = Generator
-			.getRedefinedEcoreFeatures(getEcoreFeature()).iterator(); redefinedEcoreFeatures
-			.hasNext();) {
+		for (EStructuralFeature redefinedEcoreFeature : Generator
+			.getRedefinedEcoreFeatures(getEcoreFeature())) {
 
-			redefinedGenFeatures
-				.add(findGenFeature((EStructuralFeature) redefinedEcoreFeatures
-					.next()));
+			redefinedGenFeatures.add(findGenFeature(redefinedEcoreFeature));
 		}
 
 		return redefinedGenFeatures;
@@ -345,33 +340,27 @@ public class GenFeatureImpl
 
 	public String getRedefinedListItemType() {
 
-		for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-			.iterator(); redefinedGenFeatures.hasNext();) {
-
-			GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-				.next();
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 			if (getName().equals(redefinedGenFeature.getName())) {
-				return redefinedGenFeature.getRedefinedListItemType();
+				return UML2GenModelUtil.getRedefinedListItemType(redefinedGenFeature);
 			}
 		}
 
 		return super.getListItemType();
 	}
 
+	@Override
 	public String getListItemType() {
 		return getRedefinedListItemType();
 	}
 
+	@Override
 	public String getImportedType() {
 
 		if (isListType()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.getImportedType();
@@ -382,13 +371,11 @@ public class GenFeatureImpl
 		return super.getImportedType();
 	}
 
-	public List getKeyGenFeatures() {
-		List keyGenFeatures = new ArrayList();
+	public List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getKeyGenFeatures() {
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> keyGenFeatures = new ArrayList<org.eclipse.emf.codegen.ecore.genmodel.GenFeature>();
 
-		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
-			.iterator(); k.hasNext();) {
-
-			GenFeature keyGenFeature = (GenFeature) k.next();
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature : UML2GenModelUtil
+			.getKeyGenFeatures(getTypeGenClass())) {
 
 			if (keyGenFeature.isContains()) {
 				keyGenFeatures.addAll(UML2GenModelUtil.getKeyGenFeatures(
@@ -403,9 +390,9 @@ public class GenFeatureImpl
 
 	public boolean hasStringTypeKeyGenFeature() {
 
-		for (Iterator k = getKeyGenFeatures().iterator(); k.hasNext();) {
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature : getKeyGenFeatures()) {
 
-			if (((GenFeature) k.next()).isStringType()) {
+			if (keyGenFeature.isStringType()) {
 				return true;
 			}
 		}
@@ -421,18 +408,18 @@ public class GenFeatureImpl
 		StringBuffer keyFeatureParameter = new StringBuffer();
 		int count = 0;
 
-		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
-			.iterator(); k.hasNext(); count++) {
+		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil
+			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); count++) {
 
-			GenFeature keyGenFeature = (GenFeature) k.next();
+			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k.next();
 
 			if (keyGenFeature.isContains()) {
 
-				for (Iterator n = UML2GenModelUtil.getKeyGenFeatures(
-					keyGenFeature.getTypeGenClass(), false).iterator(); n
-					.hasNext(); count++) {
+				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
+					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
+					.iterator(); n.hasNext(); count++) {
 
-					GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n.next();
 
 					if (count == index) {
 
@@ -504,18 +491,20 @@ public class GenFeatureImpl
 		StringBuffer formattedKeyFeatureName = new StringBuffer();
 		int count = 0;
 
-		for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
+		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil.getKeyGenFeatures(getTypeGenClass())
 			.iterator(); k.hasNext(); count++) {
 
-			GenFeature keyGenFeature = (GenFeature) k.next();
+			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k
+				.next();
 
 			if (keyGenFeature.isContains()) {
 
-				for (Iterator n = UML2GenModelUtil.getKeyGenFeatures(
-					keyGenFeature.getTypeGenClass(), false).iterator(); n
-					.hasNext(); count++) {
+				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
+					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
+					.iterator(); n.hasNext(); count++) {
 
-					GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n
+						.next();
 
 					if (count == index) {
 						return formattedKeyFeatureName.append(
@@ -559,15 +548,12 @@ public class GenFeatureImpl
 		return formattedKeyFeatureNames.toString();
 	}
 
+	@Override
 	public String getFeatureAccessorName() {
 
 		if (isDuplicate()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.getFeatureAccessorName();
@@ -578,15 +564,12 @@ public class GenFeatureImpl
 		return super.getFeatureAccessorName();
 	}
 
+	@Override
 	public String getQualifiedFeatureAccessorName() {
 
 		if (isDuplicate()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature
@@ -598,15 +581,12 @@ public class GenFeatureImpl
 		return super.getQualifiedFeatureAccessorName();
 	}
 
+	@Override
 	public String getQualifiedFeatureAccessor() {
 
 		if (isDuplicate()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.getQualifiedFeatureAccessor();
@@ -617,15 +597,12 @@ public class GenFeatureImpl
 		return super.getQualifiedFeatureAccessor();
 	}
 
+	@Override
 	public boolean isBidirectional() {
 
 		if (isDuplicate()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.isBidirectional();
@@ -636,15 +613,12 @@ public class GenFeatureImpl
 		return super.isBidirectional();
 	}
 
+	@Override
 	public org.eclipse.emf.codegen.ecore.genmodel.GenFeature getReverse() {
 
 		if (isDuplicate()) {
 
-			for (Iterator redefinedGenFeatures = getRedefinedGenFeatures()
-				.iterator(); redefinedGenFeatures.hasNext();) {
-
-				GenFeature redefinedGenFeature = (GenFeature) redefinedGenFeatures
-					.next();
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
 					return redefinedGenFeature.getReverse();
@@ -655,6 +629,7 @@ public class GenFeatureImpl
 		return super.getReverse();
 	}
 
+	@Override
 	public boolean hasDelegateFeature() {
 
 		if (isDuplicate()) {
@@ -669,12 +644,14 @@ public class GenFeatureImpl
 		return super.hasDelegateFeature();
 	}
 
+	@Override
 	public boolean isVolatile() {
 		return isDuplicate()
 			? getEcoreFeature().isVolatile()
 			: super.isVolatile();
 	}
 
+	@Override
 	protected void reconcileSettings(
 			org.eclipse.emf.codegen.ecore.genmodel.GenFeature oldGenFeatureVersion) {
 		super.reconcileSettings(oldGenFeatureVersion);
@@ -682,6 +659,7 @@ public class GenFeatureImpl
 		setKey(UML2GenModelUtil.isKey(oldGenFeatureVersion));
 	}
 
+	@Override
 	public void initialize(EStructuralFeature eFeature) {
 
 		if (eFeature != getEcoreFeature()) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.11 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.12 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -193,6 +193,7 @@ public class GenOperationImpl
 		this.genModel = genModel;
 	}
 
+	@Override
 	public GenClass getGenClass() {
 		return isDuplicate()
 			? findGenClass(Generator
@@ -200,6 +201,7 @@ public class GenOperationImpl
 			: super.getGenClass();
 	}
 
+	@Override
 	public org.eclipse.emf.codegen.ecore.genmodel.GenModel getGenModel() {
 		return isDuplicate()
 			? genModel
@@ -208,7 +210,7 @@ public class GenOperationImpl
 
 	protected String format(String name, String separator, String prefix,
 			boolean includePrefix) {
-		List parsedName = new ArrayList();
+		List<String> parsedName = new ArrayList<String>();
 
 		if (prefix != null) {
 
@@ -226,8 +228,8 @@ public class GenOperationImpl
 
 		StringBuffer result = new StringBuffer();
 
-		for (Iterator i = parsedName.iterator(); i.hasNext();) {
-			String nameComponent = (String) i.next();
+		for (Iterator<String> i = parsedName.iterator(); i.hasNext();) {
+			String nameComponent = i.next();
 			result.append(result.length() == 0
 				? nameComponent
 				: capName(nameComponent));
@@ -242,6 +244,7 @@ public class GenOperationImpl
 			: result.toString();
 	}
 
+	@Override
 	public String getName() {
 
 		if (isInvariant()) {
@@ -255,6 +258,7 @@ public class GenOperationImpl
 		return super.getName();
 	}
 
+	@Override
 	protected org.eclipse.emf.codegen.ecore.genmodel.GenOperation findGenOperation(
 			EOperation ecoreOperation) {
 
@@ -277,21 +281,20 @@ public class GenOperationImpl
 		return Generator.isRedefinition(getEcoreOperation());
 	}
 
-	public List getRedefinedGenOperations() {
-		List redefinedGenOperations = new ArrayList();
+	public List<org.eclipse.emf.codegen.ecore.genmodel.GenOperation> getRedefinedGenOperations() {
+		List<org.eclipse.emf.codegen.ecore.genmodel.GenOperation> redefinedGenOperations = new ArrayList<org.eclipse.emf.codegen.ecore.genmodel.GenOperation>();
 
-		for (Iterator redefinedEcoreOperations = Generator
-			.getRedefinedEcoreOperations(getEcoreOperation()).iterator(); redefinedEcoreOperations
-			.hasNext();) {
+		for (EOperation redefinedEcoreOperation : Generator
+			.getRedefinedEcoreOperations(getEcoreOperation())) {
 
 			redefinedGenOperations
-				.add(findGenOperation((EOperation) redefinedEcoreOperations
-					.next()));
+				.add(findGenOperation(redefinedEcoreOperation));
 		}
 
 		return redefinedGenOperations;
 	}
 
+	@Override
 	protected void reconcileSettings(
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation oldGenOperationVersion) {
 		super.reconcileSettings(oldGenOperationVersion);
@@ -300,6 +303,7 @@ public class GenOperationImpl
 			.getCacheAdapterScope(oldGenOperationVersion));
 	}
 
+	@Override
 	public boolean isOverrideOf(
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
 		return false;

@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenPackageGeneratorAdapter.java,v 1.2 2006/05/12 20:43:01 khussey Exp $
+ * $Id: UML2GenPackageGeneratorAdapter.java,v 1.3 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.CodeGenEcorePlugin;
@@ -52,6 +51,7 @@ public class UML2GenPackageGeneratorAdapter
 		return JET_EMITTER_DESCRIPTORS;
 	}
 
+	@Override
 	protected Diagnostic generateModel(Object object, Monitor monitor) {
 		GenPackage genPackage = (GenPackage) object;
 		monitor.beginTask("", 2); //$NON-NLS-1$
@@ -114,26 +114,27 @@ public class UML2GenPackageGeneratorAdapter
 				Resource resource = new ResourceSetImpl().getResource(
 					toPlatformResourceURI(toURI(targetPathName)), true);
 
-				List annotationsToRemove = new ArrayList();
+				List<EAnnotation> annotationsToRemove = new ArrayList<EAnnotation>();
 
-				for (TreeIterator allContents = resource.getAllContents(); allContents
-					.hasNext();) {
+				for (TreeIterator<EObject> allContents = resource
+					.getAllContents(); allContents.hasNext();) {
 
-					EObject eObject = (EObject) allContents.next();
+					EObject eObject = allContents.next();
 
-					if (eObject instanceof EAnnotation
-						&& GenModelPackage.eNS_URI
-							.equals(((EAnnotation) eObject).getSource())) {
+					if (eObject instanceof EAnnotation) {
+						EAnnotation eAnnotation = (EAnnotation) eObject;
 
-						annotationsToRemove.add(eObject);
-						allContents.prune();
+						if (GenModelPackage.eNS_URI.equals(eAnnotation
+							.getSource())) {
+
+							annotationsToRemove.add(eAnnotation);
+							allContents.prune();
+						}
 					}
 				}
 
-				for (Iterator atr = annotationsToRemove.iterator(); atr
-					.hasNext();) {
-
-					((EAnnotation) atr.next()).setEModelElement(null);
+				for (EAnnotation eAnnotation : annotationsToRemove) {
+					eAnnotation.setEModelElement(null);
 				}
 
 				try {

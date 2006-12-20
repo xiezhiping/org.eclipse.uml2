@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelGeneratorAdapterFactory.java,v 1.1 2006/05/02 22:05:25 khussey Exp $
+ * $Id: UML2GenModelGeneratorAdapterFactory.java,v 1.2 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -34,10 +34,12 @@ public class UML2GenModelGeneratorAdapterFactory
 		return uml2TemplatePath;
 	}
 
+	@Override
 	protected String[] getTemplatePath(GenModel genModel) {
 		return getUML2TemplatePath(super.getTemplatePath(genModel));
 	}
 
+	@Override
 	public Adapter createGenClassAdapter() {
 
 		if (genClassGeneratorAdapter == null) {
@@ -47,14 +49,17 @@ public class UML2GenModelGeneratorAdapterFactory
 		return genClassGeneratorAdapter;
 	}
 
+	@Override
 	public Adapter createGenEnumAdapter() {
 		return null;
 	}
 
+	@Override
 	public Adapter createGenModelAdapter() {
 		return null;
 	}
 
+	@Override
 	public Adapter createGenPackageAdapter() {
 
 		if (genPackageGeneratorAdapter == null) {

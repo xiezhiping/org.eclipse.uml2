@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenClassGeneratorAdapter.java,v 1.1 2006/05/02 22:05:25 khussey Exp $
+ * $Id: UML2GenClassGeneratorAdapter.java,v 1.2 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -42,6 +42,7 @@ public class UML2GenClassGeneratorAdapter
 		return JET_EMITTER_DESCRIPTORS;
 	}
 
+	@Override
 	protected Diagnostic generateModel(Object object, Monitor monitor) {
 		GenClass genClass = (GenClass) object;
 		monitor.beginTask("", 1); //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.6 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenFeature.java,v 1.7 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -72,15 +72,15 @@ public interface GenFeature
 
 	boolean isFactoryMethods();
 
-	List/* GenFeature */getSubsettedGenFeatures();
+	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getSubsettedGenFeatures();
 
 	boolean isRedefinition();
 
-	List/* GenFeature */getRedefinedGenFeatures();
+	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getRedefinedGenFeatures();
 
 	String getRedefinedListItemType();
 
-	List/* GenFeature */getKeyGenFeatures();
+	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getKeyGenFeatures();
 
 	boolean hasStringTypeKeyGenFeature();
 

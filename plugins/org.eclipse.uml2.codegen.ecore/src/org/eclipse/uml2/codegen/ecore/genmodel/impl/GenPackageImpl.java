@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.13 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.14 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -289,6 +289,7 @@ public class GenPackageImpl
 			+ ".Factory"; //$NON-NLS-1$
 	}
 
+	@Override
 	public String getImportedResourceBaseClassName() {
 		return isResourceInterfaces()
 			? super.getImportedResourceBaseClassName() + " implements " //$NON-NLS-1$
@@ -296,6 +297,7 @@ public class GenPackageImpl
 			: super.getImportedResourceBaseClassName();
 	}
 
+	@Override
 	public String getImportedResourceFactoryBaseClassName() {
 		return isResourceInterfaces()
 			? super.getImportedResourceFactoryBaseClassName() + " implements " //$NON-NLS-1$
@@ -313,6 +315,7 @@ public class GenPackageImpl
 		}
 	}
 
+	@Override
 	protected void reconcileSettings(
 			org.eclipse.emf.codegen.ecore.genmodel.GenPackage oldGenPackageVersion) {
 		super.reconcileSettings(oldGenPackageVersion);

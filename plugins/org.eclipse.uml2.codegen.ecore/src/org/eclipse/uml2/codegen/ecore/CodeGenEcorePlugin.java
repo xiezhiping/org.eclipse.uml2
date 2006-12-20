@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CodeGenEcorePlugin.java,v 1.3 2006/12/14 15:45:13 khussey Exp $
+ * $Id: CodeGenEcorePlugin.java,v 1.4 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore;
 
@@ -39,9 +39,7 @@ public final class CodeGenEcorePlugin
 			new ResourceLocator[]{org.eclipse.emf.codegen.ecore.CodeGenEcorePlugin.INSTANCE});
 	}
 
-	/*
-	 * Javadoc copied from base class.
-	 */
+	@Override
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}

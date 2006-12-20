@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenCacheAdapterScope.java,v 1.5 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenCacheAdapterScope.java,v 1.6 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.common.util.AbstractEnumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,15 +27,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class GenCacheAdapterScope
-		extends AbstractEnumerator {
-
+public enum GenCacheAdapterScope
+		implements Enumerator {
 	/**
+	 * The '<em><b>None</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #NONE
 	 * @generated
+	 * @ordered
 	 */
-	public static final String copyright = "Copyright (c) IBM Corporation and others."; //$NON-NLS-1$
+	NONE_LITERAL(0, "None", "None"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Global</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GLOBAL
+	 * @generated
+	 * @ordered
+	 */
+	GLOBAL_LITERAL(1, "Global", "Global"), //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * The '<em><b>Resource</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RESOURCE
+	 * @generated
+	 * @ordered
+	 */
+	RESOURCE_LITERAL(2, "Resource", "Resource"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>None</b></em>' literal value.
@@ -84,39 +105,6 @@ public final class GenCacheAdapterScope
 	public static final int RESOURCE = 2;
 
 	/**
-	 * The '<em><b>None</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NONE
-	 * @generated
-	 * @ordered
-	 */
-	public static final GenCacheAdapterScope NONE_LITERAL = new GenCacheAdapterScope(
-		NONE, "None", "None"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Global</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #GLOBAL
-	 * @generated
-	 * @ordered
-	 */
-	public static final GenCacheAdapterScope GLOBAL_LITERAL = new GenCacheAdapterScope(
-		GLOBAL, "Global", "Global"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>Resource</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RESOURCE
-	 * @generated
-	 * @ordered
-	 */
-	public static final GenCacheAdapterScope RESOURCE_LITERAL = new GenCacheAdapterScope(
-		RESOURCE, "Resource", "Resource"); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
 	 * An array of all the '<em><b>Gen Cache Adapter Scope</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,8 +119,8 @@ public final class GenCacheAdapterScope
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-		.asList(VALUES_ARRAY));
+	public static final List<GenCacheAdapterScope> VALUES = Collections
+		.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Gen Cache Adapter Scope</b></em>' literal with the specified literal value.
@@ -185,13 +173,74 @@ public final class GenCacheAdapterScope
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private GenCacheAdapterScope(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
 	}
 
 } //GenCacheAdapterScope

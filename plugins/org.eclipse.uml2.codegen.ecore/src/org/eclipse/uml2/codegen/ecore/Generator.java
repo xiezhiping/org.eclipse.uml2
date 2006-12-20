@@ -8,17 +8,17 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generator.java,v 1.4 2006/01/31 20:35:06 khussey Exp $
+ * $Id: Generator.java,v 1.5 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -47,24 +47,22 @@ public class Generator
 		return null != eOperation.getEAnnotation(ANNOTATION_SOURCE__REDEFINES);
 	}
 
-	public static List getRedefinedEcoreFeatures(
+	public static List<EStructuralFeature> getRedefinedEcoreFeatures(
 			EStructuralFeature eStructuralFeature) {
 		return getRedefinedEcoreFeatures(eStructuralFeature, false);
 	}
 
-	public static List getRedefinedEcoreFeatures(
+	public static List<EStructuralFeature> getRedefinedEcoreFeatures(
 			EStructuralFeature eStructuralFeature, boolean recurse) {
-		List redefinedEcoreFeatures = new UniqueEList.FastCompare();
+		List<EStructuralFeature> redefinedEcoreFeatures = new UniqueEList.FastCompare<EStructuralFeature>();
 
 		EAnnotation redefinesAnnotation = eStructuralFeature
 			.getEAnnotation(ANNOTATION_SOURCE__REDEFINES);
 
 		if (null != redefinesAnnotation) {
 
-			for (Iterator references = redefinesAnnotation.getReferences()
-				.iterator(); references.hasNext();) {
-				EStructuralFeature redefinedFeature = (EStructuralFeature) references
-					.next();
+			for (EObject reference : redefinesAnnotation.getReferences()) {
+				EStructuralFeature redefinedFeature = (EStructuralFeature) reference;
 
 				redefinedEcoreFeatures.add(redefinedFeature);
 
@@ -78,22 +76,22 @@ public class Generator
 		return redefinedEcoreFeatures;
 	}
 
-	public static List getRedefinedEcoreOperations(EOperation eOperation) {
+	public static List<EOperation> getRedefinedEcoreOperations(
+			EOperation eOperation) {
 		return getRedefinedEcoreOperations(eOperation, false);
 	}
 
-	public static List getRedefinedEcoreOperations(EOperation eOperation,
-			boolean recurse) {
-		List redefinedEcoreOperations = new UniqueEList.FastCompare();
+	public static List<EOperation> getRedefinedEcoreOperations(
+			EOperation eOperation, boolean recurse) {
+		List<EOperation> redefinedEcoreOperations = new UniqueEList.FastCompare<EOperation>();
 
 		EAnnotation redefinesAnnotation = eOperation
 			.getEAnnotation(ANNOTATION_SOURCE__REDEFINES);
 
 		if (null != redefinesAnnotation) {
 
-			for (Iterator references = redefinesAnnotation.getReferences()
-				.iterator(); references.hasNext();) {
-				EOperation redefinedOperation = (EOperation) references.next();
+			for (EObject reference : redefinesAnnotation.getReferences()) {
+				EOperation redefinedOperation = (EOperation) reference;
 
 				redefinedEcoreOperations.add(redefinedOperation);
 
@@ -113,24 +111,22 @@ public class Generator
 			.getEAnnotation(ANNOTATION_SOURCE__SUBSETS);
 	}
 
-	public static List getSubsettedEcoreFeatures(
+	public static List<EStructuralFeature> getSubsettedEcoreFeatures(
 			EStructuralFeature eStructuralFeature) {
 		return getSubsettedEcoreFeatures(eStructuralFeature, false);
 	}
 
-	public static List getSubsettedEcoreFeatures(
+	public static List<EStructuralFeature> getSubsettedEcoreFeatures(
 			EStructuralFeature eStructuralFeature, boolean recurse) {
-		List subsettedEcoreFeatures = new UniqueEList.FastCompare();
+		List<EStructuralFeature> subsettedEcoreFeatures = new UniqueEList.FastCompare<EStructuralFeature>();
 
 		EAnnotation subsetsAnnotation = eStructuralFeature
 			.getEAnnotation(ANNOTATION_SOURCE__SUBSETS);
 
 		if (null != subsetsAnnotation) {
 
-			for (Iterator references = subsetsAnnotation.getReferences()
-				.iterator(); references.hasNext();) {
-				EStructuralFeature subsettedFeature = (EStructuralFeature) references
-					.next();
+			for (EObject reference : subsetsAnnotation.getReferences()) {
+				EStructuralFeature subsettedFeature = (EStructuralFeature) reference;
 
 				subsettedEcoreFeatures.add(subsettedFeature);
 
@@ -157,31 +153,33 @@ public class Generator
 		return null == eOperation.getEContainingClass();
 	}
 
-	public static List getDuplicateEcoreFeatures(EClass eClass) {
-		List duplicateEcoreFeatures = new ArrayList();
+	public static List<EStructuralFeature> getDuplicateEcoreFeatures(
+			EClass eClass) {
+		List<EStructuralFeature> duplicateEcoreFeatures = new ArrayList<EStructuralFeature>();
 
 		EAnnotation duplicatesAnnotation = eClass
 			.getEAnnotation(ANNOTATION_SOURCE__DUPLICATES);
 
 		if (null != duplicatesAnnotation) {
-			duplicateEcoreFeatures.addAll(EcoreUtil.getObjectsByType(
-				duplicatesAnnotation.getContents(), EcorePackage.eINSTANCE
+			duplicateEcoreFeatures.addAll(EcoreUtil
+				.<EStructuralFeature> getObjectsByType(duplicatesAnnotation
+					.getContents(), EcorePackage.eINSTANCE
 					.getEStructuralFeature()));
 		}
 
 		return duplicateEcoreFeatures;
 	}
 
-	public static List getDuplicateEcoreOperations(EClass eClass) {
-		List duplicateEcoreOperations = new ArrayList();
+	public static List<EOperation> getDuplicateEcoreOperations(EClass eClass) {
+		List<EOperation> duplicateEcoreOperations = new ArrayList<EOperation>();
 
 		EAnnotation duplicatesAnnotation = eClass
 			.getEAnnotation(ANNOTATION_SOURCE__DUPLICATES);
 
 		if (null != duplicatesAnnotation) {
-			duplicateEcoreOperations.addAll(EcoreUtil.getObjectsByType(
-				duplicatesAnnotation.getContents(), EcorePackage.eINSTANCE
-					.getEOperation()));
+			duplicateEcoreOperations.addAll(EcoreUtil
+				.<EOperation> getObjectsByType(duplicatesAnnotation
+					.getContents(), EcorePackage.eINSTANCE.getEOperation()));
 		}
 
 		return duplicateEcoreOperations;

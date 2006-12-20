@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.15 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenClass.java,v 1.16 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -40,9 +40,9 @@ public interface GenClass
 
 	String getOperationsClassExtends();
 
-	List/* GenFeature */getKeyGenFeatures();
+	List<GenFeature> getKeyGenFeatures();
 
-	List/* GenFeature */getKeyGenFeatures(boolean includeContains);
+	List<GenFeature> getKeyGenFeatures(boolean includeContains);
 
 	boolean isFactoryMethods(GenFeature genFeature);
 
@@ -50,28 +50,28 @@ public interface GenClass
 
 	GenOperation findGenOperation(EOperation ecoreOperation);
 
-	List/* GenFeature */getDuplicateGenFeatures();
+	List<GenFeature> getDuplicateGenFeatures();
 
-	List/* GenOperation */getDuplicateGenOperations();
+	List<GenOperation> getDuplicateGenOperations();
 
 	boolean isDerivedUnionListType(GenFeature genFeature);
 
-	List/* GenFeature */getUnionGenFeatures();
+	List<GenFeature> getUnionGenFeatures();
 
-	List/* GenFeature */getImplementedUnionGenFeatures();
+	List<GenFeature> getImplementedUnionGenFeatures();
 
-	List/* GenFeature */getSubsetGenFeatures();
+	List<GenFeature> getSubsetGenFeatures();
 
-	List/* GenFeature */getImplementedSubsetGenFeatures();
+	List<GenFeature> getImplementedSubsetGenFeatures();
 
-	List/* GenFeature */getImplementedSubsetGenFeatures(boolean listType);
+	List<GenFeature> getImplementedSubsetGenFeatures(boolean listType);
 
-	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature);
+	List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature);
 
-	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature,
+	List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature,
 			boolean includeDerived);
 
-	List/* GenFeature */getSupersetGenFeatures(GenFeature subsetGenFeature,
+	List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature,
 			boolean includeDerived, boolean includeListType);
 
 	String getSupersetFeatureAccessorArray(GenFeature subsetGenFeature);
@@ -80,21 +80,21 @@ public interface GenClass
 
 	boolean isSuperset(GenFeature genFeature);
 
-	List/* GenFeature */getSupersetGenFeatures();
+	List<GenFeature> getSupersetGenFeatures();
 
-	List/* GenFeature */getImplementedSupersetGenFeatures();
+	List<GenFeature> getImplementedSupersetGenFeatures();
 
-	List/* GenFeature */getImplementedSupersetGenFeatures(boolean listType);
+	List<GenFeature> getImplementedSupersetGenFeatures(boolean listType);
 
-	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature);
+	List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature);
 
-	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature,
+	List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature,
 			boolean includeDerived);
 
-	List/* GenFeature */getSubsetGenFeatures(GenFeature supersetGenFeature,
+	List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature,
 			boolean includeDerived, boolean includeListType);
 
-	List/* GenFeature */getIsSetSubsetGenFeatures(GenFeature unionGenFeature);
+	List<GenFeature> getIsSetSubsetGenFeatures(GenFeature unionGenFeature);
 
 	String getSubsetFeatureAccessorArray(GenFeature supersetGenFeature);
 
@@ -105,20 +105,19 @@ public interface GenClass
 
 	boolean isRedefined(GenFeature genFeature);
 
-	List/* GenFeature */getRedefinedGenFeatures();
+	List<GenFeature> getRedefinedGenFeatures();
 
-	List/* GenFeature */getImplementedRedefinedGenFeatures();
+	List<GenFeature> getImplementedRedefinedGenFeatures();
 
-	List/* GenFeature */getRedefinitionGenFeatures(
-			GenFeature redefinedGenFeature);
+	List<GenFeature> getRedefinitionGenFeatures(GenFeature redefinedGenFeature);
 
 	boolean isRedefined(GenOperation genOperation);
 
-	List/* GenOperation */getRedefinedGenOperations();
+	List<GenOperation> getRedefinedGenOperations();
 
-	List/* GenOperation */getImplementedRedefinedGenOperations();
+	List<GenOperation> getImplementedRedefinedGenOperations();
 
-	List/* GenFeature */getRedefinitionGenOperations(
+	List<GenOperation> getRedefinitionGenOperations(
 			GenOperation redefinedGenOperation);
 
 	GenOperation getImplementedCollidingGetGenOperation(GenFeature genFeature);

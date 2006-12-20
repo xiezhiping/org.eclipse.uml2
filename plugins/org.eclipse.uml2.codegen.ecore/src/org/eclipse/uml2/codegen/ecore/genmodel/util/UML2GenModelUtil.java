@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.14 2006/04/10 19:15:59 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.15 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -200,19 +200,19 @@ public class UML2GenModelUtil {
 			: ""; //$NON-NLS-1$
 	}
 
-	public static List getKeyGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getKeyGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getKeyGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getKeyGenFeatures(GenClass genClass,
+	public static List<GenFeature> getKeyGenFeatures(GenClass genClass,
 			boolean includeContains) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getKeyGenFeatures(includeContains)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static boolean isFactoryMethods(GenClass genClass,
@@ -238,14 +238,14 @@ public class UML2GenModelUtil {
 			: null;
 	}
 
-	public static List getDuplicateGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getDuplicateGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getDuplicateGenFeatures()
 			: genClass.getGenFeatures();
 	}
 
-	public static List getDuplicateGenOperations(GenClass genClass) {
+	public static List<GenOperation> getDuplicateGenOperations(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getDuplicateGenOperations()
@@ -260,66 +260,68 @@ public class UML2GenModelUtil {
 			: false;
 	}
 
-	public static List getUnionGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getUnionGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getUnionGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedUnionGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getImplementedUnionGenFeatures(
+			GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedUnionGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSubsetGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getSubsetGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedSubsetGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getImplementedSubsetGenFeatures(
+			GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedSubsetGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedSubsetGenFeatures(GenClass genClass,
-			boolean listType) {
+	public static List<GenFeature> getImplementedSubsetGenFeatures(
+			GenClass genClass, boolean listType) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedSubsetGenFeatures(listType)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSupersetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSupersetGenFeatures(GenClass genClass,
 			GenFeature subsetGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSupersetGenFeatures(subsetGenFeature)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSupersetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSupersetGenFeatures(GenClass genClass,
 			GenFeature subsetGenFeature, boolean includeDerived,
 			boolean includeListType) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSupersetGenFeatures(subsetGenFeature, includeDerived,
 					includeListType)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSupersetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSupersetGenFeatures(GenClass genClass,
 			GenFeature subsetGenFeature, boolean includeDerived) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSupersetGenFeatures(subsetGenFeature, includeDerived)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static String getSupersetFeatureAccessorArray(GenClass genClass,
@@ -344,60 +346,61 @@ public class UML2GenModelUtil {
 				.isSuperset(genFeature);
 	}
 
-	public static List getSupersetGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getSupersetGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSupersetGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedSupersetGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getImplementedSupersetGenFeatures(
+			GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedSupersetGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedSupersetGenFeatures(GenClass genClass,
-			boolean listType) {
+	public static List<GenFeature> getImplementedSupersetGenFeatures(
+			GenClass genClass, boolean listType) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedSupersetGenFeatures(listType)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSubsetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSubsetGenFeatures(GenClass genClass,
 			GenFeature supersetGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetGenFeatures(supersetGenFeature)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSubsetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSubsetGenFeatures(GenClass genClass,
 			GenFeature supersetGenFeature, boolean includeDerived) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetGenFeatures(supersetGenFeature, includeDerived)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getSubsetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getSubsetGenFeatures(GenClass genClass,
 			GenFeature supersetGenFeature, boolean includeDerived,
 			boolean includeListType) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getSubsetGenFeatures(supersetGenFeature, includeDerived,
 					includeListType)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getIsSetSubsetGenFeatures(GenClass genClass,
+	public static List<GenFeature> getIsSetSubsetGenFeatures(GenClass genClass,
 			GenFeature unionGenFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getIsSetSubsetGenFeatures(unionGenFeature)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static String getSubsetFeatureAccessorArray(GenClass genClass,
@@ -430,26 +433,27 @@ public class UML2GenModelUtil {
 				.isRedefined(genFeature);
 	}
 
-	public static List getRedefinedGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getRedefinedGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getRedefinedGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getImplementedRedefinedGenFeatures(GenClass genClass) {
+	public static List<GenFeature> getImplementedRedefinedGenFeatures(
+			GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedRedefinedGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
-	public static List getRedefinitionGenFeatures(GenClass genClass,
-			GenFeature genFeature) {
+	public static List<GenFeature> getRedefinitionGenFeatures(
+			GenClass genClass, GenFeature genFeature) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getRedefinitionGenFeatures(genFeature)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static boolean isRedefined(GenClass genClass,
@@ -459,26 +463,27 @@ public class UML2GenModelUtil {
 				.isRedefined(genOperation);
 	}
 
-	public static List getRedefinedGenOperations(GenClass genClass) {
+	public static List<GenOperation> getRedefinedGenOperations(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getRedefinedGenOperations()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenOperation> emptyList();
 	}
 
-	public static List getImplementedRedefinedGenOperations(GenClass genClass) {
+	public static List<GenOperation> getImplementedRedefinedGenOperations(
+			GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedRedefinedGenOperations()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenOperation> emptyList();
 	}
 
-	public static List getRedefinitionGenOperations(GenClass genClass,
-			GenOperation genOperation) {
+	public static List<GenOperation> getRedefinitionGenOperations(
+			GenClass genClass, GenOperation genOperation) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getRedefinitionGenOperations(genOperation)
-			: Collections.EMPTY_LIST;
+			: Collections.<GenOperation> emptyList();
 	}
 
 	public static GenOperation getImplementedCollidingGetGenOperation(
@@ -551,11 +556,11 @@ public class UML2GenModelUtil {
 				.isEffectiveContainsSubset();
 	}
 
-	public static List getSubsettedGenFeatures(GenFeature genFeature) {
+	public static List<GenFeature> getSubsettedGenFeatures(GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getSubsettedGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static boolean isRedefinition(GenFeature genFeature) {
@@ -564,11 +569,11 @@ public class UML2GenModelUtil {
 				.isRedefinition();
 	}
 
-	public static List getRedefinedGenFeatures(GenFeature genFeature) {
+	public static List<GenFeature> getRedefinedGenFeatures(GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getRedefinedGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static String getRedefinedListItemType(GenFeature genFeature) {
@@ -578,11 +583,11 @@ public class UML2GenModelUtil {
 			: genFeature.getListItemType();
 	}
 
-	public static List getKeyGenFeatures(GenFeature genFeature) {
+	public static List<GenFeature> getKeyGenFeatures(GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getKeyGenFeatures()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenFeature> emptyList();
 	}
 
 	public static boolean hasStringTypeKeyGenFeature(GenFeature genFeature) {
@@ -671,11 +676,12 @@ public class UML2GenModelUtil {
 				.isRedefinition();
 	}
 
-	public static List getRedefinedGenOperations(GenOperation genOperation) {
+	public static List<GenOperation> getRedefinedGenOperations(
+			GenOperation genOperation) {
 		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
 				.getRedefinedGenOperations()
-			: Collections.EMPTY_LIST;
+			: Collections.<GenOperation> emptyList();
 	}
 
 }

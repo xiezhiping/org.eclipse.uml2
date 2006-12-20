@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.31 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.32 2006/12/20 19:54:15 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -21,7 +21,7 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.codegen.ecore.genmodel.util.GenModelUtil;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -64,23 +64,20 @@ public class GenClassImpl
 		return GenModelPackage.Literals.GEN_CLASS;
 	}
 
-	protected List duplicateGenFeatures = null;
+	protected List<GenFeature> duplicateGenFeatures = null;
 
-	public List getDuplicateGenFeatures() {
-		List result = new ArrayList(getGenFeatures());
+	public List<GenFeature> getDuplicateGenFeatures() {
+		List<GenFeature> result = new ArrayList<GenFeature>(getGenFeatures());
 
 		if (duplicateGenFeatures == null) {
-			duplicateGenFeatures = new ArrayList();
+			duplicateGenFeatures = new ArrayList<GenFeature>();
 
-			for (Iterator duplicateEcoreFeatures = Generator
-				.getDuplicateEcoreFeatures(getEcoreClass()).iterator(); duplicateEcoreFeatures
-				.hasNext();) {
+			for (EStructuralFeature duplicateEcoreFeature : Generator
+				.getDuplicateEcoreFeatures(getEcoreClass())) {
 
 				GenFeature duplicateGenFeature = getGenModel()
 					.createGenFeature();
-				duplicateGenFeature
-					.initialize((EStructuralFeature) duplicateEcoreFeatures
-						.next());
+				duplicateGenFeature.initialize(duplicateEcoreFeature);
 				duplicateGenFeatures.add(duplicateGenFeature);
 			}
 		}
@@ -90,19 +87,15 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List collectDuplicateGenFeatures(List genClasses,
-			List genFeatures, GenFeatureFilter filter) {
-		List result = new ArrayList();
+	protected List<GenFeature> collectDuplicateGenFeatures(List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
+			List<GenFeature> genFeatures, GenFeatureFilter filter) {
+		List<GenFeature> result = new ArrayList<GenFeature>();
 
 		if (genClasses != null) {
 
-			for (Iterator i = genClasses.iterator(); i.hasNext();) {
-				result
-					.addAll(collectGenFeatures(
-						null,
-						UML2GenModelUtil
-							.getDuplicateGenFeatures((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-								.next()), filter));
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass : genClasses) {
+				result.addAll(collectGenFeatures(null, UML2GenModelUtil
+					.getDuplicateGenFeatures(genClass), filter));
 			}
 		}
 
@@ -113,15 +106,16 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List getAllDuplicateGenFeatures() {
+	protected List<GenFeature> getAllDuplicateGenFeatures() {
 		return collectDuplicateGenFeatures(getAllBaseGenClasses(),
 			getDuplicateGenFeatures(), null);
 	}
 
-	public List getDeclaredGenFeatures() {
-		Map declaredGenFeatures = new LinkedHashMap();
+	@Override
+	public List<GenFeature> getDeclaredGenFeatures() {
+		Map<String, GenFeature> declaredGenFeatures = new LinkedHashMap<String, GenFeature>();
 
-		List redefinedGenFeatures = collectGenFeatures(null,
+		List<GenFeature> redefinedGenFeatures = collectGenFeatures(null,
 			getRedefinedGenFeatures(), new GenFeatureFilter() {
 
 				public boolean accept(GenFeature genFeature) {
@@ -129,12 +123,12 @@ public class GenClassImpl
 				}
 			});
 
-		for (Iterator i = redefinedGenFeatures.iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
-			declaredGenFeatures.put(genFeature.getName(), genFeature);
+		for (GenFeature redefinedGenFeature : redefinedGenFeatures) {
+			declaredGenFeatures.put(redefinedGenFeature.getName(),
+				redefinedGenFeature);
 		}
 
-		List duplicateGenFeatures = collectGenFeatures(null,
+		List<GenFeature> duplicateGenFeatures = collectGenFeatures(null,
 			getDuplicateGenFeatures(), new GenFeatureFilter() {
 
 				public boolean accept(GenFeature genFeature) {
@@ -143,65 +137,62 @@ public class GenClassImpl
 				}
 			});
 
-		for (Iterator i = duplicateGenFeatures.iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
-			declaredGenFeatures.put(genFeature.getName(), genFeature);
+		for (GenFeature duplicateGenFeature : duplicateGenFeatures) {
+			declaredGenFeatures.put(duplicateGenFeature.getName(),
+				duplicateGenFeature);
 		}
 
-		return new ArrayList(declaredGenFeatures.values());
+		return new ArrayList<GenFeature>(declaredGenFeatures.values());
 	}
 
-	protected List getImplementedGenFeatures(GenFeatureFilter filter) {
-		Map implementedGenFeatures = new LinkedHashMap();
+	protected List<GenFeature> getImplementedGenFeatures(GenFeatureFilter filter) {
+		Map<String, GenFeature> implementedGenFeatures = new LinkedHashMap<String, GenFeature>();
 
-		for (Iterator i = getImplementedGenClasses().iterator(); i.hasNext();) {
-			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-				.next();
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (EList<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
 
-			for (Iterator j = UML2GenModelUtil.getUnionGenFeatures(genClass)
-				.iterator(); j.hasNext();) {
+			for (GenFeature unionGenFeature : UML2GenModelUtil
+				.getUnionGenFeatures(implementedGenClass)) {
 
-				GenFeature genFeature = (GenFeature) j.next();
-				implementedGenFeatures.put(genFeature.getName(), genFeature);
+				implementedGenFeatures.put(unionGenFeature.getName(),
+					unionGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil.getSupersetGenFeatures(genClass)
-				.iterator(); j.hasNext();) {
+			for (GenFeature supersetGenFeature : UML2GenModelUtil
+				.getSupersetGenFeatures(implementedGenClass)) {
 
-				GenFeature genFeature = (GenFeature) j.next();
-				implementedGenFeatures.put(genFeature.getName(), genFeature);
+				implementedGenFeatures.put(supersetGenFeature.getName(),
+					supersetGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil
-				.getRedefinedGenFeatures(genClass).iterator(); j.hasNext();) {
+			for (GenFeature redefinedGenFeature : UML2GenModelUtil
+				.getRedefinedGenFeatures(implementedGenClass)) {
 
-				GenFeature genFeature = (GenFeature) j.next();
-				implementedGenFeatures.put(genFeature.getName(), genFeature);
+				implementedGenFeatures.put(redefinedGenFeature.getName(),
+					redefinedGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil
-				.getDuplicateGenFeatures(genClass).iterator(); j.hasNext();) {
+			for (GenFeature duplicateGenFeature : UML2GenModelUtil
+				.getDuplicateGenFeatures(implementedGenClass)) {
 
-				GenFeature genFeature = (GenFeature) j.next();
-				implementedGenFeatures.put(genFeature.getName(), genFeature);
+				implementedGenFeatures.put(duplicateGenFeature.getName(),
+					duplicateGenFeature);
 			}
 		}
 
-		return collectGenFeatures(null, new ArrayList(implementedGenFeatures
-			.values()), filter);
+		return collectGenFeatures(null, new ArrayList<GenFeature>(
+			implementedGenFeatures.values()), filter);
 	}
 
-	public List getDeclaredFieldGenFeatures() {
+	@Override
+	public List<GenFeature> getDeclaredFieldGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
 
 				if (UML2GenModelUtil.isDuplicate(genFeature)) {
 
-					for (Iterator i = UML2GenModelUtil.getRedefinedGenFeatures(
-						genFeature).iterator(); i.hasNext();) {
-
-						GenFeature redefinedGenFeature = (GenFeature) i.next();
+					for (GenFeature redefinedGenFeature : UML2GenModelUtil.getRedefinedGenFeatures(
+						genFeature)) {
 
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
@@ -220,7 +211,8 @@ public class GenClassImpl
 		});
 	}
 
-	public List getImplementedGenFeatures() {
+	@Override
+	public List<GenFeature> getImplementedGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
@@ -229,26 +221,26 @@ public class GenClassImpl
 		});
 	}
 
-	public List getExtendedGenFeatures() {
+	@Override
+	public List<GenFeature> getExtendedGenFeatures() {
 		return collectDuplicateGenFeatures(getExtendedGenClasses(), null, null);
 	}
 
-	protected List duplicateGenOperations = null;
+	protected List<GenOperation> duplicateGenOperations = null;
 
-	public List getDuplicateGenOperations() {
-		List result = new ArrayList(getGenOperations());
+	public List<GenOperation> getDuplicateGenOperations() {
+		List<GenOperation> result = new ArrayList<GenOperation>(
+			getGenOperations());
 
 		if (duplicateGenOperations == null) {
-			duplicateGenOperations = new ArrayList();
+			duplicateGenOperations = new ArrayList<GenOperation>();
 
-			for (Iterator duplicateEcoreOperations = Generator
-				.getDuplicateEcoreOperations(getEcoreClass()).iterator(); duplicateEcoreOperations
-				.hasNext();) {
+			for (EOperation duplicateEcoreOperation : Generator
+				.getDuplicateEcoreOperations(getEcoreClass())) {
 
 				GenOperation duplicateGenOperation = getGenModel()
 					.createGenOperation();
-				duplicateGenOperation
-					.initialize((EOperation) duplicateEcoreOperations.next());
+				duplicateGenOperation.initialize(duplicateEcoreOperation);
 				duplicateGenOperations.add(duplicateGenOperation);
 			}
 		}
@@ -258,19 +250,15 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List collectDuplicateGenOperations(List genClasses,
-			List genOperations, GenOperationFilter filter) {
-		List result = new ArrayList();
+	protected List<GenOperation> collectDuplicateGenOperations(List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
+			List<GenOperation> genOperations, GenOperationFilter filter) {
+		List<GenOperation> result = new ArrayList<GenOperation>();
 
 		if (genClasses != null) {
 
-			for (Iterator i = genClasses.iterator(); i.hasNext();) {
-				result
-					.addAll(collectGenOperations(
-						null,
-						UML2GenModelUtil
-							.getDuplicateGenOperations((org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-								.next()), filter));
+			for (org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass : genClasses) {
+				result.addAll(collectGenOperations(null, UML2GenModelUtil
+					.getDuplicateGenOperations(genClass), filter));
 			}
 		}
 
@@ -281,15 +269,16 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List getAllDuplicateGenOperations() {
+	protected List<GenOperation> getAllDuplicateGenOperations() {
 		return collectDuplicateGenOperations(getAllBaseGenClasses(),
 			getDuplicateGenOperations(), null);
 	}
 
-	public List getDeclaredGenOperations() {
-		Map declaredGenOperations = new LinkedHashMap();
+	@Override
+	public List<GenOperation> getDeclaredGenOperations() {
+		Map<String, GenOperation> declaredGenOperations = new LinkedHashMap<String, GenOperation>();
 
-		List redefinedGenOperations = collectGenOperations(null,
+		List<GenOperation> redefinedGenOperations = collectGenOperations(null,
 			getRedefinedGenOperations(), new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
@@ -298,13 +287,14 @@ public class GenClassImpl
 				}
 			});
 
-		for (Iterator i = redefinedGenOperations.iterator(); i.hasNext();) {
-			GenOperation genOperation = (GenOperation) i.next();
-			declaredGenOperations.put(genOperation.getName()
-				+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
+		for (GenOperation redefinedGenOperation : redefinedGenOperations) {
+			declaredGenOperations
+				.put(
+					redefinedGenOperation.getName()
+						+ redefinedGenOperation.getParameterTypes(""), redefinedGenOperation); //$NON-NLS-1$
 		}
 
-		List duplicateGenOperations = collectGenOperations(null,
+		List<GenOperation> duplicateGenOperations = collectGenOperations(null,
 			getDuplicateGenOperations(), new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
@@ -313,47 +303,51 @@ public class GenClassImpl
 				}
 			});
 
-		for (Iterator i = duplicateGenOperations.iterator(); i.hasNext();) {
-			GenOperation genOperation = (GenOperation) i.next();
-			declaredGenOperations.put(genOperation.getName()
-				+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
+		for (GenOperation duplicateGenOperation : duplicateGenOperations) {
+			declaredGenOperations
+				.put(
+					duplicateGenOperation.getName()
+						+ duplicateGenOperation.getParameterTypes(""), duplicateGenOperation); //$NON-NLS-1$
 		}
 
-		return collectGenOperations(null, new ArrayList(declaredGenOperations
-			.values()), new CollidingGenOperationFilter());
+		return collectGenOperations(null, new ArrayList<GenOperation>(
+			declaredGenOperations.values()), new CollidingGenOperationFilter());
 	}
 
-	protected List getImplementedGenOperations(GenOperationFilter filter) {
-		Map implementedGenOperations = new LinkedHashMap();
+	protected List<GenOperation> getImplementedGenOperations(
+			GenOperationFilter filter) {
+		Map<String, GenOperation> implementedGenOperations = new LinkedHashMap<String, GenOperation>();
 
-		for (Iterator i = getImplementedGenClasses().iterator(); i.hasNext();) {
-			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = (org.eclipse.emf.codegen.ecore.genmodel.GenClass) i
-				.next();
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (EList<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
 
-			for (Iterator j = UML2GenModelUtil.getRedefinedGenOperations(
-				genClass).iterator(); j.hasNext();) {
+			for (GenOperation redefinedGenOperation : UML2GenModelUtil
+				.getRedefinedGenOperations(implementedGenClass)) {
 
-				GenOperation genOperation = (GenOperation) j.next();
-				implementedGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
+				implementedGenOperations
+					.put(
+						redefinedGenOperation.getName()
+							+ redefinedGenOperation.getParameterTypes(""), redefinedGenOperation); //$NON-NLS-1$
 			}
 
-			for (Iterator j = UML2GenModelUtil.getDuplicateGenOperations(
-				genClass).iterator(); j.hasNext();) {
+			for (GenOperation duplicateGenOperation : UML2GenModelUtil
+				.getDuplicateGenOperations(implementedGenClass)) {
 
-				GenOperation genOperation = (GenOperation) j.next();
-				implementedGenOperations.put(genOperation.getName()
-					+ genOperation.getParameterTypes(""), genOperation); //$NON-NLS-1$
+				implementedGenOperations
+					.put(
+						duplicateGenOperation.getName()
+							+ duplicateGenOperation.getParameterTypes(""), duplicateGenOperation); //$NON-NLS-1$
 			}
 		}
 
-		return collectGenOperations(null, new ArrayList(
+		return collectGenOperations(null, new ArrayList<GenOperation>(
 			implementedGenOperations.values()), filter);
 	}
 
-	public List getImplementedGenOperations() {
+	@Override
+	public List<GenOperation> getImplementedGenOperations() {
 		return getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return super.accept(genOperation) && !isRedefined(genOperation);
 			}
@@ -362,8 +356,9 @@ public class GenClassImpl
 
 	public GenOperation getImplementedCollidingGetGenOperation(
 			final GenFeature genFeature) {
-		List implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
+		List<GenOperation> implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return !super.accept(genOperation)
 					&& genOperation.getName().equals(
@@ -378,8 +373,9 @@ public class GenClassImpl
 
 	public GenOperation getImplementedCollidingSetGenOperation(
 			final GenFeature genFeature) {
-		List implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
+		List<GenOperation> implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return !super.accept(genOperation)
 					&& genOperation.getName().equals("set" //$NON-NLS-1$
@@ -394,8 +390,9 @@ public class GenClassImpl
 
 	public GenOperation getImplementedCollidingIsSetGenOperation(
 			final GenFeature genFeature) {
-		List implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
+		List<GenOperation> implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return !super.accept(genOperation)
 					&& genOperation.getName().equals("isSet" //$NON-NLS-1$
@@ -410,8 +407,9 @@ public class GenClassImpl
 
 	public GenOperation getImplementedCollidingUnsetGenOperation(
 			final GenFeature genFeature) {
-		List implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
+		List<GenOperation> implementedCollidingGenOperations = getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return !super.accept(genOperation)
 					&& genOperation.getName().equals("unset" //$NON-NLS-1$
@@ -424,12 +422,14 @@ public class GenClassImpl
 			: (GenOperation) implementedCollidingGenOperations.get(0);
 	}
 
-	public List getExtendedGenOperations() {
+	@Override
+	public List<GenOperation> getExtendedGenOperations() {
 		return collectDuplicateGenOperations(getExtendedGenClasses(), null,
 			null);
 	}
 
-	public List getInvariantOperations() {
+	@Override
+	public List<GenOperation> getInvariantOperations() {
 		return collectGenOperations(null, getDuplicateGenOperations(),
 			new GenOperationFilter() {
 
@@ -452,6 +452,7 @@ public class GenClassImpl
 			+ getOperationsClassName();
 	}
 
+	@Override
 	public String getOperationID(GenOperation genOperation) {
 
 		if (genOperation.isInvariant()) {
@@ -487,7 +488,8 @@ public class GenClassImpl
 		return ""; //$NON-NLS-1$
 	}
 
-	public List getEInverseAddGenFeatures() {
+	@Override
+	public List<GenFeature> getEInverseAddGenFeatures() {
 		return collectGenFeatures(null, super.getEInverseAddGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -497,7 +499,8 @@ public class GenClassImpl
 			});
 	}
 
-	public List getEInverseRemoveGenFeatures() {
+	@Override
+	public List<GenFeature> getEInverseRemoveGenFeatures() {
 		return collectGenFeatures(null, super.getEInverseRemoveGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -748,6 +751,7 @@ public class GenClassImpl
 		return sb.toString();
 	}
 
+	@Override
 	public String getListConstructor(GenFeature genFeature) {
 
 		if (UML2GenModelUtil.isUnion(genFeature)) {
@@ -769,51 +773,50 @@ public class GenClassImpl
 		return super.getListConstructor(genFeature);
 	}
 
+	@Override
 	public GenFeature findGenFeature(EStructuralFeature ecoreFeature) {
 		org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = findGenClass(Generator
 			.getEcoreContainingClass(ecoreFeature));
 
-		for (Iterator i = UML2GenModelUtil.getDuplicateGenFeatures(genClass)
-			.iterator(); i.hasNext();) {
-
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : UML2GenModelUtil
+			.getDuplicateGenFeatures(genClass)) {
 
 			if (ecoreFeature.getName().equals(
-				genFeature.getEcoreFeature().getName())) {
-				return genFeature;
+				duplicateGenFeature.getEcoreFeature().getName())) {
+
+				return duplicateGenFeature;
 			}
 		}
 
 		return null;
 	}
 
+	@Override
 	public GenOperation findGenOperation(EOperation ecoreOperation) {
 		org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = findGenClass(Generator
 			.getEcoreContainingClass(ecoreOperation));
 
-		genOperationsLoop : for (Iterator i = UML2GenModelUtil
-			.getDuplicateGenOperations(genClass).iterator(); i.hasNext();) {
-
-			GenOperation genOperation = (GenOperation) i.next();
+		genOperationsLoop : for (GenOperation duplicateGenOperation : UML2GenModelUtil
+			.getDuplicateGenOperations(genClass)) {
 
 			if (ecoreOperation.getName().equals(
-				genOperation.getEcoreOperation().getName())
-				&& ecoreOperation.getEParameters().size() == genOperation
+				duplicateGenOperation.getEcoreOperation().getName())
+				&& ecoreOperation.getEParameters().size() == duplicateGenOperation
 					.getEcoreOperation().getEParameters().size()) {
 
 				for (int j = 0; j < ecoreOperation.getEParameters().size(); j++) {
-					EParameter ecoreParameter = (EParameter) ecoreOperation
-						.getEParameters().get(j);
+					EParameter ecoreParameter = ecoreOperation.getEParameters()
+						.get(j);
 
 					if (!ecoreParameter.getEType().getName().equals(
-						((EParameter) genOperation.getEcoreOperation()
+						(duplicateGenOperation.getEcoreOperation()
 							.getEParameters().get(j)).getEType().getName())) {
 
 						continue genOperationsLoop;
 					}
 				}
 
-				return genOperation;
+				return duplicateGenOperation;
 			}
 		}
 
@@ -830,11 +833,7 @@ public class GenClassImpl
 				return false;
 			}
 
-			for (Iterator subsetGenFeatures = getSubsetGenFeatures(genFeature)
-				.iterator(); subsetGenFeatures.hasNext();) {
-
-				GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures
-					.next();
+			for (GenFeature subsetGenFeature : getSubsetGenFeatures(genFeature)) {
 
 				if (UML2GenModelUtil.isDuplicate(subsetGenFeature)
 					&& !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
@@ -849,20 +848,17 @@ public class GenClassImpl
 		return false;
 	}
 
-	public List getUnionGenFeatures() {
-		List unionGenFeatures = new UniqueEList.FastCompare();
+	public List<GenFeature> getUnionGenFeatures() {
+		List<GenFeature> unionGenFeatures = new UniqueEList.FastCompare<GenFeature>();
 
-		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : getDuplicateGenFeatures()) {
 
-			if (UML2GenModelUtil.isUnion(genFeature)) {
-				unionGenFeatures.add(genFeature);
+			if (UML2GenModelUtil.isUnion(duplicateGenFeature)) {
+				unionGenFeatures.add(duplicateGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil.getSubsettedGenFeatures(
-				genFeature).iterator(); j.hasNext();) {
-
-				GenFeature subsettedGenFeature = (GenFeature) j.next();
+			for (GenFeature subsettedGenFeature : UML2GenModelUtil
+				.getSubsettedGenFeatures(duplicateGenFeature)) {
 
 				if (UML2GenModelUtil.isUnion(subsettedGenFeature)) {
 					unionGenFeatures.add(subsettedGenFeature);
@@ -873,7 +869,7 @@ public class GenClassImpl
 		return unionGenFeatures;
 	}
 
-	public List getImplementedUnionGenFeatures() {
+	public List<GenFeature> getImplementedUnionGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
@@ -898,20 +894,17 @@ public class GenClassImpl
 				}).isEmpty();
 	}
 
-	public List getSupersetGenFeatures() {
-		List supersetGenFeatures = new UniqueEList.FastCompare();
+	public List<GenFeature> getSupersetGenFeatures() {
+		List<GenFeature> supersetGenFeatures = new UniqueEList.FastCompare<GenFeature>();
 
-		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : getDuplicateGenFeatures()) {
 
-			if (isSuperset(genFeature)) {
-				supersetGenFeatures.add(genFeature);
+			if (isSuperset(duplicateGenFeature)) {
+				supersetGenFeatures.add(duplicateGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil.getSubsettedGenFeatures(
-				genFeature).iterator(); j.hasNext();) {
-
-				GenFeature subsettedGenFeature = (GenFeature) j.next();
+			for (GenFeature subsettedGenFeature : UML2GenModelUtil
+				.getSubsettedGenFeatures(duplicateGenFeature)) {
 
 				if (isSuperset(subsettedGenFeature)) {
 					supersetGenFeatures.add(subsettedGenFeature);
@@ -922,38 +915,39 @@ public class GenClassImpl
 		return supersetGenFeatures;
 	}
 
-	public List getSubsetGenFeatures(GenFeature supersetGenFeature) {
+	public List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature) {
 		return getSubsetGenFeatures(supersetGenFeature, true);
 	}
 
-	public List getSubsetGenFeatures(GenFeature supersetGenFeature,
+	public List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature,
 			boolean includeDerived) {
 		return getSubsetGenFeatures(supersetGenFeature, includeDerived, true);
 	}
 
-	public List getSubsetGenFeatures(GenFeature supersetGenFeature,
+	public List<GenFeature> getSubsetGenFeatures(GenFeature supersetGenFeature,
 			boolean includeDerived, boolean includeListType) {
-		Map subsetGenFeatures = new LinkedHashMap();
+		Map<String, GenFeature> subsetGenFeatures = new LinkedHashMap<String, GenFeature>();
 
 		final EStructuralFeature supersetEcoreFeature = supersetGenFeature
 			.getEcoreFeature();
 
-		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : getAllDuplicateGenFeatures()) {
 
 			if (Generator.getSubsettedEcoreFeatures(
-				genFeature.getEcoreFeature()).contains(supersetEcoreFeature)
-				&& (includeDerived || !genFeature.isDerived())
-				&& (includeListType || !genFeature.isListType())) {
+				duplicateGenFeature.getEcoreFeature()).contains(
+				supersetEcoreFeature)
+				&& (includeDerived || !duplicateGenFeature.isDerived())
+				&& (includeListType || !duplicateGenFeature.isListType())) {
 
-				subsetGenFeatures.put(genFeature.getName(), genFeature);
+				subsetGenFeatures.put(duplicateGenFeature.getName(),
+					duplicateGenFeature);
 			}
 		}
 
-		return new ArrayList(subsetGenFeatures.values());
+		return new ArrayList<GenFeature>(subsetGenFeatures.values());
 	}
 
-	public List getIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
+	public List<GenFeature> getIsSetSubsetGenFeatures(GenFeature unionGenFeature) {
 		return collectGenFeatures(null, getSubsetGenFeatures(unionGenFeature),
 			new GenFeatureFilter() {
 
@@ -963,7 +957,7 @@ public class GenClassImpl
 			});
 	}
 
-	public List getSubsetGenFeatures() {
+	public List<GenFeature> getSubsetGenFeatures() {
 		return collectGenFeatures(null, getDuplicateGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -973,7 +967,7 @@ public class GenClassImpl
 			});
 	}
 
-	public List getImplementedSubsetGenFeatures() {
+	public List<GenFeature> getImplementedSubsetGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
@@ -981,7 +975,6 @@ public class GenClassImpl
 					&& !collectGenFeatures(null,
 						getSupersetGenFeatures(genFeature),
 						new GenFeatureFilter() {
-
 							public boolean accept(GenFeature genFeature) {
 								return !genFeature.isDerived();
 							}
@@ -990,7 +983,7 @@ public class GenClassImpl
 		});
 	}
 
-	public List getImplementedSubsetGenFeatures(final boolean listType) {
+	public List<GenFeature> getImplementedSubsetGenFeatures(final boolean listType) {
 		return collectGenFeatures(null, getImplementedSubsetGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -1008,8 +1001,8 @@ public class GenClassImpl
 			boolean includeDerived) {
 		StringBuffer sb = new StringBuffer();
 
-		Iterator subsetGenFeatures = getSubsetGenFeatures(supersetGenFeature,
-			includeDerived).iterator();
+		Iterator<GenFeature> subsetGenFeatures = getSubsetGenFeatures(
+			supersetGenFeature, includeDerived).iterator();
 
 		if (subsetGenFeatures.hasNext()) {
 			sb.append("new "); //$NON-NLS-1$
@@ -1018,8 +1011,7 @@ public class GenClassImpl
 			sb.append("[] {"); //$NON-NLS-1$
 
 			while (subsetGenFeatures.hasNext()) {
-				GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures
-					.next();
+				GenFeature subsetGenFeature = subsetGenFeatures.next();
 
 				sb.append(subsetGenFeature.getQualifiedFeatureAccessor());
 
@@ -1044,15 +1036,14 @@ public class GenClassImpl
 			boolean includeDerived) {
 		StringBuffer sb = new StringBuffer();
 
-		Iterator subsetGenFeatures = getSubsetGenFeatures(supersetGenFeature,
-			includeDerived).iterator();
+		Iterator<GenFeature> subsetGenFeatures = getSubsetGenFeatures(
+			supersetGenFeature, includeDerived).iterator();
 
 		if (subsetGenFeatures.hasNext()) {
 			sb.append("new int[] {"); //$NON-NLS-1$
 
 			while (subsetGenFeatures.hasNext()) {
-				GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures
-					.next();
+				GenFeature subsetGenFeature = subsetGenFeatures.next();
 
 				sb.append(getQualifiedFeatureID(subsetGenFeature));
 
@@ -1069,16 +1060,16 @@ public class GenClassImpl
 		return sb.toString();
 	}
 
-	public List getSupersetGenFeatures(GenFeature subsetGenFeature) {
+	public List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature) {
 		return getSupersetGenFeatures(subsetGenFeature, true);
 	}
 
-	public List getSupersetGenFeatures(GenFeature subsetGenFeature,
+	public List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature,
 			boolean includeDerived) {
 		return getSupersetGenFeatures(subsetGenFeature, includeDerived, true);
 	}
 
-	public List getSupersetGenFeatures(GenFeature subsetGenFeature,
+	public List<GenFeature> getSupersetGenFeatures(GenFeature subsetGenFeature,
 			final boolean includeDerived, final boolean includeListType) {
 		return collectGenFeatures(null, UML2GenModelUtil
 			.getSubsettedGenFeatures(subsetGenFeature), new GenFeatureFilter() {
@@ -1090,7 +1081,7 @@ public class GenClassImpl
 		});
 	}
 
-	public List getImplementedSupersetGenFeatures() {
+	public List<GenFeature> getImplementedSupersetGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
@@ -1100,7 +1091,8 @@ public class GenClassImpl
 		});
 	}
 
-	public List getImplementedSupersetGenFeatures(final boolean listType) {
+	public List<GenFeature> getImplementedSupersetGenFeatures(
+			final boolean listType) {
 		return collectGenFeatures(null, getImplementedSupersetGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -1113,8 +1105,8 @@ public class GenClassImpl
 	public String getSupersetFeatureAccessorArray(GenFeature subsetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		Iterator supersetGenFeatures = getSupersetGenFeatures(subsetGenFeature,
-			false).iterator();
+		Iterator<GenFeature> supersetGenFeatures = getSupersetGenFeatures(
+			subsetGenFeature, false).iterator();
 
 		if (supersetGenFeatures.hasNext()) {
 			sb.append("new "); //$NON-NLS-1$
@@ -1123,8 +1115,7 @@ public class GenClassImpl
 			sb.append("[] {"); //$NON-NLS-1$
 
 			while (supersetGenFeatures.hasNext()) {
-				GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
-					.next();
+				GenFeature supersetGenFeature = supersetGenFeatures.next();
 
 				sb.append(supersetGenFeature.getQualifiedFeatureAccessor());
 
@@ -1144,15 +1135,14 @@ public class GenClassImpl
 	public String getSupersetFeatureIDArray(GenFeature subsetGenFeature) {
 		StringBuffer sb = new StringBuffer();
 
-		Iterator supersetGenFeatures = getSupersetGenFeatures(subsetGenFeature,
-			false).iterator();
+		Iterator<GenFeature> supersetGenFeatures = getSupersetGenFeatures(
+			subsetGenFeature, false).iterator();
 
 		if (supersetGenFeatures.hasNext()) {
 			sb.append("new int[] {"); //$NON-NLS-1$
 
 			while (supersetGenFeatures.hasNext()) {
-				GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures
-					.next();
+				GenFeature supersetGenFeature = supersetGenFeatures.next();
 
 				sb.append(getQualifiedFeatureID(supersetGenFeature));
 
@@ -1182,22 +1172,20 @@ public class GenClassImpl
 			}).isEmpty();
 	}
 
-	public List getRedefinedGenFeatures() {
-		List redefinedGenFeatures = new UniqueEList.FastCompare();
+	public List<GenFeature> getRedefinedGenFeatures() {
+		List<GenFeature> redefinedGenFeatures = new UniqueEList.FastCompare<GenFeature>();
 
-		for (Iterator i = getDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : getDuplicateGenFeatures()) {
 
-			if (isRedefined(genFeature)) {
-				redefinedGenFeatures.add(genFeature);
+			if (isRedefined(duplicateGenFeature)) {
+				redefinedGenFeatures.add(duplicateGenFeature);
 			}
 
-			for (Iterator j = UML2GenModelUtil.getRedefinedGenFeatures(
-				genFeature).iterator(); j.hasNext();) {
+			for (GenFeature redefinedGenFeature : UML2GenModelUtil
+				.getRedefinedGenFeatures(duplicateGenFeature)) {
 
-				GenFeature redefinedGenFeature = (GenFeature) j.next();
-
-				if (!genFeature.getName().equals(redefinedGenFeature.getName())) {
+				if (!duplicateGenFeature.getName().equals(
+					redefinedGenFeature.getName())) {
 
 					redefinedGenFeatures.add(redefinedGenFeature);
 				}
@@ -1207,7 +1195,7 @@ public class GenClassImpl
 		return redefinedGenFeatures;
 	}
 
-	public List getImplementedRedefinedGenFeatures() {
+	public List<GenFeature> getImplementedRedefinedGenFeatures() {
 		return getImplementedGenFeatures(new GenFeatureFilter() {
 
 			public boolean accept(GenFeature genFeature) {
@@ -1216,26 +1204,29 @@ public class GenClassImpl
 		});
 	}
 
-	public List getRedefinitionGenFeatures(GenFeature redefinedGenFeature) {
-		Map redefinitionGenFeatures = new LinkedHashMap();
+	public List<GenFeature> getRedefinitionGenFeatures(
+			GenFeature redefinedGenFeature) {
+		Map<String, GenFeature> redefinitionGenFeatures = new LinkedHashMap<String, GenFeature>();
 
 		EStructuralFeature redefinedEcoreFeature = redefinedGenFeature
 			.getEcoreFeature();
 
-		for (Iterator i = getAllDuplicateGenFeatures().iterator(); i.hasNext();) {
-			GenFeature genFeature = (GenFeature) i.next();
+		for (GenFeature duplicateGenFeature : getAllDuplicateGenFeatures()) {
 
 			if (Generator.getRedefinedEcoreFeatures(
-				genFeature.getEcoreFeature()).contains(redefinedEcoreFeature)) {
+				duplicateGenFeature.getEcoreFeature()).contains(
+				redefinedEcoreFeature)) {
 
-				if (!genFeature.getName().equals(redefinedGenFeature.getName())) {
-					redefinitionGenFeatures.put(genFeature.getName(),
-						genFeature);
+				if (!duplicateGenFeature.getName().equals(
+					redefinedGenFeature.getName())) {
+
+					redefinitionGenFeatures.put(duplicateGenFeature.getName(),
+						duplicateGenFeature);
 				}
 			}
 		}
 
-		return new ArrayList(redefinitionGenFeatures.values());
+		return new ArrayList<GenFeature>(redefinitionGenFeatures.values());
 	}
 
 	public boolean isRedefined(GenOperation genOperation) {
@@ -1252,22 +1243,19 @@ public class GenClassImpl
 			}).isEmpty();
 	}
 
-	public List getRedefinedGenOperations() {
-		List redefinedGenOperations = new UniqueEList.FastCompare();
+	public List<GenOperation> getRedefinedGenOperations() {
+		List<GenOperation> redefinedGenOperations = new UniqueEList.FastCompare<GenOperation>();
 
-		for (Iterator i = getDuplicateGenOperations().iterator(); i.hasNext();) {
-			GenOperation genOperation = (GenOperation) i.next();
+		for (GenOperation duplicateGenOperation : getDuplicateGenOperations()) {
 
-			if (isRedefined(genOperation)) {
-				redefinedGenOperations.add(genOperation);
+			if (isRedefined(duplicateGenOperation)) {
+				redefinedGenOperations.add(duplicateGenOperation);
 			}
 
-			for (Iterator j = UML2GenModelUtil.getRedefinedGenOperations(
-				genOperation).iterator(); j.hasNext();) {
+			for (GenOperation redefinedGenOperation : UML2GenModelUtil
+				.getRedefinedGenOperations(duplicateGenOperation)) {
 
-				GenOperation redefinedGenOperation = (GenOperation) j.next();
-
-				if (!(genOperation.getName() + genOperation
+				if (!(duplicateGenOperation.getName() + duplicateGenOperation
 					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
 					.getName() + redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
@@ -1279,48 +1267,47 @@ public class GenClassImpl
 		return redefinedGenOperations;
 	}
 
-	public List getImplementedRedefinedGenOperations() {
+	public List<GenOperation> getImplementedRedefinedGenOperations() {
 		return getImplementedGenOperations(new CollidingGenOperationFilter() {
 
+			@Override
 			public boolean accept(GenOperation genOperation) {
 				return super.accept(genOperation) && isRedefined(genOperation);
 			}
 		});
 	}
 
-	public List getRedefinitionGenOperations(GenOperation redefinedGenOperation) {
-		Map redefinitionGenOperations = new LinkedHashMap();
+	public List<GenOperation> getRedefinitionGenOperations(
+			GenOperation redefinedGenOperation) {
+		Map<String, GenOperation> redefinitionGenOperations = new LinkedHashMap<String, GenOperation>();
 
 		EOperation redefinedEcoreOperation = redefinedGenOperation
 			.getEcoreOperation();
 
-		for (Iterator i = getAllDuplicateGenOperations().iterator(); i
-			.hasNext();) {
-
-			GenOperation genOperation = (GenOperation) i.next();
+		for (GenOperation duplicateGenOperation : getAllDuplicateGenOperations()) {
 
 			if (Generator.getRedefinedEcoreOperations(
-				genOperation.getEcoreOperation()).contains(
+				duplicateGenOperation.getEcoreOperation()).contains(
 				redefinedEcoreOperation)) {
 
-				if (!(genOperation.getName() + genOperation
+				if (!(duplicateGenOperation.getName() + duplicateGenOperation
 					.getParameterTypes("")).equals(redefinedGenOperation //$NON-NLS-1$
 					.getName() + redefinedGenOperation.getParameterTypes(""))) { //$NON-NLS-1$
 
-					redefinitionGenOperations.put(genOperation.getName(),
-						genOperation);
+					redefinitionGenOperations.put(duplicateGenOperation
+						.getName(), duplicateGenOperation);
 				}
 			}
 		}
 
-		return new ArrayList(redefinitionGenOperations.values());
+		return new ArrayList<GenOperation>(redefinitionGenOperations.values());
 	}
 
-	public List getKeyGenFeatures() {
+	public List<GenFeature> getKeyGenFeatures() {
 		return getKeyGenFeatures(true);
 	}
 
-	public List getKeyGenFeatures(final boolean includeContains) {
+	public List<GenFeature> getKeyGenFeatures(final boolean includeContains) {
 		return collectGenFeatures(null, getAllGenFeatures(),
 			new GenFeatureFilter() {
 
@@ -1340,12 +1327,14 @@ public class GenClassImpl
 			&& getChildrenClasses(genFeature).size() > 0;
 	}
 
+	@Override
 	public boolean isESetField(GenFeature genFeature) {
 		return super.isESetField(genFeature)
 			&& (!UML2GenModelUtil.isUnion(genFeature))
 			&& !isRedefined(genFeature);
 	}
 
+	@Override
 	public boolean isField(GenFeature genFeature) {
 		return super.isField(genFeature)
 			&& (!UML2GenModelUtil.isUnion(genFeature))
@@ -1364,7 +1353,8 @@ public class GenClassImpl
 
 	}
 
-	public List getToStringGenFeatures() {
+	@Override
+	public List<GenFeature> getToStringGenFeatures() {
 		return collectGenFeatures(null, getImplementedGenFeatures(),
 			new GenFeatureFilter() {
 
