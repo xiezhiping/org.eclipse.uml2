@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.33 2006/12/20 20:52:45 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.34 2006/12/20 21:36:51 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -86,7 +86,8 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List<GenFeature> collectDuplicateGenFeatures(List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
+	protected List<GenFeature> collectDuplicateGenFeatures(
+			List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
 			List<GenFeature> genFeatures, GenFeatureFilter filter) {
 		List<GenFeature> result = new ArrayList<GenFeature>();
 
@@ -190,8 +191,8 @@ public class GenClassImpl
 
 				if (UML2GenModelUtil.isDuplicate(genFeature)) {
 
-					for (GenFeature redefinedGenFeature : UML2GenModelUtil.getRedefinedGenFeatures(
-						genFeature)) {
+					for (GenFeature redefinedGenFeature : UML2GenModelUtil
+						.getRedefinedGenFeatures(genFeature)) {
 
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
@@ -249,7 +250,8 @@ public class GenClassImpl
 		return result;
 	}
 
-	protected List<GenOperation> collectDuplicateGenOperations(List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
+	protected List<GenOperation> collectDuplicateGenOperations(
+			List<org.eclipse.emf.codegen.ecore.genmodel.GenClass> genClasses,
 			List<GenOperation> genOperations, GenOperationFilter filter) {
 		List<GenOperation> result = new ArrayList<GenOperation>();
 
@@ -974,6 +976,7 @@ public class GenClassImpl
 					&& !collectGenFeatures(null,
 						getSupersetGenFeatures(genFeature),
 						new GenFeatureFilter() {
+
 							public boolean accept(GenFeature genFeature) {
 								return !genFeature.isDerived();
 							}
@@ -982,7 +985,8 @@ public class GenClassImpl
 		});
 	}
 
-	public List<GenFeature> getImplementedSubsetGenFeatures(final boolean listType) {
+	public List<GenFeature> getImplementedSubsetGenFeatures(
+			final boolean listType) {
 		return collectGenFeatures(null, getImplementedSubsetGenFeatures(),
 			new GenFeatureFilter() {
 
