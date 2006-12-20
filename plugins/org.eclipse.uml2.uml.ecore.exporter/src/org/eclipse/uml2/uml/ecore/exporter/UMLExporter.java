@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.6 2006/05/02 21:42:24 khussey Exp $
+ * $Id: UMLExporter.java,v 1.7 2006/12/20 19:53:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.DiagnosticException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.converter.ConverterPlugin;
 import org.eclipse.emf.converter.util.ConverterUtil;
@@ -44,21 +45,24 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UMLExporter
 		extends ModelExporter {
 
-	protected final Map options = new HashMap();
+	protected final Map<String, String> options = new HashMap<String, String>();
 
-	public Map getOptions() {
+	public Map<String, String> getOptions() {
 		return options;
 	}
 
+	@Override
 	public String getID() {
 		return "org.eclipse.uml2.uml.ecore.exporter"; //$NON-NLS-1$
 	}
 
+	@Override
 	protected String getDefaultArtifactLocation(EPackage ePackage) {
 		return getDefaultArtifactFileName(ePackage) + '.'
 			+ UMLResource.FILE_EXTENSION;
 	}
 
+	@Override
 	protected String doCheckEPackageArtifactLocation(String location,
 			String packageName) {
 
@@ -70,6 +74,7 @@ public class UMLExporter
 		return super.doCheckEPackageArtifactLocation(location, packageName);
 	}
 
+	@Override
 	protected Diagnostic doExport(Monitor monitor, ExportData exportData)
 			throws Exception {
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
@@ -82,7 +87,7 @@ public class UMLExporter
 				.getString("_UI_ProblemsEncounteredProcessing_message"), //$NON-NLS-1$
 			null);
 
-		Map context = new HashMap();
+		Map<Object, Object> context = new HashMap<Object, Object>();
 		context.put(
 			org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider.class,
 			UMLUtil.QualifiedTextProvider.DEFAULT);
@@ -107,14 +112,14 @@ public class UMLExporter
 			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) ecore2umlConverter
 				.doSwitch(ePackage);
 
-			EList contents = resource.getContents();
+			EList<EObject> contents = resource.getContents();
 
 			contents.add(package_);
 
-			for (Iterator allContents = UMLUtil.getAllContents(package_, true,
-				false); allContents.hasNext();) {
+			for (TreeIterator<EObject> allContents = UML2Util.getAllContents(
+				package_, true, false); allContents.hasNext();) {
 
-				EObject eObject = (EObject) allContents.next();
+				EObject eObject = allContents.next();
 
 				if (eObject instanceof Element) {
 					contents.addAll(((Element) eObject)
@@ -125,8 +130,8 @@ public class UMLExporter
 			monitor.worked(1);
 		}
 
-		for (Iterator r = resourceSet.getResources().iterator(); r.hasNext();) {
-			((Resource) r.next()).save(null);
+		for (Resource resource : resourceSet.getResources()) {
+			resource.save(null);
 		}
 
 		monitor.done();
@@ -138,6 +143,7 @@ public class UMLExporter
 		return diagnostic;
 	}
 
+	@Override
 	public void setGenModel(GenModel genModel)
 			throws DiagnosticException {
 		super.setGenModel(genModel);
@@ -151,6 +157,7 @@ public class UMLExporter
 		}
 	}
 
+	@Override
 	protected boolean saveExporter() {
 		boolean changed = super.saveExporter();
 

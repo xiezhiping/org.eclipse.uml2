@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporterWizard.java,v 1.1 2006/04/06 04:21:53 khussey Exp $
+ * $Id: UMLExporterWizard.java,v 1.2 2006/12/20 19:53:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter.ui;
 
@@ -22,10 +22,12 @@ import org.eclipse.uml2.uml.ecore.exporter.UMLExporterPlugin;
 public class UMLExporterWizard
 		extends ModelExporterWizard {
 
+	@Override
 	protected ModelConverter createModelConverter() {
 		return new UMLExporter();
 	}
 
+	@Override
 	public void addPages() {
 		ModelExporterDirectoryURIPage directoryURIPage = new ModelExporterDirectoryURIPage(
 			getModelExporter(), "UMLExporterDirectoryURIPage"); //$NON-NLS-1$

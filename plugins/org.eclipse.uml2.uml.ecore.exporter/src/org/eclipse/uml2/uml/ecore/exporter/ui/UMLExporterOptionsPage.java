@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporterOptionsPage.java,v 1.2 2006/05/18 17:54:27 khussey Exp $
+ * $Id: UMLExporterOptionsPage.java,v 1.3 2006/12/20 19:53:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter.ui;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.exporter.ModelExporter;
@@ -42,7 +41,7 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UMLExporterOptionsPage
 		extends ModelExporterOptionsPage {
 
-	protected final Map choiceLabels = new HashMap();
+	protected final Map<String, String> choiceLabels = new HashMap<String, String>();
 
 	protected final String discardChoiceLabel;
 
@@ -87,15 +86,12 @@ public class UMLExporterOptionsPage
 			}
 		});
 
-		String choice = (String) getUMLExporter().getOptions().get(option);
+		String choice = getUMLExporter().getOptions().get(option);
 
-		for (Iterator entries = choiceLabels.entrySet().iterator(); entries
-			.hasNext();) {
-
-			Map.Entry entry = (Map.Entry) entries.next();
+		for (Map.Entry<String, String> entry : choiceLabels.entrySet()) {
 
 			if (entry.getValue().equals(choice)) {
-				initialChoice = (String) entry.getKey();
+				initialChoice = entry.getKey();
 				break;
 			}
 		}
@@ -109,6 +105,7 @@ public class UMLExporterOptionsPage
 		button.setText(text);
 		button.addSelectionListener(new SelectionAdapter() {
 
+			@Override
 			public void widgetSelected(SelectionEvent se) {
 				Control[] children = optionsParent.getChildren();
 				for (int i = 0; i < children.length; i++) {
@@ -174,6 +171,7 @@ public class UMLExporterOptionsPage
 
 		scrolledComposite.addControlListener(new ControlAdapter() {
 
+			@Override
 			public void controlResized(ControlEvent ce) {
 				scrolledComposite.setMinHeight(optionsComposite.computeSize(
 					SWT.DEFAULT, SWT.DEFAULT).y);
@@ -195,6 +193,7 @@ public class UMLExporterOptionsPage
 			UMLExporterPlugin.INSTANCE.getString("_UI_ProcessAll_label"), processChoiceLabel); //$NON-NLS-1$
 	}
 
+	@Override
 	protected void createSaveSettingsControl(Composite parent) {
 		super.createSaveSettingsControl(parent);
 
