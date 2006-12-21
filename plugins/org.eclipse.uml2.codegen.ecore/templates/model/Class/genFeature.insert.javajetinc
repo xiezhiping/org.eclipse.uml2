@@ -335,6 +335,8 @@
   <%if (!genFeature.isUnsettable()) {%>
     <%if (UML2GenModelUtil.isRedefined(genClass, genFeature)) {%>
   		return false;
+    <%} else if (genModel.isReflectiveDelegation()) {%>
+		return eIsSet(<%=genFeature.getQualifiedFeatureAccessor()%>);
     <%} else if (genFeature.isListType()) {%>
       <%if (genFeature.isWrappedFeatureMapType()) {%>
         <%if (genFeature.isVolatile()) {%>
