@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.26 2006/11/08 17:22:08 khussey Exp $
+ * $Id: UMLEditor.java,v 1.27 2006/12/21 18:56:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
+
 //import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 //import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
