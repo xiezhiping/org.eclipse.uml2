@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierItemProvider.java,v 1.4 2006/12/14 15:45:20 khussey Exp $
+ * $Id: GenClassifierItemProvider.java,v 1.5 2006/12/21 18:56:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenClassifier;
+
 //import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 
 import org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin;
