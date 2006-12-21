@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.17 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UMLValidator.java,v 1.18 2006/12/21 18:56:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4351,6 +4351,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(comment, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(comment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(comment, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(comment, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -4376,6 +4380,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(element, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(element, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(element, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(element, diagnostics,
 				context);
@@ -4427,6 +4435,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(directedRelationship,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(directedRelationship, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(directedRelationship,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(directedRelationship,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4452,6 +4466,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(relationship, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(relationship, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(relationship, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(relationship,
@@ -4480,6 +4499,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalSpecification,
@@ -4519,6 +4544,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(valueSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(valueSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(valueSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(valueSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4555,6 +4586,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(typedElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(typedElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(typedElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(typedElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4589,6 +4625,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(namedElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(namedElement, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(namedElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(namedElement,
@@ -4664,6 +4705,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(dependency, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(dependency, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(dependency, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dependency,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4700,6 +4745,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(packageableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(packageableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(packageableElement, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageableElement,
 				diagnostics, context);
@@ -4738,6 +4789,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(parameterableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(parameterableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(parameterableElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameterableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4765,6 +4822,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateParameter,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(templateParameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(templateParameter, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateParameter,
 				diagnostics, context);
@@ -4809,6 +4871,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(templateSignature,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(templateSignature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(templateSignature, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateSignature,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4852,6 +4919,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(templateableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(templateableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(templateableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4877,6 +4950,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateBinding, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(templateBinding, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(templateBinding, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateBinding,
@@ -4939,6 +5017,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(templateParameterSubstitution,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(templateParameterSubstitution,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4981,6 +5065,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(namespace, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(namespace, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(namespace, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(namespace,
 				diagnostics, context);
@@ -5031,6 +5119,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(elementImport, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(elementImport, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(elementImport, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(elementImport,
@@ -5092,6 +5185,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(packageImport, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(packageImport, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(packageImport, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageImport,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5133,6 +5231,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(package_, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(package_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(package_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(package_, diagnostics,
 				context);
@@ -5188,6 +5290,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(packageMerge, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(packageMerge, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(packageMerge, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageMerge,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5213,6 +5320,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(type, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(type, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(type, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(type, diagnostics,
 				context);
@@ -5251,6 +5362,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(profileApplication,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(profileApplication, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(profileApplication, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(profileApplication,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5276,6 +5393,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(profile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(profile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(profile, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(profile, diagnostics,
 				context);
@@ -5349,6 +5470,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stereotype, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(stereotype, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stereotype, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stereotype,
 				diagnostics, context);
@@ -5444,6 +5569,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(class_, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(class_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(class_, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(class_, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -5523,6 +5652,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(behavioredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(behavioredClassifier, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(behavioredClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavioredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5594,6 +5729,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(classifier, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(classifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(classifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(classifier,
 				diagnostics, context);
@@ -5703,6 +5842,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(redefinableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(redefinableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(redefinableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(redefinableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5771,6 +5916,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(generalization, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(generalization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(generalization, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5814,6 +5964,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(generalizationSet,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(generalizationSet, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(generalizationSet, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalizationSet,
 				diagnostics, context);
@@ -5882,6 +6037,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(feature, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(feature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(feature, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(feature, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -5922,6 +6081,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(useCase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(useCase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(useCase, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(useCase, diagnostics,
 				context);
@@ -6039,6 +6202,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(include, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(include, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(include, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(include, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -6073,6 +6240,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extend, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(extend, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(extend, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extend, diagnostics,
 				context);
@@ -6123,6 +6294,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(constraint, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(constraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(constraint,
 				diagnostics, context);
@@ -6236,6 +6411,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(extensionPoint, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(extensionPoint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(extensionPoint, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extensionPoint,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6293,6 +6473,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(substitution, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(substitution, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(substitution, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(substitution,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6328,6 +6513,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(realization, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(realization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(realization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(realization,
 				diagnostics, context);
@@ -6365,6 +6554,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(abstraction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(abstraction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(abstraction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(abstraction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6400,6 +6593,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(opaqueExpression,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(opaqueExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(opaqueExpression, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueExpression,
 				diagnostics, context);
@@ -6483,6 +6681,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(parameter, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(parameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameter,
 				diagnostics, context);
@@ -6608,6 +6810,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(multiplicityElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(multiplicityElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(multiplicityElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(multiplicityElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6713,6 +6921,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(connectableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(connectableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(connectableElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connectableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6747,6 +6961,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connectorEnd, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(connectorEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(connectorEnd, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connectorEnd,
@@ -6850,6 +7069,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(property, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(property, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(property, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(property, diagnostics,
 				context);
@@ -7057,6 +7280,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(deploymentTarget,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(deploymentTarget, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(deploymentTarget, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deploymentTarget,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7092,6 +7320,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deployment, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(deployment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(deployment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deployment,
 				diagnostics, context);
@@ -7129,6 +7361,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(deployedArtifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(deployedArtifact, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(deployedArtifact, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deployedArtifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7164,6 +7401,12 @@ public class UMLValidator
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deploymentSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(deploymentSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(deploymentSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -7255,6 +7498,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(artifact, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(artifact, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(artifact, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(artifact, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -7312,6 +7559,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(manifestation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(manifestation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(manifestation, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(manifestation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7347,6 +7599,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(operation, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(operation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(operation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(operation,
 				diagnostics, context);
@@ -7424,6 +7680,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(behavioralFeature,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(behavioralFeature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(behavioralFeature, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavioralFeature,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7468,6 +7729,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(behavior, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(behavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(behavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavior, diagnostics,
 				context);
@@ -7593,6 +7858,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(parameterSet, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(parameterSet, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(parameterSet, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameterSet,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7675,6 +7945,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(dataType, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(dataType, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(dataType, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dataType, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -7731,6 +8005,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interface_, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(interface_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interface_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interface_,
 				diagnostics, context);
@@ -7803,6 +8081,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(reception, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(reception, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(reception, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(reception,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7861,6 +8143,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(signal, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(signal, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(signal, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(signal, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -7917,6 +8203,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(protocolStateMachine,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(protocolStateMachine, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(protocolStateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolStateMachine,
@@ -8104,6 +8396,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(stateMachine, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(stateMachine, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stateMachine, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -8241,6 +8538,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(region, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(region, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(region, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(region, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8340,6 +8641,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(vertex, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(vertex, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(vertex, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(vertex, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8375,6 +8680,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(transition, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(transition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(transition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(transition,
 				diagnostics, context);
@@ -8525,6 +8834,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(trigger, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(trigger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(trigger, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(trigger, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8560,6 +8873,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(event, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(event, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(event, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(event, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8594,6 +8911,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(port, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(port, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(port, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(port, diagnostics,
 				context);
@@ -8737,6 +9058,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(state, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(state, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(state, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(state, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8855,6 +9180,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(connectionPointReference,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(connectionPointReference, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(connectionPointReference,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8922,6 +9253,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(pseudostate, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(pseudostate, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(pseudostate, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(pseudostate,
 				diagnostics, context);
@@ -9095,6 +9430,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(protocolConformance,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(protocolConformance, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(protocolConformance, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolConformance,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9121,6 +9462,12 @@ public class UMLValidator
 				operationTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(operationTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(operationTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(operationTemplateParameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -9153,6 +9500,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuralFeature,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(structuralFeature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(structuralFeature, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(structuralFeature,
 				diagnostics, context);
@@ -9210,6 +9562,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(association, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(association, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(association, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(association,
 				diagnostics, context);
@@ -9329,6 +9685,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(connectableElementTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(
+				connectableElementTemplateParameter, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9358,6 +9720,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(collaborationUse,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(collaborationUse, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(collaborationUse, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(collaborationUse,
 				diagnostics, context);
@@ -9440,6 +9807,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(collaboration, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(collaboration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(collaboration, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(collaboration,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9502,6 +9874,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuredClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(structuredClassifier, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(structuredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(structuredClassifier,
@@ -9576,6 +9954,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connector, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(connector, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(connector, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connector,
 				diagnostics, context);
@@ -9739,6 +10121,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(redefinableTemplateSignature,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(redefinableTemplateSignature,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(redefinableTemplateSignature,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9801,6 +10189,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(classifierTemplateParameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(classifierTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(classifierTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9848,6 +10242,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(interfaceRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(interfaceRealization, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interfaceRealization,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interfaceRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9883,6 +10283,12 @@ public class UMLValidator
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(encapsulatedClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(encapsulatedClassifier, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(encapsulatedClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -9944,6 +10350,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extension, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(extension, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(extension, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extension,
 				diagnostics, context);
@@ -10040,6 +10450,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extensionEnd, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(extensionEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(extensionEnd, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extensionEnd,
@@ -10158,6 +10573,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(image, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(image, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(image, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(image, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -10184,6 +10603,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stringExpression,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(stringExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stringExpression, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stringExpression,
 				diagnostics, context);
@@ -10251,6 +10675,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(expression, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(expression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(expression, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expression,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10285,6 +10713,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalInteger, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalInteger, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalInteger, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalInteger,
@@ -10323,6 +10756,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(literalString, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalString, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalString, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalString,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10357,6 +10795,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalBoolean, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalBoolean, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalBoolean, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalBoolean,
@@ -10395,6 +10838,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(literalNull, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalNull, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalNull, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalNull,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10430,6 +10877,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(slot, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(slot, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(slot, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(slot, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -10456,6 +10907,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(instanceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(instanceSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(instanceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(instanceSpecification,
@@ -10558,6 +11015,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(enumeration, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(enumeration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(enumeration, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(enumeration,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10616,6 +11077,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(enumerationLiteral,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(enumerationLiteral, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(enumerationLiteral, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(enumerationLiteral,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10662,6 +11129,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(primitiveType, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(primitiveType, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(primitiveType, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(primitiveType,
@@ -10721,6 +11193,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(instanceValue, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(instanceValue, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(instanceValue, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(instanceValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10758,6 +11235,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(literalUnlimitedNatural,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(literalUnlimitedNatural, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(literalUnlimitedNatural,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10792,6 +11275,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(opaqueBehavior, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(opaqueBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(opaqueBehavior, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueBehavior,
@@ -10871,6 +11359,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(functionBehavior,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(functionBehavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(functionBehavior, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(functionBehavior,
 				diagnostics, context);
@@ -10980,6 +11473,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actor, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(actor, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(actor, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(actor, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11067,6 +11564,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(usage, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(usage, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(usage, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(usage, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11101,6 +11602,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(message, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(message, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(message, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(message, diagnostics,
 				context);
@@ -11241,6 +11746,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(messageEnd, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(messageEnd, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(messageEnd, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(messageEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11276,6 +11785,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interaction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(interaction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interaction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interaction,
 				diagnostics, context);
@@ -11356,6 +11869,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(interactionFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(interactionFragment, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interactionFragment, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11391,6 +11910,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(lifeline, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(lifeline, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(lifeline, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(lifeline, diagnostics,
 				context);
@@ -11473,6 +11996,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(partDecomposition,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(partDecomposition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(partDecomposition, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(partDecomposition,
 				diagnostics, context);
@@ -11567,6 +12095,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionUse, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(interactionUse, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interactionUse, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionUse,
@@ -11666,6 +12199,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(gate, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(gate, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(gate, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(gate, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11729,6 +12266,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(action, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(action, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(action, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(action, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11777,6 +12318,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(executableNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(executableNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(executableNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executableNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11823,6 +12369,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityNode,
@@ -11895,6 +12446,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityEdge, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityEdge, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityEdge, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityEdge,
@@ -11983,6 +12539,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activity, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(activity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activity, diagnostics,
 				context);
@@ -12106,6 +12666,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(activityPartition,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityPartition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityPartition, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityPartition,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12214,6 +12779,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(activityGroup, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityGroup, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityGroup, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityGroup,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12285,6 +12855,12 @@ public class UMLValidator
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuredActivityNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(structuredActivityNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(structuredActivityNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -12362,6 +12938,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(variable, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(variable, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(variable, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(variable, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -12428,6 +13008,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(interruptibleActivityRegion,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(interruptibleActivityRegion,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interruptibleActivityRegion,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12479,6 +13065,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(exceptionHandler,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(exceptionHandler, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(exceptionHandler, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(exceptionHandler,
 				diagnostics, context);
@@ -12566,6 +13157,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(objectNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(objectNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(objectNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(objectNode,
 				diagnostics, context);
@@ -12674,6 +13269,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(outputPin, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(outputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(outputPin, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12766,6 +13365,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(pin, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(pin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(pin, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(pin, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -12853,6 +13456,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(inputPin, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(inputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(inputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(inputPin, diagnostics,
 				context);
@@ -12948,6 +13555,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(generalOrdering, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(generalOrdering, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(generalOrdering, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalOrdering,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12983,6 +13595,12 @@ public class UMLValidator
 				occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(occurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(occurrenceSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(occurrenceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -13021,6 +13639,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionOperand,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(interactionOperand, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interactionOperand, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionOperand,
 				diagnostics, context);
@@ -13092,6 +13716,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionConstraint,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(interactionConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interactionConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionConstraint,
@@ -13240,6 +13870,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(executionSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(executionSpecification, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(executionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13293,6 +13929,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(executionOccurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(executionOccurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13327,6 +13969,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executionEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(executionEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(executionEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executionEvent,
@@ -13365,6 +14012,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(stateInvariant, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(stateInvariant, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(stateInvariant, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stateInvariant,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13400,6 +14052,12 @@ public class UMLValidator
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actionExecutionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(actionExecutionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(actionExecutionSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -13458,6 +14116,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(behaviorExecutionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(behaviorExecutionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13495,6 +14159,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(creationEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(creationEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(creationEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(creationEvent,
@@ -13547,6 +14216,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(destructionEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(destructionEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(destructionEvent, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destructionEvent,
 				diagnostics, context);
@@ -13601,6 +14275,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(sendOperationEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(sendOperationEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(sendOperationEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendOperationEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13637,6 +14317,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(messageEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(messageEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(messageEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(messageEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13671,6 +14356,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sendSignalEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(sendSignalEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(sendSignalEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendSignalEvent,
@@ -13710,6 +14400,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(messageOccurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(messageOccurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13745,6 +14441,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(receiveOperationEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(receiveOperationEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(receiveOperationEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(receiveOperationEvent,
@@ -13784,6 +14486,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(receiveSignalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(receiveSignalEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(receiveSignalEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(receiveSignalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13819,6 +14527,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(combinedFragment,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(combinedFragment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(combinedFragment, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(combinedFragment,
 				diagnostics, context);
@@ -13916,6 +14629,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(continuation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(continuation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(continuation, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(continuation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13999,6 +14717,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(considerIgnoreFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(considerIgnoreFragment, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(considerIgnoreFragment,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14078,6 +14802,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(callEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(callEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(callEvent, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14113,6 +14841,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(changeEvent, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(changeEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(changeEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(changeEvent,
 				diagnostics, context);
@@ -14150,6 +14882,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(signalEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(signalEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(signalEvent, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(signalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14184,6 +14920,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(anyReceiveEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(anyReceiveEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(anyReceiveEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(anyReceiveEvent,
@@ -14222,6 +14963,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(createObjectAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(createObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(createObjectAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(createObjectAction,
 				diagnostics, context);
@@ -14334,6 +15081,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(destroyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(destroyObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(destroyObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destroyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14412,6 +15165,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(testIdentityAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(testIdentityAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(testIdentityAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(testIdentityAction,
 				diagnostics, context);
@@ -14504,6 +15263,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readSelfAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readSelfAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readSelfAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readSelfAction,
@@ -14613,6 +15377,12 @@ public class UMLValidator
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(structuralFeatureAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(structuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -14741,6 +15511,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(readStructuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(readStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14851,6 +15627,12 @@ public class UMLValidator
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(writeStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(writeStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(writeStructuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -14965,6 +15747,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(clearStructuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(clearStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(clearStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15027,6 +15815,12 @@ public class UMLValidator
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(removeStructuralFeatureValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -15112,6 +15906,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(addStructuralFeatureValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(addStructuralFeatureValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15193,6 +15993,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(linkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(linkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkAction,
 				diagnostics, context);
@@ -15284,6 +16088,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkEndData, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(linkEndData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(linkEndData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkEndData,
 				diagnostics, context);
@@ -15388,6 +16196,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(qualifierValue, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(qualifierValue, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(qualifierValue, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(qualifierValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -15459,6 +16272,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readLinkAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readLinkAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readLinkAction,
@@ -15595,6 +16413,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(linkEndCreationData,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(linkEndCreationData, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(linkEndCreationData, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkEndCreationData,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -15667,6 +16491,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(createLinkAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(createLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(createLinkAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(createLinkAction,
 				diagnostics, context);
@@ -15744,6 +16573,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(writeLinkAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(writeLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(writeLinkAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(writeLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -15817,6 +16651,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(destroyLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(destroyLinkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(destroyLinkAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destroyLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -15876,6 +16715,12 @@ public class UMLValidator
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkEndDestructionData,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(linkEndDestructionData, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(linkEndDestructionData,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -15951,6 +16796,12 @@ public class UMLValidator
 				clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clearAssociationAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(clearAssociationAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(clearAssociationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -16031,6 +16882,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(broadcastSignalAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(broadcastSignalAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(broadcastSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(broadcastSignalAction,
@@ -16116,6 +16973,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(invocationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(invocationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(invocationAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(invocationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16179,6 +17041,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(sendObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(sendObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(sendObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16229,6 +17096,12 @@ public class UMLValidator
 				valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(valueSpecificationAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(valueSpecificationAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(valueSpecificationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -16311,6 +17184,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(timeExpression, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(timeExpression, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(timeExpression, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeExpression,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16346,6 +17224,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(observation, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(observation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(observation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(observation,
 				diagnostics, context);
@@ -16383,6 +17265,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(duration, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(duration, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(duration, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(duration, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -16418,6 +17304,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(valuePin, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(valuePin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(valuePin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(valuePin, diagnostics,
 				context);
@@ -16528,6 +17418,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(durationInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(durationInterval, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(durationInterval, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16564,6 +17459,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(interval, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(interval, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(interval, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interval, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -16598,6 +17497,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(timeConstraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(timeConstraint, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeConstraint,
@@ -16652,6 +17556,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(intervalConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(intervalConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(intervalConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(intervalConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16703,6 +17613,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(timeInterval, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(timeInterval, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(timeInterval, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16739,6 +17654,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(durationConstraint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(durationConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(durationConstraint, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationConstraint,
 				diagnostics, context);
@@ -16807,6 +17728,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(timeObservation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(timeObservation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(timeObservation, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeObservation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16843,6 +17769,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(durationObservation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(durationObservation, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(durationObservation, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationObservation,
 				diagnostics, context);
@@ -16896,6 +17828,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(opaqueAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(opaqueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(opaqueAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16943,6 +17880,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(callAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(callAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callAction,
 				diagnostics, context);
@@ -17041,6 +17982,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(sendSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(sendSignalAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(sendSignalAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17123,6 +18069,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callOperationAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(callOperationAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(callOperationAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callOperationAction,
 				diagnostics, context);
@@ -17264,6 +18216,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(callBehaviorAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(callBehaviorAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(callBehaviorAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callBehaviorAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17388,6 +18346,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(informationItem, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(informationItem, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(informationItem, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(informationItem,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17490,6 +18453,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(informationFlow, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(informationFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(informationFlow, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(informationFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17571,6 +18539,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(model, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(model, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(model, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(model, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -17611,6 +18583,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(variableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(variableAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(variableAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(variableAction,
@@ -17676,6 +18653,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readVariableAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readVariableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readVariableAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readVariableAction,
 				diagnostics, context);
@@ -17760,6 +18743,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(writeVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(writeVariableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(writeVariableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(writeVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17842,6 +18831,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(clearVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(clearVariableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(clearVariableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(clearVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17892,6 +18887,12 @@ public class UMLValidator
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(addVariableValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(addVariableValueAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(addVariableValueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -17968,6 +18969,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(removeVariableValueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(removeVariableValueAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(removeVariableValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18042,6 +19049,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(raiseExceptionAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(raiseExceptionAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(raiseExceptionAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(raiseExceptionAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18088,6 +19101,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actionInputPin, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(actionInputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(actionInputPin, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(actionInputPin,
@@ -18216,6 +19234,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(readExtentAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(readExtentAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readExtentAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readExtentAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18294,6 +19317,12 @@ public class UMLValidator
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(reclassifyObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(reclassifyObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(reclassifyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -18390,6 +19419,12 @@ public class UMLValidator
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readIsClassifiedObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readIsClassifiedObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readIsClassifiedObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -18505,6 +19540,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(startClassifierBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(startClassifierBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18584,6 +19625,12 @@ public class UMLValidator
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readLinkObjectEndAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readLinkObjectEndAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readLinkObjectEndAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -18745,6 +19792,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
 				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(readLinkObjectEndQualifierAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(readLinkObjectEndQualifierAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				readLinkObjectEndQualifierAction, diagnostics, context);
@@ -18923,6 +19976,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(createLinkObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(createLinkObjectAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(createLinkObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19035,6 +20094,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(acceptEventAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(acceptEventAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(acceptEventAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(acceptEventAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19144,6 +20208,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(acceptCallAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(acceptCallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(acceptCallAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(acceptCallAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19249,6 +20318,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(replyAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(replyAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(replyAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(replyAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19327,6 +20400,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(unmarshallAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(unmarshallAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(unmarshallAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(unmarshallAction,
 				diagnostics, context);
@@ -19484,6 +20562,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(reduceAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(reduceAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(reduceAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(reduceAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19578,6 +20661,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(controlNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(controlNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(controlNode, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(controlNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19625,6 +20712,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(controlFlow, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(controlFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(controlFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(controlFlow,
 				diagnostics, context);
@@ -19691,6 +20782,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(initialNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(initialNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(initialNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(initialNode,
 				diagnostics, context);
@@ -19769,6 +20864,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityParameterNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityParameterNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityParameterNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityParameterNode,
@@ -19909,6 +21010,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(forkNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(forkNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(forkNode, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(forkNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -19985,6 +21090,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(flowFinalNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(flowFinalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(flowFinalNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(flowFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20035,6 +21145,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(finalNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(finalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(finalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(finalNode,
 				diagnostics, context);
@@ -20100,6 +21214,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(centralBufferNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(centralBufferNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(centralBufferNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(centralBufferNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20159,6 +21278,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(mergeNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(mergeNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(mergeNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(mergeNode,
 				diagnostics, context);
@@ -20235,6 +21358,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(decisionNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(decisionNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(decisionNode,
@@ -20331,6 +21459,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(activityFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(activityFinalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(activityFinalNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20381,6 +21514,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(joinNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(joinNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(joinNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(joinNode, diagnostics,
 				context);
@@ -20459,6 +21596,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(dataStoreNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(dataStoreNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(dataStoreNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dataStoreNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20518,6 +21660,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(objectFlow, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(objectFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(objectFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(objectFlow,
 				diagnostics, context);
@@ -20689,6 +21835,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(sequenceNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(sequenceNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(sequenceNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sequenceNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20750,6 +21901,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(conditionalNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(conditionalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(conditionalNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(conditionalNode,
@@ -20829,6 +21985,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clause, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(clause, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(clause, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(clause, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -20883,6 +22043,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(loopNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(loopNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(loopNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(loopNode, diagnostics,
 				context);
@@ -20989,6 +22153,11 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(expansionNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(expansionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(expansionNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expansionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21047,6 +22216,11 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(expansionRegion, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(expansionRegion, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(expansionRegion, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expansionRegion,
@@ -21128,6 +22302,12 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(componentRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(componentRealization, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(componentRealization,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(componentRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21163,6 +22343,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(component, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(component, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(component, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(component,
 				diagnostics, context);
@@ -21228,6 +22412,10 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(node, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(node, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(node, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(node, diagnostics,
 				context);
@@ -21308,6 +22496,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(device, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(device, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(device, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(device, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -21376,6 +22568,12 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executionEnvironment,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(executionEnvironment, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(executionEnvironment,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executionEnvironment,
@@ -21447,6 +22645,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(communicationPath,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(communicationPath, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(communicationPath, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(communicationPath,
 				diagnostics, context);
@@ -21548,6 +22751,10 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(finalState, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(finalState, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(finalState, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(finalState,
 				diagnostics, context);
@@ -21699,6 +22906,10 @@ public class UMLValidator
 			result &= validate_EveryProxyResolves(timeEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_UniqueID(timeEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(timeEvent, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21764,6 +22975,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(protocolTransition,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(protocolTransition, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(protocolTransition, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolTransition,
 				diagnostics, context);
@@ -21877,6 +23094,11 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(associationClass,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(associationClass, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(associationClass, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(associationClass,
 				diagnostics, context);
