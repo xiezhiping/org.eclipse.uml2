@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.11 2006/12/14 15:47:33 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.12 2006/12/21 20:26:15 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -159,8 +159,7 @@ public class DerivedEObjectEList<E>
 		}
 
 		protected boolean scanPrevious(EStructuralFeature previousFeature,
-
-		ListIterator<Object> previousValuesIterator) {
+				ListIterator<Object> previousValuesIterator) {
 			boolean isFeatureMap = FeatureMapUtil.isFeatureMap(previousFeature);
 
 			while (previousValuesIterator.hasPrevious()) {
