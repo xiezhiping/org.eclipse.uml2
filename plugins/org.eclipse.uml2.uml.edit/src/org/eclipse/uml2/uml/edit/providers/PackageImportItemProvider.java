@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportItemProvider.java,v 1.6 2006/05/15 21:06:21 khussey Exp $
+ * $Id: PackageImportItemProvider.java,v 1.7 2006/12/21 18:56:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.UMLPackage;
+
 //import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
