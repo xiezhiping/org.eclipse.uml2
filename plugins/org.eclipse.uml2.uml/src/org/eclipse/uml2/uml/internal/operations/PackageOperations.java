@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.29 2006/12/14 15:49:26 khussey Exp $
+ * $Id: PackageOperations.java,v 1.30 2007/01/04 18:57:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -237,10 +237,16 @@ public class PackageOperations
 							copyValues.add(copy((EObject) value));
 						}
 					} else {
-						copyEObject.eSet(targetEReference,
-							copy((EObject) (eReference.isMany()
-								? ((EList) value).get(0)
-								: value)));
+
+						if (eReference.isMany()) {
+							@SuppressWarnings("unchecked")
+							EList<EObject> values = (EList<EObject>) value;
+							copyEObject.eSet(targetEReference, copy(values
+								.get(0)));
+						} else {
+							copyEObject.eSet(targetEReference,
+								copy((EObject) value));
+						}
 					}
 				} catch (Exception e) {
 					UMLPlugin.INSTANCE.log(e);
