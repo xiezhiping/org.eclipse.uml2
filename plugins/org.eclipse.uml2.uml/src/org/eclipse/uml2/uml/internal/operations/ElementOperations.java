@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.48 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ElementOperations.java,v 1.49 2007/01/04 18:54:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -408,11 +408,15 @@ public class ElementOperations
 							if (eType instanceof EClass) {
 								eClass = (EClass) eType;
 
-								eObject = (EObject) (eStructuralFeature
-									.isMany()
-									? ((List) eObject.eGet(eStructuralFeature))
-										.get(index)
-									: eObject.eGet(eStructuralFeature));
+								if (eStructuralFeature.isMany()) {
+									@SuppressWarnings("unchecked")
+									List<EObject> list = (List<EObject>) eObject
+										.eGet(eStructuralFeature);
+									eObject = list.get(index);
+								} else {
+									eObject = (EObject) eObject
+										.eGet(eStructuralFeature);
+								}
 							}
 						} else {
 							return false;
@@ -508,9 +512,14 @@ public class ElementOperations
 
 				eClass = (EClass) eType;
 
-				eObject = (EObject) (eStructuralFeature.isMany()
-					? ((List) eObject.eGet(eStructuralFeature)).get(index)
-					: eObject.eGet(eStructuralFeature));
+				if (eStructuralFeature.isMany()) {
+					@SuppressWarnings("unchecked")
+					List<EObject> list = (List<EObject>) eObject
+						.eGet(eStructuralFeature);
+					eObject = list.get(index);
+				} else {
+					eObject = (EObject) eObject.eGet(eStructuralFeature);
+				}
 			} else {
 				Object value = null;
 
