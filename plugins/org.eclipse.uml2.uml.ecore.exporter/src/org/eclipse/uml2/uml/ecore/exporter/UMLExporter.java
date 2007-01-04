@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.7 2006/12/20 19:53:52 khussey Exp $
+ * $Id: UMLExporter.java,v 1.8 2007/01/04 18:55:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
@@ -95,13 +94,11 @@ public class UMLExporter
 		monitor.beginTask(UML2Util.EMPTY_STRING,
 			exportData.genPackageToArtifactURI.size());
 
-		for (Iterator i = exportData.genPackageToArtifactURI.entrySet()
-			.iterator(); i.hasNext();) {
-
-			Map.Entry entry = (Map.Entry) i.next();
-			URI artifactURI = (URI) entry.getValue();
+		for (Map.Entry<GenPackage, URI> entry : exportData.genPackageToArtifactURI
+			.entrySet()) {
+			URI artifactURI = entry.getValue();
 			Resource resource = resourceSet.createResource(artifactURI);
-			EPackage ePackage = ((GenPackage) entry.getKey()).getEcorePackage();
+			EPackage ePackage = entry.getKey().getEcorePackage();
 
 			monitor.subTask(UMLExporterPlugin.INSTANCE.getString(
 				"_UI_Exporting_message", new Object[]{artifactURI.toString()})); //$NON-NLS-1$
@@ -172,14 +169,11 @@ public class UMLExporter
 				getConverterGenAnnotationSource()).getDetails().putAll(
 				getOptions());
 		} else {
-			EMap details = genAnnotation.getDetails();
+			EMap<String, String> details = genAnnotation.getDetails();
 
-			for (Iterator entries = getOptions().entrySet().iterator(); entries
-				.hasNext();) {
-
-				Map.Entry entry = (Map.Entry) entries.next();
-				String key = (String) entry.getKey();
-				String value = (String) entry.getValue();
+			for (Map.Entry<String, String> entry : getOptions().entrySet()) {
+				String key = entry.getKey();
+				String value = entry.getValue();
 
 				if (!value.equals(details.get(key))) {
 					changed = true;
