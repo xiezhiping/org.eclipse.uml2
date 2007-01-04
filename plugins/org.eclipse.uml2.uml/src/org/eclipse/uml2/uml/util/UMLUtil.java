@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.44 2006/12/14 21:18:15 khussey Exp $
+ * $Id: UMLUtil.java,v 1.45 2007/01/04 18:55:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -173,11 +173,14 @@ public class UMLUtil
 				super((EObject) entry);
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			public boolean matches(EObject otherEObject) {
 				return super.matches(otherEObject)
-					&& safeEquals(((BasicEMap.Entry) eObject).getKey(),
-						((BasicEMap.Entry) otherEObject).getKey());
+					&& safeEquals(((BasicEMap.Entry<String, String>) eObject)
+						.getKey(),
+						((BasicEMap.Entry<String, String>) otherEObject)
+							.getKey());
 			}
 		}
 
