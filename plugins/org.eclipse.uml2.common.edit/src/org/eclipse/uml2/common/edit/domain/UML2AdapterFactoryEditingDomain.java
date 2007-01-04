@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2AdapterFactoryEditingDomain.java,v 1.1 2006/03/23 18:53:36 khussey Exp $
+ * $Id: UML2AdapterFactoryEditingDomain.java,v 1.2 2007/01/04 18:53:45 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.domain;
 
-import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Map;
 
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.change.ListChange;
 import org.eclipse.emf.ecore.change.impl.FeatureChangeImpl;
 import org.eclipse.emf.ecore.change.impl.ListChangeImpl;
 import org.eclipse.emf.ecore.change.util.ChangeRecorder;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 
@@ -36,24 +36,24 @@ public class UML2AdapterFactoryEditingDomain
 	private static class UniqueListChangeImpl
 			extends ListChangeImpl {
 
-		public void apply(EList originalList) {
+		@Override
+		public void apply(EList<Object> originalList) {
 
 			switch (getKind().getValue()) {
 				case ChangeKind.ADD :
 
 					if (index == -1) {
 
-						for (Iterator v = getValues().iterator(); v.hasNext();) {
-							Object value = v.next();
+						for (Object value : getValues()) {
 
 							if (!originalList.contains(value)) {
 								originalList.add(value);
 							}
 						}
 					} else {
-						EList values = getValues();
+						EList<Object> values = getValues();
 
-						for (ListIterator v = values
+						for (ListIterator<Object> v = values
 							.listIterator(values.size()); v.hasPrevious();) {
 
 							Object value = v.previous();
@@ -67,8 +67,8 @@ public class UML2AdapterFactoryEditingDomain
 					break;
 				case ChangeKind.REMOVE :
 
-					for (Iterator v = getValues().iterator(); v.hasNext();) {
-						originalList.remove(v.next());
+					for (Object value : getValues()) {
+						originalList.remove(value);
 					}
 
 					break;
@@ -77,24 +77,24 @@ public class UML2AdapterFactoryEditingDomain
 			}
 		}
 
-		public void applyAndReverse(EList originalList) {
+		@Override
+		public void applyAndReverse(EList<Object> originalList) {
 			switch (getKind().getValue()) {
 				case ChangeKind.ADD :
 
 					if (index == -1) {
 						index = originalList.size();
 
-						for (Iterator v = getValues().iterator(); v.hasNext();) {
-							Object value = v.next();
+						for (Object value : getValues()) {
 
 							if (!originalList.contains(value)) {
 								originalList.add(value);
 							}
 						}
 					} else {
-						EList values = getValues();
+						EList<Object> values = getValues();
 
-						for (ListIterator v = values
+						for (ListIterator<Object> v = values
 							.listIterator(values.size()); v.hasPrevious();) {
 
 							Object value = v.previous();
@@ -110,8 +110,8 @@ public class UML2AdapterFactoryEditingDomain
 					break;
 				case ChangeKind.REMOVE :
 
-					for (Iterator v = getValues().iterator(); v.hasNext();) {
-						originalList.remove(v.next());
+					for (Object value : getValues()) {
+						originalList.remove(value);
 					}
 
 					setKind(ChangeKind.ADD_LITERAL);
@@ -132,7 +132,8 @@ public class UML2AdapterFactoryEditingDomain
 			super(feature, value, isSet);
 		}
 
-		protected ListChange createListChange(EList changesList,
+		@Override
+		protected ListChange createListChange(EList<ListChange> changesList,
 				ChangeKind kind, int index) {
 
 			if (getFeature().isUnique()) {
@@ -159,7 +160,8 @@ public class UML2AdapterFactoryEditingDomain
 	}
 
 	public UML2AdapterFactoryEditingDomain(AdapterFactory adapterFactory,
-			CommandStack commandStack, Map resourceToReadOnlyMap) {
+			CommandStack commandStack,
+			Map<Resource, Boolean> resourceToReadOnlyMap) {
 		super(adapterFactory, commandStack, resourceToReadOnlyMap);
 	}
 
@@ -173,8 +175,9 @@ public class UML2AdapterFactoryEditingDomain
 
 			private boolean featureIsUnique = false;
 
-			protected ListChange createListChange(EList changesList,
-					ChangeKind kind, int index) {
+			@Override
+			protected ListChange createListChange(
+					EList<ListChange> changesList, ChangeKind kind, int index) {
 
 				if (featureIsUnique) {
 					ListChange listChange = new UniqueListChangeImpl();
@@ -190,8 +193,9 @@ public class UML2AdapterFactoryEditingDomain
 				}
 			}
 
-			protected void createRemoveListChange(EList oldList,
-					EList changesList, Object newObject, int index) {
+			@Override
+			protected void createRemoveListChange(EList<?> oldList,
+					EList<ListChange> changesList, Object newObject, int index) {
 
 				if (featureIsUnique) {
 					ListChange listChange = createListChange(changesList,
@@ -203,12 +207,14 @@ public class UML2AdapterFactoryEditingDomain
 				}
 			}
 
+			@Override
 			protected void finalizeChange(FeatureChange change, EObject eObject) {
 				featureIsUnique = change.getFeature().isUnique();
 
 				super.finalizeChange(change, eObject);
 			}
 
+			@Override
 			protected FeatureChange createFeatureChange(EObject eObject,
 					EStructuralFeature eStructuralFeature, Object value,
 					boolean isSet) {
@@ -228,6 +234,5 @@ public class UML2AdapterFactoryEditingDomain
 
 		return changeRecorder;
 	}
-	
-	
+
 }
