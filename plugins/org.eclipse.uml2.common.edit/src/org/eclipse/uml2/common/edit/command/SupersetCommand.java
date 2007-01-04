@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2005 IBM Corporation and others.
+ * Copyright (c) 2003, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetCommand.java,v 1.1 2005/05/17 22:03:59 khussey Exp $
+ * $Id: SupersetCommand.java,v 1.2 2007/01/04 18:53:35 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -18,9 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-/**
- * 
- */
 public abstract class SupersetCommand
 		extends CompoundCommand {
 
@@ -46,16 +43,12 @@ public abstract class SupersetCommand
 		this.supersetCommand = supersetCommand;
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.command.Command#execute()
-	 */
+	@Override
 	public void execute() {
 		appendAndExecute(supersetCommand);
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.command.AbstractCommand#prepare()
-	 */
+	@Override
 	protected boolean prepare() {
 		return supersetCommand.canExecute();
 	}

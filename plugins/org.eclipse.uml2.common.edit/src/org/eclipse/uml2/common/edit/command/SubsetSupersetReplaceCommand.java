@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetReplaceCommand.java,v 1.2 2006/03/01 17:11:12 khussey Exp $
+ * $Id: SubsetSupersetReplaceCommand.java,v 1.3 2007/01/04 18:53:35 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -32,12 +31,12 @@ public class SubsetSupersetReplaceCommand
 
 	protected final Object value;
 
-	protected final Collection collection;
+	protected final Collection<?> collection;
 
 	public SubsetSupersetReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EStructuralFeature[] supersetFeatures,
 			EStructuralFeature[] subsetFeatures, Object value,
-			Collection collection) {
+			Collection<?> collection) {
 
 		super(domain, owner, feature, supersetFeatures, subsetFeatures,
 			new ReplaceCommand(domain, owner, feature, value, collection));
@@ -46,20 +45,21 @@ public class SubsetSupersetReplaceCommand
 		this.collection = collection;
 	}
 
+	@Override
 	public void execute() {
 
 		if (supersetFeatures != null) {
 
-			for (Iterator elements = collection.iterator(); elements.hasNext();) {
-				Object element = elements.next();
+			for (Object element : collection) {
 
 				for (int i = 0; i < supersetFeatures.length; i++) {
 
 					if (supersetFeatures[i].isMany()) {
+						@SuppressWarnings("unchecked")
+						EList<EObject> values = (EList<EObject>) owner
+							.eGet(supersetFeatures[i]);
 
-						if (!((EList) owner.eGet(supersetFeatures[i]))
-							.contains(element)) {
-
+						if (!values.contains(element)) {
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections
 									.singleton(element),
@@ -75,8 +75,11 @@ public class SubsetSupersetReplaceCommand
 			for (int i = 0; i < subsetFeatures.length; i++) {
 
 				if (subsetFeatures[i].isMany()) {
+					@SuppressWarnings("unchecked")
+					EList<EObject> values = (EList<EObject>) owner
+						.eGet(subsetFeatures[i]);
 
-					if (((EList) owner.eGet(subsetFeatures[i])).contains(value)) {
+					if (values.contains(value)) {
 						appendAndExecute(RemoveCommand.create(domain, owner,
 							subsetFeatures[i], Collections.singleton(value)));
 					}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2006 IBM Corporation and others.
+ * Copyright (c) 2003, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SupersetSetCommand.java,v 1.3 2006/03/01 17:11:12 khussey Exp $
+ * $Id: SupersetSetCommand.java,v 1.4 2007/01/04 18:53:35 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-/**
- * @deprecated Use SubsetSupersetSetCommand
- */
+@Deprecated
 public class SupersetSetCommand
 		extends SupersetCommand {
 
@@ -35,9 +33,7 @@ public class SupersetSetCommand
 		this.value = value;
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.command.Command#execute()
-	 */
+	@Override
 	public void execute() {
 
 		if (subsetFeatures != null) {

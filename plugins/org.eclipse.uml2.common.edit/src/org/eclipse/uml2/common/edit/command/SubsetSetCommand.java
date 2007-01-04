@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003, 2006 IBM Corporation and others.
+ * Copyright (c) 2003, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSetCommand.java,v 1.3 2006/03/01 17:11:12 khussey Exp $
+ * $Id: SubsetSetCommand.java,v 1.4 2007/01/04 18:53:35 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -22,9 +22,7 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-/**
- * @deprecated Use SubsetSupersetSetCommand
- */
+@Deprecated
 public class SubsetSetCommand
 		extends SubsetCommand {
 
@@ -39,9 +37,7 @@ public class SubsetSetCommand
 		this.value = value;
 	}
 
-	/**
-	 * @see org.eclipse.emf.common.command.Command#execute()
-	 */
+	@Override
 	public void execute() {
 
 		if (supersetFeatures != null) {
@@ -51,9 +47,11 @@ public class SubsetSetCommand
 				for (int i = 0; i < supersetFeatures.length; i++) {
 
 					if (supersetFeatures[i].isMany()) {
+						@SuppressWarnings("unchecked")
+						EList<EObject> values = (EList<EObject>) owner
+							.eGet(supersetFeatures[i]);
 
-						if (!((EList) owner.eGet(supersetFeatures[i]))
-							.contains(value)) {
+						if (!values.contains(value)) {
 
 							appendAndExecute(AddCommand.create(domain, owner,
 								supersetFeatures[i], Collections

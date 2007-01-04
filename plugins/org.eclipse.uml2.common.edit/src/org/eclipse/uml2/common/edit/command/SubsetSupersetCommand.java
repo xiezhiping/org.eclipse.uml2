@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetCommand.java,v 1.1 2006/01/05 13:49:51 khussey Exp $
+ * $Id: SubsetSupersetCommand.java,v 1.2 2007/01/04 18:53:35 khussey Exp $
  */
 package org.eclipse.uml2.common.edit.command;
 
@@ -46,10 +46,12 @@ public abstract class SubsetSupersetCommand
 		this.subsetSupersetCommand = subsetSupersetCommand;
 	}
 
+	@Override
 	public void execute() {
 		appendAndExecute(subsetSupersetCommand);
 	}
 
+	@Override
 	protected boolean prepare() {
 		return subsetSupersetCommand.canExecute();
 	}
