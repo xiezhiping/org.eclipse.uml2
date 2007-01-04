@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToUMLModelAction.java,v 1.2 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ConvertToUMLModelAction.java,v 1.3 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -16,7 +16,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +27,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -59,14 +59,16 @@ public class ConvertToUMLModelAction
 		super();
 	}
 
+	@Override
 	protected AdapterFactory getAdapterFactory() {
 		return workbenchPart instanceof EcoreEditor
 			? ((EcoreEditor) workbenchPart).getAdapterFactory()
 			: null;
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof EPackage) {
@@ -77,6 +79,7 @@ public class ConvertToUMLModelAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -85,7 +88,7 @@ public class ConvertToUMLModelAction
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();
 
-			final Map options = new HashMap();
+			final Map<String, String> options = new HashMap<String, String>();
 
 			final String label = UMLExamplesUIPlugin.INSTANCE.getString(
 				"_UI_ConvertToUMLActionCommand_label", //$NON-NLS-1$
@@ -111,7 +114,7 @@ public class ConvertToUMLModelAction
 										.getObjectLabel(ePackage)}),
 								new Object[]{ePackage});
 
-							Map context = new HashMap();
+							Map<Object, Object> context = new HashMap<Object, Object>();
 							context.put(UML2Util.QualifiedTextProvider.class,
 								qualifiedTextProvider);
 
@@ -128,14 +131,11 @@ public class ConvertToUMLModelAction
 								resource.getURI()).trimFileExtension()
 								.trimSegments(1);
 
-							List resources = new ArrayList();
+							List<Resource> resources = new ArrayList<Resource>();
 
-							for (Iterator packages = UMLUtil.convertFromEcore(
-								ePackage, options, diagnostics, context)
-								.iterator(); packages.hasNext();) {
-
-								org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) packages
-									.next();
+							for (org.eclipse.uml2.uml.Package package_ : UMLUtil
+								.convertFromEcore(ePackage, options,
+									diagnostics, context)) {
 
 								resources.add(resource = resourceSet
 									.createResource(uri.appendSegment(
@@ -143,16 +143,16 @@ public class ConvertToUMLModelAction
 										.appendFileExtension(
 											UMLResource.FILE_EXTENSION)));
 
-								EList contents = resource.getContents();
+								EList<EObject> contents = resource
+									.getContents();
 
 								contents.add(package_);
 
-								for (Iterator allContents = UMLUtil
+								for (TreeIterator<EObject> allContents = UML2Util
 									.getAllContents(package_, true, false); allContents
 									.hasNext();) {
 
-									EObject eObject = (EObject) allContents
-										.next();
+									EObject eObject = allContents.next();
 
 									if (eObject instanceof Element) {
 										contents.addAll(((Element) eObject)
@@ -161,10 +161,10 @@ public class ConvertToUMLModelAction
 								}
 							}
 
-							for (Iterator i = resources.iterator(); i.hasNext();) {
+							for (Resource r : resources) {
 
 								try {
-									((Resource) i.next()).save(null);
+									r.save(null);
 								} catch (Exception e) {
 									UMLExamplesUIPlugin.INSTANCE.log(e);
 								}

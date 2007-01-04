@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.4 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.5 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
@@ -31,8 +30,9 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
 public class ExternalizeLabelsAction
 		extends PropertiesAction {
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
@@ -43,6 +43,7 @@ public class ExternalizeLabelsAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -51,16 +52,19 @@ public class ExternalizeLabelsAction
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(package_);
 
-			new UMLSwitch() {
+			new UMLSwitch<Object>() {
 
+				@Override
 				public Object caseAssociation(Association association) {
 					return association;
 				}
 
+				@Override
 				public Object caseConstraint(Constraint constraint) {
 					return constraint;
 				}
 
+				@Override
 				public Object caseNamedElement(NamedElement namedElement) {
 					String qualifiedName = namedElement.getQualifiedName();
 
@@ -72,12 +76,11 @@ public class ExternalizeLabelsAction
 					return super.caseNamedElement(namedElement);
 				}
 
+				@Override
 				public Object defaultCase(EObject eObject) {
 
-					for (Iterator eContents = eObject.eContents().iterator(); eContents
-						.hasNext();) {
-
-						doSwitch((EObject) eContents.next());
+					for (EObject c : eObject.eContents()) {
+						doSwitch(c);
 					}
 
 					return eObject;

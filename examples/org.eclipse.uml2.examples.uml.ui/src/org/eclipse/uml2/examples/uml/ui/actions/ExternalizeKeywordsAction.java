@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeKeywordsAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ExternalizeKeywordsAction.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
 import java.io.PrintWriter;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
@@ -30,8 +29,9 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
 public class ExternalizeKeywordsAction
 		extends PropertiesAction {
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof Profile) {
@@ -42,6 +42,7 @@ public class ExternalizeKeywordsAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -49,8 +50,9 @@ public class ExternalizeKeywordsAction
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(profile);
 
-			new UMLSwitch() {
+			new UMLSwitch<Object>() {
 
+				@Override
 				public Object caseStereotype(Stereotype stereotype) {
 					String qualifiedName = stereotype.getQualifiedName();
 
@@ -63,12 +65,11 @@ public class ExternalizeKeywordsAction
 					return super.caseStereotype(stereotype);
 				}
 
+				@Override
 				public Object defaultCase(EObject eObject) {
 
-					for (Iterator eContents = eObject.eContents().iterator(); eContents
-						.hasNext();) {
-
-						doSwitch((EObject) eContents.next());
+					for (EObject c : eObject.eContents()) {
+						doSwitch(c);
 					}
 
 					return super.defaultCase(eObject);

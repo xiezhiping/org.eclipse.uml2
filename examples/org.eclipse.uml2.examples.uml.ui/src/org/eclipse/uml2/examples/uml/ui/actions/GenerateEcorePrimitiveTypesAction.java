@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcorePrimitiveTypesAction.java,v 1.2 2006/10/10 20:40:47 khussey Exp $
+ * $Id: GenerateEcorePrimitiveTypesAction.java,v 1.3 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EDataType;
@@ -28,6 +26,7 @@ import org.eclipse.uml2.uml.Model;
 public class GenerateEcorePrimitiveTypesAction
 		extends GenerateModelAction {
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -38,23 +37,24 @@ public class GenerateEcorePrimitiveTypesAction
 
 					public void run() {
 
-						new EcoreSwitch() {
+						new EcoreSwitch<Object>() {
 
+							@Override
 							public Object caseEDataType(EDataType eDataType) {
 								return generateOwnedPrimitiveType(model,
 									eDataType.getName());
 							}
 
+							@Override
 							public Object caseEEnum(EEnum eEnum) {
 								return eEnum;
 							}
 
+							@Override
 							public Object defaultCase(EObject eObject) {
 
-								for (Iterator eContents = eObject.eContents()
-									.iterator(); eContents.hasNext();) {
-
-									doSwitch((EObject) eContents.next());
+								for (EObject c : eObject.eContents()) {
+									doSwitch(c);
 								}
 
 								return eObject;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToMetamodelAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ConvertToMetamodelAction.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
-
-import java.util.Iterator;
 
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
@@ -34,6 +32,7 @@ public class ConvertToMetamodelAction
 
 	protected static final String STEREOTYPE_NAME__METAMODEL = "Metamodel"; //$NON-NLS-1$
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -58,8 +57,9 @@ public class ConvertToMetamodelAction
 							: umlProfile
 								.getOwnedStereotype(STEREOTYPE_NAME__METACLASS);
 
-						new UMLSwitch() {
+						new UMLSwitch<Object>() {
 
+							@Override
 							public Object caseClass(
 									org.eclipse.uml2.uml.Class class_) {
 								applyStereotype(class_, metaclassStereotype);
@@ -67,6 +67,7 @@ public class ConvertToMetamodelAction
 								return defaultCase(class_);
 							}
 
+							@Override
 							public Object caseClassifier(Classifier classifier) {
 								classifier
 									.setVisibility(VisibilityKind.PRIVATE_LITERAL);
@@ -74,13 +75,12 @@ public class ConvertToMetamodelAction
 								return defaultCase(classifier);
 							}
 
+							@Override
 							public Object defaultCase(EObject eObject) {
 								setID(eObject);
 
-								for (Iterator eContents = eObject.eContents()
-									.iterator(); eContents.hasNext();) {
-
-									doSwitch((EObject) eContents.next());
+								for (EObject c : eObject.eContents()) {
+									doSwitch(c);
 								}
 
 								return this;

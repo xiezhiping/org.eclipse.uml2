@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateProfileAction.java,v 1.7 2006/12/14 21:18:14 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.8 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -44,13 +44,13 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.editor.actions.UMLCommandAction;
 import org.eclipse.uml2.uml.resource.UMLResource;
-import org.eclipse.uml2.uml.util.UMLUtil;
 
 public abstract class GenerateProfileAction
 		extends UMLCommandAction {
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof Profile) {
@@ -157,7 +157,7 @@ public abstract class GenerateProfileAction
 			new UML2Util.EObjectMatcher() {
 
 				public boolean matches(EObject eObject) {
-					return UMLUtil.safeEquals(((Image) eObject).getLocation(),
+					return UML2Util.safeEquals(((Image) eObject).getLocation(),
 						location);
 				}
 			});

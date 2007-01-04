@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToEcoreModelAction.java,v 1.3 2006/10/10 20:40:47 khussey Exp $
+ * $Id: ConvertToEcoreModelAction.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -16,7 +16,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -56,12 +55,14 @@ public class ConvertToEcoreModelAction
 		super();
 	}
 
+	@Override
 	protected String getMarkerID() {
 		return EValidator.MARKER;
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
@@ -72,6 +73,7 @@ public class ConvertToEcoreModelAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -81,7 +83,7 @@ public class ConvertToEcoreModelAction
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();
 
-			final Map options = new HashMap();
+			final Map<String, String> options = new HashMap<String, String>();
 
 			final String label = UMLExamplesUIPlugin.INSTANCE.getString(
 				"_UI_ConvertToEcoreActionCommand_label", //$NON-NLS-1$
@@ -107,7 +109,7 @@ public class ConvertToEcoreModelAction
 										.getObjectLabel(package_)}),
 								new Object[]{package_});
 
-							Map context = new HashMap();
+							Map<Object, Object> context = new HashMap<Object, Object>();
 							context.put(UML2Util.QualifiedTextProvider.class,
 								qualifiedTextProvider);
 
@@ -124,13 +126,10 @@ public class ConvertToEcoreModelAction
 								resource.getURI()).trimFileExtension()
 								.trimSegments(1);
 
-							List resources = new ArrayList();
+							List<Resource> resources = new ArrayList<Resource>();
 
-							for (Iterator ePackages = UMLUtil.convertToEcore(
-								package_, options, diagnostics, context)
-								.iterator(); ePackages.hasNext();) {
-
-								EPackage ePackage = (EPackage) ePackages.next();
+							for (EPackage ePackage : UMLUtil.convertToEcore(
+								package_, options, diagnostics, context)) {
 
 								resources.add(resource = resourceSet
 									.createResource(uri.appendSegment(
@@ -141,10 +140,10 @@ public class ConvertToEcoreModelAction
 								resource.getContents().add(ePackage);
 							}
 
-							for (Iterator i = resources.iterator(); i.hasNext();) {
+							for (Resource r : resources) {
 
 								try {
-									((Resource) i.next()).save(null);
+									r.save(null);
 								} catch (Exception e) {
 									UMLExamplesUIPlugin.INSTANCE.log(e);
 								}

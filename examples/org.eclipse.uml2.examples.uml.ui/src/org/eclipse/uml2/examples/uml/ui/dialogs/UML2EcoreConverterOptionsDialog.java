@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2EcoreConverterOptionsDialog.java,v 1.3 2006/04/24 02:05:38 khussey Exp $
+ * $Id: UML2EcoreConverterOptionsDialog.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.dialogs;
 
@@ -24,10 +24,11 @@ public class UML2EcoreConverterOptionsDialog
 		extends OptionsDialog {
 
 	public UML2EcoreConverterOptionsDialog(Shell parent, String title,
-			String message, Map options) {
+			String message, Map<String, String> options) {
 		super(parent, title, message, options);
 	}
 
+	@Override
 	protected void createOptionAreas(Composite parent) {
 		super.createOptionAreas(parent);
 

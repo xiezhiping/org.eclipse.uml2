@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertiesAction.java,v 1.1 2006/03/28 21:07:32 khussey Exp $
+ * $Id: PropertiesAction.java,v 1.2 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -27,9 +27,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.ui.action.CommandAction;
 import org.eclipse.uml2.common.util.UML2Util;
 
-/**
- * 
- */
 public abstract class PropertiesAction
 		extends CommandAction {
 
@@ -38,7 +35,7 @@ public abstract class PropertiesAction
 	protected static String format(String name, String separator,
 			String prefix, boolean includePrefix) {
 
-		List parsedName = new ArrayList();
+		List<String> parsedName = new ArrayList<String>();
 
 		if (prefix != null) {
 
@@ -57,8 +54,9 @@ public abstract class PropertiesAction
 
 		StringBuffer result = new StringBuffer();
 
-		for (Iterator nameIter = parsedName.iterator(); nameIter.hasNext();) {
-			String nameComponent = (String) nameIter.next();
+		for (Iterator<String> nameIter = parsedName.iterator(); nameIter
+			.hasNext();) {
+			String nameComponent = nameIter.next();
 
 			result.append(result.length() == 0
 				? nameComponent
@@ -74,8 +72,9 @@ public abstract class PropertiesAction
 			: result.toString();
 	}
 
-	protected static List parseName(String sourceName, char sourceSeparator) {
-		List result = new ArrayList();
+	protected static List<String> parseName(String sourceName,
+			char sourceSeparator) {
+		List<String> result = new ArrayList<String>();
 		StringBuffer currentWord = new StringBuffer();
 
 		int length = sourceName.length();
@@ -141,7 +140,7 @@ public abstract class PropertiesAction
 		URI uri = eResource.getURI().trimFileExtension().appendFileExtension(
 			UML2Util.PROPERTIES_FILE_EXTENSION);
 
-		List properties = new ArrayList();
+		List<String> properties = new ArrayList<String>();
 
 		LineNumberReader lineNumberReader = null;
 
@@ -176,8 +175,8 @@ public abstract class PropertiesAction
 
 			if (!properties.isEmpty()) {
 
-				for (Iterator i = properties.iterator(); i.hasNext();) {
-					printWriter.println((String) i.next());
+				for (String property : properties) {
+					printWriter.println(property);
 				}
 
 				printWriter.println();
