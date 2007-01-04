@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.5 2006/12/20 19:53:53 khussey Exp $
+ * $Id: UMLImporter.java,v 1.6 2007/01/04 18:05:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -110,7 +109,7 @@ public class UMLImporter
 	protected Diagnostic doComputeEPackages(Monitor monitor)
 			throws Exception {
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
-		List locationURIs = getModelLocationURIs();
+		List<URI> locationURIs = getModelLocationURIs();
 
 		if (locationURIs.isEmpty()) {
 			diagnostic = new BasicDiagnostic(Diagnostic.ERROR,
@@ -126,10 +125,10 @@ public class UMLImporter
 
 			ResourceSet umlResourceSet = createResourceSet();
 
-			for (Iterator i = locationURIs.iterator(); i.hasNext();) {
+			for (URI locationURI : locationURIs) {
 				packages.addAll(EcoreUtil
 					.<org.eclipse.uml2.uml.Package> getObjectsByType(
-						umlResourceSet.getResource((URI) i.next(), true)
+						umlResourceSet.getResource(locationURI, true)
 							.getContents(), UMLPackage.Literals.PACKAGE));
 			}
 
@@ -149,12 +148,13 @@ public class UMLImporter
 					org.eclipse.uml2.common.util.UML2Util.QualifiedTextProvider.class,
 					UMLUtil.QualifiedTextProvider.DEFAULT);
 
-			getEPackages().addAll(new UMLUtil.UML2EcoreConverter() {
+			@SuppressWarnings("unchecked")
+			Collection<EPackage> ePackages = (Collection<EPackage>) new UMLUtil.UML2EcoreConverter() {
 
 				@Override
 				protected void processEcoreTaggedValues(EPackage ePackage,
-						Element element, Map options,
-						DiagnosticChain diagnostics, Map context) {
+						Element element, Map<String, String> options,
+						DiagnosticChain diagnostics, Map<Object, Object> context) {
 
 					super.processEcoreTaggedValues(ePackage, element, options,
 						diagnostics, context);
@@ -195,7 +195,9 @@ public class UMLImporter
 						}
 					}
 				}
-			}.convert(packages, options, diagnostics, context));
+			}.convert(packages, options, diagnostics, context);
+
+			getEPackages().addAll(ePackages);
 
 			monitor.done();
 
@@ -239,10 +241,10 @@ public class UMLImporter
 
 		URI genModelURI = createFileURI(getGenModelPath().toString());
 		GenModel genModel = getGenModel();
-		EList foreignModel = genModel.getForeignModel();
+		EList<String> foreignModel = genModel.getForeignModel();
 
-		for (Iterator i = getModelLocationURIs().iterator(); i.hasNext();) {
-			foreignModel.add(makeRelative((URI) i.next(), genModelURI)
+		for (URI modelLocationURI : getModelLocationURIs()) {
+			foreignModel.add(makeRelative(modelLocationURI, genModelURI)
 				.toString());
 		}
 	}
@@ -254,10 +256,7 @@ public class UMLImporter
 		StringBuffer text = new StringBuffer();
 		GenModel originalGenModel = getOriginalGenModel();
 
-		for (Iterator i = originalGenModel.getForeignModel().iterator(); i
-			.hasNext();) {
-
-			String value = (String) i.next();
+		for (String value : originalGenModel.getForeignModel()) {
 
 			if (value.endsWith('.' + UMLResource.FILE_EXTENSION)
 				|| value.endsWith('.' + UML22UMLResource.FILE_EXTENSION)
