@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.34 2006/12/20 21:36:51 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.35 2007/01/04 18:53:19 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -148,7 +148,7 @@ public class GenClassImpl
 	protected List<GenFeature> getImplementedGenFeatures(GenFeatureFilter filter) {
 		Map<String, GenFeature> implementedGenFeatures = new LinkedHashMap<String, GenFeature>();
 
-		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (List<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : getImplementedGenClasses()) {
 
 			for (GenFeature unionGenFeature : UML2GenModelUtil
 				.getUnionGenFeatures(implementedGenClass)) {
@@ -319,7 +319,7 @@ public class GenClassImpl
 			GenOperationFilter filter) {
 		Map<String, GenOperation> implementedGenOperations = new LinkedHashMap<String, GenOperation>();
 
-		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : (List<org.eclipse.emf.codegen.ecore.genmodel.GenClass>) getImplementedGenClasses()) {
+		for (org.eclipse.emf.codegen.ecore.genmodel.GenClass implementedGenClass : getImplementedGenClasses()) {
 
 			for (GenOperation redefinedGenOperation : UML2GenModelUtil
 				.getRedefinedGenOperations(implementedGenClass)) {

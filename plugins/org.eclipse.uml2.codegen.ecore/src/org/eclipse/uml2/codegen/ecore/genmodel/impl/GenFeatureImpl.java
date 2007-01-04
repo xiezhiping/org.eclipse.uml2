@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.21 2006/12/20 21:36:51 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.22 2007/01/04 18:53:19 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -255,7 +255,7 @@ public class GenFeatureImpl
 			if (rootImplementsInterface != null
 				&& !rootImplementsInterface.isEObject()) {
 
-				for (GenOperation genOperation : (List<GenOperation>) rootImplementsInterface
+				for (GenOperation genOperation : rootImplementsInterface
 					.getAllGenOperations()) {
 
 					if (genOperation.getName().equals(result)
