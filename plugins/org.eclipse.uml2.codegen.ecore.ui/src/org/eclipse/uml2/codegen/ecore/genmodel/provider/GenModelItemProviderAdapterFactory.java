@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelItemProviderAdapterFactory.java,v 1.3 2006/12/14 15:45:20 khussey Exp $
+ * $Id: GenModelItemProviderAdapterFactory.java,v 1.4 2007/01/05 21:44:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -68,7 +68,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -98,6 +98,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenClassAdapter() {
 		if (genClassItemProvider == null) {
 			genClassItemProvider = new GenClassItemProvider(this);
@@ -120,6 +121,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenDataTypeAdapter() {
 		if (genDataTypeItemProvider == null) {
 			genDataTypeItemProvider = new GenDataTypeItemProvider(this);
@@ -142,6 +144,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenEnumAdapter() {
 		if (genEnumItemProvider == null) {
 			genEnumItemProvider = new GenEnumItemProvider(this);
@@ -164,6 +167,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenEnumLiteralAdapter() {
 		if (genEnumLiteralItemProvider == null) {
 			genEnumLiteralItemProvider = new GenEnumLiteralItemProvider(this);
@@ -186,6 +190,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenFeatureAdapter() {
 		if (genFeatureItemProvider == null) {
 			genFeatureItemProvider = new GenFeatureItemProvider(this);
@@ -208,6 +213,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenModelAdapter() {
 		if (genModelItemProvider == null) {
 			genModelItemProvider = new GenModelItemProvider(this);
@@ -230,6 +236,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenOperationAdapter() {
 		if (genOperationItemProvider == null) {
 			genOperationItemProvider = new GenOperationItemProvider(this);
@@ -252,6 +259,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenPackageAdapter() {
 		if (genPackageItemProvider == null) {
 			genPackageItemProvider = new GenPackageItemProvider(this);
@@ -274,6 +282,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGenParameterAdapter() {
 		if (genParameterItemProvider == null) {
 			genParameterItemProvider = new GenParameterItemProvider(this);
@@ -310,6 +319,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -320,6 +330,7 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -329,11 +340,12 @@ public class GenModelItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class)
-				|| (((Class) type).isInstance(adapter))) {
+				|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

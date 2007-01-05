@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassifierItemProvider.java,v 1.5 2006/12/21 18:56:21 khussey Exp $
+ * $Id: GenClassifierItemProvider.java,v 1.6 2007/01/05 21:44:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
@@ -25,6 +24,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -63,7 +63,8 @@ public class GenClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -72,28 +73,12 @@ public class GenClassifierItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Collection getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures
-				.add(GenModelPackage.Literals.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS);
-		}
-		return childrenFeatures;
-	}
-
-	/**
 	 * This returns GenClassifier.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Object getImage(Object object) {
 		return super.getImage(object);
 	}
@@ -104,6 +89,7 @@ public class GenClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String getText(Object object) {
 		return super.getText(object);
 	}
@@ -115,17 +101,15 @@ public class GenClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(GenClassifier.class)) {
-			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
+			case GenModelPackage.GEN_CLASSIFIER__GEN_PACKAGE :
+			case GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
-				return;
-			case org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage.GEN_CLASSIFIER__GEN_TYPE_PARAMETERS :
-				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -137,6 +121,7 @@ public class GenClassifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return CodeGenEcoreUIPlugin.INSTANCE;
 	}
