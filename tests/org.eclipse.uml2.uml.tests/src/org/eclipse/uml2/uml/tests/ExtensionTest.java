@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionTest.java,v 1.1 2006/02/21 16:32:27 khussey Exp $
+ * $Id: ExtensionTest.java,v 1.2 2007/01/05 21:48:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -78,6 +78,7 @@ public class ExtensionTest
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
+	@Override
 	protected void setUp()
 			throws Exception {
 		setFixture(UMLFactory.eINSTANCE.createExtension());
@@ -89,6 +90,7 @@ public class ExtensionTest
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
+	@Override
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);

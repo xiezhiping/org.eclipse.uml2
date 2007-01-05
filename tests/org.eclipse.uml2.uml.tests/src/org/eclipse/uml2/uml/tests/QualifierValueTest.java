@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueTest.java,v 1.1 2006/02/21 16:32:29 khussey Exp $
+ * $Id: QualifierValueTest.java,v 1.2 2007/01/05 21:48:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -69,6 +69,7 @@ public class QualifierValueTest
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
+	@Override
 	protected void setUp()
 			throws Exception {
 		setFixture(UMLFactory.eINSTANCE.createQualifierValue());
@@ -80,6 +81,7 @@ public class QualifierValueTest
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
+	@Override
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);

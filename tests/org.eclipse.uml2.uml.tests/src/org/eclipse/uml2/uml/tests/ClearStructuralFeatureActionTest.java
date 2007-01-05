@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearStructuralFeatureActionTest.java,v 1.1 2006/02/21 16:32:25 khussey Exp $
+ * $Id: ClearStructuralFeatureActionTest.java,v 1.2 2007/01/05 21:48:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -61,6 +61,7 @@ public class ClearStructuralFeatureActionTest
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
+	@Override
 	protected void setUp()
 			throws Exception {
 		setFixture(UMLFactory.eINSTANCE.createClearStructuralFeatureAction());
@@ -72,6 +73,7 @@ public class ClearStructuralFeatureActionTest
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
+	@Override
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);

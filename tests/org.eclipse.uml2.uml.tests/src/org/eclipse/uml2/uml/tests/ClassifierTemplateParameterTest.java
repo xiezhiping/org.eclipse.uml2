@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterTest.java,v 1.1 2006/02/21 16:32:28 khussey Exp $
+ * $Id: ClassifierTemplateParameterTest.java,v 1.2 2007/01/05 21:48:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -67,6 +67,7 @@ public class ClassifierTemplateParameterTest
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
+	@Override
 	protected void setUp()
 			throws Exception {
 		setFixture(UMLFactory.eINSTANCE.createClassifierTemplateParameter());
@@ -78,6 +79,7 @@ public class ClassifierTemplateParameterTest
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
+	@Override
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);

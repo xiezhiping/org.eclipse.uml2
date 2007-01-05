@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndTest.java,v 1.2 2006/03/09 21:28:59 khussey Exp $
+ * $Id: ExtensionEndTest.java,v 1.3 2007/01/05 21:48:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -75,6 +75,7 @@ public class ExtensionEndTest
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
+	@Override
 	protected void setUp()
 			throws Exception {
 		setFixture(UMLFactory.eINSTANCE.createExtensionEnd());
@@ -86,6 +87,7 @@ public class ExtensionEndTest
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
+	@Override
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
