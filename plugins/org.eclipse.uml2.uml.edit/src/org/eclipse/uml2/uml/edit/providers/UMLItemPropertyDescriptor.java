@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.5 2006/05/15 21:06:21 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.6 2007/01/05 21:49:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -37,11 +35,13 @@ class UMLItemPropertyDescriptor
 
 		public String getQualifiedText(Object object) {
 
-			if (object instanceof EList) {
+			if (object instanceof List) {
 				StringBuffer text = new StringBuffer();
 
-				for (Iterator i = ((List) object).iterator(); i.hasNext();) {
-					Object child = i.next();
+				@SuppressWarnings("unchecked")
+				List<Object> children = (List<Object>) object;
+
+				for (Object child : children) {
 
 					if (text.length() > 0) {
 						text.append(", "); //$NON-NLS-1$
@@ -82,6 +82,7 @@ class UMLItemPropertyDescriptor
 			.getQualifiedText(object);
 	}
 
+	@Override
 	public String getId(Object object) {
 		String category = getCategory(object);
 		return category == null

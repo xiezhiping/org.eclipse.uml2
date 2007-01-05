@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,16 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceItemProvider.java,v 1.1 2006/03/23 18:42:45 khussey Exp $
+ * $Id: UMLResourceItemProvider.java,v 1.2 2007/01/05 21:49:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -31,17 +30,17 @@ public class UMLResourceItemProvider
 		super(adapterFactory);
 	}
 
-	public Collection getChildren(Object object) {
-		List contents = ((Resource) object).getContents();
-		Collection children = new ArrayList(contents.size());
+	@Override
+	public Collection<?> getChildren(Object object) {
+		EList<EObject> contents = ((Resource) object).getContents();
+		Collection<Object> children = new ArrayList<Object>(contents.size());
 
-		for (Iterator c = contents.iterator(); c.hasNext();) {
-			Object o = c.next();
+		for (EObject content : contents) {
 
-			if (!AdapterFactoryEditingDomain.isControlled(o)
-				&& UMLUtil.getStereotype((EObject) o) == null) {
+			if (!AdapterFactoryEditingDomain.isControlled(content)
+				&& UMLUtil.getStereotype(content) == null) {
 
-				children.add(o);
+				children.add(content);
 			}
 		}
 

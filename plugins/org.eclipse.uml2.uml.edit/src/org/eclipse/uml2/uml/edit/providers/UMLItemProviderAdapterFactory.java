@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.18 2006/06/08 17:40:25 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.19 2007/01/05 21:49:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -73,7 +73,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -105,6 +105,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCommentAdapter() {
 		if (commentItemProvider == null) {
 			commentItemProvider = new CommentItemProvider(this);
@@ -127,6 +128,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDependencyAdapter() {
 		if (dependencyItemProvider == null) {
 			dependencyItemProvider = new DependencyItemProvider(this);
@@ -149,6 +151,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTemplateParameterAdapter() {
 		if (templateParameterItemProvider == null) {
 			templateParameterItemProvider = new TemplateParameterItemProvider(
@@ -172,6 +175,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTemplateSignatureAdapter() {
 		if (templateSignatureItemProvider == null) {
 			templateSignatureItemProvider = new TemplateSignatureItemProvider(
@@ -195,6 +199,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTemplateBindingAdapter() {
 		if (templateBindingItemProvider == null) {
 			templateBindingItemProvider = new TemplateBindingItemProvider(this);
@@ -217,6 +222,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTemplateParameterSubstitutionAdapter() {
 		if (templateParameterSubstitutionItemProvider == null) {
 			templateParameterSubstitutionItemProvider = new TemplateParameterSubstitutionItemProvider(
@@ -240,6 +246,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createElementImportAdapter() {
 		if (elementImportItemProvider == null) {
 			elementImportItemProvider = new ElementImportItemProvider(this);
@@ -262,6 +269,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPackageImportAdapter() {
 		if (packageImportItemProvider == null) {
 			packageImportItemProvider = new PackageImportItemProvider(this);
@@ -284,6 +292,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPackageAdapter() {
 		if (packageItemProvider == null) {
 			packageItemProvider = new PackageItemProvider(this);
@@ -306,6 +315,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPackageMergeAdapter() {
 		if (packageMergeItemProvider == null) {
 			packageMergeItemProvider = new PackageMergeItemProvider(this);
@@ -328,6 +338,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProfileApplicationAdapter() {
 		if (profileApplicationItemProvider == null) {
 			profileApplicationItemProvider = new ProfileApplicationItemProvider(
@@ -351,6 +362,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProfileAdapter() {
 		if (profileItemProvider == null) {
 			profileItemProvider = new ProfileItemProvider(this);
@@ -373,6 +385,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStereotypeAdapter() {
 		if (stereotypeItemProvider == null) {
 			stereotypeItemProvider = new StereotypeItemProvider(this);
@@ -395,6 +408,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createImageAdapter() {
 		if (imageItemProvider == null) {
 			imageItemProvider = new ImageItemProvider(this);
@@ -417,6 +431,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClassAdapter() {
 		if (classItemProvider == null) {
 			classItemProvider = new ClassItemProvider(this);
@@ -439,6 +454,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGeneralizationAdapter() {
 		if (generalizationItemProvider == null) {
 			generalizationItemProvider = new GeneralizationItemProvider(this);
@@ -461,6 +477,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGeneralizationSetAdapter() {
 		if (generalizationSetItemProvider == null) {
 			generalizationSetItemProvider = new GeneralizationSetItemProvider(
@@ -484,6 +501,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUseCaseAdapter() {
 		if (useCaseItemProvider == null) {
 			useCaseItemProvider = new UseCaseItemProvider(this);
@@ -506,6 +524,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIncludeAdapter() {
 		if (includeItemProvider == null) {
 			includeItemProvider = new IncludeItemProvider(this);
@@ -528,6 +547,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExtendAdapter() {
 		if (extendItemProvider == null) {
 			extendItemProvider = new ExtendItemProvider(this);
@@ -550,6 +570,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConstraintAdapter() {
 		if (constraintItemProvider == null) {
 			constraintItemProvider = new ConstraintItemProvider(this);
@@ -572,6 +593,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExtensionPointAdapter() {
 		if (extensionPointItemProvider == null) {
 			extensionPointItemProvider = new ExtensionPointItemProvider(this);
@@ -594,6 +616,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSubstitutionAdapter() {
 		if (substitutionItemProvider == null) {
 			substitutionItemProvider = new SubstitutionItemProvider(this);
@@ -616,6 +639,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRealizationAdapter() {
 		if (realizationItemProvider == null) {
 			realizationItemProvider = new RealizationItemProvider(this);
@@ -638,6 +662,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAbstractionAdapter() {
 		if (abstractionItemProvider == null) {
 			abstractionItemProvider = new AbstractionItemProvider(this);
@@ -660,6 +685,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOpaqueExpressionAdapter() {
 		if (opaqueExpressionItemProvider == null) {
 			opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(
@@ -683,6 +709,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createParameterAdapter() {
 		if (parameterItemProvider == null) {
 			parameterItemProvider = new ParameterItemProvider(this);
@@ -705,6 +732,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConnectorEndAdapter() {
 		if (connectorEndItemProvider == null) {
 			connectorEndItemProvider = new ConnectorEndItemProvider(this);
@@ -727,6 +755,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPropertyAdapter() {
 		if (propertyItemProvider == null) {
 			propertyItemProvider = new PropertyItemProvider(this);
@@ -749,6 +778,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDeploymentAdapter() {
 		if (deploymentItemProvider == null) {
 			deploymentItemProvider = new DeploymentItemProvider(this);
@@ -771,6 +801,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDeploymentSpecificationAdapter() {
 		if (deploymentSpecificationItemProvider == null) {
 			deploymentSpecificationItemProvider = new DeploymentSpecificationItemProvider(
@@ -794,6 +825,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createArtifactAdapter() {
 		if (artifactItemProvider == null) {
 			artifactItemProvider = new ArtifactItemProvider(this);
@@ -816,6 +848,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createManifestationAdapter() {
 		if (manifestationItemProvider == null) {
 			manifestationItemProvider = new ManifestationItemProvider(this);
@@ -838,6 +871,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOperationAdapter() {
 		if (operationItemProvider == null) {
 			operationItemProvider = new OperationItemProvider(this);
@@ -860,6 +894,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createParameterSetAdapter() {
 		if (parameterSetItemProvider == null) {
 			parameterSetItemProvider = new ParameterSetItemProvider(this);
@@ -882,6 +917,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDataTypeAdapter() {
 		if (dataTypeItemProvider == null) {
 			dataTypeItemProvider = new DataTypeItemProvider(this);
@@ -904,6 +940,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInterfaceAdapter() {
 		if (interfaceItemProvider == null) {
 			interfaceItemProvider = new InterfaceItemProvider(this);
@@ -926,6 +963,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReceptionAdapter() {
 		if (receptionItemProvider == null) {
 			receptionItemProvider = new ReceptionItemProvider(this);
@@ -948,6 +986,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSignalAdapter() {
 		if (signalItemProvider == null) {
 			signalItemProvider = new SignalItemProvider(this);
@@ -970,6 +1009,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProtocolStateMachineAdapter() {
 		if (protocolStateMachineItemProvider == null) {
 			protocolStateMachineItemProvider = new ProtocolStateMachineItemProvider(
@@ -993,6 +1033,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStateMachineAdapter() {
 		if (stateMachineItemProvider == null) {
 			stateMachineItemProvider = new StateMachineItemProvider(this);
@@ -1015,6 +1056,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRegionAdapter() {
 		if (regionItemProvider == null) {
 			regionItemProvider = new RegionItemProvider(this);
@@ -1037,6 +1079,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTransitionAdapter() {
 		if (transitionItemProvider == null) {
 			transitionItemProvider = new TransitionItemProvider(this);
@@ -1059,6 +1102,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTriggerAdapter() {
 		if (triggerItemProvider == null) {
 			triggerItemProvider = new TriggerItemProvider(this);
@@ -1081,6 +1125,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPortAdapter() {
 		if (portItemProvider == null) {
 			portItemProvider = new PortItemProvider(this);
@@ -1103,6 +1148,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStateAdapter() {
 		if (stateItemProvider == null) {
 			stateItemProvider = new StateItemProvider(this);
@@ -1125,6 +1171,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConnectionPointReferenceAdapter() {
 		if (connectionPointReferenceItemProvider == null) {
 			connectionPointReferenceItemProvider = new ConnectionPointReferenceItemProvider(
@@ -1148,6 +1195,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPseudostateAdapter() {
 		if (pseudostateItemProvider == null) {
 			pseudostateItemProvider = new PseudostateItemProvider(this);
@@ -1170,6 +1218,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProtocolConformanceAdapter() {
 		if (protocolConformanceItemProvider == null) {
 			protocolConformanceItemProvider = new ProtocolConformanceItemProvider(
@@ -1193,6 +1242,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOperationTemplateParameterAdapter() {
 		if (operationTemplateParameterItemProvider == null) {
 			operationTemplateParameterItemProvider = new OperationTemplateParameterItemProvider(
@@ -1216,6 +1266,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAssociationAdapter() {
 		if (associationItemProvider == null) {
 			associationItemProvider = new AssociationItemProvider(this);
@@ -1238,6 +1289,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConnectableElementTemplateParameterAdapter() {
 		if (connectableElementTemplateParameterItemProvider == null) {
 			connectableElementTemplateParameterItemProvider = new ConnectableElementTemplateParameterItemProvider(
@@ -1261,6 +1313,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCollaborationUseAdapter() {
 		if (collaborationUseItemProvider == null) {
 			collaborationUseItemProvider = new CollaborationUseItemProvider(
@@ -1284,6 +1337,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCollaborationAdapter() {
 		if (collaborationItemProvider == null) {
 			collaborationItemProvider = new CollaborationItemProvider(this);
@@ -1306,6 +1360,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConnectorAdapter() {
 		if (connectorItemProvider == null) {
 			connectorItemProvider = new ConnectorItemProvider(this);
@@ -1328,6 +1383,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRedefinableTemplateSignatureAdapter() {
 		if (redefinableTemplateSignatureItemProvider == null) {
 			redefinableTemplateSignatureItemProvider = new RedefinableTemplateSignatureItemProvider(
@@ -1351,6 +1407,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClassifierTemplateParameterAdapter() {
 		if (classifierTemplateParameterItemProvider == null) {
 			classifierTemplateParameterItemProvider = new ClassifierTemplateParameterItemProvider(
@@ -1374,6 +1431,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInterfaceRealizationAdapter() {
 		if (interfaceRealizationItemProvider == null) {
 			interfaceRealizationItemProvider = new InterfaceRealizationItemProvider(
@@ -1397,6 +1455,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExtensionAdapter() {
 		if (extensionItemProvider == null) {
 			extensionItemProvider = new ExtensionItemProvider(this);
@@ -1419,6 +1478,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExtensionEndAdapter() {
 		if (extensionEndItemProvider == null) {
 			extensionEndItemProvider = new ExtensionEndItemProvider(this);
@@ -1441,6 +1501,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStringExpressionAdapter() {
 		if (stringExpressionItemProvider == null) {
 			stringExpressionItemProvider = new StringExpressionItemProvider(
@@ -1464,6 +1525,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExpressionAdapter() {
 		if (expressionItemProvider == null) {
 			expressionItemProvider = new ExpressionItemProvider(this);
@@ -1486,6 +1548,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLiteralIntegerAdapter() {
 		if (literalIntegerItemProvider == null) {
 			literalIntegerItemProvider = new LiteralIntegerItemProvider(this);
@@ -1508,6 +1571,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLiteralStringAdapter() {
 		if (literalStringItemProvider == null) {
 			literalStringItemProvider = new LiteralStringItemProvider(this);
@@ -1530,6 +1594,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLiteralBooleanAdapter() {
 		if (literalBooleanItemProvider == null) {
 			literalBooleanItemProvider = new LiteralBooleanItemProvider(this);
@@ -1552,6 +1617,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLiteralNullAdapter() {
 		if (literalNullItemProvider == null) {
 			literalNullItemProvider = new LiteralNullItemProvider(this);
@@ -1574,6 +1640,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSlotAdapter() {
 		if (slotItemProvider == null) {
 			slotItemProvider = new SlotItemProvider(this);
@@ -1596,6 +1663,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInstanceSpecificationAdapter() {
 		if (instanceSpecificationItemProvider == null) {
 			instanceSpecificationItemProvider = new InstanceSpecificationItemProvider(
@@ -1619,6 +1687,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createEnumerationAdapter() {
 		if (enumerationItemProvider == null) {
 			enumerationItemProvider = new EnumerationItemProvider(this);
@@ -1641,6 +1710,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createEnumerationLiteralAdapter() {
 		if (enumerationLiteralItemProvider == null) {
 			enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(
@@ -1664,6 +1734,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPrimitiveTypeAdapter() {
 		if (primitiveTypeItemProvider == null) {
 			primitiveTypeItemProvider = new PrimitiveTypeItemProvider(this);
@@ -1686,6 +1757,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInstanceValueAdapter() {
 		if (instanceValueItemProvider == null) {
 			instanceValueItemProvider = new InstanceValueItemProvider(this);
@@ -1708,6 +1780,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLiteralUnlimitedNaturalAdapter() {
 		if (literalUnlimitedNaturalItemProvider == null) {
 			literalUnlimitedNaturalItemProvider = new LiteralUnlimitedNaturalItemProvider(
@@ -1731,6 +1804,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOpaqueBehaviorAdapter() {
 		if (opaqueBehaviorItemProvider == null) {
 			opaqueBehaviorItemProvider = new OpaqueBehaviorItemProvider(this);
@@ -1753,6 +1827,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFunctionBehaviorAdapter() {
 		if (functionBehaviorItemProvider == null) {
 			functionBehaviorItemProvider = new FunctionBehaviorItemProvider(
@@ -1776,6 +1851,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActorAdapter() {
 		if (actorItemProvider == null) {
 			actorItemProvider = new ActorItemProvider(this);
@@ -1798,6 +1874,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUsageAdapter() {
 		if (usageItemProvider == null) {
 			usageItemProvider = new UsageItemProvider(this);
@@ -1820,6 +1897,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createMessageAdapter() {
 		if (messageItemProvider == null) {
 			messageItemProvider = new MessageItemProvider(this);
@@ -1842,6 +1920,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInteractionAdapter() {
 		if (interactionItemProvider == null) {
 			interactionItemProvider = new InteractionItemProvider(this);
@@ -1864,6 +1943,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLifelineAdapter() {
 		if (lifelineItemProvider == null) {
 			lifelineItemProvider = new LifelineItemProvider(this);
@@ -1886,6 +1966,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPartDecompositionAdapter() {
 		if (partDecompositionItemProvider == null) {
 			partDecompositionItemProvider = new PartDecompositionItemProvider(
@@ -1909,6 +1990,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInteractionUseAdapter() {
 		if (interactionUseItemProvider == null) {
 			interactionUseItemProvider = new InteractionUseItemProvider(this);
@@ -1931,6 +2013,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGateAdapter() {
 		if (gateItemProvider == null) {
 			gateItemProvider = new GateItemProvider(this);
@@ -1961,6 +2044,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActivityAdapter() {
 		if (activityItemProvider == null) {
 			activityItemProvider = new ActivityItemProvider(this);
@@ -1983,6 +2067,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActivityPartitionAdapter() {
 		if (activityPartitionItemProvider == null) {
 			activityPartitionItemProvider = new ActivityPartitionItemProvider(
@@ -2006,6 +2091,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStructuredActivityNodeAdapter() {
 		if (structuredActivityNodeItemProvider == null) {
 			structuredActivityNodeItemProvider = new StructuredActivityNodeItemProvider(
@@ -2029,6 +2115,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createVariableAdapter() {
 		if (variableItemProvider == null) {
 			variableItemProvider = new VariableItemProvider(this);
@@ -2051,6 +2138,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInterruptibleActivityRegionAdapter() {
 		if (interruptibleActivityRegionItemProvider == null) {
 			interruptibleActivityRegionItemProvider = new InterruptibleActivityRegionItemProvider(
@@ -2074,6 +2162,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExceptionHandlerAdapter() {
 		if (exceptionHandlerItemProvider == null) {
 			exceptionHandlerItemProvider = new ExceptionHandlerItemProvider(
@@ -2097,6 +2186,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOutputPinAdapter() {
 		if (outputPinItemProvider == null) {
 			outputPinItemProvider = new OutputPinItemProvider(this);
@@ -2119,6 +2209,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPinAdapter() {
 		if (pinItemProvider == null) {
 			pinItemProvider = new PinItemProvider(this);
@@ -2141,6 +2232,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInputPinAdapter() {
 		if (inputPinItemProvider == null) {
 			inputPinItemProvider = new InputPinItemProvider(this);
@@ -2163,6 +2255,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGeneralOrderingAdapter() {
 		if (generalOrderingItemProvider == null) {
 			generalOrderingItemProvider = new GeneralOrderingItemProvider(this);
@@ -2185,6 +2278,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOccurrenceSpecificationAdapter() {
 		if (occurrenceSpecificationItemProvider == null) {
 			occurrenceSpecificationItemProvider = new OccurrenceSpecificationItemProvider(
@@ -2208,6 +2302,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInteractionOperandAdapter() {
 		if (interactionOperandItemProvider == null) {
 			interactionOperandItemProvider = new InteractionOperandItemProvider(
@@ -2231,6 +2326,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInteractionConstraintAdapter() {
 		if (interactionConstraintItemProvider == null) {
 			interactionConstraintItemProvider = new InteractionConstraintItemProvider(
@@ -2254,6 +2350,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExecutionOccurrenceSpecificationAdapter() {
 		if (executionOccurrenceSpecificationItemProvider == null) {
 			executionOccurrenceSpecificationItemProvider = new ExecutionOccurrenceSpecificationItemProvider(
@@ -2277,6 +2374,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExecutionEventAdapter() {
 		if (executionEventItemProvider == null) {
 			executionEventItemProvider = new ExecutionEventItemProvider(this);
@@ -2299,6 +2397,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStateInvariantAdapter() {
 		if (stateInvariantItemProvider == null) {
 			stateInvariantItemProvider = new StateInvariantItemProvider(this);
@@ -2321,6 +2420,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActionExecutionSpecificationAdapter() {
 		if (actionExecutionSpecificationItemProvider == null) {
 			actionExecutionSpecificationItemProvider = new ActionExecutionSpecificationItemProvider(
@@ -2344,6 +2444,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBehaviorExecutionSpecificationAdapter() {
 		if (behaviorExecutionSpecificationItemProvider == null) {
 			behaviorExecutionSpecificationItemProvider = new BehaviorExecutionSpecificationItemProvider(
@@ -2367,6 +2468,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCreationEventAdapter() {
 		if (creationEventItemProvider == null) {
 			creationEventItemProvider = new CreationEventItemProvider(this);
@@ -2389,6 +2491,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDestructionEventAdapter() {
 		if (destructionEventItemProvider == null) {
 			destructionEventItemProvider = new DestructionEventItemProvider(
@@ -2412,6 +2515,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSendOperationEventAdapter() {
 		if (sendOperationEventItemProvider == null) {
 			sendOperationEventItemProvider = new SendOperationEventItemProvider(
@@ -2435,6 +2539,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSendSignalEventAdapter() {
 		if (sendSignalEventItemProvider == null) {
 			sendSignalEventItemProvider = new SendSignalEventItemProvider(this);
@@ -2457,6 +2562,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createMessageOccurrenceSpecificationAdapter() {
 		if (messageOccurrenceSpecificationItemProvider == null) {
 			messageOccurrenceSpecificationItemProvider = new MessageOccurrenceSpecificationItemProvider(
@@ -2480,6 +2586,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReceiveOperationEventAdapter() {
 		if (receiveOperationEventItemProvider == null) {
 			receiveOperationEventItemProvider = new ReceiveOperationEventItemProvider(
@@ -2503,6 +2610,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReceiveSignalEventAdapter() {
 		if (receiveSignalEventItemProvider == null) {
 			receiveSignalEventItemProvider = new ReceiveSignalEventItemProvider(
@@ -2526,6 +2634,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCombinedFragmentAdapter() {
 		if (combinedFragmentItemProvider == null) {
 			combinedFragmentItemProvider = new CombinedFragmentItemProvider(
@@ -2549,6 +2658,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createContinuationAdapter() {
 		if (continuationItemProvider == null) {
 			continuationItemProvider = new ContinuationItemProvider(this);
@@ -2571,6 +2681,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConsiderIgnoreFragmentAdapter() {
 		if (considerIgnoreFragmentItemProvider == null) {
 			considerIgnoreFragmentItemProvider = new ConsiderIgnoreFragmentItemProvider(
@@ -2594,6 +2705,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCallEventAdapter() {
 		if (callEventItemProvider == null) {
 			callEventItemProvider = new CallEventItemProvider(this);
@@ -2616,6 +2728,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createChangeEventAdapter() {
 		if (changeEventItemProvider == null) {
 			changeEventItemProvider = new ChangeEventItemProvider(this);
@@ -2638,6 +2751,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSignalEventAdapter() {
 		if (signalEventItemProvider == null) {
 			signalEventItemProvider = new SignalEventItemProvider(this);
@@ -2660,6 +2774,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAnyReceiveEventAdapter() {
 		if (anyReceiveEventItemProvider == null) {
 			anyReceiveEventItemProvider = new AnyReceiveEventItemProvider(this);
@@ -2682,6 +2797,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCreateObjectActionAdapter() {
 		if (createObjectActionItemProvider == null) {
 			createObjectActionItemProvider = new CreateObjectActionItemProvider(
@@ -2705,6 +2821,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDestroyObjectActionAdapter() {
 		if (destroyObjectActionItemProvider == null) {
 			destroyObjectActionItemProvider = new DestroyObjectActionItemProvider(
@@ -2728,6 +2845,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTestIdentityActionAdapter() {
 		if (testIdentityActionItemProvider == null) {
 			testIdentityActionItemProvider = new TestIdentityActionItemProvider(
@@ -2751,6 +2869,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadSelfActionAdapter() {
 		if (readSelfActionItemProvider == null) {
 			readSelfActionItemProvider = new ReadSelfActionItemProvider(this);
@@ -2773,6 +2892,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadStructuralFeatureActionAdapter() {
 		if (readStructuralFeatureActionItemProvider == null) {
 			readStructuralFeatureActionItemProvider = new ReadStructuralFeatureActionItemProvider(
@@ -2796,6 +2916,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClearStructuralFeatureActionAdapter() {
 		if (clearStructuralFeatureActionItemProvider == null) {
 			clearStructuralFeatureActionItemProvider = new ClearStructuralFeatureActionItemProvider(
@@ -2819,6 +2940,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRemoveStructuralFeatureValueActionAdapter() {
 		if (removeStructuralFeatureValueActionItemProvider == null) {
 			removeStructuralFeatureValueActionItemProvider = new RemoveStructuralFeatureValueActionItemProvider(
@@ -2842,6 +2964,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAddStructuralFeatureValueActionAdapter() {
 		if (addStructuralFeatureValueActionItemProvider == null) {
 			addStructuralFeatureValueActionItemProvider = new AddStructuralFeatureValueActionItemProvider(
@@ -2865,6 +2988,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLinkEndDataAdapter() {
 		if (linkEndDataItemProvider == null) {
 			linkEndDataItemProvider = new LinkEndDataItemProvider(this);
@@ -2887,6 +3011,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createQualifierValueAdapter() {
 		if (qualifierValueItemProvider == null) {
 			qualifierValueItemProvider = new QualifierValueItemProvider(this);
@@ -2909,6 +3034,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadLinkActionAdapter() {
 		if (readLinkActionItemProvider == null) {
 			readLinkActionItemProvider = new ReadLinkActionItemProvider(this);
@@ -2931,6 +3057,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLinkEndCreationDataAdapter() {
 		if (linkEndCreationDataItemProvider == null) {
 			linkEndCreationDataItemProvider = new LinkEndCreationDataItemProvider(
@@ -2954,6 +3081,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCreateLinkActionAdapter() {
 		if (createLinkActionItemProvider == null) {
 			createLinkActionItemProvider = new CreateLinkActionItemProvider(
@@ -2977,6 +3105,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDestroyLinkActionAdapter() {
 		if (destroyLinkActionItemProvider == null) {
 			destroyLinkActionItemProvider = new DestroyLinkActionItemProvider(
@@ -3000,6 +3129,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLinkEndDestructionDataAdapter() {
 		if (linkEndDestructionDataItemProvider == null) {
 			linkEndDestructionDataItemProvider = new LinkEndDestructionDataItemProvider(
@@ -3023,6 +3153,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClearAssociationActionAdapter() {
 		if (clearAssociationActionItemProvider == null) {
 			clearAssociationActionItemProvider = new ClearAssociationActionItemProvider(
@@ -3046,6 +3177,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBroadcastSignalActionAdapter() {
 		if (broadcastSignalActionItemProvider == null) {
 			broadcastSignalActionItemProvider = new BroadcastSignalActionItemProvider(
@@ -3069,6 +3201,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSendObjectActionAdapter() {
 		if (sendObjectActionItemProvider == null) {
 			sendObjectActionItemProvider = new SendObjectActionItemProvider(
@@ -3092,6 +3225,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createValueSpecificationActionAdapter() {
 		if (valueSpecificationActionItemProvider == null) {
 			valueSpecificationActionItemProvider = new ValueSpecificationActionItemProvider(
@@ -3115,6 +3249,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeExpressionAdapter() {
 		if (timeExpressionItemProvider == null) {
 			timeExpressionItemProvider = new TimeExpressionItemProvider(this);
@@ -3137,6 +3272,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDurationAdapter() {
 		if (durationItemProvider == null) {
 			durationItemProvider = new DurationItemProvider(this);
@@ -3159,6 +3295,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createValuePinAdapter() {
 		if (valuePinItemProvider == null) {
 			valuePinItemProvider = new ValuePinItemProvider(this);
@@ -3181,6 +3318,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDurationIntervalAdapter() {
 		if (durationIntervalItemProvider == null) {
 			durationIntervalItemProvider = new DurationIntervalItemProvider(
@@ -3204,6 +3342,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIntervalAdapter() {
 		if (intervalItemProvider == null) {
 			intervalItemProvider = new IntervalItemProvider(this);
@@ -3226,6 +3365,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeConstraintAdapter() {
 		if (timeConstraintItemProvider == null) {
 			timeConstraintItemProvider = new TimeConstraintItemProvider(this);
@@ -3248,6 +3388,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIntervalConstraintAdapter() {
 		if (intervalConstraintItemProvider == null) {
 			intervalConstraintItemProvider = new IntervalConstraintItemProvider(
@@ -3271,6 +3412,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeIntervalAdapter() {
 		if (timeIntervalItemProvider == null) {
 			timeIntervalItemProvider = new TimeIntervalItemProvider(this);
@@ -3293,6 +3435,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDurationConstraintAdapter() {
 		if (durationConstraintItemProvider == null) {
 			durationConstraintItemProvider = new DurationConstraintItemProvider(
@@ -3316,6 +3459,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeObservationAdapter() {
 		if (timeObservationItemProvider == null) {
 			timeObservationItemProvider = new TimeObservationItemProvider(this);
@@ -3338,6 +3482,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDurationObservationAdapter() {
 		if (durationObservationItemProvider == null) {
 			durationObservationItemProvider = new DurationObservationItemProvider(
@@ -3361,6 +3506,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOpaqueActionAdapter() {
 		if (opaqueActionItemProvider == null) {
 			opaqueActionItemProvider = new OpaqueActionItemProvider(this);
@@ -3375,6 +3521,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSendSignalActionAdapter() {
 		if (sendSignalActionItemProvider == null) {
 			sendSignalActionItemProvider = new SendSignalActionItemProvider(
@@ -3398,6 +3545,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCallOperationActionAdapter() {
 		if (callOperationActionItemProvider == null) {
 			callOperationActionItemProvider = new CallOperationActionItemProvider(
@@ -3421,6 +3569,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCallBehaviorActionAdapter() {
 		if (callBehaviorActionItemProvider == null) {
 			callBehaviorActionItemProvider = new CallBehaviorActionItemProvider(
@@ -3444,6 +3593,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInformationItemAdapter() {
 		if (informationItemItemProvider == null) {
 			informationItemItemProvider = new InformationItemItemProvider(this);
@@ -3466,6 +3616,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInformationFlowAdapter() {
 		if (informationFlowItemProvider == null) {
 			informationFlowItemProvider = new InformationFlowItemProvider(this);
@@ -3488,6 +3639,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createModelAdapter() {
 		if (modelItemProvider == null) {
 			modelItemProvider = new ModelItemProvider(this);
@@ -3510,6 +3662,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadVariableActionAdapter() {
 		if (readVariableActionItemProvider == null) {
 			readVariableActionItemProvider = new ReadVariableActionItemProvider(
@@ -3533,6 +3686,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClearVariableActionAdapter() {
 		if (clearVariableActionItemProvider == null) {
 			clearVariableActionItemProvider = new ClearVariableActionItemProvider(
@@ -3556,6 +3710,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAddVariableValueActionAdapter() {
 		if (addVariableValueActionItemProvider == null) {
 			addVariableValueActionItemProvider = new AddVariableValueActionItemProvider(
@@ -3579,6 +3734,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRemoveVariableValueActionAdapter() {
 		if (removeVariableValueActionItemProvider == null) {
 			removeVariableValueActionItemProvider = new RemoveVariableValueActionItemProvider(
@@ -3602,6 +3758,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRaiseExceptionActionAdapter() {
 		if (raiseExceptionActionItemProvider == null) {
 			raiseExceptionActionItemProvider = new RaiseExceptionActionItemProvider(
@@ -3625,6 +3782,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActionInputPinAdapter() {
 		if (actionInputPinItemProvider == null) {
 			actionInputPinItemProvider = new ActionInputPinItemProvider(this);
@@ -3647,6 +3805,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadExtentActionAdapter() {
 		if (readExtentActionItemProvider == null) {
 			readExtentActionItemProvider = new ReadExtentActionItemProvider(
@@ -3670,6 +3829,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReclassifyObjectActionAdapter() {
 		if (reclassifyObjectActionItemProvider == null) {
 			reclassifyObjectActionItemProvider = new ReclassifyObjectActionItemProvider(
@@ -3693,6 +3853,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadIsClassifiedObjectActionAdapter() {
 		if (readIsClassifiedObjectActionItemProvider == null) {
 			readIsClassifiedObjectActionItemProvider = new ReadIsClassifiedObjectActionItemProvider(
@@ -3716,6 +3877,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStartClassifierBehaviorActionAdapter() {
 		if (startClassifierBehaviorActionItemProvider == null) {
 			startClassifierBehaviorActionItemProvider = new StartClassifierBehaviorActionItemProvider(
@@ -3739,6 +3901,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadLinkObjectEndActionAdapter() {
 		if (readLinkObjectEndActionItemProvider == null) {
 			readLinkObjectEndActionItemProvider = new ReadLinkObjectEndActionItemProvider(
@@ -3762,6 +3925,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReadLinkObjectEndQualifierActionAdapter() {
 		if (readLinkObjectEndQualifierActionItemProvider == null) {
 			readLinkObjectEndQualifierActionItemProvider = new ReadLinkObjectEndQualifierActionItemProvider(
@@ -3785,6 +3949,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCreateLinkObjectActionAdapter() {
 		if (createLinkObjectActionItemProvider == null) {
 			createLinkObjectActionItemProvider = new CreateLinkObjectActionItemProvider(
@@ -3808,6 +3973,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAcceptEventActionAdapter() {
 		if (acceptEventActionItemProvider == null) {
 			acceptEventActionItemProvider = new AcceptEventActionItemProvider(
@@ -3831,6 +3997,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAcceptCallActionAdapter() {
 		if (acceptCallActionItemProvider == null) {
 			acceptCallActionItemProvider = new AcceptCallActionItemProvider(
@@ -3854,6 +4021,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReplyActionAdapter() {
 		if (replyActionItemProvider == null) {
 			replyActionItemProvider = new ReplyActionItemProvider(this);
@@ -3876,6 +4044,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUnmarshallActionAdapter() {
 		if (unmarshallActionItemProvider == null) {
 			unmarshallActionItemProvider = new UnmarshallActionItemProvider(
@@ -3899,6 +4068,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createReduceActionAdapter() {
 		if (reduceActionItemProvider == null) {
 			reduceActionItemProvider = new ReduceActionItemProvider(this);
@@ -3921,6 +4091,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createControlFlowAdapter() {
 		if (controlFlowItemProvider == null) {
 			controlFlowItemProvider = new ControlFlowItemProvider(this);
@@ -3943,6 +4114,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createInitialNodeAdapter() {
 		if (initialNodeItemProvider == null) {
 			initialNodeItemProvider = new InitialNodeItemProvider(this);
@@ -3965,6 +4137,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActivityParameterNodeAdapter() {
 		if (activityParameterNodeItemProvider == null) {
 			activityParameterNodeItemProvider = new ActivityParameterNodeItemProvider(
@@ -3988,6 +4161,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createForkNodeAdapter() {
 		if (forkNodeItemProvider == null) {
 			forkNodeItemProvider = new ForkNodeItemProvider(this);
@@ -4010,6 +4184,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFlowFinalNodeAdapter() {
 		if (flowFinalNodeItemProvider == null) {
 			flowFinalNodeItemProvider = new FlowFinalNodeItemProvider(this);
@@ -4032,6 +4207,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCentralBufferNodeAdapter() {
 		if (centralBufferNodeItemProvider == null) {
 			centralBufferNodeItemProvider = new CentralBufferNodeItemProvider(
@@ -4055,6 +4231,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createMergeNodeAdapter() {
 		if (mergeNodeItemProvider == null) {
 			mergeNodeItemProvider = new MergeNodeItemProvider(this);
@@ -4077,6 +4254,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDecisionNodeAdapter() {
 		if (decisionNodeItemProvider == null) {
 			decisionNodeItemProvider = new DecisionNodeItemProvider(this);
@@ -4099,6 +4277,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createActivityFinalNodeAdapter() {
 		if (activityFinalNodeItemProvider == null) {
 			activityFinalNodeItemProvider = new ActivityFinalNodeItemProvider(
@@ -4122,6 +4301,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createJoinNodeAdapter() {
 		if (joinNodeItemProvider == null) {
 			joinNodeItemProvider = new JoinNodeItemProvider(this);
@@ -4144,6 +4324,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDataStoreNodeAdapter() {
 		if (dataStoreNodeItemProvider == null) {
 			dataStoreNodeItemProvider = new DataStoreNodeItemProvider(this);
@@ -4166,6 +4347,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createObjectFlowAdapter() {
 		if (objectFlowItemProvider == null) {
 			objectFlowItemProvider = new ObjectFlowItemProvider(this);
@@ -4188,6 +4370,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSequenceNodeAdapter() {
 		if (sequenceNodeItemProvider == null) {
 			sequenceNodeItemProvider = new SequenceNodeItemProvider(this);
@@ -4210,6 +4393,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createConditionalNodeAdapter() {
 		if (conditionalNodeItemProvider == null) {
 			conditionalNodeItemProvider = new ConditionalNodeItemProvider(this);
@@ -4232,6 +4416,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createClauseAdapter() {
 		if (clauseItemProvider == null) {
 			clauseItemProvider = new ClauseItemProvider(this);
@@ -4254,6 +4439,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createLoopNodeAdapter() {
 		if (loopNodeItemProvider == null) {
 			loopNodeItemProvider = new LoopNodeItemProvider(this);
@@ -4276,6 +4462,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExpansionNodeAdapter() {
 		if (expansionNodeItemProvider == null) {
 			expansionNodeItemProvider = new ExpansionNodeItemProvider(this);
@@ -4298,6 +4485,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExpansionRegionAdapter() {
 		if (expansionRegionItemProvider == null) {
 			expansionRegionItemProvider = new ExpansionRegionItemProvider(this);
@@ -4320,6 +4508,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createComponentRealizationAdapter() {
 		if (componentRealizationItemProvider == null) {
 			componentRealizationItemProvider = new ComponentRealizationItemProvider(
@@ -4343,6 +4532,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createComponentAdapter() {
 		if (componentItemProvider == null) {
 			componentItemProvider = new ComponentItemProvider(this);
@@ -4365,6 +4555,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createNodeAdapter() {
 		if (nodeItemProvider == null) {
 			nodeItemProvider = new NodeItemProvider(this);
@@ -4387,6 +4578,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDeviceAdapter() {
 		if (deviceItemProvider == null) {
 			deviceItemProvider = new DeviceItemProvider(this);
@@ -4409,6 +4601,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createExecutionEnvironmentAdapter() {
 		if (executionEnvironmentItemProvider == null) {
 			executionEnvironmentItemProvider = new ExecutionEnvironmentItemProvider(
@@ -4432,6 +4625,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCommunicationPathAdapter() {
 		if (communicationPathItemProvider == null) {
 			communicationPathItemProvider = new CommunicationPathItemProvider(
@@ -4455,6 +4649,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFinalStateAdapter() {
 		if (finalStateItemProvider == null) {
 			finalStateItemProvider = new FinalStateItemProvider(this);
@@ -4477,6 +4672,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeEventAdapter() {
 		if (timeEventItemProvider == null) {
 			timeEventItemProvider = new TimeEventItemProvider(this);
@@ -4499,6 +4695,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProtocolTransitionAdapter() {
 		if (protocolTransitionItemProvider == null) {
 			protocolTransitionItemProvider = new ProtocolTransitionItemProvider(
@@ -4522,6 +4719,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAssociationClassAdapter() {
 		if (associationClassItemProvider == null) {
 			associationClassItemProvider = new AssociationClassItemProvider(
@@ -4575,6 +4773,7 @@ public class UMLItemProviderAdapterFactory
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return isFactoryForTypeGen(type)
 			|| (type instanceof EPackage && UMLUtil.getProfile((EPackage) type) != null)
@@ -4588,6 +4787,7 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -4597,11 +4797,12 @@ public class UMLItemProviderAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class)
-				|| (((Class) type).isInstance(adapter))) {
+				|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -5056,6 +5257,7 @@ public class UMLItemProviderAdapterFactory
 		}
 	}
 
+	@Override
 	public Adapter createAdapter(Notifier target) {
 		Adapter adapter = super.createAdapter(target);
 		return adapter == null

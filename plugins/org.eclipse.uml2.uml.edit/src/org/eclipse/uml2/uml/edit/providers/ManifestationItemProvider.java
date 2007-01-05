@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationItemProvider.java,v 1.7 2006/05/15 21:06:23 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.8 2007/01/05 21:49:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -25,11 +25,13 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -73,7 +75,8 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -107,6 +110,7 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
 			"full/obj16/Manifestation")); //$NON-NLS-1$
@@ -118,6 +122,7 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String getText(Object object) {
 		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
 			object), "_UI_Manifestation_type"); //$NON-NLS-1$
@@ -137,6 +142,7 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -156,8 +162,9 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<CommandParameter> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -167,6 +174,7 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
 	}
@@ -177,8 +185,9 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection) {
+			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return new SupersetRemoveCommand(
 				domain,
@@ -196,8 +205,9 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection collection) {
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
 			return new SubsetSupersetReplaceCommand(
 				domain,
@@ -217,6 +227,7 @@ public class ManifestationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.MANIFESTATION__UTILIZED_ELEMENT) {

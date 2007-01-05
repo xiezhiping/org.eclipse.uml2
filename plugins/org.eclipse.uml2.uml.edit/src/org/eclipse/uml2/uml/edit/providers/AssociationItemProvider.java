@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationItemProvider.java,v 1.13 2006/10/10 20:40:53 khussey Exp $
+ * $Id: AssociationItemProvider.java,v 1.14 2007/01/05 21:49:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -21,16 +20,19 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -78,7 +80,8 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -220,7 +223,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.ASSOCIATION__OWNED_END);
@@ -229,19 +234,30 @@ public class AssociationItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns Association_{aggregation}.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Object getImage(Object object) {
 		int aggregation = 0;
 
-		for (Iterator memberEnds = ((Association) object).getMemberEnds()
-			.iterator(); memberEnds.hasNext();) {
-
-			int value = ((Property) memberEnds.next()).getAggregation()
-				.getValue();
+		for (Property memberEnd : ((Association) object).getMemberEnds()) {
+			int value = memberEnd.getAggregation().getValue();
 
 			if (value > aggregation) {
 				aggregation = value;
@@ -261,6 +277,7 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String getText(Object object) {
 		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
 			object), "_UI_Association_type"); //$NON-NLS-1$
@@ -276,13 +293,12 @@ public class AssociationItemProvider
 		if (!UML2Util.isEmpty(label)) {
 			appendString(text, label);
 		} else {
-			List memberEnds = association.getMemberEnds();
+			EList<Property> memberEnds = association.getMemberEnds();
 
 			if (!memberEnds.isEmpty()) {
 				appendString(text, "A"); //$NON-NLS-1$
 
-				for (Iterator me = memberEnds.iterator(); me.hasNext();) {
-					Property memberEnd = (Property) me.next();
+				for (Property memberEnd : memberEnds) {
 					String memberEndName = memberEnd.getName();
 
 					text.append('_');
@@ -324,6 +340,7 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -349,8 +366,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<CommandParameter> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
@@ -384,8 +402,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection selection) {
+			Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -408,6 +427,7 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
 	}
@@ -418,8 +438,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection, int index) {
+			EStructuralFeature feature, Collection<?> collection, int index) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
 			return new SubsetAddCommand(
 				domain,
@@ -446,8 +467,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection) {
+			EStructuralFeature feature, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
 			return new SupersetRemoveCommand(
 				domain,
@@ -473,8 +495,9 @@ public class AssociationItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection collection) {
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
 		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
 			return new SubsetSupersetReplaceCommand(
 				domain,

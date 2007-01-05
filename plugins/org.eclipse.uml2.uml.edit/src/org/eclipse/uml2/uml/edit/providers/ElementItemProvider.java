@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.15 2006/06/08 17:10:11 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.16 2007/01/05 21:49:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
 
@@ -96,7 +97,8 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -177,7 +179,9 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.ELEMENT__OWNED_COMMENT);
@@ -186,11 +190,25 @@ public class ElementItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		return getString("_UI_Element_type"); //$NON-NLS-1$
 	}
@@ -202,6 +220,7 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -221,8 +240,9 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<CommandParameter> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
@@ -236,8 +256,9 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Object getCreateChildImage(Object owner, Object feature,
-			Object child, Collection selection) {
+			Object child, Collection<?> selection) {
 
 		if (feature instanceof EStructuralFeature
 			&& FeatureMapUtil.isFeatureMap((EStructuralFeature) feature)) {
@@ -251,16 +272,17 @@ public class ElementItemProvider
 			String name = "full/obj16/" + ((EObject) child).eClass().getName(); //$NON-NLS-1$
 
 			try {
-				List images = new ArrayList();
+				List<Object> images = new ArrayList<Object>();
 				ResourceLocator resourceLocator = getResourceLocator();
 				images.add(resourceLocator.getImage(name));
 				images.add(resourceLocator.getImage("full/ovr16/CreateChild")); //$NON-NLS-1$
 
 				return new ComposedImage(images) {
 
-					public List getDrawPoints(Size size) {
-						List result = super.getDrawPoints(size);
-						((Point) result.get(1)).x = size.width - 7;
+					@Override
+					public List<Point> getDrawPoints(Size size) {
+						List<Point> result = super.getDrawPoints(size);
+						result.get(1).x = size.width - 7;
 						return result;
 					}
 				};
@@ -278,10 +300,12 @@ public class ElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
 	}
 
+	@Override
 	public Object getParent(Object object) {
 		EObject eContainer = ((EObject) object).eContainer();
 		Element baseElement = eContainer == null
@@ -293,14 +317,13 @@ public class ElementItemProvider
 			: baseElement;
 	}
 
-	public Collection getChildren(Object object) {
-		List children = new ArrayList(super.getChildren(object));
+	@Override
+	public Collection<?> getChildren(Object object) {
+		List<Object> children = new ArrayList<Object>(super.getChildren(object));
 
-		for (Iterator stereotypeApplications = ((Element) object)
-			.getStereotypeApplications().iterator(); stereotypeApplications
-			.hasNext();) {
+		for (EObject stereotypeApplication : ((Element) object)
+			.getStereotypeApplications()) {
 
-			Object stereotypeApplication = stereotypeApplications.next();
 			ITreeItemContentProvider treeItemContentProvider = (ITreeItemContentProvider) adapterFactory
 				.adapt(stereotypeApplication, ITreeItemContentProvider.class);
 
@@ -313,27 +336,24 @@ public class ElementItemProvider
 		return children;
 	}
 
-	public Collection getNewChildDescriptors(Object object,
+	@Override
+	public Collection<CommandParameter> getNewChildDescriptors(Object object,
 			EditingDomain editingDomain, Object sibling) {
-		List newChildDescriptors = new ArrayList(super.getNewChildDescriptors(
-			object, editingDomain, sibling));
+		List<CommandParameter> newChildDescriptors = new ArrayList<CommandParameter>(
+			super.getNewChildDescriptors(object, editingDomain, sibling));
 
-		for (Iterator stereotypeApplications = ((Element) object)
-			.getStereotypeApplications().iterator(); stereotypeApplications
-			.hasNext();) {
+		for (EObject stereotypeApplication : ((Element) object)
+			.getStereotypeApplications()) {
 
-			Object stereotypeApplication = stereotypeApplications.next();
 			IEditingDomainItemProvider editingDomainItemProvider = (IEditingDomainItemProvider) adapterFactory
 				.adapt(stereotypeApplication, IEditingDomainItemProvider.class);
 
 			if (editingDomainItemProvider != null) {
 
-				for (Iterator ncd = editingDomainItemProvider
+				for (CommandParameter newChildDescriptor : editingDomainItemProvider
 					.getNewChildDescriptors(stereotypeApplication,
-						editingDomain, null).iterator(); ncd.hasNext();) {
+						editingDomain, null)) {
 
-					CommandParameter newChildDescriptor = (CommandParameter) ncd
-						.next();
 					newChildDescriptor.setOwner(stereotypeApplication);
 					newChildDescriptors.add(newChildDescriptor);
 				}
@@ -343,31 +363,28 @@ public class ElementItemProvider
 		return newChildDescriptors;
 	}
 
-	public List getStereotypeApplicationPropertyDescriptors(Object object) {
-		List stereotypeApplications = ((Element) object)
+	public List<IItemPropertyDescriptor> getStereotypeApplicationPropertyDescriptors(
+			Object object) {
+		EList<EObject> stereotypeApplications = ((Element) object)
 			.getStereotypeApplications();
 
 		if (stereotypeApplications.isEmpty()) {
 			return null;
 		} else {
-			List stereotypeApplicationPropertyDescriptors = new ArrayList();
+			List<IItemPropertyDescriptor> stereotypeApplicationPropertyDescriptors = new ArrayList<IItemPropertyDescriptor>();
 
-			for (Iterator sa = stereotypeApplications.iterator(); sa.hasNext();) {
-				Object stereotypeApplication = sa.next();
+			for (EObject stereotypeApplication : stereotypeApplications) {
 				IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
 					.adapt(stereotypeApplication, IItemPropertySource.class);
 
 				if (itemPropertySource != null) {
 
-					for (Iterator propertyDescriptors = itemPropertySource
-						.getPropertyDescriptors(stereotypeApplication)
-						.iterator(); propertyDescriptors.hasNext();) {
+					for (IItemPropertyDescriptor propertyDescriptor : itemPropertySource
+						.getPropertyDescriptors(stereotypeApplication)) {
 
 						stereotypeApplicationPropertyDescriptors
 							.add(new ItemPropertyDescriptorDecorator(
-								stereotypeApplication,
-								(IItemPropertyDescriptor) propertyDescriptors
-									.next()));
+								stereotypeApplication, propertyDescriptor));
 					}
 				}
 			}
@@ -379,11 +396,7 @@ public class ElementItemProvider
 	public IItemPropertyDescriptor getStereotypeApplicationPropertyDescriptor(
 			Object object, Object propertyId) {
 
-		for (Iterator i = getStereotypeApplicationPropertyDescriptors(object)
-			.iterator(); i.hasNext();) {
-
-			IItemPropertyDescriptor itemPropertyDescriptor = (IItemPropertyDescriptor) i
-				.next();
+		for (IItemPropertyDescriptor itemPropertyDescriptor : getStereotypeApplicationPropertyDescriptors(object)) {
 
 			if (propertyId.equals(itemPropertyDescriptor.getId(object))) {
 				return itemPropertyDescriptor;
@@ -393,8 +406,10 @@ public class ElementItemProvider
 		return null;
 	}
 
+	@Override
 	public Command createCommand(Object object, EditingDomain domain,
-			Class commandClass, CommandParameter commandParameter) {
+			Class<? extends Command> commandClass,
+			CommandParameter commandParameter) {
 
 		if (commandClass == CreateChildCommand.class) {
 			EObject eOwner = ((CommandParameter) unwrapCommandValues(
@@ -416,6 +431,7 @@ public class ElementItemProvider
 			commandParameter);
 	}
 
+	@Override
 	protected boolean shouldTranslate() {
 		return UMLEditPlugin.INSTANCE.shouldTranslate();
 	}
@@ -424,12 +440,14 @@ public class ElementItemProvider
 		return UML2Util.getQualifiedText((EObject) object,
 			new UMLUtil.QualifiedTextProvider() {
 
+				@Override
 				public String getFeatureText(
 						EStructuralFeature eStructuralFeature) {
 					return ElementItemProvider.this
 						.getFeatureText(eStructuralFeature);
 				}
 
+				@Override
 				public String getClassText(EObject eObject) {
 					return getTypeText(eObject);
 				}
@@ -442,9 +460,9 @@ public class ElementItemProvider
 		if (object instanceof Element) {
 			Element element = (Element) object;
 
-			Iterator appliedStereotypes = element.getAppliedStereotypes()
-				.iterator();
-			Iterator keywords = element.getKeywords().iterator();
+			Iterator<Stereotype> appliedStereotypes = element
+				.getAppliedStereotypes().iterator();
+			Iterator<String> keywords = element.getKeywords().iterator();
 
 			if (appliedStereotypes.hasNext() || keywords.hasNext()) {
 
@@ -455,8 +473,8 @@ public class ElementItemProvider
 				text.append("<<"); //$NON-NLS-1$
 
 				while (appliedStereotypes.hasNext()) {
-					text.append(((Stereotype) appliedStereotypes.next())
-						.getKeyword(shouldTranslate()));
+					text.append(appliedStereotypes.next().getKeyword(
+						shouldTranslate()));
 
 					if (appliedStereotypes.hasNext() || keywords.hasNext()) {
 						text.append(", "); //$NON-NLS-1$
@@ -464,7 +482,7 @@ public class ElementItemProvider
 				}
 
 				while (keywords.hasNext()) {
-					text.append((String) keywords.next());
+					text.append(keywords.next());
 
 					if (keywords.hasNext()) {
 						text.append(", "); //$NON-NLS-1$
@@ -541,6 +559,7 @@ public class ElementItemProvider
 		return getString("_UI_Unknown_type"); //$NON-NLS-1$
 	}
 
+	@Override
 	protected String getFeatureText(Object feature) {
 		String featureKey = "Unknown"; //$NON-NLS-1$
 
@@ -558,6 +577,7 @@ public class ElementItemProvider
 		}
 	}
 
+	@Override
 	protected ItemPropertyDescriptor createItemPropertyDescriptor(
 			AdapterFactory adapterFactory, ResourceLocator resourceLocator,
 			String displayName, String description, EStructuralFeature feature,
@@ -569,23 +589,20 @@ public class ElementItemProvider
 	}
 
 	protected ComposedImage getComposedImage(Object object, Object image) {
-		List images = new ArrayList();
+		List<Object> images = new ArrayList<Object>();
 		images.add(image);
 		return new ComposedImage(images);
 	}
 
+	@Override
 	protected Object overlayImage(Object object, Object image) {
 		ComposedImage composedImage = getComposedImage(object, image);
-		Collection images = composedImage.getImages();
+		Collection<Object> images = composedImage.getImages();
 
 		if (object instanceof Element) {
 			Element element = (Element) object;
 
-			for (Iterator appliedStereotypes = element.getAppliedStereotypes()
-				.iterator(); appliedStereotypes.hasNext();) {
-
-				Stereotype appliedStereotype = (Stereotype) appliedStereotypes
-					.next();
+			for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
 				Resource eResource = appliedStereotype.eResource();
 
 				if (eResource != null) {
@@ -597,11 +614,8 @@ public class ElementItemProvider
 						URI normalizedURI = uriConverter.normalize(eResource
 							.getURI());
 
-						for (Iterator icons = appliedStereotype.getIcons()
-							.iterator(); icons.hasNext();) {
-
-							String location = ((Image) icons.next())
-								.getLocation();
+						for (Image icon : appliedStereotype.getIcons()) {
+							String location = icon.getLocation();
 
 							if (!UML2Util.isEmpty(location)
 								&& location.indexOf("ovr16") != -1) { //$NON-NLS-1$

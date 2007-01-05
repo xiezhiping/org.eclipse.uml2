@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.4 2006/10/10 20:40:52 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.5 2007/01/05 21:49:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -33,6 +32,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -47,46 +47,55 @@ class StereotypeApplicationItemProvider
 		super(adapterFactory);
 	}
 
+	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection, int index) {
+			EStructuralFeature feature, Collection<?> collection, int index) {
 		return new AddCommand(domain, owner, feature, collection, index) {
 
-			public Collection doGetAffectedObjects() {
+			@Override
+			public Collection<?> doGetAffectedObjects() {
 				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
 
+	@Override
 	protected Command createMoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value, int index) {
 		return new MoveCommand(domain, owner, feature, value, index) {
 
-			public Collection doGetAffectedObjects() {
+			@Override
+			public Collection<?> doGetAffectedObjects() {
 				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
 
+	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection collection) {
+			EStructuralFeature feature, Collection<?> collection) {
 		return new RemoveCommand(domain, owner, feature, collection) {
 
-			public Collection doGetAffectedObjects() {
+			@Override
+			public Collection<?> doGetAffectedObjects() {
 				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
 
+	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection collection) {
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
 		return new ReplaceCommand(domain, owner, feature, value, collection) {
 
-			public Collection doGetAffectedObjects() {
+			@Override
+			public Collection<?> doGetAffectedObjects() {
 				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
 
+	@Override
 	protected Command createSetCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Object value, int index) {
 
@@ -96,25 +105,25 @@ class StereotypeApplicationItemProvider
 
 		return new SetCommand(domain, owner, feature, value, index) {
 
-			public Collection doGetAffectedObjects() {
+			@Override
+			public Collection<?> doGetAffectedObjects() {
 				return Collections.singleton(UMLUtil.getBaseElement(owner));
 			}
 		};
 	}
 
-	public List getPropertyDescriptors(Object object) {
-		itemPropertyDescriptors = new ArrayList();
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+		itemPropertyDescriptors = new ArrayList<IItemPropertyDescriptor>();
 
-		for (Iterator eAllStructuralFeatures = ((EObject) object).eClass()
-			.getEAllStructuralFeatures().iterator(); eAllStructuralFeatures
-			.hasNext();) {
+		for (EStructuralFeature eStructuralFeature : ((EObject) object)
+			.eClass().getEAllStructuralFeatures()) {
 
-			EStructuralFeature.Internal eStructuralFeature = (EStructuralFeature.Internal) eAllStructuralFeatures
-				.next();
 			boolean isBaseReference = eStructuralFeature.getName().startsWith(
 				Extension.METACLASS_ROLE_PREFIX);
 			String[] filterFlags = isBaseReference
-				|| eStructuralFeature.isContainment()
+				|| ((EStructuralFeature.Internal) eStructuralFeature)
+					.isContainment()
 				? new String[]{"org.eclipse.ui.views.properties.expert"} //$NON-NLS-1$
 				: null;
 
@@ -136,11 +145,13 @@ class StereotypeApplicationItemProvider
 		return itemPropertyDescriptors;
 	}
 
+	@Override
 	public void notifyChanged(Notification notification) {
 		fireNotifyChanged(new ViewerNotification(notification, UMLUtil
 			.getBaseElement((EObject) notification.getNotifier()), true, false));
 	}
 
+	@Override
 	public String getText(Object object) {
 		String text = super.getText(object);
 
