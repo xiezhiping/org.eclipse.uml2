@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.18 2006/12/21 18:56:19 khussey Exp $
+ * $Id: UMLValidator.java,v 1.19 2007/01/05 21:48:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4355,6 +4355,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(comment, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(comment, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(comment, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -4384,6 +4387,9 @@ public class UMLValidator
 			result &= validate_UniqueID(element, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(element, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(element, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(element, diagnostics,
 				context);
@@ -4441,6 +4447,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(directedRelationship,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(directedRelationship,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(directedRelationship,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4471,6 +4480,9 @@ public class UMLValidator
 			result &= validate_UniqueID(relationship, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(relationship, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(relationship, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(relationship,
@@ -4505,6 +4517,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(literalSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalSpecification,
@@ -4550,6 +4565,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(valueSpecification, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(valueSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(valueSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4591,6 +4609,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(typedElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(typedElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(typedElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4630,6 +4651,9 @@ public class UMLValidator
 			result &= validate_UniqueID(namedElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(namedElement, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(namedElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(namedElement,
@@ -4709,6 +4733,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(dependency, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(dependency, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dependency,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4751,6 +4778,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(packageableElement, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(packageableElement,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageableElement,
 				diagnostics, context);
@@ -4795,6 +4825,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(parameterableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(parameterableElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameterableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4827,6 +4860,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(templateParameter, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(templateParameter,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateParameter,
 				diagnostics, context);
@@ -4875,6 +4911,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(templateSignature, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(templateSignature,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateSignature,
 				diagnostics, context);
@@ -4925,6 +4964,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(templateableElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(templateableElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -4956,6 +4998,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(templateBinding, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(templateBinding,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(templateBinding,
 				diagnostics, context);
@@ -5023,6 +5068,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(templateParameterSubstitution,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				templateParameterSubstitution, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5069,6 +5117,9 @@ public class UMLValidator
 			result &= validate_UniqueID(namespace, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(namespace, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(namespace, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(namespace,
 				diagnostics, context);
@@ -5124,6 +5175,9 @@ public class UMLValidator
 			result &= validate_UniqueID(elementImport, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(elementImport, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(elementImport, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(elementImport,
@@ -5190,6 +5244,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(packageImport, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(packageImport, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageImport,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5235,6 +5292,9 @@ public class UMLValidator
 			result &= validate_UniqueID(package_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(package_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(package_, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(package_, diagnostics,
 				context);
@@ -5295,6 +5355,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(packageMerge, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(packageMerge, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(packageMerge,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5324,6 +5387,8 @@ public class UMLValidator
 			result &= validate_UniqueID(type, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(type, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(type, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(type, diagnostics,
 				context);
@@ -5368,6 +5433,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(profileApplication, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(profileApplication,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(profileApplication,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5397,6 +5465,9 @@ public class UMLValidator
 			result &= validate_UniqueID(profile, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(profile, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(profile, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(profile, diagnostics,
 				context);
@@ -5474,6 +5545,9 @@ public class UMLValidator
 			result &= validate_UniqueID(stereotype, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(stereotype, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stereotype, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stereotype,
 				diagnostics, context);
@@ -5573,6 +5647,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(class_, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(class_, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(class_, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -5658,6 +5734,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(behavioredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(behavioredClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavioredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5733,6 +5812,9 @@ public class UMLValidator
 			result &= validate_UniqueID(classifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(classifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(classifier, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(classifier,
 				diagnostics, context);
@@ -5848,6 +5930,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(redefinableElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(redefinableElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(redefinableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5921,6 +6006,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(generalization, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(generalization, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -5969,6 +6057,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(generalizationSet, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(generalizationSet,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalizationSet,
 				diagnostics, context);
@@ -6041,6 +6132,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(feature, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(feature, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(feature, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -6085,6 +6179,9 @@ public class UMLValidator
 			result &= validate_UniqueID(useCase, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(useCase, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(useCase, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(useCase, diagnostics,
 				context);
@@ -6206,6 +6303,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(include, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(include, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(include, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -6244,6 +6344,8 @@ public class UMLValidator
 			result &= validate_UniqueID(extend, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(extend, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(extend, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extend, diagnostics,
 				context);
@@ -6298,6 +6400,9 @@ public class UMLValidator
 			result &= validate_UniqueID(constraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(constraint, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(constraint, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(constraint,
 				diagnostics, context);
@@ -6416,6 +6521,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(extensionPoint, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(extensionPoint, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extensionPoint,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6478,6 +6586,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(substitution, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(substitution, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(substitution,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6517,6 +6628,9 @@ public class UMLValidator
 			result &= validate_UniqueID(realization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(realization, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(realization, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(realization,
 				diagnostics, context);
@@ -6558,6 +6672,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(abstraction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(abstraction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(abstraction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6598,6 +6715,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(opaqueExpression, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(opaqueExpression,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueExpression,
 				diagnostics, context);
@@ -6685,6 +6805,9 @@ public class UMLValidator
 			result &= validate_UniqueID(parameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(parameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(parameter, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameter,
 				diagnostics, context);
@@ -6816,6 +6939,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(multiplicityElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(multiplicityElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(multiplicityElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6927,6 +7053,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(connectableElement, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(connectableElement,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connectableElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6966,6 +7095,9 @@ public class UMLValidator
 			result &= validate_UniqueID(connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(connectorEnd, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(connectorEnd, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connectorEnd,
@@ -7073,6 +7205,9 @@ public class UMLValidator
 			result &= validate_UniqueID(property, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(property, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(property, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(property, diagnostics,
 				context);
@@ -7285,6 +7420,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(deploymentTarget, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(deploymentTarget,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deploymentTarget,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7324,6 +7462,9 @@ public class UMLValidator
 			result &= validate_UniqueID(deployment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(deployment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(deployment, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deployment,
 				diagnostics, context);
@@ -7366,6 +7507,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(deployedArtifact, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(deployedArtifact,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(deployedArtifact,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7407,6 +7551,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(deploymentSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(deploymentSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -7502,6 +7649,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(artifact, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(artifact, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(artifact, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -7564,6 +7714,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(manifestation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(manifestation, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(manifestation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7603,6 +7756,9 @@ public class UMLValidator
 			result &= validate_UniqueID(operation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(operation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(operation, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(operation,
 				diagnostics, context);
@@ -7685,6 +7841,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(behavioralFeature, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(behavioralFeature,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavioralFeature,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7733,6 +7892,9 @@ public class UMLValidator
 			result &= validate_UniqueID(behavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(behavior, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(behavior, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(behavior, diagnostics,
 				context);
@@ -7863,6 +8025,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(parameterSet, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(parameterSet, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(parameterSet,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -7949,6 +8114,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(dataType, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(dataType, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dataType, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8009,6 +8177,9 @@ public class UMLValidator
 			result &= validate_UniqueID(interface_, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interface_, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interface_, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interface_,
 				diagnostics, context);
@@ -8085,6 +8256,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(reception, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(reception, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(reception,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -8146,6 +8320,8 @@ public class UMLValidator
 			result &= validate_UniqueID(signal, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(signal, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(signal, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(signal, diagnostics,
 				context);
@@ -8209,6 +8385,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(protocolStateMachine,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(protocolStateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolStateMachine,
@@ -8401,6 +8580,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(stateMachine, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stateMachine, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stateMachine,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -8542,6 +8724,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(region, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(region, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(region, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8645,6 +8829,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(vertex, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(vertex, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(vertex, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8684,6 +8870,9 @@ public class UMLValidator
 			result &= validate_UniqueID(transition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(transition, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(transition, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(transition,
 				diagnostics, context);
@@ -8838,6 +9027,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(trigger, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(trigger, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(trigger, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8877,6 +9069,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(event, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(event, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(event, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -8915,6 +9109,8 @@ public class UMLValidator
 			result &= validate_UniqueID(port, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(port, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(port, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(port, diagnostics,
 				context);
@@ -9062,6 +9258,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(state, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(state, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(state, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -9186,6 +9384,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(connectionPointReference,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(connectionPointReference,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9257,6 +9458,9 @@ public class UMLValidator
 			result &= validate_UniqueID(pseudostate, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(pseudostate, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(pseudostate, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(pseudostate,
 				diagnostics, context);
@@ -9436,6 +9640,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(protocolConformance, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(protocolConformance,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolConformance,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9468,6 +9675,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(operationTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(operationTemplateParameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -9505,6 +9715,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(structuralFeature, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(structuralFeature,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(structuralFeature,
 				diagnostics, context);
@@ -9566,6 +9779,9 @@ public class UMLValidator
 			result &= validate_UniqueID(association, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(association, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(association, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(association,
 				diagnostics, context);
@@ -9691,6 +9907,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				connectableElementTemplateParameter, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9725,6 +9944,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(collaborationUse, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(collaborationUse,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(collaborationUse,
 				diagnostics, context);
@@ -9812,6 +10034,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(collaboration, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(collaboration, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(collaboration,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9880,6 +10105,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(structuredClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(structuredClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(structuredClassifier,
@@ -9958,6 +10186,9 @@ public class UMLValidator
 			result &= validate_UniqueID(connector, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(connector, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(connector, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(connector,
 				diagnostics, context);
@@ -10127,6 +10358,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(redefinableTemplateSignature,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				redefinableTemplateSignature, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10195,6 +10429,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(classifierTemplateParameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(classifierTemplateParameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10248,6 +10485,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(interfaceRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interfaceRealization,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interfaceRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10289,6 +10529,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(encapsulatedClassifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(encapsulatedClassifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -10354,6 +10597,9 @@ public class UMLValidator
 			result &= validate_UniqueID(extension, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(extension, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(extension, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extension,
 				diagnostics, context);
@@ -10455,6 +10701,9 @@ public class UMLValidator
 			result &= validate_UniqueID(extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(extensionEnd, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(extensionEnd, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(extensionEnd,
@@ -10577,6 +10826,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(image, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(image, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(image, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -10608,6 +10859,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(stringExpression, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stringExpression,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stringExpression,
 				diagnostics, context);
@@ -10679,6 +10933,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(expression, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(expression, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expression,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10718,6 +10975,9 @@ public class UMLValidator
 			result &= validate_UniqueID(literalInteger, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(literalInteger, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalInteger, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalInteger,
@@ -10761,6 +11021,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(literalString, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalString, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalString,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10800,6 +11063,9 @@ public class UMLValidator
 			result &= validate_UniqueID(literalBoolean, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(literalBoolean, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalBoolean, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalBoolean,
@@ -10842,6 +11108,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(literalNull, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalNull, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(literalNull,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -10881,6 +11150,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(slot, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(slot, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(slot, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -10913,6 +11184,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(instanceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(instanceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(instanceSpecification,
@@ -11019,6 +11293,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(enumeration, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(enumeration, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(enumeration,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11083,6 +11360,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(enumerationLiteral, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(enumerationLiteral,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(enumerationLiteral,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11134,6 +11414,9 @@ public class UMLValidator
 			result &= validate_UniqueID(primitiveType, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(primitiveType, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(primitiveType, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(primitiveType,
@@ -11198,6 +11481,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(instanceValue, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(instanceValue, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(instanceValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11241,6 +11527,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(literalUnlimitedNatural,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(literalUnlimitedNatural,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11280,6 +11569,9 @@ public class UMLValidator
 			result &= validate_UniqueID(opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(opaqueBehavior, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(opaqueBehavior, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueBehavior,
@@ -11364,6 +11656,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(functionBehavior, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(functionBehavior,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(functionBehavior,
 				diagnostics, context);
@@ -11477,6 +11772,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(actor, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(actor, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(actor, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11568,6 +11865,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(usage, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(usage, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(usage, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -11606,6 +11905,9 @@ public class UMLValidator
 			result &= validate_UniqueID(message, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(message, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(message, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(message, diagnostics,
 				context);
@@ -11750,6 +12052,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(messageEnd, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(messageEnd, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(messageEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11789,6 +12094,9 @@ public class UMLValidator
 			result &= validate_UniqueID(interaction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interaction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interaction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interaction,
 				diagnostics, context);
@@ -11875,6 +12183,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(interactionFragment, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interactionFragment,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -11914,6 +12225,9 @@ public class UMLValidator
 			result &= validate_UniqueID(lifeline, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(lifeline, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(lifeline, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(lifeline, diagnostics,
 				context);
@@ -12001,6 +12315,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(partDecomposition, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(partDecomposition,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(partDecomposition,
 				diagnostics, context);
@@ -12100,6 +12417,9 @@ public class UMLValidator
 			result &= validate_UniqueID(interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interactionUse, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interactionUse, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionUse,
@@ -12203,6 +12523,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(gate, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(gate, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(gate, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -12270,6 +12592,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(action, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(action, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(action, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -12323,6 +12647,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(executableNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(executableNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executableNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12374,6 +12701,9 @@ public class UMLValidator
 			result &= validate_UniqueID(activityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(activityNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityNode,
@@ -12451,6 +12781,9 @@ public class UMLValidator
 			result &= validate_UniqueID(activityEdge, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(activityEdge, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityEdge, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityEdge,
@@ -12543,6 +12876,9 @@ public class UMLValidator
 			result &= validate_UniqueID(activity, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(activity, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activity, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activity, diagnostics,
 				context);
@@ -12671,6 +13007,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(activityPartition, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityPartition,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityPartition,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12784,6 +13123,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(activityGroup, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityGroup, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityGroup,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -12861,6 +13203,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(structuredActivityNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(structuredActivityNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -12942,6 +13287,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(variable, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(variable, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(variable, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -13014,6 +13362,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(interruptibleActivityRegion,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interruptibleActivityRegion,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13070,6 +13421,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(exceptionHandler, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(exceptionHandler,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(exceptionHandler,
 				diagnostics, context);
@@ -13161,6 +13515,9 @@ public class UMLValidator
 			result &= validate_UniqueID(objectNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(objectNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(objectNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(objectNode,
 				diagnostics, context);
@@ -13273,6 +13630,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(outputPin, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(outputPin, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13369,6 +13729,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(pin, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(pin, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(pin, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -13460,6 +13822,9 @@ public class UMLValidator
 			result &= validate_UniqueID(inputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(inputPin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(inputPin, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(inputPin, diagnostics,
 				context);
@@ -13560,6 +13925,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(generalOrdering, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(generalOrdering,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(generalOrdering,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13601,6 +13969,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(occurrenceSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(occurrenceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -13645,6 +14016,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interactionOperand, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interactionOperand,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionOperand,
 				diagnostics, context);
@@ -13722,6 +14096,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interactionConstraint,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interactionConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interactionConstraint,
@@ -13876,6 +14253,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(executionSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(executionSpecification,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13935,6 +14315,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(executionOccurrenceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				executionOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13976,6 +14359,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(executionEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(executionEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executionEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14015,6 +14401,9 @@ public class UMLValidator
 			result &= validate_UniqueID(stateInvariant, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(stateInvariant, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(stateInvariant, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(stateInvariant,
@@ -14059,6 +14448,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(actionExecutionSpecification,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				actionExecutionSpecification, diagnostics, context);
@@ -14122,6 +14514,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(behaviorExecutionSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				behaviorExecutionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14164,6 +14559,9 @@ public class UMLValidator
 			result &= validate_UniqueID(creationEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(creationEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(creationEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(creationEvent,
@@ -14221,6 +14619,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(destructionEvent, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(destructionEvent,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destructionEvent,
 				diagnostics, context);
@@ -14281,6 +14682,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(sendOperationEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(sendOperationEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendOperationEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14320,6 +14724,9 @@ public class UMLValidator
 			result &= validate_UniqueID(messageEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(messageEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(messageEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(messageEvent,
@@ -14362,6 +14769,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(sendSignalEvent, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(sendSignalEvent,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendSignalEvent,
 				diagnostics, context);
@@ -14406,6 +14816,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(messageOccurrenceSpecification,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				messageOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14447,6 +14860,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(receiveOperationEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(receiveOperationEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(receiveOperationEvent,
@@ -14492,6 +14908,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(receiveSignalEvent, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(receiveSignalEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(receiveSignalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14532,6 +14951,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(combinedFragment, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(combinedFragment,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(combinedFragment,
 				diagnostics, context);
@@ -14634,6 +15056,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(continuation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(continuation, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(continuation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14723,6 +15148,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(considerIgnoreFragment,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(considerIgnoreFragment,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14806,6 +15234,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(callEvent, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(callEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14845,6 +15276,9 @@ public class UMLValidator
 			result &= validate_UniqueID(changeEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(changeEvent, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(changeEvent, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(changeEvent,
 				diagnostics, context);
@@ -14886,6 +15320,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(signalEvent, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(signalEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(signalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -14926,6 +15363,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(anyReceiveEvent, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(anyReceiveEvent,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(anyReceiveEvent,
 				diagnostics, context);
@@ -14969,6 +15409,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(createObjectAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(createObjectAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(createObjectAction,
 				diagnostics, context);
@@ -15087,6 +15530,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(destroyObjectAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(destroyObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destroyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -15171,6 +15617,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(testIdentityAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(testIdentityAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(testIdentityAction,
 				diagnostics, context);
@@ -15268,6 +15717,9 @@ public class UMLValidator
 			result &= validate_UniqueID(readSelfAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readSelfAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readSelfAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readSelfAction,
@@ -15383,6 +15835,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(structuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(structuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -15517,6 +15972,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(readStructuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readStructuralFeatureAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15634,6 +16092,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(writeStructuralFeatureAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				writeStructuralFeatureAction, diagnostics, context);
@@ -15753,6 +16214,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(clearStructuralFeatureAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15821,6 +16285,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -15912,6 +16379,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(addStructuralFeatureValueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15997,6 +16467,9 @@ public class UMLValidator
 			result &= validate_UniqueID(linkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(linkAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(linkAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkAction,
 				diagnostics, context);
@@ -16092,6 +16565,9 @@ public class UMLValidator
 			result &= validate_UniqueID(linkEndData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(linkEndData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(linkEndData, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkEndData,
 				diagnostics, context);
@@ -16201,6 +16677,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(qualifierValue, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(qualifierValue, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(qualifierValue,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16277,6 +16756,9 @@ public class UMLValidator
 			result &= validate_UniqueID(readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readLinkAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readLinkAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readLinkAction,
@@ -16419,6 +16901,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(linkEndCreationData, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(linkEndCreationData,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(linkEndCreationData,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16496,6 +16981,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(createLinkAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(createLinkAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(createLinkAction,
 				diagnostics, context);
@@ -16578,6 +17066,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(writeLinkAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(writeLinkAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(writeLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16656,6 +17147,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(destroyLinkAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(destroyLinkAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(destroyLinkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -16721,6 +17215,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(linkEndDestructionData,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(linkEndDestructionData,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -16802,6 +17299,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(clearAssociationAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(clearAssociationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -16888,6 +17388,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(broadcastSignalAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(broadcastSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(broadcastSignalAction,
@@ -16978,6 +17481,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(invocationAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(invocationAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(invocationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17046,6 +17552,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(sendObjectAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(sendObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17102,6 +17611,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(valueSpecificationAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(valueSpecificationAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -17189,6 +17701,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(timeExpression, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(timeExpression, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeExpression,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17228,6 +17743,9 @@ public class UMLValidator
 			result &= validate_UniqueID(observation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(observation, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(observation, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(observation,
 				diagnostics, context);
@@ -17269,6 +17787,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(duration, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(duration, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(duration, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -17308,6 +17829,9 @@ public class UMLValidator
 			result &= validate_UniqueID(valuePin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(valuePin, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(valuePin, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(valuePin, diagnostics,
 				context);
@@ -17423,6 +17947,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(durationInterval, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(durationInterval,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17463,6 +17990,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(interval, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(interval, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(interval, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -17502,6 +18032,9 @@ public class UMLValidator
 			result &= validate_UniqueID(timeConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(timeConstraint, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(timeConstraint, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeConstraint,
@@ -17562,6 +18095,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(intervalConstraint, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(intervalConstraint,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(intervalConstraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17618,6 +18154,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(timeInterval, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(timeInterval, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeInterval,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17660,6 +18199,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(durationConstraint, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(durationConstraint,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationConstraint,
 				diagnostics, context);
@@ -17733,6 +18275,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(timeObservation, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(timeObservation,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeObservation,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17775,6 +18320,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(durationObservation, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(durationObservation,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(durationObservation,
 				diagnostics, context);
@@ -17833,6 +18381,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(opaqueAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(opaqueAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(opaqueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -17884,6 +18435,9 @@ public class UMLValidator
 			result &= validate_UniqueID(callAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(callAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(callAction, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callAction,
 				diagnostics, context);
@@ -17987,6 +18541,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(sendSignalAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(sendSignalAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sendSignalAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18075,6 +18632,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(callOperationAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(callOperationAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callOperationAction,
 				diagnostics, context);
@@ -18222,6 +18782,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(callBehaviorAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(callBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(callBehaviorAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18351,6 +18914,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(informationItem, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(informationItem,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(informationItem,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18458,6 +19024,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(informationFlow, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(informationFlow,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(informationFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18543,6 +19112,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(model, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(model, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(model, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -18588,6 +19159,9 @@ public class UMLValidator
 			result &= validate_UniqueID(variableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(variableAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(variableAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(variableAction,
@@ -18659,6 +19233,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readVariableAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readVariableAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readVariableAction,
 				diagnostics, context);
@@ -18749,6 +19326,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(writeVariableAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(writeVariableAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(writeVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18837,6 +19417,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(clearVariableAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(clearVariableAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(clearVariableAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -18893,6 +19476,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(addVariableValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(addVariableValueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -18975,6 +19561,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(removeVariableValueAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(removeVariableValueAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19055,6 +19644,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(raiseExceptionAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(raiseExceptionAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(raiseExceptionAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19106,6 +19698,9 @@ public class UMLValidator
 			result &= validate_UniqueID(actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(actionInputPin, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(actionInputPin, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(actionInputPin,
@@ -19239,6 +19834,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(readExtentAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readExtentAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(readExtentAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -19323,6 +19921,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(reclassifyObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(reclassifyObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -19426,6 +20027,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readIsClassifiedObjectAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				readIsClassifiedObjectAction, diagnostics, context);
@@ -19546,6 +20150,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(startClassifierBehaviorAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				startClassifierBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19631,6 +20238,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readLinkObjectEndAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(readLinkObjectEndAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
@@ -19798,6 +20408,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(readLinkObjectEndQualifierAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(
+				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				readLinkObjectEndQualifierAction, diagnostics, context);
@@ -19982,6 +20595,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(createLinkObjectAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(createLinkObjectAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20099,6 +20715,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(acceptEventAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(acceptEventAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(acceptEventAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20213,6 +20832,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(acceptCallAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(acceptCallAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(acceptCallAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20322,6 +20944,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(replyAction, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(replyAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(replyAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20405,6 +21030,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(unmarshallAction, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(unmarshallAction,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(unmarshallAction,
 				diagnostics, context);
@@ -20567,6 +21195,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(reduceAction, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(reduceAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(reduceAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20665,6 +21296,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(controlNode, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(controlNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(controlNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -20716,6 +21350,9 @@ public class UMLValidator
 			result &= validate_UniqueID(controlFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(controlFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(controlFlow, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(controlFlow,
 				diagnostics, context);
@@ -20786,6 +21423,9 @@ public class UMLValidator
 			result &= validate_UniqueID(initialNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(initialNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(initialNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(initialNode,
 				diagnostics, context);
@@ -20870,6 +21510,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(activityParameterNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityParameterNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityParameterNode,
@@ -21014,6 +21657,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(forkNode, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(forkNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(forkNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -21095,6 +21741,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(flowFinalNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(flowFinalNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(flowFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21149,6 +21798,9 @@ public class UMLValidator
 			result &= validate_UniqueID(finalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(finalNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(finalNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(finalNode,
 				diagnostics, context);
@@ -21219,6 +21871,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(centralBufferNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(centralBufferNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(centralBufferNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21282,6 +21937,9 @@ public class UMLValidator
 			result &= validate_UniqueID(mergeNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(mergeNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(mergeNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(mergeNode,
 				diagnostics, context);
@@ -21363,6 +22021,9 @@ public class UMLValidator
 			result &= validate_UniqueID(decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(decisionNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(decisionNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(decisionNode,
@@ -21464,6 +22125,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(activityFinalNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(activityFinalNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(activityFinalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21518,6 +22182,9 @@ public class UMLValidator
 			result &= validate_UniqueID(joinNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(joinNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(joinNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(joinNode, diagnostics,
 				context);
@@ -21601,6 +22268,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(dataStoreNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(dataStoreNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(dataStoreNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21664,6 +22334,9 @@ public class UMLValidator
 			result &= validate_UniqueID(objectFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(objectFlow, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(objectFlow, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(objectFlow,
 				diagnostics, context);
@@ -21840,6 +22513,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(sequenceNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(sequenceNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(sequenceNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -21907,6 +22583,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(conditionalNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(conditionalNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(conditionalNode,
 				diagnostics, context);
@@ -21989,6 +22668,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(clause, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(clause, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(clause, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -22047,6 +22728,9 @@ public class UMLValidator
 			result &= validate_UniqueID(loopNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(loopNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(loopNode, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(loopNode, diagnostics,
 				context);
@@ -22158,6 +22842,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(expansionNode, diagnostics,
 				context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(expansionNode, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expansionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -22222,6 +22909,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(expansionRegion, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(expansionRegion,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(expansionRegion,
 				diagnostics, context);
@@ -22308,6 +22998,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(componentRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(componentRealization,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(componentRealization,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -22347,6 +23040,9 @@ public class UMLValidator
 			result &= validate_UniqueID(component, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(component, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(component, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(component,
 				diagnostics, context);
@@ -22416,6 +23112,8 @@ public class UMLValidator
 			result &= validate_UniqueID(node, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(node, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(node, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(node, diagnostics,
 				context);
@@ -22500,6 +23198,8 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(device, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(device, diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(device, diagnostics,
 				context);
 		if (result || diagnostics != null)
@@ -22576,6 +23276,9 @@ public class UMLValidator
 			result &= validate_EveryKeyUnique(executionEnvironment,
 				diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(executionEnvironment,
+				diagnostics, context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(executionEnvironment,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -22650,6 +23353,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(communicationPath, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(communicationPath,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(communicationPath,
 				diagnostics, context);
@@ -22755,6 +23461,9 @@ public class UMLValidator
 			result &= validate_UniqueID(finalState, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(finalState, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(finalState, diagnostics,
+				context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(finalState,
 				diagnostics, context);
@@ -22910,6 +23619,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(timeEvent, diagnostics, context);
 		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(timeEvent, diagnostics,
+				context);
+		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(timeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -22981,6 +23693,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(protocolTransition, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(protocolTransition,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(protocolTransition,
 				diagnostics, context);
@@ -23099,6 +23814,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryKeyUnique(associationClass, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(associationClass,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateElement_validateNotOwnSelf(associationClass,
 				diagnostics, context);
