@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnapplyProfileAction.java,v 1.4 2006/10/10 20:40:49 khussey Exp $
+ * $Id: UnapplyProfileAction.java,v 1.5 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -35,8 +34,9 @@ public class UnapplyProfileAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
@@ -47,15 +47,18 @@ public class UnapplyProfileAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
 				.iterator().next();
 
-			List choiceOfValues = new ArrayList(package_.getAppliedProfiles());
+			List<Profile> choiceOfValues = new ArrayList<Profile>(package_
+				.getAppliedProfiles());
 
-			Collections.sort(choiceOfValues, new TextComparator());
+			Collections.<Profile> sort(choiceOfValues,
+				new TextComparator<Profile>());
 
 			String label = UMLEditorPlugin.INSTANCE.getString(
 				"_UI_UnapplyProfileActionCommand_label", //$NON-NLS-1$
@@ -73,11 +76,8 @@ public class UnapplyProfileAction
 
 						public void run() {
 
-							for (Iterator profiles = dialog.getResult()
-								.iterator(); profiles.hasNext();) {
-
-								package_.unapplyProfile((Profile) profiles
-									.next());
+							for (Object result : dialog.getResult()) {
+								package_.unapplyProfile((Profile) result);
 							}
 						}
 					}, label));

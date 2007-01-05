@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DiagnosticAction.java,v 1.2 2006/05/02 21:42:26 khussey Exp $
+ * $Id: DiagnosticAction.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,6 +44,7 @@ public class DiagnosticAction
 		.getBundle("org.eclipse.core.resources") != null //$NON-NLS-1$
 		? new ValidateAction.EclipseResourcesUtil() {
 
+			@Override
 			protected String getMarkerID() {
 				return DiagnosticAction.this.getMarkerID();
 			}
@@ -69,10 +69,12 @@ public class DiagnosticAction
 
 	protected final UMLUtil.QualifiedTextProvider qualifiedTextProvider = new UMLUtil.QualifiedTextProvider() {
 
+		@Override
 		public String getFeatureText(EStructuralFeature eStructuralFeature) {
 			return getLabelProvider().getText(eStructuralFeature);
 		}
 
+		@Override
 		public String getClassText(EObject eObject) {
 			return getLabelProvider().getText(eObject.eClass());
 		}
@@ -112,23 +114,20 @@ public class DiagnosticAction
 		}
 
 		if (eclipseResourcesUtil != null) {
-			Map resourceToDiagnosticMap = new HashMap();
+			Map<Resource, List<Diagnostic>> resourceToDiagnosticMap = new HashMap<Resource, List<Diagnostic>>();
 
-			for (Iterator children = diagnostic.getChildren().iterator(); children
-				.hasNext();) {
-
-				Diagnostic child = (Diagnostic) children.next();
+			for (Diagnostic child : diagnostic.getChildren()) {
 				Resource resource = getResource(child);
 
 				if (resource != null) {
-					List diagnostics = (List) resourceToDiagnosticMap
+					List<Diagnostic> diagnostics = resourceToDiagnosticMap
 						.get(resource);
 
 					if (diagnostics == null) {
 						eclipseResourcesUtil.deleteMarkers(resource);
 
 						resourceToDiagnosticMap.put(resource,
-							diagnostics = new ArrayList());
+							diagnostics = new ArrayList<Diagnostic>());
 					}
 
 					diagnostics.add(child);
@@ -137,23 +136,18 @@ public class DiagnosticAction
 
 			if (diagnostic.getSeverity() > Diagnostic.INFO) {
 
-				for (Iterator entries = resourceToDiagnosticMap.entrySet()
-					.iterator(); entries.hasNext();) {
+				for (Map.Entry<Resource, List<Diagnostic>> entry : resourceToDiagnosticMap
+					.entrySet()) {
 
-					Map.Entry entry = (Map.Entry) entries.next();
-					Resource resource = (Resource) entry.getKey();
+					Resource resource = entry.getKey();
 
-					for (Iterator diagnostics = ((List) entry.getValue())
-						.iterator(); diagnostics.hasNext();) {
-
-						eclipseResourcesUtil.createMarkers(resource,
-							(Diagnostic) diagnostics.next());
+					for (Diagnostic d : entry.getValue()) {
+						eclipseResourcesUtil.createMarkers(resource, d);
 					}
 				}
 
 				if (!diagnostic.getChildren().isEmpty()) {
-					List data = ((Diagnostic) diagnostic.getChildren().get(0))
-						.getData();
+					List<?> data = (diagnostic.getChildren().get(0)).getData();
 
 					if (!data.isEmpty()) {
 						Object datum = data.get(0);
@@ -180,7 +174,7 @@ public class DiagnosticAction
 	}
 
 	protected Resource getResource(Diagnostic diagnostic) {
-		List data = diagnostic.getData();
+		List<?> data = diagnostic.getData();
 
 		if (!data.isEmpty()) {
 			Object datum = data.get(0);
@@ -190,7 +184,7 @@ public class DiagnosticAction
 			}
 		}
 
-		return (Resource) editingDomain.getResourceSet().getResources().get(0);
+		return editingDomain.getResourceSet().getResources().get(0);
 	}
 
 }

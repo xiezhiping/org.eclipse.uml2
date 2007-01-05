@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateExtensionAction.java,v 1.4 2006/10/10 20:40:49 khussey Exp $
+ * $Id: CreateExtensionAction.java,v 1.5 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -29,6 +28,7 @@ import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
@@ -39,8 +39,9 @@ public class CreateExtensionAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof Stereotype) {
@@ -51,56 +52,50 @@ public class CreateExtensionAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final Stereotype stereotype = (Stereotype) collection.iterator()
 				.next();
-			EList allExtendedMetaclasses = stereotype
+			EList<org.eclipse.uml2.uml.Class> allExtendedMetaclasses = stereotype
 				.getAllExtendedMetaclasses();
 
-			List choiceOfValues = new ArrayList();
+			List<org.eclipse.uml2.uml.Class> choiceOfValues = new ArrayList<org.eclipse.uml2.uml.Class>();
 
 			Profile profile = stereotype.getProfile();
 
 			if (profile != null) {
 
-				for (Iterator referencedMetamodels = profile
-					.getReferencedMetamodels().iterator(); referencedMetamodels
-					.hasNext();) {
+				for (Model referencedMetamodel : profile
+					.getReferencedMetamodels()) {
 
-					Model metamodel = (Model) referencedMetamodels.next();
+					for (Type ownedType : referencedMetamodel.getOwnedTypes()) {
 
-					for (Iterator ownedTypes = metamodel.getOwnedTypes()
-						.iterator(); ownedTypes.hasNext();) {
-						Object type = ownedTypes.next();
+						if (ownedType instanceof org.eclipse.uml2.uml.Class) {
+							org.eclipse.uml2.uml.Class ownedClass = (org.eclipse.uml2.uml.Class) ownedType;
 
-						if (type instanceof org.eclipse.uml2.uml.Class
-							&& ((org.eclipse.uml2.uml.Class) type)
-								.isMetaclass()
-							&& !allExtendedMetaclasses.contains(type)) {
-
-							choiceOfValues.add(type);
+							if (ownedClass.isMetaclass()
+								&& !allExtendedMetaclasses.contains(ownedClass)) {
+								choiceOfValues.add(ownedClass);
+							}
 						}
 					}
 				}
 
-				for (Iterator referencedMetaclasses = profile
-					.getReferencedMetaclasses().iterator(); referencedMetaclasses
-					.hasNext();) {
+				for (org.eclipse.uml2.uml.Class referencedMetaclass : profile
+					.getReferencedMetaclasses()) {
 
-					org.eclipse.uml2.uml.Class metaclass = (org.eclipse.uml2.uml.Class) referencedMetaclasses
-						.next();
+					if (!allExtendedMetaclasses.contains(referencedMetaclass)
+						&& !choiceOfValues.contains(referencedMetaclass)) {
 
-					if (!allExtendedMetaclasses.contains(metaclass)
-						&& !choiceOfValues.contains(metaclass)) {
-
-						choiceOfValues.add(metaclass);
+						choiceOfValues.add(referencedMetaclass);
 					}
 				}
 			}
 
-			Collections.sort(choiceOfValues, new TextComparator());
+			Collections.<org.eclipse.uml2.uml.Class> sort(choiceOfValues,
+				new TextComparator<org.eclipse.uml2.uml.Class>());
 
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_CreateExtensionActionCommand_label"); //$NON-NLS-1$
@@ -117,12 +112,9 @@ public class CreateExtensionAction
 
 						public void run() {
 
-							for (Iterator metaclasses = dialog.getResult()
-								.iterator(); metaclasses.hasNext();) {
-
+							for (Object result : dialog.getResult()) {
 								stereotype.createExtension(
-									(org.eclipse.uml2.uml.Class) metaclasses
-										.next(), false);
+									(org.eclipse.uml2.uml.Class) result, false);
 							}
 						}
 					}, label));

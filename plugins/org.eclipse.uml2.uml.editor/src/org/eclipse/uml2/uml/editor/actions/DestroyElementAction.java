@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyElementAction.java,v 1.2 2006/10/10 20:40:49 khussey Exp $
+ * $Id: DestroyElementAction.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -30,8 +30,9 @@ public class DestroyElementAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1) {
 			Object object = collection.iterator().next();
@@ -46,6 +47,7 @@ public class DestroyElementAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {

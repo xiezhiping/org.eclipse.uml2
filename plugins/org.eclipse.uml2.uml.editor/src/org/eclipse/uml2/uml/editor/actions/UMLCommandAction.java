@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLCommandAction.java,v 1.3 2006/01/05 17:26:46 khussey Exp $
+ * $Id: UMLCommandAction.java,v 1.4 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -29,12 +29,12 @@ import org.eclipse.uml2.uml.editor.presentation.UMLEditor;
 public class UMLCommandAction
 		extends CommandAction {
 
-	protected class TextComparator
-			implements Comparator {
+	protected class TextComparator<T>
+			implements Comparator<T> {
 
-		public int compare(Object o1, Object o2) {
-			return getLabelProvider().getText(o1).compareTo(
-				getLabelProvider().getText(o2));
+		public int compare(T t1, T t2) {
+			return getLabelProvider().getText(t1).compareTo(
+				getLabelProvider().getText(t2));
 		}
 	}
 
@@ -46,18 +46,21 @@ public class UMLCommandAction
 			super(editingDomain, runnable, label);
 		}
 
+		@Override
 		public void execute() {
 			super.execute();
 
 			refreshViewer();
 		}
 
+		@Override
 		public void undo() {
 			super.undo();
 
 			refreshViewer();
 		}
 
+		@Override
 		public void redo() {
 			super.redo();
 
@@ -82,6 +85,7 @@ public class UMLCommandAction
 			: null;
 	}
 
+	@Override
 	public void setActiveEditor(IAction action, IEditorPart editorPart) {
 		super.setActiveEditor(action, editorPart);
 
@@ -89,6 +93,7 @@ public class UMLCommandAction
 			? null
 			: new AdapterFactoryLabelProvider(getAdapterFactory()) {
 
+				@Override
 				public String getColumnText(Object object, int columnIndex) {
 					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
 						.adapt(object, IItemQualifiedTextProvider.class);
@@ -98,6 +103,7 @@ public class UMLCommandAction
 						: super.getColumnText(object, columnIndex);
 				}
 
+				@Override
 				public String getText(Object object) {
 					IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
 						.adapt(object, IItemQualifiedTextProvider.class);

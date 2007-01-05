@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.5 2006/11/08 17:22:08 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.6 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.MissingResourceException;
@@ -156,7 +155,7 @@ public class UMLModelWizard
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected List initialObjectNames;
+	protected List<String> initialObjectNames;
 
 	/**
 	 * This just records the information.
@@ -179,12 +178,10 @@ public class UMLModelWizard
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection getInitialObjectNamesGen() {
+	protected Collection<String> getInitialObjectNamesGen() {
 		if (initialObjectNames == null) {
-			initialObjectNames = new ArrayList();
-			for (Iterator classifiers = umlPackage.getEClassifiers().iterator(); classifiers
-				.hasNext();) {
-				EClassifier eClassifier = (EClassifier) classifiers.next();
+			initialObjectNames = new ArrayList<String>();
+			for (EClassifier eClassifier : umlPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
 					EClass eClass = (EClass) eClassifier;
 					if (!eClass.isAbstract()) {
@@ -198,10 +195,10 @@ public class UMLModelWizard
 		return initialObjectNames;
 	}
 
-	protected Collection getInitialObjectNames() {
+	protected Collection<String> getInitialObjectNames() {
 
 		if (initialObjectNames == null) {
-			initialObjectNames = new ArrayList();
+			initialObjectNames = new ArrayList<String>();
 			initialObjectNames.add(umlPackage.getModel().getName());
 			initialObjectNames.add(umlPackage.getProfile().getName());
 			initialObjectNames.add(umlPackage.getPackage().getName());
@@ -229,6 +226,7 @@ public class UMLModelWizard
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean performFinish() {
 		try {
 			// Remember the file.
@@ -239,6 +237,7 @@ public class UMLModelWizard
 			//
 			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
 
+				@Override
 				protected void execute(IProgressMonitor progressMonitor) {
 					try {
 						// Create a resource set
@@ -263,7 +262,7 @@ public class UMLModelWizard
 
 						// Save the contents of the resource to the file system.
 						//
-						Map options = new HashMap();
+						Map<Object, Object> options = new HashMap<Object, Object>();
 						options.put(XMLResource.OPTION_ENCODING,
 							initialObjectCreationPage.getEncoding());
 						resource.save(options);
@@ -343,6 +342,7 @@ public class UMLModelWizard
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		protected boolean validatePage() {
 			if (super.validatePage()) {
 				// Make sure the file ends in ".uml".
@@ -394,7 +394,7 @@ public class UMLModelWizard
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 */
-		protected List encodings;
+		protected List<String> encodings;
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -451,8 +451,8 @@ public class UMLModelWizard
 				initialObjectField.setLayoutData(data);
 			}
 
-			for (Iterator i = getInitialObjectNames().iterator(); i.hasNext();) {
-				initialObjectField.add(getLabel((String) i.next()));
+			for (String objectName : getInitialObjectNames()) {
+				initialObjectField.add(getLabel(objectName));
 			}
 
 			if (initialObjectField.getItemCount() == 1) {
@@ -477,8 +477,8 @@ public class UMLModelWizard
 				encodingField.setLayoutData(data);
 			}
 
-			for (Iterator i = getEncodings().iterator(); i.hasNext();) {
-				encodingField.add((String) i.next());
+			for (String encoding : getEncodings()) {
+				encodingField.add(encoding);
 			}
 
 			encodingField.select(0);
@@ -515,6 +515,7 @@ public class UMLModelWizard
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public void setVisible(boolean visible) {
 			super.setVisible(visible);
 			if (visible) {
@@ -536,8 +537,7 @@ public class UMLModelWizard
 		public String getInitialObjectName() {
 			String label = initialObjectField.getText();
 
-			for (Iterator i = getInitialObjectNames().iterator(); i.hasNext();) {
-				String name = (String) i.next();
+			for (String name : getInitialObjectNames()) {
 				if (getLabel(name).equals(label)) {
 					return name;
 				}
@@ -575,9 +575,9 @@ public class UMLModelWizard
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected Collection getEncodings() {
+		protected Collection<String> getEncodings() {
 			if (encodings == null) {
-				encodings = new ArrayList();
+				encodings = new ArrayList<String>();
 				for (StringTokenizer stringTokenizer = new StringTokenizer(
 					UMLEditorPlugin.INSTANCE
 						.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
@@ -595,6 +595,7 @@ public class UMLModelWizard
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//

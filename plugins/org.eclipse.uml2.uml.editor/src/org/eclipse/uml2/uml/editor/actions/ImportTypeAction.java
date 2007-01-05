@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,20 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportTypeAction.java,v 1.2 2006/11/30 17:00:04 khussey Exp $
+ * $Id: ImportTypeAction.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -42,8 +43,9 @@ public class ImportTypeAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
@@ -54,8 +56,8 @@ public class ImportTypeAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
-	protected List getChoiceOfValues(org.eclipse.uml2.uml.Package package_) {
-		List choiceOfValues = new ArrayList();
+	protected List<Type> getChoiceOfValues(org.eclipse.uml2.uml.Package package_) {
+		List<Type> choiceOfValues = new ArrayList<Type>();
 
 		Resource eResource = package_.eResource();
 		ResourceSet resourceSet = eResource == null
@@ -98,8 +100,8 @@ public class ImportTypeAction
 		}
 
 		if (eResource != null) {
-			EList members = package_.getMembers();
-			Iterator allContents = resourceSet == null
+			EList<NamedElement> members = package_.getMembers();
+			TreeIterator<?> allContents = resourceSet == null
 				? eResource.getAllContents()
 				: resourceSet.getAllContents();
 
@@ -107,12 +109,12 @@ public class ImportTypeAction
 				Object object = allContents.next();
 
 				if (object instanceof Type && !members.contains(object)) {
-					choiceOfValues.add(object);
+					choiceOfValues.add((Type) object);
 				}
 			}
 		}
 
-		Collections.sort(choiceOfValues, new TextComparator());
+		Collections.<Type> sort(choiceOfValues, new TextComparator<Type>());
 
 		return choiceOfValues;
 	}
@@ -122,6 +124,7 @@ public class ImportTypeAction
 			.getString("_UI_ImportTypeActionCommand_label"); //$NON-NLS-1$
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -141,11 +144,9 @@ public class ImportTypeAction
 
 						public void run() {
 
-							for (Iterator types = dialog.getResult().iterator(); types
-								.hasNext();) {
-
-								package_.createElementImport((Type) types
-									.next(), VisibilityKind.PUBLIC_LITERAL);
+							for (Object result : dialog.getResult()) {
+								package_.createElementImport((Type) result,
+									VisibilityKind.PUBLIC_LITERAL);
 							}
 						}
 					}, label));

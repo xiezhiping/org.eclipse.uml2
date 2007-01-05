@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,21 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReferenceMetamodelAction.java,v 1.5 2006/11/21 22:37:43 khussey Exp $
+ * $Id: ReferenceMetamodelAction.java,v 1.6 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -42,8 +43,9 @@ public class ReferenceMetamodelAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof Profile) {
@@ -54,13 +56,15 @@ public class ReferenceMetamodelAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final Profile profile = (Profile) collection.iterator().next();
-			EList referencedMetamodels = profile.getReferencedMetamodels();
+			EList<Model> referencedMetamodels = profile
+				.getReferencedMetamodels();
 
-			List choiceOfValues = new ArrayList();
+			List<Model> choiceOfValues = new ArrayList<Model>();
 
 			try {
 				ResourceSet resourceSet = profile.eResource().getResourceSet();
@@ -72,21 +76,21 @@ public class ReferenceMetamodelAction
 					// ignore
 				}
 
-				for (Iterator resources = resourceSet.getResources().iterator(); resources
-					.hasNext();) {
+				for (Resource resource : resourceSet.getResources()) {
 
-					Resource resource = (Resource) resources.next();
+					for (TreeIterator<EObject> contents = resource
+						.getAllContents(); contents.hasNext();) {
 
-					for (Iterator contents = resource.getAllContents(); contents
-						.hasNext();) {
+						EObject eObject = contents.next();
 
-						Object object = contents.next();
+						if (eObject instanceof Model) {
+							Model model = (Model) eObject;
 
-						if (object instanceof Model
-							&& ((Model) object).isMetamodel()
-							&& !referencedMetamodels.contains(object)) {
+							if (model.isMetamodel()
+								&& !referencedMetamodels.contains(model)) {
 
-							choiceOfValues.add(object);
+								choiceOfValues.add(model);
+							}
 						}
 					}
 				}
@@ -94,7 +98,8 @@ public class ReferenceMetamodelAction
 				// ignore
 			}
 
-			Collections.sort(choiceOfValues, new TextComparator());
+			Collections.<Model> sort(choiceOfValues,
+				new TextComparator<Model>());
 
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_ReferenceMetamodelActionCommand_label"); //$NON-NLS-1$
@@ -111,12 +116,9 @@ public class ReferenceMetamodelAction
 
 						public void run() {
 
-							for (Iterator metamodels = dialog.getResult()
-								.iterator(); metamodels.hasNext();) {
-
+							for (Object result : dialog.getResult()) {
 								profile
-									.createMetamodelReference((Model) metamodels
-										.next());
+									.createMetamodelReference((Model) result);
 							}
 						}
 					}, label));

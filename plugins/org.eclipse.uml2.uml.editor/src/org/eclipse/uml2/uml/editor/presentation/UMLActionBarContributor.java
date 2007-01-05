@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.5 2006/05/16 13:08:37 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.6 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
@@ -91,6 +91,7 @@ public class UMLActionBarContributor
 		UMLEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
 	{
 
+		@Override
 		public void run() {
 			try {
 				getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
@@ -111,10 +112,12 @@ public class UMLActionBarContributor
 		.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
 	{
 
+		@Override
 		public boolean isEnabled() {
 			return activeEditorPart instanceof IViewerProvider;
 		}
 
+		@Override
 		public void run() {
 			if (activeEditorPart instanceof IViewerProvider) {
 				Viewer viewer = ((IViewerProvider) activeEditorPart)
@@ -133,7 +136,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection createChildActions;
+	protected Collection<IAction> createChildActions;
 
 	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateChild actions.
@@ -150,7 +153,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection createSiblingActions;
+	protected Collection<IAction> createSiblingActions;
 
 	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
@@ -179,6 +182,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add(new Separator("uml-settings")); //$NON-NLS-1$
 		toolBarManager.add(new Separator("uml-additions")); //$NON-NLS-1$
@@ -191,6 +195,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
@@ -232,6 +237,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActiveEditor(IEditorPart part) {
 		super.setActiveEditor(part);
 		activeEditorPart = part;
@@ -276,8 +282,8 @@ public class UMLActionBarContributor
 
 		// Query the new selection for appropriate new child/sibling descriptors
 		//
-		Collection newChildDescriptors = null;
-		Collection newSiblingDescriptors = null;
+		Collection<CommandParameter> newChildDescriptors = null;
+		Collection<CommandParameter> newSiblingDescriptors = null;
 
 		ISelection selection = event.getSelection();
 		if (selection instanceof IStructuredSelection
@@ -317,30 +323,32 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateChildActionsGen(Collection descriptors,
+	protected Collection<IAction> generateCreateChildActionsGen(
+			Collection<? extends CommandParameter> descriptors,
 			ISelection selection) {
-		Collection actions = new ArrayList();
+		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Iterator i = descriptors.iterator(); i.hasNext();) {
+			for (CommandParameter descriptor : descriptors) {
 				actions.add(new CreateChildAction(activeEditorPart, selection,
-					i.next()));
+					descriptor));
 			}
 		}
 		return actions;
 	}
 
-	protected Collection generateCreateChildActions(Collection descriptors,
+	protected Collection<IAction> generateCreateChildActions(
+			Collection<? extends CommandParameter> descriptors,
 			ISelection selection) {
-		List createChildActions = (List) generateCreateChildActionsGen(
+		List<IAction> createChildActions = (List<IAction>) generateCreateChildActionsGen(
 			descriptors, selection);
 
-		Collections.sort(createChildActions, new Comparator() {
+		Collections.<IAction> sort(createChildActions,
+			new Comparator<IAction>() {
 
-			public int compare(Object o1, Object o2) {
-				return ((IAction) o1).getText().compareTo(
-					((IAction) o2).getText());
-			}
-		});
+				public int compare(IAction a1, IAction a2) {
+					return a1.getText().compareTo(a2.getText());
+				}
+			});
 
 		return createChildActions;
 	}
@@ -352,30 +360,32 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateSiblingActionsGen(
-			Collection descriptors, ISelection selection) {
-		Collection actions = new ArrayList();
+	protected Collection<IAction> generateCreateSiblingActionsGen(
+			Collection<? extends CommandParameter> descriptors,
+			ISelection selection) {
+		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Iterator i = descriptors.iterator(); i.hasNext();) {
+			for (CommandParameter descriptor : descriptors) {
 				actions.add(new CreateSiblingAction(activeEditorPart,
-					selection, i.next()));
+					selection, descriptor));
 			}
 		}
 		return actions;
 	}
 
-	protected Collection generateCreateSiblingActions(Collection descriptors,
+	protected Collection<IAction> generateCreateSiblingActions(
+			Collection<? extends CommandParameter> descriptors,
 			ISelection selection) {
-		List createSiblingActions = (List) generateCreateSiblingActionsGen(
+		List<IAction> createSiblingActions = (List<IAction>) generateCreateSiblingActionsGen(
 			descriptors, selection);
 
-		Collections.sort(createSiblingActions, new Comparator() {
+		Collections.<IAction> sort(createSiblingActions,
+			new Comparator<IAction>() {
 
-			public int compare(Object o1, Object o2) {
-				return ((IAction) o1).getText().compareTo(
-					((IAction) o2).getText());
-			}
-		});
+				public int compare(IAction a1, IAction a2) {
+					return a1.getText().compareTo(a2.getText());
+				}
+			});
 
 		return createSiblingActions;
 	}
@@ -390,10 +400,9 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected void populateManager(IContributionManager manager,
-			Collection actions, String contributionID) {
+			Collection<? extends IAction> actions, String contributionID) {
 		if (actions != null) {
-			for (Iterator i = actions.iterator(); i.hasNext();) {
-				IAction action = (IAction) i.next();
+			for (IAction action : actions) {
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
 				} else {
@@ -411,7 +420,7 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected void depopulateManager(IContributionManager manager,
-			Collection actions) {
+			Collection<? extends IAction> actions) {
 		if (actions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -442,6 +451,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
@@ -463,6 +473,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
@@ -479,6 +490,7 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected boolean removeAllReferencesOnDelete() {
 		return true;
 	}

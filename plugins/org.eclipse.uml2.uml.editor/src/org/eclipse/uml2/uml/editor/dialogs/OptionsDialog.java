@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OptionsDialog.java,v 1.1 2005/12/22 20:21:07 khussey Exp $
+ * $Id: OptionsDialog.java,v 1.2 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.dialogs;
 
@@ -33,9 +33,9 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class OptionsDialog
 		extends MessageDialog {
 
-	protected final Map options;
+	protected final Map<String, String> options;
 
-	protected final Map choiceLabels = new HashMap();
+	protected final Map<String, String> choiceLabels = new HashMap<String, String>();
 
 	protected final String discardChoiceLabel;
 
@@ -45,7 +45,8 @@ public class OptionsDialog
 
 	protected final String reportChoiceLabel;
 
-	public OptionsDialog(Shell parent, String title, String message, Map options) {
+	public OptionsDialog(Shell parent, String title, String message,
+			Map<String, String> options) {
 
 		super(parent, title, null, message, QUESTION, new String[]{
 			IDialogConstants.OK_LABEL, IDialogConstants.CANCEL_LABEL}, 0);
@@ -98,6 +99,7 @@ public class OptionsDialog
 		// do nothing
 	}
 
+	@Override
 	protected Control createCustomArea(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
 		{

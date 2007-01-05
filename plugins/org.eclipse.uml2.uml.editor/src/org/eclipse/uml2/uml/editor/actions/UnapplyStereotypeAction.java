@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnapplyStereotypeAction.java,v 1.4 2006/10/10 20:40:49 khussey Exp $
+ * $Id: UnapplyStereotypeAction.java,v 1.5 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -36,8 +35,9 @@ public class UnapplyStereotypeAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof Element) {
@@ -48,24 +48,23 @@ public class UnapplyStereotypeAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
 			final Element element = (Element) collection.iterator().next();
 
-			List choiceOfValues = new ArrayList();
+			List<Stereotype> choiceOfValues = new ArrayList<Stereotype>();
 
-			for (Iterator appliedStereotypes = element.getAppliedStereotypes()
-				.iterator(); appliedStereotypes.hasNext();) {
+			for (Stereotype appliedStereotype : element.getAppliedStereotypes()) {
 
-				Stereotype stereotype = (Stereotype) appliedStereotypes.next();
-
-				if (!element.isStereotypeRequired(stereotype)) {
-					choiceOfValues.add(stereotype);
+				if (!element.isStereotypeRequired(appliedStereotype)) {
+					choiceOfValues.add(appliedStereotype);
 				}
 			}
 
-			Collections.sort(choiceOfValues, new TextComparator());
+			Collections.<Stereotype> sort(choiceOfValues,
+				new TextComparator<Stereotype>());
 
 			String label = UMLEditorPlugin.INSTANCE
 				.getString("_UI_UnapplyStereotypeActionCommand_label"); //$NON-NLS-1$
@@ -82,12 +81,8 @@ public class UnapplyStereotypeAction
 
 						public void run() {
 
-							for (Iterator stereotypes = dialog.getResult()
-								.iterator(); stereotypes.hasNext();) {
-
-								element
-									.unapplyStereotype((Stereotype) stereotypes
-										.next());
+							for (Object result : dialog.getResult()) {
+								element.unapplyStereotype((Stereotype) result);
 							}
 						}
 					}, label));

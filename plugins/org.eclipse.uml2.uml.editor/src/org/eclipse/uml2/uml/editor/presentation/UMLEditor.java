@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.27 2006/12/21 18:56:23 khussey Exp $
+ * $Id: UMLEditor.java,v 1.28 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -275,7 +275,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection selectionChangedListeners = new ArrayList();
+	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
 	/**
 	 * This keeps track of the selection of the editor as a whole.
@@ -320,15 +320,19 @@ public class UMLEditor
 		}
 
 		public void partBroughtToTop(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partClosed(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partDeactivated(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partOpened(IWorkbenchPart p) {
+			// Ignore.
 		}
 	};
 
@@ -336,19 +340,19 @@ public class UMLEditor
 	 * Resources that have been removed since last activation.
 	 * @generated
 	 */
-	protected Collection removedResources = new ArrayList();
+	protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been changed since last activation.
 	 * @generated
 	 */
-	protected Collection changedResources = new ArrayList();
+	protected Collection<Resource> changedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been saved.
 	 * @generated
 	 */
-	protected Collection savedResources = new ArrayList();
+	protected Collection<Resource> savedResources = new ArrayList<Resource>();
 
 	/**
 	 * Map to store the diagnostic associated with a resource.
@@ -356,7 +360,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Map resourceToDiagnosticMap = new LinkedHashMap();
+	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
 
 	/**
 	 * Controls whether the problem indication should be updated.
@@ -374,6 +378,7 @@ public class UMLEditor
 	 */
 	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
 
+		@Override
 		public void notifyChanged(Notification notification) {
 			if (notification.getNotifier() instanceof Resource) {
 				switch (notification.getFeatureID(Resource.class)) {
@@ -399,6 +404,7 @@ public class UMLEditor
 									}
 								});
 						}
+						break;
 					}
 				}
 			} else {
@@ -406,10 +412,12 @@ public class UMLEditor
 			}
 		}
 
+		@Override
 		protected void setTarget(Resource target) {
 			basicSetTarget(target);
 		}
 
+		@Override
 		protected void unsetTarget(Resource target) {
 			basicUnsetTarget(target);
 		}
@@ -435,9 +443,9 @@ public class UMLEditor
 						protected ResourceSet resourceSet = editingDomain
 							.getResourceSet();
 
-						protected Collection changedResources = new ArrayList();
+						protected Collection<Resource> changedResources = new ArrayList<Resource>();
 
-						protected Collection removedResources = new ArrayList();
+						protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 						public boolean visit(IResourceDelta delta) {
 							if (delta.getFlags() != IResourceDelta.MARKERS
@@ -460,11 +468,11 @@ public class UMLEditor
 							return true;
 						}
 
-						public Collection getChangedResources() {
+						public Collection<Resource> getChangedResources() {
 							return changedResources;
 						}
 
-						public Collection getRemovedResources() {
+						public Collection<Resource> getRemovedResources() {
 							return removedResources;
 						}
 					}
@@ -548,8 +556,7 @@ public class UMLEditor
 			editingDomain.getCommandStack().flush();
 
 			updateProblemIndication = false;
-			for (Iterator i = changedResources.iterator(); i.hasNext();) {
-				Resource resource = (Resource) i.next();
+			for (Resource resource : changedResources) {
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
@@ -578,9 +585,7 @@ public class UMLEditor
 			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
 				"org.eclipse.uml2.uml.editor", //$NON-NLS-1$
 				0, null, new Object[]{editingDomain.getResourceSet()});
-			for (Iterator i = resourceToDiagnosticMap.values().iterator(); i
-				.hasNext();) {
-				Diagnostic childDiagnostic = (Diagnostic) i.next();
+			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
 				}
@@ -643,7 +648,7 @@ public class UMLEditor
 
 		// Create an adapter factory that yields item providers.
 		//
-		List factories = new ArrayList();
+		List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 		factories.add(new UMLResourceItemProviderAdapterFactory());
 		factories.add(new UMLItemProviderAdapterFactory());
 		factories.add(new EcoreItemProviderAdapterFactory());
@@ -684,7 +689,7 @@ public class UMLEditor
 		// Create the editing domain with a special command stack.
 		//
 		editingDomain = new UML2AdapterFactoryEditingDomain(adapterFactory,
-			commandStack, new HashMap());
+			commandStack, new HashMap<Resource, Boolean>());
 	}
 
 	/**
@@ -693,6 +698,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
 	}
@@ -703,8 +709,8 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSelectionToViewer(Collection collection) {
-		final Collection theSelection = collection;
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
@@ -753,6 +759,7 @@ public class UMLEditor
 			super(adapterFactory);
 		}
 
+		@Override
 		public Object[] getElements(Object object) {
 			Object parent = super.getParent(object);
 			return (parent == null
@@ -760,6 +767,7 @@ public class UMLEditor
 				: Collections.singleton(parent)).toArray();
 		}
 
+		@Override
 		public Object[] getChildren(Object object) {
 			Object parent = super.getParent(object);
 			return (parent == null
@@ -767,11 +775,13 @@ public class UMLEditor
 				: Collections.singleton(parent)).toArray();
 		}
 
+		@Override
 		public boolean hasChildren(Object object) {
 			Object parent = super.getParent(object);
 			return parent != null;
 		}
 
+		@Override
 		public Object getParent(Object object) {
 			return null;
 		}
@@ -871,7 +881,7 @@ public class UMLEditor
 		//
 		IFileEditorInput modelFile = (IFileEditorInput) getEditorInput();
 		URI resourceURI = URI.createPlatformResourceURI(modelFile.getFile()
-			.getFullPath().toString(), true);;
+			.getFullPath().toString(), true);
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -897,15 +907,15 @@ public class UMLEditor
 	public void createModel() {
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 
-		Map extensionToFactoryMap = resourceSet.getResourceFactoryRegistry()
-			.getExtensionToFactoryMap();
+		Map<String, Object> extensionToFactoryMap = resourceSet
+			.getResourceFactoryRegistry().getExtensionToFactoryMap();
 
 		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
 			UML22UMLResource.Factory.INSTANCE);
 		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
 			XMI2UMLResource.Factory.INSTANCE);
 
-		Map uriMap = resourceSet.getURIConverter().getURIMap();
+		Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
 
 		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
 		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
@@ -913,15 +923,15 @@ public class UMLEditor
 		createModelGen();
 
 		boolean saveNeeded = false;
-		Map resourceToURIMap = new HashMap();
-		EList resources = resourceSet.getResources();
+		Map<Resource, URI> resourceToURIMap = new HashMap<Resource, URI>();
+		EList<Resource> resources = resourceSet.getResources();
 
 		for (int i = 0; i < resources.size(); i++) {
-			Resource resource = (Resource) resources.get(i);
+			Resource resource = resources.get(i);
 			URI uri = resource.getURI();
 
 			if (uriMap.containsKey(uri)) {
-				uri = (URI) uriMap.get(uri);
+				uri = uriMap.get(uri);
 			} else if (UML22UMLResource.FILE_EXTENSION.equals(uri
 				.fileExtension())) {
 
@@ -952,11 +962,8 @@ public class UMLEditor
 			resourceToURIMap.put(resource, uri);
 		}
 
-		for (Iterator entries = resourceToURIMap.entrySet().iterator(); entries
-			.hasNext();) {
-
-			Map.Entry entry = (Map.Entry) entries.next();
-			((Resource) entry.getKey()).setURI((URI) entry.getValue());
+		for (Map.Entry<Resource, URI> entry : resourceToURIMap.entrySet()) {
+			entry.getKey().setURI(entry.getValue());
 		}
 
 		if (saveNeeded) {
@@ -1007,6 +1014,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void createPages() {
 		// Creates the model from the editor input
 		//
@@ -1015,8 +1023,8 @@ public class UMLEditor
 		// Only creates the other pages if there is something that can be edited
 		//
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty()
-			&& !((Resource) getEditingDomain().getResourceSet().getResources()
-				.get(0)).getContents().isEmpty()) {
+			&& !(getEditingDomain().getResourceSet().getResources().get(0))
+				.getContents().isEmpty()) {
 			// Create a page for the selection tree view.
 			//
 			Tree tree = new Tree(getContainer(), SWT.MULTI);
@@ -1049,6 +1057,7 @@ public class UMLEditor
 
 			boolean guard = false;
 
+			@Override
 			public void controlResized(ControlEvent event) {
 				if (!guard) {
 					guard = true;
@@ -1103,6 +1112,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void pageChange(int pageIndex) {
 		super.pageChange(pageIndex);
 
@@ -1117,6 +1127,8 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView()
@@ -1144,6 +1156,7 @@ public class UMLEditor
 			class MyContentOutlinePage
 					extends ContentOutlinePage {
 
+				@Override
 				public void createControl(Composite parent) {
 					super.createControl(parent);
 					contentOutlineViewer = getTreeViewer();
@@ -1174,6 +1187,7 @@ public class UMLEditor
 					}
 				}
 
+				@Override
 				public void makeContributions(IMenuManager menuManager,
 						IToolBarManager toolBarManager,
 						IStatusLineManager statusLineManager) {
@@ -1182,6 +1196,7 @@ public class UMLEditor
 					contentOutlineStatusLineManager = statusLineManager;
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
@@ -1217,11 +1232,13 @@ public class UMLEditor
 		if (propertySheetPage == null) {
 			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
 
-				public void setSelectionToViewer(List selection) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
 					UMLEditor.this.setSelectionToViewer(selection);
 					UMLEditor.this.setFocus();
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
@@ -1240,11 +1257,13 @@ public class UMLEditor
 		if (propertySheetPage == null) {
 			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
 
-				public void setSelectionToViewer(List selection) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
 					UMLEditor.this.setSelectionToViewer(selection);
 					UMLEditor.this.setFocus();
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
@@ -1268,14 +1287,14 @@ public class UMLEditor
 	public void handleContentOutlineSelection(ISelection selection) {
 		if (selectionViewer != null && !selection.isEmpty()
 			&& selection instanceof IStructuredSelection) {
-			Iterator selectedElements = ((IStructuredSelection) selection)
+			Iterator<?> selectedElements = ((IStructuredSelection) selection)
 				.iterator();
 			if (selectedElements.hasNext()) {
 				// Get the first selected element.
 				//
 				Object selectedElement = selectedElements.next();
 
-				ArrayList selectionList = new ArrayList();
+				ArrayList<Object> selectionList = new ArrayList<Object>();
 				selectionList.add(selectedElement);
 				while (selectedElements.hasNext()) {
 					selectionList.add(selectedElements.next());
@@ -1295,6 +1314,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDirty() {
 		return ((BasicCommandStack) editingDomain.getCommandStack())
 			.isSaveNeeded();
@@ -1306,6 +1326,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
@@ -1313,13 +1334,13 @@ public class UMLEditor
 
 			// This is the method that gets invoked when the operation runs.
 			//
+			@Override
 			public void execute(IProgressMonitor monitor) {
 				// Save the resources to the file system.
 				//
 				boolean first = true;
-				for (Iterator i = editingDomain.getResourceSet().getResources()
-					.iterator(); i.hasNext();) {
-					Resource resource = (Resource) i.next();
+				for (Resource resource : editingDomain.getResourceSet()
+					.getResources()) {
 					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
 						&& !editingDomain.isReadOnly(resource)) {
 						try {
@@ -1372,6 +1393,7 @@ public class UMLEditor
 				stream.close();
 			}
 		} catch (IOException e) {
+			// Ignore
 		}
 		return result;
 	}
@@ -1382,6 +1404,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
@@ -1392,6 +1415,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void doSaveAs() {
 		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();
@@ -1405,21 +1429,21 @@ public class UMLEditor
 					.toString(), true);
 
 				ResourceSet resourceSet = editingDomain.getResourceSet();
-				EList resources = resourceSet.getResources();
-				Resource resource = (Resource) resources.get(0);
+				EList<Resource> resources = resourceSet.getResources();
+				Resource resource = resources.get(0);
 
 				if (!resource.getURI().fileExtension().equals(
 					uri.fileExtension())) {
 
 					Resource newResource = resourceSet.createResource(uri);
-					EList newContents = newResource.getContents();
+					EList<EObject> newContents = newResource.getContents();
 
-					for (Iterator contents = resource.getContents().iterator(); contents
-						.hasNext();) {
+					for (Iterator<EObject> contents = resource.getContents()
+						.iterator(); contents.hasNext();) {
 
-						Object object = contents.next();
+						EObject eObject = contents.next();
 						contents.remove();
-						newContents.add(object);
+						newContents.add(eObject);
 					}
 
 					resources.remove(0);
@@ -1437,8 +1461,7 @@ public class UMLEditor
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
-		((Resource) editingDomain.getResourceSet().getResources().get(0))
-			.setURI(uri);
+		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor = getActionBars()
@@ -1479,6 +1502,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
 		setInputWithNotify(editorInput);
@@ -1494,6 +1518,7 @@ public class UMLEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFocus() {
 		getControl(getActivePage()).setFocus();
 	}
@@ -1539,10 +1564,7 @@ public class UMLEditor
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
-		for (Iterator listeners = selectionChangedListeners.iterator(); listeners
-			.hasNext();) {
-			ISelectionChangedListener listener = (ISelectionChangedListener) listeners
-				.next();
+		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener
 				.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
@@ -1562,7 +1584,7 @@ public class UMLEditor
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
-				Collection collection = ((IStructuredSelection) selection)
+				Collection<?> collection = ((IStructuredSelection) selection)
 					.toList();
 				switch (collection.size()) {
 					case 0 : {
@@ -1680,13 +1702,12 @@ public class UMLEditor
 		super.dispose();
 	}
 
+	@Override
 	public void dispose() {
 		disposeGen();
 
-		for (Iterator resources = editingDomain.getResourceSet().getResources()
-			.iterator(); resources.hasNext();) {
-
-			((Resource) resources.next()).unload();
+		for (Resource resource : editingDomain.getResourceSet().getResources()) {
+			resource.unload();
 		}
 	}
 
@@ -1707,6 +1728,7 @@ public class UMLEditor
 			super(adapterFactory);
 		}
 
+		@Override
 		protected IPropertySource createPropertySource(Object object,
 				IItemPropertySource itemPropertySource) {
 			return new UMLPropertySource(object, itemPropertySource);
@@ -1716,52 +1738,49 @@ public class UMLEditor
 	protected static class UMLPropertySource
 			extends PropertySource {
 
-		protected List stereotypeApplicationItemPropertyDescriptors = null;
+		protected List<IItemPropertyDescriptor> stereotypeApplicationItemPropertyDescriptors = null;
 
 		protected UMLPropertySource(Object object,
 				IItemPropertySource itemPropertySource) {
 			super(object, itemPropertySource);
 		}
 
+		@Override
 		protected IPropertyDescriptor createPropertyDescriptor(
 				IItemPropertyDescriptor itemPropertyDescriptor) {
 			return new UMLPropertyDescriptor(object, itemPropertyDescriptor);
 		}
 
+		@Override
 		public IPropertyDescriptor[] getPropertyDescriptors() {
-			List propertyDescriptors = new ArrayList();
+			List<IPropertyDescriptor> propertyDescriptors = new ArrayList<IPropertyDescriptor>();
 
-			List itemPropertyDescriptors = itemPropertySource
+			List<IItemPropertyDescriptor> itemPropertyDescriptors = itemPropertySource
 				.getPropertyDescriptors(object);
 
 			if (itemPropertyDescriptors != null) {
 
-				for (Iterator i = itemPropertyDescriptors.iterator(); i
-					.hasNext();) {
-
+				for (IItemPropertyDescriptor itemPropertyDescriptor : itemPropertyDescriptors) {
 					propertyDescriptors
-						.add(createPropertyDescriptor((IItemPropertyDescriptor) i
-							.next()));
+						.add(createPropertyDescriptor(itemPropertyDescriptor));
 				}
 			}
 
 			if (itemPropertySource instanceof ElementItemProvider) {
-				stereotypeApplicationItemPropertyDescriptors = ((ElementItemProvider) itemPropertySource)
+				ElementItemProvider elementItemProvider = (ElementItemProvider) itemPropertySource;
+				stereotypeApplicationItemPropertyDescriptors = elementItemProvider
 					.getStereotypeApplicationPropertyDescriptors(object);
 
 				if (stereotypeApplicationItemPropertyDescriptors != null) {
 
-					for (Iterator i = stereotypeApplicationItemPropertyDescriptors
-						.iterator(); i.hasNext();) {
-
+					for (IItemPropertyDescriptor itemPropertyDescriptor : stereotypeApplicationItemPropertyDescriptors) {
 						propertyDescriptors
-							.add(createPropertyDescriptor((IItemPropertyDescriptor) i
-								.next()));
+							.add(createPropertyDescriptor(itemPropertyDescriptor));
 					}
 				}
 			}
 
-			return (IPropertyDescriptor[]) propertyDescriptors
+			return propertyDescriptors
 				.toArray(new IPropertyDescriptor[propertyDescriptors.size()]);
 		}
 
@@ -1778,19 +1797,23 @@ public class UMLEditor
 				: itemPropertyDescriptor;
 		}
 
+		@Override
 		public Object getPropertyValue(Object propertyId) {
 			return getItemPropertyDescriptor(propertyId).getPropertyValue(
 				object);
 		}
 
+		@Override
 		public boolean isPropertySet(Object propertyId) {
 			return getItemPropertyDescriptor(propertyId).isPropertySet(object);
 		}
 
+		@Override
 		public void resetPropertyValue(Object propertyId) {
 			getItemPropertyDescriptor(propertyId).resetPropertyValue(object);
 		}
 
+		@Override
 		public void setPropertyValue(Object propertyId, Object value) {
 			getItemPropertyDescriptor(propertyId).setPropertyValue(object,
 				value);
@@ -1806,12 +1829,14 @@ public class UMLEditor
 			super(object, itemPropertyDescriptor);
 		}
 
+		@Override
 		protected ILabelProvider getEditLabelProvider() {
 			final ILabelProvider editLabelProvider = super
 				.getEditLabelProvider();
 
 			return new LabelProvider() {
 
+				@Override
 				public String getText(Object object) {
 					return itemPropertyDescriptor instanceof IItemQualifiedTextProvider
 						? ((IItemQualifiedTextProvider) itemPropertyDescriptor)
@@ -1819,6 +1844,7 @@ public class UMLEditor
 						: editLabelProvider.getText(object);
 				}
 
+				@Override
 				public Image getImage(Object object) {
 					return editLabelProvider.getImage(object);
 				}

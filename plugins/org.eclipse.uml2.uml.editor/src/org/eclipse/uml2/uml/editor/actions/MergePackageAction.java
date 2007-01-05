@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MergePackageAction.java,v 1.2 2006/10/10 20:40:49 khussey Exp $
+ * $Id: MergePackageAction.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -46,8 +46,9 @@ public class MergePackageAction
 		super();
 	}
 
+	@Override
 	protected Command createActionCommand(EditingDomain editingDomain,
-			Collection collection) {
+			Collection<?> collection) {
 
 		if (collection.size() == 1
 			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
@@ -58,6 +59,7 @@ public class MergePackageAction
 		return UnexecutableCommand.INSTANCE;
 	}
 
+	@Override
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
@@ -67,7 +69,7 @@ public class MergePackageAction
 			final Shell shell = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getShell();
 
-			final Map options = new HashMap();
+			final Map<String, String> options = new HashMap<String, String>();
 
 			final String label = UMLEditorPlugin.INSTANCE.getString(
 				"_UI_MergePackageActionCommand_label", //$NON-NLS-1$
@@ -100,7 +102,7 @@ public class MergePackageAction
 														.getObjectLabel(package_)}),
 											new Object[]{package_});
 
-										Map context = new HashMap();
+										Map<Object, Object> context = new HashMap<Object, Object>();
 										context
 											.put(
 												EValidator.SubstitutionLabelProvider.class,
