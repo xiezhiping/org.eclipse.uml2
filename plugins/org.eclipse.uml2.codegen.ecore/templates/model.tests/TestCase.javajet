@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model.tests" imports="java.util.* org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="TestCase" version="$$" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model.tests" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="TestCase" version="$$" %>
 <%
 /**
  * <copyright>
@@ -26,7 +26,7 @@ package <%=genPackage.getTestsPackageName()%>;
  * A test case for the model object '<em><b><%=genClass.getFormattedName()%></b></em>'.
  * <!-- end-user-doc -->
 <%if (!genClass.getImplementedGenFeatures().isEmpty()) { boolean first = true;%>
-  <%for (Iterator genFeatures = genClass.getImplementedGenFeatures().iterator(); genFeatures.hasNext();) { GenFeature genFeature = (GenFeature)genFeatures.next();%>
+  <%for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {%>
     <%if ((genFeature.isVolatile() || genFeature.isDerived()) && !UML2GenModelUtil.isUnion(genFeature) && !genFeature.isSuppressedGetVisibility()) {%>
       <%if (first) { first = false;%>
  * <p>
@@ -42,7 +42,7 @@ package <%=genPackage.getTestsPackageName()%>;
   <%}%>
 <%}%>
 <%if (!genClass.getImplementedGenOperations().isEmpty()) { boolean first = true;%>
-  <%for (Iterator genOperations = genClass.getImplementedGenOperations().iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();%>
+  <%for (GenOperation genOperation : genClass.getImplementedGenOperations()) {%>
     <%if (first) { first = false;%>
  * <p>
  * The following operations are tested:
@@ -168,7 +168,7 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 		setFixture(null);
 	}
 <%}%>
-<%for (Iterator genFeatures=genClass.getImplementedGenFeatures().iterator(); genFeatures.hasNext();) { GenFeature genFeature = (GenFeature)genFeatures.next();%>
+<%for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {%>
 <%@ include file="TestCase/implementedGenFeature.override.javajetinc" fail="alternative" %>
 <%@ start %>
   <%if ((genFeature.isVolatile() || genFeature.isDerived()) && !UML2GenModelUtil.isUnion(genFeature)) {%>
@@ -264,7 +264,7 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 <%@ include file="TestCase/implementedGenFeature.insert.javajetinc" fail="silent" %>
 <%@ end %><%//TestCase/implementedGenFeature.override.javajetinc%>
 <%}%>
-<%for (Iterator genOperations = genClass.getImplementedGenOperations().iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();%>
+<%for (GenOperation genOperation : genClass.getImplementedGenOperations()) {%>
 <%@ include file="TestCase/implementedGenOperation.override.javajetinc" fail="alternative" %>
 <%@ start %>
 

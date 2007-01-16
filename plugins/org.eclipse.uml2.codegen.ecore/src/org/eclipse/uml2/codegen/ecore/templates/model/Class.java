@@ -3886,7 +3886,7 @@ public class Class
     stringBuffer.append(TEXT_465);
     }
     } else {
-    for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature)) {
     if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {
     if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {
     stringBuffer.append(TEXT_466);
@@ -3996,7 +3996,7 @@ public class Class
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_510);
     } else if (UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).contains(genFeature)) {
-    for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature)) {
     if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {
     if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {
     stringBuffer.append(TEXT_511);
@@ -4089,7 +4089,7 @@ public class Class
     stringBuffer.append(TEXT_546);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
     stringBuffer.append(TEXT_547);
-    for (Iterator subsetGenFeatures = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false)) {
     if (subsetGenFeature.isContainer()) {
     stringBuffer.append(TEXT_548);
     stringBuffer.append(subsetGenFeature.getImportedType());
@@ -4115,7 +4115,7 @@ public class Class
     stringBuffer.append(subsetGenFeature.getAccessorName());
     stringBuffer.append(TEXT_559);
     }
-    for (Iterator supersetGenFeatures = UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();
+    for (GenFeature supersetGenFeature : UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true)) {
     stringBuffer.append(TEXT_560);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_561);
@@ -4275,7 +4275,7 @@ public class Class
     stringBuffer.append(TEXT_633);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
     stringBuffer.append(TEXT_634);
-    for (Iterator subsetGenFeatures = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false)) {
     if (subsetGenFeature.isContainer()) {
     stringBuffer.append(TEXT_635);
     stringBuffer.append(subsetGenFeature.getImportedType());
@@ -4301,7 +4301,7 @@ public class Class
     stringBuffer.append(subsetGenFeature.getAccessorName());
     stringBuffer.append(TEXT_646);
     }
-    for (Iterator supersetGenFeatures = UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();
+    for (GenFeature supersetGenFeature : UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true)) {
     stringBuffer.append(TEXT_647);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_648);
@@ -4841,7 +4841,7 @@ public class Class
     stringBuffer.append(TEXT_888);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource"));
     stringBuffer.append(TEXT_889);
-    for (Iterator subsetGenFeatures = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false)) {
     if (subsetGenFeature.isContainer()) {
     stringBuffer.append(TEXT_890);
     stringBuffer.append(subsetGenFeature.getImportedType());
@@ -4867,7 +4867,7 @@ public class Class
     stringBuffer.append(subsetGenFeature.getAccessorName());
     stringBuffer.append(TEXT_901);
     }
-    for (Iterator supersetGenFeatures = UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();
+    for (GenFeature supersetGenFeature : UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true)) {
     stringBuffer.append(TEXT_902);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_903);
@@ -5585,7 +5585,7 @@ public class Class
     stringBuffer.append(TEXT_1219);
     }
     }
-    if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List<GenFeature> keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
     if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     if (isInterface) {
     stringBuffer.append(TEXT_1220);
@@ -5696,13 +5696,13 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1268);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_1269);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_1270);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0, size = nestedKeyGenFeatures.size(); n < size; n++) {
     stringBuffer.append(TEXT_1271);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1272);
@@ -5718,7 +5718,7 @@ public class Class
     stringBuffer.append(TEXT_1277);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1278);
-    }
+    index++;}
     stringBuffer.append(TEXT_1279);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_1280);
@@ -5726,7 +5726,7 @@ public class Class
     stringBuffer.append(TEXT_1281);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_1282);
-    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
+    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_1283);
     }
@@ -5745,12 +5745,12 @@ public class Class
     stringBuffer.append(TEXT_1290);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_1291);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0; n < nestedKeyGenFeatures.size(); n++) {
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_1292);
     }
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
-    }
+    index++;}
     stringBuffer.append(TEXT_1293);
     }
     } else {
@@ -5775,13 +5775,13 @@ public class Class
     stringBuffer.append(TEXT_1303);
     }
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_1304);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1305);
     }
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = genClass.getChildrenClasses(genFeature).get(0);
     if (isInterface) {
     stringBuffer.append(TEXT_1306);
     if (!keyGenFeatures.isEmpty()) {
@@ -5895,13 +5895,13 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1357);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_1358);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_1359);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0, size = nestedKeyGenFeatures.size(); n < size; n++) {
     stringBuffer.append(TEXT_1360);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1361);
@@ -5917,7 +5917,7 @@ public class Class
     stringBuffer.append(TEXT_1366);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1367);
-    }
+    index++;}
     stringBuffer.append(TEXT_1368);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_1369);
@@ -5925,7 +5925,7 @@ public class Class
     stringBuffer.append(TEXT_1370);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_1371);
-    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
+    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_1372);
     }
@@ -5944,12 +5944,12 @@ public class Class
     stringBuffer.append(TEXT_1379);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_1380);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0; n < nestedKeyGenFeatures.size(); n++) {
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_1381);
     }
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
-    }
+    index++;}
     stringBuffer.append(TEXT_1382);
     }
     } else {
@@ -5974,7 +5974,7 @@ public class Class
     stringBuffer.append(TEXT_1392);
     }
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_1393);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1394);
@@ -5983,7 +5983,7 @@ public class Class
     }
     }
     }
-    if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) { List<GenFeature> keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
     if (!keyGenFeatures.isEmpty()) {
     if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature) || UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {
     if (isInterface) {
@@ -6164,8 +6164,8 @@ public class Class
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1474);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_1475);
     stringBuffer.append(keyGenFeature.getImportedType());
@@ -6211,7 +6211,7 @@ public class Class
     }
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_1494);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+    for (GenFeature nestedKeyGenFeature : nestedKeyGenFeatures) {
     if (nestedKeyGenFeature.isStringType()) {
     stringBuffer.append(TEXT_1495);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
@@ -6247,7 +6247,7 @@ public class Class
     stringBuffer.append(TEXT_1510);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1511);
-    }
+    index++;}
     stringBuffer.append(TEXT_1512);
     } else {
     stringBuffer.append(TEXT_1513);
@@ -6263,7 +6263,7 @@ public class Class
     stringBuffer.append(TEXT_1518);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1519);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+    for (GenFeature nestedKeyGenFeature : nestedKeyGenFeatures) {
     if (nestedKeyGenFeature.isStringType()) {
     stringBuffer.append(TEXT_1520);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
@@ -6294,7 +6294,7 @@ public class Class
     stringBuffer.append(TEXT_1533);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1534);
-    }
+    index++;}
     }
     } else {
     if (keyGenFeature.isStringType()) {
@@ -6328,7 +6328,7 @@ public class Class
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1549);
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_1550);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1551);
@@ -6661,7 +6661,7 @@ public class Class
     if (genOperation.hasBody()) {
     stringBuffer.append(TEXT_1687);
     stringBuffer.append(genOperation.getBody(genModel.getIndentation(stringBuffer)));
-    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = ((GenParameter)genOperation.getGenParameters().get(0)).getName(); String context = ((GenParameter)genOperation.getGenParameters().get(1)).getName();
+    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
     if (UML2GenModelUtil.isOperationsClasses(opClass.getGenPackage())) {
     stringBuffer.append(TEXT_1688);
     stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
@@ -7207,7 +7207,7 @@ public class Class
     stringBuffer.append(TEXT_1932);
     }
     stringBuffer.append(TEXT_1933);
-    for (Iterator i=genModel.isMinimalReflectiveMethods() ? genClass.getImplementedGenFeatures().iterator() : genClass.getAllGenFeatures().iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();
+    for (GenFeature genFeature : genModel.isMinimalReflectiveMethods() ? genClass.getImplementedGenFeatures() : genClass.getAllGenFeatures()) {
     stringBuffer.append(TEXT_1934);
     stringBuffer.append(genClass.getQualifiedFeatureID(genFeature));
     stringBuffer.append(TEXT_1935);
@@ -7681,7 +7681,7 @@ public class Class
     stringBuffer.append(TEXT_2135);
     }
     }
-    for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();
+    for (GenFeature genFeature : UML2GenModelUtil.getImplementedUnionGenFeatures(genClass)) {
     if (genFeature.isGet()) {
     if (genFeature.isListType()) {
     if (!UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {
@@ -7713,7 +7713,7 @@ public class Class
     stringBuffer.append(TEXT_2148);
     }
     }
-    for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature)) {
     if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {
     if (subsetGenFeature.isListType()) {
     if (subsetGenFeature.isResolveProxies() || UML2GenModelUtil.isUnion(subsetGenFeature)) {
@@ -7868,78 +7868,78 @@ public class Class
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_2211);
     }
-    for (Iterator j = UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();
+    for (Iterator<GenFeature> isSetSubsetGenFeatures = UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).iterator(); isSetSubsetGenFeatures.hasNext();) { GenFeature isSetSubsetGenFeature = isSetSubsetGenFeatures.next();
     if (first) { first = false;
-    if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {
+    if (isSetSubsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, isSetSubsetGenFeature)) {
     stringBuffer.append(TEXT_2212);
-    stringBuffer.append(subsetGenFeature.getAccessorName());
+    stringBuffer.append(isSetSubsetGenFeature.getAccessorName());
     stringBuffer.append(TEXT_2213);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2214);
     }
-    } else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
-    if (subsetGenFeature.isListType()) {
+    } else if (UML2GenModelUtil.isDuplicate(isSetSubsetGenFeature) && !UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature)) {
+    if (isSetSubsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_2215);
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
+    stringBuffer.append(isSetSubsetGenFeature.getGetAccessor());
     stringBuffer.append(TEXT_2216);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2217);
     }
     } else {
     stringBuffer.append(TEXT_2218);
-    if (subsetGenFeature.isBasicGet()) {
+    if (isSetSubsetGenFeature.isBasicGet()) {
     stringBuffer.append(TEXT_2219);
-    stringBuffer.append(subsetGenFeature.getAccessorName());
+    stringBuffer.append(isSetSubsetGenFeature.getAccessorName());
     } else {
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
+    stringBuffer.append(isSetSubsetGenFeature.getGetAccessor());
     }
     stringBuffer.append(TEXT_2220);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2221);
     }
     }
     } else {
     stringBuffer.append(TEXT_2222);
-    stringBuffer.append(genClass.getQualifiedFeatureID(subsetGenFeature));
+    stringBuffer.append(genClass.getQualifiedFeatureID(isSetSubsetGenFeature));
     stringBuffer.append(TEXT_2223);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2224);
     }
     }
     } else {
-    if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {
+    if (isSetSubsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, isSetSubsetGenFeature)) {
     stringBuffer.append(TEXT_2225);
-    stringBuffer.append(subsetGenFeature.getAccessorName());
+    stringBuffer.append(isSetSubsetGenFeature.getAccessorName());
     stringBuffer.append(TEXT_2226);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2227);
     }
-    } else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {
-    if (subsetGenFeature.isListType()) {
+    } else if (UML2GenModelUtil.isDuplicate(isSetSubsetGenFeature) && !UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature)) {
+    if (isSetSubsetGenFeature.isListType()) {
     stringBuffer.append(TEXT_2228);
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
+    stringBuffer.append(isSetSubsetGenFeature.getGetAccessor());
     stringBuffer.append(TEXT_2229);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2230);
     }
     } else {
     stringBuffer.append(TEXT_2231);
-    if (subsetGenFeature.isBasicGet()) {
+    if (isSetSubsetGenFeature.isBasicGet()) {
     stringBuffer.append(TEXT_2232);
-    stringBuffer.append(subsetGenFeature.getAccessorName());
+    stringBuffer.append(isSetSubsetGenFeature.getAccessorName());
     } else {
-    stringBuffer.append(subsetGenFeature.getGetAccessor());
+    stringBuffer.append(isSetSubsetGenFeature.getGetAccessor());
     }
     stringBuffer.append(TEXT_2233);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2234);
     }
     }
     } else {
     stringBuffer.append(TEXT_2235);
-    stringBuffer.append(genClass.getQualifiedFeatureID(subsetGenFeature));
+    stringBuffer.append(genClass.getQualifiedFeatureID(isSetSubsetGenFeature));
     stringBuffer.append(TEXT_2236);
-    if (!j.hasNext()) {
+    if (!isSetSubsetGenFeatures.hasNext()) {
     stringBuffer.append(TEXT_2237);
     }
     }
@@ -7956,7 +7956,7 @@ public class Class
     }
     stringBuffer.append(TEXT_2241);
     }
-    for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next(); GenFeature redefinitionGenFeature = (GenFeature) UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();
+    for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) { GenFeature redefinitionGenFeature = UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();
     if (genFeature.isGet()) {
     stringBuffer.append(TEXT_2242);
     if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {
@@ -8171,7 +8171,7 @@ public class Class
     stringBuffer.append(TEXT_2336);
     }
     }
-    if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) { List<GenFeature> keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
     if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {
     if (isInterface) {
     stringBuffer.append(TEXT_2337);
@@ -8282,13 +8282,13 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2385);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_2386);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_2387);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0, size = nestedKeyGenFeatures.size(); n < size; n++) {
     stringBuffer.append(TEXT_2388);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2389);
@@ -8304,7 +8304,7 @@ public class Class
     stringBuffer.append(TEXT_2394);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2395);
-    }
+    index++;}
     stringBuffer.append(TEXT_2396);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_2397);
@@ -8312,7 +8312,7 @@ public class Class
     stringBuffer.append(TEXT_2398);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_2399);
-    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
+    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_2400);
     }
@@ -8331,12 +8331,12 @@ public class Class
     stringBuffer.append(TEXT_2407);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_2408);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0; n < nestedKeyGenFeatures.size(); n++) {
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_2409);
     }
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
-    }
+    index++;}
     stringBuffer.append(TEXT_2410);
     }
     } else {
@@ -8361,13 +8361,13 @@ public class Class
     stringBuffer.append(TEXT_2420);
     }
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_2421);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2422);
     }
     }
-    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = (GenClass) genClass.getChildrenClasses(genFeature).get(0);
+    if (genClass.getChildrenClasses(genFeature).size() == 1 || !genFeature.getTypeGenClass().isAbstract()) { GenClass childGenClass = genClass.getChildrenClasses(genFeature).get(0);
     if (isInterface) {
     stringBuffer.append(TEXT_2423);
     if (!keyGenFeatures.isEmpty()) {
@@ -8481,13 +8481,13 @@ public class Class
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2474);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_2475);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_2476);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0, size = nestedKeyGenFeatures.size(); n < size; n++) {
     stringBuffer.append(TEXT_2477);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2478);
@@ -8503,7 +8503,7 @@ public class Class
     stringBuffer.append(TEXT_2483);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2484);
-    }
+    index++;}
     stringBuffer.append(TEXT_2485);
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_2486);
@@ -8511,7 +8511,7 @@ public class Class
     stringBuffer.append(TEXT_2487);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_2488);
-    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = (GenFeature) nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
+    for (int n = nestedKeyGenFeatures.size(); n > 0; n--) { GenFeature nestedKeyGenFeature = nestedKeyGenFeatures.get(nestedKeyGenFeatures.size() - n);
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_2489);
     }
@@ -8530,12 +8530,12 @@ public class Class
     stringBuffer.append(TEXT_2496);
     stringBuffer.append(keyGenFeature.getCapName());
     stringBuffer.append(TEXT_2497);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { n.next();
+    for (int n = 0; n < nestedKeyGenFeatures.size(); n++) {
     if (first) { first = false; } else {
     stringBuffer.append(TEXT_2498);
     }
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
-    }
+    index++;}
     stringBuffer.append(TEXT_2499);
     }
     } else {
@@ -8560,7 +8560,7 @@ public class Class
     stringBuffer.append(TEXT_2509);
     }
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_2510);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2511);
@@ -8569,7 +8569,7 @@ public class Class
     }
     }
     }
-    if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) { List keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
+    if (!genClass.getExtendedGenFeatures().contains(genFeature) && genFeature.isListType() && genFeature.isReferenceType()) { List<GenFeature> keyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(genFeature);
     if (!keyGenFeatures.isEmpty()) {
     if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature) || UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {
     if (isInterface) {
@@ -8750,8 +8750,8 @@ public class Class
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2591);
     }
-    for (Iterator k = UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass()).iterator(); k.hasNext(); index++) { GenFeature keyGenFeature = (GenFeature) k.next();
-    if (keyGenFeature.isContains()) { List nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
+    for (GenFeature keyGenFeature : UML2GenModelUtil.getKeyGenFeatures(genFeature.getTypeGenClass())) {
+    if (keyGenFeature.isContains()) { List<GenFeature> nestedKeyGenFeatures = UML2GenModelUtil.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false); boolean first = true;
     if (keyGenFeature.isListType()) {
     stringBuffer.append(TEXT_2592);
     stringBuffer.append(keyGenFeature.getImportedType());
@@ -8797,7 +8797,7 @@ public class Class
     }
     stringBuffer.append(keyGenFeature.getUncapName());
     stringBuffer.append(TEXT_2611);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+    for (GenFeature nestedKeyGenFeature : nestedKeyGenFeatures) {
     if (nestedKeyGenFeature.isStringType()) {
     stringBuffer.append(TEXT_2612);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
@@ -8833,7 +8833,7 @@ public class Class
     stringBuffer.append(TEXT_2627);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2628);
-    }
+    index++;}
     stringBuffer.append(TEXT_2629);
     } else {
     stringBuffer.append(TEXT_2630);
@@ -8849,7 +8849,7 @@ public class Class
     stringBuffer.append(TEXT_2635);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2636);
-    for (Iterator n = nestedKeyGenFeatures.iterator(); n.hasNext(); index++) { GenFeature nestedKeyGenFeature = (GenFeature) n.next();
+    for (GenFeature nestedKeyGenFeature : nestedKeyGenFeatures) {
     if (nestedKeyGenFeature.isStringType()) {
     stringBuffer.append(TEXT_2637);
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
@@ -8880,7 +8880,7 @@ public class Class
     stringBuffer.append(TEXT_2650);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2651);
-    }
+    index++;}
     }
     } else {
     if (keyGenFeature.isStringType()) {
@@ -8914,7 +8914,7 @@ public class Class
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2666);
     }
-    }
+    index++;}
     stringBuffer.append(TEXT_2667);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2668);
@@ -9195,7 +9195,7 @@ public class Class
     stringBuffer.append(TEXT_2783);
     }
     }
-    for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next(); GenOperation redefinitionGenOperation = (GenOperation) UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();
+    for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) { GenOperation redefinitionGenOperation = UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();
     stringBuffer.append(TEXT_2784);
     if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genOperation) && !UML2GenModelUtil.isRedefinition(genOperation)) {
     stringBuffer.append(TEXT_2785);

@@ -1,7 +1,7 @@
 <%if (!UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false).isEmpty() || !UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true).isEmpty()) {%>
 		<%=genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")%>.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
-  <%for (Iterator subsetGenFeatures = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false).iterator(); subsetGenFeatures.hasNext(); ) { GenFeature subsetGenFeature = (GenFeature) subsetGenFeatures.next();%>
+  <%for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature, false, false)) {%>
     <%if (subsetGenFeature.isContainer()) {%>
 			<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.isBasicGet() ? "basicGet" + subsetGenFeature.getAccessorName() : subsetGenFeature.getGetAccessor()%>();
     <%} else if (genClass.getImplementingGenModel(subsetGenFeature).isVirtualDelegation()) {%>
@@ -12,7 +12,7 @@
 				set<%=subsetGenFeature.getAccessorName()%>(null);
 			}
   <%}%>
-  <%for (Iterator supersetGenFeatures = UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true).iterator(); supersetGenFeatures.hasNext(); ) { GenFeature supersetGenFeature = (GenFeature) supersetGenFeatures.next();%>
+  <%for (GenFeature supersetGenFeature : UML2GenModelUtil.getSupersetGenFeatures(genClass, genFeature, false, true)) {%>
 			if (new<%=genFeature.getCapName()%> != null)
 			{
     <%if (supersetGenFeature.isListType()) {%>

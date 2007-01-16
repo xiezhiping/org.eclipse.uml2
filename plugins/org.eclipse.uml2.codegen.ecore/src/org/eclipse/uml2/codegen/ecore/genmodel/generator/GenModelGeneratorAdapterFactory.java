@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelGeneratorAdapterFactory.java,v 1.2 2006/12/20 19:54:15 khussey Exp $
+ * $Id: GenModelGeneratorAdapterFactory.java,v 1.3 2007/01/16 18:06:33 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.generator;
 
@@ -22,6 +22,7 @@ public class GenModelGeneratorAdapterFactory
 		extends
 		org.eclipse.emf.codegen.ecore.genmodel.generator.GenModelGeneratorAdapterFactory {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected String[] getTemplatePath(GenModel genModel) {
 		return UML2GenModelGeneratorAdapterFactory.getUML2TemplatePath(super

@@ -1,6 +1,5 @@
 package org.eclipse.uml2.codegen.ecore.templates.model.tests;
 
-import java.util.*;
 import org.eclipse.emf.codegen.ecore.genmodel.*;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
@@ -203,7 +202,7 @@ public class TestCase
     stringBuffer.append(genClass.getFormattedName());
     stringBuffer.append(TEXT_7);
     if (!genClass.getImplementedGenFeatures().isEmpty()) { boolean first = true;
-    for (Iterator genFeatures = genClass.getImplementedGenFeatures().iterator(); genFeatures.hasNext();) { GenFeature genFeature = (GenFeature)genFeatures.next();
+    for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {
     if ((genFeature.isVolatile() || genFeature.isDerived()) && !UML2GenModelUtil.isUnion(genFeature) && !genFeature.isSuppressedGetVisibility()) {
     if (first) { first = false;
     stringBuffer.append(TEXT_8);
@@ -222,7 +221,7 @@ public class TestCase
     }
     }
     if (!genClass.getImplementedGenOperations().isEmpty()) { boolean first = true;
-    for (Iterator genOperations = genClass.getImplementedGenOperations().iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();
+    for (GenOperation genOperation : genClass.getImplementedGenOperations()) {
     if (first) { first = false;
     stringBuffer.append(TEXT_14);
     }
@@ -319,7 +318,7 @@ public class TestCase
     }
     stringBuffer.append(TEXT_57);
     }
-    for (Iterator genFeatures=genClass.getImplementedGenFeatures().iterator(); genFeatures.hasNext();) { GenFeature genFeature = (GenFeature)genFeatures.next();
+    for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {
     if ((genFeature.isVolatile() || genFeature.isDerived()) && !UML2GenModelUtil.isUnion(genFeature)) {
     if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {
     stringBuffer.append(TEXT_58);
@@ -408,7 +407,7 @@ public class TestCase
     }
     //TestCase/implementedGenFeature.override.javajetinc
     }
-    for (Iterator genOperations = genClass.getImplementedGenOperations().iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();
+    for (GenOperation genOperation : genClass.getImplementedGenOperations()) {
     stringBuffer.append(TEXT_100);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_101);
@@ -435,7 +434,7 @@ public class TestCase
     }
     stringBuffer.append(TEXT_112);
     stringBuffer.append(TEXT_113);
-    for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();
+    for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) {
     if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {
     stringBuffer.append(TEXT_114);
     stringBuffer.append(genFeature.getGenClass().getQualifiedInterfaceName());
@@ -501,7 +500,7 @@ public class TestCase
     stringBuffer.append(TEXT_143);
     }
     }
-    for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next();
+    for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) {
     stringBuffer.append(TEXT_144);
     stringBuffer.append(genOperation.getGenClass().getQualifiedInterfaceName());
     stringBuffer.append(TEXT_145);

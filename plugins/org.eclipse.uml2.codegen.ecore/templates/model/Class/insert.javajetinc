@@ -30,7 +30,7 @@
 
     <%}%>
   <%}%>
-  <%for (Iterator i=UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next();%>
+  <%for (GenFeature genFeature : UML2GenModelUtil.getImplementedUnionGenFeatures(genClass)) {%>
     <%if (genFeature.isGet()) {%>
       <%if (genFeature.isListType()) {%>
         <%if (!UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
@@ -51,7 +51,7 @@
 		super.<%=genFeature.getGetAccessor()%>Helper(<%=genFeature.getSafeName()%>);
             <%}%>
           <%}%>
-          <%for (Iterator j = UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
+          <%for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature)) {%>
             <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>
               <%if (subsetGenFeature.isListType()) {%>
                 <%if (subsetGenFeature.isResolveProxies() || UML2GenModelUtil.isUnion(subsetGenFeature)) {%>
@@ -140,30 +140,30 @@
       <%if (first && genClass.getExtendedGenFeatures().contains(genFeature)) { first = false;%>
 		return super.isSet<%=genFeature.getAccessorName()%>()
       <%}%>
-      <%for (Iterator j = UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).iterator(); j.hasNext();) { GenFeature subsetGenFeature = (GenFeature) j.next();%>
+      <%for (Iterator<GenFeature> isSetSubsetGenFeatures = UML2GenModelUtil.getIsSetSubsetGenFeatures(genClass, genFeature).iterator(); isSetSubsetGenFeatures.hasNext();) { GenFeature isSetSubsetGenFeature = isSetSubsetGenFeatures.next();%>
         <%if (first) { first = false;%>
-          <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
-		return isSet<%=subsetGenFeature.getAccessorName()%>()<%if (!j.hasNext()) {%>;<%}%>
-          <%} else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
-            <%if (subsetGenFeature.isListType()) {%>
-		return !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
+          <%if (isSetSubsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, isSetSubsetGenFeature)) {%>
+		return isSet<%=isSetSubsetGenFeature.getAccessorName()%>()<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
+          <%} else if (UML2GenModelUtil.isDuplicate(isSetSubsetGenFeature) && !UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature)) {%>
+            <%if (isSetSubsetGenFeature.isListType()) {%>
+		return !<%=isSetSubsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
             <%} else {%>
-		return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
+		return <%if (isSetSubsetGenFeature.isBasicGet()) {%>basicGet<%=isSetSubsetGenFeature.getAccessorName()%><%} else {%><%=isSetSubsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
             <%}%>
           <%} else {%>
-		return eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)<%if (!j.hasNext()) {%>;<%}%>
+		return eIsSet(<%=genClass.getQualifiedFeatureID(isSetSubsetGenFeature)%>)<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
           <%}%>
         <%} else {%>
-          <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
-			|| isSet<%=subsetGenFeature.getAccessorName()%>()<%if (!j.hasNext()) {%>;<%}%>
-          <%} else if (UML2GenModelUtil.isDuplicate(subsetGenFeature) && !UML2GenModelUtil.isRedefinition(subsetGenFeature)) {%>
-            <%if (subsetGenFeature.isListType()) {%>
-			|| !<%=subsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!j.hasNext()) {%>;<%}%>
+          <%if (isSetSubsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, isSetSubsetGenFeature)) {%>
+			|| isSet<%=isSetSubsetGenFeature.getAccessorName()%>()<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
+          <%} else if (UML2GenModelUtil.isDuplicate(isSetSubsetGenFeature) && !UML2GenModelUtil.isRedefinition(isSetSubsetGenFeature)) {%>
+            <%if (isSetSubsetGenFeature.isListType()) {%>
+			|| !<%=isSetSubsetGenFeature.getGetAccessor()%>().isEmpty()<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
             <%} else {%>
-			|| <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!j.hasNext()) {%>;<%}%>
+			|| <%if (isSetSubsetGenFeature.isBasicGet()) {%>basicGet<%=isSetSubsetGenFeature.getAccessorName()%><%} else {%><%=isSetSubsetGenFeature.getGetAccessor()%><%}%>() != null<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
             <%}%>
           <%} else {%>
-			|| eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>)<%if (!j.hasNext()) {%>;<%}%>
+			|| eIsSet(<%=genClass.getQualifiedFeatureID(isSetSubsetGenFeature)%>)<%if (!isSetSubsetGenFeatures.hasNext()) {%>;<%}%>
           <%}%>
         <%}%>
       <%}%>
@@ -177,7 +177,7 @@
 	}
 
   <%}%>
-  <%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass).iterator(); i.hasNext();) { GenFeature genFeature = (GenFeature)i.next(); GenFeature redefinitionGenFeature = (GenFeature) UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();%>
+  <%for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) { GenFeature redefinitionGenFeature = UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();%>
     <%if (genFeature.isGet()) {%>
 	/**
 	 * <!-- begin-user-doc -->
@@ -287,7 +287,7 @@
     <%}%>
 <%@ include file="genFeature.insert.javajetinc" fail="silent" %>
   <%}%>
-  <%for (Iterator i=UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next(); GenOperation redefinitionGenOperation = (GenOperation) UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();%>
+  <%for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) { GenOperation redefinitionGenOperation = UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

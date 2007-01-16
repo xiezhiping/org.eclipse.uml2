@@ -1,6 +1,5 @@
 package org.eclipse.uml2.codegen.ecore.templates.model;
 
-import java.util.*;
 import org.eclipse.emf.codegen.ecore.genmodel.*;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
@@ -99,7 +98,7 @@ public class OperationsClass
     stringBuffer.append(genClass.getFormattedName());
     stringBuffer.append(TEXT_7);
     if (!UML2GenModelUtil.getDuplicateGenOperations(genClass).isEmpty()) { boolean first = true;
-    for (Iterator genOperations = UML2GenModelUtil.getDuplicateGenOperations(genClass).iterator(); genOperations.hasNext();) { GenOperation genOperation = (GenOperation)genOperations.next();
+    for (GenOperation genOperation : UML2GenModelUtil.getDuplicateGenOperations(genClass)) {
     if (first) { first = false;
     stringBuffer.append(TEXT_8);
     }
@@ -133,7 +132,7 @@ public class OperationsClass
     stringBuffer.append(TEXT_21);
     stringBuffer.append(UML2GenModelUtil.getOperationsClassName(genClass));
     stringBuffer.append(TEXT_22);
-    for (Iterator i=UML2GenModelUtil.getDuplicateGenOperations(genClass).iterator(); i.hasNext();) { GenOperation genOperation = (GenOperation)i.next();
+    for (GenOperation genOperation : UML2GenModelUtil.getDuplicateGenOperations(genClass)) {
     stringBuffer.append(TEXT_23);
     if (genOperation.hasDocumentation()) {
     stringBuffer.append(TEXT_24);
@@ -159,7 +158,7 @@ public class OperationsClass
     if (genOperation.hasBody()) {
     stringBuffer.append(TEXT_33);
     stringBuffer.append(genOperation.getBody(genModel.getIndentation(stringBuffer)));
-    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = ((GenParameter)genOperation.getGenParameters().get(0)).getName(); String context = ((GenParameter)genOperation.getGenParameters().get(1)).getName();
+    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
     stringBuffer.append(TEXT_34);
     stringBuffer.append(diagnostics);
     stringBuffer.append(TEXT_35);
