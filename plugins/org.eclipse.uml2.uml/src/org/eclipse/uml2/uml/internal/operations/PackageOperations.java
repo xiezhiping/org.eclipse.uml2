@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.30 2007/01/04 18:57:41 khussey Exp $
+ * $Id: PackageOperations.java,v 1.31 2007/01/17 18:29:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -198,19 +198,31 @@ public class PackageOperations
 						.eGet(eAttribute);
 
 					for (int i = 0, size = values.size(); i < size; i++) {
-						copyValues.add(i, targetEEnum.getEEnumLiteral(values
-							.get(i).getName()));
+						EEnumLiteral value = targetEEnum.getEEnumLiteral(values
+							.get(i).getName());
+
+						if (value != null) {
+							copyValues.add(value);
+						}
 					}
 				} else {
-					copyValues.add(targetEEnum
+					EEnumLiteral value = targetEEnum
 						.getEEnumLiteral(((EEnumLiteral) eObject
-							.eGet(eAttribute)).getName()));
+							.eGet(eAttribute)).getName());
+
+					if (value != null) {
+						copyValues.add(value);
+					}
 				}
 			} else {
-				copyEObject.eSet(targetEAttribute, targetEEnum.getEEnumLiteral(
-					((EEnumLiteral) (eAttribute.isMany()
+				EEnumLiteral value = targetEEnum
+					.getEEnumLiteral(((EEnumLiteral) (eAttribute.isMany()
 						? ((EList<?>) eObject.eGet(eAttribute)).get(0)
-						: eObject.eGet(eAttribute))).getName()).getInstance());
+						: eObject.eGet(eAttribute))).getName());
+
+				if (value != null) {
+					copyEObject.eSet(targetEAttribute, value);
+				}
 			}
 		}
 
