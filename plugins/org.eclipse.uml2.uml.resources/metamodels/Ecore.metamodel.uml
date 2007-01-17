@@ -271,7 +271,7 @@
       <generalization xmi:id="EReference-_generalization.0" general="EStructuralFeature"/>
       <ownedAttribute xmi:id="EReference-containment" name="containment" type="EBoolean"/>
       <ownedAttribute xmi:id="EReference-container" name="container" type="EBoolean" isReadOnly="true" isDerived="true"/>
-      <ownedAttribute xmi:id="EReference-resolveProxies" name="resolveProxies">
+      <ownedAttribute xmi:id="EReference-resolveProxies" name="resolveProxies" type="EBoolean">
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="EReference-resolveProxies-_defaultValue" value="true"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EReference-eOpposite" name="eOpposite" type="EReference" association="A_eOpposite_eReference">
