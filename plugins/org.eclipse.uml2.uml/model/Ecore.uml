@@ -271,7 +271,7 @@
       <generalization xmi:id="_439EC3AE03B53923849D00CE" general="_439EC3AE03B53903D59D0230"/>
       <ownedAttribute xmi:id="_439EC3AE03B53A0AEF0E00CF" name="containment" type="_439EC3AE03B53D0672EC0024"/>
       <ownedAttribute xmi:id="_439EC3AE03B53D5D254701DE" name="container" type="_439EC3AE03B53D0672EC0024" isReadOnly="true" isDerived="true"/>
-      <ownedAttribute xmi:id="_439EC3AE03B53D073A660351" name="resolveProxies">
+      <ownedAttribute xmi:id="_439EC3AE03B53D073A660351" name="resolveProxies" type="_439EC3AE03B53D0672EC0024">
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_gl1jk2vXEdq4DLWZOhbdEA" value="true"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_439EC3AE03B53990C9D80213" name="eOpposite" type="_439EC3AE03B539238479039D" association="_439EC3AE03B53990C9D502FD">
