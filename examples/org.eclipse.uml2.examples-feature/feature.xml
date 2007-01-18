@@ -15,8 +15,8 @@
    </license>
 
    <url>
-      <update label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
-      <discovery label="%update.label" url="http://download.eclipse.org/tools/uml2/updates/"/>
+      <update label="%update.label" url="http://download.eclipse.org/modeling/mdt/updates/"/>
+      <discovery label="%update.label" url="http://download.eclipse.org/modeling/mdt/updates/"/>
    </url>
 
    <includes
