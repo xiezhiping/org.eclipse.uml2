@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.35 2007/01/04 18:53:19 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.36 2007/01/30 14:57:23 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1366,6 +1366,45 @@ public class GenClassImpl
 						&& !genFeature.isReferenceType();
 				}
 			});
+	}
+
+	@Override
+	public List<GenFeature> getEGetGenFeatures() {
+		final List<GenFeature> allGenFeatures = getAllGenFeatures();
+		final List<GenFeature> extendedGenFeatures = getExtendedGenFeatures();
+
+		if (getGenModel().isMinimalReflectiveMethods()) {
+			return collectGenFeatures(null, getImplementedGenFeatures(null),
+				new GenFeatureFilter() {
+
+					public boolean accept(GenFeature genFeature) {
+						return allGenFeatures.contains(genFeature)
+							&& !extendedGenFeatures.contains(genFeature);
+					}
+				});
+		} else {
+			return super.getEGetGenFeatures();
+		}
+	}
+
+	@Override
+	public List<GenFeature> getESetGenFeatures() {
+		final List<GenFeature> allGenFeatures = getAllGenFeatures();
+		final List<GenFeature> extendedGenFeatures = getExtendedGenFeatures();
+
+		if (getGenModel().isMinimalReflectiveMethods()) {
+			return collectGenFeatures(null, getImplementedGenFeatures(null),
+				new GenFeatureFilter() {
+
+					public boolean accept(GenFeature genFeature) {
+						return genFeature.isChangeable()
+							&& allGenFeatures.contains(genFeature)
+							&& !extendedGenFeatures.contains(genFeature);
+					}
+				});
+		} else {
+			return super.getESetGenFeatures();
+		}
 	}
 
 }
