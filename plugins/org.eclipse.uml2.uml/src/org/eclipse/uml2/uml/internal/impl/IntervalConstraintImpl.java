@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.18 2006/12/14 15:49:30 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.19 2007/01/30 14:59:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -190,108 +190,6 @@ public class IntervalConstraintImpl
 	 */
 	public boolean isSetSpecification() {
 		return specification != null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
-				return getName();
-			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.INTERVAL_CONSTRAINT__QUALIFIED_NAME :
-				return getQualifiedName();
-			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				return getClientDependencies();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
-				if (resolve)
-					return getNameExpression();
-				return basicGetNameExpression();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				if (resolve)
-					return getOwningTemplateParameter();
-				return basicGetOwningTemplateParameter();
-			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
-			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
-				return getConstrainedElements();
-			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
-			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
-				if (resolve)
-					return getContext();
-				return basicGetContext();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.INTERVAL_CONSTRAINT__EANNOTATIONS :
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNER :
-				return isSetOwner();
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAME :
-				return isSetName();
-			case UMLPackage.INTERVAL_CONSTRAINT__VISIBILITY :
-				return isSetVisibility();
-			case UMLPackage.INTERVAL_CONSTRAINT__QUALIFIED_NAME :
-				return QUALIFIED_NAME_EDEFAULT == null
-					? getQualifiedName() != null
-					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.INTERVAL_CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.INTERVAL_CONSTRAINT__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.INTERVAL_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
-				return basicGetOwningTemplateParameter() != null;
-			case UMLPackage.INTERVAL_CONSTRAINT__TEMPLATE_PARAMETER :
-				return templateParameter != null;
-			case UMLPackage.INTERVAL_CONSTRAINT__CONSTRAINED_ELEMENT :
-				return constrainedElements != null
-					&& !constrainedElements.isEmpty();
-			case UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION :
-				return isSetSpecification();
-			case UMLPackage.INTERVAL_CONSTRAINT__CONTEXT :
-				return basicGetContext() != null;
-		}
-		return eDynamicIsSet(featureID);
 	}
 
 } //IntervalConstraintImpl

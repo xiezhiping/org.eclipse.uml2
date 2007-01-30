@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.13 2006/12/14 15:49:29 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.14 2007/01/30 14:59:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,109 +181,6 @@ public class DurationIntervalImpl
 	 */
 	public boolean isSetMax() {
 		return max != null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.DURATION_INTERVAL__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.DURATION_INTERVAL__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.DURATION_INTERVAL__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.DURATION_INTERVAL__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.DURATION_INTERVAL__NAME :
-				return getName();
-			case UMLPackage.DURATION_INTERVAL__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.DURATION_INTERVAL__QUALIFIED_NAME :
-				return getQualifiedName();
-			case UMLPackage.DURATION_INTERVAL__CLIENT_DEPENDENCY :
-				return getClientDependencies();
-			case UMLPackage.DURATION_INTERVAL__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
-			case UMLPackage.DURATION_INTERVAL__NAME_EXPRESSION :
-				if (resolve)
-					return getNameExpression();
-				return basicGetNameExpression();
-			case UMLPackage.DURATION_INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				if (resolve)
-					return getOwningTemplateParameter();
-				return basicGetOwningTemplateParameter();
-			case UMLPackage.DURATION_INTERVAL__TEMPLATE_PARAMETER :
-				if (resolve)
-					return getTemplateParameter();
-				return basicGetTemplateParameter();
-			case UMLPackage.DURATION_INTERVAL__TYPE :
-				if (resolve)
-					return getType();
-				return basicGetType();
-			case UMLPackage.DURATION_INTERVAL__MIN :
-				if (resolve)
-					return getMin();
-				return basicGetMin();
-			case UMLPackage.DURATION_INTERVAL__MAX :
-				if (resolve)
-					return getMax();
-				return basicGetMax();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.DURATION_INTERVAL__EANNOTATIONS :
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.DURATION_INTERVAL__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.DURATION_INTERVAL__OWNER :
-				return isSetOwner();
-			case UMLPackage.DURATION_INTERVAL__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.DURATION_INTERVAL__NAME :
-				return isSetName();
-			case UMLPackage.DURATION_INTERVAL__VISIBILITY :
-				return isSetVisibility();
-			case UMLPackage.DURATION_INTERVAL__QUALIFIED_NAME :
-				return QUALIFIED_NAME_EDEFAULT == null
-					? getQualifiedName() != null
-					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.DURATION_INTERVAL__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.DURATION_INTERVAL__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.DURATION_INTERVAL__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.DURATION_INTERVAL__OWNING_TEMPLATE_PARAMETER :
-				return basicGetOwningTemplateParameter() != null;
-			case UMLPackage.DURATION_INTERVAL__TEMPLATE_PARAMETER :
-				return templateParameter != null;
-			case UMLPackage.DURATION_INTERVAL__TYPE :
-				return type != null;
-			case UMLPackage.DURATION_INTERVAL__MIN :
-				return isSetMin();
-			case UMLPackage.DURATION_INTERVAL__MAX :
-				return isSetMax();
-		}
-		return eDynamicIsSet(featureID);
 	}
 
 } //DurationIntervalImpl

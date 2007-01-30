@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTemplateParameterImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
+ * $Id: OperationTemplateParameterImpl.java,v 1.16 2007/01/30 14:59:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -175,78 +175,6 @@ public class OperationTemplateParameterImpl
 	 */
 	public boolean isSetParameteredElement() {
 		return parameteredElement != null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
-				return getEAnnotations();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT :
-				return getOwnedElements();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNER :
-				if (resolve)
-					return getOwner();
-				return basicGetOwner();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
-				if (resolve)
-					return getSignature();
-				return basicGetSignature();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
-				if (resolve)
-					return getDefault();
-				return basicGetDefault();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				if (resolve)
-					return getOwnedDefault();
-				return basicGetOwnedDefault();
-		}
-		return eDynamicGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__EANNOTATIONS :
-				return eAnnotations != null && !eAnnotations.isEmpty();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_ELEMENT :
-				return isSetOwnedElements();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNER :
-				return isSetOwner();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__SIGNATURE :
-				return basicGetSignature() != null;
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return isSetParameteredElement();
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__DEFAULT :
-				return default_ != null;
-			case UMLPackage.OPERATION_TEMPLATE_PARAMETER__OWNED_DEFAULT :
-				return ownedDefault != null;
-		}
-		return eDynamicIsSet(featureID);
 	}
 
 } //OperationTemplateParameterImpl
