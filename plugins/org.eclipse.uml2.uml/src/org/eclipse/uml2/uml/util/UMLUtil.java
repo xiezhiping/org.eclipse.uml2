@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.45 2007/01/04 18:55:10 khussey Exp $
+ * $Id: UMLUtil.java,v 1.46 2007/01/31 18:46:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4689,6 +4689,17 @@ public class UMLUtil
 			}
 
 			return super.getEType(type);
+		}
+
+		@Override
+		protected void processEcoreTaggedValues(EPackage ePackage,
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			if (packages.contains(element)) {
+				super.processEcoreTaggedValues(ePackage, element, options,
+					diagnostics, context);
+			}
 		}
 
 		@Override
