@@ -327,11 +327,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
-	@Override
-  <%}%>
 	public boolean isSet<%=genFeature.getAccessorName()%>()
 	{
+	//genFeature
   <%if (!genFeature.isUnsettable()) {%>
     <%if (UML2GenModelUtil.isRedefined(genClass, genFeature)) {%>
   		return false;

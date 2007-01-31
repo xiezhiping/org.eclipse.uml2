@@ -131,8 +131,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
-	@Override
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="isSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
 	public boolean isSet<%=genFeature.getAccessorName()%>()
 	{
@@ -184,8 +184,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
-	@Override
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="getGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>()
 	{
@@ -217,8 +217,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
-	@Override
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="basicGetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genFeature.getImportedType()%> basicGet<%=genFeature.getAccessorName()%>()
 	{
@@ -236,8 +236,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
-	@Override
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="basicSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> basicSet<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedInternalType()%> new<%=genFeature.getCapName()%>, <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> msgs)
 	{
@@ -266,8 +266,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>
-	@Override
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="setGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public void set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType()%> new<%=genFeature.getCapName()%>)
 	{
@@ -293,8 +293,8 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.useClassOverrideAnnotation() && UML2GenModelUtil.isDuplicate(genOperation) && !UML2GenModelUtil.isRedefinition(genOperation)) {%>
-	@Override
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
 	public <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{

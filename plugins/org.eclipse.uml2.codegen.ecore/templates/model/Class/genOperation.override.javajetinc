@@ -22,14 +22,14 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
+<%}%>
 <%}%>
 <%if (!isImplementation) {%>
 	<%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>;
 
 <%} else {%>
-  <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenOperations().contains(genOperation)) {%>
-	@Override
-  <%}%>
 	public <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
 	{
   <%if (genOperation.hasBody()) {%>
