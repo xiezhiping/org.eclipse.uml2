@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.22 2007/01/30 14:59:15 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.23 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,6 +71,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type getType() {
 		if (type != null && type.eIsProxy()) {
 			InternalEObject oldType = (InternalEObject) type;
@@ -89,6 +90,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type basicGetType() {
 		return type;
 	}
@@ -98,6 +100,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(Type newType) {
 
 		Type oldType = type;
@@ -114,6 +117,7 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public boolean isSetType() {
+		//genFeature
 		return type != null;
 	}
 
@@ -122,6 +126,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getLower() {
 
 		return ExtensionEndOperations.getLower(this);
@@ -132,6 +137,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLower(int newLower) {
 
 		ExtensionEndOperations.setLower(this, newLower);
@@ -173,6 +179,7 @@ public class ExtensionEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int lowerBound() {
 		return ExtensionEndOperations.lowerBound(this);
 	}

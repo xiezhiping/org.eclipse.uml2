@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.16 2006/12/14 15:49:32 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,6 +142,7 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getTargets() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -168,6 +169,7 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getSources() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -670,6 +672,7 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -693,6 +696,7 @@ public class GeneralizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		Classifier specific = basicGetSpecific();

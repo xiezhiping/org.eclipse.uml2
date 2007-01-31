@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.21 2006/12/14 15:49:30 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.22 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -551,6 +551,7 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -880,6 +881,7 @@ public abstract class BehavioralFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
 		return BehavioralFeatureOperations.isDistinguishableFrom(this, n, ns);
 	}

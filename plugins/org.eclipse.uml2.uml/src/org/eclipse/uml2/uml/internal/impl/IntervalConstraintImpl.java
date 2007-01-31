@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.19 2007/01/30 14:59:15 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.20 2007/01/31 21:21:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
@@ -99,6 +100,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification basicGetSpecification() {
 		return specification;
 	}
@@ -142,6 +144,7 @@ public class IntervalConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
 
 		if (newSpecification != specification) {
@@ -189,6 +192,7 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
+		//genFeature
 		return specification != null;
 	}
 

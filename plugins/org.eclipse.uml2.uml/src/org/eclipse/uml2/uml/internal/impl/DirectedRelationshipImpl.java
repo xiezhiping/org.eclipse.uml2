@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.12 2006/12/14 15:49:34 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.13 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -93,6 +93,7 @@ public abstract class DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getRelatedElements() {
 
 		CacheAdapter cache = getCacheAdapter();

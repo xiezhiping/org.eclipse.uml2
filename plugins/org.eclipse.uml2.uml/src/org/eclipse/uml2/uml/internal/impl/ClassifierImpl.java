@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.39 2006/12/14 15:49:31 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.40 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -486,6 +486,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -602,6 +603,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
+		//genFeature
 		return templateParameter != null;
 	}
 
@@ -686,6 +688,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VisibilityKind getVisibility() {
 		return visibility;
 	}
@@ -695,6 +698,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -712,7 +716,9 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetVisibility() {
+		//genFeature
 		return visibility != VISIBILITY_EDEFAULT;
 	}
 
@@ -721,6 +727,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace getNamespace() {
 		Namespace namespace = basicGetNamespace();
 		return namespace != null && namespace.eIsProxy()
@@ -782,6 +789,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -995,6 +1003,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedTemplateSignature() {
+		//genFeature
 		return ownedTemplateSignature != null;
 	}
 
@@ -1056,6 +1065,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> getMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -1082,6 +1092,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -1165,6 +1176,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
 			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
@@ -2827,6 +2839,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -2852,6 +2865,7 @@ public abstract class ClassifierImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace basicGetNamespace() {
 
 		org.eclipse.uml2.uml.Package package_ = basicGetPackage();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.33 2006/12/14 15:49:30 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.34 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,6 +128,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
 			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
@@ -155,6 +156,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Constraint getGuard() {
 		if (guard != null && guard.eIsProxy()) {
 			InternalEObject oldGuard = (InternalEObject) guard;
@@ -173,6 +175,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Constraint basicGetGuard() {
 		return guard;
 	}
@@ -182,6 +185,7 @@ public class ProtocolTransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGuard(Constraint newGuard) {
 
 		Constraint oldGuard = guard;

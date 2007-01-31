@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.18 2006/12/14 15:49:29 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -236,6 +236,7 @@ public class OccurrenceSpecificationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Lifeline> getCovereds() {
 		if (covereds == null) {
 			covereds = new EObjectWithInverseResolvingEList.ManyInverse<Lifeline>(
@@ -279,6 +280,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
+		//genFeature
 		return covereds != null && !covereds.isEmpty();
 	}
 

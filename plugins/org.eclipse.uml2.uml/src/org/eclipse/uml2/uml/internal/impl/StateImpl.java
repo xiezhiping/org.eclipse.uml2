@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.30 2006/12/14 15:49:32 khussey Exp $
+ * $Id: StateImpl.java,v 1.31 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -440,6 +440,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinitionContexts() {
+		//genFeature
 		return !getRedefinitionContexts().isEmpty();
 	}
 
@@ -475,6 +476,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace getNamespace() {
 		Namespace namespace = basicGetNamespace();
 		return namespace != null && namespace.eIsProxy()
@@ -631,6 +633,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -657,6 +660,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -2217,6 +2221,7 @@ public class StateImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace basicGetNamespace() {
 
 		Region container = basicGetContainer();

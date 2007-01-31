@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.38 2006/12/14 15:49:29 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.39 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -322,6 +322,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -438,6 +439,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
+		//genFeature
 		return templateParameter != null;
 	}
 
@@ -536,6 +538,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -563,6 +566,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
 			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
@@ -852,6 +856,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace getNamespace() {
 		Namespace namespace = basicGetNamespace();
 		return namespace != null && namespace.eIsProxy()
@@ -864,6 +869,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -896,6 +902,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -1693,6 +1700,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isReadOnly() {
 		return (eFlags & IS_READ_ONLY_EFLAG) != 0;
 	}
@@ -1702,6 +1710,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
@@ -1721,6 +1730,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetIsReadOnly() {
+		//genFeature
 		return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 	}
 
@@ -1991,6 +2001,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return PropertyOperations.isConsistentWith(this, redefinee);
 	}
@@ -2800,6 +2811,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -2881,6 +2893,7 @@ public class PropertyImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace basicGetNamespace() {
 
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();

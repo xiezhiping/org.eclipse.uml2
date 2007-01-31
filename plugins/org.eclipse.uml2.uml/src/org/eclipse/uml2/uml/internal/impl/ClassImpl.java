@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.38 2006/12/14 15:49:30 khussey Exp $
+ * $Id: ClassImpl.java,v 1.39 2007/01/31 21:21:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -229,6 +229,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> getOwnedMembers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -255,6 +256,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -338,6 +340,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Dependency> getClientDependencies() {
 		if (clientDependencies == null) {
 			clientDependencies = new SubsetSupersetEObjectWithInverseResolvingEList.ManyInverse<Dependency>(
@@ -536,6 +539,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Feature> getFeatures() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -562,6 +566,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Property> getAttributes() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -849,6 +854,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetSuperClasses() {
+		//genFeature
 		return !getSuperClasses().isEmpty();
 	}
 
@@ -1028,6 +1034,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Property> getOwnedAttributes() {
 		if (ownedAttributes == null) {
 			ownedAttributes = new EObjectContainmentEList.Resolving<Property>(
@@ -1102,6 +1109,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedAttributes() {
+		//genFeature
 		return ownedAttributes != null && !ownedAttributes.isEmpty();
 	}
 
@@ -1110,6 +1118,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isAbstract() {
 		return (eFlags & IS_ABSTRACT_EFLAG) != 0;
 	}
@@ -1119,6 +1128,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIsAbstract(boolean newIsAbstract) {
 
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
@@ -1138,6 +1148,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetIsAbstract() {
+		//genFeature
 		return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 	}
 
@@ -1234,6 +1245,7 @@ public class ClassImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NamedElement> inherit(EList<NamedElement> inhs) {
 		return ClassOperations.inherit(this, inhs);
 	}
@@ -2170,6 +2182,7 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetGenerals() {
+		//genFeature
 		return false;
 	}
 

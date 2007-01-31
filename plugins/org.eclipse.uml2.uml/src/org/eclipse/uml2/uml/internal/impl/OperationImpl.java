@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.32 2006/12/14 15:49:29 khussey Exp $
+ * $Id: OperationImpl.java,v 1.33 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -268,6 +268,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -384,6 +385,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
+		//genFeature
 		return templateParameter != null;
 	}
 
@@ -468,6 +470,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -663,6 +666,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Classifier> getRedefinitionContexts() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -697,6 +701,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -729,6 +734,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -761,6 +767,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Constraint> getOwnedRules() {
 		if (ownedRules == null) {
 			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
@@ -1374,6 +1381,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Parameter> getOwnedParameters() {
 		if (ownedParameters == null) {
 			ownedParameters = new EObjectContainmentEList.Resolving<Parameter>(
@@ -1436,6 +1444,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedParameters() {
+		//genFeature
 		return ownedParameters != null && !ownedParameters.isEmpty();
 	}
 
@@ -1444,6 +1453,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Type> getRaisedExceptions() {
 		if (raisedExceptions == null) {
 			raisedExceptions = new EObjectResolvingEList<Type>(Type.class,
@@ -1488,6 +1498,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetRaisedExceptions() {
+		//genFeature
 		return raisedExceptions != null && !raisedExceptions.isEmpty();
 	}
 
@@ -1615,6 +1626,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return OperationOperations.isConsistentWith(this, redefinee);
 	}
@@ -2352,6 +2364,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -2418,6 +2431,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace getNamespace() {
 		Namespace namespace = basicGetNamespace();
 		return namespace != null && namespace.eIsProxy()
@@ -2443,6 +2457,7 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Namespace basicGetNamespace() {
 
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();

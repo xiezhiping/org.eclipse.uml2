@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.14 2007/01/30 14:59:15 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.15 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -66,6 +66,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification getMin() {
 		if (min != null && min.eIsProxy()) {
 			InternalEObject oldMin = (InternalEObject) min;
@@ -84,6 +85,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification basicGetMin() {
 		return min;
 	}
@@ -119,6 +121,7 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMin() {
+		//genFeature
 		return min != null;
 	}
 
@@ -127,6 +130,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification getMax() {
 		if (max != null && max.eIsProxy()) {
 			InternalEObject oldMax = (InternalEObject) max;
@@ -145,6 +149,7 @@ public class DurationIntervalImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification basicGetMax() {
 		return max;
 	}
@@ -180,6 +185,7 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMax() {
+		//genFeature
 		return max != null;
 	}
 

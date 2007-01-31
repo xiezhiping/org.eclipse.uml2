@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.16 2007/01/30 14:59:15 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -63,6 +63,7 @@ public class DestroyLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<LinkEndData> getEndData() {
 		if (endData == null) {
 			endData = new EObjectContainmentEList.Resolving<LinkEndData>(
@@ -90,6 +91,7 @@ public class DestroyLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
+		//genFeature
 		return endData != null && !endData.isEmpty();
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.18 2006/12/14 15:49:29 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -243,6 +243,7 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterableElement getParameteredElement() {
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
@@ -264,6 +265,7 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterableElement basicGetParameteredElement() {
 		return parameteredElement;
 	}
@@ -322,6 +324,7 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
 
 		if (newParameteredElement != parameteredElement) {
@@ -350,6 +353,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
+		//genFeature
 		return parameteredElement != null;
 	}
 

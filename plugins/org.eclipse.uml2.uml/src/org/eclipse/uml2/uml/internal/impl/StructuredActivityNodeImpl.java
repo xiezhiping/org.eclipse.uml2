@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.31 2006/12/14 15:49:30 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.32 2007/01/31 21:21:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,6 +200,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -918,6 +919,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Activity getActivity() {
 		Activity activity = basicGetActivity();
 		return activity != null && activity.eIsProxy()
@@ -930,6 +932,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Activity basicGetActivity() {
 		if (eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__ACTIVITY
 			&& eContainerFeatureID != UMLPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY)
@@ -942,6 +945,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void setActivity(Activity newActivity) {
 		super.setActivity(newActivity);
 	}
@@ -952,6 +956,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetActivity() {
+		//genFeature
 		return basicGetActivity() != null;
 	}
 
@@ -1884,6 +1889,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -1917,6 +1923,7 @@ public class StructuredActivityNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		if (isSetSuperGroup()) {
@@ -2022,6 +2029,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 */
 	public boolean isSetInActivity() {
+		//genFeature
 		return false;
 	}
 

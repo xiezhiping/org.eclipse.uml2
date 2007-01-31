@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.16 2007/01/30 14:59:15 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.17 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,6 +69,7 @@ public class CreateLinkActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<LinkEndData> getEndData() {
 		if (endData == null) {
 			endData = new EObjectContainmentEList.Resolving<LinkEndData>(
@@ -96,6 +97,7 @@ public class CreateLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
+		//genFeature
 		return endData != null && !endData.isEmpty();
 	}
 

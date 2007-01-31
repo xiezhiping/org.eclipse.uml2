@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.23 2006/12/14 15:49:31 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,6 +135,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -282,6 +283,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -316,6 +318,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Classifier> getRedefinitionContexts() {
 
 		CacheAdapter cache = getCacheAdapter();
@@ -474,6 +477,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isConsistentWith(RedefinableElement redefinee) {
 		return RedefinableTemplateSignatureOperations.isConsistentWith(this,
 			redefinee);
@@ -865,6 +869,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element getOwner() {
 		Element owner = basicGetOwner();
 		return owner != null && owner.eIsProxy()
@@ -877,6 +882,7 @@ public class RedefinableTemplateSignatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Element basicGetOwner() {
 
 		TemplateableElement template = basicGetTemplate();

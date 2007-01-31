@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.16 2007/01/30 14:59:15 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,6 +67,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterableElement getParameteredElement() {
 		if (parameteredElement != null && parameteredElement.eIsProxy()) {
 			InternalEObject oldParameteredElement = (InternalEObject) parameteredElement;
@@ -88,6 +89,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterableElement basicGetParameteredElement() {
 		return parameteredElement;
 	}
@@ -147,6 +149,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
 
 		if (newParameteredElement != parameteredElement) {
@@ -177,6 +180,7 @@ public class ConnectableElementTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
+		//genFeature
 		return parameteredElement != null;
 	}
 

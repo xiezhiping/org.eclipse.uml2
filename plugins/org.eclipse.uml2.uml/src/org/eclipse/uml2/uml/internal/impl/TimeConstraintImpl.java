@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.21 2006/12/14 15:49:29 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.22 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,6 +128,7 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification getSpecification() {
 		if (specification != null && specification.eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
@@ -159,6 +160,7 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ValueSpecification basicGetSpecification() {
 		return specification;
 	}
@@ -168,6 +170,7 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain basicSetSpecificationGen(
 			ValueSpecification newSpecification, NotificationChain msgs) {
 		ValueSpecification oldSpecification = specification;
@@ -203,6 +206,7 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
 
 		if (newSpecification != specification) {
@@ -247,7 +251,9 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetSpecification() {
+		//genFeature
 		return specification != null;
 	}
 

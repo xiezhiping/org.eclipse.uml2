@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommunicationPathImpl.java,v 1.3 2006/12/14 15:49:31 khussey Exp $
+ * $Id: CommunicationPathImpl.java,v 1.4 2007/01/31 21:21:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -60,6 +60,7 @@ public class CommunicationPathImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean validateAssociationEnds(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return CommunicationPathOperations.validateAssociationEnds(this,

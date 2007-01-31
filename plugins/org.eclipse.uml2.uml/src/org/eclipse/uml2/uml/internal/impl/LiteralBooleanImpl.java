@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanImpl.java,v 1.14 2006/12/14 15:49:30 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.15 2007/01/31 21:21:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -118,6 +118,7 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isComputable() {
 		return LiteralBooleanOperations.isComputable(this);
 	}
@@ -127,6 +128,7 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean booleanValue() {
 		return LiteralBooleanOperations.booleanValue(this);
 	}
@@ -136,6 +138,7 @@ public class LiteralBooleanImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String stringValue() {
 		return LiteralBooleanOperations.stringValue(this);
 	}
