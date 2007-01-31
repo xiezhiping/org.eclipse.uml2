@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,22 +8,52 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLSaveImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
+ * $Id: XMI2UMLSaveImpl.java,v 1.3 2007/01/31 22:20:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
+
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
 
 public class XMI2UMLSaveImpl
 		extends XMISaveImpl {
 
+	protected static class Lookup
+			extends XMISaveImpl.Lookup {
+
+		public Lookup(XMLResource.XMLMap map, ExtendedMetaData extendedMetaData) {
+			super(map, extendedMetaData);
+		}
+
+		@Override
+		protected int featureKind(EStructuralFeature f) {
+			return !f.isTransient()
+				&& ((EStructuralFeature.Internal) f).isContainer()
+				? (f.isUnsettable()
+					? OBJECT_HREF_SINGLE_UNSETTABLE
+					: OBJECT_HREF_SINGLE)
+				: super.featureKind(f);
+		}
+
+	}
+
 	public XMI2UMLSaveImpl(XMLHelper helper) {
 		super(helper);
+	}
+
+	@Override
+	protected void init(XMLResource resource, Map<?, ?> options) {
+		super.init(resource, options);
+
+		featureTable = new Lookup(map, extendedMetaData);
 	}
 
 	@Override
