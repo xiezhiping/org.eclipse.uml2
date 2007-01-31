@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.36 2006/12/14 15:49:31 khussey Exp $
+ * $Id: ElementImpl.java,v 1.37 2007/01/31 17:55:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -801,13 +801,15 @@ public abstract class ElementImpl
 		EList<Adapter> eAdapters = super.eAdapters();
 
 		if ((eFlags & ADAPTING) == 0 && eAdapters.isEmpty()) {
+			eFlags |= ADAPTING;
+
 			CacheAdapter cacheAdapter = getCacheAdapter();
 
 			if (cacheAdapter != null) {
-				eFlags |= ADAPTING;
 				cacheAdapter.adapt(this);
-				eFlags &= ~ADAPTING;
 			}
+
+			eFlags &= ~ADAPTING;
 		}
 
 		return eAdapters;
