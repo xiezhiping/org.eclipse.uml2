@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.46 2007/01/31 18:46:24 khussey Exp $
+ * $Id: UMLUtil.java,v 1.47 2007/01/31 20:32:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4606,6 +4606,11 @@ public class UMLUtil
 	 */
 	public static class Profile2EPackageConverter
 			extends UML2EcoreConverter {
+
+		@Override
+		public Object caseComment(Comment comment) {
+			return null;
+		}
 
 		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
