@@ -1,0 +1,9 @@
+emf
+bin
+src
+META-INF
+plugin.xml
+plugin.properties
+.classpath
+build.properties
+.project

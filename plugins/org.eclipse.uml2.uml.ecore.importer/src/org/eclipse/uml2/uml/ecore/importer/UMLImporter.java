@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.7 2007/01/04 18:55:29 khussey Exp $
+ * $Id: UMLImporter.java,v 1.8 2007/02/05 16:31:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -66,32 +66,29 @@ public class UMLImporter
 
 		if (genModel == null) {
 
-			if (options
-				.get(
-					UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE)
-				.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options
-					.get(
-						UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES)
-					.equals(UMLUtil.OPTION__PROCESS)
-				|| options.get(
-					UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES)
-					.equals(UMLUtil.OPTION__PROCESS)) {
+			if (UMLUtil.OPTION__PROCESS
+				.equals(options
+					.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES))
+				|| UMLUtil.OPTION__PROCESS.equals(options
+					.get(UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES))) {
 
 				genModel = org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory.eINSTANCE
 					.createGenModel();

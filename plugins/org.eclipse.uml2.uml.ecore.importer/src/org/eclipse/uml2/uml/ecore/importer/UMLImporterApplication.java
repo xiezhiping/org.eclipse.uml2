@@ -1,0 +1,248 @@
+/*
+ * Copyright (c) 2007 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - initial API and implementation
+ *
+ * $Id: UMLImporterApplication.java,v 1.1 2007/02/05 16:31:51 khussey Exp $
+ */
+package org.eclipse.uml2.uml.ecore.importer;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.codegen.util.CodeGenUtil;
+import org.eclipse.emf.common.util.Monitor;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.importer.ModelImporter;
+import org.eclipse.emf.importer.ModelImporterApplication;
+import org.eclipse.uml2.uml.util.UMLUtil;
+
+
+public class UMLImporterApplication
+		extends ModelImporterApplication {
+
+	public static class PackageInfo {
+		public String nsURI;
+		public String base;
+		public String prefix;
+	}
+
+	protected Map<String, PackageInfo> nameToPackageInfo;
+
+	protected Map<String, String> umlOptions = new HashMap<String, String>(); 
+
+	public UMLImporter getUMLImporter() {
+		return (UMLImporter) getModelImporter();
+	}
+
+	@Override
+	protected ModelImporter createModelImporter() {
+		return new UMLImporter();
+	}
+
+	 @Override
+	  protected StringBuffer getUsage()
+	  {
+	    StringBuffer result = new StringBuffer();
+	    appendLine(result, "Usage: { <model.uml> }+ [ <model.genmodel> [ -reload ] ] <OPTIONS>"); //$NON-NLS-1$
+	    appendLine(result, "<OPTIONS>         ::= [ <PROJECT-OPTION> ] [ <PATHMAP> ]"); //$NON-NLS-1$
+	    appendLine(result, "                      { <PACKAGE> }+ { <REF-PACKAGE> }* { <REF-GEN-MODEL> }*"); //$NON-NLS-1$
+	    appendLine(result, "                      [ <TEMPLATE-PATH> ] [ <MODEL-PLUGIN-ID> ] [ <COPYRIGHT> ]"); //$NON-NLS-1$
+	    appendLine(result, "                      [ <SDO> ] [ <QUIET> ] { <UML-OPTION> }*"); //$NON-NLS-1$
+	    appendLine(result, "<PROJECT-OPTION>  ::= <MODEL-PROJECT> [ <EDIT-PROJECT> ] [ <EDITOR-PROJECT> ]"); //$NON-NLS-1$
+	    appendLine(result, "                      [ <TESTS-PROJECT> ]"); //$NON-NLS-1$
+	    appendLine(result, "<MODEL-PROJECT>   ::= -modelProject <model-directory> <fragment-path>"); //$NON-NLS-1$
+	    appendLine(result, "<EDIT-PROJECT>    ::= -editProject <edit-directory> <fragment-path>"); //$NON-NLS-1$
+	    appendLine(result, "<EDITOR-PROJECT>  ::= -editorProject <editor-directory> <fragment-path>"); //$NON-NLS-1$
+	    appendLine(result, "<TESTS-PROJECT>   ::= -testsProject <tests-directory> <fragment-path>"); //$NON-NLS-1$
+	    appendLine(result, "<PACKAGE>         ::= -package <nsURI> [ <base> <prefix> ]"); //$NON-NLS-1$
+	    appendLine(result, "<REF-GEN-MODEL>   ::= -refGenModel <model.genmodel> { <nsURI> }+"); //$NON-NLS-1$
+	    appendLine(result, "<UML-OPTION>      ::= < -ECORE_TAGGED_VALUES |" ); //$NON-NLS-1$
+	    appendLine(result,"                         -REDEFINING_OPERATIONS | -REDEFINING_PROPERTIES |"); //$NON-NLS-1$
+	    appendLine(result,"                         -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
+	    appendLine(result,"                         -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
+	    appendLine(result,"                         -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
+	    appendLine(result,"                         -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS >" ); //$NON-NLS-1$
+	    appendLine(result,"                       < PROCESS | IGNORE | REPORT | DISCARD ]"); //$NON-NLS-1$
+		appendLine(result, "<TEMPLATE-PATH>   ::= -templatePath <template-directory>"); //$NON-NLS-1$
+	    appendLine(result, "<MODEL-PLUGIN-ID> ::= -modelPluginID <plugin-ID>"); //$NON-NLS-1$
+	    appendLine(result, "<COPYRIGHT>       ::= -copyright <copyright-string>"); //$NON-NLS-1$
+	    appendLine(result, "<JDK-LEVEL>       ::= -jdkLevel <jdk level: 1.4 5.0 6.0>"); //$NON-NLS-1$
+	    appendLine(result, "<VALIDATE-MODEL>  ::= -validateModel < true | false >"); //$NON-NLS-1$
+	    appendLine(result, "<SDO>             ::= -sdo"); //$NON-NLS-1$
+	    appendLine(result, "<QUIET>           ::= -quiet"); //$NON-NLS-1$
+	    appendLine(result, ""); //$NON-NLS-1$
+	    appendLine(result, "For example:"); //$NON-NLS-1$
+	    appendLine(result, ""); //$NON-NLS-1$
+	    appendLine(result, ""); //$NON-NLS-1$
+	    appendLine(result, "  uml2genmodel"); //$NON-NLS-1$
+	    appendLine(result, "    ../../company/model.uml"); //$NON-NLS-1$
+	    appendLine(result, "    result/model/Extended.genmodel"); //$NON-NLS-1$
+	    appendLine(result, "    -modelProject result src"); //$NON-NLS-1$
+	    appendLine(result, "    -editProject result.edit src"); //$NON-NLS-1$
+	    appendLine(result, "    -editorProject result.editor src"); //$NON-NLS-1$
+	    appendLine(result, "    -refGenModel company.genmodel http://org.sample.company"); //$NON-NLS-1$
+	    return result;
+	  }
+
+	 @Override
+	  protected int processArgument(String[] arguments, int index) {
+		 
+		if (arguments[index].equalsIgnoreCase("-package")) { //$NON-NLS-1$
+
+			if (nameToPackageInfo == null) {
+				nameToPackageInfo = new HashMap<String, PackageInfo>();
+			}
+
+			index = processPackageInformation(arguments, index,
+				nameToPackageInfo);
+			
+		} else if (isUMLOption(arguments[index])) {
+			umlOptions.put(arguments[index].substring(1), arguments[++index]);
+			
+		} else {
+			return super.processArgument(arguments, index);
+		}
+		return index + 1;
+	}
+	 
+	 
+	protected boolean isUMLOption(String key) {
+		String strippedKey = key.substring(1);
+
+		return UMLUtil.UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES
+			.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__DERIVED_FEATURES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS
+				.equalsIgnoreCase(strippedKey);
+	}
+	
+	 protected int processPackageInformation(String[] arguments, int index,
+			Map<String, PackageInfo> nsURIToPackageInfo) {
+		int start = index;
+		PackageInfo packageInfo = new PackageInfo();
+
+		if (index + 1 < arguments.length
+			&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+			packageInfo.nsURI = arguments[++index];
+
+			if (index + 1 < arguments.length
+				&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+				packageInfo.base = arguments[++index];
+
+				if (index + 1 < arguments.length
+					&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+					packageInfo.prefix = arguments[++index];
+				}
+			}
+
+			if (index - start != 1 && index - start != 3) {
+				throw new IllegalArgumentException(
+					"Error: Expecting either 1 or 3 arguments for " //$NON-NLS-1$
+						+ arguments[start]);
+			} else {
+				nsURIToPackageInfo.put(packageInfo.nsURI, packageInfo);
+				nsURIToPackageInfo.put(packageInfo.nsURI.toLowerCase(),
+					packageInfo);
+				return index;
+			}
+		} else {
+			throw new IllegalArgumentException(
+				"Error: No package name was specified for " + arguments[start]); //$NON-NLS-1$
+		}
+	}
+	 	 
+	
+	@Override
+	protected void adjustModelImporter(Monitor monitor) {
+
+		try {
+			monitor.beginTask("", 2); //$NON-NLS-1$
+
+			super.adjustModelImporter(CodeGenUtil.createMonitor(monitor, 1));
+
+			UMLImporter umlImporter = getUMLImporter();
+
+			if (umlImporter != null) {
+				umlImporter.getOptions().putAll(umlOptions);
+			}
+
+		} finally {
+			monitor.done();
+		}
+	}
+
+	@Override
+	protected void adjustEPackages(Monitor monitor) {
+
+		try {
+			monitor.beginTask("", 2); //$NON-NLS-1$
+			super.adjustEPackages(CodeGenUtil.createMonitor(monitor, 1));
+
+			UMLImporter umlImporter = getUMLImporter();
+			List<EPackage> ePackages = umlImporter.getEPackages();
+			traverseEPackages(ePackages);
+			umlImporter.adjustEPackages(CodeGenUtil.createMonitor(monitor, 1));
+		} finally {
+			monitor.done();
+		}
+	}
+
+	 protected void traverseEPackages(List<EPackage> ePackages) {
+
+		for (EPackage ePackage : ePackages) {
+
+			if (nameToPackageInfo != null) {
+				PackageInfo packageInfo = nameToPackageInfo.get(ePackage
+					.getNsURI());
+
+				if (packageInfo != null) {
+					handleEPackage(ePackage, true);
+
+					ModelImporter.EPackageImportInfo ePackageInfo = getUMLImporter()
+						.getEPackageImportInfo(ePackage);
+
+					if (ePackageInfo.getBasePackage() == null) {
+						ePackageInfo.setBasePackage(packageInfo.base);
+					}
+
+					if (ePackageInfo.getPrefix() == null) {
+						ePackageInfo.setPrefix(packageInfo.prefix);
+					}
+				}
+			}
+
+			handleQualifiedEPackageName(ePackage);
+			traverseEPackages(ePackage.getESubpackages());
+		}
+	}  
+
+}
