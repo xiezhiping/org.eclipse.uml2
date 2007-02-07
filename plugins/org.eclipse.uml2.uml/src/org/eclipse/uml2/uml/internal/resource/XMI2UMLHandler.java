@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLHandler.java,v 1.5 2006/12/14 15:49:34 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.6 2007/02/07 17:05:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -68,14 +68,18 @@ public class XMI2UMLHandler
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {
 				uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
 			} else {
-				uriLiteral = UMLResource.UML_METAMODEL_URI
-					+ uriLiteral.substring(uriLiteral.indexOf('#'));
+				int index = uriLiteral.indexOf('#');
+				uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
+					? "#_0" //$NON-NLS-1$
+					: uriLiteral.substring(index));
 			}
 		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
 
-			uriLiteral = UMLResource.STANDARD_PROFILE_URI
-				+ uriLiteral.substring(uriLiteral.indexOf('#'));
+			int index = uriLiteral.indexOf('#');
+			uriLiteral = UMLResource.STANDARD_PROFILE_URI + (index == -1
+				? "#_0" //$NON-NLS-1$
+				: uriLiteral.substring(index));
 		}
 
 		super.handleProxy(proxy, uriLiteral);
