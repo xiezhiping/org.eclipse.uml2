@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2006 IBM Corporation and others.
+ * Copyright (c) 2004, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.15 2006/12/14 15:47:33 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.16 2007/02/08 14:39:47 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -433,7 +433,8 @@ public class CacheAdapter
 		Map<EObject, Map<Object, Object>> resourceMap = values.get(resource);
 
 		if (resourceMap == null) {
-			resourceMap = createHashMap();
+			resourceMap = Collections.synchronizedMap(this
+				.<EObject, Map<Object, Object>> createHashMap());
 
 			values.put(resource, resourceMap);
 		}
@@ -441,7 +442,8 @@ public class CacheAdapter
 		Map<Object, Object> eObjectMap = resourceMap.get(eObject);
 
 		if (eObjectMap == null) {
-			eObjectMap = createHashMap();
+			eObjectMap = Collections.synchronizedMap(this
+				.<Object, Object> createHashMap());
 
 			resourceMap.put(eObject, eObjectMap);
 		}
