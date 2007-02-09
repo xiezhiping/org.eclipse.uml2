@@ -11,16 +11,10 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.3 2007/02/05 16:31:51 khussey Exp $
+ $Id: plugin.xml,v 1.4 2007/02/09 16:35:35 khussey Exp $
 -->
 
 <plugin>
-
-  <extension id="UML2GenModel" point="org.eclipse.core.runtime.applications">
-    <application>
-      <run class="org.eclipse.uml2.uml.ecore.importer.UMLImporterApplication"/>
-    </application>
-  </extension>
 
   <extension point="org.eclipse.emf.importer.modelImporterDescriptors">
     <modelImporterDescriptor
@@ -31,6 +25,12 @@
        description="%_UI_UMLModelImporter_description"
        wizard="org.eclipse.uml2.uml.ecore.importer.ui.UMLImporterWizard"/>
   </extension>	
+
+  <extension id="UML2GenModel" point="org.eclipse.core.runtime.applications">
+    <application>
+      <run class="org.eclipse.uml2.uml.ecore.importer.UMLImporterApplication"/>
+    </application>
+  </extension>
 
   <extension point="org.eclipse.ant.core.extraClasspathEntries">
     <extraClasspathEntry library="ant_tasks/uml2.uml.ecore.importer.tasks.jar"/>

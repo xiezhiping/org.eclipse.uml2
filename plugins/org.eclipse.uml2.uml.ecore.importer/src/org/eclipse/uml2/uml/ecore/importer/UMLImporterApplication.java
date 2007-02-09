@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterApplication.java,v 1.1 2007/02/05 16:31:51 khussey Exp $
+ * $Id: UMLImporterApplication.java,v 1.2 2007/02/09 16:35:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.ecore.EPackage;
@@ -28,14 +29,35 @@ public class UMLImporterApplication
 		extends ModelImporterApplication {
 
 	public static class PackageInfo {
+
+		public String name;
+
+		public String nsPrefix;
+
 		public String nsURI;
+
 		public String base;
+
 		public String prefix;
+
+		public String operationsPackage;
+
+		public boolean resourceInterfaces = false;
 	}
+	
+	protected boolean pluralizeGetters = false;
+
+	protected boolean safeStrings = false;
+
+	protected boolean cacheAdapterSupport = false;
+
+	protected boolean factoryMethods = false;
+
+	protected String invariantPrefix;
 
 	protected Map<String, PackageInfo> nameToPackageInfo;
 
-	protected Map<String, String> umlOptions = new HashMap<String, String>(); 
+	protected Map<String, String> importerOptions = new HashMap<String, String>(); 
 
 	public UMLImporter getUMLImporter() {
 		return (UMLImporter) getModelImporter();
@@ -46,54 +68,63 @@ public class UMLImporterApplication
 		return new UMLImporter();
 	}
 
-	 @Override
-	  protected StringBuffer getUsage()
-	  {
-	    StringBuffer result = new StringBuffer();
-	    appendLine(result, "Usage: { <model.uml> }+ [ <model.genmodel> [ -reload ] ] <OPTIONS>"); //$NON-NLS-1$
-	    appendLine(result, "<OPTIONS>         ::= [ <PROJECT-OPTION> ] [ <PATHMAP> ]"); //$NON-NLS-1$
-	    appendLine(result, "                      { <PACKAGE> }+ { <REF-PACKAGE> }* { <REF-GEN-MODEL> }*"); //$NON-NLS-1$
-	    appendLine(result, "                      [ <TEMPLATE-PATH> ] [ <MODEL-PLUGIN-ID> ] [ <COPYRIGHT> ]"); //$NON-NLS-1$
-	    appendLine(result, "                      [ <SDO> ] [ <QUIET> ] { <UML-OPTION> }*"); //$NON-NLS-1$
-	    appendLine(result, "<PROJECT-OPTION>  ::= <MODEL-PROJECT> [ <EDIT-PROJECT> ] [ <EDITOR-PROJECT> ]"); //$NON-NLS-1$
-	    appendLine(result, "                      [ <TESTS-PROJECT> ]"); //$NON-NLS-1$
-	    appendLine(result, "<MODEL-PROJECT>   ::= -modelProject <model-directory> <fragment-path>"); //$NON-NLS-1$
-	    appendLine(result, "<EDIT-PROJECT>    ::= -editProject <edit-directory> <fragment-path>"); //$NON-NLS-1$
-	    appendLine(result, "<EDITOR-PROJECT>  ::= -editorProject <editor-directory> <fragment-path>"); //$NON-NLS-1$
-	    appendLine(result, "<TESTS-PROJECT>   ::= -testsProject <tests-directory> <fragment-path>"); //$NON-NLS-1$
-	    appendLine(result, "<PACKAGE>         ::= -package <nsURI> [ <base> <prefix> ]"); //$NON-NLS-1$
-	    appendLine(result, "<REF-GEN-MODEL>   ::= -refGenModel <model.genmodel> { <nsURI> }+"); //$NON-NLS-1$
-	    appendLine(result, "<UML-OPTION>      ::= < -ECORE_TAGGED_VALUES |" ); //$NON-NLS-1$
-	    appendLine(result,"                         -REDEFINING_OPERATIONS | -REDEFINING_PROPERTIES |"); //$NON-NLS-1$
-	    appendLine(result,"                         -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
-	    appendLine(result,"                         -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
-	    appendLine(result,"                         -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
-	    appendLine(result,"                         -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS >" ); //$NON-NLS-1$
-	    appendLine(result,"                       < PROCESS | IGNORE | REPORT | DISCARD ]"); //$NON-NLS-1$
-		appendLine(result, "<TEMPLATE-PATH>   ::= -templatePath <template-directory>"); //$NON-NLS-1$
-	    appendLine(result, "<MODEL-PLUGIN-ID> ::= -modelPluginID <plugin-ID>"); //$NON-NLS-1$
-	    appendLine(result, "<COPYRIGHT>       ::= -copyright <copyright-string>"); //$NON-NLS-1$
-	    appendLine(result, "<JDK-LEVEL>       ::= -jdkLevel <jdk level: 1.4 5.0 6.0>"); //$NON-NLS-1$
-	    appendLine(result, "<VALIDATE-MODEL>  ::= -validateModel < true | false >"); //$NON-NLS-1$
-	    appendLine(result, "<SDO>             ::= -sdo"); //$NON-NLS-1$
-	    appendLine(result, "<QUIET>           ::= -quiet"); //$NON-NLS-1$
-	    appendLine(result, ""); //$NON-NLS-1$
-	    appendLine(result, "For example:"); //$NON-NLS-1$
-	    appendLine(result, ""); //$NON-NLS-1$
-	    appendLine(result, ""); //$NON-NLS-1$
-	    appendLine(result, "  uml2genmodel"); //$NON-NLS-1$
-	    appendLine(result, "    ../../company/model.uml"); //$NON-NLS-1$
-	    appendLine(result, "    result/model/Extended.genmodel"); //$NON-NLS-1$
-	    appendLine(result, "    -modelProject result src"); //$NON-NLS-1$
-	    appendLine(result, "    -editProject result.edit src"); //$NON-NLS-1$
-	    appendLine(result, "    -editorProject result.editor src"); //$NON-NLS-1$
-	    appendLine(result, "    -refGenModel company.genmodel http://org.sample.company"); //$NON-NLS-1$
-	    return result;
-	  }
+	@Override
+	protected StringBuffer getUsage() {
+		StringBuffer result = new StringBuffer();
 
-	 @Override
-	  protected int processArgument(String[] arguments, int index) {
-		 
+		appendLine(result, "Usage: { <model.uml> }+ [ <model.genmodel> [ -reload ] ] <OPTIONS>"); //$NON-NLS-1$
+		appendLine(result, "<OPTIONS>               ::= [ <PROJECT-OPTION> ] [ <PATHMAP> ]"); //$NON-NLS-1$
+		appendLine(result, "                            { <PACKAGE> }+ { <REF-PACKAGE> }* { <REF-GEN-MODEL> }*"); //$NON-NLS-1$
+		appendLine(result, "                            [ <TEMPLATE-PATH> ] [ <MODEL-PLUGIN-ID> ] [ <COPYRIGHT> ]"); //$NON-NLS-1$
+		appendLine(result, "                            [ <SDO> ] [ <QUIET> ] { <IMPORTER-OPTION> }*"); //$NON-NLS-1$
+		appendLine(result, "                            [ <CACHE-ADAPTER-SUPPORT> ] [ <FACTORY-METHODS> ] [ <PLURALIZE-GETTERS> ]"); //$NON-NLS-1$
+		appendLine(result, "                            [ <SAFE-STRINGS> ] [ <INVARIANT-PREFIX> ]"); //$NON-NLS-1$
+		appendLine(result, "<PROJECT-OPTION>        ::= <MODEL-PROJECT> [ <EDIT-PROJECT> ] [ <EDITOR-PROJECT> ]"); //$NON-NLS-1$
+		appendLine(result, "                            [ <TESTS-PROJECT> ]"); //$NON-NLS-1$
+		appendLine(result, "<MODEL-PROJECT>         ::= -modelProject <model-directory> <fragment-path>"); //$NON-NLS-1$
+		appendLine(result, "<EDIT-PROJECT>          ::= -editProject <edit-directory> <fragment-path>"); //$NON-NLS-1$
+		appendLine(result, "<EDITOR-PROJECT>        ::= -editorProject <editor-directory> <fragment-path>"); //$NON-NLS-1$
+		appendLine(result, "<TESTS-PROJECT>         ::= -testsProject <tests-directory> <fragment-path>"); //$NON-NLS-1$
+		appendLine(result, "<PACKAGE>               ::= -package <name> [ <nsPrefix> <nsURI> <base> <prefix> ]"); //$NON-NLS-1$
+		appendLine(result, "                            [ <operationsPackage> ] [ resourceInterfaces ]"); //$NON-NLS-1$
+		appendLine(result, "<REF-GEN-MODEL>         ::= -refGenModel <model.genmodel> { <nsURI> }+"); //$NON-NLS-1$
+		appendLine(result, "<TEMPLATE-PATH>         ::= -templatePath <template-directory>"); //$NON-NLS-1$
+		appendLine(result, "<MODEL-PLUGIN-ID>       ::= -modelPluginID <plugin-ID>"); //$NON-NLS-1$
+		appendLine(result, "<COPYRIGHT>             ::= -copyright <copyright-string>"); //$NON-NLS-1$
+		appendLine(result, "<JDK-LEVEL>             ::= -jdkLevel <jdk level: 1.4 5.0 6.0>"); //$NON-NLS-1$
+		appendLine(result, "<VALIDATE-MODEL>        ::= -validateModel < true | false >"); //$NON-NLS-1$
+		appendLine(result, "<SDO>                   ::= -sdo"); //$NON-NLS-1$
+		appendLine(result, "<QUIET>                 ::= -quiet"); //$NON-NLS-1$
+		appendLine(result, "<IMPORTER-OPTION>       ::= < -ECORE_TAGGED_VALUES |" ); //$NON-NLS-1$
+		appendLine(result,"                               -REDEFINING_OPERATIONS | -REDEFINING_PROPERTIES |"); //$NON-NLS-1$
+		appendLine(result,"                               -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
+		appendLine(result,"                               -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
+		appendLine(result,"                               -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
+		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS >" ); //$NON-NLS-1$
+		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
+		appendLine(result, "<CACHE-ADAPTER-SUPPORT> ::= -cacheAdapterSupport"); //$NON-NLS-1$
+		appendLine(result, "<FACTORY-METHODS>       ::= -factoryMethods"); //$NON-NLS-1$
+		appendLine(result, "<PLURALIZE-GETTERS>     ::= -pluralizeGetters"); //$NON-NLS-1$
+		appendLine(result, "<SAFE-STRINGS>          ::= -safeStrings"); //$NON-NLS-1$
+		appendLine(result, "<INVARIANT-PREFIX>      ::= -invariantPrefix <prefix>"); //$NON-NLS-1$
+		appendLine(result, ""); //$NON-NLS-1$
+		appendLine(result, "For example:"); //$NON-NLS-1$
+		appendLine(result, ""); //$NON-NLS-1$
+		appendLine(result, ""); //$NON-NLS-1$
+		appendLine(result, "  uml2genmodel"); //$NON-NLS-1$
+		appendLine(result, "    ../../company/model.uml"); //$NON-NLS-1$
+		appendLine(result, "    result/model/Extended.genmodel"); //$NON-NLS-1$
+		appendLine(result, "    -modelProject result src"); //$NON-NLS-1$
+		appendLine(result, "    -editProject result.edit src"); //$NON-NLS-1$
+		appendLine(result, "    -editorProject result.editor src"); //$NON-NLS-1$
+		appendLine(result, "    -refGenModel company.genmodel http://org.sample.company"); //$NON-NLS-1$
+		
+		return result;
+	}
+
+	@Override
+	protected int processArgument(String[] arguments, int index) {
+
 		if (arguments[index].equalsIgnoreCase("-package")) { //$NON-NLS-1$
 
 			if (nameToPackageInfo == null) {
@@ -102,18 +133,26 @@ public class UMLImporterApplication
 
 			index = processPackageInformation(arguments, index,
 				nameToPackageInfo);
-			
-		} else if (isUMLOption(arguments[index])) {
-			umlOptions.put(arguments[index].substring(1), arguments[++index]);
-			
+		} else if (isImporterOption(arguments[index])) {
+			importerOptions.put(arguments[index].substring(1), arguments[++index]);
+		} else if (arguments[index].equalsIgnoreCase("-pluralizeGetters")) {
+			pluralizeGetters = true;
+		} else if (arguments[index].equalsIgnoreCase("-safeStrings")) {
+			safeStrings = true;
+		} else if (arguments[index].equalsIgnoreCase("-cacheAdapterSupport")) {
+			cacheAdapterSupport = true;
+		} else if (arguments[index].equalsIgnoreCase("-factoryMethods")) {
+			factoryMethods = true;
+		} else if (arguments[index].equalsIgnoreCase("-invariantPrefix")) {
+			invariantPrefix = arguments[++index];
 		} else {
 			return super.processArgument(arguments, index);
 		}
+
 		return index + 1;
 	}
-	 
-	 
-	protected boolean isUMLOption(String key) {
+
+	protected boolean isImporterOption(String key) {
 		String strippedKey = key.substring(1);
 
 		return UMLUtil.UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES
@@ -141,36 +180,61 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS
 				.equalsIgnoreCase(strippedKey);
 	}
-	
-	 protected int processPackageInformation(String[] arguments, int index,
-			Map<String, PackageInfo> nsURIToPackageInfo) {
+
+	protected int processPackageInformation(String[] arguments, int index,
+			Map<String, PackageInfo> nameToPackageInfo) {
 		int start = index;
 		PackageInfo packageInfo = new PackageInfo();
 
 		if (index + 1 < arguments.length
 			&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
 
-			packageInfo.nsURI = arguments[++index];
+			packageInfo.name = arguments[++index];
 
 			if (index + 1 < arguments.length
-				&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+				&& !arguments[index + 1].startsWith("-") //$NON-NLS-1$
+				&& !arguments[index + 2].startsWith("-") //$NON-NLS-1$
+				&& !arguments[index + 3].startsWith("-")) { //$NON-NLS-1$
 
-				packageInfo.base = arguments[++index];
+				packageInfo.nsPrefix = arguments[++index];
 
 				if (index + 1 < arguments.length
 					&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
 
-					packageInfo.prefix = arguments[++index];
+					packageInfo.nsURI = arguments[++index];
+
+					if (index + 1 < arguments.length
+						&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+						packageInfo.base = arguments[++index];
+
+						if (index + 1 < arguments.length
+							&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+							packageInfo.prefix = arguments[++index];
+						}
+					}
 				}
 			}
 
-			if (index - start != 1 && index - start != 3) {
+			while (index + 1 < arguments.length
+				&& !arguments[index + 1].startsWith("-")) { //$NON-NLS-1$
+
+				if (arguments[++index].equalsIgnoreCase("resourceInterfaces")) { //$NON-NLS-1$
+					packageInfo.resourceInterfaces = true;
+					break;
+				} else {
+					packageInfo.operationsPackage = arguments[index];
+				}
+			}
+
+			if (index - start == 0 || index - start == 4) {
 				throw new IllegalArgumentException(
-					"Error: Expecting either 1 or 3 arguments for " //$NON-NLS-1$
+					"Error: Expecting either 1 - 3 or 5 - 7 arguments for " //$NON-NLS-1$
 						+ arguments[start]);
 			} else {
-				nsURIToPackageInfo.put(packageInfo.nsURI, packageInfo);
-				nsURIToPackageInfo.put(packageInfo.nsURI.toLowerCase(),
+				nameToPackageInfo.put(packageInfo.name, packageInfo);
+				nameToPackageInfo.put(packageInfo.name.toLowerCase(),
 					packageInfo);
 				return index;
 			}
@@ -179,8 +243,7 @@ public class UMLImporterApplication
 				"Error: No package name was specified for " + arguments[start]); //$NON-NLS-1$
 		}
 	}
-	 	 
-	
+
 	@Override
 	protected void adjustModelImporter(Monitor monitor) {
 
@@ -192,9 +255,47 @@ public class UMLImporterApplication
 			UMLImporter umlImporter = getUMLImporter();
 
 			if (umlImporter != null) {
-				umlImporter.getOptions().putAll(umlOptions);
+				umlImporter.getOptions().putAll(importerOptions);
 			}
 
+		} finally {
+			monitor.done();
+		}
+	}
+
+	@Override
+	protected void adjustGenModel(Monitor monitor) {
+
+		try {
+			monitor.beginTask("", 2); //$NON-NLS-1$
+
+			super.adjustGenModel(CodeGenUtil.createMonitor(monitor, 1));
+
+			GenModel genModel = getUMLImporter().getGenModel();
+
+			if (genModel instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenModel) {
+				org.eclipse.uml2.codegen.ecore.genmodel.GenModel uml2GenModel = (org.eclipse.uml2.codegen.ecore.genmodel.GenModel) genModel;
+
+				if (pluralizeGetters) {
+					uml2GenModel.setPluralizedGetters(pluralizeGetters);
+				}
+
+				if (safeStrings) {
+					uml2GenModel.setSafeStrings(safeStrings);
+				}
+
+				if (cacheAdapterSupport) {
+					uml2GenModel.setCacheAdapterSupport(cacheAdapterSupport);
+				}
+
+				if (factoryMethods) {
+					uml2GenModel.setFactoryMethods(factoryMethods);
+				}
+
+				if (invariantPrefix != null) {
+					uml2GenModel.setInvariantPrefix(invariantPrefix);
+				}
+			}
 		} finally {
 			monitor.done();
 		}
@@ -209,6 +310,7 @@ public class UMLImporterApplication
 
 			UMLImporter umlImporter = getUMLImporter();
 			List<EPackage> ePackages = umlImporter.getEPackages();
+
 			traverseEPackages(ePackages);
 			umlImporter.adjustEPackages(CodeGenUtil.createMonitor(monitor, 1));
 		} finally {
@@ -216,26 +318,44 @@ public class UMLImporterApplication
 		}
 	}
 
-	 protected void traverseEPackages(List<EPackage> ePackages) {
+	protected void traverseEPackages(List<EPackage> ePackages) {
 
 		for (EPackage ePackage : ePackages) {
 
 			if (nameToPackageInfo != null) {
 				PackageInfo packageInfo = nameToPackageInfo.get(ePackage
-					.getNsURI());
+					.getName());
 
 				if (packageInfo != null) {
 					handleEPackage(ePackage, true);
 
-					ModelImporter.EPackageImportInfo ePackageInfo = getUMLImporter()
+					ModelImporter.EPackageImportInfo ePackageImportInfo = getUMLImporter()
 						.getEPackageImportInfo(ePackage);
 
-					if (ePackageInfo.getBasePackage() == null) {
-						ePackageInfo.setBasePackage(packageInfo.base);
+					if (packageInfo.nsPrefix != null) {
+						ePackage.setNsPrefix(packageInfo.nsPrefix);
 					}
 
-					if (ePackageInfo.getPrefix() == null) {
-						ePackageInfo.setPrefix(packageInfo.prefix);
+					if (packageInfo.nsURI != null) {
+						ePackage.setNsURI(packageInfo.nsURI);
+					}
+
+					if (ePackageImportInfo.getBasePackage() == null) {
+						ePackageImportInfo.setBasePackage(packageInfo.base);
+					}
+
+					if (ePackageImportInfo.getPrefix() == null) {
+						ePackageImportInfo.setPrefix(packageInfo.prefix);
+					}
+
+					if (ePackageImportInfo instanceof UMLImporter.EPackageImportInfo) {
+						UMLImporter.EPackageImportInfo umlEPackageImportInfo = (UMLImporter.EPackageImportInfo) ePackageImportInfo;
+
+						umlEPackageImportInfo
+							.setResourceInterfaces(packageInfo.resourceInterfaces);
+
+						umlEPackageImportInfo
+							.setOperationsPackage(packageInfo.operationsPackage);
 					}
 				}
 			}

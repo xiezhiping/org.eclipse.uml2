@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.8 2007/02/05 16:31:51 khussey Exp $
+ * $Id: UMLImporter.java,v 1.9 2007/02/09 16:35:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -51,6 +51,35 @@ public class UMLImporter
 		extends ModelImporter {
 
 	protected final Map<String, String> options = new HashMap<String, String>();
+
+	public static class EPackageImportInfo
+			extends ModelImporter.EPackageImportInfo {
+
+		protected String operationsPackage;
+
+		protected boolean resourceInterfaces = false;
+
+		public String getOperationsPackage() {
+			return operationsPackage;
+		}
+
+		public void setOperationsPackage(String operationsPackage) {
+			this.operationsPackage = operationsPackage;
+		}
+
+		public boolean isResourceInterfaces() {
+			return resourceInterfaces;
+		}
+
+		public void setResourceInterfaces(boolean resourceInterfaces) {
+			this.resourceInterfaces = resourceInterfaces;
+		}
+	}
+
+	@Override
+	protected EPackageConvertInfo createEPackageInfo(EPackage ePackage) {
+		return new EPackageImportInfo();
+	}
 
 	public Map<String, String> getOptions() {
 		return options;
@@ -160,7 +189,7 @@ public class UMLImporter
 						element, UMLUtil.STEREOTYPE__E_PACKAGE);
 
 					if (null != ePackageStereotype) {
-						EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
+						ModelImporter.EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 
 						if (element.hasValue(ePackageStereotype,
 							UMLUtil.TAG_DEFINITION__BASE_PACKAGE)) {
@@ -207,8 +236,24 @@ public class UMLImporter
 	}
 
 	@Override
+	protected void adjustGenPackageDuringTraverse(GenPackage genPackage) {
+		super.adjustGenPackageDuringTraverse(genPackage);
+
+		if (genPackage instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) {
+			org.eclipse.uml2.codegen.ecore.genmodel.GenPackage uml2GenPackage = (org.eclipse.uml2.codegen.ecore.genmodel.GenPackage) genPackage;
+			EPackageImportInfo umlEPackageImportInfo = (EPackageImportInfo) getEPackageImportInfo(genPackage
+				.getEcorePackage());
+
+			uml2GenPackage.setOperationsPackage(umlEPackageImportInfo
+				.getOperationsPackage());
+			uml2GenPackage.setResourceInterfaces(umlEPackageImportInfo
+				.isResourceInterfaces());
+		}
+	}
+
+	@Override
 	public void adjustEPackage(Monitor monitor, EPackage ePackage) {
-		EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
+		ModelImporter.EPackageImportInfo ePackageInfo = getEPackageImportInfo(ePackage);
 		String name = ePackage.getName();
 
 		if (ePackageInfo.getPrefix() == null) {

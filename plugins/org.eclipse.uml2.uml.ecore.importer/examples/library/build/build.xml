@@ -30,7 +30,10 @@
 		<uml2Java modelName="library">
 			<settings>
 				<arg line="-ECORE_TAGGED_VALUES PROCESS"/>
-				<arg line="-package http:///library.ecore org.examples Library"/>
+				<arg line="-DUPLICATE_FEATURES PROCESS"/>
+				<arg line="-pluralizeGetters"/>
+				<arg line="-invariantPrefix validate"/>
+				<arg line="-package library library http://www.examples.org/2007/Library org.examples Library org.examples.library.operations resourceInterfaces"/>
 			</settings>
 		</uml2Java>
 		
