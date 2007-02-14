@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLHandler.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UMLHandler.java,v 1.3 2007/02/14 21:57:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.SAXXMIHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+import org.eclipse.uml2.uml.Profile;
 
 public class UMLHandler
 		extends SAXXMIHandler {
@@ -36,6 +37,16 @@ public class UMLHandler
 	public UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map<?, ?> options) {
 		super(xmiResource, helper, options);
+	}
+
+	@Override
+	public void endElement(String uri, String localName, String name) {
+
+		if (objects.size() == 1 && objects.peek() instanceof Profile) {
+			handleForwardReferences();
+		}
+
+		super.endElement(uri, localName, name);
 	}
 
 	@Override
