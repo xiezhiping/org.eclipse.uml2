@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.3 2006/05/23 20:19:05 khussey Exp $
+ $Id: plugin.xml,v 1.4 2007/02/14 19:57:56 khussey Exp $
 -->
 
 <plugin>
@@ -34,6 +34,8 @@
 <!-- Define Javadoc locations                                               -->
 <!-- ====================================================================== -->
   <extension point="org.eclipse.pde.core.javadoc">
-    <javadoc path="references/javadoc" /> <!-- defaults to reference/api -->
+    <javadoc path="references/javadoc"> <!-- defaults to reference/api -->
+      <plugin id="org.eclipse.uml2"/> <!-- @pluginIDs@ -->
+    </javadoc>
   </extension>
 </plugin>
