@@ -85,7 +85,7 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected <%=genClass.getImportedInterfaceName()%> fixture = null;
+	protected <%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%> fixture = null;
 <%}%>
 <%if (!genClass.isAbstract()) {%>
 
@@ -118,7 +118,7 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void setFixture(<%=genClass.getImportedInterfaceName()%> fixture)
+	protected void setFixture(<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%> fixture)
 	{
 		this.fixture = fixture;
 	}
@@ -130,12 +130,15 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private <%=genClass.getImportedInterfaceName()%> getFixture()
+<%if (!genClass.isModelRoot() && genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	<%if (genModel.useGenerics()) {%>protected<%} else {%>private<%}%> <%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%> getFixture()
 	{
 <%if (genClass.isModelRoot()) {%>
 		return fixture;
 <%} else {%>
-		return (<%=genClass.getImportedInterfaceName()%>)fixture;
+		return (<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)fixture;
 <%}%>
 	}
 <%if (!genClass.isAbstract()) {%>
@@ -171,7 +174,7 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 <%for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {%>
 <%@ include file="TestCase/implementedGenFeature.override.javajetinc" fail="alternative" %>
 <%@ start %>
-  <%if ((genFeature.isVolatile() || genFeature.isDerived()) && !UML2GenModelUtil.isUnion(genFeature)) {%>
+  <%if (UML2GenModelUtil.isTest(genFeature)) {%>
     <%if (genFeature.isGet() && !genFeature.isSuppressedGetVisibility()) {%>
 <%@ include file="TestCase/getGenFeature.override.javajetinc" fail="alternative" %>
 <%@ start %>
@@ -183,6 +186,9 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/getGenFeature.annotations.insert.javajetinc%>
+<%@ include file="TestCase/getGenFeature.annotations.insert.javajetinc" fail="silent" %>
+      <%}%>
 	public void test<%=genModel.capName(genFeature.getGetAccessor())%>()
 	{
 <%@ include file="TestCase/getGenFeature.TODO.override.javajetinc" fail="alternative" %>
@@ -205,6 +211,9 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#set<%=genFeature.getAccessorName()%>(<%=genFeature.getType()%>)
 	 * @generated
 	 */
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/setGenFeature.annotations.insert.javajetinc%>
+<%@ include file="TestCase/setGenFeature.annotations.insert.javajetinc" fail="silent" %>
+      <%}%>
 	public void testSet<%=genFeature.getAccessorName()%>()
 	{
 <%@ include file="TestCase/setGenFeature.TODO.override.javajetinc" fail="alternative" %>
@@ -227,6 +236,9 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#unset<%=genFeature.getAccessorName()%>()
 	 * @generated
 	 */
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/unsetGenFeature.annotations.insert.javajetinc%>
+<%@ include file="TestCase/unsetGenFeature.annotations.insert.javajetinc" fail="silent" %>
+      <%}%>
 	public void testUnset<%=genFeature.getAccessorName()%>()
 	{
 <%@ include file="TestCase/unsetGenFeature.TODO.override.javajetinc" fail="alternative" %>
@@ -249,6 +261,9 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>()
 	 * @generated
 	 */
+      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/isSetGenFeature.annotations.insert.javajetinc%>
+<%@ include file="TestCase/isSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
+      <%}%>
 	public void testIsSet<%=genFeature.getAccessorName()%>()
 	{
 <%@ include file="TestCase/isSetGenFeature.TODO.override.javajetinc" fail="alternative" %>
@@ -275,6 +290,9 @@ public<%if (genClass.isAbstract()) {%> abstract<%}%> class <%=genClass.getTestCa
 	 * @see <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
 	 * @generated
 	 */
+  <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/genOperation.annotations.insert.javajetinc%>
+<%@ include file="TestCase/genOperation.annotations.insert.javajetinc" fail="silent" %>
+  <%}%>
 	public void test<%=genModel.capName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false)%>()
 	{
 <%@ include file="TestCase/implementedGenOperation.TODO.override.javajetinc" fail="alternative" %>

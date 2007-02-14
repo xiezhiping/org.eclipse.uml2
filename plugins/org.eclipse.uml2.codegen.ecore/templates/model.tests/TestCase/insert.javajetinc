@@ -8,6 +8,9 @@
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#<%=genFeature.getGetAccessor()%>()
 	 * @generated
 	 */
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //getGenFeature.annotations.insert.javajetinc%>
+<%@ include file="getGenFeature.annotations.insert.javajetinc" fail="silent" %>
+    <%}%>
 	public void test<%=genModel.capName(genFeature.getGetAccessor())%>()
 	{
 		// TODO: implement this redefined feature getter test method
@@ -23,6 +26,9 @@
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#set<%=genFeature.getAccessorName()%>(<%=genFeature.getType()%>)
 	 * @generated
 	 */
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //setGenFeature.annotations.insert.javajetinc%>
+<%@ include file="setGenFeature.annotations.insert.javajetinc" fail="silent" %>
+    <%}%>
 	public void testSet<%=genFeature.getAccessorName()%>()
 	{
 		// TODO: implement this redefined feature setter test method
@@ -38,6 +44,9 @@
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#unset<%=genFeature.getAccessorName()%>()
 	 * @generated
 	 */
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //unsetGenFeature.annotations.insert.javajetinc%>
+<%@ include file="unsetGenFeature.annotations.insert.javajetinc" fail="silent" %>
+    <%}%>
 	public void testUnset<%=genFeature.getAccessorName()%>()
 	{
 		// TODO: implement this redefined test method
@@ -53,6 +62,9 @@
 	 * @see <%=genFeature.getGenClass().getQualifiedInterfaceName()%>#isSet<%=genFeature.getAccessorName()%>()
 	 * @generated
 	 */
+    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //isSetGenFeature.annotations.insert.javajetinc%>
+<%@ include file="isSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
+    <%}%>
 	public void testIsSet<%=genFeature.getAccessorName()%>()
 	{
 		// TODO: implement this redefined test method
@@ -69,6 +81,9 @@
 	 * @see <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
 	 * @generated
 	 */
+  <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc%>
+<%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
+  <%}%>
 	public void test<%=genModel.capName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false)%>()
 	{
 		// TODO: implement this redefined operation test method

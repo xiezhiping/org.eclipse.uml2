@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.16 2007/01/05 21:44:08 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.17 2007/02/14 19:59:49 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -642,6 +642,11 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
 				.getFormattedKeyFeatureNames()
 			: ""; //$NON-NLS-1$				
+	}
+
+	public static boolean isTest(GenFeature genFeature) {
+		return (genFeature.isVolatile() || genFeature.isDerived())
+			&& !isUnion(genFeature);
 	}
 
 	// GenOperation utilities
