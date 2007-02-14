@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineTest.java,v 1.5 2007/01/05 21:48:57 khussey Exp $
+ * $Id: StateMachineTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -64,7 +64,8 @@ public class StateMachineTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StateMachine getFixture() {
+	@Override
+	protected StateMachine getFixture() {
 		return (StateMachine) fixture;
 	}
 
@@ -183,6 +184,7 @@ public class StateMachineTest
 	 * @see org.eclipse.uml2.uml.StateMachine#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement)
 	 * @generated
 	 */
+	@Override
 	public void testIsConsistentWith__RedefinableElement() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -195,6 +197,7 @@ public class StateMachineTest
 	 * @see org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement)
 	 * @generated
 	 */
+	@Override
 	public void testIsRedefinitionContextValid__RedefinableElement() {
 		// TODO: implement this redefined operation test method
 		// Ensure that you remove @generated or mark it @generated NOT

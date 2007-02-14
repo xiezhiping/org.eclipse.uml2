@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OutputPinTest.java,v 1.3 2007/01/05 21:48:57 khussey Exp $
+ * $Id: OutputPinTest.java,v 1.4 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -57,7 +57,8 @@ public class OutputPinTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private OutputPin getFixture() {
+	@Override
+	protected OutputPin getFixture() {
 		return (OutputPin) fixture;
 	}
 

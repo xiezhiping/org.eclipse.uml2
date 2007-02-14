@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateTest.java,v 1.4 2007/01/05 21:48:57 khussey Exp $
+ * $Id: PseudostateTest.java,v 1.5 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -65,7 +65,8 @@ public class PseudostateTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Pseudostate getFixture() {
+	@Override
+	protected Pseudostate getFixture() {
 		return (Pseudostate) fixture;
 	}
 

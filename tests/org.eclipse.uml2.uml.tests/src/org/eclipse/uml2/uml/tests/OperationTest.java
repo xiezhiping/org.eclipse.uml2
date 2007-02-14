@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationTest.java,v 1.7 2007/01/05 21:48:58 khussey Exp $
+ * $Id: OperationTest.java,v 1.8 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -77,7 +77,8 @@ public class OperationTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Operation getFixture() {
+	@Override
+	protected Operation getFixture() {
 		return (Operation) fixture;
 	}
 
@@ -355,6 +356,7 @@ public class OperationTest
 	 * @see org.eclipse.uml2.uml.Operation#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement)
 	 * @generated
 	 */
+	@Override
 	public void testIsConsistentWith__RedefinableElement() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

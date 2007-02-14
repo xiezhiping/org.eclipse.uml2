@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageTest.java,v 1.8 2007/01/05 21:48:57 khussey Exp $
+ * $Id: PackageTest.java,v 1.9 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -86,7 +86,8 @@ public class PackageTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private org.eclipse.uml2.uml.Package getFixture() {
+	@Override
+	protected org.eclipse.uml2.uml.Package getFixture() {
 		return (org.eclipse.uml2.uml.Package) fixture;
 	}
 
@@ -436,6 +437,7 @@ public class PackageTest
 	 * @see org.eclipse.uml2.uml.Package#mustBeOwned()
 	 * @generated NOT
 	 */
+	@Override
 	public void testMustBeOwned() {
 		assertFalse(getFixture().mustBeOwned());
 	}

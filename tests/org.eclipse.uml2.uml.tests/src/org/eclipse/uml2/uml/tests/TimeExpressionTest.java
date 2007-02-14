@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionTest.java,v 1.2 2007/01/05 21:48:57 khussey Exp $
+ * $Id: TimeExpressionTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -57,7 +57,8 @@ public class TimeExpressionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TimeExpression getFixture() {
+	@Override
+	protected TimeExpression getFixture() {
 		return (TimeExpression) fixture;
 	}
 
@@ -92,6 +93,7 @@ public class TimeExpressionTest
 	 * @see org.eclipse.uml2.uml.TimeExpression#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

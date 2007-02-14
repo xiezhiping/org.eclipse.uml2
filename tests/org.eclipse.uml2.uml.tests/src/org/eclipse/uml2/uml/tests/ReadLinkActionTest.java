@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ReadLinkActionTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -61,7 +61,8 @@ public class ReadLinkActionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ReadLinkAction getFixture() {
+	@Override
+	protected ReadLinkAction getFixture() {
 		return (ReadLinkAction) fixture;
 	}
 

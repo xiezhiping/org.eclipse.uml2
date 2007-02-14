@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementTest.java,v 1.5 2006/06/14 22:09:58 khussey Exp $
+ * $Id: TemplateableElementTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -46,7 +46,8 @@ public abstract class TemplateableElementTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private TemplateableElement getFixture() {
+	@Override
+	protected TemplateableElement getFixture() {
 		return (TemplateableElement) fixture;
 	}
 

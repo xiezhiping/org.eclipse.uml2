@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationFlowTest.java,v 1.5 2007/01/05 21:48:57 khussey Exp $
+ * $Id: InformationFlowTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class InformationFlowTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private InformationFlow getFixture() {
+	@Override
+	protected InformationFlow getFixture() {
 		return (InformationFlow) fixture;
 	}
 

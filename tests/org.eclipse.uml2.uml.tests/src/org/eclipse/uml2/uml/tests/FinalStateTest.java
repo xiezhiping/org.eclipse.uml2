@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateTest.java,v 1.3 2007/01/05 21:48:57 khussey Exp $
+ * $Id: FinalStateTest.java,v 1.4 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -62,7 +62,8 @@ public class FinalStateTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private FinalState getFixture() {
+	@Override
+	protected FinalState getFixture() {
 		return (FinalState) fixture;
 	}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: JoinNodeTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -58,7 +58,8 @@ public class JoinNodeTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private JoinNode getFixture() {
+	@Override
+	protected JoinNode getFixture() {
 		return (JoinNode) fixture;
 	}
 

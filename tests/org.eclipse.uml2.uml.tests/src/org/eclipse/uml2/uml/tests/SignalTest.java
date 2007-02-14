@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalTest.java,v 1.5 2007/01/05 21:48:56 khussey Exp $
+ * $Id: SignalTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -57,7 +57,8 @@ public class SignalTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Signal getFixture() {
+	@Override
+	protected Signal getFixture() {
 		return (Signal) fixture;
 	}
 

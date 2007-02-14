@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ReadStructuralFeatureActionTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -58,7 +58,8 @@ public class ReadStructuralFeatureActionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ReadStructuralFeatureAction getFixture() {
+	@Override
+	protected ReadStructuralFeatureAction getFixture() {
 		return (ReadStructuralFeatureAction) fixture;
 	}
 
@@ -105,6 +106,7 @@ public class ReadStructuralFeatureActionTest
 	 * @see org.eclipse.uml2.uml.ReadStructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
+	@Override
 	public void testValidateMultiplicity__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.7 2006/06/14 22:09:58 khussey Exp $
+ * $Id: ElementTest.java,v 1.8 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import java.util.Date;
-import java.util.Iterator;
 
 import junit.framework.TestCase;
 
@@ -23,6 +22,8 @@ import org.eclipse.emf.common.util.UniqueEList;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
@@ -125,7 +126,7 @@ public abstract class ElementTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Element getFixture() {
+	protected Element getFixture() {
 		return fixture;
 	}
 
@@ -138,8 +139,9 @@ public abstract class ElementTest
 	 */
 	public void testValidateNotOwnSelf__DiagnosticChain_Map() {
 
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseComment(Comment comment) {
 				caseElement(comment);
 
@@ -155,6 +157,7 @@ public abstract class ElementTest
 				return comment;
 			}
 
+			@Override
 			public Object caseElement(Element element) {
 				assertTrue(element.validateNotOwnSelf(null, null));
 
@@ -172,20 +175,23 @@ public abstract class ElementTest
 	 */
 	public void testValidateHasOwner__DiagnosticChain_Map() {
 
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseElement(Element element) {
 				assertFalse(getFixture().validateHasOwner(null, null));
 
 				return element;
 			}
 
+			@Override
 			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 				assertTrue(getFixture().validateHasOwner(null, null));
 
 				return package_;
 			}
 
+			@Override
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				caseElement(packageableElement);
@@ -222,7 +228,7 @@ public abstract class ElementTest
 				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents()
 			.add(comment2);
 
-		EList contents = resourceSet.createResource(
+		EList<EObject> contents = resourceSet.createResource(
 			URI.createFileURI(String.valueOf(new Date().getTime()))
 				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents();
 
@@ -237,16 +243,20 @@ public abstract class ElementTest
 
 		assertFalse(contents.contains(getFixture()));
 
-		final EList annotatedElements1 = comment1.getAnnotatedElements();
-		final EList annotatedElements2 = comment2.getAnnotatedElements();
+		final EList<Element> annotatedElements1 = comment1
+			.getAnnotatedElements();
+		final EList<Element> annotatedElements2 = comment2
+			.getAnnotatedElements();
 
 		annotatedElements1.add(getFixture());
 		annotatedElements2.add(getFixture());
 
-		final EList packagedElements = model.getPackagedElements();
+		final EList<PackageableElement> packagedElements = model
+			.getPackagedElements();
 
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseElement(Element element) {
 				assertTrue(annotatedElements1.contains(element));
 				assertTrue(annotatedElements2.contains(element));
@@ -259,6 +269,7 @@ public abstract class ElementTest
 				return element;
 			}
 
+			@Override
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				caseElement(packageableElement);
@@ -361,20 +372,23 @@ public abstract class ElementTest
 	 */
 	public void testGetNearestPackage() {
 
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseElement(Element element) {
 				assertNull(element.getNearestPackage());
 
 				return element;
 			}
 
+			@Override
 			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 				assertSame(package_, package_.getNearestPackage());
 
 				return package_;
 			}
 
+			@Override
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				caseElement(packageableElement);
@@ -403,20 +417,23 @@ public abstract class ElementTest
 	 */
 	public void testGetModel() {
 
-		new UMLSwitch() {
+		new UMLSwitch<Object>() {
 
+			@Override
 			public Object caseElement(Element element) {
 				assertNull(element.getModel());
 
 				return element;
 			}
 
+			@Override
 			public Object caseModel(Model model) {
 				assertSame(model, model.getModel());
 
 				return model;
 			}
 
+			@Override
 			public Object casePackageableElement(
 					PackageableElement packageableElement) {
 				caseElement(packageableElement);
@@ -749,13 +766,13 @@ public abstract class ElementTest
 	 * @generated NOT
 	 */
 	public void testAllOwnedElements() {
-		EList allOwnedElements = getFixture().allOwnedElements();
+		EList<Element> allOwnedElements = getFixture().allOwnedElements();
 
 		assertTrue(allOwnedElements
 			.containsAll(getFixture().getOwnedElements()));
 
-		for (Iterator aoe = allOwnedElements.iterator(); aoe.hasNext();) {
-			assertTrue(allOwnedElements.containsAll(((Element) aoe.next())
+		for (Element ownedElement : allOwnedElements) {
+			assertTrue(allOwnedElements.containsAll(ownedElement
 				.allOwnedElements()));
 		}
 	}
@@ -771,13 +788,10 @@ public abstract class ElementTest
 		assertTrue(getFixture().mustBeOwned());
 	}
 
-	protected EList getEAllSubClasses(EClass eClass) {
-		EList eAllSubClasses = new UniqueEList.FastCompare();
+	protected EList<EClass> getEAllSubClasses(EClass eClass) {
+		EList<EClass> eAllSubClasses = new UniqueEList.FastCompare<EClass>();
 
-		for (Iterator eClassifiers = UMLPackage.eINSTANCE.getEClassifiers()
-			.iterator(); eClassifiers.hasNext();) {
-
-			Object eClassifier = eClassifiers.next();
+		for (EClassifier eClassifier : UMLPackage.eINSTANCE.getEClassifiers()) {
 
 			if (eClassifier instanceof EClass) {
 				EClass umlEClass = (EClass) eClassifier;

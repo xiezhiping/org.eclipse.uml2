@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationTest.java,v 1.6 2007/01/05 21:48:56 khussey Exp $
+ * $Id: EnumerationTest.java,v 1.7 2007/02/14 20:06:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -51,7 +51,8 @@ public class EnumerationTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Enumeration getFixture() {
+	@Override
+	protected Enumeration getFixture() {
 		return (Enumeration) fixture;
 	}
 

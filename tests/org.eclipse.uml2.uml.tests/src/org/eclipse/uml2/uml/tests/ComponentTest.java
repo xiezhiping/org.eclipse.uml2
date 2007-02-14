@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentTest.java,v 1.6 2007/01/05 21:48:57 khussey Exp $
+ * $Id: ComponentTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -69,7 +69,8 @@ public class ComponentTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Component getFixture() {
+	@Override
+	protected Component getFixture() {
 		return (Component) fixture;
 	}
 

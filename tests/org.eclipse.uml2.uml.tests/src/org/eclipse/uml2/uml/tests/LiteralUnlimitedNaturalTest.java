@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralUnlimitedNaturalTest.java,v 1.2 2007/01/05 21:48:57 khussey Exp $
+ * $Id: LiteralUnlimitedNaturalTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class LiteralUnlimitedNaturalTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LiteralUnlimitedNatural getFixture() {
+	@Override
+	protected LiteralUnlimitedNatural getFixture() {
 		return (LiteralUnlimitedNatural) fixture;
 	}
 
@@ -94,6 +95,7 @@ public class LiteralUnlimitedNaturalTest
 	 * @see org.eclipse.uml2.uml.LiteralUnlimitedNatural#isComputable()
 	 * @generated
 	 */
+	@Override
 	public void testIsComputable() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -106,6 +108,7 @@ public class LiteralUnlimitedNaturalTest
 	 * @see org.eclipse.uml2.uml.LiteralUnlimitedNatural#unlimitedValue()
 	 * @generated
 	 */
+	@Override
 	public void testUnlimitedValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -118,6 +121,7 @@ public class LiteralUnlimitedNaturalTest
 	 * @see org.eclipse.uml2.uml.LiteralUnlimitedNatural#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionTest.java,v 1.5 2007/01/05 21:48:57 khussey Exp $
+ * $Id: ClearAssociationActionTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -58,7 +58,8 @@ public class ClearAssociationActionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ClearAssociationAction getFixture() {
+	@Override
+	protected ClearAssociationAction getFixture() {
 		return (ClearAssociationAction) fixture;
 	}
 

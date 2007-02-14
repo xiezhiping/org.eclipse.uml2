@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinTest.java,v 1.8 2007/01/05 21:48:58 khussey Exp $
+ * $Id: PinTest.java,v 1.9 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -76,7 +76,8 @@ public class PinTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Pin getFixture() {
+	@Override
+	protected Pin getFixture() {
 		return (Pin) fixture;
 	}
 

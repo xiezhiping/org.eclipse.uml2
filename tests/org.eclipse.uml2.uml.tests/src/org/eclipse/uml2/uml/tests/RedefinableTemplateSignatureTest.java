@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureTest.java,v 1.6 2007/01/05 21:48:57 khussey Exp $
+ * $Id: RedefinableTemplateSignatureTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -66,7 +66,8 @@ public class RedefinableTemplateSignatureTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private RedefinableTemplateSignature getFixture() {
+	@Override
+	protected RedefinableTemplateSignature getFixture() {
 		return (RedefinableTemplateSignature) fixture;
 	}
 
@@ -149,6 +150,7 @@ public class RedefinableTemplateSignatureTest
 	 * @see org.eclipse.uml2.uml.RedefinableTemplateSignature#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement)
 	 * @generated
 	 */
+	@Override
 	public void testIsConsistentWith__RedefinableElement() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

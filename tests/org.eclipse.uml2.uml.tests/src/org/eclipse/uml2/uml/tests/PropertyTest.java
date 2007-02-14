@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.10 2007/01/05 21:48:58 khussey Exp $
+ * $Id: PropertyTest.java,v 1.11 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -102,7 +102,8 @@ public class PropertyTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Property getFixture() {
+	@Override
+	protected Property getFixture() {
 		return (Property) fixture;
 	}
 
@@ -666,6 +667,7 @@ public class PropertyTest
 	 * @see org.eclipse.uml2.uml.Property#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement)
 	 * @generated NOT
 	 */
+	@Override
 	public void testIsConsistentWith__RedefinableElement() {
 		assertFalse(getFixture().isConsistentWith(null));
 

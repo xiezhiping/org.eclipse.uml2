@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionTest.java,v 1.4 2006/05/26 17:28:10 khussey Exp $
+ * $Id: WriteStructuralFeatureActionTest.java,v 1.5 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -46,7 +46,8 @@ public abstract class WriteStructuralFeatureActionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private WriteStructuralFeatureAction getFixture() {
+	@Override
+	protected WriteStructuralFeatureAction getFixture() {
 		return (WriteStructuralFeatureAction) fixture;
 	}
 
@@ -69,6 +70,7 @@ public abstract class WriteStructuralFeatureActionTest
 	 * @see org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
+	@Override
 	public void testValidateMultiplicity__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

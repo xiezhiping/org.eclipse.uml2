@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeTest.java,v 1.6 2007/01/05 21:48:57 khussey Exp $
+ * $Id: DataTypeTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class DataTypeTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private DataType getFixture() {
+	@Override
+	protected DataType getFixture() {
 		return (DataType) fixture;
 	}
 
@@ -118,6 +119,7 @@ public class DataTypeTest
 	 * @see org.eclipse.uml2.uml.DataType#inherit(org.eclipse.emf.common.util.EList)
 	 * @generated
 	 */
+	@Override
 	public void testInherit__EList() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

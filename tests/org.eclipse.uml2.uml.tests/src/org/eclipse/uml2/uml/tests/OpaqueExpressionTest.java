@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionTest.java,v 1.2 2007/01/05 21:48:57 khussey Exp $
+ * $Id: OpaqueExpressionTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -70,7 +70,8 @@ public class OpaqueExpressionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private OpaqueExpression getFixture() {
+	@Override
+	protected OpaqueExpression getFixture() {
 		return (OpaqueExpression) fixture;
 	}
 
@@ -201,6 +202,7 @@ public class OpaqueExpressionTest
 	 * @see org.eclipse.uml2.uml.OpaqueExpression#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

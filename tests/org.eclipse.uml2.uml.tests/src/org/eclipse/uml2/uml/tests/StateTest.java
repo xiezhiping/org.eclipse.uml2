@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateTest.java,v 1.5 2007/01/05 21:48:56 khussey Exp $
+ * $Id: StateTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -77,7 +77,8 @@ public class StateTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private State getFixture() {
+	@Override
+	protected State getFixture() {
 		return (State) fixture;
 	}
 

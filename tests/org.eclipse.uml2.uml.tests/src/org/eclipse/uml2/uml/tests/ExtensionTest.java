@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionTest.java,v 1.2 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ExtensionTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -68,7 +68,8 @@ public class ExtensionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Extension getFixture() {
+	@Override
+	protected Extension getFixture() {
 		return (Extension) fixture;
 	}
 

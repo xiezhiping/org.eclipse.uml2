@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralStringTest.java,v 1.3 2007/01/05 21:48:57 khussey Exp $
+ * $Id: LiteralStringTest.java,v 1.4 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -60,7 +60,8 @@ public class LiteralStringTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private LiteralString getFixture() {
+	@Override
+	protected LiteralString getFixture() {
 		return (LiteralString) fixture;
 	}
 
@@ -95,6 +96,7 @@ public class LiteralStringTest
 	 * @see org.eclipse.uml2.uml.LiteralString#integerValue()
 	 * @generated
 	 */
+	@Override
 	public void testIntegerValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -107,6 +109,7 @@ public class LiteralStringTest
 	 * @see org.eclipse.uml2.uml.LiteralString#unlimitedValue()
 	 * @generated
 	 */
+	@Override
 	public void testUnlimitedValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -119,6 +122,7 @@ public class LiteralStringTest
 	 * @see org.eclipse.uml2.uml.LiteralString#isComputable()
 	 * @generated
 	 */
+	@Override
 	public void testIsComputable() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -131,6 +135,7 @@ public class LiteralStringTest
 	 * @see org.eclipse.uml2.uml.LiteralString#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

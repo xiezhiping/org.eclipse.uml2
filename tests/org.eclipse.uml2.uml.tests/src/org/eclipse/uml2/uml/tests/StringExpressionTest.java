@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionTest.java,v 1.6 2007/01/05 21:48:58 khussey Exp $
+ * $Id: StringExpressionTest.java,v 1.7 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -61,7 +61,8 @@ public class StringExpressionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private StringExpression getFixture() {
+	@Override
+	protected StringExpression getFixture() {
 		return (StringExpression) fixture;
 	}
 
@@ -147,6 +148,7 @@ public class StringExpressionTest
 	 * @see org.eclipse.uml2.uml.StringExpression#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineTest.java,v 1.5 2007/01/05 21:48:57 khussey Exp $
+ * $Id: ProtocolStateMachineTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -61,7 +61,8 @@ public class ProtocolStateMachineTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ProtocolStateMachine getFixture() {
+	@Override
+	protected ProtocolStateMachine getFixture() {
 		return (ProtocolStateMachine) fixture;
 	}
 
@@ -144,6 +145,7 @@ public class ProtocolStateMachineTest
 	 * @see org.eclipse.uml2.uml.ProtocolStateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
+	@Override
 	public void testValidateClassifierContext__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

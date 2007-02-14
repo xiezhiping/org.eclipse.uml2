@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassTest.java,v 1.6 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ClassTest.java,v 1.7 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -69,7 +69,8 @@ public class ClassTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private org.eclipse.uml2.uml.Class getFixture() {
+	@Override
+	protected org.eclipse.uml2.uml.Class getFixture() {
 		return (org.eclipse.uml2.uml.Class) fixture;
 	}
 
@@ -200,6 +201,7 @@ public class ClassTest
 	 * @see org.eclipse.uml2.uml.Class#inherit(org.eclipse.emf.common.util.EList)
 	 * @generated
 	 */
+	@Override
 	public void testInherit__EList() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -212,6 +214,7 @@ public class ClassTest
 	 * @see org.eclipse.uml2.uml.Classifier#getGenerals()
 	 * @generated
 	 */
+	@Override
 	public void testGetGenerals() {
 		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

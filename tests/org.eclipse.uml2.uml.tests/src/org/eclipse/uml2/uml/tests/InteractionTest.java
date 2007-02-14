@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: InteractionTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -51,7 +51,8 @@ public class InteractionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Interaction getFixture() {
+	@Override
+	protected Interaction getFixture() {
 		return (Interaction) fixture;
 	}
 

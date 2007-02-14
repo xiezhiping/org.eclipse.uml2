@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineTest.java,v 1.5 2007/01/05 21:48:57 khussey Exp $
+ * $Id: LifelineTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class LifelineTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Lifeline getFixture() {
+	@Override
+	protected Lifeline getFixture() {
 		return (Lifeline) fixture;
 	}
 

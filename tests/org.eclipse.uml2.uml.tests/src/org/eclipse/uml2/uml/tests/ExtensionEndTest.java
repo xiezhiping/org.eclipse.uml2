@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndTest.java,v 1.3 2007/01/05 21:48:57 khussey Exp $
+ * $Id: ExtensionEndTest.java,v 1.4 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -65,7 +65,8 @@ public class ExtensionEndTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ExtensionEnd getFixture() {
+	@Override
+	protected ExtensionEnd getFixture() {
 		return (ExtensionEnd) fixture;
 	}
 
@@ -100,6 +101,7 @@ public class ExtensionEndTest
 	 * @see org.eclipse.uml2.uml.ExtensionEnd#getLower()
 	 * @generated
 	 */
+	@Override
 	public void testGetLower() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -112,6 +114,7 @@ public class ExtensionEndTest
 	 * @see org.eclipse.uml2.uml.ExtensionEnd#setLower(int)
 	 * @generated
 	 */
+	@Override
 	public void testSetLower() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -148,6 +151,7 @@ public class ExtensionEndTest
 	 * @see org.eclipse.uml2.uml.ExtensionEnd#lowerBound()
 	 * @generated
 	 */
+	@Override
 	public void testLowerBound() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationTest.java,v 1.2 2007/01/05 21:48:58 khussey Exp $
+ * $Id: DurationTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -57,7 +57,8 @@ public class DurationTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Duration getFixture() {
+	@Override
+	protected Duration getFixture() {
 		return (Duration) fixture;
 	}
 
@@ -92,6 +93,7 @@ public class DurationTest
 	 * @see org.eclipse.uml2.uml.Duration#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

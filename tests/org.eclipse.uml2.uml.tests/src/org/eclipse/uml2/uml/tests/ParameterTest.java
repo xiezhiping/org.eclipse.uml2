@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterTest.java,v 1.10 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ParameterTest.java,v 1.11 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -93,7 +93,8 @@ public class ParameterTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Parameter getFixture() {
+	@Override
+	protected Parameter getFixture() {
 		return (Parameter) fixture;
 	}
 

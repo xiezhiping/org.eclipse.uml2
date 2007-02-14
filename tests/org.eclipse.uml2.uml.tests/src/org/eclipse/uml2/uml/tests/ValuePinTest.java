@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinTest.java,v 1.3 2007/01/05 21:48:56 khussey Exp $
+ * $Id: ValuePinTest.java,v 1.4 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -58,7 +58,8 @@ public class ValuePinTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ValuePin getFixture() {
+	@Override
+	protected ValuePin getFixture() {
 		return (ValuePin) fixture;
 	}
 

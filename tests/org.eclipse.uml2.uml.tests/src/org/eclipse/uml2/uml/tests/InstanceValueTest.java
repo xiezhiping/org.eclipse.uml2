@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueTest.java,v 1.2 2007/01/05 21:48:57 khussey Exp $
+ * $Id: InstanceValueTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -57,7 +57,8 @@ public class InstanceValueTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private InstanceValue getFixture() {
+	@Override
+	protected InstanceValue getFixture() {
 		return (InstanceValue) fixture;
 	}
 
@@ -92,6 +93,7 @@ public class InstanceValueTest
 	 * @see org.eclipse.uml2.uml.InstanceValue#stringValue()
 	 * @generated
 	 */
+	@Override
 	public void testStringValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT

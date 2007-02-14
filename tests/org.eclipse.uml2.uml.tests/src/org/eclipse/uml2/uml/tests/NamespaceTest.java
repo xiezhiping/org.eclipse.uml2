@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceTest.java,v 1.6 2006/06/21 15:32:26 khussey Exp $
+ * $Id: NamespaceTest.java,v 1.7 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -67,7 +67,8 @@ public abstract class NamespaceTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Namespace getFixture() {
+	@Override
+	protected Namespace getFixture() {
 		return (Namespace) fixture;
 	}
 
@@ -112,11 +113,11 @@ public abstract class NamespaceTest
 			// pass
 		}
 
-		EList packageableElementSubClasses = getEAllSubClasses(UMLPackage.Literals.PACKAGEABLE_ELEMENT);
+		EList<EClass> packageableElementSubClasses = getEAllSubClasses(UMLPackage.Literals.PACKAGEABLE_ELEMENT);
 
 		for (int i = 0; i < packageableElementSubClasses.size(); i++) {
 			PackageableElement packageableElement = (PackageableElement) UMLFactory.eINSTANCE
-				.create((EClass) packageableElementSubClasses.get(i));
+				.create(packageableElementSubClasses.get(i));
 
 			try {
 				getFixture().createElementImport(packageableElement, null);
@@ -134,8 +135,8 @@ public abstract class NamespaceTest
 
 			assertEquals(i + 1, getFixture().getElementImports().size());
 
-			ElementImport elementImport = (ElementImport) getFixture()
-				.getElementImports().get(i);
+			ElementImport elementImport = getFixture().getElementImports().get(
+				i);
 
 			assertSame(packageableElement, elementImport.getImportedElement());
 			assertSame(VisibilityKind.PRIVATE_LITERAL, elementImport
@@ -187,8 +188,7 @@ public abstract class NamespaceTest
 
 		assertEquals(1, getFixture().getPackageImports().size());
 
-		PackageImport packageImport = (PackageImport) getFixture()
-			.getPackageImports().get(0);
+		PackageImport packageImport = getFixture().getPackageImports().get(0);
 
 		assertSame(package_, packageImport.getImportedPackage());
 		assertSame(VisibilityKind.PRIVATE_LITERAL, packageImport
@@ -218,7 +218,8 @@ public abstract class NamespaceTest
 		ElementImport elementImport = getFixture().createElementImport(null);
 		elementImport.setImportedElement(class_);
 
-		EList importedElements = getFixture().getImportedElements();
+		EList<PackageableElement> importedElements = getFixture()
+			.getImportedElements();
 
 		assertEquals(1, importedElements.size());
 		assertTrue(importedElements.contains(class_));
@@ -240,7 +241,8 @@ public abstract class NamespaceTest
 		PackageImport packageImport = getFixture().createPackageImport(null);
 		packageImport.setImportedPackage(package_);
 
-		EList importedPackages = getFixture().getImportedPackages();
+		EList<org.eclipse.uml2.uml.Package> importedPackages = getFixture()
+			.getImportedPackages();
 
 		assertEquals(1, importedPackages.size());
 		assertTrue(importedPackages.contains(package_));

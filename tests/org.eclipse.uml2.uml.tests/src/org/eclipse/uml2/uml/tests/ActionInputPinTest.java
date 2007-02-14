@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: ActionInputPinTest.java,v 1.6 2007/02/14 20:06:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class ActionInputPinTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private ActionInputPin getFixture() {
+	@Override
+	protected ActionInputPin getFixture() {
 		return (ActionInputPin) fixture;
 	}
 

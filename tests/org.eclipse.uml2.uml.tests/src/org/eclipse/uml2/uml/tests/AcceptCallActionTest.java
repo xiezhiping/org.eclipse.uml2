@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionTest.java,v 1.5 2007/01/05 21:48:58 khussey Exp $
+ * $Id: AcceptCallActionTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -59,7 +59,8 @@ public class AcceptCallActionTest
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private AcceptCallAction getFixture() {
+	@Override
+	protected AcceptCallAction getFixture() {
 		return (AcceptCallAction) fixture;
 	}
 
