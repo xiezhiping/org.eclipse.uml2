@@ -211,6 +211,15 @@
   <nested>
     <inputs href="../../org.eclipse.uml2/model/UML2.ecore#//StateMachine/stateMachine_redefinitionContext"/>
   </nested>
+  <nested>
+    <outputs href="UML.ecore#//AcceptEventAction/trigger"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//State/deferrableTrigger"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Transition/trigger"/>
+  </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>

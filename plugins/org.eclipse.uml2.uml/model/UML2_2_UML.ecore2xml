@@ -164,4 +164,16 @@
     <key xsi:type="ecore:EReference" href="UML.ecore#//Message/signature"/>
     <value xMLRepresentation="1"/>
   </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//AcceptEventAction/trigger"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//State/deferrableTrigger"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
+  <ecoreToXMLInfo>
+    <key xsi:type="ecore:EReference" href="UML.ecore#//Transition/trigger"/>
+    <value xMLRepresentation="0"/>
+  </ecoreToXMLInfo>
 </ecore2xml:XMLMap>
