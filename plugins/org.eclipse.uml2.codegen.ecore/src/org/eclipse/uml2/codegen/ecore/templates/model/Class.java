@@ -7936,7 +7936,7 @@ public class Class
     }
     }
     stringBuffer.append(TEXT_2226);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //isSetGenFeature.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2227);
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2228);
@@ -8042,7 +8042,7 @@ public class Class
     for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) { GenFeature redefinitionGenFeature = UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();
     if (genFeature.isGet()) {
     stringBuffer.append(TEXT_2263);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //getGenFeature.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2264);
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2265);
@@ -8104,7 +8104,7 @@ public class Class
     }
     if (genFeature.isBasicGet()) {
     stringBuffer.append(TEXT_2288);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicGetGenFeature.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2289);
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2290);
@@ -8131,7 +8131,7 @@ public class Class
     }
     if (genFeature.isBasicSet()) {
     stringBuffer.append(TEXT_2299);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicSetGenFeature.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2300);
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2301);
@@ -8192,7 +8192,7 @@ public class Class
     }
     if (genFeature.isSet()) {
     stringBuffer.append(TEXT_2327);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //setGenFeature.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2328);
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2329);
@@ -9288,7 +9288,7 @@ public class Class
     }
     for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) { GenOperation redefinitionGenOperation = UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();
     stringBuffer.append(TEXT_2807);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc
     stringBuffer.append(TEXT_2808);
     if (genClass.getExtendedGenOperations().contains(genOperation) || (UML2GenModelUtil.isDuplicate(genOperation) && (!UML2GenModelUtil.isRedefinition(genOperation) || genClass.getExtendedGenOperations().contains(UML2GenModelUtil.getRedefinedGenOperations(genOperation).iterator().next())))) {
     stringBuffer.append(TEXT_2809);
