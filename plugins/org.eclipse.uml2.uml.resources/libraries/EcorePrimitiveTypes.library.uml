@@ -14,7 +14,13 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDiagnosticChain" name="EDiagnosticChain"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDouble" name="EDouble"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EDoubleObject" name="EDoubleObject"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEList" name="EEList">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EEList-_ownedTemplateSignature" parameter="EEList-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EEList-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EEList-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="EEList-_ownedTemplateSignature-_ownedParameter.0"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EEnumerator" name="EEnumerator"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMap" name="EFeatureMap"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFeatureMapEntry" name="EFeatureMapEntry"/>
@@ -22,19 +28,40 @@
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EFloatObject" name="EFloatObject"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInt" name="EInt"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EIntegerObject" name="EIntegerObject"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaClass" name="EJavaClass">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EJavaClass-_ownedTemplateSignature" parameter="EJavaClass-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EJavaClass-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EJavaClass-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="T" templateParameter="EJavaClass-_ownedTemplateSignature-_ownedParameter.0"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EJavaObject" name="EJavaObject"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELong" name="ELong"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ELongObject" name="ELongObject"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EMap" name="EMap">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="EMap-_ownedTemplateSignature" parameter="EMap-_ownedTemplateSignature-_ownedParameter.0 EMap-_ownedTemplateSignature-_ownedParameter.1">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="K" templateParameter="EMap-_ownedTemplateSignature-_ownedParameter.0"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.1" parameteredElement="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="EMap-_ownedTemplateSignature-_ownedParameter.1-_ownedParameteredElement" name="V" templateParameter="EMap-_ownedTemplateSignature-_ownedParameter.1"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResource" name="EResource"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EResourceSet" name="EResourceSet"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShort" name="EShort"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EShortObject" name="EShortObject"/>
     <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EString" name="EString"/>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="ETreeIterator" name="ETreeIterator">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="ETreeIterator-_ownedTemplateSignature" parameter="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0" parameteredElement="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0-_ownedParameteredElement" name="E" templateParameter="ETreeIterator-_ownedTemplateSignature-_ownedParameter.0"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
     <profileApplication xmi:id="_profileApplication.0">
-      <eAnnotations xmi:id="_profileApplication.0-_eAnnotations.0" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eAnnotations xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
