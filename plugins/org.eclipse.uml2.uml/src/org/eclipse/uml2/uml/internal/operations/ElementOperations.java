@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.49 2007/01/04 18:54:52 khussey Exp $
+ * $Id: ElementOperations.java,v 1.50 2007/02/23 03:16:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -1003,22 +1003,6 @@ public class ElementOperations
 		}
 
 		return false;
-	}
-
-	protected static Element getOwningElement(Element element, EClass eClass,
-			boolean resolve) {
-		Element owningElement = null;
-
-		for (Element owner = element; ((owningElement = (Element) owner.eGet(
-			UMLPackage.Literals.ELEMENT__OWNER, resolve)) == null
-			? owner = owningElement = getBaseElement(owner.eContainer())
-			: owningElement) != null
-			&& !(eClass.isInstance(owningElement));) {
-
-			owner = owner.getOwner();
-		}
-
-		return owningElement;
 	}
 
 	/**

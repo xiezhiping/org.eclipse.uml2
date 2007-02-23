@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.48 2007/01/31 21:29:18 khussey Exp $
+ * $Id: UMLUtil.java,v 1.49 2007/02/23 03:16:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -50,6 +50,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -67,6 +68,7 @@ import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataType;
@@ -89,6 +91,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
@@ -97,6 +100,11 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.StructuredClassifier;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateParameterSubstitution;
+import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -2121,6 +2129,12 @@ public class UMLUtil
 
 		protected Collection<org.eclipse.uml2.uml.Package> packages = null;
 
+		protected Map<String, String> options = null;
+
+		protected DiagnosticChain diagnostics = null;
+
+		protected Map<Object, Object> context = null;
+
 		protected void setName(ENamedElement eNamedElement, String name,
 				boolean validate) {
 			eNamedElement.setName(validate
@@ -2131,6 +2145,15 @@ public class UMLUtil
 		protected void setName(ENamedElement eNamedElement,
 				NamedElement namedElement) {
 			setName(eNamedElement, namedElement.getName(), true);
+
+			if (namedElement instanceof Classifier) {
+				Namespace namespace = namedElement.getNamespace();
+
+				if (namespace instanceof Classifier) {
+					qualifyName(eNamedElement, getValidJavaIdentifier(namespace
+						.getName()));
+				}
+			}
 		}
 
 		protected EClassifier getEType(Type type) {
@@ -2188,6 +2211,128 @@ public class UMLUtil
 			return eType;
 		}
 
+		protected ETypeParameter getETypeParameter(Type type) {
+			ETypeParameter eTypeParameter = null;
+
+			if (type != null) {
+				TemplateParameter templateParameter = type
+					.getTemplateParameter();
+
+				if (templateParameter != null) {
+					TemplateSignature signature = templateParameter
+						.getSignature();
+
+					if (signature != null) {
+						TemplateableElement template = signature.getTemplate();
+
+						if (template instanceof Type) {
+							EClassifier eType = getEType((Type) template);
+
+							if (eType != null) {
+								String name = type.getName();
+
+								for (ETypeParameter eParameter : eType
+									.getETypeParameters()) {
+
+									if (safeEquals(name, eParameter.getName())) {
+										eTypeParameter = eParameter;
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				if (eTypeParameter == null) {
+					Object eObject = doSwitch(type);
+
+					if (eObject instanceof ETypeParameter) {
+						eTypeParameter = (ETypeParameter) eObject;
+					}
+				}
+			}
+
+			return eTypeParameter;
+		}
+
+		protected EGenericType getEGenericType(Type type) {
+			EGenericType eGenericType = null;
+
+			if (type instanceof Classifier) {
+				eGenericType = EcoreFactory.eINSTANCE.createEGenericType();
+
+				EClassifier eType = getEType(type);
+
+				if (eType == null) {
+					ETypeParameter eTypeParameter = getETypeParameter(type);
+
+					if (eTypeParameter != null) {
+						eGenericType.setETypeParameter(eTypeParameter);
+					} else {
+
+						if (options != null
+							&& !OPTION__IGNORE.equals(options
+								.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+							processEcoreTaggedValues(eGenericType, type,
+								options, diagnostics, context);
+						}
+
+						EList<EGenericType> eTypeArguments = eGenericType
+							.getETypeArguments();
+
+						for (TemplateBinding templateBinding : ((Classifier) type)
+							.getTemplateBindings()) {
+
+							TemplateSignature signature = templateBinding
+								.getSignature();
+
+							if (signature != null) {
+								TemplateableElement template = signature
+									.getTemplate();
+
+								if (template instanceof Classifier) {
+									eGenericType
+										.setEClassifier(getEType((Classifier) template));
+
+									for (TemplateParameterSubstitution parameterSubstitution : templateBinding
+										.getParameterSubstitutions()) {
+
+										EList<ParameterableElement> actuals = parameterSubstitution
+											.getActuals();
+
+										ParameterableElement argument = actuals
+											.isEmpty()
+											? null
+											: actuals.get(0);
+
+										if (argument == null) {
+											TemplateParameter formal = parameterSubstitution
+												.getFormal();
+
+											if (formal != null) {
+												argument = formal.getDefault();
+											}
+										}
+
+										if (argument instanceof Classifier) {
+											eTypeArguments
+												.add(getEGenericType((Classifier) argument));
+										}
+									}
+								}
+							}
+						}
+					}
+				} else {
+					eGenericType.setEClassifier(eType);
+				}
+			}
+
+			return eGenericType;
+		}
+
 		protected EClassifier getEType(TypedElement typedElement) {
 			return getEType(typedElement.getType());
 		}
@@ -2198,24 +2343,36 @@ public class UMLUtil
 				+ NamedElement.SEPARATOR + name);
 		}
 
+		protected boolean isGenericType(Classifier classifier) {
+			return options != null
+				&& !OPTION__IGNORE.equals(options
+					.get(OPTION__ECORE_TAGGED_VALUES))
+				&& getAppliedEcoreStereotype(classifier,
+					STEREOTYPE__E_GENERIC_TYPE) != null;
+		}
+
 		@Override
 		public Object caseClass(org.eclipse.uml2.uml.Class class_) {
-			org.eclipse.uml2.uml.Package package_ = class_.getNearestPackage();
 
-			if (package_ != null) {
-				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-				elementToEModelElementMap.put(class_, eClass);
+			if (!isGenericType(class_) && !class_.isTemplateParameter()) {
+				org.eclipse.uml2.uml.Package package_ = class_
+					.getNearestPackage();
 
-				EPackage ePackage = (EPackage) doSwitch(package_);
-				ePackage.getEClassifiers().add(eClass);
+				if (package_ != null) {
+					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+					elementToEModelElementMap.put(class_, eClass);
 
-				setName(eClass, class_);
+					EPackage ePackage = (EPackage) doSwitch(package_);
+					ePackage.getEClassifiers().add(eClass);
 
-				eClass.setAbstract(class_.isAbstract());
+					setName(eClass, class_);
 
-				defaultCase(class_);
+					eClass.setAbstract(class_.isAbstract());
 
-				return eClass;
+					defaultCase(class_);
+
+					return eClass;
+				}
 			}
 
 			return super.caseClass(class_);
@@ -2405,14 +2562,21 @@ public class UMLUtil
 					Classifier general = generalization.getGeneral();
 
 					if (general != null) {
-						EClassifier generalEClassifier = (EClassifier) doSwitch(general);
+						EGenericType eGenericSuperType = getEGenericType(general);
 
-						if (generalEClassifier instanceof EClass) {
-							EClass generalEClass = (EClass) generalEClassifier;
+						if (eGenericSuperType != null) {
+							EClassifier generalEClassifier = eGenericSuperType
+								.getERawType();
 
-							if (!specificEClass.isSuperTypeOf(generalEClass)) {
-								specificEClass.getESuperTypes().add(
-									generalEClass);
+							if (generalEClassifier instanceof EClass) {
+								EClass generalEClass = (EClass) generalEClassifier;
+
+								if (!specificEClass
+									.isSuperTypeOf(generalEClass)) {
+
+									specificEClass.getEGenericSuperTypes().add(
+										eGenericSuperType);
+								}
 							}
 						}
 					}
@@ -2449,11 +2613,22 @@ public class UMLUtil
 					Interface contract = interfaceRealization.getContract();
 
 					if (contract != null) {
-						EClass contractEClass = (EClass) doSwitch(contract);
+						EGenericType eGenericSuperType = getEGenericType(contract);
 
-						if (contractEClass != null) {
-							implementingEClass.getESuperTypes().add(
-								contractEClass);
+						if (eGenericSuperType != null) {
+							EClassifier contractEClassifier = eGenericSuperType
+								.getERawType();
+
+							if (contractEClassifier instanceof EClass) {
+								EClass contractEClass = (EClass) contractEClassifier;
+
+								if (!implementingEClass
+									.isSuperTypeOf(contractEClass)) {
+
+									implementingEClass.getEGenericSuperTypes()
+										.add(eGenericSuperType);
+								}
+							}
 						}
 					}
 				}
@@ -2464,24 +2639,27 @@ public class UMLUtil
 
 		@Override
 		public Object caseInterface(Interface interface_) {
-			org.eclipse.uml2.uml.Package package_ = interface_
-				.getNearestPackage();
 
-			if (package_ != null) {
-				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-				elementToEModelElementMap.put(interface_, eClass);
+			if (!isGenericType(interface_) && !interface_.isTemplateParameter()) {
+				org.eclipse.uml2.uml.Package package_ = interface_
+					.getNearestPackage();
 
-				EPackage ePackage = (EPackage) doSwitch(package_);
-				ePackage.getEClassifiers().add(eClass);
+				if (package_ != null) {
+					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+					elementToEModelElementMap.put(interface_, eClass);
 
-				setName(eClass, interface_);
+					EPackage ePackage = (EPackage) doSwitch(package_);
+					ePackage.getEClassifiers().add(eClass);
 
-				eClass.setAbstract(true);
-				eClass.setInterface(true);
+					setName(eClass, interface_);
 
-				defaultCase(interface_);
+					eClass.setAbstract(true);
+					eClass.setInterface(true);
 
-				return eClass;
+					defaultCase(interface_);
+
+					return eClass;
+				}
 			}
 
 			return super.caseInterface(interface_);
@@ -2533,17 +2711,19 @@ public class UMLUtil
 
 				setName(eOperation, operation);
 
-				EList<EClassifier> eExceptions = eOperation.getEExceptions();
+				EList<EGenericType> eGenericExceptions = eOperation
+					.getEGenericExceptions();
 
 				for (Type raisedException : operation.getRaisedExceptions()) {
-					EClassifier eType = getEType(raisedException);
+					EGenericType eGenericType = getEGenericType(raisedException);
 
-					if (eType != null) {
-						eExceptions.add(eType);
+					if (eGenericType != null) {
+						eGenericExceptions.add(eGenericType);
 					}
 				}
 
-				eOperation.setEType(getEType(operation.getType()));
+				eOperation
+					.setEGenericType(getEGenericType(operation.getType()));
 
 				int upper = operation.getUpper();
 
@@ -2631,24 +2811,78 @@ public class UMLUtil
 		}
 
 		@Override
+		public Object caseParameterableElement(
+				ParameterableElement parameterableElement) {
+			TemplateParameter templateParameter = parameterableElement
+				.getTemplateParameter();
+
+			if (templateParameter != null) {
+				TemplateSignature signature = templateParameter.getSignature();
+
+				if (signature != null) {
+					EList<ETypeParameter> eTypeParameters = getETypeParameters((ENamedElement) doSwitch(signature
+						.getTemplate()));
+
+					if (eTypeParameters != null) {
+						ETypeParameter eTypeParameter = EcoreFactory.eINSTANCE
+							.createETypeParameter();
+						elementToEModelElementMap.put(parameterableElement,
+							eTypeParameter);
+
+						int index = signature.getParameters().indexOf(
+							templateParameter);
+
+						if (index < eTypeParameters.size()) {
+							eTypeParameters.add(index, eTypeParameter);
+						} else {
+							eTypeParameters.add(eTypeParameter);
+						}
+
+						if (parameterableElement instanceof NamedElement) {
+							setName(eTypeParameter,
+								(NamedElement) parameterableElement);
+						}
+
+						if (options != null
+							&& !OPTION__IGNORE.equals(options
+								.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+							processEcoreTaggedValues(eTypeParameter,
+								templateParameter, options, diagnostics,
+								context);
+						}
+					}
+				}
+			}
+
+			return super.caseParameterableElement(parameterableElement);
+		}
+
+		@Override
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
-			org.eclipse.uml2.uml.Package package_ = primitiveType
-				.getNearestPackage();
 
-			if (package_ != null) {
-				EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
-				elementToEModelElementMap.put(primitiveType, eDataType);
+			if (!isGenericType(primitiveType)
+				&& !primitiveType.isTemplateParameter()) {
 
-				EPackage ePackage = (EPackage) doSwitch(package_);
-				ePackage.getEClassifiers().add(eDataType);
+				org.eclipse.uml2.uml.Package package_ = primitiveType
+					.getNearestPackage();
 
-				setName(eDataType, primitiveType);
+				if (package_ != null) {
+					EDataType eDataType = EcoreFactory.eINSTANCE
+						.createEDataType();
+					elementToEModelElementMap.put(primitiveType, eDataType);
 
-				eDataType.setInstanceClassName(eDataType.getName());
+					EPackage ePackage = (EPackage) doSwitch(package_);
+					ePackage.getEClassifiers().add(eDataType);
 
-				defaultCase(primitiveType);
+					setName(eDataType, primitiveType);
 
-				return eDataType;
+					eDataType.setInstanceClassName(eDataType.getName());
+
+					defaultCase(primitiveType);
+
+					return eDataType;
+				}
 			}
 
 			return super.casePrimitiveType(primitiveType);
@@ -2656,23 +2890,25 @@ public class UMLUtil
 
 		@Override
 		public Object caseDataType(DataType dataType) {
-			org.eclipse.uml2.uml.Package package_ = dataType
-				.getNearestPackage();
 
-			if (package_ != null) {
-				EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-				elementToEModelElementMap.put(dataType, eClass);
+			if (!isGenericType(dataType) && !dataType.isTemplateParameter()) {
+				org.eclipse.uml2.uml.Package package_ = dataType
+					.getNearestPackage();
 
-				EPackage ePackage = (EPackage) doSwitch(package_);
-				ePackage.getEClassifiers().add(eClass);
+				if (package_ != null) {
+					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+					elementToEModelElementMap.put(dataType, eClass);
 
-				setName(eClass, dataType);
+					EPackage ePackage = (EPackage) doSwitch(package_);
+					ePackage.getEClassifiers().add(eClass);
 
-				defaultCase(dataType);
+					setName(eClass, dataType);
 
-				return eClass;
+					defaultCase(dataType);
+
+					return eClass;
+				}
 			}
-
 			return super.caseDataType(dataType);
 		}
 
@@ -2746,13 +2982,24 @@ public class UMLUtil
 		}
 
 		@Override
+		public Object caseTemplateParameter(TemplateParameter templateParameter) {
+			return defaultCase(templateParameter);
+		}
+
+		@Override
+		public Object caseTemplateSignature(TemplateSignature templateSignature) {
+			return defaultCase(templateSignature);
+		}
+
+		@Override
 		public Object caseTypedElement(TypedElement typedElement) {
 			Object eModelElement = elementToEModelElementMap.get(typedElement);
 
 			if (eModelElement instanceof ETypedElement) {
 				ETypedElement eTypedElement = (ETypedElement) eModelElement;
 
-				eTypedElement.setEType(getEType(typedElement));
+				eTypedElement.setEGenericType(getEGenericType(typedElement
+					.getType()));
 
 				return eTypedElement;
 			}
@@ -3098,6 +3345,115 @@ public class UMLUtil
 			}
 		}
 
+		protected void processEcoreTaggedValues(EGenericType eGenericType,
+				Element element, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			Stereotype eGenericTypeStereotype = getAppliedEcoreStereotype(
+				element, STEREOTYPE__E_GENERIC_TYPE);
+
+			if (eGenericTypeStereotype != null) {
+
+				if (element.hasValue(eGenericTypeStereotype,
+					TAG_DEFINITION__LOWER_BOUND)) {
+
+					Classifier value = (Classifier) element.getValue(
+						eGenericTypeStereotype, TAG_DEFINITION__LOWER_BOUND);
+
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									ECORE_TAGGED_VALUE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UML2EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(
+												context,
+												eGenericType,
+												getTagDefinition(
+													eGenericTypeStereotype,
+													TAG_DEFINITION__LOWER_BOUND),
+												value)),
+									new Object[]{eGenericType}));
+						}
+
+						eGenericType.setELowerBound(getEGenericType(value));
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))
+						&& diagnostics != null) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ECORE_TAGGED_VALUE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eGenericType, getTagDefinition(
+												eGenericTypeStereotype,
+												TAG_DEFINITION__LOWER_BOUND),
+											value)), new Object[]{eGenericType}));
+					}
+				}
+
+				if (element.hasValue(eGenericTypeStereotype,
+					TAG_DEFINITION__UPPER_BOUND)) {
+
+					Classifier value = (Classifier) element.getValue(
+						eGenericTypeStereotype, TAG_DEFINITION__UPPER_BOUND);
+
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									ECORE_TAGGED_VALUE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UML2EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(
+												context,
+												eGenericType,
+												getTagDefinition(
+													eGenericTypeStereotype,
+													TAG_DEFINITION__UPPER_BOUND),
+												value)),
+									new Object[]{eGenericType}));
+						}
+
+						eGenericType.setEUpperBound(getEGenericType(value));
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))
+						&& diagnostics != null) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ECORE_TAGGED_VALUE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eGenericType, getTagDefinition(
+												eGenericTypeStereotype,
+												TAG_DEFINITION__UPPER_BOUND),
+											value)), new Object[]{eGenericType}));
+					}
+				}
+			}
+		}
+
 		protected void processEcoreTaggedValues(EOperation eOperation,
 				Element element, Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
@@ -3252,6 +3608,66 @@ public class UMLUtil
 			}
 		}
 
+		protected void processEcoreTaggedValues(ETypeParameter eTypeParameter,
+				Element element, final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+			Stereotype eTypeParameterStereotype = getAppliedEcoreStereotype(
+				element, STEREOTYPE__E_TYPE_PARAMETER);
+
+			if (eTypeParameterStereotype != null
+				&& element.hasValue(eTypeParameterStereotype,
+					TAG_DEFINITION__BOUNDS)) {
+
+				@SuppressWarnings("unchecked")
+				EList<Classifier> value = (EList<Classifier>) element.getValue(
+					eTypeParameterStereotype, TAG_DEFINITION__BOUNDS);
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ECORE_TAGGED_VALUE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eTypeParameter, getTagDefinition(
+												eTypeParameterStereotype,
+												TAG_DEFINITION__BOUNDS), value)),
+								new Object[]{eTypeParameter}));
+					}
+
+					EList<EGenericType> eBounds = eTypeParameter.getEBounds();
+
+					for (Classifier bound : value) {
+						eBounds.add(getEGenericType(bound));
+					}
+				} else if (OPTION__REPORT.equals(options
+					.get(OPTION__ECORE_TAGGED_VALUES))
+					&& diagnostics != null) {
+
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							ECORE_TAGGED_VALUE,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_UML2EcoreConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										eTypeParameter, getTagDefinition(
+											eTypeParameterStereotype,
+											TAG_DEFINITION__BOUNDS), value)),
+							new Object[]{eTypeParameter}));
+				}
+			}
+		}
+
 		protected void processEcoreTaggedValues(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
@@ -3259,6 +3675,7 @@ public class UMLUtil
 
 			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
 				.entrySet()) {
+
 				EModelElement eModelElement = entry.getValue();
 
 				new EcoreSwitch<Object>() {
@@ -3803,17 +4220,21 @@ public class UMLUtil
 			EObject eContainer = eNamedElement.eContainer();
 
 			if (eContainer instanceof ENamedElement) {
-				String qualifiedName = ((ENamedElement) eContainer).getName()
-					+ '_' + eNamedElement.getName();
-
-				if (DEBUG) {
-					System.err.println("Qualified " //$NON-NLS-1$
-						+ getQualifiedText(eNamedElement) + " as " //$NON-NLS-1$
-						+ qualifiedName);
-				}
-
-				eNamedElement.setName(qualifiedName);
+				qualifyName(eNamedElement, ((ENamedElement) eContainer)
+					.getName());
 			}
+		}
+
+		protected void qualifyName(ENamedElement eNamedElement, String qualifier) {
+			String qualifiedName = qualifier + '_' + eNamedElement.getName();
+
+			if (DEBUG) {
+				System.err.println("Qualified " //$NON-NLS-1$
+					+ getQualifiedText(eNamedElement) + " as " //$NON-NLS-1$
+					+ qualifiedName);
+			}
+
+			eNamedElement.setName(qualifiedName);
 		}
 
 		protected void processDuplicateOperations(Map<String, String> options,
@@ -4586,6 +5007,10 @@ public class UMLUtil
 			packages = EcoreUtil.getObjectsByType(eObjects,
 				UMLPackage.Literals.PACKAGE);
 
+			this.options = options;
+			this.diagnostics = diagnostics;
+			this.context = context;
+
 			for (org.eclipse.uml2.uml.Package package_ : packages) {
 				doSwitch(package_);
 			}
@@ -4764,6 +5189,46 @@ public class UMLUtil
 			extends EcoreSwitch<Object>
 			implements Converter {
 
+		protected class ParameterSubstitutionMatcher
+				extends EClassMatcher {
+
+			protected ParameterSubstitutionMatcher(
+					TemplateBinding templateBinding) {
+				super(templateBinding);
+			}
+
+			@Override
+			public boolean matches(EObject otherEObject) {
+				EList<TemplateParameterSubstitution> parameterSubstitutions = ((TemplateBinding) eObject)
+					.getParameterSubstitutions();
+				EList<TemplateParameterSubstitution> otherParameterSubstitutions = ((TemplateBinding) otherEObject)
+					.getParameterSubstitutions();
+
+				if (parameterSubstitutions.size() == otherParameterSubstitutions
+					.size()) {
+
+					for (int i = 0; i < parameterSubstitutions.size(); i++) {
+						TemplateParameterSubstitution parameterSubstitution = parameterSubstitutions
+							.get(i);
+						TemplateParameterSubstitution otherParameterSubstitution = otherParameterSubstitutions
+							.get(i);
+
+						if (!(safeEquals(parameterSubstitution.getFormal(),
+							otherParameterSubstitution.getFormal()) && safeEquals(
+							parameterSubstitution.getActuals(),
+							otherParameterSubstitution.getActuals()))) {
+
+							return false;
+						}
+					}
+
+					return true;
+				}
+
+				return false;
+			}
+		}
+
 		/**
 		 * The option for handling cases where an Ecore tagged value is
 		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
@@ -4837,6 +5302,12 @@ public class UMLUtil
 
 		protected Collection<EPackage> ePackages = null;
 
+		protected Map<String, String> options = null;
+
+		protected DiagnosticChain diagnostics = null;
+
+		protected Map<Object, Object> context = null;
+
 		protected Model getEcorePrimitiveTypesLibrary(
 				EModelElement eModelElement) {
 			Resource eResource = eModelElement.eResource();
@@ -4892,6 +5363,10 @@ public class UMLUtil
 				: null;
 		}
 
+		protected boolean isTemplate(EClassifier eClassifier) {
+			return eClassifier.getETypeParameters().size() > 0;
+		}
+
 		protected Type getType(EModelElement eModelElement, EClassifier eType) {
 			Type type = null;
 
@@ -4913,7 +5388,124 @@ public class UMLUtil
 				}
 
 				if (type == null) {
-					type = (Type) doSwitch(eType);
+					Object eObject = doSwitch(eType);
+
+					if (eObject instanceof Type) {
+						type = (Type) eObject;
+					}
+				}
+			}
+
+			return type;
+		}
+
+		protected Type getType(EModelElement eModelElement,
+				ETypeParameter eTypeParameter) {
+			Type type = null;
+
+			if (eTypeParameter != null) {
+				EObject eContainer = eTypeParameter.eContainer();
+
+				if (eContainer instanceof EDataType) {
+					Type template = getType(eModelElement,
+						(EDataType) eContainer);
+
+					if (template instanceof Classifier) {
+						TemplateSignature ownedTemplateSignature = ((Classifier) template)
+							.getOwnedTemplateSignature();
+
+						if (ownedTemplateSignature != null) {
+							String name = eTypeParameter.getName();
+
+							for (TemplateParameter parameter : ownedTemplateSignature
+								.getParameters()) {
+
+								ParameterableElement parameteredElement = parameter
+									.getParameteredElement();
+
+								if (parameteredElement instanceof Type) {
+									Type parameteredType = (Type) parameteredElement;
+
+									if (safeEquals(name, parameteredType
+										.getName())) {
+
+										type = parameteredType;
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				if (type == null) {
+					Object eObject = doSwitch(eTypeParameter);
+
+					if (eObject instanceof Type) {
+						type = (Type) eObject;
+					}
+				}
+			}
+
+			return type;
+		}
+
+		protected Type getType(EModelElement eModelElement,
+				EGenericType eGenericType) {
+			Type type = null;
+
+			if (eGenericType != null) {
+				EClassifier eClassifier = eGenericType.getEClassifier();
+
+				if (eClassifier != null) {
+					type = getType(eModelElement, eClassifier);
+
+					if (isTemplate(eClassifier)) {
+						TemplateBinding templateBinding = createTemplateBinding(
+							eModelElement, eGenericType, eClassifier);
+						EObjectMatcher matcher = new ParameterSubstitutionMatcher(
+							templateBinding);
+
+						TemplateSignature templateSignature = ((Classifier) type)
+							.getOwnedTemplateSignature();
+						EList<Type> ownedTypes = getOwnedTypes(eModelElement);
+
+						for (DirectedRelationship relationship : templateSignature
+							.getTargetDirectedRelationships(UMLPackage.Literals.TEMPLATE_BINDING)) {
+
+							if (matcher.matches(relationship)
+								&& ownedTypes.containsAll(relationship
+									.getSources())) {
+
+								templateBinding = (TemplateBinding) relationship;
+								break;
+							}
+						}
+
+						TemplateableElement boundElement = templateBinding
+							.getBoundElement();
+
+						if (boundElement == null) {
+							boundElement = createGenericType(eModelElement,
+								eGenericType, eClassifier);
+							boundElement.getTemplateBindings().add(
+								templateBinding);
+
+							templateBinding.setSignature(templateSignature);
+						}
+
+						type = (Type) boundElement;
+					}
+				} else {
+					ETypeParameter eTypeParameter = eGenericType
+						.getETypeParameter();
+
+					if (eTypeParameter != null) {
+						type = getType(eModelElement, eTypeParameter);
+					} else {
+						type = createGenericType(eModelElement, eGenericType,
+							null);
+					}
 				}
 			}
 
@@ -4921,7 +5513,164 @@ public class UMLUtil
 		}
 
 		protected Type getType(ETypedElement eTypedElement) {
-			return getType(eTypedElement, eTypedElement.getEType());
+			return getType(eTypedElement, eTypedElement.getEGenericType());
+		}
+
+		protected EList<Type> getOwnedTypes(EModelElement eModelElement) {
+			Namespace namespace = (Namespace) getOwningElement(
+				(Element) doSwitch(eModelElement),
+				UMLPackage.Literals.NAMESPACE, true);
+
+			@SuppressWarnings("unchecked")
+			EList<Type> ownedTypes = (EList<Type>) new UMLSwitch<Object>() {
+
+				@Override
+				public Object caseClass(org.eclipse.uml2.uml.Class class_) {
+					return class_.getNestedClassifiers();
+				}
+
+				@Override
+				public Object caseDataType(DataType dataType) {
+					return doSwitch(dataType.getNamespace());
+				}
+
+				@Override
+				public Object caseInterface(Interface interface_) {
+					return interface_.getNestedClassifiers();
+				}
+
+				@Override
+				public Object caseOperation(Operation operation) {
+					return doSwitch(operation.getNamespace());
+				}
+
+				@Override
+				public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+					return package_.getOwnedTypes();
+				}
+
+				@Override
+				public Object doSwitch(EObject eObject) {
+					return eObject == null
+						? null
+						: super.doSwitch(eObject);
+				}
+
+			}.doSwitch(namespace);
+
+			return ownedTypes;
+		}
+
+		protected String getGenericTypeName(EGenericType eGenericType) {
+			StringBuffer name = new StringBuffer();
+
+			EClassifier eClassifier = eGenericType.getEClassifier();
+
+			if (eClassifier != null) {
+				name.append(eClassifier.getName());
+			} else {
+				ETypeParameter eTypeParameter = eGenericType
+					.getETypeParameter();
+
+				if (eTypeParameter != null) {
+					name.append(eTypeParameter.getName());
+				} else {
+					name.append("Wildcard"); //$NON-NLS-1$
+
+					if (options != null
+						&& !OPTION__IGNORE.equals(options
+							.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+						EGenericType eLowerBound = eGenericType
+							.getELowerBound();
+
+						if (eLowerBound != null) {
+							name.append("_super_"); //$NON-NLS-1$
+							name.append(getGenericTypeName(eLowerBound));
+						} else {
+							EGenericType eUpperBound = eGenericType
+								.getEUpperBound();
+
+							if (eUpperBound != null) {
+								name.append("_extends_"); //$NON-NLS-1$
+								name.append(getGenericTypeName(eUpperBound));
+							}
+						}
+					}
+				}
+			}
+
+			for (EGenericType eTypeArgument : eGenericType.getETypeArguments()) {
+				name.append('_');
+				name.append(getGenericTypeName(eTypeArgument));
+			}
+
+			return name.toString();
+		}
+
+		protected Classifier createGenericType(EModelElement eModelElement,
+				EGenericType eGenericType, EClassifier eClassifier) {
+			Classifier genericType = eClassifier instanceof EDataType
+				? UMLFactory.eINSTANCE.createPrimitiveType()
+				: UMLFactory.eINSTANCE.createClass();
+
+			getOwnedTypes(eModelElement).add(genericType);
+
+			genericType.setName(getGenericTypeName(eGenericType));
+
+			if (options != null
+				&& !OPTION__IGNORE.equals(options
+					.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+				processEcoreTaggedValues(genericType, eGenericType, options,
+					diagnostics, context);
+			}
+
+			return genericType;
+		}
+
+		protected TemplateBinding createTemplateBinding(
+				EModelElement eModelElement, EGenericType eGenericType,
+				EClassifier eClassifier) {
+			TemplateBinding templateBinding = UMLFactory.eINSTANCE
+				.createTemplateBinding();
+
+			EList<ETypeParameter> eTypeParameters = eClassifier
+				.getETypeParameters();
+			int eTypeParametersSize = eTypeParameters.size();
+
+			EList<EGenericType> eTypeArguments = eGenericType
+				.getETypeArguments();
+			int eTypeArgumentsSize = eTypeArguments.size();
+
+			if (eTypeArgumentsSize <= eTypeParametersSize) {
+
+				for (int i = 0; i < eTypeArgumentsSize; i++) {
+					Type parameterType = getType(eModelElement, eTypeParameters
+						.get(i));
+
+					if (parameterType != null) {
+						TemplateParameter templateParameter = parameterType
+							.getTemplateParameter();
+
+						if (templateParameter != null) {
+							Type argumentType = getType(eModelElement,
+								eTypeArguments.get(i));
+
+							if (argumentType != null) {
+								TemplateParameterSubstitution parameterSubstitution = templateBinding
+									.createParameterSubstitution();
+								parameterSubstitution
+									.setFormal(templateParameter);
+								parameterSubstitution.getActuals().add(
+									argumentType);
+							}
+						}
+					}
+				}
+			}
+
+			return templateBinding;
 		}
 
 		@Override
@@ -4971,22 +5720,20 @@ public class UMLUtil
 					classifier.setIsAbstract(eClass.isAbstract());
 				}
 
-				for (EClass eSuperType : eClass.getESuperTypes()) {
+				for (EGenericType eGenericSuperType : eClass
+					.getEGenericSuperTypes()) {
 
-					if (eSuperType.isInterface()
+					Type generalType = getType(eClass, eGenericSuperType);
+
+					if (generalType instanceof Interface
 						&& classifier instanceof BehavioredClassifier) {
 
 						((BehavioredClassifier) classifier)
 							.createInterfaceRealization(null,
-								(Interface) doSwitch(eSuperType));
-					} else {
-						Classifier generalClassifier = (Classifier) doSwitch(eSuperType);
-
-						if (!classifier.allParents()
-							.contains(generalClassifier)) {
-
-							classifier.createGeneralization(generalClassifier);
-						}
+								(Interface) generalType);
+					} else if (!classifier.allParents().contains(generalType)) {
+						classifier
+							.createGeneralization((Classifier) generalType);
 					}
 				}
 
@@ -5101,17 +5848,19 @@ public class UMLUtil
 
 				operation.setName(eOperation.getName());
 
-				EClassifier eType = eOperation.getEType();
+				EGenericType eGenericType = eOperation.getEGenericType();
 
-				if (eType != null) {
+				if (eGenericType != null) {
 					operation.createReturnResult(null, getType(eOperation,
-						eType));
+						eGenericType));
 				}
 
 				EList<Type> raisedExceptions = operation.getRaisedExceptions();
 
-				for (EClassifier eException : eOperation.getEExceptions()) {
-					Type type = getType(eOperation, eException);
+				for (EGenericType eGenericException : eOperation
+					.getEGenericExceptions()) {
+
+					Type type = getType(eOperation, eGenericException);
 
 					if (type != null) {
 						raisedExceptions.add(type);
@@ -5297,6 +6046,55 @@ public class UMLUtil
 		}
 
 		@Override
+		public Object caseETypeParameter(ETypeParameter eTypeParameter) {
+			EList<ETypeParameter> eTypeParameters = getETypeParameters(eTypeParameter
+				.eContainer());
+
+			if (eTypeParameters != null) {
+				ClassifierTemplateParameter templateParameter = UMLFactory.eINSTANCE
+					.createClassifierTemplateParameter();
+				org.eclipse.uml2.uml.Class parameterableElement = (org.eclipse.uml2.uml.Class) templateParameter
+					.createOwnedParameteredElement(UMLPackage.Literals.CLASS);
+				eModelElementToElementMap.put(eTypeParameter,
+					parameterableElement);
+
+				TemplateableElement template = (TemplateableElement) doSwitch(eTypeParameter
+					.eContainer());
+				TemplateSignature ownedTemplateSignature = template
+					.getOwnedTemplateSignature();
+
+				if (ownedTemplateSignature == null) {
+					ownedTemplateSignature = template
+						.createOwnedTemplateSignature();
+				}
+
+				EList<TemplateParameter> ownedParameters = ownedTemplateSignature
+					.getOwnedParameters();
+				int index = eTypeParameters.indexOf(eTypeParameter);
+
+				if (index < ownedParameters.size()) {
+					ownedParameters.add(index, templateParameter);
+				} else {
+					ownedParameters.add(templateParameter);
+				}
+
+				parameterableElement.setName(eTypeParameter.getName());
+
+				if (options != null
+					&& !OPTION__IGNORE.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+					processEcoreTaggedValues(templateParameter, eTypeParameter,
+						options, diagnostics, context);
+				}
+
+				return parameterableElement;
+			}
+
+			return super.caseETypeParameter(eTypeParameter);
+		}
+
+		@Override
 		public Object defaultCase(EObject eObject) {
 
 			for (EObject eContent : eObject.eContents()) {
@@ -5317,7 +6115,11 @@ public class UMLUtil
 		}
 
 		protected Profile getEcoreProfile(EModelElement eModelElement) {
-			Resource eResource = eModelElement.eResource();
+			return getEcoreProfile((EObject) eModelElement);
+		}
+
+		protected Profile getEcoreProfile(EObject eObject) {
+			Resource eResource = eObject.eResource();
 
 			if (eResource != null) {
 				ResourceSet resourceSet = eResource.getResourceSet();
@@ -5334,7 +6136,11 @@ public class UMLUtil
 
 		protected Stereotype getEcoreStereotype(EModelElement eModelElement,
 				String name) {
-			Profile ecoreProfile = getEcoreProfile(eModelElement);
+			return getEcoreStereotype((EObject) eModelElement, name);
+		}
+
+		protected Stereotype getEcoreStereotype(EObject eObject, String name) {
+			Profile ecoreProfile = getEcoreProfile(eObject);
 
 			return ecoreProfile != null
 				? ecoreProfile.getOwnedStereotype(name)
@@ -5704,6 +6510,197 @@ public class UMLUtil
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__VISIBILITY, eStructuralFeature, null,
 					options, diagnostics, context);
+			}
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				EGenericType eGenericType, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Stereotype eGenericTypeStereotype = getEcoreStereotype(
+				eGenericType, STEREOTYPE__E_GENERIC_TYPE);
+
+			if (eGenericTypeStereotype != null) {
+				safeApplyStereotype(element, eGenericTypeStereotype);
+
+				EGenericType eLowerBound = eGenericType.getELowerBound();
+
+				if (eLowerBound != null) {
+					EClassifier eClassifier = eLowerBound.getEClassifier();
+					Type lowerBound = getType(eClassifier == null
+						? eLowerBound.getETypeParameter()
+						: eClassifier, eLowerBound);
+
+					if (lowerBound != null) {
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+							if (diagnostics != null) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										ECORE_TAGGED_VALUE,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context,
+													element,
+													getTagDefinition(
+														eGenericTypeStereotype,
+														TAG_DEFINITION__LOWER_BOUND),
+													lowerBound)),
+										new Object[]{element}));
+							}
+
+							setTaggedValue(element, eGenericTypeStereotype,
+								TAG_DEFINITION__LOWER_BOUND, lowerBound);
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__ECORE_TAGGED_VALUES))
+							&& diagnostics != null) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									ECORE_TAGGED_VALUE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_Ecore2UMLConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(
+												context,
+												element,
+												getTagDefinition(
+													eGenericTypeStereotype,
+													TAG_DEFINITION__LOWER_BOUND),
+												lowerBound)),
+									new Object[]{element}));
+						}
+					}
+				}
+
+				EGenericType eUpperBound = eGenericType.getEUpperBound();
+
+				if (eUpperBound != null) {
+					EClassifier eClassifier = eUpperBound.getEClassifier();
+					Type upperBound = getType(eClassifier == null
+						? eUpperBound.getETypeParameter()
+						: eClassifier, eUpperBound);
+
+					if (upperBound != null) {
+
+						if (OPTION__PROCESS.equals(options
+							.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+							if (diagnostics != null) {
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.INFO,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										ECORE_TAGGED_VALUE,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context,
+													element,
+													getTagDefinition(
+														eGenericTypeStereotype,
+														TAG_DEFINITION__UPPER_BOUND),
+													upperBound)),
+										new Object[]{element}));
+							}
+
+							setTaggedValue(element, eGenericTypeStereotype,
+								TAG_DEFINITION__UPPER_BOUND, upperBound);
+						} else if (OPTION__REPORT.equals(options
+							.get(OPTION__ECORE_TAGGED_VALUES))
+							&& diagnostics != null) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.WARNING,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									ECORE_TAGGED_VALUE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_Ecore2UMLConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(
+												context,
+												element,
+												getTagDefinition(
+													eGenericTypeStereotype,
+													TAG_DEFINITION__UPPER_BOUND),
+												upperBound)),
+									new Object[]{element}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				ETypeParameter eTypeParameter, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Stereotype eTypeParameterStereotype = getEcoreStereotype(
+				eTypeParameter, STEREOTYPE__E_TYPE_PARAMETER);
+
+			if (eTypeParameterStereotype != null) {
+				safeApplyStereotype(element, eTypeParameterStereotype);
+
+				EList<Type> bounds = new UniqueEList.FastCompare<Type>();
+
+				for (EGenericType eBound : eTypeParameter.getEBounds()) {
+					Type type = getType(eTypeParameter, eBound);
+
+					if (type != null) {
+						bounds.add(type);
+					}
+				}
+
+				if (!bounds.isEmpty()) {
+
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									ECORE_TAGGED_VALUE,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_Ecore2UMLConverter_ProcessEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												element, getTagDefinition(
+													eTypeParameterStereotype,
+													TAG_DEFINITION__BOUNDS),
+												bounds)), new Object[]{element}));
+						}
+
+						setTaggedValue(element, eTypeParameterStereotype,
+							TAG_DEFINITION__BOUNDS, bounds);
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__ECORE_TAGGED_VALUES))
+						&& diagnostics != null) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								ECORE_TAGGED_VALUE,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Ecore2UMLConverter_ReportEcoreTaggedValue_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											element, getTagDefinition(
+												eTypeParameterStereotype,
+												TAG_DEFINITION__BOUNDS), bounds)),
+								new Object[]{element}));
+					}
+				}
 			}
 		}
 
@@ -6106,6 +7103,10 @@ public class UMLUtil
 			ePackages = EcoreUtil.getObjectsByType(eObjects,
 				EcorePackage.Literals.EPACKAGE);
 
+			this.options = options;
+			this.diagnostics = diagnostics;
+			this.context = context;
+
 			for (EPackage ePackage : ePackages) {
 				doSwitch(ePackage);
 			}
@@ -6195,6 +7196,16 @@ public class UMLUtil
 	public static final String STEREOTYPE__E_CLASS = "EClass"; //$NON-NLS-1$
 
 	/**
+	 * The name of the 'EGenericType' stereotype.
+	 */
+	public static final String STEREOTYPE__E_GENERIC_TYPE = "EGenericType"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'ETypeParameter' stereotype.
+	 */
+	public static final String STEREOTYPE__E_TYPE_PARAMETER = "ETypeParameter"; //$NON-NLS-1$
+
+	/**
 	 * The name of the 'EDataType' stereotype.
 	 */
 	public static final String STEREOTYPE__E_DATA_TYPE = "EDataType"; //$NON-NLS-1$
@@ -6228,6 +7239,23 @@ public class UMLUtil
 	 * The name of the 'EReference' stereotype.
 	 */
 	public static final String STEREOTYPE__E_REFERENCE = "EReference"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'upperBound' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__UPPER_BOUND = "upperBound"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'lowerBound' stereotype property.
+	 */
+
+	public static final String TAG_DEFINITION__LOWER_BOUND = "lowerBound"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'bounds' stereotype property.
+	 */
+
+	public static final String TAG_DEFINITION__BOUNDS = "bounds"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'attributeName' stereotype property.
@@ -6865,80 +7893,112 @@ public class UMLUtil
 		return false;
 	}
 
+	protected static Element getOwningElement(Element element, EClass eClass,
+			boolean resolve) {
+		Element owningElement = null;
+
+		for (Element owner = element; ((owningElement = (Element) owner.eGet(
+			UMLPackage.Literals.ELEMENT__OWNER, resolve)) == null
+			? owner = owningElement = getBaseElement(owner.eContainer())
+			: owningElement) != null
+			&& !(eClass.isInstance(owningElement));) {
+
+			owner = owner.getOwner();
+		}
+
+		return owningElement;
+	}
+
 	protected static EList<Property> getOwnedAttributes(Type type) {
-		@SuppressWarnings("unchecked")
-		EList<Property> ownedAttributes = (EList<Property>) new UMLSwitch() {
+		return new UMLSwitch<EList<Property>>() {
 
 			@Override
-			public Object caseArtifact(Artifact artifact) {
+			public EList<Property> caseArtifact(Artifact artifact) {
 				return artifact.getOwnedAttributes();
 			}
 
 			@Override
-			public Object caseDataType(DataType dataType) {
+			public EList<Property> caseDataType(DataType dataType) {
 				return dataType.getOwnedAttributes();
 			}
 
 			@Override
-			public Object caseInterface(Interface interface_) {
+			public EList<Property> caseInterface(Interface interface_) {
 				return interface_.getOwnedAttributes();
 			}
 
 			@Override
-			public Object caseSignal(Signal signal) {
+			public EList<Property> caseSignal(Signal signal) {
 				return signal.getOwnedAttributes();
 			}
 
 			@Override
-			public Object caseStructuredClassifier(
+			public EList<Property> caseStructuredClassifier(
 					StructuredClassifier structuredClassifier) {
 				return structuredClassifier.getOwnedAttributes();
 			}
 
 			@Override
-			public Object doSwitch(EObject eObject) {
+			public EList<Property> doSwitch(EObject eObject) {
 				return eObject == null
 					? null
 					: super.doSwitch(eObject);
 			}
 		}.doSwitch(type);
-
-		return ownedAttributes;
 	}
 
 	protected static EList<Operation> getOwnedOperations(Type type) {
-		@SuppressWarnings("unchecked")
-		EList<Operation> ownedOperations = (EList<Operation>) new UMLSwitch() {
+		return new UMLSwitch<EList<Operation>>() {
 
 			@Override
-			public Object caseArtifact(Artifact artifact) {
+			public EList<Operation> caseArtifact(Artifact artifact) {
 				return artifact.getOwnedOperations();
 			}
 
 			@Override
-			public Object caseClass(org.eclipse.uml2.uml.Class class_) {
+			public EList<Operation> caseClass(org.eclipse.uml2.uml.Class class_) {
 				return class_.getOwnedOperations();
 			}
 
 			@Override
-			public Object caseDataType(DataType dataType) {
+			public EList<Operation> caseDataType(DataType dataType) {
 				return dataType.getOwnedOperations();
 			}
 
 			@Override
-			public Object caseInterface(Interface interface_) {
+			public EList<Operation> caseInterface(Interface interface_) {
 				return interface_.getOwnedOperations();
 			}
 
 			@Override
-			public Object doSwitch(EObject eObject) {
+			public EList<Operation> doSwitch(EObject eObject) {
 				return eObject == null
 					? null
 					: super.doSwitch(eObject);
 			}
 		}.doSwitch(type);
+	}
 
-		return ownedOperations;
+	protected static EList<ETypeParameter> getETypeParameters(EObject eObject) {
+		return new EcoreSwitch<EList<ETypeParameter>>() {
+
+			@Override
+			public EList<ETypeParameter> caseEClassifier(EClassifier eClassifier) {
+				return eClassifier.getETypeParameters();
+			}
+
+			@Override
+			public EList<ETypeParameter> caseEOperation(EOperation eOperation) {
+				return eOperation.getETypeParameters();
+			}
+
+			@Override
+			public EList<ETypeParameter> doSwitch(EObject eObject) {
+				return eObject == null
+					? null
+					: super.doSwitch(eObject);
+			}
+		}.doSwitch(eObject);
 	}
 
 	protected static EList<Feature> getRedefinedFeatures(Feature feature) {
