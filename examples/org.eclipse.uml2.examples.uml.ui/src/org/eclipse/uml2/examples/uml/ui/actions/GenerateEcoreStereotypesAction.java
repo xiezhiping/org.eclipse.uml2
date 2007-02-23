@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.5 2007/01/04 18:47:13 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.6 2007/02/23 03:11:38 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -17,6 +17,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.common.edit.command.ChangeCommand;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
@@ -242,6 +243,37 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedAttribute(eReferenceStereotype,
 							"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
 							.setBooleanDefaultValue(true);
+
+						Stereotype eTypeParameterStereotype = generateOwnedStereotype(
+							profile, "ETypeParameter", false); //$NON-NLS-1$
+						org.eclipse.uml2.uml.Class templateParameterMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.TEMPLATE_PARAMETER);
+						generateExtension(eTypeParameterStereotype,
+							templateParameterMetaclass, false);
+						generateGeneralization(eTypeParameterStereotype,
+							eNamedElementStereotype);
+						org.eclipse.uml2.uml.Class classifierMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.CLASSIFIER);
+						generateOwnedAttribute(
+							eTypeParameterStereotype,
+							"bounds", //$NON-NLS-1$
+							classifierMetaclass, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
+
+						Stereotype eGenericTypeStereotype = generateOwnedStereotype(
+							profile, "EGenericType", false); //$NON-NLS-1$
+						generateExtension(eGenericTypeStereotype,
+							classMetaclass, false);
+						generateExtension(eGenericTypeStereotype,
+							interfaceMetaclass, false);
+						generateExtension(eGenericTypeStereotype,
+							dataTypeMetaclass, false);
+						generateOwnedAttribute(eGenericTypeStereotype,
+							"upperBound", //$NON-NLS-1$
+							classifierMetaclass, 0, 1);
+						generateOwnedAttribute(eGenericTypeStereotype,
+							"lowerBound", //$NON-NLS-1$
+							classifierMetaclass, 0, 1);
 
 						setIDs(profile);
 					}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.5 2007/01/04 18:47:13 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.6 2007/02/23 03:11:38 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -25,6 +25,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class ExternalizeLabelsAction
@@ -54,6 +55,11 @@ public class ExternalizeLabelsAction
 
 			new UMLSwitch<Object>() {
 
+				@Override
+				public Object caseTemplateParameter(TemplateParameter templateParameter) {
+					return templateParameter;
+				}
+							
 				@Override
 				public Object caseAssociation(Association association) {
 					return association;
