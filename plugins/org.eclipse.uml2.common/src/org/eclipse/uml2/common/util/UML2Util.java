@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.27 2006/12/14 21:18:16 khussey Exp $
+ * $Id: UML2Util.java,v 1.28 2007/02/23 03:16:53 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -612,6 +612,22 @@ public class UML2Util {
 			}
 
 			return EcoreUtil.getIdentification((EObject) object);
+		} else if (object instanceof Collection) {
+			StringBuffer messageSubstitution = new StringBuffer("["); //$NON-NLS-1$
+
+			for (Object element : ((Collection<?>) object)) {
+
+				if (messageSubstitution.length() > 1) {
+					messageSubstitution.append(", "); //$NON-NLS-1$
+				}
+
+				messageSubstitution.append(getMessageSubstitution(context,
+					element));
+			}
+
+			messageSubstitution.append(']');
+
+			return messageSubstitution.toString();
 		} else {
 			return String.valueOf(object);
 		}
