@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.33 2007/01/31 21:21:15 khussey Exp $
+ * $Id: OperationImpl.java,v 1.34 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -132,7 +132,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBinding> templateBindings = null;
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -142,7 +142,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature = null;
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The default value of the '{@link #isQuery() <em>Is Query</em>}' attribute.
@@ -212,7 +212,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> preconditions = null;
+	protected EList<Constraint> preconditions;
 
 	/**
 	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
@@ -222,7 +222,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> postconditions = null;
+	protected EList<Constraint> postconditions;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedOperations() <em>Redefined Operation</em>}' reference list.
@@ -232,7 +232,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operation> redefinedOperations = null;
+	protected EList<Operation> redefinedOperations;
 
 	/**
 	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
@@ -242,7 +242,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint bodyCondition = null;
+	protected Constraint bodyCondition;
 
 	/**
 	 * <!-- begin-user-doc -->

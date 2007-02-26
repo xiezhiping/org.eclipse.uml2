@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.14 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.15 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -58,7 +58,7 @@ public class InstanceValueImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InstanceSpecification instance = null;
+	protected InstanceSpecification instance;
 
 	/**
 	 * <!-- begin-user-doc -->

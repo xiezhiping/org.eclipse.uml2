@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.15 2007/01/31 21:21:14 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.16 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -66,7 +66,7 @@ public class PackageMergeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected org.eclipse.uml2.uml.Package mergedPackage = null;
+	protected org.eclipse.uml2.uml.Package mergedPackage;
 
 	/**
 	 * <!-- begin-user-doc -->

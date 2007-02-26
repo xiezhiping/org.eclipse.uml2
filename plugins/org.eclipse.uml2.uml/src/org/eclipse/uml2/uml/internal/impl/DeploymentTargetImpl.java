@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.21 2007/01/31 21:21:14 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.22 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Deployment> deployments = null;
+	protected EList<Deployment> deployments;
 
 	/**
 	 * <!-- begin-user-doc -->

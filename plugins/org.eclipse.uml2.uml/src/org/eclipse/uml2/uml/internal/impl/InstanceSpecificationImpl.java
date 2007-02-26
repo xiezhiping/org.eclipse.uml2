@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.20 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getClassifiers() <em>Classifier</em>}' reference list.
@@ -100,7 +100,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> classifiers = null;
+	protected EList<Classifier> classifiers;
 
 	/**
 	 * The cached value of the '{@link #getSlots() <em>Slot</em>}' containment reference list.
@@ -110,7 +110,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Slot> slots = null;
+	protected EList<Slot> slots;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -120,7 +120,7 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification specification = null;
+	protected ValueSpecification specification;
 
 	/**
 	 * <!-- begin-user-doc -->

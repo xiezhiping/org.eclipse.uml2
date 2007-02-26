@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.21 2007/01/31 21:21:16 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.22 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class LifelineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ConnectableElement represents = null;
+	protected ConnectableElement represents;
 
 	/**
 	 * The cached value of the '{@link #getSelector() <em>Selector</em>}' containment reference.
@@ -95,7 +95,7 @@ public class LifelineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification selector = null;
+	protected ValueSpecification selector;
 
 	/**
 	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
@@ -105,7 +105,7 @@ public class LifelineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected PartDecomposition decomposedAs = null;
+	protected PartDecomposition decomposedAs;
 
 	/**
 	 * The cached value of the '{@link #getCoveredBys() <em>Covered By</em>}' reference list.
@@ -115,7 +115,7 @@ public class LifelineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InteractionFragment> coveredBys = null;
+	protected EList<InteractionFragment> coveredBys;
 
 	/**
 	 * <!-- begin-user-doc -->

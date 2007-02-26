@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,7 +94,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ActivityNode source = null;
+	protected ActivityNode source;
 
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -104,7 +104,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ActivityNode target = null;
+	protected ActivityNode target;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedEdges() <em>Redefined Edge</em>}' reference list.
@@ -114,7 +114,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> redefinedEdges = null;
+	protected EList<ActivityEdge> redefinedEdges;
 
 	/**
 	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
@@ -124,7 +124,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityPartition> inPartitions = null;
+	protected EList<ActivityPartition> inPartitions;
 
 	/**
 	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
@@ -134,7 +134,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification guard = null;
+	protected ValueSpecification guard;
 
 	/**
 	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' containment reference.
@@ -144,7 +144,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification weight = null;
+	protected ValueSpecification weight;
 
 	/**
 	 * The cached value of the '{@link #getInterrupts() <em>Interrupts</em>}' reference.
@@ -154,7 +154,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InterruptibleActivityRegion interrupts = null;
+	protected InterruptibleActivityRegion interrupts;
 
 	/**
 	 * <!-- begin-user-doc -->

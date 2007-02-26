@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterableElement> actuals = null;
+	protected EList<ParameterableElement> actuals;
 
 	/**
 	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
@@ -88,7 +88,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter formal = null;
+	protected TemplateParameter formal;
 
 	/**
 	 * The cached value of the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
@@ -98,7 +98,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterableElement> ownedActuals = null;
+	protected EList<ParameterableElement> ownedActuals;
 
 	/**
 	 * <!-- begin-user-doc -->

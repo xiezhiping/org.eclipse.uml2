@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public abstract class StructuralFeatureActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected StructuralFeature structuralFeature = null;
+	protected StructuralFeature structuralFeature;
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
@@ -92,7 +92,7 @@ public abstract class StructuralFeatureActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndActionImpl.java,v 1.24 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ReadLinkObjectEndActionImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class ReadLinkObjectEndActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
@@ -95,7 +95,7 @@ public class ReadLinkObjectEndActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Property end = null;
+	protected Property end;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -105,7 +105,7 @@ public class ReadLinkObjectEndActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * <!-- begin-user-doc -->

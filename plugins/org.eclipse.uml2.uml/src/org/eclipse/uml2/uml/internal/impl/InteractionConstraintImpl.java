@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.22 2007/01/31 21:21:16 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.23 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification minint = null;
+	protected ValueSpecification minint;
 
 	/**
 	 * The cached value of the '{@link #getMaxint() <em>Maxint</em>}' containment reference.
@@ -86,7 +86,7 @@ public class InteractionConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification maxint = null;
+	protected ValueSpecification maxint;
 
 	/**
 	 * <!-- begin-user-doc -->

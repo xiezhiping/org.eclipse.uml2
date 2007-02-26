@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.23 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.24 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Type type = null;
+	protected Type type;
 
 	/**
 	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
@@ -139,7 +139,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperBound = null;
+	protected ValueSpecification upperBound;
 
 	/**
 	 * The cached value of the '{@link #getInStates() <em>In State</em>}' reference list.
@@ -149,7 +149,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<State> inStates = null;
+	protected EList<State> inStates;
 
 	/**
 	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
@@ -159,7 +159,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior selection = null;
+	protected Behavior selection;
 
 	/**
 	 * <!-- begin-user-doc -->

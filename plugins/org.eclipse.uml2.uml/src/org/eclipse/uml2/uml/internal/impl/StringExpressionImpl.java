@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.22 2007/01/31 21:21:15 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.23 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class StringExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBinding> templateBindings = null;
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -94,7 +94,7 @@ public class StringExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature = null;
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getSubExpressions() <em>Sub Expression</em>}' containment reference list.
@@ -104,7 +104,7 @@ public class StringExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StringExpression> subExpressions = null;
+	protected EList<StringExpression> subExpressions;
 
 	/**
 	 * <!-- begin-user-doc -->

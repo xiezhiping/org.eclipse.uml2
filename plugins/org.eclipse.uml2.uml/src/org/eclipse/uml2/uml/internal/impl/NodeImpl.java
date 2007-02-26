@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.28 2007/01/31 21:21:15 khussey Exp $
+ * $Id: NodeImpl.java,v 1.29 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,7 +100,7 @@ public class NodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Deployment> deployments = null;
+	protected EList<Deployment> deployments;
 
 	/**
 	 * The cached value of the '{@link #getNestedNodes() <em>Nested Node</em>}' containment reference list.
@@ -110,7 +110,7 @@ public class NodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Node> nestedNodes = null;
+	protected EList<Node> nestedNodes;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.34 2007/01/31 21:21:15 khussey Exp $
+ * $Id: PackageImpl.java,v 1.35 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -117,7 +117,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBinding> templateBindings = null;
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -127,7 +127,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature = null;
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getPackagedElements() <em>Packaged Element</em>}' containment reference list.
@@ -137,7 +137,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageableElement> packagedElements = null;
+	protected EList<PackageableElement> packagedElements;
 
 	/**
 	 * The cached value of the '{@link #getPackageMerges() <em>Package Merge</em>}' containment reference list.
@@ -147,7 +147,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageMerge> packageMerges = null;
+	protected EList<PackageMerge> packageMerges;
 
 	/**
 	 * The cached value of the '{@link #getProfileApplications() <em>Profile Application</em>}' containment reference list.
@@ -157,7 +157,7 @@ public class PackageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProfileApplication> profileApplications = null;
+	protected EList<ProfileApplication> profileApplications;
 
 	/**
 	 * <!-- begin-user-doc -->

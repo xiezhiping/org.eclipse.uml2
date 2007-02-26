@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TriggerImpl.java,v 1.13 2006/12/14 15:49:29 khussey Exp $
+ * $Id: TriggerImpl.java,v 1.14 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -61,7 +61,7 @@ public class TriggerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Event event = null;
+	protected Event event;
 
 	/**
 	 * The cached value of the '{@link #getPorts() <em>Port</em>}' reference list.
@@ -71,7 +71,7 @@ public class TriggerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Port> ports = null;
+	protected EList<Port> ports;
 
 	/**
 	 * <!-- begin-user-doc -->

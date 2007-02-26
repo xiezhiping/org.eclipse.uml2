@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.29 2007/01/31 21:21:16 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.30 2007/02/26 16:17:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,7 +96,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
@@ -106,7 +106,7 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Connector> ownedConnectors = null;
+	protected EList<Connector> ownedConnectors;
 
 	/**
 	 * <!-- begin-user-doc -->

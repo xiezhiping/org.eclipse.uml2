@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.37 2007/01/31 17:55:12 khussey Exp $
+ * $Id: ElementImpl.java,v 1.38 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,7 +77,7 @@ public abstract class ElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Comment> ownedComments = null;
+	protected EList<Comment> ownedComments;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.20 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> outgoings = null;
+	protected EList<ActivityEdge> outgoings;
 
 	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
@@ -99,7 +99,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> incomings = null;
+	protected EList<ActivityEdge> incomings;
 
 	/**
 	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
@@ -109,7 +109,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityPartition> inPartitions = null;
+	protected EList<ActivityPartition> inPartitions;
 
 	/**
 	 * The cached value of the '{@link #getInInterruptibleRegions() <em>In Interruptible Region</em>}' reference list.
@@ -119,7 +119,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InterruptibleActivityRegion> inInterruptibleRegions = null;
+	protected EList<InterruptibleActivityRegion> inInterruptibleRegions;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedNodes() <em>Redefined Node</em>}' reference list.
@@ -129,7 +129,7 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> redefinedNodes = null;
+	protected EList<ActivityNode> redefinedNodes;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.26 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.27 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,7 @@ public class ProtocolStateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProtocolConformance> conformances = null;
+	protected EList<ProtocolConformance> conformances;
 
 	/**
 	 * <!-- begin-user-doc -->

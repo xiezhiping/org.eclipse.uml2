@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,7 +102,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
@@ -112,7 +112,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operation> ownedOperations = null;
+	protected EList<Operation> ownedOperations;
 
 	/**
 	 * The cached value of the '{@link #getNestedClassifiers() <em>Nested Classifier</em>}' containment reference list.
@@ -122,7 +122,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> nestedClassifiers = null;
+	protected EList<Classifier> nestedClassifiers;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedInterfaces() <em>Redefined Interface</em>}' reference list.
@@ -132,7 +132,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Interface> redefinedInterfaces = null;
+	protected EList<Interface> redefinedInterfaces;
 
 	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
@@ -142,7 +142,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Reception> ownedReceptions = null;
+	protected EList<Reception> ownedReceptions;
 
 	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' containment reference.
@@ -152,7 +152,7 @@ public class InterfaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ProtocolStateMachine protocol = null;
+	protected ProtocolStateMachine protocol;
 
 	/**
 	 * <!-- begin-user-doc -->

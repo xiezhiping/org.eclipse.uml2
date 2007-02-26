@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.25 2007/01/31 21:21:16 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.26 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -86,7 +86,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> results = null;
+	protected EList<OutputPin> results;
 
 	/**
 	 * The cached value of the '{@link #getUnmarshallType() <em>Unmarshall Type</em>}' reference.
@@ -96,7 +96,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier unmarshallType = null;
+	protected Classifier unmarshallType;
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
@@ -106,7 +106,7 @@ public class UnmarshallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * <!-- begin-user-doc -->

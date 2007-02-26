@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.21 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,7 +95,7 @@ public class TimeEventImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification when = null;
+	protected ValueSpecification when;
 
 	/**
 	 * <!-- begin-user-doc -->

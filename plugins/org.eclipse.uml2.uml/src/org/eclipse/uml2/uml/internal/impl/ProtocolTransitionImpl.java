@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.34 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.35 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -92,7 +92,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint postCondition = null;
+	protected Constraint postCondition;
 
 	/**
 	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
@@ -102,7 +102,7 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint preCondition = null;
+	protected Constraint preCondition;
 
 	/**
 	 * <!-- begin-user-doc -->

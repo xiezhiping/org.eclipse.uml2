@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.21 2007/01/31 21:21:16 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.22 2007/02/26 16:17:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DeployedArtifact> deployedArtifacts = null;
+	protected EList<DeployedArtifact> deployedArtifacts;
 
 	/**
 	 * The cached value of the '{@link #getConfigurations() <em>Configuration</em>}' containment reference list.
@@ -88,7 +88,7 @@ public class DeploymentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DeploymentSpecification> configurations = null;
+	protected EList<DeploymentSpecification> configurations;
 
 	/**
 	 * <!-- begin-user-doc -->

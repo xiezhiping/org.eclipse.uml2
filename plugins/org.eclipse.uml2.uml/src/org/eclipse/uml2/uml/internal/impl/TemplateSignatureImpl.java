@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateParameter> parameters = null;
+	protected EList<TemplateParameter> parameters;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
@@ -86,7 +86,7 @@ public class TemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateParameter> ownedParameters = null;
+	protected EList<TemplateParameter> ownedParameters;
 
 	/**
 	 * <!-- begin-user-doc -->

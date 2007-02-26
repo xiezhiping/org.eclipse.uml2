@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.32 2007/01/31 21:21:14 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.33 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,7 +104,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ElementImport> elementImports = null;
+	protected EList<ElementImport> elementImports;
 
 	/**
 	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
@@ -114,7 +114,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageImport> packageImports = null;
+	protected EList<PackageImport> packageImports;
 
 	/**
 	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -124,7 +124,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> ownedRules = null;
+	protected EList<Constraint> ownedRules;
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variable</em>}' containment reference list.
@@ -134,7 +134,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Variable> variables = null;
+	protected EList<Variable> variables;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
@@ -144,7 +144,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> edges = null;
+	protected EList<ActivityEdge> edges;
 
 	/**
 	 * The default value of the '{@link #isMustIsolate() <em>Must Isolate</em>}' attribute.
@@ -174,7 +174,7 @@ public class StructuredActivityNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> nodes = null;
+	protected EList<ActivityNode> nodes;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public class DependencyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NamedElement> suppliers = null;
+	protected EList<NamedElement> suppliers;
 
 	/**
 	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
@@ -80,7 +80,7 @@ public class DependencyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<NamedElement> clients = null;
+	protected EList<NamedElement> clients;
 
 	/**
 	 * <!-- begin-user-doc -->

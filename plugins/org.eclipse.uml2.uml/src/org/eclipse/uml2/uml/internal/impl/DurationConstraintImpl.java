@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.21 2007/01/31 21:21:16 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,7 +71,7 @@ public class DurationConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Boolean> firstEvents = null;
+	protected EList<Boolean> firstEvents;
 
 	/**
 	 * <!-- begin-user-doc -->

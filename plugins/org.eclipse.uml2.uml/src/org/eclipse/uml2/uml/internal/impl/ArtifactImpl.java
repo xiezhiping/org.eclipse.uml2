@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.28 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.29 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,7 +127,7 @@ public class ArtifactImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Artifact> nestedArtifacts = null;
+	protected EList<Artifact> nestedArtifacts;
 
 	/**
 	 * The cached value of the '{@link #getManifestations() <em>Manifestation</em>}' containment reference list.
@@ -137,7 +137,7 @@ public class ArtifactImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Manifestation> manifestations = null;
+	protected EList<Manifestation> manifestations;
 
 	/**
 	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
@@ -147,7 +147,7 @@ public class ArtifactImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operation> ownedOperations = null;
+	protected EList<Operation> ownedOperations;
 
 	/**
 	 * The cached value of the '{@link #getOwnedAttributes() <em>Owned Attribute</em>}' containment reference list.
@@ -157,7 +157,7 @@ public class ArtifactImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * <!-- begin-user-doc -->

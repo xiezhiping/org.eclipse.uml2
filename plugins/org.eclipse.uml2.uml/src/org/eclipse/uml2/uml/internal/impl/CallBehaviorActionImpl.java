@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.16 2007/01/31 21:21:15 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.17 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,7 +71,7 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior behavior = null;
+	protected Behavior behavior;
 
 	/**
 	 * <!-- begin-user-doc -->

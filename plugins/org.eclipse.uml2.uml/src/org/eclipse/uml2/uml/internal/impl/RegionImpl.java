@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.26 2007/01/31 21:21:14 khussey Exp $
+ * $Id: RegionImpl.java,v 1.27 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,7 +114,7 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Vertex> subvertices = null;
+	protected EList<Vertex> subvertices;
 
 	/**
 	 * The cached value of the '{@link #getTransitions() <em>Transition</em>}' containment reference list.
@@ -124,7 +124,7 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transition> transitions = null;
+	protected EList<Transition> transitions;
 
 	/**
 	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
@@ -134,7 +134,7 @@ public class RegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Region extendedRegion = null;
+	protected Region extendedRegion;
 
 	/**
 	 * <!-- begin-user-doc -->

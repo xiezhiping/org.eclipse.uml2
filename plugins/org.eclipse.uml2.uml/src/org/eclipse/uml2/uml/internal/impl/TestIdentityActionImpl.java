@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin first = null;
+	protected InputPin first;
 
 	/**
 	 * The cached value of the '{@link #getSecond() <em>Second</em>}' containment reference.
@@ -94,7 +94,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin second = null;
+	protected InputPin second;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -104,7 +104,7 @@ public class TestIdentityActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * <!-- begin-user-doc -->

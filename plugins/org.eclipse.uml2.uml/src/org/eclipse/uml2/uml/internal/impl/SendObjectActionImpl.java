@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin target = null;
+	protected InputPin target;
 
 	/**
 	 * The cached value of the '{@link #getRequest() <em>Request</em>}' containment reference.
@@ -88,7 +88,7 @@ public class SendObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin request = null;
+	protected InputPin request;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier defaultClassifier = null;
+	protected Classifier defaultClassifier;
 
 	/**
 	 * The cached value of the '{@link #getConstrainingClassifier() <em>Constraining Classifier</em>}' reference.
@@ -94,7 +94,7 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier constrainingClassifier = null;
+	protected Classifier constrainingClassifier;
 
 	/**
 	 * <!-- begin-user-doc -->

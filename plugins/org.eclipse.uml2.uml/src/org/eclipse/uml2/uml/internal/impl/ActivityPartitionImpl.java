@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.25 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,7 +131,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> nodes = null;
+	protected EList<ActivityNode> nodes;
 
 	/**
 	 * The cached value of the '{@link #getSubpartitions() <em>Subpartition</em>}' containment reference list.
@@ -141,7 +141,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityPartition> subpartitions = null;
+	protected EList<ActivityPartition> subpartitions;
 
 	/**
 	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
@@ -151,7 +151,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Element represents = null;
+	protected Element represents;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' reference list.
@@ -161,7 +161,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> edges = null;
+	protected EList<ActivityEdge> edges;
 
 	/**
 	 * <!-- begin-user-doc -->

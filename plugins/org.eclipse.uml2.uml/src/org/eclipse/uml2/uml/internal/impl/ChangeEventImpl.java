@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ChangeEventImpl.java,v 1.20 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ChangeEventImpl.java,v 1.21 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,7 +68,7 @@ public class ChangeEventImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification changeExpression = null;
+	protected ValueSpecification changeExpression;
 
 	/**
 	 * <!-- begin-user-doc -->

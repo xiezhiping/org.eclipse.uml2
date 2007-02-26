@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.25 2007/01/31 21:21:16 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.26 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -135,7 +135,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperValue = null;
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
@@ -145,7 +145,7 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification lowerValue = null;
+	protected ValueSpecification lowerValue;
 
 	/**
 	 * <!-- begin-user-doc -->

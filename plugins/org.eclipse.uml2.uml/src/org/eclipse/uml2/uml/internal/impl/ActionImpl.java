@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ActionImpl.java,v 1.28 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public abstract class ActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> localPreconditions = null;
+	protected EList<Constraint> localPreconditions;
 
 	/**
 	 * The cached value of the '{@link #getLocalPostconditions() <em>Local Postcondition</em>}' containment reference list.
@@ -90,7 +90,7 @@ public abstract class ActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> localPostconditions = null;
+	protected EList<Constraint> localPostconditions;
 
 	/**
 	 * <!-- begin-user-doc -->

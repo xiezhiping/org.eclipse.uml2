@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.17 2006/12/14 15:49:30 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.18 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ExpansionRegion regionAsOutput = null;
+	protected ExpansionRegion regionAsOutput;
 
 	/**
 	 * The cached value of the '{@link #getRegionAsInput() <em>Region As Input</em>}' reference.
@@ -79,7 +79,7 @@ public class ExpansionNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ExpansionRegion regionAsInput = null;
+	protected ExpansionRegion regionAsInput;
 
 	/**
 	 * <!-- begin-user-doc -->

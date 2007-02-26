@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.14 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.15 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -62,7 +62,7 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * <!-- begin-user-doc -->

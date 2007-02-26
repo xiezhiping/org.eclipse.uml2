@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.10 2006/12/14 15:49:30 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.11 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,7 +59,7 @@ public class QualifierValueImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Property qualifier = null;
+	protected Property qualifier;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
@@ -69,7 +69,7 @@ public class QualifierValueImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin value = null;
+	protected InputPin value;
 
 	/**
 	 * <!-- begin-user-doc -->

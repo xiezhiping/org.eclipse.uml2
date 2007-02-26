@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.20 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,7 +99,7 @@ public class ExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ValueSpecification> operands = null;
+	protected EList<ValueSpecification> operands;
 
 	/**
 	 * <!-- begin-user-doc -->

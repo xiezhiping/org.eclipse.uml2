@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.17 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.18 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier realizingClassifier = null;
+	protected Classifier realizingClassifier;
 
 	/**
 	 * <!-- begin-user-doc -->

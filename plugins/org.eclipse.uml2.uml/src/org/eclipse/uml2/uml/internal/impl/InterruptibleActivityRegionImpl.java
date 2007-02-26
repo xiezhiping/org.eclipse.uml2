@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegionImpl.java,v 1.18 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InterruptibleActivityRegionImpl.java,v 1.19 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> nodes = null;
+	protected EList<ActivityNode> nodes;
 
 	/**
 	 * The cached value of the '{@link #getInterruptingEdges() <em>Interrupting Edge</em>}' reference list.
@@ -79,7 +79,7 @@ public class InterruptibleActivityRegionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> interruptingEdges = null;
+	protected EList<ActivityEdge> interruptingEdges;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetImpl.java,v 1.20 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ParameterSetImpl.java,v 1.21 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ public class ParameterSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> parameters = null;
+	protected EList<Parameter> parameters;
 
 	/**
 	 * The cached value of the '{@link #getConditions() <em>Condition</em>}' containment reference list.
@@ -84,7 +84,7 @@ public class ParameterSetImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> conditions = null;
+	protected EList<Constraint> conditions;
 
 	/**
 	 * <!-- begin-user-doc -->

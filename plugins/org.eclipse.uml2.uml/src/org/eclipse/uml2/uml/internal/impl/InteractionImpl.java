@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.29 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.30 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,7 +111,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Lifeline> covereds = null;
+	protected EList<Lifeline> covereds;
 
 	/**
 	 * The cached value of the '{@link #getGeneralOrderings() <em>General Ordering</em>}' containment reference list.
@@ -121,7 +121,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralOrdering> generalOrderings = null;
+	protected EList<GeneralOrdering> generalOrderings;
 
 	/**
 	 * The cached value of the '{@link #getLifelines() <em>Lifeline</em>}' containment reference list.
@@ -131,7 +131,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Lifeline> lifelines = null;
+	protected EList<Lifeline> lifelines;
 
 	/**
 	 * The cached value of the '{@link #getFragments() <em>Fragment</em>}' containment reference list.
@@ -141,7 +141,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InteractionFragment> fragments = null;
+	protected EList<InteractionFragment> fragments;
 
 	/**
 	 * The cached value of the '{@link #getActions() <em>Action</em>}' containment reference list.
@@ -151,7 +151,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Action> actions = null;
+	protected EList<Action> actions;
 
 	/**
 	 * The cached value of the '{@link #getFormalGates() <em>Formal Gate</em>}' containment reference list.
@@ -161,7 +161,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Gate> formalGates = null;
+	protected EList<Gate> formalGates;
 
 	/**
 	 * The cached value of the '{@link #getMessages() <em>Message</em>}' containment reference list.
@@ -171,7 +171,7 @@ public class InteractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Message> messages = null;
+	protected EList<Message> messages;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.24 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -95,7 +95,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference.
@@ -105,7 +105,7 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Property qualifier = null;
+	protected Property qualifier;
 
 	/**
 	 * <!-- begin-user-doc -->

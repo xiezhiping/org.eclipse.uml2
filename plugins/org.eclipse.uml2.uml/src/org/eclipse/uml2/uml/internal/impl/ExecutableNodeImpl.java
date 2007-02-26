@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNodeImpl.java,v 1.20 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ExecutableNodeImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -70,7 +70,7 @@ public abstract class ExecutableNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExceptionHandler> handlers = null;
+	protected EList<ExceptionHandler> handlers;
 
 	/**
 	 * <!-- begin-user-doc -->

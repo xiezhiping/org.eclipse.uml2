@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.35 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.36 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -158,7 +158,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperValue = null;
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
@@ -168,7 +168,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification lowerValue = null;
+	protected ValueSpecification lowerValue;
 
 	/**
 	 * The cached value of the '{@link #getParameterSets() <em>Parameter Set</em>}' reference list.
@@ -178,7 +178,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterSet> parameterSets = null;
+	protected EList<ParameterSet> parameterSets;
 
 	/**
 	 * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
@@ -218,7 +218,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification defaultValue = null;
+	protected ValueSpecification defaultValue;
 
 	/**
 	 * The default value of the '{@link #isException() <em>Is Exception</em>}' attribute.

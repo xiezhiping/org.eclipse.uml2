@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: PinImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,7 +151,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperValue = null;
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
@@ -161,7 +161,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification lowerValue = null;
+	protected ValueSpecification lowerValue;
 
 	/**
 	 * The default value of the '{@link #isControl() <em>Is Control</em>}' attribute.

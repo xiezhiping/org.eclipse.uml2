@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,7 +106,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier classifier = null;
+	protected Classifier classifier;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -116,7 +116,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
@@ -126,7 +126,7 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * <!-- begin-user-doc -->

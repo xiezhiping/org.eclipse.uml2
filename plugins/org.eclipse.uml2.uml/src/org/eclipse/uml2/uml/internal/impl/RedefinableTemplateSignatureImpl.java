@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -89,7 +89,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateParameter> parameters = null;
+	protected EList<TemplateParameter> parameters;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
@@ -99,7 +99,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateParameter> ownedParameters = null;
+	protected EList<TemplateParameter> ownedParameters;
 
 	/**
 	 * The cached value of the '{@link #getExtendedSignatures() <em>Extended Signature</em>}' reference list.
@@ -109,7 +109,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<RedefinableTemplateSignature> extendedSignatures = null;
+	protected EList<RedefinableTemplateSignature> extendedSignatures;
 
 	/**
 	 * <!-- begin-user-doc -->

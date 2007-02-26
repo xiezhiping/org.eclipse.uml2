@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.30 2007/01/31 21:21:16 khussey Exp $
+ * $Id: VariableImpl.java,v 1.31 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,7 +150,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperValue = null;
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
@@ -160,7 +160,7 @@ public class VariableImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification lowerValue = null;
+	protected ValueSpecification lowerValue;
 
 	/**
 	 * <!-- begin-user-doc -->

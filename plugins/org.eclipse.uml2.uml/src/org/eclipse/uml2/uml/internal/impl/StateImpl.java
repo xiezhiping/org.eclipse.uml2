@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.31 2007/01/31 21:21:16 khussey Exp $
+ * $Id: StateImpl.java,v 1.32 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,7 +134,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transition> outgoings = null;
+	protected EList<Transition> outgoings;
 
 	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
@@ -144,7 +144,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transition> incomings = null;
+	protected EList<Transition> incomings;
 
 	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
@@ -194,7 +194,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected StateMachine submachine = null;
+	protected StateMachine submachine;
 
 	/**
 	 * The cached value of the '{@link #getConnections() <em>Connection</em>}' containment reference list.
@@ -204,7 +204,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConnectionPointReference> connections = null;
+	protected EList<ConnectionPointReference> connections;
 
 	/**
 	 * The cached value of the '{@link #getConnectionPoints() <em>Connection Point</em>}' containment reference list.
@@ -214,7 +214,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pseudostate> connectionPoints = null;
+	protected EList<Pseudostate> connectionPoints;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedState() <em>Redefined State</em>}' reference.
@@ -224,7 +224,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected State redefinedState = null;
+	protected State redefinedState;
 
 	/**
 	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
@@ -234,7 +234,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint stateInvariant = null;
+	protected Constraint stateInvariant;
 
 	/**
 	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' containment reference.
@@ -244,7 +244,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior entry = null;
+	protected Behavior entry;
 
 	/**
 	 * The cached value of the '{@link #getExit() <em>Exit</em>}' containment reference.
@@ -254,7 +254,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior exit = null;
+	protected Behavior exit;
 
 	/**
 	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' containment reference.
@@ -264,7 +264,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior doActivity = null;
+	protected Behavior doActivity;
 
 	/**
 	 * The cached value of the '{@link #getDeferrableTriggers() <em>Deferrable Trigger</em>}' containment reference list.
@@ -274,7 +274,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Trigger> deferrableTriggers = null;
+	protected EList<Trigger> deferrableTriggers;
 
 	/**
 	 * The cached value of the '{@link #getRegions() <em>Region</em>}' containment reference list.
@@ -284,7 +284,7 @@ public class StateImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Region> regions = null;
+	protected EList<Region> regions;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.24 2007/01/31 21:21:14 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,7 +81,7 @@ public abstract class WriteVariableActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin value = null;
+	protected InputPin value;
 
 	/**
 	 * <!-- begin-user-doc -->

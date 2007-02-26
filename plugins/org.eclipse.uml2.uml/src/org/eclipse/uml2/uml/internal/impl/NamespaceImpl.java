@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.23 2007/01/31 21:21:16 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.24 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,7 +79,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ElementImport> elementImports = null;
+	protected EList<ElementImport> elementImports;
 
 	/**
 	 * The cached value of the '{@link #getPackageImports() <em>Package Import</em>}' containment reference list.
@@ -89,7 +89,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageImport> packageImports = null;
+	protected EList<PackageImport> packageImports;
 
 	/**
 	 * The cached value of the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -99,7 +99,7 @@ public abstract class NamespaceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> ownedRules = null;
+	protected EList<Constraint> ownedRules;
 
 	/**
 	 * <!-- begin-user-doc -->

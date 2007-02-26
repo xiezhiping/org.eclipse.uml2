@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.25 2007/02/26 16:17:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class ReplyActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Trigger replyToCall = null;
+	protected Trigger replyToCall;
 
 	/**
 	 * The cached value of the '{@link #getReturnInformation() <em>Return Information</em>}' containment reference.
@@ -94,7 +94,7 @@ public class ReplyActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin returnInformation = null;
+	protected InputPin returnInformation;
 
 	/**
 	 * The cached value of the '{@link #getReplyValues() <em>Reply Value</em>}' containment reference list.
@@ -104,7 +104,7 @@ public class ReplyActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InputPin> replyValues = null;
+	protected EList<InputPin> replyValues;
 
 	/**
 	 * <!-- begin-user-doc -->

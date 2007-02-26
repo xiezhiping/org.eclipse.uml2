@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: VertexImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public abstract class VertexImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transition> outgoings = null;
+	protected EList<Transition> outgoings;
 
 	/**
 	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
@@ -79,7 +79,7 @@ public abstract class VertexImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transition> incomings = null;
+	protected EList<Transition> incomings;
 
 	/**
 	 * <!-- begin-user-doc -->

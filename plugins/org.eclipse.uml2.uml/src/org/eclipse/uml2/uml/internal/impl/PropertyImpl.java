@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.39 2007/01/31 21:21:15 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.40 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,7 +126,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
@@ -136,7 +136,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConnectorEnd> ends = null;
+	protected EList<ConnectorEnd> ends;
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -146,7 +146,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Deployment> deployments = null;
+	protected EList<Deployment> deployments;
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -156,7 +156,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBinding> templateBindings = null;
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -166,7 +166,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature = null;
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
@@ -176,7 +176,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Association association = null;
+	protected Association association;
 
 	/**
 	 * The default value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
@@ -266,7 +266,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> redefinedProperties = null;
+	protected EList<Property> redefinedProperties;
 
 	/**
 	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
@@ -276,7 +276,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification defaultValue = null;
+	protected ValueSpecification defaultValue;
 
 	/**
 	 * The cached value of the '{@link #getSubsettedProperties() <em>Subsetted Property</em>}' reference list.
@@ -286,7 +286,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> subsettedProperties = null;
+	protected EList<Property> subsettedProperties;
 
 	/**
 	 * The cached value of the '{@link #getQualifiers() <em>Qualifier</em>}' containment reference list.
@@ -296,7 +296,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> qualifiers = null;
+	protected EList<Property> qualifiers;
 
 	/**
 	 * <!-- begin-user-doc -->

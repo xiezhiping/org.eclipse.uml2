@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,7 +105,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> oldClassifiers = null;
+	protected EList<Classifier> oldClassifiers;
 
 	/**
 	 * The cached value of the '{@link #getNewClassifiers() <em>New Classifier</em>}' reference list.
@@ -115,7 +115,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> newClassifiers = null;
+	protected EList<Classifier> newClassifiers;
 
 	/**
 	 * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference.
@@ -125,7 +125,7 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * <!-- begin-user-doc -->

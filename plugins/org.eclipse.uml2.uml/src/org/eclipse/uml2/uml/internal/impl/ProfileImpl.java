@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.28 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,7 +91,7 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ElementImport> metaclassReferences = null;
+	protected EList<ElementImport> metaclassReferences;
 
 	/**
 	 * The cached value of the '{@link #getMetamodelReferences() <em>Metamodel Reference</em>}' reference list.
@@ -101,7 +101,7 @@ public class ProfileImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageImport> metamodelReferences = null;
+	protected EList<PackageImport> metamodelReferences;
 
 	/**
 	 * <!-- begin-user-doc -->

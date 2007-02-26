@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationImpl.java,v 1.29 2007/01/31 21:21:14 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.30 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +98,7 @@ public class AssociationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedEnds = null;
+	protected EList<Property> ownedEnds;
 
 	/**
 	 * The cached value of the '{@link #getMemberEnds() <em>Member End</em>}' reference list.
@@ -108,7 +108,7 @@ public class AssociationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> memberEnds = null;
+	protected EList<Property> memberEnds;
 
 	/**
 	 * The default value of the '{@link #isDerived() <em>Is Derived</em>}' attribute.
@@ -138,7 +138,7 @@ public class AssociationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> navigableOwnedEnds = null;
+	protected EList<Property> navigableOwnedEnds;
 
 	/**
 	 * <!-- begin-user-doc -->

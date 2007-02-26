@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.22 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.23 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,7 +84,7 @@ public class ExtendImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected UseCase extendedCase = null;
+	protected UseCase extendedCase;
 
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
@@ -94,7 +94,7 @@ public class ExtendImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint condition = null;
+	protected Constraint condition;
 
 	/**
 	 * The cached value of the '{@link #getExtensionLocations() <em>Extension Location</em>}' reference list.
@@ -104,7 +104,7 @@ public class ExtendImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExtensionPoint> extensionLocations = null;
+	protected EList<ExtensionPoint> extensionLocations;
 
 	/**
 	 * <!-- begin-user-doc -->

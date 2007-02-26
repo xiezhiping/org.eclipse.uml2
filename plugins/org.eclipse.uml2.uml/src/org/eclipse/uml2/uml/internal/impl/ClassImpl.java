@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.39 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ClassImpl.java,v 1.40 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,7 +123,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Behavior> ownedBehaviors = null;
+	protected EList<Behavior> ownedBehaviors;
 
 	/**
 	 * The cached value of the '{@link #getClassifierBehavior() <em>Classifier Behavior</em>}' reference.
@@ -133,7 +133,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior classifierBehavior = null;
+	protected Behavior classifierBehavior;
 
 	/**
 	 * The cached value of the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
@@ -143,7 +143,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InterfaceRealization> interfaceRealizations = null;
+	protected EList<InterfaceRealization> interfaceRealizations;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTriggers() <em>Owned Trigger</em>}' containment reference list.
@@ -153,7 +153,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Trigger> ownedTriggers = null;
+	protected EList<Trigger> ownedTriggers;
 
 	/**
 	 * The cached value of the '{@link #getNestedClassifiers() <em>Nested Classifier</em>}' containment reference list.
@@ -163,7 +163,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> nestedClassifiers = null;
+	protected EList<Classifier> nestedClassifiers;
 
 	/**
 	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
@@ -173,7 +173,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operation> ownedOperations = null;
+	protected EList<Operation> ownedOperations;
 
 	/**
 	 * The default value of the '{@link #isActive() <em>Is Active</em>}' attribute.
@@ -203,7 +203,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Reception> ownedReceptions = null;
+	protected EList<Reception> ownedReceptions;
 
 	/**
 	 * <!-- begin-user-doc -->

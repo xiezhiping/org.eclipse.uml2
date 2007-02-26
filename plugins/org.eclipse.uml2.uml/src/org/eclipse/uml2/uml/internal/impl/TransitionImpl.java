@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.25 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,7 +142,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Vertex target = null;
+	protected Vertex target;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
@@ -152,7 +152,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Transition redefinedTransition = null;
+	protected Transition redefinedTransition;
 
 	/**
 	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
@@ -162,7 +162,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint guard = null;
+	protected Constraint guard;
 
 	/**
 	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
@@ -172,7 +172,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior effect = null;
+	protected Behavior effect;
 
 	/**
 	 * The cached value of the '{@link #getTriggers() <em>Trigger</em>}' containment reference list.
@@ -182,7 +182,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Trigger> triggers = null;
+	protected EList<Trigger> triggers;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -192,7 +192,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Vertex source = null;
+	protected Vertex source;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.18 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,7 +73,7 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
@@ -83,7 +83,7 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConnectorEnd> ends = null;
+	protected EList<ConnectorEnd> ends;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: LinkActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,7 +81,7 @@ public abstract class LinkActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<LinkEndData> endData = null;
+	protected EList<LinkEndData> endData;
 
 	/**
 	 * The cached value of the '{@link #getInputValues() <em>Input Value</em>}' containment reference list.
@@ -91,7 +91,7 @@ public abstract class LinkActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InputPin> inputValues = null;
+	protected EList<InputPin> inputValues;
 
 	/**
 	 * <!-- begin-user-doc -->

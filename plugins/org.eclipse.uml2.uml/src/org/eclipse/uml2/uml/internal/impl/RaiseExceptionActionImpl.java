@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RaiseExceptionActionImpl.java,v 1.24 2007/01/31 21:21:16 khussey Exp $
+ * $Id: RaiseExceptionActionImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ public class RaiseExceptionActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin exception = null;
+	protected InputPin exception;
 
 	/**
 	 * <!-- begin-user-doc -->

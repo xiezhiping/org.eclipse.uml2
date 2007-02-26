@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SignalImpl.java,v 1.27 2007/01/31 21:21:16 khussey Exp $
+ * $Id: SignalImpl.java,v 1.28 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class SignalImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * <!-- begin-user-doc -->

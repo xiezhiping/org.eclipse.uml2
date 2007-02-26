@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: DataTypeImpl.java,v 1.28 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class DataTypeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * The cached value of the '{@link #getOwnedOperations() <em>Owned Operation</em>}' containment reference list.
@@ -95,7 +95,7 @@ public class DataTypeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Operation> ownedOperations = null;
+	protected EList<Operation> ownedOperations;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.28 2007/01/31 21:21:14 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.29 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -103,7 +103,7 @@ public class StateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Region> regions = null;
+	protected EList<Region> regions;
 
 	/**
 	 * The cached value of the '{@link #getSubmachineStates() <em>Submachine State</em>}' reference list.
@@ -113,7 +113,7 @@ public class StateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<State> submachineStates = null;
+	protected EList<State> submachineStates;
 
 	/**
 	 * The cached value of the '{@link #getConnectionPoints() <em>Connection Point</em>}' containment reference list.
@@ -123,7 +123,7 @@ public class StateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pseudostate> connectionPoints = null;
+	protected EList<Pseudostate> connectionPoints;
 
 	/**
 	 * The cached value of the '{@link #getExtendedStateMachines() <em>Extended State Machine</em>}' reference list.
@@ -133,7 +133,7 @@ public class StateMachineImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StateMachine> extendedStateMachines = null;
+	protected EList<StateMachine> extendedStateMachines;
 
 	/**
 	 * <!-- begin-user-doc -->

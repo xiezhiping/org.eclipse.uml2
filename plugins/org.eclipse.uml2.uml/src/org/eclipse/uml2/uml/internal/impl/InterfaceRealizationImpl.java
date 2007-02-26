@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.16 2007/01/31 21:21:16 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -72,7 +72,7 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Interface contract = null;
+	protected Interface contract;
 
 	/**
 	 * <!-- begin-user-doc -->

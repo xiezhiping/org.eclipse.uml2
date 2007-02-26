@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationUseImpl.java,v 1.20 2007/01/31 21:21:16 khussey Exp $
+ * $Id: CollaborationUseImpl.java,v 1.21 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ public class CollaborationUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Collaboration type = null;
+	protected Collaboration type;
 
 	/**
 	 * The cached value of the '{@link #getRoleBindings() <em>Role Binding</em>}' containment reference list.
@@ -84,7 +84,7 @@ public class CollaborationUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Dependency> roleBindings = null;
+	protected EList<Dependency> roleBindings;
 
 	/**
 	 * <!-- begin-user-doc -->

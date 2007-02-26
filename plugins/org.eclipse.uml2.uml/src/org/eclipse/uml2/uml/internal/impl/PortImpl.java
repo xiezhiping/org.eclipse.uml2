@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.26 2007/01/31 21:21:14 khussey Exp $
+ * $Id: PortImpl.java,v 1.27 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -128,7 +128,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Port> redefinedPorts = null;
+	protected EList<Port> redefinedPorts;
 
 	/**
 	 * The cached value of the '{@link #getProtocol() <em>Protocol</em>}' reference.
@@ -138,7 +138,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ProtocolStateMachine protocol = null;
+	protected ProtocolStateMachine protocol;
 
 	/**
 	 * <!-- begin-user-doc -->

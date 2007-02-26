@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.25 2007/01/31 21:21:14 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ public abstract class InvocationActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InputPin> arguments = null;
+	protected EList<InputPin> arguments;
 
 	/**
 	 * The cached value of the '{@link #getOnPort() <em>On Port</em>}' reference.
@@ -93,7 +93,7 @@ public abstract class InvocationActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Port onPort = null;
+	protected Port onPort;
 
 	/**
 	 * <!-- begin-user-doc -->

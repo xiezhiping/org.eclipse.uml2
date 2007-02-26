@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.22 2007/01/31 21:21:14 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.23 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -92,7 +92,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Lifeline> covereds = null;
+	protected EList<Lifeline> covereds;
 
 	/**
 	 * The cached value of the '{@link #getGeneralOrderings() <em>General Ordering</em>}' containment reference list.
@@ -102,7 +102,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralOrdering> generalOrderings = null;
+	protected EList<GeneralOrdering> generalOrderings;
 
 	/**
 	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
@@ -112,7 +112,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InteractionConstraint guard = null;
+	protected InteractionConstraint guard;
 
 	/**
 	 * The cached value of the '{@link #getFragments() <em>Fragment</em>}' containment reference list.
@@ -122,7 +122,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InteractionFragment> fragments = null;
+	protected EList<InteractionFragment> fragments;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.18 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Association type = null;
+	protected Association type;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedConnectors() <em>Redefined Connector</em>}' reference list.
@@ -93,7 +93,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Connector> redefinedConnectors = null;
+	protected EList<Connector> redefinedConnectors;
 
 	/**
 	 * The cached value of the '{@link #getEnds() <em>End</em>}' containment reference list.
@@ -103,7 +103,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConnectorEnd> ends = null;
+	protected EList<ConnectorEnd> ends;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -142,7 +142,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Behavior> contracts = null;
+	protected EList<Behavior> contracts;
 
 	/**
 	 * <!-- begin-user-doc -->

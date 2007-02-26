@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.20 2007/01/31 21:21:14 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.21 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -73,7 +73,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> bodies = null;
+	protected EList<String> bodies;
 
 	/**
 	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
@@ -83,7 +83,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> languages = null;
+	protected EList<String> languages;
 
 	/**
 	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
@@ -93,7 +93,7 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior behavior = null;
+	protected Behavior behavior;
 
 	/**
 	 * <!-- begin-user-doc -->

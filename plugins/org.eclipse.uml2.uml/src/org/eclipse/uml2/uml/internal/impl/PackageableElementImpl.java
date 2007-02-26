@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.16 2007/01/31 21:21:15 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.17 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,7 +67,7 @@ public abstract class PackageableElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * <!-- begin-user-doc -->

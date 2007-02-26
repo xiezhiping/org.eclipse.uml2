@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.27 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ public class ActionInputPinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Action fromAction = null;
+	protected Action fromAction;
 
 	/**
 	 * <!-- begin-user-doc -->

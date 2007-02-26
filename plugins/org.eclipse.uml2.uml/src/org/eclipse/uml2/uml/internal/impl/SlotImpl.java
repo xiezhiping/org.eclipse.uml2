@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.20 2007/01/31 21:21:16 khussey Exp $
+ * $Id: SlotImpl.java,v 1.21 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,7 +71,7 @@ public class SlotImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected StructuralFeature definingFeature = null;
+	protected StructuralFeature definingFeature;
 
 	/**
 	 * The cached value of the '{@link #getValues() <em>Value</em>}' containment reference list.
@@ -81,7 +81,7 @@ public class SlotImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ValueSpecification> values = null;
+	protected EList<ValueSpecification> values;
 
 	/**
 	 * <!-- begin-user-doc -->

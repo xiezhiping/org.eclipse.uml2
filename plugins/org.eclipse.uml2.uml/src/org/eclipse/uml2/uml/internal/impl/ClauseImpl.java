@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.13 2006/12/14 15:49:30 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.14 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,7 +71,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> tests = null;
+	protected EList<ExecutableNode> tests;
 
 	/**
 	 * The cached value of the '{@link #getBodies() <em>Body</em>}' reference list.
@@ -81,7 +81,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> bodies = null;
+	protected EList<ExecutableNode> bodies;
 
 	/**
 	 * The cached value of the '{@link #getPredecessorClauses() <em>Predecessor Clause</em>}' reference list.
@@ -91,7 +91,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Clause> predecessorClauses = null;
+	protected EList<Clause> predecessorClauses;
 
 	/**
 	 * The cached value of the '{@link #getSuccessorClauses() <em>Successor Clause</em>}' reference list.
@@ -101,7 +101,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Clause> successorClauses = null;
+	protected EList<Clause> successorClauses;
 
 	/**
 	 * The cached value of the '{@link #getDecider() <em>Decider</em>}' reference.
@@ -111,7 +111,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin decider = null;
+	protected OutputPin decider;
 
 	/**
 	 * The cached value of the '{@link #getBodyOutputs() <em>Body Output</em>}' reference list.
@@ -121,7 +121,7 @@ public class ClauseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> bodyOutputs = null;
+	protected EList<OutputPin> bodyOutputs;
 
 	/**
 	 * <!-- begin-user-doc -->

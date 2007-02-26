@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallActionImpl.java,v 1.19 2007/01/31 21:21:14 khussey Exp $
+ * $Id: AcceptCallActionImpl.java,v 1.20 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class AcceptCallActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin returnInformation = null;
+	protected OutputPin returnInformation;
 
 	/**
 	 * <!-- begin-user-doc -->

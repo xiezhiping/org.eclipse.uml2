@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,7 @@ public class DestroyObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin target = null;
+	protected InputPin target;
 
 	/**
 	 * <!-- begin-user-doc -->

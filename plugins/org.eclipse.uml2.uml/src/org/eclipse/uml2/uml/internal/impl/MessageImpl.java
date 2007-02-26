@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.23 2007/01/31 21:21:15 khussey Exp $
+ * $Id: MessageImpl.java,v 1.24 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,7 @@ public class MessageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected MessageEnd receiveEvent = null;
+	protected MessageEnd receiveEvent;
 
 	/**
 	 * The cached value of the '{@link #getSendEvent() <em>Send Event</em>}' reference.
@@ -130,7 +130,7 @@ public class MessageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected MessageEnd sendEvent = null;
+	protected MessageEnd sendEvent;
 
 	/**
 	 * The cached value of the '{@link #getConnector() <em>Connector</em>}' reference.
@@ -140,7 +140,7 @@ public class MessageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Connector connector = null;
+	protected Connector connector;
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
@@ -150,7 +150,7 @@ public class MessageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ValueSpecification> arguments = null;
+	protected EList<ValueSpecification> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseImpl.java,v 1.23 2007/01/31 21:21:15 khussey Exp $
+ * $Id: InteractionUseImpl.java,v 1.24 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class InteractionUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Interaction refersTo = null;
+	protected Interaction refersTo;
 
 	/**
 	 * The cached value of the '{@link #getActualGates() <em>Actual Gate</em>}' containment reference list.
@@ -90,7 +90,7 @@ public class InteractionUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Gate> actualGates = null;
+	protected EList<Gate> actualGates;
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
@@ -100,7 +100,7 @@ public class InteractionUseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Action> arguments = null;
+	protected EList<Action> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->

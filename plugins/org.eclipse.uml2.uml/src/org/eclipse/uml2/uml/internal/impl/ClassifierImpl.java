@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.40 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.41 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -158,7 +158,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateParameter templateParameter = null;
+	protected TemplateParameter templateParameter;
 
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
@@ -168,7 +168,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateBinding> templateBindings = null;
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
@@ -178,7 +178,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature = null;
+	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getCollaborationUses() <em>Collaboration Use</em>}' containment reference list.
@@ -188,7 +188,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CollaborationUse> collaborationUses = null;
+	protected EList<CollaborationUse> collaborationUses;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -218,7 +218,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Generalization> generalizations = null;
+	protected EList<Generalization> generalizations;
 
 	/**
 	 * The cached value of the '{@link #getPowertypeExtents() <em>Powertype Extent</em>}' reference list.
@@ -228,7 +228,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralizationSet> powertypeExtents = null;
+	protected EList<GeneralizationSet> powertypeExtents;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedClassifiers() <em>Redefined Classifier</em>}' reference list.
@@ -238,7 +238,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> redefinedClassifiers = null;
+	protected EList<Classifier> redefinedClassifiers;
 
 	/**
 	 * The cached value of the '{@link #getSubstitutions() <em>Substitution</em>}' containment reference list.
@@ -248,7 +248,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Substitution> substitutions = null;
+	protected EList<Substitution> substitutions;
 
 	/**
 	 * The cached value of the '{@link #getRepresentation() <em>Representation</em>}' reference.
@@ -258,7 +258,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected CollaborationUse representation = null;
+	protected CollaborationUse representation;
 
 	/**
 	 * The cached value of the '{@link #getOwnedUseCases() <em>Owned Use Case</em>}' containment reference list.
@@ -268,7 +268,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UseCase> ownedUseCases = null;
+	protected EList<UseCase> ownedUseCases;
 
 	/**
 	 * The cached value of the '{@link #getUseCases() <em>Use Case</em>}' reference list.
@@ -278,7 +278,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<UseCase> useCases = null;
+	protected EList<UseCase> useCases;
 
 	/**
 	 * <!-- begin-user-doc -->

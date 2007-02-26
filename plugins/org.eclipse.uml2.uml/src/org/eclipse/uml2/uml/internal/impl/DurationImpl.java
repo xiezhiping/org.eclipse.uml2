@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationImpl.java,v 1.16 2007/01/31 21:21:16 khussey Exp $
+ * $Id: DurationImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -64,7 +64,7 @@ public class DurationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification expr = null;
+	protected ValueSpecification expr;
 
 	/**
 	 * The cached value of the '{@link #getObservations() <em>Observation</em>}' reference list.
@@ -74,7 +74,7 @@ public class DurationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Observation> observations = null;
+	protected EList<Observation> observations;
 
 	/**
 	 * <!-- begin-user-doc -->

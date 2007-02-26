@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImportImpl.java,v 1.16 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ElementImportImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,7 +126,7 @@ public class ElementImportImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected PackageableElement importedElement = null;
+	protected PackageableElement importedElement;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.22 2007/01/31 21:21:16 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.23 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -137,7 +137,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> ownedParameters = null;
+	protected EList<Parameter> ownedParameters;
 
 	/**
 	 * The default value of the '{@link #isAbstract() <em>Is Abstract</em>}' attribute.
@@ -167,7 +167,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Behavior> methods = null;
+	protected EList<Behavior> methods;
 
 	/**
 	 * The default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
@@ -197,7 +197,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Type> raisedExceptions = null;
+	protected EList<Type> raisedExceptions;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameterSets() <em>Owned Parameter Set</em>}' containment reference list.
@@ -207,7 +207,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterSet> ownedParameterSets = null;
+	protected EList<ParameterSet> ownedParameterSets;
 
 	/**
 	 * <!-- begin-user-doc -->

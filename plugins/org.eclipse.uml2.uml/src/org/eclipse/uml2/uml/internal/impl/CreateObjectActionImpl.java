@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.23 2007/01/31 21:21:14 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.24 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class CreateObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier classifier = null;
+	protected Classifier classifier;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -92,7 +92,7 @@ public class CreateObjectActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * <!-- begin-user-doc -->

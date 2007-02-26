@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.20 2006/12/14 15:49:30 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.21 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> bodies = null;
+	protected EList<String> bodies;
 
 	/**
 	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
@@ -88,7 +88,7 @@ public class OpaqueBehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> languages = null;
+	protected EList<String> languages;
 
 	/**
 	 * <!-- begin-user-doc -->

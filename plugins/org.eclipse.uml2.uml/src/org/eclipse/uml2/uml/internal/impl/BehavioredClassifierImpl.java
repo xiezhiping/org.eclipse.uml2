@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierImpl.java,v 1.30 2007/01/31 21:21:15 khussey Exp $
+ * $Id: BehavioredClassifierImpl.java,v 1.31 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Behavior> ownedBehaviors = null;
+	protected EList<Behavior> ownedBehaviors;
 
 	/**
 	 * The cached value of the '{@link #getClassifierBehavior() <em>Classifier Behavior</em>}' reference.
@@ -107,7 +107,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior classifierBehavior = null;
+	protected Behavior classifierBehavior;
 
 	/**
 	 * The cached value of the '{@link #getInterfaceRealizations() <em>Interface Realization</em>}' containment reference list.
@@ -117,7 +117,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InterfaceRealization> interfaceRealizations = null;
+	protected EList<InterfaceRealization> interfaceRealizations;
 
 	/**
 	 * The cached value of the '{@link #getOwnedTriggers() <em>Owned Trigger</em>}' containment reference list.
@@ -127,7 +127,7 @@ public abstract class BehavioredClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Trigger> ownedTriggers = null;
+	protected EList<Trigger> ownedTriggers;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.21 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class ConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Element> constrainedElements = null;
+	protected EList<Element> constrainedElements;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' containment reference.
@@ -90,7 +90,7 @@ public class ConstraintImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification specification = null;
+	protected ValueSpecification specification;
 
 	/**
 	 * <!-- begin-user-doc -->

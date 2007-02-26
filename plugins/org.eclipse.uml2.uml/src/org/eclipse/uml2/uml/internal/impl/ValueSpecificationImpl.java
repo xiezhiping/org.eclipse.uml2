@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationImpl.java,v 1.13 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ValueSpecificationImpl.java,v 1.14 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,7 +59,7 @@ public abstract class ValueSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Type type = null;
+	protected Type type;
 
 	/**
 	 * <!-- begin-user-doc -->

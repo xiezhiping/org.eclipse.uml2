@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.20 2007/01/31 21:21:14 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.21 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -69,7 +69,7 @@ public class AbstractionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OpaqueExpression mapping = null;
+	protected OpaqueExpression mapping;
 
 	/**
 	 * <!-- begin-user-doc -->

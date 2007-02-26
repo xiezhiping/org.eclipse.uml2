@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.26 2007/01/31 21:21:14 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.27 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -151,7 +151,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Dependency> clientDependencies = null;
+	protected EList<Dependency> clientDependencies;
 
 	/**
 	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
@@ -161,7 +161,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected StringExpression nameExpression = null;
+	protected StringExpression nameExpression;
 
 	/**
 	 * <!-- begin-user-doc -->

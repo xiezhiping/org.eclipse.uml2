@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalActionImpl.java,v 1.24 2007/01/31 21:21:15 khussey Exp $
+ * $Id: SendSignalActionImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,7 +83,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin target = null;
+	protected InputPin target;
 
 	/**
 	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
@@ -93,7 +93,7 @@ public class SendSignalActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Signal signal = null;
+	protected Signal signal;
 
 	/**
 	 * <!-- begin-user-doc -->

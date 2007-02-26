@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.18 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature signature = null;
+	protected TemplateSignature signature;
 
 	/**
 	 * The cached value of the '{@link #getParameterSubstitutions() <em>Parameter Substitution</em>}' containment reference list.
@@ -88,7 +88,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TemplateParameterSubstitution> parameterSubstitutions = null;
+	protected EList<TemplateParameterSubstitution> parameterSubstitutions;
 
 	/**
 	 * <!-- begin-user-doc -->

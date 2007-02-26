@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.23 2007/01/31 21:21:14 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.24 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -72,7 +72,7 @@ public class StateInvariantImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint invariant = null;
+	protected Constraint invariant;
 
 	/**
 	 * <!-- begin-user-doc -->

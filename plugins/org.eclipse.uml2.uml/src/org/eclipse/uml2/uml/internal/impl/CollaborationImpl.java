@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.28 2007/01/31 21:21:15 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.29 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +98,7 @@ public class CollaborationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> ownedAttributes = null;
+	protected EList<Property> ownedAttributes;
 
 	/**
 	 * The cached value of the '{@link #getOwnedConnectors() <em>Owned Connector</em>}' containment reference list.
@@ -108,7 +108,7 @@ public class CollaborationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Connector> ownedConnectors = null;
+	protected EList<Connector> ownedConnectors;
 
 	/**
 	 * The cached value of the '{@link #getCollaborationRoles() <em>Collaboration Role</em>}' reference list.
@@ -118,7 +118,7 @@ public class CollaborationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConnectableElement> collaborationRoles = null;
+	protected EList<ConnectableElement> collaborationRoles;
 
 	/**
 	 * <!-- begin-user-doc -->

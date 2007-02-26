@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueActionImpl.java,v 1.22 2007/01/31 21:21:15 khussey Exp $
+ * $Id: OpaqueActionImpl.java,v 1.23 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,7 +80,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> bodies = null;
+	protected EList<String> bodies;
 
 	/**
 	 * The cached value of the '{@link #getLanguages() <em>Language</em>}' attribute list.
@@ -90,7 +90,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> languages = null;
+	protected EList<String> languages;
 
 	/**
 	 * The cached value of the '{@link #getInputValues() <em>Input Value</em>}' containment reference list.
@@ -100,7 +100,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InputPin> inputValues = null;
+	protected EList<InputPin> inputValues;
 
 	/**
 	 * The cached value of the '{@link #getOutputValues() <em>Output Value</em>}' containment reference list.
@@ -110,7 +110,7 @@ public class OpaqueActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> outputValues = null;
+	protected EList<OutputPin> outputValues;
 
 	/**
 	 * <!-- begin-user-doc -->

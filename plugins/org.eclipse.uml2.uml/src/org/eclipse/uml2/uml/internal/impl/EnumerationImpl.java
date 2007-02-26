@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationImpl.java,v 1.25 2007/01/31 21:21:14 khussey Exp $
+ * $Id: EnumerationImpl.java,v 1.26 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,7 +78,7 @@ public class EnumerationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<EnumerationLiteral> ownedLiterals = null;
+	protected EList<EnumerationLiteral> ownedLiterals;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.23 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.24 2007/02/26 16:17:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class ReadExtentActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.
@@ -92,7 +92,7 @@ public class ReadExtentActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier classifier = null;
+	protected Classifier classifier;
 
 	/**
 	 * <!-- begin-user-doc -->

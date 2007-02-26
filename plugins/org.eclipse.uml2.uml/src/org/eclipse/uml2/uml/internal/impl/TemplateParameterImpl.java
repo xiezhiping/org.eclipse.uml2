@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.18 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -76,7 +76,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterableElement parameteredElement = null;
+	protected ParameterableElement parameteredElement;
 
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
@@ -86,7 +86,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterableElement default_ = null;
+	protected ParameterableElement default_;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
@@ -96,7 +96,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterableElement ownedParameteredElement = null;
+	protected ParameterableElement ownedParameteredElement;
 
 	/**
 	 * The cached value of the '{@link #getOwnedDefault() <em>Owned Default</em>}' containment reference.
@@ -106,7 +106,7 @@ public class TemplateParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterableElement ownedDefault = null;
+	protected ParameterableElement ownedDefault;
 
 	/**
 	 * <!-- begin-user-doc -->

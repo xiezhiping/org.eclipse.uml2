@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.21 2007/01/31 21:21:15 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.22 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,7 +68,7 @@ public class SequenceNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> executableNodes = null;
+	protected EList<ExecutableNode> executableNodes;
 
 	/**
 	 * <!-- begin-user-doc -->

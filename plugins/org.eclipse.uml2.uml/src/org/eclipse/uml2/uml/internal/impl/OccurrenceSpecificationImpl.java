@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.20 2007/02/26 16:17:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -67,7 +67,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralOrdering> toBefores = null;
+	protected EList<GeneralOrdering> toBefores;
 
 	/**
 	 * The cached value of the '{@link #getEvent() <em>Event</em>}' reference.
@@ -77,7 +77,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Event event = null;
+	protected Event event;
 
 	/**
 	 * The cached value of the '{@link #getToAfters() <em>To After</em>}' reference list.
@@ -87,7 +87,7 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralOrdering> toAfters = null;
+	protected EList<GeneralOrdering> toAfters;
 
 	/**
 	 * <!-- begin-user-doc -->

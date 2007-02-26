@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.19 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.20 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -85,7 +85,7 @@ public class ReduceActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Behavior reducer = null;
+	protected Behavior reducer;
 
 	/**
 	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
@@ -95,7 +95,7 @@ public class ReduceActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin result = null;
+	protected OutputPin result;
 
 	/**
 	 * The cached value of the '{@link #getCollection() <em>Collection</em>}' containment reference.
@@ -105,7 +105,7 @@ public class ReduceActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin collection = null;
+	protected InputPin collection;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.

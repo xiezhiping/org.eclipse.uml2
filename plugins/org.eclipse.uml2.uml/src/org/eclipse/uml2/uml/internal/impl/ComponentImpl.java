@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.31 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.32 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PackageableElement> packagedElements = null;
+	protected EList<PackageableElement> packagedElements;
 
 	/**
 	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' containment reference list.
@@ -130,7 +130,7 @@ public class ComponentImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ComponentRealization> realizations = null;
+	protected EList<ComponentRealization> realizations;
 
 	/**
 	 * <!-- begin-user-doc -->

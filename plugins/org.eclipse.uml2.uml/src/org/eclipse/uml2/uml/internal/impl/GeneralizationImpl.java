@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.18 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -106,7 +106,7 @@ public class GeneralizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier general = null;
+	protected Classifier general;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizationSets() <em>Generalization Set</em>}' reference list.
@@ -116,7 +116,7 @@ public class GeneralizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GeneralizationSet> generalizationSets = null;
+	protected EList<GeneralizationSet> generalizationSets;
 
 	/**
 	 * <!-- begin-user-doc -->

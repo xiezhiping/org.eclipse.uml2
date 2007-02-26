@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.24 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected InputPin object = null;
+	protected InputPin object;
 
 	/**
 	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
@@ -92,7 +92,7 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Association association = null;
+	protected Association association;
 
 	/**
 	 * <!-- begin-user-doc -->

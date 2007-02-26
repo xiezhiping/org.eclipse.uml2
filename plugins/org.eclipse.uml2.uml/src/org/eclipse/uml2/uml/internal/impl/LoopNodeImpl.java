@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LoopNodeImpl.java,v 1.26 2007/01/31 21:21:16 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.27 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> bodyParts = null;
+	protected EList<ExecutableNode> bodyParts;
 
 	/**
 	 * The cached value of the '{@link #getSetupParts() <em>Setup Part</em>}' reference list.
@@ -126,7 +126,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> setupParts = null;
+	protected EList<ExecutableNode> setupParts;
 
 	/**
 	 * The cached value of the '{@link #getDecider() <em>Decider</em>}' reference.
@@ -136,7 +136,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected OutputPin decider = null;
+	protected OutputPin decider;
 
 	/**
 	 * The cached value of the '{@link #getTests() <em>Test</em>}' reference list.
@@ -146,7 +146,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExecutableNode> tests = null;
+	protected EList<ExecutableNode> tests;
 
 	/**
 	 * The cached value of the '{@link #getResults() <em>Result</em>}' containment reference list.
@@ -156,7 +156,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> results = null;
+	protected EList<OutputPin> results;
 
 	/**
 	 * The cached value of the '{@link #getLoopVariables() <em>Loop Variable</em>}' reference list.
@@ -166,7 +166,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> loopVariables = null;
+	protected EList<OutputPin> loopVariables;
 
 	/**
 	 * The cached value of the '{@link #getBodyOutputs() <em>Body Output</em>}' reference list.
@@ -176,7 +176,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutputPin> bodyOutputs = null;
+	protected EList<OutputPin> bodyOutputs;
 
 	/**
 	 * The cached value of the '{@link #getLoopVariableInputs() <em>Loop Variable Input</em>}' containment reference list.
@@ -186,7 +186,7 @@ public class LoopNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InputPin> loopVariableInputs = null;
+	protected EList<InputPin> loopVariableInputs;
 
 	/**
 	 * <!-- begin-user-doc -->

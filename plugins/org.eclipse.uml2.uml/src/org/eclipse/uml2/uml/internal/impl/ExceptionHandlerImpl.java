@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.16 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.17 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -71,7 +71,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ExecutableNode handlerBody = null;
+	protected ExecutableNode handlerBody;
 
 	/**
 	 * The cached value of the '{@link #getExceptionInput() <em>Exception Input</em>}' reference.
@@ -81,7 +81,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ObjectNode exceptionInput = null;
+	protected ObjectNode exceptionInput;
 
 	/**
 	 * The cached value of the '{@link #getExceptionTypes() <em>Exception Type</em>}' reference list.
@@ -91,7 +91,7 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> exceptionTypes = null;
+	protected EList<Classifier> exceptionTypes;
 
 	/**
 	 * <!-- begin-user-doc -->

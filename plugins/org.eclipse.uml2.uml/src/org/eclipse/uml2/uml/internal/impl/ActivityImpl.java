@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.31 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.32 2007/02/26 16:17:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,7 +114,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityNode> nodes = null;
+	protected EList<ActivityNode> nodes;
 
 	/**
 	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
@@ -124,7 +124,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityGroup> groups = null;
+	protected EList<ActivityGroup> groups;
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variable</em>}' containment reference list.
@@ -134,7 +134,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Variable> variables = null;
+	protected EList<Variable> variables;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -164,7 +164,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityEdge> edges = null;
+	protected EList<ActivityEdge> edges;
 
 	/**
 	 * The cached value of the '{@link #getPartitions() <em>Partition</em>}' reference list.
@@ -174,7 +174,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityPartition> partitions = null;
+	protected EList<ActivityPartition> partitions;
 
 	/**
 	 * The default value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.30 2007/01/31 21:21:14 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.31 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,7 +127,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Behavior> redefinedBehaviors = null;
+	protected EList<Behavior> redefinedBehaviors;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
@@ -137,7 +137,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Parameter> ownedParameters = null;
+	protected EList<Parameter> ownedParameters;
 
 	/**
 	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
@@ -147,7 +147,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> preconditions = null;
+	protected EList<Constraint> preconditions;
 
 	/**
 	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
@@ -157,7 +157,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> postconditions = null;
+	protected EList<Constraint> postconditions;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameterSets() <em>Owned Parameter Set</em>}' containment reference list.
@@ -167,7 +167,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterSet> ownedParameterSets = null;
+	protected EList<ParameterSet> ownedParameterSets;
 
 	/**
 	 * The cached value of the '{@link #getSpecification() <em>Specification</em>}' reference.
@@ -177,7 +177,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected BehavioralFeature specification = null;
+	protected BehavioralFeature specification;
 
 	/**
 	 * <!-- begin-user-doc -->

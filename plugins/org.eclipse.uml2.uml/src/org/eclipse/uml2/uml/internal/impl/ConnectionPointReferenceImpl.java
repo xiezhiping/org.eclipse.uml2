@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.18 2007/01/31 21:21:14 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.19 2007/02/26 16:17:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -74,7 +74,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pseudostate> entries = null;
+	protected EList<Pseudostate> entries;
 
 	/**
 	 * The cached value of the '{@link #getExits() <em>Exit</em>}' reference list.
@@ -84,7 +84,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pseudostate> exits = null;
+	protected EList<Pseudostate> exits;
 
 	/**
 	 * <!-- begin-user-doc -->

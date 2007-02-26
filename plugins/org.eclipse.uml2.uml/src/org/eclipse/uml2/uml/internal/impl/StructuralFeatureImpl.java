@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.25 2007/01/31 21:21:15 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -82,7 +82,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Type type = null;
+	protected Type type;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -152,7 +152,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification upperValue = null;
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
@@ -162,7 +162,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification lowerValue = null;
+	protected ValueSpecification lowerValue;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.

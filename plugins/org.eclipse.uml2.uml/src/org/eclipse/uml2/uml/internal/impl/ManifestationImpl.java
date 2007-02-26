@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.15 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.16 2007/02/26 16:17:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -64,7 +64,7 @@ public class ManifestationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected PackageableElement utilizedElement = null;
+	protected PackageableElement utilizedElement;
 
 	/**
 	 * <!-- begin-user-doc -->

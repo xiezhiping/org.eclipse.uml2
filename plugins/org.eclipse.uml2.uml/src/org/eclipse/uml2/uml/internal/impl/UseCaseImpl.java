@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.25 2007/01/31 21:21:15 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +90,7 @@ public class UseCaseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Include> includes = null;
+	protected EList<Include> includes;
 
 	/**
 	 * The cached value of the '{@link #getExtends() <em>Extend</em>}' containment reference list.
@@ -100,7 +100,7 @@ public class UseCaseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Extend> extends_ = null;
+	protected EList<Extend> extends_;
 
 	/**
 	 * The cached value of the '{@link #getExtensionPoints() <em>Extension Point</em>}' containment reference list.
@@ -110,7 +110,7 @@ public class UseCaseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExtensionPoint> extensionPoints = null;
+	protected EList<ExtensionPoint> extensionPoints;
 
 	/**
 	 * The cached value of the '{@link #getSubjects() <em>Subject</em>}' reference list.
@@ -120,7 +120,7 @@ public class UseCaseImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Classifier> subjects = null;
+	protected EList<Classifier> subjects;
 
 	/**
 	 * <!-- begin-user-doc -->
