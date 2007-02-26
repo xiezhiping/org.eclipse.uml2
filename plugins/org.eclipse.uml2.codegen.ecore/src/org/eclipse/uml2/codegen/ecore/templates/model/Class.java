@@ -71,9 +71,9 @@ public class Class
   protected final String TEXT_53 = NL;
   protected final String TEXT_54 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprivate static final long serialVersionUID = 1L;" + NL;
   protected final String TEXT_55 = NL + "\t/**" + NL + "\t * An array of objects representing the values of non-primitive features." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected Object[] ";
-  protected final String TEXT_56 = " = null;" + NL;
+  protected final String TEXT_56 = ";" + NL;
   protected final String TEXT_57 = NL + "\t/**" + NL + "\t * A bit field representing the indices of non-primitive feature values." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected int ";
-  protected final String TEXT_58 = " = 0;" + NL;
+  protected final String TEXT_58 = ";" + NL;
   protected final String TEXT_59 = NL + "\t/**" + NL + "\t * A set of bit flags representing the values of boolean attributes and whether unsettable features have been set." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t * @ordered" + NL + "\t */" + NL + "\tprotected int ";
   protected final String TEXT_60 = " = 0;" + NL;
   protected final String TEXT_61 = NL + "\t/**" + NL + "\t * The cached value of the '{@link #";
@@ -82,7 +82,7 @@ public class Class
   protected final String TEXT_64 = "." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see #";
   protected final String TEXT_65 = "()" + NL + "\t * @generated" + NL + "\t * @ordered" + NL + "\t */" + NL + "\tprotected ";
   protected final String TEXT_66 = " ";
-  protected final String TEXT_67 = " = null;" + NL;
+  protected final String TEXT_67 = ";" + NL;
   protected final String TEXT_68 = NL + "\t/**" + NL + "\t * The empty value for the '{@link #";
   protected final String TEXT_69 = "() <em>";
   protected final String TEXT_70 = "</em>}' array accessor." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @see #";
@@ -130,7 +130,7 @@ public class Class
   protected final String TEXT_112 = NL + "\t/**" + NL + "\t * This is true if the ";
   protected final String TEXT_113 = " ";
   protected final String TEXT_114 = " has been set." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t * @ordered" + NL + "\t */" + NL + "\tprotected boolean ";
-  protected final String TEXT_115 = "ESet = false;" + NL;
+  protected final String TEXT_115 = "ESet;" + NL;
   protected final String TEXT_116 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tprotected ";
   protected final String TEXT_117 = "()" + NL + "\t{" + NL + "\t\tsuper();";
   protected final String TEXT_118 = NL + "\t\t";
@@ -3430,7 +3430,7 @@ public class Class
     stringBuffer.append(genFeature.getGetAccessor());
     stringBuffer.append(TEXT_244);
     } else {
-    if (genModel.useGenerics() && (genFeature.isResolveProxies() && !genFeature.isListType() && !genFeature.isContainer() && !genModel.isReflectiveDelegation() && genFeature.isUncheckedCast() || genFeature.isListDataType() && genFeature.hasDelegateFeature())) {
+    if (genModel.useGenerics() && ((genFeature.isContainer() || genFeature.isResolveProxies()) && !genFeature.isListType() && !genModel.isReflectiveDelegation() && genFeature.isUncheckedCast() || genFeature.isListDataType() && genFeature.hasDelegateFeature())) {
     stringBuffer.append(TEXT_245);
     }
     stringBuffer.append(TEXT_246);

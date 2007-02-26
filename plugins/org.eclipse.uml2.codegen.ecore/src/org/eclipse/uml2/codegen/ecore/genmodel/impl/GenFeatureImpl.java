@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.22 2007/01/04 18:53:19 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.23 2007/02/26 16:16:52 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -187,7 +187,7 @@ public class GenFeatureImpl
 		return result.toString();
 	}
 
-	private org.eclipse.emf.codegen.ecore.genmodel.GenModel genModel = null;
+	private org.eclipse.emf.codegen.ecore.genmodel.GenModel genModel;
 
 	protected void setGenModel(
 			org.eclipse.emf.codegen.ecore.genmodel.GenModel genModel) {
