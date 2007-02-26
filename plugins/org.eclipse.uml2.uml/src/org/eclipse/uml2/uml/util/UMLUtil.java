@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.49 2007/02/23 03:16:49 khussey Exp $
+ * $Id: UMLUtil.java,v 1.50 2007/02/26 22:22:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2485,6 +2485,30 @@ public class UMLUtil
 		}
 
 		@Override
+		public Object caseDataType(DataType dataType) {
+
+			if (!isGenericType(dataType) && !dataType.isTemplateParameter()) {
+				org.eclipse.uml2.uml.Package package_ = dataType
+					.getNearestPackage();
+
+				if (package_ != null) {
+					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+					elementToEModelElementMap.put(dataType, eClass);
+
+					EPackage ePackage = (EPackage) doSwitch(package_);
+					ePackage.getEClassifiers().add(eClass);
+
+					setName(eClass, dataType);
+
+					defaultCase(dataType);
+
+					return eClass;
+				}
+			}
+			return super.caseDataType(dataType);
+		}
+
+		@Override
 		public Object caseEModelElement(EModelElement eModelElement) {
 			return eModelElement;
 		}
@@ -2889,30 +2913,6 @@ public class UMLUtil
 		}
 
 		@Override
-		public Object caseDataType(DataType dataType) {
-
-			if (!isGenericType(dataType) && !dataType.isTemplateParameter()) {
-				org.eclipse.uml2.uml.Package package_ = dataType
-					.getNearestPackage();
-
-				if (package_ != null) {
-					EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-					elementToEModelElementMap.put(dataType, eClass);
-
-					EPackage ePackage = (EPackage) doSwitch(package_);
-					ePackage.getEClassifiers().add(eClass);
-
-					setName(eClass, dataType);
-
-					defaultCase(dataType);
-
-					return eClass;
-				}
-			}
-			return super.caseDataType(dataType);
-		}
-
-		@Override
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
@@ -3307,7 +3307,7 @@ public class UMLUtil
 					diagnostics, context);
 
 				processEcoreTaggedValue(eClassifier,
-					EcorePackage.Literals.ECLASSIFIER__INSTANCE_CLASS_NAME,
+					EcorePackage.Literals.ECLASSIFIER__INSTANCE_TYPE_NAME,
 					element, eClassifierStereotype,
 					TAG_DEFINITION__INSTANCE_CLASS_NAME, options, diagnostics,
 					context);
@@ -6432,7 +6432,7 @@ public class UMLUtil
 
 				processEcoreTaggedValue(element, eClassifierStereotype,
 					TAG_DEFINITION__INSTANCE_CLASS_NAME, eClassifier,
-					EcorePackage.Literals.ECLASSIFIER__INSTANCE_CLASS_NAME,
+					EcorePackage.Literals.ECLASSIFIER__INSTANCE_TYPE_NAME,
 					options, diagnostics, context);
 			}
 		}
