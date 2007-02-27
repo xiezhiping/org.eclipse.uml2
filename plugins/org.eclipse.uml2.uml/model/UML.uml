@@ -2,14 +2,14 @@
 <xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
-      <importedPackage xmi:type="uml:Model" href="Ecore.uml#439EC3AE03B5"/>
+      <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
     <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
       <mergedPackage xmi:type="uml:Model" href="L3.uml#_EBtHcBmMEdqvcs97umGEYQ"/>
     </packageMerge>
     <packagedElement xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
       <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
-        <general xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D4E40050"/>
+        <general xmi:type="uml:Class" href="Ecore.uml#_SeWihMX_EduPJbEsMYXjUQ"/>
       </generalization>
       <ownedOperation xmi:id="_XebbkGvuEdqG6fBIPwe-mw" name="destroy">
         <ownedComment xmi:id="_skdy8ewbEdqYHf-imTcTdw" annotatedElement="_XebbkGvuEdqG6fBIPwe-mw">
@@ -90,7 +90,7 @@
           <body>Applies the specified stereotype to this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="_GGbJwGv1Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
         <ownedParameter xmi:id="_GmnFsGv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
       </ownedOperation>
@@ -99,7 +99,7 @@
           <body>Unapplies the specified stereotype from this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="_NqRVsGv1Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
         <ownedParameter xmi:id="_OI9c0Gv1Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
       </ownedOperation>
@@ -127,7 +127,7 @@
           <body>Retrieves the stereotype applications for this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="_PAVWQGvgEdq4DLWZOhbdEA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oJqQgWvzEdq7X4sGURiZYA" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_oJqQgGvzEdq7X4sGURiZYA"/>
         </ownedParameter>
@@ -137,7 +137,7 @@
           <body>Retrieves the application of the specified stereotype for this element, or null if no such stereotype application exists.</body>
         </ownedComment>
         <ownedParameter xmi:id="_Uw5aIGv1Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4QyvUWv3Edq7X4sGURiZYA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4QyvUGv3Edq7X4sGURiZYA"/>
         </ownedParameter>
@@ -215,7 +215,7 @@
           <body>Retrieves the value of the property with the specified name in the specified stereotype for this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="_dYH5MGv2Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="Ecore.uml#_439EC3AE03B53ACDF8200182"/>
+          <type xmi:type="uml:PrimitiveType" href="Ecore.uml#_SeWkccX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8gS1oWv3Edq7X4sGURiZYA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8gS1oGv3Edq7X4sGURiZYA"/>
         </ownedParameter>
@@ -229,7 +229,7 @@
         <ownedParameter xmi:id="_resLQGv2Edq7X4sGURiZYA" name="stereotype" type="_A7vDAGv0Edq7X4sGURiZYA" effect="read"/>
         <ownedParameter xmi:id="_o6B2IGv2Edq7X4sGURiZYA" name="propertyName" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
         <ownedParameter xmi:id="_m5bH4GzIEdqNr-AKm4G4QQ" name="newValue" effect="read">
-          <type xmi:type="uml:PrimitiveType" href="Ecore.uml#_439EC3AE03B53ACDF8200182"/>
+          <type xmi:type="uml:PrimitiveType" href="Ecore.uml#_SeWkccX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_Tj6BkYbbEdq0WtDJCT4EaQ" name="createEAnnotation">
@@ -237,7 +237,7 @@
           <body>Creates an annotation with the specified source and this element as its model element.</body>
         </ownedComment>
         <ownedParameter xmi:id="_YE_AEIbbEdq0WtDJCT4EaQ" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53D98A1C701AB"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWj6cX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
         <ownedParameter xmi:id="_aXUPEIbbEdq0WtDJCT4EaQ" name="source" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read"/>
       </ownedOperation>
@@ -259,7 +259,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UJybo6PAEdqi_5gqUMOQtA"/>
         </ownedParameter>
         <ownedParameter xmi:id="_XBN7wKPAEdqi_5gqUMOQtA" name="eClass" effect="read">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D5BF000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWizcX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_fBOfQKPAEdqi_5gqUMOQtA" name="getSourceDirectedRelationships">
@@ -280,7 +280,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fBOfR6PAEdqi_5gqUMOQtA"/>
         </ownedParameter>
         <ownedParameter xmi:id="_fBOfSKPAEdqi_5gqUMOQtA" name="eClass" effect="read">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D5BF000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWizcX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_t5G5gKPAEdqi_5gqUMOQtA" name="getTargetDirectedRelationships">
@@ -301,7 +301,7 @@
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_t5G5h6PAEdqi_5gqUMOQtA"/>
         </ownedParameter>
         <ownedParameter xmi:id="_t5G5iKPAEdqi_5gqUMOQtA" name="eClass" effect="read">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D5BF000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWizcX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -758,7 +758,7 @@
           <body>Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a &quot;best effort&quot; basis (matching classifiers and structural features by name).</body>
         </ownedComment>
         <ownedParameter xmi:id="_w2ZvcGv5Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ObBOMXF8EdqziYxiZo0YtA" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ObBOMHF8EdqziYxiZo0YtA"/>
         </ownedParameter>
@@ -769,7 +769,7 @@
           <body>Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.</body>
         </ownedComment>
         <ownedParameter xmi:id="_6yryYGv5Edq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZvqLMXF8EdqziYxiZo0YtA" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZvqLMHF8EdqziYxiZo0YtA"/>
         </ownedParameter>
@@ -857,7 +857,7 @@
           <body>Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile.</body>
         </ownedComment>
         <ownedParameter xmi:id="_9o-PwGwJEdq7X4sGURiZYA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53C4F1C860123"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWijsX_EduPJbEsMYXjUQ"/>
         </ownedParameter>
         <ownedParameter xmi:id="_-se7MGwJEdq7X4sGURiZYA" name="classifier" type="_6UV2QGwJEdq7X4sGURiZYA" effect="read"/>
       </ownedOperation>
@@ -880,7 +880,7 @@
           <body>Defines this profile by (re)creating Ecore representations of its current contents.</body>
         </ownedComment>
         <ownedParameter xmi:id="_JO2EsGwgEdqHKKVoxc0dlA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53905C3F7000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWjPsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bctjUWwgEdqHKKVoxc0dlA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bctjUGwgEdqHKKVoxc0dlA"/>
         </ownedParameter>
@@ -890,7 +890,7 @@
           <body>Retrieves the current definition (Ecore representation) of this profile.</body>
         </ownedComment>
         <ownedParameter xmi:id="_P0QScGwgEdqHKKVoxc0dlA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53905C3F7000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWjPsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dKYmEWwgEdqHKKVoxc0dlA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dKYmEGwgEdqHKKVoxc0dlA"/>
         </ownedParameter>
@@ -900,7 +900,7 @@
           <body>Retrieves the current definition (Ecore representation) of the specified named element in this profile.</body>
         </ownedComment>
         <ownedParameter xmi:id="_nFBqQWwgEdqHKKVoxc0dlA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53B65CCC600FE"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWifsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nFBqQmwgEdqHKKVoxc0dlA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nFBqQ2wgEdqHKKVoxc0dlA"/>
         </ownedParameter>
@@ -989,7 +989,7 @@
           <body>Retrieves the current definition (Ecore representation) of this stereotype.</body>
         </ownedComment>
         <ownedParameter xmi:id="_wdNtsY0GEdqipMtlOpTiHA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53903D5BF000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWizcX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wdNtso0GEdqipMtlOpTiHA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wdNts40GEdqipMtlOpTiHA"/>
         </ownedParameter>
@@ -1024,7 +1024,7 @@
           <body>Retrieves the definition (Ecore representation) of the profile associated with this profile application.</body>
         </ownedComment>
         <ownedParameter xmi:id="_LJ9EAG10EdqniMBnIUw7ig" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53905C3F7000A"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWjPsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OTQ-UW10EdqniMBnIUw7ig" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OTQ-UG10EdqniMBnIUw7ig"/>
         </ownedParameter>
@@ -1034,7 +1034,7 @@
           <body>Retrieves the definition (Ecore representation) of the specified named element in the profile associated with this profile application.</body>
         </ownedComment>
         <ownedParameter xmi:id="_G3YEAY2_EdqipMtlOpTiHA" direction="return">
-          <type xmi:type="uml:Class" href="Ecore.uml#_439EC3AE03B53B65CCC600FE"/>
+          <type xmi:type="uml:Class" href="Ecore.uml#_SeWifsX_EduPJbEsMYXjUQ"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_G3YEAo2_EdqipMtlOpTiHA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_G3YEA42_EdqipMtlOpTiHA"/>
         </ownedParameter>
@@ -1394,12 +1394,12 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_tYLfUFouEduqL61CEsqW6g" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
-  <Ecore:EAttribute xmi:id="_tYLfUVouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
-  <Ecore:EDataType xmi:id="_tYUpQFouEduqL61CEsqW6g" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_tYUpQVouEduqL61CEsqW6g" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_tYUpQlouEduqL61CEsqW6g" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_tYUpQ1ouEduqL61CEsqW6g" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EAttribute xmi:id="_tYeaQFouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
-  <Ecore:EAttribute xmi:id="_tYeaQVouEduqL61CEsqW6g" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
+  <Ecore:EPackage xmi:id="_r5xGgMYcEduPJbEsMYXjUQ" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EAttribute xmi:id="_r563gMYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
+  <Ecore:EDataType xmi:id="_r563gcYcEduPJbEsMYXjUQ" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_r563gsYcEduPJbEsMYXjUQ" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_r563g8YcEduPJbEsMYXjUQ" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_r563hMYcEduPJbEsMYXjUQ" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EAttribute xmi:id="_r6EBcMYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
+  <Ecore:EAttribute xmi:id="_r6EBccYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
 </xmi:XMI>
