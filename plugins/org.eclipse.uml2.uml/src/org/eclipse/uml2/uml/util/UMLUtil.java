@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.50 2007/02/26 22:22:48 khussey Exp $
+ * $Id: UMLUtil.java,v 1.51 2007/02/27 04:58:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5763,7 +5763,7 @@ public class UMLUtil
 					.getBaseType(eDataType);
 
 				if (baseType != null) {
-					Classifier generalClassifier = (Classifier) doSwitch(baseType);
+					Classifier generalClassifier = (Classifier) getType(eDataType, baseType);
 
 					if (!primitiveType.allParents().contains(generalClassifier)) {
 						primitiveType.createGeneralization(generalClassifier);
