@@ -1,736 +1,620 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore_0="http:///Ecore_0.profile.uml2" xmlns:notation="http://www.ibm.com/xtools/1.5.0/Notation" xmlns:uml="http://www.eclipse.org/uml2/1.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.0/Umlnotation" xsi:schemaLocation="http:///Ecore_0.profile.uml2 pathmap://UML2_PROFILES/Ecore.profile.uml2#_v9VUsK87Edi5QpYeY_yIpg" xmi:id="_BWooUBmMEdqvcs97umGEYQ" name="L1" clientDependency="_3ADC7B74022D41AF63B30203 _3ADC7B74022D41AF63B30205 _3ADC7B74022D41AF63B3020D _3ADC7B74022D41AF63B30211 _3ADC7B74022D41AF63B30213 _2iUYYHxrEdq7cMP_l1l5Gg _7uwoEHxrEdq7cMP_l1l5Gg _BHRk4HxsEdq7cMP_l1l5Gg _DBKesHxsEdq7cMP_l1l5Gg _MZYyUHxsEdq7cMP_l1l5Gg _X7RjgHygEdq7cMP_l1l5Gg" appliedProfile="_BWooVBmMEdqvcs97umGEYQ _BWyZUBmMEdqvcs97umGEYQ _BWyZUxmMEdqvcs97umGEYQ _BWyZVhmMEdqvcs97umGEYQ _BWyZWRmMEdqvcs97umGEYQ _BbZzkBmMEdqvcs97umGEYQ">
-  <eAnnotations xmi:id="_s1ozMhTaEdqZu-3Jy1-uYg" source="appliedStereotypes">
-    <contents xmi:type="Ecore_0:Ecore__EPackage" xmi:id="_s1ozMxTaEdqZu-3Jy1-uYg" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1.1/uml.xml"/>
-  </eAnnotations>
-  <eAnnotations xmi:id="_s1ykPxTaEdqZu-3Jy1-uYg" source="uml2.diagrams" references="_3ADC7B74022D42FB52700007">
-    <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D3E10F06500B4" type="Class" name="Package Dependencies">
-      <children xmi:id="_u88eCxTaEdqZu-3Jy1-uYg" targetEdges="_u9Fn_BTaEdqZu-3Jy1-uYg _u9FoMhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u88eDhTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eDxTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u88eEBTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        </children>
-        <children xmi:id="_u88eERTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eDBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eDRTaEdqZu-3Jy1-uYg" x="18897" y="457" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u88eEhTaEdqZu-3Jy1-uYg" sourceEdges="_u9Fn_BTaEdqZu-3Jy1-uYg" targetEdges="_u9FoBRTaEdqZu-3Jy1-uYg _u9FoDhTaEdqZu-3Jy1-uYg _u9PY8xTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u88eFRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eFhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u88eFxTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        </children>
-        <children xmi:id="_u88eGBTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eExTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eFBTaEdqZu-3Jy1-uYg" x="18194" y="4064" width="3945" height="1676"/>
-      </children>
-      <children xmi:id="_u88eGRTaEdqZu-3Jy1-uYg" sourceEdges="_u9FoBRTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u88eHBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eHRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u88eHhTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        </children>
-        <children xmi:id="_u88eHxTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eGhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eGxTaEdqZu-3Jy1-uYg" x="11836" y="4013" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u88eIBTaEdqZu-3Jy1-uYg" sourceEdges="_u9PY6hTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u88eIxTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eJBTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u88eJRTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-        </children>
-        <children xmi:id="_u88eJhTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eIRTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eIhTaEdqZu-3Jy1-uYg" x="9347" y="9804" width="3042" height="1676"/>
-      </children>
-      <children xmi:id="_u9Fn4BTaEdqZu-3Jy1-uYg" sourceEdges="_u9FoIBTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9Fn4xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn5BTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9Fn5RTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-        </children>
-        <children xmi:id="_u9Fn5hTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn4RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn4hTaEdqZu-3Jy1-uYg" x="18787" y="9906" width="3469" height="1676"/>
-      </children>
-      <children xmi:id="_u9Fn5xTaEdqZu-3Jy1-uYg" sourceEdges="_u9FoDhTaEdqZu-3Jy1-uYg _u9FoKRTaEdqZu-3Jy1-uYg" targetEdges="_u9FoFxTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9Fn6hTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn6xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9Fn7BTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-        </children>
-        <children xmi:id="_u9Fn7RTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn6BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn6RTaEdqZu-3Jy1-uYg" x="30378" y="4114" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u9Fn7hTaEdqZu-3Jy1-uYg" sourceEdges="_u9FoFxTaEdqZu-3Jy1-uYg" targetEdges="_u9FoIBTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9Fn8RTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn8hTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9Fn8xTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-        </children>
-        <children xmi:id="_u9Fn9BTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn7xTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn8BTaEdqZu-3Jy1-uYg" x="29540" y="9804" width="4318" height="1676"/>
-      </children>
-      <children xmi:id="_u9Fn9RTaEdqZu-3Jy1-uYg" sourceEdges="_u9FoMhTaEdqZu-3Jy1-uYg" targetEdges="_u9FoKRTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9Fn-BTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn-RTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9Fn-hTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        </children>
-        <children xmi:id="_u9Fn-xTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn9hTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn9xTaEdqZu-3Jy1-uYg" x="30276" y="457" width="2778" height="1676"/>
-      </children>
-      <children xmi:id="_u9PY4xTaEdqZu-3Jy1-uYg" sourceEdges="_u9PY8xTaEdqZu-3Jy1-uYg" targetEdges="_u9PY6hTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PY5hTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PY5xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9PY6BTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        </children>
-        <children xmi:id="_u9PY6RTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PY5BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PY5RTaEdqZu-3Jy1-uYg" x="13318" y="7467" width="4155" height="1786"/>
-      </children>
-      <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_s1ykQRTaEdqZu-3Jy1-uYg"/>
-      <edges xmi:id="_u9Fn_BTaEdqZu-3Jy1-uYg" source="_u88eEhTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9Fn_xTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoARTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3CFC26860119?UML/CommonBehaviors/BasicBehaviors/%3CDependency%3E"/>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
+  <uml:Model xmi:id="_BWooUBmMEdqvcs97umGEYQ" name="L1">
+    <eAnnotations xmi:id="_s1ykPxTaEdqZu-3Jy1-uYg" source="uml2.diagrams" references="_3ADC7B74022D42FB52700007">
+      <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D3E10F06500B4" type="Class" name="Package Dependencies">
+        <children xmi:id="_u88eCxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u88eDhTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eDxTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoAhTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3CFC26860119?UML/CommonBehaviors/BasicBehaviors/%3CDependency%3E"/>
+          <children xmi:id="_u88eEBTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u88eERTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0UMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0UcFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0UsFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3CFC26860119?UML/CommonBehaviors/BasicBehaviors/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoABTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eDBTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eDRTaEdqZu-3Jy1-uYg" x="18897" y="457"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9Fn_RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3CFC26860119?UML/CommonBehaviors/BasicBehaviors/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9Fn_hTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoAxTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoBBTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoBRTaEdqZu-3Jy1-uYg" source="_u88eGRTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoCBTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoChTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D521626012C?UML/UseCases/%3CDependency%3E"/>
+        <children xmi:id="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u88eFRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eFhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoCxTaEdqZu-3Jy1-uYg" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D521626012C?UML/UseCases/%3CDependency%3E"/>
+          <children xmi:id="_u88eFxTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u88eGBTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0U8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0VMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0VcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D521626012C?UML/UseCases/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoCRTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eExTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eFBTaEdqZu-3Jy1-uYg" x="18194" y="4064"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoBhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D521626012C?UML/UseCases/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoBxTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoDBTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoDRTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoDhTaEdqZu-3Jy1-uYg" source="_u9Fn5xTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoERTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoExTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D5215A2030D?UML/Classes/Interfaces/%3CDependency%3E"/>
+        <children xmi:id="_u88eGRTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u88eHBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eHRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoFBTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D5215A2030D?UML/Classes/Interfaces/%3CDependency%3E"/>
+          <children xmi:id="_u88eHhTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u88eHxTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0VsFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0V8FkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0WMFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D5215A2030D?UML/Classes/Interfaces/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoEhTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eGhTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eGxTaEdqZu-3Jy1-uYg" x="11836" y="4013"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoDxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D5215A2030D?UML/Classes/Interfaces/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoEBTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoFRTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoFhTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoFxTaEdqZu-3Jy1-uYg" source="_u9Fn7hTaEdqZu-3Jy1-uYg" target="_u9Fn5xTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoGhTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoHBTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BD63310039B?UML/CompositeStructures/InternalStructures/%3CDependency%3E"/>
+        <children xmi:id="_u88eIBTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u88eIxTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u88eJBTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoHRTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BD63310039B?UML/CompositeStructures/InternalStructures/%3CDependency%3E"/>
+          <children xmi:id="_u88eJRTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u88eJhTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0WcFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0WsFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0W8FkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BD63310039B?UML/CompositeStructures/InternalStructures/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoGxTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u88eIRTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u88eIhTaEdqZu-3Jy1-uYg" x="9347" y="9804"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoGBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BD63310039B?UML/CompositeStructures/InternalStructures/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoGRTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoHhTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoHxTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoIBTaEdqZu-3Jy1-uYg" source="_u9Fn4BTaEdqZu-3Jy1-uYg" target="_u9Fn7hTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoIxTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoJRTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D02599A03AC?UML/Interactions/BasicInteractions/%3CDependency%3E"/>
+        <children xmi:id="_u9Fn4BTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9Fn4xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn5BTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoJhTaEdqZu-3Jy1-uYg" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D02599A03AC?UML/Interactions/BasicInteractions/%3CDependency%3E"/>
+          <children xmi:id="_u9Fn5RTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9Fn5hTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0XMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0XcFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0XsFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D02599A03AC?UML/Interactions/BasicInteractions/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoJBTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn4RTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn4hTaEdqZu-3Jy1-uYg" x="18787" y="9906"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoIRTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3D02599A03AC?UML/Interactions/BasicInteractions/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoIhTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoJxTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoKBTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoKRTaEdqZu-3Jy1-uYg" source="_u9Fn5xTaEdqZu-3Jy1-uYg" target="_u9Fn9RTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoLBTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoLhTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BAF2073035B?UML/Classes/Interfaces/%3CDependency%3E"/>
+        <children xmi:id="_u9Fn5xTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9Fn6hTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn6xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9FoLxTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BAF2073035B?UML/Classes/Interfaces/%3CDependency%3E"/>
+          <children xmi:id="_u9Fn7BTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9Fn7RTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0X8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0YMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0YcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BAF2073035B?UML/Classes/Interfaces/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoLRTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn6BTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn6RTaEdqZu-3Jy1-uYg" x="30378" y="4114"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoKhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D3BAF2073035B?UML/Classes/Interfaces/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoKxTaEdqZu-3Jy1-uYg" points="[26, -555, 26, 3122]$[132, -2778, 132, 899]$[132, -2804, 132, 873]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoMBTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9FoMRTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9FoMhTaEdqZu-3Jy1-uYg" source="_u9Fn9RTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9FoNRTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9FoNxTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_nyzikEC4EdqY8ZY2jW2jkQ?UML/Classes/Dependencies/%3CDependency%3E"/>
+        <children xmi:id="_u9Fn7hTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9Fn8RTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn8hTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9PY4BTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_nyzikEC4EdqY8ZY2jW2jkQ?UML/Classes/Dependencies/%3CDependency%3E"/>
+          <children xmi:id="_u9Fn8xTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9Fn9BTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0YsFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0Y8FkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0ZMFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_nyzikEC4EdqY8ZY2jW2jkQ?UML/Classes/Dependencies/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9FoNhTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn7xTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn8BTaEdqZu-3Jy1-uYg" x="29540" y="9804"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9FoMxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_nyzikEC4EdqY8ZY2jW2jkQ?UML/Classes/Dependencies/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9FoNBTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY4RTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY4hTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9PY6hTaEdqZu-3Jy1-uYg" source="_u88eIBTaEdqZu-3Jy1-uYg" target="_u9PY4xTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PY7RTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9PY7xTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D003003AD?UML/Activities/BasicActivities/%3CDependency%3E"/>
+        <children xmi:id="_u9Fn9RTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9Fn-BTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9Fn-RTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9PY8BTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D003003AD?UML/Activities/BasicActivities/%3CDependency%3E"/>
+          <children xmi:id="_u9Fn-hTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9Fn-xTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0ZcFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0ZsFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0Z8FkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D003003AD?UML/Activities/BasicActivities/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9PY7hTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9Fn9hTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9Fn9xTaEdqZu-3Jy1-uYg" x="30276" y="457"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9PY6xTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D003003AD?UML/Activities/BasicActivities/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9PY7BTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY8RTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY8hTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9PY8xTaEdqZu-3Jy1-uYg" source="_u9PY4xTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PY9hTaEdqZu-3Jy1-uYg" type="NameLabel">
-          <children xmi:id="_u9PY-BTaEdqZu-3Jy1-uYg" type="Stereotype">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D00F401C4?UML/Activities/FundamentalActivities/%3CDependency%3E"/>
+        <children xmi:id="_u9PY4xTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9PY5hTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PY5xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
           </children>
-          <children xmi:id="_u9PY-RTaEdqZu-3Jy1-uYg" visible="false" type="Name">
-            <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D00F401C4?UML/Activities/FundamentalActivities/%3CDependency%3E"/>
+          <children xmi:id="_u9PY6BTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9PY6RTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0aMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0acFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0asFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
           </children>
-          <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D00F401C4?UML/Activities/FundamentalActivities/%3CDependency%3E"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9PY9xTaEdqZu-3Jy1-uYg" y="-185"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PY5BTaEdqZu-3Jy1-uYg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PY5RTaEdqZu-3Jy1-uYg" x="13318" y="7467"/>
         </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9PY9BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Dependency" href="Superstructure.emx#_3ADC7B74022D410D00F401C4?UML/Activities/FundamentalActivities/%3CDependency%3E"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9PY9RTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY-hTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9PY-xTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-    </contents>
-    <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D42FB52700007" type="Class" name="L1">
-      <children xmi:id="_u9PY_BTaEdqZu-3Jy1-uYg" targetEdges="_BHkf0HxsEdq7cMP_l1l5Gg">
-        <children xmi:id="_u9PY_xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZABTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+        <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_s1ykQRTaEdqZu-3Jy1-uYg"/>
+        <edges xmi:id="_5_ungMYPEduW_cUc2naAIw" source="_u9Fn5xTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_ung8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_unhcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_unh8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_unhsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_unhMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_ungcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_HAhywhTbEdqZu-3Jy1-uYg?UML/Classes/Interfaces/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_ungsYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_uniMYPEduW_cUc2naAIw" source="_u9Fn4BTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_uni8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_unjcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_unj8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_unjsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_unjMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_unicYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_G2ZmYRTbEdqZu-3Jy1-uYg?UML/Interactions/BasicInteractions/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_unisYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_unkMYPEduW_cUc2naAIw" source="_u88eIBTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_unk8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_unlcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_unl8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_unlsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_unlMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_unkcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_GwSXURTbEdqZu-3Jy1-uYg?UML/Activities/BasicActivities/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_unksYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_unmMYPEduW_cUc2naAIw" source="_u88eGRTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_unm8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_unncYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_unn8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_unnsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_unnMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_unmcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_HISAkBTbEdqZu-3Jy1-uYg?UML/UseCases/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_unmsYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_unoMYPEduW_cUc2naAIw" source="_u88eEhTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_uno8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_unpcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_unp8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_unpsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_unpMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_unocYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_Gp4NURTbEdqZu-3Jy1-uYg?UML/CommonBehaviors/BasicBehaviors/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_unosYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_4YgMYPEduW_cUc2naAIw" source="_u9PY4xTaEdqZu-3Jy1-uYg" target="_u88eEhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_4Yg8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_4YhcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_4Yh8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_4YhsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_4YhMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_4YgcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_G186chTbEdqZu-3Jy1-uYg?UML/Activities/FundamentalActivities/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_4YgsYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_4YiMYPEduW_cUc2naAIw" source="_u9Fn7hTaEdqZu-3Jy1-uYg" target="_u9Fn5xTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_4Yi8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_4YjcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_4Yj8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_4YjsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_4YjMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_4YicYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_Gn8ToBTbEdqZu-3Jy1-uYg?UML/CompositeStructures/InternalStructures/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_4YisYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_4YkMYPEduW_cUc2naAIw" source="_u9Fn4BTaEdqZu-3Jy1-uYg" target="_u9Fn7hTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_4Yk8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_4YlcYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_4Yl8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_4YlsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_4YlMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_4YkcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_G2ZmYBTbEdqZu-3Jy1-uYg?UML/Interactions/BasicInteractions/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_4YksYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_4YmMYPEduW_cUc2naAIw" source="_u9Fn9RTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_5_4Ym8YPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_5_4YncYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_5_4Yn8YPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_5_4YnsYPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5_4YnMYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_4YmcYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_HBbKoxTbEdqZu-3Jy1-uYg?UML/Classes/Dependencies/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_4YmsYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_5_4YoMYPEduW_cUc2naAIw" source="_u9Fn5xTaEdqZu-3Jy1-uYg" target="_u9Fn9RTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_6ABicMYPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_6ABicsYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_6ABidMYPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_6ABic8YPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ABiccYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_5_4YocYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_HAhywRTbEdqZu-3Jy1-uYg?UML/Classes/Interfaces/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_4YosYPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_6ABidcYPEduW_cUc2naAIw" source="_u88eIBTaEdqZu-3Jy1-uYg" target="_u9PY4xTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_6ABieMYPEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_6ABiesYPEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_6ABifMYPEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_6ABie8YPEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ABiecYPEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_6ABidsYPEduW_cUc2naAIw" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageMerge" href="Superstructure.emx#_GwSXUBTbEdqZu-3Jy1-uYg?UML/Activities/BasicActivities/%3CPackageMerge%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6ABid8YPEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_9wHTcMYQEduW_cUc2naAIw" source="_u9PY4xTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_9wHTc8YQEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_9wHTdcYQEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_9wHTd8YQEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_9wHTdsYQEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9wHTdMYQEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_9wHTccYQEduW_cUc2naAIw" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageImport" href="Superstructure.emx#_3ADC7B74022D410D00B40230?UML/Activities/FundamentalActivities/%3CPackageImport%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9wHTcsYQEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_9wHTeMYQEduW_cUc2naAIw" source="_u9Fn9RTaEdqZu-3Jy1-uYg" target="_u88eCxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_9wHTe8YQEduW_cUc2naAIw" type="KindLabel">
+            <children xmi:id="_9wHTfcYQEduW_cUc2naAIw" type="Stereotype"/>
+            <children xmi:id="_9wHTf8YQEduW_cUc2naAIw" type="Kind"/>
+            <children xmi:id="_9wHTfsYQEduW_cUc2naAIw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9wHTfMYQEduW_cUc2naAIw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_9wHTecYQEduW_cUc2naAIw" routing="Rectilinear" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:PackageImport" href="Superstructure.emx#_UcugAD9KEdqjIv4r4xIGZw?UML/Classes/Dependencies/%3CPackageImport%3E?"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_9wHTesYQEduW_cUc2naAIw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+      </contents>
+      <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D42FB52700007" type="Class" name="L1">
+        <children xmi:id="_u9PY_BTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9PY_xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZABTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9PZARTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9PZAhTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0a8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0bMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0bcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PY_RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PY_hTaEdqZu-3Jy1-uYg" x="2226" y="3498"/>
         </children>
-        <children xmi:id="_u9PZARTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
+        <children xmi:id="_u9PZAxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9PZBhTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZBxTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9PZCBTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9PZCRTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uG0bsFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uG0b8FkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uG0cMFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZBBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZBRTaEdqZu-3Jy1-uYg" x="13868" y="9093"/>
         </children>
-        <children xmi:id="_u9PZAhTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
+        <children xmi:id="_u9PZChTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9PZDRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZDhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9PZDxTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9PZEBTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-QMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-QcFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-QsFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZCxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZDBTaEdqZu-3Jy1-uYg" x="14389" y="4134"/>
         </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PY_RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PY_hTaEdqZu-3Jy1-uYg" x="2226" y="3498" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u9PZAxTaEdqZu-3Jy1-uYg" targetEdges="_u9iT2xTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PZBhTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZBxTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+        <children xmi:id="_u9PZERTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9PZFBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZFRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9PZFhTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9PZFxTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-Q8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-RMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-RcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZEhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZExTaEdqZu-3Jy1-uYg" x="10176" y="10812"/>
         </children>
-        <children xmi:id="_u9PZCBTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
+        <children xmi:id="_u9ZJ4BTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9ZJ4xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ5BTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZJ5RTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZJ5hTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-RsFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-R8FkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-SMFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ4RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ4hTaEdqZu-3Jy1-uYg" x="6042" y="10812"/>
         </children>
-        <children xmi:id="_u9PZCRTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
+        <children xmi:id="_u9ZJ5xTaEdqZu-3Jy1-uYg" element="_BWooUBmMEdqvcs97umGEYQ">
+          <children xmi:id="_u9ZJ6hTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ6xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZJ7BTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZJ7RTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-ScFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-SsFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-S8FkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ6BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ6RTaEdqZu-3Jy1-uYg" x="8280" y="5994"/>
         </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZBBTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZBRTaEdqZu-3Jy1-uYg" x="13868" y="9093" width="2963" height="1676"/>
-      </children>
-      <children xmi:id="_u9PZChTaEdqZu-3Jy1-uYg" targetEdges="_u9iT0hTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PZDRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZDhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+        <children xmi:id="_u9ZJ7hTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9ZJ8RTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ8hTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZJ8xTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZJ9BTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-TMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-TcFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-TsFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ7xTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ8BTaEdqZu-3Jy1-uYg" x="12801" y="1778"/>
         </children>
-        <children xmi:id="_u9PZDxTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
+        <children xmi:id="_u9ZJ9RTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9ZJ-BTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ-RTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZJ-hTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZJ-xTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-T8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-UMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-UcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ9hTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ9xTaEdqZu-3Jy1-uYg" x="4134" y="1272"/>
         </children>
-        <children xmi:id="_u9PZEBTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
+        <children xmi:id="_u9ZKDhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9ZKERTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZKEhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZKExTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZKFBTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-UsFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-U8FkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-VMFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZKDxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZKEBTaEdqZu-3Jy1-uYg" x="1590" y="6360"/>
         </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZCxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZDBTaEdqZu-3Jy1-uYg" x="14389" y="4134" width="4318" height="1676"/>
-      </children>
-      <children xmi:id="_u9PZERTaEdqZu-3Jy1-uYg" targetEdges="_u9iT5BTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9PZFBTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9PZFRTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+        <children xmi:id="_u9ZKHhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_u9ZKIRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZKIhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_u9ZKIxTaEdqZu-3Jy1-uYg" type="Stereotype"/>
+          <children xmi:id="_u9ZKJBTaEdqZu-3Jy1-uYg" type="Name"/>
+          <children xmi:id="_8uP-VcFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-VsFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-V8FkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZKHxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZKIBTaEdqZu-3Jy1-uYg" x="1908" y="9222"/>
         </children>
-        <children xmi:id="_u9PZFhTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
+        <children xmi:id="_HPVIQHxsEdq7cMP_l1l5Gg">
+          <children xmi:id="_HPVIQ3xsEdq7cMP_l1l5Gg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_HPVIRHxsEdq7cMP_l1l5Gg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_HPVIRXxsEdq7cMP_l1l5Gg" type="Stereotype"/>
+          <children xmi:id="_HPVIRnxsEdq7cMP_l1l5Gg" type="Name"/>
+          <children xmi:id="_8uP-WMFkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-WcFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-WsFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_HPVIQXxsEdq7cMP_l1l5Gg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPVIQnxsEdq7cMP_l1l5Gg" x="8268" y="1272"/>
         </children>
-        <children xmi:id="_u9PZFxTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
+        <children xmi:id="_T3sZUHygEdq7cMP_l1l5Gg">
+          <children xmi:id="_T3sZU3ygEdq7cMP_l1l5Gg" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_T3sZVHygEdq7cMP_l1l5Gg" width="1320" height="1320"/>
+          </children>
+          <children xmi:id="_T3sZVXygEdq7cMP_l1l5Gg" type="Stereotype"/>
+          <children xmi:id="_T3sZVnygEdq7cMP_l1l5Gg" type="Name"/>
+          <children xmi:id="_8uP-W8FkEdu60_VP7XWKdw" type="Parent"/>
+          <children xmi:id="_8uP-XMFkEdu60_VP7XWKdw" type="PackageContents">
+            <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_8uP-XcFkEdu60_VP7XWKdw" canonical="false" collapsed="true"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_T3sZUXygEdq7cMP_l1l5Gg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
+          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities?"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T3sZUnygEdq7cMP_l1l5Gg" x="14628" y="6678"/>
         </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9PZEhTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9PZExTaEdqZu-3Jy1-uYg" x="10176" y="10812" width="3310" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZJ4BTaEdqZu-3Jy1-uYg" targetEdges="_u9iT7RTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9ZJ4xTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ5BTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZJ5RTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        </children>
-        <children xmi:id="_u9ZJ5hTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ4RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ4hTaEdqZu-3Jy1-uYg" x="6042" y="10812" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZJ5xTaEdqZu-3Jy1-uYg" sourceEdges="_u9ZKLhTaEdqZu-3Jy1-uYg _u9iT0hTaEdqZu-3Jy1-uYg _u9iT2xTaEdqZu-3Jy1-uYg _u9iT5BTaEdqZu-3Jy1-uYg _u9iT7RTaEdqZu-3Jy1-uYg _2idiUHxrEdq7cMP_l1l5Gg _7vDjAHxrEdq7cMP_l1l5Gg _BHkf0HxsEdq7cMP_l1l5Gg _DBUPsHxsEdq7cMP_l1l5Gg _MZrtQHxsEdq7cMP_l1l5Gg _X7bUgHygEdq7cMP_l1l5Gg" element="_BWooUBmMEdqvcs97umGEYQ">
-        <children xmi:id="_u9ZJ6hTaEdqZu-3Jy1-uYg" type="ImageCompartment" element="_BWooUBmMEdqvcs97umGEYQ">
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ6xTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZJ7BTaEdqZu-3Jy1-uYg" type="Stereotype" element="_BWooUBmMEdqvcs97umGEYQ"/>
-        <children xmi:id="_u9ZJ7RTaEdqZu-3Jy1-uYg" type="Name" element="_BWooUBmMEdqvcs97umGEYQ"/>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ6BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ6RTaEdqZu-3Jy1-uYg" x="8280" y="5994" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZJ7hTaEdqZu-3Jy1-uYg" targetEdges="_7vDjAHxrEdq7cMP_l1l5Gg">
-        <children xmi:id="_u9ZJ8RTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ8hTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZJ8xTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        </children>
-        <children xmi:id="_u9ZJ9BTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ7xTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ8BTaEdqZu-3Jy1-uYg" x="12801" y="1778" width="2540" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZJ9RTaEdqZu-3Jy1-uYg" targetEdges="_DBUPsHxsEdq7cMP_l1l5Gg">
-        <children xmi:id="_u9ZJ-BTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZJ-RTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZJ-hTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        </children>
-        <children xmi:id="_u9ZJ-xTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZJ9hTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZJ9xTaEdqZu-3Jy1-uYg" x="4134" y="1272" width="2883" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZKDhTaEdqZu-3Jy1-uYg" targetEdges="_2idiUHxrEdq7cMP_l1l5Gg">
-        <children xmi:id="_u9ZKERTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZKEhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZKExTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        </children>
-        <children xmi:id="_u9ZKFBTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZKDxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZKEBTaEdqZu-3Jy1-uYg" x="1590" y="6360" width="3268" height="1676"/>
-      </children>
-      <children xmi:id="_u9ZKHhTaEdqZu-3Jy1-uYg" targetEdges="_u9ZKLhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9ZKIRTaEdqZu-3Jy1-uYg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_u9ZKIhTaEdqZu-3Jy1-uYg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_u9ZKIxTaEdqZu-3Jy1-uYg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-        </children>
-        <children xmi:id="_u9ZKJBTaEdqZu-3Jy1-uYg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_u9ZKHxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="10" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="None"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u9ZKIBTaEdqZu-3Jy1-uYg" x="1908" y="9222" width="3268" height="1676"/>
-      </children>
-      <children xmi:id="_HPVIQHxsEdq7cMP_l1l5Gg" targetEdges="_MZrtQHxsEdq7cMP_l1l5Gg">
-        <children xmi:id="_HPVIQ3xsEdq7cMP_l1l5Gg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_HPVIRHxsEdq7cMP_l1l5Gg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_HPVIRXxsEdq7cMP_l1l5Gg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-        </children>
-        <children xmi:id="_HPVIRnxsEdq7cMP_l1l5Gg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_HPVIQXxsEdq7cMP_l1l5Gg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HPVIQnxsEdq7cMP_l1l5Gg" x="8268" y="1272" width="3175" height="1586"/>
-      </children>
-      <children xmi:id="_T3sZUHygEdq7cMP_l1l5Gg" targetEdges="_X7bUgHygEdq7cMP_l1l5Gg">
-        <children xmi:id="_T3sZU3ygEdq7cMP_l1l5Gg" type="ImageCompartment">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-          <layoutConstraint xmi:type="notation:Size" xmi:id="_T3sZVHygEdq7cMP_l1l5Gg" width="1320" height="1320"/>
-        </children>
-        <children xmi:id="_T3sZVXygEdq7cMP_l1l5Gg" type="Stereotype">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        </children>
-        <children xmi:id="_T3sZVnygEdq7cMP_l1l5Gg" type="Name">
-          <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_T3sZUXygEdq7cMP_l1l5Gg" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
-        <element xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T3sZUnygEdq7cMP_l1l5Gg" x="14628" y="6678" width="4445" height="1586"/>
-      </children>
-      <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_s1ykQxTaEdqZu-3Jy1-uYg" description="Level 1 adds new language units and extends the capabilities provided by Level 0. Specifically, it adds language units for use cases, interactions, structures, actions, and activities."/>
-      <edges xmi:id="_u9ZKLhTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D41AF63B30211" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZKHhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9ZKMRTaEdqZu-3Jy1-uYg" type="NameLabel" element="_3ADC7B74022D41AF63B30211">
-          <children xmi:id="_u9ZKMxTaEdqZu-3Jy1-uYg" type="Stereotype" element="_3ADC7B74022D41AF63B30211"/>
-          <children xmi:id="_u9ZKNBTaEdqZu-3Jy1-uYg" type="Name" element="_3ADC7B74022D41AF63B30211"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9ZKMhTaEdqZu-3Jy1-uYg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9ZKLxTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9ZKMBTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT0BTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT0RTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9iT0hTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D41AF63B30213" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZChTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9iT1RTaEdqZu-3Jy1-uYg" type="NameLabel" element="_3ADC7B74022D41AF63B30213">
-          <children xmi:id="_u9iT1xTaEdqZu-3Jy1-uYg" type="Stereotype" element="_3ADC7B74022D41AF63B30213"/>
-          <children xmi:id="_u9iT2BTaEdqZu-3Jy1-uYg" type="Name" element="_3ADC7B74022D41AF63B30213"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9iT1hTaEdqZu-3Jy1-uYg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9iT0xTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9iT1BTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT2RTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT2hTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9iT2xTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D41AF63B30203" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZAxTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9iT3hTaEdqZu-3Jy1-uYg" type="NameLabel" element="_3ADC7B74022D41AF63B30203">
-          <children xmi:id="_u9iT4BTaEdqZu-3Jy1-uYg" type="Stereotype" element="_3ADC7B74022D41AF63B30203"/>
-          <children xmi:id="_u9iT4RTaEdqZu-3Jy1-uYg" type="Name" element="_3ADC7B74022D41AF63B30203"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9iT3xTaEdqZu-3Jy1-uYg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9iT3BTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9iT3RTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT4hTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT4xTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9iT5BTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D41AF63B30205" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZERTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9iT5xTaEdqZu-3Jy1-uYg" type="NameLabel" element="_3ADC7B74022D41AF63B30205">
-          <children xmi:id="_u9iT6RTaEdqZu-3Jy1-uYg" type="Stereotype" element="_3ADC7B74022D41AF63B30205"/>
-          <children xmi:id="_u9iT6hTaEdqZu-3Jy1-uYg" type="Name" element="_3ADC7B74022D41AF63B30205"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9iT6BTaEdqZu-3Jy1-uYg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9iT5RTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9iT5hTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT6xTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT7BTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_u9iT7RTaEdqZu-3Jy1-uYg" element="_3ADC7B74022D41AF63B3020D" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ4BTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_u9iT8BTaEdqZu-3Jy1-uYg" type="NameLabel" element="_3ADC7B74022D41AF63B3020D">
-          <children xmi:id="_u9iT8hTaEdqZu-3Jy1-uYg" type="Stereotype" element="_3ADC7B74022D41AF63B3020D"/>
-          <children xmi:id="_u9iT8xTaEdqZu-3Jy1-uYg" type="Name" element="_3ADC7B74022D41AF63B3020D"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_u9iT8RTaEdqZu-3Jy1-uYg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_u9iT7hTaEdqZu-3Jy1-uYg" fontName="Arial" fontHeight="8" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_u9iT7xTaEdqZu-3Jy1-uYg" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT9BTaEdqZu-3Jy1-uYg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_u9iT9RTaEdqZu-3Jy1-uYg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_2idiUHxrEdq7cMP_l1l5Gg" element="_2iUYYHxrEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZKDhTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_2idiU3xrEdq7cMP_l1l5Gg" type="NameLabel" element="_2iUYYHxrEdq7cMP_l1l5Gg">
-          <children xmi:id="_2inTUHxrEdq7cMP_l1l5Gg" type="Stereotype" element="_2iUYYHxrEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_2inTUXxrEdq7cMP_l1l5Gg" type="Name" element="_2iUYYHxrEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2idiVHxrEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_2idiUXxrEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2idiUnxrEdq7cMP_l1l5Gg" points="[-49, 6, 191, -11]$[-239, 17, 1, 0]"/>
-        <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2ixEUHxrEdq7cMP_l1l5Gg" id="anchor50"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2ixEUXxrEdq7cMP_l1l5Gg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_7vDjAHxrEdq7cMP_l1l5Gg" element="_7uwoEHxrEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ7hTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_7vDjA3xrEdq7cMP_l1l5Gg" type="NameLabel" element="_7uwoEHxrEdq7cMP_l1l5Gg">
-          <children xmi:id="_7vDjBXxrEdq7cMP_l1l5Gg" type="Stereotype" element="_7uwoEHxrEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_7vDjBnxrEdq7cMP_l1l5Gg" type="Name" element="_7uwoEHxrEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7vDjBHxrEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_7vDjAXxrEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7vDjAnxrEdq7cMP_l1l5Gg" points="[23, -21, -148, 139]$[171, -159, 0, 1]"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7vNUAHxrEdq7cMP_l1l5Gg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_BHkf0HxsEdq7cMP_l1l5Gg" element="_BHRk4HxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PY_BTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_BHkf03xsEdq7cMP_l1l5Gg" type="NameLabel" element="_BHRk4HxsEdq7cMP_l1l5Gg">
-          <children xmi:id="_BHkf1XxsEdq7cMP_l1l5Gg" type="Stereotype" element="_BHRk4HxsEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_BHkf1nxsEdq7cMP_l1l5Gg" type="Name" element="_BHRk4HxsEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BHkf1HxsEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_BHkf0XxsEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BHkf0nxsEdq7cMP_l1l5Gg" points="[-49, -21, 179, 74]$[-228, -94, 0, 1]"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BHuQ0HxsEdq7cMP_l1l5Gg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_DBUPsHxsEdq7cMP_l1l5Gg" element="_DBKesHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ9RTaEdqZu-3Jy1-uYg">
-        <children xmi:id="_DBUPs3xsEdq7cMP_l1l5Gg" type="NameLabel" element="_DBKesHxsEdq7cMP_l1l5Gg">
-          <children xmi:id="_DBUPtXxsEdq7cMP_l1l5Gg" type="Stereotype" element="_DBKesHxsEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_DBUPtnxsEdq7cMP_l1l5Gg" type="Name" element="_DBKesHxsEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DBUPtHxsEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_DBUPsXxsEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_DBUPsnxsEdq7cMP_l1l5Gg" points="[-29, -33, 121, 146]$[-149, -178, 1, 1]"/>
-        <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DBeAsHxsEdq7cMP_l1l5Gg" id="anchor50"/>
-      </edges>
-      <edges xmi:id="_MZrtQHxsEdq7cMP_l1l5Gg" element="_MZYyUHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_HPVIQHxsEdq7cMP_l1l5Gg">
-        <children xmi:id="_MZrtQ3xsEdq7cMP_l1l5Gg" type="NameLabel" element="_MZYyUHxsEdq7cMP_l1l5Gg">
-          <children xmi:id="_MZrtRXxsEdq7cMP_l1l5Gg" type="Stereotype" element="_MZYyUHxsEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_MZrtRnxsEdq7cMP_l1l5Gg" type="Name" element="_MZYyUHxsEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MZrtRHxsEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MZrtQXxsEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MZrtQnxsEdq7cMP_l1l5Gg" points="[0, -21, -12, 159]$[12, -180, 0, 0]"/>
-      </edges>
-      <edges xmi:id="_X7bUgHygEdq7cMP_l1l5Gg" element="_X7RjgHygEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_T3sZUHygEdq7cMP_l1l5Gg">
-        <children xmi:id="_X7bUg3ygEdq7cMP_l1l5Gg" type="NameLabel" element="_X7RjgHygEdq7cMP_l1l5Gg">
-          <children xmi:id="_X7bUhXygEdq7cMP_l1l5Gg" type="Stereotype" element="_X7RjgHygEdq7cMP_l1l5Gg"/>
-          <children xmi:id="_X7bUhnygEdq7cMP_l1l5Gg" type="Name" element="_X7RjgHygEdq7cMP_l1l5Gg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X7bUhHygEdq7cMP_l1l5Gg" y="-185"/>
-        </children>
-        <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_X7bUgXygEdq7cMP_l1l5Gg" lineColor="0" showStereotype="Text"/>
-        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_X7bUgnygEdq7cMP_l1l5Gg" points="[49, 5, -215, -19]$[264, 24, 0, 0]"/>
-      </edges>
-    </contents>
-  </eAnnotations>
-  <eAnnotations xmi:id="__J3IwX3mEdq7cMP_l1l5Gg" source="http://www.eclipse.org/emf/2002/Ecore"/>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWooVBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BWooVRmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BWooVhmMEdqvcs97umGEYQ" key="version" value="0"/>
+        <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_s1ykQxTaEdqZu-3Jy1-uYg" description="Level 1 adds new language units and extends the capabilities provided by Level 0. Specifically, it adds language units for use cases, interactions, structures, actions, and activities."/>
+        <edges xmi:id="_MxN2IMFmEdu60_VP7XWKdw" element="_4JxB4HxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ9RTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxN2I8FmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxN2JcFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxN2J8FmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxN2JsFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxN2JMFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxN2IcFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxN2IsFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxN2KMFmEdu60_VP7XWKdw" element="_4xP4oHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ7hTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxN2K8FmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxN2LcFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxN2L8FmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxN2LsFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxN2LMFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxN2KcFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxN2KsFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxN2MMFmEdu60_VP7XWKdw" element="_4e6ygHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PY_BTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxN2M8FmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxXnIMFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxXnIsFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxXnIcFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxN2NMFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxN2McFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxN2MsFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxXnI8FmEdu60_VP7XWKdw" element="_c_XvgHygEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_T3sZUHygEdq7cMP_l1l5Gg">
+          <children xmi:id="_MxXnJsFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxXnKMFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxXnKsFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxXnKcFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxXnJ8FmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxXnJMFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxXnJcFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxXnK8FmEdu60_VP7XWKdw" element="_5EeWoHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZKDhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxXnLsFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxXnMMFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxXnMsFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxXnMcFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxXnL8FmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxXnLMFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxXnLcFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxXnM8FmEdu60_VP7XWKdw" element="_qbMZEHxsEdq7cMP_l1l5Gg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_HPVIQHxsEdq7cMP_l1l5Gg">
+          <children xmi:id="_MxXnNsFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxXnOMFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxXnOsFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxXnOcFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxXnN8FmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxXnNMFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxXnNcFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxXnO8FmEdu60_VP7XWKdw" element="_HWusRRTbEdqZu-3Jy1-uYg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZERTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxXnPsFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxXnQMFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxhYIMFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxXnQcFmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxXnP8FmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxXnPMFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxXnPcFmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxhYIcFmEdu60_VP7XWKdw" element="_HWusRBTbEdqZu-3Jy1-uYg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZAxTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxhYJMFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxhYJsFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxhYKMFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxhYJ8FmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxhYJcFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxhYIsFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxhYI8FmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxhYKcFmEdu60_VP7XWKdw" element="_HWusSBTbEdqZu-3Jy1-uYg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9PZChTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxhYLMFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxhYLsFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxhYMMFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxhYL8FmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxhYLcFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxhYKsFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxhYK8FmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxhYMcFmEdu60_VP7XWKdw" element="_HWusRhTbEdqZu-3Jy1-uYg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZJ4BTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxhYNMFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxhYNsFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxhYOMFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxhYN8FmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxhYNcFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxhYMsFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxhYM8FmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:id="_MxhYOcFmEdu60_VP7XWKdw" element="_HWusRxTbEdqZu-3Jy1-uYg" source="_u9ZJ5xTaEdqZu-3Jy1-uYg" target="_u9ZKHhTaEdqZu-3Jy1-uYg">
+          <children xmi:id="_MxhYPMFmEdu60_VP7XWKdw" type="KindLabel">
+            <children xmi:id="_MxhYPsFmEdu60_VP7XWKdw" type="Stereotype"/>
+            <children xmi:id="_MxhYQMFmEdu60_VP7XWKdw" type="Kind"/>
+            <children xmi:id="_MxhYP8FmEdu60_VP7XWKdw" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MxhYPcFmEdu60_VP7XWKdw" y="-186"/>
+          </children>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_MxhYOsFmEdu60_VP7XWKdw" lineColor="0" showStereotype="Text"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MxhYO8FmEdu60_VP7XWKdw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+      </contents>
     </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Basic.profile.uml2#_6mFRgK86Edih9-GG5afQ0g"/>
-  </packageImport>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWyZUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BWyZURmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BWyZUhmMEdqvcs97umGEYQ" key="version" value="0"/>
-    </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Intermediate.profile.uml2#_Cz7csK87Edih9-GG5afQ0g"/>
-  </packageImport>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWyZUxmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BWyZVBmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BWyZVRmMEdqvcs97umGEYQ" key="version" value="0"/>
-    </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Complete.profile.uml2#_M7pTkK87Edih9-GG5afQ0g"/>
-  </packageImport>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWyZVhmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BWyZVxmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BWyZWBmMEdqvcs97umGEYQ" key="version" value="0"/>
-    </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default"/>
-    <importedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default"/>
-  </packageImport>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BWyZWRmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BWyZWhmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BWyZWxmMEdqvcs97umGEYQ" key="version" value="0"/>
-    </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment"/>
-    <importedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment"/>
-  </packageImport>
-  <packageImport xmi:id="_BWyZXBmMEdqvcs97umGEYQ">
-    <importedPackage xmi:type="uml:Model" href="pathmap://UML2_LIBRARIES/UML2PrimitiveTypes.library.uml2#_EfRZoK86EdieaYgxtVWN8Q"/>
-  </packageImport>
-  <packageImport xmi:type="uml:ProfileApplication" xmi:id="_BbZzkBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_BbZzkRmMEdqvcs97umGEYQ" source="attributes">
-      <details xmi:id="_BbZzkhmMEdqvcs97umGEYQ" key="version" value="0"/>
-    </eAnnotations>
-    <importedPackage xmi:type="uml:Profile" href="pathmap://UML2_PROFILES/Ecore.profile.uml2#_siPt4K87Edi5QpYeY_yIpg"/>
-    <importedProfile href="pathmap://UML2_PROFILES/Ecore.profile.uml2#_siPt4K87Edi5QpYeY_yIpg"/>
-  </packageImport>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_3ADC7B74022D41AF63B30203" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_s1ykMRTaEdqZu-3Jy1-uYg" source="keywords">
-      <details xmi:id="_s1ykMhTaEdqZu-3Jy1-uYg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_3ADC7B74022D41AF63B30205" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_s1ykNBTaEdqZu-3Jy1-uYg" source="keywords">
-      <details xmi:id="_s1ykNRTaEdqZu-3Jy1-uYg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_3ADC7B74022D41AF63B3020D" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_s1ykNxTaEdqZu-3Jy1-uYg" source="keywords">
-      <details xmi:id="_s1ykOBTaEdqZu-3Jy1-uYg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_3ADC7B74022D41AF63B30211" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_s1ykOhTaEdqZu-3Jy1-uYg" source="keywords">
-      <details xmi:id="_s1ykOxTaEdqZu-3Jy1-uYg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_3ADC7B74022D41AF63B30213" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_s1ykPRTaEdqZu-3Jy1-uYg" source="keywords">
-      <details xmi:id="_s1ykPhTaEdqZu-3Jy1-uYg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_2iUYYHxrEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_OP2ksHxsEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_OP2ksXxsEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_7uwoEHxrEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_UGUBwHxsEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_UGUBwXxsEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_BHRk4HxsEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_QruKMHxsEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_QruKMXxsEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_DBKesHxsEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_SKo_QHxsEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_SKo_QXxsEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_MZYyUHxsEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_TUProHxsEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_TUProXxsEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-  </ownedMember>
-  <ownedMember xmi:type="uml:Dependency" xmi:id="_X7RjgHygEdq7cMP_l1l5Gg" client="_BWooUBmMEdqvcs97umGEYQ">
-    <eAnnotations xmi:id="_aJSTMHygEdq7cMP_l1l5Gg" source="keywords">
-      <details xmi:id="_aJSTMXygEdq7cMP_l1l5Gg" key="merge"/>
-    </eAnnotations>
-    <supplier xmi:type="uml:Package" href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-  </ownedMember>
-  <packageMerge xmi:id="_HWusRBTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities"/>
-  </packageMerge>
-  <packageMerge xmi:id="_HWusRRTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions"/>
-  </packageMerge>
-  <packageMerge xmi:id="_HWusRhTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases"/>
-  </packageMerge>
-  <packageMerge xmi:id="_HWusRxTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications"/>
-  </packageMerge>
-  <packageMerge xmi:id="_HWusSBTbEdqZu-3Jy1-uYg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures"/>
-  </packageMerge>
-  <packageMerge xmi:id="_qbMZEHxsEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions"/>
-  </packageMerge>
-  <packageMerge xmi:id="_4JxB4HxsEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies"/>
-  </packageMerge>
-  <packageMerge xmi:id="_4e6ygHxsEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces"/>
-  </packageMerge>
-  <packageMerge xmi:id="_4xP4oHxsEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel"/>
-  </packageMerge>
-  <packageMerge xmi:id="_5EeWoHxsEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors"/>
-  </packageMerge>
-  <packageMerge xmi:id="_c_XvgHygEdq7cMP_l1l5Gg">
-    <mergedPackage href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities"/>
-  </packageMerge>
-</uml:Model>
+    <packageMerge xmi:id="_HWusRBTbEdqZu-3Jy1-uYg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3DF124E700CB?UML/Activities/BasicActivities?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HWusRRTbEdqZu-3Jy1-uYg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3388DA6E014A?UML/Interactions/BasicInteractions?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HWusRhTbEdqZu-3Jy1-uYg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D336185C00118?UML/UseCases?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HWusRxTbEdqZu-3Jy1-uYg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3CFC224902BF?UML/CommonBehaviors/Communications?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_HWusSBTbEdqZu-3Jy1-uYg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3BAE542B0121?UML/CompositeStructures/InternalStructures?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_qbMZEHxsEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D410C264F010C?UML/Actions/BasicActions?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_4JxB4HxsEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3ADF556A0044?UML/Classes/Dependencies?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_4e6ygHxsEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3BAF164701DA?UML/Classes/Interfaces?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_4xP4oHxsEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D3C9FD9B900CF?UML/Classes/Kernel?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_5EeWoHxsEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D335C122001A4?UML/CommonBehaviors/BasicBehaviors?"/>
+    </packageMerge>
+    <packageMerge xmi:id="_c_XvgHygEdq7cMP_l1l5Gg">
+      <mergedPackage href="Superstructure.emx#_3ADC7B74022D410D001C03C2?UML/Activities/FundamentalActivities?"/>
+    </packageMerge>
+    <profileApplication xmi:id="_BWyZUxmMEdqvcs97umGEYQ">
+      <eAnnotations xmi:id="_BWyZVBmMEdqvcs97umGEYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:id="_BWyZVhmMEdqvcs97umGEYQ">
+      <eAnnotations xmi:id="_BWyZVxmMEdqvcs97umGEYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_BWyZWRmMEdqvcs97umGEYQ">
+      <eAnnotations xmi:id="_BWyZWhmMEdqvcs97umGEYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_IrdAUMmBEdqBcN1R6EvWUw?Deployment/Deployment?"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+    </profileApplication>
+    <profileApplication xmi:id="_BbZzkBmMEdqvcs97umGEYQ">
+      <eAnnotations xmi:id="_BbZzkRmMEdqvcs97umGEYQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <Ecore:EPackage xmi:id="_FAJjAMFlEdu60_VP7XWKdw" base_Package="_BWooUBmMEdqvcs97umGEYQ" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1.1/uml.xml"/>
+</xmi:XMI>
