@@ -89,7 +89,7 @@
           <children xmi:id="_nDK2fWvbEdq4DLWZOhbdEA" visible="false" type="StructureCompartment">
             <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_nDK2fmvbEdq4DLWZOhbdEA"/>
           </children>
-          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_nDK2cWvbEdq4DLWZOhbdEA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_nDK2cWvbEdq4DLWZOhbdEA" fontHeight="8" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nDK2cmvbEdq4DLWZOhbdEA" x="2989" y="6455"/>
         </children>
         <children xmi:id="_p1sBYGvbEdq4DLWZOhbdEA">
@@ -111,7 +111,7 @@
           <children xmi:id="_p11yamvbEdq4DLWZOhbdEA" visible="false" type="StructureCompartment">
             <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_p11ya2vbEdq4DLWZOhbdEA"/>
           </children>
-          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_p1sBYWvbEdq4DLWZOhbdEA" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
+          <styles xmi:type="umlnotation:UMLShapeStyle" xmi:id="_p1sBYWvbEdq4DLWZOhbdEA" fontHeight="8" showListStereotype="None" showListVisibility="None" lineColor="0" showStereotype="Text"/>
           <element xmi:type="uml:Class" href="Ecore.emx#_SeWihMX_EduPJbEsMYXjUQ?Ecore/EModelElement?"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_p1sBYmvbEdq4DLWZOhbdEA" x="2536" y="2853"/>
         </children>
@@ -122,7 +122,7 @@
             <children xmi:id="_rczwNmvbEdq4DLWZOhbdEA" type="Name" element="_rcp_MGvbEdq4DLWZOhbdEA"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rczwNGvbEdq4DLWZOhbdEA" y="-185"/>
           </children>
-          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_rczwMWvbEdq4DLWZOhbdEA" lineColor="0" showStereotype="Text"/>
+          <styles xmi:type="umlnotation:UMLConnectorStyle" xmi:id="_rczwMWvbEdq4DLWZOhbdEA" fontHeight="8" lineColor="0" showStereotype="Text"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rczwMmvbEdq4DLWZOhbdEA" points="[-1, -450, 1811, 2037]$[-1826, -2038, -14, 449]"/>
         </edges>
       </contents>
