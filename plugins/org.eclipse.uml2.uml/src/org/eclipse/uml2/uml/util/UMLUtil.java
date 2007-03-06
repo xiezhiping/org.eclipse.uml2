@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.51 2007/02/27 04:58:29 khussey Exp $
+ * $Id: UMLUtil.java,v 1.52 2007/03/06 17:12:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5763,7 +5763,8 @@ public class UMLUtil
 					.getBaseType(eDataType);
 
 				if (baseType != null) {
-					Classifier generalClassifier = (Classifier) getType(eDataType, baseType);
+					Classifier generalClassifier = (Classifier) getType(
+						eDataType, baseType);
 
 					if (!primitiveType.allParents().contains(generalClassifier)) {
 						primitiveType.createGeneralization(generalClassifier);
@@ -7625,7 +7626,8 @@ public class UMLUtil
 		Resource eResource = metaclass.eResource();
 
 		if (eResource == null
-			|| !UMLResource.UML_METAMODEL_URI.equals(eResource.getURI())) {
+			|| !UMLResource.UML_METAMODEL_URI.equals(String.valueOf(eResource
+				.getURI()))) {
 
 			Model model = metaclass.getModel();
 
