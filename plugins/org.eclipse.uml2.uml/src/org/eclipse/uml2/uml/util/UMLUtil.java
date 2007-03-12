@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.52 2007/03/06 17:12:14 khussey Exp $
+ * $Id: UMLUtil.java,v 1.53 2007/03/12 21:10:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3584,7 +3584,7 @@ public class UMLUtil
 					context);
 
 				processEcoreTaggedValue(eStructuralFeature,
-					EcorePackage.Literals.ESTRUCTURAL_FEATURE__TRANSIENT,
+					EcorePackage.Literals.ESTRUCTURAL_FEATURE__VOLATILE,
 					element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__IS_VOLATILE, options, diagnostics, context);
 
