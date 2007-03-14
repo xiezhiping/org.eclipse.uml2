@@ -7740,7 +7740,7 @@ public class Class
     stringBuffer.append(TEXT_2146);
     if (isImplementation) {
     if (genClass.isModelRoot()) {
-    if (UML2GenModelUtil.isFactoryMethods(genModel)) {
+    if (UML2GenModelUtil.isFactoryMethods(genClass)) {
     stringBuffer.append(TEXT_2147);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
     stringBuffer.append(TEXT_2148);
@@ -7749,7 +7749,7 @@ public class Class
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreUtil"));
     stringBuffer.append(TEXT_2150);
     }
-    if (UML2GenModelUtil.isCacheAdapterSupport(genModel)) {
+    if (UML2GenModelUtil.isCacheAdapterSupport(genClass)) {
     stringBuffer.append(TEXT_2151);
     stringBuffer.append(genClass.getFormattedName());
     stringBuffer.append(TEXT_2152);

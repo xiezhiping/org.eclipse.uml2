@@ -1,6 +1,6 @@
 <%if (isImplementation) {%>
   <%if (genClass.isModelRoot()) {%>
-    <%if (UML2GenModelUtil.isFactoryMethods(genModel)) {%>
+    <%if (UML2GenModelUtil.isFactoryMethods(genClass)) {%>
 	/**
 	 * Creates a new instance of the specified Ecore class.
 	 * <!-- begin-user-doc -->
@@ -15,7 +15,7 @@
 	}
 
     <%}%>
-    <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel)) {%>
+    <%if (UML2GenModelUtil.isCacheAdapterSupport(genClass)) {%>
 	/**
 	 * Retrieves the cache adapter for this '<em><b><%=genClass.getFormattedName()%></b></em>'.
 	 * <!-- begin-user-doc -->

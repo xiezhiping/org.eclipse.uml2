@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.17 2007/02/14 19:59:49 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.18 2007/03/14 02:29:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -518,6 +518,32 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getImplementedCollidingUnsetGenOperation(genFeature)
 			: null;
+	}
+
+	public static boolean isFactoryMethods(GenClass genClass) {
+
+		for (GenClass classExtendsGenClass = genClass.getClassExtendsGenClass(); classExtendsGenClass != null; classExtendsGenClass = classExtendsGenClass
+			.getClassExtendsGenClass()) {
+
+			if (isFactoryMethods(classExtendsGenClass.getGenModel())) {
+				return false;
+			}
+		}
+
+		return isFactoryMethods(genClass.getGenModel());
+	}
+
+	public static boolean isCacheAdapterSupport(GenClass genClass) {
+
+		for (GenClass classExtendsGenClass = genClass.getClassExtendsGenClass(); classExtendsGenClass != null; classExtendsGenClass = classExtendsGenClass
+			.getClassExtendsGenClass()) {
+
+			if (isCacheAdapterSupport(classExtendsGenClass.getGenModel())) {
+				return false;
+			}
+		}
+
+		return isCacheAdapterSupport(genClass.getGenModel());
 	}
 
 	// GenFeature utilities
