@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterApplication.java,v 1.2 2007/02/09 16:35:35 khussey Exp $
+ * $Id: UMLImporterApplication.java,v 1.3 2007/03/14 02:39:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -135,15 +135,15 @@ public class UMLImporterApplication
 				nameToPackageInfo);
 		} else if (isImporterOption(arguments[index])) {
 			importerOptions.put(arguments[index].substring(1), arguments[++index]);
-		} else if (arguments[index].equalsIgnoreCase("-pluralizeGetters")) {
+		} else if (arguments[index].equalsIgnoreCase("-pluralizeGetters")) { //$NON-NLS-1$
 			pluralizeGetters = true;
-		} else if (arguments[index].equalsIgnoreCase("-safeStrings")) {
+		} else if (arguments[index].equalsIgnoreCase("-safeStrings")) { //$NON-NLS-1$
 			safeStrings = true;
-		} else if (arguments[index].equalsIgnoreCase("-cacheAdapterSupport")) {
+		} else if (arguments[index].equalsIgnoreCase("-cacheAdapterSupport")) { //$NON-NLS-1$
 			cacheAdapterSupport = true;
-		} else if (arguments[index].equalsIgnoreCase("-factoryMethods")) {
+		} else if (arguments[index].equalsIgnoreCase("-factoryMethods")) { //$NON-NLS-1$
 			factoryMethods = true;
-		} else if (arguments[index].equalsIgnoreCase("-invariantPrefix")) {
+		} else if (arguments[index].equalsIgnoreCase("-invariantPrefix")) { //$NON-NLS-1$
 			invariantPrefix = arguments[++index];
 		} else {
 			return super.processArgument(arguments, index);
