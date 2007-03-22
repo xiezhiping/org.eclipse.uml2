@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.21 2006/12/14 15:45:13 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.22 2007/03/22 16:47:29 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -624,6 +624,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__CREATION_ICONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CREATION_ICONS;
+
+	/**
+	 * The feature id for the '<em><b>Creation Submenus</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__CREATION_SUBMENUS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CREATION_SUBMENUS;
 
 	/**
 	 * The feature id for the '<em><b>Edit Directory</b></em>' attribute.
