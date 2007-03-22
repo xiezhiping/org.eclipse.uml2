@@ -8,19 +8,22 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.6 2007/01/05 21:48:51 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.7 2007/03/22 16:47:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
@@ -139,6 +142,14 @@ public class UMLActionBarContributor
 	protected Collection<IAction> createChildActions;
 
 	/**
+	 * This will contain a map of {@link org.eclipse.emf.edit.ui.action.CreateChildAction}s, keyed by sub-menu text.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Map<String, Collection<IAction>> createChildSubmenuActions;
+
+	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateChild actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,6 +165,14 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected Collection<IAction> createSiblingActions;
+
+	/**
+	 * This will contain a map of {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction}s, keyed by submenu text.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Map<String, Collection<IAction>> createSiblingSubmenuActions;
 
 	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
@@ -274,16 +293,19 @@ public class UMLActionBarContributor
 		// Remove any menu items for old selection.
 		//
 		if (createChildMenuManager != null) {
+			depopulateManager(createChildMenuManager, createChildSubmenuActions);
 			depopulateManager(createChildMenuManager, createChildActions);
 		}
 		if (createSiblingMenuManager != null) {
+			depopulateManager(createSiblingMenuManager,
+				createSiblingSubmenuActions);
 			depopulateManager(createSiblingMenuManager, createSiblingActions);
 		}
 
 		// Query the new selection for appropriate new child/sibling descriptors
 		//
-		Collection<CommandParameter> newChildDescriptors = null;
-		Collection<CommandParameter> newSiblingDescriptors = null;
+		Collection<?> newChildDescriptors = null;
+		Collection<?> newSiblingDescriptors = null;
 
 		ISelection selection = event.getSelection();
 		if (selection instanceof IStructuredSelection
@@ -302,14 +324,20 @@ public class UMLActionBarContributor
 		//
 		createChildActions = generateCreateChildActions(newChildDescriptors,
 			selection);
+		createChildSubmenuActions = extractSubmenuActions(createChildActions);
 		createSiblingActions = generateCreateSiblingActions(
 			newSiblingDescriptors, selection);
+		createSiblingSubmenuActions = extractSubmenuActions(createSiblingActions);
 
 		if (createChildMenuManager != null) {
+			populateManager(createChildMenuManager, createChildSubmenuActions,
+				null);
 			populateManager(createChildMenuManager, createChildActions, null);
 			createChildMenuManager.update(true);
 		}
 		if (createSiblingMenuManager != null) {
+			populateManager(createSiblingMenuManager,
+				createSiblingSubmenuActions, null);
 			populateManager(createSiblingMenuManager, createSiblingActions,
 				null);
 			createSiblingMenuManager.update(true);
@@ -324,11 +352,10 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateChildActionsGen(
-			Collection<? extends CommandParameter> descriptors,
-			ISelection selection) {
+			Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (CommandParameter descriptor : descriptors) {
+			for (Object descriptor : descriptors) {
 				actions.add(new CreateChildAction(activeEditorPart, selection,
 					descriptor));
 			}
@@ -337,8 +364,7 @@ public class UMLActionBarContributor
 	}
 
 	protected Collection<IAction> generateCreateChildActions(
-			Collection<? extends CommandParameter> descriptors,
-			ISelection selection) {
+			Collection<?> descriptors, ISelection selection) {
 		List<IAction> createChildActions = (List<IAction>) generateCreateChildActionsGen(
 			descriptors, selection);
 
@@ -361,11 +387,10 @@ public class UMLActionBarContributor
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateSiblingActionsGen(
-			Collection<? extends CommandParameter> descriptors,
-			ISelection selection) {
+			Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (CommandParameter descriptor : descriptors) {
+			for (Object descriptor : descriptors) {
 				actions.add(new CreateSiblingAction(activeEditorPart,
 					selection, descriptor));
 			}
@@ -374,8 +399,7 @@ public class UMLActionBarContributor
 	}
 
 	protected Collection<IAction> generateCreateSiblingActions(
-			Collection<? extends CommandParameter> descriptors,
-			ISelection selection) {
+			Collection<?> descriptors, ISelection selection) {
 		List<IAction> createSiblingActions = (List<IAction>) generateCreateSiblingActionsGen(
 			descriptors, selection);
 
@@ -394,7 +418,7 @@ public class UMLActionBarContributor
 	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
 	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
 	 * by inserting them before the specified contribution item <code>contributionID</code>.
-	 * If <code>ID</code> is <code>null</code>, they are simply added.
+	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -446,6 +470,92 @@ public class UMLActionBarContributor
 	}
 
 	/**
+	 * This extracts those actions in the <code>submenuActions</code> collection whose text is qualified and returns
+	 * a map of these actions, keyed by submenu text.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Map<String, Collection<IAction>> extractSubmenuActions(
+			Collection<IAction> createActions) {
+		Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
+		if (createActions != null) {
+			for (Iterator<IAction> actions = createActions.iterator(); actions
+				.hasNext();) {
+				IAction action = actions.next();
+				StringTokenizer st = new StringTokenizer(action.getText(), "|"); //$NON-NLS-1$
+				if (st.countTokens() == 2) {
+					String text = st.nextToken().trim();
+					Collection<IAction> submenuActions = createSubmenuActions
+						.get(text);
+					if (submenuActions == null) {
+						createSubmenuActions.put(text,
+							submenuActions = new ArrayList<IAction>());
+					}
+					action.setText(st.nextToken().trim());
+					submenuActions.add(action);
+					actions.remove();
+				}
+			}
+		}
+		return createSubmenuActions;
+	}
+
+	/**
+	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.MenuManager}s containing
+	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the {@link org.eclipse.jface.action.IAction}s
+	 * contained in the <code>submenuActions</code> collection, by inserting them before the specified contribution
+	 * item <code>contributionID</code>.
+	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void populateManager(IContributionManager manager,
+			Map<String, Collection<IAction>> submenuActions,
+			String contributionID) {
+		if (submenuActions != null) {
+			for (Map.Entry<String, Collection<IAction>> entry : submenuActions
+				.entrySet()) {
+				MenuManager submenuManager = new MenuManager(entry.getKey());
+				if (contributionID != null) {
+					manager.insertBefore(contributionID, submenuManager);
+				} else {
+					manager.add(submenuManager);
+				}
+				populateManager(submenuManager, entry.getValue(), null);
+			}
+		}
+	}
+
+	/**
+	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.MenuManager}s and their
+	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the {@link org.eclipse.jface.action.IAction}s
+	 * contained in the <code>submenuActions</code> map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void depopulateManager(IContributionManager manager,
+			Map<String, Collection<IAction>> submenuActions) {
+		if (submenuActions != null) {
+			IContributionItem[] items = manager.getItems();
+			for (int i = 0; i < items.length; i++) {
+				IContributionItem contributionItem = items[i];
+				if (contributionItem instanceof MenuManager) {
+					MenuManager submenuManager = (MenuManager) contributionItem;
+					if (submenuActions
+						.containsKey(submenuManager.getMenuText())) {
+						depopulateManager(submenuManager, submenuActions
+							.get(contributionItem));
+						manager.remove(contributionItem);
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 * This populates the pop-up menu before it appears.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -458,11 +568,13 @@ public class UMLActionBarContributor
 
 		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
 			.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		populateManager(submenuManager, createChildSubmenuActions, null);
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
 		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
 			.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		populateManager(submenuManager, createSiblingSubmenuActions, null);
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 	}
