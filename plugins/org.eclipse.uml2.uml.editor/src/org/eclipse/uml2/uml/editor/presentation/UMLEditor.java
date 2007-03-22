@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.28 2007/01/05 21:48:51 khussey Exp $
+ * $Id: UMLEditor.java,v 1.29 2007/03/22 16:46:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -388,7 +388,7 @@ public class UMLEditor
 						Resource resource = (Resource) notification
 							.getNotifier();
 						Diagnostic diagnostic = analyzeResourceProblems(
-							(Resource) notification.getNotifier(), null);
+							resource, null);
 						if (diagnostic.getSeverity() != Diagnostic.OK) {
 							resourceToDiagnosticMap.put(resource, diagnostic);
 						} else {
