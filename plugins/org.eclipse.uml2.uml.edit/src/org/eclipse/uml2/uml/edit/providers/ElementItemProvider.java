@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementItemProvider.java,v 1.16 2007/01/05 21:49:15 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.17 2007/03/22 16:46:09 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -234,15 +234,15 @@ public class ElementItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
-			Collection<CommandParameter> newChildDescriptors, Object object) {
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
@@ -337,10 +337,10 @@ public class ElementItemProvider
 	}
 
 	@Override
-	public Collection<CommandParameter> getNewChildDescriptors(Object object,
+	public Collection<?> getNewChildDescriptors(Object object,
 			EditingDomain editingDomain, Object sibling) {
-		List<CommandParameter> newChildDescriptors = new ArrayList<CommandParameter>(
-			super.getNewChildDescriptors(object, editingDomain, sibling));
+		List<Object> newChildDescriptors = new ArrayList<Object>(super
+			.getNewChildDescriptors(object, editingDomain, sibling));
 
 		for (EObject stereotypeApplication : ((Element) object)
 			.getStereotypeApplications()) {
@@ -350,11 +350,12 @@ public class ElementItemProvider
 
 			if (editingDomainItemProvider != null) {
 
-				for (CommandParameter newChildDescriptor : editingDomainItemProvider
+				for (Object newChildDescriptor : editingDomainItemProvider
 					.getNewChildDescriptors(stereotypeApplication,
 						editingDomain, null)) {
 
-					newChildDescriptor.setOwner(stereotypeApplication);
+					((CommandParameter) newChildDescriptor)
+						.setOwner(stereotypeApplication);
 					newChildDescriptors.add(newChildDescriptor);
 				}
 			}

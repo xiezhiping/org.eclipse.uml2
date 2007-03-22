@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyItemProvider.java,v 1.15 2007/01/05 21:49:18 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.16 2007/03/22 16:46:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -679,15 +678,15 @@ public class PropertyItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
-			Collection<CommandParameter> newChildDescriptors, Object object) {
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
