@@ -539,6 +539,12 @@
       </eAnnotations>
       <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
+    <eOperations name="createUsage" ordered="false" lowerBound="1" eType="#//Usage">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a usage between this named element and the specified supplier, owned by this named element's nearest package."/>
+      </eAnnotations>
+      <eParameters name="supplier" ordered="false" lowerBound="1" eType="#//NamedElement"/>
+    </eOperations>
     <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.&#xD;&#xA;result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif"/>
@@ -5900,6 +5906,11 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Usage" eSuperTypes="#//Dependency">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier."/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PackageMerge" eSuperTypes="#//DirectedRelationship">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A package merge defines how the contents of one package are extended by the contents of another package."/>
@@ -7481,11 +7492,6 @@
       </eAnnotations>
       <eAnnotations source="redefines" references="#//StructuredActivityNode/node"/>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Usage" eSuperTypes="#//Dependency">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier."/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlNode" abstract="true" eSuperTypes="#//ActivityNode">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

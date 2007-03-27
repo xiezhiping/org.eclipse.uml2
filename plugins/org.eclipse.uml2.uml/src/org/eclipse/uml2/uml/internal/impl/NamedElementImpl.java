@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.27 2007/02/26 16:17:56 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.28 2007/03/27 03:39:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.NamedElementOperations;
@@ -537,15 +538,25 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public Usage createUsage(NamedElement supplier) {
+		return NamedElementOperations.createUsage(this, supplier);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Namespace> allNamespaces() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Namespace> result = (EList<Namespace>) cache.get(this,
-				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(7));
+				UMLPackage.Literals.NAMED_ELEMENT.getEOperations().get(8));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
-					.getEOperations().get(7), result = NamedElementOperations
+					.getEOperations().get(8), result = NamedElementOperations
 					.allNamespaces(this));
 			}
 			return result;
@@ -582,10 +593,10 @@ public abstract class NamedElementImpl
 			@SuppressWarnings("unchecked")
 			EList<org.eclipse.uml2.uml.Package> result = (EList<org.eclipse.uml2.uml.Package>) cache
 				.get(this, UMLPackage.Literals.NAMED_ELEMENT.getEOperations()
-					.get(10));
+					.get(11));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.NAMED_ELEMENT
-					.getEOperations().get(10), result = NamedElementOperations
+					.getEOperations().get(11), result = NamedElementOperations
 					.allOwningPackages(this));
 			}
 			return result;

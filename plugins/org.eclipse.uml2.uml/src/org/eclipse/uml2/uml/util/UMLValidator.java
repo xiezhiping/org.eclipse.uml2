@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.19 2007/01/05 21:48:47 khussey Exp $
+ * $Id: UMLValidator.java,v 1.20 2007/03/27 03:39:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3815,6 +3815,8 @@ public class UMLValidator
 			case UMLPackage.EXPRESSION :
 				return validateExpression((Expression) value, diagnostics,
 					context);
+			case UMLPackage.USAGE :
+				return validateUsage((Usage) value, diagnostics, context);
 			case UMLPackage.PACKAGE_MERGE :
 				return validatePackageMerge((PackageMerge) value, diagnostics,
 					context);
@@ -3923,8 +3925,6 @@ public class UMLValidator
 			case UMLPackage.SEQUENCE_NODE :
 				return validateSequenceNode((SequenceNode) value, diagnostics,
 					context);
-			case UMLPackage.USAGE :
-				return validateUsage((Usage) value, diagnostics, context);
 			case UMLPackage.CONTROL_NODE :
 				return validateControlNode((ControlNode) value, diagnostics,
 					context);

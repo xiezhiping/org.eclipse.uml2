@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.12 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.13 2007/03/27 03:39:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2070,6 +2070,29 @@ public class UMLSwitch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.USAGE : {
+				Usage usage = (Usage) theEObject;
+				T result = caseUsage(usage);
+				if (result == null)
+					result = caseDependency(usage);
+				if (result == null)
+					result = casePackageableElement(usage);
+				if (result == null)
+					result = caseDirectedRelationship(usage);
+				if (result == null)
+					result = caseNamedElement(usage);
+				if (result == null)
+					result = caseParameterableElement(usage);
+				if (result == null)
+					result = caseRelationship(usage);
+				if (result == null)
+					result = caseElement(usage);
+				if (result == null)
+					result = caseEModelElement(usage);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.PACKAGE_MERGE : {
 				PackageMerge packageMerge = (PackageMerge) theEObject;
 				T result = casePackageMerge(packageMerge);
@@ -2898,29 +2921,6 @@ public class UMLSwitch<T> {
 					result = caseEModelElement(sequenceNode);
 				if (result == null)
 					result = caseRedefinableElement(sequenceNode);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.USAGE : {
-				Usage usage = (Usage) theEObject;
-				T result = caseUsage(usage);
-				if (result == null)
-					result = caseDependency(usage);
-				if (result == null)
-					result = casePackageableElement(usage);
-				if (result == null)
-					result = caseDirectedRelationship(usage);
-				if (result == null)
-					result = caseNamedElement(usage);
-				if (result == null)
-					result = caseParameterableElement(usage);
-				if (result == null)
-					result = caseRelationship(usage);
-				if (result == null)
-					result = caseElement(usage);
-				if (result == null)
-					result = caseEModelElement(usage);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

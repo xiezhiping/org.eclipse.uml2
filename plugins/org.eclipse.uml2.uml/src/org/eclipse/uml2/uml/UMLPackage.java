@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.24 2006/05/16 15:07:25 khussey Exp $
+ * $Id: UMLPackage.java,v 1.25 2007/03/27 03:39:49 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -356,7 +356,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralSpecification()
 	 * @generated
 	 */
-	int LITERAL_SPECIFICATION = 94;
+	int LITERAL_SPECIFICATION = 95;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TypedElementImpl <em>Typed Element</em>}' class.
@@ -1494,7 +1494,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPackageMerge()
 	 * @generated
 	 */
-	int PACKAGE_MERGE = 87;
+	int PACKAGE_MERGE = 88;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TypeImpl <em>Type</em>}' class.
@@ -1514,7 +1514,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProfileApplication()
 	 * @generated
 	 */
-	int PROFILE_APPLICATION = 88;
+	int PROFILE_APPLICATION = 89;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ProfileImpl <em>Profile</em>}' class.
@@ -4596,7 +4596,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralInteger()
 	 * @generated
 	 */
-	int LITERAL_INTEGER = 95;
+	int LITERAL_INTEGER = 96;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.LiteralStringImpl <em>Literal String</em>}' class.
@@ -4606,7 +4606,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralString()
 	 * @generated
 	 */
-	int LITERAL_STRING = 96;
+	int LITERAL_STRING = 97;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
@@ -4616,7 +4616,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralBoolean()
 	 * @generated
 	 */
-	int LITERAL_BOOLEAN = 97;
+	int LITERAL_BOOLEAN = 98;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.LiteralNullImpl <em>Literal Null</em>}' class.
@@ -4626,7 +4626,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralNull()
 	 * @generated
 	 */
-	int LITERAL_NULL = 98;
+	int LITERAL_NULL = 99;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SlotImpl <em>Slot</em>}' class.
@@ -4636,7 +4636,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSlot()
 	 * @generated
 	 */
-	int SLOT = 92;
+	int SLOT = 93;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InstanceSpecificationImpl <em>Instance Specification</em>}' class.
@@ -4646,7 +4646,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInstanceSpecification()
 	 * @generated
 	 */
-	int INSTANCE_SPECIFICATION = 91;
+	int INSTANCE_SPECIFICATION = 92;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.EnumerationImpl <em>Enumeration</em>}' class.
@@ -4656,7 +4656,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getEnumeration()
 	 * @generated
 	 */
-	int ENUMERATION = 89;
+	int ENUMERATION = 90;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
@@ -4666,7 +4666,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getEnumerationLiteral()
 	 * @generated
 	 */
-	int ENUMERATION_LITERAL = 90;
+	int ENUMERATION_LITERAL = 91;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
@@ -4676,7 +4676,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPrimitiveType()
 	 * @generated
 	 */
-	int PRIMITIVE_TYPE = 93;
+	int PRIMITIVE_TYPE = 94;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InstanceValueImpl <em>Instance Value</em>}' class.
@@ -4686,7 +4686,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInstanceValue()
 	 * @generated
 	 */
-	int INSTANCE_VALUE = 99;
+	int INSTANCE_VALUE = 100;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.LiteralUnlimitedNaturalImpl <em>Literal Unlimited Natural</em>}' class.
@@ -4696,7 +4696,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getLiteralUnlimitedNatural()
 	 * @generated
 	 */
-	int LITERAL_UNLIMITED_NATURAL = 100;
+	int LITERAL_UNLIMITED_NATURAL = 101;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.OpaqueBehaviorImpl <em>Opaque Behavior</em>}' class.
@@ -4706,7 +4706,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOpaqueBehavior()
 	 * @generated
 	 */
-	int OPAQUE_BEHAVIOR = 101;
+	int OPAQUE_BEHAVIOR = 102;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.FunctionBehaviorImpl <em>Function Behavior</em>}' class.
@@ -4716,7 +4716,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFunctionBehavior()
 	 * @generated
 	 */
-	int FUNCTION_BEHAVIOR = 102;
+	int FUNCTION_BEHAVIOR = 103;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActorImpl <em>Actor</em>}' class.
@@ -4736,7 +4736,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUsage()
 	 * @generated
 	 */
-	int USAGE = 125;
+	int USAGE = 87;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.MessageImpl <em>Message</em>}' class.
@@ -4826,7 +4826,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityNode()
 	 * @generated
 	 */
-	int ACTIVITY_NODE = 106;
+	int ACTIVITY_NODE = 107;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExecutableNodeImpl <em>Executable Node</em>}' class.
@@ -4836,7 +4836,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExecutableNode()
 	 * @generated
 	 */
-	int EXECUTABLE_NODE = 105;
+	int EXECUTABLE_NODE = 106;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActionImpl <em>Action</em>}' class.
@@ -4846,7 +4846,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAction()
 	 * @generated
 	 */
-	int ACTION = 104;
+	int ACTION = 105;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl <em>Activity Edge</em>}' class.
@@ -4856,7 +4856,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityEdge()
 	 * @generated
 	 */
-	int ACTIVITY_EDGE = 111;
+	int ACTIVITY_EDGE = 112;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl <em>Activity</em>}' class.
@@ -4866,7 +4866,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivity()
 	 * @generated
 	 */
-	int ACTIVITY = 109;
+	int ACTIVITY = 110;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl <em>Activity Partition</em>}' class.
@@ -4876,7 +4876,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityPartition()
 	 * @generated
 	 */
-	int ACTIVITY_PARTITION = 112;
+	int ACTIVITY_PARTITION = 113;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl <em>Activity Group</em>}' class.
@@ -4886,7 +4886,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityGroup()
 	 * @generated
 	 */
-	int ACTIVITY_GROUP = 108;
+	int ACTIVITY_GROUP = 109;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StructuredActivityNodeImpl <em>Structured Activity Node</em>}' class.
@@ -4896,7 +4896,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStructuredActivityNode()
 	 * @generated
 	 */
-	int STRUCTURED_ACTIVITY_NODE = 107;
+	int STRUCTURED_ACTIVITY_NODE = 108;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.VariableImpl <em>Variable</em>}' class.
@@ -4906,7 +4906,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 110;
+	int VARIABLE = 111;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InterruptibleActivityRegionImpl <em>Interruptible Activity Region</em>}' class.
@@ -4916,7 +4916,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInterruptibleActivityRegion()
 	 * @generated
 	 */
-	int INTERRUPTIBLE_ACTIVITY_REGION = 113;
+	int INTERRUPTIBLE_ACTIVITY_REGION = 114;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl <em>Exception Handler</em>}' class.
@@ -4926,7 +4926,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExceptionHandler()
 	 * @generated
 	 */
-	int EXCEPTION_HANDLER = 114;
+	int EXCEPTION_HANDLER = 115;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl <em>Object Node</em>}' class.
@@ -4936,7 +4936,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectNode()
 	 * @generated
 	 */
-	int OBJECT_NODE = 115;
+	int OBJECT_NODE = 116;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.PinImpl <em>Pin</em>}' class.
@@ -4946,7 +4946,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPin()
 	 * @generated
 	 */
-	int PIN = 117;
+	int PIN = 118;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.OutputPinImpl <em>Output Pin</em>}' class.
@@ -4956,7 +4956,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOutputPin()
 	 * @generated
 	 */
-	int OUTPUT_PIN = 116;
+	int OUTPUT_PIN = 117;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InputPinImpl <em>Input Pin</em>}' class.
@@ -4966,7 +4966,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInputPin()
 	 * @generated
 	 */
-	int INPUT_PIN = 118;
+	int INPUT_PIN = 119;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.GeneralOrderingImpl <em>General Ordering</em>}' class.
@@ -5426,7 +5426,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInvocationAction()
 	 * @generated
 	 */
-	int INVOCATION_ACTION = 120;
+	int INVOCATION_ACTION = 121;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.BroadcastSignalActionImpl <em>Broadcast Signal Action</em>}' class.
@@ -5556,7 +5556,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOpaqueAction()
 	 * @generated
 	 */
-	int OPAQUE_ACTION = 103;
+	int OPAQUE_ACTION = 104;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallActionImpl <em>Call Action</em>}' class.
@@ -5566,7 +5566,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallAction()
 	 * @generated
 	 */
-	int CALL_ACTION = 119;
+	int CALL_ACTION = 120;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SendSignalActionImpl <em>Send Signal Action</em>}' class.
@@ -5576,7 +5576,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSendSignalAction()
 	 * @generated
 	 */
-	int SEND_SIGNAL_ACTION = 121;
+	int SEND_SIGNAL_ACTION = 122;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallOperationActionImpl <em>Call Operation Action</em>}' class.
@@ -5586,7 +5586,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallOperationAction()
 	 * @generated
 	 */
-	int CALL_OPERATION_ACTION = 122;
+	int CALL_OPERATION_ACTION = 123;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CallBehaviorActionImpl <em>Call Behavior Action</em>}' class.
@@ -5596,7 +5596,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCallBehaviorAction()
 	 * @generated
 	 */
-	int CALL_BEHAVIOR_ACTION = 123;
+	int CALL_BEHAVIOR_ACTION = 124;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InformationItemImpl <em>Information Item</em>}' class.
@@ -20794,6 +20794,548 @@ public interface UMLPackage
 	int STRING_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObservationImpl <em>Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObservation()
+	 * @generated
+	 */
+	int OBSERVATION = 202;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationImpl <em>Time Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservation()
+	 * @generated
+	 */
+	int TIME_OBSERVATION = 210;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationImpl <em>Duration Observation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservation()
+	 * @generated
+	 */
+	int DURATION_OBSERVATION = 211;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.VariableActionImpl <em>Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.VariableActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVariableAction()
+	 * @generated
+	 */
+	int VARIABLE_ACTION = 214;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadVariableActionImpl <em>Read Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReadVariableActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadVariableAction()
+	 * @generated
+	 */
+	int READ_VARIABLE_ACTION = 215;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.WriteVariableActionImpl <em>Write Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.WriteVariableActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteVariableAction()
+	 * @generated
+	 */
+	int WRITE_VARIABLE_ACTION = 216;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ClearVariableActionImpl <em>Clear Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ClearVariableActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearVariableAction()
+	 * @generated
+	 */
+	int CLEAR_VARIABLE_ACTION = 217;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl <em>Add Variable Value Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAddVariableValueAction()
+	 * @generated
+	 */
+	int ADD_VARIABLE_VALUE_ACTION = 218;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl <em>Remove Variable Value Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRemoveVariableValueAction()
+	 * @generated
+	 */
+	int REMOVE_VARIABLE_VALUE_ACTION = 219;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl <em>Raise Exception Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRaiseExceptionAction()
+	 * @generated
+	 */
+	int RAISE_EXCEPTION_ACTION = 220;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl <em>Action Input Pin</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActionInputPin()
+	 * @generated
+	 */
+	int ACTION_INPUT_PIN = 221;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl <em>Read Extent Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadExtentAction()
+	 * @generated
+	 */
+	int READ_EXTENT_ACTION = 224;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl <em>Reclassify Object Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReclassifyObjectAction()
+	 * @generated
+	 */
+	int RECLASSIFY_OBJECT_ACTION = 225;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadIsClassifiedObjectActionImpl <em>Read Is Classified Object Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReadIsClassifiedObjectActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadIsClassifiedObjectAction()
+	 * @generated
+	 */
+	int READ_IS_CLASSIFIED_OBJECT_ACTION = 226;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl <em>Start Classifier Behavior Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStartClassifierBehaviorAction()
+	 * @generated
+	 */
+	int START_CLASSIFIER_BEHAVIOR_ACTION = 227;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndActionImpl <em>Read Link Object End Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndAction()
+	 * @generated
+	 */
+	int READ_LINK_OBJECT_END_ACTION = 228;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndQualifierActionImpl <em>Read Link Object End Qualifier Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndQualifierActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndQualifierAction()
+	 * @generated
+	 */
+	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 229;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CreateLinkObjectActionImpl <em>Create Link Object Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.CreateLinkObjectActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateLinkObjectAction()
+	 * @generated
+	 */
+	int CREATE_LINK_OBJECT_ACTION = 230;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl <em>Accept Event Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptEventAction()
+	 * @generated
+	 */
+	int ACCEPT_EVENT_ACTION = 231;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl <em>Accept Call Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptCallAction()
+	 * @generated
+	 */
+	int ACCEPT_CALL_ACTION = 232;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl <em>Reply Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReplyActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReplyAction()
+	 * @generated
+	 */
+	int REPLY_ACTION = 233;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl <em>Unmarshall Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnmarshallAction()
+	 * @generated
+	 */
+	int UNMARSHALL_ACTION = 234;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReduceActionImpl <em>Reduce Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ReduceActionImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReduceAction()
+	 * @generated
+	 */
+	int REDUCE_ACTION = 235;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlNodeImpl <em>Control Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ControlNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlNode()
+	 * @generated
+	 */
+	int CONTROL_NODE = 126;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlFlowImpl <em>Control Flow</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ControlFlowImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlFlow()
+	 * @generated
+	 */
+	int CONTROL_FLOW = 127;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InitialNodeImpl <em>Initial Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.InitialNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInitialNode()
+	 * @generated
+	 */
+	int INITIAL_NODE = 128;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ActivityParameterNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityParameterNode()
+	 * @generated
+	 */
+	int ACTIVITY_PARAMETER_NODE = 129;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ForkNodeImpl <em>Fork Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ForkNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getForkNode()
+	 * @generated
+	 */
+	int FORK_NODE = 162;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.FinalNodeImpl <em>Final Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.FinalNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalNode()
+	 * @generated
+	 */
+	int FINAL_NODE = 164;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.FlowFinalNodeImpl <em>Flow Final Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.FlowFinalNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFlowFinalNode()
+	 * @generated
+	 */
+	int FLOW_FINAL_NODE = 163;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CentralBufferNodeImpl <em>Central Buffer Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.CentralBufferNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCentralBufferNode()
+	 * @generated
+	 */
+	int CENTRAL_BUFFER_NODE = 165;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.MergeNodeImpl <em>Merge Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.MergeNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMergeNode()
+	 * @generated
+	 */
+	int MERGE_NODE = 166;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl <em>Decision Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDecisionNode()
+	 * @generated
+	 */
+	int DECISION_NODE = 167;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityFinalNodeImpl <em>Activity Final Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ActivityFinalNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityFinalNode()
+	 * @generated
+	 */
+	int ACTIVITY_FINAL_NODE = 168;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.JoinNodeImpl <em>Join Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.JoinNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getJoinNode()
+	 * @generated
+	 */
+	int JOIN_NODE = 236;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl <em>Data Store Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDataStoreNode()
+	 * @generated
+	 */
+	int DATA_STORE_NODE = 237;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObjectFlowImpl <em>Object Flow</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ObjectFlowImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectFlow()
+	 * @generated
+	 */
+	int OBJECT_FLOW = 238;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SequenceNodeImpl <em>Sequence Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.SequenceNodeImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSequenceNode()
+	 * @generated
+	 */
+	int SEQUENCE_NODE = 125;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__EANNOTATIONS = DEPENDENCY__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__OWNED_ELEMENT = DEPENDENCY__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__OWNER = DEPENDENCY__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__OWNED_COMMENT = DEPENDENCY__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__NAME = DEPENDENCY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__VISIBILITY = DEPENDENCY__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__QUALIFIED_NAME = DEPENDENCY__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__CLIENT_DEPENDENCY = DEPENDENCY__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__NAMESPACE = DEPENDENCY__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__NAME_EXPRESSION = DEPENDENCY__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__OWNING_TEMPLATE_PARAMETER = DEPENDENCY__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__TEMPLATE_PARAMETER = DEPENDENCY__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__RELATED_ELEMENT = DEPENDENCY__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__SOURCE = DEPENDENCY__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__TARGET = DEPENDENCY__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Supplier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__SUPPLIER = DEPENDENCY__SUPPLIER;
+
+	/**
+	 * The feature id for the '<em><b>Client</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE__CLIENT = DEPENDENCY__CLIENT;
+
+	/**
+	 * The number of structural features of the '<em>Usage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USAGE_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -24833,36 +25375,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int ACTION_FEATURE_COUNT = EXECUTABLE_NODE_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObservationImpl <em>Observation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ObservationImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObservation()
-	 * @generated
-	 */
-	int OBSERVATION = 202;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TimeObservationImpl <em>Time Observation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.TimeObservationImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTimeObservation()
-	 * @generated
-	 */
-	int TIME_OBSERVATION = 210;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DurationObservationImpl <em>Duration Observation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.DurationObservationImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDurationObservation()
-	 * @generated
-	 */
-	int DURATION_OBSERVATION = 211;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -29716,356 +30228,6 @@ public interface UMLPackage
 	int CALL_BEHAVIOR_ACTION_FEATURE_COUNT = CALL_ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.VariableActionImpl <em>Variable Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.VariableActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVariableAction()
-	 * @generated
-	 */
-	int VARIABLE_ACTION = 214;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadVariableActionImpl <em>Read Variable Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReadVariableActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadVariableAction()
-	 * @generated
-	 */
-	int READ_VARIABLE_ACTION = 215;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.WriteVariableActionImpl <em>Write Variable Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.WriteVariableActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getWriteVariableAction()
-	 * @generated
-	 */
-	int WRITE_VARIABLE_ACTION = 216;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ClearVariableActionImpl <em>Clear Variable Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ClearVariableActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClearVariableAction()
-	 * @generated
-	 */
-	int CLEAR_VARIABLE_ACTION = 217;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl <em>Add Variable Value Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.AddVariableValueActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAddVariableValueAction()
-	 * @generated
-	 */
-	int ADD_VARIABLE_VALUE_ACTION = 218;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl <em>Remove Variable Value Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.RemoveVariableValueActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRemoveVariableValueAction()
-	 * @generated
-	 */
-	int REMOVE_VARIABLE_VALUE_ACTION = 219;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl <em>Raise Exception Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.RaiseExceptionActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRaiseExceptionAction()
-	 * @generated
-	 */
-	int RAISE_EXCEPTION_ACTION = 220;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl <em>Action Input Pin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ActionInputPinImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActionInputPin()
-	 * @generated
-	 */
-	int ACTION_INPUT_PIN = 221;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl <em>Read Extent Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReadExtentActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadExtentAction()
-	 * @generated
-	 */
-	int READ_EXTENT_ACTION = 224;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl <em>Reclassify Object Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReclassifyObjectActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReclassifyObjectAction()
-	 * @generated
-	 */
-	int RECLASSIFY_OBJECT_ACTION = 225;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadIsClassifiedObjectActionImpl <em>Read Is Classified Object Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReadIsClassifiedObjectActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadIsClassifiedObjectAction()
-	 * @generated
-	 */
-	int READ_IS_CLASSIFIED_OBJECT_ACTION = 226;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl <em>Start Classifier Behavior Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.StartClassifierBehaviorActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStartClassifierBehaviorAction()
-	 * @generated
-	 */
-	int START_CLASSIFIER_BEHAVIOR_ACTION = 227;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndActionImpl <em>Read Link Object End Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndAction()
-	 * @generated
-	 */
-	int READ_LINK_OBJECT_END_ACTION = 228;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndQualifierActionImpl <em>Read Link Object End Qualifier Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReadLinkObjectEndQualifierActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReadLinkObjectEndQualifierAction()
-	 * @generated
-	 */
-	int READ_LINK_OBJECT_END_QUALIFIER_ACTION = 229;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CreateLinkObjectActionImpl <em>Create Link Object Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.CreateLinkObjectActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCreateLinkObjectAction()
-	 * @generated
-	 */
-	int CREATE_LINK_OBJECT_ACTION = 230;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl <em>Accept Event Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.AcceptEventActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptEventAction()
-	 * @generated
-	 */
-	int ACCEPT_EVENT_ACTION = 231;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl <em>Accept Call Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.AcceptCallActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getAcceptCallAction()
-	 * @generated
-	 */
-	int ACCEPT_CALL_ACTION = 232;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReplyActionImpl <em>Reply Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReplyActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReplyAction()
-	 * @generated
-	 */
-	int REPLY_ACTION = 233;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl <em>Unmarshall Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.UnmarshallActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getUnmarshallAction()
-	 * @generated
-	 */
-	int UNMARSHALL_ACTION = 234;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReduceActionImpl <em>Reduce Action</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ReduceActionImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReduceAction()
-	 * @generated
-	 */
-	int REDUCE_ACTION = 235;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlNodeImpl <em>Control Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ControlNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlNode()
-	 * @generated
-	 */
-	int CONTROL_NODE = 126;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ControlFlowImpl <em>Control Flow</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ControlFlowImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getControlFlow()
-	 * @generated
-	 */
-	int CONTROL_FLOW = 127;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InitialNodeImpl <em>Initial Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.InitialNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInitialNode()
-	 * @generated
-	 */
-	int INITIAL_NODE = 128;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityParameterNodeImpl <em>Activity Parameter Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ActivityParameterNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityParameterNode()
-	 * @generated
-	 */
-	int ACTIVITY_PARAMETER_NODE = 129;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ForkNodeImpl <em>Fork Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ForkNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getForkNode()
-	 * @generated
-	 */
-	int FORK_NODE = 162;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.FinalNodeImpl <em>Final Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.FinalNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFinalNode()
-	 * @generated
-	 */
-	int FINAL_NODE = 164;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.FlowFinalNodeImpl <em>Flow Final Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.FlowFinalNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getFlowFinalNode()
-	 * @generated
-	 */
-	int FLOW_FINAL_NODE = 163;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CentralBufferNodeImpl <em>Central Buffer Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.CentralBufferNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCentralBufferNode()
-	 * @generated
-	 */
-	int CENTRAL_BUFFER_NODE = 165;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.MergeNodeImpl <em>Merge Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.MergeNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getMergeNode()
-	 * @generated
-	 */
-	int MERGE_NODE = 166;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl <em>Decision Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDecisionNode()
-	 * @generated
-	 */
-	int DECISION_NODE = 167;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ActivityFinalNodeImpl <em>Activity Final Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ActivityFinalNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getActivityFinalNode()
-	 * @generated
-	 */
-	int ACTIVITY_FINAL_NODE = 168;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.JoinNodeImpl <em>Join Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.JoinNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getJoinNode()
-	 * @generated
-	 */
-	int JOIN_NODE = 236;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl <em>Data Store Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDataStoreNode()
-	 * @generated
-	 */
-	int DATA_STORE_NODE = 237;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ObjectFlowImpl <em>Object Flow</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ObjectFlowImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getObjectFlow()
-	 * @generated
-	 */
-	int OBJECT_FLOW = 238;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SequenceNodeImpl <em>Sequence Node</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.SequenceNodeImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSequenceNode()
-	 * @generated
-	 */
-	int SEQUENCE_NODE = 124;
-
-	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30460,168 +30622,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int SEQUENCE_NODE_FEATURE_COUNT = STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__EANNOTATIONS = DEPENDENCY__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__OWNED_ELEMENT = DEPENDENCY__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__OWNER = DEPENDENCY__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__OWNED_COMMENT = DEPENDENCY__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__NAME = DEPENDENCY__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__VISIBILITY = DEPENDENCY__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__QUALIFIED_NAME = DEPENDENCY__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__CLIENT_DEPENDENCY = DEPENDENCY__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__NAMESPACE = DEPENDENCY__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__NAME_EXPRESSION = DEPENDENCY__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__OWNING_TEMPLATE_PARAMETER = DEPENDENCY__OWNING_TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__TEMPLATE_PARAMETER = DEPENDENCY__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__RELATED_ELEMENT = DEPENDENCY__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__SOURCE = DEPENDENCY__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__TARGET = DEPENDENCY__TARGET;
-
-	/**
-	 * The feature id for the '<em><b>Supplier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__SUPPLIER = DEPENDENCY__SUPPLIER;
-
-	/**
-	 * The feature id for the '<em><b>Client</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE__CLIENT = DEPENDENCY__CLIENT;
-
-	/**
-	 * The number of structural features of the '<em>Usage</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USAGE_FEATURE_COUNT = DEPENDENCY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.

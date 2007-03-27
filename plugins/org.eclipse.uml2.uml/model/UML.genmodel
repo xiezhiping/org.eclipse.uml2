@@ -354,6 +354,9 @@
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/getLabel.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//NamedElement/getLabel.1/localize"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/createUsage">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//NamedElement/createUsage/supplier"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/getQualifiedName"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//NamedElement/allNamespaces"
           cacheAdapterScope="Global"/>
@@ -2232,6 +2235,7 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Usage"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//PackageMerge">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference UML.ecore#//PackageMerge/mergedPackage" key="true"/>
@@ -2766,7 +2770,6 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Usage"/>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ControlNode"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ControlFlow">
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ControlFlow/object_nodes">

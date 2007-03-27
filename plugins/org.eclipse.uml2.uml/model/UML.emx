@@ -772,6 +772,13 @@
         </ownedParameter>
         <ownedParameter xmi:id="_6FwyQGwKEdq7X4sGURiZYA" name="localize" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:id="_Dww9MNlrEduDKPkA-0jJZg" name="createUsage">
+        <ownedComment xmi:id="_wQPHYNlrEduDKPkA-0jJZg" annotatedElement="_Dww9MNlrEduDKPkA-0jJZg">
+          <body>Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_phglkNlrEduDKPkA-0jJZg" type="_h18oENlrEduDKPkA-0jJZg" direction="return"/>
+        <ownedParameter xmi:id="_xcQ1oNlrEduDKPkA-0jJZg" name="supplier" type="_csVgUGvtEdqG6fBIPwe-mw"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ynRtoGvtEdqG6fBIPwe-mw" name="Type" isAbstract="true">
       <ownedOperation xmi:id="_RNEaIGwNEdq7X4sGURiZYA" name="createAssociation">
@@ -1513,6 +1520,7 @@
         <ownedParameter xmi:id="_FbLFMTElEdu9VoNTbEBQkQ" type="_dRZxsGvsEdqG6fBIPwe-mw" direction="return"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h18oENlrEduDKPkA-0jJZg" name="Usage"/>
     <profileApplication xmi:id="_o8I_umvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_o8I_u2vaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
@@ -1663,4 +1671,5 @@
   <Default:Documentation xmi:id="_FWMrh8FlEdu60_VP7XWKdw" base_Comment="_s-DiwPZPEdqYHf-imTcTdw"/>
   <Ecore:EAttribute xmi:id="_FWgNhMFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
   <Ecore:EAttribute xmi:id="_FWgNhcFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
+  <Default:Documentation xmi:id="_wQPHYdlrEduDKPkA-0jJZg" base_Comment="_wQPHYNlrEduDKPkA-0jJZg"/>
 </xmi:XMI>

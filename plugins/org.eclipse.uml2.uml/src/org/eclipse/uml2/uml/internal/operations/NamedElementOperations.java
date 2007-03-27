@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.20 2006/12/14 15:49:26 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.21 2007/03/27 03:39:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -45,6 +46,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#createDependency(org.eclipse.uml2.uml.NamedElement) <em>Create Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel() <em>Get Label</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel(boolean) <em>Get Label</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#createUsage(org.eclipse.uml2.uml.NamedElement) <em>Create Usage</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName() <em>Get Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
@@ -167,13 +169,8 @@ public class NamedElementOperations
 		return result;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static Dependency createDependency(NamedElement namedElement,
-			NamedElement supplier) {
+	protected static Dependency createDependency(NamedElement namedElement,
+			NamedElement supplier, EClass eClass) {
 		org.eclipse.uml2.uml.Package package_ = namedElement
 			.getNearestPackage();
 
@@ -186,12 +183,26 @@ public class NamedElementOperations
 		}
 
 		Dependency dependency = (Dependency) package_.createPackagedElement(
-			null, UMLPackage.Literals.DEPENDENCY);
+			null, eClass);
 
 		dependency.getClients().add(namedElement);
 		dependency.getSuppliers().add(supplier);
 
 		return dependency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Dependency createDependency(NamedElement namedElement,
+			NamedElement supplier) {
+		return createDependency(namedElement, supplier,
+			UMLPackage.Literals.DEPENDENCY);
 	}
 
 	/**
@@ -217,6 +228,20 @@ public class NamedElementOperations
 				? EMPTY_STRING
 				: qualifiedName.replace(':', '_')), namedElement.getName(),
 			localize);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Usage createUsage(NamedElement namedElement,
+			NamedElement supplier) {
+		return (Usage) createDependency(namedElement, supplier,
+			UMLPackage.Literals.USAGE);
 	}
 
 	/**

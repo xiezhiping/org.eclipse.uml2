@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.16 2006/12/14 15:49:30 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.17 2007/03/27 03:39:50 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -402,6 +402,8 @@ public class UMLFactoryImpl
 				return createStringExpression();
 			case UMLPackage.EXPRESSION :
 				return createExpression();
+			case UMLPackage.USAGE :
+				return createUsage();
 			case UMLPackage.PACKAGE_MERGE :
 				return createPackageMerge();
 			case UMLPackage.PROFILE_APPLICATION :
@@ -460,8 +462,6 @@ public class UMLFactoryImpl
 				return createCallBehaviorAction();
 			case UMLPackage.SEQUENCE_NODE :
 				return createSequenceNode();
-			case UMLPackage.USAGE :
-				return createUsage();
 			case UMLPackage.CONTROL_FLOW :
 				return createControlFlow();
 			case UMLPackage.INITIAL_NODE :

@@ -269,6 +269,9 @@
     <eOperations name="getLabel" ordered="false" eType="#//String">
       <eParameters name="localize" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
+    <eOperations name="createUsage" ordered="false" lowerBound="1" eType="#//Usage">
+      <eParameters name="supplier" ordered="false" lowerBound="1" eType="#//NamedElement"/>
+    </eOperations>
     <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String"/>
     <eOperations name="allNamespaces" upperBound="-1" eType="#//Namespace"/>
     <eOperations name="isDistinguishableFrom" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -3238,6 +3241,7 @@
       <eAnnotations source="subsets" references="#//Element/ownedElement"/>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Usage" eSuperTypes="#//Dependency"/>
   <eClassifiers xsi:type="ecore:EClass" name="PackageMerge" eSuperTypes="#//DirectedRelationship">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mergedPackage" ordered="false"
         lowerBound="1" eType="#//Package">
@@ -4174,7 +4178,6 @@
       <eAnnotations source="redefines" references="#//StructuredActivityNode/node"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Usage" eSuperTypes="#//Dependency"/>
   <eClassifiers xsi:type="ecore:EClass" name="ControlNode" abstract="true" eSuperTypes="#//ActivityNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="ControlFlow" eSuperTypes="#//ActivityEdge">
     <eOperations name="object_nodes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

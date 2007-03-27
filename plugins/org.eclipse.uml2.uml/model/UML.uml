@@ -646,6 +646,13 @@
         </ownedParameter>
         <ownedParameter xmi:id="_6FwyQGwKEdq7X4sGURiZYA" name="localize" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:id="_Dww9MNlrEduDKPkA-0jJZg" name="createUsage">
+        <ownedComment xmi:id="_wQPHYNlrEduDKPkA-0jJZg" annotatedElement="_Dww9MNlrEduDKPkA-0jJZg">
+          <body>Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_phglkNlrEduDKPkA-0jJZg" type="_h18oENlrEduDKPkA-0jJZg" direction="return"/>
+        <ownedParameter xmi:id="_xcQ1oNlrEduDKPkA-0jJZg" name="supplier" type="_csVgUGvtEdqG6fBIPwe-mw"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ynRtoGvtEdqG6fBIPwe-mw" name="Type" isAbstract="true">
       <ownedOperation xmi:id="_RNEaIGwNEdq7X4sGURiZYA" name="createAssociation">
@@ -1387,6 +1394,7 @@
         <ownedParameter xmi:id="_FbLFMTElEdu9VoNTbEBQkQ" type="_dRZxsGvsEdqG6fBIPwe-mw" direction="return"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_h18oENlrEduDKPkA-0jJZg" name="Usage"/>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
@@ -1394,12 +1402,12 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_r5xGgMYcEduPJbEsMYXjUQ" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
-  <Ecore:EAttribute xmi:id="_r563gMYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
-  <Ecore:EDataType xmi:id="_r563gcYcEduPJbEsMYXjUQ" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_r563gsYcEduPJbEsMYXjUQ" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_r563g8YcEduPJbEsMYXjUQ" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EDataType xmi:id="_r563hMYcEduPJbEsMYXjUQ" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
-  <Ecore:EAttribute xmi:id="_r6EBcMYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
-  <Ecore:EAttribute xmi:id="_r6EBccYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
+  <Ecore:EPackage xmi:id="_uD3_sNl6EduswtG05_IvNA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EAttribute xmi:id="_uEEM8Nl6EduswtG05_IvNA" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
+  <Ecore:EDataType xmi:id="_uEWg0Nl6EduswtG05_IvNA" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_uEWg0dl6EduswtG05_IvNA" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_uEWg0tl6EduswtG05_IvNA" instanceClassName="java.lang.String" base_PrimitiveType="_aAyVgGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EDataType xmi:id="_uEWg09l6EduswtG05_IvNA" instanceClassName="int" base_PrimitiveType="_dRZxsGvsEdqG6fBIPwe-mw"/>
+  <Ecore:EAttribute xmi:id="_uEWg1Nl6EduswtG05_IvNA" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
+  <Ecore:EAttribute xmi:id="_uEWg1dl6EduswtG05_IvNA" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
 </xmi:XMI>
