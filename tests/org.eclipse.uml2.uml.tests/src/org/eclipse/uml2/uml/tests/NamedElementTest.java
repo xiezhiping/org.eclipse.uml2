@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
+ * $Id: NamedElementTest.java,v 1.7 2007/03/27 03:40:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.NamedElement;
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#createDependency(org.eclipse.uml2.uml.NamedElement) <em>Create Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel() <em>Get Label</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getLabel(boolean) <em>Get Label</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#createUsage(org.eclipse.uml2.uml.NamedElement) <em>Create Usage</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#allNamespaces() <em>All Namespaces</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#isDistinguishableFrom(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Namespace) <em>Is Distinguishable From</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#separator() <em>Separator</em>}</li>
@@ -145,6 +146,19 @@ public abstract class NamedElementTest
 	 * @generated
 	 */
 	public void testGetLabel__boolean() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.NamedElement#createUsage(org.eclipse.uml2.uml.NamedElement) <em>Create Usage</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.NamedElement#createUsage(org.eclipse.uml2.uml.NamedElement)
+	 * @generated
+	 */
+
+	public void testCreateUsage__NamedElement() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
