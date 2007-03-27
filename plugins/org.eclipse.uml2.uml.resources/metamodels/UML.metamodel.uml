@@ -12998,6 +12998,13 @@ stream: a stream of values flows into a single execution&#xD;
         </ownedParameter>
         <ownedParameter xmi:id="NamedElement-getLabel.1-localize" name="localize" type="Boolean" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:id="NamedElement-createUsage" name="createUsage">
+        <ownedComment xmi:id="NamedElement-createUsage-_ownedComment.0" annotatedElement="NamedElement-createUsage">
+          <body>Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="NamedElement-createUsage-_ownedParameter.0" type="Usage" direction="return"/>
+        <ownedParameter xmi:id="NamedElement-createUsage-supplier" name="supplier" type="NamedElement"/>
+      </ownedOperation>
       <ownedOperation xmi:id="NamedElement-qualifiedName.1" name="qualifiedName" isQuery="true" bodyCondition="NamedElement-qualifiedName.1-spec">
         <ownedComment xmi:id="NamedElement-qualifiedName.1-_ownedComment.0" annotatedElement="NamedElement-qualifiedName.1">
           <body>When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.</body>
