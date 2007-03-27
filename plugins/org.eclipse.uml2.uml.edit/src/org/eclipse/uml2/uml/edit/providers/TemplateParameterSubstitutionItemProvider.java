@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.15 2007/03/22 16:46:10 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.16 2007/03/27 03:41:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -389,6 +389,10 @@ public class TemplateParameterSubstitutionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+			UMLFactory.eINSTANCE.createUsage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -442,10 +446,6 @@ public class TemplateParameterSubstitutionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
 			UMLFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-			UMLFactory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,

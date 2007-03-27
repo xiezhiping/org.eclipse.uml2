@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageItemProvider.java,v 1.15 2007/03/22 16:46:11 khussey Exp $
+ * $Id: PackageItemProvider.java,v 1.16 2007/03/27 03:41:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -617,6 +617,10 @@ public class PackageItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
+				.createUsage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -666,10 +670,6 @@ public class PackageItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
 				.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE
-				.createUsage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PACKAGE__PACKAGED_ELEMENT, UMLFactory.eINSTANCE

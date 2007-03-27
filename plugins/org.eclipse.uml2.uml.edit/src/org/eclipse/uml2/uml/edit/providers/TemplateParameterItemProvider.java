@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterItemProvider.java,v 1.15 2007/03/22 16:46:10 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.16 2007/03/27 03:41:16 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -416,6 +416,10 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
+			UMLFactory.eINSTANCE.createUsage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -469,10 +473,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 			UMLFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
-			UMLFactory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -744,6 +744,10 @@ public class TemplateParameterItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
+			UMLFactory.eINSTANCE.createUsage()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -797,10 +801,6 @@ public class TemplateParameterItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
 			UMLFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
-			UMLFactory.eINSTANCE.createUsage()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_PARAMETER__OWNED_DEFAULT,
