@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.30 2006/12/14 15:49:25 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.31 2007/03/28 20:56:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -264,8 +264,7 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static boolean isDefined(Profile profile) {
-		EAnnotation eAnnotation = profile.getEAnnotation(UMLPackage.eNS_URI);
-		return eAnnotation != null && eAnnotation.getContents().size() > 0;
+		return profile.getDefinition() != null;
 	}
 
 	/**
@@ -302,17 +301,22 @@ public class ProfileOperations
 	 * @generated NOT
 	 */
 	public static EPackage getDefinition(Profile profile) {
-		EAnnotation eAnnotation = profile.getEAnnotation(UMLPackage.eNS_URI);
+		EPackage definition = getEPackage(profile);
 
-		if (eAnnotation != null) {
-			EList<EObject> contents = eAnnotation.getContents();
+		if (definition == null) {
+			EAnnotation eAnnotation = profile
+				.getEAnnotation(UMLPackage.eNS_URI);
 
-			if (contents.size() > 0) {
-				return (EPackage) contents.get(0);
+			if (eAnnotation != null) {
+				EList<EObject> contents = eAnnotation.getContents();
+
+				if (contents.size() > 0) {
+					definition = (EPackage) contents.get(0);
+				}
 			}
 		}
 
-		return null;
+		return definition;
 	}
 
 	protected static ENamedElement getDefinition(Profile profile,
@@ -322,17 +326,25 @@ public class ProfileOperations
 
 			if (profileDefinition != null) {
 
-				for (EClassifier eClassifier : profileDefinition
-					.getEClassifiers()) {
+				if (profileDefinition.eContainer() instanceof EAnnotation) {
 
-					EAnnotation eAnnotation = eClassifier
-						.getEAnnotation(UMLPackage.eNS_URI);
+					for (EClassifier eClassifier : profileDefinition
+						.getEClassifiers()) {
 
-					if (eAnnotation != null
-						&& eAnnotation.getReferences().contains(namedElement)) {
+						EAnnotation eAnnotation = eClassifier
+							.getEAnnotation(UMLPackage.eNS_URI);
 
-						return eClassifier;
+						if (eAnnotation != null
+							&& eAnnotation.getReferences().contains(
+								namedElement)) {
+
+							return eClassifier;
+						}
 					}
+				} else {
+					return profileDefinition
+						.getEClassifier(getValidJavaIdentifier(namedElement
+							.getName()));
 				}
 			}
 

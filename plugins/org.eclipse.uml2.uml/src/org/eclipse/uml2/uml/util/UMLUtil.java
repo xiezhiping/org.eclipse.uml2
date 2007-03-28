@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.53 2007/03/12 21:10:50 khussey Exp $
+ * $Id: UMLUtil.java,v 1.54 2007/03/28 20:56:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1047,7 +1047,7 @@ public class UMLUtil
 							if (matchingEntry != null) {
 								return (EObject) matchingEntry;
 							}
-						} else if (getStereotype(theEClass) != null) {
+						} else if (getStereotype(theEClass, theEObject) != null) {
 							EObject matchingEObject = findEObject(
 								getMatchCandidates(theEObject),
 								new EClassMatcher(theEObject));
@@ -2343,7 +2343,7 @@ public class UMLUtil
 				+ NamedElement.SEPARATOR + name);
 		}
 
-		protected boolean isGenericType(Classifier classifier) {
+		protected boolean isEGenericType(Classifier classifier) {
 			return options != null
 				&& !OPTION__IGNORE.equals(options
 					.get(OPTION__ECORE_TAGGED_VALUES))
@@ -2351,10 +2351,53 @@ public class UMLUtil
 					STEREOTYPE__E_GENERIC_TYPE) != null;
 		}
 
+		protected boolean isEClass(Namespace namespace) {
+			return new UMLSwitch<Boolean>() {
+
+				@Override
+				public Boolean caseClass(org.eclipse.uml2.uml.Class class_) {
+					return Boolean.TRUE;
+				}
+
+				@Override
+				public Boolean caseDataType(DataType dataType) {
+					return Boolean.TRUE;
+				}
+
+				@Override
+				public Boolean caseEnumeration(Enumeration enumeration) {
+					return Boolean.FALSE;
+				}
+
+				@Override
+				public Boolean caseInterface(Interface interface_) {
+					return Boolean.TRUE;
+				}
+
+				@Override
+				public Boolean caseNamespace(Namespace namespace) {
+					return Boolean.FALSE;
+				}
+
+				@Override
+				public Boolean casePrimitiveType(PrimitiveType primitiveType) {
+					return Boolean.FALSE;
+				}
+
+				@Override
+				public Boolean doSwitch(EObject eObject) {
+					return eObject == null
+						? Boolean.FALSE
+						: super.doSwitch(eObject);
+				}
+
+			}.doSwitch(namespace).booleanValue();
+		}
+
 		@Override
 		public Object caseClass(org.eclipse.uml2.uml.Class class_) {
 
-			if (!isGenericType(class_) && !class_.isTemplateParameter()) {
+			if (!isEGenericType(class_) && !class_.isTemplateParameter()) {
 				org.eclipse.uml2.uml.Package package_ = class_
 					.getNearestPackage();
 
@@ -2487,7 +2530,7 @@ public class UMLUtil
 		@Override
 		public Object caseDataType(DataType dataType) {
 
-			if (!isGenericType(dataType) && !dataType.isTemplateParameter()) {
+			if (!isEGenericType(dataType) && !dataType.isTemplateParameter()) {
 				org.eclipse.uml2.uml.Package package_ = dataType
 					.getNearestPackage();
 
@@ -2664,7 +2707,9 @@ public class UMLUtil
 		@Override
 		public Object caseInterface(Interface interface_) {
 
-			if (!isGenericType(interface_) && !interface_.isTemplateParameter()) {
+			if (!isEGenericType(interface_)
+				&& !interface_.isTemplateParameter()) {
+
 				org.eclipse.uml2.uml.Package package_ = interface_
 					.getNearestPackage();
 
@@ -2723,9 +2768,7 @@ public class UMLUtil
 		public Object caseOperation(Operation operation) {
 			Namespace namespace = operation.getNamespace();
 
-			if (namespace instanceof org.eclipse.uml2.uml.Class
-				|| namespace instanceof Interface) {
-
+			if (isEClass(namespace)) {
 				EOperation eOperation = EcoreFactory.eINSTANCE
 					.createEOperation();
 				elementToEModelElementMap.put(operation, eOperation);
@@ -2885,7 +2928,7 @@ public class UMLUtil
 		@Override
 		public Object casePrimitiveType(PrimitiveType primitiveType) {
 
-			if (!isGenericType(primitiveType)
+			if (!isEGenericType(primitiveType)
 				&& !primitiveType.isTemplateParameter()) {
 
 				org.eclipse.uml2.uml.Package package_ = primitiveType
@@ -2916,13 +2959,16 @@ public class UMLUtil
 		public Object caseProperty(Property property) {
 			Namespace namespace = property.getNamespace();
 
-			if (namespace instanceof org.eclipse.uml2.uml.Class
-				|| namespace instanceof DataType
-				|| namespace instanceof Interface) {
-
+			if (isEClass(namespace)) {
 				EStructuralFeature eStructuralFeature = null;
 
-				if (property.getType() instanceof DataType) {
+				if (isEClass((Classifier) property.getType())) {
+					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
+						.createEReference());
+					elementToEModelElementMap.put(property, eReference);
+
+					eReference.setContainment(property.isComposite());
+				} else {
 					EAttribute eAttribute = (EAttribute) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEAttribute());
 					elementToEModelElementMap.put(property, eAttribute);
@@ -2932,12 +2978,6 @@ public class UMLUtil
 					if (default_ != null) {
 						eAttribute.setDefaultValueLiteral(default_);
 					}
-				} else {
-					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
-						.createEReference());
-					elementToEModelElementMap.put(property, eStructuralFeature);
-
-					eReference.setContainment(property.isComposite());
 				}
 
 				EClass eClass = (EClass) doSwitch(namespace);
@@ -5105,20 +5145,11 @@ public class UMLUtil
 
 		@Override
 		protected EClassifier getEType(Type type) {
+			EClassifier eType = getEClassifier(type);
 
-			if (type instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) type;
-
-				if (class_.isMetaclass()) {
-					EClassifier eType = getEClassifier(class_);
-
-					if (eType != null) {
-						return eType;
-					}
-				}
-			}
-
-			return super.getEType(type);
+			return eType == null
+				? super.getEType(type)
+				: eType;
 		}
 
 		@Override
@@ -7595,6 +7626,39 @@ public class UMLUtil
 		return namedElements;
 	}
 
+	protected static EPackage getEPackage(org.eclipse.uml2.uml.Package package_) {
+		return EPackage.Registry.INSTANCE.getEPackage((String) getTaggedValue(
+			package_, "Ecore" //$NON-NLS-1$
+				+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
+			TAG_DEFINITION__NS_URI));
+	}
+
+	protected static EClassifier getEClassifier(Type type) {
+		Resource eResource = type.eResource();
+
+		if (eResource == null
+			|| !UMLResource.UML_METAMODEL_URI.equals(String.valueOf(eResource
+				.getURI()))) {
+
+			org.eclipse.uml2.uml.Package package_ = type.getNearestPackage();
+
+			if (package_ != null) {
+				EPackage ePackage = getEPackage(package_);
+
+				if (ePackage != null) {
+					return ePackage.getEClassifier(type.getName());
+				}
+			}
+		}
+
+		return UMLPackage.eINSTANCE.getEClassifier(type.getName());
+	}
+
+	protected static EClassifier getEClassifier(
+			org.eclipse.uml2.uml.Class metaclass) {
+		return getEClassifier((Type) metaclass);
+	}
+
 	/**
 	 * Retrieves the profile for which the specified package represents a
 	 * definition.
@@ -7621,32 +7685,41 @@ public class UMLUtil
 		return null;
 	}
 
-	protected static EClassifier getEClassifier(
-			org.eclipse.uml2.uml.Class metaclass) {
-		Resource eResource = metaclass.eResource();
+	public static Profile getProfile(EPackage definition, EObject context) {
+		Profile profile = getProfile(definition);
 
-		if (eResource == null
-			|| !UMLResource.UML_METAMODEL_URI.equals(String.valueOf(eResource
-				.getURI()))) {
+		if (profile == null && context != null) {
+			URI location = UMLPlugin.getEPackageNsURIToProfileLocationMap()
+				.get(definition.getNsURI());
 
-			Model model = metaclass.getModel();
+			if (location != null) {
+				Resource eResource = context.eResource();
 
-			if (model != null) {
-				EPackage ePackage = EPackage.Registry.INSTANCE
-					.getEPackage((String) getTaggedValue(model, "Ecore" //$NON-NLS-1$
-						+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
-						TAG_DEFINITION__NS_URI));
+				if (eResource != null) {
+					ResourceSet resourceSet = eResource.getResourceSet();
 
-				if (ePackage != null) {
-					return ePackage.getEClassifier(metaclass.getName());
+					if (resourceSet != null) {
+
+						try {
+							profile = (Profile) resourceSet.getEObject(
+								location, true);
+						} catch (Exception e) {
+							UMLPlugin.INSTANCE.log(e);
+						}
+					}
 				}
 			}
 		}
 
-		return UMLPackage.eINSTANCE.getEClassifier(metaclass.getName());
+		return profile;
 	}
 
 	protected static NamedElement getNamedElement(ENamedElement definition) {
+		return getNamedElement(definition, null);
+	}
+
+	protected static NamedElement getNamedElement(ENamedElement definition,
+			EObject context) {
 
 		if (definition instanceof EClassifier) {
 			EAnnotation eAnnotation = definition
@@ -7664,10 +7737,27 @@ public class UMLUtil
 				}
 			}
 
+			org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) getNamedElement(
+				((EClassifier) definition).getEPackage(), context);
+
+			if (package_ != null) {
+				String name = definition.getName();
+
+				for (Type ownedType : package_.getOwnedTypes()) {
+
+					if (safeEquals(getValidJavaIdentifier(ownedType.getName()),
+						name)) {
+
+						return ownedType;
+					}
+				}
+			}
+
 			return null;
 		} else if (definition instanceof EStructuralFeature) {
-			org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) getNamedElement(((EStructuralFeature) definition)
-				.getEContainingClass());
+			org.eclipse.uml2.uml.Class class_ = (org.eclipse.uml2.uml.Class) getNamedElement(
+				((EStructuralFeature) definition).getEContainingClass(),
+				context);
 
 			if (class_ != null) {
 				String name = definition.getName();
@@ -7684,20 +7774,26 @@ public class UMLUtil
 
 			return null;
 		} else if (definition instanceof EEnumLiteral) {
-			Enumeration enumeration = (Enumeration) getNamedElement(((EEnumLiteral) definition)
-				.getEEnum());
+			Enumeration enumeration = (Enumeration) getNamedElement(
+				((EEnumLiteral) definition).getEEnum(), context);
 			return enumeration == null
 				? null
 				: enumeration.getOwnedLiteral(definition.getName());
 		} else if (definition instanceof EPackage) {
-			return getProfile((EPackage) definition);
+			return getProfile((EPackage) definition, context);
 		} else {
 			return null;
 		}
 	}
 
 	protected static Stereotype getStereotype(EClass definition) {
-		NamedElement namedElement = getNamedElement(definition);
+		return getStereotype(definition, null);
+	}
+
+	protected static Stereotype getStereotype(EClass definition,
+			EObject stereotypeApplication) {
+		NamedElement namedElement = getNamedElement(definition,
+			stereotypeApplication);
 		return namedElement instanceof Stereotype
 			? (Stereotype) namedElement
 			: null;
@@ -7714,7 +7810,8 @@ public class UMLUtil
 	public static Stereotype getStereotype(EObject stereotypeApplication) {
 		return stereotypeApplication == null
 			? null
-			: getStereotype(stereotypeApplication.eClass());
+			: getStereotype(stereotypeApplication.eClass(),
+				stereotypeApplication);
 	}
 
 	/**
@@ -7730,7 +7827,7 @@ public class UMLUtil
 		if (stereotypeApplication != null) {
 			EClass eClass = stereotypeApplication.eClass();
 
-			if (getStereotype(eClass) != null) {
+			if (getStereotype(eClass, stereotypeApplication) != null) {
 
 				for (EStructuralFeature eStructuralFeature : eClass
 					.getEAllStructuralFeatures()) {
@@ -7767,7 +7864,7 @@ public class UMLUtil
 		if (stereotypeApplication != null) {
 			EClass eClass = stereotypeApplication.eClass();
 
-			if (getStereotype(eClass) != null) {
+			if (getStereotype(eClass, stereotypeApplication) != null) {
 
 				for (EStructuralFeature eStructuralFeature : eClass
 					.getEAllStructuralFeatures()) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResource.java,v 1.6 2006/11/30 05:16:55 khussey Exp $
+ * $Id: UMLResource.java,v 1.7 2007/03/28 20:56:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -84,7 +84,7 @@ public interface UMLResource
 
 	String PROFILES_PATHMAP = "pathmap://UML_PROFILES/"; //$NON-NLS-1$
 
-	String ECORE_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Ecore/3"; //$NON-NLS-1$
+	String ECORE_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Ecore/4"; //$NON-NLS-1$
 
 	String ECORE_PROFILE_URI = PROFILES_PATHMAP + "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 

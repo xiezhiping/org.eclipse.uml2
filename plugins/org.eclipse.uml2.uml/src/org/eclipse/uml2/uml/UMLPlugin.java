@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPlugin.java,v 1.2 2006/12/14 15:49:27 khussey Exp $
+ * $Id: UMLPlugin.java,v 1.3 2007/03/28 20:56:52 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.Platform;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.common.util.URI;
+
+import org.eclipse.emf.ecore.plugin.RegistryReader;
+import org.osgi.framework.BundleContext;
 
 /**
  * This is the central singleton for the UML model plugin.
@@ -24,6 +34,78 @@ import org.eclipse.emf.common.util.ResourceLocator;
  */
 public final class UMLPlugin
 		extends EMFPlugin {
+
+	protected static class GeneratedPackageRegistryReader
+			extends RegistryReader {
+
+		protected static final String TAG_PROFILE = "profile"; //$NON-NLS-1$
+
+		protected static final String ATT_URI = "uri"; //$NON-NLS-1$
+
+		protected static final String ATT_LOCATION = "location"; //$NON-NLS-1$
+
+		protected Map<String, URI> ePackageNsURIToProfileLocationMap;
+
+		protected GeneratedPackageRegistryReader() {
+			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+				.getSymbolicName(), GENERATED_PACKAGE_PPID);
+		}
+
+		protected GeneratedPackageRegistryReader(
+				Map<String, URI> ePackageNsURIToProfileLocationMap) {
+			this();
+
+			this.ePackageNsURIToProfileLocationMap = ePackageNsURIToProfileLocationMap;
+		}
+
+		@Override
+		protected boolean readElement(IConfigurationElement element) {
+
+			if (element.getName().equals(TAG_PROFILE)) {
+				String uri = element.getAttribute(ATT_URI);
+
+				if (uri == null) {
+					logMissingAttribute(element, ATT_URI);
+				} else {
+
+					if (ePackageNsURIToProfileLocationMap != null) {
+						String location = element.getAttribute(ATT_LOCATION);
+
+						if (location != null) {
+							URI profileLocation = URI.createURI(location);
+
+							if (profileLocation.isRelative()) {
+								profileLocation = URI.createPlatformPluginURI(
+									element.getDeclaringExtension()
+										.getContributor().getName()
+										+ '/' + location, true);
+							}
+
+							ePackageNsURIToProfileLocationMap.put(uri,
+								profileLocation);
+						}
+					}
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+	}
+
+	private static Map<String, URI> ePackageNsURIToProfileLocationMap;
+
+	public static Map<String, URI> getEPackageNsURIToProfileLocationMap() {
+
+		if (ePackageNsURIToProfileLocationMap == null) {
+			ePackageNsURIToProfileLocationMap = new HashMap<String, URI>();
+		}
+
+		return ePackageNsURIToProfileLocationMap;
+	}
+
+	protected static final String GENERATED_PACKAGE_PPID = "generated_package"; //$NON-NLS-1$
 
 	/**
 	 * Keep track of the singleton.
@@ -96,6 +178,16 @@ public final class UMLPlugin
 			//
 			plugin = this;
 		}
+
+		@Override
+		public void start(BundleContext context)
+				throws Exception {
+			super.start(context);
+
+			new GeneratedPackageRegistryReader(
+				getEPackageNsURIToProfileLocationMap()).readRegistry();
+		}
+
 	}
 
 }
