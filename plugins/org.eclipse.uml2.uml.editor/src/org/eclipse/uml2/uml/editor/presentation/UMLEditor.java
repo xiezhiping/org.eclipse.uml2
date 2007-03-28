@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.29 2007/03/22 16:46:15 khussey Exp $
+ * $Id: UMLEditor.java,v 1.30 2007/03/28 20:53:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -24,6 +25,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.ui.dialogs.DiagnosticDialog;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 
@@ -658,7 +660,24 @@ public class UMLEditor
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//
-		BasicCommandStack commandStack = new BasicCommandStack();
+		BasicCommandStack commandStack = new BasicCommandStack() {
+
+			@Override
+			protected void handleError(Exception exception) {
+				super.handleError(exception);
+
+				BasicDiagnostic diagnostic = new BasicDiagnostic(
+					UMLEditorPlugin.INSTANCE.getSymbolicName(), 0, exception
+						.getLocalizedMessage(), null);
+				diagnostic.add(BasicDiagnostic.toDiagnostic(exception));
+
+				DiagnosticDialog
+					.openProblem(getSite().getShell(), null,
+						CommonPlugin.INSTANCE
+							.getString("_UI_IgnoreException_exception"), //$NON-NLS-1$
+						diagnostic);
+			}
+		};
 
 		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
 		//
