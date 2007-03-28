@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.5 2007/01/05 21:49:16 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.6 2007/03/28 21:52:59 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,6 +20,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -38,6 +39,7 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 class StereotypeApplicationItemProvider
@@ -167,6 +169,11 @@ class StereotypeApplicationItemProvider
 		}
 
 		return text;
+	}
+
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return UMLEditPlugin.INSTANCE;
 	}
 
 }
