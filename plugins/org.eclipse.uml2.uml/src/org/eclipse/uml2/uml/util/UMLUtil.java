@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.54 2007/03/28 20:56:52 khussey Exp $
+ * $Id: UMLUtil.java,v 1.55 2007/03/29 17:17:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5644,6 +5644,16 @@ public class UMLUtil
 			Classifier genericType = eClassifier instanceof EDataType
 				? UMLFactory.eINSTANCE.createPrimitiveType()
 				: UMLFactory.eINSTANCE.createClass();
+
+			for (EGenericType eTypeArgument : eGenericType.getETypeArguments()) {
+				ETypeParameter eTypeParameter = eTypeArgument
+					.getETypeParameter();
+
+				if (eTypeParameter != null) {
+					eModelElement = eTypeParameter;
+					break;
+				}
+			}
 
 			getOwnedTypes(eModelElement).add(genericType);
 
