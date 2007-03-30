@@ -5,6 +5,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
 	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createAddCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection")%> collection, int index) {
   <%for (GenFeature subsetGenFeature : UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)) {%>
 		if (feature == <%=subsetGenFeature.getQualifiedFeatureAccessor()%>) {
@@ -22,6 +25,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
 	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createRemoveCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection")%> collection) {
   <%for (GenFeature supersetGenFeature : UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true)) {%>
 		if (feature == <%=supersetGenFeature.getQualifiedFeatureAccessor()%>) {
@@ -39,6 +45,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
 	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createReplaceCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> value, <%=genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection")%> collection) {
   <%{ List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true));%>
     <%for (GenFeature genFeature : subsetSupersetGenFeatures) {%>
@@ -58,6 +67,9 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
 	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createSetCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner, <%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> feature, Object value) {
   <%{ List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));%>
     <%for (GenFeature genFeature : subsetSupersetGenFeatures) {%>
