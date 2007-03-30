@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileTest.java,v 1.4 2007/02/14 20:06:12 khussey Exp $
+ * $Id: ProfileTest.java,v 1.5 2007/03/30 15:26:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -36,6 +36,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#define(java.util.Map, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Define</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition() <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
@@ -182,6 +183,19 @@ public class ProfileTest
 	 * @generated
 	 */
 	public void testDefine() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Profile#define(java.util.Map, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Define</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Profile#define(java.util.Map, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+
+	public void testDefine__Map_DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
