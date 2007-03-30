@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.30 2007/03/28 20:53:49 khussey Exp $
+ * $Id: UMLEditor.java,v 1.31 2007/03/30 15:26:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -671,11 +671,10 @@ public class UMLEditor
 						.getLocalizedMessage(), null);
 				diagnostic.add(BasicDiagnostic.toDiagnostic(exception));
 
-				DiagnosticDialog
-					.openProblem(getSite().getShell(), null,
-						CommonPlugin.INSTANCE
-							.getString("_UI_IgnoreException_exception"), //$NON-NLS-1$
-						diagnostic);
+				DiagnosticDialog.openProblem(getSite().getShell(), null,
+					CommonPlugin.INSTANCE
+						.getString("_UI_IgnoreException_exception"), //$NON-NLS-1$
+					diagnostic);
 			}
 		};
 
