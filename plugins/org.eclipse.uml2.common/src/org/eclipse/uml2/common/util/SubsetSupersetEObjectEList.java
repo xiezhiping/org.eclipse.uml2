@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectEList.java,v 1.4 2006/12/14 15:47:32 khussey Exp $
+ * $Id: SubsetSupersetEObjectEList.java,v 1.5 2007/03/30 18:17:33 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -83,14 +83,14 @@ public class SubsetSupersetEObjectEList<E>
 		this.subsetFeatureIDs = subsetFeatureIDs;
 	}
 
+	protected boolean enforceSubsetConstraints() {
+		Resource.Internal eInternalResource = owner.eInternalResource();
+		return eInternalResource == null || !eInternalResource.isLoading();
+	}
+
 	protected void supersetAdd(Object object) {
 
-		if (supersetFeatureIDs != null) {
-			Resource.Internal eInternalResource = owner.eInternalResource();
-
-			if (eInternalResource != null && eInternalResource.isLoading()) {
-				return;
-			}
+		if (supersetFeatureIDs != null && enforceSubsetConstraints()) {
 
 			for (int i = 0; i < supersetFeatureIDs.length; i++) {
 				EStructuralFeature supersetEStructuralFeature = owner.eClass()
@@ -106,13 +106,16 @@ public class SubsetSupersetEObjectEList<E>
 					}
 				}
 			}
-
 		}
+	}
+
+	protected boolean enforceSupersetConstraints() {
+		return true;
 	}
 
 	protected void subsetRemove(Object object) {
 
-		if (subsetFeatureIDs != null) {
+		if (subsetFeatureIDs != null && enforceSupersetConstraints()) {
 
 			for (int i = 0; i < subsetFeatureIDs.length; i++) {
 				EStructuralFeature subsetEStructuralFeature = owner.eClass()
@@ -127,7 +130,6 @@ public class SubsetSupersetEObjectEList<E>
 					owner.eSet(subsetEStructuralFeature, null);
 				}
 			}
-
 		}
 	}
 
@@ -178,6 +180,7 @@ public class SubsetSupersetEObjectEList<E>
 
 		for (Iterator<? extends E> elements = collection.iterator(); elements
 			.hasNext();) {
+
 			supersetAdd(elements.next());
 		}
 
@@ -190,6 +193,7 @@ public class SubsetSupersetEObjectEList<E>
 
 		for (Iterator<? extends E> elements = collection.iterator(); elements
 			.hasNext();) {
+
 			supersetAdd(elements.next());
 		}
 
