@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.28 2007/02/23 03:16:53 khussey Exp $
+ * $Id: UML2Util.java,v 1.29 2007/03/30 18:42:31 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -473,7 +473,7 @@ public class UML2Util {
 	/**
 	 * Retrieves a string for the specified object, localized if indicated.
 	 * 
-	 * @param object
+	 * @param eObject
 	 *            The object for which to retrieve a (localized) string.
 	 * @param key
 	 *            The key in the resource bundle.
