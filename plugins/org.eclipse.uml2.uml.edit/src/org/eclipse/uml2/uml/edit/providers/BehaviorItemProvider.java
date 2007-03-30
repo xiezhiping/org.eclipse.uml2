@@ -8,20 +8,23 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorItemProvider.java,v 1.12 2007/03/22 16:46:10 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.13 2007/03/30 18:19:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -32,6 +35,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -214,8 +220,6 @@ public class BehaviorItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER);
-			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__PRECONDITION);
-			childrenFeatures.add(UMLPackage.Literals.BEHAVIOR__POSTCONDITION);
 			childrenFeatures
 				.add(UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET);
 		}
@@ -262,12 +266,12 @@ public class BehaviorItemProvider
 
 		switch (notification.getFeatureID(Behavior.class)) {
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
+			case UMLPackage.BEHAVIOR__PRECONDITION :
+			case UMLPackage.BEHAVIOR__POSTCONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
-			case UMLPackage.BEHAVIOR__PRECONDITION :
-			case UMLPackage.BEHAVIOR__POSTCONDITION :
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -378,6 +382,89 @@ public class BehaviorItemProvider
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createAddCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
+		}
+		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
+		}
+		return super
+			.createAddCommand(domain, owner, feature, collection, index);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(domain, owner, feature,
+				new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+					UMLPackage.Literals.BEHAVIOR__POSTCONDITION}, collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SubsetSupersetReplaceCommand(domain, owner, feature,
+				null, new EStructuralFeature[]{
+					UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+					UMLPackage.Literals.BEHAVIOR__POSTCONDITION}, value,
+				collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
 	}
 
 }
