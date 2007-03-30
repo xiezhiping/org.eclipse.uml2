@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentItemProvider.java,v 1.9 2007/03/22 16:46:10 khussey Exp $
+ * $Id: CommentItemProvider.java,v 1.10 2007/03/30 19:21:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -133,7 +133,7 @@ public class CommentItemProvider
 	public String getText(Object object) {
 		return appendString(
 			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_Comment_type"), ((Comment) object).getBody()).toString(); //$NON-NLS-1$
+				"_UI_Comment_type"), crop(((Comment) object).getBody())).toString(); //$NON-NLS-1$
 	}
 
 	/**

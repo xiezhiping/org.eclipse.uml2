@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionItemProvider.java,v 1.7 2007/03/22 16:46:11 khussey Exp $
+ * $Id: OpaqueExpressionItemProvider.java,v 1.8 2007/03/30 19:21:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -182,7 +182,7 @@ public class OpaqueExpressionItemProvider
 
 		appendString(text, !UML2Util.isEmpty(label)
 			? label
-			: opaqueExpression.stringValue());
+			: crop(opaqueExpression.stringValue()));
 
 		return text.toString();
 	}
