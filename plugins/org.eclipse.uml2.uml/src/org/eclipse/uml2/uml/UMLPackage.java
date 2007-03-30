@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.25 2007/03/27 03:39:49 khussey Exp $
+ * $Id: UMLPackage.java,v 1.26 2007/03/30 18:20:25 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -11191,7 +11191,7 @@ public interface UMLPackage
 	int BEHAVIOR__CONTEXT = CLASS_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -11200,7 +11200,7 @@ public interface UMLPackage
 	int BEHAVIOR__PRECONDITION = CLASS_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13315,7 +13315,7 @@ public interface UMLPackage
 	int STATE_MACHINE__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13324,7 +13324,7 @@ public interface UMLPackage
 	int STATE_MACHINE__PRECONDITION = BEHAVIOR__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13900,7 +13900,7 @@ public interface UMLPackage
 	int PROTOCOL_STATE_MACHINE__CONTEXT = STATE_MACHINE__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -13909,7 +13909,7 @@ public interface UMLPackage
 	int PROTOCOL_STATE_MACHINE__PRECONDITION = STATE_MACHINE__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24090,7 +24090,7 @@ public interface UMLPackage
 	int OPAQUE_BEHAVIOR__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24099,7 +24099,7 @@ public interface UMLPackage
 	int OPAQUE_BEHAVIOR__PRECONDITION = BEHAVIOR__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24657,7 +24657,7 @@ public interface UMLPackage
 	int FUNCTION_BEHAVIOR__CONTEXT = OPAQUE_BEHAVIOR__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -24666,7 +24666,7 @@ public interface UMLPackage
 	int FUNCTION_BEHAVIOR__PRECONDITION = OPAQUE_BEHAVIOR__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26646,7 +26646,7 @@ public interface UMLPackage
 	int ACTIVITY__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -26655,7 +26655,7 @@ public interface UMLPackage
 	int ACTIVITY__PRECONDITION = BEHAVIOR__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32604,7 +32604,7 @@ public interface UMLPackage
 	int INTERACTION__CONTEXT = BEHAVIOR__CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Precondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Precondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -32613,7 +32613,7 @@ public interface UMLPackage
 	int INTERACTION__PRECONDITION = BEHAVIOR__PRECONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Postcondition</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Postcondition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -61350,10 +61350,10 @@ public interface UMLPackage
 	EReference getBehavior_Context();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Behavior#getPreconditions <em>Precondition</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Behavior#getPreconditions <em>Precondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Precondition</em>'.
+	 * @return the meta object for the reference list '<em>Precondition</em>'.
 	 * @see org.eclipse.uml2.uml.Behavior#getPreconditions()
 	 * @see #getBehavior()
 	 * @generated
@@ -61361,10 +61361,10 @@ public interface UMLPackage
 	EReference getBehavior_Precondition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.uml2.uml.Behavior#getPostconditions <em>Postcondition</em>}'.
+	 * Returns the meta object for the reference list '{@link org.eclipse.uml2.uml.Behavior#getPostconditions <em>Postcondition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Postcondition</em>'.
+	 * @return the meta object for the reference list '<em>Postcondition</em>'.
 	 * @see org.eclipse.uml2.uml.Behavior#getPostconditions()
 	 * @see #getBehavior()
 	 * @generated
@@ -69973,7 +69973,7 @@ public interface UMLPackage
 		EReference BEHAVIOR__CONTEXT = eINSTANCE.getBehavior_Context();
 
 		/**
-		 * The meta object literal for the '<em><b>Precondition</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Precondition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -69982,7 +69982,7 @@ public interface UMLPackage
 			.getBehavior_Precondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Postcondition</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Postcondition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

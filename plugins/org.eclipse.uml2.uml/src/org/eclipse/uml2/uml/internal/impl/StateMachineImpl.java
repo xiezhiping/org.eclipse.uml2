@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.29 2007/02/26 16:17:56 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.30 2007/03/30 18:20:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -663,12 +663,6 @@ public class StateMachineImpl
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__PRECONDITION :
-				return ((InternalEList<?>) getPreconditions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__POSTCONDITION :
-				return ((InternalEList<?>) getPostconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())

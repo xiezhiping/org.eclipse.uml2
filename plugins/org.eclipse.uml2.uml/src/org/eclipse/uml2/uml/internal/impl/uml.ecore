@@ -1748,9 +1748,13 @@
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinitionContext"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="precondition" ordered="false"
-        upperBound="-1" eType="#//Constraint" containment="true"/>
+        upperBound="-1" eType="#//Constraint">
+      <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postcondition" ordered="false"
-        upperBound="-1" eType="#//Constraint" containment="true"/>
+        upperBound="-1" eType="#//Constraint">
+      <eAnnotations source="subsets" references="#//Namespace/ownedRule"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameterSet" ordered="false"
         upperBound="-1" eType="#//ParameterSet" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>

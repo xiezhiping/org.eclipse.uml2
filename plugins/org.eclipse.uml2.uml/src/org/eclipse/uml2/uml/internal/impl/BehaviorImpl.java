@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.31 2007/02/26 16:17:56 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.32 2007/03/30 18:20:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -37,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
+import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.BehavioredClassifier;
@@ -82,6 +84,7 @@ import org.eclipse.uml2.uml.internal.operations.BehaviorOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#isReentrant <em>Is Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getRedefinedBehaviors <em>Redefined Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
@@ -140,7 +143,7 @@ public abstract class BehaviorImpl
 	protected EList<Parameter> ownedParameters;
 
 	/**
-	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' containment reference list.
+	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreconditions()
@@ -150,7 +153,7 @@ public abstract class BehaviorImpl
 	protected EList<Constraint> preconditions;
 
 	/**
-	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' containment reference list.
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostconditions()
@@ -446,12 +449,27 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	@SuppressWarnings("serial")
 	public EList<Constraint> getPreconditions() {
 		if (preconditions == null) {
-			preconditions = new EObjectContainmentEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION);
+			preconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
+				Constraint.class, this, UMLPackage.BEHAVIOR__PRECONDITION,
+				PRECONDITION_ESUPERSETS, null) {
+
+				@Override
+				protected boolean enforceSubsetConstraints() {
+					return true;
+				}
+
+				@Override
+				protected void didAdd(int index, Constraint newObject) {
+					super.didAdd(index, newObject);
+
+					supersetAdd(newObject);
+				}
+			};
 		}
 		return preconditions;
 	}
@@ -511,12 +529,27 @@ public abstract class BehaviorImpl
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	@SuppressWarnings("serial")
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
-			postconditions = new EObjectContainmentEList.Resolving<Constraint>(
-				Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION);
+			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
+				Constraint.class, this, UMLPackage.BEHAVIOR__POSTCONDITION,
+				POSTCONDITION_ESUPERSETS, null) {
+
+				@Override
+				protected boolean enforceSubsetConstraints() {
+					return true;
+				}
+
+				@Override
+				protected void didAdd(int index, Constraint newObject) {
+					super.didAdd(index, newObject);
+
+					supersetAdd(newObject);
+				}
+			};
 		}
 		return postconditions;
 	}
@@ -908,12 +941,6 @@ public abstract class BehaviorImpl
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__PRECONDITION :
-				return ((InternalEList<?>) getPreconditions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.BEHAVIOR__POSTCONDITION :
-				return ((InternalEList<?>) getPostconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
@@ -1656,6 +1683,53 @@ public abstract class BehaviorImpl
 	 * @ordered
 	 */
 	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{UMLPackage.BEHAVIOR__CONTEXT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	@Override
+	public EList<Constraint> getOwnedRules() {
+		if (ownedRules == null) {
+			ownedRules = new SubsetSupersetEObjectContainmentWithInverseEList.Resolving<Constraint>(
+				Constraint.class, this, UMLPackage.BEHAVIOR__OWNED_RULE, null,
+				OWNED_RULE_ESUBSETS, UMLPackage.CONSTRAINT__CONTEXT);
+		}
+		return ownedRules;
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
+		UMLPackage.BEHAVIOR__PRECONDITION, UMLPackage.BEHAVIOR__POSTCONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.BEHAVIOR__OWNED_RULE};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.BEHAVIOR__OWNED_RULE};
 
 	/**
 	 * <!-- begin-user-doc -->

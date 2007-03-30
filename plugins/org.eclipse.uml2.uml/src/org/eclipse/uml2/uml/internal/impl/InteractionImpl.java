@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.30 2007/02/26 16:17:57 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.31 2007/03/30 18:20:25 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -929,12 +929,6 @@ public class InteractionImpl
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.INTERACTION__PRECONDITION :
-				return ((InternalEList<?>) getPreconditions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.INTERACTION__POSTCONDITION :
-				return ((InternalEList<?>) getPostconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())

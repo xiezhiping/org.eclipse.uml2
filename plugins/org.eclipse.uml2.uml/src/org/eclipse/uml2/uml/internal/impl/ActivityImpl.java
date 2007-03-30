@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.32 2007/02/26 16:17:59 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.33 2007/03/30 18:20:26 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -842,12 +842,6 @@ public class ActivityImpl
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__PRECONDITION :
-				return ((InternalEList<?>) getPreconditions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__POSTCONDITION :
-				return ((InternalEList<?>) getPostconditions()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())

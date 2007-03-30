@@ -9483,14 +9483,14 @@ define a collating sequence between operands and subexpressions).
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r2AiMxTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r2AiMhTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_9jvUsYNmEdq7cMP_l1l5Gg" name="precondition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" association="_9jvUsINmEdq7cMP_l1l5Gg">
+          <ownedAttribute xmi:id="_9jvUsYNmEdq7cMP_l1l5Gg" name="precondition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF5A9017E" association="_9jvUsINmEdq7cMP_l1l5Gg">
             <ownedComment xmi:id="_d02kcPZOEdqYHf-imTcTdw" annotatedElement="_9jvUsYNmEdq7cMP_l1l5Gg">
               <body>An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9kCPoINmEdq7cMP_l1l5Gg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9j5FsYNmEdq7cMP_l1l5Gg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_FNiXoYNnEdq7cMP_l1l5Gg" name="postcondition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" association="_FNiXoINnEdq7cMP_l1l5Gg">
+          <ownedAttribute xmi:id="_FNiXoYNnEdq7cMP_l1l5Gg" name="postcondition" type="_3ADC7B74022D3CAAED67023C" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAF5A9017E" association="_FNiXoINnEdq7cMP_l1l5Gg">
             <ownedComment xmi:id="_gB98QPZOEdqYHf-imTcTdw" annotatedElement="_FNiXoYNnEdq7cMP_l1l5Gg">
               <body>An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.</body>
             </ownedComment>
