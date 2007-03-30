@@ -11044,14 +11044,14 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Behavior-context-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Behavior-context-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="Behavior-precondition" name="precondition" type="Constraint" aggregation="composite" association="A_precondition_behavior">
+      <ownedAttribute xmi:id="Behavior-precondition" name="precondition" type="Constraint" aggregation="composite" subsettedProperty="Namespace-ownedRule" association="A_precondition_behavior">
         <ownedComment xmi:id="Behavior-precondition-_ownedComment.0" annotatedElement="Behavior-precondition">
           <body>An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.</body>
         </ownedComment>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Behavior-precondition-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Behavior-precondition-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="Behavior-postcondition" name="postcondition" type="Constraint" aggregation="composite" association="A_postcondition_behavior">
+      <ownedAttribute xmi:id="Behavior-postcondition" name="postcondition" type="Constraint" aggregation="composite" subsettedProperty="Namespace-ownedRule" association="A_postcondition_behavior">
         <ownedComment xmi:id="Behavior-postcondition-_ownedComment.0" annotatedElement="Behavior-postcondition">
           <body>An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.</body>
         </ownedComment>
