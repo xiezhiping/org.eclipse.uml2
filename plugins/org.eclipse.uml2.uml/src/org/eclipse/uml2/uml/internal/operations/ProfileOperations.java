@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.31 2007/03/28 20:56:52 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.32 2007/03/30 15:25:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,6 +65,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#define(java.util.Map, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Define</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition() <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
@@ -282,7 +283,21 @@ public class ProfileOperations
 		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			OPTION__PROCESS);
 
-		Collection<EPackage> ePackages = convertToEcore(profile, options);
+		return profile.define(options, null, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EPackage define(Profile profile, Map<String, String> options,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		Collection<EPackage> ePackages = convertToEcore(profile, options,
+			diagnostics, context);
 		EPackage definition = ePackages.size() == 1
 			? ePackages.iterator().next()
 			: null;

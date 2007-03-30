@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileImpl.java,v 1.28 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ProfileImpl.java,v 1.29 2007/03/30 15:25:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -469,6 +469,17 @@ public class ProfileImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EPackage define(Map<String, String> options,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return ProfileOperations.define(this, options, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EPackage getDefinition() {
 		return ProfileOperations.getDefinition(this);
 	}
@@ -492,10 +503,10 @@ public class ProfileImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<org.eclipse.uml2.uml.Class> result = (EList<org.eclipse.uml2.uml.Class>) cache
-				.get(this, UMLPackage.Literals.PROFILE.getEOperations().get(8));
+				.get(this, UMLPackage.Literals.PROFILE.getEOperations().get(9));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
-					.get(8), result = ProfileOperations
+					.get(9), result = ProfileOperations
 					.getReferencedMetaclasses(this));
 			}
 			return result;
@@ -513,10 +524,10 @@ public class ProfileImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Model> result = (EList<Model>) cache.get(this,
-				UMLPackage.Literals.PROFILE.getEOperations().get(9));
+				UMLPackage.Literals.PROFILE.getEOperations().get(10));
 			if (result == null) {
 				cache.put(this, UMLPackage.Literals.PROFILE.getEOperations()
-					.get(9), result = ProfileOperations
+					.get(10), result = ProfileOperations
 					.getReferencedMetamodels(this));
 			}
 			return result;

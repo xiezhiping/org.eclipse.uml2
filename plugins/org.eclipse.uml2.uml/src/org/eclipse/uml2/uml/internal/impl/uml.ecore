@@ -2868,6 +2868,21 @@
     </eOperations>
     <eOperations name="isDefined" ordered="false" lowerBound="1" eType="#//Boolean"/>
     <eOperations name="define" ordered="false" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+    <eOperations name="define" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage">
+      <eParameters name="options" ordered="false" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="#//String"/>
+          <eTypeArguments eClassifier="#//String"/>
+        </eGenericType>
+      </eParameters>
+      <eParameters name="diagnostics" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>
+      <eParameters name="context" ordered="false" lowerBound="1">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+          <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
     <eOperations name="getDefinition" ordered="false" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
     <eOperations name="getDefinition" ordered="false" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//ENamedElement">
       <eParameters name="namedElement" ordered="false" lowerBound="1" eType="#//NamedElement"/>

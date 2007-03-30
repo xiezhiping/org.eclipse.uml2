@@ -985,6 +985,30 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="__pew8GvzEdq7X4sGURiZYA" name="Profile">
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_HmwyMtrxEduW-vlXzvw90A" name="EMap_EJavaObject_EJavaObject">
+        <templateBinding xmi:id="_0mVaQNryEduJovxV1TmzsQ">
+          <signature xmi:type="uml:RedefinableTemplateSignature" href="Ecore.emx#_SeWke8X_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E?"/>
+          <parameterSubstitution xmi:id="_x9HDUNr0EduJovxV1TmzsQ">
+            <formal xmi:type="uml:ClassifierTemplateParameter" href="Ecore.emx#_SeWkfMX_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E/%3CClassifierTemplateParameter%3E?"/>
+            <actual xmi:type="uml:PrimitiveType" href="Ecore.emx#_SeWkccX_EduPJbEsMYXjUQ?Ecore/EJavaObject?"/>
+          </parameterSubstitution>
+          <parameterSubstitution xmi:id="_zYmw8Nr0EduJovxV1TmzsQ">
+            <formal xmi:type="uml:ClassifierTemplateParameter" href="Ecore.emx#_SeWkfsX_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E/%3CClassifierTemplateParameter%3E?"/>
+            <actual xmi:type="uml:PrimitiveType" href="Ecore.emx#_SeWkccX_EduPJbEsMYXjUQ?Ecore/EJavaObject?"/>
+          </parameterSubstitution>
+        </templateBinding>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_HmwyNtrxEduW-vlXzvw90A" name="EMap_EString_EString">
+        <templateBinding xmi:id="_2w0U0NryEduJovxV1TmzsQ">
+          <signature xmi:type="uml:RedefinableTemplateSignature" href="Ecore.emx#_SeWke8X_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E?"/>
+          <parameterSubstitution xmi:id="_HmwyONrxEduW-vlXzvw90A" actual="_aAyVgGvsEdqG6fBIPwe-mw">
+            <formal xmi:type="uml:ClassifierTemplateParameter" href="Ecore.emx#_SeWkfMX_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E/%3CClassifierTemplateParameter%3E?"/>
+          </parameterSubstitution>
+          <parameterSubstitution xmi:id="_HmwyOdrxEduW-vlXzvw90A" actual="_aAyVgGvsEdqG6fBIPwe-mw">
+            <formal xmi:type="uml:ClassifierTemplateParameter" href="Ecore.emx#_SeWkfsX_EduPJbEsMYXjUQ?Ecore/EMap/%3CRedefinableTemplateSignature%3E/%3CClassifierTemplateParameter%3E?"/>
+          </parameterSubstitution>
+        </templateBinding>
+      </nestedClassifier>
       <ownedOperation xmi:id="_2QKPIGwJEdq7X4sGURiZYA" name="create">
         <ownedComment xmi:id="_QbUdUOwjEdqYHf-imTcTdw" annotatedElement="_2QKPIGwJEdq7X4sGURiZYA">
           <body>Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile.</body>
@@ -1017,6 +1041,19 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bctjUWwgEdqHKKVoxc0dlA" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bctjUGwgEdqHKKVoxc0dlA"/>
         </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_M-uloNrsEduJovxV1TmzsQ" name="define">
+        <ownedComment xmi:id="_-vR1oNrxEduJovxV1TmzsQ" annotatedElement="_M-uloNrsEduJovxV1TmzsQ">
+          <body>Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_Rn2F0NrsEduJovxV1TmzsQ" name="" direction="return">
+          <type xmi:type="uml:Class" href="Ecore.emx#_SeWjPsX_EduPJbEsMYXjUQ?Ecore/EPackage?"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_cg7vQNrsEduJovxV1TmzsQ" name="options" type="_HmwyNtrxEduW-vlXzvw90A"/>
+        <ownedParameter xmi:id="_aE-DINrsEduJovxV1TmzsQ" name="diagnostics">
+          <type xmi:type="uml:PrimitiveType" href="Ecore.emx#_SeWkTcX_EduPJbEsMYXjUQ?Ecore/EDiagnosticChain?"/>
+        </ownedParameter>
+        <ownedParameter xmi:id="_dHhOINrsEduJovxV1TmzsQ" name="context" type="_HmwyMtrxEduW-vlXzvw90A"/>
       </ownedOperation>
       <ownedOperation xmi:id="_LLkQEGwgEdqHKKVoxc0dlA" name="getDefinition" isQuery="true">
         <ownedComment xmi:id="_nSm-IOwjEdqYHf-imTcTdw" annotatedElement="_LLkQEGwgEdqHKKVoxc0dlA">
@@ -1672,4 +1709,5 @@
   <Ecore:EAttribute xmi:id="_FWgNhMFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_c_GaAC7qEdutFcse1QllAQ"/>
   <Ecore:EAttribute xmi:id="_FWgNhcFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_ldWYsS7qEdutFcse1QllAQ"/>
   <Default:Documentation xmi:id="_wQPHYdlrEduDKPkA-0jJZg" base_Comment="_wQPHYNlrEduDKPkA-0jJZg"/>
+  <Default:Documentation xmi:id="_-vX8QNrxEduJovxV1TmzsQ" base_Comment="_-vR1oNrxEduJovxV1TmzsQ"/>
 </xmi:XMI>

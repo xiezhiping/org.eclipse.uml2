@@ -2024,6 +2024,11 @@
       </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/isDefined"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/define"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/define.1">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/define.1/options"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/define.1/diagnostics"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/define.1/context"/>
+      </genOperations>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getDefinition"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Profile/getDefinition.1">
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Profile/getDefinition.1/namedElement"/>

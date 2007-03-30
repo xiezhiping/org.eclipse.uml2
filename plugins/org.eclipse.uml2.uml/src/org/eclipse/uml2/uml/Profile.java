@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Profile.java,v 1.15 2007/03/30 15:26:01 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -273,6 +273,18 @@ public interface Profile
 	 * @generated
 	 */
 	EPackage define();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context.
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" optionsRequired="true" optionsOrdered="false" diagnosticsRequired="true" diagnosticsOrdered="false" contextRequired="true" contextOrdered="false"
+	 * @generated
+	 */
+	EPackage define(Map<String, String> options, DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
