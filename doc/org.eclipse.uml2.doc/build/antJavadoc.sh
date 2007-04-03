@@ -66,9 +66,9 @@ if [ $hasToken -gt 0  ]; then
 			mv $antScript.template.tmp $antScript.template;
 		fi
 	done
-else 
-	echo "[antJd] ERROR! "$currentPath"/javadoc.xml.template does not contain token @plugin@!";
-	exit 1;
+#else 
+#	echo "[antJd] ERROR! "$currentPath"/javadoc.xml.template does not contain token @plugin@!";
+#	exit 1;
 fi
 
 # Finds plugins in the Workspace:

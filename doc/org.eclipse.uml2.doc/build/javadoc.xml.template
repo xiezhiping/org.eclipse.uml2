@@ -72,8 +72,6 @@
 
 				<!-- If you add a @ plugin @ below, don't forget to update the antjavadoc.sh file -->
 
-				<group title="${groupTitle}" packages="@plugin@"/>
-
 				<group title="Ecore Code Generation"    packages="org.eclipse.uml2.codegen.ecore:org.eclipse.uml2.codegen.ecore.genmodel:org.eclipse.uml2.codegen.ecore.genmodel.generator:org.eclipse.uml2.codegen.ecore.genmodel.util"/>
 				<group title="Ecore Code Generation UI" packages="org.eclipse.uml2.codegen.ecore.genmodel.provider:org.eclipse.uml2.codegen.ecore.ui"/>
 
@@ -87,7 +85,7 @@
 				<group title="UML Importer for EMF"     packages="org.eclipse.uml2.uml.ecore.importer:org.eclipse.uml2.uml.ecore.importer.ui"/>
 				<group title="UML Exporter for EMF"     packages="org.eclipse.uml2.uml.ecore.exporter:org.eclipse.uml2.uml.ecore.exporter.ui"/>
 
-				<!-- If you add a @ plugin @ above, don't forget to update the antjavadoc.sh file -->
+				<!-- If you add a @ plugin @ above, don't forget to update the antjavadoc.sh file -->	
 
 				@packagesets@
 				

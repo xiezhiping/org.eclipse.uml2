@@ -7,7 +7,7 @@
 	<property name="plugin" value="org.eclipse.uml2"/>
 	<property name="docPlugin" value="org.eclipse.uml2.doc"/>
 
-	<property name="filesToInclude" value="META-INF/**,about.html,about.ini,about.mappings,about.properties,modeling32.png,plugin.xml,plugin.properties,toc.xml,topics_*.xml,index/**,images/**,tutorials/**,references/**"/>
+	<property name="filesToInclude" value="META-INF/**,about.html,about.ini,about.mappings,about.properties,modeling*.png,plugin.xml,plugin.properties,toc.xml,schema.css,topics_*.xml,index/**,images/**,tutorials/**,references/**"/>
 
 	<!-- Compiler settings. -->
 	<property name="javacFailOnError" value="false"/>
@@ -69,6 +69,8 @@
 
 		<!-- We don't have anything to index at this stage. -->
 		<!-- <antcall target="build.index"/> -->
+
+		<antcall target="convertSchemaToHtml"/>
 	</target>
 
 	<target name="build.index" depends="init" description="Builds search index for the plug-in" if="eclipse.running">
@@ -119,6 +121,11 @@
 		</delete>
 		<zip destfile="${plugin.destination}/${docPlugin}_${pluginVersion}.${forceContextQualifier}.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" update="false"/>
 		<delete dir="${temp.folder}"/>
+	</target>
+
+	<target name="convertSchemaToHtml">
+		<property name="schema-destination" value="./references/extension-points" />
+		<pde.convertSchemaToHTML manifest="../org.eclipse.uml2.uml/plugin.xml" destination="${schema-destination}" />
 	</target>
 
 </project>
