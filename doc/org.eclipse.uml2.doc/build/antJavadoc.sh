@@ -44,6 +44,23 @@ hasToken=`grep -c "@plugin@" $antScript".template"`;
 # Finds plugins in the Workspace:
 pluginDirs=`find $pluginPath -name "${pluginName}*" -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n | cut -f2 -d' '`; 
 
+function groupPackage
+{
+	plugin=$1
+	hasToken=`grep "@$plugin@" $currentPath/javadoc.xml.template`
+	if [ "x$hasToken" != "x"  ]; then
+		srcDir=$eclipseDir/plugins/$plugin/src
+		if [ -d $srcDir ]; then
+			packages=`find $srcDir -type f -name '*.java' -exec grep -e '^package .*;' {} \; | sed -e 's/^package *\(.*\);/\1/' | sort | uniq | xargs | sed -e 's/ /:/g'`
+			packages=`echo $packages | sed -e 's/\//\\\\\\//g' | sed -e 's/\./\\\\\./g'`
+		
+			sed -e "s/\@${plugin}\@/${packages}/g" $currentPath/javadoc.xml.template > javadoc.xml.template.tmp
+	
+			mv javadoc.xml.template.tmp javadoc.xml.template
+		fi
+	fi
+}
+
 if [ $hasToken -gt 0  ]; then
 	for pluginDir in $pluginDirs; do
 		srcDir=$pluginDir/src; 
@@ -67,8 +84,20 @@ if [ $hasToken -gt 0  ]; then
 		fi
 	done
 else 
-	echo "[antJd] ERROR! "$currentPath"/javadoc.xml.template does not contain token @plugin@!";
-	exit 1;
+	groupPackage org.eclipse.uml2.codegen.ecore
+	groupPackage org.eclipse.uml2.codegen.ecore.ui
+
+	groupPackage org.eclipse.uml2.common
+	groupPackage org.eclipse.uml2.common.edit
+
+	groupPackage org.eclipse.uml2.uml
+
+	groupPackage org.eclipse.uml2.uml.ecore.exporter
+	groupPackage org.eclipse.uml2.uml.ecore.importer
+
+	groupPackage org.eclipse.uml2.uml.edit
+
+	groupPackage org.eclipse.uml2.uml.editor
 fi
 
 # Finds plugins in the Workspace:
