@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.32 2007/03/30 15:25:55 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.33 2007/04/04 22:16:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -282,6 +282,10 @@ public class ProfileOperations
 			OPTION__PROCESS);
 		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
 			OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+			OPTION__IGNORE);
+		options
+			.put(UML2EcoreConverter.OPTION__OPERATION_BODIES, OPTION__IGNORE);
 
 		return profile.define(options, null, null);
 	}

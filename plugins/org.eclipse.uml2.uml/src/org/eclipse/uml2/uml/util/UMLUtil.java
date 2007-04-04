@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.55 2007/03/29 17:17:45 khussey Exp $
+ * $Id: UMLUtil.java,v 1.56 2007/04/04 22:16:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -66,6 +66,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
@@ -87,6 +88,8 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.OpaqueBehavior;
+import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.Parameter;
@@ -2054,6 +2057,20 @@ public class UMLUtil
 		 */
 		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where invariant constraints are
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__INVARIANT_CONSTRAINTS = "INVARIANT_CONSTRAINTS"; //$NON-NLS-1$
+
+		/**
+		 * The option for handling cases where operation bodies are encountered.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__OPERATION_BODIES = "OPERATION_BODIES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2124,6 +2141,18 @@ public class UMLUtil
 		 * encountered.
 		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 12;
+
+		/**
+		 * The diagnostic code for cases where invariant constraints are
+		 * encountered.
+		 */
+		public static final int INVARIANT_CONSTRAINT = DIAGNOSTIC_CODE_OFFSET + 13;
+
+		/**
+		 * The diagnostic code for cases where operation body details are
+		 * encountered.
+		 */
+		public static final int OPERATION_BODY = DIAGNOSTIC_CODE_OFFSET + 14;
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
 
@@ -2437,83 +2466,25 @@ public class UMLUtil
 
 		@Override
 		public Object caseConstraint(Constraint constraint) {
-			Namespace context = constraint.getContext();
+			Namespace constraintContext = constraint.getContext();
 
-			if (context != null) {
-				EModelElement eModelElement = (EModelElement) doSwitch(context);
+			if (constraintContext != null) {
+				EModelElement eModelElement = (EModelElement) doSwitch(constraintContext);
 
 				if (eModelElement != null) {
+
+					if (eModelElement instanceof EClassifier
+						&& options != null
+						&& !OPTION__IGNORE.equals(options
+							.get(OPTION__INVARIANT_CONSTRAINTS))) {
+
+						eModelElement = processInvariantConstraint(
+							(EClassifier) eModelElement, constraint, options,
+							diagnostics, context);
+					}
+
 					ValueSpecification specification = constraint
 						.getSpecification();
-
-					if (eModelElement instanceof EClassifier) {
-						String name = constraint.getName();
-
-						if (!isEmpty(name)) {
-
-							if (eModelElement instanceof EClass) {
-								EOperation eOperation = EcoreFactory.eINSTANCE
-									.createEOperation();
-								elementToEModelElementMap.put(constraint,
-									eOperation);
-
-								((EClass) eModelElement).getEOperations().add(
-									eOperation);
-
-								setName(eOperation, name, true);
-
-								eOperation
-									.setEType(EcorePackage.Literals.EBOOLEAN);
-
-								EParameter eParameter = EcoreFactory.eINSTANCE
-									.createEParameter();
-
-								eOperation.getEParameters().add(eParameter);
-
-								setName(eParameter, "diagnostics", false); //$NON-NLS-1$
-								eParameter
-									.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
-
-								eParameter = EcoreFactory.eINSTANCE
-									.createEParameter();
-
-								eOperation.getEParameters().add(eParameter);
-
-								setName(eParameter, "context", false); //$NON-NLS-1$
-
-								EGenericType eGenericType = EcoreFactory.eINSTANCE
-									.createEGenericType();
-								eGenericType
-									.setEClassifier(EcorePackage.Literals.EMAP);
-								EGenericType eGenericKeyType = EcoreFactory.eINSTANCE
-									.createEGenericType();
-								eGenericKeyType
-									.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
-								eGenericType.getETypeArguments().add(
-									eGenericKeyType);
-								EGenericType eGenericValueType = EcoreFactory.eINSTANCE
-									.createEGenericType();
-								eGenericValueType
-									.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
-								eGenericType.getETypeArguments().add(
-									eGenericValueType);
-
-								eParameter.setEGenericType(eGenericType);
-
-								defaultCase(constraint);
-
-								eModelElement = eOperation;
-							} else {
-
-								if (addConstraint(eModelElement, name) && DEBUG) {
-									System.out
-										.println(getQualifiedText(eModelElement)
-											+ " is constrained with '" //$NON-NLS-1$
-											+ name + "'"); //$NON-NLS-1$
-								}
-							}
-						}
-					}
 
 					if (specification != null) {
 						addDocumentation(eModelElement, specification
@@ -4911,6 +4882,201 @@ public class UMLUtil
 			}
 		}
 
+		protected void processOperationBody(EOperation eOperation,
+				EList<String> languages, EList<String> bodies,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			int languagesSize = languages.size();
+			int bodiesSize = bodies.size();
+
+			for (int i = 0; i < (languagesSize == bodiesSize
+				? bodiesSize
+				: (bodiesSize == 1
+					? 1
+					: 0)); i++) {
+
+				String language = i < languagesSize
+					? languages.get(i)
+					: LANGUAGE__OCL;
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__OPERATION_BODIES))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								OPERATION_BODY,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessOperationBody_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eOperation, language)),
+								new Object[]{eOperation}));
+
+					}
+
+					EcoreUtil.setAnnotation(eOperation, LANGUAGE__JAVA
+						.equals(language)
+						? EMF_GEN_MODEL_PACKAGE_NS_URI
+						: UML2_GEN_MODEL_PACKAGE_NS_URI,
+						ANNOTATION_DETAIL__BODY, bodies.get(i));
+				} else if (OPTION__REPORT.equals(options
+					.get(OPTION__OPERATION_BODIES))
+					&& diagnostics != null) {
+
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							OPERATION_BODY,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_UML2EcoreConverter_ReportOperationBody_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										eOperation, language)),
+							new Object[]{eOperation}));
+				}
+			}
+		}
+
+		protected void processOperationBodies(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			for (Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
+				.entrySet()) {
+
+				Element key = entry.getKey();
+				EModelElement value = entry.getValue();
+
+				if (key instanceof Operation && value instanceof EOperation) {
+					Operation operation = (Operation) key;
+					EOperation eOperation = (EOperation) value;
+
+					for (Behavior method : operation.getMethods()) {
+
+						if (method instanceof OpaqueBehavior) {
+							OpaqueBehavior body = (OpaqueBehavior) method;
+
+							processOperationBody(eOperation, body
+								.getLanguages(), body.getBodies(), options,
+								diagnostics, context);
+						}
+					}
+
+					Constraint bodyCondition = operation.getBodyCondition();
+
+					if (bodyCondition != null) {
+						ValueSpecification specification = bodyCondition
+							.getSpecification();
+
+						if (specification instanceof OpaqueExpression) {
+							OpaqueExpression body = (OpaqueExpression) specification;
+
+							processOperationBody(eOperation, body
+								.getLanguages(), body.getBodies(), options,
+								diagnostics, context);
+						}
+					}
+				}
+			}
+		}
+
+		protected EModelElement processInvariantConstraint(
+				EClassifier eClassifier, Constraint constraint,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			String name = constraint.getName();
+
+			if (!isEmpty(name)) {
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__INVARIANT_CONSTRAINTS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								INVARIANT_CONSTRAINT,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ProcessInvariantConstraint_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eClassifier, name)),
+								new Object[]{eClassifier}));
+					}
+
+					if (eClassifier instanceof EClass) {
+						EOperation eOperation = EcoreFactory.eINSTANCE
+							.createEOperation();
+						elementToEModelElementMap.put(constraint, eOperation);
+
+						((EClass) eClassifier).getEOperations().add(eOperation);
+
+						setName(eOperation, name, true);
+
+						eOperation.setEType(EcorePackage.Literals.EBOOLEAN);
+
+						EParameter eParameter = EcoreFactory.eINSTANCE
+							.createEParameter();
+
+						eOperation.getEParameters().add(eParameter);
+
+						setName(eParameter, "diagnostics", false); //$NON-NLS-1$
+						eParameter
+							.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
+
+						eParameter = EcoreFactory.eINSTANCE.createEParameter();
+
+						eOperation.getEParameters().add(eParameter);
+
+						setName(eParameter, "context", false); //$NON-NLS-1$
+
+						EGenericType eGenericType = EcoreFactory.eINSTANCE
+							.createEGenericType();
+						eGenericType.setEClassifier(EcorePackage.Literals.EMAP);
+						EGenericType eGenericKeyType = EcoreFactory.eINSTANCE
+							.createEGenericType();
+						eGenericKeyType
+							.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
+						eGenericType.getETypeArguments().add(eGenericKeyType);
+						EGenericType eGenericValueType = EcoreFactory.eINSTANCE
+							.createEGenericType();
+						eGenericValueType
+							.setEClassifier(EcorePackage.Literals.EJAVA_OBJECT);
+						eGenericType.getETypeArguments().add(eGenericValueType);
+
+						eParameter.setEGenericType(eGenericType);
+
+						defaultCase(constraint);
+
+						return eOperation;
+					} else {
+						addConstraint(eClassifier, name);
+					}
+				} else if (OPTION__REPORT.equals(options
+					.get(OPTION__INVARIANT_CONSTRAINTS))
+					&& diagnostics != null) {
+
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							INVARIANT_CONSTRAINT,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_UML2EcoreConverter_ReportInvariantConstraint_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context,
+										eClassifier, name)),
+							new Object[]{eClassifier}));
+				}
+			}
+
+			return eClassifier;
+		}
+
 		protected void processAnnotationDetails(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
@@ -5037,6 +5203,10 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__ANNOTATION_DETAILS))) {
 				processAnnotationDetails(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__OPERATION_BODIES))) {
+				processOperationBodies(options, diagnostics, context);
 			}
 		}
 
@@ -5297,6 +5467,13 @@ public class UMLUtil
 		 */
 		public static final String OPTION__ANNOTATION_DETAILS = "ANNOTATION_DETAILS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where body annotations are encountered.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__BODY_ANNOTATIONS = "BODY_ANNOTATIONS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
 		/**
@@ -5328,6 +5505,11 @@ public class UMLUtil
 		 * encountered.
 		 */
 		public static final int ANNOTATION_DETAILS = DIAGNOSTIC_CODE_OFFSET + 5;
+
+		/**
+		 * The diagnostic code for cases where body annotations are encountered.
+		 */
+		public static final int BODY_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 6;
 
 		protected final Map<EModelElement, Element> eModelElementToElementMap = new LinkedHashMap<EModelElement, Element>();
 
@@ -7045,13 +7227,101 @@ public class UMLUtil
 			}
 		}
 
+		protected void processBodyAnnotation(Operation operation,
+				String language, String body,
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			if (body != null) {
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__BODY_ANNOTATIONS))) {
+
+					if (diagnostics != null) {
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.INFO,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								BODY_ANNOTATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Ecore2UMLConverter_ProcessBodyAnnotation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											operation, language)),
+								new Object[]{operation}));
+					}
+
+					Constraint bodyCondition = operation.getBodyCondition();
+
+					if (bodyCondition == null) {
+						bodyCondition = operation.createBodyCondition(null);
+					}
+
+					ValueSpecification specification = bodyCondition
+						.getSpecification();
+					OpaqueExpression expression = specification instanceof OpaqueExpression
+						? (OpaqueExpression) specification
+						: (OpaqueExpression) bodyCondition.createSpecification(
+							null, null, UMLPackage.Literals.OPAQUE_EXPRESSION);
+
+					expression.getLanguages().add(language);
+					expression.getBodies().add(body);
+				} else if (OPTION__REPORT.equals(options
+					.get(OPTION__BODY_ANNOTATIONS))
+					&& diagnostics != null) {
+
+					diagnostics
+						.add(new BasicDiagnostic(
+							Diagnostic.WARNING,
+							UMLValidator.DIAGNOSTIC_SOURCE,
+							BODY_ANNOTATION,
+							UMLPlugin.INSTANCE
+								.getString(
+									"_UI_Ecore2UMLConverter_ReportBodyAnnotation_diagnostic", //$NON-NLS-1$
+									getMessageSubstitutions(context, operation,
+										language)), new Object[]{operation}));
+				}
+			}
+		}
+
+		protected void processBodyAnnotations(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+
+				Element element = entry.getValue();
+
+				if (element instanceof Operation) {
+					Operation operation = (Operation) element;
+					EModelElement eModelElement = entry.getKey();
+
+					processBodyAnnotation(operation, LANGUAGE__OCL, EcoreUtil
+						.getAnnotation(eModelElement,
+							UML2_GEN_MODEL_PACKAGE_NS_URI,
+							ANNOTATION_DETAIL__BODY), options, diagnostics,
+						context);
+
+					processBodyAnnotation(operation, LANGUAGE__JAVA, EcoreUtil
+						.getAnnotation(eModelElement,
+							EMF_GEN_MODEL_PACKAGE_NS_URI,
+							ANNOTATION_DETAIL__BODY), options, diagnostics,
+						context);
+				}
+			}
+		}
+
 		protected void processAnnotationDetails(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
 				final Map<Object, Object> context) {
 
-			for (final Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
 				.entrySet()) {
+
 				Element element = entry.getValue();
 
 				if (element != null) {
@@ -7060,47 +7330,53 @@ public class UMLUtil
 					for (EAnnotation eAnnotation : eModelElement
 						.getEAnnotations()) {
 
-						EMap<String, String> details = eAnnotation.getDetails();
+						String source = eAnnotation.getSource();
 
-						if (!details.isEmpty()) {
+						if (!EMF_GEN_MODEL_PACKAGE_NS_URI.equals(source)
+							&& !UML2_GEN_MODEL_PACKAGE_NS_URI.equals(source)) {
 
-							if (OPTION__PROCESS.equals(options
-								.get(OPTION__ANNOTATION_DETAILS))) {
+							EMap<String, String> details = eAnnotation
+								.getDetails();
 
-								if (diagnostics != null) {
+							if (!details.isEmpty()) {
+
+								if (OPTION__PROCESS.equals(options
+									.get(OPTION__ANNOTATION_DETAILS))) {
+
+									if (diagnostics != null) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UMLValidator.DIAGNOSTIC_SOURCE,
+												ANNOTATION_DETAILS,
+												UMLPlugin.INSTANCE
+													.getString(
+														"_UI_Ecore2UMLConverter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context, element,
+															source)),
+												new Object[]{element}));
+									}
+
+									getEAnnotation(element, source, true)
+										.getDetails().putAll(details.map());
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__ANNOTATION_DETAILS))
+									&& diagnostics != null) {
+
 									diagnostics
 										.add(new BasicDiagnostic(
-											Diagnostic.INFO,
+											Diagnostic.WARNING,
 											UMLValidator.DIAGNOSTIC_SOURCE,
 											ANNOTATION_DETAILS,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_Ecore2UMLConverter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+													"_UI_Ecore2UMLConverter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, element,
-														eAnnotation.getSource())),
+														source)),
 											new Object[]{element}));
 								}
-
-								getEAnnotation(element,
-									eAnnotation.getSource(), true).getDetails()
-									.putAll(details.map());
-							} else if (OPTION__REPORT.equals(options
-								.get(OPTION__ANNOTATION_DETAILS))
-								&& diagnostics != null) {
-
-								diagnostics
-									.add(new BasicDiagnostic(
-										Diagnostic.WARNING,
-										UMLValidator.DIAGNOSTIC_SOURCE,
-										ANNOTATION_DETAILS,
-										UMLPlugin.INSTANCE
-											.getString(
-												"_UI_Ecore2UMLConverter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
-												getMessageSubstitutions(
-													context, element,
-													eAnnotation.getSource())),
-										new Object[]{element}));
 							}
 						}
 					}
@@ -7135,6 +7411,10 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__ANNOTATION_DETAILS))) {
 				processAnnotationDetails(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__BODY_ANNOTATIONS))) {
+				processBodyAnnotations(options, diagnostics, context);
 			}
 		}
 
@@ -7191,6 +7471,8 @@ public class UMLUtil
 
 	protected static final String ANNOTATION__UNION = "union"; //$NON-NLS-1$
 
+	protected static final String ANNOTATION_DETAIL__BODY = "body"; //$NON-NLS-1$
+
 	protected static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
@@ -7226,6 +7508,14 @@ public class UMLUtil
 	protected static final String ENUMERATION__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION__VISIBILITY_KIND = "VisibilityKind"; //$NON-NLS-1$
+
+	protected static final String EMF_GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel"; //$NON-NLS-1$
+
+	protected static final String UML2_GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
+
+	protected static final String LANGUAGE__JAVA = "Java"; //$NON-NLS-1$
+
+	protected static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'EAttribute' stereotype.
@@ -8492,6 +8782,18 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS)) {
+
+			options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
+			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+				OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -8592,6 +8894,18 @@ public class UMLUtil
 
 		if (!options.containsKey(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
 			options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
+				OPTION__REPORT);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS)) {
+
+			options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
+			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
 				OPTION__REPORT);
 		}
 
