@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterDetailPage.java,v 1.5 2006/12/20 19:53:53 khussey Exp $
+ * $Id: UMLImporterDetailPage.java,v 1.6 2007/04/04 22:16:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -206,6 +206,18 @@ public class UMLImporterDetailPage
 			UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
+		addOptionControl(optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_InvariantConstraints_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
+		addOptionControl(optionsComposite,
+			UMLImporterPlugin.INSTANCE
+				.getString("_UI_OperationBodies_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
 
 		scrolledComposite.setContent(optionsComposite);
 		scrolledComposite.setExpandHorizontal(true);

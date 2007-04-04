@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.9 2007/02/09 16:35:35 khussey Exp $
+ * $Id: UMLImporter.java,v 1.10 2007/04/04 22:16:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -116,6 +116,9 @@ public class UMLImporter
 				|| UMLUtil.OPTION__PROCESS
 					.equals(options
 						.get(UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES))
+				|| UMLUtil.OPTION__PROCESS
+					.equals(options
+						.get(UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES))
 				|| UMLUtil.OPTION__PROCESS.equals(options
 					.get(UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES))) {
 
