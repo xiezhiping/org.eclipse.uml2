@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2EcoreConverterOptionsDialog.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
+ * $Id: UML2EcoreConverterOptionsDialog.java,v 1.5 2007/04/04 22:16:25 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.dialogs;
 
@@ -113,6 +113,20 @@ public class UML2EcoreConverterOptionsDialog
 			UMLExamplesUIPlugin.INSTANCE
 				.getString("_UI_AnnotationDetails_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
+
+		createOptionArea(parent,
+			UMLExamplesUIPlugin.INSTANCE
+				.getString("_UI_InvariantConstraints_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
+
+		createOptionArea(parent,
+			UMLExamplesUIPlugin.INSTANCE
+				.getString("_UI_OperationBodies_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, processChoiceLabel);
 	}
