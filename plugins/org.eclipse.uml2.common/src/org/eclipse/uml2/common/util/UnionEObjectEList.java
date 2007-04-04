@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnionEObjectEList.java,v 1.4 2006/12/14 15:47:32 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.5 2007/04/04 03:15:12 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -20,6 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 
+/**
+ * An unmodifiable list that represents a union of elements. This list is ideal
+ * for implementing derived features whose values are obtained from the values
+ * of other features in a non-trivial way.
+ */
 public class UnionEObjectEList<E>
 		extends EcoreEList.UnmodifiableEList<E> {
 

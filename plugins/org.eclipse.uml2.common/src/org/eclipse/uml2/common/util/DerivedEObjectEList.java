@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedEObjectEList.java,v 1.12 2006/12/21 20:26:15 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.13 2007/04/04 03:15:12 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -34,6 +34,10 @@ import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
+ * A list whose contents are derived (dynamically using a "smart" iterator) from
+ * the values of other features in a trivial way (e.g. by type). The default
+ * implementation does not support modification.
+ * 
  * @since 1.2
  */
 public class DerivedEObjectEList<E>
@@ -744,15 +748,41 @@ public class DerivedEObjectEList<E>
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Indicates whether all elements from the specified source feature are
+	 * included in this list.
+	 * 
+	 * @param feature
+	 *            A source feature.
+	 * @return <code>true</code> if the elements are included;
+	 *         <code>false</code> otherwise.
+	 */
 	protected boolean isIncluded(EStructuralFeature feature) {
 		return dataClass
 			.isAssignableFrom(feature.getEType().getInstanceClass());
 	}
 
+	/**
+	 * Indicates whether the specified element from a source feature is included
+	 * in this list.
+	 * 
+	 * @param object
+	 *            An element from a source feature.
+	 * @return <code>true</code> if the element is included;
+	 *         <code>false</code> otherwise.
+	 */
 	protected boolean isIncluded(Object object) {
 		return dataClass.isInstance(derive(object));
 	}
 
+	/**
+	 * Derives a value for this list from the specified element in a source
+	 * feature.
+	 * 
+	 * @param object
+	 *            An element from a source feature.
+	 * @return The "derived" value of the specified element.
+	 */
 	@SuppressWarnings("unchecked")
 	protected E derive(Object object) {
 		return (E) object;

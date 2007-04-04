@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubsetSupersetEObjectEList.java,v 1.5 2007/03/30 18:17:33 khussey Exp $
+ * $Id: SubsetSupersetEObjectEList.java,v 1.6 2007/04/04 03:15:12 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -24,6 +24,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectEList;
 
 /**
+ * A list that enforces subset/superset consraints. Specifically, when an
+ * element is added to a subset, it is also added to the associated superset(s),
+ * if not already present; when an element is removed from a superset, it is
+ * also removed from the associated subset(s), if present.
+ * 
  * @since 1.2
  */
 public class SubsetSupersetEObjectEList<E>
@@ -70,8 +75,14 @@ public class SubsetSupersetEObjectEList<E>
 		}
 	}
 
+	/**
+	 * An array of superset feature identifiers.
+	 */
 	protected final int[] supersetFeatureIDs;
 
+	/**
+	 * An array of subset feature identifiers.
+	 */
 	protected final int[] subsetFeatureIDs;
 
 	public SubsetSupersetEObjectEList(Class<?> dataClass,
@@ -83,11 +94,23 @@ public class SubsetSupersetEObjectEList<E>
 		this.subsetFeatureIDs = subsetFeatureIDs;
 	}
 
+	/**
+	 * Indicates whether subset constraints should be enforced.
+	 * 
+	 * @return <code>true</code> if subset constraints should be enforced;
+	 *         <code>false</code> otherwise.
+	 */
 	protected boolean enforceSubsetConstraints() {
 		Resource.Internal eInternalResource = owner.eInternalResource();
 		return eInternalResource == null || !eInternalResource.isLoading();
 	}
 
+	/**
+	 * Adds the specified element to the superset(s).
+	 * 
+	 * @param object
+	 *            The element to be added.
+	 */
 	protected void supersetAdd(Object object) {
 
 		if (supersetFeatureIDs != null && enforceSubsetConstraints()) {
@@ -109,10 +132,22 @@ public class SubsetSupersetEObjectEList<E>
 		}
 	}
 
+	/**
+	 * Indicates whether superset constraints should be enforced.
+	 * 
+	 * @return <code>true</code> if superset constraints should be enforced;
+	 *         <code>false</code> otherwise.
+	 */
 	protected boolean enforceSupersetConstraints() {
 		return true;
 	}
 
+	/**
+	 * Removes the specified element from the subset(s).
+	 * 
+	 * @param object
+	 *            The element to be removed.
+	 */
 	protected void subsetRemove(Object object) {
 
 		if (subsetFeatureIDs != null && enforceSupersetConstraints()) {
