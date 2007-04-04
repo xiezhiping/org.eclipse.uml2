@@ -23,6 +23,8 @@
     <details key="SUPER_CLASS_ORDER" value="PROCESS"/>
     <details key="UNION_PROPERTIES" value="PROCESS"/>
     <details key="DUPLICATE_OPERATION_INHERITANCE" value="PROCESS"/>
+    <details key="OPERATION_BODIES" value="IGNORE"/>
+    <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
   </genAnnotations>
   <foreignModel>UML.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
