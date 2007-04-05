@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporterPlugin.java,v 1.3 2006/12/20 19:53:52 khussey Exp $
+ * $Id: UMLExporterPlugin.java,v 1.4 2007/04/05 05:03:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.exporter.ExporterPlugin;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 /**
  * The <b>Plugin</b> for the UML2.UML.Ecore.Exporter library.
@@ -36,7 +37,8 @@ public final class UMLExporterPlugin
 	 * Creates the singleton instance.
 	 */
 	private UMLExporterPlugin() {
-		super(new ResourceLocator[]{ExporterPlugin.INSTANCE});
+		super(
+			new ResourceLocator[]{UMLPlugin.INSTANCE, ExporterPlugin.INSTANCE});
 	}
 
 	/*

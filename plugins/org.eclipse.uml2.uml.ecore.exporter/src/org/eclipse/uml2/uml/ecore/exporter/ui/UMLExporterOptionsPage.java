@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporterOptionsPage.java,v 1.4 2007/04/04 22:16:25 khussey Exp $
+ * $Id: UMLExporterOptionsPage.java,v 1.5 2007/04/05 05:03:55 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter.ui;
 
@@ -164,12 +164,17 @@ public class UMLExporterOptionsPage
 			UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
 				processChoiceLabel}, ignoreChoiceLabel);
-		addOptionControl(
-			optionsComposite,
+		addOptionControl(optionsComposite,
 			UMLExporterPlugin.INSTANCE.getString("_UI_BodyAnnotations_label"), //$NON-NLS-1$
-			UMLUtil.Ecore2UMLConverter.OPTION__BODY_ANNOTATIONS,
+			UMLUtil.Ecore2UMLConverter.OPTION__BODY_ANNOTATIONS, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			ignoreChoiceLabel);
+		addOptionControl(optionsComposite,
+			UMLExporterPlugin.INSTANCE
+				.getString("_UI_DocumentationAnnotations_label"), //$NON-NLS-1$
+			UMLUtil.Ecore2UMLConverter.OPTION__DOCUMENTATION_ANNOTATIONS,
 			new String[]{ignoreChoiceLabel, reportChoiceLabel,
-				processChoiceLabel}, ignoreChoiceLabel);
+				processChoiceLabel}, processChoiceLabel);
 
 		scrolledComposite.setContent(optionsComposite);
 		scrolledComposite.setExpandHorizontal(true);
