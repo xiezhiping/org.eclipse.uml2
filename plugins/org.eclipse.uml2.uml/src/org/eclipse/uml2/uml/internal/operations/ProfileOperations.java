@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.33 2007/04/04 22:16:27 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.34 2007/04/05 05:04:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -286,6 +286,7 @@ public class ProfileOperations
 			OPTION__IGNORE);
 		options
 			.put(UML2EcoreConverter.OPTION__OPERATION_BODIES, OPTION__IGNORE);
+		options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 
 		return profile.define(options, null, null);
 	}

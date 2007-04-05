@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.56 2007/04/04 22:16:27 khussey Exp $
+ * $Id: UMLUtil.java,v 1.57 2007/04/05 05:04:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2071,6 +2071,13 @@ public class UMLUtil
 		 */
 		public static final String OPTION__OPERATION_BODIES = "OPERATION_BODIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where comments are encountered.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__COMMENTS = "COMMENTS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2153,6 +2160,11 @@ public class UMLUtil
 		 * encountered.
 		 */
 		public static final int OPERATION_BODY = DIAGNOSTIC_CODE_OFFSET + 14;
+
+		/**
+		 * The diagnostic code for cases where comments are encountered.
+		 */
+		public static final int COMMENT = DIAGNOSTIC_CODE_OFFSET + 15;
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
 
@@ -2452,12 +2464,18 @@ public class UMLUtil
 
 		@Override
 		public Object caseComment(Comment comment) {
+			String body = comment.getBody();
 
-			for (Element annotatedElement : comment.getAnnotatedElements()) {
-				EModelElement eModelElement = (EModelElement) doSwitch(annotatedElement);
+			if (!isEmpty(body) && options != null
+				&& !OPTION__IGNORE.equals(options.get(OPTION__COMMENTS))) {
 
-				if (eModelElement != null) {
-					addDocumentation(eModelElement, comment.getBody());
+				for (Element annotatedElement : comment.getAnnotatedElements()) {
+					EModelElement eModelElement = (EModelElement) doSwitch(annotatedElement);
+
+					if (eModelElement != null) {
+						processComment(eModelElement, body, options,
+							diagnostics, context);
+					}
 				}
 			}
 
@@ -4882,6 +4900,35 @@ public class UMLUtil
 			}
 		}
 
+		protected void processComment(EModelElement eModelElement,
+				String comment, final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			if (OPTION__PROCESS.equals(options.get(OPTION__COMMENTS))) {
+
+				if (diagnostics != null) {
+					diagnostics.add(new BasicDiagnostic(Diagnostic.INFO,
+						UMLValidator.DIAGNOSTIC_SOURCE, COMMENT,
+						UMLPlugin.INSTANCE.getString(
+							"_UI_UML2EcoreConverter_ProcessComment_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, eModelElement)),
+						new Object[]{eModelElement}));
+				}
+
+				addDocumentation(eModelElement, comment);
+			} else if (OPTION__REPORT.equals(options.get(OPTION__COMMENTS))
+				&& diagnostics != null) {
+
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					UMLValidator.DIAGNOSTIC_SOURCE, COMMENT, UMLPlugin.INSTANCE
+						.getString(
+							"_UI_UML2EcoreConverter_ReportComment_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, eModelElement)),
+					new Object[]{eModelElement}));
+			}
+		}
+
 		protected void processOperationBody(EOperation eOperation,
 				EList<String> languages, EList<String> bodies,
 				Map<String, String> options, DiagnosticChain diagnostics,
@@ -5243,11 +5290,6 @@ public class UMLUtil
 			extends UML2EcoreConverter {
 
 		@Override
-		public Object caseComment(Comment comment) {
-			return null;
-		}
-
-		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 
 			if (packages.contains(package_)) {
@@ -5474,6 +5516,13 @@ public class UMLUtil
 		 */
 		public static final String OPTION__BODY_ANNOTATIONS = "BODY_ANNOTATIONS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where documentation annotations are
+		 * encountered. Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__DOCUMENTATION_ANNOTATIONS = "DOCUMENTATION_ANNOTATIONS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 3000;
 
 		/**
@@ -5510,6 +5559,12 @@ public class UMLUtil
 		 * The diagnostic code for cases where body annotations are encountered.
 		 */
 		public static final int BODY_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 6;
+
+		/**
+		 * The diagnostic code for cases where documentation annotations are
+		 * encountered.
+		 */
+		public static final int DOCUMENTATION_ANNOTATION = DIAGNOSTIC_CODE_OFFSET + 7;
 
 		protected final Map<EModelElement, Element> eModelElementToElementMap = new LinkedHashMap<EModelElement, Element>();
 
@@ -7314,6 +7369,62 @@ public class UMLUtil
 			}
 		}
 
+		protected void processDocumentationAnnotations(
+				final Map<String, String> options,
+				final DiagnosticChain diagnostics,
+				final Map<Object, Object> context) {
+
+			for (Map.Entry<EModelElement, Element> entry : eModelElementToElementMap
+				.entrySet()) {
+
+				Element element = entry.getValue();
+				EModelElement eModelElement = entry.getKey();
+
+				String documentation = EcoreUtil
+					.getDocumentation(eModelElement);
+
+				if (!isEmpty(documentation)) {
+
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__DOCUMENTATION_ANNOTATIONS))) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									DOCUMENTATION_ANNOTATION,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_Ecore2UMLConverter_ProcessDocumentationAnnotation_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												element)),
+									new Object[]{element}));
+						}
+
+						Comment comment = element.createOwnedComment();
+						comment.getAnnotatedElements().add(element);
+						comment.setBody(documentation);
+
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__DOCUMENTATION_ANNOTATIONS))
+						&& diagnostics != null) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								DOCUMENTATION_ANNOTATION,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_Ecore2UMLConverter_ReportDocumentationAnnotation_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											element)), new Object[]{element}));
+					}
+				}
+			}
+		}
+
 		protected void processAnnotationDetails(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
@@ -7415,6 +7526,12 @@ public class UMLUtil
 
 			if (!OPTION__IGNORE.equals(options.get(OPTION__BODY_ANNOTATIONS))) {
 				processBodyAnnotations(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__DOCUMENTATION_ANNOTATIONS))) {
+
+				processDocumentationAnnotations(options, diagnostics, context);
 			}
 		}
 
@@ -8794,6 +8911,10 @@ public class UMLUtil
 				OPTION__IGNORE);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
+			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
+		}
+
 		return convertToEcore(package_, options, null, null);
 	}
 
@@ -8909,6 +9030,10 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
+		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
+			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
 		@SuppressWarnings("unchecked")
 		Collection<EPackage> ePackages = (Collection<EPackage>) new UML2EcoreConverter()
 			.convert(Collections.singletonList(package_), options, diagnostics,
@@ -9009,6 +9134,22 @@ public class UMLUtil
 		if (!options.containsKey(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS)) {
 			options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
 				OPTION__IGNORE);
+		}
+
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS)) {
+
+			options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
+			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+				OPTION__IGNORE);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
+			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__IGNORE);
 		}
 
 		return convertToEcore(profile, options, null, null);
@@ -9114,9 +9255,26 @@ public class UMLUtil
 				OPTION__REPORT);
 		}
 
+		if (!options
+			.containsKey(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS)) {
+
+			options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__OPERATION_BODIES)) {
+			options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+				OPTION__REPORT);
+		}
+
+		if (!options.containsKey(UML2EcoreConverter.OPTION__COMMENTS)) {
+			options.put(UML2EcoreConverter.OPTION__COMMENTS, OPTION__REPORT);
+		}
+
 		@SuppressWarnings("unchecked")
 		Collection<EPackage> ePackages = (Collection<EPackage>) new Profile2EPackageConverter()
-			.convert(Collections.singleton(profile), options, null, null);
+			.convert(Collections.singleton(profile), options, diagnostics,
+				context);
 
 		for (TreeIterator<EObject> allContents = EcoreUtil
 			.getAllContents(ePackages); allContents.hasNext();) {
