@@ -8,17 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditorPlugin.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
+ * $Id: UMLEditorPlugin.java,v 1.4 2007/04/05 05:04:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+import org.eclipse.uml2.uml.UMLPlugin;
 
 /**
  * This is the central singleton for the UML editor plugin.
@@ -49,10 +47,11 @@ public final class UMLEditorPlugin
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UMLEditorPlugin() {
-		super(new ResourceLocator[]{EcoreEditPlugin.INSTANCE,});
+		super(new ResourceLocator[]{UMLPlugin.INSTANCE,
+			EcoreEditPlugin.INSTANCE});
 	}
 
 	/**

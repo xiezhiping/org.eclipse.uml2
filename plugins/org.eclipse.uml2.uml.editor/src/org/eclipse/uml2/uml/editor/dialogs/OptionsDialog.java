@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OptionsDialog.java,v 1.2 2007/01/05 21:48:51 khussey Exp $
+ * $Id: OptionsDialog.java,v 1.3 2007/04/05 05:04:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.dialogs;
 
@@ -54,13 +54,13 @@ public class OptionsDialog
 		this.options = options;
 
 		choiceLabels.put(discardChoiceLabel = UMLEditorPlugin.INSTANCE
-			.getString("_UI_DiscardChoice_label"), UMLUtil.OPTION__DISCARD); //$NON-NLS-1$
+			.getString("_UI_Discard_label"), UMLUtil.OPTION__DISCARD); //$NON-NLS-1$
 		choiceLabels.put(ignoreChoiceLabel = UMLEditorPlugin.INSTANCE
-			.getString("_UI_IgnoreChoice_label"), UMLUtil.OPTION__IGNORE); //$NON-NLS-1$
+			.getString("_UI_Ignore_label"), UMLUtil.OPTION__IGNORE); //$NON-NLS-1$
 		choiceLabels.put(processChoiceLabel = UMLEditorPlugin.INSTANCE
-			.getString("_UI_ProcessChoice_label"), UMLUtil.OPTION__PROCESS); //$NON-NLS-1$
+			.getString("_UI_Process_label"), UMLUtil.OPTION__PROCESS); //$NON-NLS-1$
 		choiceLabels.put(reportChoiceLabel = UMLEditorPlugin.INSTANCE
-			.getString("_UI_ReportChoice_label"), UMLUtil.OPTION__REPORT); //$NON-NLS-1$
+			.getString("_UI_Report_label"), UMLUtil.OPTION__REPORT); //$NON-NLS-1$
 	}
 
 	protected void createOptionArea(Composite parent, String text,
