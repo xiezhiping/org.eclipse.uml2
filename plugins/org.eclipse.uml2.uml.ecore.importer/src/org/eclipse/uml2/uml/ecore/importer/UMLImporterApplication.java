@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterApplication.java,v 1.4 2007/04/04 22:16:28 khussey Exp $
+ * $Id: UMLImporterApplication.java,v 1.5 2007/04/05 05:03:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -100,8 +100,8 @@ public class UMLImporterApplication
 		appendLine(result,"                               -SUBSETTING_PROPERTIES | -UNION_PROPERTIES | -DERIVED_FEATURES |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
-		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -OPERATION_BODIES |" ); //$NON-NLS-1$
-		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS >" ); //$NON-NLS-1$
+		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
+		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -OPERATION_BODIES | -COMMENTS >" ); //$NON-NLS-1$
 		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
 		appendLine(result, "<CACHE-ADAPTER-SUPPORT> ::= -cacheAdapterSupport"); //$NON-NLS-1$
 		appendLine(result, "<FACTORY-METHODS>       ::= -factoryMethods"); //$NON-NLS-1$
@@ -178,11 +178,13 @@ public class UMLImporterApplication
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER
 				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS
+				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES
 				.equalsIgnoreCase(strippedKey)
-			|| UMLUtil.UML2EcoreConverter.OPTION__ANNOTATION_DETAILS
+			|| UMLUtil.UML2EcoreConverter.OPTION__COMMENTS
 				.equalsIgnoreCase(strippedKey);
 	}
 
