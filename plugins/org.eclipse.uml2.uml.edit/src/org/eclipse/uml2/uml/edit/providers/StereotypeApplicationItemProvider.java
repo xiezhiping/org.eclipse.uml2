@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeApplicationItemProvider.java,v 1.6 2007/03/28 21:52:59 khussey Exp $
+ * $Id: StereotypeApplicationItemProvider.java,v 1.7 2007/04/05 02:36:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -42,7 +42,7 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
-class StereotypeApplicationItemProvider
+public class StereotypeApplicationItemProvider
 		extends ReflectiveItemProvider {
 
 	public StereotypeApplicationItemProvider(AdapterFactory adapterFactory) {

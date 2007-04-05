@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.6 2007/01/05 21:49:15 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.7 2007/04/05 02:36:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
 
-class UMLItemPropertyDescriptor
+public class UMLItemPropertyDescriptor
 		extends ItemPropertyDescriptor
 		implements IItemQualifiedTextProvider {
 
