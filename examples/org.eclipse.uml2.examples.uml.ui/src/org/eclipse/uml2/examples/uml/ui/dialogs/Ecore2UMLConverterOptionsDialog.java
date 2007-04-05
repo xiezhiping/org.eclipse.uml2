@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Ecore2UMLConverterOptionsDialog.java,v 1.5 2007/04/04 22:16:25 khussey Exp $
+ * $Id: Ecore2UMLConverterOptionsDialog.java,v 1.6 2007/04/05 05:04:48 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.dialogs;
 
@@ -73,5 +73,12 @@ public class Ecore2UMLConverterOptionsDialog
 			UMLUtil.Ecore2UMLConverter.OPTION__BODY_ANNOTATIONS, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			ignoreChoiceLabel);
+
+		createOptionArea(parent,
+			UMLExamplesUIPlugin.INSTANCE
+				.getString("_UI_DocumentationAnnotations_label"), //$NON-NLS-1$
+			UMLUtil.Ecore2UMLConverter.OPTION__DOCUMENTATION_ANNOTATIONS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel,
+				processChoiceLabel}, processChoiceLabel);
 	}
 }
