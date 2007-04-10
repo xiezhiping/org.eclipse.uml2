@@ -220,6 +220,9 @@
   <nested>
     <outputs href="UML.ecore#//Transition/trigger"/>
   </nested>
+  <nested>
+    <outputs href="UML.ecore#//ActivityGroup/subgroup"/>
+  </nested>
   <inputs href="../../org.eclipse.uml2/model/UML2.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>
