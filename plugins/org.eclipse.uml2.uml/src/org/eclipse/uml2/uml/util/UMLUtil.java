@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.57 2007/04/05 05:04:42 khussey Exp $
+ * $Id: UMLUtil.java,v 1.58 2007/04/17 21:15:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -8066,9 +8066,11 @@ public class UMLUtil
 					return ePackage.getEClassifier(type.getName());
 				}
 			}
+			
+			return null;
+		} else {
+			return UMLPackage.eINSTANCE.getEClassifier(type.getName());
 		}
-
-		return UMLPackage.eINSTANCE.getEClassifier(type.getName());
 	}
 
 	protected static EClassifier getEClassifier(
