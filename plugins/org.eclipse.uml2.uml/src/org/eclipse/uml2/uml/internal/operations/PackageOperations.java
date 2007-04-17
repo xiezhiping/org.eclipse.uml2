@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.32 2007/02/01 18:43:37 khussey Exp $
+ * $Id: PackageOperations.java,v 1.33 2007/04/17 19:39:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -525,6 +526,13 @@ public class PackageOperations
 								.eResource();
 
 							if (eResource != null) {
+
+								if (eResource instanceof XMLResource) {
+									XMLResource xmlResource = (XMLResource) eResource;
+									xmlResource.setID(copy, xmlResource
+										.getID(stereotypeApplication));
+								}
+
 								EList<EObject> contents = eResource
 									.getContents();
 
