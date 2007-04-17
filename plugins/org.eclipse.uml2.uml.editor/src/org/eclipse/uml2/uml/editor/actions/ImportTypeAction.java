@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ImportTypeAction.java,v 1.3 2007/01/05 21:48:51 khussey Exp $
+ * $Id: ImportTypeAction.java,v 1.4 2007/04/17 19:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -109,7 +109,11 @@ public class ImportTypeAction
 				Object object = allContents.next();
 
 				if (object instanceof Type && !members.contains(object)) {
-					choiceOfValues.add((Type) object);
+					Type type = (Type) object;
+
+					if (type.getNearestPackage().makesVisible(type)) {
+						choiceOfValues.add(type);
+					}
 				}
 			}
 		}
