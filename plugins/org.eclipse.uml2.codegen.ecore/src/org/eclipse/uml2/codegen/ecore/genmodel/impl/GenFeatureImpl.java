@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.23 2007/02/26 16:16:52 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.24 2007/04/24 21:48:57 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -675,6 +675,11 @@ public class GenFeatureImpl
 		} else {
 			super.initialize(eFeature);
 		}
+	}
+
+	@Override
+	public boolean isTested() {
+		return super.isTested() && !isUnion();
 	}
 
 } // GenFeatureImpl

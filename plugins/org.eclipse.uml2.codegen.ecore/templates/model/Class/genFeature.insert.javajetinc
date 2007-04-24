@@ -329,7 +329,6 @@
 	 */
 	public boolean isSet<%=genFeature.getAccessorName()%>()
 	{
-	//genFeature
   <%if (!genFeature.isUnsettable()) {%>
     <%if (UML2GenModelUtil.isRedefined(genClass, genFeature)) {%>
   		return false;

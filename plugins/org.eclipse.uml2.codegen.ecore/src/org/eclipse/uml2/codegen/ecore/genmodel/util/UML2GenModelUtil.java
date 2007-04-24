@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.18 2007/03/14 02:29:02 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.19 2007/04/24 21:48:58 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -671,8 +671,7 @@ public class UML2GenModelUtil {
 	}
 
 	public static boolean isTest(GenFeature genFeature) {
-		return (genFeature.isVolatile() || genFeature.isDerived())
-			&& !isUnion(genFeature);
+		return genFeature.isTested();
 	}
 
 	// GenOperation utilities
