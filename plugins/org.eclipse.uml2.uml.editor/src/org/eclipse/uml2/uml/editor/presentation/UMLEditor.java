@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.31 2007/03/30 15:26:07 khussey Exp $
+ * $Id: UMLEditor.java,v 1.32 2007/04/24 21:47:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -55,6 +55,7 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 
@@ -643,11 +644,20 @@ public class UMLEditor
 	 * This creates a model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public UMLEditor() {
 		super();
+		initializeEditingDomain();
+	}
 
+	/**
+	 * This sets up the editing domain for the model editor.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
 		List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
@@ -696,7 +706,8 @@ public class UMLEditor
 							setSelectionToViewer(mostRecentCommand
 								.getAffectedObjects());
 						}
-						if (propertySheetPage != null) {
+						if (propertySheetPage != null
+							&& !propertySheetPage.getControl().isDisposed()) {
 							propertySheetPage.refresh();
 						}
 					}
@@ -878,7 +889,8 @@ public class UMLEditor
 		contextMenu.addMenuListener(this);
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(contextMenu, viewer);
+		getSite().registerContextMenu(contextMenu,
+			new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[]{LocalTransfer.getInstance()};
