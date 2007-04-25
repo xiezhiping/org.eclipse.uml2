@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -118,7 +118,6 @@ public class ConstraintImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -209,7 +208,6 @@ public class ConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -219,7 +217,6 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -237,7 +234,6 @@ public class ConstraintImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONSTRAINT__SPECIFICATION, newSpecification,
 				newSpecification));
-
 	}
 
 	/**
@@ -287,7 +283,6 @@ public class ConstraintImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContext,
 			UMLPackage.CONSTRAINT__CONTEXT, msgs);
-
 		return msgs;
 	}
 
@@ -297,7 +292,6 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public void setContext(Namespace newContext) {
-
 		if (newContext != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
 			if (EcoreUtil.isAncestor(this, newContext))
@@ -315,7 +309,6 @@ public class ConstraintImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONSTRAINT__CONTEXT, newContext, newContext));
-
 	}
 
 	/**
@@ -707,7 +700,6 @@ public class ConstraintImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Namespace context = basicGetContext();
 		if (context != null) {
 			return context;

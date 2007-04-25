@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceiveOperationEventImpl.java,v 1.8 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ReceiveOperationEventImpl.java,v 1.9 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,14 +110,12 @@ public class ReceiveOperationEventImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-
 		Operation oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.RECEIVE_OPERATION_EVENT__OPERATION, oldOperation,
 				operation));
-
 	}
 
 	/**

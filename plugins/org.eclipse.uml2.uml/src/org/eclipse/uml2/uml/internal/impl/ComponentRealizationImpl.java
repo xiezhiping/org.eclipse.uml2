@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.18 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.19 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -191,7 +191,6 @@ public class ComponentRealizationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newAbstraction,
 			UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newAbstraction != null) {
@@ -210,7 +209,6 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setAbstraction(Component newAbstraction) {
-
 		if (newAbstraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
@@ -229,7 +227,6 @@ public class ComponentRealizationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMPONENT_REALIZATION__ABSTRACTION, newAbstraction,
 				newAbstraction));
-
 	}
 
 	/**
@@ -266,14 +263,12 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public void setRealizingClassifier(Classifier newRealizingClassifier) {
-
 		Classifier oldRealizingClassifier = realizingClassifier;
 		realizingClassifier = newRealizingClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
 				oldRealizingClassifier, realizingClassifier));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newRealizingClassifier != null) {
@@ -623,7 +618,6 @@ public class ComponentRealizationImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		Component abstraction = basicGetAbstraction();
 		if (abstraction != null) {
 			return abstraction;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealizationImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
+ * $Id: InterfaceRealizationImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -179,14 +179,12 @@ public class InterfaceRealizationImpl
 	 * @generated
 	 */
 	public void setContract(Interface newContract) {
-
 		Interface oldContract = contract;
 		contract = newContract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERFACE_REALIZATION__CONTRACT, oldContract,
 				contract));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newContract != null) {
@@ -230,7 +228,6 @@ public class InterfaceRealizationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newImplementingClassifier,
 			UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newImplementingClassifier != null) {
@@ -250,7 +247,6 @@ public class InterfaceRealizationImpl
 	 */
 	public void setImplementingClassifier(
 			BehavioredClassifier newImplementingClassifier) {
-
 		if (newImplementingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER && newImplementingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newImplementingClassifier))
@@ -273,7 +269,6 @@ public class InterfaceRealizationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER,
 				newImplementingClassifier, newImplementingClassifier));
-
 	}
 
 	/**

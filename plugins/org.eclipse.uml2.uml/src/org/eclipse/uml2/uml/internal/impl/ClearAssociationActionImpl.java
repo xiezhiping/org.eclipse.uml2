@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClearAssociationActionImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ClearAssociationActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,6 @@ public class ClearAssociationActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -198,7 +197,6 @@ public class ClearAssociationActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -208,7 +206,6 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -228,7 +225,6 @@ public class ClearAssociationActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLEAR_ASSOCIATION_ACTION__OBJECT, newObject,
 				newObject));
-
 	}
 
 	/**
@@ -289,14 +285,12 @@ public class ClearAssociationActionImpl
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
-
 		Association oldAssociation = association;
 		association = newAssociation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLEAR_ASSOCIATION_ACTION__ASSOCIATION,
 				oldAssociation, association));
-
 	}
 
 	/**

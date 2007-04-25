@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecificationImpl.java,v 1.20 2007/02/26 16:17:57 khussey Exp $
+ * $Id: OccurrenceSpecificationImpl.java,v 1.21 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -182,13 +182,11 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setEvent(Event newEvent) {
-
 		Event oldEvent = event;
 		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OCCURRENCE_SPECIFICATION__EVENT, oldEvent, event));
-
 	}
 
 	/**
@@ -280,7 +278,6 @@ public class OccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		//genFeature
 		return covereds != null && !covereds.isEmpty();
 	}
 

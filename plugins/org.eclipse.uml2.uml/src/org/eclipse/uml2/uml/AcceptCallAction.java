@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptCallAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
+ * $Id: AcceptCallAction.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,6 +82,8 @@ public interface AcceptCallAction
 	 * <!-- begin-model-doc -->
 	 * The result pins must match the in and inout parameters of the operation specified by the trigger event in number, type, and order.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -95,6 +97,8 @@ public interface AcceptCallAction
 	 * <!-- begin-model-doc -->
 	 * The trigger event must be a CallEvent.
 	 * trigger.event.oclIsKindOf(CallEvent)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -108,6 +112,8 @@ public interface AcceptCallAction
 	 * <!-- begin-model-doc -->
 	 * isUnmrashall must be true for an AcceptCallAction.
 	 * isUnmarshall = true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

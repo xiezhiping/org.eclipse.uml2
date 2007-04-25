@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartitionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -188,7 +188,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList<ActivityGroup> getSubgroups() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -216,7 +215,6 @@ public class ActivityPartitionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -244,7 +242,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList<ActivityNode> getContainedNodes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -304,7 +301,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public EList<ActivityEdge> getContainedEdges() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -389,7 +385,6 @@ public class ActivityPartitionImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInActivity,
 			UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-
 		return msgs;
 	}
 
@@ -399,7 +394,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setInActivity(Activity newInActivity) {
-
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
@@ -418,7 +412,6 @@ public class ActivityPartitionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, newInActivity,
 				newInActivity));
-
 	}
 
 	/**
@@ -436,7 +429,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setIsDimension(boolean newIsDimension) {
-
 		boolean oldIsDimension = (eFlags & IS_DIMENSION_EFLAG) != 0;
 		if (newIsDimension)
 			eFlags |= IS_DIMENSION_EFLAG;
@@ -446,7 +438,6 @@ public class ActivityPartitionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION, oldIsDimension,
 				newIsDimension));
-
 	}
 
 	/**
@@ -464,7 +455,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setIsExternal(boolean newIsExternal) {
-
 		boolean oldIsExternal = (eFlags & IS_EXTERNAL_EFLAG) != 0;
 		if (newIsExternal)
 			eFlags |= IS_EXTERNAL_EFLAG;
@@ -474,7 +464,6 @@ public class ActivityPartitionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL, oldIsExternal,
 				newIsExternal));
-
 	}
 
 	/**
@@ -646,7 +635,6 @@ public class ActivityPartitionImpl
 			ActivityPartition newSuperPartition, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSuperPartition,
 			UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION, msgs);
-
 		return msgs;
 	}
 
@@ -656,7 +644,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
-
 		if (newSuperPartition != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperPartition))
@@ -676,7 +663,6 @@ public class ActivityPartitionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION,
 				newSuperPartition, newSuperPartition));
-
 	}
 
 	/**
@@ -713,14 +699,12 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public void setRepresents(Element newRepresents) {
-
 		Element oldRepresents = represents;
 		represents = newRepresents;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_PARTITION__REPRESENTS, oldRepresents,
 				represents));
-
 	}
 
 	/**
@@ -1268,7 +1252,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-
 		ActivityPartition superPartition = basicGetSuperPartition();
 		if (superPartition != null) {
 			return superPartition;
@@ -1317,7 +1300,6 @@ public class ActivityPartitionImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		if (isSetSuperGroup()) {
 			return basicGetSuperGroup();
 		}

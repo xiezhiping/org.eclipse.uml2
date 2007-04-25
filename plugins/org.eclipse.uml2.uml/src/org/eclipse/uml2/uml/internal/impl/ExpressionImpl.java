@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpressionImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ExpressionImpl.java,v 1.22 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,7 +127,6 @@ public class ExpressionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -163,7 +162,6 @@ public class ExpressionImpl
 	 * @generated
 	 */
 	public void setSymbol(String newSymbol) {
-
 		String oldSymbol = symbol;
 		symbol = newSymbol;
 		boolean oldSymbolESet = (eFlags & SYMBOL_ESETFLAG) != 0;
@@ -172,7 +170,6 @@ public class ExpressionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXPRESSION__SYMBOL, oldSymbol, symbol,
 				!oldSymbolESet));
-
 	}
 
 	/**

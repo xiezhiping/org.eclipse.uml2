@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.19 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.20 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -225,7 +225,6 @@ public class ConnectionPointReferenceImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newState,
 			UMLPackage.CONNECTION_POINT_REFERENCE__STATE, msgs);
-
 		return msgs;
 	}
 
@@ -235,7 +234,6 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
-
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
@@ -254,7 +252,6 @@ public class ConnectionPointReferenceImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONNECTION_POINT_REFERENCE__STATE, newState,
 				newState));
-
 	}
 
 	/**
@@ -584,7 +581,6 @@ public class ConnectionPointReferenceImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		State state = basicGetState();
 		if (state != null) {
 			return state;

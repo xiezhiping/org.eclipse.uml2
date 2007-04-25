@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationshipImpl.java,v 1.13 2007/01/31 21:21:16 khussey Exp $
+ * $Id: DirectedRelationshipImpl.java,v 1.14 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -68,7 +68,6 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -95,7 +94,6 @@ public abstract class DirectedRelationshipImpl
 	 */
 	@Override
 	public EList<Element> getRelatedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -124,7 +122,6 @@ public abstract class DirectedRelationshipImpl
 	 * @generated
 	 */
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

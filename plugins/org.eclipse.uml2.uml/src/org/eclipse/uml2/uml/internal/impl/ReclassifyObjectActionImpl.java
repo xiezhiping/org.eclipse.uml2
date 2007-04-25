@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ReclassifyObjectActionImpl.java,v 1.26 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -153,7 +153,6 @@ public class ReclassifyObjectActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -188,7 +187,6 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
-
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -198,7 +196,6 @@ public class ReclassifyObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.RECLASSIFY_OBJECT_ACTION__IS_REPLACE_ALL,
 				oldIsReplaceAll, newIsReplaceAll));
-
 	}
 
 	/**
@@ -343,7 +340,6 @@ public class ReclassifyObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -353,7 +349,6 @@ public class ReclassifyObjectActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -373,7 +368,6 @@ public class ReclassifyObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.RECLASSIFY_OBJECT_ACTION__OBJECT, newObject,
 				newObject));
-
 	}
 
 	/**

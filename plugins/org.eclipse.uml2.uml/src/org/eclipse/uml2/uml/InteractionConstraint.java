@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraint.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
+ * $Id: InteractionConstraint.java,v 1.8 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -124,6 +124,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * The dynamic variables that take part in the constraint must be owned by the ConnectableElement corresponding to the covered Lifeline.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -137,6 +139,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * The constraint may contain references to global data or write-once data.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -150,6 +154,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * Minint/maxint can only be present if the InteractionConstraint is associated with the operand of a loop CombinedFragment.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -163,6 +169,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * If minint is specified, then the expression must evaluate to a non-negative integer.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -176,6 +184,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * If maxint is specified, then the expression must evaluate to a positive integer.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -189,6 +199,8 @@ public interface InteractionConstraint
 	 * <!-- begin-model-doc -->
 	 * If maxint is specified, then minint must be specified and the evaluation of maxint must be >= the evaluation of minint
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

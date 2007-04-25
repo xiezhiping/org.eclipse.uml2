@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.20 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,6 @@ public class TemplateBindingImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -143,7 +142,6 @@ public class TemplateBindingImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -171,7 +169,6 @@ public class TemplateBindingImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -225,13 +222,11 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-
 		TemplateSignature oldSignature = signature;
 		signature = newSignature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_BINDING__SIGNATURE, oldSignature, signature));
-
 	}
 
 	/**
@@ -291,7 +286,6 @@ public class TemplateBindingImpl
 			TemplateableElement newBoundElement, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newBoundElement,
 			UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, msgs);
-
 		return msgs;
 	}
 
@@ -301,7 +295,6 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
-
 		if (newBoundElement != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, newBoundElement))
@@ -321,7 +314,6 @@ public class TemplateBindingImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT, newBoundElement,
 				newBoundElement));
-
 	}
 
 	/**
@@ -609,7 +601,6 @@ public class TemplateBindingImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateableElement boundElement = basicGetBoundElement();
 		if (boundElement != null) {
 			return boundElement;

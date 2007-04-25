@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpression.java,v 1.12 2006/12/14 15:49:27 khussey Exp $
+ * $Id: OpaqueExpression.java,v 1.13 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -167,6 +167,8 @@ public interface OpaqueExpression
 	 * <!-- begin-model-doc -->
 	 * If the language attribute is not empty, then the size of the body and language arrays must be the same.
 	 * language->notEmpty() implies (body->size() = language->size())
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -181,6 +183,8 @@ public interface OpaqueExpression
 	 * The behavior may only have return result parameters.
 	 * self.behavior.notEmpty() implies
 	 *   self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -195,6 +199,8 @@ public interface OpaqueExpression
 	 * The behavior must have exactly one return result parameter.
 	 * self.behavior.notEmpty() implies
 	 *   self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

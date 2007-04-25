@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.17 2007/02/26 16:17:55 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -99,7 +99,6 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList<Element> getRelatedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -127,7 +126,6 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -153,7 +151,6 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -206,13 +203,11 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setAddition(UseCase newAddition) {
-
 		UseCase oldAddition = addition;
 		addition = newAddition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INCLUDE__ADDITION, oldAddition, addition));
-
 	}
 
 	/**
@@ -246,7 +241,6 @@ public class IncludeImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newIncludingCase,
 			UMLPackage.INCLUDE__INCLUDING_CASE, msgs);
-
 		return msgs;
 	}
 
@@ -256,7 +250,6 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
-
 		if (newIncludingCase != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, newIncludingCase))
@@ -275,7 +268,6 @@ public class IncludeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INCLUDE__INCLUDING_CASE, newIncludingCase,
 				newIncludingCase));
-
 	}
 
 	/**

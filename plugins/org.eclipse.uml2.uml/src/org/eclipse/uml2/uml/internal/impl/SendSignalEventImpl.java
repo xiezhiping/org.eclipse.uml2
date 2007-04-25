@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalEventImpl.java,v 1.13 2007/02/26 16:17:56 khussey Exp $
+ * $Id: SendSignalEventImpl.java,v 1.14 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,13 +109,11 @@ public class SendSignalEventImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SEND_SIGNAL_EVENT__SIGNAL, oldSignal, signal));
-
 	}
 
 	/**

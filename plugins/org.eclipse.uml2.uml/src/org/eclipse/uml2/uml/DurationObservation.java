@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservation.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
+ * $Id: DurationObservation.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -104,6 +104,8 @@ public interface DurationObservation
 	 * The multiplicity of firstEvent must be 2 if the multiplicity of event is 2. Otherwise the multiplicity of firstEvent is 0.
 	 * if (event->size() = 2)
 	 *   then (firstEvent->size() = 2) else (firstEvent->size() = 0)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

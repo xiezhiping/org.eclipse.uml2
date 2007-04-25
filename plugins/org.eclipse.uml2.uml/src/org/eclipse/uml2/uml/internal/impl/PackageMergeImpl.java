@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMergeImpl.java,v 1.16 2007/02/26 16:17:55 khussey Exp $
+ * $Id: PackageMergeImpl.java,v 1.17 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,7 +94,6 @@ public class PackageMergeImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -121,7 +120,6 @@ public class PackageMergeImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -175,14 +173,12 @@ public class PackageMergeImpl
 	 * @generated
 	 */
 	public void setMergedPackage(org.eclipse.uml2.uml.Package newMergedPackage) {
-
 		org.eclipse.uml2.uml.Package oldMergedPackage = mergedPackage;
 		mergedPackage = newMergedPackage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_MERGE__MERGED_PACKAGE, oldMergedPackage,
 				mergedPackage));
-
 	}
 
 	/**
@@ -217,7 +213,6 @@ public class PackageMergeImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newReceivingPackage,
 			UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE, msgs);
-
 		return msgs;
 	}
 
@@ -228,7 +223,6 @@ public class PackageMergeImpl
 	 */
 	public void setReceivingPackage(
 			org.eclipse.uml2.uml.Package newReceivingPackage) {
-
 		if (newReceivingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE && newReceivingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newReceivingPackage))
@@ -248,7 +242,6 @@ public class PackageMergeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_MERGE__RECEIVING_PACKAGE,
 				newReceivingPackage, newReceivingPackage));
-
 	}
 
 	/**
@@ -492,7 +485,6 @@ public class PackageMergeImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		org.eclipse.uml2.uml.Package receivingPackage = basicGetReceivingPackage();
 		if (receivingPackage != null) {
 			return receivingPackage;

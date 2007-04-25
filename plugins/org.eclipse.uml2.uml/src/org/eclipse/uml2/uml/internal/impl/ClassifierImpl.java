@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierImpl.java,v 1.41 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.42 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -305,7 +305,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -366,7 +365,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Classifier> getRedefinitionContextsGen() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -469,7 +467,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -478,7 +475,6 @@ public abstract class ClassifierImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**
@@ -540,7 +536,6 @@ public abstract class ClassifierImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -576,7 +571,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -594,7 +588,6 @@ public abstract class ClassifierImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__TEMPLATE_PARAMETER,
 				newTemplateParameter, newTemplateParameter));
-
 	}
 
 	/**
@@ -603,7 +596,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		//genFeature
 		return templateParameter != null;
 	}
 
@@ -638,7 +630,6 @@ public abstract class ClassifierImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -657,7 +648,6 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -680,7 +670,6 @@ public abstract class ClassifierImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -700,7 +689,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -708,7 +696,6 @@ public abstract class ClassifierImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__VISIBILITY, oldVisibility, visibility));
-
 	}
 
 	/**
@@ -718,7 +705,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		//genFeature
 		return visibility != VISIBILITY_EDEFAULT;
 	}
 
@@ -791,7 +777,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -926,7 +911,6 @@ public abstract class ClassifierImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -951,7 +935,6 @@ public abstract class ClassifierImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -971,7 +954,6 @@ public abstract class ClassifierImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**
@@ -1003,7 +985,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedTemplateSignature() {
-		//genFeature
 		return ownedTemplateSignature != null;
 	}
 
@@ -1013,7 +994,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1067,7 +1047,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public EList<NamedElement> getMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1094,7 +1073,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1121,7 +1099,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Property> getAttributes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1258,7 +1235,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;
@@ -1268,7 +1244,6 @@ public abstract class ClassifierImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__IS_ABSTRACT, oldIsAbstract,
 				newIsAbstract));
-
 	}
 
 	/**
@@ -1332,7 +1307,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<NamedElement> getInheritedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -1424,7 +1398,6 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public EList<Classifier> getGenerals() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -1654,14 +1627,12 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public void setRepresentation(CollaborationUse newRepresentation) {
-
 		CollaborationUse oldRepresentation = representation;
 		representation = newRepresentation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER__REPRESENTATION, oldRepresentation,
 				representation));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newRepresentation != null) {
@@ -2841,7 +2812,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2867,7 +2837,6 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		if (package_ != null) {
 			return package_;

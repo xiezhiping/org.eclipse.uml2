@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementImpl.java,v 1.28 2007/03/27 03:39:50 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.29 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -190,7 +190,6 @@ public abstract class NamedElementImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -226,7 +225,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setName(String newName) {
-
 		String oldName = name;
 		name = newName;
 		boolean oldNameESet = (eFlags & NAME_ESETFLAG) != 0;
@@ -234,7 +232,6 @@ public abstract class NamedElementImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.NAMED_ELEMENT__NAME, oldName, name, !oldNameESet));
-
 	}
 
 	/**
@@ -277,7 +274,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -288,7 +284,6 @@ public abstract class NamedElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.NAMED_ELEMENT__VISIBILITY, oldVisibility,
 				visibility, !oldVisibilityESet));
-
 	}
 
 	/**
@@ -322,7 +317,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public String getQualifiedName() {
-
 		return NamedElementOperations.getQualifiedName(this);
 	}
 
@@ -427,7 +421,6 @@ public abstract class NamedElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -437,7 +430,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setNameExpression(StringExpression newNameExpression) {
-
 		if (newNameExpression != nameExpression) {
 			NotificationChain msgs = null;
 			if (nameExpression != null)
@@ -455,7 +447,6 @@ public abstract class NamedElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION, newNameExpression,
 				newNameExpression));
-
 	}
 
 	/**
@@ -819,7 +810,6 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public Namespace basicGetNamespaceGen() {
-
 		return null;
 	}
 
@@ -875,7 +865,6 @@ public abstract class NamedElementImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		if (isSetNamespace()) {
 			return basicGetNamespace();
 		}

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetImpl.java,v 1.16 2007/02/26 16:17:57 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.17 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -157,7 +157,6 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setIsCovering(boolean newIsCovering) {
-
 		boolean oldIsCovering = (eFlags & IS_COVERING_EFLAG) != 0;
 		if (newIsCovering)
 			eFlags |= IS_COVERING_EFLAG;
@@ -167,7 +166,6 @@ public class GeneralizationSetImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_COVERING, oldIsCovering,
 				newIsCovering));
-
 	}
 
 	/**
@@ -185,7 +183,6 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setIsDisjoint(boolean newIsDisjoint) {
-
 		boolean oldIsDisjoint = (eFlags & IS_DISJOINT_EFLAG) != 0;
 		if (newIsDisjoint)
 			eFlags |= IS_DISJOINT_EFLAG;
@@ -195,7 +192,6 @@ public class GeneralizationSetImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__IS_DISJOINT, oldIsDisjoint,
 				newIsDisjoint));
-
 	}
 
 	/**
@@ -244,7 +240,6 @@ public class GeneralizationSetImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -254,7 +249,6 @@ public class GeneralizationSetImpl
 	 * @generated
 	 */
 	public void setPowertype(Classifier newPowertype) {
-
 		if (newPowertype != powertype) {
 			NotificationChain msgs = null;
 			if (powertype != null)
@@ -272,7 +266,6 @@ public class GeneralizationSetImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION_SET__POWERTYPE, newPowertype,
 				newPowertype));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.25 2007/02/26 16:17:59 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,6 @@ public class CallOperationActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -177,14 +176,12 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-
 		Operation oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CALL_OPERATION_ACTION__OPERATION, oldOperation,
 				operation));
-
 	}
 
 	/**
@@ -243,7 +240,6 @@ public class CallOperationActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -253,7 +249,6 @@ public class CallOperationActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
-
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -270,7 +265,6 @@ public class CallOperationActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CALL_OPERATION_ACTION__TARGET, newTarget, newTarget));
-
 	}
 
 	/**

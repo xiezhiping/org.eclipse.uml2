@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceAction.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ReduceAction.java,v 1.8 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -188,6 +188,8 @@ public interface ReduceAction
 	 * <!-- begin-model-doc -->
 	 * The type of the input must be a collection.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -201,6 +203,8 @@ public interface ReduceAction
 	 * <!-- begin-model-doc -->
 	 * The type of the output must be compatible with the type of the output of the reducer behavior.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -214,6 +218,8 @@ public interface ReduceAction
 	 * <!-- begin-model-doc -->
 	 * The reducer behavior must have two input parameters and one output parameter, of types compatible with the types of elements of the input collection.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

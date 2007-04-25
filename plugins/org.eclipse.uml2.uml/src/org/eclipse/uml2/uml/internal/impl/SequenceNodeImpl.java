@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeImpl.java,v 1.22 2007/02/26 16:17:56 khussey Exp $
+ * $Id: SequenceNodeImpl.java,v 1.23 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -152,7 +152,6 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public boolean isSetExecutableNodes() {
-		//genFeature
 		return executableNodes != null && !executableNodes.isEmpty();
 	}
 
@@ -686,7 +685,6 @@ public class SequenceNodeImpl
 	 * @generated
 	 */
 	public boolean isSetNodes() {
-		//genFeature
 		return false;
 	}
 

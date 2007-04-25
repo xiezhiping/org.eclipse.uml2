@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartClassifierBehaviorActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
+ * $Id: StartClassifierBehaviorActionImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,7 +108,6 @@ public class StartClassifierBehaviorActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -187,7 +186,6 @@ public class StartClassifierBehaviorActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -197,7 +195,6 @@ public class StartClassifierBehaviorActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -217,7 +214,6 @@ public class StartClassifierBehaviorActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.START_CLASSIFIER_BEHAVIOR_ACTION__OBJECT, newObject,
 				newObject));
-
 	}
 
 	/**

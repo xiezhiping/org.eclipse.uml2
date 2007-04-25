@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.20 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -164,7 +164,6 @@ public abstract class ConnectableElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -200,7 +199,6 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -218,7 +216,6 @@ public abstract class ConnectableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER,
 				newTemplateParameter, newTemplateParameter));
-
 	}
 
 	/**
@@ -227,7 +224,6 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		//genFeature
 		return templateParameter != null;
 	}
 
@@ -262,7 +258,6 @@ public abstract class ConnectableElementImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -281,7 +276,6 @@ public abstract class ConnectableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -304,7 +298,6 @@ public abstract class ConnectableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -657,7 +650,6 @@ public abstract class ConnectableElementImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;

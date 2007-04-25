@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendOperationEventImpl.java,v 1.13 2007/02/26 16:17:57 khussey Exp $
+ * $Id: SendOperationEventImpl.java,v 1.14 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,14 +110,12 @@ public class SendOperationEventImpl
 	 * @generated
 	 */
 	public void setOperation(Operation newOperation) {
-
 		Operation oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SEND_OPERATION_EVENT__OPERATION, oldOperation,
 				operation));
-
 	}
 
 	/**

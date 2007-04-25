@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageableElementImpl.java,v 1.17 2007/02/26 16:17:57 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,7 +148,6 @@ public abstract class PackageableElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -166,7 +165,6 @@ public abstract class PackageableElementImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -184,7 +182,6 @@ public abstract class PackageableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGEABLE_ELEMENT__TEMPLATE_PARAMETER,
 				newTemplateParameter, newTemplateParameter));
-
 	}
 
 	/**
@@ -218,7 +215,6 @@ public abstract class PackageableElementImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -237,7 +233,6 @@ public abstract class PackageableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -260,7 +255,6 @@ public abstract class PackageableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGEABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -280,7 +274,6 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -289,7 +282,6 @@ public abstract class PackageableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, oldVisibility,
 				visibility));
-
 	}
 
 	/**
@@ -299,7 +291,6 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		//genFeature
 		return visibility != VISIBILITY_EDEFAULT;
 	}
 
@@ -627,7 +618,6 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;

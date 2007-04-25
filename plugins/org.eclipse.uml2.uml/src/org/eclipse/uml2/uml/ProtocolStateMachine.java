@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachine.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ProtocolStateMachine.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -99,6 +99,8 @@ public interface ProtocolStateMachine
 	 * <!-- begin-model-doc -->
 	 * All transitions of a protocol state machine must be protocol transitions. (transitions as extended by the ProtocolStateMachines package)
 	 * region->forAll(r | r.transition->forAll(t | t.oclIsTypeOf(ProtocolTransition)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -114,6 +116,8 @@ public interface ProtocolStateMachine
 	 * region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
 	 * (v.entry->isEmpty() and v.exit->isEmpty() and v.doActivity->isEmpty())))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -129,6 +133,8 @@ public interface ProtocolStateMachine
 	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Psuedostate) implies
 	 * ((v.kind <> #deepHistory) and (v.kind <> #shallowHistory)))))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -142,6 +148,8 @@ public interface ProtocolStateMachine
 	 * <!-- begin-model-doc -->
 	 * If two ports are connected, then the protocol state machine of the required interface (if defined) must be conformant to the protocol state machine of the provided interface (if defined).
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

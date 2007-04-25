@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -237,13 +237,11 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__TYPE, oldType, type));
-
 	}
 
 	/**
@@ -253,7 +251,6 @@ public abstract class StructuralFeatureImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -290,7 +287,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -300,7 +296,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED, oldIsOrdered,
 				newIsOrdered));
-
 	}
 
 	/**
@@ -318,7 +313,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -328,7 +322,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE, oldIsUnique,
 				newIsUnique));
-
 	}
 
 	/**
@@ -337,7 +330,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public int getUpper() {
-
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -347,7 +339,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -357,7 +348,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public int getLower() {
-
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -367,7 +357,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -430,7 +419,6 @@ public abstract class StructuralFeatureImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -440,7 +428,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -460,7 +447,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE, newUpperValue,
 				newUpperValue));
-
 	}
 
 	/**
@@ -538,7 +524,6 @@ public abstract class StructuralFeatureImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -548,7 +533,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -568,7 +552,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE, newLowerValue,
 				newLowerValue));
-
 	}
 
 	/**
@@ -602,7 +585,6 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
-
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;
@@ -612,7 +594,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY, oldIsReadOnly,
 				newIsReadOnly));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.31 2007/02/26 16:17:58 khussey Exp $
+ * $Id: VariableImpl.java,v 1.32 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -189,7 +189,6 @@ public class VariableImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -225,7 +224,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -234,7 +232,6 @@ public class VariableImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__IS_ORDERED, oldIsOrdered, newIsOrdered));
-
 	}
 
 	/**
@@ -252,7 +249,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -261,7 +257,6 @@ public class VariableImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__IS_UNIQUE, oldIsUnique, newIsUnique));
-
 	}
 
 	/**
@@ -270,7 +265,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public int getUpper() {
-
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -280,7 +274,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -290,7 +283,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public int getLower() {
-
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -300,7 +292,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -361,7 +352,6 @@ public class VariableImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -371,7 +361,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -388,7 +377,6 @@ public class VariableImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__UPPER_VALUE, newUpperValue, newUpperValue));
-
 	}
 
 	/**
@@ -464,7 +452,6 @@ public class VariableImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -474,7 +461,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -491,7 +477,6 @@ public class VariableImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__LOWER_VALUE, newLowerValue, newLowerValue));
-
 	}
 
 	/**
@@ -554,7 +539,6 @@ public class VariableImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newActivityScope,
 			UMLPackage.VARIABLE__ACTIVITY_SCOPE, msgs);
-
 		return msgs;
 	}
 
@@ -564,7 +548,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setActivityScope(Activity newActivityScope) {
-
 		if (newActivityScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE && newActivityScope != null)) {
 			if (EcoreUtil.isAncestor(this, newActivityScope))
@@ -583,7 +566,6 @@ public class VariableImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__ACTIVITY_SCOPE, newActivityScope,
 				newActivityScope));
-
 	}
 
 	/**
@@ -617,7 +599,6 @@ public class VariableImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newScope,
 			UMLPackage.VARIABLE__SCOPE, msgs);
-
 		return msgs;
 	}
 
@@ -627,7 +608,6 @@ public class VariableImpl
 	 * @generated
 	 */
 	public void setScope(StructuredActivityNode newScope) {
-
 		if (newScope != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, newScope))
@@ -646,7 +626,6 @@ public class VariableImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__SCOPE, newScope, newScope));
-
 	}
 
 	/**
@@ -1279,7 +1258,6 @@ public class VariableImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		StructuredActivityNode scope = basicGetScope();
 		if (scope != null) {
 			return scope;

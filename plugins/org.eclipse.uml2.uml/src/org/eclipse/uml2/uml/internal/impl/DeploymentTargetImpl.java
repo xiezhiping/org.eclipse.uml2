@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTargetImpl.java,v 1.22 2007/02/26 16:17:55 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.23 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +98,6 @@ public abstract class DeploymentTargetImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -197,7 +196,6 @@ public abstract class DeploymentTargetImpl
 	 * @generated
 	 */
 	public EList<PackageableElement> getDeployedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")

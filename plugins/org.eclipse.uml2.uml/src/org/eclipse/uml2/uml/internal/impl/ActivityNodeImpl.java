@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ActivityNodeImpl.java,v 1.22 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,6 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public EList<ActivityGroup> getInGroups() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -183,7 +182,6 @@ public abstract class ActivityNodeImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -323,7 +321,6 @@ public abstract class ActivityNodeImpl
 			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
 			UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE, msgs);
-
 		return msgs;
 	}
 
@@ -333,7 +330,6 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
-
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
@@ -353,7 +349,6 @@ public abstract class ActivityNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_NODE__IN_STRUCTURED_NODE,
 				newInStructuredNode, newInStructuredNode));
-
 	}
 
 	/**
@@ -387,7 +382,6 @@ public abstract class ActivityNodeImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newActivity,
 			UMLPackage.ACTIVITY_NODE__ACTIVITY, msgs);
-
 		return msgs;
 	}
 
@@ -397,7 +391,6 @@ public abstract class ActivityNodeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_NODE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
@@ -415,7 +408,6 @@ public abstract class ActivityNodeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_NODE__ACTIVITY, newActivity, newActivity));
-
 	}
 
 	/**
@@ -933,7 +925,6 @@ public abstract class ActivityNodeImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;

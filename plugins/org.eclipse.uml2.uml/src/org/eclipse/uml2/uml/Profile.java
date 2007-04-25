@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.15 2007/03/30 15:26:01 khussey Exp $
+ * $Id: Profile.java,v 1.16 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -209,6 +209,8 @@ public interface Profile
 	 *   select(c | c.oclIsKindOf(Classifier) and
 	 *     (c.generalization.namespace = self or
 	 *       (c.specialization.namespace = self) )->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -223,6 +225,8 @@ public interface Profile
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
 	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -235,6 +239,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile.
+	 * @param classifier The classifier of which to create an instance.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
@@ -246,6 +251,8 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.
+	 * @param name The name for the new stereotype, or null.
+	 * @param isAbstract Whether the new stereotype should be abstract.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
@@ -279,6 +286,9 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context.
+	 * @param options The options to use.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" optionsRequired="true" optionsOrdered="false" diagnosticsRequired="true" diagnosticsOrdered="false" contextRequired="true" contextOrdered="false"
 	 * @generated
@@ -302,6 +312,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the current definition (Ecore representation) of the specified named element in this profile.
+	 * @param namedElement The named element whose definition to retrieve.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
 	 * @generated
@@ -335,6 +346,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the extensions owned by this profile, excluding non-required extensions if indicated.
+	 * @param requiredOnly Whether to retrieve only required extensions.
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.uml2.uml.Extension" ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
 	 * @generated

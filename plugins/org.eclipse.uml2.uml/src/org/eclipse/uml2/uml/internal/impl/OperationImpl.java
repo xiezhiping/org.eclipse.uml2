@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OperationImpl.java,v 1.34 2007/02/26 16:17:57 khussey Exp $
+ * $Id: OperationImpl.java,v 1.35 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -322,7 +322,6 @@ public class OperationImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -358,7 +357,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -376,7 +374,6 @@ public class OperationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__TEMPLATE_PARAMETER, newTemplateParameter,
 				newTemplateParameter));
-
 	}
 
 	/**
@@ -385,7 +382,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		//genFeature
 		return templateParameter != null;
 	}
 
@@ -420,7 +416,6 @@ public class OperationImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -439,7 +434,6 @@ public class OperationImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -462,7 +456,6 @@ public class OperationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -472,7 +465,6 @@ public class OperationImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -607,7 +599,6 @@ public class OperationImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -618,7 +609,6 @@ public class OperationImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -638,7 +628,6 @@ public class OperationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**
@@ -668,7 +657,6 @@ public class OperationImpl
 	 */
 	@Override
 	public EList<Classifier> getRedefinitionContexts() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -703,7 +691,6 @@ public class OperationImpl
 	 */
 	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -736,7 +723,6 @@ public class OperationImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -792,7 +778,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsQuery(boolean newIsQuery) {
-
 		boolean oldIsQuery = (eFlags & IS_QUERY_EFLAG) != 0;
 		if (newIsQuery)
 			eFlags |= IS_QUERY_EFLAG;
@@ -801,7 +786,6 @@ public class OperationImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__IS_QUERY, oldIsQuery, newIsQuery));
-
 	}
 
 	/**
@@ -810,7 +794,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isOrdered() {
-
 		return OperationOperations.isOrdered(this);
 	}
 
@@ -820,7 +803,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		OperationOperations.setIsOrdered(this, newIsOrdered);
 	}
 
@@ -830,7 +812,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isUnique() {
-
 		return OperationOperations.isUnique(this);
 	}
 
@@ -840,7 +821,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-
 		OperationOperations.setIsUnique(this, newIsUnique);
 	}
 
@@ -850,7 +830,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getLower() {
-
 		return OperationOperations.getLower(this);
 	}
 
@@ -860,7 +839,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-
 		OperationOperations.setLower(this, newLower);
 	}
 
@@ -870,7 +848,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public int getUpper() {
-
 		return OperationOperations.getUpper(this);
 	}
 
@@ -880,7 +857,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-
 		OperationOperations.setUpper(this, newUpper);
 	}
 
@@ -915,7 +891,6 @@ public class OperationImpl
 			org.eclipse.uml2.uml.Class newClass, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newClass,
 			UMLPackage.OPERATION__CLASS, msgs);
-
 		return msgs;
 	}
 
@@ -925,7 +900,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setClass_(org.eclipse.uml2.uml.Class newClass) {
-
 		if (newClass != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS && newClass != null)) {
 			if (EcoreUtil.isAncestor(this, newClass))
@@ -944,7 +918,6 @@ public class OperationImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__CLASS, newClass, newClass));
-
 	}
 
 	/**
@@ -1174,7 +1147,6 @@ public class OperationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newDatatype,
 			UMLPackage.OPERATION__DATATYPE, msgs);
-
 		return msgs;
 	}
 
@@ -1184,7 +1156,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
-
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
@@ -1203,7 +1174,6 @@ public class OperationImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__DATATYPE, newDatatype, newDatatype));
-
 	}
 
 	/**
@@ -1240,14 +1210,12 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setBodyCondition(Constraint newBodyCondition) {
-
 		Constraint oldBodyCondition = bodyCondition;
 		bodyCondition = newBodyCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__BODY_CONDITION, oldBodyCondition,
 				bodyCondition));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newBodyCondition != null) {
@@ -1299,7 +1267,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Type basicGetType() {
-
 		return OperationOperations.getType(this);
 	}
 
@@ -1309,7 +1276,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-
 		OperationOperations.setType(this, newType);
 	}
 
@@ -1344,7 +1310,6 @@ public class OperationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInterface,
 			UMLPackage.OPERATION__INTERFACE, msgs);
-
 		return msgs;
 	}
 
@@ -1354,7 +1319,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public void setInterface(Interface newInterface) {
-
 		if (newInterface != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
 			if (EcoreUtil.isAncestor(this, newInterface))
@@ -1373,7 +1337,6 @@ public class OperationImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPERATION__INTERFACE, newInterface, newInterface));
-
 	}
 
 	/**
@@ -1444,7 +1407,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedParameters() {
-		//genFeature
 		return ownedParameters != null && !ownedParameters.isEmpty();
 	}
 
@@ -1498,7 +1460,6 @@ public class OperationImpl
 	 * @generated
 	 */
 	public boolean isSetRaisedExceptions() {
-		//genFeature
 		return raisedExceptions != null && !raisedExceptions.isEmpty();
 	}
 
@@ -2366,7 +2327,6 @@ public class OperationImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2459,7 +2419,6 @@ public class OperationImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;

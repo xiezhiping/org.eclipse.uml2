@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Signal.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Signal.java,v 1.8 2007/04/25 17:47:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -112,6 +112,10 @@ public interface Signal
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this signal.
+	 * @param name The name for the new attribute, or null.
+	 * @param type The type for the new attribute, or null.
+	 * @param lower The lower bound for the new attribute.
+	 * @param upper The upper bound for the new attribute.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated

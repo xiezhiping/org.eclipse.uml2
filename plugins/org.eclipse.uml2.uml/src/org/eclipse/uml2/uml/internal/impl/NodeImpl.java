@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NodeImpl.java,v 1.29 2007/02/26 16:17:56 khussey Exp $
+ * $Id: NodeImpl.java,v 1.30 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,7 +138,6 @@ public class NodeImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -234,7 +233,6 @@ public class NodeImpl
 	 * @generated
 	 */
 	public EList<PackageableElement> getDeployedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -287,7 +285,6 @@ public class NodeImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

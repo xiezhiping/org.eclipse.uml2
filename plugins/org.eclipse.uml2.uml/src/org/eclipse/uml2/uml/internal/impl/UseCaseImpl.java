@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: UseCaseImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,7 +148,6 @@ public class UseCaseImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

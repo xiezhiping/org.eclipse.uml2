@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterImpl.java,v 1.19 2007/02/26 16:17:56 khussey Exp $
+ * $Id: TemplateParameterImpl.java,v 1.20 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -147,7 +147,6 @@ public class TemplateParameterImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -216,7 +215,6 @@ public class TemplateParameterImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (ownedParameteredElement != null
@@ -233,7 +231,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -251,7 +248,6 @@ public class TemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 				newParameteredElement, newParameteredElement));
-
 	}
 
 	/**
@@ -288,13 +284,11 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefault(ParameterableElement newDefault) {
-
 		ParameterableElement oldDefault = default_;
 		default_ = newDefault;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__DEFAULT, oldDefault, default_));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (ownedDefault != null && ownedDefault != newDefault) {
@@ -334,7 +328,6 @@ public class TemplateParameterImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSignature,
 			UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, msgs);
-
 		return msgs;
 	}
 
@@ -344,7 +337,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setSignature(TemplateSignature newSignature) {
-
 		if (newSignature != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER__SIGNATURE && newSignature != null)) {
 			if (EcoreUtil.isAncestor(this, newSignature))
@@ -364,7 +356,6 @@ public class TemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__SIGNATURE, newSignature,
 				newSignature));
-
 	}
 
 	/**
@@ -433,7 +424,6 @@ public class TemplateParameterImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwnedParameteredElement != null) {
@@ -452,7 +442,6 @@ public class TemplateParameterImpl
 	 */
 	public void setOwnedParameteredElement(
 			ParameterableElement newOwnedParameteredElement) {
-
 		if (newOwnedParameteredElement != ownedParameteredElement) {
 			NotificationChain msgs = null;
 			if (ownedParameteredElement != null)
@@ -475,7 +464,6 @@ public class TemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 				newOwnedParameteredElement, newOwnedParameteredElement));
-
 	}
 
 	/**
@@ -548,7 +536,6 @@ public class TemplateParameterImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwnedDefault != null) {
@@ -566,7 +553,6 @@ public class TemplateParameterImpl
 	 * @generated
 	 */
 	public void setOwnedDefault(ParameterableElement newOwnedDefault) {
-
 		if (newOwnedDefault != ownedDefault) {
 			NotificationChain msgs = null;
 			if (ownedDefault != null)
@@ -586,7 +572,6 @@ public class TemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT, newOwnedDefault,
 				newOwnedDefault));
-
 	}
 
 	/**
@@ -845,7 +830,6 @@ public class TemplateParameterImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateSignature signature = basicGetSignature();
 		if (signature != null) {
 			return signature;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutionSpecificationImpl.java,v 1.15 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ExecutionSpecificationImpl.java,v 1.16 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,13 +130,11 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setStart(OccurrenceSpecification newStart) {
-
 		OccurrenceSpecification oldStart = start;
 		start = newStart;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXECUTION_SPECIFICATION__START, oldStart, start));
-
 	}
 
 	/**
@@ -173,13 +171,11 @@ public abstract class ExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setFinish(OccurrenceSpecification newFinish) {
-
 		OccurrenceSpecification oldFinish = finish;
 		finish = newFinish;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXECUTION_SPECIFICATION__FINISH, oldFinish, finish));
-
 	}
 
 	/**

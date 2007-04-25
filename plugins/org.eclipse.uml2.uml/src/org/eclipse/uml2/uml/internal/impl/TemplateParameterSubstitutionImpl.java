@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,7 +126,6 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -201,14 +200,12 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setFormal(TemplateParameter newFormal) {
-
 		TemplateParameter oldFormal = formal;
 		formal = newFormal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL, oldFormal,
 				formal));
-
 	}
 
 	/**
@@ -268,7 +265,6 @@ public class TemplateParameterSubstitutionImpl
 			TemplateBinding newTemplateBinding, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newTemplateBinding,
 			UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING, msgs);
-
 		return msgs;
 	}
 
@@ -278,7 +274,6 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
-
 		if (newTemplateBinding != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplateBinding))
@@ -298,7 +293,6 @@ public class TemplateParameterSubstitutionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING,
 				newTemplateBinding, newTemplateBinding));
-
 	}
 
 	/**
@@ -568,7 +562,6 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateBinding templateBinding = basicGetTemplateBinding();
 		if (templateBinding != null) {
 			return templateBinding;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Constraint.java,v 1.12 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -131,6 +131,8 @@ public interface Constraint
 	 * <!-- begin-model-doc -->
 	 * A constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -144,6 +146,8 @@ public interface Constraint
 	 * <!-- begin-model-doc -->
 	 * The value specification for a constraint must evaluate to a Boolean value.
 	 * self.specification().booleanValue().isOclKindOf(Boolean)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -157,6 +161,8 @@ public interface Constraint
 	 * <!-- begin-model-doc -->
 	 * The value specification for a constraint must evaluate to a Boolean value.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -170,6 +176,8 @@ public interface Constraint
 	 * <!-- begin-model-doc -->
 	 * Evaluating the value specification for a constraint must not have side effects.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -183,6 +191,8 @@ public interface Constraint
 	 * <!-- begin-model-doc -->
 	 * A constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ReadIsClassifiedObjectActionImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -154,7 +154,6 @@ public class ReadIsClassifiedObjectActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -182,7 +181,6 @@ public class ReadIsClassifiedObjectActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -217,7 +215,6 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setIsDirect(boolean newIsDirect) {
-
 		boolean oldIsDirect = (eFlags & IS_DIRECT_EFLAG) != 0;
 		if (newIsDirect)
 			eFlags |= IS_DIRECT_EFLAG;
@@ -227,7 +224,6 @@ public class ReadIsClassifiedObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__IS_DIRECT,
 				oldIsDirect, newIsDirect));
-
 	}
 
 	/**
@@ -266,14 +262,12 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
-
 		Classifier oldClassifier = classifier;
 		classifier = newClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__CLASSIFIER,
 				oldClassifier, classifier));
-
 	}
 
 	/**
@@ -335,7 +329,6 @@ public class ReadIsClassifiedObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -345,7 +338,6 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -365,7 +357,6 @@ public class ReadIsClassifiedObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__RESULT, newResult,
 				newResult));
-
 	}
 
 	/**
@@ -442,7 +433,6 @@ public class ReadIsClassifiedObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -452,7 +442,6 @@ public class ReadIsClassifiedObjectActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -472,7 +461,6 @@ public class ReadIsClassifiedObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_IS_CLASSIFIED_OBJECT_ACTION__OBJECT, newObject,
 				newObject));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentImpl.java,v 1.32 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.33 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -159,7 +159,6 @@ public class ComponentImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -187,7 +186,6 @@ public class ComponentImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -223,7 +221,6 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public void setIsIndirectlyInstantiated(boolean newIsIndirectlyInstantiated) {
-
 		boolean oldIsIndirectlyInstantiated = (eFlags & IS_INDIRECTLY_INSTANTIATED_EFLAG) != 0;
 		if (newIsIndirectlyInstantiated)
 			eFlags |= IS_INDIRECTLY_INSTANTIATED_EFLAG;
@@ -233,7 +230,6 @@ public class ComponentImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMPONENT__IS_INDIRECTLY_INSTANTIATED,
 				oldIsIndirectlyInstantiated, newIsIndirectlyInstantiated));
-
 	}
 
 	/**
@@ -242,7 +238,6 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList<Interface> getRequireds() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -288,7 +283,6 @@ public class ComponentImpl
 	 * @generated
 	 */
 	public EList<Interface> getProvideds() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")

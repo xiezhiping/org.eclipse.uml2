@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionInputPinImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.29 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -111,7 +111,6 @@ public class ActionInputPinImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -190,7 +189,6 @@ public class ActionInputPinImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -200,7 +198,6 @@ public class ActionInputPinImpl
 	 * @generated
 	 */
 	public void setFromAction(Action newFromAction) {
-
 		if (newFromAction != fromAction) {
 			NotificationChain msgs = null;
 			if (fromAction != null)
@@ -218,7 +215,6 @@ public class ActionInputPinImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTION_INPUT_PIN__FROM_ACTION, newFromAction,
 				newFromAction));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionImpl.java,v 1.28 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ActionImpl.java,v 1.29 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -117,7 +117,6 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -185,7 +184,6 @@ public abstract class ActionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -211,7 +209,6 @@ public abstract class ActionImpl
 	 * @generated
 	 */
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

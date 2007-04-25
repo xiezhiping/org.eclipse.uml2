@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.20 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Classifier.java,v 1.21 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -586,6 +586,8 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
 	 * not self.allParents()->includes(self)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -599,6 +601,8 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * A classifier may only specialize classifiers of a valid type.
 	 * self.parents()->forAll(c | self.maySpecializeType(c))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -612,6 +616,8 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
 	 * not self.allParents()->includes(self)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -625,6 +631,8 @@ public interface Classifier
 	 * <!-- begin-model-doc -->
 	 * The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances also be its subclasses.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -704,6 +712,9 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier.
+	 * @param name The name of the operation to retrieve, or null.
+	 * @param parameterNames The parameter names of the operation to retrieve, or null.
+	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false"
 	 * @generated
@@ -716,6 +727,10 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the first operation with the specified name, parameter names, and parameter types from this classifier, ignoring case if indicated.
+	 * @param name The name of the operation to retrieve, or null.
+	 * @param parameterNames The parameter names of the operation to retrieve, or null.
+	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
+	 * @param ignoreCase Whether to ignore case in String comparisons.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.uml.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
 	 * @generated

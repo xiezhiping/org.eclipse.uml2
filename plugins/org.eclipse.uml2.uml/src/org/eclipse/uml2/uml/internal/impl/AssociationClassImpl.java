@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClassImpl.java,v 1.30 2007/02/26 16:17:56 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.31 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -174,7 +174,6 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList<Element> getRelatedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -204,7 +203,6 @@ public class AssociationClassImpl
 	 */
 	@Override
 	public EList<NamedElement> getMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -231,7 +229,6 @@ public class AssociationClassImpl
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -260,7 +257,6 @@ public class AssociationClassImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -412,7 +408,6 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-
 		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
 		if (newIsDerived)
 			eFlags |= IS_DERIVED_EFLAG;
@@ -422,7 +417,6 @@ public class AssociationClassImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ASSOCIATION_CLASS__IS_DERIVED, oldIsDerived,
 				newIsDerived));
-
 	}
 
 	/**
@@ -431,7 +425,6 @@ public class AssociationClassImpl
 	 * @generated
 	 */
 	public EList<Type> getEndTypes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")

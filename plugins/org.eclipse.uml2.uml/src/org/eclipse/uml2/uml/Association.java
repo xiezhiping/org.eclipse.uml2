@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.13 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Association.java,v 1.14 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -300,6 +300,8 @@ public interface Association
 	 * <!-- begin-model-doc -->
 	 * An association specializing another association has the same number of ends as the other association.
 	 * self.parents()->forAll(p | p.memberEnd.size() = self.memberEnd.size())
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -313,6 +315,8 @@ public interface Association
 	 * <!-- begin-model-doc -->
 	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -326,6 +330,8 @@ public interface Association
 	 * <!-- begin-model-doc -->
 	 * Only binary associations can be aggregations.
 	 * self.memberEnd->exists(aggregation <> Aggregation::none) implies self.memberEnd->size() = 2
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -339,6 +345,8 @@ public interface Association
 	 * <!-- begin-model-doc -->
 	 * Association ends of associations with more than two ends must be owned by the association.
 	 * if memberEnd->size() > 2 then ownedEnd->includesAll(memberEnd)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
+ * $Id: TemplateSignatureImpl.java,v 1.21 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,7 +114,6 @@ public class TemplateSignatureImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -182,7 +181,6 @@ public class TemplateSignatureImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newTemplate,
 			UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-
 		return msgs;
 	}
 
@@ -192,7 +190,6 @@ public class TemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
@@ -212,7 +209,6 @@ public class TemplateSignatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE, newTemplate,
 				newTemplate));
-
 	}
 
 	/**
@@ -498,7 +494,6 @@ public class TemplateSignatureImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DependencyImpl.java,v 1.17 2007/02/26 16:17:58 khussey Exp $
+ * $Id: DependencyImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,6 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList<Element> getRelatedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -135,7 +134,6 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -161,7 +159,6 @@ public class DependencyImpl
 	 * @generated
 	 */
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

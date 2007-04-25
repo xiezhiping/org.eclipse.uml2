@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.17 2007/03/27 03:39:49 khussey Exp $
+ * $Id: NamedElement.java,v 1.18 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -272,6 +272,8 @@ public interface NamedElement
 	 * If there is no name, or one of the containing namespaces has no name, there is no qualified name.
 	 * (self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
 	 *   implies self.qualifiedName->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -286,6 +288,8 @@ public interface NamedElement
 	 * When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
 	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
 	 *   self.qualifiedName = self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -299,6 +303,8 @@ public interface NamedElement
 	 * <!-- begin-model-doc -->
 	 * If a NamedElement is not owned by a Namespace, it does not have a visibility.
 	 * namespace->isEmpty() implies visibility->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -311,6 +317,7 @@ public interface NamedElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package.
+	 * @param supplier The supplier for the new dependency.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" supplierRequired="true" supplierOrdered="false"
 	 * @generated
@@ -333,6 +340,7 @@ public interface NamedElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves a label for this named element, localized if indicated.
+	 * @param localize Whether to localize the label.
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
@@ -344,6 +352,7 @@ public interface NamedElement
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.
+	 * @param supplier The supplier for the new usage.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" supplierRequired="true" supplierOrdered="false"
 	 * @generated

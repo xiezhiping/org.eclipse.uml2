@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AbstractionImpl.java,v 1.21 2007/02/26 16:17:56 khussey Exp $
+ * $Id: AbstractionImpl.java,v 1.22 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,6 @@ public class AbstractionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -173,7 +172,6 @@ public class AbstractionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -183,7 +181,6 @@ public class AbstractionImpl
 	 * @generated
 	 */
 	public void setMapping(OpaqueExpression newMapping) {
-
 		if (newMapping != mapping) {
 			NotificationChain msgs = null;
 			if (mapping != null)
@@ -200,7 +197,6 @@ public class AbstractionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ABSTRACTION__MAPPING, newMapping, newMapping));
-
 	}
 
 	/**

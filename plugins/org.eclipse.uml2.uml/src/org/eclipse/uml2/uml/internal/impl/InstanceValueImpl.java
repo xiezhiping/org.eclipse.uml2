@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceValueImpl.java,v 1.15 2007/02/26 16:17:56 khussey Exp $
+ * $Id: InstanceValueImpl.java,v 1.16 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -113,13 +113,11 @@ public class InstanceValueImpl
 	 * @generated
 	 */
 	public void setInstance(InstanceSpecification newInstance) {
-
 		InstanceSpecification oldInstance = instance;
 		instance = newInstance;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INSTANCE_VALUE__INSTANCE, oldInstance, instance));
-
 	}
 
 	/**

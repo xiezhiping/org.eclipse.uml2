@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommentImpl.java,v 1.12 2007/02/26 16:17:58 khussey Exp $
+ * $Id: CommentImpl.java,v 1.13 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -118,7 +118,6 @@ public class CommentImpl
 	 * @generated
 	 */
 	public void setBody(String newBody) {
-
 		String oldBody = body;
 		body = newBody;
 		boolean oldBodyESet = (eFlags & BODY_ESETFLAG) != 0;
@@ -126,7 +125,6 @@ public class CommentImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMMENT__BODY, oldBody, body, !oldBodyESet));
-
 	}
 
 	/**

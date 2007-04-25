@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.20 2006/12/14 15:49:30 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.21 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,7 +166,6 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeploymentLocation(String newDeploymentLocation) {
-
 		String oldDeploymentLocation = deploymentLocation;
 		deploymentLocation = newDeploymentLocation;
 		boolean oldDeploymentLocationESet = (eFlags & DEPLOYMENT_LOCATION_ESETFLAG) != 0;
@@ -176,7 +175,6 @@ public class DeploymentSpecificationImpl
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT_LOCATION,
 				oldDeploymentLocation, deploymentLocation,
 				!oldDeploymentLocationESet));
-
 	}
 
 	/**
@@ -220,7 +218,6 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setExecutionLocation(String newExecutionLocation) {
-
 		String oldExecutionLocation = executionLocation;
 		executionLocation = newExecutionLocation;
 		boolean oldExecutionLocationESet = (eFlags & EXECUTION_LOCATION_ESETFLAG) != 0;
@@ -230,7 +227,6 @@ public class DeploymentSpecificationImpl
 				UMLPackage.DEPLOYMENT_SPECIFICATION__EXECUTION_LOCATION,
 				oldExecutionLocation, executionLocation,
 				!oldExecutionLocationESet));
-
 	}
 
 	/**
@@ -290,7 +286,6 @@ public class DeploymentSpecificationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newDeployment,
 			UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, msgs);
-
 		return msgs;
 	}
 
@@ -300,7 +295,6 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public void setDeployment(Deployment newDeployment) {
-
 		if (newDeployment != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
 			if (EcoreUtil.isAncestor(this, newDeployment))
@@ -320,7 +314,6 @@ public class DeploymentSpecificationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT, newDeployment,
 				newDeployment));
-
 	}
 
 	/**

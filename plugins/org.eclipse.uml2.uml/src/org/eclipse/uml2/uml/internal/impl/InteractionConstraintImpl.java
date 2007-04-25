@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionConstraintImpl.java,v 1.23 2007/02/26 16:17:57 khussey Exp $
+ * $Id: InteractionConstraintImpl.java,v 1.24 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,7 +114,6 @@ public class InteractionConstraintImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -194,7 +193,6 @@ public class InteractionConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -204,7 +202,6 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public void setMinint(ValueSpecification newMinint) {
-
 		if (newMinint != minint) {
 			NotificationChain msgs = null;
 			if (minint != null)
@@ -221,7 +218,6 @@ public class InteractionConstraintImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION_CONSTRAINT__MININT, newMinint, newMinint));
-
 	}
 
 	/**
@@ -297,7 +293,6 @@ public class InteractionConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -307,7 +302,6 @@ public class InteractionConstraintImpl
 	 * @generated
 	 */
 	public void setMaxint(ValueSpecification newMaxint) {
-
 		if (newMaxint != maxint) {
 			NotificationChain msgs = null;
 			if (maxint != null)
@@ -324,7 +318,6 @@ public class InteractionConstraintImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION_CONSTRAINT__MAXINT, newMaxint, newMaxint));
-
 	}
 
 	/**

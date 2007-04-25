@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RemoveVariableValueActionImpl.java,v 1.25 2007/02/26 16:17:59 khussey Exp $
+ * $Id: RemoveVariableValueActionImpl.java,v 1.26 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,7 +130,6 @@ public class RemoveVariableValueActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,7 +164,6 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public void setIsRemoveDuplicates(boolean newIsRemoveDuplicates) {
-
 		boolean oldIsRemoveDuplicates = (eFlags & IS_REMOVE_DUPLICATES_EFLAG) != 0;
 		if (newIsRemoveDuplicates)
 			eFlags |= IS_REMOVE_DUPLICATES_EFLAG;
@@ -175,7 +173,6 @@ public class RemoveVariableValueActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__IS_REMOVE_DUPLICATES,
 				oldIsRemoveDuplicates, newIsRemoveDuplicates));
-
 	}
 
 	/**
@@ -237,7 +234,6 @@ public class RemoveVariableValueActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -247,7 +243,6 @@ public class RemoveVariableValueActionImpl
 	 * @generated
 	 */
 	public void setRemoveAt(InputPin newRemoveAt) {
-
 		if (newRemoveAt != removeAt) {
 			NotificationChain msgs = null;
 			if (removeAt != null)
@@ -267,7 +262,6 @@ public class RemoveVariableValueActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REMOVE_VARIABLE_VALUE_ACTION__REMOVE_AT,
 				newRemoveAt, newRemoveAt));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.18 2007/02/26 16:17:58 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.19 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -144,7 +144,6 @@ public class GeneralizationImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -171,7 +170,6 @@ public class GeneralizationImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -206,7 +204,6 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setIsSubstitutable(boolean newIsSubstitutable) {
-
 		boolean oldIsSubstitutable = (eFlags & IS_SUBSTITUTABLE_EFLAG) != 0;
 		if (newIsSubstitutable)
 			eFlags |= IS_SUBSTITUTABLE_EFLAG;
@@ -218,7 +215,6 @@ public class GeneralizationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE,
 				oldIsSubstitutable, newIsSubstitutable, !oldIsSubstitutableESet));
-
 	}
 
 	/**
@@ -283,13 +279,11 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setGeneral(Classifier newGeneral) {
-
 		Classifier oldGeneral = general;
 		general = newGeneral;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION__GENERAL, oldGeneral, general));
-
 	}
 
 	/**
@@ -364,7 +358,6 @@ public class GeneralizationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSpecific,
 			UMLPackage.GENERALIZATION__SPECIFIC, msgs);
-
 		return msgs;
 	}
 
@@ -374,7 +367,6 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public void setSpecific(Classifier newSpecific) {
-
 		if (newSpecific != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecific))
@@ -393,7 +385,6 @@ public class GeneralizationImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION__SPECIFIC, newSpecific, newSpecific));
-
 	}
 
 	/**
@@ -698,7 +689,6 @@ public class GeneralizationImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		Classifier specific = basicGetSpecific();
 		if (specific != null) {
 			return specific;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.27 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -219,7 +219,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -281,7 +280,6 @@ public class TransitionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -393,7 +391,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinitionContexts() {
-		//genFeature
 		return !getRedefinitionContexts().isEmpty();
 	}
 
@@ -412,7 +409,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -421,7 +417,6 @@ public class TransitionImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**
@@ -452,7 +447,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setKind(TransitionKind newKind) {
-
 		TransitionKind oldKind = kind;
 		kind = newKind == null
 			? KIND_EDEFAULT
@@ -460,7 +454,6 @@ public class TransitionImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__KIND, oldKind, kind));
-
 	}
 
 	/**
@@ -494,7 +487,6 @@ public class TransitionImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContainer,
 			UMLPackage.TRANSITION__CONTAINER, msgs);
-
 		return msgs;
 	}
 
@@ -504,7 +496,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -522,7 +513,6 @@ public class TransitionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__CONTAINER, newContainer, newContainer));
-
 	}
 
 	/**
@@ -570,7 +560,6 @@ public class TransitionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -580,7 +569,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setTarget(Vertex newTarget) {
-
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -595,7 +583,6 @@ public class TransitionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__TARGET, newTarget, newTarget));
-
 	}
 
 	/**
@@ -632,14 +619,12 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setRedefinedTransition(Transition newRedefinedTransition) {
-
 		Transition oldRedefinedTransition = redefinedTransition;
 		redefinedTransition = newRedefinedTransition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__REDEFINED_TRANSITION,
 				oldRedefinedTransition, redefinedTransition));
-
 	}
 
 	/**
@@ -675,13 +660,11 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setGuard(Constraint newGuard) {
-
 		Constraint oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__GUARD, oldGuard, guard));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newGuard != null) {
@@ -770,7 +753,6 @@ public class TransitionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -780,7 +762,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setEffect(Behavior newEffect) {
-
 		if (newEffect != effect) {
 			NotificationChain msgs = null;
 			if (effect != null)
@@ -797,7 +778,6 @@ public class TransitionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__EFFECT, newEffect, newEffect));
-
 	}
 
 	/**
@@ -912,7 +892,6 @@ public class TransitionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -922,7 +901,6 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setSource(Vertex newSource) {
-
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -937,7 +915,6 @@ public class TransitionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TRANSITION__SOURCE, newSource, newSource));
-
 	}
 
 	/**
@@ -1560,7 +1537,6 @@ public class TransitionImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

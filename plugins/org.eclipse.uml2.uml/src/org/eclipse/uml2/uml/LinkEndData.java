@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndData.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
+ * $Id: LinkEndData.java,v 1.9 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -124,6 +124,8 @@ public interface LinkEndData
 	 * <!-- begin-model-doc -->
 	 * The property must be an association end.
 	 * self.end.association->size() = 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -137,6 +139,8 @@ public interface LinkEndData
 	 * <!-- begin-model-doc -->
 	 * The type of the end object input pin is the same as the type of the association end.
 	 * self.value.type = self.end.type
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -150,6 +154,8 @@ public interface LinkEndData
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the end object input pin must be 1..1.
 	 * self.value.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -163,6 +169,8 @@ public interface LinkEndData
 	 * <!-- begin-model-doc -->
 	 * The qualifiers include all and only the qualifiers of the association end.
 	 * self.qualifier->collect(qualifier) = self.end.qualifier
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -176,6 +184,8 @@ public interface LinkEndData
 	 * <!-- begin-model-doc -->
 	 * The end object input pin is not also a qualifier value input pin.
 	 * self.value->excludesAll(self.qualifier.value)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

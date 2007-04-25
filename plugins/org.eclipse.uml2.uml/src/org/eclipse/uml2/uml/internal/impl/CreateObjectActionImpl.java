@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectActionImpl.java,v 1.24 2007/02/26 16:17:55 khussey Exp $
+ * $Id: CreateObjectActionImpl.java,v 1.25 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,6 @@ public class CreateObjectActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -174,14 +173,12 @@ public class CreateObjectActionImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
-
 		Classifier oldClassifier = classifier;
 		classifier = newClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CREATE_OBJECT_ACTION__CLASSIFIER, oldClassifier,
 				classifier));
-
 	}
 
 	/**
@@ -240,7 +237,6 @@ public class CreateObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -250,7 +246,6 @@ public class CreateObjectActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -267,7 +262,6 @@ public class CreateObjectActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CREATE_OBJECT_ACTION__RESULT, newResult, newResult));
-
 	}
 
 	/**

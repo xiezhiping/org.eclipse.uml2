@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceImpl.java,v 1.24 2007/02/26 16:17:58 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.25 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -127,7 +127,6 @@ public abstract class NamespaceImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -154,7 +153,6 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -209,7 +207,6 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList<NamedElement> getMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -440,7 +437,6 @@ public abstract class NamespaceImpl
 	 * @generated
 	 */
 	public EList<PackageableElement> getImportedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")

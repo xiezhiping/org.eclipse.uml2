@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.26 2007/02/26 16:17:58 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.27 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -174,7 +174,6 @@ public abstract class MultiplicityElementImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -211,7 +210,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -221,7 +219,6 @@ public abstract class MultiplicityElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED, oldIsOrdered,
 				newIsOrdered));
-
 	}
 
 	/**
@@ -239,7 +236,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -249,7 +245,6 @@ public abstract class MultiplicityElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE, oldIsUnique,
 				newIsUnique));
-
 	}
 
 	/**
@@ -258,7 +253,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getUpper() {
-
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -268,7 +262,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -278,7 +271,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public int getLower() {
-
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -288,7 +280,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -351,7 +342,6 @@ public abstract class MultiplicityElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -361,7 +351,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -381,7 +370,6 @@ public abstract class MultiplicityElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE, newUpperValue,
 				newUpperValue));
-
 	}
 
 	/**
@@ -459,7 +447,6 @@ public abstract class MultiplicityElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -469,7 +456,6 @@ public abstract class MultiplicityElementImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -489,7 +475,6 @@ public abstract class MultiplicityElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE, newLowerValue,
 				newLowerValue));
-
 	}
 
 	/**

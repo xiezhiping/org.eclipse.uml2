@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadExtentActionImpl.java,v 1.24 2007/02/26 16:17:59 khussey Exp $
+ * $Id: ReadExtentActionImpl.java,v 1.25 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,6 @@ public class ReadExtentActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -197,7 +196,6 @@ public class ReadExtentActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -207,7 +205,6 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -224,7 +221,6 @@ public class ReadExtentActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_EXTENT_ACTION__RESULT, newResult, newResult));
-
 	}
 
 	/**
@@ -276,14 +272,12 @@ public class ReadExtentActionImpl
 	 * @generated
 	 */
 	public void setClassifier(Classifier newClassifier) {
-
 		Classifier oldClassifier = classifier;
 		classifier = newClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_EXTENT_ACTION__CLASSIFIER, oldClassifier,
 				classifier));
-
 	}
 
 	/**

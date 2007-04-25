@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.12 2006/06/07 21:39:13 khussey Exp $
+ * $Id: ProfileApplication.java,v 1.13 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -134,6 +134,7 @@ public interface ProfileApplication
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the definition (Ecore representation) of the specified named element in the profile associated with this profile application.
+	 * @param namedElement The named element for which to retrieve the applied definition.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" namedElementRequired="true" namedElementOrdered="false"
 	 * @generated

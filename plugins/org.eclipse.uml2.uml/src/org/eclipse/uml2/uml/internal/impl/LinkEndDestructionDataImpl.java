@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.11 2007/02/26 16:17:57 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.12 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,6 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public void setIsDestroyDuplicates(boolean newIsDestroyDuplicates) {
-
 		boolean oldIsDestroyDuplicates = (eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0;
 		if (newIsDestroyDuplicates)
 			eFlags |= IS_DESTROY_DUPLICATES_EFLAG;
@@ -126,7 +125,6 @@ public class LinkEndDestructionDataImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES,
 				oldIsDestroyDuplicates, newIsDestroyDuplicates));
-
 	}
 
 	/**
@@ -163,14 +161,12 @@ public class LinkEndDestructionDataImpl
 	 * @generated
 	 */
 	public void setDestroyAt(InputPin newDestroyAt) {
-
 		InputPin oldDestroyAt = destroyAt;
 		destroyAt = newDestroyAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT, oldDestroyAt,
 				destroyAt));
-
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.4 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -115,6 +115,8 @@ public interface ConnectorEnd
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -128,6 +130,8 @@ public interface ConnectorEnd
 	 * <!-- begin-model-doc -->
 	 * If a connector end is attached to a port of the containing classifier, partWithPort will be empty.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -141,6 +145,8 @@ public interface ConnectorEnd
 	 * <!-- begin-model-doc -->
 	 * If a connector end references both a role and a partWithPort, then the role must be a port that is defined by the type of the partWithPort.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -154,6 +160,8 @@ public interface ConnectorEnd
 	 * <!-- begin-model-doc -->
 	 * The property held in self.partWithPort must not be a Port.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

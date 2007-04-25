@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.27 2007/02/26 16:17:55 khussey Exp $
+ * $Id: PortImpl.java,v 1.28 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -167,7 +167,6 @@ public class PortImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -208,7 +207,6 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setIsBehavior(boolean newIsBehavior) {
-
 		boolean oldIsBehavior = (eFlags & IS_BEHAVIOR_EFLAG) != 0;
 		if (newIsBehavior)
 			eFlags |= IS_BEHAVIOR_EFLAG;
@@ -217,7 +215,6 @@ public class PortImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PORT__IS_BEHAVIOR, oldIsBehavior, newIsBehavior));
-
 	}
 
 	/**
@@ -235,7 +232,6 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setIsService(boolean newIsService) {
-
 		boolean oldIsService = (eFlags & IS_SERVICE_EFLAG) != 0;
 		if (newIsService)
 			eFlags |= IS_SERVICE_EFLAG;
@@ -244,7 +240,6 @@ public class PortImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PORT__IS_SERVICE, oldIsService, newIsService));
-
 	}
 
 	/**
@@ -253,7 +248,6 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList<Interface> getRequireds() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -339,7 +333,6 @@ public class PortImpl
 	 * @generated
 	 */
 	public EList<Interface> getProvideds() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -412,13 +405,11 @@ public class PortImpl
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
-
 		ProtocolStateMachine oldProtocol = protocol;
 		protocol = newProtocol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PORT__PROTOCOL, oldProtocol, protocol));
-
 	}
 
 	/**

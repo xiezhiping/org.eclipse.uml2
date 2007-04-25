@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FunctionBehavior.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
+ * $Id: FunctionBehavior.java,v 1.4 2007/04/25 17:47:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,6 +40,8 @@ public interface FunctionBehavior
 	 * A function behavior has at least one output parameter.
 	 * self.ownedParameters->
 	 *   select(p | p.direction=#out or p.direction=#inout or p.direction=#return)->size() >= 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -58,6 +60,8 @@ public interface FunctionBehavior
 	 *       hasAllDataTypeAttributes(a.type))
 	 * self.ownedParameters->forAll(p | p.type.notEmpty() and
 	 *   p.oclIsTypeOf(DataType) and hasAllDataTypeAttributes(p))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

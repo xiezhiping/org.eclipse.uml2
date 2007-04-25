@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: AcceptEventActionImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -142,7 +142,6 @@ public class AcceptEventActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -178,7 +177,6 @@ public class AcceptEventActionImpl
 	 * @generated
 	 */
 	public void setIsUnmarshall(boolean newIsUnmarshall) {
-
 		boolean oldIsUnmarshall = (eFlags & IS_UNMARSHALL_EFLAG) != 0;
 		if (newIsUnmarshall)
 			eFlags |= IS_UNMARSHALL_EFLAG;
@@ -188,7 +186,6 @@ public class AcceptEventActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACCEPT_EVENT_ACTION__IS_UNMARSHALL, oldIsUnmarshall,
 				newIsUnmarshall));
-
 	}
 
 	/**

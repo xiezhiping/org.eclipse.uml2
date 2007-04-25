@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationActionImpl.java,v 1.26 2007/02/26 16:17:56 khussey Exp $
+ * $Id: InvocationActionImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -121,7 +121,6 @@ public abstract class InvocationActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -243,13 +242,11 @@ public abstract class InvocationActionImpl
 	 * @generated
 	 */
 	public void setOnPort(Port newOnPort) {
-
 		Port oldOnPort = onPort;
 		onPort = newOnPort;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INVOCATION_ACTION__ON_PORT, oldOnPort, onPort));
-
 	}
 
 	/**

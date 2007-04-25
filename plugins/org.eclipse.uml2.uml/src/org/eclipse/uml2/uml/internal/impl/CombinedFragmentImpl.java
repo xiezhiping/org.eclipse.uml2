@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentImpl.java,v 1.22 2007/02/26 16:17:56 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -138,7 +138,6 @@ public class CombinedFragmentImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -175,7 +174,6 @@ public class CombinedFragmentImpl
 	 */
 	public void setInteractionOperator(
 			InteractionOperatorKind newInteractionOperator) {
-
 		InteractionOperatorKind oldInteractionOperator = interactionOperator;
 		interactionOperator = newInteractionOperator == null
 			? INTERACTION_OPERATOR_EDEFAULT
@@ -184,7 +182,6 @@ public class CombinedFragmentImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
 				oldInteractionOperator, interactionOperator));
-
 	}
 
 	/**

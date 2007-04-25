@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValuePinImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -149,7 +149,6 @@ public class ValuePinImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -159,7 +158,6 @@ public class ValuePinImpl
 	 * @generated
 	 */
 	public void setValue(ValueSpecification newValue) {
-
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -176,7 +174,6 @@ public class ValuePinImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VALUE_PIN__VALUE, newValue, newValue));
-
 	}
 
 	/**

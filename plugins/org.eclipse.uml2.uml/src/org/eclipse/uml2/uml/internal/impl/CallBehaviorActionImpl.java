@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionImpl.java,v 1.17 2007/02/26 16:17:56 khussey Exp $
+ * $Id: CallBehaviorActionImpl.java,v 1.18 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -126,14 +126,12 @@ public class CallBehaviorActionImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-
 		Behavior oldBehavior = behavior;
 		behavior = newBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CALL_BEHAVIOR_ACTION__BEHAVIOR, oldBehavior,
 				behavior));
-
 	}
 
 	/**

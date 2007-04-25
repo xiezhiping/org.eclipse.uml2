@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkAction.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ReadLinkAction.java,v 1.9 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,6 +83,8 @@ public interface ReadLinkAction
 	 * <!-- begin-model-doc -->
 	 * Exactly one link-end data specification (the 'open' end) must not have an end object input pin.
 	 * self.endData->select(ed | ed.value->size() = 0)->size() = 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -99,6 +101,8 @@ public interface ReadLinkAction
 	 * self.result.type = openend.type
 	 * and self.result.ordering = openend.ordering
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -114,6 +118,8 @@ public interface ReadLinkAction
 	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -129,6 +135,8 @@ public interface ReadLinkAction
 	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.isNavigable()
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -149,6 +157,8 @@ public interface ReadLinkAction
 	 * or (openend.visibility = #protected
 	 * and host.allSupertypes->includes(oed.end.participant))))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

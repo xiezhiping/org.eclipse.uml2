@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteralImpl.java,v 1.17 2007/01/31 21:21:14 khussey Exp $
+ * $Id: EnumerationLiteralImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,6 @@ public class EnumerationLiteralImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnumeration,
 			UMLPackage.ENUMERATION_LITERAL__ENUMERATION, msgs);
-
 		return msgs;
 	}
 
@@ -130,7 +129,6 @@ public class EnumerationLiteralImpl
 	 * @generated
 	 */
 	public void setEnumeration(Enumeration newEnumeration) {
-
 		if (newEnumeration != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
@@ -150,7 +148,6 @@ public class EnumerationLiteralImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ENUMERATION_LITERAL__ENUMERATION, newEnumeration,
 				newEnumeration));
-
 	}
 
 	/**
@@ -489,7 +486,6 @@ public class EnumerationLiteralImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Enumeration enumeration = basicGetEnumeration();
 		if (enumeration != null) {
 			return enumeration;

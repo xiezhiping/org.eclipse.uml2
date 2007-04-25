@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionImpl.java,v 1.25 2007/02/26 16:17:59 khussey Exp $
+ * $Id: ReplyActionImpl.java,v 1.26 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,7 +132,6 @@ public class ReplyActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -185,14 +184,12 @@ public class ReplyActionImpl
 	 * @generated
 	 */
 	public void setReplyToCall(Trigger newReplyToCall) {
-
 		Trigger oldReplyToCall = replyToCall;
 		replyToCall = newReplyToCall;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REPLY_ACTION__REPLY_TO_CALL, oldReplyToCall,
 				replyToCall));
-
 	}
 
 	/**
@@ -254,7 +251,6 @@ public class ReplyActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -264,7 +260,6 @@ public class ReplyActionImpl
 	 * @generated
 	 */
 	public void setReturnInformation(InputPin newReturnInformation) {
-
 		if (newReturnInformation != returnInformation) {
 			NotificationChain msgs = null;
 			if (returnInformation != null)
@@ -284,7 +279,6 @@ public class ReplyActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REPLY_ACTION__RETURN_INFORMATION,
 				newReturnInformation, newReturnInformation));
-
 	}
 
 	/**

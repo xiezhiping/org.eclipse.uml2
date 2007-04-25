@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.30 2007/02/26 16:17:59 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.31 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -133,7 +133,6 @@ public abstract class StructuredClassifierImpl
 	 * @generated
 	 */
 	public EList<ConnectableElement> getRoles() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -192,7 +191,6 @@ public abstract class StructuredClassifierImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -221,7 +219,6 @@ public abstract class StructuredClassifierImpl
 	 */
 	@Override
 	public EList<Property> getAttributes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -249,7 +246,6 @@ public abstract class StructuredClassifierImpl
 	 */
 	@Override
 	public EList<NamedElement> getMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -277,7 +273,6 @@ public abstract class StructuredClassifierImpl
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();

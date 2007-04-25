@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.21 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TypeImpl.java,v 1.22 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -364,7 +364,6 @@ public abstract class TypeImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		org.eclipse.uml2.uml.Package package_ = basicGetPackage();
 		if (package_ != null) {
 			return package_;

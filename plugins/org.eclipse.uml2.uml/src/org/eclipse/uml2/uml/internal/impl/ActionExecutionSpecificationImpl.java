@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActionExecutionSpecificationImpl.java,v 1.15 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ActionExecutionSpecificationImpl.java,v 1.16 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,14 +120,12 @@ public class ActionExecutionSpecificationImpl
 	 * @generated
 	 */
 	public void setAction(Action newAction) {
-
 		Action oldAction = action;
 		action = newAction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTION_EXECUTION_SPECIFICATION__ACTION, oldAction,
 				action));
-
 	}
 
 	/**

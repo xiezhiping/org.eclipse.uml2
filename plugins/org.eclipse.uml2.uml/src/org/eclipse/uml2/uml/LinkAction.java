@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.7 2006/12/14 15:49:28 khussey Exp $
+ * $Id: LinkAction.java,v 1.8 2007/04/25 17:47:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -154,6 +154,8 @@ public interface LinkAction
 	 * <!-- begin-model-doc -->
 	 * The association ends of the link end data must all be from the same association and include all and only the association ends of that association.
 	 * self.endData->collect(end) = self.association()->collect(connection))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -167,6 +169,8 @@ public interface LinkAction
 	 * <!-- begin-model-doc -->
 	 * The association ends of the link end data must not be static.
 	 * self.endData->forall(end.oclisKindOf(NavigableEnd) implies end.isStatic = #false
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -185,6 +189,8 @@ public interface LinkAction
 	 * then ledpins->union(self.endData.oclAsType(LinkEndCreationData).insertAt)
 	 * else ledpins
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

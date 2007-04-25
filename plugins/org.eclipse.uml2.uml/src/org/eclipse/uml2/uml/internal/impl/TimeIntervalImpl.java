@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeIntervalImpl.java,v 1.15 2007/01/31 21:21:14 khussey Exp $
+ * $Id: TimeIntervalImpl.java,v 1.16 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,13 +96,11 @@ public class TimeIntervalImpl
 	 * @generated
 	 */
 	public void setMaxGen(ValueSpecification newMax) {
-
 		ValueSpecification oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_INTERVAL__MAX, oldMax, max));
-
 	}
 
 	@Override
@@ -121,7 +119,6 @@ public class TimeIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMax() {
-		//genFeature
 		return max != null;
 	}
 
@@ -160,13 +157,11 @@ public class TimeIntervalImpl
 	 * @generated
 	 */
 	public void setMinGen(ValueSpecification newMin) {
-
 		ValueSpecification oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_INTERVAL__MIN, oldMin, min));
-
 	}
 
 	@Override
@@ -185,7 +180,6 @@ public class TimeIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMin() {
-		//genFeature
 		return min != null;
 	}
 

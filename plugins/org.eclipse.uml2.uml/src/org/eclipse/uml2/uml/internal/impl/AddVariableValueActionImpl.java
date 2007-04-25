@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AddVariableValueActionImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
+ * $Id: AddVariableValueActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -130,7 +130,6 @@ public class AddVariableValueActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,7 +164,6 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
-
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -175,7 +173,6 @@ public class AddVariableValueActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ADD_VARIABLE_VALUE_ACTION__IS_REPLACE_ALL,
 				oldIsReplaceAll, newIsReplaceAll));
-
 	}
 
 	/**
@@ -237,7 +234,6 @@ public class AddVariableValueActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -247,7 +243,6 @@ public class AddVariableValueActionImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
-
 		if (newInsertAt != insertAt) {
 			NotificationChain msgs = null;
 			if (insertAt != null)
@@ -267,7 +262,6 @@ public class AddVariableValueActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ADD_VARIABLE_VALUE_ACTION__INSERT_AT, newInsertAt,
 				newInsertAt));
-
 	}
 
 	/**

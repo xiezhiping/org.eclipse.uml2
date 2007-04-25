@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImpl.java,v 1.35 2007/02/26 16:17:56 khussey Exp $
+ * $Id: PackageImpl.java,v 1.36 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -237,7 +237,6 @@ public class PackageImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -255,7 +254,6 @@ public class PackageImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -273,7 +271,6 @@ public class PackageImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE__TEMPLATE_PARAMETER, newTemplateParameter,
 				newTemplateParameter));
-
 	}
 
 	/**
@@ -307,7 +304,6 @@ public class PackageImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -326,7 +322,6 @@ public class PackageImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -349,7 +344,6 @@ public class PackageImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -369,7 +363,6 @@ public class PackageImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -377,7 +370,6 @@ public class PackageImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE__VISIBILITY, oldVisibility, visibility));
-
 	}
 
 	/**
@@ -387,7 +379,6 @@ public class PackageImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		//genFeature
 		return visibility != VISIBILITY_EDEFAULT;
 	}
 
@@ -398,7 +389,6 @@ public class PackageImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -531,7 +521,6 @@ public class PackageImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -542,7 +531,6 @@ public class PackageImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -562,7 +550,6 @@ public class PackageImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**
@@ -592,7 +579,6 @@ public class PackageImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1763,7 +1749,6 @@ public class PackageImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -1874,7 +1859,6 @@ public class PackageImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		org.eclipse.uml2.uml.Package nestingPackage = basicGetNestingPackage();
 		if (nestingPackage != null) {
 			return nestingPackage;

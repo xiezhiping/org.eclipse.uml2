@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityImpl.java,v 1.33 2007/03/30 18:20:26 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.34 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -222,7 +222,6 @@ public class ActivityImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -250,7 +249,6 @@ public class ActivityImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -368,7 +366,6 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public void setIsReadOnly(boolean newIsReadOnly) {
-
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;
@@ -377,7 +374,6 @@ public class ActivityImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
-
 	}
 
 	/**
@@ -395,7 +391,6 @@ public class ActivityImpl
 	 * @generated
 	 */
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
-
 		boolean oldIsSingleExecution = (eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0;
 		if (newIsSingleExecution)
 			eFlags |= IS_SINGLE_EXECUTION_EFLAG;
@@ -405,7 +400,6 @@ public class ActivityImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution,
 				newIsSingleExecution));
-
 	}
 
 	/**

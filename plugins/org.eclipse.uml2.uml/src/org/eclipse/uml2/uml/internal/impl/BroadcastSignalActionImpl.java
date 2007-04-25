@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BroadcastSignalActionImpl.java,v 1.16 2007/02/26 16:17:58 khussey Exp $
+ * $Id: BroadcastSignalActionImpl.java,v 1.17 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -125,13 +125,11 @@ public class BroadcastSignalActionImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BROADCAST_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
-
 	}
 
 	/**

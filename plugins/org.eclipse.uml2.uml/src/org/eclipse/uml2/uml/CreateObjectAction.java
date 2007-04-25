@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateObjectAction.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
+ * $Id: CreateObjectAction.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -108,6 +108,8 @@ public interface CreateObjectAction
 	 * <!-- begin-model-doc -->
 	 * The classifier cannot be abstract.
 	 * not (self.classifier.isAbstract = #true)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -121,6 +123,8 @@ public interface CreateObjectAction
 	 * <!-- begin-model-doc -->
 	 * The classifier cannot be an association class
 	 * not self.classifier.oclIsKindOf(AssociationClass)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -134,6 +138,8 @@ public interface CreateObjectAction
 	 * <!-- begin-model-doc -->
 	 * The type of the result pin must be the same as the classifier of the action.
 	 * self.result.type = self.classifier
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -147,6 +153,8 @@ public interface CreateObjectAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the output pin is 1..1.
 	 * self.result.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

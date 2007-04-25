@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyObjectActionImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
+ * $Id: DestroyObjectActionImpl.java,v 1.26 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -150,7 +150,6 @@ public class DestroyObjectActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -186,7 +185,6 @@ public class DestroyObjectActionImpl
 	 * @generated
 	 */
 	public void setIsDestroyLinks(boolean newIsDestroyLinks) {
-
 		boolean oldIsDestroyLinks = (eFlags & IS_DESTROY_LINKS_EFLAG) != 0;
 		if (newIsDestroyLinks)
 			eFlags |= IS_DESTROY_LINKS_EFLAG;
@@ -196,7 +194,6 @@ public class DestroyObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DESTROY_OBJECT_ACTION__IS_DESTROY_LINKS,
 				oldIsDestroyLinks, newIsDestroyLinks));
-
 	}
 
 	/**
@@ -214,7 +211,6 @@ public class DestroyObjectActionImpl
 	 * @generated
 	 */
 	public void setIsDestroyOwnedObjects(boolean newIsDestroyOwnedObjects) {
-
 		boolean oldIsDestroyOwnedObjects = (eFlags & IS_DESTROY_OWNED_OBJECTS_EFLAG) != 0;
 		if (newIsDestroyOwnedObjects)
 			eFlags |= IS_DESTROY_OWNED_OBJECTS_EFLAG;
@@ -224,7 +220,6 @@ public class DestroyObjectActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DESTROY_OBJECT_ACTION__IS_DESTROY_OWNED_OBJECTS,
 				oldIsDestroyOwnedObjects, newIsDestroyOwnedObjects));
-
 	}
 
 	/**
@@ -283,7 +278,6 @@ public class DestroyObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -293,7 +287,6 @@ public class DestroyObjectActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
-
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -310,7 +303,6 @@ public class DestroyObjectActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DESTROY_OBJECT_ACTION__TARGET, newTarget, newTarget));
-
 	}
 
 	/**

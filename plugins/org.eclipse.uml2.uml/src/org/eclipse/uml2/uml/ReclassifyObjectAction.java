@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReclassifyObjectAction.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ReclassifyObjectAction.java,v 1.10 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -206,6 +206,8 @@ public interface ReclassifyObjectAction
 	 * <!-- begin-model-doc -->
 	 * None of the new classifiers may be abstract.
 	 * not self.newClassifier->exists(isAbstract = true)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -219,6 +221,8 @@ public interface ReclassifyObjectAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the input pin is 1..1.
 	 * self.argument.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -232,6 +236,8 @@ public interface ReclassifyObjectAction
 	 * <!-- begin-model-doc -->
 	 * The input pin has no type.
 	 * self.argument.type->size() = 0
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

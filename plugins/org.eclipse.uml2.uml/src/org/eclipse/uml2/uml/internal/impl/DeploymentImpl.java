@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.22 2007/02/26 16:17:59 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.23 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,6 @@ public class DeploymentImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -297,7 +296,6 @@ public class DeploymentImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newLocation,
 			UMLPackage.DEPLOYMENT__LOCATION, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newLocation != null) {
@@ -316,7 +314,6 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public void setLocation(DeploymentTarget newLocation) {
-
 		if (newLocation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
@@ -335,7 +332,6 @@ public class DeploymentImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DEPLOYMENT__LOCATION, newLocation, newLocation));
-
 	}
 
 	/**

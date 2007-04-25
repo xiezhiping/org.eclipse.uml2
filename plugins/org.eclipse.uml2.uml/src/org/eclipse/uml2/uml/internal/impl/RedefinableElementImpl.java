@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementImpl.java,v 1.17 2006/12/14 15:49:29 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -105,7 +105,6 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,7 +164,6 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public EList<Classifier> getRedefinitionContextsGen() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -271,7 +269,6 @@ public abstract class RedefinableElementImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -280,7 +277,6 @@ public abstract class RedefinableElementImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**

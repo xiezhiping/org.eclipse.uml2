@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.17 2007/02/26 16:17:57 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -177,13 +177,11 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setContract(Classifier newContract) {
-
 		Classifier oldContract = contract;
 		contract = newContract;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SUBSTITUTION__CONTRACT, oldContract, contract));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newContract != null) {
@@ -226,7 +224,6 @@ public class SubstitutionImpl
 			Classifier newSubstitutingClassifier, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSubstitutingClassifier,
 			UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newSubstitutingClassifier != null) {
@@ -245,7 +242,6 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
-
 		if (newSubstitutingClassifier != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
@@ -266,7 +262,6 @@ public class SubstitutionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER,
 				newSubstitutingClassifier, newSubstitutingClassifier));
-
 	}
 
 	/**

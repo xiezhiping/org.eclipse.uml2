@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReduceActionImpl.java,v 1.20 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ReduceActionImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -153,7 +153,6 @@ public class ReduceActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -179,7 +178,6 @@ public class ReduceActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -231,13 +229,11 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setReducer(Behavior newReducer) {
-
 		Behavior oldReducer = reducer;
 		reducer = newReducer;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDUCE_ACTION__REDUCER, oldReducer, reducer));
-
 	}
 
 	/**
@@ -295,7 +291,6 @@ public class ReduceActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -305,7 +300,6 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -322,7 +316,6 @@ public class ReduceActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDUCE_ACTION__RESULT, newResult, newResult));
-
 	}
 
 	/**
@@ -397,7 +390,6 @@ public class ReduceActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -407,7 +399,6 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setCollection(InputPin newCollection) {
-
 		if (newCollection != collection) {
 			NotificationChain msgs = null;
 			if (collection != null)
@@ -425,7 +416,6 @@ public class ReduceActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDUCE_ACTION__COLLECTION, newCollection,
 				newCollection));
-
 	}
 
 	/**
@@ -467,7 +457,6 @@ public class ReduceActionImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -477,7 +466,6 @@ public class ReduceActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDUCE_ACTION__IS_ORDERED, oldIsOrdered,
 				newIsOrdered));
-
 	}
 
 	/**

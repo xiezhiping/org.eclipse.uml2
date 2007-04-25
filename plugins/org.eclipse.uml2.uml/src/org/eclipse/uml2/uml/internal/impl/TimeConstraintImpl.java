@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeConstraintImpl.java,v 1.22 2007/01/31 21:21:15 khussey Exp $
+ * $Id: TimeConstraintImpl.java,v 1.23 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -110,7 +110,6 @@ public class TimeConstraintImpl
 	 * @generated
 	 */
 	public void setFirstEvent(boolean newFirstEvent) {
-
 		boolean oldFirstEvent = (eFlags & FIRST_EVENT_EFLAG) != 0;
 		if (newFirstEvent)
 			eFlags |= FIRST_EVENT_EFLAG;
@@ -120,7 +119,6 @@ public class TimeConstraintImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_CONSTRAINT__FIRST_EVENT, oldFirstEvent,
 				newFirstEvent));
-
 	}
 
 	/**
@@ -184,7 +182,6 @@ public class TimeConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -208,7 +205,6 @@ public class TimeConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -226,7 +222,6 @@ public class TimeConstraintImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_CONSTRAINT__SPECIFICATION, newSpecification,
 				newSpecification));
-
 	}
 
 	/**
@@ -253,7 +248,6 @@ public class TimeConstraintImpl
 	 */
 	@Override
 	public boolean isSetSpecification() {
-		//genFeature
 		return specification != null;
 	}
 

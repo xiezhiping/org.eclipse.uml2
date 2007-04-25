@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CreateLinkActionImpl.java,v 1.17 2007/01/31 21:21:15 khussey Exp $
+ * $Id: CreateLinkActionImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,6 @@ public class CreateLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
-		//genFeature
 		return endData != null && !endData.isEmpty();
 	}
 

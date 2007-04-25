@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadSelfAction.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
+ * $Id: ReadSelfAction.java,v 1.9 2007/04/25 17:47:06 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -82,6 +82,8 @@ public interface ReadSelfAction
 	 * <!-- begin-model-doc -->
 	 * The action must be contained in an behavior that has a host classifier.
 	 * self.context->size() = 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -95,6 +97,8 @@ public interface ReadSelfAction
 	 * <!-- begin-model-doc -->
 	 * If the action is contained in an behavior that is acting as the body of a method, then the operation of the method must not be static.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -108,6 +112,8 @@ public interface ReadSelfAction
 	 * <!-- begin-model-doc -->
 	 * The type of the result output pin is the host classifier.
 	 * self.result.type = self.context
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -121,6 +127,8 @@ public interface ReadSelfAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the result output pin is 1..1.
 	 * self.result.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

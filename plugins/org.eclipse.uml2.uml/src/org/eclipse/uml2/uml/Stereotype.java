@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Stereotype.java,v 1.10 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,6 +74,8 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * Stereotype names should not clash with keyword names for the extended model element.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -87,6 +89,8 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * A Stereotype may only generalize or specialize another Stereotype.
 	 * generalization.general->forAll(e |e.oclIsKindOf(Stereotype)) and generalization.specific->forAll(e | e.oclIsKindOf(Stereotype)) 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -99,6 +103,8 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a(n) (required) extension of the specified metaclass with this stereotype.
+	 * @param metaclass The metaclass for the new extension.
+	 * @param isRequired Whether the new extension should be required.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false" isRequiredDataType="org.eclipse.uml2.uml.Boolean" isRequiredRequired="true" isRequiredOrdered="false"
 	 * @generated
@@ -133,6 +139,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the keyword for this stereotype, localized if indicated.
+	 * @param localize Whether to localize the keyword.
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
@@ -177,6 +184,7 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates an icon with the specified location for this stereotype.
+	 * @param location The location for the new icon.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" locationDataType="org.eclipse.uml2.uml.String" locationRequired="true" locationOrdered="false"
 	 * @generated
@@ -188,6 +196,8 @@ public interface Stereotype
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates an icon with the specified format and content for this stereotype.
+	 * @param format The format for the new icon.
+	 * @param content The content for the new icon.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" formatDataType="org.eclipse.uml2.uml.String" formatRequired="true" formatOrdered="false" contentDataType="org.eclipse.uml2.uml.String" contentRequired="true" contentOrdered="false"
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypedElementImpl.java,v 1.13 2007/02/26 16:17:55 khussey Exp $
+ * $Id: TypedElementImpl.java,v 1.14 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,13 +108,11 @@ public abstract class TypedElementImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TYPED_ELEMENT__TYPE, oldType, type));
-
 	}
 
 	/**

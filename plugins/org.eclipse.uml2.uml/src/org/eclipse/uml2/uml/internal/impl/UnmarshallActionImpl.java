@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallActionImpl.java,v 1.26 2007/02/26 16:17:58 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.27 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,7 +134,6 @@ public class UnmarshallActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -160,7 +159,6 @@ public class UnmarshallActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -280,14 +278,12 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setUnmarshallType(Classifier newUnmarshallType) {
-
 		Classifier oldUnmarshallType = unmarshallType;
 		unmarshallType = newUnmarshallType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.UNMARSHALL_ACTION__UNMARSHALL_TYPE,
 				oldUnmarshallType, unmarshallType));
-
 	}
 
 	/**
@@ -345,7 +341,6 @@ public class UnmarshallActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -355,7 +350,6 @@ public class UnmarshallActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -372,7 +366,6 @@ public class UnmarshallActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.UNMARSHALL_ACTION__OBJECT, newObject, newObject));
-
 	}
 
 	/**

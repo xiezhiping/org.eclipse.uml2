@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.20 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Component.java,v 1.21 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -257,6 +257,8 @@ public interface Component
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a(n) (abstract) class with the specified name as a packaged element of this component.
+	 * @param name The name for the new class, or null.
+	 * @param isAbstract Whether the new class should be abstract.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
@@ -268,6 +270,7 @@ public interface Component
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a enumeration with the specified name as a packaged element of this component.
+	 * @param name The name for the new enumeration, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
@@ -279,6 +282,7 @@ public interface Component
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a primitive type with the specified name as a packaged element of this component.
+	 * @param name The name for the new primitive type, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
@@ -290,6 +294,7 @@ public interface Component
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates an interface with the specified name as a packaged element of this component.
+	 * @param name The name for the new interface, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated

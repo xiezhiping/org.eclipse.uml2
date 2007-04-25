@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
+ * $Id: VertexImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -226,7 +226,6 @@ public abstract class VertexImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContainer,
 			UMLPackage.VERTEX__CONTAINER, msgs);
-
 		return msgs;
 	}
 
@@ -236,7 +235,6 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -254,7 +252,6 @@ public abstract class VertexImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VERTEX__CONTAINER, newContainer, newContainer));
-
 	}
 
 	/**
@@ -527,7 +524,6 @@ public abstract class VertexImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

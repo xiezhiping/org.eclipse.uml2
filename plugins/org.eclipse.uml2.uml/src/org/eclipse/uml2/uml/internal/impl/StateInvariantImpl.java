@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateInvariantImpl.java,v 1.24 2007/02/26 16:17:55 khussey Exp $
+ * $Id: StateInvariantImpl.java,v 1.25 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -100,7 +100,6 @@ public class StateInvariantImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -178,7 +177,6 @@ public class StateInvariantImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -188,7 +186,6 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public void setInvariant(Constraint newInvariant) {
-
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
 			if (invariant != null)
@@ -206,7 +203,6 @@ public class StateInvariantImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE_INVARIANT__INVARIANT, newInvariant,
 				newInvariant));
-
 	}
 
 	/**
@@ -279,7 +275,6 @@ public class StateInvariantImpl
 	 * @generated
 	 */
 	public boolean isSetCovereds() {
-		//genFeature
 		return covereds != null && !covereds.isEmpty();
 	}
 

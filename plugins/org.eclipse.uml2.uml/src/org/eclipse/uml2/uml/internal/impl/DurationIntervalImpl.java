@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationIntervalImpl.java,v 1.15 2007/01/31 21:21:15 khussey Exp $
+ * $Id: DurationIntervalImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -96,13 +96,11 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public void setMinGen(ValueSpecification newMin) {
-
 		ValueSpecification oldMin = min;
 		min = newMin;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DURATION_INTERVAL__MIN, oldMin, min));
-
 	}
 
 	@Override
@@ -121,7 +119,6 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMin() {
-		//genFeature
 		return min != null;
 	}
 
@@ -160,13 +157,11 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public void setMaxGen(ValueSpecification newMax) {
-
 		ValueSpecification oldMax = max;
 		max = newMax;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DURATION_INTERVAL__MAX, oldMax, max));
-
 	}
 
 	@Override
@@ -185,7 +180,6 @@ public class DurationIntervalImpl
 	 * @generated
 	 */
 	public boolean isSetMax() {
-		//genFeature
 		return max != null;
 	}
 

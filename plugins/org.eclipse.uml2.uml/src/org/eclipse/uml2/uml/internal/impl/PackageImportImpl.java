@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImportImpl.java,v 1.17 2007/02/26 16:17:55 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,7 +123,6 @@ public class PackageImportImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -150,7 +149,6 @@ public class PackageImportImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -185,7 +183,6 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -194,7 +191,6 @@ public class PackageImportImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_IMPORT__VISIBILITY, oldVisibility,
 				visibility));
-
 	}
 
 	/**
@@ -232,14 +228,12 @@ public class PackageImportImpl
 	 */
 	public void setImportedPackage(
 			org.eclipse.uml2.uml.Package newImportedPackage) {
-
 		org.eclipse.uml2.uml.Package oldImportedPackage = importedPackage;
 		importedPackage = newImportedPackage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE,
 				oldImportedPackage, importedPackage));
-
 	}
 
 	/**
@@ -273,7 +267,6 @@ public class PackageImportImpl
 			Namespace newImportingNamespace, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newImportingNamespace,
 			UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE, msgs);
-
 		return msgs;
 	}
 
@@ -283,7 +276,6 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public void setImportingNamespace(Namespace newImportingNamespace) {
-
 		if (newImportingNamespace != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE && newImportingNamespace != null)) {
 			if (EcoreUtil.isAncestor(this, newImportingNamespace))
@@ -303,7 +295,6 @@ public class PackageImportImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE,
 				newImportingNamespace, newImportingNamespace));
-
 	}
 
 	/**
@@ -584,7 +575,6 @@ public class PackageImportImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		Namespace importingNamespace = basicGetImportingNamespace();
 		if (importingNamespace != null) {
 			return importingNamespace;

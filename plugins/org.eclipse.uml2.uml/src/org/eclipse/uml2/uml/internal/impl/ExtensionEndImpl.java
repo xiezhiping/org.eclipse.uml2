@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndImpl.java,v 1.23 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.24 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,13 +102,11 @@ public class ExtensionEndImpl
 	 */
 	@Override
 	public void setType(Type newType) {
-
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXTENSION_END__TYPE, oldType, type));
-
 	}
 
 	/**
@@ -117,7 +115,6 @@ public class ExtensionEndImpl
 	 * @generated
 	 */
 	public boolean isSetType() {
-		//genFeature
 		return type != null;
 	}
 
@@ -128,7 +125,6 @@ public class ExtensionEndImpl
 	 */
 	@Override
 	public int getLower() {
-
 		return ExtensionEndOperations.getLower(this);
 	}
 
@@ -139,7 +135,6 @@ public class ExtensionEndImpl
 	 */
 	@Override
 	public void setLower(int newLower) {
-
 		ExtensionEndOperations.setLower(this, newLower);
 	}
 

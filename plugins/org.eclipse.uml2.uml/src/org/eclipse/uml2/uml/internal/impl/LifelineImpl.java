@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.22 2007/02/26 16:17:58 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.23 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,6 @@ public class LifelineImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -211,13 +210,11 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setRepresents(ConnectableElement newRepresents) {
-
 		ConnectableElement oldRepresents = represents;
 		represents = newRepresents;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LIFELINE__REPRESENTS, oldRepresents, represents));
-
 	}
 
 	/**
@@ -251,7 +248,6 @@ public class LifelineImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInteraction,
 			UMLPackage.LIFELINE__INTERACTION, msgs);
-
 		return msgs;
 	}
 
@@ -261,7 +257,6 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
@@ -280,7 +275,6 @@ public class LifelineImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LIFELINE__INTERACTION, newInteraction,
 				newInteraction));
-
 	}
 
 	/**
@@ -338,7 +332,6 @@ public class LifelineImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -348,7 +341,6 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setSelector(ValueSpecification newSelector) {
-
 		if (newSelector != selector) {
 			NotificationChain msgs = null;
 			if (selector != null)
@@ -365,7 +357,6 @@ public class LifelineImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LIFELINE__SELECTOR, newSelector, newSelector));
-
 	}
 
 	/**
@@ -418,14 +409,12 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public void setDecomposedAs(PartDecomposition newDecomposedAs) {
-
 		PartDecomposition oldDecomposedAs = decomposedAs;
 		decomposedAs = newDecomposedAs;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LIFELINE__DECOMPOSED_AS, oldDecomposedAs,
 				decomposedAs));
-
 	}
 
 	/**
@@ -785,7 +774,6 @@ public class LifelineImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Interaction interaction = basicGetInteraction();
 		if (interaction != null) {
 			return interaction;

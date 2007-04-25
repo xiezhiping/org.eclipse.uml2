@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PinImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
+ * $Id: PinImpl.java,v 1.29 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -210,7 +210,6 @@ public class PinImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -245,7 +244,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsOrdered(boolean newIsOrdered) {
-
 		boolean oldIsOrdered = (eFlags & IS_ORDERED_EFLAG) != 0;
 		if (newIsOrdered)
 			eFlags |= IS_ORDERED_EFLAG;
@@ -254,7 +252,6 @@ public class PinImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__IS_ORDERED, oldIsOrdered, newIsOrdered));
-
 	}
 
 	/**
@@ -272,7 +269,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsUnique(boolean newIsUnique) {
-
 		boolean oldIsUnique = (eFlags & IS_UNIQUE_EFLAG) != 0;
 		if (newIsUnique)
 			eFlags |= IS_UNIQUE_EFLAG;
@@ -281,7 +277,6 @@ public class PinImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__IS_UNIQUE, oldIsUnique, newIsUnique));
-
 	}
 
 	/**
@@ -290,7 +285,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public int getUpper() {
-
 		return MultiplicityElementOperations.getUpper(this);
 	}
 
@@ -300,7 +294,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setUpper(int newUpper) {
-
 		MultiplicityElementOperations.setUpper(this, newUpper);
 	}
 
@@ -310,7 +303,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public int getLower() {
-
 		return MultiplicityElementOperations.getLower(this);
 	}
 
@@ -320,7 +312,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setLower(int newLower) {
-
 		MultiplicityElementOperations.setLower(this, newLower);
 	}
 
@@ -380,7 +371,6 @@ public class PinImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -390,7 +380,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setUpperValue(ValueSpecification newUpperValue) {
-
 		if (newUpperValue != upperValue) {
 			NotificationChain msgs = null;
 			if (upperValue != null)
@@ -407,7 +396,6 @@ public class PinImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__UPPER_VALUE, newUpperValue, newUpperValue));
-
 	}
 
 	/**
@@ -482,7 +470,6 @@ public class PinImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -492,7 +479,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setLowerValue(ValueSpecification newLowerValue) {
-
 		if (newLowerValue != lowerValue) {
 			NotificationChain msgs = null;
 			if (lowerValue != null)
@@ -509,7 +495,6 @@ public class PinImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__LOWER_VALUE, newLowerValue, newLowerValue));
-
 	}
 
 	/**
@@ -543,7 +528,6 @@ public class PinImpl
 	 * @generated
 	 */
 	public void setIsControl(boolean newIsControl) {
-
 		boolean oldIsControl = (eFlags & IS_CONTROL_EFLAG) != 0;
 		if (newIsControl)
 			eFlags |= IS_CONTROL_EFLAG;
@@ -552,7 +536,6 @@ public class PinImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__IS_CONTROL, oldIsControl, newIsControl));
-
 	}
 
 	/**

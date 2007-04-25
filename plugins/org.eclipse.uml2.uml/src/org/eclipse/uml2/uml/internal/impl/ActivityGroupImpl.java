@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.19 2007/01/31 21:21:15 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.20 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -94,7 +94,6 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList<ActivityGroup> getSubgroups() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -121,7 +120,6 @@ public abstract class ActivityGroupImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -148,7 +146,6 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList<ActivityNode> getContainedNodes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -206,7 +203,6 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public EList<ActivityEdge> getContainedEdges() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -289,7 +285,6 @@ public abstract class ActivityGroupImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInActivity,
 			UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, msgs);
-
 		return msgs;
 	}
 
@@ -299,7 +294,6 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public void setInActivity(Activity newInActivity) {
-
 		if (newInActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
@@ -318,7 +312,6 @@ public abstract class ActivityGroupImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY, newInActivity,
 				newInActivity));
-
 	}
 
 	/**
@@ -562,7 +555,6 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public ActivityGroup basicGetSuperGroup() {
-
 		return null;
 	}
 
@@ -607,7 +599,6 @@ public abstract class ActivityGroupImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		if (isSetSuperGroup()) {
 			return basicGetSuperGroup();
 		}

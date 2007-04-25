@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.18 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Package.java,v 1.19 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -325,6 +325,8 @@ public interface Package
 	 * <!-- begin-model-doc -->
 	 * If an element that is owned by a package has visibility, it is public or private.
 	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -348,6 +350,8 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a(n) (abstract) class with the specified name as an owned type of this package.
+	 * @param name The name for the new class, or null.
+	 * @param isAbstract Whether the new class should be abstract.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
@@ -359,6 +363,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a enumeration with the specified name as an owned type of this package.
+	 * @param name The name for the new enumeration, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
@@ -370,6 +375,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a primitive type with the specified name as an owned type of this package.
+	 * @param name The name for the new primitive type, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated
@@ -381,6 +387,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines whether the specified profile is applied to this package.
+	 * @param profile The profile in question.
 	 * <!-- end-model-doc -->
 	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
@@ -392,6 +399,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
+	 * @param profile The profile to apply.
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
@@ -403,6 +411,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
+	 * @param profile The profile to unapply.
 	 * <!-- end-model-doc -->
 	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
@@ -425,6 +434,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the profile with the specified qualified name that is applied to this package, or null if no such profile is applied.
+	 * @param qualifiedName The qualified name of the applied profile to retrieve.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
@@ -436,6 +446,8 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the profile with the specified qualified name that is applied to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * @param qualifiedName The qualified name of the applied profile to retrieve.
+	 * @param recurse Whether to look in nesting packages.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
@@ -458,6 +470,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the application of the specified profile to this package, or null if no such profile is applied.
+	 * @param profile The profile whose application to retrieve.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
@@ -469,6 +482,8 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Retrieves the application of the specified profile to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * @param profile The profile whose application to retrieve.
+	 * @param recurse Whether to look in nesting packages.
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" profileRequired="true" profileOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
@@ -480,6 +495,7 @@ public interface Package
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates an interface with the specified name as an owned type of this package.
+	 * @param name The name for the new interface, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
 	 * @generated

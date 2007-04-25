@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectNodeImpl.java,v 1.24 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.25 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -213,13 +213,11 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setType(Type newType) {
-
 		Type oldType = type;
 		type = newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_NODE__TYPE, oldType, type));
-
 	}
 
 	/**
@@ -229,7 +227,6 @@ public abstract class ObjectNodeImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -265,7 +262,6 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
-
 		ObjectNodeOrderingKind oldOrdering = ordering;
 		ordering = newOrdering == null
 			? ORDERING_EDEFAULT
@@ -273,7 +269,6 @@ public abstract class ObjectNodeImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_NODE__ORDERING, oldOrdering, ordering));
-
 	}
 
 	/**
@@ -291,7 +286,6 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setIsControlType(boolean newIsControlType) {
-
 		boolean oldIsControlType = (eFlags & IS_CONTROL_TYPE_EFLAG) != 0;
 		if (newIsControlType)
 			eFlags |= IS_CONTROL_TYPE_EFLAG;
@@ -301,7 +295,6 @@ public abstract class ObjectNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE, oldIsControlType,
 				newIsControlType));
-
 	}
 
 	/**
@@ -361,7 +354,6 @@ public abstract class ObjectNodeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -371,7 +363,6 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setUpperBound(ValueSpecification newUpperBound) {
-
 		if (newUpperBound != upperBound) {
 			NotificationChain msgs = null;
 			if (upperBound != null)
@@ -389,7 +380,6 @@ public abstract class ObjectNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_NODE__UPPER_BOUND, newUpperBound,
 				newUpperBound));
-
 	}
 
 	/**
@@ -482,13 +472,11 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
-
 		Behavior oldSelection = selection;
 		selection = newSelection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_NODE__SELECTION, oldSelection, selection));
-
 	}
 
 	/**

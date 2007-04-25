@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.15 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Operation.java,v 1.16 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -525,6 +525,8 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * An operation can have at most one return parameter; i.e., an owned parameter with the direction set to 'return'
 	 * self.ownedParameter->select(par | par.direction = #return)->size() <= 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -538,6 +540,8 @@ public interface Operation
 	 * <!-- begin-model-doc -->
 	 * A bodyCondition can only be specified for a query operation.
 	 * bodyCondition->notEmpty() implies isQuery
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

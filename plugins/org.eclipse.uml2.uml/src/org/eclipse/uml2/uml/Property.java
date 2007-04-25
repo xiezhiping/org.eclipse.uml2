@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.23 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Property.java,v 1.24 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -570,6 +570,8 @@ public interface Property
 	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
 	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -586,6 +588,8 @@ public interface Property
 	 *   (self.subsettingContext()->notEmpty() and self.subsettingContext()->forAll (sc |
 	 *     self.subsettedProperty->forAll(sp |
 	 *       sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -603,6 +607,8 @@ public interface Property
 	 *       redefinedProperty->forAll(rp|
 	 *         ((redefinitionContext->collect(fc|
 	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -619,6 +625,8 @@ public interface Property
 	 *   self.type.conformsTo(sp.type) and
 	 *     ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies
 	 *       self.upperBound()<=sp.upperBound() ))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -632,6 +640,8 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * Only a navigable property can be marked as readOnly.
 	 * isReadOnly implies isNavigable()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -645,6 +655,8 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A derived union is derived.
 	 * isDerivedUnion implies isDerived
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -658,6 +670,8 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A derived union is read only.
 	 * isDerivedUnion implies isReadOnly
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -671,6 +685,8 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A property may not subset a property with the same name.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -684,6 +700,8 @@ public interface Property
 	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -698,6 +716,8 @@ public interface Property
 	 * A binding of a property template parameter representing an attribute must be to an attribute.
 	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
 	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -710,6 +730,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Sets the navigability of this property as indicated.
+	 * @param isNavigable The new navigability.
 	 * <!-- end-model-doc -->
 	 * @model isNavigableDataType="org.eclipse.uml2.uml.Boolean" isNavigableRequired="true" isNavigableOrdered="false"
 	 * @generated
@@ -732,6 +753,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Sets the default value for this property to the specified Boolean value.
+	 * @param value The new default value.
 	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
 	 * @generated
@@ -743,6 +765,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Sets the default value for this property to the specified integer value.
+	 * @param value The new default value.
 	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
 	 * @generated
@@ -754,6 +777,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Sets the default value for this property to the specified string value.
+	 * @param value The new default value.
 	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
 	 * @generated
@@ -765,6 +789,7 @@ public interface Property
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Sets the default value for this property to the specified unlimited natural value.
+	 * @param value The new default value.
 	 * <!-- end-model-doc -->
 	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
 	 * @generated

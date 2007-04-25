@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
+ * $Id: SendObjectActionImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,6 @@ public class SendObjectActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -191,7 +190,6 @@ public class SendObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -201,7 +199,6 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public void setTarget(InputPin newTarget) {
-
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -218,7 +215,6 @@ public class SendObjectActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SEND_OBJECT_ACTION__TARGET, newTarget, newTarget));
-
 	}
 
 	/**
@@ -301,7 +297,6 @@ public class SendObjectActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -311,7 +306,6 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public void setRequest(InputPin newRequest) {
-
 		if (newRequest != request) {
 			NotificationChain msgs = null;
 			if (request != null)
@@ -328,7 +322,6 @@ public class SendObjectActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SEND_OBJECT_ACTION__REQUEST, newRequest, newRequest));
-
 	}
 
 	/**
@@ -361,7 +354,6 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public boolean isSetRequest() {
-		//genFeature
 		return request != null;
 	}
 
@@ -812,7 +804,6 @@ public class SendObjectActionImpl
 	 * @generated
 	 */
 	public boolean isSetArguments() {
-		//genFeature
 		return false;
 	}
 

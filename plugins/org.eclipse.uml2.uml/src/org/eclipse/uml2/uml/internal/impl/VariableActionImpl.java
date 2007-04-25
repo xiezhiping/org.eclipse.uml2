@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableActionImpl.java,v 1.16 2007/02/26 16:17:56 khussey Exp $
+ * $Id: VariableActionImpl.java,v 1.17 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,13 +123,11 @@ public abstract class VariableActionImpl
 	 * @generated
 	 */
 	public void setVariable(Variable newVariable) {
-
 		Variable oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE_ACTION__VARIABLE, oldVariable, variable));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValueImpl.java,v 1.11 2007/02/26 16:17:57 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.12 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,13 +124,11 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
-
 		Property oldQualifier = qualifier;
 		qualifier = newQualifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.QUALIFIER_VALUE__QUALIFIER, oldQualifier, qualifier));
-
 	}
 
 	/**
@@ -166,13 +164,11 @@ public class QualifierValueImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-
 		InputPin oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.QUALIFIER_VALUE__VALUE, oldValue, value));
-
 	}
 
 	/**

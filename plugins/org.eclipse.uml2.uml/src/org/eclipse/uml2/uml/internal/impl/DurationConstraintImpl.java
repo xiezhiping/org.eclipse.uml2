@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraintImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
+ * $Id: DurationConstraintImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,7 +168,6 @@ public class DurationConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -192,7 +191,6 @@ public class DurationConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -212,7 +210,6 @@ public class DurationConstraintImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.DURATION_CONSTRAINT__SPECIFICATION,
 				newSpecification, newSpecification));
-
 	}
 
 	/**
@@ -239,7 +236,6 @@ public class DurationConstraintImpl
 	 */
 	@Override
 	public boolean isSetSpecification() {
-		//genFeature
 		return specification != null;
 	}
 

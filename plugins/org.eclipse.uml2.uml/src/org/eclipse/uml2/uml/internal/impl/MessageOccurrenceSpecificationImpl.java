@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageOccurrenceSpecificationImpl.java,v 1.15 2007/02/26 16:17:56 khussey Exp $
+ * $Id: MessageOccurrenceSpecificationImpl.java,v 1.16 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -115,14 +115,12 @@ public class MessageOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	public void setMessage(Message newMessage) {
-
 		Message oldMessage = message;
 		message = newMessage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE_OCCURRENCE_SPECIFICATION__MESSAGE,
 				oldMessage, message));
-
 	}
 
 	/**

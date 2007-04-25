@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierAction.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierAction.java,v 1.8 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -161,6 +161,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The qualifier attribute must be a qualifier attribute of an association end.
 	 * self.qualifier.associationEnd->size() = 1
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -174,6 +176,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The association of the association end of the qualifier attribute must be an association class.
 	 * self.qualifier.associationEnd.association.oclIsKindOf(AssociationClass)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -187,6 +191,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The ends of the association must not be static.
 	 * self.qualifier.associationEnd.association.memberEnd->forall(e | not e.isStatic)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -200,6 +206,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The type of the object input pin is the association class that owns the association end that has the given qualifier attribute.
 	 * self.object.type = self.qualifier.associationEnd.association
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -213,6 +221,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the qualifier attribute is 1..1.
 	 * self.qualifier.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -226,6 +236,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the object input pin is 1..1.
 	 * self.object.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -239,6 +251,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The type of the result output pin is the same as the type of the qualifier attribute.
 	 * self.result.type = self.qualifier.type
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -252,6 +266,8 @@ public interface ReadLinkObjectEndQualifierAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the result output pin is 1..1.
 	 * self.result.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

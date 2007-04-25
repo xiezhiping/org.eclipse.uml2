@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.16 2006/12/14 15:49:27 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -232,6 +232,8 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * A multiplicity must define at least one valid cardinality that is greater than zero.
 	 * upperBound()->notEmpty() implies upperBound() > 0
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -245,6 +247,8 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The lower bound must be a non-negative integer literal.
 	 * lowerBound()->notEmpty() implies lowerBound() >= 0
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -258,6 +262,8 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * The upper bound must be greater than or equal to the lower bound.
 	 * (upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -271,6 +277,8 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * If a non-literal ValueSpecification is used for the lower or upper bound, then evaluating that specification must not have side effects.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -284,6 +292,8 @@ public interface MultiplicityElement
 	 * <!-- begin-model-doc -->
 	 * If a non-literal ValueSpecification is used for the lower or upper bound, then that specification must be a constant expression.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

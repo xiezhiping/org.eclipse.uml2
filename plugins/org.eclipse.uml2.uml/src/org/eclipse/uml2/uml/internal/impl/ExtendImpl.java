@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtendImpl.java,v 1.23 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ExtendImpl.java,v 1.24 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,7 +131,6 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList<Element> getRelatedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -159,7 +158,6 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -185,7 +183,6 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -212,7 +209,6 @@ public class ExtendImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -266,13 +262,11 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setExtendedCase(UseCase newExtendedCase) {
-
 		UseCase oldExtendedCase = extendedCase;
 		extendedCase = newExtendedCase;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXTEND__EXTENDED_CASE, oldExtendedCase, extendedCase));
-
 	}
 
 	/**
@@ -331,7 +325,6 @@ public class ExtendImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -341,7 +334,6 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setCondition(Constraint newCondition) {
-
 		if (newCondition != condition) {
 			NotificationChain msgs = null;
 			if (condition != null)
@@ -358,7 +350,6 @@ public class ExtendImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXTEND__CONDITION, newCondition, newCondition));
-
 	}
 
 	/**
@@ -453,7 +444,6 @@ public class ExtendImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newExtension,
 			UMLPackage.EXTEND__EXTENSION, msgs);
-
 		return msgs;
 	}
 
@@ -463,7 +453,6 @@ public class ExtendImpl
 	 * @generated
 	 */
 	public void setExtension(UseCase newExtension) {
-
 		if (newExtension != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXTEND__EXTENSION && newExtension != null)) {
 			if (EcoreUtil.isAncestor(this, newExtension))
@@ -481,7 +470,6 @@ public class ExtendImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXTEND__EXTENSION, newExtension, newExtension));
-
 	}
 
 	/**

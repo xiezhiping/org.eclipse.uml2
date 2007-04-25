@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.19 2007/03/30 18:20:25 khussey Exp $
+ * $Id: Behavior.java,v 1.20 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -397,6 +397,8 @@ public interface Behavior
 	 * <!-- begin-model-doc -->
 	 * The parameters of the behavior must match the parameters of the implemented behavioral feature.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -410,6 +412,8 @@ public interface Behavior
 	 * <!-- begin-model-doc -->
 	 * The implemented behavioral feature must be a feature (possibly inherited) of the context classifier of the behavior.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -423,6 +427,8 @@ public interface Behavior
 	 * <!-- begin-model-doc -->
 	 * If the implemented behavioral feature has been redefined in the ancestors of the owner of the behavior, then the behavior must realize the latest redefining behavioral feature.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -436,6 +442,8 @@ public interface Behavior
 	 * <!-- begin-model-doc -->
 	 * There may be at most one behavior for a given pairing of classifier (as owner of the behavior) and behavioral feature (as specification of the behavior).
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

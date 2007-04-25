@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTemplateParameterImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
+ * $Id: ConnectableElementTemplateParameterImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -114,7 +114,6 @@ public class ConnectableElementTemplateParameterImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -151,7 +150,6 @@ public class ConnectableElementTemplateParameterImpl
 	 */
 	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -171,7 +169,6 @@ public class ConnectableElementTemplateParameterImpl
 				Notification.SET,
 				UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 				newParameteredElement, newParameteredElement));
-
 	}
 
 	/**
@@ -180,7 +177,6 @@ public class ConnectableElementTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
-		//genFeature
 		return parameteredElement != null;
 	}
 

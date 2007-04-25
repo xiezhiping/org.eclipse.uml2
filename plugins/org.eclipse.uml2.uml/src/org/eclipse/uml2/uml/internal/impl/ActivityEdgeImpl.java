@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.26 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -181,7 +181,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public EList<ActivityGroup> getInGroups() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -208,7 +207,6 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -242,7 +240,6 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -294,7 +291,6 @@ public abstract class ActivityEdgeImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newActivity,
 			UMLPackage.ACTIVITY_EDGE__ACTIVITY, msgs);
-
 		return msgs;
 	}
 
@@ -304,7 +300,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setActivity(Activity newActivity) {
-
 		if (newActivity != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
@@ -322,7 +317,6 @@ public abstract class ActivityEdgeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__ACTIVITY, newActivity, newActivity));
-
 	}
 
 	/**
@@ -396,7 +390,6 @@ public abstract class ActivityEdgeImpl
 			StructuredActivityNode newInStructuredNode, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInStructuredNode,
 			UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE, msgs);
-
 		return msgs;
 	}
 
@@ -406,7 +399,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
-
 		if (newInStructuredNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
@@ -426,7 +418,6 @@ public abstract class ActivityEdgeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE,
 				newInStructuredNode, newInStructuredNode));
-
 	}
 
 	/**
@@ -474,7 +465,6 @@ public abstract class ActivityEdgeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -484,7 +474,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setTarget(ActivityNode newTarget) {
-
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
@@ -501,7 +490,6 @@ public abstract class ActivityEdgeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__TARGET, newTarget, newTarget));
-
 	}
 
 	/**
@@ -601,7 +589,6 @@ public abstract class ActivityEdgeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -611,7 +598,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setGuard(ValueSpecification newGuard) {
-
 		if (newGuard != guard) {
 			NotificationChain msgs = null;
 			if (guard != null)
@@ -628,7 +614,6 @@ public abstract class ActivityEdgeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__GUARD, newGuard, newGuard));
-
 	}
 
 	/**
@@ -701,7 +686,6 @@ public abstract class ActivityEdgeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -711,7 +695,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setWeight(ValueSpecification newWeight) {
-
 		if (newWeight != weight) {
 			NotificationChain msgs = null;
 			if (weight != null)
@@ -728,7 +711,6 @@ public abstract class ActivityEdgeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__WEIGHT, newWeight, newWeight));
-
 	}
 
 	/**
@@ -792,7 +774,6 @@ public abstract class ActivityEdgeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -802,7 +783,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setInterrupts(InterruptibleActivityRegion newInterrupts) {
-
 		if (newInterrupts != interrupts) {
 			NotificationChain msgs = null;
 			if (interrupts != null)
@@ -824,7 +804,6 @@ public abstract class ActivityEdgeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__INTERRUPTS, newInterrupts,
 				newInterrupts));
-
 	}
 
 	/**
@@ -872,7 +851,6 @@ public abstract class ActivityEdgeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -882,7 +860,6 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public void setSource(ActivityNode newSource) {
-
 		if (newSource != source) {
 			NotificationChain msgs = null;
 			if (source != null)
@@ -899,7 +876,6 @@ public abstract class ActivityEdgeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ACTIVITY_EDGE__SOURCE, newSource, newSource));
-
 	}
 
 	/**
@@ -1337,7 +1313,6 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;

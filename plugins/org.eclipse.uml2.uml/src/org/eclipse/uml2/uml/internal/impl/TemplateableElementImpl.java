@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElementImpl.java,v 1.20 2007/02/26 16:17:58 khussey Exp $
+ * $Id: TemplateableElementImpl.java,v 1.21 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +107,6 @@ public abstract class TemplateableElementImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -245,7 +244,6 @@ public abstract class TemplateableElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -256,7 +254,6 @@ public abstract class TemplateableElementImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -276,7 +273,6 @@ public abstract class TemplateableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**

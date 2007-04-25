@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragmentImpl.java,v 1.22 2007/02/26 16:17:58 khussey Exp $
+ * $Id: InteractionFragmentImpl.java,v 1.23 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -115,7 +115,6 @@ public abstract class InteractionFragmentImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -262,7 +261,6 @@ public abstract class InteractionFragmentImpl
 			Interaction newEnclosingInteraction, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnclosingInteraction,
 			UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION, msgs);
-
 		return msgs;
 	}
 
@@ -272,7 +270,6 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
@@ -292,7 +289,6 @@ public abstract class InteractionFragmentImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION,
 				newEnclosingInteraction, newEnclosingInteraction));
-
 	}
 
 	/**
@@ -326,7 +322,6 @@ public abstract class InteractionFragmentImpl
 			InteractionOperand newEnclosingOperand, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
 			UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND, msgs);
-
 		return msgs;
 	}
 
@@ -336,7 +331,6 @@ public abstract class InteractionFragmentImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
@@ -356,7 +350,6 @@ public abstract class InteractionFragmentImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND,
 				newEnclosingOperand, newEnclosingOperand));
-
 	}
 
 	/**
@@ -677,7 +670,6 @@ public abstract class InteractionFragmentImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;

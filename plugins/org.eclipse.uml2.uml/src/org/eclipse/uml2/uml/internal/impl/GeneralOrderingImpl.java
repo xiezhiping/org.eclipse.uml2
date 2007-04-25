@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralOrderingImpl.java,v 1.14 2007/02/26 16:17:55 khussey Exp $
+ * $Id: GeneralOrderingImpl.java,v 1.15 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,7 +134,6 @@ public class GeneralOrderingImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -144,7 +143,6 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public void setBefore(OccurrenceSpecification newBefore) {
-
 		if (newBefore != before) {
 			NotificationChain msgs = null;
 			if (before != null)
@@ -161,7 +159,6 @@ public class GeneralOrderingImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERAL_ORDERING__BEFORE, newBefore, newBefore));
-
 	}
 
 	/**
@@ -209,7 +206,6 @@ public class GeneralOrderingImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -219,7 +215,6 @@ public class GeneralOrderingImpl
 	 * @generated
 	 */
 	public void setAfter(OccurrenceSpecification newAfter) {
-
 		if (newAfter != after) {
 			NotificationChain msgs = null;
 			if (after != null)
@@ -236,7 +231,6 @@ public class GeneralOrderingImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERAL_ORDERING__AFTER, newAfter, newAfter));
-
 	}
 
 	/**

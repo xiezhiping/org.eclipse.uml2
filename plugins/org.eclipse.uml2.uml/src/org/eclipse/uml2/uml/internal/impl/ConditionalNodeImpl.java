@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConditionalNodeImpl.java,v 1.24 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.25 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -168,7 +168,6 @@ public class ConditionalNodeImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -196,7 +195,6 @@ public class ConditionalNodeImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -230,7 +228,6 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public void setIsDeterminate(boolean newIsDeterminate) {
-
 		boolean oldIsDeterminate = (eFlags & IS_DETERMINATE_EFLAG) != 0;
 		if (newIsDeterminate)
 			eFlags |= IS_DETERMINATE_EFLAG;
@@ -240,7 +237,6 @@ public class ConditionalNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE, oldIsDeterminate,
 				newIsDeterminate));
-
 	}
 
 	/**
@@ -258,7 +254,6 @@ public class ConditionalNodeImpl
 	 * @generated
 	 */
 	public void setIsAssured(boolean newIsAssured) {
-
 		boolean oldIsAssured = (eFlags & IS_ASSURED_EFLAG) != 0;
 		if (newIsAssured)
 			eFlags |= IS_ASSURED_EFLAG;
@@ -268,7 +263,6 @@ public class ConditionalNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CONDITIONAL_NODE__IS_ASSURED, oldIsAssured,
 				newIsAssured));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MessageImpl.java,v 1.24 2007/02/26 16:17:57 khussey Exp $
+ * $Id: MessageImpl.java,v 1.25 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -191,7 +191,6 @@ public class MessageImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -217,7 +216,6 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageKind getMessageKind() {
-
 		return MessageOperations.getMessageKind(this);
 	}
 
@@ -236,7 +234,6 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setMessageSort(MessageSort newMessageSort) {
-
 		MessageSort oldMessageSort = messageSort;
 		messageSort = newMessageSort == null
 			? MESSAGE_SORT_EDEFAULT
@@ -244,7 +241,6 @@ public class MessageImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE__MESSAGE_SORT, oldMessageSort, messageSort));
-
 	}
 
 	/**
@@ -281,14 +277,12 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setReceiveEvent(MessageEnd newReceiveEvent) {
-
 		MessageEnd oldReceiveEvent = receiveEvent;
 		receiveEvent = newReceiveEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE__RECEIVE_EVENT, oldReceiveEvent,
 				receiveEvent));
-
 	}
 
 	/**
@@ -324,13 +318,11 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setSendEvent(MessageEnd newSendEvent) {
-
 		MessageEnd oldSendEvent = sendEvent;
 		sendEvent = newSendEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE__SEND_EVENT, oldSendEvent, sendEvent));
-
 	}
 
 	/**
@@ -366,13 +358,11 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setConnector(Connector newConnector) {
-
 		Connector oldConnector = connector;
 		connector = newConnector;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE__CONNECTOR, oldConnector, connector));
-
 	}
 
 	/**
@@ -406,7 +396,6 @@ public class MessageImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newInteraction,
 			UMLPackage.MESSAGE__INTERACTION, msgs);
-
 		return msgs;
 	}
 
@@ -416,7 +405,6 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setInteraction(Interaction newInteraction) {
-
 		if (newInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
@@ -434,7 +422,6 @@ public class MessageImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MESSAGE__INTERACTION, newInteraction, newInteraction));
-
 	}
 
 	/**
@@ -516,7 +503,6 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NamedElement basicGetSignature() {
-
 		return MessageOperations.getSignature(this);
 	}
 
@@ -909,7 +895,6 @@ public class MessageImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Interaction interaction = basicGetInteraction();
 		if (interaction != null) {
 			return interaction;

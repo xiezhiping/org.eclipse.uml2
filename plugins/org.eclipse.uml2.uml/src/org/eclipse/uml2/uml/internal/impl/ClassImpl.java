@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassImpl.java,v 1.40 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ClassImpl.java,v 1.41 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -231,7 +231,6 @@ public class ClassImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -258,7 +257,6 @@ public class ClassImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -384,14 +382,12 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setClassifierBehavior(Behavior newClassifierBehavior) {
-
 		Behavior oldClassifierBehavior = classifierBehavior;
 		classifierBehavior = newClassifierBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASS__CLASSIFIER_BEHAVIOR, oldClassifierBehavior,
 				classifierBehavior));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newClassifierBehavior != null) {
@@ -541,7 +537,6 @@ public class ClassImpl
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -568,7 +563,6 @@ public class ClassImpl
 	 */
 	@Override
 	public EList<Property> getAttributes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -854,7 +848,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetSuperClasses() {
-		//genFeature
 		return !getSuperClasses().isEmpty();
 	}
 
@@ -873,7 +866,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public void setIsActive(boolean newIsActive) {
-
 		boolean oldIsActive = (eFlags & IS_ACTIVE_EFLAG) != 0;
 		if (newIsActive)
 			eFlags |= IS_ACTIVE_EFLAG;
@@ -882,7 +874,6 @@ public class ClassImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASS__IS_ACTIVE, oldIsActive, newIsActive));
-
 	}
 
 	/**
@@ -989,7 +980,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public EList<Extension> getExtensions() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -1109,7 +1099,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetOwnedAttributes() {
-		//genFeature
 		return ownedAttributes != null && !ownedAttributes.isEmpty();
 	}
 
@@ -1130,7 +1119,6 @@ public class ClassImpl
 	 */
 	@Override
 	public void setIsAbstract(boolean newIsAbstract) {
-
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;
@@ -1139,7 +1127,6 @@ public class ClassImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASS__IS_ABSTRACT, oldIsAbstract, newIsAbstract));
-
 	}
 
 	/**
@@ -1148,7 +1135,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetIsAbstract() {
-		//genFeature
 		return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 	}
 
@@ -2182,7 +2168,6 @@ public class ClassImpl
 	 * @generated
 	 */
 	public boolean isSetGenerals() {
-		//genFeature
 		return false;
 	}
 

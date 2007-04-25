@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Pseudostate.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Pseudostate.java,v 1.10 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -130,6 +130,8 @@ public interface Pseudostate
 	 * <!-- begin-model-doc -->
 	 * An initial vertex can have at most one outgoing transition.
 	 * (self.kind = #initial) implies (self.outgoing->size <= 1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -145,6 +147,8 @@ public interface Pseudostate
 	 * ((self.kind = #deepHistory) or (self.kind = #shallowHistory)) implies
 	 * (self.outgoing->size <= 1)
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -160,6 +164,8 @@ public interface Pseudostate
 	 * (self.kind = #join) implies
 	 * ((self.outgoing->size = 1) and (self.incoming->size >= 2))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -175,6 +181,8 @@ public interface Pseudostate
 	 * (self.kind = #join) implies
 	 *   self.incoming->forAll (t1, t2 | t1<>t2 implies
 	 *     (self.stateMachine.LCA(t1.source, t2.source).container.isOrthogonal))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -190,6 +198,8 @@ public interface Pseudostate
 	 * (self.kind = #fork) implies
 	 * ((self.incoming->size = 1) and (self.outgoing->size >= 2))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -205,6 +215,8 @@ public interface Pseudostate
 	 * (self.kind = #fork) implies
 	 *   self.outgoing->forAll (t1, t2 | t1<>t2 implies
 	 *     (self.stateMachine.LCA(t1.target, t2.target).container.isOrthogonal))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -220,6 +232,8 @@ public interface Pseudostate
 	 * (self.kind = #junction) implies
 	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -235,6 +249,8 @@ public interface Pseudostate
 	 * (self.kind = #choice) implies
 	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
 	 * 
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -249,6 +265,8 @@ public interface Pseudostate
 	 * The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.
 	 * (self.kind = #initial) implies (self.outgoing.guard->isEmpty()
 	 *   and self.outgoing.trigger->isEmpty())
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

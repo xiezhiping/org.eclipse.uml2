@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallAction.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
+ * $Id: UnmarshallAction.java,v 1.10 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -193,6 +193,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * The type of the object input pin must be the same as the unmarshall classifier.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -206,6 +208,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the object input pin is 1..1
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -219,6 +223,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * The number of result output pins must be the same as the number of structural features of the unmarshall classifier.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -232,6 +238,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * The type and ordering of each result output pin must be the same as the corresponding structural feature of the unmarshall classifier.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -246,6 +254,8 @@ public interface UnmarshallAction
 	 * The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding structural features of the unmarshall classifier.
 	 * 
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -259,6 +269,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * The unmarshall classifier must have at least one structural feature.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -272,6 +284,8 @@ public interface UnmarshallAction
 	 * <!-- begin-model-doc -->
 	 * unmarshallType must be a Classifier with ordered attributes
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

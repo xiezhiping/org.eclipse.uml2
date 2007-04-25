@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionImpl.java,v 1.17 2007/01/31 21:21:16 khussey Exp $
+ * $Id: DestroyLinkActionImpl.java,v 1.18 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -91,7 +91,6 @@ public class DestroyLinkActionImpl
 	 * @generated
 	 */
 	public boolean isSetEndData() {
-		//genFeature
 		return endData != null && !endData.isEmpty();
 	}
 

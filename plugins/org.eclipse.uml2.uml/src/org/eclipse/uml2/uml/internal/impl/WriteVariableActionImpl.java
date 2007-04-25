@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableActionImpl.java,v 1.25 2007/02/26 16:17:56 khussey Exp $
+ * $Id: WriteVariableActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,7 +109,6 @@ public abstract class WriteVariableActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -186,7 +185,6 @@ public abstract class WriteVariableActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -196,7 +194,6 @@ public abstract class WriteVariableActionImpl
 	 * @generated
 	 */
 	public void setValue(InputPin newValue) {
-
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -213,7 +210,6 @@ public abstract class WriteVariableActionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.WRITE_VARIABLE_ACTION__VALUE, newValue, newValue));
-
 	}
 
 	/**

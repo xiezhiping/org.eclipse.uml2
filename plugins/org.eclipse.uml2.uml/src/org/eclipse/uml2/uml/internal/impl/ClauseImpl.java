@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClauseImpl.java,v 1.14 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ClauseImpl.java,v 1.15 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -283,13 +283,11 @@ public class ClauseImpl
 	 * @generated
 	 */
 	public void setDecider(OutputPin newDecider) {
-
 		OutputPin oldDecider = decider;
 		decider = newDecider;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLAUSE__DECIDER, oldDecider, decider));
-
 	}
 
 	/**

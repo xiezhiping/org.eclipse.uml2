@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteVariableAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
+ * $Id: WriteVariableAction.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -97,6 +97,8 @@ public interface WriteVariableAction
 	 * <!-- begin-model-doc -->
 	 * The type input pin is the same as the type of the variable.
 	 * self.value.type = self.variable.type
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -110,6 +112,8 @@ public interface WriteVariableAction
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the input pin is 1..1.
 	 * self.value.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.22 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.23 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,7 +122,6 @@ public class ProfileApplicationImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -151,7 +150,6 @@ public class ProfileApplicationImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -207,14 +205,12 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public void setAppliedProfile(Profile newAppliedProfile) {
-
 		Profile oldAppliedProfile = appliedProfile;
 		appliedProfile = newAppliedProfile;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROFILE_APPLICATION__APPLIED_PROFILE,
 				oldAppliedProfile, appliedProfile));
-
 	}
 
 	/**
@@ -232,7 +228,6 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public void setIsStrict(boolean newIsStrict) {
-
 		boolean oldIsStrict = (eFlags & IS_STRICT_EFLAG) != 0;
 		if (newIsStrict)
 			eFlags |= IS_STRICT_EFLAG;
@@ -242,7 +237,6 @@ public class ProfileApplicationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROFILE_APPLICATION__IS_STRICT, oldIsStrict,
 				newIsStrict));
-
 	}
 
 	/**
@@ -277,7 +271,6 @@ public class ProfileApplicationImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newApplyingPackage,
 			UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE, msgs);
-
 		return msgs;
 	}
 
@@ -288,7 +281,6 @@ public class ProfileApplicationImpl
 	 */
 	public void setApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage) {
-
 		if (newApplyingPackage != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newApplyingPackage))
@@ -308,7 +300,6 @@ public class ProfileApplicationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE,
 				newApplyingPackage, newApplyingPackage));
-
 	}
 
 	/**
@@ -600,7 +591,6 @@ public class ProfileApplicationImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		org.eclipse.uml2.uml.Package applyingPackage = basicGetApplyingPackage();
 		if (applyingPackage != null) {
 			return applyingPackage;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuralFeatureActionImpl.java,v 1.25 2007/02/26 16:17:58 khussey Exp $
+ * $Id: StructuralFeatureActionImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +120,6 @@ public abstract class StructuralFeatureActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -176,14 +175,12 @@ public abstract class StructuralFeatureActionImpl
 	 * @generated
 	 */
 	public void setStructuralFeature(StructuralFeature newStructuralFeature) {
-
 		StructuralFeature oldStructuralFeature = structuralFeature;
 		structuralFeature = newStructuralFeature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE_ACTION__STRUCTURAL_FEATURE,
 				oldStructuralFeature, structuralFeature));
-
 	}
 
 	/**
@@ -244,7 +241,6 @@ public abstract class StructuralFeatureActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -254,7 +250,6 @@ public abstract class StructuralFeatureActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -274,7 +269,6 @@ public abstract class StructuralFeatureActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE_ACTION__OBJECT, newObject,
 				newObject));
-
 	}
 
 	/**

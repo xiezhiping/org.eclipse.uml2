@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorImpl.java,v 1.32 2007/03/30 18:20:25 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.33 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -208,7 +208,6 @@ public abstract class BehaviorImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -241,7 +240,6 @@ public abstract class BehaviorImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -269,7 +267,6 @@ public abstract class BehaviorImpl
 	 */
 	@Override
 	public EList<Classifier> getRedefinitionContexts() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -312,7 +309,6 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public void setIsReentrant(boolean newIsReentrant) {
-
 		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
 		if (newIsReentrant)
 			eFlags |= IS_REENTRANT_EFLAG;
@@ -322,7 +318,6 @@ public abstract class BehaviorImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
 				newIsReentrant));
-
 	}
 
 	/**
@@ -442,7 +437,6 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public BehavioredClassifier basicGetContext() {
-
 		return BehaviorOperations.getContext(this);
 	}
 
@@ -707,7 +701,6 @@ public abstract class BehaviorImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -717,7 +710,6 @@ public abstract class BehaviorImpl
 	 * @generated
 	 */
 	public void setSpecification(BehavioralFeature newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -735,7 +727,6 @@ public abstract class BehaviorImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR__SPECIFICATION, newSpecification,
 				newSpecification));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionImpl.java,v 1.21 2007/02/26 16:17:55 khussey Exp $
+ * $Id: OpaqueExpressionImpl.java,v 1.22 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -197,7 +197,6 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public Parameter basicGetResult() {
-
 		return OpaqueExpressionOperations.getResult(this);
 	}
 
@@ -235,13 +234,11 @@ public class OpaqueExpressionImpl
 	 * @generated
 	 */
 	public void setBehavior(Behavior newBehavior) {
-
 		Behavior oldBehavior = behavior;
 		behavior = newBehavior;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR, oldBehavior, behavior));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.25 2007/02/26 16:17:55 khussey Exp $
+ * $Id: ReadLinkObjectEndQualifierActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -133,7 +133,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 */
 	@Override
 	public EList<InputPin> getInputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -166,7 +165,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 */
 	@Override
 	public EList<OutputPin> getOutputs() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -258,7 +256,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -268,7 +265,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setObject(InputPin newObject) {
-
 		if (newObject != object) {
 			NotificationChain msgs = null;
 			if (object != null)
@@ -292,7 +288,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__OBJECT,
 				newObject, newObject));
-
 	}
 
 	/**
@@ -385,7 +380,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -395,7 +389,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setResult(OutputPin newResult) {
-
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
@@ -419,7 +412,6 @@ public class ReadLinkObjectEndQualifierActionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__RESULT,
 				newResult, newResult));
-
 	}
 
 	/**
@@ -473,14 +465,12 @@ public class ReadLinkObjectEndQualifierActionImpl
 	 * @generated
 	 */
 	public void setQualifier(Property newQualifier) {
-
 		Property oldQualifier = qualifier;
 		qualifier = newQualifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER,
 				oldQualifier, qualifier));
-
 	}
 
 	/**

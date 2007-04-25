@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -129,7 +129,6 @@ public class JoinNodeImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -165,7 +164,6 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public void setIsCombineDuplicate(boolean newIsCombineDuplicate) {
-
 		boolean oldIsCombineDuplicate = (eFlags & IS_COMBINE_DUPLICATE_EFLAG) != 0;
 		if (newIsCombineDuplicate)
 			eFlags |= IS_COMBINE_DUPLICATE_EFLAG;
@@ -175,7 +173,6 @@ public class JoinNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.JOIN_NODE__IS_COMBINE_DUPLICATE,
 				oldIsCombineDuplicate, newIsCombineDuplicate));
-
 	}
 
 	/**
@@ -233,7 +230,6 @@ public class JoinNodeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -243,7 +239,6 @@ public class JoinNodeImpl
 	 * @generated
 	 */
 	public void setJoinSpec(ValueSpecification newJoinSpec) {
-
 		if (newJoinSpec != joinSpec) {
 			NotificationChain msgs = null;
 			if (joinSpec != null)
@@ -260,7 +255,6 @@ public class JoinNodeImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.JOIN_NODE__JOIN_SPEC, newJoinSpec, newJoinSpec));
-
 	}
 
 	/**

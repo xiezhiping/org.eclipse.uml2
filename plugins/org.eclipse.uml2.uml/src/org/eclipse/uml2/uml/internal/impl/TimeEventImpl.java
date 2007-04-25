@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEventImpl.java,v 1.22 2007/02/26 16:17:57 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -123,7 +123,6 @@ public class TimeEventImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -159,7 +158,6 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public void setIsRelative(boolean newIsRelative) {
-
 		boolean oldIsRelative = (eFlags & IS_RELATIVE_EFLAG) != 0;
 		if (newIsRelative)
 			eFlags |= IS_RELATIVE_EFLAG;
@@ -169,7 +167,6 @@ public class TimeEventImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_EVENT__IS_RELATIVE, oldIsRelative,
 				newIsRelative));
-
 	}
 
 	/**
@@ -226,7 +223,6 @@ public class TimeEventImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -236,7 +232,6 @@ public class TimeEventImpl
 	 * @generated
 	 */
 	public void setWhen(ValueSpecification newWhen) {
-
 		if (newWhen != when) {
 			NotificationChain msgs = null;
 			if (when != null)
@@ -253,7 +248,6 @@ public class TimeEventImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_EVENT__WHEN, newWhen, newWhen));
-
 	}
 
 	/**

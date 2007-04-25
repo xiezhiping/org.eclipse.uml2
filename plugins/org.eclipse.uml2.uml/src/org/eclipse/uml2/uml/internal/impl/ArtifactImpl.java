@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.29 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ArtifactImpl.java,v 1.30 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -185,7 +185,6 @@ public class ArtifactImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -213,7 +212,6 @@ public class ArtifactImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -241,7 +239,6 @@ public class ArtifactImpl
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -268,7 +265,6 @@ public class ArtifactImpl
 	 */
 	@Override
 	public EList<Property> getAttributes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -318,7 +314,6 @@ public class ArtifactImpl
 	 * @generated
 	 */
 	public void setFileName(String newFileName) {
-
 		String oldFileName = fileName;
 		fileName = newFileName;
 		boolean oldFileNameESet = (eFlags & FILE_NAME_ESETFLAG) != 0;
@@ -327,7 +322,6 @@ public class ArtifactImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.ARTIFACT__FILE_NAME, oldFileName, fileName,
 				!oldFileNameESet));
-
 	}
 
 	/**

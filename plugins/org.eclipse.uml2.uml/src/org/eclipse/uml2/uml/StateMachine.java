@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.11 2006/12/14 15:49:28 khussey Exp $
+ * $Id: StateMachine.java,v 1.12 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -238,6 +238,8 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * The classifier context of a state machine cannot be an interface.
 	 * context->notEmpty() implies not context.oclIsKindOf(Interface)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -251,6 +253,8 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * The context classifier of the method state machine of a behavioral feature must be the classifier that owns the behavioral feature.
 	 * specification->notEmpty() implies (context->notEmpty() and specification->featuringClassifier->exists (c | c = context))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -264,6 +268,8 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * The connection points of a state machine are pseudostates of kind entry point or exit point.
 	 * conectionPoint->forAll (c | c.kind = #entryPoint or c.kind = #exitPoint)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -277,6 +283,8 @@ public interface StateMachine
 	 * <!-- begin-model-doc -->
 	 * A state machine as the method for a behavioral feature cannot have entry/exit connection points.
 	 * specification->notEmpty() implies connectionPoint->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

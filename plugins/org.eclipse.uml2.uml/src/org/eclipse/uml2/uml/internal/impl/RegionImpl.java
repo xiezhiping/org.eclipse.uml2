@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionImpl.java,v 1.27 2007/02/26 16:17:55 khussey Exp $
+ * $Id: RegionImpl.java,v 1.28 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -161,7 +161,6 @@ public class RegionImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -290,7 +289,6 @@ public class RegionImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinitionContexts() {
-		//genFeature
 		return !getRedefinitionContexts().isEmpty();
 	}
 
@@ -309,7 +307,6 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -318,7 +315,6 @@ public class RegionImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REGION__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**
@@ -328,7 +324,6 @@ public class RegionImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -506,7 +501,6 @@ public class RegionImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newState,
 			UMLPackage.REGION__STATE, msgs);
-
 		return msgs;
 	}
 
@@ -516,7 +510,6 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setState(State newState) {
-
 		if (newState != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
@@ -534,7 +527,6 @@ public class RegionImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REGION__STATE, newState, newState));
-
 	}
 
 	/**
@@ -571,14 +563,12 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setExtendedRegion(Region newExtendedRegion) {
-
 		Region oldExtendedRegion = extendedRegion;
 		extendedRegion = newExtendedRegion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REGION__EXTENDED_REGION, oldExtendedRegion,
 				extendedRegion));
-
 	}
 
 	/**
@@ -612,7 +602,6 @@ public class RegionImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newStateMachine,
 			UMLPackage.REGION__STATE_MACHINE, msgs);
-
 		return msgs;
 	}
 
@@ -622,7 +611,6 @@ public class RegionImpl
 	 * @generated
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
-
 		if (newStateMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine))
@@ -641,7 +629,6 @@ public class RegionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REGION__STATE_MACHINE, newStateMachine,
 				newStateMachine));
-
 	}
 
 	/**
@@ -1265,7 +1252,6 @@ public class RegionImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		State state = basicGetState();
 		if (state != null) {
 			return state;

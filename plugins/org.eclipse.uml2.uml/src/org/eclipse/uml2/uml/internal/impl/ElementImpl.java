@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.38 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ElementImpl.java,v 1.39 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -104,7 +104,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -739,7 +738,6 @@ public abstract class ElementImpl
 	 * @generated
 	 */
 	public Element basicGetOwnerGen() {
-
 		return null;
 	}
 

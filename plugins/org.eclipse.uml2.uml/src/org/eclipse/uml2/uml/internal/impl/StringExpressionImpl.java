@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.23 2007/02/26 16:17:56 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.24 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,7 +132,6 @@ public class StringExpressionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -267,7 +266,6 @@ public class StringExpressionImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -278,7 +276,6 @@ public class StringExpressionImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -298,7 +295,6 @@ public class StringExpressionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**
@@ -425,7 +421,6 @@ public class StringExpressionImpl
 			StringExpression newOwningExpression, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningExpression,
 			UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION, msgs);
-
 		return msgs;
 	}
 
@@ -435,7 +430,6 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
-
 		if (newOwningExpression != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
@@ -455,7 +449,6 @@ public class StringExpressionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION,
 				newOwningExpression, newOwningExpression));
-
 	}
 
 	/**
@@ -960,7 +953,6 @@ public class StringExpressionImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		StringExpression owningExpression = basicGetOwningExpression();
 		if (owningExpression != null) {
 			return owningExpression;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureImpl.java,v 1.23 2007/02/26 16:17:58 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.24 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -234,7 +234,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -294,7 +293,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList<Classifier> getRedefinitionContextsGen() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -400,7 +398,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -409,7 +406,6 @@ public abstract class BehavioralFeatureImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**
@@ -418,7 +414,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public EList<Classifier> getFeaturingClassifiersGen() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -533,7 +528,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
-
 		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
 		if (newIsStatic)
 			eFlags |= IS_STATIC_EFLAG;
@@ -543,7 +537,6 @@ public abstract class BehavioralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__IS_STATIC, oldIsStatic,
 				newIsStatic));
-
 	}
 
 	/**
@@ -553,7 +546,6 @@ public abstract class BehavioralFeatureImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -649,7 +641,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setIsAbstract(boolean newIsAbstract) {
-
 		boolean oldIsAbstract = (eFlags & IS_ABSTRACT_EFLAG) != 0;
 		if (newIsAbstract)
 			eFlags |= IS_ABSTRACT_EFLAG;
@@ -659,7 +650,6 @@ public abstract class BehavioralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT, oldIsAbstract,
 				newIsAbstract));
-
 	}
 
 	/**
@@ -718,7 +708,6 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
-
 		CallConcurrencyKind oldConcurrency = concurrency;
 		concurrency = newConcurrency == null
 			? CONCURRENCY_EDEFAULT
@@ -727,7 +716,6 @@ public abstract class BehavioralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, oldConcurrency,
 				concurrency));
-
 	}
 
 	/**

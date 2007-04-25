@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Class.java,v 1.15 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -337,6 +337,8 @@ public interface Class
 	 * <!-- begin-model-doc -->
 	 * A passive class may not own receptions.
 	 * not self.isActive implies self.ownedReception.isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -349,6 +351,10 @@ public interface Class
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this class.
+	 * @param name The name for the new operation, or null.
+	 * @param parameterNames The parameter names for the new operation, or null.
+	 * @param parameterTypes The parameter types for the new operation, or null.
+	 * @param returnType The return type for the new operation, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated

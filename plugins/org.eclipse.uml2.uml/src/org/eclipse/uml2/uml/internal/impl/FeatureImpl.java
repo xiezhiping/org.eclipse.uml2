@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.15 2006/12/14 15:49:29 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -97,7 +97,6 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	public EList<Classifier> getFeaturingClassifiersGen() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -196,7 +195,6 @@ public abstract class FeatureImpl
 	 * @generated
 	 */
 	public void setIsStatic(boolean newIsStatic) {
-
 		boolean oldIsStatic = (eFlags & IS_STATIC_EFLAG) != 0;
 		if (newIsStatic)
 			eFlags |= IS_STATIC_EFLAG;
@@ -205,7 +203,6 @@ public abstract class FeatureImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.FEATURE__IS_STATIC, oldIsStatic, newIsStatic));
-
 	}
 
 	/**

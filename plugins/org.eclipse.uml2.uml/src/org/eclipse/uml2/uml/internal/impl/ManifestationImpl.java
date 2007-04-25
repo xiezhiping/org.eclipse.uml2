@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ManifestationImpl.java,v 1.16 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ManifestationImpl.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -144,14 +144,12 @@ public class ManifestationImpl
 	 * @generated
 	 */
 	public void setUtilizedElement(PackageableElement newUtilizedElement) {
-
 		PackageableElement oldUtilizedElement = utilizedElement;
 		utilizedElement = newUtilizedElement;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.MANIFESTATION__UTILIZED_ELEMENT, oldUtilizedElement,
 				utilizedElement));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newUtilizedElement != null) {

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.35 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.36 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -187,13 +187,11 @@ public class ProtocolTransitionImpl
 	 */
 	@Override
 	public void setGuard(Constraint newGuard) {
-
 		Constraint oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__GUARD, oldGuard, guard));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (preCondition != null && preCondition != newGuard) {
@@ -242,14 +240,12 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setPostCondition(Constraint newPostCondition) {
-
 		Constraint oldPostCondition = postCondition;
 		postCondition = newPostCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION,
 				oldPostCondition, postCondition));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newPostCondition != null) {
@@ -351,7 +347,8 @@ public class ProtocolTransitionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Operation getReferred(String name,
@@ -432,14 +429,12 @@ public class ProtocolTransitionImpl
 	 * @generated
 	 */
 	public void setPreCondition(Constraint newPreCondition) {
-
 		Constraint oldPreCondition = preCondition;
 		preCondition = newPreCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION, oldPreCondition,
 				preCondition));
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newPreCondition != null) {

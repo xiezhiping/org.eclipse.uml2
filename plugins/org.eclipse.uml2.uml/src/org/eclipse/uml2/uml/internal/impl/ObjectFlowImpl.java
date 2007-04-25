@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ObjectFlowImpl.java,v 1.16 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.17 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -156,7 +156,6 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setIsMulticast(boolean newIsMulticast) {
-
 		boolean oldIsMulticast = (eFlags & IS_MULTICAST_EFLAG) != 0;
 		if (newIsMulticast)
 			eFlags |= IS_MULTICAST_EFLAG;
@@ -166,7 +165,6 @@ public class ObjectFlowImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_FLOW__IS_MULTICAST, oldIsMulticast,
 				newIsMulticast));
-
 	}
 
 	/**
@@ -184,7 +182,6 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setIsMultireceive(boolean newIsMultireceive) {
-
 		boolean oldIsMultireceive = (eFlags & IS_MULTIRECEIVE_EFLAG) != 0;
 		if (newIsMultireceive)
 			eFlags |= IS_MULTIRECEIVE_EFLAG;
@@ -194,7 +191,6 @@ public class ObjectFlowImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE, oldIsMultireceive,
 				newIsMultireceive));
-
 	}
 
 	/**
@@ -231,14 +227,12 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setTransformation(Behavior newTransformation) {
-
 		Behavior oldTransformation = transformation;
 		transformation = newTransformation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_FLOW__TRANSFORMATION, oldTransformation,
 				transformation));
-
 	}
 
 	/**
@@ -275,13 +269,11 @@ public class ObjectFlowImpl
 	 * @generated
 	 */
 	public void setSelection(Behavior newSelection) {
-
 		Behavior oldSelection = selection;
 		selection = newSelection;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.OBJECT_FLOW__SELECTION, oldSelection, selection));
-
 	}
 
 	/**

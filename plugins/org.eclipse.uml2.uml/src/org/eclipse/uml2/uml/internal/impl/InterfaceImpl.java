@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.28 2007/02/26 16:17:56 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.29 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -180,7 +180,6 @@ public class InterfaceImpl
 	 */
 	@Override
 	public EList<Property> getAttributes() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -207,7 +206,6 @@ public class InterfaceImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -235,7 +233,6 @@ public class InterfaceImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -268,7 +265,6 @@ public class InterfaceImpl
 	 */
 	@Override
 	public EList<Feature> getFeatures() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -605,7 +601,6 @@ public class InterfaceImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -615,7 +610,6 @@ public class InterfaceImpl
 	 * @generated
 	 */
 	public void setProtocol(ProtocolStateMachine newProtocol) {
-
 		if (newProtocol != protocol) {
 			NotificationChain msgs = null;
 			if (protocol != null)
@@ -632,7 +626,6 @@ public class InterfaceImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERFACE__PROTOCOL, newProtocol, newProtocol));
-
 	}
 
 	/**

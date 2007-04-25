@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementImpl.java,v 1.15 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ParameterableElementImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -143,7 +143,6 @@ public abstract class ParameterableElementImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -161,7 +160,6 @@ public abstract class ParameterableElementImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -179,7 +177,6 @@ public abstract class ParameterableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
 				newTemplateParameter, newTemplateParameter));
-
 	}
 
 	/**
@@ -213,7 +210,6 @@ public abstract class ParameterableElementImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -232,7 +228,6 @@ public abstract class ParameterableElementImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -255,7 +250,6 @@ public abstract class ParameterableElementImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PARAMETERABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -460,7 +454,6 @@ public abstract class ParameterableElementImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;

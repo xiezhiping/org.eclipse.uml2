@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionNodeImpl.java,v 1.18 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.19 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -146,7 +146,6 @@ public class ExpansionNodeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -156,7 +155,6 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsOutput(ExpansionRegion newRegionAsOutput) {
-
 		if (newRegionAsOutput != regionAsOutput) {
 			NotificationChain msgs = null;
 			if (regionAsOutput != null)
@@ -174,7 +172,6 @@ public class ExpansionNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXPANSION_NODE__REGION_AS_OUTPUT, newRegionAsOutput,
 				newRegionAsOutput));
-
 	}
 
 	/**
@@ -223,7 +220,6 @@ public class ExpansionNodeImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -233,7 +229,6 @@ public class ExpansionNodeImpl
 	 * @generated
 	 */
 	public void setRegionAsInput(ExpansionRegion newRegionAsInput) {
-
 		if (newRegionAsInput != regionAsInput) {
 			NotificationChain msgs = null;
 			if (regionAsInput != null)
@@ -251,7 +246,6 @@ public class ExpansionNodeImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXPANSION_NODE__REGION_AS_INPUT, newRegionAsInput,
 				newRegionAsInput));
-
 	}
 
 	/**

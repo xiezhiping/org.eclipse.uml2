@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExpansionRegionImpl.java,v 1.19 2007/02/26 16:17:58 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.20 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -147,7 +147,6 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public void setMode(ExpansionKind newMode) {
-
 		ExpansionKind oldMode = mode;
 		mode = newMode == null
 			? MODE_EDEFAULT
@@ -155,7 +154,6 @@ public class ExpansionRegionImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXPANSION_REGION__MODE, oldMode, mode));
-
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.32 2007/02/26 16:17:58 khussey Exp $
+ * $Id: StateImpl.java,v 1.33 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -311,7 +311,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -440,7 +439,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSetRedefinitionContexts() {
-		//genFeature
 		return !getRedefinitionContexts().isEmpty();
 	}
 
@@ -459,7 +457,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setIsLeaf(boolean newIsLeaf) {
-
 		boolean oldIsLeaf = (eFlags & IS_LEAF_EFLAG) != 0;
 		if (newIsLeaf)
 			eFlags |= IS_LEAF_EFLAG;
@@ -468,7 +465,6 @@ public class StateImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__IS_LEAF, oldIsLeaf, newIsLeaf));
-
 	}
 
 	/**
@@ -597,7 +593,6 @@ public class StateImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newContainer,
 			UMLPackage.STATE__CONTAINER, msgs);
-
 		return msgs;
 	}
 
@@ -607,7 +602,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setContainer(Region newContainer) {
-
 		if (newContainer != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
@@ -625,7 +619,6 @@ public class StateImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__CONTAINER, newContainer, newContainer));
-
 	}
 
 	/**
@@ -635,7 +628,6 @@ public class StateImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -662,7 +654,6 @@ public class StateImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -688,7 +679,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
-
 		return StateOperations.isComposite(this);
 	}
 
@@ -698,7 +688,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isOrthogonal() {
-
 		return StateOperations.isOrthogonal(this);
 	}
 
@@ -708,7 +697,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSimple() {
-
 		return StateOperations.isSimple(this);
 	}
 
@@ -718,7 +706,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public boolean isSubmachineState() {
-
 		return StateOperations.isSubmachineState(this);
 	}
 
@@ -767,7 +754,6 @@ public class StateImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -777,7 +763,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setSubmachine(StateMachine newSubmachine) {
-
 		if (newSubmachine != submachine) {
 			NotificationChain msgs = null;
 			if (submachine != null)
@@ -794,7 +779,6 @@ public class StateImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__SUBMACHINE, newSubmachine, newSubmachine));
-
 	}
 
 	/**
@@ -942,14 +926,12 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setRedefinedState(State newRedefinedState) {
-
 		State oldRedefinedState = redefinedState;
 		redefinedState = newRedefinedState;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__REDEFINED_STATE, oldRedefinedState,
 				redefinedState));
-
 	}
 
 	/**
@@ -1009,7 +991,6 @@ public class StateImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -1019,7 +1000,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setStateInvariant(Constraint newStateInvariant) {
-
 		if (newStateInvariant != stateInvariant) {
 			NotificationChain msgs = null;
 			if (stateInvariant != null)
@@ -1037,7 +1017,6 @@ public class StateImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__STATE_INVARIANT, newStateInvariant,
 				newStateInvariant));
-
 	}
 
 	/**
@@ -1116,7 +1095,6 @@ public class StateImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -1126,7 +1104,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setEntry(Behavior newEntry) {
-
 		if (newEntry != entry) {
 			NotificationChain msgs = null;
 			if (entry != null)
@@ -1143,7 +1120,6 @@ public class StateImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__ENTRY, newEntry, newEntry));
-
 	}
 
 	/**
@@ -1213,7 +1189,6 @@ public class StateImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -1223,7 +1198,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setExit(Behavior newExit) {
-
 		if (newExit != exit) {
 			NotificationChain msgs = null;
 			if (exit != null)
@@ -1240,7 +1214,6 @@ public class StateImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__EXIT, newExit, newExit));
-
 	}
 
 	/**
@@ -1313,7 +1286,6 @@ public class StateImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -1323,7 +1295,6 @@ public class StateImpl
 	 * @generated
 	 */
 	public void setDoActivity(Behavior newDoActivity) {
-
 		if (newDoActivity != doActivity) {
 			NotificationChain msgs = null;
 			if (doActivity != null)
@@ -1340,7 +1311,6 @@ public class StateImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STATE__DO_ACTIVITY, newDoActivity, newDoActivity));
-
 	}
 
 	/**
@@ -2223,7 +2193,6 @@ public class StateImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		Region container = basicGetContainer();
 		if (container != null) {
 			return container;

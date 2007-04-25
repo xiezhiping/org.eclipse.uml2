@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeObservationImpl.java,v 1.8 2007/02/26 16:17:55 khussey Exp $
+ * $Id: TimeObservationImpl.java,v 1.9 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -132,13 +132,11 @@ public class TimeObservationImpl
 	 * @generated
 	 */
 	public void setEvent(NamedElement newEvent) {
-
 		NamedElement oldEvent = event;
 		event = newEvent;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_OBSERVATION__EVENT, oldEvent, event));
-
 	}
 
 	/**
@@ -156,7 +154,6 @@ public class TimeObservationImpl
 	 * @generated
 	 */
 	public void setFirstEvent(boolean newFirstEvent) {
-
 		boolean oldFirstEvent = (eFlags & FIRST_EVENT_EFLAG) != 0;
 		if (newFirstEvent)
 			eFlags |= FIRST_EVENT_EFLAG;
@@ -166,7 +163,6 @@ public class TimeObservationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.TIME_OBSERVATION__FIRST_EVENT, oldFirstEvent,
 				newFirstEvent));
-
 	}
 
 	/**

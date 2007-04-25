@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationImpl.java,v 1.21 2007/02/26 16:17:57 khussey Exp $
+ * $Id: InstanceSpecificationImpl.java,v 1.22 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -201,7 +201,6 @@ public class InstanceSpecificationImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
@@ -219,7 +218,6 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -237,7 +235,6 @@ public class InstanceSpecificationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__TEMPLATE_PARAMETER,
 				newTemplateParameter, newTemplateParameter));
-
 	}
 
 	/**
@@ -271,7 +268,6 @@ public class InstanceSpecificationImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -290,7 +286,6 @@ public class InstanceSpecificationImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -313,7 +308,6 @@ public class InstanceSpecificationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -333,7 +327,6 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-
 		VisibilityKind oldVisibility = visibility;
 		visibility = newVisibility == null
 			? VISIBILITY_EDEFAULT
@@ -342,7 +335,6 @@ public class InstanceSpecificationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__VISIBILITY, oldVisibility,
 				visibility));
-
 	}
 
 	/**
@@ -352,7 +344,6 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		//genFeature
 		return visibility != VISIBILITY_EDEFAULT;
 	}
 
@@ -363,7 +354,6 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -487,7 +477,6 @@ public class InstanceSpecificationImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -497,7 +486,6 @@ public class InstanceSpecificationImpl
 	 * @generated
 	 */
 	public void setSpecification(ValueSpecification newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -517,7 +505,6 @@ public class InstanceSpecificationImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INSTANCE_SPECIFICATION__SPECIFICATION,
 				newSpecification, newSpecification));
-
 	}
 
 	/**
@@ -1018,7 +1005,6 @@ public class InstanceSpecificationImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;

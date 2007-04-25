@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IntervalConstraintImpl.java,v 1.20 2007/01/31 21:21:14 khussey Exp $
+ * $Id: IntervalConstraintImpl.java,v 1.21 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -124,7 +124,6 @@ public class IntervalConstraintImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -146,7 +145,6 @@ public class IntervalConstraintImpl
 	 */
 	@Override
 	public void setSpecification(ValueSpecification newSpecification) {
-
 		if (newSpecification != specification) {
 			NotificationChain msgs = null;
 			if (specification != null)
@@ -166,7 +164,6 @@ public class IntervalConstraintImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERVAL_CONSTRAINT__SPECIFICATION,
 				newSpecification, newSpecification));
-
 	}
 
 	/**
@@ -192,7 +189,6 @@ public class IntervalConstraintImpl
 	 * @generated
 	 */
 	public boolean isSetSpecification() {
-		//genFeature
 		return specification != null;
 	}
 

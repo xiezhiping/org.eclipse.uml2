@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerImpl.java,v 1.17 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ExceptionHandlerImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -159,14 +159,12 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setHandlerBody(ExecutableNode newHandlerBody) {
-
 		ExecutableNode oldHandlerBody = handlerBody;
 		handlerBody = newHandlerBody;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY, oldHandlerBody,
 				handlerBody));
-
 	}
 
 	/**
@@ -203,14 +201,12 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setExceptionInput(ObjectNode newExceptionInput) {
-
 		ObjectNode oldExceptionInput = exceptionInput;
 		exceptionInput = newExceptionInput;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT,
 				oldExceptionInput, exceptionInput));
-
 	}
 
 	/**
@@ -286,7 +282,6 @@ public class ExceptionHandlerImpl
 			ExecutableNode newProtectedNode, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newProtectedNode,
 			UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, msgs);
-
 		return msgs;
 	}
 
@@ -296,7 +291,6 @@ public class ExceptionHandlerImpl
 	 * @generated
 	 */
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
-
 		if (newProtectedNode != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
 			if (EcoreUtil.isAncestor(this, newProtectedNode))
@@ -316,7 +310,6 @@ public class ExceptionHandlerImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE, newProtectedNode,
 				newProtectedNode));
-
 	}
 
 	/**
@@ -560,7 +553,6 @@ public class ExceptionHandlerImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		ExecutableNode protectedNode = basicGetProtectedNode();
 		if (protectedNode != null) {
 			return protectedNode;

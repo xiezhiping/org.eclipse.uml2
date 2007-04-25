@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.21 2007/02/26 16:17:58 khussey Exp $
+ * $Id: SlotImpl.java,v 1.22 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -109,7 +109,6 @@ public class SlotImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -160,7 +159,6 @@ public class SlotImpl
 			InstanceSpecification newOwningInstance, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningInstance,
 			UMLPackage.SLOT__OWNING_INSTANCE, msgs);
-
 		return msgs;
 	}
 
@@ -170,7 +168,6 @@ public class SlotImpl
 	 * @generated
 	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
-
 		if (newOwningInstance != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningInstance))
@@ -190,7 +187,6 @@ public class SlotImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SLOT__OWNING_INSTANCE, newOwningInstance,
 				newOwningInstance));
-
 	}
 
 	/**
@@ -227,14 +223,12 @@ public class SlotImpl
 	 * @generated
 	 */
 	public void setDefiningFeature(StructuralFeature newDefiningFeature) {
-
 		StructuralFeature oldDefiningFeature = definingFeature;
 		definingFeature = newDefiningFeature;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.SLOT__DEFINING_FEATURE, oldDefiningFeature,
 				definingFeature));
-
 	}
 
 	/**
@@ -510,7 +504,6 @@ public class SlotImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		InstanceSpecification owningInstance = basicGetOwningInstance();
 		if (owningInstance != null) {
 			return owningInstance;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.16 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.17 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -95,7 +95,6 @@ public class ProtocolConformanceImpl
 	 */
 	@Override
 	public EList<Element> getTargets() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -123,7 +122,6 @@ public class ProtocolConformanceImpl
 	 */
 	@Override
 	public EList<Element> getSources() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -178,14 +176,12 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public void setGeneralMachine(ProtocolStateMachine newGeneralMachine) {
-
 		ProtocolStateMachine oldGeneralMachine = generalMachine;
 		generalMachine = newGeneralMachine;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_CONFORMANCE__GENERAL_MACHINE,
 				oldGeneralMachine, generalMachine));
-
 	}
 
 	/**
@@ -219,7 +215,6 @@ public class ProtocolConformanceImpl
 			ProtocolStateMachine newSpecificMachine, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newSpecificMachine,
 			UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE, msgs);
-
 		return msgs;
 	}
 
@@ -229,7 +224,6 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
-
 		if (newSpecificMachine != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecificMachine))
@@ -249,7 +243,6 @@ public class ProtocolConformanceImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE,
 				newSpecificMachine, newSpecificMachine));
-
 	}
 
 	/**
@@ -493,7 +486,6 @@ public class ProtocolConformanceImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		ProtocolStateMachine specificMachine = basicGetSpecificMachine();
 		if (specificMachine != null) {
 			return specificMachine;

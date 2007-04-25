@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.25 2007/02/26 16:17:57 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -137,7 +137,6 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -209,7 +208,6 @@ public class RedefinableTemplateSignatureImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newTemplate,
 			UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE, msgs);
-
 		return msgs;
 	}
 
@@ -219,7 +217,6 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-
 		if (newTemplate != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
@@ -239,7 +236,6 @@ public class RedefinableTemplateSignatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE,
 				newTemplate, newTemplate));
-
 	}
 
 	/**
@@ -285,7 +281,6 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -320,7 +315,6 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public EList<Classifier> getRedefinitionContexts() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -395,7 +389,6 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public EList<TemplateParameter> getInheritedParameters() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -884,7 +877,6 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateableElement template = basicGetTemplate();
 		if (template != null) {
 			return template;

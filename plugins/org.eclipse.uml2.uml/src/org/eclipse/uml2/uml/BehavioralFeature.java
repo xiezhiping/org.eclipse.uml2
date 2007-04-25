@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.13 2006/12/14 15:49:28 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.14 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -292,6 +292,8 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a return result parameter with the specified name and type.
+	 * @param name The name for the new return result, or null.
+	 * @param type The type for the new return result, or null.
 	 * <!-- end-model-doc -->
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false"
 	 * @generated

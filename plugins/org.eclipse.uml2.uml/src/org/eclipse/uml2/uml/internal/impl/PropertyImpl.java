@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.40 2007/02/26 16:17:56 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.41 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -376,7 +376,6 @@ public class PropertyImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -412,7 +411,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setTemplateParameter(TemplateParameter newTemplateParameter) {
-
 		if (newTemplateParameter != templateParameter) {
 			NotificationChain msgs = null;
 			if (templateParameter != null)
@@ -430,7 +428,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__TEMPLATE_PARAMETER, newTemplateParameter,
 				newTemplateParameter));
-
 	}
 
 	/**
@@ -439,7 +436,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetTemplateParameter() {
-		//genFeature
 		return templateParameter != null;
 	}
 
@@ -474,7 +470,6 @@ public class PropertyImpl
 			TemplateParameter newOwningTemplateParameter, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningTemplateParameter,
 			UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningTemplateParameter != null) {
@@ -493,7 +488,6 @@ public class PropertyImpl
 	 */
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
-
 		if (newOwningTemplateParameter != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
@@ -516,7 +510,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER,
 				newOwningTemplateParameter, newOwningTemplateParameter));
-
 	}
 
 	/**
@@ -540,7 +533,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -637,7 +629,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList<PackageableElement> getDeployedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
@@ -797,7 +788,6 @@ public class PropertyImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -808,7 +798,6 @@ public class PropertyImpl
 	 */
 	public void setOwnedTemplateSignature(
 			TemplateSignature newOwnedTemplateSignature) {
-
 		if (newOwnedTemplateSignature != ownedTemplateSignature) {
 			NotificationChain msgs = null;
 			if (ownedTemplateSignature != null)
@@ -828,7 +817,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
 				newOwnedTemplateSignature, newOwnedTemplateSignature));
-
 	}
 
 	/**
@@ -871,7 +859,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -904,7 +891,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public EList<RedefinableElement> getRedefinedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -976,7 +962,6 @@ public class PropertyImpl
 			else
 				msgs.add(notification);
 		}
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			Association owningAssociation = basicGetOwningAssociation();
@@ -994,7 +979,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAssociation(Association newAssociation) {
-
 		if (newAssociation != association) {
 			NotificationChain msgs = null;
 			if (association != null)
@@ -1012,7 +996,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__ASSOCIATION, newAssociation,
 				newAssociation));
-
 	}
 
 	/**
@@ -1046,7 +1029,6 @@ public class PropertyImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newDatatype,
 			UMLPackage.PROPERTY__DATATYPE, msgs);
-
 		return msgs;
 	}
 
@@ -1056,7 +1038,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDatatype(DataType newDatatype) {
-
 		if (newDatatype != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
@@ -1075,7 +1056,6 @@ public class PropertyImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__DATATYPE, newDatatype, newDatatype));
-
 	}
 
 	/**
@@ -1093,7 +1073,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsDerived(boolean newIsDerived) {
-
 		boolean oldIsDerived = (eFlags & IS_DERIVED_EFLAG) != 0;
 		if (newIsDerived)
 			eFlags |= IS_DERIVED_EFLAG;
@@ -1102,7 +1081,6 @@ public class PropertyImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__IS_DERIVED, oldIsDerived, newIsDerived));
-
 	}
 
 	/**
@@ -1120,7 +1098,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsDerivedUnion(boolean newIsDerivedUnion) {
-
 		boolean oldIsDerivedUnion = (eFlags & IS_DERIVED_UNION_EFLAG) != 0;
 		if (newIsDerivedUnion)
 			eFlags |= IS_DERIVED_UNION_EFLAG;
@@ -1130,7 +1107,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__IS_DERIVED_UNION, oldIsDerivedUnion,
 				newIsDerivedUnion));
-
 	}
 
 	/**
@@ -1139,7 +1115,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public String getDefault() {
-
 		return PropertyOperations.getDefault(this);
 	}
 
@@ -1149,7 +1124,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefault(String newDefault) {
-
 		PropertyOperations.setDefault(this, newDefault);
 	}
 
@@ -1159,7 +1133,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void unsetDefault() {
-
 		PropertyOperations.unsetDefault(this);
 	}
 
@@ -1169,7 +1142,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetDefault() {
-
 		return PropertyOperations.isSetDefault(this);
 	}
 
@@ -1188,7 +1160,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
-
 		AggregationKind oldAggregation = aggregation;
 		aggregation = newAggregation == null
 			? AGGREGATION_EDEFAULT
@@ -1196,7 +1167,6 @@ public class PropertyImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__AGGREGATION, oldAggregation, aggregation));
-
 	}
 
 	/**
@@ -1205,7 +1175,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isComposite() {
-
 		return PropertyOperations.isComposite(this);
 	}
 
@@ -1215,7 +1184,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setIsComposite(boolean newIsComposite) {
-
 		PropertyOperations.setIsComposite(this, newIsComposite);
 	}
 
@@ -1342,7 +1310,6 @@ public class PropertyImpl
 			Association newOwningAssociation, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newOwningAssociation,
 			UMLPackage.PROPERTY__OWNING_ASSOCIATION, msgs);
-
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newOwningAssociation != null) {
@@ -1360,7 +1327,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
-
 		if (newOwningAssociation != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
@@ -1380,7 +1346,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__OWNING_ASSOCIATION, newOwningAssociation,
 				newOwningAssociation));
-
 	}
 
 	/**
@@ -1440,7 +1405,6 @@ public class PropertyImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -1450,7 +1414,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setDefaultValue(ValueSpecification newDefaultValue) {
-
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
 			if (defaultValue != null)
@@ -1468,7 +1431,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__DEFAULT_VALUE, newDefaultValue,
 				newDefaultValue));
-
 	}
 
 	/**
@@ -1505,7 +1467,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property basicGetOpposite() {
-
 		return PropertyOperations.getOpposite(this);
 	}
 
@@ -1515,7 +1476,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setOpposite(Property newOpposite) {
-
 		PropertyOperations.setOpposite(this, newOpposite);
 	}
 
@@ -1663,7 +1623,6 @@ public class PropertyImpl
 			NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newAssociationEnd,
 			UMLPackage.PROPERTY__ASSOCIATION_END, msgs);
-
 		return msgs;
 	}
 
@@ -1673,7 +1632,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
-
 		if (newAssociationEnd != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
 			if (EcoreUtil.isAncestor(this, newAssociationEnd))
@@ -1692,7 +1650,6 @@ public class PropertyImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__ASSOCIATION_END, newAssociationEnd,
 				newAssociationEnd));
-
 	}
 
 	/**
@@ -1712,7 +1669,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public void setIsReadOnly(boolean newIsReadOnly) {
-
 		boolean oldIsReadOnly = (eFlags & IS_READ_ONLY_EFLAG) != 0;
 		if (newIsReadOnly)
 			eFlags |= IS_READ_ONLY_EFLAG;
@@ -1721,7 +1677,6 @@ public class PropertyImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PROPERTY__IS_READ_ONLY, oldIsReadOnly, newIsReadOnly));
-
 	}
 
 	/**
@@ -1730,7 +1685,6 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public boolean isSetIsReadOnly() {
-		//genFeature
 		return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 	}
 
@@ -2813,7 +2767,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-
 		TemplateParameter owningTemplateParameter = basicGetOwningTemplateParameter();
 		if (owningTemplateParameter != null) {
 			return owningTemplateParameter;
@@ -2895,7 +2848,6 @@ public class PropertyImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		org.eclipse.uml2.uml.Class class_ = basicGetClass_();
 		if (class_ != null) {
 			return class_;

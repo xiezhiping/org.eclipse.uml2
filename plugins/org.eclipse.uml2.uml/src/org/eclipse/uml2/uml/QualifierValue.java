@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: QualifierValue.java,v 1.3 2006/12/14 15:49:27 khussey Exp $
+ * $Id: QualifierValue.java,v 1.4 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -96,6 +96,8 @@ public interface QualifierValue
 	 * <!-- begin-model-doc -->
 	 * The qualifier attribute must be a qualifier of the association end of the link-end data.
 	 * self.LinkEndData.end->collect(qualifier)->includes(self.qualifier)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -109,6 +111,8 @@ public interface QualifierValue
 	 * <!-- begin-model-doc -->
 	 * The type of the qualifier value input pin is the same as the type of the qualifier attribute.
 	 * self.value.type = self.qualifier.type
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -122,6 +126,8 @@ public interface QualifierValue
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the qualifier value input pin is "1..1".
 	 * self.value.multiplicity.is(1,1)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

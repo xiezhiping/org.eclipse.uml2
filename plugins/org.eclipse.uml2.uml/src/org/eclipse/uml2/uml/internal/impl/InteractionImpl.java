@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.31 2007/03/30 18:20:25 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.32 2007/04/25 17:47:01 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,7 +199,6 @@ public class InteractionImpl
 	 */
 	@Override
 	public EList<Element> getOwnedElements() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -345,7 +344,6 @@ public class InteractionImpl
 			Interaction newEnclosingInteraction, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnclosingInteraction,
 			UMLPackage.INTERACTION__ENCLOSING_INTERACTION, msgs);
-
 		return msgs;
 	}
 
@@ -355,7 +353,6 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
-
 		if (newEnclosingInteraction != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
@@ -375,7 +372,6 @@ public class InteractionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION__ENCLOSING_INTERACTION,
 				newEnclosingInteraction, newEnclosingInteraction));
-
 	}
 
 	/**
@@ -409,7 +405,6 @@ public class InteractionImpl
 			InteractionOperand newEnclosingOperand, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject) newEnclosingOperand,
 			UMLPackage.INTERACTION__ENCLOSING_OPERAND, msgs);
-
 		return msgs;
 	}
 
@@ -419,7 +414,6 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
-
 		if (newEnclosingOperand != eInternalContainer()
 			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
@@ -439,7 +433,6 @@ public class InteractionImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.INTERACTION__ENCLOSING_OPERAND, newEnclosingOperand,
 				newEnclosingOperand));
-
 	}
 
 	/**
@@ -449,7 +442,6 @@ public class InteractionImpl
 	 */
 	@Override
 	public EList<NamedElement> getOwnedMembers() {
-
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
@@ -1846,7 +1838,6 @@ public class InteractionImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-
 		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;

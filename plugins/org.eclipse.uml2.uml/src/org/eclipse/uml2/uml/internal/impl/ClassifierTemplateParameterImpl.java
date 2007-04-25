@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.20 2007/02/26 16:17:56 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -131,7 +131,6 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setAllowSubstitutable(boolean newAllowSubstitutable) {
-
 		boolean oldAllowSubstitutable = (eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0;
 		if (newAllowSubstitutable)
 			eFlags |= ALLOW_SUBSTITUTABLE_EFLAG;
@@ -141,7 +140,6 @@ public class ClassifierTemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
 				oldAllowSubstitutable, newAllowSubstitutable));
-
 	}
 
 	/**
@@ -180,14 +178,12 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setDefaultClassifier(Classifier newDefaultClassifier) {
-
 		Classifier oldDefaultClassifier = defaultClassifier;
 		defaultClassifier = newDefaultClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
 				oldDefaultClassifier, defaultClassifier));
-
 	}
 
 	/**
@@ -226,7 +222,6 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public void setConstrainingClassifier(Classifier newConstrainingClassifier) {
-
 		Classifier oldConstrainingClassifier = constrainingClassifier;
 		constrainingClassifier = newConstrainingClassifier;
 		if (eNotificationRequired())
@@ -235,7 +230,6 @@ public class ClassifierTemplateParameterImpl
 				Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
 				oldConstrainingClassifier, constrainingClassifier));
-
 	}
 
 	/**
@@ -289,7 +283,6 @@ public class ClassifierTemplateParameterImpl
 			else
 				msgs.add(notification);
 		}
-
 		return msgs;
 	}
 
@@ -326,7 +319,6 @@ public class ClassifierTemplateParameterImpl
 	 */
 	@Override
 	public void setParameteredElement(ParameterableElement newParameteredElement) {
-
 		if (newParameteredElement != parameteredElement) {
 			NotificationChain msgs = null;
 			if (parameteredElement != null)
@@ -344,7 +336,6 @@ public class ClassifierTemplateParameterImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT,
 				newParameteredElement, newParameteredElement));
-
 	}
 
 	/**
@@ -353,7 +344,6 @@ public class ClassifierTemplateParameterImpl
 	 * @generated
 	 */
 	public boolean isSetParameteredElement() {
-		//genFeature
 		return parameteredElement != null;
 	}
 

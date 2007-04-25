@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendSignalAction.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
+ * $Id: SendSignalAction.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -123,6 +123,8 @@ public interface SendSignalAction
 	 * <!-- begin-model-doc -->
 	 * The number and order of argument pins must be the same as the number and order of attributes in the signal.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -136,6 +138,8 @@ public interface SendSignalAction
 	 * <!-- begin-model-doc -->
 	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

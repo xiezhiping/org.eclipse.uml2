@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReceptionImpl.java,v 1.14 2007/02/26 16:17:57 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.15 2007/04/25 17:47:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -122,13 +122,11 @@ public class ReceptionImpl
 	 * @generated
 	 */
 	public void setSignal(Signal newSignal) {
-
 		Signal oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.RECEPTION__SIGNAL, oldSignal, signal));
-
 	}
 
 	/**

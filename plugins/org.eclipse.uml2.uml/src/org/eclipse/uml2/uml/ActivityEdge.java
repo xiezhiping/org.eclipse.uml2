@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.14 2006/12/14 15:49:27 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.15 2007/04/25 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -366,6 +366,8 @@ public interface ActivityEdge
 	 * <!-- begin-model-doc -->
 	 * The source and target of an edge must be in the same activity as the edge.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -379,6 +381,8 @@ public interface ActivityEdge
 	 * <!-- begin-model-doc -->
 	 * Activity edges may be owned only by activities or groups.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated
@@ -392,6 +396,8 @@ public interface ActivityEdge
 	 * <!-- begin-model-doc -->
 	 * Activity edges may be owned by at most one structured node.
 	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @model
 	 * @generated

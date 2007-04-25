@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.11 2007/02/26 16:17:56 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.12 2007/04/25 17:47:00 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,7 +116,6 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public void setIsReplaceAll(boolean newIsReplaceAll) {
-
 		boolean oldIsReplaceAll = (eFlags & IS_REPLACE_ALL_EFLAG) != 0;
 		if (newIsReplaceAll)
 			eFlags |= IS_REPLACE_ALL_EFLAG;
@@ -126,7 +125,6 @@ public class LinkEndCreationDataImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_CREATION_DATA__IS_REPLACE_ALL,
 				oldIsReplaceAll, newIsReplaceAll));
-
 	}
 
 	/**
@@ -163,14 +161,12 @@ public class LinkEndCreationDataImpl
 	 * @generated
 	 */
 	public void setInsertAt(InputPin newInsertAt) {
-
 		InputPin oldInsertAt = insertAt;
 		insertAt = newInsertAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.LINK_END_CREATION_DATA__INSERT_AT, oldInsertAt,
 				insertAt));
-
 	}
 
 	/**
