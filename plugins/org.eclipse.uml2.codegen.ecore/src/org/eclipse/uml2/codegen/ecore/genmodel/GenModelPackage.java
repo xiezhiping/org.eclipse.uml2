@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.22 2007/03/22 16:47:29 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.23 2007/04/25 21:49:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1065,6 +1065,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__COMPLIANCE_LEVEL = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COMPLIANCE_LEVEL;
+
+	/**
+	 * The feature id for the '<em><b>Suppress Gen Model Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__SUPPRESS_GEN_MODEL_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_GEN_MODEL_ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
