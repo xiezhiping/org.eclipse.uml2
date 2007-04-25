@@ -574,18 +574,30 @@
         </ownedComment>
         <ownedParameter xmi:id="DataType-createOwnedOperation-_ownedParameter.0" type="Operation" direction="return"/>
         <ownedParameter xmi:id="DataType-createOwnedOperation-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedOperation-name-_ownedComment.0" annotatedElement="DataType-createOwnedOperation-name">
+            <body>The name for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedOperation-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedOperation-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="DataType-createOwnedOperation-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedOperation-parameterNames-_ownedComment.0" annotatedElement="DataType-createOwnedOperation-parameterNames">
+            <body>The parameter names for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedOperation-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedOperation-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="DataType-createOwnedOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedOperation-parameterTypes-_ownedComment.0" annotatedElement="DataType-createOwnedOperation-parameterTypes">
+            <body>The parameter types for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedOperation-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedOperation-parameterTypes-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="DataType-createOwnedOperation-returnType" name="returnType" type="Type" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedOperation-returnType-_ownedComment.0" annotatedElement="DataType-createOwnedOperation-returnType">
+            <body>The return type for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedOperation-returnType-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedOperation-returnType-_lowerValue"/>
         </ownedParameter>
@@ -596,15 +608,29 @@
         </ownedComment>
         <ownedParameter xmi:id="DataType-createOwnedAttribute-_ownedParameter.0" type="Property" direction="return"/>
         <ownedParameter xmi:id="DataType-createOwnedAttribute-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedAttribute-name-_ownedComment.0" annotatedElement="DataType-createOwnedAttribute-name">
+            <body>The name for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedAttribute-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedAttribute-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="DataType-createOwnedAttribute-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedAttribute-type-_ownedComment.0" annotatedElement="DataType-createOwnedAttribute-type">
+            <body>The type for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DataType-createOwnedAttribute-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType-createOwnedAttribute-type-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="DataType-createOwnedAttribute-lower" name="lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="DataType-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="DataType-createOwnedAttribute-lower" name="lower" type="Integer" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedAttribute-lower-_ownedComment.0" annotatedElement="DataType-createOwnedAttribute-lower">
+            <body>The lower bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="DataType-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="DataType-createOwnedAttribute-upper-_ownedComment.0" annotatedElement="DataType-createOwnedAttribute-upper">
+            <body>The upper bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="DataType-inherit" name="inherit" isQuery="true" redefinedOperation="Classifier-inherit" bodyCondition="DataType-inherit-spec">
         <ownedComment xmi:id="DataType-inherit-_ownedComment.0" annotatedElement="DataType-inherit">
@@ -864,17 +890,61 @@
           <body>Creates a(n) (binary) association between this type and the specified other type, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this type's nearest package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Type-createAssociation-_ownedParameter.0" type="Association" direction="return"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1IsNavigable" name="end1IsNavigable" type="Boolean" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1Aggregation" name="end1Aggregation" type="AggregationKind" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1Name" name="end1Name" type="String" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1Lower" name="end1Lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1Upper" name="end1Upper" type="UnlimitedNatural" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end1Type" name="end1Type" type="Type" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end2IsNavigable" name="end2IsNavigable" type="Boolean" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end2Aggregation" name="end2Aggregation" type="AggregationKind" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end2Name" name="end2Name" type="String" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end2Lower" name="end2Lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="Type-createAssociation-end2Upper" name="end2Upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Type-createAssociation-end1IsNavigable" name="end1IsNavigable" type="Boolean" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1IsNavigable-_ownedComment.0" annotatedElement="Type-createAssociation-end1IsNavigable">
+            <body>The navigability for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end1Aggregation" name="end1Aggregation" type="AggregationKind" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1Aggregation-_ownedComment.0" annotatedElement="Type-createAssociation-end1Aggregation">
+            <body>The aggregation for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end1Name" name="end1Name" type="String" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1Name-_ownedComment.0" annotatedElement="Type-createAssociation-end1Name">
+            <body>The name for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end1Lower" name="end1Lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1Lower-_ownedComment.0" annotatedElement="Type-createAssociation-end1Lower">
+            <body>The lower bound for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end1Upper" name="end1Upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1Upper-_ownedComment.0" annotatedElement="Type-createAssociation-end1Upper">
+            <body>The upper bound for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end1Type" name="end1Type" type="Type" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end1Type-_ownedComment.0" annotatedElement="Type-createAssociation-end1Type">
+            <body>The type for the first end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end2IsNavigable" name="end2IsNavigable" type="Boolean" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end2IsNavigable-_ownedComment.0" annotatedElement="Type-createAssociation-end2IsNavigable">
+            <body>The navigability for the second end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end2Aggregation" name="end2Aggregation" type="AggregationKind" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end2Aggregation-_ownedComment.0" annotatedElement="Type-createAssociation-end2Aggregation">
+            <body>The aggregation for the second end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end2Name" name="end2Name" type="String" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end2Name-_ownedComment.0" annotatedElement="Type-createAssociation-end2Name">
+            <body>The name for the second end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end2Lower" name="end2Lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end2Lower-_ownedComment.0" annotatedElement="Type-createAssociation-end2Lower">
+            <body>The lower bound for the second end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Type-createAssociation-end2Upper" name="end2Upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Type-createAssociation-end2Upper-_ownedComment.0" annotatedElement="Type-createAssociation-end2Upper">
+            <body>The upper bound for the second end of the new association.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Type-getAssociations" name="getAssociations">
         <ownedComment xmi:id="Type-getAssociations-_ownedComment.0" annotatedElement="Type-getAssociations">
@@ -2291,16 +2361,32 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <body>Creates an import of the specified element into this namespace with the specified visibility.</body>
         </ownedComment>
         <ownedParameter xmi:id="Namespace-createElementImport-_ownedParameter.0" type="ElementImport" direction="return"/>
-        <ownedParameter xmi:id="Namespace-createElementImport-element" name="element" type="PackageableElement" effect="read"/>
-        <ownedParameter xmi:id="Namespace-createElementImport-visibility" name="visibility" type="VisibilityKind" effect="read"/>
+        <ownedParameter xmi:id="Namespace-createElementImport-element" name="element" type="PackageableElement" effect="read">
+          <ownedComment xmi:id="Namespace-createElementImport-element-_ownedComment.0" annotatedElement="Namespace-createElementImport-element">
+            <body>The element to import.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Namespace-createElementImport-visibility" name="visibility" type="VisibilityKind" effect="read">
+          <ownedComment xmi:id="Namespace-createElementImport-visibility-_ownedComment.0" annotatedElement="Namespace-createElementImport-visibility">
+            <body>The visibility for the new element import.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Namespace-createPackageImport" name="createPackageImport">
         <ownedComment xmi:id="Namespace-createPackageImport-_ownedComment.0" annotatedElement="Namespace-createPackageImport">
           <body>Creates an import of the specified package into this namespace with the specified visibility.</body>
         </ownedComment>
         <ownedParameter xmi:id="Namespace-createPackageImport-_ownedParameter.0" type="PackageImport" direction="return"/>
-        <ownedParameter xmi:id="Namespace-createPackageImport-package_" name="package_" type="Package" effect="read"/>
-        <ownedParameter xmi:id="Namespace-createPackageImport-visibility" name="visibility" type="VisibilityKind" effect="read"/>
+        <ownedParameter xmi:id="Namespace-createPackageImport-package_" name="package_" type="Package" effect="read">
+          <ownedComment xmi:id="Namespace-createPackageImport-package_-_ownedComment.0" annotatedElement="Namespace-createPackageImport-package_">
+            <body>The package to import.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Namespace-createPackageImport-visibility" name="visibility" type="VisibilityKind" effect="read">
+          <ownedComment xmi:id="Namespace-createPackageImport-visibility-_ownedComment.0" annotatedElement="Namespace-createPackageImport-visibility">
+            <body>The visibility for the new package import.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Namespace-getImportedElements" name="getImportedElements" isQuery="true">
         <ownedComment xmi:id="Namespace-getImportedElements-_ownedComment.0" annotatedElement="Namespace-getImportedElements">
@@ -2523,15 +2609,29 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         </ownedComment>
         <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-_ownedParameter.0" type="Property" direction="return"/>
         <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="StructuredClassifier-createOwnedAttribute-name-_ownedComment.0" annotatedElement="StructuredClassifier-createOwnedAttribute-name">
+            <body>The name for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="StructuredClassifier-createOwnedAttribute-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="StructuredClassifier-createOwnedAttribute-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="StructuredClassifier-createOwnedAttribute-type-_ownedComment.0" annotatedElement="StructuredClassifier-createOwnedAttribute-type">
+            <body>The type for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="StructuredClassifier-createOwnedAttribute-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="StructuredClassifier-createOwnedAttribute-type-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-lower" name="lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-lower" name="lower" type="Integer" effect="read">
+          <ownedComment xmi:id="StructuredClassifier-createOwnedAttribute-lower-_ownedComment.0" annotatedElement="StructuredClassifier-createOwnedAttribute-lower">
+            <body>The lower bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="StructuredClassifier-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="StructuredClassifier-createOwnedAttribute-upper-_ownedComment.0" annotatedElement="StructuredClassifier-createOwnedAttribute-upper">
+            <body>The upper bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_type_connector" name="A_type_connector" visibility="private" memberEnd="Connector-type A_type_connector-_ownedEnd.0">
@@ -3818,15 +3918,29 @@ v) attributes of the class owning the Interaction
         </ownedComment>
         <ownedParameter xmi:id="Signal-createOwnedAttribute-_ownedParameter.0" type="Property" direction="return"/>
         <ownedParameter xmi:id="Signal-createOwnedAttribute-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Signal-createOwnedAttribute-name-_ownedComment.0" annotatedElement="Signal-createOwnedAttribute-name">
+            <body>The name for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Signal-createOwnedAttribute-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Signal-createOwnedAttribute-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Signal-createOwnedAttribute-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="Signal-createOwnedAttribute-type-_ownedComment.0" annotatedElement="Signal-createOwnedAttribute-type">
+            <body>The type for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Signal-createOwnedAttribute-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Signal-createOwnedAttribute-type-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Signal-createOwnedAttribute-lower" name="lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="Signal-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Signal-createOwnedAttribute-lower" name="lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Signal-createOwnedAttribute-lower-_ownedComment.0" annotatedElement="Signal-createOwnedAttribute-lower">
+            <body>The lower bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Signal-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Signal-createOwnedAttribute-upper-_ownedComment.0" annotatedElement="Signal-createOwnedAttribute-upper">
+            <body>The upper bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="SignalEvent" name="SignalEvent">
@@ -4783,18 +4897,30 @@ The association is a specialization of the ownedMember association.&#xD;
         </ownedComment>
         <ownedParameter xmi:id="Artifact-createOwnedOperation-_ownedParameter.0" type="Operation" direction="return"/>
         <ownedParameter xmi:id="Artifact-createOwnedOperation-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedOperation-name-_ownedComment.0" annotatedElement="Artifact-createOwnedOperation-name">
+            <body>The name for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedOperation-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedOperation-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Artifact-createOwnedOperation-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedOperation-parameterNames-_ownedComment.0" annotatedElement="Artifact-createOwnedOperation-parameterNames">
+            <body>The parameter names for  the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedOperation-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedOperation-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Artifact-createOwnedOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedOperation-parameterTypes-_ownedComment.0" annotatedElement="Artifact-createOwnedOperation-parameterTypes">
+            <body>The parameter types for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedOperation-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedOperation-parameterTypes-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Artifact-createOwnedOperation-returnType" name="returnType" type="Type" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedOperation-returnType-_ownedComment.0" annotatedElement="Artifact-createOwnedOperation-returnType">
+            <body>The return type for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedOperation-returnType-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedOperation-returnType-_lowerValue"/>
         </ownedParameter>
@@ -4805,15 +4931,29 @@ The association is a specialization of the ownedMember association.&#xD;
         </ownedComment>
         <ownedParameter xmi:id="Artifact-createOwnedAttribute-_ownedParameter.0" type="Property" direction="return"/>
         <ownedParameter xmi:id="Artifact-createOwnedAttribute-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedAttribute-name-_ownedComment.0" annotatedElement="Artifact-createOwnedAttribute-name">
+            <body>The name for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedAttribute-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedAttribute-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Artifact-createOwnedAttribute-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedAttribute-type-_ownedComment.0" annotatedElement="Artifact-createOwnedAttribute-type">
+            <body>The type for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Artifact-createOwnedAttribute-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Artifact-createOwnedAttribute-type-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Artifact-createOwnedAttribute-lower" name="lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="Artifact-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Artifact-createOwnedAttribute-lower" name="lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedAttribute-lower-_ownedComment.0" annotatedElement="Artifact-createOwnedAttribute-lower">
+            <body>The lower bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Artifact-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Artifact-createOwnedAttribute-upper-_ownedComment.0" annotatedElement="Artifact-createOwnedAttribute-upper">
+            <body>The upper bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_deployedArtifact_deployment" name="A_deployedArtifact_deployment" visibility="private" memberEnd="Deployment-deployedArtifact A_deployedArtifact_deployment-_ownedEnd.0">
@@ -7630,8 +7770,16 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <body>Creates a(n) (required) extension of the specified metaclass with this stereotype.</body>
         </ownedComment>
         <ownedParameter xmi:id="Stereotype-createExtension-_ownedParameter.0" type="Extension" direction="return"/>
-        <ownedParameter xmi:id="Stereotype-createExtension-metaclass" name="metaclass" type="Class" effect="read"/>
-        <ownedParameter xmi:id="Stereotype-createExtension-isRequired" name="isRequired" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Stereotype-createExtension-metaclass" name="metaclass" type="Class" effect="read">
+          <ownedComment xmi:id="Stereotype-createExtension-metaclass-_ownedComment.0" annotatedElement="Stereotype-createExtension-metaclass">
+            <body>The metaclass for the new extension.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Stereotype-createExtension-isRequired" name="isRequired" type="Boolean" effect="read">
+          <ownedComment xmi:id="Stereotype-createExtension-isRequired-_ownedComment.0" annotatedElement="Stereotype-createExtension-isRequired">
+            <body>Whether the new extension should be required.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Stereotype-getProfile" name="getProfile" isQuery="true">
         <ownedComment xmi:id="Stereotype-getProfile-_ownedComment.0" annotatedElement="Stereotype-getProfile">
@@ -7653,7 +7801,11 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <body>Retrieves the keyword for this stereotype, localized if indicated.</body>
         </ownedComment>
         <ownedParameter xmi:id="Stereotype-getKeyword.1-_ownedParameter.0" type="String" direction="return"/>
-        <ownedParameter xmi:id="Stereotype-getKeyword.1-localize" name="localize" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Stereotype-getKeyword.1-localize" name="localize" type="Boolean" effect="read">
+          <ownedComment xmi:id="Stereotype-getKeyword.1-localize-_ownedComment.0" annotatedElement="Stereotype-getKeyword.1-localize">
+            <body>Whether to localize the keyword.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Stereotype-getExtendedMetaclasses" name="getExtendedMetaclasses" isQuery="true">
         <ownedComment xmi:id="Stereotype-getExtendedMetaclasses-_ownedComment.0" annotatedElement="Stereotype-getExtendedMetaclasses">
@@ -7688,15 +7840,27 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <body>Creates an icon with the specified location for this stereotype.</body>
         </ownedComment>
         <ownedParameter xmi:id="Stereotype-createIcon-_ownedParameter.0" type="Image" direction="return"/>
-        <ownedParameter xmi:id="Stereotype-createIcon-location" name="location" type="String" effect="read"/>
+        <ownedParameter xmi:id="Stereotype-createIcon-location" name="location" type="String" effect="read">
+          <ownedComment xmi:id="Stereotype-createIcon-location-_ownedComment.0" annotatedElement="Stereotype-createIcon-location">
+            <body>The location for the new icon.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Stereotype-createIcon.1" name="createIcon">
         <ownedComment xmi:id="Stereotype-createIcon.1-_ownedComment.0" annotatedElement="Stereotype-createIcon.1">
           <body>Creates an icon with the specified format and content for this stereotype.</body>
         </ownedComment>
         <ownedParameter xmi:id="Stereotype-createIcon.1-_ownedParameter.0" type="Image" direction="return"/>
-        <ownedParameter xmi:id="Stereotype-createIcon.1-format" name="format" type="String" effect="read"/>
-        <ownedParameter xmi:id="Stereotype-createIcon.1-content" name="content" type="String" effect="read"/>
+        <ownedParameter xmi:id="Stereotype-createIcon.1-format" name="format" type="String" effect="read">
+          <ownedComment xmi:id="Stereotype-createIcon.1-format-_ownedComment.0" annotatedElement="Stereotype-createIcon.1-format">
+            <body>The format for the new icon.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Stereotype-createIcon.1-content" name="content" type="String" effect="read">
+          <ownedComment xmi:id="Stereotype-createIcon.1-content-_ownedComment.0" annotatedElement="Stereotype-createIcon.1-content">
+            <body>The content for the new icon.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Profile" name="Profile">
@@ -7774,15 +7938,27 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <ownedParameter xmi:id="Profile-create-_ownedParameter.0" direction="return">
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EObject"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Profile-create-classifier" name="classifier" type="Classifier" effect="read"/>
+        <ownedParameter xmi:id="Profile-create-classifier" name="classifier" type="Classifier" effect="read">
+          <ownedComment xmi:id="Profile-create-classifier-_ownedComment.0" annotatedElement="Profile-create-classifier">
+            <body>The classifier of which to create an instance.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Profile-createOwnedStereotype" name="createOwnedStereotype">
         <ownedComment xmi:id="Profile-createOwnedStereotype-_ownedComment.0" annotatedElement="Profile-createOwnedStereotype">
           <body>Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.</body>
         </ownedComment>
         <ownedParameter xmi:id="Profile-createOwnedStereotype-_ownedParameter.0" type="Stereotype" direction="return"/>
-        <ownedParameter xmi:id="Profile-createOwnedStereotype-name" name="name" type="String" effect="read"/>
-        <ownedParameter xmi:id="Profile-createOwnedStereotype-isAbstract" name="isAbstract" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Profile-createOwnedStereotype-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Profile-createOwnedStereotype-name-_ownedComment.0" annotatedElement="Profile-createOwnedStereotype-name">
+            <body>The name for the new stereotype, or null.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Profile-createOwnedStereotype-isAbstract" name="isAbstract" type="Boolean" effect="read">
+          <ownedComment xmi:id="Profile-createOwnedStereotype-isAbstract-_ownedComment.0" annotatedElement="Profile-createOwnedStereotype-isAbstract">
+            <body>Whether the new stereotype should be abstract.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Profile-isDefined" name="isDefined" isQuery="true">
         <ownedComment xmi:id="Profile-isDefined-_ownedComment.0" annotatedElement="Profile-isDefined">
@@ -7807,11 +7983,22 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <ownedParameter xmi:id="Profile-define.1-_ownedParameter.0" name="" direction="return">
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EPackage"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Profile-define.1-options" name="options" type="Profile-EMap_EString_EString"/>
+        <ownedParameter xmi:id="Profile-define.1-options" name="options" type="Profile-EMap_EString_EString">
+          <ownedComment xmi:id="Profile-define.1-options-_ownedComment.0" annotatedElement="Profile-define.1-options">
+            <body>The options to use.</body>
+          </ownedComment>
+        </ownedParameter>
         <ownedParameter xmi:id="Profile-define.1-diagnostics" name="diagnostics">
+          <ownedComment xmi:id="Profile-define.1-diagnostics-_ownedComment.0" annotatedElement="Profile-define.1-diagnostics">
+            <body>The chain of diagnostics to which problems are to be appended.</body>
+          </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="Ecore.metamodel.uml#EDiagnosticChain"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Profile-define.1-context" name="context" type="Profile-EMap_EJavaObject_EJavaObject"/>
+        <ownedParameter xmi:id="Profile-define.1-context" name="context" type="Profile-EMap_EJavaObject_EJavaObject">
+          <ownedComment xmi:id="Profile-define.1-context-_ownedComment.0" annotatedElement="Profile-define.1-context">
+            <body>The cache of context-specific information.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Profile-getDefinition" name="getDefinition" isQuery="true">
         <ownedComment xmi:id="Profile-getDefinition-_ownedComment.0" annotatedElement="Profile-getDefinition">
@@ -7832,7 +8019,11 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Profile-getDefinition.1-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Profile-getDefinition.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Profile-getDefinition.1-namedElement" name="namedElement" type="NamedElement" effect="read"/>
+        <ownedParameter xmi:id="Profile-getDefinition.1-namedElement" name="namedElement" type="NamedElement" effect="read">
+          <ownedComment xmi:id="Profile-getDefinition.1-namedElement-_ownedComment.0" annotatedElement="Profile-getDefinition.1-namedElement">
+            <body>The named element whose definition to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Profile-getReferencedMetaclasses" name="getReferencedMetaclasses" isQuery="true">
         <ownedComment xmi:id="Profile-getReferencedMetaclasses-_ownedComment.0" annotatedElement="Profile-getReferencedMetaclasses">
@@ -7860,7 +8051,11 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Profile-getOwnedExtensions-_ownedParameter.0-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Profile-getOwnedExtensions-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Profile-getOwnedExtensions-requiredOnly" name="requiredOnly" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Profile-getOwnedExtensions-requiredOnly" name="requiredOnly" type="Boolean" effect="read">
+          <ownedComment xmi:id="Profile-getOwnedExtensions-requiredOnly-_ownedComment.0" annotatedElement="Profile-getOwnedExtensions-requiredOnly">
+            <body>Whether to retrieve only required extensions.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Class" name="Class">
@@ -7956,18 +8151,30 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         </ownedComment>
         <ownedParameter xmi:id="Class-createOwnedOperation-_ownedParameter.0" type="Operation" direction="return"/>
         <ownedParameter xmi:id="Class-createOwnedOperation-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Class-createOwnedOperation-name-_ownedComment.0" annotatedElement="Class-createOwnedOperation-name">
+            <body>The name for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Class-createOwnedOperation-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class-createOwnedOperation-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Class-createOwnedOperation-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="Class-createOwnedOperation-parameterNames-_ownedComment.0" annotatedElement="Class-createOwnedOperation-parameterNames">
+            <body>The parameter names for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Class-createOwnedOperation-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class-createOwnedOperation-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Class-createOwnedOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="Class-createOwnedOperation-parameterTypes-_ownedComment.0" annotatedElement="Class-createOwnedOperation-parameterTypes">
+            <body>The parameter types for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Class-createOwnedOperation-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class-createOwnedOperation-parameterTypes-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Class-createOwnedOperation-returnType" name="returnType" type="Type" effect="read">
+          <ownedComment xmi:id="Class-createOwnedOperation-returnType-_ownedComment.0" annotatedElement="Class-createOwnedOperation-returnType">
+            <body>The return type for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Class-createOwnedOperation-returnType-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Class-createOwnedOperation-returnType-_lowerValue"/>
         </ownedParameter>
@@ -8042,7 +8249,11 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ProfileApplication-getAppliedDefinition.1-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ProfileApplication-getAppliedDefinition.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="ProfileApplication-getAppliedDefinition.1-namedElement" name="namedElement" type="NamedElement" effect="read"/>
+        <ownedParameter xmi:id="ProfileApplication-getAppliedDefinition.1-namedElement" name="namedElement" type="NamedElement" effect="read">
+          <ownedComment xmi:id="ProfileApplication-getAppliedDefinition.1-namedElement-_ownedComment.0" annotatedElement="ProfileApplication-getAppliedDefinition.1-namedElement">
+            <body>The named element for which to retrieve the applied definition.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Extension" name="Extension">
@@ -8228,7 +8439,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <body>Determines whether this element has the specified keyword.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-hasKeyword-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-hasKeyword-keyword" name="keyword" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-hasKeyword-keyword" name="keyword" type="String" effect="read">
+          <ownedComment xmi:id="Element-hasKeyword-keyword-_ownedComment.0" annotatedElement="Element-hasKeyword-keyword">
+            <body>The keyword in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getKeywords" name="getKeywords" isQuery="true">
         <ownedComment xmi:id="Element-getKeywords-_ownedComment.0" annotatedElement="Element-getKeywords">
@@ -8244,14 +8459,22 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <body>Adds the specified keyword to this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-addKeyword-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-addKeyword-keyword" name="keyword" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-addKeyword-keyword" name="keyword" type="String" effect="read">
+          <ownedComment xmi:id="Element-addKeyword-keyword-_ownedComment.0" annotatedElement="Element-addKeyword-keyword">
+            <body>The keyword to add.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-removeKeyword" name="removeKeyword">
         <ownedComment xmi:id="Element-removeKeyword-_ownedComment.0" annotatedElement="Element-removeKeyword">
           <body>Removes the specified keyword from this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-removeKeyword-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-removeKeyword-keyword" name="keyword" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-removeKeyword-keyword" name="keyword" type="String" effect="read">
+          <ownedComment xmi:id="Element-removeKeyword-keyword-_ownedComment.0" annotatedElement="Element-removeKeyword-keyword">
+            <body>The keyword to remove.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getNearestPackage" name="getNearestPackage" isQuery="true">
         <ownedComment xmi:id="Element-getNearestPackage-_ownedComment.0" annotatedElement="Element-getNearestPackage">
@@ -8276,21 +8499,33 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <body>Determines whether the specified stereotype is applicable to this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-isStereotypeApplicable-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-isStereotypeApplicable-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-isStereotypeApplicable-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-isStereotypeApplicable-stereotype-_ownedComment.0" annotatedElement="Element-isStereotypeApplicable-stereotype">
+            <body>The stereotype in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-isStereotypeRequired" name="isStereotypeRequired" isQuery="true">
         <ownedComment xmi:id="Element-isStereotypeRequired-_ownedComment.0" annotatedElement="Element-isStereotypeRequired">
           <body>Determines whether the specified stereotype is required for this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-isStereotypeRequired-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-isStereotypeRequired-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-isStereotypeRequired-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-isStereotypeRequired-stereotype-_ownedComment.0" annotatedElement="Element-isStereotypeRequired-stereotype">
+            <body>The stereotype in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-isStereotypeApplied" name="isStereotypeApplied" isQuery="true">
         <ownedComment xmi:id="Element-isStereotypeApplied-_ownedComment.0" annotatedElement="Element-isStereotypeApplied">
           <body>Determines whether the specified stereotype is applied to this element.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-isStereotypeApplied-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-isStereotypeApplied-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-isStereotypeApplied-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-isStereotypeApplied-stereotype-_ownedComment.0" annotatedElement="Element-isStereotypeApplied-stereotype">
+            <body>The stereotype in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-applyStereotype" name="applyStereotype">
         <ownedComment xmi:id="Element-applyStereotype-_ownedComment.0" annotatedElement="Element-applyStereotype">
@@ -8299,7 +8534,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
         <ownedParameter xmi:id="Element-applyStereotype-_ownedParameter.0" direction="return">
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EObject"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-applyStereotype-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-applyStereotype-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-applyStereotype-stereotype-_ownedComment.0" annotatedElement="Element-applyStereotype-stereotype">
+            <body>The stereotype to apply.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-unapplyStereotype" name="unapplyStereotype">
         <ownedComment xmi:id="Element-unapplyStereotype-_ownedComment.0" annotatedElement="Element-unapplyStereotype">
@@ -8308,7 +8547,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
         <ownedParameter xmi:id="Element-unapplyStereotype-_ownedParameter.0" direction="return">
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EObject"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-unapplyStereotype-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-unapplyStereotype-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-unapplyStereotype-stereotype-_ownedComment.0" annotatedElement="Element-unapplyStereotype-stereotype">
+            <body>The stereotype to unapply.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getApplicableStereotypes" name="getApplicableStereotypes" isQuery="true">
         <ownedComment xmi:id="Element-getApplicableStereotypes-_ownedComment.0" annotatedElement="Element-getApplicableStereotypes">
@@ -8327,7 +8570,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getApplicableStereotype-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getApplicableStereotype-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getApplicableStereotype-qualifiedName" name="qualifiedName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-getApplicableStereotype-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Element-getApplicableStereotype-qualifiedName-_ownedComment.0" annotatedElement="Element-getApplicableStereotype-qualifiedName">
+            <body>The qualified name of the applicable stereotype to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getStereotypeApplications" name="getStereotypeApplications" isQuery="true">
         <ownedComment xmi:id="Element-getStereotypeApplications-_ownedComment.0" annotatedElement="Element-getStereotypeApplications">
@@ -8348,7 +8595,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getStereotypeApplication-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getStereotypeApplication-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getStereotypeApplication-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-getStereotypeApplication-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-getStereotypeApplication-stereotype-_ownedComment.0" annotatedElement="Element-getStereotypeApplication-stereotype">
+            <body>The stereotype for which to retrieve an application.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getRequiredStereotypes" name="getRequiredStereotypes" isQuery="true">
         <ownedComment xmi:id="Element-getRequiredStereotypes-_ownedComment.0" annotatedElement="Element-getRequiredStereotypes">
@@ -8367,7 +8618,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getRequiredStereotype-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getRequiredStereotype-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getRequiredStereotype-qualifiedName" name="qualifiedName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-getRequiredStereotype-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Element-getRequiredStereotype-qualifiedName-_ownedComment.0" annotatedElement="Element-getRequiredStereotype-qualifiedName">
+            <body>The qualified name of the required stereotype to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getAppliedStereotypes" name="getAppliedStereotypes" isQuery="true">
         <ownedComment xmi:id="Element-getAppliedStereotypes-_ownedComment.0" annotatedElement="Element-getAppliedStereotypes">
@@ -8386,7 +8641,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getAppliedStereotype-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getAppliedStereotype-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getAppliedStereotype-qualifiedName" name="qualifiedName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-getAppliedStereotype-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Element-getAppliedStereotype-qualifiedName-_ownedComment.0" annotatedElement="Element-getAppliedStereotype-qualifiedName">
+            <body>The qualified name of the applied stereotype to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getAppliedSubstereotypes" name="getAppliedSubstereotypes" isQuery="true">
         <ownedComment xmi:id="Element-getAppliedSubstereotypes-_ownedComment.0" annotatedElement="Element-getAppliedSubstereotypes">
@@ -8396,7 +8655,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getAppliedSubstereotypes-_ownedParameter.0-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getAppliedSubstereotypes-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getAppliedSubstereotypes-stereotype" name="stereotype" type="Stereotype" effect="read"/>
+        <ownedParameter xmi:id="Element-getAppliedSubstereotypes-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-getAppliedSubstereotypes-stereotype-_ownedComment.0" annotatedElement="Element-getAppliedSubstereotypes-stereotype">
+            <body>The superstereotype of the applied substereotypes to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getAppliedSubstereotype" name="getAppliedSubstereotype" isQuery="true">
         <ownedComment xmi:id="Element-getAppliedSubstereotype-_ownedComment.0" annotatedElement="Element-getAppliedSubstereotype">
@@ -8406,16 +8669,32 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getAppliedSubstereotype-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getAppliedSubstereotype-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getAppliedSubstereotype-stereotype" name="stereotype" type="Stereotype" effect="read"/>
-        <ownedParameter xmi:id="Element-getAppliedSubstereotype-qualifiedName" name="qualifiedName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-getAppliedSubstereotype-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-getAppliedSubstereotype-stereotype-_ownedComment.0" annotatedElement="Element-getAppliedSubstereotype-stereotype">
+            <body>The superstereotype of the applied substereotype to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Element-getAppliedSubstereotype-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Element-getAppliedSubstereotype-qualifiedName-_ownedComment.0" annotatedElement="Element-getAppliedSubstereotype-qualifiedName">
+            <body>The qualified name of the applied substereotype to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-hasValue" name="hasValue" isQuery="true">
         <ownedComment xmi:id="Element-hasValue-_ownedComment.0" annotatedElement="Element-hasValue">
           <body>Determines whether this element has a (non-default) value for the property with the specified name in the specified stereotype.</body>
         </ownedComment>
         <ownedParameter xmi:id="Element-hasValue-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Element-hasValue-stereotype" name="stereotype" type="Stereotype" effect="read"/>
-        <ownedParameter xmi:id="Element-hasValue-propertyName" name="propertyName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-hasValue-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-hasValue-stereotype-_ownedComment.0" annotatedElement="Element-hasValue-stereotype">
+            <body>The stereotype for which to test the property.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Element-hasValue-propertyName" name="propertyName" type="String" effect="read">
+          <ownedComment xmi:id="Element-hasValue-propertyName-_ownedComment.0" annotatedElement="Element-hasValue-propertyName">
+            <body>The name of the property in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getValue" name="getValue" isQuery="true">
         <ownedComment xmi:id="Element-getValue-_ownedComment.0" annotatedElement="Element-getValue">
@@ -8426,16 +8705,35 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Element-getValue-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getValue-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-getValue-stereotype" name="stereotype" type="Stereotype" effect="read"/>
-        <ownedParameter xmi:id="Element-getValue-propertyName" name="propertyName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-getValue-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-getValue-stereotype-_ownedComment.0" annotatedElement="Element-getValue-stereotype">
+            <body>The stereotype for which to retrieve the value.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Element-getValue-propertyName" name="propertyName" type="String" effect="read">
+          <ownedComment xmi:id="Element-getValue-propertyName-_ownedComment.0" annotatedElement="Element-getValue-propertyName">
+            <body>The name of the property whose value to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-setValue" name="setValue">
         <ownedComment xmi:id="Element-setValue-_ownedComment.0" annotatedElement="Element-setValue">
           <body>Sets the value of the property with the specified name in the specified stereotype for this element.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Element-setValue-stereotype" name="stereotype" type="Stereotype" effect="read"/>
-        <ownedParameter xmi:id="Element-setValue-propertyName" name="propertyName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-setValue-stereotype" name="stereotype" type="Stereotype" effect="read">
+          <ownedComment xmi:id="Element-setValue-stereotype-_ownedComment.0" annotatedElement="Element-setValue-stereotype">
+            <body>The stereotype for which to set the value.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Element-setValue-propertyName" name="propertyName" type="String" effect="read">
+          <ownedComment xmi:id="Element-setValue-propertyName-_ownedComment.0" annotatedElement="Element-setValue-propertyName">
+            <body>The name of the property whose value to set.</body>
+          </ownedComment>
+        </ownedParameter>
         <ownedParameter xmi:id="Element-setValue-newValue" name="newValue" effect="read">
+          <ownedComment xmi:id="Element-setValue-newValue-_ownedComment.0" annotatedElement="Element-setValue-newValue">
+            <body>The new value for the property.</body>
+          </ownedComment>
           <type xmi:type="uml:PrimitiveType" href="Ecore.metamodel.uml#EJavaObject"/>
         </ownedParameter>
       </ownedOperation>
@@ -8446,7 +8744,11 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
         <ownedParameter xmi:id="Element-createEAnnotation-_ownedParameter.0" direction="return">
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EAnnotation"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Element-createEAnnotation-source" name="source" type="String" effect="read"/>
+        <ownedParameter xmi:id="Element-createEAnnotation-source" name="source" type="String" effect="read">
+          <ownedComment xmi:id="Element-createEAnnotation-source-_ownedComment.0" annotatedElement="Element-createEAnnotation-source">
+            <body>The source for the new annotation.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Element-getRelationships" name="getRelationships">
         <ownedComment xmi:id="Element-getRelationships-_ownedComment.0" annotatedElement="Element-getRelationships">
@@ -8466,6 +8768,9 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getRelationships.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Element-getRelationships.1-eClass" name="eClass" effect="read">
+          <ownedComment xmi:id="Element-getRelationships.1-eClass-_ownedComment.0" annotatedElement="Element-getRelationships.1-eClass">
+            <body>The (meta)type of the relationships to retrieve.</body>
+          </ownedComment>
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EClass"/>
         </ownedParameter>
       </ownedOperation>
@@ -8487,6 +8792,9 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getSourceDirectedRelationships.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Element-getSourceDirectedRelationships.1-eClass" name="eClass" effect="read">
+          <ownedComment xmi:id="Element-getSourceDirectedRelationships.1-eClass-_ownedComment.0" annotatedElement="Element-getSourceDirectedRelationships.1-eClass">
+            <body>The (meta)type of the directed relationships to retrieve.</body>
+          </ownedComment>
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EClass"/>
         </ownedParameter>
       </ownedOperation>
@@ -8508,6 +8816,9 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Element-getTargetDirectedRelationships.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Element-getTargetDirectedRelationships.1-eClass" name="eClass" effect="read">
+          <ownedComment xmi:id="Element-getTargetDirectedRelationships.1-eClass-_ownedComment.0" annotatedElement="Element-getTargetDirectedRelationships.1-eClass">
+            <body>The (meta)type of the directed relationships to retrieve.</body>
+          </ownedComment>
           <type xmi:type="uml:Class" href="Ecore.metamodel.uml#EClass"/>
         </ownedParameter>
       </ownedOperation>
@@ -10698,25 +11009,41 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <ownedComment xmi:id="Parameter-setBooleanDefaultValue-_ownedComment.0" annotatedElement="Parameter-setBooleanDefaultValue">
           <body>Sets the default value for this parameter to the specified Boolean value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Parameter-setBooleanDefaultValue-value" name="value" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Parameter-setBooleanDefaultValue-value" name="value" type="Boolean" effect="read">
+          <ownedComment xmi:id="Parameter-setBooleanDefaultValue-value-_ownedComment.0" annotatedElement="Parameter-setBooleanDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Parameter-setIntegerDefaultValue" name="setIntegerDefaultValue">
         <ownedComment xmi:id="Parameter-setIntegerDefaultValue-_ownedComment.0" annotatedElement="Parameter-setIntegerDefaultValue">
           <body>Sets the default value for this parameter to the specified integer value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Parameter-setIntegerDefaultValue-value" name="value" type="Integer" effect="read"/>
+        <ownedParameter xmi:id="Parameter-setIntegerDefaultValue-value" name="value" type="Integer" effect="read">
+          <ownedComment xmi:id="Parameter-setIntegerDefaultValue-value-_ownedComment.0" annotatedElement="Parameter-setIntegerDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Parameter-setStringDefaultValue" name="setStringDefaultValue">
         <ownedComment xmi:id="Parameter-setStringDefaultValue-_ownedComment.0" annotatedElement="Parameter-setStringDefaultValue">
           <body>Sets the default value for this parameter to the specified string value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Parameter-setStringDefaultValue-value" name="value" type="String" effect="read"/>
+        <ownedParameter xmi:id="Parameter-setStringDefaultValue-value" name="value" type="String" effect="read">
+          <ownedComment xmi:id="Parameter-setStringDefaultValue-value-_ownedComment.0" annotatedElement="Parameter-setStringDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Parameter-setUnlimitedNaturalDefaultValue" name="setUnlimitedNaturalDefaultValue">
         <ownedComment xmi:id="Parameter-setUnlimitedNaturalDefaultValue-_ownedComment.0" annotatedElement="Parameter-setUnlimitedNaturalDefaultValue">
           <body>Sets the default value for this parameter to the specified unlimited natural value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Parameter-setUnlimitedNaturalDefaultValue-value" name="value" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Parameter-setUnlimitedNaturalDefaultValue-value" name="value" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Parameter-setUnlimitedNaturalDefaultValue-value-_ownedComment.0" annotatedElement="Parameter-setUnlimitedNaturalDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Parameter-setNullDefaultValue" name="setNullDefaultValue">
         <ownedComment xmi:id="Parameter-setNullDefaultValue-_ownedComment.0" annotatedElement="Parameter-setNullDefaultValue">
@@ -10942,10 +11269,16 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         </ownedComment>
         <ownedParameter xmi:id="BehavioralFeature-createReturnResult-_ownedParameter.0" type="Parameter" direction="return"/>
         <ownedParameter xmi:id="BehavioralFeature-createReturnResult-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="BehavioralFeature-createReturnResult-name-_ownedComment.0" annotatedElement="BehavioralFeature-createReturnResult-name">
+            <body>The name for the new return result, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BehavioralFeature-createReturnResult-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="BehavioralFeature-createReturnResult-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="BehavioralFeature-createReturnResult-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="BehavioralFeature-createReturnResult-type-_ownedComment.0" annotatedElement="BehavioralFeature-createReturnResult-type">
+            <body>The type for the new return result, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="BehavioralFeature-createReturnResult-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="BehavioralFeature-createReturnResult-type-_lowerValue"/>
         </ownedParameter>
@@ -11924,29 +12257,49 @@ stream: a stream of values flows into a single execution&#xD;
           <body>Creates a(n) (abstract) class with the specified name as a packaged element of this component.</body>
         </ownedComment>
         <ownedParameter xmi:id="Component-createOwnedClass-_ownedParameter.0" type="Class" direction="return"/>
-        <ownedParameter xmi:id="Component-createOwnedClass-name" name="name" type="String" effect="read"/>
-        <ownedParameter xmi:id="Component-createOwnedClass-isAbstract" name="isAbstract" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Component-createOwnedClass-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Component-createOwnedClass-name-_ownedComment.0" annotatedElement="Component-createOwnedClass-name">
+            <body>The name for the new class, or null.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Component-createOwnedClass-isAbstract" name="isAbstract" type="Boolean" effect="read">
+          <ownedComment xmi:id="Component-createOwnedClass-isAbstract-_ownedComment.0" annotatedElement="Component-createOwnedClass-isAbstract">
+            <body>Whether the new class should be abstract.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Component-createOwnedEnumeration" name="createOwnedEnumeration">
         <ownedComment xmi:id="Component-createOwnedEnumeration-_ownedComment.0" annotatedElement="Component-createOwnedEnumeration">
           <body>Creates a enumeration with the specified name as a packaged element of this component.</body>
         </ownedComment>
         <ownedParameter xmi:id="Component-createOwnedEnumeration-_ownedParameter.0" type="Enumeration" direction="return"/>
-        <ownedParameter xmi:id="Component-createOwnedEnumeration-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Component-createOwnedEnumeration-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Component-createOwnedEnumeration-name-_ownedComment.0" annotatedElement="Component-createOwnedEnumeration-name">
+            <body>The name for the new enumeration, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Component-createOwnedPrimitiveType" name="createOwnedPrimitiveType">
         <ownedComment xmi:id="Component-createOwnedPrimitiveType-_ownedComment.0" annotatedElement="Component-createOwnedPrimitiveType">
           <body>Creates a primitive type with the specified name as a packaged element of this component.</body>
         </ownedComment>
         <ownedParameter xmi:id="Component-createOwnedPrimitiveType-_ownedParameter.0" type="PrimitiveType" direction="return"/>
-        <ownedParameter xmi:id="Component-createOwnedPrimitiveType-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Component-createOwnedPrimitiveType-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Component-createOwnedPrimitiveType-name-_ownedComment.0" annotatedElement="Component-createOwnedPrimitiveType-name">
+            <body>The name for the new primitive type, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Component-createOwnedInterface" name="createOwnedInterface">
         <ownedComment xmi:id="Component-createOwnedInterface-_ownedComment.0" annotatedElement="Component-createOwnedInterface">
           <body>Creates an interface with the specified name as a packaged element of this component.</body>
         </ownedComment>
         <ownedParameter xmi:id="Component-createOwnedInterface-_ownedParameter.0" type="Interface" direction="return"/>
-        <ownedParameter xmi:id="Component-createOwnedInterface-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Component-createOwnedInterface-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Component-createOwnedInterface-name-_ownedComment.0" annotatedElement="Component-createOwnedInterface-name">
+            <body>The name for the new interface, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Component-realizedInterfaces" name="realizedInterfaces" isQuery="true" bodyCondition="Component-realizedInterfaces-spec">
         <ownedComment xmi:id="Component-realizedInterfaces-_ownedComment.0" annotatedElement="Component-realizedInterfaces">
@@ -12175,18 +12528,30 @@ stream: a stream of values flows into a single execution&#xD;
         </ownedComment>
         <ownedParameter xmi:id="Interface-createOwnedOperation-_ownedParameter.0" type="Operation" direction="return"/>
         <ownedParameter xmi:id="Interface-createOwnedOperation-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedOperation-name-_ownedComment.0" annotatedElement="Interface-createOwnedOperation-name">
+            <body>The name for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedOperation-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedOperation-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Interface-createOwnedOperation-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedOperation-parameterNames-_ownedComment.0" annotatedElement="Interface-createOwnedOperation-parameterNames">
+            <body>The parameter names for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedOperation-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedOperation-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Interface-createOwnedOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedOperation-parameterTypes-_ownedComment.0" annotatedElement="Interface-createOwnedOperation-parameterTypes">
+            <body>The parameter types for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedOperation-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedOperation-parameterTypes-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Interface-createOwnedOperation-returnType" name="returnType" type="Type" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedOperation-returnType-_ownedComment.0" annotatedElement="Interface-createOwnedOperation-returnType">
+            <body>The return type for the new operation, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedOperation-returnType-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedOperation-returnType-_lowerValue"/>
         </ownedParameter>
@@ -12197,15 +12562,29 @@ stream: a stream of values flows into a single execution&#xD;
         </ownedComment>
         <ownedParameter xmi:id="Interface-createOwnedAttribute-_ownedParameter.0" type="Property" direction="return"/>
         <ownedParameter xmi:id="Interface-createOwnedAttribute-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedAttribute-name-_ownedComment.0" annotatedElement="Interface-createOwnedAttribute-name">
+            <body>The name for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedAttribute-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedAttribute-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Interface-createOwnedAttribute-type" name="type" type="Type" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedAttribute-type-_ownedComment.0" annotatedElement="Interface-createOwnedAttribute-type">
+            <body>The type for the new attribute, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Interface-createOwnedAttribute-type-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Interface-createOwnedAttribute-type-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Interface-createOwnedAttribute-lower" name="lower" type="Integer" effect="read"/>
-        <ownedParameter xmi:id="Interface-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Interface-createOwnedAttribute-lower" name="lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedAttribute-lower-_ownedComment.0" annotatedElement="Interface-createOwnedAttribute-lower">
+            <body>The lower bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Interface-createOwnedAttribute-upper" name="upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Interface-createOwnedAttribute-upper-_ownedComment.0" annotatedElement="Interface-createOwnedAttribute-upper">
+            <body>The upper bound for the new attribute.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Port" name="Port">
@@ -13014,7 +13393,11 @@ stream: a stream of values flows into a single execution&#xD;
           <body>Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package.</body>
         </ownedComment>
         <ownedParameter xmi:id="NamedElement-createDependency-_ownedParameter.0" type="Dependency" direction="return"/>
-        <ownedParameter xmi:id="NamedElement-createDependency-supplier" name="supplier" type="NamedElement" effect="read"/>
+        <ownedParameter xmi:id="NamedElement-createDependency-supplier" name="supplier" type="NamedElement" effect="read">
+          <ownedComment xmi:id="NamedElement-createDependency-supplier-_ownedComment.0" annotatedElement="NamedElement-createDependency-supplier">
+            <body>The supplier for the new dependency.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="NamedElement-getLabel" name="getLabel" isQuery="true">
         <ownedComment xmi:id="NamedElement-getLabel-_ownedComment.0" annotatedElement="NamedElement-getLabel">
@@ -13033,14 +13416,22 @@ stream: a stream of values flows into a single execution&#xD;
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="NamedElement-getLabel.1-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="NamedElement-getLabel.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="NamedElement-getLabel.1-localize" name="localize" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="NamedElement-getLabel.1-localize" name="localize" type="Boolean" effect="read">
+          <ownedComment xmi:id="NamedElement-getLabel.1-localize-_ownedComment.0" annotatedElement="NamedElement-getLabel.1-localize">
+            <body>Whether to localize the label.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="NamedElement-createUsage" name="createUsage">
         <ownedComment xmi:id="NamedElement-createUsage-_ownedComment.0" annotatedElement="NamedElement-createUsage">
           <body>Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.</body>
         </ownedComment>
         <ownedParameter xmi:id="NamedElement-createUsage-_ownedParameter.0" type="Usage" direction="return"/>
-        <ownedParameter xmi:id="NamedElement-createUsage-supplier" name="supplier" type="NamedElement"/>
+        <ownedParameter xmi:id="NamedElement-createUsage-supplier" name="supplier" type="NamedElement">
+          <ownedComment xmi:id="NamedElement-createUsage-supplier-_ownedComment.0" annotatedElement="NamedElement-createUsage-supplier">
+            <body>The supplier for the new usage.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="NamedElement-qualifiedName.1" name="qualifiedName" isQuery="true" bodyCondition="NamedElement-qualifiedName.1-spec">
         <ownedComment xmi:id="NamedElement-qualifiedName.1-_ownedComment.0" annotatedElement="NamedElement-qualifiedName.1">
@@ -13650,7 +14041,11 @@ define a collating sequence between operands and subexpressions).
         <ownedComment xmi:id="Property-setIsNavigable-_ownedComment.0" annotatedElement="Property-setIsNavigable">
           <body>Sets the navigability of this property as indicated.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Property-setIsNavigable-isNavigable" name="isNavigable" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Property-setIsNavigable-isNavigable" name="isNavigable" type="Boolean" effect="read">
+          <ownedComment xmi:id="Property-setIsNavigable-isNavigable-_ownedComment.0" annotatedElement="Property-setIsNavigable-isNavigable">
+            <body>The new navigability.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Property-getOtherEnd" name="getOtherEnd">
         <ownedComment xmi:id="Property-getOtherEnd-_ownedComment.0" annotatedElement="Property-getOtherEnd">
@@ -13665,25 +14060,41 @@ define a collating sequence between operands and subexpressions).
         <ownedComment xmi:id="Property-setBooleanDefaultValue-_ownedComment.0" annotatedElement="Property-setBooleanDefaultValue">
           <body>Sets the default value for this property to the specified Boolean value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Property-setBooleanDefaultValue-value" name="value" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Property-setBooleanDefaultValue-value" name="value" type="Boolean" effect="read">
+          <ownedComment xmi:id="Property-setBooleanDefaultValue-value-_ownedComment.0" annotatedElement="Property-setBooleanDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Property-setIntegerDefaultValue" name="setIntegerDefaultValue">
         <ownedComment xmi:id="Property-setIntegerDefaultValue-_ownedComment.0" annotatedElement="Property-setIntegerDefaultValue">
           <body>Sets the default value for this property to the specified integer value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Property-setIntegerDefaultValue-value" name="value" type="Integer" effect="read"/>
+        <ownedParameter xmi:id="Property-setIntegerDefaultValue-value" name="value" type="Integer" effect="read">
+          <ownedComment xmi:id="Property-setIntegerDefaultValue-value-_ownedComment.0" annotatedElement="Property-setIntegerDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Property-setStringDefaultValue" name="setStringDefaultValue">
         <ownedComment xmi:id="Property-setStringDefaultValue-_ownedComment.0" annotatedElement="Property-setStringDefaultValue">
           <body>Sets the default value for this property to the specified string value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Property-setStringDefaultValue-value" name="value" type="String" effect="read"/>
+        <ownedParameter xmi:id="Property-setStringDefaultValue-value" name="value" type="String" effect="read">
+          <ownedComment xmi:id="Property-setStringDefaultValue-value-_ownedComment.0" annotatedElement="Property-setStringDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Property-setUnlimitedNaturalDefaultValue" name="setUnlimitedNaturalDefaultValue">
         <ownedComment xmi:id="Property-setUnlimitedNaturalDefaultValue-_ownedComment.0" annotatedElement="Property-setUnlimitedNaturalDefaultValue">
           <body>Sets the default value for this property to the specified unlimited natural value.</body>
         </ownedComment>
-        <ownedParameter xmi:id="Property-setUnlimitedNaturalDefaultValue-value" name="value" type="UnlimitedNatural" effect="read"/>
+        <ownedParameter xmi:id="Property-setUnlimitedNaturalDefaultValue-value" name="value" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Property-setUnlimitedNaturalDefaultValue-value-_ownedComment.0" annotatedElement="Property-setUnlimitedNaturalDefaultValue-value">
+            <body>The new default value.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Property-setNullDefaultValue" name="setNullDefaultValue">
         <ownedComment xmi:id="Property-setNullDefaultValue-_ownedComment.0" annotatedElement="Property-setNullDefaultValue">
@@ -14401,14 +14812,23 @@ define a collating sequence between operands and subexpressions).
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation-name-_ownedComment.0" annotatedElement="Classifier-getOperation-name">
+            <body>The name of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation-parameterNames-_ownedComment.0" annotatedElement="Classifier-getOperation-parameterNames">
+            <body>The parameter names of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation-parameterTypes-_ownedComment.0" annotatedElement="Classifier-getOperation-parameterTypes">
+            <body>The parameter types of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation-parameterTypes-_lowerValue"/>
         </ownedParameter>
@@ -14422,18 +14842,31 @@ define a collating sequence between operands and subexpressions).
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation.1-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation.1-name-_ownedComment.0" annotatedElement="Classifier-getOperation.1-name">
+            <body>The name of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation.1-name-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-name-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation.1-parameterNames" name="parameterNames" type="String" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation.1-parameterNames-_ownedComment.0" annotatedElement="Classifier-getOperation.1-parameterNames">
+            <body>The parameter names of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation.1-parameterNames-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-parameterNames-_lowerValue"/>
         </ownedParameter>
         <ownedParameter xmi:id="Classifier-getOperation.1-parameterTypes" name="parameterTypes" type="Type" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation.1-parameterTypes-_ownedComment.0" annotatedElement="Classifier-getOperation.1-parameterTypes">
+            <body>The parameter types of the operation to retrieve, or null.</body>
+          </ownedComment>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Classifier-getOperation.1-parameterTypes-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Classifier-getOperation.1-parameterTypes-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Classifier-getOperation.1-ignoreCase" name="ignoreCase" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Classifier-getOperation.1-ignoreCase" name="ignoreCase" type="Boolean" effect="read">
+          <ownedComment xmi:id="Classifier-getOperation.1-ignoreCase-_ownedComment.0" annotatedElement="Classifier-getOperation.1-ignoreCase">
+            <body>Whether to ignore case in String comparisons.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Classifier-getUsedInterfaces" name="getUsedInterfaces">
         <ownedComment xmi:id="Classifier-getUsedInterfaces-_ownedComment.0" annotatedElement="Classifier-getUsedInterfaces">
@@ -14840,36 +15273,60 @@ define a collating sequence between operands and subexpressions).
           <body>Creates a(n) (abstract) class with the specified name as an owned type of this package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Package-createOwnedClass-_ownedParameter.0" type="Class" direction="return"/>
-        <ownedParameter xmi:id="Package-createOwnedClass-name" name="name" type="String" effect="read"/>
-        <ownedParameter xmi:id="Package-createOwnedClass-isAbstract" name="isAbstract" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Package-createOwnedClass-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Package-createOwnedClass-name-_ownedComment.0" annotatedElement="Package-createOwnedClass-name">
+            <body>The name for the new class, or null.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Package-createOwnedClass-isAbstract" name="isAbstract" type="Boolean" effect="read">
+          <ownedComment xmi:id="Package-createOwnedClass-isAbstract-_ownedComment.0" annotatedElement="Package-createOwnedClass-isAbstract">
+            <body>Whether the new class should be abstract.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-createOwnedEnumeration" name="createOwnedEnumeration">
         <ownedComment xmi:id="Package-createOwnedEnumeration-_ownedComment.0" annotatedElement="Package-createOwnedEnumeration">
           <body>Creates a enumeration with the specified name as an owned type of this package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Package-createOwnedEnumeration-_ownedParameter.0" type="Enumeration" direction="return"/>
-        <ownedParameter xmi:id="Package-createOwnedEnumeration-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Package-createOwnedEnumeration-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Package-createOwnedEnumeration-name-_ownedComment.0" annotatedElement="Package-createOwnedEnumeration-name">
+            <body>The name for the new enumeration, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-createOwnedPrimitiveType" name="createOwnedPrimitiveType">
         <ownedComment xmi:id="Package-createOwnedPrimitiveType-_ownedComment.0" annotatedElement="Package-createOwnedPrimitiveType">
           <body>Creates a primitive type with the specified name as an owned type of this package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Package-createOwnedPrimitiveType-_ownedParameter.0" type="PrimitiveType" direction="return"/>
-        <ownedParameter xmi:id="Package-createOwnedPrimitiveType-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Package-createOwnedPrimitiveType-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Package-createOwnedPrimitiveType-name-_ownedComment.0" annotatedElement="Package-createOwnedPrimitiveType-name">
+            <body>The name for the new primitive type, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-createOwnedInterface" name="createOwnedInterface">
         <ownedComment xmi:id="Package-createOwnedInterface-_ownedComment.0" annotatedElement="Package-createOwnedInterface">
           <body>Creates an interface with the specified name as an owned type of this package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Package-createOwnedInterface-_ownedParameter.0" type="Interface" direction="return"/>
-        <ownedParameter xmi:id="Package-createOwnedInterface-name" name="name" type="String" effect="read"/>
+        <ownedParameter xmi:id="Package-createOwnedInterface-name" name="name" type="String" effect="read">
+          <ownedComment xmi:id="Package-createOwnedInterface-name-_ownedComment.0" annotatedElement="Package-createOwnedInterface-name">
+            <body>The name for the new interface, or null.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-isProfileApplied" name="isProfileApplied" isQuery="true">
         <ownedComment xmi:id="Package-isProfileApplied-_ownedComment.0" annotatedElement="Package-isProfileApplied">
           <body>Determines whether the specified profile is applied to this package.</body>
         </ownedComment>
         <ownedParameter xmi:id="Package-isProfileApplied-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Package-isProfileApplied-profile" name="profile" type="Profile" effect="read"/>
+        <ownedParameter xmi:id="Package-isProfileApplied-profile" name="profile" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-isProfileApplied-profile-_ownedComment.0" annotatedElement="Package-isProfileApplied-profile">
+            <body>The profile in question.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-applyProfile" name="applyProfile">
         <ownedComment xmi:id="Package-applyProfile-_ownedComment.0" annotatedElement="Package-applyProfile">
@@ -14880,7 +15337,11 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-applyProfile-_ownedParameter.0-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-applyProfile-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-applyProfile-profile" name="profile" type="Profile" effect="read"/>
+        <ownedParameter xmi:id="Package-applyProfile-profile" name="profile" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-applyProfile-profile-_ownedComment.0" annotatedElement="Package-applyProfile-profile">
+            <body>The profile to apply.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-unapplyProfile" name="unapplyProfile">
         <ownedComment xmi:id="Package-unapplyProfile-_ownedComment.0" annotatedElement="Package-unapplyProfile">
@@ -14891,7 +15352,11 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-unapplyProfile-_ownedParameter.0-_upperValue" value="*"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-unapplyProfile-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-unapplyProfile-profile" name="profile" type="Profile" effect="read"/>
+        <ownedParameter xmi:id="Package-unapplyProfile-profile" name="profile" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-unapplyProfile-profile-_ownedComment.0" annotatedElement="Package-unapplyProfile-profile">
+            <body>The profile to unapply.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-getAppliedProfiles" name="getAppliedProfiles" isQuery="true">
         <ownedComment xmi:id="Package-getAppliedProfiles-_ownedComment.0" annotatedElement="Package-getAppliedProfiles">
@@ -14919,7 +15384,11 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-getAppliedProfile-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-getAppliedProfile-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-getAppliedProfile-qualifiedName" name="qualifiedName" type="String" effect="read"/>
+        <ownedParameter xmi:id="Package-getAppliedProfile-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Package-getAppliedProfile-qualifiedName-_ownedComment.0" annotatedElement="Package-getAppliedProfile-qualifiedName">
+            <body>The qualified name of the applied profile to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-getAppliedProfile.1" name="getAppliedProfile" isQuery="true">
         <ownedComment xmi:id="Package-getAppliedProfile.1-_ownedComment.0" annotatedElement="Package-getAppliedProfile.1">
@@ -14929,8 +15398,16 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-getAppliedProfile.1-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-getAppliedProfile.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-getAppliedProfile.1-qualifiedName" name="qualifiedName" type="String" effect="read"/>
-        <ownedParameter xmi:id="Package-getAppliedProfile.1-recurse" name="recurse" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Package-getAppliedProfile.1-qualifiedName" name="qualifiedName" type="String" effect="read">
+          <ownedComment xmi:id="Package-getAppliedProfile.1-qualifiedName-_ownedComment.0" annotatedElement="Package-getAppliedProfile.1-qualifiedName">
+            <body>The qualified name of the applied profile to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Package-getAppliedProfile.1-recurse" name="recurse" type="Boolean" effect="read">
+          <ownedComment xmi:id="Package-getAppliedProfile.1-recurse-_ownedComment.0" annotatedElement="Package-getAppliedProfile.1-recurse">
+            <body>Whether to look in nesting packages.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-getAllProfileApplications" name="getAllProfileApplications" isQuery="true">
         <ownedComment xmi:id="Package-getAllProfileApplications-_ownedComment.0" annotatedElement="Package-getAllProfileApplications">
@@ -14949,7 +15426,11 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-getProfileApplication-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-getProfileApplication-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-getProfileApplication-profile" name="profile" type="Profile" effect="read"/>
+        <ownedParameter xmi:id="Package-getProfileApplication-profile" name="profile" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-getProfileApplication-profile-_ownedComment.0" annotatedElement="Package-getProfileApplication-profile">
+            <body>The profile whose application to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-getProfileApplication.1" name="getProfileApplication" isQuery="true">
         <ownedComment xmi:id="Package-getProfileApplication.1-_ownedComment.0" annotatedElement="Package-getProfileApplication.1">
@@ -14959,8 +15440,16 @@ define a collating sequence between operands and subexpressions).
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Package-getProfileApplication.1-_ownedParameter.0-_upperValue" value="1"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Package-getProfileApplication.1-_ownedParameter.0-_lowerValue"/>
         </ownedParameter>
-        <ownedParameter xmi:id="Package-getProfileApplication.1-profile" name="profile" type="Profile" effect="read"/>
-        <ownedParameter xmi:id="Package-getProfileApplication.1-recurse" name="recurse" type="Boolean" effect="read"/>
+        <ownedParameter xmi:id="Package-getProfileApplication.1-profile" name="profile" type="Profile" effect="read">
+          <ownedComment xmi:id="Package-getProfileApplication.1-profile-_ownedComment.0" annotatedElement="Package-getProfileApplication.1-profile">
+            <body>The profile whose application to retrieve.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Package-getProfileApplication.1-recurse" name="recurse" type="Boolean" effect="read">
+          <ownedComment xmi:id="Package-getProfileApplication.1-recurse-_ownedComment.0" annotatedElement="Package-getProfileApplication.1-recurse">
+            <body>Whether to look in nesting packages.</body>
+          </ownedComment>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="Package-isModelLibrary" name="isModelLibrary" isQuery="true">
         <ownedComment xmi:id="Package-isModelLibrary-_ownedComment.0" annotatedElement="Package-isModelLibrary">
