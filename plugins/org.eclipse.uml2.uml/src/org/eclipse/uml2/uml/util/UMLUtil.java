@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.58 2007/04/17 21:15:11 khussey Exp $
+ * $Id: UMLUtil.java,v 1.59 2007/04/26 12:35:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5072,6 +5072,8 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "diagnostics", false); //$NON-NLS-1$
+						addDocumentation(eParameter, "The chain of diagnostics to which problems are to be appended."); //$NON-NLS-1$
+
 						eParameter
 							.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
 
@@ -5080,6 +5082,7 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "context", false); //$NON-NLS-1$
+						addDocumentation(eParameter, "The cache of context-specific information."); //$NON-NLS-1$
 
 						EGenericType eGenericType = EcoreFactory.eINSTANCE
 							.createEGenericType();
