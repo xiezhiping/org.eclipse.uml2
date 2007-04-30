@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.59 2007/04/26 12:35:40 khussey Exp $
+ * $Id: UMLUtil.java,v 1.60 2007/04/30 19:39:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2504,7 +2504,11 @@ public class UMLUtil
 					ValueSpecification specification = constraint
 						.getSpecification();
 
-					if (specification != null) {
+					if (specification != null
+						&& !(eModelElement instanceof EOperation
+							&& options != null && OPTION__PROCESS
+							.equals(options.get(OPERATION_BODY)))) {
+
 						addDocumentation(eModelElement, specification
 							.stringValue());
 					}
@@ -5072,7 +5076,8 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "diagnostics", false); //$NON-NLS-1$
-						addDocumentation(eParameter, "The chain of diagnostics to which problems are to be appended."); //$NON-NLS-1$
+						addDocumentation(eParameter,
+							"The chain of diagnostics to which problems are to be appended."); //$NON-NLS-1$
 
 						eParameter
 							.setEType(EcorePackage.Literals.EDIAGNOSTIC_CHAIN);
@@ -5082,7 +5087,8 @@ public class UMLUtil
 						eOperation.getEParameters().add(eParameter);
 
 						setName(eParameter, "context", false); //$NON-NLS-1$
-						addDocumentation(eParameter, "The cache of context-specific information."); //$NON-NLS-1$
+						addDocumentation(eParameter,
+							"The cache of context-specific information."); //$NON-NLS-1$
 
 						EGenericType eGenericType = EcoreFactory.eINSTANCE
 							.createEGenericType();
@@ -5099,6 +5105,17 @@ public class UMLUtil
 						eGenericType.getETypeArguments().add(eGenericValueType);
 
 						eParameter.setEGenericType(eGenericType);
+
+						ValueSpecification specification = constraint
+							.getSpecification();
+
+						if (specification instanceof OpaqueExpression) {
+							OpaqueExpression body = (OpaqueExpression) specification;
+
+							processOperationBody(eOperation, body
+								.getLanguages(), body.getBodies(), options,
+								diagnostics, context);
+						}
 
 						defaultCase(constraint);
 
@@ -8069,7 +8086,7 @@ public class UMLUtil
 					return ePackage.getEClassifier(type.getName());
 				}
 			}
-			
+
 			return null;
 		} else {
 			return UMLPackage.eINSTANCE.getEClassifier(type.getName());
