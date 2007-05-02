@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.41 2007/04/25 17:47:01 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.42 2007/05/02 15:03:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1228,7 +1228,8 @@ public class PropertyImpl
 				msgs = ((InternalEList<Property>) newClass.getOwnedAttributes())
 					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newClass,
-				UMLPackage.PROPERTY__CLASS, msgs);
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.CLASS__OWNED_ATTRIBUTE, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())

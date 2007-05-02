@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.60 2007/04/30 19:39:43 khussey Exp $
+ * $Id: UMLUtil.java,v 1.61 2007/05/02 15:03:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -247,7 +247,8 @@ public class UMLUtil
 					Type type = ((TypedElement) eObject).getType();
 					Type otherType = ((TypedElement) otherEObject).getType();
 
-					return new ResultingQNameMatcher(type).matches(otherType)
+					return (type == null && otherType == null)
+						|| new ResultingQNameMatcher(type).matches(otherType)
 						|| (type instanceof Classifier
 							&& otherType instanceof Classifier && (findEObject(
 							((Classifier) type).allParents(),

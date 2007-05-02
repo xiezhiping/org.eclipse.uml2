@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.37 2007/04/25 17:47:02 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.38 2007/05/02 15:03:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -715,7 +715,8 @@ public class ParameterImpl
 				msgs = ((InternalEList<Parameter>) newOperation
 					.getOwnedParameters()).basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newOperation,
-				UMLPackage.PARAMETER__OPERATION, msgs);
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.OPERATION__OWNED_PARAMETER, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())

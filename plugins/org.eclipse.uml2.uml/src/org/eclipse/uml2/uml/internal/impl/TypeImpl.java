@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeImpl.java,v 1.22 2007/04/25 17:47:03 khussey Exp $
+ * $Id: TypeImpl.java,v 1.23 2007/05/02 15:03:11 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -129,7 +129,8 @@ public abstract class TypeImpl
 				msgs = ((InternalEList<Type>) newPackage.getOwnedTypes())
 					.basicAdd(this, msgs);
 			msgs = eBasicSetContainer((InternalEObject) newPackage,
-				UMLPackage.TYPE__PACKAGE, msgs);
+				InternalEObject.EOPPOSITE_FEATURE_BASE
+					- UMLPackage.PACKAGE__PACKAGED_ELEMENT, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
