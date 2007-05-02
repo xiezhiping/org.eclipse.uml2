@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.16 2007/05/02 20:12:48 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.17 2007/05/02 20:14:35 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenEnum;
 import org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenParameter;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -28,7 +27,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModel;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory;
@@ -496,23 +494,6 @@ public class GenModelImpl
 	public List<String> getModelRequiredPlugins() {
 		List<String> result = super.getModelRequiredPlugins();
 		result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
-
-		for (GenPackage genPackage : getAllGenPackagesWithClassifiers()) {
-
-			for (GenClass genClass : genPackage.getGenClasses()) {
-
-				for (GenOperation genOperation : genClass.getGenOperations()) {
-
-					if (!isBlank(EcoreUtil.getAnnotation(genOperation
-						.getEcoreOperation(), GenModelPackage.eNS_URI, "body"))) { //$NON-NLS-1$
-
-						result.add("org.eclipse.ocl.ecore"); //$NON-NLS-1$
-						result.add("org.eclipse.ocl.uml"); //$NON-NLS-1$
-						break;
-					}
-				}
-			}
-		}
 		return result;
 	}
 
