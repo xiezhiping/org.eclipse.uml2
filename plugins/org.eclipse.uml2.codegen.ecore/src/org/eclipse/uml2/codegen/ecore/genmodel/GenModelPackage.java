@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.23 2007/04/25 21:49:07 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.24 2007/05/03 22:13:00 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1074,6 +1074,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__SUPPRESS_GEN_MODEL_ANNOTATIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__SUPPRESS_GEN_MODEL_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Copyright Fields</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__COPYRIGHT_FIELDS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COPYRIGHT_FIELDS;
+
+	/**
+	 * The feature id for the '<em><b>Binary Compatible Reflective Methods</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__BINARY_COMPATIBLE_REFLECTIVE_METHODS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__BINARY_COMPATIBLE_REFLECTIVE_METHODS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.

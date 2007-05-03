@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.25 2007/05/03 13:28:21 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.26 2007/05/03 22:13:00 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -410,7 +410,7 @@ public class GenFeatureImpl
 		int count = 0;
 
 		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil
-			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); ) {
+			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext();) {
 
 			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k
 				.next();
@@ -419,7 +419,7 @@ public class GenFeatureImpl
 
 				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
 					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
-					.iterator(); n.hasNext(); ) {
+					.iterator(); n.hasNext();) {
 
 					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n
 						.next();
@@ -495,7 +495,7 @@ public class GenFeatureImpl
 		int count = 0;
 
 		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil
-			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); ) {
+			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext();) {
 
 			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k
 				.next();
@@ -504,7 +504,7 @@ public class GenFeatureImpl
 
 				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
 					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
-					.iterator(); n.hasNext(); ) {
+					.iterator(); n.hasNext();) {
 
 					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n
 						.next();
