@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
+ * $Id: InterfaceOperations.java,v 1.11 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,6 +63,9 @@ public class InterfaceOperations
 	 * <!-- begin-model-doc -->
 	 * The visibility of all features owned by an interface must be public.
 	 * self.feature->forAll(f | f.visibility = #public)
+	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -92,6 +95,14 @@ public class InterfaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this interface.
+	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+	 * @param name The name for the new operation, or null.
+	 * @param parameterNames The parameter names for the new operation, or null.
+	 * @param parameterTypes The parameter types for the new operation, or null.
+	 * @param returnType The return type for the new operation, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(Interface interface_,
@@ -104,6 +115,14 @@ public class InterfaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this interface.
+	 * @param interface_ The receiving '<em><b>Interface</b></em>' model object.
+	 * @param name The name for the new attribute, or null.
+	 * @param type The type for the new attribute, or null.
+	 * @param lower The lower bound for the new attribute.
+	 * @param upper The upper bound for the new attribute.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property createOwnedAttribute(Interface interface_,

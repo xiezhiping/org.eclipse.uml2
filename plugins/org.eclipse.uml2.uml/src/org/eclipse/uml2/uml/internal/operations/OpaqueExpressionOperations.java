@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueExpressionOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
+ * $Id: OpaqueExpressionOperations.java,v 1.14 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -67,6 +67,9 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * If the language attribute is not empty, then the size of the body and language arrays must be the same.
 	 * language->notEmpty() implies (body->size() = language->size())
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -101,6 +104,9 @@ public class OpaqueExpressionOperations
 	 * The behavior may only have return result parameters.
 	 * self.behavior.notEmpty() implies
 	 *   self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -135,6 +141,9 @@ public class OpaqueExpressionOperations
 	 * The behavior must have exactly one return result parameter.
 	 * self.behavior.notEmpty() implies
 	 *   self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -169,6 +178,7 @@ public class OpaqueExpressionOperations
 	 * The query value() gives an integer value for an expression intended to produce one.
 	 * self.isIntegral()
 	 * true
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -192,6 +202,7 @@ public class OpaqueExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isIntegral() tells whether an expression is intended to produce an integer.
 	 * result = false
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -217,6 +228,7 @@ public class OpaqueExpressionOperations
 	 * The query isPositive() tells whether an integer expression has a positive value.
 	 * self.isIntegral()
 	 * result = false
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -241,6 +253,7 @@ public class OpaqueExpressionOperations
 	 * The query isNonNegative() tells whether an integer expression has a non-negative value.
 	 * self.isIntegral()
 	 * result = false
+	 * @param opaqueExpression The receiving '<em><b>Opaque Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

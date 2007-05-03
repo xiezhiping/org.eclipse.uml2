@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolStateMachineOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ProtocolStateMachineOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * All transitions of a protocol state machine must be protocol transitions. (transitions as extended by the ProtocolStateMachines package)
 	 * region->forAll(r | r.transition->forAll(t | t.oclIsTypeOf(ProtocolTransition)))
+	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -93,6 +96,9 @@ public class ProtocolStateMachineOperations
 	 * region->forAll(r | r.subvertex->forAll(v | v.oclIsKindOf(State) implies
 	 * (v.entry->isEmpty() and v.exit->isEmpty() and v.doActivity->isEmpty())))
 	 * 
+	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -128,6 +134,9 @@ public class ProtocolStateMachineOperations
 	 * region->forAll (r | r.subvertex->forAll (v | v.oclIsKindOf(Psuedostate) implies
 	 * ((v.kind <> #deepHistory) and (v.kind <> #shallowHistory)))))
 	 * 
+	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -161,6 +170,9 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * If two ports are connected, then the protocol state machine of the required interface (if defined) must be conformant to the protocol state machine of the provided interface (if defined).
 	 * true
+	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -194,6 +206,9 @@ public class ProtocolStateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * A protocol state machine must only have a classifier context, not a behavioral feature context.
 	 * (not context->isEmpty( )) and specification->isEmpty()
+	 * @param protocolStateMachine The receiving '<em><b>Protocol State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

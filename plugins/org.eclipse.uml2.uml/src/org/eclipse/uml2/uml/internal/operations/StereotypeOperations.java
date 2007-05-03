@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.14 2006/12/14 15:49:26 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.15 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -79,6 +79,9 @@ public class StereotypeOperations
 	 * <!-- begin-model-doc -->
 	 * Stereotype names should not clash with keyword names for the extended model element.
 	 * true
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -111,6 +114,9 @@ public class StereotypeOperations
 	 * <!-- begin-model-doc -->
 	 * A Stereotype may only generalize or specialize another Stereotype.
 	 * generalization.general->forAll(e |e.oclIsKindOf(Stereotype)) and generalization.specific->forAll(e | e.oclIsKindOf(Stereotype)) 
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -140,6 +146,12 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (required) extension of the specified metaclass with this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param metaclass The metaclass for the new extension.
+	 * @param isRequired Whether the new extension should be required.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Extension createExtension(Stereotype stereotype,
@@ -192,6 +204,10 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile that owns this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
@@ -204,6 +220,10 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the localized keyword for this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static String getKeyword(Stereotype stereotype) {
@@ -213,6 +233,11 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the keyword for this stereotype, localized if indicated.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param localize Whether to localize the keyword.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static String getKeyword(Stereotype stereotype, boolean localize) {
@@ -253,6 +278,10 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metaclasses extended by this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses(
@@ -265,6 +294,10 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the metaclasses extended by this stereotype, including the metaclasses extended by its superstereotypes.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses(
@@ -287,6 +320,10 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EClass getDefinition(Stereotype stereotype) {
@@ -299,6 +336,11 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an icon with the specified location for this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param location The location for the new icon.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Image createIcon(Stereotype stereotype, String location) {
@@ -310,6 +352,12 @@ public class StereotypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an icon with the specified format and content for this stereotype.
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param format The format for the new icon.
+	 * @param content The content for the new icon.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Image createIcon(Stereotype stereotype, String format,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
+ * $Id: LinkActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -61,6 +61,9 @@ public class LinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The association ends of the link end data must all be from the same association and include all and only the association ends of that association.
 	 * self.endData->collect(end) = self.association()->collect(connection))
+	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -93,6 +96,9 @@ public class LinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The association ends of the link end data must not be static.
 	 * self.endData->forall(end.oclisKindOf(NavigableEnd) implies end.isStatic = #false
+	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -130,6 +136,9 @@ public class LinkActionOperations
 	 * then ledpins->union(self.endData.oclAsType(LinkEndCreationData).insertAt)
 	 * else ledpins
 	 * 
+	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -162,6 +171,7 @@ public class LinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * The association operates on LinkAction. It returns the association of the action.
 	 * result = self.endData->asSequence().first().end.association
+	 * @param linkAction The receiving '<em><b>Link Action</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

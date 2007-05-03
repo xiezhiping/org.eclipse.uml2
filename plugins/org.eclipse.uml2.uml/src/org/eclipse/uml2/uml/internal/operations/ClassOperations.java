@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassOperations.java,v 1.20 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ClassOperations.java,v 1.21 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -74,6 +74,9 @@ public class ClassOperations
 	 * <!-- begin-model-doc -->
 	 * A passive class may not own receptions.
 	 * not self.isActive implies self.ownedReception.isEmpty()
+	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -135,6 +138,14 @@ public class ClassOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this class.
+	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
+	 * @param name The name for the new operation, or null.
+	 * @param parameterNames The parameter names for the new operation, or null.
+	 * @param parameterTypes The parameter types for the new operation, or null.
+	 * @param returnType The return type for the new operation, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(
@@ -148,6 +159,10 @@ public class ClassOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this class is a metaclass.
+	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
@@ -161,6 +176,7 @@ public class ClassOperations
 	 * <!-- begin-model-doc -->
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
+	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterableElementOperations.java,v 1.6 2006/01/05 22:43:24 khussey Exp $
+ * $Id: ParameterableElementOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,6 +48,7 @@ public class ParameterableElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
 	 * result = p->oclIsKindOf(self.oclType)
+	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -62,6 +63,7 @@ public class ParameterableElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
 	 * result = templateParameter->notEmpty()
+	 * @param parameterableElement The receiving '<em><b>Parameterable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

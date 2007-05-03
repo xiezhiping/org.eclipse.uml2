@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehaviorOperations.java,v 1.12 2006/12/14 15:49:26 khussey Exp $
+ * $Id: BehaviorOperations.java,v 1.13 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -66,6 +66,9 @@ public class BehaviorOperations
 	 * <!-- begin-model-doc -->
 	 * The parameters of the behavior must match the parameters of the implemented behavioral feature.
 	 * true
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -117,6 +120,9 @@ public class BehaviorOperations
 	 * <!-- begin-model-doc -->
 	 * The implemented behavioral feature must be a feature (possibly inherited) of the context classifier of the behavior.
 	 * true
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -156,6 +162,9 @@ public class BehaviorOperations
 	 * <!-- begin-model-doc -->
 	 * If the implemented behavioral feature has been redefined in the ancestors of the owner of the behavior, then the behavior must realize the latest redefining behavioral feature.
 	 * true
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -188,6 +197,9 @@ public class BehaviorOperations
 	 * <!-- begin-model-doc -->
 	 * There may be at most one behavior for a given pairing of classifier (as owner of the behavior) and behavioral feature (as specification of the behavior).
 	 * true
+	 * @param behavior The receiving '<em><b>Behavior</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

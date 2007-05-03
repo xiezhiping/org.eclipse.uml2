@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataOperations.java,v 1.3 2006/12/14 15:49:24 khussey Exp $
+ * $Id: LinkEndDestructionDataOperations.java,v 1.4 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class LinkEndDestructionDataOperations
 	 * <!-- begin-model-doc -->
 	 * LinkEndDestructionData can only be end data for DestroyLinkAction or one of its specializations.
 	 * true
+	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class LinkEndDestructionDataOperations
 	 * <!-- begin-model-doc -->
 	 * LinkEndDestructionData for ordered nonunique association ends must have a single destroyAt input pin if isDestroyDuplicates is false. It must be of type UnlimitedNatural and have a multiplicity of 1..1. Otherwise, the action has no input pin for the removal position.
 	 * true
+	 * @param linkEndDestructionData The receiving '<em><b>Link End Destruction Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

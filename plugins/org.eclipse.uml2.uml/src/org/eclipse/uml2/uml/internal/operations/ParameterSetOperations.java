@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterSetOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ParameterSetOperations.java,v 1.6 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class ParameterSetOperations
 	 * <!-- begin-model-doc -->
 	 * The parameters in a parameter set must all be inputs or all be outputs of the same parameterized entity, and the parameter set is owned by that entity.
 	 * true
+	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -89,6 +92,9 @@ public class ParameterSetOperations
 	 * <!-- begin-model-doc -->
 	 * If a behavior has input parameters that are in a parameter set, then any inputs that are not in a parameter set must be streaming. Same for output parameters.
 	 * true
+	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -121,6 +127,9 @@ public class ParameterSetOperations
 	 * <!-- begin-model-doc -->
 	 * Two parameter sets cannot have exactly the same set of parameters.
 	 * true
+	 * @param parameterSet The receiving '<em><b>Parameter Set</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

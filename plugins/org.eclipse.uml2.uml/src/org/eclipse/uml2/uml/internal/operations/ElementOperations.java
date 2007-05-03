@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.50 2007/02/23 03:16:49 khussey Exp $
+ * $Id: ElementOperations.java,v 1.51 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -100,6 +100,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Element#hasValue(org.eclipse.uml2.uml.Stereotype, java.lang.String) <em>Has Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#getValue(org.eclipse.uml2.uml.Stereotype, java.lang.String) <em>Get Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#setValue(org.eclipse.uml2.uml.Stereotype, java.lang.String, java.lang.Object) <em>Set Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#createEAnnotation(java.lang.String) <em>Create EAnnotation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getRelationships() <em>Get Relationships</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getRelationships(org.eclipse.emf.ecore.EClass) <em>Get Relationships</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getSourceDirectedRelationships() <em>Get Source Directed Relationships</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getSourceDirectedRelationships(org.eclipse.emf.ecore.EClass) <em>Get Source Directed Relationships</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getTargetDirectedRelationships() <em>Get Target Directed Relationships</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getTargetDirectedRelationships(org.eclipse.emf.ecore.EClass) <em>Get Target Directed Relationships</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#allOwnedElements() <em>All Owned Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#mustBeOwned() <em>Must Be Owned</em>}</li>
  * </ul>
@@ -125,6 +132,9 @@ public class ElementOperations
 	 * <!-- begin-model-doc -->
 	 * An element may not directly or indirectly own itself.
 	 * not self.allOwnedElements()->includes(self)
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -154,6 +164,9 @@ public class ElementOperations
 	 * <!-- begin-model-doc -->
 	 * Elements that must be owned must have an owner.
 	 * self.mustBeOwned() implies owner->notEmpty()
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -180,6 +193,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype applications for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<EObject> getStereotypeApplications(Element element) {
@@ -204,6 +221,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified stereotype for this element, or null if no such stereotype application exists.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype for which to retrieve an application.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EObject getStereotypeApplication(Element element,
@@ -223,6 +245,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are required for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Stereotype> getRequiredStereotypes(Element element) {
@@ -267,6 +293,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is required for this element, or null if no such stereotype is required.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param qualifiedName The qualified name of the required stereotype to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Stereotype getRequiredStereotype(Element element,
@@ -285,6 +316,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are applied to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Stereotype> getAppliedStereotypes(Element element) {
@@ -309,6 +344,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is  applied.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param qualifiedName The qualified name of the applied stereotype to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Stereotype getAppliedStereotype(Element element,
@@ -327,6 +367,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the substereotypes of the specified stereotype that are applied to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The superstereotype of the applied substereotypes to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Stereotype> getAppliedSubstereotypes(Element element,
@@ -346,6 +391,12 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the substereotype of the specified stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is applied.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The superstereotype of the applied substereotype to retrieve.
+	 * @param qualifiedName The qualified name of the applied substereotype to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Stereotype getAppliedSubstereotype(Element element,
@@ -367,6 +418,12 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this element has a (non-default) value for the property with the specified name in the specified stereotype.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype for which to test the property.
+	 * @param propertyName The name of the property in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean hasValue(Element element, Stereotype stereotype,
@@ -452,6 +509,12 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the value of the property with the specified name in the specified stereotype for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype for which to retrieve the value.
+	 * @param propertyName The name of the property whose value to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Object getValue(Element element, Stereotype stereotype,
@@ -567,6 +630,13 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the value of the property with the specified name in the specified stereotype for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype for which to set the value.
+	 * @param propertyName The name of the property whose value to set.
+	 * @param newValue The new value for the property.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setValue(Element element, Stereotype stereotype,
@@ -794,6 +864,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an annotation with the specified source and this element as its model element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param source The source for the new annotation.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EAnnotation createEAnnotation(Element element, String source) {
@@ -803,6 +878,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the relationships in which this element is involved.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Relationship> getRelationships(Element element) {
@@ -812,6 +891,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the relationships of the specified type in which this element is involved.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param eClass The (meta)type of the relationships to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Relationship> getRelationships(Element element,
@@ -876,6 +960,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships for which this element is a source.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<DirectedRelationship> getSourceDirectedRelationships(
@@ -887,6 +975,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships of the specified type for which this element is a source.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param eClass The (meta)type of the directed relationships to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<DirectedRelationship> getSourceDirectedRelationships(
@@ -910,6 +1003,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships for which this element is a target.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<DirectedRelationship> getTargetDirectedRelationships(
@@ -921,6 +1018,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the directed relationships of the specified type for which this element is a target.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param eClass The (meta)type of the directed relationships to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<DirectedRelationship> getTargetDirectedRelationships(
@@ -944,6 +1046,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the keywords for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<String> getKeywords(Element element) {
@@ -971,6 +1077,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Adds the specified keyword to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param keyword The keyword to add.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean addKeyword(Element element, String keyword) {
@@ -988,6 +1099,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Removes the specified keyword from this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param keyword The keyword to remove.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean removeKeyword(Element element, String keyword) {
@@ -1008,6 +1124,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the nearest package that owns (either directly or indirectly) this element, or the element itself (if it is a package).
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Package getNearestPackage(Element element) {
@@ -1019,6 +1139,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the model that owns (either directly or indirectly) this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Model getModel(Element element) {
@@ -1092,11 +1216,15 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is applicable to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isStereotypeApplicable(Element element,
 			Stereotype stereotype) {
-
 		return getDefinition(element, stereotype) != null
 			&& getExtension(element, stereotype) != null;
 	}
@@ -1104,6 +1232,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is required for this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isStereotypeRequired(Element element,
@@ -1121,6 +1254,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified stereotype is applied to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isStereotypeApplied(Element element,
@@ -1254,6 +1392,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the specified stereotype to this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype to apply.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EObject applyStereotype(Element element, Stereotype stereotype) {
@@ -1320,6 +1463,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unapplies the specified stereotype from this element.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param stereotype The stereotype to unapply.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EObject unapplyStereotype(Element element,
@@ -1344,6 +1492,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotypes that are applicable to this element, including those that are required and/or may already be applied.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Stereotype> getApplicableStereotypes(Element element) {
@@ -1384,6 +1536,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype with the specified qualified name that is applicable to this element, or null if no such stereotype is applicable.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param qualifiedName The qualified name of the applicable stereotype to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Stereotype getApplicableStereotype(Element element,
@@ -1405,6 +1562,11 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this element has the specified keyword.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * @param keyword The keyword in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean hasKeyword(Element element, String keyword) {
@@ -1417,6 +1579,10 @@ public class ElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Destroys this element by removing all cross references to/from it and removing it from its containing resource or object.
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void destroy(Element element) {
@@ -1499,6 +1665,7 @@ public class ElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -1513,6 +1680,7 @@ public class ElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
 	 * result = true
+	 * @param element The receiving '<em><b>Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

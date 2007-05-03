@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: PseudostateOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -62,6 +62,9 @@ public class PseudostateOperations
 	 * <!-- begin-model-doc -->
 	 * An initial vertex can have at most one outgoing transition.
 	 * (self.kind = #initial) implies (self.outgoing->size <= 1)
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -96,6 +99,9 @@ public class PseudostateOperations
 	 * ((self.kind = #deepHistory) or (self.kind = #shallowHistory)) implies
 	 * (self.outgoing->size <= 1)
 	 * 
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -130,6 +136,9 @@ public class PseudostateOperations
 	 * (self.kind = #join) implies
 	 * ((self.outgoing->size = 1) and (self.incoming->size >= 2))
 	 * 
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -164,6 +173,9 @@ public class PseudostateOperations
 	 * (self.kind = #join) implies
 	 *   self.incoming->forAll (t1, t2 | t1<>t2 implies
 	 *     (self.stateMachine.LCA(t1.source, t2.source).container.isOrthogonal))
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -198,6 +210,9 @@ public class PseudostateOperations
 	 * (self.kind = #fork) implies
 	 * ((self.incoming->size = 1) and (self.outgoing->size >= 2))
 	 * 
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -232,6 +247,9 @@ public class PseudostateOperations
 	 * (self.kind = #fork) implies
 	 *   self.outgoing->forAll (t1, t2 | t1<>t2 implies
 	 *     (self.stateMachine.LCA(t1.target, t2.target).container.isOrthogonal))
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -266,6 +284,9 @@ public class PseudostateOperations
 	 * (self.kind = #junction) implies
 	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
 	 * 
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -300,6 +321,9 @@ public class PseudostateOperations
 	 * (self.kind = #choice) implies
 	 * ((self.incoming->size >= 1) and (self.outgoing->size >= 1))
 	 * 
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -333,6 +357,9 @@ public class PseudostateOperations
 	 * The outgoing transition from and initial vertex may have a behavior, but not a trigger or a guard.
 	 * (self.kind = #initial) implies (self.outgoing.guard->isEmpty()
 	 *   and self.outgoing.trigger->isEmpty())
+	 * @param pseudostate The receiving '<em><b>Pseudostate</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

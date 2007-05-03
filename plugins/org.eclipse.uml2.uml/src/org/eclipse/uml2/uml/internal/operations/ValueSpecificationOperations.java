@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ValueSpecificationOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
+ * $Id: ValueSpecificationOperations.java,v 1.11 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -68,6 +68,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
 	 * result = false
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -81,6 +82,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query integerValue() gives a single Integer value when one can be computed.
 	 * result = Set{}
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -94,6 +96,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query booleanValue() gives a single Boolean value when one can be computed.
 	 * result = Set{}
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -107,6 +110,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query stringValue() gives a single String value when one can be computed.
 	 * result = Set{}
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -120,6 +124,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
 	 * result = Set{}
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -133,6 +138,7 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query isNull() returns true when it can be computed that the value is null.
 	 * result = false
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -146,8 +152,8 @@ public class ValueSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
 	 * 
-	 * 
 	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

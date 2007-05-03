@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ContinuationOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ContinuationOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class ContinuationOperations
 	 * <!-- begin-model-doc -->
 	 * Continuations with the same name may only cover the same set of Lifelines (within one Classifier).
 	 * true
+	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class ContinuationOperations
 	 * <!-- begin-model-doc -->
 	 * Continuations are always global in the enclosing InteractionFragment e.g. it always covers all Lifelines covered by the enclosing InteractionFragment.
 	 * true
+	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -120,6 +126,9 @@ public class ContinuationOperations
 	 * <!-- begin-model-doc -->
 	 * Continuations always occur as the very first InteractionFragment or the very last InteractionFragment of the enclosing InteractionFragment.
 	 * true
+	 * @param continuation The receiving '<em><b>Continuation</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

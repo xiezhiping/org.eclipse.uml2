@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.10 2006/12/14 15:49:26 khussey Exp $
+ * $Id: TransitionOperations.java,v 1.11 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -71,6 +71,9 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * A fork segment must not have guards or triggers.
 	 * (source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (guard->isEmpty() and trigger->isEmpty())
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -103,6 +106,9 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * A join segment must not have guards or triggers.
 	 * (target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (guard->isEmpty() and trigger->isEmpty())
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -135,6 +141,9 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * A fork segment must always target a state.
 	 * (source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -167,6 +176,9 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * A join segment must always originate from a state.
 	 * (target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (source.oclIsKindOf(State))
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -201,6 +213,9 @@ public class TransitionOperations
 	 * source.oclIsKindOf(Pseudostate) and
 	 * ((source.kind <> #junction) and (source.kind <> #join) and (source.kind <> #initial)) implies trigger->isEmpty()
 	 * 
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -238,6 +253,9 @@ public class TransitionOperations
 	 * ((self.trigger->isEmpty) or
 	 * (self.trigger.stereotype.name = 'create'))
 	 * 
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -271,6 +289,9 @@ public class TransitionOperations
 	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
 	 * 
 	 * true
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -308,6 +329,7 @@ public class TransitionOperations
 	 * else
 	 * sm.context
 	 * endif
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -330,6 +352,7 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
 	 * result = container.containingStateMachine()
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -346,11 +369,10 @@ public class TransitionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.
 	 * result = (redefinee.oclIsKindOf(Transition) and
-	 * 
 	 *   let trans: Transition = redefinee.oclAsType(Transition) in
-	 * 
 	 *     (source() = trans.source() and trigger() = tran.trigger())
 	 * redefinee.isRedefinitionContextValid(self)
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

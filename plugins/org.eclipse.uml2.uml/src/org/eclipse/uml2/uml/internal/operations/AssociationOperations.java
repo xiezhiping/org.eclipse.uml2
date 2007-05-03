@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationOperations.java,v 1.11 2006/12/14 15:49:26 khussey Exp $
+ * $Id: AssociationOperations.java,v 1.12 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -67,6 +67,9 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * An association specializing another association has the same number of ends as the other association.
 	 * self.parents()->forAll(p | p.memberEnd.size() = self.memberEnd.size())
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -99,6 +102,9 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
 	 * true
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -131,6 +137,9 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * Only binary associations can be aggregations.
 	 * self.memberEnd->exists(aggregation <> Aggregation::none) implies self.memberEnd->size() = 2
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -163,6 +172,9 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * Association ends of associations with more than two ends must be owned by the association.
 	 * if memberEnd->size() > 2 then ownedEnd->includesAll(memberEnd)
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -192,6 +204,10 @@ public class AssociationOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this association is a binary association, i.e. whether it has exactly two member ends.
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isBinary(Association association) {
@@ -204,6 +220,7 @@ public class AssociationOperations
 	 * <!-- begin-model-doc -->
 	 * endType is derived from the types of the member ends.
 	 * result = self.memberEnd->collect(e | e.type)
+	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

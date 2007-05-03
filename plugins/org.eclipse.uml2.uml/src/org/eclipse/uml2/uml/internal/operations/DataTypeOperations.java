@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataTypeOperations.java,v 1.11 2006/12/14 15:49:26 khussey Exp $
+ * $Id: DataTypeOperations.java,v 1.12 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,14 @@ public class DataTypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this data type.
+	 * @param dataType The receiving '<em><b>Data Type</b></em>' model object.
+	 * @param name The name for the new operation, or null.
+	 * @param parameterNames The parameter names for the new operation, or null.
+	 * @param parameterTypes The parameter types for the new operation, or null.
+	 * @param returnType The return type for the new operation, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Operation createOwnedOperation(DataType dataType,
@@ -67,6 +75,14 @@ public class DataTypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this data type.
+	 * @param dataType The receiving '<em><b>Data Type</b></em>' model object.
+	 * @param name The name for the new attribute, or null.
+	 * @param type The type for the new attribute, or null.
+	 * @param lower The lower bound for the new attribute.
+	 * @param upper The upper bound for the new attribute.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property createOwnedAttribute(DataType dataType, String name,
@@ -81,6 +97,7 @@ public class DataTypeOperations
 	 * <!-- begin-model-doc -->
 	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs->excluding(inh | ownedMember->select(oclIsKindOf(RedefinableElement))->select(redefinedElement->includes(inh)))
+	 * @param dataType The receiving '<em><b>Data Type</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

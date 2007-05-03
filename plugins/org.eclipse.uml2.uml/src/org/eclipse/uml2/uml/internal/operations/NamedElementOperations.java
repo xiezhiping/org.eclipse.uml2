@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElementOperations.java,v 1.21 2007/03/27 03:39:53 khussey Exp $
+ * $Id: NamedElementOperations.java,v 1.22 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -76,6 +76,9 @@ public class NamedElementOperations
 	 * If there is no name, or one of the containing namespaces has no name, there is no qualified name.
 	 * (self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
 	 *   implies self.qualifiedName->isEmpty()
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -109,6 +112,9 @@ public class NamedElementOperations
 	 * When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.
 	 * (self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies
 	 *   self.qualifiedName = self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -141,6 +147,9 @@ public class NamedElementOperations
 	 * <!-- begin-model-doc -->
 	 * If a NamedElement is not owned by a Namespace, it does not have a visibility.
 	 * namespace->isEmpty() implies visibility->isEmpty()
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -196,6 +205,8 @@ public class NamedElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a dependency between this named element and the specified supplier, owned by this named element's nearest package.
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param supplier The supplier for the new dependency.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -208,6 +219,10 @@ public class NamedElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves a localized label for this named element.
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static String getLabel(NamedElement namedElement) {
@@ -219,6 +234,11 @@ public class NamedElementOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves a label for this named element, localized if indicated.
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param localize Whether to localize the label.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static String getLabel(NamedElement namedElement, boolean localize) {
@@ -235,6 +255,8 @@ public class NamedElementOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Creates a usage between this named element and the specified supplier, owned by this named element's nearest package.
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
+	 * @param supplier The supplier for the new usage.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -255,6 +277,7 @@ public class NamedElementOperations
 	 * else
 	 *     Set{}
 	 * endif
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -282,6 +305,7 @@ public class NamedElementOperations
 	 * then Sequence{}
 	 * else self.namespace.allNamespaces()->prepend(self.namespace)
 	 * endif
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -299,6 +323,7 @@ public class NamedElementOperations
 	 * then ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()
 	 * else true
 	 * endif
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -327,6 +352,7 @@ public class NamedElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query separator() gives the string that is used to separate names when constructing a qualified name.
 	 * result = '::'
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -340,6 +366,7 @@ public class NamedElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
+	 * @param namedElement The receiving '<em><b>Named Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

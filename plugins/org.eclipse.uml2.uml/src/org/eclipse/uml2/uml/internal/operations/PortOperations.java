@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
+ * $Id: PortOperations.java,v 1.14 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -71,6 +71,9 @@ public class PortOperations
 	 * <!-- begin-model-doc -->
 	 * The required interfaces of a port must be provided by elements to which the port is connected.
 	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -103,6 +106,9 @@ public class PortOperations
 	 * <!-- begin-model-doc -->
 	 * Port.aggregation must be composite.
 	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -132,6 +138,9 @@ public class PortOperations
 	 * <!-- begin-model-doc -->
 	 * When a port is destroyed, all connectors attached to this port will be destroyed also.
 	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -164,6 +173,9 @@ public class PortOperations
 	 * <!-- begin-model-doc -->
 	 * A defaultValue for port cannot be specified when the type of the Port is an Interface
 	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

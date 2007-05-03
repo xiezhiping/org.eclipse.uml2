@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.33 2007/04/17 19:39:18 khussey Exp $
+ * $Id: PackageOperations.java,v 1.34 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -372,6 +372,9 @@ public class PackageOperations
 	 * <!-- begin-model-doc -->
 	 * If an element that is owned by a package has visibility, it is public or private.
 	 * self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -417,6 +420,12 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) class with the specified name as an owned type of this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param name The name for the new class, or null.
+	 * @param isAbstract Whether the new class should be abstract.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Class createOwnedClass(
@@ -431,6 +440,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a enumeration with the specified name as an owned type of this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param name The name for the new enumeration, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Enumeration createOwnedEnumeration(
@@ -442,6 +456,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a primitive type with the specified name as an owned type of this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param name The name for the new primitive type, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static PrimitiveType createOwnedPrimitiveType(
@@ -453,6 +472,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether the specified profile is applied to this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile in question.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isProfileApplied(
@@ -463,6 +487,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile to apply.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<EObject> applyProfile(
@@ -564,6 +593,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile to unapply.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<EObject> unapplyProfile(
@@ -618,6 +652,10 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profiles that are applied to this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Profile> getAppliedProfiles(
@@ -629,6 +667,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile with the specified qualified name that is applied to this package, or null if no such profile is applied.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param qualifiedName The qualified name of the applied profile to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Profile getAppliedProfile(
@@ -652,6 +695,12 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the profile with the specified qualified name that is applied to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param qualifiedName The qualified name of the applied profile to retrieve.
+	 * @param recurse Whether to look in nesting packages.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Profile getAppliedProfile(
@@ -677,6 +726,10 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the profile applications for this package, including profile applications for its nesting package(s).
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<ProfileApplication> getAllProfileApplications(
@@ -697,6 +750,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified profile to this package, or null if no such profile is applied.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile whose application to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static ProfileApplication getProfileApplication(
@@ -716,6 +774,12 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the application of the specified profile to this package or any of its nesting packages (if indicated), or null if no such profile is applied.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param profile The profile whose application to retrieve.
+	 * @param recurse Whether to look in nesting packages.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static ProfileApplication getProfileApplication(
@@ -742,6 +806,11 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an interface with the specified name as an owned type of this package.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param name The name for the new interface, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Interface createOwnedInterface(
@@ -753,6 +822,10 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this package is a model library.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isModelLibrary(org.eclipse.uml2.uml.Package package_) {
@@ -763,6 +836,10 @@ public class PackageOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves all the profiles that are applied to this package, including profiles applied to its nesting package(s).
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Profile> getAllAppliedProfiles(
@@ -835,6 +912,7 @@ public class PackageOperations
 	 * <!-- begin-model-doc -->
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
 	 * result = member->select( m | self.makesVisible(m))
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -862,6 +940,7 @@ public class PackageOperations
 	 * result = (ownedMember->includes(el)) or
 	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
 	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -899,6 +978,7 @@ public class PackageOperations
 	 * <!-- begin-model-doc -->
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner.
 	 * result = false
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

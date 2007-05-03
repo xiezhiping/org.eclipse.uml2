@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeatureOperations.java,v 1.7 2006/12/14 15:49:26 khussey Exp $
+ * $Id: BehavioralFeatureOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,6 +52,12 @@ public class BehavioralFeatureOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a return result parameter with the specified name and type.
+	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
+	 * @param name The name for the new return result, or null.
+	 * @param type The type for the new return result, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Parameter createReturnResult(
@@ -75,6 +81,7 @@ public class BehavioralFeatureOperations
 	 *   endif
 	 * else true
 	 * endif
+	 * @param behavioralFeature The receiving '<em><b>Behavioral Feature</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

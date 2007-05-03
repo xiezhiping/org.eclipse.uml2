@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PartDecompositionOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: PartDecompositionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class PartDecompositionOperations
 	 * <!-- begin-model-doc -->
 	 * PartDecompositions apply only to Parts that are Parts of Internal Structures not to Parts of Collaborations.
 	 * true
+	 * @param partDecomposition The receiving '<em><b>Part Decomposition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -94,6 +97,9 @@ public class PartDecompositionOperations
 	 * iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D
 	 * 
 	 * true
+	 * @param partDecomposition The receiving '<em><b>Part Decomposition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -128,6 +134,9 @@ public class PartDecompositionOperations
 	 * InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)
 	 * 
 	 * true
+	 * @param partDecomposition The receiving '<em><b>Part Decomposition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallActionOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: CallActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class CallActionOperations
 	 * <!-- begin-model-doc -->
 	 * Only synchronous call actions can have result pins.
 	 * true
+	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class CallActionOperations
 	 * <!-- begin-model-doc -->
 	 * The number and order of argument pins must be the same as the number and order of parameters of the invoked behavior or behavioral feature. Pins are matched to parameters by order.
 	 * true
+	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -120,6 +126,9 @@ public class CallActionOperations
 	 * <!-- begin-model-doc -->
 	 * The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior or behavioral feature.
 	 * true
+	 * @param callAction The receiving '<em><b>Call Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

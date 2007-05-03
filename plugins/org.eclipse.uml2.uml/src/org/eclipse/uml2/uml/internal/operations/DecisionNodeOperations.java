@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: DecisionNodeOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class DecisionNodeOperations
 	 * <!-- begin-model-doc -->
 	 * A decision node has one incoming edge.
 	 * true
+	 * @param decisionNode The receiving '<em><b>Decision Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -87,6 +90,9 @@ public class DecisionNodeOperations
 	 * <!-- begin-model-doc -->
 	 * A decision input behavior has zero or one input parameter and one output parameter. Any input parameter must be the same as or a supertype of the type of object tokens coming along the incoming edge. The behavior cannot have side effects.
 	 * true
+	 * @param decisionNode The receiving '<em><b>Decision Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -119,6 +125,9 @@ public class DecisionNodeOperations
 	 * <!-- begin-model-doc -->
 	 * The edges coming into and out of a decision node must be either all object flows or all control flows.
 	 * true
+	 * @param decisionNode The receiving '<em><b>Decision Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

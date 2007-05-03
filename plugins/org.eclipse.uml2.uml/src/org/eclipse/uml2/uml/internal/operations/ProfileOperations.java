@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.34 2007/04/05 05:04:41 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.35 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -47,7 +47,6 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
-import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
@@ -97,6 +96,9 @@ public class ProfileOperations
 	 *   select(c | c.oclIsKindOf(Classifier) and
 	 *     (c.generalization.namespace = self or
 	 *       (c.specialization.namespace = self) )->isEmpty()
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -155,6 +157,9 @@ public class ProfileOperations
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
 	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -190,6 +195,11 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param classifier The classifier of which to create an instance.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EObject create(Profile profile, Classifier classifier) {
@@ -200,50 +210,6 @@ public class ProfileOperations
 		}
 
 		throw new IllegalArgumentException(String.valueOf(classifier));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static ElementImport createMetaclassReference(Profile profile,
-			org.eclipse.uml2.uml.Class metaclass) {
-
-		if (metaclass == null
-			|| profile.getReferencedMetaclasses().contains(metaclass)) {
-
-			throw new IllegalArgumentException(String.valueOf(metaclass));
-		}
-
-		ElementImport metaclassReference = profile.createElementImport(
-			metaclass, VisibilityKind.PUBLIC_LITERAL);
-
-		profile.getMetaclassReferences().add(metaclassReference);
-
-		return metaclassReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static PackageImport createMetamodelReference(Profile profile,
-			Model metamodel) {
-
-		if (metamodel == null
-			|| profile.getReferencedMetamodels().contains(metamodel)) {
-
-			throw new IllegalArgumentException(String.valueOf(metamodel));
-		}
-
-		PackageImport metamodelReference = profile.createPackageImport(
-			metamodel, VisibilityKind.PUBLIC_LITERAL);
-
-		profile.getMetamodelReferences().add(metamodelReference);
-
-		return metamodelReference;
 	}
 
 	/**
@@ -262,6 +228,10 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Determines whether this profile is defined.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isDefined(Profile profile) {
@@ -271,6 +241,10 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Defines this profile by (re)creating Ecore representations of its current contents.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EPackage define(Profile profile) {
@@ -296,6 +270,10 @@ public class ProfileOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param options The options to use.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -318,6 +296,10 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of this profile.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EPackage getDefinition(Profile profile) {
@@ -396,6 +378,11 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the current definition (Ecore representation) of the specified named element in this profile.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param namedElement The named element whose definition to retrieve.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static ENamedElement getDefinition(Profile profile,
@@ -406,6 +393,10 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metaclasses referenced by this profile.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses(
@@ -430,6 +421,10 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the metamodels referenced by this profile.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Model> getReferencedMetamodels(Profile profile) {
@@ -466,6 +461,11 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the extensions owned by this profile, excluding non-required extensions if indicated.
+	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
+	 * @param requiredOnly Whether to retrieve only required extensions.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Extension> getOwnedExtensions(Profile profile,

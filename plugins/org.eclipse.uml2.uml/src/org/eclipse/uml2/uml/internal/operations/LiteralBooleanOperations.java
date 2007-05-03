@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralBooleanOperations.java,v 1.6 2006/01/05 22:43:26 khussey Exp $
+ * $Id: LiteralBooleanOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -48,6 +48,7 @@ public class LiteralBooleanOperations
 	 * <!-- begin-model-doc -->
 	 * The query isComputable() is redefined to be true.
 	 * result = true
+	 * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -61,6 +62,7 @@ public class LiteralBooleanOperations
 	 * <!-- begin-model-doc -->
 	 * The query booleanValue() gives the value.
 	 * result = value
+	 * @param literalBoolean The receiving '<em><b>Literal Boolean</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

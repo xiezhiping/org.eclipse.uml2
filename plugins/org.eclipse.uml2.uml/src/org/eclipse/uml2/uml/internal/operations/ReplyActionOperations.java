@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReplyActionOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ReplyActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class ReplyActionOperations
 	 * <!-- begin-model-doc -->
 	 * The reply value pins must match the return, out, and inout parameters of the operation on the event on the trigger in number, type, and order.
 	 * true
+	 * @param replyAction The receiving '<em><b>Reply Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -87,6 +90,9 @@ public class ReplyActionOperations
 	 * <!-- begin-model-doc -->
 	 * The event on replyToCall trigger must be a CallEvent replyToCallEvent.oclIsKindOf(CallEvent)
 	 * replyToCallEvent.oclIsKindOf(CallEvent)
+	 * @param replyAction The receiving '<em><b>Reply Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

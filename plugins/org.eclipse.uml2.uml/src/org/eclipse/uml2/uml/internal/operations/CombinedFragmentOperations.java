@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CombinedFragmentOperations.java,v 1.6 2006/12/14 15:49:25 khussey Exp $
+ * $Id: CombinedFragmentOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -61,6 +61,9 @@ public class CombinedFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * If the interactionOperator is opt, loop, break, or neg there must be exactly one operand
 	 * true
+	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -102,8 +105,10 @@ public class CombinedFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * The InteractionConstraint with minint and maxint only apply when attached to an InteractionOperand where the interactionOperator is loop.
 	 * true
+	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * 
 	 * @generated NOT
 	 */
 	public static boolean validateMinintAndMaxint(
@@ -146,6 +151,9 @@ public class CombinedFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * If the interactionOperator is break, the corresponding InteractionOperand must cover all Lifelines within the enclosing InteractionFragment.
 	 * true
+	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -178,6 +186,9 @@ public class CombinedFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * The interaction operators 'consider' and 'ignore' can only be used for the CombineIgnoreFragment subtype of CombinedFragment
 	 * ((interactionOperator = #consider) or (interactionOperator = #ignore)) implies oclsisTypeOf(CombineIgnoreFragment)
+	 * @param combinedFragment The receiving '<em><b>Combined Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

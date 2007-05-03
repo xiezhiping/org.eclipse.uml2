@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: FinalStateOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: FinalStateOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -59,6 +59,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state cannot have any outgoing transitions.
 	 * self.outgoing->size() = 0
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -91,6 +94,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state cannot have regions.
 	 * self.region->size() = 0
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state cannot reference a submachine.
 	 * self.submachine->isEmpty()
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -156,6 +165,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state has no entry behavior.
 	 * self.entry->isEmpty()
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -188,6 +200,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state has no exit behavior.
 	 * self.exit->isEmpty()
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -220,6 +235,9 @@ public class FinalStateOperations
 	 * <!-- begin-model-doc -->
 	 * A final state has no state (doActivity) behavior.
 	 * self.doActivity->isEmpty()
+	 * @param finalState The receiving '<em><b>Final State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RegionOperations.java,v 1.10 2006/12/14 15:49:25 khussey Exp $
+ * $Id: RegionOperations.java,v 1.11 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -74,6 +74,9 @@ public class RegionOperations
 	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
 	 * select(p : Pseudostate | p.kind = #initial)->size() <= 1
 	 * 
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -108,6 +111,9 @@ public class RegionOperations
 	 * self.subvertex->select (v | v.oclIsKindOf(Pseudostate))->
 	 * select(p : Pseudostate | p.kind = #deepHistory)->size() <= 1
 	 * 
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -142,6 +148,9 @@ public class RegionOperations
 	 * self.subvertex->select(v | v.oclIsKindOf(Pseudostate))->
 	 * select(p : Pseudostate | p.kind = #shallowHistory)->size() <= 1
 	 * 
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -174,6 +183,9 @@ public class RegionOperations
 	 * <!-- begin-model-doc -->
 	 * If a Region is owned by a StateMachine, then it cannot also be owned by a State and vice versa.
 	 * (stateMachine->notEmpty() implies state->isEmpty()) and (state->notEmpty() implies stateMachine->isEmpty())
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -211,6 +223,7 @@ public class RegionOperations
 	 * else
 	 * sm.context
 	 * endif
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -233,6 +246,7 @@ public class RegionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
 	 * result = true
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -268,6 +282,7 @@ public class RegionOperations
 	 * else
 	 * stateMachine
 	 * endif
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -294,6 +309,7 @@ public class RegionOperations
 	 * else if not state->isEmpty() then
 	 * state.container.belongsToPSM ()
 	 * else false
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -320,6 +336,7 @@ public class RegionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
 	 * result = true
+	 * @param region The receiving '<em><b>Region</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

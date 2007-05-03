@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDataOperations.java,v 1.3 2006/12/14 15:49:24 khussey Exp $
+ * $Id: LinkEndDataOperations.java,v 1.4 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class LinkEndDataOperations
 	 * <!-- begin-model-doc -->
 	 * The property must be an association end.
 	 * self.end.association->size() = 1
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -91,6 +94,9 @@ public class LinkEndDataOperations
 	 * <!-- begin-model-doc -->
 	 * The type of the end object input pin is the same as the type of the association end.
 	 * self.value.type = self.end.type
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class LinkEndDataOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the end object input pin must be 1..1.
 	 * self.value.multiplicity.is(1,1)
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -155,6 +164,9 @@ public class LinkEndDataOperations
 	 * <!-- begin-model-doc -->
 	 * The qualifiers include all and only the qualifiers of the association end.
 	 * self.qualifier->collect(qualifier) = self.end.qualifier
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -187,6 +199,9 @@ public class LinkEndDataOperations
 	 * <!-- begin-model-doc -->
 	 * The end object input pin is not also a qualifier value input pin.
 	 * self.value->excludesAll(self.qualifier.value)
+	 * @param linkEndData The receiving '<em><b>Link End Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

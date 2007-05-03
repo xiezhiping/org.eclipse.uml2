@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionOperations.java,v 1.6 2006/12/14 15:49:27 khussey Exp $
+ * $Id: StringExpressionOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class StringExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * All the operands of a StringExpression must be LiteralStrings
 	 * operand->forAll (op | op.oclIsKindOf (LiteralString))
+	 * @param stringExpression The receiving '<em><b>String Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -92,6 +95,9 @@ public class StringExpressionOperations
 	 * define a collating sequence between operands and subexpressions).
 	 * 
 	 * if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty()
+	 * @param stringExpression The receiving '<em><b>String Expression</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -145,10 +151,10 @@ public class StringExpressionOperations
 	 * <!-- begin-model-doc -->
 	 * The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
 	 * 
-	 * 
 	 * result = if subExpression->notEmpty()
 	 * then subExpression->iterate(se; stringValue = ?| stringValue.concat(se.stringValue()))
 	 * else operand->iterate()(op; stringValue = ? | stringValue.concat(op.value))
+	 * @param stringExpression The receiving '<em><b>String Expression</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

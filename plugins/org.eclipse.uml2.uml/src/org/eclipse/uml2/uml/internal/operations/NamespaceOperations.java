@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamespaceOperations.java,v 1.14 2006/12/14 15:49:26 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.15 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -77,6 +77,9 @@ public class NamespaceOperations
 	 * <!-- begin-model-doc -->
 	 * All the members of a Namespace are distinguishable within it.
 	 * membersAreDistinguishable()
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -104,6 +107,12 @@ public class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an import of the specified element into this namespace with the specified visibility.
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
+	 * @param element The element to import.
+	 * @param visibility The visibility for the new element import.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static ElementImport createElementImport(Namespace namespace,
@@ -128,6 +137,12 @@ public class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an import of the specified package into this namespace with the specified visibility.
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
+	 * @param package_ The package to import.
+	 * @param visibility The visibility for the new package import.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static PackageImport createPackageImport(Namespace namespace,
@@ -152,6 +167,10 @@ public class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the elements imported by this namespace.
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<PackageableElement> getImportedElements(
@@ -173,6 +192,10 @@ public class NamespaceOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the packages imported by this namespace.
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<org.eclipse.uml2.uml.Package> getImportedPackages(
@@ -196,9 +219,9 @@ public class NamespaceOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The importedMember property is derived from the ElementImports and the PackageImports. References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
-	 * The importedMember property is derived from the ElementImports and the PackageImports.
 	 * result = self.importMembers(self.elementImport.importedElement.asSet()-
 	 * >union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -287,7 +310,7 @@ public class NamespaceOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query getNamesOfMember() is overridden to take account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
+	 * The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
 	 * The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
 	 * result = if self.ownedMember ->includes(element)
 	 * then Set{}->include(element.name)
@@ -297,6 +320,7 @@ public class NamespaceOperations
 	 *   else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))
 	 *   endif
 	 * endif
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -315,6 +339,7 @@ public class NamespaceOperations
 	 * result = self.member->forAll( memb |
 	 * self.member->excluding(memb)->forAll(other |
 	 * memb.isDistinguishableFrom(other, self)))
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -343,6 +368,7 @@ public class NamespaceOperations
 	 * The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
 	 * result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |
 	 * mem.imp.isDistinguishableFrom(mem, self)))
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -375,6 +401,7 @@ public class NamespaceOperations
 	 * <!-- begin-model-doc -->
 	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
 	 * result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
+	 * @param namespace The receiving '<em><b>Namespace</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

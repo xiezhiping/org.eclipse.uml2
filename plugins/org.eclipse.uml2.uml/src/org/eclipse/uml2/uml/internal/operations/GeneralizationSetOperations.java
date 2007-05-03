@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationSetOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: GeneralizationSetOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class GeneralizationSetOperations
 	 * <!-- begin-model-doc -->
 	 * Every Generalization associated with a particular GeneralizationSet must have the same general Classifier.
 	 * generalization->collect(g | g.general)->asSet()->size() <= 1
+	 * @param generalizationSet The receiving '<em><b>Generalization Set</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class GeneralizationSetOperations
 	 * <!-- begin-model-doc -->
 	 * The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances be its subclasses.
 	 * true
+	 * @param generalizationSet The receiving '<em><b>Generalization Set</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.5 2006/01/05 22:43:24 khussey Exp $
+ * $Id: VertexOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,6 +63,7 @@ public class VertexOperations
 	 * state.containingStateMachine() -- no other valid cases possible
 	 * endif
 	 * 
+	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

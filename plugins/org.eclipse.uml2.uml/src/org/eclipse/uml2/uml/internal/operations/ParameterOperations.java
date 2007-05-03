@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.18 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.19 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -75,6 +75,9 @@ public class ParameterOperations
 	 * <!-- begin-model-doc -->
 	 * A parameter may only be associated with a connector end within the context of a collaboration.
 	 * self.end.notEmpty() implies self.collaboration.notEmpty()
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -107,6 +110,9 @@ public class ParameterOperations
 	 * <!-- begin-model-doc -->
 	 * A parameter cannot be a stream and exception at the same time.
 	 * true
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -139,6 +145,9 @@ public class ParameterOperations
 	 * <!-- begin-model-doc -->
 	 * An input parameter cannot be an exception.
 	 * true
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -171,6 +180,9 @@ public class ParameterOperations
 	 * <!-- begin-model-doc -->
 	 * Reentrant behaviors cannot have stream parameters.
 	 * true
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -203,6 +215,9 @@ public class ParameterOperations
 	 * <!-- begin-model-doc -->
 	 * Only in and inout parameters may have a delete effect. Only out, inout, and return parameters may have a create effect.
 	 * true
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -281,6 +296,11 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified Boolean value.
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setBooleanDefaultValue(Parameter parameter, boolean value) {
@@ -295,6 +315,11 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified integer value.
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setIntegerDefaultValue(Parameter parameter, int value) {
@@ -309,6 +334,11 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified string value.
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setStringDefaultValue(Parameter parameter, String value) {
@@ -323,6 +353,11 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified unlimited natural value.
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setUnlimitedNaturalDefaultValue(Parameter parameter,
@@ -339,6 +374,10 @@ public class ParameterOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the null value.
+	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setNullDefaultValue(Parameter parameter) {

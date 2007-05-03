@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyOperations.java,v 1.36 2007/01/31 22:00:29 khussey Exp $
+ * $Id: PropertyOperations.java,v 1.37 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -108,6 +108,9 @@ public class PropertyOperations
 	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
 	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -146,6 +149,9 @@ public class PropertyOperations
 	 *   (self.subsettingContext()->notEmpty() and self.subsettingContext()->forAll (sc |
 	 *     self.subsettedProperty->forAll(sp |
 	 *       sp.subsettingContext()->exists(c | sc.conformsTo(c)))))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -196,6 +202,9 @@ public class PropertyOperations
 	 *       redefinedProperty->forAll(rp|
 	 *         ((redefinitionContext->collect(fc|
 	 *           fc.allParents()))->asSet())->collect(c| c.allFeatures())->asSet()->includes(rp))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -231,6 +240,9 @@ public class PropertyOperations
 	 *   self.type.conformsTo(sp.type) and
 	 *     ((self.upperBound()->notEmpty() and sp.upperBound()->notEmpty()) implies
 	 *       self.upperBound()<=sp.upperBound() ))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -276,6 +288,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * Only a navigable property can be marked as readOnly.
 	 * isReadOnly implies isNavigable()
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -308,6 +323,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A derived union is derived.
 	 * isDerivedUnion implies isDerived
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -338,6 +356,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A derived union is read only.
 	 * isDerivedUnion implies isReadOnly
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -368,6 +389,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A property may not subset a property with the same name.
 	 * true
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -406,6 +430,9 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * A Property can be a DeploymentTarget if it is a kind of Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -443,6 +470,9 @@ public class PropertyOperations
 	 * A binding of a property template parameter representing an attribute must be to an attribute.
 	 * (isAttribute(self) and (templateParameterSubstitution->notEmpty())
 	 *   implies (templateParameterSubstitution->forAll(ts | isAttribute(ts.formal)))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -475,6 +505,7 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
 	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -496,6 +527,11 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified Boolean value.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setBooleanDefaultValue(Property property, boolean value) {
@@ -510,6 +546,11 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified integer value.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setIntegerDefaultValue(Property property, int value) {
@@ -524,6 +565,11 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified string value.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setStringDefaultValue(Property property, String value) {
@@ -538,6 +584,11 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified unlimited natural value.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setUnlimitedNaturalDefaultValue(Property property,
@@ -554,6 +605,10 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the null value.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setNullDefaultValue(Property property) {
@@ -575,6 +630,7 @@ public class PropertyOperations
 	 *       if otherEnd.owningAssociation->isEmpty() then otherEnd else Set{} endif
 	 *     else Set {}
 	 *     endif
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -613,6 +669,7 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * The value of isComposite is true only if aggregation is composite.
 	 * result = (self.aggregation = #composite)
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -629,6 +686,7 @@ public class PropertyOperations
 	 * then association.endType-type
 	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
 	 * endif
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -664,9 +722,9 @@ public class PropertyOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query isNavigable indicates whether it is possible to navigate across the property.
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -792,6 +850,11 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the navigability of this property as indicated.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * @param isNavigable The new navigability.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static void setIsNavigable(Property property, boolean isNavigable) {
@@ -818,6 +881,10 @@ public class PropertyOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the other end of the (binary) association in which this property is a member end.
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property getOtherEnd(Property property) {
@@ -851,6 +918,7 @@ public class PropertyOperations
 	 *   ((prop.upperBound()->notEmpty() and self.upperBound()->notEmpty()) implies prop.lowerBound() <= self.lowerBound()) and 
 	 *   (self.isDerived implies prop.isDerived) and
 	 *   (self.isComposite implies prop.isComposite))
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -889,8 +957,8 @@ public class PropertyOperations
 	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
 	 * 
-	 * 
 	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
+	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

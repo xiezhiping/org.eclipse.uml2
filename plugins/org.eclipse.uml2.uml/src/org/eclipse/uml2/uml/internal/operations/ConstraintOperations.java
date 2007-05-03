@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
+ * $Id: ConstraintOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -59,6 +59,9 @@ public class ConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * A constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
+	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -89,6 +92,9 @@ public class ConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * The value specification for a constraint must evaluate to a Boolean value.
 	 * self.specification().booleanValue().isOclKindOf(Boolean)
+	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -122,6 +128,9 @@ public class ConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * The value specification for a constraint must evaluate to a Boolean value.
 	 * true
+	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -154,6 +163,9 @@ public class ConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * Evaluating the value specification for a constraint must not have side effects.
 	 * true
+	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -186,6 +198,9 @@ public class ConstraintOperations
 	 * <!-- begin-model-doc -->
 	 * A constraint cannot be applied to itself.
 	 * not constrainedElement->includes(self)
+	 * @param constraint The receiving '<em><b>Constraint</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

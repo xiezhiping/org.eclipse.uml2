@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.13 2006/12/14 15:49:25 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.14 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -69,6 +69,12 @@ public class ComponentOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) class with the specified name as a packaged element of this component.
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param name The name for the new class, or null.
+	 * @param isAbstract Whether the new class should be abstract.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static org.eclipse.uml2.uml.Class createOwnedClass(
@@ -82,6 +88,11 @@ public class ComponentOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a enumeration with the specified name as a packaged element of this component.
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param name The name for the new enumeration, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Enumeration createOwnedEnumeration(Component component,
@@ -93,6 +104,11 @@ public class ComponentOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a primitive type with the specified name as a packaged element of this component.
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param name The name for the new primitive type, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static PrimitiveType createOwnedPrimitiveType(Component component,
@@ -104,6 +120,11 @@ public class ComponentOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates an interface with the specified name as a packaged element of this component.
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param name The name for the new interface, or null.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Interface createOwnedInterface(Component component,
@@ -120,6 +141,7 @@ public class ComponentOperations
 	 * result = (classifier.clientDependency->
 	 * select(dependency|dependency.oclIsKindOf(Realization) and dependency.supplier.oclIsKindOf(Interface)))->
 	 * collect(dependency|dependency.client)
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -168,6 +190,7 @@ public class ComponentOperations
 	 * result = (classifier.supplierDependency->
 	 * select(dependency|dependency.oclIsKindOf(Usage) and dependency.supplier.oclIsKindOf(interface)))->
 	 * collect(dependency|dependency.supplier)
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -213,14 +236,11 @@ public class ComponentOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * result = let usedInterfaces = UsedInterfaces(self) and
-	 * 
 	 *   let realizingClassifierUsedInterfaces = UsedInterfaces(self.realizingClassifier) and
-	 * 
 	 *   let typesOfUsedPorts = self.ownedPort.required in
-	 * 
 	 *     ((usedInterfaces->union(realizingClassifierUsedInterfaces))->
-	 * 
 	 *       union(typesOfUsedPorts))->asSet()
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -256,16 +276,12 @@ public class ComponentOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * result = let implementedInterfaces = self.implementation->collect(impl|impl.contract) and
-	 * 
 	 *   let realizedInterfaces = RealizedInterfaces(self) and
-	 * 
 	 *   let realizingClassifierInterfaces = RealizedInterfaces(self.realizingClassifier) and
-	 * 
 	 *   let typesOfRequiredPorts = self.ownedPort.provided in
-	 * 
 	 *     (((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->
-	 * 
 	 *       union(typesOfRequiredPorts))->asSet()
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

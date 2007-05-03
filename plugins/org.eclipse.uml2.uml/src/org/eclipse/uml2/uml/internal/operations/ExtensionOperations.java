@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionOperations.java,v 1.11 2006/12/14 15:49:24 khussey Exp $
+ * $Id: ExtensionOperations.java,v 1.12 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -66,6 +66,9 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The non-owned end of an Extension is typed by a Class.
 	 * metaclassEnd()->notEmpty() and metaclass()->oclIsKindOf(Class)
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -98,6 +101,9 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * An Extension is binary, i.e., it has only two memberEnds.
 	 * memberEnd->size() = 2
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -127,6 +133,10 @@ public class ExtensionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the extension end that is typed by a stereotype (as opposed to a metaclass).
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property getStereotypeEnd(Extension extension) {
@@ -139,6 +149,10 @@ public class ExtensionOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the stereotype that extends a metaclass through this extension.
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Stereotype getStereotype(Extension extension) {
@@ -161,6 +175,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
 	 * result = memberEnd->reject(ownedEnd)
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -183,6 +198,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).
 	 * result = metaclassEnd().type
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -207,6 +223,7 @@ public class ExtensionOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRequired() is true if the owned end has a multiplicity with the lower bound of 1.
 	 * result = (ownedEnd->lowerBound() = 1)
+	 * @param extension The receiving '<em><b>Extension</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadStructuralFeatureActionOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ReadStructuralFeatureActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class ReadStructuralFeatureActionOperations
 	 * self.result.type = self.structuralFeature.type
 	 * and self.result.ordering = self.structuralFeature.ordering
 	 * 
+	 * @param readStructuralFeatureAction The receiving '<em><b>Read Structural Feature Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class ReadStructuralFeatureActionOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the structural feature must be compatible with the multiplicity of the output pin.
 	 * self.structuralFeature.multiplicity.compatibleWith(self.result.multiplicity)
+	 * @param readStructuralFeatureAction The receiving '<em><b>Read Structural Feature Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

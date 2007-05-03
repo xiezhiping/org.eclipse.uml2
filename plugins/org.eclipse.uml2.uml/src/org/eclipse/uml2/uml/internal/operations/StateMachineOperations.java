@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineOperations.java,v 1.12 2006/12/14 15:49:26 khussey Exp $
+ * $Id: StateMachineOperations.java,v 1.13 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -68,6 +68,9 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The classifier context of a state machine cannot be an interface.
 	 * context->notEmpty() implies not context.oclIsKindOf(Interface)
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -100,6 +103,9 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The context classifier of the method state machine of a behavioral feature must be the classifier that owns the behavioral feature.
 	 * specification->notEmpty() implies (context->notEmpty() and specification->featuringClassifier->exists (c | c = context))
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -132,6 +138,9 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The connection points of a state machine are pseudostates of kind entry point or exit point.
 	 * conectionPoint->forAll (c | c.kind = #entryPoint or c.kind = #exitPoint)
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -164,6 +173,9 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * A state machine as the method for a behavioral feature cannot have entry/exit connection points.
 	 * specification->notEmpty() implies connectionPoint->isEmpty()
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -196,6 +208,7 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
 	 * true
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -244,7 +257,6 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean
 	 * 
-	 * 
 	 * result = if (s2 = s1) then
 	 * true
 	 * else if (s1.container->isEmpty) then
@@ -252,6 +264,7 @@ public class StateMachineOperations
 	 * else if (s2.container->isEmpty) then
 	 * false
 	 * else (ancestor (s1, s2.container))
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -280,6 +293,7 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
 	 * result = true
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -302,6 +316,7 @@ public class StateMachineOperations
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
 	 * result = true
+	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

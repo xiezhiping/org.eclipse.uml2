@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionEndOperations.java,v 1.13 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ExtensionEndOperations.java,v 1.14 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -59,6 +59,9 @@ public class ExtensionEndOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of ExtensionEnd is 0..1 or 1.
 	 * (self->lowerBound() = 0 or self->lowerBound() = 1) and self->upperBound() = 1
+	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -91,6 +94,9 @@ public class ExtensionEndOperations
 	 * <!-- begin-model-doc -->
 	 * The aggregation of an ExtensionEnd is composite.
 	 * self.aggregation = #composite
+	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -122,9 +128,9 @@ public class ExtensionEndOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default
-	 * 
 	 * lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
 	 * result = lowerBound = if lowerValue->isEmpty() then 0 else lowerValue->IntegerValue() endif
+	 * @param extensionEnd The receiving '<em><b>Extension End</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

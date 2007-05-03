@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElementOperations.java,v 1.9 2006/12/14 15:49:25 khussey Exp $
+ * $Id: RedefinableElementOperations.java,v 1.10 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -63,6 +63,9 @@ public class RedefinableElementOperations
 	 * <!-- begin-model-doc -->
 	 * At least one of the redefinition contexts of the redefining element must be a specialization of at least one of the redefinition contexts for each redefined element.
 	 * self.redefinedElement->forAll(e | self.isRedefinitionContextValid(e))
+	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -106,6 +109,9 @@ public class RedefinableElementOperations
 	 * <!-- begin-model-doc -->
 	 * A redefining element must be consistent with each redefined element.
 	 * self.redefinedElement->forAll(re | re.isConsistentWith(self))
+	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -147,6 +153,7 @@ public class RedefinableElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
 	 * result = redefinitionContext->exists(c | c.allParents()->includes(redefined.redefinitionContext)))
+	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -181,9 +188,8 @@ public class RedefinableElementOperations
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
 	 * redefinee.isRedefinitionContextValid(self)
-	 * 
-	 * 
 	 * result = false
+	 * @param redefinableElement The receiving '<em><b>Redefinable Element</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

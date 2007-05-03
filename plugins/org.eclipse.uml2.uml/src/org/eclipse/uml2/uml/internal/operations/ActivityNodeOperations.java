@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNodeOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: ActivityNodeOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class ActivityNodeOperations
 	 * <!-- begin-model-doc -->
 	 * Activity nodes can only be owned by activities or groups.
 	 * true
+	 * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -87,6 +90,9 @@ public class ActivityNodeOperations
 	 * <!-- begin-model-doc -->
 	 * Activity nodes may be owned by at most one structured node.
 	 * true
+	 * @param activityNode The receiving '<em><b>Activity Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

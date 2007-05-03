@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierOperations.java,v 1.7 2006/12/14 15:49:24 khussey Exp $
+ * $Id: StructuredClassifierOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class StructuredClassifierOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicities on connected elements must be consistent.
 	 * true
+	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,14 @@ public class StructuredClassifierOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a property with the specified name, type, lower bound, and upper bound as an owned attribute of this structured classifier.
+	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+	 * @param name The name for the new attribute, or null.
+	 * @param type The type for the new attribute, or null.
+	 * @param lower The lower bound for the new attribute.
+	 * @param upper The upper bound for the new attribute.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Property createOwnedAttribute(

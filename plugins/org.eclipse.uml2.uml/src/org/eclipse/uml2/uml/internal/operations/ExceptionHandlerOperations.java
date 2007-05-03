@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandlerOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ExceptionHandlerOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class ExceptionHandlerOperations
 	 * <!-- begin-model-doc -->
 	 * The exception handler and its input object node are not the source or target of any edge.
 	 * true
+	 * @param exceptionHandler The receiving '<em><b>Exception Handler</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class ExceptionHandlerOperations
 	 * <!-- begin-model-doc -->
 	 * The result pins of the exception handler body must correspond in number and types to the result pins of the protected node.
 	 * true
+	 * @param exceptionHandler The receiving '<em><b>Exception Handler</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -122,6 +128,9 @@ public class ExceptionHandlerOperations
 	 * <!-- begin-model-doc -->
 	 * The handler body has one input, and that input is the same as the exception input.
 	 * true
+	 * @param exceptionHandler The receiving '<em><b>Exception Handler</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -154,6 +163,9 @@ public class ExceptionHandlerOperations
 	 * <!-- begin-model-doc -->
 	 * An edge that has a source in an exception handler structured node must have its target in the handler also, and vice versa.
 	 * true
+	 * @param exceptionHandler The receiving '<em><b>Exception Handler</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

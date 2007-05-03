@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventActionOperations.java,v 1.6 2006/12/14 15:49:25 khussey Exp $
+ * $Id: AcceptEventActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class AcceptEventActionOperations
 	 * <!-- begin-model-doc -->
 	 * AcceptEventActions may have no input pins.
 	 * true
+	 * @param acceptEventAction The receiving '<em><b>Accept Event Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class AcceptEventActionOperations
 	 * <!-- begin-model-doc -->
 	 * There are no output pins if the trigger events are only ChangeEvents, or if they are only CallEvents when this action is an instance of AcceptEventAction and not an instance of a descendant of AcceptEventAction (such as AcceptCallAction).
 	 * true
+	 * @param acceptEventAction The receiving '<em><b>Accept Event Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class AcceptEventActionOperations
 	 * <!-- begin-model-doc -->
 	 * If the trigger events are all TimeEvents, there is exactly one output pin.
 	 * true
+	 * @param acceptEventAction The receiving '<em><b>Accept Event Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -156,6 +165,9 @@ public class AcceptEventActionOperations
 	 * <!-- begin-model-doc -->
 	 * If isUnmarshall is true, there must be exactly one trigger for events of type SignalEvent. The number of result output pins must be the same as the number of attributes of the signal. The type and ordering of each result output pin must be the same as the corresponding attribute of the signal. The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding attribute.
 	 * true
+	 * @param acceptEventAction The receiving '<em><b>Accept Event Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

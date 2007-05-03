@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionOperations.java,v 1.6 2006/12/14 15:49:24 khussey Exp $
+ * $Id: CallOperationActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class CallOperationActionOperations
 	 * <!-- begin-model-doc -->
 	 * The number of argument pins and the number of owned parameters of the operation of type in and in-out must be equal.
 	 * true
+	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class CallOperationActionOperations
 	 * <!-- begin-model-doc -->
 	 * The number of result pins and the number of owned parameters of the operation of type return, out, and in-out must be equal.
 	 * true
+	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class CallOperationActionOperations
 	 * <!-- begin-model-doc -->
 	 * The type of the target pin must be the same as the type that owns the operation.
 	 * true
+	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -157,6 +166,9 @@ public class CallOperationActionOperations
 	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding owned parameter of the operation.
 	 * 
 	 * true
+	 * @param callOperationAction The receiving '<em><b>Call Operation Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: JoinNodeOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: JoinNodeOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class JoinNodeOperations
 	 * <!-- begin-model-doc -->
 	 * A join node has one outgoing edge.
 	 * self.outgoing->size() = 1
+	 * @param joinNode The receiving '<em><b>Join Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class JoinNodeOperations
 	 *   self.outgoing.isTypeOf(ObjectFlow)) and
 	 *     (self.incoming.select(e | e.isTypeOf(ObjectFlow)->empty() implies
 	 *       self.outgoing.isTypeOf(ControlFlow))
+	 * @param joinNode The receiving '<em><b>Join Node</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

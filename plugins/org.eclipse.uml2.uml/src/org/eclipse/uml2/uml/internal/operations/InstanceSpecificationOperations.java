@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InstanceSpecificationOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: InstanceSpecificationOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class InstanceSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * The defining feature of each slot is a structural feature (directly or inherited) of a classifier of the instance specification.
 	 * slot->forAll(s | classifier->exists (c | c.allFeatures()->includes (s.definingFeature)))
+	 * @param instanceSpecification The receiving '<em><b>Instance Specification</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -90,6 +93,9 @@ public class InstanceSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * One structural feature (including the same feature inherited from multiple classifiers) is the defining feature of at most one slot in an instance specification.
 	 * classifier->forAll(c | (c.allFeatures()->forAll(f | slot->select(s | s.definingFeature = f)->size() <= 1)))
+	 * @param instanceSpecification The receiving '<em><b>Instance Specification</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class InstanceSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * An InstanceSpecification can be a DeploymentTarget if it is the instance specification of a Node and functions as a part in the internal structure of an encompassing Node.
 	 * true
+	 * @param instanceSpecification The receiving '<em><b>Instance Specification</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -156,6 +165,9 @@ public class InstanceSpecificationOperations
 	 * <!-- begin-model-doc -->
 	 * An InstanceSpecification can be a DeployedArtifact if it is the instance specification of an Artifact.
 	 * true
+	 * @param instanceSpecification The receiving '<em><b>Instance Specification</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

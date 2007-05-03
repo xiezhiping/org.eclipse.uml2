@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: TestIdentityActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class TestIdentityActionOperations
 	 * self.first.type->size() = 0
 	 * and self.second.type->size() = 0
 	 * 
+	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -92,6 +95,9 @@ public class TestIdentityActionOperations
 	 * self.first.multiplicity.is(1,1)
 	 * and self.second.multiplicity.is(1,1)
 	 * 
+	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -125,6 +131,9 @@ public class TestIdentityActionOperations
 	 * <!-- begin-model-doc -->
 	 * The type of the result is Boolean.
 	 * self.result.type.oclIsTypeOf(Boolean)
+	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

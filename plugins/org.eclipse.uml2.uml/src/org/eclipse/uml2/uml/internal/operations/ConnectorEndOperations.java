@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndOperations.java,v 1.8 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ConnectorEndOperations.java,v 1.9 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,6 +65,9 @@ public class ConnectorEndOperations
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector.
 	 * true
+	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -97,6 +100,9 @@ public class ConnectorEndOperations
 	 * <!-- begin-model-doc -->
 	 * If a connector end is attached to a port of the containing classifier, partWithPort will be empty.
 	 * true
+	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -129,6 +135,9 @@ public class ConnectorEndOperations
 	 * <!-- begin-model-doc -->
 	 * If a connector end references both a role and a partWithPort, then the role must be a port that is defined by the type of the partWithPort.
 	 * true
+	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -162,6 +171,9 @@ public class ConnectorEndOperations
 	 * <!-- begin-model-doc -->
 	 * The property held in self.partWithPort must not be a Port.
 	 * true
+	 * @param connectorEnd The receiving '<em><b>Connector End</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

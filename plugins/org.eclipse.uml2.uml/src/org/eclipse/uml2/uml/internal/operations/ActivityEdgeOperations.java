@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: ActivityEdgeOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class ActivityEdgeOperations
 	 * <!-- begin-model-doc -->
 	 * The source and target of an edge must be in the same activity as the edge.
 	 * true
+	 * @param activityEdge The receiving '<em><b>Activity Edge</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class ActivityEdgeOperations
 	 * <!-- begin-model-doc -->
 	 * Activity edges may be owned only by activities or groups.
 	 * true
+	 * @param activityEdge The receiving '<em><b>Activity Edge</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -120,6 +126,9 @@ public class ActivityEdgeOperations
 	 * <!-- begin-model-doc -->
 	 * Activity edges may be owned by at most one structured node.
 	 * true
+	 * @param activityEdge The receiving '<em><b>Activity Edge</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

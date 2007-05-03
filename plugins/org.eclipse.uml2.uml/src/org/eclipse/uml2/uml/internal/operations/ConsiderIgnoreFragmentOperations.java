@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragmentOperations.java,v 1.5 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ConsiderIgnoreFragmentOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class ConsiderIgnoreFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * The interaction operator of a ConsiderIgnoreFragment must be either 'consider' or 'ignore'.
 	 * (interactionOperator = #consider) or (interactionOperator = #ignore)
+	 * @param considerIgnoreFragment The receiving '<em><b>Consider Ignore Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -88,6 +91,9 @@ public class ConsiderIgnoreFragmentOperations
 	 * <!-- begin-model-doc -->
 	 * The NamedElements must be of a type of element that identifies a message (e.g., an Operation, Reception, or a Signal).
 	 * message->forAll(m | m.oclIsKindOf(Operation) or m.oclIsKindOf(Reception) or m.oclIsKindOf(Signal))
+	 * @param considerIgnoreFragment The receiving '<em><b>Consider Ignore Fragment</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

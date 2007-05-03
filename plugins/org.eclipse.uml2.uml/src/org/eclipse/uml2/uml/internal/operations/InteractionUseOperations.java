@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUseOperations.java,v 1.5 2006/12/14 15:49:25 khussey Exp $
+ * $Id: InteractionUseOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -57,6 +57,9 @@ public class InteractionUseOperations
 	 * <!-- begin-model-doc -->
 	 * Actual Gates of the InteractionUse must match Formal Gates of the referred Interaction. Gates match when their names are equal.
 	 * true
+	 * @param interactionUse The receiving '<em><b>Interaction Use</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -89,6 +92,9 @@ public class InteractionUseOperations
 	 * <!-- begin-model-doc -->
 	 * The InteractionUse must cover all Lifelines of the enclosing Interaction which appear within the referred Interaction.
 	 * true
+	 * @param interactionUse The receiving '<em><b>Interaction Use</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -121,6 +127,9 @@ public class InteractionUseOperations
 	 * <!-- begin-model-doc -->
 	 * The arguments of the InteractionUse must correspond to parameters of the referred Interaction
 	 * true
+	 * @param interactionUse The receiving '<em><b>Interaction Use</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -154,6 +163,9 @@ public class InteractionUseOperations
 	 * <!-- begin-model-doc -->
 	 * The arguments must only be constants, parameters of the enclosing Interaction or attributes of the classifier owning the enclosing Interaction.
 	 * true
+	 * @param interactionUse The receiving '<em><b>Interaction Use</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

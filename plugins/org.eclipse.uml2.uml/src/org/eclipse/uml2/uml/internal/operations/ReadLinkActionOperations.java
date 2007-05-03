@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ReadLinkActionOperations.java,v 1.5 2006/12/14 15:49:24 khussey Exp $
+ * $Id: ReadLinkActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,6 +58,9 @@ public class ReadLinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * Exactly one link-end data specification (the 'open' end) must not have an end object input pin.
 	 * self.endData->select(ed | ed.value->size() = 0)->size() = 1
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -93,6 +96,9 @@ public class ReadLinkActionOperations
 	 * self.result.type = openend.type
 	 * and self.result.ordering = openend.ordering
 	 * 
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -128,6 +134,9 @@ public class ReadLinkActionOperations
 	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
 	 * 
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -163,6 +172,9 @@ public class ReadLinkActionOperations
 	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.isNavigable()
 	 * 
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -203,6 +215,9 @@ public class ReadLinkActionOperations
 	 * or (openend.visibility = #protected
 	 * and host.allSupertypes->includes(oed.end.participant))))
 	 * 
+	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureOperations.java,v 1.8 2006/12/14 15:49:25 khussey Exp $
+ * $Id: RedefinableTemplateSignatureOperations.java,v 1.9 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -66,6 +66,9 @@ public class RedefinableTemplateSignatureOperations
 	 * <!-- begin-model-doc -->
 	 * The inherited parameters are the parameters of the extended template signature.
 	 * if extendedSignature->isEmpty() then Set{} else extendedSignature.parameter endif
+	 * @param redefinableTemplateSignature The receiving '<em><b>Redefinable Template Signature</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +126,7 @@ public class RedefinableTemplateSignatureOperations
 	 * The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.
 	 * redefinee.isRedefinitionContextValid(self)
 	 * result = redefinee.oclIsKindOf(RedefineableTemplateSignature)
+	 * @param redefinableTemplateSignature The receiving '<em><b>Redefinable Template Signature</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

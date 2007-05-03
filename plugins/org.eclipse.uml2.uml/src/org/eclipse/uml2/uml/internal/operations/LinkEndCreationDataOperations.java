@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataOperations.java,v 1.3 2006/12/14 15:49:25 khussey Exp $
+ * $Id: LinkEndCreationDataOperations.java,v 1.4 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -55,6 +55,9 @@ public class LinkEndCreationDataOperations
 	 * <!-- begin-model-doc -->
 	 * LinkEndCreationData can only be end data for CreateLinkAction or one of its specializations.
 	 * self.LinkAction.oclIsKindOf(CreateLinkAction)
+	 * @param linkEndCreationData The receiving '<em><b>Link End Creation Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -96,6 +99,9 @@ public class LinkEndCreationDataOperations
 	 * and insertAtPin.multiplicity.is(1,1))
 	 * endif
 	 * 
+	 * @param linkEndCreationData The receiving '<em><b>Link End Creation Data</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCaseOperations.java,v 1.11 2006/12/14 15:49:25 khussey Exp $
+ * $Id: UseCaseOperations.java,v 1.12 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -64,6 +64,9 @@ public class UseCaseOperations
 	 * <!-- begin-model-doc -->
 	 * A UseCase must have a name.
 	 * self.name -> notEmpty ()
+	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -93,6 +96,9 @@ public class UseCaseOperations
 	 * <!-- begin-model-doc -->
 	 * UseCases can only be involved in binary Associations.
 	 * true
+	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -126,6 +132,9 @@ public class UseCaseOperations
 	 * <!-- begin-model-doc -->
 	 * UseCases can not have Associations to UseCases specifying the same subject.
 	 * true
+	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -178,6 +187,9 @@ public class UseCaseOperations
 	 * <!-- begin-model-doc -->
 	 * A use case cannot include use cases that directly or indirectly include it.
 	 * not self.allIncludedUseCases()->includes(self)
+	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -222,6 +234,7 @@ public class UseCaseOperations
 	 * <!-- begin-model-doc -->
 	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
 	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
+	 * @param useCase The receiving '<em><b>Use Case</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

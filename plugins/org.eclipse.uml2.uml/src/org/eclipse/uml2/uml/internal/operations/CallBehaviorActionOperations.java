@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallBehaviorActionOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: CallBehaviorActionOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -56,6 +56,9 @@ public class CallBehaviorActionOperations
 	 * <!-- begin-model-doc -->
 	 * The number of argument pins and the number of parameters of the behavior of type in and in-out must be equal.
 	 * true
+	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -89,6 +92,9 @@ public class CallBehaviorActionOperations
 	 * <!-- begin-model-doc -->
 	 * The number of result pins and the number of parameters of the behavior of type return, out, and in-out must be equal.
 	 * true
+	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -123,6 +129,9 @@ public class CallBehaviorActionOperations
 	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of the behavior.
 	 * 
 	 * true
+	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.9 2006/12/14 15:49:26 khussey Exp $
+ * $Id: StateOperations.java,v 1.10 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -73,6 +73,9 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * Only submachine states can have connection point references.
 	 * isSubmachineState implies connection->notEmpty ( )
+	 * @param state The receiving '<em><b>State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -107,6 +110,9 @@ public class StateOperations
 	 * self.isSubmachineState implies (self.connection->forAll (cp |
 	 * cp.entry->forAll (p | p.statemachine = self.submachine) and
 	 * cp.exit->forAll (p | p.statemachine = self.submachine)))
+	 * @param state The receiving '<em><b>State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -140,6 +146,9 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * A state is not allowed to have both a submachine and regions.
 	 * isComposite implies not isSubmachineState
+	 * @param state The receiving '<em><b>State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -172,6 +181,9 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * Only composite states can have entry or exit pseudostates defined.
 	 * connectionPoint->notEmpty() implies isComoposite
+	 * @param state The receiving '<em><b>State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -204,6 +216,9 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * Only entry or exit pseudostates can serve as connection points.
 	 * connectionPoint->forAll(cp|cp.kind = #entry or cp.kind = #exit)
+	 * @param state The receiving '<em><b>State</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
@@ -236,6 +251,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * A simple state is a state without any regions.
 	 * result = region.isEmpty()
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -249,6 +265,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * A composite state is a state with at least one region.
 	 * result = region.notEmpty()
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -262,6 +279,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * An orthogonal state is a composite state with at least 2 regions
 	 * result = (region->size () > 1)
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -275,6 +293,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * Only submachine states can have a reference statemachine.
 	 * result = submachine.notEmpty()
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -293,6 +312,7 @@ public class StateOperations
 	 * else
 	 * sm.context
 	 * endif
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -315,6 +335,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
 	 * result = true
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -339,6 +360,7 @@ public class StateOperations
 	 * <!-- begin-model-doc -->
 	 * The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.
 	 * result = true
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
@@ -370,9 +392,9 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query containingStateMachine() returns the state machine that
-	 * contains the state either directly or transitively. result =
-	 * container.containingStateMachine()
+	 * The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
+	 * result = container.containingStateMachine()
+	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

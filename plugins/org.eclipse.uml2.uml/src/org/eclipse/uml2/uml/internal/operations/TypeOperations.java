@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TypeOperations.java,v 1.15 2006/12/14 15:49:26 khussey Exp $
+ * $Id: TypeOperations.java,v 1.16 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -173,6 +173,21 @@ public class TypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a(n) (binary) association between this type and the specified other type, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this type's nearest package.
+	 * @param type The receiving '<em><b>Type</b></em>' model object.
+	 * @param end1IsNavigable The navigability for the first end of the new association.
+	 * @param end1Aggregation The aggregation for the first end of the new association.
+	 * @param end1Name The name for the first end of the new association.
+	 * @param end1Lower The lower bound for the first end of the new association.
+	 * @param end1Upper The upper bound for the first end of the new association.
+	 * @param end1Type The type for the first end of the new association.
+	 * @param end2IsNavigable The navigability for the second end of the new association.
+	 * @param end2Aggregation The aggregation for the second end of the new association.
+	 * @param end2Name The name for the second end of the new association.
+	 * @param end2Lower The lower bound for the second end of the new association.
+	 * @param end2Upper The upper bound for the second end of the new association.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static Association createAssociation(Type type,
@@ -213,6 +228,10 @@ public class TypeOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the associations in which this type is involved.
+	 * @param type The receiving '<em><b>Type</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Association> getAssociations(Type type) {
@@ -285,6 +304,7 @@ public class TypeOperations
 	 * <!-- begin-model-doc -->
 	 * The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
 	 * result = false
+	 * @param type The receiving '<em><b>Type</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */

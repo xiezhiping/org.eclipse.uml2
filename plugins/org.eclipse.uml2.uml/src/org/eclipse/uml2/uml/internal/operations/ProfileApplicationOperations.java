@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.6 2006/12/14 15:49:26 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -52,6 +52,10 @@ public class ProfileApplicationOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the definition (Ecore representation) of the profile associated with this profile application.
+	 * @param profileApplication The receiving '<em><b>Profile Application</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EPackage getAppliedDefinition(
@@ -73,6 +77,11 @@ public class ProfileApplicationOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the definition (Ecore representation) of the specified named element in the profile associated with this profile application.
+	 * @param profileApplication The receiving '<em><b>Profile Application</b></em>' model object.
+	 * @param namedElement The named element for which to retrieve the applied definition.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static ENamedElement getAppliedDefinition(
