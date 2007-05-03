@@ -95,8 +95,8 @@
           <%} else {%>
 			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
           <%}%>
-        <%}%>
-      <%index++;}%>
+        <%index++;}%>
+      <%}%>
 		return new<%=genFeature.getCapName()%>;
 	}
 
@@ -174,8 +174,8 @@
             <%} else {%>
 			new<%=genFeature.getCapName()%>.set<%=keyGenFeature.getAccessorName()%>(<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>);
             <%}%>
-          <%}%>
-        <%index++;}%>
+          <%index++;}%>
+        <%}%>
 		return new<%=genFeature.getCapName()%>;
       <%}%>
 	}
@@ -307,8 +307,8 @@
 			if (<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%> != null && !<%=UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false)%>.equals(<%=genFeature.getUncapName()%>.<%=keyGenFeature.getGetAccessor()%>()))
           <%}%>
 				continue <%=genFeature.getUncapName()%>Loop;
-        <%}%>
-      <%index++;}%>
+        <%index++;}%>
+      <%}%>
 			return <%=genFeature.getUncapName()%>;
 		}
       <%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>

@@ -5843,8 +5843,8 @@ public class Class
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1315);
     }
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_1316);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1317);
@@ -6042,8 +6042,8 @@ public class Class
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_1404);
     }
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_1405);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_1406);
@@ -6396,8 +6396,8 @@ public class Class
     stringBuffer.append(TEXT_1560);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1561);
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_1562);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1563);
@@ -8453,8 +8453,8 @@ public class Class
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2431);
     }
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_2432);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2433);
@@ -8652,8 +8652,8 @@ public class Class
     stringBuffer.append(UML2GenModelUtil.getKeyFeatureParameter(genFeature, index, false));
     stringBuffer.append(TEXT_2520);
     }
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_2521);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_2522);
@@ -9006,8 +9006,8 @@ public class Class
     stringBuffer.append(TEXT_2676);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2677);
-    }
     index++;}
+    }
     stringBuffer.append(TEXT_2678);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2679);

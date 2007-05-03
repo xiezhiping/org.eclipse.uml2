@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.24 2007/04/24 21:48:57 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.25 2007/05/03 13:28:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -410,7 +410,7 @@ public class GenFeatureImpl
 		int count = 0;
 
 		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil
-			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); count++) {
+			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); ) {
 
 			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k
 				.next();
@@ -419,12 +419,12 @@ public class GenFeatureImpl
 
 				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
 					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
-					.iterator(); n.hasNext(); count++) {
+					.iterator(); n.hasNext(); ) {
 
 					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n
 						.next();
 
-					if (count == index) {
+					if (count++ == index) {
 
 						if (formal) {
 
@@ -457,7 +457,7 @@ public class GenFeatureImpl
 							.toString();
 					}
 				}
-			} else if (count == index) {
+			} else if (count++ == index) {
 
 				if (formal) {
 					keyFeatureParameter.append(keyGenFeature.getImportedType());
@@ -495,7 +495,7 @@ public class GenFeatureImpl
 		int count = 0;
 
 		for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> k = UML2GenModelUtil
-			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); count++) {
+			.getKeyGenFeatures(getTypeGenClass()).iterator(); k.hasNext(); ) {
 
 			org.eclipse.emf.codegen.ecore.genmodel.GenFeature keyGenFeature = k
 				.next();
@@ -504,12 +504,12 @@ public class GenFeatureImpl
 
 				for (Iterator<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> n = UML2GenModelUtil
 					.getKeyGenFeatures(keyGenFeature.getTypeGenClass(), false)
-					.iterator(); n.hasNext(); count++) {
+					.iterator(); n.hasNext(); ) {
 
 					org.eclipse.emf.codegen.ecore.genmodel.GenFeature nestedKeyGenFeature = n
 						.next();
 
-					if (count == index) {
+					if (count++ == index) {
 						return formattedKeyFeatureName.append(
 							"'<em><b>" //$NON-NLS-1$
 								+ format(keyGenFeature.getCapName()
@@ -522,7 +522,7 @@ public class GenFeatureImpl
 							.toString();
 					}
 				}
-			} else if (count == index) {
+			} else if (count++ == index) {
 				return formattedKeyFeatureName.append(
 					"'<em><b>" //$NON-NLS-1$
 						+ format(keyGenFeature.getAccessorName(), ' ', null,
