@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:Standard="http://www.eclipse.org/uml2/schemas/Standard/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA http://www.eclipse.org/uml2/schemas/Standard/1 pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w">
   <uml:Model xmi:id="_0" name="uml">
     <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="Ecore.metamodel.uml#_0"/>
@@ -2682,7 +2682,6 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_definingEnd_connectorEnd-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectableElement-end ConnectorEnd-role"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_attribute_classifier" name="A_attribute_classifier" visibility="private" memberEnd="Classifier-attribute A_attribute_classifier-classifier">
       <ownedEnd xmi:id="A_attribute_classifier-classifier" name="classifier" type="Classifier" subsettedProperty="RedefinableElement-redefinitionContext" association="A_attribute_classifier">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_attribute_classifier-classifier-_upperValue" value="1"/>
@@ -4367,74 +4366,6 @@ v) attributes of the class owning the Interaction
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EncapsulatedClassifier-ownedPort-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EncapsulatedClassifier-ownedPort-_lowerValue"/>
       </ownedAttribute>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="ConnectorEnd" name="ConnectorEnd">
-      <ownedComment xmi:id="ConnectorEnd-_ownedComment.0" annotatedElement="ConnectorEnd">
-        <body>A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.</body>
-      </ownedComment>
-      <ownedRule xmi:id="ConnectorEnd-multiplicity" name="multiplicity" constrainedElement="ConnectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-multiplicity-_ownedComment.0" annotatedElement="ConnectorEnd-multiplicity">
-          <body>The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-multiplicity-_specification">
-          <language>OCL</language>
-          <body>true</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="ConnectorEnd-part_with_port_empty" name="part_with_port_empty" constrainedElement="ConnectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-part_with_port_empty-_ownedComment.0" annotatedElement="ConnectorEnd-part_with_port_empty">
-          <body>If a connector end is attached to a port of the containing classifier, partWithPort will be empty.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-part_with_port_empty-_specification">
-          <language>OCL</language>
-          <body>true</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="ConnectorEnd-role_and_part_with_port" name="role_and_part_with_port" constrainedElement="ConnectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-role_and_part_with_port-_ownedComment.0" annotatedElement="ConnectorEnd-role_and_part_with_port">
-          <body>If a connector end references both a role and a partWithPort, then the role must be a port that is defined by the type of the partWithPort.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-role_and_part_with_port-_specification">
-          <language>OCL</language>
-          <body>true</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="ConnectorEnd-self_part_with_port" name="self_part_with_port" constrainedElement="ConnectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-self_part_with_port-_ownedComment.0" annotatedElement="ConnectorEnd-self_part_with_port">
-          <body>The property held in self.partWithPort must not be a Port.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-self_part_with_port-_specification">
-          <language>OCL</language>
-          <body>true</body>
-        </specification>
-      </ownedRule>
-      <generalization xmi:id="ConnectorEnd-_generalization.0" general="MultiplicityElement"/>
-      <ownedAttribute xmi:id="ConnectorEnd-definingEnd" name="definingEnd" type="Property" isReadOnly="true" isDerived="true" association="A_definingEnd_connectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-definingEnd-_ownedComment.0" annotatedElement="ConnectorEnd-definingEnd">
-          <body>A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.&#xD;
-</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-definingEnd-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-definingEnd-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="ConnectorEnd-role" name="role" type="ConnectableElement" association="A_end_role">
-        <ownedComment xmi:id="ConnectorEnd-role-_ownedComment.0" annotatedElement="ConnectorEnd-role">
-          <body>The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.&#xD;
-</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-role-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-role-_lowerValue" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="ConnectorEnd-partWithPort" name="partWithPort" type="Property" association="A_partWithPort_connectorEnd">
-        <ownedComment xmi:id="ConnectorEnd-partWithPort-_ownedComment.0" annotatedElement="ConnectorEnd-partWithPort">
-          <body>Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-partWithPort-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-partWithPort-_lowerValue"/>
-      </ownedAttribute>
-      <ownedOperation xmi:id="ConnectorEnd-getDefiningEnd" name="getDefiningEnd" visibility="protected" isQuery="true">
-        <ownedParameter xmi:id="ConnectorEnd-getDefiningEnd-_ownedParameter.0" type="Property" direction="return"/>
-      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_encapsulatedClassifier_ownedPort" name="A_encapsulatedClassifier_ownedPort" visibility="private" memberEnd="A_encapsulatedClassifier_ownedPort-_ownedEnd.0 EncapsulatedClassifier-ownedPort">
       <ownedEnd xmi:id="A_encapsulatedClassifier_ownedPort-_ownedEnd.0" type="EncapsulatedClassifier" subsettedProperty="RedefinableElement-redefinitionContext" association="A_encapsulatedClassifier_ownedPort">
@@ -7062,221 +6993,6 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <ownedParameter xmi:id="StateMachine-isConsistentWith-redefinee" name="redefinee" type="RedefinableElement"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="Transition" name="Transition">
-      <ownedComment xmi:id="Transition-_ownedComment.0" annotatedElement="Transition">
-        <body>A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.</body>
-      </ownedComment>
-      <ownedRule xmi:id="Transition-fork_segment_guards" name="fork_segment_guards" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-fork_segment_guards-_ownedComment.0" annotatedElement="Transition-fork_segment_guards">
-          <body>A fork segment must not have guards or triggers.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-fork_segment_guards-_specification">
-          <language>OCL</language>
-          <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (guard->isEmpty() and trigger->isEmpty())</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-join_segment_guards" name="join_segment_guards" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-join_segment_guards-_ownedComment.0" annotatedElement="Transition-join_segment_guards">
-          <body>A join segment must not have guards or triggers.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-join_segment_guards-_specification">
-          <language>OCL</language>
-          <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (guard->isEmpty() and trigger->isEmpty())</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-fork_segment_state" name="fork_segment_state" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-fork_segment_state-_ownedComment.0" annotatedElement="Transition-fork_segment_state">
-          <body>A fork segment must always target a state.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-fork_segment_state-_specification">
-          <language>OCL</language>
-          <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-join_segment_state" name="join_segment_state" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-join_segment_state-_ownedComment.0" annotatedElement="Transition-join_segment_state">
-          <body>A join segment must always originate from a state.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-join_segment_state-_specification">
-          <language>OCL</language>
-          <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (source.oclIsKindOf(State))</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-outgoing_pseudostates" name="outgoing_pseudostates" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-outgoing_pseudostates-_ownedComment.0" annotatedElement="Transition-outgoing_pseudostates">
-          <body>Transitions outgoing pseudostates may not have a trigger.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-outgoing_pseudostates-_specification">
-          <language>OCL</language>
-          <body>source.oclIsKindOf(Pseudostate) and&#xA;((source.kind &lt;> #junction) and (source.kind &lt;> #join) and (source.kind &lt;> #initial)) implies trigger->isEmpty()&#xA;</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-initial_transition" name="initial_transition" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-initial_transition-_ownedComment.0" annotatedElement="Transition-initial_transition">
-          <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-initial_transition-_specification">
-          <language>OCL</language>
-          <body>self.source.oclIsKindOf(Pseudostate) implies&#xA;(self.source.oclAsType(Pseudostate).kind = #initial) implies&#xA;(self.source.container = self.stateMachine.top) implies&#xA;((self.trigger->isEmpty) or&#xA;(self.trigger.stereotype.name = 'create'))&#xA;</body>
-        </specification>
-      </ownedRule>
-      <ownedRule xmi:id="Transition-signatures_compatible" name="signatures_compatible" constrainedElement="Transition">
-        <ownedComment xmi:id="Transition-signatures_compatible-_ownedComment.0" annotatedElement="Transition-signatures_compatible">
-          <body>In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.&#xD;
-</body>
-        </ownedComment>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-signatures_compatible-_specification">
-          <language>OCL</language>
-          <body>true</body>
-        </specification>
-      </ownedRule>
-      <generalization xmi:id="Transition-_generalization.0" general="RedefinableElement"/>
-      <generalization xmi:id="Transition-_generalization.1" general="Namespace"/>
-      <ownedAttribute xmi:id="Transition-kind" name="kind" type="TransitionKind">
-        <ownedComment xmi:id="Transition-kind-_ownedComment.0" annotatedElement="Transition-kind">
-          <body>Indicates  the precise type of the transition.</body>
-        </ownedComment>
-        <defaultValue xmi:type="uml:InstanceValue" xmi:id="Transition-kind-_defaultValue" type="TransitionKind" instance="TransitionKind-external"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-container" name="container" type="Region" subsettedProperty="NamedElement-namespace" association="A_container_transition">
-        <ownedComment xmi:id="Transition-container-_ownedComment.0" annotatedElement="Transition-container">
-          <body>Designates the region that owns this transition.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-container-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-container-_lowerValue" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-source" name="source" type="Vertex" association="A_outgoing_source.1">
-        <ownedComment xmi:id="Transition-source-_ownedComment.0" annotatedElement="Transition-source">
-          <body>Designates the originating vertex (state or pseudostate) of the transition.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-source-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-source-_lowerValue" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-target" name="target" type="Vertex" association="A_incoming_target">
-        <ownedComment xmi:id="Transition-target-_ownedComment.0" annotatedElement="Transition-target">
-          <body>Designates the target vertex that is reached when the transition is taken.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-target-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-target-_lowerValue" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-redefinedTransition" name="redefinedTransition" type="Transition" subsettedProperty="RedefinableElement-redefinedElement" association="A_redefinedTransition_transition">
-        <ownedComment xmi:id="Transition-redefinedTransition-_ownedComment.0" annotatedElement="Transition-redefinedTransition">
-          <body>The transition that is redefined by this transition.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-redefinedTransition-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-redefinedTransition-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-guard" name="guard" type="Constraint" aggregation="composite" subsettedProperty="Namespace-ownedRule" association="A_guard_transition">
-        <ownedComment xmi:id="Transition-guard-_ownedComment.0" annotatedElement="Transition-guard">
-          <body>A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-guard-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-guard-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-redefinitionContext" name="redefinitionContext" type="Classifier" isReadOnly="true" isDerived="true" redefinedProperty="RedefinableElement-redefinitionContext" association="A_transition_redefinitionContext">
-        <ownedComment xmi:id="Transition-redefinitionContext-_ownedComment.0" annotatedElement="Transition-redefinitionContext">
-          <body>References the classifier in which context this element may be redefined.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-redefinitionContext-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-redefinitionContext-_lowerValue" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-effect" name="effect" type="Behavior" aggregation="composite" subsettedProperty="Element-ownedElement" association="A_effect_transition">
-        <ownedComment xmi:id="Transition-effect-_ownedComment.0" annotatedElement="Transition-effect">
-          <body>Specifies an optional behavior to be performed when the transition fires.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-effect-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-effect-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Transition-trigger" name="trigger" type="Trigger" aggregation="composite" association="A_trigger_transition">
-        <ownedComment xmi:id="Transition-trigger-_ownedComment.0" annotatedElement="Transition-trigger">
-          <body>Specifies the triggers that may fire the transition.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-trigger-_upperValue" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-trigger-_lowerValue"/>
-      </ownedAttribute>
-      <ownedOperation xmi:id="Transition-redefinitionContext.1" name="redefinitionContext" isQuery="true" bodyCondition="Transition-redefinitionContext.1-spec">
-        <ownedComment xmi:id="Transition-redefinitionContext.1-_ownedComment.0" annotatedElement="Transition-redefinitionContext.1">
-          <body>The redefinition context of a transition is the nearest containing statemachine.</body>
-        </ownedComment>
-        <ownedRule xmi:id="Transition-redefinitionContext.1-spec" name="spec" constrainedElement="Transition-redefinitionContext.1 Transition-redefinitionContext">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-redefinitionContext.1-spec-_specification">
-            <language>OCL</language>
-            <body>result = let sm = containingStateMachine() in&#xA;if sm.context->isEmpty() or sm.general->notEmpty() then&#xA;sm&#xA;else&#xA;sm.context&#xA;endif</body>
-          </specification>
-        </ownedRule>
-        <ownedParameter xmi:id="Transition-redefinitionContext.1-_ownedParameter.0" type="Classifier" direction="return"/>
-      </ownedOperation>
-      <ownedOperation xmi:id="Transition-isConsistentWith" name="isConsistentWith" isQuery="true" precondition="Transition-isConsistentWith-_ownedRule.1" redefinedOperation="RedefinableElement-isConsistentWith" bodyCondition="Transition-isConsistentWith-spec">
-        <ownedComment xmi:id="Transition-isConsistentWith-_ownedComment.0" annotatedElement="Transition-isConsistentWith">
-          <body>The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.</body>
-        </ownedComment>
-        <ownedRule xmi:id="Transition-isConsistentWith-spec" name="spec" constrainedElement="Transition-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-spec-_specification">
-            <language>OCL</language>
-            <body>result = (redefinee.oclIsKindOf(Transition) and&#xD;&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xD;&#xA;    (source() = trans.source() and trigger() = tran.trigger())</body>
-          </specification>
-        </ownedRule>
-        <ownedRule xmi:id="Transition-isConsistentWith-_ownedRule.1" constrainedElement="Transition-isConsistentWith">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-_ownedRule.1-_specification">
-            <language>OCL</language>
-            <body>redefinee.isRedefinitionContextValid(self)</body>
-          </specification>
-        </ownedRule>
-        <ownedParameter xmi:id="Transition-isConsistentWith-_ownedParameter.0" type="Boolean" direction="return"/>
-        <ownedParameter xmi:id="Transition-isConsistentWith-redefinee" name="redefinee" type="RedefinableElement"/>
-      </ownedOperation>
-      <ownedOperation xmi:id="Transition-containingStateMachine" name="containingStateMachine" isQuery="true" bodyCondition="Transition-containingStateMachine-spec">
-        <ownedComment xmi:id="Transition-containingStateMachine-_ownedComment.0" annotatedElement="Transition-containingStateMachine">
-          <body>The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.</body>
-        </ownedComment>
-        <ownedRule xmi:id="Transition-containingStateMachine-spec" name="spec" constrainedElement="Transition-containingStateMachine">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-containingStateMachine-spec-_specification">
-            <language>OCL</language>
-            <body>result = container.containingStateMachine()</body>
-          </specification>
-        </ownedRule>
-        <ownedParameter xmi:id="Transition-containingStateMachine-_ownedParameter.0" type="StateMachine" direction="return"/>
-      </ownedOperation>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="Vertex" name="Vertex" isAbstract="true">
-      <ownedComment xmi:id="Vertex-_ownedComment.0" annotatedElement="Vertex">
-        <body>A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.</body>
-      </ownedComment>
-      <generalization xmi:id="Vertex-_generalization.0" general="NamedElement"/>
-      <ownedAttribute xmi:id="Vertex-container" name="container" type="Region" subsettedProperty="NamedElement-namespace" association="A_container_subvertex">
-        <ownedComment xmi:id="Vertex-container-_ownedComment.0" annotatedElement="Vertex-container">
-          <body>The region that contains this vertex.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-container-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-container-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Vertex-outgoing" name="outgoing" type="Transition" association="A_outgoing_source.1">
-        <ownedComment xmi:id="Vertex-outgoing-_ownedComment.0" annotatedElement="Vertex-outgoing">
-          <body>Specifies the transitions departing from this vertex.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-outgoing-_upperValue" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-outgoing-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="Vertex-incoming" name="incoming" type="Transition" association="A_incoming_target">
-        <ownedComment xmi:id="Vertex-incoming-_ownedComment.0" annotatedElement="Vertex-incoming">
-          <body>Specifies the transitions entering this vertex.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-incoming-_upperValue" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-incoming-_lowerValue"/>
-      </ownedAttribute>
-      <ownedOperation xmi:id="Vertex-containingStateMachine" name="containingStateMachine" isQuery="true" bodyCondition="Vertex-containingStateMachine-spec">
-        <ownedComment xmi:id="Vertex-containingStateMachine-_ownedComment.0" annotatedElement="Vertex-containingStateMachine">
-          <body>The operation containingStateMachine() returns the state machine in which this Vertex is defined</body>
-        </ownedComment>
-        <ownedRule xmi:id="Vertex-containingStateMachine-spec" name="spec" constrainedElement="Vertex-containingStateMachine">
-          <specification xmi:type="uml:OpaqueExpression" xmi:id="Vertex-containingStateMachine-spec-_specification">
-            <language>OCL</language>
-            <body>result = if not container->isEmpty()&#xA;then&#xA;-- the container is a region&#xA;container.containingStateMachine()&#xA;else if (oclIsKindOf(Pseudostate)) then&#xA;-- entry or exit point?&#xA;if (kind = #entryPoint) or (kind = #exitPoint) then&#xA;stateMachine&#xA;else if (oclIsKindOf(ConnectionPointReference)) then&#xA;state.containingStateMachine() -- no other valid cases possible&#xA;endif&#xA;</body>
-          </specification>
-        </ownedRule>
-        <ownedParameter xmi:id="Vertex-containingStateMachine-_ownedParameter.0" type="StateMachine" direction="return"/>
-      </ownedOperation>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Pseudostate" name="Pseudostate">
       <ownedComment xmi:id="Pseudostate-_ownedComment.0" annotatedElement="Pseudostate">
         <body>A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.</body>
@@ -7625,8 +7341,6 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_container_subvertex" name="A_container_subvertex" visibility="private" memberEnd="Vertex-container Region-subvertex"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_container_transition" name="A_container_transition" visibility="private" memberEnd="Transition-container Region-transition"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source.1" name="A_outgoing_source" visibility="private" memberEnd="Vertex-outgoing Transition-source"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="A_incoming_target" name="A_incoming_target" visibility="private" memberEnd="Vertex-incoming Transition-target"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_submachineState_submachine" name="A_submachineState_submachine" visibility="private" memberEnd="StateMachine-submachineState State-submachine"/>
     <packagedElement xmi:type="uml:Association" xmi:id="A_entry_connectionPointReference" name="A_entry_connectionPointReference" visibility="private" memberEnd="ConnectionPointReference-entry A_entry_connectionPointReference-_ownedEnd.0">
       <ownedEnd xmi:id="A_entry_connectionPointReference-_ownedEnd.0" type="ConnectionPointReference" association="A_entry_connectionPointReference">
@@ -15167,30 +14881,6 @@ define a collating sequence between operands and subexpressions).
         <ownedParameter xmi:id="RedefinableTemplateSignature-isConsistentWith-redefinee" name="redefinee" type="RedefinableElement"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="ConnectableElement" name="ConnectableElement" isAbstract="true">
-      <ownedComment xmi:id="ConnectableElement-_ownedComment.0" annotatedElement="ConnectableElement">
-        <body>ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.</body>
-      </ownedComment>
-      <ownedComment xmi:id="ConnectableElement-_ownedComment.1" annotatedElement="ConnectableElement">
-        <body>A connectable element may be exposed as a connectable element template parameter.</body>
-      </ownedComment>
-      <generalization xmi:id="ConnectableElement-_generalization.0" general="TypedElement"/>
-      <generalization xmi:id="ConnectableElement-_generalization.1" general="ParameterableElement"/>
-      <ownedAttribute xmi:id="ConnectableElement-end" name="end" type="ConnectorEnd" isOrdered="true" association="A_end_role">
-        <ownedComment xmi:id="ConnectableElement-end-_ownedComment.0" annotatedElement="ConnectableElement-end">
-          <body>Denotes a connector that attaches to this connectable element.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectableElement-end-_upperValue" value="*"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectableElement-end-_lowerValue"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="ConnectableElement-templateParameter" name="templateParameter" type="ConnectableElementTemplateParameter" redefinedProperty="ParameterableElement-templateParameter" association="A_templateParameter_parameteredElement.2">
-        <ownedComment xmi:id="ConnectableElement-templateParameter-_ownedComment.0" annotatedElement="ConnectableElement-templateParameter">
-          <body>The ConnectableElementTemplateParameter for this ConnectableElement parameter.</body>
-        </ownedComment>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectableElement-templateParameter-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectableElement-templateParameter-_lowerValue"/>
-      </ownedAttribute>
-    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="ConnectableElementTemplateParameter" name="ConnectableElementTemplateParameter">
       <ownedComment xmi:id="ConnectableElementTemplateParameter-_ownedComment.0" annotatedElement="ConnectableElementTemplateParameter">
         <body>A connectable element template parameter exposes a connectable element as a formal parameter for a template.</body>
@@ -15581,6 +15271,367 @@ define a collating sequence between operands and subexpressions).
     <packagedElement xmi:type="uml:Association" xmi:id="A_constrainingClassifier_classifierTemplateParameter" name="A_constrainingClassifier_classifierTemplateParameter" visibility="private" memberEnd="ClassifierTemplateParameter-constrainingClassifier A_constrainingClassifier_classifierTemplateParameter-_ownedEnd.0">
       <ownedEnd xmi:id="A_constrainingClassifier_classifierTemplateParameter-_ownedEnd.0" type="ClassifierTemplateParameter" association="A_constrainingClassifier_classifierTemplateParameter"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ConnectableElement" name="ConnectableElement" isAbstract="true">
+      <ownedComment xmi:id="ConnectableElement-_ownedComment.0" annotatedElement="ConnectableElement">
+        <body>ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.</body>
+      </ownedComment>
+      <ownedComment xmi:id="ConnectableElement-_ownedComment.1" annotatedElement="ConnectableElement">
+        <body>A connectable element may be exposed as a connectable element template parameter.</body>
+      </ownedComment>
+      <generalization xmi:id="ConnectableElement-_generalization.0" general="TypedElement"/>
+      <generalization xmi:id="ConnectableElement-_generalization.1" general="ParameterableElement"/>
+      <ownedAttribute xmi:id="ConnectableElement-templateParameter" name="templateParameter" type="ConnectableElementTemplateParameter" redefinedProperty="ParameterableElement-templateParameter" association="A_templateParameter_parameteredElement.2">
+        <ownedComment xmi:id="ConnectableElement-templateParameter-_ownedComment.0" annotatedElement="ConnectableElement-templateParameter">
+          <body>The ConnectableElementTemplateParameter for this ConnectableElement parameter.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectableElement-templateParameter-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectableElement-templateParameter-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ConnectableElement-end" name="end" type="ConnectorEnd" isOrdered="true" isDerived="true" association="A_connectableElement_end">
+        <ownedComment xmi:id="ConnectableElement-end-_ownedComment.0" annotatedElement="ConnectableElement-end">
+          <body>Denotes a connector that attaches to this connectable element.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectableElement-end-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectableElement-end-_lowerValue"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="ConnectableElement-getEnds" name="getEnds" visibility="protected">
+        <ownedParameter xmi:id="ConnectableElement-getEnds-_ownedParameter.0" name="" type="ConnectorEnd" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectableElement-getEnds-_ownedParameter.0-_upperValue" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectableElement-getEnds-_ownedParameter.0-_lowerValue"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="ConnectorEnd" name="ConnectorEnd">
+      <ownedComment xmi:id="ConnectorEnd-_ownedComment.0" annotatedElement="ConnectorEnd">
+        <body>A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.</body>
+      </ownedComment>
+      <ownedRule xmi:id="ConnectorEnd-multiplicity" name="multiplicity" constrainedElement="ConnectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-multiplicity-_ownedComment.0" annotatedElement="ConnectorEnd-multiplicity">
+          <body>The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-multiplicity-_specification">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="ConnectorEnd-part_with_port_empty" name="part_with_port_empty" constrainedElement="ConnectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-part_with_port_empty-_ownedComment.0" annotatedElement="ConnectorEnd-part_with_port_empty">
+          <body>If a connector end is attached to a port of the containing classifier, partWithPort will be empty.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-part_with_port_empty-_specification">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="ConnectorEnd-role_and_part_with_port" name="role_and_part_with_port" constrainedElement="ConnectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-role_and_part_with_port-_ownedComment.0" annotatedElement="ConnectorEnd-role_and_part_with_port">
+          <body>If a connector end references both a role and a partWithPort, then the role must be a port that is defined by the type of the partWithPort.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-role_and_part_with_port-_specification">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="ConnectorEnd-self_part_with_port" name="self_part_with_port" constrainedElement="ConnectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-self_part_with_port-_ownedComment.0" annotatedElement="ConnectorEnd-self_part_with_port">
+          <body>The property held in self.partWithPort must not be a Port.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="ConnectorEnd-self_part_with_port-_specification">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <generalization xmi:id="ConnectorEnd-_generalization.0" general="MultiplicityElement"/>
+      <ownedAttribute xmi:id="ConnectorEnd-definingEnd" name="definingEnd" type="Property" isReadOnly="true" isDerived="true" association="A_definingEnd_connectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-definingEnd-_ownedComment.0" annotatedElement="ConnectorEnd-definingEnd">
+          <body>A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.&#xD;
+</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-definingEnd-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-definingEnd-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ConnectorEnd-partWithPort" name="partWithPort" type="Property" association="A_partWithPort_connectorEnd">
+        <ownedComment xmi:id="ConnectorEnd-partWithPort-_ownedComment.0" annotatedElement="ConnectorEnd-partWithPort">
+          <body>Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-partWithPort-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-partWithPort-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="ConnectorEnd-role" name="role" type="ConnectableElement" association="A_end_role">
+        <ownedComment xmi:id="ConnectorEnd-role-_ownedComment.0" annotatedElement="ConnectorEnd-role">
+          <body>The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.&#xD;
+</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ConnectorEnd-role-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ConnectorEnd-role-_lowerValue" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="ConnectorEnd-getDefiningEnd" name="getDefiningEnd" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="ConnectorEnd-getDefiningEnd-_ownedParameter.0" type="Property" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_connectableElement_end" name="A_connectableElement_end" visibility="private" memberEnd="ConnectableElement-end A_connectableElement_end-_ownedEnd.0">
+      <ownedEnd xmi:id="A_connectableElement_end-_ownedEnd.0" name="" visibility="private" type="ConnectableElement" association="A_connectableElement_end">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_connectableElement_end-_ownedEnd.0-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_connectableElement_end-_ownedEnd.0-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_end_role" name="A_end_role" visibility="private" memberEnd="ConnectorEnd-role A_end_role-end">
+      <ownedEnd xmi:id="A_end_role-end" name="end" visibility="private" type="ConnectorEnd" association="A_end_role">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_end_role-end-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_end_role-end-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Vertex" name="Vertex" isAbstract="true">
+      <ownedComment xmi:id="Vertex-_ownedComment.0" annotatedElement="Vertex">
+        <body>A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.</body>
+      </ownedComment>
+      <generalization xmi:id="Vertex-_generalization.0" general="NamedElement"/>
+      <ownedAttribute xmi:id="Vertex-container" name="container" type="Region" subsettedProperty="NamedElement-namespace" association="A_container_subvertex">
+        <ownedComment xmi:id="Vertex-container-_ownedComment.0" annotatedElement="Vertex-container">
+          <body>The region that contains this vertex.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-container-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-container-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Vertex-incoming" name="incoming" type="Transition" isDerived="true" association="A_vertex_incoming">
+        <ownedComment xmi:id="Vertex-incoming-_ownedComment.0" annotatedElement="Vertex-incoming">
+          <body>Specifies the transitions entering this vertex.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-incoming-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-incoming-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Vertex-outgoing" name="outgoing" type="Transition" isDerived="true" association="A_vertex_outgoing">
+        <ownedComment xmi:id="Vertex-outgoing-_ownedComment.0" annotatedElement="Vertex-outgoing">
+          <body>Specifies the transitions departing from this vertex.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-outgoing-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-outgoing-_lowerValue"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="Vertex-containingStateMachine" name="containingStateMachine" isQuery="true" bodyCondition="Vertex-containingStateMachine-spec">
+        <ownedComment xmi:id="Vertex-containingStateMachine-_ownedComment.0" annotatedElement="Vertex-containingStateMachine">
+          <body>The operation containingStateMachine() returns the state machine in which this Vertex is defined</body>
+        </ownedComment>
+        <ownedRule xmi:id="Vertex-containingStateMachine-spec" name="spec" constrainedElement="Vertex-containingStateMachine">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Vertex-containingStateMachine-spec-_specification">
+            <language>OCL</language>
+            <body>result = if not container->isEmpty()&#xA;then&#xA;-- the container is a region&#xA;container.containingStateMachine()&#xA;else if (oclIsKindOf(Pseudostate)) then&#xA;-- entry or exit point?&#xA;if (kind = #entryPoint) or (kind = #exitPoint) then&#xA;stateMachine&#xA;else if (oclIsKindOf(ConnectionPointReference)) then&#xA;state.containingStateMachine() -- no other valid cases possible&#xA;endif&#xA;</body>
+          </specification>
+        </ownedRule>
+        <ownedParameter xmi:id="Vertex-containingStateMachine-_ownedParameter.0" type="StateMachine" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Vertex-getIncomings" name="getIncomings" visibility="protected">
+        <ownedParameter xmi:id="Vertex-getIncomings-_ownedParameter.0" name="" type="Transition" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-getIncomings-_ownedParameter.0-_upperValue" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-getIncomings-_ownedParameter.0-_lowerValue"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="Vertex-getOutgoings" name="getOutgoings" visibility="protected">
+        <ownedParameter xmi:id="Vertex-getOutgoings-_ownedParameter.0" name="" type="Transition" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Vertex-getOutgoings-_ownedParameter.0-_upperValue" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Vertex-getOutgoings-_ownedParameter.0-_lowerValue"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="Transition" name="Transition">
+      <ownedComment xmi:id="Transition-_ownedComment.0" annotatedElement="Transition">
+        <body>A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.</body>
+      </ownedComment>
+      <ownedRule xmi:id="Transition-fork_segment_guards" name="fork_segment_guards" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-fork_segment_guards-_ownedComment.0" annotatedElement="Transition-fork_segment_guards">
+          <body>A fork segment must not have guards or triggers.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-fork_segment_guards-_specification">
+          <language>OCL</language>
+          <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (guard->isEmpty() and trigger->isEmpty())</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-join_segment_guards" name="join_segment_guards" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-join_segment_guards-_ownedComment.0" annotatedElement="Transition-join_segment_guards">
+          <body>A join segment must not have guards or triggers.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-join_segment_guards-_specification">
+          <language>OCL</language>
+          <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (guard->isEmpty() and trigger->isEmpty())</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-fork_segment_state" name="fork_segment_state" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-fork_segment_state-_ownedComment.0" annotatedElement="Transition-fork_segment_state">
+          <body>A fork segment must always target a state.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-fork_segment_state-_specification">
+          <language>OCL</language>
+          <body>(source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-join_segment_state" name="join_segment_state" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-join_segment_state-_ownedComment.0" annotatedElement="Transition-join_segment_state">
+          <body>A join segment must always originate from a state.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-join_segment_state-_specification">
+          <language>OCL</language>
+          <body>(target.oclIsKindOf(Pseudostate) and target.kind = #join) implies (source.oclIsKindOf(State))</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-outgoing_pseudostates" name="outgoing_pseudostates" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-outgoing_pseudostates-_ownedComment.0" annotatedElement="Transition-outgoing_pseudostates">
+          <body>Transitions outgoing pseudostates may not have a trigger.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-outgoing_pseudostates-_specification">
+          <language>OCL</language>
+          <body>source.oclIsKindOf(Pseudostate) and&#xA;((source.kind &lt;> #junction) and (source.kind &lt;> #join) and (source.kind &lt;> #initial)) implies trigger->isEmpty()&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-initial_transition" name="initial_transition" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-initial_transition-_ownedComment.0" annotatedElement="Transition-initial_transition">
+          <body>An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype &lt;&lt;create>>.</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-initial_transition-_specification">
+          <language>OCL</language>
+          <body>self.source.oclIsKindOf(Pseudostate) implies&#xA;(self.source.oclAsType(Pseudostate).kind = #initial) implies&#xA;(self.source.container = self.stateMachine.top) implies&#xA;((self.trigger->isEmpty) or&#xA;(self.trigger.stereotype.name = 'create'))&#xA;</body>
+        </specification>
+      </ownedRule>
+      <ownedRule xmi:id="Transition-signatures_compatible" name="signatures_compatible" constrainedElement="Transition">
+        <ownedComment xmi:id="Transition-signatures_compatible-_ownedComment.0" annotatedElement="Transition-signatures_compatible">
+          <body>In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.&#xD;
+</body>
+        </ownedComment>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-signatures_compatible-_specification">
+          <language>OCL</language>
+          <body>true</body>
+        </specification>
+      </ownedRule>
+      <generalization xmi:id="Transition-_generalization.0" general="RedefinableElement"/>
+      <generalization xmi:id="Transition-_generalization.1" general="Namespace"/>
+      <ownedAttribute xmi:id="Transition-kind" name="kind" type="TransitionKind">
+        <ownedComment xmi:id="Transition-kind-_ownedComment.0" annotatedElement="Transition-kind">
+          <body>Indicates  the precise type of the transition.</body>
+        </ownedComment>
+        <defaultValue xmi:type="uml:InstanceValue" xmi:id="Transition-kind-_defaultValue" type="TransitionKind" instance="TransitionKind-external"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-container" name="container" type="Region" subsettedProperty="NamedElement-namespace" association="A_container_transition">
+        <ownedComment xmi:id="Transition-container-_ownedComment.0" annotatedElement="Transition-container">
+          <body>Designates the region that owns this transition.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-container-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-container-_lowerValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-redefinedTransition" name="redefinedTransition" type="Transition" subsettedProperty="RedefinableElement-redefinedElement" association="A_redefinedTransition_transition">
+        <ownedComment xmi:id="Transition-redefinedTransition-_ownedComment.0" annotatedElement="Transition-redefinedTransition">
+          <body>The transition that is redefined by this transition.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-redefinedTransition-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-redefinedTransition-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-guard" name="guard" type="Constraint" aggregation="composite" subsettedProperty="Namespace-ownedRule" association="A_guard_transition">
+        <ownedComment xmi:id="Transition-guard-_ownedComment.0" annotatedElement="Transition-guard">
+          <body>A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-guard-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-guard-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-redefinitionContext" name="redefinitionContext" type="Classifier" isReadOnly="true" isDerived="true" redefinedProperty="RedefinableElement-redefinitionContext" association="A_transition_redefinitionContext">
+        <ownedComment xmi:id="Transition-redefinitionContext-_ownedComment.0" annotatedElement="Transition-redefinitionContext">
+          <body>References the classifier in which context this element may be redefined.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-redefinitionContext-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-redefinitionContext-_lowerValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-effect" name="effect" type="Behavior" aggregation="composite" subsettedProperty="Element-ownedElement" association="A_effect_transition">
+        <ownedComment xmi:id="Transition-effect-_ownedComment.0" annotatedElement="Transition-effect">
+          <body>Specifies an optional behavior to be performed when the transition fires.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-effect-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-effect-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-trigger" name="trigger" type="Trigger" aggregation="composite" association="A_trigger_transition">
+        <ownedComment xmi:id="Transition-trigger-_ownedComment.0" annotatedElement="Transition-trigger">
+          <body>Specifies the triggers that may fire the transition.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-trigger-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-trigger-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-target" name="target" type="Vertex" association="A_incoming_target">
+        <ownedComment xmi:id="Transition-target-_ownedComment.0" annotatedElement="Transition-target">
+          <body>Designates the target vertex that is reached when the transition is taken.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-target-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-target-_lowerValue" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="Transition-source" name="source" type="Vertex" association="A_outgoing_source.1">
+        <ownedComment xmi:id="Transition-source-_ownedComment.0" annotatedElement="Transition-source">
+          <body>Designates the originating vertex (state or pseudostate) of the transition.</body>
+        </ownedComment>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Transition-source-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Transition-source-_lowerValue" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="Transition-redefinitionContext.1" name="redefinitionContext" isQuery="true" bodyCondition="Transition-redefinitionContext.1-spec">
+        <ownedComment xmi:id="Transition-redefinitionContext.1-_ownedComment.0" annotatedElement="Transition-redefinitionContext.1">
+          <body>The redefinition context of a transition is the nearest containing statemachine.</body>
+        </ownedComment>
+        <ownedRule xmi:id="Transition-redefinitionContext.1-spec" name="spec" constrainedElement="Transition-redefinitionContext.1 Transition-redefinitionContext">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-redefinitionContext.1-spec-_specification">
+            <language>OCL</language>
+            <body>result = let sm = containingStateMachine() in&#xA;if sm.context->isEmpty() or sm.general->notEmpty() then&#xA;sm&#xA;else&#xA;sm.context&#xA;endif</body>
+          </specification>
+        </ownedRule>
+        <ownedParameter xmi:id="Transition-redefinitionContext.1-_ownedParameter.0" type="Classifier" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Transition-isConsistentWith" name="isConsistentWith" isQuery="true" precondition="Transition-isConsistentWith-_ownedRule.1" redefinedOperation="RedefinableElement-isConsistentWith" bodyCondition="Transition-isConsistentWith-spec">
+        <ownedComment xmi:id="Transition-isConsistentWith-_ownedComment.0" annotatedElement="Transition-isConsistentWith">
+          <body>The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.</body>
+        </ownedComment>
+        <ownedRule xmi:id="Transition-isConsistentWith-spec" name="spec" constrainedElement="Transition-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-spec-_specification">
+            <language>OCL</language>
+            <body>result = (redefinee.oclIsKindOf(Transition) and&#xD;&#xA;  let trans: Transition = redefinee.oclAsType(Transition) in&#xD;&#xA;    (source() = trans.source() and trigger() = tran.trigger())</body>
+          </specification>
+        </ownedRule>
+        <ownedRule xmi:id="Transition-isConsistentWith-_ownedRule.1" constrainedElement="Transition-isConsistentWith">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-isConsistentWith-_ownedRule.1-_specification">
+            <language>OCL</language>
+            <body>redefinee.isRedefinitionContextValid(self)</body>
+          </specification>
+        </ownedRule>
+        <ownedParameter xmi:id="Transition-isConsistentWith-_ownedParameter.0" type="Boolean" direction="return"/>
+        <ownedParameter xmi:id="Transition-isConsistentWith-redefinee" name="redefinee" type="RedefinableElement"/>
+      </ownedOperation>
+      <ownedOperation xmi:id="Transition-containingStateMachine" name="containingStateMachine" isQuery="true" bodyCondition="Transition-containingStateMachine-spec">
+        <ownedComment xmi:id="Transition-containingStateMachine-_ownedComment.0" annotatedElement="Transition-containingStateMachine">
+          <body>The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.</body>
+        </ownedComment>
+        <ownedRule xmi:id="Transition-containingStateMachine-spec" name="spec" constrainedElement="Transition-containingStateMachine">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="Transition-containingStateMachine-spec-_specification">
+            <language>OCL</language>
+            <body>result = container.containingStateMachine()</body>
+          </specification>
+        </ownedRule>
+        <ownedParameter xmi:id="Transition-containingStateMachine-_ownedParameter.0" type="StateMachine" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_incoming_target" name="A_incoming_target" visibility="private" memberEnd="Transition-target A_incoming_target-incoming">
+      <ownedEnd xmi:id="A_incoming_target-incoming" name="incoming" visibility="private" type="Transition" association="A_incoming_target">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_incoming_target-incoming-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_incoming_target-incoming-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_outgoing_source.1" name="A_outgoing_source" visibility="private" memberEnd="Transition-source A_outgoing_source.1-outgoing">
+      <ownedEnd xmi:id="A_outgoing_source.1-outgoing" name="outgoing" visibility="private" type="Transition" association="A_outgoing_source.1">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_outgoing_source.1-outgoing-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_outgoing_source.1-outgoing-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_vertex_incoming" name="A_vertex_incoming" visibility="private" memberEnd="Vertex-incoming A_vertex_incoming-_ownedEnd.0">
+      <ownedEnd xmi:id="A_vertex_incoming-_ownedEnd.0" name="" visibility="private" type="Vertex" association="A_vertex_incoming">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_vertex_incoming-_ownedEnd.0-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_vertex_incoming-_ownedEnd.0-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_vertex_outgoing" name="A_vertex_outgoing" visibility="private" memberEnd="Vertex-outgoing A_vertex_outgoing-_ownedEnd.0">
+      <ownedEnd xmi:id="A_vertex_outgoing-_ownedEnd.0" name="" visibility="private" type="Vertex" association="A_vertex_outgoing">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_vertex_outgoing-_ownedEnd.0-_upperValue" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_vertex_outgoing-_ownedEnd.0-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:id="_profileApplication.0">
       <eAnnotations xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
@@ -15594,7 +15645,7 @@ define a collating sequence between operands and subexpressions).
       <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_0" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_0" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.1.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   <Ecore:EAttribute xmi:id="_LWVYQd7NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="OpaqueExpression-body"/>
   <Ecore:EDataType xmi:id="_LWfJQN7NEduglsXU_NKRsA" instanceClassName="boolean" base_PrimitiveType="Boolean"/>
   <Ecore:EDataType xmi:id="_LWfJQd7NEduglsXU_NKRsA" instanceClassName="int" base_PrimitiveType="Integer"/>
@@ -15604,356 +15655,359 @@ define a collating sequence between operands and subexpressions).
   <Ecore:EAttribute xmi:id="_LWfJRd7NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="OpaqueBehavior-body"/>
   <Ecore:EGenericType xmi:id="_PUkIYN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EJavaObject_EJavaObject"/>
   <Ecore:EGenericType xmi:id="_QfhfoN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EString_EString"/>
-  <Ecore:EReference xmi:id="_c-Hut97NEduglsXU_NKRsA" isTransient="true" base_Property="Classifier-attribute"/>
-  <Ecore:EReference xmi:id="_c-HuuN7NEduglsXU_NKRsA" isTransient="true" base_Property="Classifier-feature"/>
-  <Ecore:EReference xmi:id="_c-Huud7NEduglsXU_NKRsA" isTransient="true" base_Property="Classifier-inheritedMember"/>
-  <Ecore:EOperation xmi:id="_c-Huut7NEduglsXU_NKRsA" base_Operation="Classifier-general.1" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_c-Huu97NEduglsXU_NKRsA" base_Operation="Classifier-inheritedMember.1" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_c-HuvN7NEduglsXU_NKRsA" isTransient="true" base_Property="DirectedRelationship-source"/>
-  <Ecore:EReference xmi:id="_c-Huvd7NEduglsXU_NKRsA" isTransient="true" base_Property="DirectedRelationship-target"/>
-  <Ecore:EReference xmi:id="_c-Huvt7NEduglsXU_NKRsA" isTransient="true" base_Property="Element-ownedElement"/>
-  <Ecore:EReference xmi:id="_c-Huv97NEduglsXU_NKRsA" isTransient="true" base_Property="Element-owner"/>
-  <Ecore:EReference xmi:id="_c-HuwN7NEduglsXU_NKRsA" isTransient="true" base_Property="Feature-featuringClassifier"/>
-  <Ecore:EReference xmi:id="_c-Q4QN7NEduglsXU_NKRsA" isTransient="true" base_Property="Namespace-importedMember"/>
-  <Ecore:EReference xmi:id="_c-Q4Qd7NEduglsXU_NKRsA" isTransient="true" base_Property="Namespace-ownedMember"/>
-  <Ecore:EReference xmi:id="_c-Q4Qt7NEduglsXU_NKRsA" isTransient="true" base_Property="Namespace-member"/>
-  <Ecore:EOperation xmi:id="_c-Q4Q97NEduglsXU_NKRsA" base_Operation="Namespace-importedMember.1" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_c-Q4RN7NEduglsXU_NKRsA" isTransient="true" base_Property="RedefinableElement-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_c-Q4Rd7NEduglsXU_NKRsA" isTransient="true" base_Property="RedefinableElement-redefinedElement"/>
-  <Ecore:EReference xmi:id="_c-Q4Rt7NEduglsXU_NKRsA" isTransient="true" base_Property="Relationship-relatedElement"/>
-  <Ecore:EReference xmi:id="_c-Q4R97NEduglsXU_NKRsA" isTransient="true" base_Property="Association-endType"/>
-  <Ecore:EAttribute xmi:id="_c-Q4SN7NEduglsXU_NKRsA" isTransient="true" isUnsettable="true" base_Property="Property-default"/>
-  <Ecore:EReference xmi:id="_c-Q4Sd7NEduglsXU_NKRsA" isTransient="true" base_Property="Property-opposite"/>
-  <Ecore:EOperation xmi:id="_c-Q4St7NEduglsXU_NKRsA" base_Operation="Property-opposite.1" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_c-Q4S97NEduglsXU_NKRsA" isUnsettable="true" base_Property="OpaqueExpression-language"/>
-  <Ecore:EAttribute xmi:id="_c-Q4TN7NEduglsXU_NKRsA" isTransient="true" base_Property="Operation-isOrdered"/>
-  <Ecore:EAttribute xmi:id="_c-Q4Td7NEduglsXU_NKRsA" isTransient="true" base_Property="Operation-isUnique"/>
-  <Ecore:EAttribute xmi:id="_c-Q4Tt7NEduglsXU_NKRsA" isTransient="true" base_Property="Operation-lower"/>
-  <Ecore:EAttribute xmi:id="_c-Q4T97NEduglsXU_NKRsA" isTransient="true" base_Property="Operation-upper"/>
-  <Ecore:EReference xmi:id="_c-Q4UN7NEduglsXU_NKRsA" isTransient="true" base_Property="Operation-type"/>
-  <Ecore:EOperation xmi:id="_c-Q4Ud7NEduglsXU_NKRsA" base_Operation="Operation-lower.1" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_c-Q4Ut7NEduglsXU_NKRsA" base_Operation="Operation-upper.1" operationName="upperBound"/>
-  <Ecore:EOperation xmi:id="_c-Q4U97NEduglsXU_NKRsA" base_Operation="Operation-type.1" operationName="getType"/>
-  <Ecore:EAttribute xmi:id="_c-Q4VN7NEduglsXU_NKRsA" isTransient="true" isUnsettable="true" base_Property="Parameter-default"/>
-  <Ecore:EAttribute xmi:id="_c-Q4Vd7NEduglsXU_NKRsA" isUnsettable="true" base_Property="ElementImport-alias"/>
-  <Ecore:EReference xmi:id="_c-Q4Vt7NEduglsXU_NKRsA" isTransient="true" base_Property="Package-ownedType"/>
-  <Ecore:EReference xmi:id="_c-Q4V97NEduglsXU_NKRsA" isTransient="true" base_Property="Package-nestedPackage"/>
-  <Ecore:EReference xmi:id="_c-Q4WN7NEduglsXU_NKRsA" isTransient="true" base_Property="Package-nestingPackage"/>
-  <Ecore:EReference xmi:id="_c-Q4Wd7NEduglsXU_NKRsA" isTransient="true" base_Property="Type-package"/>
-  <Ecore:EAttribute xmi:id="_c-Q4Wt7NEduglsXU_NKRsA" isUnsettable="true" base_Property="NamedElement-name"/>
-  <Ecore:EAttribute xmi:id="_c-Q4W97NEduglsXU_NKRsA" isUnsettable="true" base_Property="NamedElement-visibility"/>
-  <Ecore:EReference xmi:id="_c-Q4XN7NEduglsXU_NKRsA" isTransient="true" base_Property="NamedElement-namespace"/>
-  <Ecore:EAttribute xmi:id="_c-Q4Xd7NEduglsXU_NKRsA" isTransient="true" base_Property="NamedElement-qualifiedName"/>
-  <Ecore:EOperation xmi:id="_c-Q4Xt7NEduglsXU_NKRsA" base_Operation="NamedElement-qualifiedName.1" operationName="getQualifiedName"/>
-  <Ecore:EAttribute xmi:id="_c-Q4X97NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="Comment-body"/>
-  <Ecore:EAttribute xmi:id="_dBGJ6N7NEduglsXU_NKRsA" isUnsettable="true" base_Property="LiteralString-value"/>
-  <Ecore:EAttribute xmi:id="_dBGJ6d7NEduglsXU_NKRsA" isTransient="true" base_Property="MultiplicityElement-upper"/>
-  <Ecore:EAttribute xmi:id="_dBGJ6t7NEduglsXU_NKRsA" isTransient="true" base_Property="MultiplicityElement-lower"/>
-  <Ecore:EOperation xmi:id="_dBGJ697NEduglsXU_NKRsA" base_Operation="MultiplicityElement-lower.1" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_dBGJ7N7NEduglsXU_NKRsA" base_Operation="MultiplicityElement-upper.1" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_dBGJ7d7NEduglsXU_NKRsA" isTransient="true" base_Property="Classifier-general"/>
-  <Ecore:EAttribute xmi:id="_dBGJ7t7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Generalization-isSubstitutable"/>
-  <Ecore:EReference xmi:id="_dBGJ797NEduglsXU_NKRsA" isTransient="true" base_Property="Class-superClass"/>
-  <Ecore:EAttribute xmi:id="_dBP60N7NEduglsXU_NKRsA" isTransient="true" base_Property="Property-isComposite"/>
-  <Ecore:EOperation xmi:id="_dBP60d7NEduglsXU_NKRsA" base_Operation="Association-endType.1" operationName="getEndTypes"/>
-  <Ecore:EAttribute xmi:id="_dBP60t7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Expression-symbol"/>
-  <Ecore:EReference xmi:id="_dBZE-97NEduglsXU_NKRsA" isTransient="true" base_Property="Behavior-context"/>
-  <Ecore:EReference xmi:id="_dBZE_N7NEduglsXU_NKRsA" isTransient="true" base_Property="OpaqueExpression-result"/>
-  <Ecore:EAttribute xmi:id="_dBZE_d7NEduglsXU_NKRsA" isUnsettable="true" base_Property="OpaqueBehavior-language"/>
-  <Ecore:EAttribute xmi:id="_dBi2EN7NEduglsXU_NKRsA" isUnsettable="true" base_Property="OpaqueAction-language"/>
-  <Ecore:EReference xmi:id="_dBi2Ed7NEduglsXU_NKRsA" isTransient="true" base_Property="Action-output"/>
-  <Ecore:EReference xmi:id="_dBi2Et7NEduglsXU_NKRsA" isTransient="true" base_Property="Action-input"/>
-  <Ecore:EReference xmi:id="_dBi2E97NEduglsXU_NKRsA" isTransient="true" base_Property="Action-context"/>
-  <Ecore:EReference xmi:id="_dBi2Rt7NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityGroup-containedNode"/>
-  <Ecore:EReference xmi:id="_dBi2R97NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityGroup-subgroup"/>
-  <Ecore:EReference xmi:id="_dBi2SN7NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityGroup-superGroup"/>
-  <Ecore:EReference xmi:id="_dBi2Sd7NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityNode-inGroup"/>
-  <Ecore:EReference xmi:id="_dBsnMN7NEduglsXU_NKRsA" isTransient="true" base_Property="Activity-structuredNode"/>
-  <Ecore:EReference xmi:id="_dB_iDN7NEduglsXU_NKRsA" isTransient="true" base_Property="ConnectorEnd-definingEnd"/>
-  <Ecore:EReference xmi:id="_dB_iDd7NEduglsXU_NKRsA" isTransient="true" base_Property="StructuredClassifier-part"/>
-  <Ecore:EReference xmi:id="_dB_iDt7NEduglsXU_NKRsA" isTransient="true" base_Property="StructuredClassifier-role"/>
-  <Ecore:EReference xmi:id="_dCIsVd7NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityEdge-inGroup"/>
-  <Ecore:EReference xmi:id="_dCIsVt7NEduglsXU_NKRsA" isTransient="true" base_Property="ActivityGroup-containedEdge"/>
-  <Ecore:EAttribute xmi:id="_dClXkN7NEduglsXU_NKRsA" isTransient="true" base_Property="Message-messageKind"/>
-  <Ecore:EReference xmi:id="_dClXkd7NEduglsXU_NKRsA" isTransient="true" base_Property="Message-signature"/>
-  <Ecore:EReference xmi:id="_dDCD5d7NEduglsXU_NKRsA" isTransient="true" base_Property="Port-required"/>
-  <Ecore:EReference xmi:id="_dDCD5t7NEduglsXU_NKRsA" isTransient="true" base_Property="Port-provided"/>
-  <Ecore:EReference xmi:id="_dDCD597NEduglsXU_NKRsA" isTransient="true" base_Property="EncapsulatedClassifier-ownedPort"/>
-  <Ecore:EReference xmi:id="_dDL0ut7NEduglsXU_NKRsA" isTransient="true" base_Property="Component-required"/>
-  <Ecore:EReference xmi:id="_dDL0u97NEduglsXU_NKRsA" isTransient="true" base_Property="Component-provided"/>
-  <Ecore:EOperation xmi:id="_dDL0vN7NEduglsXU_NKRsA" base_Operation="Component-required.1" operationName="getRequireds"/>
-  <Ecore:EOperation xmi:id="_dDL0vd7NEduglsXU_NKRsA" base_Operation="Component-provided.1" operationName="getProvideds"/>
-  <Ecore:EAttribute xmi:id="_dDL0vt7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Connector-kind"/>
-  <Ecore:EAttribute xmi:id="_dDL08d7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Artifact-fileName"/>
-  <Ecore:EReference xmi:id="_dDU-f97NEduglsXU_NKRsA" isTransient="true" base_Property="DeploymentTarget-deployedElement"/>
-  <Ecore:EOperation xmi:id="_dDU-gN7NEduglsXU_NKRsA" base_Operation="DeploymentTarget-deployedElement.1" operationName="getDeployedElements"/>
-  <Ecore:EAttribute xmi:id="_dE99NN7NEduglsXU_NKRsA" isTransient="true" base_Property="State-isComposite"/>
-  <Ecore:EAttribute xmi:id="_dE99Nd7NEduglsXU_NKRsA" isTransient="true" base_Property="State-isOrthogonal"/>
-  <Ecore:EAttribute xmi:id="_dE99Nt7NEduglsXU_NKRsA" isTransient="true" base_Property="State-isSimple"/>
-  <Ecore:EAttribute xmi:id="_dE99N97NEduglsXU_NKRsA" isTransient="true" base_Property="State-isSubmachineState"/>
-  <Ecore:EReference xmi:id="_dE99ON7NEduglsXU_NKRsA" isTransient="true" base_Property="State-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_dE99Od7NEduglsXU_NKRsA" isTransient="true" base_Property="Transition-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_dE99Ot7NEduglsXU_NKRsA" isTransient="true" base_Property="Region-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_dFHuYt7NEduglsXU_NKRsA" isTransient="true" base_Property="Profile-ownedStereotype"/>
-  <Ecore:EReference xmi:id="_dFHuY97NEduglsXU_NKRsA" isTransient="true" base_Property="Class-extension"/>
-  <Ecore:EAttribute xmi:id="_dFHuZN7NEduglsXU_NKRsA" isTransient="true" base_Property="Extension-isRequired"/>
-  <Ecore:EReference xmi:id="_dFHuZd7NEduglsXU_NKRsA" isTransient="true" base_Property="Extension-metaclass"/>
-  <Ecore:EOperation xmi:id="_dFHuZt7NEduglsXU_NKRsA" base_Operation="Extension-metaclass.1" operationName="getMetaclass"/>
-  <Ecore:EAttribute xmi:id="_dFHuZ97NEduglsXU_NKRsA" isUnsettable="true" base_Property="Image-content"/>
-  <Ecore:EAttribute xmi:id="_dFHuaN7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Image-location"/>
-  <Ecore:EAttribute xmi:id="_dFHuad7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Image-format"/>
-  <Ecore:EAttribute xmi:id="_dFHubt7NEduglsXU_NKRsA" isTransient="true" base_Property="ExtensionEnd-lower"/>
-  <Ecore:EAttribute xmi:id="_dFapJt7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Model-viewpoint"/>
-  <Ecore:EAttribute xmi:id="_dF3Vad7NEduglsXU_NKRsA" isUnsettable="true" base_Property="Parameter-effect"/>
-  <Ecore:EAttribute xmi:id="_dGKQH97NEduglsXU_NKRsA" isUnsettable="true" base_Property="DeploymentSpecification-deploymentLocation"/>
-  <Ecore:EAttribute xmi:id="_dGKQIN7NEduglsXU_NKRsA" isUnsettable="true" base_Property="DeploymentSpecification-executionLocation"/>
-  <Ecore:EReference xmi:id="_dGUBDN7NEduglsXU_NKRsA" isTransient="true" base_Property="ProtocolTransition-referred"/>
-  <Ecore:EReference xmi:id="_dGm8I97NEduglsXU_NKRsA" isTransient="true" base_Property="RedefinableTemplateSignature-inheritedParameter"/>
-  <Standard:Metamodel xmi:id="_ekeEQN7REduDUa-107O6IQ" base_Model="_0"/>
-  <Standard:Metaclass xmi:id="_ekxmQN7REduDUa-107O6IQ" base_Class="Comment"/>
-  <Standard:Metaclass xmi:id="_ekxmQd7REduDUa-107O6IQ" base_Class="DirectedRelationship"/>
-  <Standard:Metaclass xmi:id="_ekxmQt7REduDUa-107O6IQ" base_Class="LiteralSpecification"/>
-  <Standard:Metaclass xmi:id="_ekxmQ97REduDUa-107O6IQ" base_Class="LiteralInteger"/>
-  <Standard:Metaclass xmi:id="_ekxmRN7REduDUa-107O6IQ" base_Class="LiteralString"/>
-  <Standard:Metaclass xmi:id="_ekxmRd7REduDUa-107O6IQ" base_Class="LiteralBoolean"/>
-  <Standard:Metaclass xmi:id="_ekxmRt7REduDUa-107O6IQ" base_Class="LiteralNull"/>
-  <Standard:Metaclass xmi:id="_ekxmR97REduDUa-107O6IQ" base_Class="Constraint"/>
-  <Standard:Metaclass xmi:id="_ekxmSN7REduDUa-107O6IQ" base_Class="ElementImport"/>
-  <Standard:Metaclass xmi:id="_ekxmSd7REduDUa-107O6IQ" base_Class="TypedElement"/>
-  <Standard:Metaclass xmi:id="_ekxmSt7REduDUa-107O6IQ" base_Class="Feature"/>
-  <Standard:Metaclass xmi:id="_ekxmS97REduDUa-107O6IQ" base_Class="RedefinableElement"/>
-  <Standard:Metaclass xmi:id="_ekxmTN7REduDUa-107O6IQ" base_Class="StructuralFeature"/>
-  <Standard:Metaclass xmi:id="_ek6wMN7REduDUa-107O6IQ" base_Class="Slot"/>
-  <Standard:Metaclass xmi:id="_ek6wMd7REduDUa-107O6IQ" base_Class="PackageImport"/>
-  <Standard:Metaclass xmi:id="_ek6wMt7REduDUa-107O6IQ" base_Class="DataType"/>
-  <Standard:Metaclass xmi:id="_ek6wM97REduDUa-107O6IQ" base_Class="Enumeration"/>
-  <Standard:Metaclass xmi:id="_ek6wNN7REduDUa-107O6IQ" base_Class="EnumerationLiteral"/>
-  <Standard:Metaclass xmi:id="_ek6wNd7REduDUa-107O6IQ" base_Class="PrimitiveType"/>
-  <Standard:Metaclass xmi:id="_ek6wNt7REduDUa-107O6IQ" base_Class="Association"/>
-  <Standard:Metaclass xmi:id="_ek6wN97REduDUa-107O6IQ" base_Class="Relationship"/>
-  <Standard:Metaclass xmi:id="_ek6wON7REduDUa-107O6IQ" base_Class="PackageMerge"/>
-  <Standard:Metaclass xmi:id="_ek6wOd7REduDUa-107O6IQ" base_Class="InstanceValue"/>
-  <Standard:Metaclass xmi:id="_ek6wOt7REduDUa-107O6IQ" base_Class="LiteralUnlimitedNatural"/>
-  <Standard:Metaclass xmi:id="_ek6wO97REduDUa-107O6IQ" base_Class="Type"/>
-  <Standard:Metaclass xmi:id="_ek6wPN7REduDUa-107O6IQ" base_Class="Expression"/>
-  <Standard:Metaclass xmi:id="_elEhMN7REduDUa-107O6IQ" base_Class="OpaqueExpression"/>
-  <Standard:Metaclass xmi:id="_elEhMd7REduDUa-107O6IQ" base_Class="OpaqueBehavior"/>
-  <Standard:Metaclass xmi:id="_elEhMt7REduDUa-107O6IQ" base_Class="FunctionBehavior"/>
-  <Standard:Metaclass xmi:id="_elEhM97REduDUa-107O6IQ" base_Class="OpaqueAction"/>
-  <Standard:Metaclass xmi:id="_elEhNN7REduDUa-107O6IQ" base_Class="CallAction"/>
-  <Standard:Metaclass xmi:id="_elEhNd7REduDUa-107O6IQ" base_Class="SendSignalAction"/>
-  <Standard:Metaclass xmi:id="_elEhNt7REduDUa-107O6IQ" base_Class="CallOperationAction"/>
-  <Standard:Metaclass xmi:id="_elOSMN7REduDUa-107O6IQ" base_Class="CallBehaviorAction"/>
-  <Standard:Metaclass xmi:id="_elOSMd7REduDUa-107O6IQ" base_Class="MultiplicityElement"/>
-  <Standard:Metaclass xmi:id="_elOSMt7REduDUa-107O6IQ" base_Class="SequenceNode"/>
-  <Standard:Metaclass xmi:id="_elOSM97REduDUa-107O6IQ" base_Class="InputPin"/>
-  <Standard:Metaclass xmi:id="_elOSNN7REduDUa-107O6IQ" base_Class="OutputPin"/>
-  <Standard:Metaclass xmi:id="_elOSNd7REduDUa-107O6IQ" base_Class="Usage"/>
-  <Standard:Metaclass xmi:id="_elOSNt7REduDUa-107O6IQ" base_Class="Abstraction"/>
-  <Standard:Metaclass xmi:id="_elOSN97REduDUa-107O6IQ" base_Class="Dependency"/>
-  <Standard:Metaclass xmi:id="_elOSON7REduDUa-107O6IQ" base_Class="Realization"/>
-  <Standard:Metaclass xmi:id="_elOSOd7REduDUa-107O6IQ" base_Class="Substitution"/>
-  <Standard:Metaclass xmi:id="_elXcIN7REduDUa-107O6IQ" base_Class="Namespace"/>
-  <Standard:Metaclass xmi:id="_elXcId7REduDUa-107O6IQ" base_Class="InterfaceRealization"/>
-  <Standard:Metaclass xmi:id="_elXcIt7REduDUa-107O6IQ" base_Class="StructuredClassifier"/>
-  <Standard:Metaclass xmi:id="_elXcI97REduDUa-107O6IQ" base_Class="Variable"/>
-  <Standard:Metaclass xmi:id="_elXcJN7REduDUa-107O6IQ" base_Class="CollaborationUse"/>
-  <Standard:Metaclass xmi:id="_elXcJd7REduDUa-107O6IQ" base_Class="Collaboration"/>
-  <Standard:Metaclass xmi:id="_elhNIN7REduDUa-107O6IQ" base_Class="ControlNode"/>
-  <Standard:Metaclass xmi:id="_elhNId7REduDUa-107O6IQ" base_Class="ControlFlow"/>
-  <Standard:Metaclass xmi:id="_elhNIt7REduDUa-107O6IQ" base_Class="InitialNode"/>
-  <Standard:Metaclass xmi:id="_elhNI97REduDUa-107O6IQ" base_Class="ActivityParameterNode"/>
-  <Standard:Metaclass xmi:id="_elhNJN7REduDUa-107O6IQ" base_Class="ValuePin"/>
-  <Standard:Metaclass xmi:id="_elhNJd7REduDUa-107O6IQ" base_Class="Message"/>
-  <Standard:Metaclass xmi:id="_elhNJt7REduDUa-107O6IQ" base_Class="GeneralOrdering"/>
-  <Standard:Metaclass xmi:id="_elhNJ97REduDUa-107O6IQ" base_Class="ExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_elhNKN7REduDUa-107O6IQ" base_Class="OccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_elhNKd7REduDUa-107O6IQ" base_Class="MessageEnd"/>
-  <Standard:Metaclass xmi:id="_elhNKt7REduDUa-107O6IQ" base_Class="StateInvariant"/>
-  <Standard:Metaclass xmi:id="_el0IEN7REduDUa-107O6IQ" base_Class="ActionExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_el0IEd7REduDUa-107O6IQ" base_Class="BehaviorExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_el0IEt7REduDUa-107O6IQ" base_Class="ExecutionEvent"/>
-  <Standard:Metaclass xmi:id="_el0IE97REduDUa-107O6IQ" base_Class="CreationEvent"/>
-  <Standard:Metaclass xmi:id="_el0IFN7REduDUa-107O6IQ" base_Class="DestructionEvent"/>
-  <Standard:Metaclass xmi:id="_el0IFd7REduDUa-107O6IQ" base_Class="SendOperationEvent"/>
-  <Standard:Metaclass xmi:id="_el0IFt7REduDUa-107O6IQ" base_Class="SendSignalEvent"/>
-  <Standard:Metaclass xmi:id="_el0IF97REduDUa-107O6IQ" base_Class="MessageOccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_el0IGN7REduDUa-107O6IQ" base_Class="ExecutionOccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_el0IGd7REduDUa-107O6IQ" base_Class="ReceiveOperationEvent"/>
-  <Standard:Metaclass xmi:id="_el0IGt7REduDUa-107O6IQ" base_Class="ReceiveSignalEvent"/>
-  <Standard:Metaclass xmi:id="_emQ0AN7REduDUa-107O6IQ" base_Class="Actor"/>
-  <Standard:Metaclass xmi:id="_emQ0Ad7REduDUa-107O6IQ" base_Class="Extend"/>
-  <Standard:Metaclass xmi:id="_emQ0At7REduDUa-107O6IQ" base_Class="Include"/>
-  <Standard:Metaclass xmi:id="_emQ0A97REduDUa-107O6IQ" base_Class="UseCase"/>
-  <Standard:Metaclass xmi:id="_emalAN7REduDUa-107O6IQ" base_Class="ExtensionPoint"/>
-  <Standard:Metaclass xmi:id="_emalAd7REduDUa-107O6IQ" base_Class="CallEvent"/>
-  <Standard:Metaclass xmi:id="_emalAt7REduDUa-107O6IQ" base_Class="ChangeEvent"/>
-  <Standard:Metaclass xmi:id="_emalA97REduDUa-107O6IQ" base_Class="Reception"/>
-  <Standard:Metaclass xmi:id="_emalBN7REduDUa-107O6IQ" base_Class="Signal"/>
-  <Standard:Metaclass xmi:id="_emalBd7REduDUa-107O6IQ" base_Class="SignalEvent"/>
-  <Standard:Metaclass xmi:id="_emalBt7REduDUa-107O6IQ" base_Class="MessageEvent"/>
-  <Standard:Metaclass xmi:id="_emalB97REduDUa-107O6IQ" base_Class="AnyReceiveEvent"/>
-  <Standard:Metaclass xmi:id="_emalCN7REduDUa-107O6IQ" base_Class="BehavioredClassifier"/>
-  <Standard:Metaclass xmi:id="_emalCd7REduDUa-107O6IQ" base_Class="Event"/>
-  <Standard:Metaclass xmi:id="_emju8N7REduDUa-107O6IQ" base_Class="ForkNode"/>
-  <Standard:Metaclass xmi:id="_emju8d7REduDUa-107O6IQ" base_Class="FlowFinalNode"/>
-  <Standard:Metaclass xmi:id="_emju8t7REduDUa-107O6IQ" base_Class="CentralBufferNode"/>
-  <Standard:Metaclass xmi:id="_emju897REduDUa-107O6IQ" base_Class="ActivityPartition"/>
-  <Standard:Metaclass xmi:id="_emju9N7REduDUa-107O6IQ" base_Class="MergeNode"/>
-  <Standard:Metaclass xmi:id="_emju9d7REduDUa-107O6IQ" base_Class="DecisionNode"/>
-  <Standard:Metaclass xmi:id="_emju9t7REduDUa-107O6IQ" base_Class="FinalNode"/>
-  <Standard:Metaclass xmi:id="_emju997REduDUa-107O6IQ" base_Class="ActivityFinalNode"/>
-  <Standard:Metaclass xmi:id="_emju-N7REduDUa-107O6IQ" base_Class="EncapsulatedClassifier"/>
-  <Standard:Metaclass xmi:id="_emtf8N7REduDUa-107O6IQ" base_Class="ConnectorEnd"/>
-  <Standard:Metaclass xmi:id="_emtf8d7REduDUa-107O6IQ" base_Class="ComponentRealization"/>
-  <Standard:Metaclass xmi:id="_emtf8t7REduDUa-107O6IQ" base_Class="Connector"/>
-  <Standard:Metaclass xmi:id="_emtf897REduDUa-107O6IQ" base_Class="Manifestation"/>
-  <Standard:Metaclass xmi:id="_em2p4N7REduDUa-107O6IQ" base_Class="Node"/>
-  <Standard:Metaclass xmi:id="_em2p4d7REduDUa-107O6IQ" base_Class="Device"/>
-  <Standard:Metaclass xmi:id="_em2p4t7REduDUa-107O6IQ" base_Class="ExecutionEnvironment"/>
-  <Standard:Metaclass xmi:id="_em2p497REduDUa-107O6IQ" base_Class="DeploymentTarget"/>
-  <Standard:Metaclass xmi:id="_em2p5N7REduDUa-107O6IQ" base_Class="DeployedArtifact"/>
-  <Standard:Metaclass xmi:id="_em2p5d7REduDUa-107O6IQ" base_Class="CommunicationPath"/>
-  <Standard:Metaclass xmi:id="_em2p5t7REduDUa-107O6IQ" base_Class="InstanceSpecification"/>
-  <Standard:Metaclass xmi:id="_em2p597REduDUa-107O6IQ" base_Class="Artifact"/>
-  <Standard:Metaclass xmi:id="_em2p6N7REduDUa-107O6IQ" base_Class="InteractionUse"/>
-  <Standard:Metaclass xmi:id="_enAa4N7REduDUa-107O6IQ" base_Class="PartDecomposition"/>
-  <Standard:Metaclass xmi:id="_enAa4d7REduDUa-107O6IQ" base_Class="InteractionOperand"/>
-  <Standard:Metaclass xmi:id="_enAa4t7REduDUa-107O6IQ" base_Class="InteractionConstraint"/>
-  <Standard:Metaclass xmi:id="_enAa497REduDUa-107O6IQ" base_Class="Gate"/>
-  <Standard:Metaclass xmi:id="_enAa5N7REduDUa-107O6IQ" base_Class="CombinedFragment"/>
-  <Standard:Metaclass xmi:id="_enAa5d7REduDUa-107O6IQ" base_Class="Interaction"/>
-  <Standard:Metaclass xmi:id="_enAa5t7REduDUa-107O6IQ" base_Class="Lifeline"/>
-  <Standard:Metaclass xmi:id="_enKL4N7REduDUa-107O6IQ" base_Class="Continuation"/>
-  <Standard:Metaclass xmi:id="_enKL4d7REduDUa-107O6IQ" base_Class="InteractionFragment"/>
-  <Standard:Metaclass xmi:id="_enKL4t7REduDUa-107O6IQ" base_Class="ConsiderIgnoreFragment"/>
-  <Standard:Metaclass xmi:id="_enKL497REduDUa-107O6IQ" base_Class="CreateObjectAction"/>
-  <Standard:Metaclass xmi:id="_enTV0N7REduDUa-107O6IQ" base_Class="DestroyObjectAction"/>
-  <Standard:Metaclass xmi:id="_enTV0d7REduDUa-107O6IQ" base_Class="TestIdentityAction"/>
-  <Standard:Metaclass xmi:id="_enTV0t7REduDUa-107O6IQ" base_Class="ReadSelfAction"/>
-  <Standard:Metaclass xmi:id="_enTV097REduDUa-107O6IQ" base_Class="StructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_enTV1N7REduDUa-107O6IQ" base_Class="ReadStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_enTV1d7REduDUa-107O6IQ" base_Class="WriteStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_enTV1t7REduDUa-107O6IQ" base_Class="ClearStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_enTV197REduDUa-107O6IQ" base_Class="RemoveStructuralFeatureValueAction"/>
-  <Standard:Metaclass xmi:id="_enTV2N7REduDUa-107O6IQ" base_Class="AddStructuralFeatureValueAction"/>
-  <Standard:Metaclass xmi:id="_endG0N7REduDUa-107O6IQ" base_Class="LinkAction"/>
-  <Standard:Metaclass xmi:id="_endG0d7REduDUa-107O6IQ" base_Class="ReadLinkAction"/>
-  <Standard:Metaclass xmi:id="_endG0t7REduDUa-107O6IQ" base_Class="LinkEndCreationData"/>
-  <Standard:Metaclass xmi:id="_endG097REduDUa-107O6IQ" base_Class="CreateLinkAction"/>
-  <Standard:Metaclass xmi:id="_endG1N7REduDUa-107O6IQ" base_Class="DestroyLinkAction"/>
-  <Standard:Metaclass xmi:id="_endG1d7REduDUa-107O6IQ" base_Class="WriteLinkAction"/>
-  <Standard:Metaclass xmi:id="_endG1t7REduDUa-107O6IQ" base_Class="ClearAssociationAction"/>
-  <Standard:Metaclass xmi:id="_endG197REduDUa-107O6IQ" base_Class="BroadcastSignalAction"/>
-  <Standard:Metaclass xmi:id="_endG2N7REduDUa-107O6IQ" base_Class="SendObjectAction"/>
-  <Standard:Metaclass xmi:id="_endG2d7REduDUa-107O6IQ" base_Class="LinkEndDestructionData"/>
-  <Standard:Metaclass xmi:id="_endG2t7REduDUa-107O6IQ" base_Class="ValueSpecificationAction"/>
-  <Standard:Metaclass xmi:id="_enm30N7REduDUa-107O6IQ" base_Class="TimeExpression"/>
-  <Standard:Metaclass xmi:id="_enwBwN7REduDUa-107O6IQ" base_Class="Duration"/>
-  <Standard:Metaclass xmi:id="_enwBwd7REduDUa-107O6IQ" base_Class="DurationInterval"/>
-  <Standard:Metaclass xmi:id="_enwBwt7REduDUa-107O6IQ" base_Class="TimeConstraint"/>
-  <Standard:Metaclass xmi:id="_enwBw97REduDUa-107O6IQ" base_Class="TimeInterval"/>
-  <Standard:Metaclass xmi:id="_enwBxN7REduDUa-107O6IQ" base_Class="DurationConstraint"/>
-  <Standard:Metaclass xmi:id="_enwBxd7REduDUa-107O6IQ" base_Class="IntervalConstraint"/>
-  <Standard:Metaclass xmi:id="_enwBxt7REduDUa-107O6IQ" base_Class="Interval"/>
-  <Standard:Metaclass xmi:id="_enwBx97REduDUa-107O6IQ" base_Class="Observation"/>
-  <Standard:Metaclass xmi:id="_enwByN7REduDUa-107O6IQ" base_Class="TimeObservation"/>
-  <Standard:Metaclass xmi:id="_enwByd7REduDUa-107O6IQ" base_Class="DurationObservation"/>
-  <Standard:Metaclass xmi:id="_en5ywN7REduDUa-107O6IQ" base_Class="InvocationAction"/>
-  <Standard:Metaclass xmi:id="_en5ywd7REduDUa-107O6IQ" base_Class="Trigger"/>
-  <Standard:Metaclass xmi:id="_en5ywt7REduDUa-107O6IQ" base_Class="StateMachine"/>
-  <Standard:Metaclass xmi:id="_en5yw97REduDUa-107O6IQ" base_Class="Transition"/>
-  <Standard:Metaclass xmi:id="_eoC8sN7REduDUa-107O6IQ" base_Class="Vertex"/>
-  <Standard:Metaclass xmi:id="_eoC8sd7REduDUa-107O6IQ" base_Class="Pseudostate"/>
-  <Standard:Metaclass xmi:id="_eoMtsN7REduDUa-107O6IQ" base_Class="FinalState"/>
-  <Standard:Metaclass xmi:id="_eoMtsd7REduDUa-107O6IQ" base_Class="ConnectionPointReference"/>
-  <Standard:Metaclass xmi:id="_eoMtst7REduDUa-107O6IQ" base_Class="TimeEvent"/>
-  <Standard:Metaclass xmi:id="_eoWesN7REduDUa-107O6IQ" base_Class="Stereotype"/>
-  <Standard:Metaclass xmi:id="_eoWesd7REduDUa-107O6IQ" base_Class="Profile"/>
-  <Standard:Metaclass xmi:id="_eofooN7REduDUa-107O6IQ" base_Class="Class"/>
-  <Standard:Metaclass xmi:id="_eopZoN7REduDUa-107O6IQ" base_Class="ProfileApplication"/>
-  <Standard:Metaclass xmi:id="_eopZod7REduDUa-107O6IQ" base_Class="Extension"/>
-  <Standard:Metaclass xmi:id="_eopZot7REduDUa-107O6IQ" base_Class="Image"/>
-  <Standard:Metaclass xmi:id="_eozKoN7REduDUa-107O6IQ" base_Class="Element"/>
-  <Standard:Metaclass xmi:id="_epGFkN7REduDUa-107O6IQ" base_Class="ExtensionEnd"/>
-  <Standard:Metaclass xmi:id="_epGFkd7REduDUa-107O6IQ" base_Class="VariableAction"/>
-  <Standard:Metaclass xmi:id="_epGFkt7REduDUa-107O6IQ" base_Class="ReadVariableAction"/>
-  <Standard:Metaclass xmi:id="_epGFk97REduDUa-107O6IQ" base_Class="WriteVariableAction"/>
-  <Standard:Metaclass xmi:id="_epGFlN7REduDUa-107O6IQ" base_Class="ClearVariableAction"/>
-  <Standard:Metaclass xmi:id="_epGFld7REduDUa-107O6IQ" base_Class="AddVariableValueAction"/>
-  <Standard:Metaclass xmi:id="_epGFlt7REduDUa-107O6IQ" base_Class="RemoveVariableValueAction"/>
-  <Standard:Metaclass xmi:id="_epPPgN7REduDUa-107O6IQ" base_Class="RaiseExceptionAction"/>
-  <Standard:Metaclass xmi:id="_epPPgd7REduDUa-107O6IQ" base_Class="ActionInputPin"/>
-  <Standard:Metaclass xmi:id="_epPPgt7REduDUa-107O6IQ" base_Class="GeneralizationSet"/>
-  <Standard:Metaclass xmi:id="_epPPg97REduDUa-107O6IQ" base_Class="Generalization"/>
-  <Standard:Metaclass xmi:id="_epZAgN7REduDUa-107O6IQ" base_Class="InformationItem"/>
-  <Standard:Metaclass xmi:id="_epZAgd7REduDUa-107O6IQ" base_Class="InformationFlow"/>
-  <Standard:Metaclass xmi:id="_epixgN7REduDUa-107O6IQ" base_Class="Model"/>
-  <Standard:Metaclass xmi:id="_epixgd7REduDUa-107O6IQ" base_Class="ReadExtentAction"/>
-  <Standard:Metaclass xmi:id="_epixgt7REduDUa-107O6IQ" base_Class="ReclassifyObjectAction"/>
-  <Standard:Metaclass xmi:id="_epixg97REduDUa-107O6IQ" base_Class="ReadIsClassifiedObjectAction"/>
-  <Standard:Metaclass xmi:id="_epr7cN7REduDUa-107O6IQ" base_Class="StartClassifierBehaviorAction"/>
-  <Standard:Metaclass xmi:id="_epr7cd7REduDUa-107O6IQ" base_Class="QualifierValue"/>
-  <Standard:Metaclass xmi:id="_epr7ct7REduDUa-107O6IQ" base_Class="LinkEndData"/>
-  <Standard:Metaclass xmi:id="_epr7c97REduDUa-107O6IQ" base_Class="ReadLinkObjectEndAction"/>
-  <Standard:Metaclass xmi:id="_ep1scN7REduDUa-107O6IQ" base_Class="ReadLinkObjectEndQualifierAction"/>
-  <Standard:Metaclass xmi:id="_ep1scd7REduDUa-107O6IQ" base_Class="CreateLinkObjectAction"/>
-  <Standard:Metaclass xmi:id="_ep1sct7REduDUa-107O6IQ" base_Class="AcceptEventAction"/>
-  <Standard:Metaclass xmi:id="_ep1sc97REduDUa-107O6IQ" base_Class="AcceptCallAction"/>
-  <Standard:Metaclass xmi:id="_ep_dcN7REduDUa-107O6IQ" base_Class="ReplyAction"/>
-  <Standard:Metaclass xmi:id="_ep_dcd7REduDUa-107O6IQ" base_Class="UnmarshallAction"/>
-  <Standard:Metaclass xmi:id="_ep_dct7REduDUa-107O6IQ" base_Class="ReduceAction"/>
-  <Standard:Metaclass xmi:id="_eqSYYN7REduDUa-107O6IQ" base_Class="JoinNode"/>
-  <Standard:Metaclass xmi:id="_eqSYYd7REduDUa-107O6IQ" base_Class="DataStoreNode"/>
-  <Standard:Metaclass xmi:id="_eqSYYt7REduDUa-107O6IQ" base_Class="ObjectFlow"/>
-  <Standard:Metaclass xmi:id="_eqbiUN7REduDUa-107O6IQ" base_Class="ObjectNode"/>
-  <Standard:Metaclass xmi:id="_eqbiUd7REduDUa-107O6IQ" base_Class="ParameterSet"/>
-  <Standard:Metaclass xmi:id="_eqbiUt7REduDUa-107O6IQ" base_Class="Activity"/>
-  <Standard:Metaclass xmi:id="_eqlTUN7REduDUa-107O6IQ" base_Class="Parameter"/>
-  <Standard:Metaclass xmi:id="_eqlTUd7REduDUa-107O6IQ" base_Class="Action"/>
-  <Standard:Metaclass xmi:id="_eqvEUN7REduDUa-107O6IQ" base_Class="InterruptibleActivityRegion"/>
-  <Standard:Metaclass xmi:id="_eqvEUd7REduDUa-107O6IQ" base_Class="ActivityNode"/>
-  <Standard:Metaclass xmi:id="_eqvEUt7REduDUa-107O6IQ" base_Class="BehavioralFeature"/>
-  <Standard:Metaclass xmi:id="_eq4OQN7REduDUa-107O6IQ" base_Class="Behavior"/>
-  <Standard:Metaclass xmi:id="_eq4OQd7REduDUa-107O6IQ" base_Class="Pin"/>
-  <Standard:Metaclass xmi:id="_erB_QN7REduDUa-107O6IQ" base_Class="ConditionalNode"/>
-  <Standard:Metaclass xmi:id="_erB_Qd7REduDUa-107O6IQ" base_Class="StructuredActivityNode"/>
-  <Standard:Metaclass xmi:id="_erB_Qt7REduDUa-107O6IQ" base_Class="LoopNode"/>
-  <Standard:Metaclass xmi:id="_erLwQN7REduDUa-107O6IQ" base_Class="Clause"/>
-  <Standard:Metaclass xmi:id="_erLwQd7REduDUa-107O6IQ" base_Class="ActivityEdge"/>
-  <Standard:Metaclass xmi:id="_erU6MN7REduDUa-107O6IQ" base_Class="ActivityGroup"/>
-  <Standard:Metaclass xmi:id="_erU6Md7REduDUa-107O6IQ" base_Class="ExpansionNode"/>
-  <Standard:Metaclass xmi:id="_erU6Mt7REduDUa-107O6IQ" base_Class="ExpansionRegion"/>
-  <Standard:Metaclass xmi:id="_ererMN7REduDUa-107O6IQ" base_Class="ExecutableNode"/>
-  <Standard:Metaclass xmi:id="_ererMd7REduDUa-107O6IQ" base_Class="ExceptionHandler"/>
-  <Standard:Metaclass xmi:id="_ererMt7REduDUa-107O6IQ" base_Class="Component"/>
-  <Standard:Metaclass xmi:id="_ern1IN7REduDUa-107O6IQ" base_Class="Deployment"/>
-  <Standard:Metaclass xmi:id="_ern1Id7REduDUa-107O6IQ" base_Class="DeploymentSpecification"/>
-  <Standard:Metaclass xmi:id="_ern1It7REduDUa-107O6IQ" base_Class="ProtocolConformance"/>
-  <Standard:Metaclass xmi:id="_erxmIN7REduDUa-107O6IQ" base_Class="Interface"/>
-  <Standard:Metaclass xmi:id="_erxmId7REduDUa-107O6IQ" base_Class="Port"/>
-  <Standard:Metaclass xmi:id="_er7XIN7REduDUa-107O6IQ" base_Class="ProtocolTransition"/>
-  <Standard:Metaclass xmi:id="_er7XId7REduDUa-107O6IQ" base_Class="ProtocolStateMachine"/>
-  <Standard:Metaclass xmi:id="_er7XIt7REduDUa-107O6IQ" base_Class="State"/>
-  <Standard:Metaclass xmi:id="_esEhEN7REduDUa-107O6IQ" base_Class="Region"/>
-  <Standard:Metaclass xmi:id="_esOSEN7REduDUa-107O6IQ" base_Class="AssociationClass"/>
-  <Standard:Metaclass xmi:id="_esYDEN7REduDUa-107O6IQ" base_Class="TemplateSignature"/>
-  <Standard:Metaclass xmi:id="_esYDEd7REduDUa-107O6IQ" base_Class="NamedElement"/>
-  <Standard:Metaclass xmi:id="_eshNAN7REduDUa-107O6IQ" base_Class="TemplateParameter"/>
-  <Standard:Metaclass xmi:id="_eshNAd7REduDUa-107O6IQ" base_Class="StringExpression"/>
-  <Standard:Metaclass xmi:id="_eshNAt7REduDUa-107O6IQ" base_Class="TemplateBinding"/>
-  <Standard:Metaclass xmi:id="_eshNA97REduDUa-107O6IQ" base_Class="TemplateParameterSubstitution"/>
-  <Standard:Metaclass xmi:id="_esq-AN7REduDUa-107O6IQ" base_Class="TemplateableElement"/>
-  <Standard:Metaclass xmi:id="_esq-Ad7REduDUa-107O6IQ" base_Class="ParameterableElement"/>
-  <Standard:Metaclass xmi:id="_esq-At7REduDUa-107O6IQ" base_Class="Property"/>
-  <Standard:Metaclass xmi:id="_es948N7REduDUa-107O6IQ" base_Class="ValueSpecification"/>
-  <Standard:Metaclass xmi:id="_etHp8N7REduDUa-107O6IQ" base_Class="Operation"/>
-  <Standard:Metaclass xmi:id="_etQz4N7REduDUa-107O6IQ" base_Class="OperationTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_etQz4d7REduDUa-107O6IQ" base_Class="PackageableElement"/>
-  <Standard:Metaclass xmi:id="_etQz4t7REduDUa-107O6IQ" base_Class="Classifier"/>
-  <Standard:Metaclass xmi:id="_ettf0N7REduDUa-107O6IQ" base_Class="ClassifierTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_ettf0d7REduDUa-107O6IQ" base_Class="RedefinableTemplateSignature"/>
-  <Standard:Metaclass xmi:id="_ettf0t7REduDUa-107O6IQ" base_Class="ConnectableElement"/>
-  <Standard:Metaclass xmi:id="_ettf097REduDUa-107O6IQ" base_Class="ConnectableElementTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_et3Q0N7REduDUa-107O6IQ" base_Class="Package"/>
+  <Ecore:EReference xmi:id="_UUrrVfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-attribute"/>
+  <Ecore:EReference xmi:id="_UUrrVvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-feature"/>
+  <Ecore:EReference xmi:id="_UUrrV_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-inheritedMember"/>
+  <Ecore:EOperation xmi:id="_UUrrWPoAEdu-e7JlHBQtRA" base_Operation="Classifier-general.1" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_UUrrWfoAEdu-e7JlHBQtRA" base_Operation="Classifier-inheritedMember.1" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_UUrrWvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="DirectedRelationship-source"/>
+  <Ecore:EReference xmi:id="_UUrrW_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="DirectedRelationship-target"/>
+  <Ecore:EReference xmi:id="_UUrrXPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Element-ownedElement"/>
+  <Ecore:EReference xmi:id="_UUrrXfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Element-owner"/>
+  <Ecore:EReference xmi:id="_UUrrXvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Feature-featuringClassifier"/>
+  <Ecore:EReference xmi:id="_UUrrX_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-importedMember"/>
+  <Ecore:EReference xmi:id="_UUrrYPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-ownedMember"/>
+  <Ecore:EReference xmi:id="_UUrrYfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-member"/>
+  <Ecore:EOperation xmi:id="_UUrrYvoAEdu-e7JlHBQtRA" base_Operation="Namespace-importedMember.1" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_UUrrY_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableElement-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_UUrrZPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableElement-redefinedElement"/>
+  <Ecore:EReference xmi:id="_UUrrZfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Relationship-relatedElement"/>
+  <Ecore:EReference xmi:id="_UUrrZvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Association-endType"/>
+  <Ecore:EAttribute xmi:id="_UUrrZ_oAEdu-e7JlHBQtRA" isTransient="true" isUnsettable="true" base_Property="Property-default"/>
+  <Ecore:EReference xmi:id="_UUrraPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Property-opposite"/>
+  <Ecore:EOperation xmi:id="_UUrrafoAEdu-e7JlHBQtRA" base_Operation="Property-opposite.1" operationName="getOpposite"/>
+  <Ecore:EAttribute xmi:id="_UUrravoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueExpression-language"/>
+  <Ecore:EAttribute xmi:id="_UUrra_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-isOrdered"/>
+  <Ecore:EAttribute xmi:id="_UUrrbPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-isUnique"/>
+  <Ecore:EAttribute xmi:id="_UUrrbfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-lower"/>
+  <Ecore:EAttribute xmi:id="_UUrrbvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-upper"/>
+  <Ecore:EReference xmi:id="_UUrrb_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-type"/>
+  <Ecore:EOperation xmi:id="_UUrrcPoAEdu-e7JlHBQtRA" base_Operation="Operation-lower.1" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_UUrrcfoAEdu-e7JlHBQtRA" base_Operation="Operation-upper.1" operationName="upperBound"/>
+  <Ecore:EOperation xmi:id="_UUrrcvoAEdu-e7JlHBQtRA" base_Operation="Operation-type.1" operationName="getType"/>
+  <Ecore:EAttribute xmi:id="_UUrrc_oAEdu-e7JlHBQtRA" isTransient="true" isUnsettable="true" base_Property="Parameter-default"/>
+  <Ecore:EAttribute xmi:id="_UUrrdPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="ElementImport-alias"/>
+  <Ecore:EReference xmi:id="_UUrrdfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-ownedType"/>
+  <Ecore:EReference xmi:id="_UUrrdvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-nestedPackage"/>
+  <Ecore:EReference xmi:id="_UUrrd_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-nestingPackage"/>
+  <Ecore:EReference xmi:id="_UUrrePoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Type-package"/>
+  <Ecore:EAttribute xmi:id="_UUrrefoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="NamedElement-name"/>
+  <Ecore:EAttribute xmi:id="_UUrrevoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="NamedElement-visibility"/>
+  <Ecore:EReference xmi:id="_UUrre_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="NamedElement-namespace"/>
+  <Ecore:EAttribute xmi:id="_UUrrfPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="NamedElement-qualifiedName"/>
+  <Ecore:EOperation xmi:id="_UUrrffoAEdu-e7JlHBQtRA" base_Operation="NamedElement-qualifiedName.1" operationName="getQualifiedName"/>
+  <Ecore:EAttribute xmi:id="_UUrrfvoAEdu-e7JlHBQtRA" isUnsettable="true" xmlFeatureKind="Element" base_Property="Comment-body"/>
+  <Ecore:EAttribute xmi:id="_UXgWAvoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="LiteralString-value"/>
+  <Ecore:EAttribute xmi:id="_UXgWA_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="MultiplicityElement-upper"/>
+  <Ecore:EAttribute xmi:id="_UXgWBPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="MultiplicityElement-lower"/>
+  <Ecore:EOperation xmi:id="_UXgWBfoAEdu-e7JlHBQtRA" base_Operation="MultiplicityElement-lower.1" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_UXgWBvoAEdu-e7JlHBQtRA" base_Operation="MultiplicityElement-upper.1" operationName="getUpper"/>
+  <Ecore:EReference xmi:id="_UXqG0PoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-general"/>
+  <Ecore:EAttribute xmi:id="_UXqG0foAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Generalization-isSubstitutable"/>
+  <Ecore:EReference xmi:id="_UXqG0voAEdu-e7JlHBQtRA" isTransient="true" base_Property="Class-superClass"/>
+  <Ecore:EAttribute xmi:id="_UXqG0_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Property-isComposite"/>
+  <Ecore:EOperation xmi:id="_UXqG1PoAEdu-e7JlHBQtRA" base_Operation="Association-endType.1" operationName="getEndTypes"/>
+  <Ecore:EAttribute xmi:id="_UXqG1foAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Expression-symbol"/>
+  <Ecore:EReference xmi:id="_UXz4D_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Behavior-context"/>
+  <Ecore:EReference xmi:id="_UXz4EPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="OpaqueExpression-result"/>
+  <Ecore:EAttribute xmi:id="_UXz4EfoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueBehavior-language"/>
+  <Ecore:EAttribute xmi:id="_UX9CSPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueAction-language"/>
+  <Ecore:EReference xmi:id="_UX9CSfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-output"/>
+  <Ecore:EReference xmi:id="_UX9CSvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-input"/>
+  <Ecore:EReference xmi:id="_UX9CS_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-context"/>
+  <Ecore:EReference xmi:id="_UX9CfvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-containedNode"/>
+  <Ecore:EReference xmi:id="_UX9Cf_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-subgroup"/>
+  <Ecore:EReference xmi:id="_UX9CgPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-superGroup"/>
+  <Ecore:EReference xmi:id="_UX9CgfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityNode-inGroup"/>
+  <Ecore:EReference xmi:id="_UYQjwPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Activity-structuredNode"/>
+  <Ecore:EReference xmi:id="_UYZuK_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ConnectorEnd-definingEnd"/>
+  <Ecore:EReference xmi:id="_UYZuLPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="StructuredClassifier-part"/>
+  <Ecore:EReference xmi:id="_UYZuLfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="StructuredClassifier-role"/>
+  <Ecore:EReference xmi:id="_UYsopPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityEdge-inGroup"/>
+  <Ecore:EReference xmi:id="_UYsopfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-containedEdge"/>
+  <Ecore:EAttribute xmi:id="_UY2aGPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Message-messageKind"/>
+  <Ecore:EReference xmi:id="_UY2aGfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Message-signature"/>
+  <Ecore:EReference xmi:id="_UZTF8_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Port-required"/>
+  <Ecore:EReference xmi:id="_UZTF9PoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Port-provided"/>
+  <Ecore:EReference xmi:id="_UZTF9foAEdu-e7JlHBQtRA" isTransient="true" base_Property="EncapsulatedClassifier-ownedPort"/>
+  <Ecore:EReference xmi:id="_UZc25voAEdu-e7JlHBQtRA" isTransient="true" base_Property="Component-required"/>
+  <Ecore:EReference xmi:id="_UZc25_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Component-provided"/>
+  <Ecore:EOperation xmi:id="_UZc26PoAEdu-e7JlHBQtRA" base_Operation="Component-required.1" operationName="getRequireds"/>
+  <Ecore:EOperation xmi:id="_UZc26foAEdu-e7JlHBQtRA" base_Operation="Component-provided.1" operationName="getProvideds"/>
+  <Ecore:EAttribute xmi:id="_UZc26voAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Connector-kind"/>
+  <Ecore:EAttribute xmi:id="_UZc3HfoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Artifact-fileName"/>
+  <Ecore:EReference xmi:id="_UZmAj_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="DeploymentTarget-deployedElement"/>
+  <Ecore:EOperation xmi:id="_UZmAkPoAEdu-e7JlHBQtRA" base_Operation="DeploymentTarget-deployedElement.1" operationName="getDeployedElements"/>
+  <Ecore:EAttribute xmi:id="_UayUV_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isComposite"/>
+  <Ecore:EAttribute xmi:id="_UayUWPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isOrthogonal"/>
+  <Ecore:EAttribute xmi:id="_UayUWfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isSimple"/>
+  <Ecore:EAttribute xmi:id="_UayUWvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isSubmachineState"/>
+  <Ecore:EReference xmi:id="_UayUW_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_Ua8EUPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Transition-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_Ua8EUfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Region-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_UbFOZfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Profile-ownedStereotype"/>
+  <Ecore:EReference xmi:id="_UbFOZvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Class-extension"/>
+  <Ecore:EAttribute xmi:id="_UbFOZ_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Extension-isRequired"/>
+  <Ecore:EReference xmi:id="_UbFOaPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Extension-metaclass"/>
+  <Ecore:EOperation xmi:id="_UbFOafoAEdu-e7JlHBQtRA" base_Operation="Extension-metaclass.1" operationName="getMetaclass"/>
+  <Ecore:EAttribute xmi:id="_UbFOavoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-content"/>
+  <Ecore:EAttribute xmi:id="_UbFOa_oAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-location"/>
+  <Ecore:EAttribute xmi:id="_UbFObPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-format"/>
+  <Ecore:EAttribute xmi:id="_UbFOcfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ExtensionEnd-lower"/>
+  <Ecore:EAttribute xmi:id="_UbYwRvoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Model-viewpoint"/>
+  <Ecore:EAttribute xmi:id="_Ub-mIPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Parameter-effect"/>
+  <Ecore:EAttribute xmi:id="_UcIXf_oAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="DeploymentSpecification-deploymentLocation"/>
+  <Ecore:EAttribute xmi:id="_UcIXgPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="DeploymentSpecification-executionLocation"/>
+  <Ecore:EReference xmi:id="_UcRhL_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ProtocolTransition-referred"/>
+  <Ecore:EReference xmi:id="_UcuNAPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableTemplateSignature-inheritedParameter"/>
+  <Ecore:EReference xmi:id="_UcuNEfoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="ConnectableElement-end"/>
+  <Ecore:EReference xmi:id="_UcuNMPoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="Vertex-incoming"/>
+  <Ecore:EReference xmi:id="_UcuNMfoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="Vertex-outgoing"/>
+  <Standard:Metamodel xmi:id="_G0UywPoCEdu-e7JlHBQtRA" base_Model="_0"/>
+  <Standard:Metaclass xmi:id="_G0ejwPoCEdu-e7JlHBQtRA" base_Class="Comment"/>
+  <Standard:Metaclass xmi:id="_G0ejwfoCEdu-e7JlHBQtRA" base_Class="DirectedRelationship"/>
+  <Standard:Metaclass xmi:id="_G0ejwvoCEdu-e7JlHBQtRA" base_Class="LiteralSpecification"/>
+  <Standard:Metaclass xmi:id="_G0ejw_oCEdu-e7JlHBQtRA" base_Class="LiteralInteger"/>
+  <Standard:Metaclass xmi:id="_G0ejxPoCEdu-e7JlHBQtRA" base_Class="LiteralString"/>
+  <Standard:Metaclass xmi:id="_G0ejxfoCEdu-e7JlHBQtRA" base_Class="LiteralBoolean"/>
+  <Standard:Metaclass xmi:id="_G0ejxvoCEdu-e7JlHBQtRA" base_Class="LiteralNull"/>
+  <Standard:Metaclass xmi:id="_G0ejx_oCEdu-e7JlHBQtRA" base_Class="Constraint"/>
+  <Standard:Metaclass xmi:id="_G0ejyPoCEdu-e7JlHBQtRA" base_Class="ElementImport"/>
+  <Standard:Metaclass xmi:id="_G0ejyfoCEdu-e7JlHBQtRA" base_Class="TypedElement"/>
+  <Standard:Metaclass xmi:id="_G0ejyvoCEdu-e7JlHBQtRA" base_Class="Feature"/>
+  <Standard:Metaclass xmi:id="_G0ejy_oCEdu-e7JlHBQtRA" base_Class="RedefinableElement"/>
+  <Standard:Metaclass xmi:id="_G0ejzPoCEdu-e7JlHBQtRA" base_Class="StructuralFeature"/>
+  <Standard:Metaclass xmi:id="_G0ejzfoCEdu-e7JlHBQtRA" base_Class="Slot"/>
+  <Standard:Metaclass xmi:id="_G0ejzvoCEdu-e7JlHBQtRA" base_Class="PackageImport"/>
+  <Standard:Metaclass xmi:id="_G0ejz_oCEdu-e7JlHBQtRA" base_Class="DataType"/>
+  <Standard:Metaclass xmi:id="_G0ej0PoCEdu-e7JlHBQtRA" base_Class="Enumeration"/>
+  <Standard:Metaclass xmi:id="_G0ej0foCEdu-e7JlHBQtRA" base_Class="EnumerationLiteral"/>
+  <Standard:Metaclass xmi:id="_G0ntsPoCEdu-e7JlHBQtRA" base_Class="PrimitiveType"/>
+  <Standard:Metaclass xmi:id="_G0ntsfoCEdu-e7JlHBQtRA" base_Class="Association"/>
+  <Standard:Metaclass xmi:id="_G0ntsvoCEdu-e7JlHBQtRA" base_Class="Relationship"/>
+  <Standard:Metaclass xmi:id="_G0nts_oCEdu-e7JlHBQtRA" base_Class="PackageMerge"/>
+  <Standard:Metaclass xmi:id="_G0nttPoCEdu-e7JlHBQtRA" base_Class="InstanceValue"/>
+  <Standard:Metaclass xmi:id="_G0nttfoCEdu-e7JlHBQtRA" base_Class="LiteralUnlimitedNatural"/>
+  <Standard:Metaclass xmi:id="_G0nttvoCEdu-e7JlHBQtRA" base_Class="Type"/>
+  <Standard:Metaclass xmi:id="_G0ntt_oCEdu-e7JlHBQtRA" base_Class="Expression"/>
+  <Standard:Metaclass xmi:id="_G0xesPoCEdu-e7JlHBQtRA" base_Class="OpaqueExpression"/>
+  <Standard:Metaclass xmi:id="_G0xesfoCEdu-e7JlHBQtRA" base_Class="OpaqueBehavior"/>
+  <Standard:Metaclass xmi:id="_G0xesvoCEdu-e7JlHBQtRA" base_Class="FunctionBehavior"/>
+  <Standard:Metaclass xmi:id="_G0xes_oCEdu-e7JlHBQtRA" base_Class="OpaqueAction"/>
+  <Standard:Metaclass xmi:id="_G0xetPoCEdu-e7JlHBQtRA" base_Class="CallAction"/>
+  <Standard:Metaclass xmi:id="_G0xetfoCEdu-e7JlHBQtRA" base_Class="SendSignalAction"/>
+  <Standard:Metaclass xmi:id="_G0xetvoCEdu-e7JlHBQtRA" base_Class="CallOperationAction"/>
+  <Standard:Metaclass xmi:id="_G0xet_oCEdu-e7JlHBQtRA" base_Class="CallBehaviorAction"/>
+  <Standard:Metaclass xmi:id="_G0xeuPoCEdu-e7JlHBQtRA" base_Class="MultiplicityElement"/>
+  <Standard:Metaclass xmi:id="_G06ooPoCEdu-e7JlHBQtRA" base_Class="SequenceNode"/>
+  <Standard:Metaclass xmi:id="_G06oofoCEdu-e7JlHBQtRA" base_Class="InputPin"/>
+  <Standard:Metaclass xmi:id="_G06oovoCEdu-e7JlHBQtRA" base_Class="OutputPin"/>
+  <Standard:Metaclass xmi:id="_G06oo_oCEdu-e7JlHBQtRA" base_Class="Usage"/>
+  <Standard:Metaclass xmi:id="_G06opPoCEdu-e7JlHBQtRA" base_Class="Abstraction"/>
+  <Standard:Metaclass xmi:id="_G06opfoCEdu-e7JlHBQtRA" base_Class="Dependency"/>
+  <Standard:Metaclass xmi:id="_G06opvoCEdu-e7JlHBQtRA" base_Class="Realization"/>
+  <Standard:Metaclass xmi:id="_G06op_oCEdu-e7JlHBQtRA" base_Class="Substitution"/>
+  <Standard:Metaclass xmi:id="_G06oqPoCEdu-e7JlHBQtRA" base_Class="Namespace"/>
+  <Standard:Metaclass xmi:id="_G1EZoPoCEdu-e7JlHBQtRA" base_Class="InterfaceRealization"/>
+  <Standard:Metaclass xmi:id="_G1EZofoCEdu-e7JlHBQtRA" base_Class="StructuredClassifier"/>
+  <Standard:Metaclass xmi:id="_G1EZovoCEdu-e7JlHBQtRA" base_Class="Variable"/>
+  <Standard:Metaclass xmi:id="_G1EZo_oCEdu-e7JlHBQtRA" base_Class="CollaborationUse"/>
+  <Standard:Metaclass xmi:id="_G1EZpPoCEdu-e7JlHBQtRA" base_Class="Collaboration"/>
+  <Standard:Metaclass xmi:id="_G1EZpfoCEdu-e7JlHBQtRA" base_Class="ControlNode"/>
+  <Standard:Metaclass xmi:id="_G1EZpvoCEdu-e7JlHBQtRA" base_Class="ControlFlow"/>
+  <Standard:Metaclass xmi:id="_G1EZp_oCEdu-e7JlHBQtRA" base_Class="InitialNode"/>
+  <Standard:Metaclass xmi:id="_G1EZqPoCEdu-e7JlHBQtRA" base_Class="ActivityParameterNode"/>
+  <Standard:Metaclass xmi:id="_G1EZqfoCEdu-e7JlHBQtRA" base_Class="ValuePin"/>
+  <Standard:Metaclass xmi:id="_G1OKoPoCEdu-e7JlHBQtRA" base_Class="Message"/>
+  <Standard:Metaclass xmi:id="_G1OKofoCEdu-e7JlHBQtRA" base_Class="GeneralOrdering"/>
+  <Standard:Metaclass xmi:id="_G1OKovoCEdu-e7JlHBQtRA" base_Class="ExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKo_oCEdu-e7JlHBQtRA" base_Class="OccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKpPoCEdu-e7JlHBQtRA" base_Class="MessageEnd"/>
+  <Standard:Metaclass xmi:id="_G1OKpfoCEdu-e7JlHBQtRA" base_Class="StateInvariant"/>
+  <Standard:Metaclass xmi:id="_G1OKpvoCEdu-e7JlHBQtRA" base_Class="ActionExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKp_oCEdu-e7JlHBQtRA" base_Class="BehaviorExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKqPoCEdu-e7JlHBQtRA" base_Class="ExecutionEvent"/>
+  <Standard:Metaclass xmi:id="_G1OKqfoCEdu-e7JlHBQtRA" base_Class="CreationEvent"/>
+  <Standard:Metaclass xmi:id="_G1OKqvoCEdu-e7JlHBQtRA" base_Class="DestructionEvent"/>
+  <Standard:Metaclass xmi:id="_G1OKq_oCEdu-e7JlHBQtRA" base_Class="SendOperationEvent"/>
+  <Standard:Metaclass xmi:id="_G1OKrPoCEdu-e7JlHBQtRA" base_Class="SendSignalEvent"/>
+  <Standard:Metaclass xmi:id="_G1OKrfoCEdu-e7JlHBQtRA" base_Class="MessageOccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKrvoCEdu-e7JlHBQtRA" base_Class="ExecutionOccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_G1OKr_oCEdu-e7JlHBQtRA" base_Class="ReceiveOperationEvent"/>
+  <Standard:Metaclass xmi:id="_G1XUkPoCEdu-e7JlHBQtRA" base_Class="ReceiveSignalEvent"/>
+  <Standard:Metaclass xmi:id="_G1XUkfoCEdu-e7JlHBQtRA" base_Class="Actor"/>
+  <Standard:Metaclass xmi:id="_G1XUkvoCEdu-e7JlHBQtRA" base_Class="Extend"/>
+  <Standard:Metaclass xmi:id="_G1hFkPoCEdu-e7JlHBQtRA" base_Class="Include"/>
+  <Standard:Metaclass xmi:id="_G1hFkfoCEdu-e7JlHBQtRA" base_Class="UseCase"/>
+  <Standard:Metaclass xmi:id="_G1hFkvoCEdu-e7JlHBQtRA" base_Class="ExtensionPoint"/>
+  <Standard:Metaclass xmi:id="_G1hFk_oCEdu-e7JlHBQtRA" base_Class="CallEvent"/>
+  <Standard:Metaclass xmi:id="_G1hFlPoCEdu-e7JlHBQtRA" base_Class="ChangeEvent"/>
+  <Standard:Metaclass xmi:id="_G1hFlfoCEdu-e7JlHBQtRA" base_Class="Reception"/>
+  <Standard:Metaclass xmi:id="_G1hFlvoCEdu-e7JlHBQtRA" base_Class="Signal"/>
+  <Standard:Metaclass xmi:id="_G1hFl_oCEdu-e7JlHBQtRA" base_Class="SignalEvent"/>
+  <Standard:Metaclass xmi:id="_G1hFmPoCEdu-e7JlHBQtRA" base_Class="MessageEvent"/>
+  <Standard:Metaclass xmi:id="_G1hFmfoCEdu-e7JlHBQtRA" base_Class="AnyReceiveEvent"/>
+  <Standard:Metaclass xmi:id="_G1hFmvoCEdu-e7JlHBQtRA" base_Class="BehavioredClassifier"/>
+  <Standard:Metaclass xmi:id="_G1q2kPoCEdu-e7JlHBQtRA" base_Class="Event"/>
+  <Standard:Metaclass xmi:id="_G1q2kfoCEdu-e7JlHBQtRA" base_Class="ForkNode"/>
+  <Standard:Metaclass xmi:id="_G1q2kvoCEdu-e7JlHBQtRA" base_Class="FlowFinalNode"/>
+  <Standard:Metaclass xmi:id="_G1q2k_oCEdu-e7JlHBQtRA" base_Class="CentralBufferNode"/>
+  <Standard:Metaclass xmi:id="_G1q2lPoCEdu-e7JlHBQtRA" base_Class="ActivityPartition"/>
+  <Standard:Metaclass xmi:id="_G1q2lfoCEdu-e7JlHBQtRA" base_Class="MergeNode"/>
+  <Standard:Metaclass xmi:id="_G1q2lvoCEdu-e7JlHBQtRA" base_Class="DecisionNode"/>
+  <Standard:Metaclass xmi:id="_G1q2l_oCEdu-e7JlHBQtRA" base_Class="FinalNode"/>
+  <Standard:Metaclass xmi:id="_G1q2mPoCEdu-e7JlHBQtRA" base_Class="ActivityFinalNode"/>
+  <Standard:Metaclass xmi:id="_G1q2mfoCEdu-e7JlHBQtRA" base_Class="EncapsulatedClassifier"/>
+  <Standard:Metaclass xmi:id="_G10AgPoCEdu-e7JlHBQtRA" base_Class="ComponentRealization"/>
+  <Standard:Metaclass xmi:id="_G10AgfoCEdu-e7JlHBQtRA" base_Class="Connector"/>
+  <Standard:Metaclass xmi:id="_G10AgvoCEdu-e7JlHBQtRA" base_Class="Manifestation"/>
+  <Standard:Metaclass xmi:id="_G10Ag_oCEdu-e7JlHBQtRA" base_Class="Node"/>
+  <Standard:Metaclass xmi:id="_G10AhPoCEdu-e7JlHBQtRA" base_Class="Device"/>
+  <Standard:Metaclass xmi:id="_G10AhfoCEdu-e7JlHBQtRA" base_Class="ExecutionEnvironment"/>
+  <Standard:Metaclass xmi:id="_G10AhvoCEdu-e7JlHBQtRA" base_Class="DeploymentTarget"/>
+  <Standard:Metaclass xmi:id="_G19xgPoCEdu-e7JlHBQtRA" base_Class="DeployedArtifact"/>
+  <Standard:Metaclass xmi:id="_G19xgfoCEdu-e7JlHBQtRA" base_Class="CommunicationPath"/>
+  <Standard:Metaclass xmi:id="_G19xgvoCEdu-e7JlHBQtRA" base_Class="InstanceSpecification"/>
+  <Standard:Metaclass xmi:id="_G19xg_oCEdu-e7JlHBQtRA" base_Class="Artifact"/>
+  <Standard:Metaclass xmi:id="_G19xhPoCEdu-e7JlHBQtRA" base_Class="InteractionUse"/>
+  <Standard:Metaclass xmi:id="_G19xhfoCEdu-e7JlHBQtRA" base_Class="PartDecomposition"/>
+  <Standard:Metaclass xmi:id="_G19xhvoCEdu-e7JlHBQtRA" base_Class="InteractionOperand"/>
+  <Standard:Metaclass xmi:id="_G2G7cPoCEdu-e7JlHBQtRA" base_Class="InteractionConstraint"/>
+  <Standard:Metaclass xmi:id="_G2G7cfoCEdu-e7JlHBQtRA" base_Class="Gate"/>
+  <Standard:Metaclass xmi:id="_G2G7cvoCEdu-e7JlHBQtRA" base_Class="CombinedFragment"/>
+  <Standard:Metaclass xmi:id="_G2G7c_oCEdu-e7JlHBQtRA" base_Class="Interaction"/>
+  <Standard:Metaclass xmi:id="_G2G7dPoCEdu-e7JlHBQtRA" base_Class="Lifeline"/>
+  <Standard:Metaclass xmi:id="_G2G7dfoCEdu-e7JlHBQtRA" base_Class="Continuation"/>
+  <Standard:Metaclass xmi:id="_G2G7dvoCEdu-e7JlHBQtRA" base_Class="InteractionFragment"/>
+  <Standard:Metaclass xmi:id="_G2G7d_oCEdu-e7JlHBQtRA" base_Class="ConsiderIgnoreFragment"/>
+  <Standard:Metaclass xmi:id="_G2QscPoCEdu-e7JlHBQtRA" base_Class="CreateObjectAction"/>
+  <Standard:Metaclass xmi:id="_G2QscfoCEdu-e7JlHBQtRA" base_Class="DestroyObjectAction"/>
+  <Standard:Metaclass xmi:id="_G2QscvoCEdu-e7JlHBQtRA" base_Class="TestIdentityAction"/>
+  <Standard:Metaclass xmi:id="_G2Qsc_oCEdu-e7JlHBQtRA" base_Class="ReadSelfAction"/>
+  <Standard:Metaclass xmi:id="_G2adcPoCEdu-e7JlHBQtRA" base_Class="StructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_G2adcfoCEdu-e7JlHBQtRA" base_Class="ReadStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_G2adcvoCEdu-e7JlHBQtRA" base_Class="WriteStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_G2adc_oCEdu-e7JlHBQtRA" base_Class="ClearStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_G2addPoCEdu-e7JlHBQtRA" base_Class="RemoveStructuralFeatureValueAction"/>
+  <Standard:Metaclass xmi:id="_G2addfoCEdu-e7JlHBQtRA" base_Class="AddStructuralFeatureValueAction"/>
+  <Standard:Metaclass xmi:id="_G2addvoCEdu-e7JlHBQtRA" base_Class="LinkAction"/>
+  <Standard:Metaclass xmi:id="_G2add_oCEdu-e7JlHBQtRA" base_Class="ReadLinkAction"/>
+  <Standard:Metaclass xmi:id="_G2adePoCEdu-e7JlHBQtRA" base_Class="LinkEndCreationData"/>
+  <Standard:Metaclass xmi:id="_G2jnYPoCEdu-e7JlHBQtRA" base_Class="CreateLinkAction"/>
+  <Standard:Metaclass xmi:id="_G2jnYfoCEdu-e7JlHBQtRA" base_Class="DestroyLinkAction"/>
+  <Standard:Metaclass xmi:id="_G2jnYvoCEdu-e7JlHBQtRA" base_Class="WriteLinkAction"/>
+  <Standard:Metaclass xmi:id="_G2jnY_oCEdu-e7JlHBQtRA" base_Class="ClearAssociationAction"/>
+  <Standard:Metaclass xmi:id="_G2jnZPoCEdu-e7JlHBQtRA" base_Class="BroadcastSignalAction"/>
+  <Standard:Metaclass xmi:id="_G2jnZfoCEdu-e7JlHBQtRA" base_Class="SendObjectAction"/>
+  <Standard:Metaclass xmi:id="_G2jnZvoCEdu-e7JlHBQtRA" base_Class="LinkEndDestructionData"/>
+  <Standard:Metaclass xmi:id="_G2jnZ_oCEdu-e7JlHBQtRA" base_Class="ValueSpecificationAction"/>
+  <Standard:Metaclass xmi:id="_G2tYYPoCEdu-e7JlHBQtRA" base_Class="TimeExpression"/>
+  <Standard:Metaclass xmi:id="_G2tYYfoCEdu-e7JlHBQtRA" base_Class="Duration"/>
+  <Standard:Metaclass xmi:id="_G2tYYvoCEdu-e7JlHBQtRA" base_Class="DurationInterval"/>
+  <Standard:Metaclass xmi:id="_G2tYY_oCEdu-e7JlHBQtRA" base_Class="TimeConstraint"/>
+  <Standard:Metaclass xmi:id="_G2tYZPoCEdu-e7JlHBQtRA" base_Class="TimeInterval"/>
+  <Standard:Metaclass xmi:id="_G2tYZfoCEdu-e7JlHBQtRA" base_Class="DurationConstraint"/>
+  <Standard:Metaclass xmi:id="_G23JYPoCEdu-e7JlHBQtRA" base_Class="IntervalConstraint"/>
+  <Standard:Metaclass xmi:id="_G23JYfoCEdu-e7JlHBQtRA" base_Class="Interval"/>
+  <Standard:Metaclass xmi:id="_G23JYvoCEdu-e7JlHBQtRA" base_Class="Observation"/>
+  <Standard:Metaclass xmi:id="_G23JY_oCEdu-e7JlHBQtRA" base_Class="TimeObservation"/>
+  <Standard:Metaclass xmi:id="_G23JZPoCEdu-e7JlHBQtRA" base_Class="DurationObservation"/>
+  <Standard:Metaclass xmi:id="_G23JZfoCEdu-e7JlHBQtRA" base_Class="InvocationAction"/>
+  <Standard:Metaclass xmi:id="_G3ATUPoCEdu-e7JlHBQtRA" base_Class="Trigger"/>
+  <Standard:Metaclass xmi:id="_G3ATUfoCEdu-e7JlHBQtRA" base_Class="StateMachine"/>
+  <Standard:Metaclass xmi:id="_G3ATUvoCEdu-e7JlHBQtRA" base_Class="Pseudostate"/>
+  <Standard:Metaclass xmi:id="_G3ATU_oCEdu-e7JlHBQtRA" base_Class="FinalState"/>
+  <Standard:Metaclass xmi:id="_G3KEUPoCEdu-e7JlHBQtRA" base_Class="ConnectionPointReference"/>
+  <Standard:Metaclass xmi:id="_G3KEUfoCEdu-e7JlHBQtRA" base_Class="TimeEvent"/>
+  <Standard:Metaclass xmi:id="_G3TOQPoCEdu-e7JlHBQtRA" base_Class="Stereotype"/>
+  <Standard:Metaclass xmi:id="_G3c_QPoCEdu-e7JlHBQtRA" base_Class="Profile"/>
+  <Standard:Metaclass xmi:id="_G3c_QfoCEdu-e7JlHBQtRA" base_Class="Class"/>
+  <Standard:Metaclass xmi:id="_G3mwQPoCEdu-e7JlHBQtRA" base_Class="ProfileApplication"/>
+  <Standard:Metaclass xmi:id="_G3mwQfoCEdu-e7JlHBQtRA" base_Class="Extension"/>
+  <Standard:Metaclass xmi:id="_G3v6MPoCEdu-e7JlHBQtRA" base_Class="Image"/>
+  <Standard:Metaclass xmi:id="_G3v6MfoCEdu-e7JlHBQtRA" base_Class="Element"/>
+  <Standard:Metaclass xmi:id="_G4DcMPoCEdu-e7JlHBQtRA" base_Class="ExtensionEnd"/>
+  <Standard:Metaclass xmi:id="_G4DcMfoCEdu-e7JlHBQtRA" base_Class="VariableAction"/>
+  <Standard:Metaclass xmi:id="_G4DcMvoCEdu-e7JlHBQtRA" base_Class="ReadVariableAction"/>
+  <Standard:Metaclass xmi:id="_G4DcM_oCEdu-e7JlHBQtRA" base_Class="WriteVariableAction"/>
+  <Standard:Metaclass xmi:id="_G4DcNPoCEdu-e7JlHBQtRA" base_Class="ClearVariableAction"/>
+  <Standard:Metaclass xmi:id="_G4DcNfoCEdu-e7JlHBQtRA" base_Class="AddVariableValueAction"/>
+  <Standard:Metaclass xmi:id="_G4DcNvoCEdu-e7JlHBQtRA" base_Class="RemoveVariableValueAction"/>
+  <Standard:Metaclass xmi:id="_G4MmIPoCEdu-e7JlHBQtRA" base_Class="RaiseExceptionAction"/>
+  <Standard:Metaclass xmi:id="_G4MmIfoCEdu-e7JlHBQtRA" base_Class="ActionInputPin"/>
+  <Standard:Metaclass xmi:id="_G4MmIvoCEdu-e7JlHBQtRA" base_Class="GeneralizationSet"/>
+  <Standard:Metaclass xmi:id="_G4MmI_oCEdu-e7JlHBQtRA" base_Class="Generalization"/>
+  <Standard:Metaclass xmi:id="_G4MmJPoCEdu-e7JlHBQtRA" base_Class="InformationItem"/>
+  <Standard:Metaclass xmi:id="_G4WXIPoCEdu-e7JlHBQtRA" base_Class="InformationFlow"/>
+  <Standard:Metaclass xmi:id="_G4WXIfoCEdu-e7JlHBQtRA" base_Class="Model"/>
+  <Standard:Metaclass xmi:id="_G4WXIvoCEdu-e7JlHBQtRA" base_Class="ReadExtentAction"/>
+  <Standard:Metaclass xmi:id="_G4WXI_oCEdu-e7JlHBQtRA" base_Class="ReclassifyObjectAction"/>
+  <Standard:Metaclass xmi:id="_G4pSEPoCEdu-e7JlHBQtRA" base_Class="ReadIsClassifiedObjectAction"/>
+  <Standard:Metaclass xmi:id="_G4pSEfoCEdu-e7JlHBQtRA" base_Class="StartClassifierBehaviorAction"/>
+  <Standard:Metaclass xmi:id="_G4pSEvoCEdu-e7JlHBQtRA" base_Class="QualifierValue"/>
+  <Standard:Metaclass xmi:id="_G4pSE_oCEdu-e7JlHBQtRA" base_Class="LinkEndData"/>
+  <Standard:Metaclass xmi:id="_G4zDEPoCEdu-e7JlHBQtRA" base_Class="ReadLinkObjectEndAction"/>
+  <Standard:Metaclass xmi:id="_G4zDEfoCEdu-e7JlHBQtRA" base_Class="ReadLinkObjectEndQualifierAction"/>
+  <Standard:Metaclass xmi:id="_G4zDEvoCEdu-e7JlHBQtRA" base_Class="CreateLinkObjectAction"/>
+  <Standard:Metaclass xmi:id="_G4zDE_oCEdu-e7JlHBQtRA" base_Class="AcceptEventAction"/>
+  <Standard:Metaclass xmi:id="_G48NAPoCEdu-e7JlHBQtRA" base_Class="AcceptCallAction"/>
+  <Standard:Metaclass xmi:id="_G48NAfoCEdu-e7JlHBQtRA" base_Class="ReplyAction"/>
+  <Standard:Metaclass xmi:id="_G48NAvoCEdu-e7JlHBQtRA" base_Class="UnmarshallAction"/>
+  <Standard:Metaclass xmi:id="_G48NA_oCEdu-e7JlHBQtRA" base_Class="ReduceAction"/>
+  <Standard:Metaclass xmi:id="_G5PvAPoCEdu-e7JlHBQtRA" base_Class="JoinNode"/>
+  <Standard:Metaclass xmi:id="_G5PvAfoCEdu-e7JlHBQtRA" base_Class="DataStoreNode"/>
+  <Standard:Metaclass xmi:id="_G5PvAvoCEdu-e7JlHBQtRA" base_Class="ObjectFlow"/>
+  <Standard:Metaclass xmi:id="_G5PvA_oCEdu-e7JlHBQtRA" base_Class="ObjectNode"/>
+  <Standard:Metaclass xmi:id="_G5Y48PoCEdu-e7JlHBQtRA" base_Class="ParameterSet"/>
+  <Standard:Metaclass xmi:id="_G5Y48foCEdu-e7JlHBQtRA" base_Class="Activity"/>
+  <Standard:Metaclass xmi:id="_G5Y48voCEdu-e7JlHBQtRA" base_Class="Parameter"/>
+  <Standard:Metaclass xmi:id="_G5ip8PoCEdu-e7JlHBQtRA" base_Class="Action"/>
+  <Standard:Metaclass xmi:id="_G5ip8foCEdu-e7JlHBQtRA" base_Class="InterruptibleActivityRegion"/>
+  <Standard:Metaclass xmi:id="_G5ip8voCEdu-e7JlHBQtRA" base_Class="ActivityNode"/>
+  <Standard:Metaclass xmi:id="_G5rz4PoCEdu-e7JlHBQtRA" base_Class="BehavioralFeature"/>
+  <Standard:Metaclass xmi:id="_G5rz4foCEdu-e7JlHBQtRA" base_Class="Behavior"/>
+  <Standard:Metaclass xmi:id="_G51k4PoCEdu-e7JlHBQtRA" base_Class="Pin"/>
+  <Standard:Metaclass xmi:id="_G5_V4PoCEdu-e7JlHBQtRA" base_Class="ConditionalNode"/>
+  <Standard:Metaclass xmi:id="_G5_V4foCEdu-e7JlHBQtRA" base_Class="StructuredActivityNode"/>
+  <Standard:Metaclass xmi:id="_G5_V4voCEdu-e7JlHBQtRA" base_Class="LoopNode"/>
+  <Standard:Metaclass xmi:id="_G6If0PoCEdu-e7JlHBQtRA" base_Class="Clause"/>
+  <Standard:Metaclass xmi:id="_G6If0foCEdu-e7JlHBQtRA" base_Class="ActivityEdge"/>
+  <Standard:Metaclass xmi:id="_G6If0voCEdu-e7JlHBQtRA" base_Class="ActivityGroup"/>
+  <Standard:Metaclass xmi:id="_G6SQ0PoCEdu-e7JlHBQtRA" base_Class="ExpansionNode"/>
+  <Standard:Metaclass xmi:id="_G6SQ0foCEdu-e7JlHBQtRA" base_Class="ExpansionRegion"/>
+  <Standard:Metaclass xmi:id="_G6SQ0voCEdu-e7JlHBQtRA" base_Class="ExecutableNode"/>
+  <Standard:Metaclass xmi:id="_G6SQ0_oCEdu-e7JlHBQtRA" base_Class="ExceptionHandler"/>
+  <Standard:Metaclass xmi:id="_G6cB0PoCEdu-e7JlHBQtRA" base_Class="Component"/>
+  <Standard:Metaclass xmi:id="_G6lLwPoCEdu-e7JlHBQtRA" base_Class="Deployment"/>
+  <Standard:Metaclass xmi:id="_G6lLwfoCEdu-e7JlHBQtRA" base_Class="DeploymentSpecification"/>
+  <Standard:Metaclass xmi:id="_G6lLwvoCEdu-e7JlHBQtRA" base_Class="ProtocolConformance"/>
+  <Standard:Metaclass xmi:id="_G6lLw_oCEdu-e7JlHBQtRA" base_Class="Interface"/>
+  <Standard:Metaclass xmi:id="_G6u8wPoCEdu-e7JlHBQtRA" base_Class="Port"/>
+  <Standard:Metaclass xmi:id="_G6u8wfoCEdu-e7JlHBQtRA" base_Class="ProtocolTransition"/>
+  <Standard:Metaclass xmi:id="_G64GsPoCEdu-e7JlHBQtRA" base_Class="ProtocolStateMachine"/>
+  <Standard:Metaclass xmi:id="_G64GsfoCEdu-e7JlHBQtRA" base_Class="State"/>
+  <Standard:Metaclass xmi:id="_G7B3sPoCEdu-e7JlHBQtRA" base_Class="Region"/>
+  <Standard:Metaclass xmi:id="_G7LosPoCEdu-e7JlHBQtRA" base_Class="AssociationClass"/>
+  <Standard:Metaclass xmi:id="_G7LosfoCEdu-e7JlHBQtRA" base_Class="TemplateSignature"/>
+  <Standard:Metaclass xmi:id="_G7UyoPoCEdu-e7JlHBQtRA" base_Class="NamedElement"/>
+  <Standard:Metaclass xmi:id="_G7ejoPoCEdu-e7JlHBQtRA" base_Class="TemplateParameter"/>
+  <Standard:Metaclass xmi:id="_G7ejofoCEdu-e7JlHBQtRA" base_Class="StringExpression"/>
+  <Standard:Metaclass xmi:id="_G7ejovoCEdu-e7JlHBQtRA" base_Class="TemplateBinding"/>
+  <Standard:Metaclass xmi:id="_G7ejo_oCEdu-e7JlHBQtRA" base_Class="TemplateParameterSubstitution"/>
+  <Standard:Metaclass xmi:id="_G7oUoPoCEdu-e7JlHBQtRA" base_Class="TemplateableElement"/>
+  <Standard:Metaclass xmi:id="_G7oUofoCEdu-e7JlHBQtRA" base_Class="ParameterableElement"/>
+  <Standard:Metaclass xmi:id="_G7oUovoCEdu-e7JlHBQtRA" base_Class="Property"/>
+  <Standard:Metaclass xmi:id="_G77PkPoCEdu-e7JlHBQtRA" base_Class="ValueSpecification"/>
+  <Standard:Metaclass xmi:id="_G8EZgPoCEdu-e7JlHBQtRA" base_Class="Operation"/>
+  <Standard:Metaclass xmi:id="_G8OKgPoCEdu-e7JlHBQtRA" base_Class="OperationTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_G8OKgfoCEdu-e7JlHBQtRA" base_Class="PackageableElement"/>
+  <Standard:Metaclass xmi:id="_G8OKgvoCEdu-e7JlHBQtRA" base_Class="Classifier"/>
+  <Standard:Metaclass xmi:id="_G8q2cPoCEdu-e7JlHBQtRA" base_Class="ClassifierTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_G8q2cfoCEdu-e7JlHBQtRA" base_Class="RedefinableTemplateSignature"/>
+  <Standard:Metaclass xmi:id="_G8q2cvoCEdu-e7JlHBQtRA" base_Class="ConnectableElementTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_G80ncPoCEdu-e7JlHBQtRA" base_Class="Package"/>
+  <Standard:Metaclass xmi:id="_G9HiYPoCEdu-e7JlHBQtRA" base_Class="ConnectableElement"/>
+  <Standard:Metaclass xmi:id="_G9HiYfoCEdu-e7JlHBQtRA" base_Class="ConnectorEnd"/>
+  <Standard:Metaclass xmi:id="_G9HiYvoCEdu-e7JlHBQtRA" base_Class="Vertex"/>
+  <Standard:Metaclass xmi:id="_G9QsUPoCEdu-e7JlHBQtRA" base_Class="Transition"/>
 </xmi:XMI>
