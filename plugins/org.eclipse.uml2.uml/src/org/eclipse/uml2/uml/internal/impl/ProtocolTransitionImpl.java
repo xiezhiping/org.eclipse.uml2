@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolTransitionImpl.java,v 1.36 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.37 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -507,16 +507,6 @@ public class ProtocolTransitionImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainer((Region) otherEnd, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				if (target != null)
-					msgs = ((InternalEObject) target).eInverseRemove(this,
-						UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
-				return basicSetTarget((Vertex) otherEnd, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				if (source != null)
-					msgs = ((InternalEObject) source).eInverseRemove(this,
-						UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
-				return basicSetSource((Vertex) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -552,15 +542,11 @@ public class ProtocolTransitionImpl
 					otherEnd, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return basicSetContainer(null, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				return basicSetTarget(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				return basicSetSource(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -625,10 +611,6 @@ public class ProtocolTransitionImpl
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				if (resolve)
-					return getTarget();
-				return basicGetTarget();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
 					return getRedefinedTransition();
@@ -643,6 +625,10 @@ public class ProtocolTransitionImpl
 				return basicGetEffect();
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return getTriggers();
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				if (resolve)
 					return getSource();
@@ -718,9 +704,6 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) newValue);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				setTarget((Vertex) newValue);
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) newValue);
 				return;
@@ -733,6 +716,9 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				setTarget((Vertex) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -791,9 +777,6 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) null);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				setTarget((Vertex) null);
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) null);
 				return;
@@ -805,6 +788,9 @@ public class ProtocolTransitionImpl
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				setTarget((Vertex) null);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				setSource((Vertex) null);
@@ -872,8 +858,6 @@ public class ProtocolTransitionImpl
 				return kind != KIND_EDEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				return target != null;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				return redefinedTransition != null;
 			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
@@ -882,6 +866,8 @@ public class ProtocolTransitionImpl
 				return effect != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				return target != null;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				return source != null;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :

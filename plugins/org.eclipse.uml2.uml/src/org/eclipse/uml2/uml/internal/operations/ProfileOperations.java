@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileOperations.java,v 1.35 2007/05/03 21:11:52 khussey Exp $
+ * $Id: ProfileOperations.java,v 1.36 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -286,8 +286,8 @@ public class ProfileOperations
 			: null;
 
 		if (definition != null) {
-			getEAnnotation(profile, UMLPackage.eNS_URI, true).getContents()
-				.add(0, definition);
+			getEAnnotation(profile, UML2_UML_PACKAGE_2_0_NS_URI, true)
+				.getContents().add(0, definition);
 		}
 
 		return definition;
@@ -307,7 +307,7 @@ public class ProfileOperations
 
 		if (definition == null) {
 			EAnnotation eAnnotation = profile
-				.getEAnnotation(UMLPackage.eNS_URI);
+				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 			if (eAnnotation != null) {
 				EList<EObject> contents = eAnnotation.getContents();
@@ -334,7 +334,7 @@ public class ProfileOperations
 						.getEClassifiers()) {
 
 						EAnnotation eAnnotation = eClassifier
-							.getEAnnotation(UMLPackage.eNS_URI);
+							.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 						if (eAnnotation != null
 							&& eAnnotation.getReferences().contains(

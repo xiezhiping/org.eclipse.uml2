@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.17 2007/04/25 17:47:02 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.18 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
@@ -25,8 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
@@ -190,44 +187,12 @@ public class ConnectorEndImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRole(ConnectableElement newRole,
-			NotificationChain msgs) {
+	public void setRole(ConnectableElement newRole) {
 		ConnectableElement oldRole = role;
 		role = newRole;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.CONNECTOR_END__ROLE, oldRole,
-				newRole);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRole(ConnectableElement newRole) {
-		if (newRole != role) {
-			NotificationChain msgs = null;
-			if (role != null)
-				msgs = ((InternalEObject) role).eInverseRemove(this,
-					UMLPackage.CONNECTABLE_ELEMENT__END,
-					ConnectableElement.class, msgs);
-			if (newRole != null)
-				msgs = ((InternalEObject) newRole).eInverseAdd(this,
-					UMLPackage.CONNECTABLE_ELEMENT__END,
-					ConnectableElement.class, msgs);
-			msgs = basicSetRole(newRole, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CONNECTOR_END__ROLE, newRole, newRole));
+				UMLPackage.CONNECTOR_END__ROLE, oldRole, role));
 	}
 
 	/**
@@ -272,54 +237,6 @@ public class ConnectorEndImpl
 			Map<Object, Object> context) {
 		return ConnectorEndOperations.validateSelfPartWithPort(this,
 			diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.CONNECTOR_END__EANNOTATIONS :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTOR_END__ROLE :
-				if (role != null)
-					msgs = ((InternalEObject) role).eInverseRemove(this,
-						UMLPackage.CONNECTABLE_ELEMENT__END,
-						ConnectableElement.class, msgs);
-				return basicSetRole((ConnectableElement) otherEnd, msgs);
-		}
-		return eDynamicInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UMLPackage.CONNECTOR_END__EANNOTATIONS :
-				return ((InternalEList<?>) getEAnnotations()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
-				return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
-				return basicSetUpperValue(null, msgs);
-			case UMLPackage.CONNECTOR_END__LOWER_VALUE :
-				return basicSetLowerValue(null, msgs);
-			case UMLPackage.CONNECTOR_END__ROLE :
-				return basicSetRole(null, msgs);
-		}
-		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

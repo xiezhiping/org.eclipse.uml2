@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementOperations.java,v 1.51 2007/05/03 21:11:52 khussey Exp $
+ * $Id: ElementOperations.java,v 1.52 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -603,7 +603,7 @@ public class ElementOperations
 
 				if (eType instanceof EEnum && value instanceof EEnumLiteral) {
 					EAnnotation eAnnotation = eType
-						.getEAnnotation(UMLPackage.eNS_URI);
+						.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 					if (eAnnotation != null) {
 						EList<EObject> references = eAnnotation.getReferences();
@@ -1053,7 +1053,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static EList<String> getKeywords(Element element) {
-		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+		EAnnotation eAnnotation = element
+			.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 		if (eAnnotation != null) {
 			EMap<String, String> details = eAnnotation.getDetails();
@@ -1086,7 +1087,7 @@ public class ElementOperations
 	 */
 	public static boolean addKeyword(Element element, String keyword) {
 		EMap<String, String> details = getEAnnotation(element,
-			UMLPackage.eNS_URI, true).getDetails();
+			UML2_UML_PACKAGE_2_0_NS_URI, true).getDetails();
 
 		if (!details.containsKey(keyword)) {
 			details.put(keyword, null);
@@ -1107,7 +1108,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static boolean removeKeyword(Element element, String keyword) {
-		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+		EAnnotation eAnnotation = element
+			.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 		if (eAnnotation != null) {
 			EMap<String, String> details = eAnnotation.getDetails();
@@ -1570,7 +1572,8 @@ public class ElementOperations
 	 * @generated NOT
 	 */
 	public static boolean hasKeyword(Element element, String keyword) {
-		EAnnotation eAnnotation = element.getEAnnotation(UMLPackage.eNS_URI);
+		EAnnotation eAnnotation = element
+			.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 		return eAnnotation != null
 			&& eAnnotation.getDetails().containsKey(keyword);

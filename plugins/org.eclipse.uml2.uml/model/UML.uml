@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
     <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
       <mergedPackage xmi:type="uml:Model" href="L3.uml#_EBtHcBmMEdqvcs97umGEYQ"/>
+    </packageMerge>
+    <packageMerge xmi:id="_NTdxgPnjEdunWsS3se92JQ">
+      <mergedPackage xmi:type="uml:Model" href="10536.uml#_y16xIPnhEdunWsS3se92JQ"/>
+    </packageMerge>
+    <packageMerge xmi:id="_zhBU4PnnEdunWsS3se92JQ">
+      <mergedPackage xmi:type="uml:Model" href="10537.uml#_udv6MPnlEdunWsS3se92JQ"/>
     </packageMerge>
     <packagedElement xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
       <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
@@ -1928,7 +1934,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.1.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   <Ecore:EAttribute xmi:id="_LWVYQd7NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
   <Ecore:EDataType xmi:id="_LWfJQN7NEduglsXU_NKRsA" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
   <Ecore:EDataType xmi:id="_LWfJQd7NEduglsXU_NKRsA" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>

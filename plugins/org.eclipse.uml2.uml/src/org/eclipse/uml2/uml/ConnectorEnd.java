@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.4 2007/04/25 17:47:04 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.5 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,6 @@ public interface ConnectorEnd
 
 	/**
 	 * Returns the value of the '<em><b>Role</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ConnectableElement#getEnds <em>End</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -93,8 +92,7 @@ public interface ConnectorEnd
 	 * @return the value of the '<em>Role</em>' reference.
 	 * @see #setRole(ConnectableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectorEnd_Role()
-	 * @see org.eclipse.uml2.uml.ConnectableElement#getEnds
-	 * @model opposite="end" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	ConnectableElement getRole();

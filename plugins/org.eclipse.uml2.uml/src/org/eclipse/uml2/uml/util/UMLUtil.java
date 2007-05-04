@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.61 2007/05/02 15:03:11 khussey Exp $
+ * $Id: UMLUtil.java,v 1.62 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1790,7 +1790,7 @@ public class UMLUtil
 
 							getEAnnotation(
 								getEAnnotation(resultingPackage,
-									UMLPackage.eNS_URI, true),
+									UML2_UML_PACKAGE_2_0_NS_URI, true),
 								mergedPackage.getQualifiedName(), true)
 								.getReferences().add(resultingEObject);
 						} else if (OPTION__REPORT.equals(options
@@ -5433,8 +5433,8 @@ public class UMLUtil
 
 			if (eModelElement instanceof EClassifier) {
 				EList<EObject> references = getEAnnotation(
-					(EClassifier) eModelElement, UMLPackage.eNS_URI, true)
-					.getReferences();
+					(EClassifier) eModelElement, UML2_UML_PACKAGE_2_0_NS_URI,
+					true).getReferences();
 
 				if (references.isEmpty()) {
 					references.add(eObject);
@@ -7655,6 +7655,8 @@ public class UMLUtil
 
 	protected static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
 
+	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+
 	/**
 	 * The name of the 'EAttribute' stereotype.
 	 */
@@ -8113,7 +8115,7 @@ public class UMLUtil
 		if (eContainer instanceof EAnnotation) {
 			EAnnotation eAnnotation = (EAnnotation) eContainer;
 
-			if (safeEquals(eAnnotation.getSource(), UMLPackage.eNS_URI)) {
+			if (safeEquals(eAnnotation.getSource(), UML2_UML_PACKAGE_2_0_NS_URI)) {
 				eContainer = eAnnotation.eContainer();
 
 				if (eContainer instanceof Profile) {
@@ -8163,7 +8165,7 @@ public class UMLUtil
 
 		if (definition instanceof EClassifier) {
 			EAnnotation eAnnotation = definition
-				.getEAnnotation(UMLPackage.eNS_URI);
+				.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 			if (eAnnotation != null) {
 				EList<EObject> references = eAnnotation.getReferences();

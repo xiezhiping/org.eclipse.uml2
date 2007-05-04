@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml"
-    nsURI="http://www.eclipse.org/uml2/2.0.0/UML" nsPrefix="uml">
+    nsURI="http://www.eclipse.org/uml2/2.1.0/UML" nsPrefix="uml">
   <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="int">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An integer is a primitive type representing integer values."/>
@@ -2927,12 +2927,28 @@
         <eAnnotations source="redefines" references="#//ParameterableElement/templateParameter"/>
       </contents>
     </eAnnotations>
+    <eOperations name="getEnds" ordered="false" upperBound="-1" eType="#//ConnectorEnd"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" upperBound="-1" eType="#//ConnectorEnd"
-        eOpposite="#//ConnectorEnd/role">
+        volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Denotes a connector that attaches to this connectable element."/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectableElementTemplateParameter"
+      eSuperTypes="#//TemplateParameter">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A connectable element template parameter exposes a connectable element as a formal parameter for a template."/>
+    </eAnnotations>
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
+          lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The ConnectableElement for this template parameter."/>
+        </eAnnotations>
+        <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
+      </contents>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorEnd" eSuperTypes="#//MultiplicityElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3028,7 +3044,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="role" ordered="false" lowerBound="1"
-        eType="#//ConnectableElement" eOpposite="#//ConnectableElement/end">
+        eType="#//ConnectableElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.&#xD;&#xA;"/>
       </eAnnotations>
@@ -4891,16 +4907,18 @@
         <details key="documentation" value="The operation containingStateMachine() returns the state machine in which this Vertex is defined&#xD;&#xA;result = if not container->isEmpty()&#xA;then&#xA;-- the container is a region&#xA;container.containingStateMachine()&#xA;else if (oclIsKindOf(Pseudostate)) then&#xA;-- entry or exit point?&#xA;if (kind = #entryPoint) or (kind = #exitPoint) then&#xA;stateMachine&#xA;else if (oclIsKindOf(ConnectionPointReference)) then&#xA;state.containingStateMachine() -- no other valid cases possible&#xA;endif&#xA;"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" ordered="false"
-        upperBound="-1" eType="#//Transition" eOpposite="#//Transition/source">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Specifies the transitions departing from this vertex."/>
-      </eAnnotations>
-    </eStructuralFeatures>
+    <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition"/>
+    <eOperations name="getOutgoings" ordered="false" upperBound="-1" eType="#//Transition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" ordered="false"
-        upperBound="-1" eType="#//Transition" eOpposite="#//Transition/target">
+        upperBound="-1" eType="#//Transition" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Specifies the transitions entering this vertex."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" ordered="false"
+        upperBound="-1" eType="#//Transition" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specifies the transitions departing from this vertex."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" ordered="false"
@@ -5089,12 +5107,6 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//Vertex" eOpposite="#//Vertex/incoming">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Designates the target vertex that is reached when the transition is taken."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedTransition" ordered="false"
         eType="#//Transition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -5122,8 +5134,14 @@
         <details key="documentation" value="Specifies the triggers that may fire the transition."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
+        lowerBound="1" eType="#//Vertex">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Designates the target vertex that is reached when the transition is taken."/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
-        lowerBound="1" eType="#//Vertex" eOpposite="#//Vertex/outgoing">
+        lowerBound="1" eType="#//Vertex">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Designates the originating vertex (state or pseudostate) of the transition."/>
       </eAnnotations>
@@ -6885,21 +6903,6 @@
         <details key="documentation" value="Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts)."/>
       </eAnnotations>
     </eLiterals>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectableElementTemplateParameter"
-      eSuperTypes="#//TemplateParameter">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A connectable element template parameter exposes a connectable element as a formal parameter for a template."/>
-    </eAnnotations>
-    <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
-          lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The ConnectableElement for this template parameter."/>
-        </eAnnotations>
-        <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
-      </contents>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterDirectionKind">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

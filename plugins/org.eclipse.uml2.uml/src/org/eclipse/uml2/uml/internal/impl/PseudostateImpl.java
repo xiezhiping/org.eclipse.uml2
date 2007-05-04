@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PseudostateImpl.java,v 1.18 2007/04/25 17:47:00 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.19 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -377,12 +377,6 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -419,12 +413,6 @@ public class PseudostateImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
@@ -492,10 +480,10 @@ public class PseudostateImpl
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.PSEUDOSTATE__INCOMING :
 				return getIncomings();
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -547,14 +535,14 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.PSEUDOSTATE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
@@ -599,11 +587,11 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				getOutgoings().clear();
-				return;
 			case UMLPackage.PSEUDOSTATE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				getOutgoings().clear();
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				setContainer((Region) null);
@@ -652,10 +640,10 @@ public class PseudostateImpl
 				return isSetNamespace();
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return nameExpression != null;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return incomings != null && !incomings.isEmpty();
+				return !getIncomings().isEmpty();
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return !getOutgoings().isEmpty();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :

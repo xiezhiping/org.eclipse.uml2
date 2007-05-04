@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateImpl.java,v 1.33 2007/04/25 17:47:03 khussey Exp $
+ * $Id: StateImpl.java,v 1.34 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -66,6 +65,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.RedefinableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.StateOperations;
+import org.eclipse.uml2.uml.internal.operations.VertexOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,8 +78,8 @@ import org.eclipse.uml2.uml.internal.operations.StateOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
@@ -125,26 +125,6 @@ public class StateImpl
 	 * @ordered
 	 */
 	protected static final int IS_LEAF_EFLAG = 1 << 10;
-
-	/**
-	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Transition> outgoings;
-
-	/**
-	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncomings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Transition> incomings;
 
 	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
@@ -486,12 +466,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList<Transition> getOutgoings() {
-		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList<Transition>(
-				Transition.class, this, UMLPackage.STATE__OUTGOING,
-				UMLPackage.TRANSITION__SOURCE);
-		}
-		return outgoings;
+		return VertexOperations.getOutgoings(this);
 	}
 
 	/**
@@ -527,12 +502,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public EList<Transition> getIncomings() {
-		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList<Transition>(
-				Transition.class, this, UMLPackage.STATE__INCOMING,
-				UMLPackage.TRANSITION__TARGET);
-		}
-		return incomings;
+		return VertexOperations.getIncomings(this);
 	}
 
 	/**
@@ -1586,12 +1556,6 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_RULE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__OUTGOING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1643,12 +1607,6 @@ public class StateImpl
 					otherEnd, msgs);
 			case UMLPackage.STATE__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE__CONTAINER :
 				return basicSetContainer(null, msgs);
@@ -1748,10 +1706,10 @@ public class StateImpl
 				return getRedefinedElements();
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.STATE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.STATE__INCOMING :
 				return getIncomings();
+			case UMLPackage.STATE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.STATE__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -1859,14 +1817,14 @@ public class StateImpl
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.STATE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.STATE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.STATE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.STATE__CONTAINER :
@@ -1951,11 +1909,11 @@ public class StateImpl
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.STATE__OUTGOING :
-				getOutgoings().clear();
-				return;
 			case UMLPackage.STATE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.STATE__OUTGOING :
+				getOutgoings().clear();
 				return;
 			case UMLPackage.STATE__CONTAINER :
 				setContainer((Region) null);
@@ -2043,10 +2001,10 @@ public class StateImpl
 				return isSetRedefinedElements();
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.STATE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.STATE__INCOMING :
-				return incomings != null && !incomings.isEmpty();
+				return !getIncomings().isEmpty();
+			case UMLPackage.STATE__OUTGOING :
+				return !getOutgoings().isEmpty();
 			case UMLPackage.STATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
@@ -2103,10 +2061,10 @@ public class StateImpl
 		}
 		if (baseClass == Vertex.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.STATE__OUTGOING :
-					return UMLPackage.VERTEX__OUTGOING;
 				case UMLPackage.STATE__INCOMING :
 					return UMLPackage.VERTEX__INCOMING;
+				case UMLPackage.STATE__OUTGOING :
+					return UMLPackage.VERTEX__OUTGOING;
 				case UMLPackage.STATE__CONTAINER :
 					return UMLPackage.VERTEX__CONTAINER;
 				default :
@@ -2137,10 +2095,10 @@ public class StateImpl
 		}
 		if (baseClass == Vertex.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.VERTEX__OUTGOING :
-					return UMLPackage.STATE__OUTGOING;
 				case UMLPackage.VERTEX__INCOMING :
 					return UMLPackage.STATE__INCOMING;
+				case UMLPackage.VERTEX__OUTGOING :
+					return UMLPackage.STATE__OUTGOING;
 				case UMLPackage.VERTEX__CONTAINER :
 					return UMLPackage.STATE__CONTAINER;
 				default :

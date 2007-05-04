@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
+ * $Id: VariableOperations.java,v 1.7 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -39,7 +39,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class VariableOperations
-		extends NamedElementOperations {
+		extends ConnectableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

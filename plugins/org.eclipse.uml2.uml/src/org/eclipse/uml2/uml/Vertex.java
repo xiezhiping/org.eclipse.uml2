@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Vertex.java,v 1.9 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
@@ -44,7 +44,6 @@ public interface Vertex
 	/**
 	 * Returns the value of the '<em><b>Outgoing</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Transition#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -52,8 +51,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
-	 * @see org.eclipse.uml2.uml.Transition#getSource
-	 * @model type="org.eclipse.uml2.uml.Transition" opposite="source" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Transition" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getOutgoings();
@@ -85,7 +83,6 @@ public interface Vertex
 	/**
 	 * Returns the value of the '<em><b>Incoming</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Transition}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -93,8 +90,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
-	 * @see org.eclipse.uml2.uml.Transition#getTarget
-	 * @model type="org.eclipse.uml2.uml.Transition" opposite="target" ordered="false"
+	 * @model type="org.eclipse.uml2.uml.Transition" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getIncomings();

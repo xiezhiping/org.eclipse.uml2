@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.31 2007/02/14 16:00:47 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.32 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -160,6 +160,8 @@ public class UML22UMLResourceHandler
 	protected static final String TAG_DEFINITION__SIGNATURE = "signature"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__SYMBOL = "symbol"; //$NON-NLS-1$
+
+	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return resource.getEObjectToExtensionMap().get(eObject);
@@ -573,7 +575,7 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("keywords"); //$NON-NLS-1$
 
 				if (keywordsAnnotation != null) {
-					keywordsAnnotation.setSource(UMLPackage.eNS_URI);
+					keywordsAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
 				}
 
 				EAnnotation appliedStereotypesAnnotation = element
@@ -1300,7 +1302,7 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("attributes"); //$NON-NLS-1$
 
 				if (attributesAnnotation != null) {
-					attributesAnnotation.setSource(UMLPackage.eNS_URI);
+					attributesAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
 
 					EMap<String, String> details = attributesAnnotation
 						.getDetails();
@@ -1317,7 +1319,7 @@ public class UML22UMLResourceHandler
 							}
 
 							EAnnotation eAnnotation = appliedProfile
-								.getEAnnotation(UMLPackage.eNS_URI);
+								.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 							if (eAnnotation != null) {
 								EList<EObject> contents = eAnnotation
@@ -1380,7 +1382,7 @@ public class UML22UMLResourceHandler
 					.getEAnnotation("ePackages"); //$NON-NLS-1$
 
 				if (ePackagesAnnotation != null) {
-					ePackagesAnnotation.setSource(UMLPackage.eNS_URI);
+					ePackagesAnnotation.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
 
 					new EcoreSwitch<Object>() {
 
@@ -1391,7 +1393,7 @@ public class UML22UMLResourceHandler
 
 							if (stereotypeAnnotation != null) {
 								stereotypeAnnotation
-									.setSource(UMLPackage.eNS_URI);
+									.setSource(UML2_UML_PACKAGE_2_0_NS_URI);
 
 								EList<EObject> references = stereotypeAnnotation
 									.getReferences();
@@ -1470,7 +1472,7 @@ public class UML22UMLResourceHandler
 
 									EList<EObject> eEnumReferences = UML2Util
 										.getEAnnotation(eEnum,
-											UMLPackage.eNS_URI, true)
+											UML2_UML_PACKAGE_2_0_NS_URI, true)
 										.getReferences();
 
 									if (eEnumReferences.isEmpty()) {

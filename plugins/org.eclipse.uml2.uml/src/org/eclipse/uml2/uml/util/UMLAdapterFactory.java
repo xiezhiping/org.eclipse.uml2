@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLAdapterFactory.java,v 1.10 2007/03/27 03:39:50 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.11 2007/05/04 20:35:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -496,6 +496,12 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseConnectableElementTemplateParameter(
+				ConnectableElementTemplateParameter object) {
+			return createConnectableElementTemplateParameterAdapter();
+		}
+
+		@Override
 		public Adapter caseConnectorEnd(ConnectorEnd object) {
 			return createConnectorEndAdapter();
 		}
@@ -706,12 +712,6 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseStructuralFeature(StructuralFeature object) {
 			return createStructuralFeatureAdapter();
-		}
-
-		@Override
-		public Adapter caseConnectableElementTemplateParameter(
-				ConnectableElementTemplateParameter object) {
-			return createConnectableElementTemplateParameterAdapter();
 		}
 
 		@Override

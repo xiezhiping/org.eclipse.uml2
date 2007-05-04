@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterOperations.java,v 1.19 2007/05/03 21:11:53 khussey Exp $
+ * $Id: ParameterOperations.java,v 1.20 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -58,7 +58,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class ParameterOperations
-		extends NamedElementOperations {
+		extends ConnectableElementOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

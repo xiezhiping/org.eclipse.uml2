@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionImpl.java,v 1.27 2007/04/25 17:47:01 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.28 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,11 +79,11 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTriggers <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
@@ -135,16 +135,6 @@ public class TransitionImpl
 	protected TransitionKind kind = KIND_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTarget()
-	 * @generated
-	 * @ordered
-	 */
-	protected Vertex target;
-
-	/**
 	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -183,6 +173,16 @@ public class TransitionImpl
 	 * @ordered
 	 */
 	protected EList<Trigger> triggers;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vertex target;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -547,42 +547,12 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTarget(Vertex newTarget,
-			NotificationChain msgs) {
+	public void setTarget(Vertex newTarget) {
 		Vertex oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TRANSITION__TARGET, oldTarget,
-				newTarget);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTarget(Vertex newTarget) {
-		if (newTarget != target) {
-			NotificationChain msgs = null;
-			if (target != null)
-				msgs = ((InternalEObject) target).eInverseRemove(this,
-					UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
-			if (newTarget != null)
-				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
-					UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
-			msgs = basicSetTarget(newTarget, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__TARGET, newTarget, newTarget));
+				UMLPackage.TRANSITION__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -879,42 +849,12 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSource(Vertex newSource,
-			NotificationChain msgs) {
+	public void setSource(Vertex newSource) {
 		Vertex oldSource = source;
 		source = newSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, UMLPackage.TRANSITION__SOURCE, oldSource,
-				newSource);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSource(Vertex newSource) {
-		if (newSource != source) {
-			NotificationChain msgs = null;
-			if (source != null)
-				msgs = ((InternalEObject) source).eInverseRemove(this,
-					UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
-			if (newSource != null)
-				msgs = ((InternalEObject) newSource).eInverseAdd(this,
-					UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
-			msgs = basicSetSource(newSource, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__SOURCE, newSource, newSource));
+				UMLPackage.TRANSITION__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -1082,16 +1022,6 @@ public class TransitionImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainer((Region) otherEnd, msgs);
-			case UMLPackage.TRANSITION__TARGET :
-				if (target != null)
-					msgs = ((InternalEObject) target).eInverseRemove(this,
-						UMLPackage.VERTEX__INCOMING, Vertex.class, msgs);
-				return basicSetTarget((Vertex) otherEnd, msgs);
-			case UMLPackage.TRANSITION__SOURCE :
-				if (source != null)
-					msgs = ((InternalEObject) source).eInverseRemove(this,
-						UMLPackage.VERTEX__OUTGOING, Vertex.class, msgs);
-				return basicSetSource((Vertex) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1127,15 +1057,11 @@ public class TransitionImpl
 					otherEnd, msgs);
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicSetContainer(null, msgs);
-			case UMLPackage.TRANSITION__TARGET :
-				return basicSetTarget(null, msgs);
 			case UMLPackage.TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.TRANSITION__TRIGGER :
 				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.TRANSITION__SOURCE :
-				return basicSetSource(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1216,10 +1142,6 @@ public class TransitionImpl
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
-			case UMLPackage.TRANSITION__TARGET :
-				if (resolve)
-					return getTarget();
-				return basicGetTarget();
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
 					return getRedefinedTransition();
@@ -1234,6 +1156,10 @@ public class TransitionImpl
 				return basicGetEffect();
 			case UMLPackage.TRANSITION__TRIGGER :
 				return getTriggers();
+			case UMLPackage.TRANSITION__TARGET :
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 			case UMLPackage.TRANSITION__SOURCE :
 				if (resolve)
 					return getSource();
@@ -1299,9 +1225,6 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__CONTAINER :
 				setContainer((Region) newValue);
 				return;
-			case UMLPackage.TRANSITION__TARGET :
-				setTarget((Vertex) newValue);
-				return;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) newValue);
 				return;
@@ -1314,6 +1237,9 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
+				return;
+			case UMLPackage.TRANSITION__TARGET :
+				setTarget((Vertex) newValue);
 				return;
 			case UMLPackage.TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -1366,9 +1292,6 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__CONTAINER :
 				setContainer((Region) null);
 				return;
-			case UMLPackage.TRANSITION__TARGET :
-				setTarget((Vertex) null);
-				return;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) null);
 				return;
@@ -1380,6 +1303,9 @@ public class TransitionImpl
 				return;
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
+				return;
+			case UMLPackage.TRANSITION__TARGET :
+				setTarget((Vertex) null);
 				return;
 			case UMLPackage.TRANSITION__SOURCE :
 				setSource((Vertex) null);
@@ -1441,8 +1367,6 @@ public class TransitionImpl
 				return kind != KIND_EDEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
-			case UMLPackage.TRANSITION__TARGET :
-				return target != null;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				return redefinedTransition != null;
 			case UMLPackage.TRANSITION__GUARD :
@@ -1451,6 +1375,8 @@ public class TransitionImpl
 				return effect != null;
 			case UMLPackage.TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
+			case UMLPackage.TRANSITION__TARGET :
+				return target != null;
 			case UMLPackage.TRANSITION__SOURCE :
 				return source != null;
 		}

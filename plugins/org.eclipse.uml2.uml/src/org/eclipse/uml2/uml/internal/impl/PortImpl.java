@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortImpl.java,v 1.28 2007/04/25 17:47:00 khussey Exp $
+ * $Id: PortImpl.java,v 1.29 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -979,7 +979,7 @@ public class PortImpl
 			case UMLPackage.PORT__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PORT__END :
-				return ends != null && !ends.isEmpty();
+				return !getEnds().isEmpty();
 			case UMLPackage.PORT__DEPLOYMENT :
 				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PORT__DEPLOYED_ELEMENT :

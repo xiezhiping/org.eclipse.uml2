@@ -11,7 +11,7 @@
  Contributors:
    IBM - initial API and implementation
 
- $Id: plugin.xml,v 1.4 2007/03/28 20:56:52 khussey Exp $
+ $Id: plugin.xml,v 1.5 2007/05/04 20:35:34 khussey Exp $
 -->
 
 <plugin>
@@ -19,6 +19,13 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/uml2/2.0.0/UML" 
+       class = "org.eclipse.uml2.uml.UMLPackage"
+       genModel = "model/UML.genmodel" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/uml2/2.1.0/UML" 
        class = "org.eclipse.uml2.uml.UMLPackage"
        genModel = "model/UML.genmodel" /> 
   </extension>

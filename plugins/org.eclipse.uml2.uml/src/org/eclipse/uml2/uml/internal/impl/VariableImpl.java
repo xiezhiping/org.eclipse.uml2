@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VariableImpl.java,v 1.32 2007/04/25 17:47:01 khussey Exp $
+ * $Id: VariableImpl.java,v 1.33 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -794,9 +794,6 @@ public class VariableImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.VARIABLE__END :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -833,9 +830,6 @@ public class VariableImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.VARIABLE__END :
-				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.VARIABLE__LOWER_VALUE :
@@ -1130,7 +1124,7 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.VARIABLE__END :
-				return ends != null && !ends.isEmpty();
+				return !getEnds().isEmpty();
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.VARIABLE__IS_UNIQUE :

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.20 2007/04/25 17:47:02 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.21 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -43,6 +42,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.operations.ConnectableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 
 /**
@@ -74,16 +74,6 @@ public abstract class ConnectableElementImpl
 	 * @ordered
 	 */
 	protected TemplateParameter templateParameter;
-
-	/**
-	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ConnectorEnd> ends;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -306,12 +296,7 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 */
 	public EList<ConnectorEnd> getEnds() {
-		if (ends == null) {
-			ends = new EObjectWithInverseResolvingEList<ConnectorEnd>(
-				ConnectorEnd.class, this, UMLPackage.CONNECTABLE_ELEMENT__END,
-				UMLPackage.CONNECTOR_END__ROLE);
-		}
-		return ends;
+		return ConnectableElementOperations.getEnds(this);
 	}
 
 	/**
@@ -361,9 +346,6 @@ public abstract class ConnectableElementImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT__END :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
-					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -392,9 +374,6 @@ public abstract class ConnectableElementImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.CONNECTABLE_ELEMENT__END :
-				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
-					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -598,7 +577,7 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.CONNECTABLE_ELEMENT__END :
-				return ends != null && !ends.isEmpty();
+				return !getEnds().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

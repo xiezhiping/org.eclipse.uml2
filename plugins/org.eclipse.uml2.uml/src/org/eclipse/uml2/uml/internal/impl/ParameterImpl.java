@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ParameterImpl.java,v 1.38 2007/05/02 15:03:11 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.39 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1233,9 +1233,6 @@ public class ParameterImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.PARAMETER__END :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PARAMETER__PARAMETER_SET :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getParameterSets())
 					.basicAdd(otherEnd, msgs);
@@ -1267,9 +1264,6 @@ public class ParameterImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.PARAMETER__END :
-				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				return basicSetUpperValue(null, msgs);
 			case UMLPackage.PARAMETER__LOWER_VALUE :
@@ -1600,7 +1594,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PARAMETER__END :
-				return ends != null && !ends.isEmpty();
+				return !getEnds().isEmpty();
 			case UMLPackage.PARAMETER__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PARAMETER__IS_UNIQUE :

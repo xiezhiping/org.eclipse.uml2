@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.34 2007/05/03 21:11:52 khussey Exp $
+ * $Id: PackageOperations.java,v 1.35 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -530,7 +530,8 @@ public class PackageOperations
 
 						if (profileApplication.getAppliedProfile() == profile) {
 							EList<EObject> references = getEAnnotation(
-								profileApplication, UMLPackage.eNS_URI, true)
+								profileApplication,
+								UML2_UML_PACKAGE_2_0_NS_URI, true)
 								.getReferences();
 
 							if (references.isEmpty()) {

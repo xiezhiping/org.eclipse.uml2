@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPackage.java,v 1.26 2007/03/30 18:20:25 khussey Exp $
+ * $Id: UMLPackage.java,v 1.27 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface UMLPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+	String eNS_URI = "http://www.eclipse.org/uml2/2.1.0/UML"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -1524,7 +1524,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProfile()
 	 * @generated
 	 */
-	int PROFILE = 70;
+	int PROFILE = 71;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -1544,7 +1544,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStructuredClassifier()
 	 * @generated
 	 */
-	int STRUCTURED_CLASSIFIER = 64;
+	int STRUCTURED_CLASSIFIER = 65;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.EncapsulatedClassifierImpl <em>Encapsulated Classifier</em>}' class.
@@ -1554,7 +1554,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getEncapsulatedClassifier()
 	 * @generated
 	 */
-	int ENCAPSULATED_CLASSIFIER = 63;
+	int ENCAPSULATED_CLASSIFIER = 64;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ClassImpl <em>Class</em>}' class.
@@ -1564,7 +1564,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getClass_()
 	 * @generated
 	 */
-	int CLASS = 45;
+	int CLASS = 46;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StereotypeImpl <em>Stereotype</em>}' class.
@@ -1574,7 +1574,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStereotype()
 	 * @generated
 	 */
-	int STEREOTYPE = 68;
+	int STEREOTYPE = 69;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.BehavioredClassifierImpl <em>Behaviored Classifier</em>}' class.
@@ -1584,7 +1584,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBehavioredClassifier()
 	 * @generated
 	 */
-	int BEHAVIORED_CLASSIFIER = 46;
+	int BEHAVIORED_CLASSIFIER = 47;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RedefinableElementImpl <em>Redefinable Element</em>}' class.
@@ -2600,7 +2600,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnectorEnd()
 	 * @generated
 	 */
-	int CONNECTOR_END = 34;
+	int CONNECTOR_END = 35;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl <em>Structural Feature</em>}' class.
@@ -2610,7 +2610,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStructuralFeature()
 	 * @generated
 	 */
-	int STRUCTURAL_FEATURE = 75;
+	int STRUCTURAL_FEATURE = 76;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl <em>Property</em>}' class.
@@ -2620,7 +2620,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProperty()
 	 * @generated
 	 */
-	int PROPERTY = 35;
+	int PROPERTY = 36;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl <em>Deployment Target</em>}' class.
@@ -2630,7 +2630,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDeploymentTarget()
 	 * @generated
 	 */
-	int DEPLOYMENT_TARGET = 36;
+	int DEPLOYMENT_TARGET = 37;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl <em>Deployment</em>}' class.
@@ -2640,7 +2640,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDeployment()
 	 * @generated
 	 */
-	int DEPLOYMENT = 37;
+	int DEPLOYMENT = 38;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DeployedArtifactImpl <em>Deployed Artifact</em>}' class.
@@ -2650,7 +2650,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDeployedArtifact()
 	 * @generated
 	 */
-	int DEPLOYED_ARTIFACT = 38;
+	int DEPLOYED_ARTIFACT = 39;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ArtifactImpl <em>Artifact</em>}' class.
@@ -2660,7 +2660,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 40;
+	int ARTIFACT = 41;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DeploymentSpecificationImpl <em>Deployment Specification</em>}' class.
@@ -2670,7 +2670,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDeploymentSpecification()
 	 * @generated
 	 */
-	int DEPLOYMENT_SPECIFICATION = 39;
+	int DEPLOYMENT_SPECIFICATION = 40;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ManifestationImpl <em>Manifestation</em>}' class.
@@ -2680,7 +2680,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getManifestation()
 	 * @generated
 	 */
-	int MANIFESTATION = 41;
+	int MANIFESTATION = 42;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.BehavioralFeatureImpl <em>Behavioral Feature</em>}' class.
@@ -2690,7 +2690,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBehavioralFeature()
 	 * @generated
 	 */
-	int BEHAVIORAL_FEATURE = 43;
+	int BEHAVIORAL_FEATURE = 44;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.OperationImpl <em>Operation</em>}' class.
@@ -2700,7 +2700,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 42;
+	int OPERATION = 43;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.BehaviorImpl <em>Behavior</em>}' class.
@@ -2710,7 +2710,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getBehavior()
 	 * @generated
 	 */
-	int BEHAVIOR = 44;
+	int BEHAVIOR = 45;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ParameterSetImpl <em>Parameter Set</em>}' class.
@@ -2720,7 +2720,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getParameterSet()
 	 * @generated
 	 */
-	int PARAMETER_SET = 72;
+	int PARAMETER_SET = 73;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.DataTypeImpl <em>Data Type</em>}' class.
@@ -2730,7 +2730,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDataType()
 	 * @generated
 	 */
-	int DATA_TYPE = 73;
+	int DATA_TYPE = 74;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -2740,7 +2740,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInterface()
 	 * @generated
 	 */
-	int INTERFACE = 48;
+	int INTERFACE = 49;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ReceptionImpl <em>Reception</em>}' class.
@@ -2750,7 +2750,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getReception()
 	 * @generated
 	 */
-	int RECEPTION = 49;
+	int RECEPTION = 50;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.SignalImpl <em>Signal</em>}' class.
@@ -2760,7 +2760,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getSignal()
 	 * @generated
 	 */
-	int SIGNAL = 50;
+	int SIGNAL = 51;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl <em>State Machine</em>}' class.
@@ -2770,7 +2770,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getStateMachine()
 	 * @generated
 	 */
-	int STATE_MACHINE = 52;
+	int STATE_MACHINE = 53;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ProtocolStateMachineImpl <em>Protocol State Machine</em>}' class.
@@ -2780,7 +2780,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProtocolStateMachine()
 	 * @generated
 	 */
-	int PROTOCOL_STATE_MACHINE = 51;
+	int PROTOCOL_STATE_MACHINE = 52;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RegionImpl <em>Region</em>}' class.
@@ -2790,7 +2790,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getRegion()
 	 * @generated
 	 */
-	int REGION = 53;
+	int REGION = 54;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.VertexImpl <em>Vertex</em>}' class.
@@ -2800,7 +2800,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getVertex()
 	 * @generated
 	 */
-	int VERTEX = 54;
+	int VERTEX = 55;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl <em>Transition</em>}' class.
@@ -2810,7 +2810,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTransition()
 	 * @generated
 	 */
-	int TRANSITION = 55;
+	int TRANSITION = 56;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -2820,7 +2820,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 56;
+	int TRIGGER = 57;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.EventImpl <em>Event</em>}' class.
@@ -2830,7 +2830,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getEvent()
 	 * @generated
 	 */
-	int EVENT = 57;
+	int EVENT = 58;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.PortImpl <em>Port</em>}' class.
@@ -2840,7 +2840,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPort()
 	 * @generated
 	 */
-	int PORT = 58;
+	int PORT = 59;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.StateImpl <em>State</em>}' class.
@@ -2850,7 +2850,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 59;
+	int STATE = 60;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ConnectionPointReferenceImpl <em>Connection Point Reference</em>}' class.
@@ -2860,7 +2860,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnectionPointReference()
 	 * @generated
 	 */
-	int CONNECTION_POINT_REFERENCE = 60;
+	int CONNECTION_POINT_REFERENCE = 61;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl <em>Pseudostate</em>}' class.
@@ -2870,7 +2870,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getPseudostate()
 	 * @generated
 	 */
-	int PSEUDOSTATE = 61;
+	int PSEUDOSTATE = 62;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ProtocolConformanceImpl <em>Protocol Conformance</em>}' class.
@@ -2880,7 +2880,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getProtocolConformance()
 	 * @generated
 	 */
-	int PROTOCOL_CONFORMANCE = 62;
+	int PROTOCOL_CONFORMANCE = 63;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.OperationTemplateParameterImpl <em>Operation Template Parameter</em>}' class.
@@ -2890,7 +2890,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getOperationTemplateParameter()
 	 * @generated
 	 */
-	int OPERATION_TEMPLATE_PARAMETER = 74;
+	int OPERATION_TEMPLATE_PARAMETER = 75;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.AssociationImpl <em>Association</em>}' class.
@@ -4305,7 +4305,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnectableElementTemplateParameter()
 	 * @generated
 	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER = 76;
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER = 34;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -4506,7 +4506,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getConnector()
 	 * @generated
 	 */
-	int CONNECTOR = 65;
+	int CONNECTOR = 66;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.RedefinableTemplateSignatureImpl <em>Redefinable Template Signature</em>}' class.
@@ -4536,7 +4536,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getInterfaceRealization()
 	 * @generated
 	 */
-	int INTERFACE_REALIZATION = 47;
+	int INTERFACE_REALIZATION = 48;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExtensionImpl <em>Extension</em>}' class.
@@ -4546,7 +4546,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExtension()
 	 * @generated
 	 */
-	int EXTENSION = 66;
+	int EXTENSION = 67;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExtensionEndImpl <em>Extension End</em>}' class.
@@ -4556,7 +4556,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExtensionEnd()
 	 * @generated
 	 */
-	int EXTENSION_END = 67;
+	int EXTENSION_END = 68;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ImageImpl <em>Image</em>}' class.
@@ -4566,7 +4566,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getImage()
 	 * @generated
 	 */
-	int IMAGE = 69;
+	int IMAGE = 70;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -5626,7 +5626,7 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getModel()
 	 * @generated
 	 */
-	int MODEL = 71;
+	int MODEL = 72;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -6644,6 +6644,96 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int MULTIPLICITY_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Signature</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Default</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
+
+	/**
+	 * The number of structural features of the '<em>Connectable Element Template Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -14305,22 +14395,22 @@ public interface UMLPackage
 	int VERTEX__NAME_EXPRESSION = NAMED_ELEMENT__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VERTEX__OUTGOING = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERTEX__INCOMING = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int VERTEX__INCOMING = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTEX__OUTGOING = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -14530,22 +14620,13 @@ public interface UMLPackage
 	int TRANSITION__CONTAINER = NAMESPACE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__TARGET = NAMESPACE_FEATURE_COUNT + 5;
-
-	/**
 	 * The feature id for the '<em><b>Redefined Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__REDEFINED_TRANSITION = NAMESPACE_FEATURE_COUNT + 6;
+	int TRANSITION__REDEFINED_TRANSITION = NAMESPACE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Guard</b></em>' reference.
@@ -14554,7 +14635,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__GUARD = NAMESPACE_FEATURE_COUNT + 7;
+	int TRANSITION__GUARD = NAMESPACE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Effect</b></em>' containment reference.
@@ -14563,7 +14644,7 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__EFFECT = NAMESPACE_FEATURE_COUNT + 8;
+	int TRANSITION__EFFECT = NAMESPACE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Trigger</b></em>' containment reference list.
@@ -14572,7 +14653,16 @@ public interface UMLPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSITION__TRIGGER = NAMESPACE_FEATURE_COUNT + 9;
+	int TRANSITION__TRIGGER = NAMESPACE_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__TARGET = NAMESPACE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -15466,22 +15556,22 @@ public interface UMLPackage
 	int STATE__REDEFINITION_CONTEXT = NAMESPACE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__OUTGOING = NAMESPACE_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE__INCOMING = NAMESPACE_FEATURE_COUNT + 4;
+	int STATE__INCOMING = NAMESPACE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__OUTGOING = NAMESPACE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -15718,15 +15808,6 @@ public interface UMLPackage
 	int CONNECTION_POINT_REFERENCE__NAME_EXPRESSION = VERTEX__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTION_POINT_REFERENCE__OUTGOING = VERTEX__OUTGOING;
-
-	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15734,6 +15815,15 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int CONNECTION_POINT_REFERENCE__INCOMING = VERTEX__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_POINT_REFERENCE__OUTGOING = VERTEX__OUTGOING;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -15871,15 +15961,6 @@ public interface UMLPackage
 	int PSEUDOSTATE__NAME_EXPRESSION = VERTEX__NAME_EXPRESSION;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDOSTATE__OUTGOING = VERTEX__OUTGOING;
-
-	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -15887,6 +15968,15 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PSEUDOSTATE__INCOMING = VERTEX__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDOSTATE__OUTGOING = VERTEX__OUTGOING;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -18686,96 +18776,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int OPERATION_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__EANNOTATIONS = TEMPLATE_PARAMETER__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_ELEMENT = TEMPLATE_PARAMETER__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNER = TEMPLATE_PARAMETER__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_COMMENT = TEMPLATE_PARAMETER__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Signature</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__SIGNATURE = TEMPLATE_PARAMETER__SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Parametered Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Parametered Element</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT = TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Default</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__DEFAULT = TEMPLATE_PARAMETER__DEFAULT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Default</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER__OWNED_DEFAULT = TEMPLATE_PARAMETER__OWNED_DEFAULT;
-
-	/**
-	 * The number of structural features of the '<em>Connectable Element Template Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER_FEATURE_COUNT = TEMPLATE_PARAMETER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -48852,15 +48852,6 @@ public interface UMLPackage
 	int FINAL_STATE__REDEFINITION_CONTEXT = STATE__REDEFINITION_CONTEXT;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FINAL_STATE__OUTGOING = STATE__OUTGOING;
-
-	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48868,6 +48859,15 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int FINAL_STATE__INCOMING = STATE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__OUTGOING = STATE__OUTGOING;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' container reference.
@@ -57890,15 +57890,6 @@ public interface UMLPackage
 	int PROTOCOL_TRANSITION__CONTAINER = TRANSITION__CONTAINER;
 
 	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROTOCOL_TRANSITION__TARGET = TRANSITION__TARGET;
-
-	/**
 	 * The feature id for the '<em><b>Redefined Transition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57933,6 +57924,15 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int PROTOCOL_TRANSITION__TRIGGER = TRANSITION__TRIGGER;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROTOCOL_TRANSITION__TARGET = TRANSITION__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
+ * $Id: ProfileApplicationOperations.java,v 1.8 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.ProfileApplication;
-import org.eclipse.uml2.uml.UMLPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +60,7 @@ public class ProfileApplicationOperations
 	public static EPackage getAppliedDefinition(
 			ProfileApplication profileApplication) {
 		EAnnotation eAnnotation = profileApplication
-			.getEAnnotation(UMLPackage.eNS_URI);
+			.getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI);
 
 		if (eAnnotation != null) {
 			EList<EObject> references = eAnnotation.getReferences();

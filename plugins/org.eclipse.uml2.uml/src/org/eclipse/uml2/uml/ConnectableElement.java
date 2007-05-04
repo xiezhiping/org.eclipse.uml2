@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElement.java,v 1.5 2006/12/14 15:49:28 khussey Exp $
+ * $Id: ConnectableElement.java,v 1.6 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,6 @@ public interface ConnectableElement
 	/**
 	 * Returns the value of the '<em><b>End</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ConnectorEnd}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ConnectorEnd#getRole <em>Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -49,8 +48,7 @@ public interface ConnectableElement
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement_End()
-	 * @see org.eclipse.uml2.uml.ConnectorEnd#getRole
-	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" opposite="role"
+	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<ConnectorEnd> getEnds();

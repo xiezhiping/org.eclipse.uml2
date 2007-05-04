@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.20 2007/04/25 17:47:00 khussey Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.21 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -292,12 +292,6 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -330,12 +324,6 @@ public class ConnectionPointReferenceImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return basicSetContainer(null, msgs);
 			case UMLPackage.CONNECTION_POINT_REFERENCE__STATE :
@@ -397,10 +385,10 @@ public class ConnectionPointReferenceImpl
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
 				return getIncomings();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -450,14 +438,14 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
@@ -505,11 +493,11 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				getOutgoings().clear();
-				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				getOutgoings().clear();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				setContainer((Region) null);
@@ -558,10 +546,10 @@ public class ConnectionPointReferenceImpl
 				return isSetNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				return nameExpression != null;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return incomings != null && !incomings.isEmpty();
+				return !getIncomings().isEmpty();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return !getOutgoings().isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :

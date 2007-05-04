@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uml"
-    nsURI="http://www.eclipse.org/uml2/2.0.0/UML" nsPrefix="uml">
+    nsURI="http://www.eclipse.org/uml2/2.1.0/UML" nsPrefix="uml">
   <eClassifiers xsi:type="ecore:EDataType" name="Integer" instanceClassName="int"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Boolean" instanceClassName="boolean"/>
   <eClassifiers xsi:type="ecore:EDataType" name="String" instanceClassName="java.lang.String"/>
@@ -1231,8 +1231,18 @@
         <eAnnotations source="redefines" references="#//ParameterableElement/templateParameter"/>
       </contents>
     </eAnnotations>
+    <eOperations name="getEnds" ordered="false" upperBound="-1" eType="#//ConnectorEnd"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="end" upperBound="-1" eType="#//ConnectorEnd"
-        eOpposite="#//ConnectorEnd/role"/>
+        volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectableElementTemplateParameter"
+      eSuperTypes="#//TemplateParameter">
+    <eAnnotations source="duplicates">
+      <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
+          lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
+        <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
+      </contents>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorEnd" eSuperTypes="#//MultiplicityElement">
     <eOperations name="multiplicity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -1277,7 +1287,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="partWithPort" ordered="false"
         eType="#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="role" ordered="false" lowerBound="1"
-        eType="#//ConnectableElement" eOpposite="#//ConnectableElement/end"/>
+        eType="#//ConnectableElement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//StructuralFeature #//ConnectableElement #//DeploymentTarget #//TemplateableElement">
     <eAnnotations source="duplicates">
@@ -2137,10 +2147,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Vertex" abstract="true" eSuperTypes="#//NamedElement">
     <eOperations name="containingStateMachine" ordered="false" lowerBound="1" eType="#//StateMachine"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" ordered="false"
-        upperBound="-1" eType="#//Transition" eOpposite="#//Transition/source"/>
+    <eOperations name="getIncomings" ordered="false" upperBound="-1" eType="#//Transition"/>
+    <eOperations name="getOutgoings" ordered="false" upperBound="-1" eType="#//Transition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" ordered="false"
-        upperBound="-1" eType="#//Transition" eOpposite="#//Transition/target"/>
+        upperBound="-1" eType="#//Transition" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" ordered="false"
+        upperBound="-1" eType="#//Transition" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" ordered="false"
         eType="#//Region" eOpposite="#//Region/subvertex">
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
@@ -2230,8 +2242,6 @@
         lowerBound="1" eType="#//Region" eOpposite="#//Region/transition">
       <eAnnotations source="subsets" references="#//NamedElement/namespace"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
-        lowerBound="1" eType="#//Vertex" eOpposite="#//Vertex/incoming"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="redefinedTransition" ordered="false"
         eType="#//Transition">
       <eAnnotations source="subsets" references="#//RedefinableElement/redefinedElement"/>
@@ -2246,8 +2256,10 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" ordered="false"
         upperBound="-1" eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" ordered="false"
+        lowerBound="1" eType="#//Vertex"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" ordered="false"
-        lowerBound="1" eType="#//Vertex" eOpposite="#//Vertex/outgoing"/>
+        lowerBound="1" eType="#//Vertex"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="TransitionKind">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -2999,15 +3011,6 @@
     <eLiterals name="none"/>
     <eLiterals name="shared" value="1"/>
     <eLiterals name="composite" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectableElementTemplateParameter"
-      eSuperTypes="#//TemplateParameter">
-    <eAnnotations source="duplicates">
-      <contents xsi:type="ecore:EReference" name="parameteredElement" ordered="false"
-          lowerBound="1" eType="#//ParameterableElement" eOpposite="#//ConnectableElement/%duplicates%/templateParameter">
-        <eAnnotations source="redefines" references="#//TemplateParameter/parameteredElement"/>
-      </contents>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterDirectionKind">
     <eLiterals name="in"/>

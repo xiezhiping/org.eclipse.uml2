@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactoryImpl.java,v 1.17 2007/03/27 03:39:50 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.18 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -252,7 +252,7 @@ public class UMLFactoryImpl
 	public static UMLFactory init() {
 		try {
 			UMLFactory theUMLFactory = (UMLFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/2.0.0/UML"); //$NON-NLS-1$ 
+				.getEFactory("http://www.eclipse.org/uml2/2.1.0/UML"); //$NON-NLS-1$ 
 			if (theUMLFactory != null) {
 				return theUMLFactory;
 			}
@@ -316,6 +316,8 @@ public class UMLFactoryImpl
 				return createOpaqueExpression();
 			case UMLPackage.PARAMETER :
 				return createParameter();
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return createConnectableElementTemplateParameter();
 			case UMLPackage.CONNECTOR_END :
 				return createConnectorEnd();
 			case UMLPackage.PROPERTY :
@@ -380,8 +382,6 @@ public class UMLFactoryImpl
 				return createDataType();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
 				return createOperationTemplateParameter();
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return createConnectableElementTemplateParameter();
 			case UMLPackage.COLLABORATION_USE :
 				return createCollaborationUse();
 			case UMLPackage.COLLABORATION :

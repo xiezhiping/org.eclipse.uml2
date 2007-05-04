@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
+ * $Id: VertexImpl.java,v 1.22 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -49,8 +48,8 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
@@ -60,26 +59,6 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
 public abstract class VertexImpl
 		extends NamedElementImpl
 		implements Vertex {
-
-	/**
-	 * The cached value of the '{@link #getOutgoings() <em>Outgoing</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutgoings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Transition> outgoings;
-
-	/**
-	 * The cached value of the '{@link #getIncomings() <em>Incoming</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIncomings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Transition> incomings;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,12 +98,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public EList<Transition> getOutgoings() {
-		if (outgoings == null) {
-			outgoings = new EObjectWithInverseResolvingEList<Transition>(
-				Transition.class, this, UMLPackage.VERTEX__OUTGOING,
-				UMLPackage.TRANSITION__SOURCE);
-		}
-		return outgoings;
+		return VertexOperations.getOutgoings(this);
 	}
 
 	/**
@@ -160,12 +134,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public EList<Transition> getIncomings() {
-		if (incomings == null) {
-			incomings = new EObjectWithInverseResolvingEList<Transition>(
-				Transition.class, this, UMLPackage.VERTEX__INCOMING,
-				UMLPackage.TRANSITION__TARGET);
-		}
-		return incomings;
+		return VertexOperations.getIncomings(this);
 	}
 
 	/**
@@ -279,12 +248,6 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.VERTEX__OUTGOING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.VERTEX__INCOMING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -313,12 +276,6 @@ public abstract class VertexImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.VERTEX__OUTGOING :
-				return ((InternalEList<?>) getOutgoings()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.VERTEX__INCOMING :
-				return ((InternalEList<?>) getIncomings()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicSetContainer(null, msgs);
 		}
@@ -375,10 +332,10 @@ public abstract class VertexImpl
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.VERTEX__OUTGOING :
-				return getOutgoings();
 			case UMLPackage.VERTEX__INCOMING :
 				return getIncomings();
+			case UMLPackage.VERTEX__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.VERTEX__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -420,14 +377,14 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.VERTEX__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.VERTEX__INCOMING :
 				getIncomings().clear();
 				getIncomings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.VERTEX__OUTGOING :
+				getOutgoings().clear();
+				getOutgoings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
@@ -463,11 +420,11 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.VERTEX__OUTGOING :
-				getOutgoings().clear();
-				return;
 			case UMLPackage.VERTEX__INCOMING :
 				getIncomings().clear();
+				return;
+			case UMLPackage.VERTEX__OUTGOING :
+				getOutgoings().clear();
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
 				setContainer((Region) null);
@@ -507,10 +464,10 @@ public abstract class VertexImpl
 				return isSetNamespace();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return nameExpression != null;
-			case UMLPackage.VERTEX__OUTGOING :
-				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.VERTEX__INCOMING :
-				return incomings != null && !incomings.isEmpty();
+				return !getIncomings().isEmpty();
+			case UMLPackage.VERTEX__OUTGOING :
+				return !getOutgoings().isEmpty();
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicGetContainer() != null;
 		}

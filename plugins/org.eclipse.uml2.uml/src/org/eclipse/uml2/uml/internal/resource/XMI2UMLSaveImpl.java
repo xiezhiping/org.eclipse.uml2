@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI2UMLSaveImpl.java,v 1.3 2007/01/31 22:20:36 khussey Exp $
+ * $Id: XMI2UMLSaveImpl.java,v 1.4 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
+import org.eclipse.uml2.uml.UMLPackage;
 
 public class XMI2UMLSaveImpl
 		extends XMISaveImpl {
@@ -40,7 +41,10 @@ public class XMI2UMLSaveImpl
 				? (f.isUnsettable()
 					? OBJECT_HREF_SINGLE_UNSETTABLE
 					: OBJECT_HREF_SINGLE)
-				: super.featureKind(f);
+				: ((f == UMLPackage.Literals.CONNECTABLE_ELEMENT__END
+					|| f == UMLPackage.Literals.VERTEX__INCOMING || f == UMLPackage.Literals.VERTEX__OUTGOING)
+					? OBJECT_HREF_MANY
+					: super.featureKind(f));
 		}
 
 	}

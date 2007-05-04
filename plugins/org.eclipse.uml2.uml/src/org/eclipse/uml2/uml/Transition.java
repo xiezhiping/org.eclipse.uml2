@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.18 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Transition.java,v 1.19 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -34,11 +34,11 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getContainer <em>Container</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getTriggers <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
@@ -108,7 +108,6 @@ public interface Transition
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Vertex#getIncomings <em>Incoming</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -117,8 +116,7 @@ public interface Transition
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Vertex)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Target()
-	 * @see org.eclipse.uml2.uml.Vertex#getIncomings
-	 * @model opposite="incoming" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	Vertex getTarget();
@@ -295,7 +293,6 @@ public interface Transition
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -304,8 +301,7 @@ public interface Transition
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Vertex)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Source()
-	 * @see org.eclipse.uml2.uml.Vertex#getOutgoings
-	 * @model opposite="outgoing" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	Vertex getSource();

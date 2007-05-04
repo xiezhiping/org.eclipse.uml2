@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.20 2007/03/27 03:39:49 khussey Exp $
+ * $Id: UMLValidator.java,v 1.21 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3672,6 +3672,10 @@ public class UMLValidator
 			case UMLPackage.CONNECTABLE_ELEMENT :
 				return validateConnectableElement((ConnectableElement) value,
 					diagnostics, context);
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return validateConnectableElementTemplateParameter(
+					(ConnectableElementTemplateParameter) value, diagnostics,
+					context);
 			case UMLPackage.CONNECTOR_END :
 				return validateConnectorEnd((ConnectorEnd) value, diagnostics,
 					context);
@@ -3784,10 +3788,6 @@ public class UMLValidator
 			case UMLPackage.STRUCTURAL_FEATURE :
 				return validateStructuralFeature((StructuralFeature) value,
 					diagnostics, context);
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return validateConnectableElementTemplateParameter(
-					(ConnectableElementTemplateParameter) value, diagnostics,
-					context);
 			case UMLPackage.COLLABORATION_USE :
 				return validateCollaborationUse((CollaborationUse) value,
 					diagnostics, context);

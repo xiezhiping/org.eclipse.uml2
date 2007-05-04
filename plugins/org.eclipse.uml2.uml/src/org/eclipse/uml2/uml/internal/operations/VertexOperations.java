@@ -8,16 +8,25 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
+ * $Id: VertexOperations.java,v 1.7 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.List;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.UniqueEList;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.DelegatingEcoreEList;
 import org.eclipse.uml2.uml.ConnectionPointReference;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 
 /**
@@ -29,6 +38,8 @@ import org.eclipse.uml2.uml.Vertex;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Get Outgoings</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,6 +101,194 @@ public class VertexOperations
 		}
 
 		return null;
+	}
+
+	protected static class IncomingEList
+			extends DelegatingEcoreEList<Transition> {
+
+		private static final long serialVersionUID = 1L;
+
+		protected final EStructuralFeature eStructuralFeature;
+
+		protected final EList<Transition> delegateList;
+
+		protected IncomingEList(InternalEObject owner,
+				EStructuralFeature eStructuralFeature,
+				EList<Transition> delegateList) {
+			super(owner);
+
+			this.eStructuralFeature = eStructuralFeature;
+			this.delegateList = delegateList;
+		}
+
+		@Override
+		public EStructuralFeature getEStructuralFeature() {
+			return eStructuralFeature;
+		}
+
+		@Override
+		public int getFeatureID() {
+			return owner.eDerivedStructuralFeatureID(eStructuralFeature
+				.getFeatureID(), Vertex.class);
+		}
+
+		@Override
+		protected List<Transition> delegateList() {
+			return delegateList;
+		}
+
+		@Override
+		protected void delegateAdd(int index, Transition transition) {
+			int delegateIndex = delegateList.indexOf(transition);
+
+			if (delegateIndex != -1) {
+
+				if (index != delegateIndex) {
+					delegateList.move(index, transition);
+				}
+			} else if (index < delegateList.size()) {
+				delegateList.add(index, transition);
+			} else {
+				delegateList.add(transition);
+			}
+		}
+
+		@Override
+		protected void didAdd(int index, Transition newTransition) {
+			super.didAdd(index, newTransition);
+
+			newTransition.setTarget((Vertex) owner);
+		}
+
+		@Override
+		protected void didRemove(int index, Transition oldTransition) {
+			super.didRemove(index, oldTransition);
+
+			oldTransition.setTarget(null);
+		}
+
+		@Override
+		protected void didSet(int index, Transition newTransition,
+				Transition oldTransition) {
+			super.didSet(index, newTransition, oldTransition);
+
+			newTransition.setTarget((Vertex) owner);
+			oldTransition.setTarget(null);
+		}
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Transition> getIncomings(Vertex vertex) {
+		EList<Transition> incomings = new UniqueEList.FastCompare<Transition>();
+
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(vertex)) {
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__TARGET) {
+				incomings.add((Transition) setting.getEObject());
+			}
+		}
+
+		return new IncomingEList((InternalEObject) vertex,
+			UMLPackage.Literals.VERTEX__INCOMING, incomings);
+	}
+
+	protected static class OutgoingEList
+			extends DelegatingEcoreEList<Transition> {
+
+		private static final long serialVersionUID = 1L;
+
+		protected final EStructuralFeature eStructuralFeature;
+
+		protected final EList<Transition> delegateList;
+
+		protected OutgoingEList(InternalEObject owner,
+				EStructuralFeature eStructuralFeature,
+				EList<Transition> delegateList) {
+			super(owner);
+
+			this.eStructuralFeature = eStructuralFeature;
+			this.delegateList = delegateList;
+		}
+
+		@Override
+		public EStructuralFeature getEStructuralFeature() {
+			return eStructuralFeature;
+		}
+
+		@Override
+		public int getFeatureID() {
+			return owner.eDerivedStructuralFeatureID(eStructuralFeature
+				.getFeatureID(), Vertex.class);
+		}
+
+		@Override
+		protected List<Transition> delegateList() {
+			return delegateList;
+		}
+
+		@Override
+		protected void delegateAdd(int index, Transition transition) {
+			int delegateIndex = delegateList.indexOf(transition);
+
+			if (delegateIndex != -1) {
+
+				if (index != delegateIndex) {
+					delegateList.move(index, transition);
+				}
+			} else if (index < delegateList.size()) {
+				delegateList.add(index, transition);
+			} else {
+				delegateList.add(transition);
+			}
+		}
+
+		@Override
+		protected void didAdd(int index, Transition newTransition) {
+			super.didAdd(index, newTransition);
+
+			newTransition.setSource((Vertex) owner);
+		}
+
+		@Override
+		protected void didRemove(int index, Transition oldTransition) {
+			super.didRemove(index, oldTransition);
+
+			oldTransition.setSource(null);
+		}
+
+		@Override
+		protected void didSet(int index, Transition newTransition,
+				Transition oldTransition) {
+			super.didSet(index, newTransition, oldTransition);
+
+			newTransition.setSource((Vertex) owner);
+			oldTransition.setSource(null);
+		}
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Transition> getOutgoings(Vertex vertex) {
+		EList<Transition> outgoings = new UniqueEList.FastCompare<Transition>();
+
+		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(vertex)) {
+
+			if (setting.getEStructuralFeature() == UMLPackage.Literals.TRANSITION__SOURCE) {
+				outgoings.add((Transition) setting.getEObject());
+			}
+		}
+
+		return new IncomingEList((InternalEObject) vertex,
+			UMLPackage.Literals.VERTEX__OUTGOING, outgoings);
 	}
 
 } // VertexOperations

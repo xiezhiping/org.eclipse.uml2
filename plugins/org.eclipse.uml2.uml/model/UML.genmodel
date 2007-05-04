@@ -1010,7 +1010,9 @@
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//ConnectableElement">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//ConnectableElement/end"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//ConnectableElement/getEnds"/>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ConnectableElementTemplateParameter"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ConnectorEnd">
       <genFeatures xsi:type="genmodel:GenFeature" property="Readonly" notify="false"
           createChild="false" ecoreFeature="ecore:EReference UML.ecore#//ConnectorEnd/definingEnd">
@@ -1592,14 +1594,16 @@
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//Vertex">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Vertex/outgoing"/>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Vertex/incoming"/>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Vertex/outgoing"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Vertex/container">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/containingStateMachine"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/getIncomings"/>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Vertex/getOutgoings"/>
     </genClasses>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Transition">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//Transition/kind"/>
@@ -1607,8 +1611,6 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/container">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/target"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/redefinedTransition"/>
       <genFeatures xsi:type="genmodel:GenFeature" createChild="true" propertySortChoices="true"
@@ -1623,6 +1625,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/trigger">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/target"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//Transition/source"/>
       <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Transition/fork_segment_guards">
@@ -2094,7 +2098,6 @@
     <genClasses xsi:type="genmodel:GenClass" image="false" ecoreClass="UML.ecore#//StructuralFeature">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//StructuralFeature/isReadOnly"/>
     </genClasses>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ConnectableElementTemplateParameter"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CollaborationUse">
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//CollaborationUse/type"/>

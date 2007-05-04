@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyImpl.java,v 1.42 2007/05/02 15:03:11 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.43 2007/05/04 20:35:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -68,6 +67,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.uml2.uml.internal.operations.ConnectableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.PropertyOperations;
@@ -127,16 +127,6 @@ public class PropertyImpl
 	 * @ordered
 	 */
 	protected TemplateParameter templateParameter;
-
-	/**
-	 * The cached value of the '{@link #getEnds() <em>End</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnds()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ConnectorEnd> ends;
 
 	/**
 	 * The cached value of the '{@link #getDeployments() <em>Deployment</em>}' containment reference list.
@@ -518,12 +508,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public EList<ConnectorEnd> getEnds() {
-		if (ends == null) {
-			ends = new EObjectWithInverseResolvingEList<ConnectorEnd>(
-				ConnectorEnd.class, this, UMLPackage.PROPERTY__END,
-				UMLPackage.CONNECTOR_END__ROLE);
-		}
-		return ends;
+		return ConnectableElementOperations.getEnds(this);
 	}
 
 	/**
@@ -1990,9 +1975,6 @@ public class PropertyImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.PROPERTY__END :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEnds())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
 					.basicAdd(otherEnd, msgs);
@@ -2060,9 +2042,6 @@ public class PropertyImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.PROPERTY__END :
-				return ((InternalEList<?>) getEnds()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<?>) getDeployments()).basicRemove(
 					otherEnd, msgs);
@@ -2597,7 +2576,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
 			case UMLPackage.PROPERTY__END :
-				return ends != null && !ends.isEmpty();
+				return !getEnds().isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYED_ELEMENT :

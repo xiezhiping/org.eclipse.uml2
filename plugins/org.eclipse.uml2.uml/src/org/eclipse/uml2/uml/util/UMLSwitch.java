@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLSwitch.java,v 1.13 2007/03/27 03:39:50 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.14 2007/05/04 20:35:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -883,6 +883,19 @@ public class UMLSwitch<T> {
 					result = caseElement(connectableElement);
 				if (result == null)
 					result = caseEModelElement(connectableElement);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
+				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
+				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseTemplateParameter(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseElement(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseEModelElement(connectableElementTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1855,19 +1868,6 @@ public class UMLSwitch<T> {
 					result = caseElement(structuralFeature);
 				if (result == null)
 					result = caseEModelElement(structuralFeature);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
-				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
-				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseElement(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseEModelElement(connectableElementTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
