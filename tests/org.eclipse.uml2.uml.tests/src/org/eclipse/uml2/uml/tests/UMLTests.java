@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLTests.java,v 1.3 2007/03/27 03:40:24 khussey Exp $
+ * $Id: UMLTests.java,v 1.4 2007/05/04 20:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -60,6 +60,7 @@ public class UMLTests
 		suite.addTestSuite(AbstractionTest.class);
 		suite.addTestSuite(OpaqueExpressionTest.class);
 		suite.addTestSuite(ParameterTest.class);
+		suite.addTestSuite(ConnectableElementTemplateParameterTest.class);
 		suite.addTestSuite(ConnectorEndTest.class);
 		suite.addTestSuite(PropertyTest.class);
 		suite.addTestSuite(DeploymentTest.class);
@@ -92,7 +93,6 @@ public class UMLTests
 		suite.addTestSuite(ParameterSetTest.class);
 		suite.addTestSuite(DataTypeTest.class);
 		suite.addTestSuite(OperationTemplateParameterTest.class);
-		suite.addTestSuite(ConnectableElementTemplateParameterTest.class);
 		suite.addTestSuite(CollaborationUseTest.class);
 		suite.addTestSuite(CollaborationTest.class);
 		suite.addTestSuite(UseCaseTest.class);

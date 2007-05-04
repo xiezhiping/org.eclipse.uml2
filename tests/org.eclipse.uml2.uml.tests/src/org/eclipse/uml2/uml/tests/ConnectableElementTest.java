@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementTest.java,v 1.4 2007/02/14 20:06:13 khussey Exp $
+ * $Id: ConnectableElementTest.java,v 1.5 2007/05/04 20:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -18,6 +18,12 @@ import org.eclipse.uml2.uml.ConnectableElement;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Connectable Element</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectableElement#getEnds() <em>End</em>}</li>
+ * </ul>
+ * </p>
  * <p>
  * The following operations are tested:
  * <ul>
@@ -49,6 +55,18 @@ public abstract class ConnectableElementTest
 	@Override
 	protected ConnectableElement getFixture() {
 		return (ConnectableElement) fixture;
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConnectableElement#getEnds() <em>End</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConnectableElement#getEnds()
+	 * @generated
+	 */
+	public void testGetEnds() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementTest.java,v 1.8 2007/02/14 20:06:12 khussey Exp $
+ * $Id: ElementTest.java,v 1.9 2007/05/04 20:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -91,6 +91,8 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  */
 public abstract class ElementTest
 		extends TestCase {
+
+	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	/**
 	 * The fixture for this Element test case.
@@ -297,7 +299,7 @@ public abstract class ElementTest
 	public void testHasKeyword__String() {
 		assertFalse(getFixture().hasKeyword(getName()));
 
-		UML2Util.createEAnnotation(getFixture(), UMLPackage.eNS_URI)
+		UML2Util.createEAnnotation(getFixture(), UML2_UML_PACKAGE_2_0_NS_URI)
 			.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().hasKeyword(getName()));
@@ -313,7 +315,7 @@ public abstract class ElementTest
 	public void testGetKeywords() {
 		assertTrue(getFixture().getKeywords().isEmpty());
 
-		UML2Util.createEAnnotation(getFixture(), UMLPackage.eNS_URI)
+		UML2Util.createEAnnotation(getFixture(), UML2_UML_PACKAGE_2_0_NS_URI)
 			.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().getKeywords().contains(getName()));
@@ -327,12 +329,12 @@ public abstract class ElementTest
 	 * @generated NOT
 	 */
 	public void testAddKeyword__String() {
-		assertNull(getFixture().getEAnnotation(UMLPackage.eNS_URI));
+		assertNull(getFixture().getEAnnotation(UML2_UML_PACKAGE_2_0_NS_URI));
 
 		assertTrue(getFixture().addKeyword(getName()));
 
 		EAnnotation eAnnotation = getFixture().getEAnnotation(
-			UMLPackage.eNS_URI);
+			UML2_UML_PACKAGE_2_0_NS_URI);
 		assertNotNull(eAnnotation);
 		assertTrue(eAnnotation.getDetails().containsKey(getName()));
 
@@ -353,7 +355,7 @@ public abstract class ElementTest
 		assertFalse(getFixture().removeKeyword(getName()));
 
 		EAnnotation eAnnotation = UML2Util.createEAnnotation(getFixture(),
-			UMLPackage.eNS_URI);
+			UML2_UML_PACKAGE_2_0_NS_URI);
 		eAnnotation.getDetails().put(getName(), null);
 
 		assertTrue(getFixture().removeKeyword(getName()));

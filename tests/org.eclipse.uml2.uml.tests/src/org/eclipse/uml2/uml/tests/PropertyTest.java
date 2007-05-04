@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PropertyTest.java,v 1.11 2007/02/14 20:06:14 khussey Exp $
+ * $Id: PropertyTest.java,v 1.12 2007/05/04 20:35:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -35,6 +35,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
  * <p>
  * The following features are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectableElement#getEnds() <em>End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployedElements() <em>Deployed Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getClass_() <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDefault() <em>Default</em>}</li>
@@ -129,6 +130,18 @@ public class PropertyTest
 	protected void tearDown()
 			throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConnectableElement#getEnds() <em>End</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConnectableElement#getEnds()
+	 * @generated
+	 */
+	public void testGetEnds() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
