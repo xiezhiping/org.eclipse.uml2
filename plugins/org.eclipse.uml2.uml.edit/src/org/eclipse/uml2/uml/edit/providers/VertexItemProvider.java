@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexItemProvider.java,v 1.5 2007/03/22 16:46:09 khussey Exp $
+ * $Id: VertexItemProvider.java,v 1.6 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -65,8 +65,8 @@ public class VertexItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOutgoingPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

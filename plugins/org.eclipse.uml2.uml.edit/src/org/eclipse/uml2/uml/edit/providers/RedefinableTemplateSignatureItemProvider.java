@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.11 2007/03/22 16:46:09 khussey Exp $
+ * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.12 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -305,11 +305,11 @@ public class RedefinableTemplateSignatureItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
+			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
+			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,

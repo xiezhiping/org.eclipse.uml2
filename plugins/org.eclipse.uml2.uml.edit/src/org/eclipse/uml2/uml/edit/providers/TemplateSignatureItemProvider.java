@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignatureItemProvider.java,v 1.13 2007/03/22 16:46:11 khussey Exp $
+ * $Id: TemplateSignatureItemProvider.java,v 1.14 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -239,11 +239,11 @@ public class TemplateSignatureItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
+			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
+			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,

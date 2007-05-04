@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateItemProvider.java,v 1.10 2007/03/22 16:46:10 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.11 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -73,8 +73,8 @@ public class StateItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
-			addOutgoingPropertyDescriptor(object);
 			addIncomingPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
 			addIsOrthogonalPropertyDescriptor(object);

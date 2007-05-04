@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionItemProvider.java,v 1.14 2007/03/22 16:46:11 khussey Exp $
+ * $Id: TransitionItemProvider.java,v 1.15 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -83,11 +83,11 @@ public class TransitionItemProvider
 			addRedefinitionContextPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
 			addRedefinedTransitionPropertyDescriptor(object);
 			addGuardPropertyDescriptor(object);
 			addEffectPropertyDescriptor(object);
 			addTriggerPropertyDescriptor(object);
+			addTargetPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

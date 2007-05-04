@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.20 2007/03/27 03:41:16 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.21 2007/05/04 20:35:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4887,6 +4887,8 @@ public class UMLItemProviderAdapterFactory
 			opaqueExpressionItemProvider.dispose();
 		if (parameterItemProvider != null)
 			parameterItemProvider.dispose();
+		if (connectableElementTemplateParameterItemProvider != null)
+			connectableElementTemplateParameterItemProvider.dispose();
 		if (connectorEndItemProvider != null)
 			connectorEndItemProvider.dispose();
 		if (propertyItemProvider != null)
@@ -4951,8 +4953,6 @@ public class UMLItemProviderAdapterFactory
 			dataTypeItemProvider.dispose();
 		if (operationTemplateParameterItemProvider != null)
 			operationTemplateParameterItemProvider.dispose();
-		if (connectableElementTemplateParameterItemProvider != null)
-			connectableElementTemplateParameterItemProvider.dispose();
 		if (collaborationUseItemProvider != null)
 			collaborationUseItemProvider.dispose();
 		if (collaborationItemProvider != null)
