@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.7 2007/03/22 16:47:28 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.8 2007/05/07 20:07:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -22,11 +22,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.action.ControlAction;
 import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.CreateSiblingAction;
@@ -56,6 +66,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
 /**
@@ -186,12 +197,119 @@ public class UMLActionBarContributor
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public UMLActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
-		validateAction = new ValidateAction();
+		validateAction = new ValidateAction() {
+
+			protected int count(EObject eObject) {
+				int count = 1;
+
+				if (eObject instanceof Element) {
+
+					for (EObject stereotypeApplication : ((Element) eObject)
+						.getStereotypeApplications()) {
+
+						count += count(stereotypeApplication);
+					}
+				}
+
+				for (EObject eContent : eObject.eContents()) {
+					count += count(eContent);
+				}
+
+				return count;
+			}
+
+			@Override
+			protected Diagnostic validate(final IProgressMonitor progressMonitor) {
+				EObject eObject = (EObject) selectedObjects.iterator().next();
+
+				progressMonitor.beginTask("", count(eObject)); //$NON-NLS-1$
+
+				final AdapterFactory adapterFactory = domain instanceof AdapterFactoryEditingDomain
+					? ((AdapterFactoryEditingDomain) domain)
+						.getAdapterFactory()
+					: null;
+
+				Diagnostician diagnostician = new Diagnostician() {
+
+					@Override
+					public String getObjectLabel(EObject eObject) {
+
+						if (adapterFactory != null && !eObject.eIsProxy()) {
+							IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory
+								.adapt(eObject, IItemLabelProvider.class);
+
+							if (itemLabelProvider != null) {
+								return itemLabelProvider.getText(eObject);
+							}
+						}
+
+						return super.getObjectLabel(eObject);
+					}
+
+					protected boolean doValidateStereotypeApplications(
+							EObject eObject, DiagnosticChain diagnostics,
+							Map<Object, Object> context) {
+						List<EObject> stereotypeApplications = eObject instanceof Element
+							? ((Element) eObject).getStereotypeApplications()
+							: Collections.<EObject> emptyList();
+
+						if (!stereotypeApplications.isEmpty()) {
+							Iterator<EObject> i = stereotypeApplications
+								.iterator();
+							boolean result = validate(i.next(), diagnostics,
+								context);
+
+							while (i.hasNext()
+								&& (result || diagnostics != null)) {
+
+								result &= validate(i.next(), diagnostics,
+									context);
+							}
+
+							return result;
+						} else {
+							return true;
+						}
+					}
+
+					@Override
+					protected boolean doValidateContents(EObject eObject,
+							DiagnosticChain diagnostics,
+							Map<Object, Object> context) {
+						boolean result = doValidateStereotypeApplications(
+							eObject, diagnostics, context);
+
+						if (result || diagnostics != null) {
+							result &= super.doValidateContents(eObject,
+								diagnostics, context);
+						}
+
+						return result;
+					}
+
+					@Override
+					public boolean validate(EClass eClass, EObject eObject,
+							DiagnosticChain diagnostics,
+							Map<Object, Object> context) {
+						progressMonitor.worked(1);
+						return super.validate(eClass, eObject, diagnostics,
+							context);
+					}
+				};
+
+				progressMonitor.setTaskName(EMFEditUIPlugin.INSTANCE.getString(
+					"_UI_Validating_message", new Object[]{diagnostician //$NON-NLS-1$
+						.getObjectLabel(eObject)}));
+
+				return diagnostician.validate(eObject);
+			}
+		};
+
 		controlAction = new ControlAction();
 	}
 
