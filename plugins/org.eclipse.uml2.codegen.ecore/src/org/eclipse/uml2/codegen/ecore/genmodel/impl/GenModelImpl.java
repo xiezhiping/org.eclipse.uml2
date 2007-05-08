@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.17 2007/05/02 20:14:35 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.18 2007/05/08 19:24:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenEnum;
 import org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenParameter;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -493,7 +494,40 @@ public class GenModelImpl
 	@Override
 	public List<String> getModelRequiredPlugins() {
 		List<String> result = super.getModelRequiredPlugins();
-		result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
+
+		if (isCacheAdapterSupport()) {
+			result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
+		} else {
+
+			genPackageLoop : for (GenPackage genPackage : getAllGenPackagesWithClassifiers()) {
+
+				for (GenClass genClass : genPackage.getGenClasses()) {
+
+					if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(
+						genClass).isEmpty()
+						|| !UML2GenModelUtil.getImplementedSupersetGenFeatures(
+							genClass).isEmpty()
+						|| !UML2GenModelUtil.getImplementedUnionGenFeatures(
+							genClass).isEmpty()) {
+
+						result.add("org.eclipse.uml2.common"); //$NON-NLS-1$
+						break genPackageLoop;
+					}
+				}
+			}
+		}
+
+		genPackageLoop : for (GenPackage genPackage : getAllGenPackagesWithClassifiers()) {
+
+			for (GenClass genClass : genPackage.getGenClasses()) {
+
+				if (UML2GenModelUtil.hasOCLOperationBodies(genClass)) {
+					result.add("org.eclipse.ocl.ecore"); //$NON-NLS-1$
+					break genPackageLoop;
+				}
+			}
+		}
+
 		return result;
 	}
 

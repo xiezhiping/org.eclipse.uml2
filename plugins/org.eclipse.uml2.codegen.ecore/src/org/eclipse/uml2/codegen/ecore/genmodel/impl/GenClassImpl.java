@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.36 2007/01/30 14:57:23 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.37 2007/05/08 19:24:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1405,6 +1405,18 @@ public class GenClassImpl
 		} else {
 			return super.getESetGenFeatures();
 		}
+	}
+
+	public boolean hasOCLOperationBodies() {
+
+		for (GenOperation genOperation : getAllGenOperations()) {
+
+			if (UML2GenModelUtil.hasOCLBody(genOperation)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

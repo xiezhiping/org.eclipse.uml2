@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.13 2007/02/26 16:16:52 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.14 2007/05/08 19:24:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
@@ -307,6 +308,15 @@ public class GenOperationImpl
 	public boolean isOverrideOf(
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
 		return false;
+	}
+
+	public String getOCLBody() {
+		return EcoreUtil.getAnnotation(getEcoreOperation(),
+			GenModelPackage.eNS_URI, "body"); //$NON-NLS-1
+	}
+
+	public boolean hasOCLBody() {
+		return !isBlank(getOCLBody());
 	}
 
 } // GenOperationImpl

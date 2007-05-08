@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.19 2007/04/24 21:48:58 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.20 2007/05/08 19:24:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
@@ -34,6 +35,10 @@ public class UML2GenModelUtil {
 
 	protected UML2GenModelUtil() {
 		super();
+	}
+
+	public static String getUpperName(String name) {
+		return CodeGenUtil.format(name, '_', null, false, true).toUpperCase();
 	}
 
 	// GenBase utilities
@@ -546,6 +551,13 @@ public class UML2GenModelUtil {
 		return isCacheAdapterSupport(genClass.getGenModel());
 	}
 
+	public static boolean hasOCLOperationBodies(GenClass genClass) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.hasOCLOperationBodies()
+			: false;
+	}
+
 	// GenFeature utilities
 
 	public static boolean isCached(GenFeature genFeature) {
@@ -714,6 +726,20 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
 				.getRedefinedGenOperations()
 			: Collections.<GenOperation> emptyList();
+	}
+
+	public static String getOCLBody(GenOperation genOperation) {
+		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
+		? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
+			.getOCLBody()
+		: null;
+	}
+
+	public static boolean hasOCLBody(GenOperation genOperation) {
+		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
+		? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
+			.hasOCLBody()
+		: false;
 	}
 
 }

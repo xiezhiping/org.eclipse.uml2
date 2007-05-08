@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClass.java,v 1.16 2006/12/20 19:54:15 khussey Exp $
+ * $Id: GenClass.java,v 1.17 2007/05/08 19:24:02 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -127,5 +127,10 @@ public interface GenClass
 	GenOperation getImplementedCollidingIsSetGenOperation(GenFeature genFeature);
 
 	GenOperation getImplementedCollidingUnsetGenOperation(GenFeature genFeature);
+
+	/**
+	 * @since 2.1
+	 */
+	boolean hasOCLOperationBodies();
 
 } // GenClass
