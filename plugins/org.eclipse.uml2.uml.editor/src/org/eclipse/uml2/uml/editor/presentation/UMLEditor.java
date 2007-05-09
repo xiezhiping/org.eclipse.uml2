@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.32 2007/04/24 21:47:23 khussey Exp $
+ * $Id: UMLEditor.java,v 1.33 2007/05/09 19:40:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1358,6 +1358,12 @@ public class UMLEditor
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
+		// Save only resources that have actually changed.
+		//
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
+			Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
@@ -1375,7 +1381,7 @@ public class UMLEditor
 						&& !editingDomain.isReadOnly(resource)) {
 						try {
 							savedResources.add(resource);
-							resource.save(Collections.EMPTY_MAP);
+							resource.save(saveOptions);
 						} catch (Exception exception) {
 							resourceToDiagnosticMap.put(resource,
 								analyzeResourceProblems(resource, exception));
