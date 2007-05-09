@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.37 2007/05/08 19:24:02 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.38 2007/05/09 21:44:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -346,7 +346,8 @@ public class GenClassImpl
 
 	@Override
 	public List<GenOperation> getImplementedGenOperations() {
-		return getImplementedGenOperations(new CollidingGenOperationFilter() {
+		return getImplementedGenOperations(new CollidingGenOperationFilter(
+			getImplementedGenFeatures()) {
 
 			@Override
 			public boolean accept(GenOperation genOperation) {
@@ -1271,7 +1272,8 @@ public class GenClassImpl
 	}
 
 	public List<GenOperation> getImplementedRedefinedGenOperations() {
-		return getImplementedGenOperations(new CollidingGenOperationFilter() {
+		return getImplementedGenOperations(new CollidingGenOperationFilter(
+			getImplementedGenFeatures()) {
 
 			@Override
 			public boolean accept(GenOperation genOperation) {
@@ -1349,9 +1351,13 @@ public class GenClassImpl
 			org.eclipse.emf.codegen.ecore.genmodel.impl.GenClassImpl.CollidingGenOperationFilter {
 
 		protected CollidingGenOperationFilter() {
+			this(getAllDuplicateGenFeatures());
+		}
+
+		protected CollidingGenOperationFilter(List<GenFeature> genFeatures) {
 			super();
 
-			allGenFeatures = getAllDuplicateGenFeatures();
+			allGenFeatures = genFeatures;
 		}
 
 	}
