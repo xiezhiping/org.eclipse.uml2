@@ -403,7 +403,7 @@ public class TestCase
     stringBuffer.append(TEXT_79);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_80);
-    stringBuffer.append(genFeature.getType());
+    stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_81);
     stringBuffer.append(genFeature.getFormattedName());
     stringBuffer.append(TEXT_82);
@@ -411,7 +411,7 @@ public class TestCase
     stringBuffer.append(TEXT_83);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_84);
-    stringBuffer.append(genFeature.getType());
+    stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_85);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //TestCase/setGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {
@@ -542,7 +542,7 @@ public class TestCase
     stringBuffer.append(TEXT_141);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_142);
-    stringBuffer.append(genFeature.getType());
+    stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_143);
     stringBuffer.append(genFeature.getFormattedName());
     stringBuffer.append(TEXT_144);
@@ -550,7 +550,7 @@ public class TestCase
     stringBuffer.append(TEXT_145);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_146);
-    stringBuffer.append(genFeature.getType());
+    stringBuffer.append(genFeature.getRawBoundType());
     stringBuffer.append(TEXT_147);
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50 && UML2GenModelUtil.isTest(genFeature)) { //setGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || (genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()) && UML2GenModelUtil.isTest(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next()))))) {

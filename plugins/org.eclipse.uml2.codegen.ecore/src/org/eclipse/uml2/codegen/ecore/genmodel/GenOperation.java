@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperation.java,v 1.5 2007/05/08 19:24:02 khussey Exp $
+ * $Id: GenOperation.java,v 1.6 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -74,12 +74,12 @@ public interface GenOperation
 	List<org.eclipse.emf.codegen.ecore.genmodel.GenOperation> getRedefinedGenOperations();
 
 	/**
-	 * @since 2.1
+	 * @since 1.3
 	 */
 	String getOCLBody();
 
 	/**
-	 * @since 2.1
+	 * @since 1.3
 	 */
 	boolean hasOCLBody();
 

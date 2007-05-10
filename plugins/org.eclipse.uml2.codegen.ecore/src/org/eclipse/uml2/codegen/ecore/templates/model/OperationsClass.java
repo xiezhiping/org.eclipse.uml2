@@ -355,8 +355,8 @@ public class OperationsClass
     stringBuffer.append(TEXT_73);
     }
     stringBuffer.append(TEXT_74);
-    stringBuffer.append(genOperation.getTypeParameters());
-    stringBuffer.append(genOperation.getImportedType());
+    stringBuffer.append(genOperation.getTypeParameters(null));
+    stringBuffer.append(genOperation.getImportedType(null));
     stringBuffer.append(TEXT_75);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_76);
@@ -366,9 +366,9 @@ public class OperationsClass
     if (!genOperation.getGenParameters().isEmpty()) {
     stringBuffer.append(TEXT_78);
     }
-    stringBuffer.append(genOperation.getParameters());
+    stringBuffer.append(genOperation.getParameters(null));
     stringBuffer.append(TEXT_79);
-    stringBuffer.append(genOperation.getThrows());
+    stringBuffer.append(genOperation.getThrows(null));
     stringBuffer.append(TEXT_80);
     if (genOperation.hasBody()) {
     stringBuffer.append(TEXT_81);
@@ -468,21 +468,21 @@ public class OperationsClass
     stringBuffer.append(TEXT_123);
     stringBuffer.append(genModel.getImportedName("java.util.Collection"));
     stringBuffer.append(TEXT_124);
-    stringBuffer.append(genOperation.getListItemType());
+    stringBuffer.append(genOperation.getListItemType(null));
     stringBuffer.append(TEXT_125);
     stringBuffer.append(genModel.getImportedName("java.util.Collection"));
     stringBuffer.append(TEXT_126);
-    stringBuffer.append(genOperation.getListItemType());
+    stringBuffer.append(genOperation.getListItemType(null));
     stringBuffer.append(TEXT_127);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     stringBuffer.append(TEXT_128);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.BasicEList"));
     stringBuffer.append(TEXT_129);
-    stringBuffer.append(genOperation.getListItemType());
+    stringBuffer.append(genOperation.getListItemType(null));
     stringBuffer.append(TEXT_130);
     } else if (genOperation.isPrimitiveType()) {
     stringBuffer.append(TEXT_131);
-    stringBuffer.append(genOperation.getObjectType());
+    stringBuffer.append(genOperation.getObjectType(null));
     stringBuffer.append(TEXT_132);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     stringBuffer.append(TEXT_133);
@@ -490,7 +490,7 @@ public class OperationsClass
     stringBuffer.append(TEXT_134);
     } else {
     stringBuffer.append(TEXT_135);
-    stringBuffer.append(genOperation.getImportedType());
+    stringBuffer.append(genOperation.getImportedType(null));
     stringBuffer.append(TEXT_136);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     stringBuffer.append(TEXT_137);

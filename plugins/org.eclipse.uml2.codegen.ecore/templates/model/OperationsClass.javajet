@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.7 2007/05/08 19:24:02 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.8 2007/05/10 14:24:21 khussey Exp $" %>
 <%
 /**
  * <copyright>
@@ -135,7 +135,7 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
   <%}%>
 	 * @generated
 	 */
-	public static <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public static <%=genOperation.getTypeParameters(null)%><%=genOperation.getImportedType(null)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(null)%>)<%=genOperation.getThrows(null)%>
 	{
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
@@ -201,12 +201,12 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
         <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
 		@SuppressWarnings("unchecked")
         <%}%>
-		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>);
-		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<<%=genOperation.getListItemType()%>>(result.size(), result.toArray());
+		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>);
+		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<<%=genOperation.getListItemType(null)%>>(result.size(), result.toArray());
       <%} else if (genOperation.isPrimitiveType()) {%>
-		return ((<%=genOperation.getObjectType()%>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>)).<%=genOperation.getPrimitiveValueFunction()%>();
+		return ((<%=genOperation.getObjectType(null)%>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>)).<%=genOperation.getPrimitiveValueFunction()%>();
       <%} else {%>
-		return (<%=genOperation.getImportedType()%>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>);
+		return (<%=genOperation.getImportedType(null)%>) query.evaluate(<%=genClass.safeName(genClass.getUncapName())%>);
       <%}%>
   <%} else {%>
 <%@ include file="Operations/genOperation.TODO.override.javajetinc" fail="alternative" %>

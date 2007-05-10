@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.14 2007/05/08 19:24:02 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.15 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -38,7 +38,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl#getCacheAdapterScope <em>Cache Adapter Scope</em>}</li>
+ * <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenOperationImpl#getCacheAdapterScope <em>Cache Adapter Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -306,13 +306,14 @@ public class GenOperationImpl
 
 	@Override
 	public boolean isOverrideOf(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass,
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
 		return false;
 	}
 
 	public String getOCLBody() {
 		return EcoreUtil.getAnnotation(getEcoreOperation(),
-			GenModelPackage.eNS_URI, "body"); //$NON-NLS-1
+			GenModelPackage.eNS_URI, "body"); //$NON-NLS-1$
 	}
 
 	public boolean hasOCLBody() {

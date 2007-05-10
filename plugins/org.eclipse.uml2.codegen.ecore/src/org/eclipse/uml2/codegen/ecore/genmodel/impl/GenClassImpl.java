@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenClassImpl.java,v 1.38 2007/05/09 21:44:20 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.39 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -258,13 +258,14 @@ public class GenClassImpl
 		if (genClasses != null) {
 
 			for (org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass : genClasses) {
-				result.addAll(collectGenOperations(null, UML2GenModelUtil
+				result.addAll(collectGenOperations(this, null, UML2GenModelUtil
 					.getDuplicateGenOperations(genClass), filter));
 			}
 		}
 
 		if (genFeatures != null) {
-			result.addAll(collectGenOperations(null, genOperations, filter));
+			result.addAll(collectGenOperations(this, null, genOperations,
+				filter));
 		}
 
 		return result;
@@ -279,8 +280,8 @@ public class GenClassImpl
 	public List<GenOperation> getDeclaredGenOperations() {
 		Map<String, GenOperation> declaredGenOperations = new LinkedHashMap<String, GenOperation>();
 
-		List<GenOperation> redefinedGenOperations = collectGenOperations(null,
-			getRedefinedGenOperations(), new GenOperationFilter() {
+		List<GenOperation> redefinedGenOperations = collectGenOperations(this,
+			null, getRedefinedGenOperations(), new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
 					return !getAllDuplicateGenOperations().contains(
@@ -295,8 +296,8 @@ public class GenClassImpl
 						+ redefinedGenOperation.getParameterTypes(""), redefinedGenOperation); //$NON-NLS-1$
 		}
 
-		List<GenOperation> duplicateGenOperations = collectGenOperations(null,
-			getDuplicateGenOperations(), new GenOperationFilter() {
+		List<GenOperation> duplicateGenOperations = collectGenOperations(this,
+			null, getDuplicateGenOperations(), new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
 					return !UML2GenModelUtil.isDuplicate(genOperation)
@@ -311,7 +312,7 @@ public class GenClassImpl
 						+ duplicateGenOperation.getParameterTypes(""), duplicateGenOperation); //$NON-NLS-1$
 		}
 
-		return collectGenOperations(null, new ArrayList<GenOperation>(
+		return collectGenOperations(this, null, new ArrayList<GenOperation>(
 			declaredGenOperations.values()), new CollidingGenOperationFilter());
 	}
 
@@ -340,7 +341,7 @@ public class GenClassImpl
 			}
 		}
 
-		return collectGenOperations(null, new ArrayList<GenOperation>(
+		return collectGenOperations(this, null, new ArrayList<GenOperation>(
 			implementedGenOperations.values()), filter);
 	}
 
@@ -432,7 +433,7 @@ public class GenClassImpl
 
 	@Override
 	public List<GenOperation> getInvariantOperations() {
-		return collectGenOperations(null, getDuplicateGenOperations(),
+		return collectGenOperations(this, null, getDuplicateGenOperations(),
 			new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
@@ -536,9 +537,8 @@ public class GenClassImpl
 				"org.eclipse.emf.ecore.util.BasicInternalEList")); //$NON-NLS-1$
 			if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 				sb.append('<');
-				sb
-					.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+				sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+					genFeature));
 				sb.append('>');
 			}
 			sb.append("("); //$NON-NLS-1$
@@ -557,8 +557,8 @@ public class GenClassImpl
 				}
 				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 					sb.append('<');
-					sb.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+						genFeature));
 					sb.append('>');
 				}
 				sb.append("("); //$NON-NLS-1$
@@ -596,8 +596,8 @@ public class GenClassImpl
 				}
 				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 					sb.append('<');
-					sb.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+						genFeature));
 					sb.append('>');
 				}
 				sb.append("("); //$NON-NLS-1$
@@ -642,8 +642,8 @@ public class GenClassImpl
 				}
 				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 					sb.append('<');
-					sb.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+						genFeature));
 					sb.append('>');
 				}
 				sb.append("("); //$NON-NLS-1$
@@ -685,8 +685,8 @@ public class GenClassImpl
 				sb.append(unsettable);
 				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 					sb.append('<');
-					sb.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+					sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+						genFeature));
 					sb.append('>');
 				}
 				sb.append("("); //$NON-NLS-1$
@@ -729,9 +729,8 @@ public class GenClassImpl
 				"org.eclipse.uml2.common.util.DerivedUnionEObjectEList")); //$NON-NLS-1$
 			if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
 				sb.append('<');
-				sb
-					.append(UML2GenModelUtil
-						.getRedefinedListItemType(genFeature));
+				sb.append(UML2GenModelUtil.getRedefinedListItemType(this,
+					genFeature));
 				sb.append('>');
 			}
 			sb.append("("); //$NON-NLS-1$
@@ -1236,8 +1235,8 @@ public class GenClassImpl
 	public boolean isRedefined(GenOperation genOperation) {
 		final EOperation ecoreOperation = genOperation.getEcoreOperation();
 
-		return !collectGenOperations(null, getAllDuplicateGenOperations(),
-			new GenOperationFilter() {
+		return !collectGenOperations(this, null,
+			getAllDuplicateGenOperations(), new GenOperationFilter() {
 
 				public boolean accept(GenOperation genOperation) {
 					return Generator.getRedefinedEcoreOperations(

@@ -16,7 +16,7 @@
 			return <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		}
           <%} else {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();			
+		<%=subsetGenFeature.getImportedType(genClass)%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();			
 		if (<%=subsetGenFeature.getSafeName()%> != null)
 		{
 			return <%=subsetGenFeature.getSafeName()%>;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.26 2007/05/03 22:13:00 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.27 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -36,7 +36,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isKey <em>Key</em>}</li>
+ * <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isKey <em>Key</em>}</li>
  * </ul>
  * </p>
  *
@@ -252,6 +252,8 @@ public class GenFeatureImpl
 			GenClass rootImplementsInterface = getGenModel()
 				.getRootImplementsInterfaceGenClass();
 
+			GenClass context = getContext();
+
 			if (rootImplementsInterface != null
 				&& !rootImplementsInterface.isEObject()) {
 
@@ -260,7 +262,8 @@ public class GenFeatureImpl
 
 					if (genOperation.getName().equals(result)
 						&& genOperation.getGenParameters().isEmpty()
-						&& !genOperation.getType().equals(getType())) {
+						&& !genOperation.getType(context).equals(
+							getType(context))) {
 
 						result = result + "_"; //$NON-NLS-1$
 						break;
@@ -338,38 +341,43 @@ public class GenFeatureImpl
 		return redefinedGenFeatures;
 	}
 
+	@Deprecated
 	public String getRedefinedListItemType() {
+		return getRedefinedListItemType(getContext());
+	}
+
+	public String getRedefinedListItemType(GenClass context) {
 
 		for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 			if (getName().equals(redefinedGenFeature.getName())) {
-				return UML2GenModelUtil
-					.getRedefinedListItemType(redefinedGenFeature);
+				return UML2GenModelUtil.getRedefinedListItemType(context,
+					redefinedGenFeature);
 			}
 		}
 
-		return super.getListItemType();
+		return super.getListItemType(context);
 	}
 
 	@Override
-	public String getListItemType() {
-		return getRedefinedListItemType();
+	public String getListItemType(GenClass context) {
+		return getRedefinedListItemType(context);
 	}
 
 	@Override
-	public String getImportedType() {
+	public String getImportedType(GenClass context) {
 
 		if (isListType()) {
 
 			for (org.eclipse.emf.codegen.ecore.genmodel.GenFeature redefinedGenFeature : getRedefinedGenFeatures()) {
 
 				if (getName().equals(redefinedGenFeature.getName())) {
-					return redefinedGenFeature.getImportedType();
+					return redefinedGenFeature.getImportedType(context);
 				}
 			}
 		}
 
-		return super.getImportedType();
+		return super.getImportedType(context);
 	}
 
 	public List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getKeyGenFeatures() {
@@ -401,11 +409,22 @@ public class GenFeatureImpl
 		return false;
 	}
 
+	@Deprecated
 	public String getKeyFeatureParameter(int index) {
-		return getKeyFeatureParameter(index, true);
+		return getKeyFeatureParameter(getContext(), index);
 	}
 
+	public String getKeyFeatureParameter(GenClass context, int index) {
+		return getKeyFeatureParameter(context, index, true);
+	}
+
+	@Deprecated
 	public String getKeyFeatureParameter(int index, boolean formal) {
+		return getKeyFeatureParameter(getContext(), index, formal);
+	}
+
+	public String getKeyFeatureParameter(GenClass context, int index,
+			boolean formal) {
 		StringBuffer keyFeatureParameter = new StringBuffer();
 		int count = 0;
 
@@ -437,12 +456,12 @@ public class GenFeatureImpl
 									keyFeatureParameter.append('<');
 									keyFeatureParameter
 										.append(nestedKeyGenFeature
-											.getListItemType());
+											.getListItemType(context));
 									keyFeatureParameter.append('>');
 								}
 							} else {
 								keyFeatureParameter.append(nestedKeyGenFeature
-									.getImportedType());
+									.getImportedType(context));
 							}
 
 							keyFeatureParameter.append(' ');
@@ -460,7 +479,8 @@ public class GenFeatureImpl
 			} else if (count++ == index) {
 
 				if (formal) {
-					keyFeatureParameter.append(keyGenFeature.getImportedType());
+					keyFeatureParameter.append(keyGenFeature
+						.getImportedType(context));
 					keyFeatureParameter.append(' ');
 				}
 
@@ -472,15 +492,26 @@ public class GenFeatureImpl
 		return keyFeatureParameter.toString();
 	}
 
+	@Deprecated
 	public String getKeyFeatureParameters() {
-		return getKeyFeatureParameters(true);
+		return getKeyFeatureParameters(getContext());
 	}
 
+	public String getKeyFeatureParameters(GenClass context) {
+		return getKeyFeatureParameters(context, true);
+	}
+
+	@Deprecated
 	public String getKeyFeatureParameters(boolean formal) {
+		return getKeyFeatureParameters(getContext(), formal);
+	}
+
+	public String getKeyFeatureParameters(GenClass context, boolean formal) {
 		StringBuffer keyFeatureParameters = new StringBuffer();
 
 		for (int i = 0, size = getKeyGenFeatures().size(); i < size; i++) {
-			keyFeatureParameters.append(getKeyFeatureParameter(i, formal));
+			keyFeatureParameters.append(getKeyFeatureParameter(context, i,
+				formal));
 
 			if (i + 1 < size) {
 				keyFeatureParameters.append(", "); //$NON-NLS-1$

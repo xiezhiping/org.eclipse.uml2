@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.7 2006/12/20 19:54:15 khussey Exp $
+ * $Id: GenFeature.java,v 1.8 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
 import java.util.List;
+
+import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,18 +80,93 @@ public interface GenFeature
 
 	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getRedefinedGenFeatures();
 
+	/**
+	 * @since 1.3
+	 */
+	String getRedefinedListItemType(org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
+
+	/**
+	 * Use {@link #getRedefinedListItemType(GenClass)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getRedefinedListItemType(getGenClass())</code>.
+	 * 
+	 * @see #getRedefinedListItemType(GenClass)
+	 */
+	@Deprecated
 	String getRedefinedListItemType();
 
 	List<org.eclipse.emf.codegen.ecore.genmodel.GenFeature> getKeyGenFeatures();
 
 	boolean hasStringTypeKeyGenFeature();
 
+	/**
+	 * @since 1.3
+	 */
+	String getKeyFeatureParameter(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index);
+
+	/**
+	 * Use {@link #getKeyFeatureParameter(GenClass, int)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameter(getGenClass(), index)</code>.
+	 * 
+	 * @see #getKeyFeatureParameter(GenClass, int)
+	 */
+	@Deprecated
 	String getKeyFeatureParameter(int index);
 
+	/**
+	 * @since 1.3
+	 */
+	String getKeyFeatureParameter(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index, boolean formal);
+
+	/**
+	 * Use {@link #getKeyFeatureParameter(GenClass, int, boolean)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameter(getGenClass(), index, formal)</code>.
+	 * 
+	 * @see #getKeyFeatureParameter(GenClass, boolean)
+	 */
+	@Deprecated
 	String getKeyFeatureParameter(int index, boolean formal);
 
+	/**
+	 * @since 1.3
+	 */
+	String getKeyFeatureParameters(org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
+
+	/**
+	 * Use {@link #getKeyFeatureParameters(GenClass)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameters(getGenClass())</code>.
+	 * 
+	 * @see #getKeyFeatureParameters(GenClass)
+	 */
+	@Deprecated
 	String getKeyFeatureParameters();
 
+	/**
+	 * @since 1.3
+	 */
+	String getKeyFeatureParameters(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, boolean formal);
+
+	/**
+	 * Use {@link #getKeyFeatureParameters(GenClass, boolean)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameter(getGenClass(), formal)</code>.
+	 * 
+	 * @see #getKeyFeatureParameters(GenClass, boolean)
+	 */
+	@Deprecated
 	String getKeyFeatureParameters(boolean formal);
 
 	String getFormattedKeyFeatureName(int index);

@@ -53,7 +53,7 @@
          <%if (genModel.useClassOverrideAnnotation() && genClass.getExtendedGenFeatures().contains(genFeature)) {%>
 	@Override
          <%}%>
-	protected <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>Helper(<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%>)
+	protected <%=genFeature.getImportedType(genClass)%> <%=genFeature.getGetAccessor()%>Helper(<%=genFeature.getImportedType(genClass)%> <%=genFeature.getSafeName()%>)
 	{
           <%if (genClass.getExtendedGenFeatures().contains(genFeature)) {%>
             <%if (UML2GenModelUtil.isDerivedUnionListType(genClass.getClassExtendsGenClass(), genFeature)) {%>
@@ -69,7 +69,7 @@
                   <%if (subsetGenFeature.isIsSet() || UML2GenModelUtil.isUnion(subsetGenFeature) || UML2GenModelUtil.isRedefinition(subsetGenFeature) || UML2GenModelUtil.isRedefined(genClass, subsetGenFeature)) {%>
 		if (isSet<%=subsetGenFeature.getAccessorName()%>())
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType(genClass))%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -78,16 +78,16 @@
                     <%if (genClass.isField(subsetGenFeature)) {%>
 		if (eIsSet(<%=genClass.getQualifiedFeatureID(subsetGenFeature)%>))
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType(genClass))%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getGetAccessor()%>()).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
 		}
                     <%} else {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
+		<%=subsetGenFeature.getImportedType(genClass)%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty())
 		{
-			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType())%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); )
+			for (<%=genModel.getImportedName("java.util.Iterator")%><%if (genModel.useGenerics()) {%><<%=genModel.getImportedName(subsetGenFeature.getQualifiedListItemType(genClass))%>><%}%> i = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.util.InternalEList")%>) <%=subsetGenFeature.getSafeName()%>).basicIterator(); i.hasNext(); )
 			{
 				<%=genFeature.getSafeName()%>.add(i.next());
 			}
@@ -107,7 +107,7 @@
 			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getGetAccessor()%>());
 		}
                     <%} else {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
+		<%=subsetGenFeature.getImportedType(genClass)%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (!<%=subsetGenFeature.getSafeName()%>.isEmpty())
 		{
 			<%=genFeature.getSafeName()%>.addAll(<%=subsetGenFeature.getSafeName()%>);
@@ -122,7 +122,7 @@
 			<%=genFeature.getSafeName()%>.add(<%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>());
 		}
                 <%} else {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
+		<%=subsetGenFeature.getImportedType(genClass)%> <%=subsetGenFeature.getSafeName()%> = <%if (subsetGenFeature.isBasicGet()) {%>basicGet<%=subsetGenFeature.getAccessorName()%><%} else {%><%=subsetGenFeature.getGetAccessor()%><%}%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null)
 		{
 			<%=genFeature.getSafeName()%>.add(<%=subsetGenFeature.getSafeName()%>);
@@ -198,19 +198,19 @@
       <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //getGenFeature.annotations.insert.javajetinc%>
 <%@ include file="getGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
-	public <%=genFeature.getImportedType()%> <%=genFeature.getGetAccessor()%>()
+	public <%=genFeature.getImportedType(genClass)%> <%=genFeature.getGetAccessor()%>()
 	{
       <%if (genFeature.isListType()) {%>
         <%if (redefinitionGenFeature.isListType()) {%>
-          <%if (genModel.useGenerics() && !redefinitionGenFeature.getListItemType().equals(genFeature.getListItemType())) {%>
+          <%if (genModel.useGenerics() && !redefinitionGenFeature.getListItemType(genClass).equals(genFeature.getListItemType(genClass))) {%>
 		@SuppressWarnings("unchecked")
-		<%=genFeature.getImportedType()%> <%=redefinitionGenFeature.getUncapName()%> = (<%=genFeature.getImportedType()%>)((<%=genModel.getImportedName("org.eclipse.emf.common.util.EList") + "<?>"%>)<%=redefinitionGenFeature.getGetAccessor()%>());
+		<%=genFeature.getImportedType(genClass)%> <%=redefinitionGenFeature.getUncapName()%> = (<%=genFeature.getImportedType(genClass)%>)((<%=genModel.getImportedName("org.eclipse.emf.common.util.EList") + "<?>"%>)<%=redefinitionGenFeature.getGetAccessor()%>());
 		return <%=redefinitionGenFeature.getUncapName()%>;
           <%} else {%>
 		return <%=redefinitionGenFeature.getGetAccessor()%>();
           <%}%>
         <%} else {%>
-		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType() + ">"%><%}%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
+		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<%if (genModel.useGenerics()) {%><%="<" + genFeature.getListItemType(genClass) + ">"%><%}%>(this, <%if (UML2GenModelUtil.isDuplicate(genFeature) && !UML2GenModelUtil.isRedefinition(genFeature)) {%>null<%} else {%><%=genFeature.getQualifiedFeatureAccessor()%><%}%>, 0, <%=genModel.getImportedName("java.util.Collections")%>.EMPTY_LIST.toArray());
         <%}%>
       <%} else {%>
         <%if (redefinitionGenFeature.isListType()) {%>
@@ -231,7 +231,7 @@
       <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicGetGenFeature.annotations.insert.javajetinc%>
 <%@ include file="basicGetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
-	public <%=genFeature.getImportedType()%> basicGet<%=genFeature.getAccessorName()%>()
+	public <%=genFeature.getImportedType(genClass)%> basicGet<%=genFeature.getAccessorName()%>()
 	{
       <%if (redefinitionGenFeature.isListType()) {%>
 		return null;
@@ -250,21 +250,21 @@
       <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicSetGenFeature.annotations.insert.javajetinc%>
 <%@ include file="basicSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
-	public <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> basicSet<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedInternalType()%> new<%=genFeature.getCapName()%>, <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> msgs)
+	public <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> basicSet<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedInternalType(genClass)%> new<%=genFeature.getCapName()%>, <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> msgs)
 	{
       <%if (!redefinitionGenFeature.isSet() || redefinitionGenFeature.isListType()) {%>
 		throw new UnsupportedOperationException();
       <%} else {%>
-        <%if (!genFeature.getType().equals(redefinitionGenFeature.getType())) {%>
-		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType()%>))
+        <%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>
+		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType(genClass)%>))
 		{
 			throw new IllegalArgumentException(String.valueOf(new<%=genFeature.getCapName()%>));
 		}
         <%}%>
         <%if (redefinitionGenFeature.isBasicSet()) {%>
-		return basicSet<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType().equals(redefinitionGenFeature.getType())) {%>(<%=redefinitionGenFeature.getImportedType()%>) <%}%>new<%=genFeature.getCapName()%>, msgs);
+		return basicSet<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>(<%=redefinitionGenFeature.getImportedType(genClass)%>) <%}%>new<%=genFeature.getCapName()%>, msgs);
         <%} else {%>
-		set<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType().equals(redefinitionGenFeature.getType())) {%>(<%=redefinitionGenFeature.getImportedType()%>) <%}%>new<%=genFeature.getCapName()%>);
+		set<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>(<%=redefinitionGenFeature.getImportedType(genClass)%>) <%}%>new<%=genFeature.getCapName()%>);
 		return msgs;
         <%}%>
       <%}%>
@@ -280,18 +280,18 @@
       <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //setGenFeature.annotations.insert.javajetinc%>
 <%@ include file="setGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
-	public void set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType()%> new<%=genFeature.getCapName()%>)
+	public void set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType(genClass)%> new<%=genFeature.getCapName()%>)
 	{
       <%if (!redefinitionGenFeature.isSet() || redefinitionGenFeature.isListType()) {%>
 		throw new UnsupportedOperationException();
       <%} else {%>
-        <%if (!genFeature.getType().equals(redefinitionGenFeature.getType())) {%>
-		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType()%>))
+        <%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>
+		if (new<%=genFeature.getCapName()%> != null && !(new<%=genFeature.getCapName()%> instanceof <%=redefinitionGenFeature.getImportedType(genClass)%>))
 		{
 			throw new IllegalArgumentException(String.valueOf(new<%=genFeature.getCapName()%>));
 		}
         <%}%>
-		set<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType().equals(redefinitionGenFeature.getType())) {%>(<%=redefinitionGenFeature.getImportedType()%>) <%}%>new<%=genFeature.getCapName()%>);
+		set<%=redefinitionGenFeature.getAccessorName()%>(<%if (!genFeature.getType(genClass).equals(redefinitionGenFeature.getType(genClass))) {%>(<%=redefinitionGenFeature.getImportedType(genClass)%>) <%}%>new<%=genFeature.getCapName()%>);
       <%}%>
 	}
 
@@ -307,7 +307,7 @@
     <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc%>
 <%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
-	public <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public <%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
     <%if (genOperation.isVoid()) {%>
 		<%=redefinitionGenOperation.getName()%>(<%=genOperation.getParameterNames(", ")%>);

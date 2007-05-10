@@ -74,10 +74,10 @@
 <%}%>
 <%}%>
 <%if (!isImplementation) {%>
-	<%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>;
+	<%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>;
 
 <%} else {%>
-	public <%=genOperation.getTypeParameters()%><%=genOperation.getImportedType()%> <%=genOperation.getName()%>(<%=genOperation.getParameters()%>)<%=genOperation.getThrows()%>
+	public <%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
@@ -134,10 +134,10 @@
           <%if (genModel.useGenerics() && genOperation.isUncheckedCast()) {%>
 			@SuppressWarnings("unchecked")
           <%}%>
-			<%=genOperation.getObjectType()%> result = (<%=genOperation.getObjectType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
+			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
 			if (result == null)
 			{
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType()%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
 			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}
@@ -169,12 +169,12 @@
         <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
 		@SuppressWarnings("unchecked")
         <%}%>
-		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>>) query.evaluate(this);
-		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<<%=genOperation.getListItemType()%>>(result.size(), result.toArray());
+		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>>) query.evaluate(this);
+		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<<%=genOperation.getListItemType(null)%>>(result.size(), result.toArray());
       <%} else if (genOperation.isPrimitiveType()) {%>
-		return ((<%=genOperation.getObjectType()%>) query.evaluate(this)).<%=genOperation.getPrimitiveValueFunction()%>();
+		return ((<%=genOperation.getObjectType(null)%>) query.evaluate(this)).<%=genOperation.getPrimitiveValueFunction()%>();
       <%} else {%>
-		return (<%=genOperation.getImportedType()%>) query.evaluate(this);
+		return (<%=genOperation.getImportedType(null)%>) query.evaluate(this);
       <%}%>
     <%} else {%>
 		// TODO: implement this method

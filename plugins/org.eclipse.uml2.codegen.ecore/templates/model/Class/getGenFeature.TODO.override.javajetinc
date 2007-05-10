@@ -7,10 +7,10 @@
       <%if (genModel.useGenerics() && genOperation.isUncheckedCast()) {%>
 			@SuppressWarnings("unchecked")
       <%}%>
-			<%=genOperation.getObjectType()%> result = (<%=genOperation.getObjectType()%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>);
+			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (result == null)
 			{
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>, result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType()%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>, result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
 			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}
@@ -26,7 +26,7 @@
         <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
 			@SuppressWarnings("unchecked")
         <%}%>
-			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>);
+			<%=genFeature.getImportedType(genClass)%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType(genClass)%>) cache.get(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (<%=genFeature.getSafeName()%> == null)
 			{
 				cache.put(eResource, this, <%=genFeature.getQualifiedFeatureAccessor()%>, <%=genFeature.getSafeName()%> = new <%=genClass.getListConstructor(genFeature)%>);
@@ -46,7 +46,7 @@
             <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
 				@SuppressWarnings("unchecked")
             <%}%>
-				<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, method);
+				<%=genFeature.getImportedType(genClass)%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType(genClass)%>) cache.get(eResource(), this, method);
 				if (<%=genFeature.getSafeName()%> == null)
 				{
 					<%=genModel.getImportedName("java.util.List")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>.FastCompare());
@@ -62,7 +62,7 @@
             <%if (genModel.useGenerics() && genFeature.isUncheckedCast()) {%>
 				@SuppressWarnings("unchecked")
             <%}%>
-			<%=genFeature.getImportedType()%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType()%>) cache.get(eResource(), this, <%=genFeature.getQualifiedFeatureAccessor()%>);
+			<%=genFeature.getImportedType(genClass)%> <%=genFeature.getSafeName()%> = (<%=genFeature.getImportedType(genClass)%>) cache.get(eResource(), this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (<%=genFeature.getSafeName()%> == null)
 			{
 				<%=genModel.getImportedName("java.util.List")%> union = <%=genFeature.getGetAccessor()%>Helper(new <%=genModel.getImportedName("org.eclipse.emf.common.util.UniqueEList")%>.FastCompare());
@@ -90,7 +90,7 @@
 			return <%=subsetGenFeature.getGetAccessor()%>();
 		}
             <%} else {%>
-		<%=subsetGenFeature.getImportedType()%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
+		<%=subsetGenFeature.getImportedType(genClass)%> <%=subsetGenFeature.getSafeName()%> = <%=subsetGenFeature.getGetAccessor()%>();
 		if (<%=subsetGenFeature.getSafeName()%> != null)
 		{
 			return <%=subsetGenFeature.getSafeName()%>;

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.20 2007/05/08 19:24:02 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.21 2007/05/10 14:24:21 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -37,6 +37,9 @@ public class UML2GenModelUtil {
 		super();
 	}
 
+	/**
+	 * @since 1.3
+	 */
 	public static String getUpperName(String name) {
 		return CodeGenUtil.format(name, '_', null, false, true).toUpperCase();
 	}
@@ -551,6 +554,9 @@ public class UML2GenModelUtil {
 		return isCacheAdapterSupport(genClass.getGenModel());
 	}
 
+	/**
+	 * @since 1.3
+	 */
 	public static boolean hasOCLOperationBodies(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
@@ -616,11 +622,29 @@ public class UML2GenModelUtil {
 			: Collections.<GenFeature> emptyList();
 	}
 
+	/**
+	 * Use {@link #getRedefinedListItemType(GenClass, GenFeature)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getRedefinedListItemType(genFeature.getGenClass(), genFeature)</code>.
+	 * 
+	 * @see #getRedefinedListItemType(GenClass, GenFeature)
+	 */
+	@Deprecated
 	public static String getRedefinedListItemType(GenFeature genFeature) {
+		return getRedefinedListItemType(genFeature.getGenClass(), genFeature);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public static String getRedefinedListItemType(GenClass context,
+			GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
-				.getRedefinedListItemType()
-			: genFeature.getListItemType();
+				.getRedefinedListItemType(context)
+			: genFeature.getListItemType(context);
 	}
 
 	public static List<GenFeature> getKeyGenFeatures(GenFeature genFeature) {
@@ -637,33 +661,108 @@ public class UML2GenModelUtil {
 			: false;
 	}
 
+	/**
+	 * Use {@link #getKeyFeatureParameter(GenClass, GenFeature, int)} with
+	 * either <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameter(genFeature.getGenClass(), genFeature, index)</code>.
+	 * 
+	 * @see #getKeyFeatureParameter(GenClass, GenFeature, int)
+	 */
+	@Deprecated
 	public static String getKeyFeatureParameter(GenFeature genFeature, int index) {
+		return getKeyFeatureParameter(genFeature.getGenClass(), genFeature,
+			index);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public static String getKeyFeatureParameter(GenClass genClass,
+			GenFeature genFeature, int index) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
-				.getKeyFeatureParameter(index)
+				.getKeyFeatureParameter(genClass, index)
 			: ""; //$NON-NLS-1$
 	}
 
+	/**
+	 * Use {@link #getKeyFeatureParameter(GenClass, GenFeature, int, boolean)}
+	 * with either <code>null</code> for erasing type parameter references or
+	 * a {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getRedefinedListItemType(genFeature.getGenClass(), genFeature, index, formal)</code>.
+	 * 
+	 * @see #getKeyFeatureParameter(GenClass, GenFeature, int, boolean)
+	 */
+	@Deprecated
 	public static String getKeyFeatureParameter(GenFeature genFeature,
 			int index, boolean formal) {
+		return getKeyFeatureParameter(genFeature.getGenClass(), genFeature,
+			index, formal);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public static String getKeyFeatureParameter(GenClass context,
+			GenFeature genFeature, int index, boolean formal) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
-				.getKeyFeatureParameter(index, formal)
+				.getKeyFeatureParameter(context, index, formal)
 			: ""; //$NON-NLS-1$
 	}
 
+	/**
+	 * Use {@link #getKeyFeatureParameters(GenClass, GenFeature)} with either
+	 * <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameters(genFeature.getGenClass(), genFeature)</code>.
+	 * 
+	 * @see #getKeyFeatureParameters(GenClass, GenFeature)
+	 */
+	@Deprecated
 	public static String getKeyFeatureParameters(GenFeature genFeature) {
+		return getKeyFeatureParameters(genFeature.getGenClass(), genFeature);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public static String getKeyFeatureParameters(GenClass genClass,
+			GenFeature genFeature) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
-				.getKeyFeatureParameters()
+				.getKeyFeatureParameters(genClass)
 			: ""; //$NON-NLS-1$		
 	}
 
+	/**
+	 * Use {@link #getKeyFeatureParameters(GenClass, GenFeature, boolean)} with
+	 * either <code>null</code> for erasing type parameter references or a
+	 * {@link GenClass} context representing potential type substitutions for
+	 * type parameter references. By default, this will just do
+	 * <code>getKeyFeatureParameters(genFeature.getGenClass(), genFeature, formal)</code>.
+	 * 
+	 * @see #getKeyFeatureParameters(GenClass, GenFeature)
+	 */
+	@Deprecated
 	public static String getKeyFeatureParameters(GenFeature genFeature,
 			boolean formal) {
+		return getKeyFeatureParameters(genFeature.getGenClass(), genFeature,
+			formal);
+	}
+
+	/**
+	 * @since 1.3
+	 */
+	public static String getKeyFeatureParameters(GenClass context,
+			GenFeature genFeature, boolean formal) {
 		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
-				.getKeyFeatureParameters(formal)
+				.getKeyFeatureParameters(context, formal)
 			: ""; //$NON-NLS-1$		
 	}
 
@@ -728,18 +827,24 @@ public class UML2GenModelUtil {
 			: Collections.<GenOperation> emptyList();
 	}
 
+	/**
+	 * @since 1.3
+	 */
 	public static String getOCLBody(GenOperation genOperation) {
 		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
-		? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
-			.getOCLBody()
-		: null;
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
+				.getOCLBody()
+			: null;
 	}
 
+	/**
+	 * @since 1.3
+	 */
 	public static boolean hasOCLBody(GenOperation genOperation) {
 		return genOperation instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenOperation
-		? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
-			.hasOCLBody()
-		: false;
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenOperation) genOperation)
+				.hasOCLBody()
+			: false;
 	}
 
 }
