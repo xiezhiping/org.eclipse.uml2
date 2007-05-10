@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeature.java,v 1.8 2007/05/10 14:24:21 khussey Exp $
+ * $Id: GenFeature.java,v 1.9 2007/05/10 22:19:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -83,7 +83,8 @@ public interface GenFeature
 	/**
 	 * @since 1.3
 	 */
-	String getRedefinedListItemType(org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
+	String getRedefinedListItemType(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
 
 	/**
 	 * Use {@link #getRedefinedListItemType(GenClass)} with either
@@ -104,7 +105,8 @@ public interface GenFeature
 	/**
 	 * @since 1.3
 	 */
-	String getKeyFeatureParameter(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index);
+	String getKeyFeatureParameter(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index);
 
 	/**
 	 * Use {@link #getKeyFeatureParameter(GenClass, int)} with either
@@ -121,7 +123,9 @@ public interface GenFeature
 	/**
 	 * @since 1.3
 	 */
-	String getKeyFeatureParameter(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index, boolean formal);
+	String getKeyFeatureParameter(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass context, int index,
+			boolean formal);
 
 	/**
 	 * Use {@link #getKeyFeatureParameter(GenClass, int, boolean)} with either
@@ -138,7 +142,8 @@ public interface GenFeature
 	/**
 	 * @since 1.3
 	 */
-	String getKeyFeatureParameters(org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
+	String getKeyFeatureParameters(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass context);
 
 	/**
 	 * Use {@link #getKeyFeatureParameters(GenClass)} with either
@@ -155,7 +160,9 @@ public interface GenFeature
 	/**
 	 * @since 1.3
 	 */
-	String getKeyFeatureParameters(org.eclipse.emf.codegen.ecore.genmodel.GenClass context, boolean formal);
+	String getKeyFeatureParameters(
+			org.eclipse.emf.codegen.ecore.genmodel.GenClass context,
+			boolean formal);
 
 	/**
 	 * Use {@link #getKeyFeatureParameters(GenClass, boolean)} with either

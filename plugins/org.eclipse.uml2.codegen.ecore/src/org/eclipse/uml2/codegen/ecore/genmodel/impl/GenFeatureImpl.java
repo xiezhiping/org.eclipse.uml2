@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.27 2007/05/10 14:24:21 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.28 2007/05/10 22:19:25 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -36,7 +36,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isKey <em>Key</em>}</li>
  * </ul>
  * </p>
  *
