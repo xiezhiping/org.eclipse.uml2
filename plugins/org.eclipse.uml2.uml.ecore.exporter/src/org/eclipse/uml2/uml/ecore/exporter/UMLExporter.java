@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.9 2007/05/16 18:33:38 khussey Exp $
+ * $Id: UMLExporter.java,v 1.10 2007/05/16 18:38:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -144,7 +144,13 @@ public class UMLExporter
 
 		return diagnostic;
 	}
-			
+
+	@Override
+	protected boolean isValidEPackage(GenPackage genPackage) {
+		return genPackage.getRootGenPackage() == genPackage
+			&& super.isValidEPackage(genPackage);
+	}
+
 	private static final class Ecore2UMLConverter
 			extends UMLUtil.Ecore2UMLConverter {
 
