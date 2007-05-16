@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.6 2007/02/23 03:11:38 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.7 2007/05/16 17:35:54 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -246,6 +246,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eTypeParameterStereotype = generateOwnedStereotype(
 							profile, "ETypeParameter", false); //$NON-NLS-1$
+						generateIcon(eTypeParameterStereotype,
+							"../icons/full/ovr16/ETypeParameter.gif"); //$NON-NLS-1$
 						org.eclipse.uml2.uml.Class templateParameterMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.TEMPLATE_PARAMETER);
 						generateExtension(eTypeParameterStereotype,
@@ -262,6 +264,8 @@ public class GenerateEcoreStereotypesAction
 
 						Stereotype eGenericTypeStereotype = generateOwnedStereotype(
 							profile, "EGenericType", false); //$NON-NLS-1$
+						generateIcon(eGenericTypeStereotype,
+							"../icons/full/ovr16/EGenericType.gif"); //$NON-NLS-1$
 						generateExtension(eGenericTypeStereotype,
 							classMetaclass, false);
 						generateExtension(eGenericTypeStereotype,
