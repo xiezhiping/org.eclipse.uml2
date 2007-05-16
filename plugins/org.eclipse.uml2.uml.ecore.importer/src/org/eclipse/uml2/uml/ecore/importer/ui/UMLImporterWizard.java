@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterWizard.java,v 1.2 2006/12/20 19:53:53 khussey Exp $
+ * $Id: UMLImporterWizard.java,v 1.3 2007/05/16 18:38:21 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -32,7 +32,14 @@ public class UMLImporterWizard
 		addPage(detailPage);
 
 		ModelImporterPackagePage packagePage = new ModelImporterPackagePage(
-			getModelImporter(), "UMLImporterPackagePage"); //$NON-NLS-1$
+			getModelImporter(), "UMLImporterPackagePage") { //$NON-NLS-1$
+
+			@Override
+			protected boolean supportsNestedPackages() {
+				return false;
+			}
+		};
+
 		packagePage.setShowReferencedGenModels(true);
 		addPage(packagePage);
 	}
