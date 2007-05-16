@@ -8,12 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.8 2007/01/04 18:55:59 khussey Exp $
+ * $Id: UMLExporter.java,v 1.9 2007/05/16 18:33:38 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenAnnotation;
@@ -31,9 +33,11 @@ import org.eclipse.emf.converter.ConverterPlugin;
 import org.eclipse.emf.converter.util.ConverterUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
 import org.eclipse.uml2.common.util.UML2Util;
@@ -96,6 +100,7 @@ public class UMLExporter
 
 		for (Map.Entry<GenPackage, URI> entry : exportData.genPackageToArtifactURI
 			.entrySet()) {
+
 			URI artifactURI = entry.getValue();
 			Resource resource = resourceSet.createResource(artifactURI);
 			EPackage ePackage = entry.getKey().getEcorePackage();
@@ -139,11 +144,52 @@ public class UMLExporter
 
 		return diagnostic;
 	}
+			
+	private static final class Ecore2UMLConverter
+			extends UMLUtil.Ecore2UMLConverter {
 
+		private Collection<EPackage> getEcorePackages() {
+			return EcoreUtil.<EPackage> getObjectsByType(
+				eModelElementToElementMap.keySet(),
+				EcorePackage.Literals.EPACKAGE);
+		}
+	}
+			
 	@Override
 	public void setGenModel(GenModel genModel)
 			throws DiagnosticException {
 		super.setGenModel(genModel);
+
+		Ecore2UMLConverter converter = new Ecore2UMLConverter();
+
+		for (Iterator<GenPackage> genPackages = new GenPackagesTreeIterator(
+			genModel); genPackages.hasNext();) {
+
+			GenPackage genPackage = genPackages.next();
+
+			if (isValidEPackage(genPackage)) {
+				converter.convert(Collections.singleton(genPackage
+					.getEcorePackage()), getOptions(), null, null);
+			}
+		}
+
+		Map<EPackage, GenPackage> ePackageToGenPackageMap = getEPackageToGenPackageMap();
+
+		for (EPackage convertedEPackage : converter.getEcorePackages()) {
+			GenPackage convertedGenPackage = genModel
+				.findGenPackage(convertedEPackage);
+
+			if (convertedGenPackage != null
+				&& isValidEPackage(convertedGenPackage)) {
+
+				ePackageToGenPackageMap.put(convertedEPackage,
+					convertedGenPackage);
+
+				getEPackages().add(convertedEPackage);
+			}
+		}
+
+		adjustGenModel();
 
 		genModel = getGenModel();
 
