@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.62 2007/05/04 20:35:32 khussey Exp $
+ * $Id: UMLUtil.java,v 1.63 2007/05/16 18:33:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5597,38 +5597,49 @@ public class UMLUtil
 
 		protected Map<Object, Object> context = null;
 
+		private ResourceSet getResourceSet(Resource resource) {
+			return resource == null
+				? null
+				: resource.getResourceSet();
+		}
+
+		private ResourceSet getResourceSet(EModelElement eModelElement) {
+			ResourceSet resourceSet = getResourceSet(eModelElement.eResource());
+
+			if (resourceSet == null) {
+
+				for (EPackage ePackage : ePackages) {
+					resourceSet = getResourceSet(ePackage.eResource());
+
+					if (resourceSet != null) {
+						break;
+					}
+				}
+			}
+
+			return resourceSet;
+		}
+
 		protected Model getEcorePrimitiveTypesLibrary(
 				EModelElement eModelElement) {
-			Resource eResource = eModelElement.eResource();
+			ResourceSet resourceSet = getResourceSet(eModelElement);
 
-			if (eResource != null) {
-				ResourceSet resourceSet = eResource.getResourceSet();
-
-				if (resourceSet != null) {
-					return load(
-						resourceSet,
-						URI
-							.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
-						UMLPackage.Literals.MODEL);
-				}
+			if (resourceSet != null) {
+				return load(resourceSet, URI
+					.createURI(UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI),
+					UMLPackage.Literals.MODEL);
 			}
 
 			return null;
 		}
 
 		protected Model getXMLPrimitiveTypesLibrary(EModelElement eModelElement) {
-			Resource eResource = eModelElement.eResource();
+			ResourceSet resourceSet = getResourceSet(eModelElement);
 
-			if (eResource != null) {
-				ResourceSet resourceSet = eResource.getResourceSet();
-
-				if (resourceSet != null) {
-					return load(
-						resourceSet,
-						URI
-							.createURI(UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI),
-						UMLPackage.Literals.MODEL);
-				}
+			if (resourceSet != null) {
+				return load(resourceSet, URI
+					.createURI(UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI),
+					UMLPackage.Literals.MODEL);
 			}
 
 			return null;
