@@ -1152,6 +1152,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ETypeParameter-bounds-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ETypeParameter-bounds-_lowerValue"/>
       </ownedAttribute>
+      <icon xmi:id="ETypeParameter-_icon.0" location="../icons/full/ovr16/ETypeParameter.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="TemplateParameter_ETypeParameter" name="TemplateParameter_ETypeParameter" memberEnd="TemplateParameter_ETypeParameter-extension_ETypeParameter ETypeParameter-base_TemplateParameter">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="TemplateParameter_ETypeParameter-extension_ETypeParameter" name="extension_ETypeParameter" type="ETypeParameter" aggregation="composite" association="TemplateParameter_ETypeParameter">
@@ -1178,6 +1179,7 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EGenericType-lowerBound-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-lowerBound-_lowerValue"/>
       </ownedAttribute>
+      <icon xmi:id="EGenericType-_icon.0" location="../icons/full/ovr16/EGenericType.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="Class_EGenericType" name="Class_EGenericType" memberEnd="Class_EGenericType-extension_EGenericType EGenericType-base_Class">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Class_EGenericType-extension_EGenericType" name="extension_EGenericType" type="EGenericType" aggregation="composite" association="Class_EGenericType">
