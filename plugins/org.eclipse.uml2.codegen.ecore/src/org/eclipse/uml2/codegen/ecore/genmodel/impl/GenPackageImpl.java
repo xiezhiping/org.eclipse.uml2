@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenPackageImpl.java,v 1.14 2006/12/20 19:54:15 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.15 2007/05/22 16:58:17 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
@@ -86,6 +87,15 @@ public class GenPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private static final int EOFFSET_CORRECTION = GenModelPackage.Literals.GEN_PACKAGE
+		.getFeatureID(GenModelPackage.Literals.GEN_PACKAGE__RESOURCE_INTERFACES)
+		- GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected GenPackageImpl() {
 		super();
 	}
@@ -122,8 +132,9 @@ public class GenPackageImpl
 			eFlags &= ~RESOURCE_INTERFACES_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES,
-				oldResourceInterfaces, newResourceInterfaces));
+				GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES
+					+ EOFFSET_CORRECTION, oldResourceInterfaces,
+				newResourceInterfaces));
 	}
 
 	/**
@@ -145,8 +156,9 @@ public class GenPackageImpl
 		operationsPackage = newOperationsPackage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE,
-				oldOperationsPackage, operationsPackage));
+				GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE
+					+ EOFFSET_CORRECTION, oldOperationsPackage,
+				operationsPackage));
 	}
 
 	/**
@@ -156,7 +168,7 @@ public class GenPackageImpl
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				return isResourceInterfaces()
 					? Boolean.TRUE
@@ -174,7 +186,7 @@ public class GenPackageImpl
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				setResourceInterfaces(((Boolean) newValue).booleanValue());
 				return;
@@ -192,7 +204,7 @@ public class GenPackageImpl
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				setResourceInterfaces(RESOURCE_INTERFACES_EDEFAULT);
 				return;
@@ -210,7 +222,7 @@ public class GenPackageImpl
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
 				return ((eFlags & RESOURCE_INTERFACES_EFLAG) != 0) != RESOURCE_INTERFACES_EDEFAULT;
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
@@ -219,6 +231,34 @@ public class GenPackageImpl
 					: !OPERATIONS_PACKAGE_EDEFAULT.equals(operationsPackage);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == GenBase.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenPackage.class) {
+			switch (baseFeatureID - EOFFSET_CORRECTION) {
+				case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
+					return GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES
+						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
+					return GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE
+						+ EOFFSET_CORRECTION;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelPackage.java,v 1.25 2007/05/10 22:19:25 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.26 2007/05/22 16:58:17 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1101,6 +1101,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__PUBLIC_CONSTRUCTORS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__PUBLIC_CONSTRUCTORS;
+
+	/**
+	 * The feature id for the '<em><b>Template Plugin Variables</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__TEMPLATE_PLUGIN_VARIABLES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__TEMPLATE_PLUGIN_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Provider Root Extends Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__PROVIDER_ROOT_EXTENDS_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__PROVIDER_ROOT_EXTENDS_CLASS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.

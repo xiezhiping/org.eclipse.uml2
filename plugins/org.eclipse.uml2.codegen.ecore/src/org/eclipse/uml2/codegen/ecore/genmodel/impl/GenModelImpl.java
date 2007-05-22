@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenModelImpl.java,v 1.18 2007/05/08 19:24:02 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.19 2007/05/22 16:58:17 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModel;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
@@ -161,6 +162,15 @@ public class GenModelImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private static final int EOFFSET_CORRECTION = GenModelPackage.Literals.GEN_MODEL
+		.getFeatureID(GenModelPackage.Literals.GEN_MODEL__FACTORY_METHODS)
+		- GenModelPackage.GEN_MODEL__FACTORY_METHODS;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected GenModelImpl() {
 		super();
 	}
@@ -196,9 +206,11 @@ public class GenModelImpl
 		else
 			eFlags &= ~FACTORY_METHODS_EFLAG;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__FACTORY_METHODS, oldFactoryMethods,
-				newFactoryMethods));
+			eNotify(new ENotificationImpl(
+				this,
+				Notification.SET,
+				GenModelPackage.GEN_MODEL__FACTORY_METHODS + EOFFSET_CORRECTION,
+				oldFactoryMethods, newFactoryMethods));
 	}
 
 	/**
@@ -223,8 +235,9 @@ public class GenModelImpl
 			eFlags &= ~PLURALIZED_GETTERS_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS,
-				oldPluralizedGetters, newPluralizedGetters));
+				GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS
+					+ EOFFSET_CORRECTION, oldPluralizedGetters,
+				newPluralizedGetters));
 	}
 
 	/**
@@ -249,8 +262,9 @@ public class GenModelImpl
 			eFlags &= ~CACHE_ADAPTER_SUPPORT_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT,
-				oldCacheAdapterSupport, newCacheAdapterSupport));
+				GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT
+					+ EOFFSET_CORRECTION, oldCacheAdapterSupport,
+				newCacheAdapterSupport));
 	}
 
 	/**
@@ -275,8 +289,8 @@ public class GenModelImpl
 			eFlags &= ~SAFE_STRINGS_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__SAFE_STRINGS, oldSafeStrings,
-				newSafeStrings));
+				GenModelPackage.GEN_MODEL__SAFE_STRINGS + EOFFSET_CORRECTION,
+				oldSafeStrings, newSafeStrings));
 	}
 
 	/**
@@ -298,8 +312,8 @@ public class GenModelImpl
 		invariantPrefix = newInvariantPrefix;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_MODEL__INVARIANT_PREFIX,
-				oldInvariantPrefix, invariantPrefix));
+				GenModelPackage.GEN_MODEL__INVARIANT_PREFIX
+					+ EOFFSET_CORRECTION, oldInvariantPrefix, invariantPrefix));
 	}
 
 	/**
@@ -309,7 +323,7 @@ public class GenModelImpl
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				return isFactoryMethods()
 					? Boolean.TRUE
@@ -339,7 +353,7 @@ public class GenModelImpl
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				setFactoryMethods(((Boolean) newValue).booleanValue());
 				return;
@@ -366,7 +380,7 @@ public class GenModelImpl
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				setFactoryMethods(FACTORY_METHODS_EDEFAULT);
 				return;
@@ -393,7 +407,7 @@ public class GenModelImpl
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
 				return ((eFlags & FACTORY_METHODS_EFLAG) != 0) != FACTORY_METHODS_EDEFAULT;
 			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
@@ -408,6 +422,43 @@ public class GenModelImpl
 					: !INVARIANT_PREFIX_EDEFAULT.equals(invariantPrefix);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == GenBase.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenModel.class) {
+			switch (baseFeatureID - EOFFSET_CORRECTION) {
+				case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
+					return GenModelPackage.GEN_MODEL__FACTORY_METHODS
+						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
+					return GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS
+						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
+					return GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT
+						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
+					return GenModelPackage.GEN_MODEL__SAFE_STRINGS
+						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
+					return GenModelPackage.GEN_MODEL__INVARIANT_PREFIX
+						+ EOFFSET_CORRECTION;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

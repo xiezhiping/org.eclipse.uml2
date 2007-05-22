@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenFeatureImpl.java,v 1.28 2007/05/10 22:19:25 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.29 2007/05/22 16:58:17 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -24,9 +24,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
 /**
@@ -71,6 +73,15 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private static final int EOFFSET_CORRECTION = GenModelPackage.Literals.GEN_FEATURE
+		.getFeatureID(GenModelPackage.Literals.GEN_FEATURE__KEY)
+		- GenModelPackage.GEN_FEATURE__KEY;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected GenFeatureImpl() {
 		super();
 	}
@@ -107,7 +118,8 @@ public class GenFeatureImpl
 			eFlags &= ~KEY_EFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_FEATURE__KEY, oldKey, newKey));
+				GenModelPackage.GEN_FEATURE__KEY + EOFFSET_CORRECTION, oldKey,
+				newKey));
 	}
 
 	/**
@@ -117,7 +129,7 @@ public class GenFeatureImpl
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return isKey()
 					? Boolean.TRUE
@@ -133,7 +145,7 @@ public class GenFeatureImpl
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				setKey(((Boolean) newValue).booleanValue());
 				return;
@@ -148,7 +160,7 @@ public class GenFeatureImpl
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				setKey(KEY_EDEFAULT);
 				return;
@@ -163,11 +175,42 @@ public class GenFeatureImpl
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == GenBase.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenTypedElement.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenFeature.class) {
+			switch (baseFeatureID - EOFFSET_CORRECTION) {
+				case GenModelPackage.GEN_FEATURE__KEY :
+					return GenModelPackage.GEN_FEATURE__KEY
+						+ EOFFSET_CORRECTION;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

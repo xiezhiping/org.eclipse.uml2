@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GenOperationImpl.java,v 1.16 2007/05/10 22:19:25 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.17 2007/05/22 16:58:17 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -23,12 +23,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.codegen.ecore.Generator;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenCacheAdapterScope;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.uml2.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.uml2.codegen.ecore.genmodel.GenTypedElement;
 import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
 
 /**
@@ -73,6 +75,15 @@ public class GenOperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private static final int EOFFSET_CORRECTION = GenModelPackage.Literals.GEN_OPERATION
+		.getFeatureID(GenModelPackage.Literals.GEN_OPERATION__CACHE_ADAPTER_SCOPE)
+		- GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	protected GenOperationImpl() {
 		super();
 	}
@@ -108,8 +119,9 @@ public class GenOperationImpl
 			: newCacheAdapterScope;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE,
-				oldCacheAdapterScope, cacheAdapterScope));
+				GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE
+					+ EOFFSET_CORRECTION, oldCacheAdapterScope,
+				cacheAdapterScope));
 	}
 
 	/**
@@ -119,7 +131,7 @@ public class GenOperationImpl
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				return getCacheAdapterScope();
 		}
@@ -133,7 +145,7 @@ public class GenOperationImpl
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				setCacheAdapterScope((GenCacheAdapterScope) newValue);
 				return;
@@ -148,7 +160,7 @@ public class GenOperationImpl
 	 */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				setCacheAdapterScope(CACHE_ADAPTER_SCOPE_EDEFAULT);
 				return;
@@ -163,11 +175,42 @@ public class GenOperationImpl
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
+		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
 				return cacheAdapterScope != CACHE_ADAPTER_SCOPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == GenBase.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenTypedElement.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == GenOperation.class) {
+			switch (baseFeatureID - EOFFSET_CORRECTION) {
+				case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
+					return GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE
+						+ EOFFSET_CORRECTION;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

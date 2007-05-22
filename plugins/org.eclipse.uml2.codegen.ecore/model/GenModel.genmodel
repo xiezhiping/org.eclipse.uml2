@@ -7,7 +7,8 @@
     modelPluginClass="org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin" editPluginClass="org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin"
     editorPluginClass="" updateClasspath="false" nonNLSMarkers="true" codeFormatting="true"
     testsDirectory="" testSuiteClass="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8"
-    importerID="org.eclipse.emf.importer.rose" complianceLevel="5.0" usedGenPackages="../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel ../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    importerID="org.eclipse.emf.importer.rose" complianceLevel="5.0" copyrightFields="false"
+    binaryCompatibleReflectiveMethods="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>GenModel.mdl</foreignModel>
   <foreignModel>CURDIR</foreignModel>
   <foreignModel>.</foreignModel>
