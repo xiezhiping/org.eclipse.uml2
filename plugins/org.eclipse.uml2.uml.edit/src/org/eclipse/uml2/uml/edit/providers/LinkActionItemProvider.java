@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkActionItemProvider.java,v 1.5 2007/03/22 16:46:09 khussey Exp $
+ * $Id: LinkActionItemProvider.java,v 1.6 2007/05/23 20:31:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -189,24 +189,14 @@ public class LinkActionItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
-				.createLinkEndData()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
-				.createLinkEndCreationData()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
-				.createLinkEndDestructionData()));
+		collectNewEndDataChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, UMLFactory.eINSTANCE
@@ -219,6 +209,13 @@ public class LinkActionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LINK_ACTION__INPUT_VALUE, UMLFactory.eINSTANCE
 				.createActionInputPin()));
+	}
+
+	protected void collectNewEndDataChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
+				.createLinkEndData()));
 	}
 
 	/**

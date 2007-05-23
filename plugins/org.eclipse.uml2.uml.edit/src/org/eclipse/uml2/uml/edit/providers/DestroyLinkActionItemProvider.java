@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DestroyLinkActionItemProvider.java,v 1.6 2007/03/22 16:46:12 khussey Exp $
+ * $Id: DestroyLinkActionItemProvider.java,v 1.7 2007/05/23 20:31:56 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 //import org.eclipse.uml2.uml.DestroyLinkAction;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -151,6 +152,14 @@ public class DestroyLinkActionItemProvider
 	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLEditPlugin.INSTANCE;
+	}
+
+	@Override
+	protected void collectNewEndDataChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.LINK_ACTION__END_DATA, UMLFactory.eINSTANCE
+				.createLinkEndDestructionData()));
 	}
 
 }
