@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.35 2007/05/04 20:35:34 khussey Exp $
+ * $Id: PackageOperations.java,v 1.36 2007/05/23 19:31:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -152,55 +152,71 @@ public class PackageOperations
 			EFactory eFactory = eDataType.getEPackage().getEFactoryInstance();
 
 			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
-			EDataType targetEDataType = targetEAttribute.getEAttributeType();
-			EFactory targetEFactory = targetEDataType.getEPackage()
-				.getEFactoryInstance();
 
-			if (targetEAttribute.isMany()) {
-				@SuppressWarnings("unchecked")
-				EList<Object> copyValues = (EList<Object>) copyEObject
-					.eGet(targetEAttribute);
+			if (targetEAttribute != null && targetEAttribute.isChangeable()) {
+				EDataType targetEDataType = targetEAttribute
+					.getEAttributeType();
+				EFactory targetEFactory = targetEDataType.getEPackage()
+					.getEFactoryInstance();
 
-				if (eAttribute.isMany()) {
-					EList<?> values = (EList<?>) eObject.eGet(eAttribute);
+				if (targetEAttribute.isMany()) {
+					@SuppressWarnings("unchecked")
+					EList<Object> copyValues = (EList<Object>) copyEObject
+						.eGet(targetEAttribute);
 
-					for (int i = 0, size = values.size(); i < size; i++) {
-						copyValues.add(i, targetEFactory.createFromString(
+					if (eAttribute.isMany()) {
+						EList<?> values = (EList<?>) eObject.eGet(eAttribute);
+
+						for (int i = 0, size = values.size(); i < size; i++) {
+							copyValues.add(i, targetEFactory.createFromString(
+								targetEDataType, eFactory.convertToString(
+									eDataType, values.get(i))));
+						}
+					} else {
+						copyValues.add(targetEFactory.createFromString(
 							targetEDataType, eFactory.convertToString(
-								eDataType, values.get(i))));
+								eDataType, eObject.eGet(eAttribute))));
 					}
 				} else {
-					copyValues.add(targetEFactory.createFromString(
-						targetEDataType, eFactory.convertToString(eDataType,
-							eObject.eGet(eAttribute))));
+					copyEObject.eSet(targetEAttribute, targetEFactory
+						.createFromString(targetEDataType, eFactory
+							.convertToString(eDataType, eAttribute.isMany()
+								? ((EList<?>) eObject.eGet(eAttribute)).get(0)
+								: eObject.eGet(eAttribute))));
 				}
-			} else {
-				copyEObject.eSet(targetEAttribute, targetEFactory
-					.createFromString(targetEDataType, eFactory
-						.convertToString(eDataType, eAttribute.isMany()
-							? ((EList<?>) eObject.eGet(eAttribute)).get(0)
-							: eObject.eGet(eAttribute))));
 			}
 		}
 
 		protected void copyEEnumAttribute(EAttribute eAttribute,
 				EObject eObject, EObject copyEObject) {
 			EAttribute targetEAttribute = (EAttribute) getTarget(eAttribute);
-			EEnum targetEEnum = (EEnum) targetEAttribute.getEAttributeType();
 
-			if (targetEAttribute.isMany()) {
-				@SuppressWarnings("unchecked")
-				EList<EEnumLiteral> copyValues = (EList<EEnumLiteral>) copyEObject
-					.eGet(targetEAttribute);
+			if (targetEAttribute != null && targetEAttribute.isChangeable()) {
+				EEnum targetEEnum = (EEnum) targetEAttribute
+					.getEAttributeType();
 
-				if (eAttribute.isMany()) {
+				if (targetEAttribute.isMany()) {
 					@SuppressWarnings("unchecked")
-					EList<EEnumLiteral> values = (EList<EEnumLiteral>) eObject
-						.eGet(eAttribute);
+					EList<EEnumLiteral> copyValues = (EList<EEnumLiteral>) copyEObject
+						.eGet(targetEAttribute);
 
-					for (int i = 0, size = values.size(); i < size; i++) {
-						EEnumLiteral value = targetEEnum.getEEnumLiteral(values
-							.get(i).getName());
+					if (eAttribute.isMany()) {
+						@SuppressWarnings("unchecked")
+						EList<EEnumLiteral> values = (EList<EEnumLiteral>) eObject
+							.eGet(eAttribute);
+
+						for (int i = 0, size = values.size(); i < size; i++) {
+							EEnumLiteral value = targetEEnum
+								.getEEnumLiteral(values.get(i).getName());
+
+							if (value != null) {
+								copyValues.add(value);
+							}
+						}
+					} else {
+						EEnumLiteral value = targetEEnum
+							.getEEnumLiteral(((EEnumLiteral) eObject
+								.eGet(eAttribute)).getName());
 
 						if (value != null) {
 							copyValues.add(value);
@@ -208,21 +224,13 @@ public class PackageOperations
 					}
 				} else {
 					EEnumLiteral value = targetEEnum
-						.getEEnumLiteral(((EEnumLiteral) eObject
-							.eGet(eAttribute)).getName());
+						.getEEnumLiteral(((EEnumLiteral) (eAttribute.isMany()
+							? ((EList<?>) eObject.eGet(eAttribute)).get(0)
+							: eObject.eGet(eAttribute))).getName());
 
 					if (value != null) {
-						copyValues.add(value);
+						copyEObject.eSet(targetEAttribute, value);
 					}
-				}
-			} else {
-				EEnumLiteral value = targetEEnum
-					.getEEnumLiteral(((EEnumLiteral) (eAttribute.isMany()
-						? ((EList<?>) eObject.eGet(eAttribute)).get(0)
-						: eObject.eGet(eAttribute))).getName());
-
-				if (value != null) {
-					copyEObject.eSet(targetEAttribute, value);
 				}
 			}
 		}
@@ -237,28 +245,32 @@ public class PackageOperations
 				try {
 					EReference targetEReference = (EReference) getTarget(eReference);
 
-					if (targetEReference.isMany()) {
-						@SuppressWarnings("unchecked")
-						EList<EObject> copyValues = (EList<EObject>) copyEObject
-							.eGet(targetEReference);
+					if (targetEReference != null
+						&& targetEReference.isChangeable()) {
 
-						if (eReference.isMany()) {
+						if (targetEReference.isMany()) {
 							@SuppressWarnings("unchecked")
-							EList<EObject> values = (EList<EObject>) value;
-							copyValues.addAll(copyAll(values));
-						} else if (value != null) {
-							copyValues.add(copy((EObject) value));
-						}
-					} else {
+							EList<EObject> copyValues = (EList<EObject>) copyEObject
+								.eGet(targetEReference);
 
-						if (eReference.isMany()) {
-							@SuppressWarnings("unchecked")
-							EList<EObject> values = (EList<EObject>) value;
-							copyEObject.eSet(targetEReference, copy(values
-								.get(0)));
+							if (eReference.isMany()) {
+								@SuppressWarnings("unchecked")
+								EList<EObject> values = (EList<EObject>) value;
+								copyValues.addAll(copyAll(values));
+							} else if (value != null) {
+								copyValues.add(copy((EObject) value));
+							}
 						} else {
-							copyEObject.eSet(targetEReference,
-								copy((EObject) value));
+
+							if (eReference.isMany()) {
+								@SuppressWarnings("unchecked")
+								EList<EObject> values = (EList<EObject>) value;
+								copyEObject.eSet(targetEReference, copy(values
+									.get(0)));
+							} else {
+								copyEObject.eSet(targetEReference,
+									copy((EObject) value));
+							}
 						}
 					}
 				} catch (Exception e) {
@@ -277,77 +289,82 @@ public class PackageOperations
 				try {
 					EReference targetEReference = (EReference) getTarget(eReference);
 
-					if (targetEReference.isMany()) {
-						@SuppressWarnings("unchecked")
-						InternalEList<EObject> copyValues = (InternalEList<EObject>) copyEObject
-							.eGet(targetEReference);
+					if (targetEReference != null
+						&& targetEReference.isChangeable()) {
 
-						if (eReference.isMany()) {
-							EReference targetEOpposite = targetEReference
-								.getEOpposite();
-							int index = 0;
-
+						if (targetEReference.isMany()) {
 							@SuppressWarnings("unchecked")
-							Iterator<EObject> v = ((EList<EObject>) value)
-								.iterator();
+							InternalEList<EObject> copyValues = (InternalEList<EObject>) copyEObject
+								.eGet(targetEReference);
 
-							while (v.hasNext()) {
-								value = v.next();
+							if (eReference.isMany()) {
+								EReference targetEOpposite = targetEReference
+									.getEOpposite();
+								int index = 0;
+
+								@SuppressWarnings("unchecked")
+								Iterator<EObject> v = ((EList<EObject>) value)
+									.iterator();
+
+								while (v.hasNext()) {
+									value = v.next();
+									EObject copyValue = get(value);
+
+									if (copyValue == null) {
+
+										if (targetEOpposite == null) {
+											copyValues.addUnique(index++,
+												(EObject) value);
+										}
+									} else {
+
+										if (targetEOpposite != null) {
+											int position = copyValues
+												.indexOf(copyValue);
+
+											if (position == -1) {
+												copyValues.addUnique(index++,
+													copyValue);
+											} else if (position != index) {
+												copyValues.move(index++,
+													copyValue);
+											}
+										} else {
+											copyValues.addUnique(index++,
+												copyValue);
+										}
+									}
+								}
+							} else if (value != null) {
 								EObject copyValue = get(value);
 
 								if (copyValue == null) {
 
-									if (targetEOpposite == null) {
-										copyValues.addUnique(index++,
-											(EObject) value);
+									if (targetEReference.getEOpposite() == null) {
+										copyValues.addUnique((EObject) value);
 									}
 								} else {
-
-									if (targetEOpposite != null) {
-										int position = copyValues
-											.indexOf(copyValue);
-
-										if (position == -1) {
-											copyValues.addUnique(index++,
-												copyValue);
-										} else if (position != index) {
-											copyValues.move(index++, copyValue);
-										}
-									} else {
-										copyValues
-											.addUnique(index++, copyValue);
-									}
+									copyValues.addUnique(copyValue);
 								}
 							}
-						} else if (value != null) {
-							EObject copyValue = get(value);
+						} else {
+
+							if (eReference.isMany()) {
+								@SuppressWarnings("unchecked")
+								EList<EObject> values = (EList<EObject>) value;
+								value = values.get(0);
+							}
+
+							Object copyValue = get(value);
 
 							if (copyValue == null) {
 
 								if (targetEReference.getEOpposite() == null) {
-									copyValues.addUnique((EObject) value);
+									copyEObject.eSet(targetEReference, value);
 								}
 							} else {
-								copyValues.addUnique(copyValue);
+								copyEObject.eSet(targetEReference, copyValue);
 							}
-						}
-					} else {
-
-						if (eReference.isMany()) {
-							@SuppressWarnings("unchecked")
-							EList<EObject> values = (EList<EObject>) value;
-							value = values.get(0);
-						}
-
-						Object copyValue = get(value);
-
-						if (copyValue == null) {
-
-							if (targetEReference.getEOpposite() == null) {
-								copyEObject.eSet(targetEReference, value);
-							}
-						} else {
-							copyEObject.eSet(targetEReference, copyValue);
 						}
 					}
 				} catch (Exception e) {
