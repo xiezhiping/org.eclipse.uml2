@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DerivedSubsetEObjectEList.java,v 1.9 2007/04/04 03:15:12 khussey Exp $
+ * $Id: DerivedSubsetEObjectEList.java,v 1.10 2007/05/24 02:46:26 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -45,8 +45,10 @@ public class DerivedSubsetEObjectEList<E>
 
 			switch (prepared) {
 				case 3 :
+				case 1 :
 					preparePrevious();
 					break;
+				case -1 :
 				case -3 :
 					prepareNext();
 					break;
@@ -70,8 +72,10 @@ public class DerivedSubsetEObjectEList<E>
 
 			switch (prepared) {
 				case 3 :
+				case 1 :
 					preparePrevious();
 					break;
+				case -1 :
 				case -3 :
 					prepareNext();
 					break;
@@ -98,7 +102,7 @@ public class DerivedSubsetEObjectEList<E>
 						sourceFeatureIDs[featureIndex], resolve(), true))
 						.basicList();
 
-				valuesList.listIterator().add(element);
+				valuesList.listIterator(valuesList.size()).add(element);
 			} else {
 
 				switch (prepared) {
