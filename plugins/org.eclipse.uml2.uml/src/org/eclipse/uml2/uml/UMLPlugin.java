@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLPlugin.java,v 1.3 2007/03/28 20:56:52 khussey Exp $
+ * $Id: UMLPlugin.java,v 1.4 2007/05/28 20:10:51 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,14 +59,14 @@ public final class UMLPlugin
 		}
 
 		@Override
-		protected boolean readElement(IConfigurationElement element) {
+		protected boolean readElement(IConfigurationElement element, boolean add) {
 
 			if (element.getName().equals(TAG_PROFILE)) {
 				String uri = element.getAttribute(ATT_URI);
 
 				if (uri == null) {
 					logMissingAttribute(element, ATT_URI);
-				} else {
+				} else if (add) {
 
 					if (ePackageNsURIToProfileLocationMap != null) {
 						String location = element.getAttribute(ATT_LOCATION);
@@ -86,6 +86,9 @@ public final class UMLPlugin
 						}
 					}
 
+					return true;
+				} else {
+					ePackageNsURIToProfileLocationMap.remove(uri);
 					return true;
 				}
 			}
