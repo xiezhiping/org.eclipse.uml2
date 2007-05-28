@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLUtil.java,v 1.63 2007/05/16 18:33:37 khussey Exp $
+ * $Id: UMLUtil.java,v 1.64 2007/05/28 20:02:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -24,6 +24,7 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -4807,7 +4808,8 @@ public class UMLUtil
 						? 1
 						: (otherEAllStructuralFeaturesSize < eAllStructuralFeaturesSize
 							? -1
-							: eClass.getName().compareTo(otherEClass.getName()));
+							: CommonPlugin.INSTANCE.getComparator().compare(
+								eClass.getName(), otherEClass.getName()));
 				}
 			};
 
