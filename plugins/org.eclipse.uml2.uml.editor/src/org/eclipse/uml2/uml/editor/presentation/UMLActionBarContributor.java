@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLActionBarContributor.java,v 1.8 2007/05/07 20:07:13 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.9 2007/05/28 20:02:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -23,6 +23,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -490,7 +491,8 @@ public class UMLActionBarContributor
 			new Comparator<IAction>() {
 
 				public int compare(IAction a1, IAction a2) {
-					return a1.getText().compareTo(a2.getText());
+					return CommonPlugin.INSTANCE.getComparator().compare(
+						a1.getText(), a2.getText());
 				}
 			});
 
@@ -525,7 +527,8 @@ public class UMLActionBarContributor
 			new Comparator<IAction>() {
 
 				public int compare(IAction a1, IAction a2) {
-					return a1.getText().compareTo(a2.getText());
+					return CommonPlugin.INSTANCE.getComparator().compare(
+						a1.getText(), a2.getText());
 				}
 			});
 

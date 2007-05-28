@@ -8,12 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLCommandAction.java,v 1.4 2007/01/05 21:48:51 khussey Exp $
+ * $Id: UMLCommandAction.java,v 1.5 2007/05/28 20:02:28 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
 import java.util.Comparator;
 
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -33,8 +34,8 @@ public class UMLCommandAction
 			implements Comparator<T> {
 
 		public int compare(T t1, T t2) {
-			return getLabelProvider().getText(t1).compareTo(
-				getLabelProvider().getText(t2));
+			return CommonPlugin.INSTANCE.getComparator().compare(
+				getLabelProvider().getText(t1), getLabelProvider().getText(t2));
 		}
 	}
 
