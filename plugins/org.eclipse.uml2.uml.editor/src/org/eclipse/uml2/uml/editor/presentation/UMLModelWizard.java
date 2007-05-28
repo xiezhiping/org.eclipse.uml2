@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.6 2007/01/05 21:48:51 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.7 2007/05/28 21:19:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
@@ -189,8 +190,8 @@ public class UMLModelWizard
 					}
 				}
 			}
-			Collections.sort(initialObjectNames, java.text.Collator
-				.getInstance());
+			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE
+				.getComparator());
 		}
 		return initialObjectNames;
 	}
