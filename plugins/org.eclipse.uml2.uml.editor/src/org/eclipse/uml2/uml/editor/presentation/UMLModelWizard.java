@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLModelWizard.java,v 1.7 2007/05/28 21:19:36 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.8 2007/05/28 21:23:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -201,8 +201,8 @@ public class UMLModelWizard
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
 			initialObjectNames.add(umlPackage.getModel().getName());
-			initialObjectNames.add(umlPackage.getProfile().getName());
 			initialObjectNames.add(umlPackage.getPackage().getName());
+			initialObjectNames.add(umlPackage.getProfile().getName());
 		}
 
 		return initialObjectNames;
