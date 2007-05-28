@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.33 2007/05/09 19:40:51 khussey Exp $
+ * $Id: UMLEditor.java,v 1.34 2007/05/28 21:11:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -62,8 +62,10 @@ import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 
@@ -144,7 +146,6 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -907,11 +908,7 @@ public class UMLEditor
 	 * @generated
 	 */
 	public void createModelGen() {
-		// Assumes that the input is a file object.
-		//
-		IFileEditorInput modelFile = (IFileEditorInput) getEditorInput();
-		URI resourceURI = URI.createPlatformResourceURI(modelFile.getFile()
-			.getFullPath().toString(), true);
+		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -969,21 +966,10 @@ public class UMLEditor
 					UMLResource.FILE_EXTENSION);
 
 				if (i == 0) {
-					IEditorInput editorInput = getEditorInput();
+					setInputWithNotify(new URIEditorInput(uri));
+					setPartName(uri.lastSegment());
 
-					if (editorInput instanceof FileEditorInput) {
-						IPath path = ((FileEditorInput) editorInput).getPath();
-						path = path.removeFileExtension().addFileExtension(
-							UMLResource.FILE_EXTENSION);
-						IFile file = ResourcesPlugin.getWorkspace().getRoot()
-							.getFile(path);
-						editorInput = new FileEditorInput(file);
-
-						setInputWithNotify(editorInput);
-						setPartName(editorInput.getName());
-
-						saveNeeded = true;
-					}
+					saveNeeded = true;
 				}
 
 				EcoreUtil.resolveAll(resource);
@@ -1077,7 +1063,12 @@ public class UMLEditor
 			int pageIndex = addPage(tree);
 			setPageText(pageIndex, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
 
-			setActivePage(0);
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
+				public void run() {
+					setActivePage(0);
+				}
+			});
 		}
 
 		// Ensures that this editor will only display the page's tab
@@ -1097,7 +1088,12 @@ public class UMLEditor
 			}
 		});
 
-		updateProblemIndication();
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
+			public void run() {
+				updateProblemIndication();
+			}
+		});
 	}
 
 	/**
