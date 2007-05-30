@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.10 2007/05/16 18:38:21 khussey Exp $
+ * $Id: UMLExporter.java,v 1.11 2007/05/30 04:20:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -77,6 +77,7 @@ public class UMLExporter
 		return super.doCheckEPackageArtifactLocation(location, packageName);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected Diagnostic doExport(Monitor monitor, ExportData exportData)
 			throws Exception {
@@ -147,8 +148,8 @@ public class UMLExporter
 
 	@Override
 	protected boolean isValidEPackage(GenPackage genPackage) {
-		return genPackage.getRootGenPackage() == genPackage
-			&& super.isValidEPackage(genPackage);
+		EPackage ecorePackage = genPackage.getEcorePackage();
+		return ecorePackage != null && ecorePackage.getESuperPackage() == null;
 	}
 
 	private static final class Ecore2UMLConverter
@@ -160,7 +161,7 @@ public class UMLExporter
 				EcorePackage.Literals.EPACKAGE);
 		}
 	}
-			
+
 	@Override
 	public void setGenModel(GenModel genModel)
 			throws DiagnosticException {

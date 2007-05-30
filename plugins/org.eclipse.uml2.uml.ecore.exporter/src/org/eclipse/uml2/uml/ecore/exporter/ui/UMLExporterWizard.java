@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporterWizard.java,v 1.3 2007/05/16 18:38:21 khussey Exp $
+ * $Id: UMLExporterWizard.java,v 1.4 2007/05/30 04:20:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter.ui;
 
@@ -36,13 +36,14 @@ public class UMLExporterWizard
 		addPage(directoryURIPage);
 
 		ModelExporterPackagePage packagePage = new ModelExporterPackagePage(
-			getModelExporter(), "UMLExporterPackagePage") {
+			getModelExporter(), "UMLExporterPackagePage") { //$NON-NLS-1$
 			
 			@Override
 			protected boolean supportsNestedPackages() {
 				return false;
 			}
 		};
+
 		packagePage.setTitle(UMLExporterPlugin.INSTANCE
 			.getString("_UI_UMLExport_title")); //$NON-NLS-1$
 		addPage(packagePage);
