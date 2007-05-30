@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.10 2007/04/04 22:16:28 khussey Exp $
+ * $Id: UMLImporter.java,v 1.11 2007/05/30 20:11:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -232,6 +232,10 @@ public class UMLImporter
 
 			if (Diagnostic.INFO < diagnostics.getSeverity()) {
 				diagnostic = diagnostics;
+			}
+			
+			if (Diagnostic.ERROR > diagnostics.getSeverity()) {
+				adjustEPackages(monitor);
 			}
 		}
 

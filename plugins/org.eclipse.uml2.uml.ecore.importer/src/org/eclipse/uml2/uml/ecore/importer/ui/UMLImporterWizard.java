@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporterWizard.java,v 1.3 2007/05/16 18:38:21 khussey Exp $
+ * $Id: UMLImporterWizard.java,v 1.4 2007/05/30 20:11:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer.ui;
 
@@ -33,11 +33,6 @@ public class UMLImporterWizard
 
 		ModelImporterPackagePage packagePage = new ModelImporterPackagePage(
 			getModelImporter(), "UMLImporterPackagePage") { //$NON-NLS-1$
-
-			@Override
-			protected boolean supportsNestedPackages() {
-				return false;
-			}
 		};
 
 		packagePage.setShowReferencedGenModels(true);
