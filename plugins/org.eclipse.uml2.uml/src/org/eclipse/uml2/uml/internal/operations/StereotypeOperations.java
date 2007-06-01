@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeOperations.java,v 1.15 2007/05/03 21:11:53 khussey Exp $
+ * $Id: StereotypeOperations.java,v 1.16 2007/06/01 16:00:39 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -241,9 +241,11 @@ public class StereotypeOperations
 	 * @generated NOT
 	 */
 	public static String getKeyword(Stereotype stereotype, boolean localize) {
+		String qualifiedName = stereotype.getQualifiedName();
 		String keyword = getString(stereotype,
-			getValidJavaIdentifier(stereotype.getQualifiedName().replace(':',
-				'_')), EMPTY_STRING, localize);
+			getValidJavaIdentifier(isEmpty(qualifiedName)
+				? EMPTY_STRING
+				: qualifiedName.replace(':', '_')), EMPTY_STRING, localize);
 
 		if (isEmpty(keyword)) {
 			String identifier = getValidJavaIdentifier(stereotype.getName());
