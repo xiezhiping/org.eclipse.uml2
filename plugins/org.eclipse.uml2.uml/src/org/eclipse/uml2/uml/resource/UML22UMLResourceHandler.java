@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.32 2007/05/04 20:35:34 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.33 2007/06/04 13:25:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -184,6 +184,7 @@ public class UML22UMLResourceHandler
 
 		for (Iterator<FeatureMap.Entry> entries = featureMap.iterator(); entries
 			.hasNext();) {
+
 			FeatureMap.Entry entry = entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
@@ -193,6 +194,26 @@ public class UML22UMLResourceHandler
 				}
 
 				return entry.getValue();
+			}
+		}
+
+		return null;
+	}
+
+	private EObject getEObject(AnyType extension, Resource resource,
+			String name, boolean remove) {
+
+		if (extension != null) {
+			Object value = getValue(extension.getAnyAttribute(), name, remove);
+
+			if (value == null) {
+				value = getValue(extension.getMixed(), name, remove);
+
+				if (value instanceof EObject) {
+					return (EObject) value;
+				}
+			} else if (value instanceof String && resource != null) {
+				return resource.getEObject((String) value);
 			}
 		}
 
@@ -209,6 +230,7 @@ public class UML22UMLResourceHandler
 
 		for (Iterator<FeatureMap.Entry> entries = featureMap.iterator(); entries
 			.hasNext();) {
+
 			FeatureMap.Entry entry = entries.next();
 
 			if (name.equals(entry.getEStructuralFeature().getName())) {
@@ -222,6 +244,41 @@ public class UML22UMLResourceHandler
 		}
 
 		return values;
+	}
+
+	private Collection<EObject> getEObjects(AnyType extension,
+			Resource resource, String name, boolean remove) {
+		Collection<EObject> eObjects = new UniqueEList.FastCompare<EObject>();
+
+		if (extension != null) {
+			Collection<Object> values = getValues(extension.getAnyAttribute(),
+				name, remove);
+
+			if (values.isEmpty()) {
+				values = getValues(extension.getMixed(), name, remove);
+
+				for (Object value : values) {
+
+					if (value instanceof EObject) {
+						eObjects.add((EObject) value);
+					}
+				}
+			} else if (resource != null) {
+
+				for (Object value : values) {
+
+					if (value instanceof String) {
+						EObject eObject = resource.getEObject((String) value);
+
+						if (eObject != null) {
+							eObjects.add(eObject);
+						}
+					}
+				}
+			}
+		}
+
+		return eObjects;
 	}
 
 	protected InternalEObject handleProxy(InternalEObject internalEObject) {
@@ -357,18 +414,13 @@ public class UML22UMLResourceHandler
 				if (extension != null) {
 					EList<Trigger> triggers = acceptEventAction.getTriggers();
 
-					for (Object value : getValues(extension.getAnyAttribute(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"trigger", true)) { //$NON-NLS-1$
 
-						if (value instanceof String) {
-							EObject eObject = resource
-								.getEObject((String) value);
+						if (eObject instanceof Trigger) {
+							doSwitch(eObject);
 
-							if (eObject instanceof Trigger) {
-								doSwitch(eObject);
-
-								triggers.add((Trigger) EcoreUtil.copy(eObject));
-							}
+							triggers.add((Trigger) EcoreUtil.copy(eObject));
 						}
 					}
 				}
@@ -399,7 +451,7 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, activity);
 
 				if (extension != null) {
-					getValues(extension.getAnyAttribute(), "action", true); //$NON-NLS-1$
+					getEObjects(extension, resource, "action", true); //$NON-NLS-1$
 
 					Object value = getValue(extension.getAnyAttribute(),
 						"body", true); //$NON-NLS-1$
@@ -432,25 +484,25 @@ public class UML22UMLResourceHandler
 				if (extension != null) {
 					EList<Parameter> ownedParameters = behavioralFeature
 						.getOwnedParameters();
-					List<Object> returnResult = new ArrayList<Object>(
-						getValues(extension.getMixed(), "returnResult", true)); //$NON-NLS-1$
+					List<EObject> returnResult = new ArrayList<EObject>(
+						getEObjects(extension, resource, "returnResult", true)); //$NON-NLS-1$
 
-					for (ListIterator<Object> values = returnResult
-						.listIterator(returnResult.size()); values
+					for (ListIterator<EObject> eObjects = returnResult
+						.listIterator(returnResult.size()); eObjects
 						.hasPrevious();) {
 
-						Object value = values.previous();
+						EObject eObject = eObjects.previous();
 
-						if (value instanceof Parameter) {
-							ownedParameters.add(0, (Parameter) value);
+						if (eObject instanceof Parameter) {
+							ownedParameters.add(0, (Parameter) eObject);
 						}
 					}
 
-					for (Object value : getValues(extension.getMixed(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"formalParameter", true)) { //$NON-NLS-1$
 
-						if (value instanceof Parameter) {
-							ownedParameters.add((Parameter) value);
+						if (eObject instanceof Parameter) {
+							ownedParameters.add((Parameter) eObject);
 						}
 					}
 				}
@@ -467,11 +519,11 @@ public class UML22UMLResourceHandler
 					EList<Behavior> ownedBehaviors = behavioredClassifier
 						.getOwnedBehaviors();
 
-					for (Object value : getValues(extension.getMixed(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"ownedStateMachine", true)) { //$NON-NLS-1$
 
-						if (value instanceof StateMachine) {
-							ownedBehaviors.add((StateMachine) value);
+						if (eObject instanceof StateMachine) {
+							ownedBehaviors.add((StateMachine) eObject);
 						}
 					}
 				}
@@ -482,20 +534,11 @@ public class UML22UMLResourceHandler
 			@Override
 			public Object caseCallBehaviorAction(
 					CallBehaviorAction callBehaviorAction) {
-				AnyType extension = getExtension(resource, callBehaviorAction);
+				EObject eObject = getEObject(getExtension(resource,
+					callBehaviorAction), resource, "function", true); //$NON-NLS-1$
 
-				if (extension != null) {
-					Object value = getValue(extension.getAnyAttribute(),
-						"function", true); //$NON-NLS-1$
-
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof FunctionBehavior) {
-							callBehaviorAction
-								.setBehavior((FunctionBehavior) eObject);
-						}
-					}
+				if (eObject instanceof FunctionBehavior) {
+					callBehaviorAction.setBehavior((FunctionBehavior) eObject);
 				}
 
 				return super.caseCallBehaviorAction(callBehaviorAction);
@@ -513,13 +556,13 @@ public class UML22UMLResourceHandler
 						comment.setBody((String) value);
 					}
 
-					value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"bodyExpression", true); //$NON-NLS-1$
 
-					if (value instanceof StringExpression) {
+					if (eObject instanceof StringExpression) {
 						UMLUtil.setTaggedValue(comment, getUML2Stereotype(
 							comment, STEREOTYPE__COMMENT),
-							TAG_DEFINITION__BODY_EXPRESSION, value);
+							TAG_DEFINITION__BODY_EXPRESSION, eObject);
 					}
 				}
 
@@ -535,10 +578,10 @@ public class UML22UMLResourceHandler
 						.equals(getValue(extension.getAnyAttribute(),
 							"isFirstTime", true))); //$NON-NLS-1$
 
-					Collection<Object> values = getValues(extension
-						.getAnyAttribute(), "event", true); //$NON-NLS-1$
+					Collection<EObject> eObjects = getEObjects(extension,
+						resource, "event", true); //$NON-NLS-1$
 
-					if (!values.isEmpty()) {
+					if (!eObjects.isEmpty()) {
 						DurationObservation durationObservation = (DurationObservation) duration
 							.getNearestPackage().createPackagedElement(
 								duration.getName(),
@@ -549,16 +592,11 @@ public class UML22UMLResourceHandler
 						EList<Boolean> firstEvents = durationObservation
 							.getFirstEvents();
 
-						for (Object value : values) {
+						for (EObject eObject : eObjects) {
 
-							if (value instanceof String) {
-								EObject eObject = resource
-									.getEObject((String) value);
-
-								if (eObject instanceof NamedElement) {
-									events.add((NamedElement) eObject);
-									firstEvents.add(isFirstEvent);
-								}
+							if (eObject instanceof NamedElement) {
+								events.add((NamedElement) eObject);
+								firstEvents.add(isFirstEvent);
 							}
 						}
 
@@ -633,19 +671,16 @@ public class UML22UMLResourceHandler
 					Stereotype stereotype = getUML2Stereotype(expression,
 						STEREOTYPE__OPAQUE_EXPRESSION);
 
-					Object value = getValue(extension.getAnyAttribute(),
+					EObject eObject = getEObject(extension, resource,
 						"behavior", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof Behavior) {
-							UMLUtil.setTaggedValue(expression, stereotype,
-								TAG_DEFINITION__BEHAVIOR, eObject);
-						}
+					if (eObject instanceof Behavior) {
+						UMLUtil.setTaggedValue(expression, stereotype,
+							TAG_DEFINITION__BEHAVIOR, eObject);
 					}
 
-					value = getValue(extension.getAnyAttribute(), "body", true); //$NON-NLS-1$
+					Object value = getValue(extension.getAnyAttribute(),
+						"body", true); //$NON-NLS-1$
 
 					if (value instanceof String) {
 						UMLUtil.setTaggedValue(expression, stereotype,
@@ -689,7 +724,7 @@ public class UML22UMLResourceHandler
 					AnyType extension = getExtension(resource, extensionEnd);
 
 					if (extension == null
-						|| getValue(extension.getMixed(), "lowerValue", true) == null) { //$NON-NLS-1$
+						|| getEObject(extension, resource, "lowerValue", true) == null) { //$NON-NLS-1$
 
 						extensionEnd.setLower(1);
 					}
@@ -703,11 +738,11 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, interactionUse);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"argument", true); //$NON-NLS-1$
 
-					if (value instanceof InputPin) {
-						InputPin inputValue = (InputPin) value;
+					if (eObject instanceof InputPin) {
+						InputPin inputValue = (InputPin) eObject;
 						((OpaqueAction) interactionUse.createArgument(
 							inputValue.getName(),
 							UMLPackage.Literals.OPAQUE_ACTION))
@@ -724,12 +759,12 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, multiplicityElement);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"lowerValue", true); //$NON-NLS-1$
 
-					if (value instanceof ValueSpecification) {
+					if (eObject instanceof ValueSpecification) {
 						multiplicityElement
-							.setLowerValue((ValueSpecification) value);
+							.setLowerValue((ValueSpecification) eObject);
 					}
 				}
 
@@ -751,17 +786,13 @@ public class UML22UMLResourceHandler
 								: MessageSort.get((String) value));
 					}
 
-					value = getValue(extension.getAnyAttribute(),
+					EObject eObject = getEObject(extension, resource,
 						"signature", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof NamedElement) {
-							UMLUtil.setTaggedValue(message, getUML2Stereotype(
-								message, STEREOTYPE__MESSAGE),
-								TAG_DEFINITION__SIGNATURE, eObject);
-						}
+					if (eObject instanceof NamedElement) {
+						UMLUtil.setTaggedValue(message, getUML2Stereotype(
+							message, STEREOTYPE__MESSAGE),
+							TAG_DEFINITION__SIGNATURE, eObject);
 					}
 				}
 
@@ -773,26 +804,18 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, messageEnd);
 
 				if (extension != null) {
-					Object value = getValue(extension.getAnyAttribute(),
+					EObject eObject = getEObject(extension, resource,
 						"receiveMessage", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof Message) {
-							messageEnd.setMessage((Message) eObject);
-						}
+					if (eObject instanceof Message) {
+						messageEnd.setMessage((Message) eObject);
 					}
 
-					value = getValue(extension.getAnyAttribute(),
+					eObject = getEObject(extension, resource,
 						"sendMessage", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof Message) {
-							messageEnd.setMessage((Message) eObject);
-						}
+					if (eObject instanceof Message) {
+						messageEnd.setMessage((Message) eObject);
 					}
 				}
 
@@ -812,57 +835,52 @@ public class UML22UMLResourceHandler
 				Message message = messageOccurrenceSpecification.getMessage();
 
 				if (message == null) {
-					Collection<Object> values = Collections
-						.<Object> emptyList();
+					Collection<EObject> eObjects = Collections
+						.<EObject> emptyList();
 
 					if (extension != null) {
-						values = getValues(extension.getAnyAttribute(),
+						eObjects = getEObjects(extension, resource,
 							"startExec", true); //$NON-NLS-1$
 
-						if (values.isEmpty()) {
-							values = getValues(extension.getAnyAttribute(),
+						if (eObjects.isEmpty()) {
+							eObjects = getEObjects(extension, resource,
 								"finishExec", true); //$NON-NLS-1$
 						}
 					}
 
-					if (values.isEmpty()) {
+					if (eObjects.isEmpty()) {
 						return caseOccurrenceSpecification((OccurrenceSpecification) reincarnate(
 							messageOccurrenceSpecification,
 							UMLPackage.Literals.OCCURRENCE_SPECIFICATION,
 							resource));
 					} else {
 
-						for (Object value : values) {
+						for (EObject eObject : eObjects) {
 
-							if (value instanceof String) {
-								EObject eObject = resource
-									.getEObject((String) value);
+							if (eObject instanceof ExecutionSpecification) {
+								ExecutionSpecification execution = (ExecutionSpecification) eObject;
 
-								if (eObject instanceof ExecutionSpecification) {
-									ExecutionSpecification execution = (ExecutionSpecification) eObject;
+								if (execution.getFinish() == messageOccurrenceSpecification) {
+									OccurrenceSpecification start = execution
+										.getStart();
 
-									if (execution.getFinish() == messageOccurrenceSpecification) {
-										OccurrenceSpecification start = execution
-											.getStart();
+									if (start instanceof MessageOccurrenceSpecification
+										&& ((MessageOccurrenceSpecification) start)
+											.getMessage() != null) {
 
-										if (start instanceof MessageOccurrenceSpecification
-											&& ((MessageOccurrenceSpecification) start)
-												.getMessage() != null) {
-
-											break;
-										}
+										break;
 									}
-
-									ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) reincarnate(
-										messageOccurrenceSpecification,
-										UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION,
-										resource);
-
-									executionOccurrenceSpecification
-										.setExecution(execution);
-
-									return caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
 								}
+
+								ExecutionOccurrenceSpecification executionOccurrenceSpecification = (ExecutionOccurrenceSpecification) reincarnate(
+									messageOccurrenceSpecification,
+									UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION,
+									resource);
+
+								executionOccurrenceSpecification
+									.setExecution(execution);
+
+								return caseExecutionOccurrenceSpecification(executionOccurrenceSpecification);
 							}
 						}
 					}
@@ -1032,45 +1050,38 @@ public class UML22UMLResourceHandler
 					}
 
 					if (extension != null) {
-						Collection<Object> values = getValues(extension
-							.getAnyAttribute(), "startExec", true); //$NON-NLS-1$
+						Collection<EObject> eObjects = getEObjects(extension,
+							resource, "startExec", true); //$NON-NLS-1$
 
-						if (values.isEmpty()) {
-							values = getValues(extension.getAnyAttribute(),
+						if (eObjects.isEmpty()) {
+							eObjects = getEObjects(extension, resource,
 								"finishExec", true); //$NON-NLS-1$
 						}
 
-						for (Object value : values) {
+						for (EObject eObject : eObjects) {
 
-							if (value instanceof String) {
-								EObject eObject = resource
-									.getEObject((String) value);
+							if (eObject instanceof ExecutionSpecification) {
+								ExecutionSpecification execution = (ExecutionSpecification) eObject;
 
-								if (eObject instanceof ExecutionSpecification) {
-									ExecutionSpecification execution = (ExecutionSpecification) eObject;
+								if (execution.getFinish() == messageOccurrenceSpecification) {
+									OccurrenceSpecification start = execution
+										.getStart();
 
-									if (execution.getFinish() == messageOccurrenceSpecification) {
-										OccurrenceSpecification start = execution
-											.getStart();
+									if (start instanceof MessageOccurrenceSpecification) {
+										Message startMessage = ((MessageOccurrenceSpecification) start)
+											.getMessage();
 
-										if (start instanceof MessageOccurrenceSpecification) {
-											Message startMessage = ((MessageOccurrenceSpecification) start)
-												.getMessage();
+										if (startMessage != null) {
+											doSwitch(startMessage);
 
-											if (startMessage != null) {
-												doSwitch(startMessage);
-
-												if (startMessage
-													.getMessageSort() == MessageSort.SYNCH_CALL_LITERAL) {
-
-													message
-														.setMessageSort(MessageSort.REPLY_LITERAL);
-												}
+											if (startMessage.getMessageSort() == MessageSort.SYNCH_CALL_LITERAL) {
+												message
+													.setMessageSort(MessageSort.REPLY_LITERAL);
 											}
 										}
-
-										break;
 									}
+
+									break;
 								}
 							}
 						}
@@ -1090,11 +1101,11 @@ public class UML22UMLResourceHandler
 					EList<PackageImport> packageImports = namespace
 						.getPackageImports();
 
-					for (Object value : getValues(extension.getMixed(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"packageImport", true)) { //$NON-NLS-1$
 
-						if (value instanceof PackageImport) {
-							packageImports.add((PackageImport) value);
+						if (eObject instanceof PackageImport) {
+							packageImports.add((PackageImport) eObject);
 						}
 					}
 				}
@@ -1138,11 +1149,11 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, opaqueAction);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"duration", true); //$NON-NLS-1$
 
-					if (value instanceof Duration) {
-						Duration duration = (Duration) value;
+					if (eObject instanceof Duration) {
+						Duration duration = (Duration) eObject;
 
 						ValuePin inputValue = (ValuePin) opaqueAction
 							.createInputValue(duration.getName(), duration
@@ -1151,10 +1162,10 @@ public class UML22UMLResourceHandler
 						inputValue.setValue(duration);
 					}
 
-					value = getValue(extension.getMixed(), "now", true); //$NON-NLS-1$
+					eObject = getEObject(extension, resource, "now", true); //$NON-NLS-1$
 
-					if (value instanceof TimeExpression) {
-						TimeExpression timeExpression = (TimeExpression) value;
+					if (eObject instanceof TimeExpression) {
+						TimeExpression timeExpression = (TimeExpression) eObject;
 
 						ValuePin inputValue = (ValuePin) opaqueAction
 							.createInputValue(timeExpression.getName(),
@@ -1183,10 +1194,10 @@ public class UML22UMLResourceHandler
 					Stereotype stereotype = getUML2Stereotype(opaqueExpression,
 						STEREOTYPE__EXPRESSION);
 
-					Collection<Object> values = getValues(extension.getMixed(),
-						"operand", true); //$NON-NLS-1$
+					Collection<EObject> eObjects = getEObjects(extension,
+						resource, "operand", true); //$NON-NLS-1$
 
-					if (!values.isEmpty()) {
+					if (!eObjects.isEmpty()) {
 
 						if (UMLUtil.safeApplyStereotype(opaqueExpression,
 							stereotype) != null) {
@@ -1195,13 +1206,10 @@ public class UML22UMLResourceHandler
 							EList<ValueSpecification> operands = (EList<ValueSpecification>) opaqueExpression
 								.getValue(stereotype, TAG_DEFINITION__OPERAND);
 
-							for (Iterator<Object> v = values.iterator(); v
-								.hasNext();) {
+							for (EObject eObject : eObjects) {
 
-								value = v.next();
-
-								if (value instanceof ValueSpecification) {
-									operands.add((ValueSpecification) value);
+								if (eObject instanceof ValueSpecification) {
+									operands.add((ValueSpecification) eObject);
 								}
 							}
 						}
@@ -1251,12 +1259,8 @@ public class UML22UMLResourceHandler
 			@Override
 			public Object caseParameterableElement(
 					ParameterableElement parameterableElement) {
-				AnyType extension = getExtension(resource, parameterableElement);
-
-				if (extension != null) {
-					getValue(extension.getAnyAttribute(),
-						"templateParameter", true); //$NON-NLS-1$
-				}
+				getEObject(getExtension(resource, parameterableElement),
+					resource, "templateParameter", true); //$NON-NLS-1$
 
 				return super.caseParameterableElement(parameterableElement);
 			}
@@ -1270,11 +1274,11 @@ public class UML22UMLResourceHandler
 					profileApplication);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"importedPackage", true); //$NON-NLS-1$
 
-					if (value instanceof Profile) {
-						removeExtension(resource, (Profile) value);
+					if (eObject instanceof Profile) {
+						removeExtension(resource, (Profile) eObject);
 					}
 				}
 
@@ -1530,12 +1534,8 @@ public class UML22UMLResourceHandler
 
 			@Override
 			public Object caseRealization(Realization realization) {
-				AnyType extension = getExtension(resource, realization);
-
-				if (extension != null) {
-					getValue(extension.getAnyAttribute(),
-						"realizingClassifier", true); //$NON-NLS-1$
-				}
+				getEObject(getExtension(resource, realization), resource,
+					"realizingClassifier", true); //$NON-NLS-1$
 
 				return super.caseRealization(realization);
 			}
@@ -1548,19 +1548,14 @@ public class UML22UMLResourceHandler
 					EList<Trigger> deferrableTriggers = state
 						.getDeferrableTriggers();
 
-					for (Object value : getValues(extension.getAnyAttribute(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"deferrableTrigger", true)) { //$NON-NLS-1$
 
-						if (value instanceof String) {
-							EObject eObject = resource
-								.getEObject((String) value);
+						if (eObject instanceof Trigger) {
+							doSwitch(eObject);
 
-							if (eObject instanceof Trigger) {
-								doSwitch(eObject);
-
-								deferrableTriggers.add((Trigger) EcoreUtil
-									.copy(eObject));
-							}
+							deferrableTriggers.add((Trigger) EcoreUtil
+								.copy(eObject));
 						}
 					}
 				}
@@ -1574,11 +1569,11 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, templateParameter);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"ownedParameteredElement", true); //$NON-NLS-1$
 
-					if (value instanceof ParameterableElement) {
-						ParameterableElement parameterableElement = (ParameterableElement) value;
+					if (eObject instanceof ParameterableElement) {
+						ParameterableElement parameterableElement = (ParameterableElement) eObject;
 
 						doSwitch(parameterableElement);
 
@@ -1603,37 +1598,33 @@ public class UML22UMLResourceHandler
 							.setOwnedParameteredElement(parameterableElement);
 					}
 
-					value = getValue(extension.getAnyAttribute(),
+					eObject = getEObject(extension, resource,
 						"parameteredElement", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
+					if (eObject instanceof ParameterableElement) {
+						ParameterableElement parameterableElement = (ParameterableElement) eObject;
 
-						if (eObject instanceof ParameterableElement) {
-							ParameterableElement parameterableElement = (ParameterableElement) eObject;
+						doSwitch(parameterableElement);
 
-							doSwitch(parameterableElement);
-
-							if (parameterableElement instanceof Classifier) {
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
-									resource);
-							} else if (parameterableElement instanceof ConnectableElement) {
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
-									resource);
-							} else if (parameterableElement instanceof Operation) {
-								templateParameter = (TemplateParameter) reincarnate(
-									templateParameter,
-									UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
-									resource);
-							}
-
-							templateParameter
-								.setParameteredElement(parameterableElement);
+						if (parameterableElement instanceof Classifier) {
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+								resource);
+						} else if (parameterableElement instanceof ConnectableElement) {
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER,
+								resource);
+						} else if (parameterableElement instanceof Operation) {
+							templateParameter = (TemplateParameter) reincarnate(
+								templateParameter,
+								UMLPackage.Literals.OPERATION_TEMPLATE_PARAMETER,
+								resource);
 						}
+
+						templateParameter
+							.setParameteredElement(parameterableElement);
 					}
 				}
 
@@ -1649,10 +1640,10 @@ public class UML22UMLResourceHandler
 					Stereotype stereotype = getUML2Stereotype(
 						templateSignature, STEREOTYPE__TEMPLATE_SIGNATURE);
 
-					Collection<Object> values = getValues(extension
-						.getAnyAttribute(), "nestedSignature", true); //$NON-NLS-1$
+					Collection<EObject> eObjects = getEObjects(extension,
+						resource, "nestedSignature", true); //$NON-NLS-1$
 
-					if (!values.isEmpty()) {
+					if (!eObjects.isEmpty()) {
 
 						if (UMLUtil.safeApplyStereotype(templateSignature,
 							stereotype) != null) {
@@ -1662,32 +1653,22 @@ public class UML22UMLResourceHandler
 								.getValue(stereotype,
 									TAG_DEFINITION__NESTED_SIGNATURE);
 
-							for (Object value : values) {
+							for (EObject eObject : eObjects) {
 
-								if (value instanceof String) {
-									EObject eObject = resource
-										.getEObject((String) value);
-
-									if (eObject instanceof TemplateSignature) {
-										nestedSignatures
-											.add((TemplateSignature) eObject);
-									}
+								if (eObject instanceof TemplateSignature) {
+									nestedSignatures
+										.add((TemplateSignature) eObject);
 								}
 							}
 						}
 					}
 
-					Object value = getValue(extension.getAnyAttribute(),
+					EObject eObject = getEObject(extension, resource,
 						"nestingSignature", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
-
-						if (eObject instanceof TemplateSignature) {
-							UMLUtil.setTaggedValue(templateSignature,
-								stereotype, TAG_DEFINITION__NESTING_SIGNATURE,
-								eObject);
-						}
+					if (eObject instanceof TemplateSignature) {
+						UMLUtil.setTaggedValue(templateSignature, stereotype,
+							TAG_DEFINITION__NESTING_SIGNATURE, eObject);
 					}
 				}
 
@@ -1702,21 +1683,17 @@ public class UML22UMLResourceHandler
 					boolean firstEvent = !"false".equals(getValue(extension //$NON-NLS-1$
 						.getAnyAttribute(), "isFirstTime", true)); //$NON-NLS-1$
 
-					Object value = getValue(extension.getAnyAttribute(),
+					EObject eObject = getEObject(extension, resource,
 						"event", true); //$NON-NLS-1$
 
-					if (value instanceof String) {
-						EObject eObject = resource.getEObject((String) value);
+					if (eObject instanceof NamedElement) {
+						TimeObservation timeObservation = (TimeObservation) timeExpression
+							.getNearestPackage().createPackagedElement(
+								timeExpression.getName(),
+								UMLPackage.Literals.TIME_OBSERVATION);
 
-						if (eObject instanceof NamedElement) {
-							TimeObservation timeObservation = (TimeObservation) timeExpression
-								.getNearestPackage().createPackagedElement(
-									timeExpression.getName(),
-									UMLPackage.Literals.TIME_OBSERVATION);
-
-							timeObservation.setEvent((NamedElement) eObject);
-							timeObservation.setFirstEvent(firstEvent);
-						}
+						timeObservation.setEvent((NamedElement) eObject);
+						timeObservation.setFirstEvent(firstEvent);
 					}
 				}
 
@@ -1740,18 +1717,13 @@ public class UML22UMLResourceHandler
 				if (extension != null) {
 					EList<Trigger> triggers = transition.getTriggers();
 
-					for (Object value : getValues(extension.getAnyAttribute(),
+					for (EObject eObject : getEObjects(extension, resource,
 						"trigger", true)) { //$NON-NLS-1$
 
-						if (value instanceof String) {
-							EObject eObject = resource
-								.getEObject((String) value);
+						if (eObject instanceof Trigger) {
+							doSwitch(eObject);
 
-							if (eObject instanceof Trigger) {
-								doSwitch(eObject);
-
-								triggers.add((Trigger) EcoreUtil.copy(eObject));
-							}
+							triggers.add((Trigger) EcoreUtil.copy(eObject));
 						}
 					}
 				}
@@ -1765,61 +1737,50 @@ public class UML22UMLResourceHandler
 				AnyType extension = getExtension(resource, trigger);
 
 				if (extension != null) {
-					Object value = getValue(extension.getMixed(),
+					EObject eObject = getEObject(extension, resource,
 						"changeExpression", true); //$NON-NLS-1$
 
-					if (value instanceof ValueSpecification) {
+					if (eObject instanceof ValueSpecification) {
 						event = (Event) trigger.getNearestPackage()
 							.createPackagedElement(trigger.getName(),
 								UMLPackage.Literals.CHANGE_EVENT);
 						((ChangeEvent) event)
-							.setChangeExpression((ValueSpecification) value);
+							.setChangeExpression((ValueSpecification) eObject);
 					} else {
-						value = getValue(extension.getAnyAttribute(),
+						eObject = getEObject(extension, resource,
 							"operation", true); //$NON-NLS-1$
 
-						if (value instanceof String) {
-							EObject eObject = resource
-								.getEObject((String) value);
-
-							if (eObject instanceof Operation) {
-								event = (CallEvent) trigger.getNearestPackage()
-									.createPackagedElement(trigger.getName(),
-										UMLPackage.Literals.CALL_EVENT);
-								((CallEvent) event)
-									.setOperation((Operation) eObject);
-							}
+						if (eObject instanceof Operation) {
+							event = (CallEvent) trigger.getNearestPackage()
+								.createPackagedElement(trigger.getName(),
+									UMLPackage.Literals.CALL_EVENT);
+							((CallEvent) event)
+								.setOperation((Operation) eObject);
 						} else {
-							value = getValue(extension.getAnyAttribute(),
+							eObject = getEObject(extension, resource,
 								"signal", true); //$NON-NLS-1$
 
-							if (value instanceof String) {
-								EObject eObject = resource
-									.getEObject((String) value);
-
-								if (eObject instanceof Signal) {
-									event = (SignalEvent) trigger
-										.getNearestPackage()
-										.createPackagedElement(
-											trigger.getName(),
-											UMLPackage.Literals.SIGNAL_EVENT);
-									((SignalEvent) event)
-										.setSignal((Signal) eObject);
-								}
+							if (eObject instanceof Signal) {
+								event = (SignalEvent) trigger
+									.getNearestPackage().createPackagedElement(
+										trigger.getName(),
+										UMLPackage.Literals.SIGNAL_EVENT);
+								((SignalEvent) event)
+									.setSignal((Signal) eObject);
 							} else {
-								value = getValue(extension.getMixed(),
+								eObject = getEObject(extension, resource,
 									"when", true); //$NON-NLS-1$
 
-								if (value instanceof ValueSpecification) {
+								if (eObject instanceof ValueSpecification) {
 									event = (TimeEvent) trigger
 										.getNearestPackage()
 										.createPackagedElement(
 											trigger.getName(),
 											UMLPackage.Literals.TIME_EVENT);
 									((TimeEvent) event)
-										.setWhen((ValueSpecification) value);
+										.setWhen((ValueSpecification) eObject);
 
-									value = getValue(extension
+									Object value = getValue(extension
 										.getAnyAttribute(), "isRelative", true); //$NON-NLS-1$
 
 									if (value instanceof String) {
@@ -1911,4 +1872,5 @@ public class UML22UMLResourceHandler
 			ElementOperations.applyAllRequiredStereotypes(package_);
 		}
 	}
+
 }
