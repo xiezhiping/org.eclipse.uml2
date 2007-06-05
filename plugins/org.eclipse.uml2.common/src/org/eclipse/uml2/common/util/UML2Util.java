@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2Util.java,v 1.29 2007/03/30 18:42:31 khussey Exp $
+ * $Id: UML2Util.java,v 1.30 2007/06/05 13:04:58 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -55,6 +55,7 @@ import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
 import org.osgi.framework.Bundle;
 
 /**
@@ -857,11 +858,11 @@ public class UML2Util {
 	}
 
 	protected static boolean isNCNameStart(char c) {
-		return Character.isLetter(c) || c == '_';
+		return XMLTypeUtil.isNCNameStart(c);
 	}
 
 	protected static boolean isNCNamePart(char c) {
-		return Character.isLetterOrDigit(c) || c == '.' || c == '-' || c == '_';
+		return XMLTypeUtil.isNCNamePart(c);
 	}
 
 	protected static String getValidNCName(String name) {
