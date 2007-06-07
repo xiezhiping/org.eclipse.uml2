@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLValidator.java,v 1.21 2007/05/04 20:35:32 khussey Exp $
+ * $Id: UMLValidator.java,v 1.22 2007/06/07 15:18:40 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3565,7 +3565,7 @@ public class UMLValidator
 	}
 
 	/**
-	 * Calls <code>validateXXX</code> for the corresonding classifier of the model.
+	 * Calls <code>validateXXX</code> for the corresponding classifier of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
