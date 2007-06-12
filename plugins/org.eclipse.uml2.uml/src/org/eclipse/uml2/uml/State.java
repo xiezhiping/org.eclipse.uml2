@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: State.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
+ * $Id: State.java,v 1.18 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -156,7 +156,7 @@ public interface State
 	 * @return the value of the '<em>Connection</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Connection()
 	 * @see org.eclipse.uml2.uml.ConnectionPointReference#getState
-	 * @model type="org.eclipse.uml2.uml.ConnectionPointReference" opposite="state" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ConnectionPointReference> getConnections();
@@ -209,7 +209,7 @@ public interface State
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_ConnectionPoint()
 	 * @see org.eclipse.uml2.uml.Pseudostate#getState
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="state" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Pseudostate> getConnectionPoints();
@@ -447,7 +447,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deferrable Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_DeferrableTrigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Trigger> getDeferrableTriggers();
@@ -500,7 +500,7 @@ public interface State
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_Region()
 	 * @see org.eclipse.uml2.uml.Region#getState
-	 * @model type="org.eclipse.uml2.uml.Region" opposite="state" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="state" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Region> getRegions();

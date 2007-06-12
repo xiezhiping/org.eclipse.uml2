@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElement.java,v 1.6 2007/05/04 20:35:32 khussey Exp $
+ * $Id: ConnectableElement.java,v 1.7 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,7 +48,7 @@ public interface ConnectableElement
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectableElement_End()
-	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" transient="true" volatile="true" derived="true"
+	 * @model transient="true" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<ConnectorEnd> getEnds();

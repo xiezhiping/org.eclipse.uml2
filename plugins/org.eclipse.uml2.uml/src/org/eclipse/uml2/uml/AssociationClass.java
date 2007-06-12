@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClass.java,v 1.5 2007/04/25 17:47:05 khussey Exp $
+ * $Id: AssociationClass.java,v 1.6 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface AssociationClass
 	 * The operation allConnections results in the set of all AssociationEnds of the Association.
 	 * result = memberEnd->union ( self.parents ()->collect (p | p.allConnections () )
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Property" lower="2" ordered="false"
+	 * @model lower="2" ordered="false"
 	 * @generated
 	 */
 	EList<Property> allConnections();

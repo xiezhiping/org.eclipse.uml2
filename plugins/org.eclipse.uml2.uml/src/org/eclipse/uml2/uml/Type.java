@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.10 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Type.java,v 1.11 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -97,7 +97,7 @@ public interface Type
 	 * <!-- begin-model-doc -->
 	 * Retrieves the associations in which this type is involved.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Association" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Association> getAssociations();

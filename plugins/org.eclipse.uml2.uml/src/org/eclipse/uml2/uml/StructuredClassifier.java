@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifier.java,v 1.9 2007/04/25 17:47:05 khussey Exp $
+ * $Id: StructuredClassifier.java,v 1.10 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getOwnedAttributes();
@@ -124,7 +124,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Part</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_Part()
-	 * @model type="org.eclipse.uml2.uml.Property" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Property> getParts();
@@ -165,7 +165,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_Role()
-	 * @model type="org.eclipse.uml2.uml.ConnectableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<ConnectableElement> getRoles();
@@ -207,7 +207,7 @@ public interface StructuredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connector</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStructuredClassifier_OwnedConnector()
-	 * @model type="org.eclipse.uml2.uml.Connector" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Connector> getOwnedConnectors();

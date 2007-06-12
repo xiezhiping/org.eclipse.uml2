@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.16 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Operation.java,v 1.17 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -228,7 +228,7 @@ public interface Operation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Precondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPreconditions();
@@ -292,7 +292,7 @@ public interface Operation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Postcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPostconditions();
@@ -356,7 +356,7 @@ public interface Operation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Operation</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_RedefinedOperation()
-	 * @model type="org.eclipse.uml2.uml.Operation" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Operation> getRedefinedOperations();
@@ -591,7 +591,7 @@ public interface Operation
 	 * The query returnResult() returns the set containing the return parameter of the Operation if one exists, otherwise, it returns an empty set
 	 * result = ownedParameter->select (par | par.direction = #return)
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Parameter" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Parameter> returnResult();

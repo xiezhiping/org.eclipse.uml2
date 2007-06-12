@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.19 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Package.java,v 1.20 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -63,7 +63,7 @@ public interface Package
 	 * @return the value of the '<em>Package Merge</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackageMerge()
 	 * @see org.eclipse.uml2.uml.PackageMerge#getReceivingPackage
-	 * @model type="org.eclipse.uml2.uml.PackageMerge" opposite="receivingPackage" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="receivingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageMerge> getPackageMerges();
@@ -112,7 +112,7 @@ public interface Package
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> getPackagedElements();
@@ -167,7 +167,7 @@ public interface Package
 	 * @return the value of the '<em>Owned Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_OwnedType()
 	 * @see org.eclipse.uml2.uml.Type#getPackage
-	 * @model type="org.eclipse.uml2.uml.Type" opposite="package" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model opposite="package" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Type> getOwnedTypes();
@@ -222,7 +222,7 @@ public interface Package
 	 * @return the value of the '<em>Nested Package</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_NestedPackage()
 	 * @see org.eclipse.uml2.uml.Package#getNestingPackage
-	 * @model type="org.eclipse.uml2.uml.Package" opposite="nestingPackage" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model opposite="nestingPackage" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Package> getNestedPackages();
@@ -304,7 +304,7 @@ public interface Package
 	 * @return the value of the '<em>Profile Application</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_ProfileApplication()
 	 * @see org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage
-	 * @model type="org.eclipse.uml2.uml.ProfileApplication" opposite="applyingPackage" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="applyingPackage" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ProfileApplication> getProfileApplications();
@@ -401,7 +401,7 @@ public interface Package
 	 * Applies the current definition of the specified profile to this package and automatically applies required stereotypes in the profile to elements within this package's namespace hieararchy. If a different definition is already applied, automatically migrates any associated stereotype values on a "best effort" basis (matching classifiers and structural features by name).
 	 * @param profile The profile to apply.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @model ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
 	EList<EObject> applyProfile(Profile profile);
@@ -413,7 +413,7 @@ public interface Package
 	 * Unapplies the specified profile from this package and automatically unapplies stereotypes in the profile from elements within this package's namespace hieararchy.
 	 * @param profile The profile to unapply.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.emf.ecore.EObject" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @model ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
 	EList<EObject> unapplyProfile(Profile profile);
@@ -424,7 +424,7 @@ public interface Package
 	 * <!-- begin-model-doc -->
 	 * Retrieves the profiles that are applied to this package.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Profile> getAppliedProfiles();
@@ -460,7 +460,7 @@ public interface Package
 	 * <!-- begin-model-doc -->
 	 * Retrieves all the profile applications for this package, including profile applications for its nesting package(s).
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.ProfileApplication" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<ProfileApplication> getAllProfileApplications();
@@ -519,7 +519,7 @@ public interface Package
 	 * <!-- begin-model-doc -->
 	 * Retrieves all the profiles that are applied to this package, including profiles applied to its nesting package(s).
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Profile" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Profile> getAllAppliedProfiles();
@@ -531,7 +531,7 @@ public interface Package
 	 * The query visibleMembers() defines which members of a Package can be accessed outside it.
 	 * result = member->select( m | self.makesVisible(m))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> visibleMembers();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OccurrenceSpecification.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
+ * $Id: OccurrenceSpecification.java,v 1.8 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface OccurrenceSpecification
 	 * @return the value of the '<em>To Before</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOccurrenceSpecification_ToBefore()
 	 * @see org.eclipse.uml2.uml.GeneralOrdering#getAfter
-	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" opposite="after" ordered="false"
+	 * @model opposite="after" ordered="false"
 	 * @generated
 	 */
 	EList<GeneralOrdering> getToBefores();
@@ -118,7 +118,7 @@ public interface OccurrenceSpecification
 	 * @return the value of the '<em>To After</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOccurrenceSpecification_ToAfter()
 	 * @see org.eclipse.uml2.uml.GeneralOrdering#getBefore
-	 * @model type="org.eclipse.uml2.uml.GeneralOrdering" opposite="before" ordered="false"
+	 * @model opposite="before" ordered="false"
 	 * @generated
 	 */
 	EList<GeneralOrdering> getToAfters();

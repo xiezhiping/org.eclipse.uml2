@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.16 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Profile.java,v 1.17 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_OwnedStereotype()
-	 * @model type="org.eclipse.uml2.uml.Stereotype" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Stereotype> getOwnedStereotypes();
@@ -108,7 +108,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metaclass Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetaclassReference()
-	 * @model type="org.eclipse.uml2.uml.ElementImport" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ElementImport> getMetaclassReferences();
@@ -158,7 +158,7 @@ public interface Profile
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metamodel Reference</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_MetamodelReference()
-	 * @model type="org.eclipse.uml2.uml.PackageImport" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<PackageImport> getMetamodelReferences();
@@ -325,7 +325,7 @@ public interface Profile
 	 * <!-- begin-model-doc -->
 	 * Retrieves the metaclasses referenced by this profile.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses();
@@ -336,7 +336,7 @@ public interface Profile
 	 * <!-- begin-model-doc -->
 	 * Retrieves the metamodels referenced by this profile.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Model" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Model> getReferencedMetamodels();
@@ -348,7 +348,7 @@ public interface Profile
 	 * Retrieves the extensions owned by this profile, excluding non-required extensions if indicated.
 	 * @param requiredOnly Whether to retrieve only required extensions.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Extension" ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
+	 * @model ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
 	 * @generated
 	 */
 	EList<Extension> getOwnedExtensions(boolean requiredOnly);

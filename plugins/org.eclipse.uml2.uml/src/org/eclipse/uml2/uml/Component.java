@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.21 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Component.java,v 1.22 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -80,7 +80,7 @@ public interface Component
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_Required()
-	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Interface> getRequireds();
@@ -118,7 +118,7 @@ public interface Component
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_Provided()
-	 * @model type="org.eclipse.uml2.uml.Interface" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Interface> getProvideds();
@@ -156,7 +156,7 @@ public interface Component
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Packaged Element</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_PackagedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> getPackagedElements();
@@ -211,7 +211,7 @@ public interface Component
 	 * @return the value of the '<em>Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_Realization()
 	 * @see org.eclipse.uml2.uml.ComponentRealization#getAbstraction
-	 * @model type="org.eclipse.uml2.uml.ComponentRealization" opposite="abstraction" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="abstraction" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ComponentRealization> getRealizations();
@@ -310,7 +310,7 @@ public interface Component
 	 * select(dependency|dependency.oclIsKindOf(Realization) and dependency.supplier.oclIsKindOf(Interface)))->
 	 * collect(dependency|dependency.client)
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
+	 * @model ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
 	EList<Interface> realizedInterfaces(Classifier classifier);
@@ -324,7 +324,7 @@ public interface Component
 	 * select(dependency|dependency.oclIsKindOf(Usage) and dependency.supplier.oclIsKindOf(interface)))->
 	 * collect(dependency|dependency.supplier)
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false" classifierRequired="true" classifierOrdered="false"
+	 * @model ordered="false" classifierRequired="true" classifierOrdered="false"
 	 * @generated
 	 */
 	EList<Interface> usedInterfaces(Classifier classifier);

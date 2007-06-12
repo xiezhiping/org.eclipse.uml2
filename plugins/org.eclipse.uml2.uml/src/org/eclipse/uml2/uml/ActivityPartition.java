@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.17 2007/04/25 17:47:05 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.18 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -113,7 +113,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Edge()
 	 * @see org.eclipse.uml2.uml.ActivityEdge#getInPartitions
-	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inPartition" ordered="false"
+	 * @model opposite="inPartition" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityEdge> getEdges();
@@ -154,7 +154,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Node()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getInPartitions
-	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inPartition" ordered="false"
+	 * @model opposite="inPartition" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityNode> getNodes();
@@ -195,7 +195,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Subpartition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_Subpartition()
 	 * @see org.eclipse.uml2.uml.ActivityPartition#getSuperPartition
-	 * @model type="org.eclipse.uml2.uml.ActivityPartition" opposite="superPartition" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="superPartition" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityPartition> getSubpartitions();

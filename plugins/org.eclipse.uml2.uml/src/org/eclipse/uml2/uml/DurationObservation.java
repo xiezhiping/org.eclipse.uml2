@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationObservation.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
+ * $Id: DurationObservation.java,v 1.8 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface DurationObservation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_Event()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" required="true" upper="2" ordered="false"
+	 * @model required="true" upper="2" ordered="false"
 	 * @generated
 	 */
 	EList<NamedElement> getEvents();
@@ -92,7 +92,7 @@ public interface DurationObservation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Event</em>' attribute list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_FirstEvent()
-	 * @model type="boolean" default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
 	 * @generated
 	 */
 	EList<Boolean> getFirstEvents();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Artifact.java,v 1.12 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Artifact.java,v 1.13 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -108,7 +108,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Artifact</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_NestedArtifact()
-	 * @model type="org.eclipse.uml2.uml.Artifact" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Artifact> getNestedArtifacts();
@@ -172,7 +172,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Manifestation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_Manifestation()
-	 * @model type="org.eclipse.uml2.uml.Manifestation" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Manifestation> getManifestations();
@@ -229,7 +229,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedOperation()
-	 * @model type="org.eclipse.uml2.uml.Operation" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Operation> getOwnedOperations();
@@ -291,7 +291,7 @@ public interface Artifact
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getArtifact_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getOwnedAttributes();
@@ -359,7 +359,7 @@ public interface Artifact
 	 * @param parameterTypes The parameter types for the new operation, or null.
 	 * @param returnType The return type for the new operation, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
 	Operation createOwnedOperation(String name, EList<String> parameterNames,

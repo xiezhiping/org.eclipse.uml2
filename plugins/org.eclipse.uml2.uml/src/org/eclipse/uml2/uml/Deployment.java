@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.8 2006/12/14 15:49:28 khussey Exp $
+ * $Id: Deployment.java,v 1.9 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface Deployment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployed Artifact</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_DeployedArtifact()
-	 * @model type="org.eclipse.uml2.uml.DeployedArtifact" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<DeployedArtifact> getDeployedArtifacts();
@@ -94,7 +94,7 @@ public interface Deployment
 	 * @return the value of the '<em>Configuration</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Configuration()
 	 * @see org.eclipse.uml2.uml.DeploymentSpecification#getDeployment
-	 * @model type="org.eclipse.uml2.uml.DeploymentSpecification" opposite="deployment" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="deployment" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<DeploymentSpecification> getConfigurations();

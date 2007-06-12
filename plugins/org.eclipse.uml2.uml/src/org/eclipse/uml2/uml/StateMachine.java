@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.12 2007/04/25 17:47:04 khussey Exp $
+ * $Id: StateMachine.java,v 1.13 2007/06/12 12:53:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface StateMachine
 	 * @return the value of the '<em>Region</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_Region()
 	 * @see org.eclipse.uml2.uml.Region#getStateMachine
-	 * @model type="org.eclipse.uml2.uml.Region" opposite="stateMachine" containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model opposite="stateMachine" containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList<Region> getRegions();
@@ -110,7 +110,7 @@ public interface StateMachine
 	 * @return the value of the '<em>Submachine State</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_SubmachineState()
 	 * @see org.eclipse.uml2.uml.State#getSubmachine
-	 * @model type="org.eclipse.uml2.uml.State" opposite="submachine" ordered="false"
+	 * @model opposite="submachine" ordered="false"
 	 * @generated
 	 */
 	EList<State> getSubmachineStates();
@@ -151,7 +151,7 @@ public interface StateMachine
 	 * @return the value of the '<em>Connection Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ConnectionPoint()
 	 * @see org.eclipse.uml2.uml.Pseudostate#getStateMachine
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" opposite="stateMachine" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="stateMachine" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Pseudostate> getConnectionPoints();
@@ -202,7 +202,7 @@ public interface StateMachine
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended State Machine</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStateMachine_ExtendedStateMachine()
-	 * @model type="org.eclipse.uml2.uml.StateMachine" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<StateMachine> getExtendedStateMachines();

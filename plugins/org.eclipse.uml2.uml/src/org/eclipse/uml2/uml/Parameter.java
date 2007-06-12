@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Parameter.java,v 1.19 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Parameter.java,v 1.20 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -64,7 +64,7 @@ public interface Parameter
 	 * @return the value of the '<em>Parameter Set</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_ParameterSet()
 	 * @see org.eclipse.uml2.uml.ParameterSet#getParameters
-	 * @model type="org.eclipse.uml2.uml.ParameterSet" opposite="parameter" ordered="false"
+	 * @model opposite="parameter" ordered="false"
 	 * @generated
 	 */
 	EList<ParameterSet> getParameterSets();

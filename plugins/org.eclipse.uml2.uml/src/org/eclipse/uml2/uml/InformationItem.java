@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItem.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
+ * $Id: InformationItem.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface InformationItem
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Represented</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInformationItem_Represented()
-	 * @model type="org.eclipse.uml2.uml.Classifier" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Classifier> getRepresenteds();

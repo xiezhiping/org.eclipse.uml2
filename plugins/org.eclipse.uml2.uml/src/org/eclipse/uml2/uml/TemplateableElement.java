@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.9 2006/12/14 15:49:28 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.10 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface TemplateableElement
 	 * @return the value of the '<em>Template Binding</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateableElement_TemplateBinding()
 	 * @see org.eclipse.uml2.uml.TemplateBinding#getBoundElement
-	 * @model type="org.eclipse.uml2.uml.TemplateBinding" opposite="boundElement" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="boundElement" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<TemplateBinding> getTemplateBindings();
@@ -147,7 +147,7 @@ public interface TemplateableElement
 	 * The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
 	 * result = allOwnedElements->select(oclIsKindOf(ParameterableElement))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.ParameterableElement" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ParameterableElement> parameterableElements();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.12 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Interface.java,v 1.13 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedAttribute()
-	 * @model type="org.eclipse.uml2.uml.Property" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getOwnedAttributes();
@@ -128,7 +128,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Nested Classifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_NestedClassifier()
-	 * @model type="org.eclipse.uml2.uml.Classifier" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Classifier> getNestedClassifiers();
@@ -181,7 +181,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Interface</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_RedefinedInterface()
-	 * @model type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Interface> getRedefinedInterfaces();
@@ -219,7 +219,7 @@ public interface Interface
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Reception</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedReception()
-	 * @model type="org.eclipse.uml2.uml.Reception" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Reception> getOwnedReceptions();
@@ -317,7 +317,7 @@ public interface Interface
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterface_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getInterface
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="interface" containment="true" resolveProxies="true"
+	 * @model opposite="interface" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Operation> getOwnedOperations();
@@ -392,7 +392,7 @@ public interface Interface
 	 * @param parameterTypes The parameter types for the new operation, or null.
 	 * @param returnType The return type for the new operation, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
 	Operation createOwnedOperation(String name, EList<String> parameterNames,

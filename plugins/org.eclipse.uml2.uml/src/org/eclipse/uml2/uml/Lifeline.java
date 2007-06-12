@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.13 2007/04/25 17:47:06 khussey Exp $
+ * $Id: Lifeline.java,v 1.14 2007/06/12 12:53:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -174,7 +174,7 @@ public interface Lifeline
 	 * @return the value of the '<em>Covered By</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLifeline_CoveredBy()
 	 * @see org.eclipse.uml2.uml.InteractionFragment#getCovereds
-	 * @model type="org.eclipse.uml2.uml.InteractionFragment" opposite="covered" ordered="false"
+	 * @model opposite="covered" ordered="false"
 	 * @generated
 	 */
 	EList<InteractionFragment> getCoveredBys();

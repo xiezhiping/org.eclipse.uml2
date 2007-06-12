@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterruptibleActivityRegion.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
+ * $Id: InterruptibleActivityRegion.java,v 1.8 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface InterruptibleActivityRegion
 	 * @return the value of the '<em>Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_Node()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getInInterruptibleRegions
-	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inInterruptibleRegion" ordered="false"
+	 * @model opposite="inInterruptibleRegion" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityNode> getNodes();
@@ -97,7 +97,7 @@ public interface InterruptibleActivityRegion
 	 * @return the value of the '<em>Interrupting Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterruptibleActivityRegion_InterruptingEdge()
 	 * @see org.eclipse.uml2.uml.ActivityEdge#getInterrupts
-	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="interrupts" ordered="false"
+	 * @model opposite="interrupts" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityEdge> getInterruptingEdges();

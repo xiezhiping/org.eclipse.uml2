@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Extend.java,v 1.11 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Extend.java,v 1.12 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -131,7 +131,7 @@ public interface Extend
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extension Location</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtend_ExtensionLocation()
-	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<ExtensionPoint> getExtensionLocations();

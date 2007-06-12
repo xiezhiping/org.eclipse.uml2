@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehavior.java,v 1.6 2006/12/14 15:49:28 khussey Exp $
+ * $Id: OpaqueBehavior.java,v 1.7 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,7 @@ public interface OpaqueBehavior
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueBehavior_Body()
-	 * @model type="java.lang.String" unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -89,7 +89,7 @@ public interface OpaqueBehavior
 	 * @see #isSetLanguages()
 	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueBehavior_Language()
-	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
 	EList<String> getLanguages();

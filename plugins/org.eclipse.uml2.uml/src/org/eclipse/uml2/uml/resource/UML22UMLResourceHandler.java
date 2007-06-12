@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.33 2007/06/04 13:25:18 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.34 2007/06/12 12:53:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1278,7 +1278,7 @@ public class UML22UMLResourceHandler
 						"importedPackage", true); //$NON-NLS-1$
 
 					if (eObject instanceof Profile) {
-						removeExtension(resource, (Profile) eObject);
+						removeExtension(resource, eObject);
 					}
 				}
 

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.20 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Behavior.java,v 1.21 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -87,7 +87,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Behavior</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_RedefinedBehavior()
-	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Behavior> getRedefinedBehaviors();
@@ -127,7 +127,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_OwnedParameter()
-	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Parameter> getOwnedParameters();
@@ -195,7 +195,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Precondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Precondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPreconditions();
@@ -259,7 +259,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Postcondition</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_Postcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getPostconditions();
@@ -323,7 +323,7 @@ public interface Behavior
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavior_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ParameterSet> getOwnedParameterSets();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DurationConstraint.java,v 1.8 2007/04/25 17:47:04 khussey Exp $
+ * $Id: DurationConstraint.java,v 1.9 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,7 +50,7 @@ public interface DurationConstraint
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Event</em>' attribute list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationConstraint_FirstEvent()
-	 * @model type="boolean" default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
 	 * @generated
 	 */
 	EList<Boolean> getFirstEvents();

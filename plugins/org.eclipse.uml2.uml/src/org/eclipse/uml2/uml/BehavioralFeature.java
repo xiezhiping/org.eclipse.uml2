@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioralFeature.java,v 1.14 2007/04/25 17:47:04 khussey Exp $
+ * $Id: BehavioralFeature.java,v 1.15 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,7 +56,7 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameter()
-	 * @model type="org.eclipse.uml2.uml.Parameter" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Parameter> getOwnedParameters();
@@ -138,7 +138,7 @@ public interface BehavioralFeature
 	 * @return the value of the '<em>Method</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_Method()
 	 * @see org.eclipse.uml2.uml.Behavior#getSpecification
-	 * @model type="org.eclipse.uml2.uml.Behavior" opposite="specification" ordered="false"
+	 * @model opposite="specification" ordered="false"
 	 * @generated
 	 */
 	EList<Behavior> getMethods();
@@ -207,7 +207,7 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_RaisedException()
-	 * @model type="org.eclipse.uml2.uml.Type" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Type> getRaisedExceptions();
@@ -246,7 +246,7 @@ public interface BehavioralFeature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Set</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_OwnedParameterSet()
-	 * @model type="org.eclipse.uml2.uml.ParameterSet" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ParameterSet> getOwnedParameterSets();

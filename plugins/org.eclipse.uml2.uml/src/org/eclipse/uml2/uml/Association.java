@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.14 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Association.java,v 1.15 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,7 +83,7 @@ public interface Association
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_EndType()
-	 * @model type="org.eclipse.uml2.uml.Type" required="true" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<Type> getEndTypes();
@@ -124,7 +124,7 @@ public interface Association
 	 * @return the value of the '<em>Member End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_MemberEnd()
 	 * @see org.eclipse.uml2.uml.Property#getAssociation
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="association" lower="2"
+	 * @model opposite="association" lower="2"
 	 * @generated
 	 */
 	EList<Property> getMemberEnds();
@@ -166,7 +166,7 @@ public interface Association
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Navigable Owned End</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_NavigableOwnedEnd()
-	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Property> getNavigableOwnedEnds();
@@ -236,7 +236,7 @@ public interface Association
 	 * @return the value of the '<em>Owned End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_OwnedEnd()
 	 * @see org.eclipse.uml2.uml.Property#getOwningAssociation
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="owningAssociation" containment="true" resolveProxies="true"
+	 * @model opposite="owningAssociation" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getOwnedEnds();

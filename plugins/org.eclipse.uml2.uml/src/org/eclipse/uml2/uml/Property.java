@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.24 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Property.java,v 1.25 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -275,7 +275,7 @@ public interface Property
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_RedefinedProperty()
-	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Property> getRedefinedProperties();
@@ -434,7 +434,7 @@ public interface Property
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subsetted Property</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_SubsettedProperty()
-	 * @model type="org.eclipse.uml2.uml.Property" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Property> getSubsettedProperties();
@@ -478,7 +478,7 @@ public interface Property
 	 * @return the value of the '<em>Qualifier</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Qualifier()
 	 * @see org.eclipse.uml2.uml.Property#getAssociationEnd
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="associationEnd" containment="true" resolveProxies="true"
+	 * @model opposite="associationEnd" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getQualifiers();
@@ -829,7 +829,7 @@ public interface Property
 	 * else if classifier->notEmpty() then Set{classifier} else Set{} endif
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Type" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Type> subsettingContext();

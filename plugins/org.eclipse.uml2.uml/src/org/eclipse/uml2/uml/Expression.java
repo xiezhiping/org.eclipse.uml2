@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Expression.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Expression.java,v 1.9 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -103,7 +103,7 @@ public interface Expression
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operand</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Operand()
-	 * @model type="org.eclipse.uml2.uml.ValueSpecification" containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<ValueSpecification> getOperands();

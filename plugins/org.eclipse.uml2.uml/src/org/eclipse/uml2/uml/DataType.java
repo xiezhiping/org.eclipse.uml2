@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.10 2007/04/25 17:47:06 khussey Exp $
+ * $Id: DataType.java,v 1.11 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface DataType
 	 * @return the value of the '<em>Owned Attribute</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedAttribute()
 	 * @see org.eclipse.uml2.uml.Property#getDatatype
-	 * @model type="org.eclipse.uml2.uml.Property" opposite="datatype" containment="true" resolveProxies="true"
+	 * @model opposite="datatype" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Property> getOwnedAttributes();
@@ -122,7 +122,7 @@ public interface DataType
 	 * @return the value of the '<em>Owned Operation</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDataType_OwnedOperation()
 	 * @see org.eclipse.uml2.uml.Operation#getDatatype
-	 * @model type="org.eclipse.uml2.uml.Operation" opposite="datatype" containment="true" resolveProxies="true"
+	 * @model opposite="datatype" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Operation> getOwnedOperations();
@@ -182,7 +182,7 @@ public interface DataType
 	 * @param parameterTypes The parameter types for the new operation, or null.
 	 * @param returnType The return type for the new operation, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesType="java.lang.String" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesType="org.eclipse.uml2.uml.Type" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
 	Operation createOwnedOperation(String name, EList<String> parameterNames,

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Constraint.java,v 1.12 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Constraint.java,v 1.13 2007/06/12 12:53:18 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Constraint
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Constrained Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConstraint_ConstrainedElement()
-	 * @model type="org.eclipse.uml2.uml.Element"
+	 * @model
 	 * @generated
 	 */
 	EList<Element> getConstrainedElements();

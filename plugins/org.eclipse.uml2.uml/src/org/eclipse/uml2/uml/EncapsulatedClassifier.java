@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EncapsulatedClassifier.java,v 1.8 2006/12/14 15:49:27 khussey Exp $
+ * $Id: EncapsulatedClassifier.java,v 1.9 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface EncapsulatedClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Port</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEncapsulatedClassifier_OwnedPort()
-	 * @model type="org.eclipse.uml2.uml.Port" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Port> getOwnedPorts();

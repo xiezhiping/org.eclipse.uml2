@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReference.java,v 1.8 2007/04/25 17:47:05 khussey Exp $
+ * $Id: ConnectionPointReference.java,v 1.9 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface ConnectionPointReference
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Entry</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Entry()
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Pseudostate> getEntries();
@@ -91,7 +91,7 @@ public interface ConnectionPointReference
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exit</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnectionPointReference_Exit()
-	 * @model type="org.eclipse.uml2.uml.Pseudostate" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Pseudostate> getExits();

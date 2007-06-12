@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.13 2007/04/25 17:47:05 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.14 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -59,7 +59,7 @@ public interface ActivityGroup
 	 * @return the value of the '<em>Subgroup</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_Subgroup()
 	 * @see org.eclipse.uml2.uml.ActivityGroup#getSuperGroup
-	 * @model type="org.eclipse.uml2.uml.ActivityGroup" opposite="superGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model opposite="superGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityGroup> getSubgroups();
@@ -92,7 +92,7 @@ public interface ActivityGroup
 	 * @return the value of the '<em>Contained Node</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedNode()
 	 * @see org.eclipse.uml2.uml.ActivityNode#getInGroups
-	 * @model type="org.eclipse.uml2.uml.ActivityNode" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityNode> getContainedNodes();
@@ -160,7 +160,7 @@ public interface ActivityGroup
 	 * @return the value of the '<em>Contained Edge</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_ContainedEdge()
 	 * @see org.eclipse.uml2.uml.ActivityEdge#getInGroups
-	 * @model type="org.eclipse.uml2.uml.ActivityEdge" opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model opposite="inGroup" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<ActivityEdge> getContainedEdges();

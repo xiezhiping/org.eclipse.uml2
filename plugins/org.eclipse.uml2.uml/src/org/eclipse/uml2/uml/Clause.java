@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Clause.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Clause.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface Clause
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Test()
-	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ExecutableNode> getTests();
@@ -97,7 +97,7 @@ public interface Clause
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Body()
-	 * @model type="org.eclipse.uml2.uml.ExecutableNode" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ExecutableNode> getBodies();
@@ -138,7 +138,7 @@ public interface Clause
 	 * @return the value of the '<em>Predecessor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_PredecessorClause()
 	 * @see org.eclipse.uml2.uml.Clause#getSuccessorClauses
-	 * @model type="org.eclipse.uml2.uml.Clause" opposite="successorClause" ordered="false"
+	 * @model opposite="successorClause" ordered="false"
 	 * @generated
 	 */
 	EList<Clause> getPredecessorClauses();
@@ -155,7 +155,7 @@ public interface Clause
 	 * @return the value of the '<em>Successor Clause</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_SuccessorClause()
 	 * @see org.eclipse.uml2.uml.Clause#getPredecessorClauses
-	 * @model type="org.eclipse.uml2.uml.Clause" opposite="predecessorClause" ordered="false"
+	 * @model opposite="predecessorClause" ordered="false"
 	 * @generated
 	 */
 	EList<Clause> getSuccessorClauses();
@@ -195,7 +195,7 @@ public interface Clause
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_BodyOutput()
-	 * @model type="org.eclipse.uml2.uml.OutputPin"
+	 * @model
 	 * @generated
 	 */
 	EList<OutputPin> getBodyOutputs();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Vertex.java,v 1.9 2007/05/04 20:35:32 khussey Exp $
+ * $Id: Vertex.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
-	 * @model type="org.eclipse.uml2.uml.Transition" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getOutgoings();
@@ -90,7 +90,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
-	 * @model type="org.eclipse.uml2.uml.Transition" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getIncomings();

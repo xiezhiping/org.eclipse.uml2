@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.9 2007/04/25 17:47:06 khussey Exp $
+ * $Id: UseCase.java,v 1.10 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -58,7 +58,7 @@ public interface UseCase
 	 * @return the value of the '<em>Include</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Include()
 	 * @see org.eclipse.uml2.uml.Include#getIncludingCase
-	 * @model type="org.eclipse.uml2.uml.Include" opposite="includingCase" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="includingCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Include> getIncludes();
@@ -114,7 +114,7 @@ public interface UseCase
 	 * @return the value of the '<em>Extend</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Extend()
 	 * @see org.eclipse.uml2.uml.Extend#getExtension
-	 * @model type="org.eclipse.uml2.uml.Extend" opposite="extension" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="extension" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Extend> getExtends();
@@ -170,7 +170,7 @@ public interface UseCase
 	 * @return the value of the '<em>Extension Point</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_ExtensionPoint()
 	 * @see org.eclipse.uml2.uml.ExtensionPoint#getUseCase
-	 * @model type="org.eclipse.uml2.uml.ExtensionPoint" opposite="useCase" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="useCase" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ExtensionPoint> getExtensionPoints();
@@ -223,7 +223,7 @@ public interface UseCase
 	 * @return the value of the '<em>Subject</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUseCase_Subject()
 	 * @see org.eclipse.uml2.uml.Classifier#getUseCases
-	 * @model type="org.eclipse.uml2.uml.Classifier" opposite="useCase" ordered="false"
+	 * @model opposite="useCase" ordered="false"
 	 * @generated
 	 */
 	EList<Classifier> getSubjects();
@@ -319,7 +319,7 @@ public interface UseCase
 	 * The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
 	 * result = self.include->union(self.include->collect(in | in.allIncludedUseCases()))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.UseCase" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<UseCase> allIncludedUseCases();

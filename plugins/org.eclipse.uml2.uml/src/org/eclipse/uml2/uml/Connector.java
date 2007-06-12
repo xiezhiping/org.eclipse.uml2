@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Connector.java,v 1.15 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Connector.java,v 1.16 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,7 +84,7 @@ public interface Connector
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Redefined Connector</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_RedefinedConnector()
-	 * @model type="org.eclipse.uml2.uml.Connector" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Connector> getRedefinedConnectors();
@@ -122,7 +122,7 @@ public interface Connector
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_End()
-	 * @model type="org.eclipse.uml2.uml.ConnectorEnd" containment="true" resolveProxies="true" lower="2"
+	 * @model containment="true" resolveProxies="true" lower="2"
 	 * @generated
 	 */
 	EList<ConnectorEnd> getEnds();
@@ -202,7 +202,7 @@ public interface Connector
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contract</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_Contract()
-	 * @model type="org.eclipse.uml2.uml.Behavior" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Behavior> getContracts();

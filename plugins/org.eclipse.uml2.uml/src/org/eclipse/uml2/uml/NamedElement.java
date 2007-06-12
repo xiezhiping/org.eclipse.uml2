@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: NamedElement.java,v 1.18 2007/04/25 17:47:05 khussey Exp $
+ * $Id: NamedElement.java,v 1.19 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -182,7 +182,7 @@ public interface NamedElement
 	 * @return the value of the '<em>Client Dependency</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_ClientDependency()
 	 * @see org.eclipse.uml2.uml.Dependency#getClients
-	 * @model type="org.eclipse.uml2.uml.Dependency" opposite="client" ordered="false"
+	 * @model opposite="client" ordered="false"
 	 * @generated
 	 */
 	EList<Dependency> getClientDependencies();
@@ -369,7 +369,7 @@ public interface NamedElement
 	 * else self.namespace.allNamespaces()->prepend(self.namespace)
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Namespace"
+	 * @model
 	 * @generated
 	 */
 	EList<Namespace> allNamespaces();
@@ -408,7 +408,7 @@ public interface NamedElement
 	 * The query allOwningPackages() returns all the directly or indirectly owning packages.
 	 * result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Package" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<org.eclipse.uml2.uml.Package> allOwningPackages();

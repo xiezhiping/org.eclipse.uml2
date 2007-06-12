@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Action.java,v 1.12 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Action.java,v 1.13 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Output()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<OutputPin> getOutputs();
@@ -95,7 +95,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_Input()
-	 * @model type="org.eclipse.uml2.uml.InputPin" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	EList<InputPin> getInputs();
@@ -150,7 +150,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Precondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPrecondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getLocalPreconditions();
@@ -214,7 +214,7 @@ public interface Action
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Postcondition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_LocalPostcondition()
-	 * @model type="org.eclipse.uml2.uml.Constraint" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getLocalPostconditions();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignature.java,v 1.9 2007/04/25 17:47:04 khussey Exp $
+ * $Id: RedefinableTemplateSignature.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended Signature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_ExtendedSignature()
-	 * @model type="org.eclipse.uml2.uml.RedefinableTemplateSignature" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<RedefinableTemplateSignature> getExtendedSignatures();
@@ -92,7 +92,7 @@ public interface RedefinableTemplateSignature
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Parameter</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRedefinableTemplateSignature_InheritedParameter()
-	 * @model type="org.eclipse.uml2.uml.TemplateParameter" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<TemplateParameter> getInheritedParameters();

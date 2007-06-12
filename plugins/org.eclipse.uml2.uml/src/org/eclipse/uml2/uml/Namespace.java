@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.13 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Namespace.java,v 1.14 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Namespace
 	 * @return the value of the '<em>Element Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ElementImport()
 	 * @see org.eclipse.uml2.uml.ElementImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.ElementImport" opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<ElementImport> getElementImports();
@@ -112,7 +112,7 @@ public interface Namespace
 	 * @return the value of the '<em>Package Import</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_PackageImport()
 	 * @see org.eclipse.uml2.uml.PackageImport#getImportingNamespace
-	 * @model type="org.eclipse.uml2.uml.PackageImport" opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="importingNamespace" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageImport> getPackageImports();
@@ -165,7 +165,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Rule</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedRule()
 	 * @see org.eclipse.uml2.uml.Constraint#getContext
-	 * @model type="org.eclipse.uml2.uml.Constraint" opposite="context" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="context" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Constraint> getOwnedRules();
@@ -229,7 +229,7 @@ public interface Namespace
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_Member()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<NamedElement> getMembers();
@@ -268,7 +268,7 @@ public interface Namespace
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_ImportedMember()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> getImportedMembers();
@@ -310,7 +310,7 @@ public interface Namespace
 	 * @return the value of the '<em>Owned Member</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamespace_OwnedMember()
 	 * @see org.eclipse.uml2.uml.NamedElement#getNamespace
-	 * @model type="org.eclipse.uml2.uml.NamedElement" opposite="namespace" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model opposite="namespace" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<NamedElement> getOwnedMembers();
@@ -388,7 +388,7 @@ public interface Namespace
 	 * <!-- begin-model-doc -->
 	 * Retrieves the elements imported by this namespace.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.PackageableElement" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> getImportedElements();
@@ -399,7 +399,7 @@ public interface Namespace
 	 * <!-- begin-model-doc -->
 	 * Retrieves the packages imported by this namespace.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Package" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<org.eclipse.uml2.uml.Package> getImportedPackages();
@@ -419,7 +419,7 @@ public interface Namespace
 	 *   endif
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false" elementRequired="true" elementOrdered="false"
+	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" elementRequired="true" elementOrdered="false"
 	 * @generated
 	 */
 	EList<String> getNamesOfMember(NamedElement element);
@@ -446,7 +446,7 @@ public interface Namespace
 	 * result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |
 	 * mem.imp.isDistinguishableFrom(mem, self)))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" ordered="false" impsType="org.eclipse.uml2.uml.PackageableElement" impsMany="true" impsOrdered="false"
+	 * @model ordered="false" impsMany="true" impsOrdered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> importMembers(EList<PackageableElement> imps);
@@ -458,7 +458,7 @@ public interface Namespace
 	 * The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
 	 * result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" ordered="false" impsType="org.eclipse.uml2.uml.PackageableElement" impsMany="true" impsOrdered="false"
+	 * @model ordered="false" impsMany="true" impsOrdered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> excludeCollisions(EList<PackageableElement> imps);

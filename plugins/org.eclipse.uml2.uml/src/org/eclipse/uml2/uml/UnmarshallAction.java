@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnmarshallAction.java,v 1.10 2007/04/25 17:47:05 khussey Exp $
+ * $Id: UnmarshallAction.java,v 1.11 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,7 +55,7 @@ public interface UnmarshallAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getUnmarshallAction_Result()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList<OutputPin> getResults();

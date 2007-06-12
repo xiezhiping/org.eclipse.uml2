@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkAction.java,v 1.8 2007/04/25 17:47:06 khussey Exp $
+ * $Id: LinkAction.java,v 1.9 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -54,7 +54,7 @@ public interface LinkAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End Data</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_EndData()
-	 * @model type="org.eclipse.uml2.uml.LinkEndData" containment="true" resolveProxies="true" lower="2" ordered="false"
+	 * @model containment="true" resolveProxies="true" lower="2" ordered="false"
 	 * @generated
 	 */
 	EList<LinkEndData> getEndData();
@@ -90,7 +90,7 @@ public interface LinkAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkAction_InputValue()
-	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
 	EList<InputPin> getInputValues();

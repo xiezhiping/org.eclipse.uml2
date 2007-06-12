@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.7 2006/12/14 15:49:27 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +52,7 @@ public interface DeploymentTarget
 	 * @return the value of the '<em>Deployment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_Deployment()
 	 * @see org.eclipse.uml2.uml.Deployment#getLocation
-	 * @model type="org.eclipse.uml2.uml.Deployment" opposite="location" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="location" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Deployment> getDeployments();
@@ -103,7 +103,7 @@ public interface DeploymentTarget
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deployed Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentTarget_DeployedElement()
-	 * @model type="org.eclipse.uml2.uml.PackageableElement" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<PackageableElement> getDeployedElements();

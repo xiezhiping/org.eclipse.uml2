@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionKind.java,v 1.5 2006/12/14 15:49:27 khussey Exp $
+ * $Id: TransitionKind.java,v 1.6 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * kind=#external implies owner.source.isComposite
  * <!-- end-model-doc -->
  * @see org.eclipse.uml2.uml.UMLPackage#getTransitionKind()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='state_is_local state_is_external'"
  * @generated
  */
 public enum TransitionKind

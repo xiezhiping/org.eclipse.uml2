@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.19 2007/05/04 20:35:32 khussey Exp $
+ * $Id: Transition.java,v 1.20 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -251,7 +251,7 @@ public interface Transition
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Trigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Trigger> getTriggers();

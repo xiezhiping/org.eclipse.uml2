@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConsiderIgnoreFragment.java,v 1.6 2007/04/25 17:47:06 khussey Exp $
+ * $Id: ConsiderIgnoreFragment.java,v 1.7 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface ConsiderIgnoreFragment
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Message</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConsiderIgnoreFragment_Message()
-	 * @model type="org.eclipse.uml2.uml.NamedElement" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<NamedElement> getMessages();

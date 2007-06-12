@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExceptionHandler.java,v 1.7 2007/04/25 17:47:05 khussey Exp $
+ * $Id: ExceptionHandler.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -106,7 +106,7 @@ public interface ExceptionHandler
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exception Type</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExceptionHandler_ExceptionType()
-	 * @model type="org.eclipse.uml2.uml.Classifier" required="true" ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	EList<Classifier> getExceptionTypes();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueAction.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
+ * $Id: OpaqueAction.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -54,7 +54,7 @@ public interface OpaqueAction
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_Body()
-	 * @model type="java.lang.String" unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -93,7 +93,7 @@ public interface OpaqueAction
 	 * @see #isSetLanguages()
 	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_Language()
-	 * @model type="java.lang.String" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String"
 	 * @generated
 	 */
 	EList<String> getLanguages();
@@ -129,7 +129,7 @@ public interface OpaqueAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Input Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_InputValue()
-	 * @model type="org.eclipse.uml2.uml.InputPin" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<InputPin> getInputValues();
@@ -212,7 +212,7 @@ public interface OpaqueAction
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Output Value</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_OutputValue()
-	 * @model type="org.eclipse.uml2.uml.OutputPin" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<OutputPin> getOutputValues();

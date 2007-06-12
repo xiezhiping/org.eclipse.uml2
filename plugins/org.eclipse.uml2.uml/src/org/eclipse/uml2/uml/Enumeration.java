@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Enumeration.java,v 1.9 2006/12/14 15:49:27 khussey Exp $
+ * $Id: Enumeration.java,v 1.10 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ public interface Enumeration
 	 * @return the value of the '<em>Owned Literal</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEnumeration_OwnedLiteral()
 	 * @see org.eclipse.uml2.uml.EnumerationLiteral#getEnumeration
-	 * @model type="org.eclipse.uml2.uml.EnumerationLiteral" opposite="enumeration" containment="true" resolveProxies="true"
+	 * @model opposite="enumeration" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<EnumerationLiteral> getOwnedLiterals();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.17 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Element.java,v 1.18 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -60,7 +60,7 @@ public interface Element
 	 * @return the value of the '<em>Owned Element</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedElement()
 	 * @see org.eclipse.uml2.uml.Element#getOwner
-	 * @model type="org.eclipse.uml2.uml.Element" opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model opposite="owner" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Element> getOwnedElements();
@@ -91,7 +91,7 @@ public interface Element
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Comment</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getElement_OwnedComment()
-	 * @model type="org.eclipse.uml2.uml.Comment" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Comment> getOwnedComments();
@@ -142,7 +142,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the stereotype applications for this element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.emf.ecore.EObject" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<EObject> getStereotypeApplications();
@@ -165,7 +165,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the stereotypes that are required for this element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Stereotype> getRequiredStereotypes();
@@ -188,7 +188,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the stereotypes that are applied to this element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Stereotype> getAppliedStereotypes();
@@ -212,7 +212,7 @@ public interface Element
 	 * Retrieves the substereotypes of the specified stereotype that are applied to this element.
 	 * @param stereotype The superstereotype of the applied substereotypes to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Stereotype" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
 	EList<Stereotype> getAppliedSubstereotypes(Stereotype stereotype);
@@ -289,7 +289,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the relationships in which this element is involved.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Relationship" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Relationship> getRelationships();
@@ -301,7 +301,7 @@ public interface Element
 	 * Retrieves the relationships of the specified type in which this element is involved.
 	 * @param eClass The (meta)type of the relationships to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Relationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @model ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
 	EList<Relationship> getRelationships(EClass eClass);
@@ -312,7 +312,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the directed relationships for which this element is a source.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<DirectedRelationship> getSourceDirectedRelationships();
@@ -324,7 +324,7 @@ public interface Element
 	 * Retrieves the directed relationships of the specified type for which this element is a source.
 	 * @param eClass The (meta)type of the directed relationships to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @model ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
 	EList<DirectedRelationship> getSourceDirectedRelationships(EClass eClass);
@@ -335,7 +335,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the directed relationships for which this element is a target.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<DirectedRelationship> getTargetDirectedRelationships();
@@ -347,7 +347,7 @@ public interface Element
 	 * Retrieves the directed relationships of the specified type for which this element is a target.
 	 * @param eClass The (meta)type of the directed relationships to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.DirectedRelationship" ordered="false" eClassRequired="true" eClassOrdered="false"
+	 * @model ordered="false" eClassRequired="true" eClassOrdered="false"
 	 * @generated
 	 */
 	EList<DirectedRelationship> getTargetDirectedRelationships(EClass eClass);
@@ -358,7 +358,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the keywords for this element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="java.lang.String" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
 	 * @generated
 	 */
 	EList<String> getKeywords();
@@ -475,7 +475,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the stereotypes that are applicable to this element, including those that are required and/or may already be applied.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Stereotype" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Stereotype> getApplicableStereotypes();
@@ -522,7 +522,7 @@ public interface Element
 	 * The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
 	 * result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))
 	 * <!-- end-model-doc -->
-	 * @model type="org.eclipse.uml2.uml.Element" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<Element> allOwnedElements();

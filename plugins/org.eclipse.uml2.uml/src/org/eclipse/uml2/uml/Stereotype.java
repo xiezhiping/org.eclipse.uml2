@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.10 2007/04/25 17:47:04 khussey Exp $
+ * $Id: Stereotype.java,v 1.11 2007/06/12 12:53:17 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface Stereotype
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Icon</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getStereotype_Icon()
-	 * @model type="org.eclipse.uml2.uml.Image" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Image> getIcons();
@@ -152,7 +152,7 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * Retrieves the metaclasses extended by this stereotype.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses();
@@ -163,7 +163,7 @@ public interface Stereotype
 	 * <!-- begin-model-doc -->
 	 * Retrieves all the metaclasses extended by this stereotype, including the metaclasses extended by its superstereotypes.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Class" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses();

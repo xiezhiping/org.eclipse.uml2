@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.12 2007/04/25 17:47:06 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.13 2007/06/12 12:53:19 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +57,7 @@ public interface BehavioredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Behavior</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedBehavior()
-	 * @model type="org.eclipse.uml2.uml.Behavior" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Behavior> getOwnedBehaviors();
@@ -149,7 +149,7 @@ public interface BehavioredClassifier
 	 * @return the value of the '<em>Interface Realization</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_InterfaceRealization()
 	 * @see org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier
-	 * @model type="org.eclipse.uml2.uml.InterfaceRealization" opposite="implementingClassifier" containment="true" resolveProxies="true" ordered="false"
+	 * @model opposite="implementingClassifier" containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<InterfaceRealization> getInterfaceRealizations();
@@ -204,7 +204,7 @@ public interface BehavioredClassifier
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedTrigger()
-	 * @model type="org.eclipse.uml2.uml.Trigger" containment="true" resolveProxies="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	EList<Trigger> getOwnedTriggers();
@@ -266,7 +266,7 @@ public interface BehavioredClassifier
 	 * <!-- begin-model-doc -->
 	 * Retrieves the interfaces on which this behaviored classifier has an interface realization dependency.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Interface> getImplementedInterfaces();
@@ -277,7 +277,7 @@ public interface BehavioredClassifier
 	 * <!-- begin-model-doc -->
 	 * Retrieves all the interfaces on which this behaviored classifier or any of its parents has an interface realization dependency.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" type="org.eclipse.uml2.uml.Interface" ordered="false"
+	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
 	EList<Interface> getAllImplementedInterfaces();
