@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.40 2007/06/12 21:01:06 khussey Exp $
+ * $Id: ElementImpl.java,v 1.41 2007/06/13 18:11:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -781,8 +781,8 @@ public abstract class ElementImpl
 
 		try {
 			changeDescriptionClass = CommonPlugin.loadClass(
-				"org.eclipse.emf.ecore.change",
-				"org.eclipse.emf.ecore.change.ChangeDescription");
+				"org.eclipse.emf.ecore.change", //$NON-NLS-1$
+				"org.eclipse.emf.ecore.change.ChangeDescription"); //$NON-NLS-1$
 		} catch (Throwable throwable) {
 			// ignore
 		}
