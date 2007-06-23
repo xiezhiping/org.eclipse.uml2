@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.7 2007/05/04 20:35:34 khussey Exp $
+ * $Id: VertexOperations.java,v 1.8 2007/06/23 18:28:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -287,7 +287,7 @@ public class VertexOperations
 			}
 		}
 
-		return new IncomingEList((InternalEObject) vertex,
+		return new OutgoingEList((InternalEObject) vertex,
 			UMLPackage.Literals.VERTEX__OUTGOING, outgoings);
 	}
 
