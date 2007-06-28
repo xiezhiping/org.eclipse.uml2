@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPoint.java,v 1.6 2007/04/25 17:47:04 khussey Exp $
+ * $Id: ExtensionPoint.java,v 1.7 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,7 +51,7 @@ public interface ExtensionPoint
 	 * @see #setUseCase(UseCase)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtensionPoint_UseCase()
 	 * @see org.eclipse.uml2.uml.UseCase#getExtensionPoints
-	 * @model opposite="extensionPoint" required="true" ordered="false"
+	 * @model opposite="extensionPoint" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	UseCase getUseCase();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformance.java,v 1.5 2006/05/12 20:38:06 khussey Exp $
+ * $Id: ProtocolConformance.java,v 1.6 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,7 @@ public interface ProtocolConformance
 	 * @see #setSpecificMachine(ProtocolStateMachine)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProtocolConformance_SpecificMachine()
 	 * @see org.eclipse.uml2.uml.ProtocolStateMachine#getConformances
-	 * @model opposite="conformance" required="true" ordered="false"
+	 * @model opposite="conformance" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	ProtocolStateMachine getSpecificMachine();

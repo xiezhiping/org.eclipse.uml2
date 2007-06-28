@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.9 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Deployment.java,v 1.10 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -147,7 +147,7 @@ public interface Deployment
 	 * @see #setLocation(DeploymentTarget)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeployment_Location()
 	 * @see org.eclipse.uml2.uml.DeploymentTarget#getDeployments
-	 * @model opposite="deployment" required="true" ordered="false"
+	 * @model opposite="deployment" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	DeploymentTarget getLocation();

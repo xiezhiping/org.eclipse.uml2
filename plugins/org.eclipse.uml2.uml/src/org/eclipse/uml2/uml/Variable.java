@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Variable.java,v 1.10 2007/04/25 17:47:05 khussey Exp $
+ * $Id: Variable.java,v 1.11 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface Variable
 	 * @see #setActivityScope(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVariable_ActivityScope()
 	 * @see org.eclipse.uml2.uml.Activity#getVariables
-	 * @model opposite="variable" ordered="false"
+	 * @model opposite="variable" transient="false" ordered="false"
 	 * @generated
 	 */
 	Activity getActivityScope();
@@ -80,7 +80,7 @@ public interface Variable
 	 * @see #setScope(StructuredActivityNode)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVariable_Scope()
 	 * @see org.eclipse.uml2.uml.StructuredActivityNode#getVariables
-	 * @model opposite="variable" ordered="false"
+	 * @model opposite="variable" transient="false" ordered="false"
 	 * @generated
 	 */
 	StructuredActivityNode getScope();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateSignature.java,v 1.12 2007/06/12 12:53:17 khussey Exp $
+ * $Id: TemplateSignature.java,v 1.13 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -72,7 +72,7 @@ public interface TemplateSignature
 	 * @see #setTemplate(TemplateableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateSignature_Template()
 	 * @see org.eclipse.uml2.uml.TemplateableElement#getOwnedTemplateSignature
-	 * @model opposite="ownedTemplateSignature" required="true" ordered="false"
+	 * @model opposite="ownedTemplateSignature" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	TemplateableElement getTemplate();

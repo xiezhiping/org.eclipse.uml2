@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.12 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Generalization.java,v 1.13 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -174,7 +174,7 @@ public interface Generalization
 	 * @see #setSpecific(Classifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralization_Specific()
 	 * @see org.eclipse.uml2.uml.Classifier#getGeneralizations
-	 * @model opposite="generalization" required="true" ordered="false"
+	 * @model opposite="generalization" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	Classifier getSpecific();

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.25 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Property.java,v 1.26 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,7 @@ public interface Property
 	 * @see #setDatatype(DataType)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Datatype()
 	 * @see org.eclipse.uml2.uml.DataType#getOwnedAttributes
-	 * @model opposite="ownedAttribute" ordered="false"
+	 * @model opposite="ownedAttribute" transient="false" ordered="false"
 	 * @generated
 	 */
 	DataType getDatatype();
@@ -319,7 +319,7 @@ public interface Property
 	 * @see #setOwningAssociation(Association)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_OwningAssociation()
 	 * @see org.eclipse.uml2.uml.Association#getOwnedEnds
-	 * @model opposite="ownedEnd" ordered="false"
+	 * @model opposite="ownedEnd" transient="false" ordered="false"
 	 * @generated
 	 */
 	Association getOwningAssociation();
@@ -548,7 +548,7 @@ public interface Property
 	 * @see #setAssociationEnd(Property)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_AssociationEnd()
 	 * @see org.eclipse.uml2.uml.Property#getQualifiers
-	 * @model opposite="qualifier" ordered="false"
+	 * @model opposite="qualifier" transient="false" ordered="false"
 	 * @generated
 	 */
 	Property getAssociationEnd();

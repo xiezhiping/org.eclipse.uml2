@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.20 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Transition.java,v 1.21 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -91,7 +91,7 @@ public interface Transition
 	 * @see #setContainer(Region)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTransition_Container()
 	 * @see org.eclipse.uml2.uml.Region#getTransitions
-	 * @model opposite="transition" required="true" ordered="false"
+	 * @model opposite="transition" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	Region getContainer();

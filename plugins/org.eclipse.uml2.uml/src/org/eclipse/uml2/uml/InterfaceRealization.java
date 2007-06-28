@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceRealization.java,v 1.2 2006/05/12 20:38:05 khussey Exp $
+ * $Id: InterfaceRealization.java,v 1.3 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,7 @@ public interface InterfaceRealization
 	 * @see #setImplementingClassifier(BehavioredClassifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInterfaceRealization_ImplementingClassifier()
 	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations
-	 * @model opposite="interfaceRealization" required="true" ordered="false"
+	 * @model opposite="interfaceRealization" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	BehavioredClassifier getImplementingClassifier();

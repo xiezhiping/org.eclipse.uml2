@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: EnumerationLiteral.java,v 1.5 2006/06/07 21:39:13 khussey Exp $
+ * $Id: EnumerationLiteral.java,v 1.6 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,7 +47,7 @@ public interface EnumerationLiteral
 	 * @see #setEnumeration(Enumeration)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getEnumerationLiteral_Enumeration()
 	 * @see org.eclipse.uml2.uml.Enumeration#getOwnedLiterals
-	 * @model opposite="ownedLiteral" ordered="false"
+	 * @model opposite="ownedLiteral" transient="false" ordered="false"
 	 * @generated
 	 */
 	Enumeration getEnumeration();

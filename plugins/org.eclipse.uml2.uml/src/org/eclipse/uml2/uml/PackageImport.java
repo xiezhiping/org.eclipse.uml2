@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.8 2007/04/25 17:47:06 khussey Exp $
+ * $Id: PackageImport.java,v 1.9 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -107,7 +107,7 @@ public interface PackageImport
 	 * @see #setImportingNamespace(Namespace)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageImport_ImportingNamespace()
 	 * @see org.eclipse.uml2.uml.Namespace#getPackageImports
-	 * @model opposite="packageImport" required="true" ordered="false"
+	 * @model opposite="packageImport" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	Namespace getImportingNamespace();

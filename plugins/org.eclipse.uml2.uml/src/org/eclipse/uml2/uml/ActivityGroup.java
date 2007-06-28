@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroup.java,v 1.14 2007/06/12 12:53:16 khussey Exp $
+ * $Id: ActivityGroup.java,v 1.15 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -133,7 +133,7 @@ public interface ActivityGroup
 	 * @see #setInActivity(Activity)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityGroup_InActivity()
 	 * @see org.eclipse.uml2.uml.Activity#getGroups
-	 * @model opposite="group" ordered="false"
+	 * @model opposite="group" transient="false" ordered="false"
 	 * @generated
 	 */
 	Activity getInActivity();

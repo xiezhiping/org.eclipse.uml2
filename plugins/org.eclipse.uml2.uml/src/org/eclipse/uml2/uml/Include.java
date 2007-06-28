@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Include.java,v 1.5 2006/05/12 20:38:09 khussey Exp $
+ * $Id: Include.java,v 1.6 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,7 +74,7 @@ public interface Include
 	 * @see #setIncludingCase(UseCase)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInclude_IncludingCase()
 	 * @see org.eclipse.uml2.uml.UseCase#getIncludes
-	 * @model opposite="include" required="true" ordered="false"
+	 * @model opposite="include" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	UseCase getIncludingCase();

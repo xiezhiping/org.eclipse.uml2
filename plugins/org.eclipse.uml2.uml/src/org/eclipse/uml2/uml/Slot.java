@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Slot.java,v 1.10 2007/06/12 12:53:19 khussey Exp $
+ * $Id: Slot.java,v 1.11 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,7 +53,7 @@ public interface Slot
 	 * @see #setOwningInstance(InstanceSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSlot_OwningInstance()
 	 * @see org.eclipse.uml2.uml.InstanceSpecification#getSlots
-	 * @model opposite="slot" required="true" ordered="false"
+	 * @model opposite="slot" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	InstanceSpecification getOwningInstance();

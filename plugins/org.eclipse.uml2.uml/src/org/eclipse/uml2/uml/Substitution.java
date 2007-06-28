@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Substitution.java,v 1.3 2006/06/07 21:39:13 khussey Exp $
+ * $Id: Substitution.java,v 1.4 2007/06/28 01:41:45 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,7 @@ public interface Substitution
 	 * @see #setSubstitutingClassifier(Classifier)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getSubstitution_SubstitutingClassifier()
 	 * @see org.eclipse.uml2.uml.Classifier#getSubstitutions
-	 * @model opposite="substitution" required="true" ordered="false"
+	 * @model opposite="substitution" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	Classifier getSubstitutingClassifier();

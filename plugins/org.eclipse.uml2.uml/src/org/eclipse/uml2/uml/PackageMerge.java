@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.5 2006/05/12 20:38:06 khussey Exp $
+ * $Id: PackageMerge.java,v 1.6 2007/06/28 01:41:44 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,7 +73,7 @@ public interface PackageMerge
 	 * @see #setReceivingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageMerge_ReceivingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getPackageMerges
-	 * @model opposite="packageMerge" required="true" ordered="false"
+	 * @model opposite="packageMerge" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Package getReceivingPackage();
