@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.16 2007/02/08 14:39:47 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.17 2007/07/04 17:20:18 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -120,7 +121,15 @@ public class CacheAdapter
 		if (!UML2Util.isEmpty(property)) {
 
 			try {
-				return (CacheAdapter) Class.forName(property).newInstance();
+				int index = property.indexOf(':');
+
+				if (index != -1) {
+					return (CacheAdapter) CommonPlugin.loadClass(
+						property.substring(0, index),
+						property.substring(index + 1)).newInstance();
+				} else {
+					return (CacheAdapter) Class.forName(property).newInstance();
+				}
 			} catch (Exception e) {
 				// ignore
 			}
