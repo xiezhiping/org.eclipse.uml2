@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLHandler.java,v 1.3 2007/02/14 21:57:56 khussey Exp $
+ * $Id: UMLHandler.java,v 1.4 2007/07/12 19:00:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -110,6 +110,33 @@ public class UMLHandler
 
 		return super.validateCreateObjectFromFactory(factory, typeName,
 			newObject, feature);
+	}
+
+	// see https://bugs.eclipse.org/bugs/show_bug.cgi?id=196040
+	@Override
+	protected void handleObjectAttribs(EObject eObject) {
+
+		if (attribs != null) {
+			InternalEObject internalEObject = (InternalEObject) eObject;
+
+			for (int i = 0, size = attribs.getLength(); i < size; i++) {
+				String name = attribs.getQName(i);
+
+				if (name.equals(ID_ATTRIB)) {
+					xmlResource.setID(internalEObject, attribs.getValue(i));
+				} else if (name.equals(hrefAttribute)
+					&& (!recordUnknownFeature
+						|| types.peek() != UNKNOWN_FEATURE_TYPE || internalEObject
+						.eClass() != anyType)) {
+
+					handleProxy(internalEObject, attribs.getValue(i));
+				} else if (!name.startsWith(XMLResource.XML_NS)
+					&& !notFeatures.contains(name)) {
+
+					setAttribValue(eObject, name, attribs.getValue(i));
+				}
+			}
+		}
 	}
 
 }
