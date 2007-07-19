@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="org.eclipse.uml2.doc" default="build.jars" basedir=".">
 
+	<property file="${buildDirectory}/finalPluginsVersions.properties"/>
+
 	<!-- Plug-in information.  This is a HACK.  Do not forget to update version numbers, etc.. -->
-	<property name="pluginVersion" value="2.1.0"/>
+	<property name="pluginVersion" value="${org.eclipse.uml2.doc}"/>
 
 	<property name="plugin" value="org.eclipse.uml2"/>
 	<property name="docPlugin" value="org.eclipse.uml2.doc"/>
@@ -56,7 +58,7 @@
 		<antcall target="gather.bin.parts">
 			<param name="destination.temp.folder" value="${temp.folder}/"/>
 		</antcall>
-		<zip destfile="${plugin.destination}/${docPlugin}_${pluginVersion}.${forceContextQualifier}.jar" basedir="${temp.folder}/${docPlugin}_${pluginVersion}.${forceContextQualifier}" filesonly="false" whenempty="skip" update="false"/>
+		<zip destfile="${plugin.destination}/${docPlugin}_${pluginVersion}.jar" basedir="${temp.folder}/${docPlugin}_${pluginVersion}" filesonly="false" whenempty="skip" update="false"/>
 		<delete dir="${temp.folder}"/>
 	</target>
 
@@ -81,13 +83,13 @@
 	</target>
 
 	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
-		<mkdir dir="${destination.temp.folder}/${docPlugin}_${pluginVersion}.${forceContextQualifier}"/>
-		<copy todir="${destination.temp.folder}/${docPlugin}_${pluginVersion}.${forceContextQualifier}" failonerror="true" overwrite="false">
+		<mkdir dir="${destination.temp.folder}/${docPlugin}_${pluginVersion}"/>
+		<copy todir="${destination.temp.folder}/${docPlugin}_${pluginVersion}" failonerror="true" overwrite="false">
 			<fileset dir="${basedir}" includes="${filesToInclude}"/>
 		</copy>
 		<eclipse.versionReplacer 
-			path="${destination.temp.folder}/${docPlugin}_${pluginVersion}.${forceContextQualifier}" 
-			version="${pluginVersion}.${forceContextQualifier}"/>
+			path="${destination.temp.folder}/${docPlugin}_${pluginVersion}" 
+			version="${pluginVersion}"/>
 	</target>
 
 	<target name="build.zips" depends="init">
@@ -100,8 +102,8 @@
 	</target>
 
 	<target name="clean" depends="init" description="Clean the plug-in: ${docPlugin} of all the zips, jars and logs created.">
-		<delete file="${plugin.destination}/${docPlugin}_${pluginVersion}.${forceContextQualifier}.jar"/>
-		<delete file="${plugin.destination}/${docPlugin}_${pluginVersion}.${forceContextQualifier}.zip"/>
+		<delete file="${plugin.destination}/${docPlugin}_${pluginVersion}.jar"/>
+		<delete file="${plugin.destination}/${docPlugin}_${pluginVersion}.zip"/>
 		<delete dir="${temp.folder}"/>
 	</target>
 
@@ -119,7 +121,7 @@
 		<delete>
 			<fileset dir="${temp.folder}" includes="**/*.bin.log"			/>
 		</delete>
-		<zip destfile="${plugin.destination}/${docPlugin}_${pluginVersion}.${forceContextQualifier}.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<zip destfile="${plugin.destination}/${docPlugin}_${pluginVersion}.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" update="false"/>
 		<delete dir="${temp.folder}"/>
 	</target>
 
