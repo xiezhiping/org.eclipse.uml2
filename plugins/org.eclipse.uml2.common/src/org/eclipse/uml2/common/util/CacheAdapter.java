@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.17 2007/07/04 17:20:18 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.18 2007/07/31 17:41:40 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -246,9 +246,20 @@ public class CacheAdapter
 	}
 
 	protected boolean addAdapter(EList<Adapter> adapters) {
-		return adapters.contains(this)
-			? false
-			: adapters.add(this);
+		int index = adapters.indexOf(this);
+
+		switch (index) {
+			case 0 :
+				break;
+			case -1 :
+				adapters.add(0, this);
+				return true;
+			default :
+				adapters.move(0, index);
+				break;
+		}
+
+		return false;
 	}
 
 	public boolean adapt(Notifier notifier) {
