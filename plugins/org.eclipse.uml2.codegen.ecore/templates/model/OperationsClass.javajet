@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.8 2007/05/10 14:24:21 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.9 2007/08/20 13:57:03 jbruck Exp $" %>
 <%
 /**
  * <copyright>
@@ -176,11 +176,21 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
 			return false;
 		}
 		return true;
-    <%} else if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclQry = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_QRY";%>
+    <%} else if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclQry = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_QRY";
+		GenOperation redefinedGenOperation = genOperation;
+		while (UML2GenModelUtil.isDuplicate(redefinedGenOperation)) {
+			java.util.List<GenOperation> redefinedGenOperations = UML2GenModelUtil.getRedefinedGenOperations(redefinedGenOperation);
+			if (redefinedGenOperations.size() > 0) {
+				redefinedGenOperation = redefinedGenOperations.get(0);
+			} else {
+				break;
+			}
+		}
+		int index = genOperation.getGenClass().getAllGenOperations().indexOf(redefinedGenOperation);%>
 		if (<%=oclQry%> == null)
 		{
 			<%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%>.Helper helper = EOCL_ENV.createOCLHelper();
-			helper.setOperationContext(<%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>, <%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>.getEOperations().get(<%=genOperation.getGenClass().getGenOperations().indexOf(genOperation)%>));
+			helper.setOperationContext(<%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>, <%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>.getEAllOperations().get(<%=index%>));
 			try
 			{
 				<%=oclQry%> = helper.createQuery(<%=UML2GenModelUtil.getUpperName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))%>__EOCL_EXP);
