@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNodeItemProvider.java,v 1.12 2007/03/22 16:46:12 khussey Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.13 2007/08/30 16:14:34 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -100,13 +102,15 @@ public class SequenceNodeItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures
+				.remove(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE);
 			childrenFeatures
 				.add(UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE);
 		}
@@ -176,12 +180,25 @@ public class SequenceNodeItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+				
+		for (Iterator<Object> childDescriptorIterator = newChildDescriptors
+			.iterator(); childDescriptorIterator.hasNext();) {
+			Object commandParameter = childDescriptorIterator.next();
+
+			if (commandParameter instanceof CommandParameter) {
+
+				if (((CommandParameter) commandParameter).feature
+					.equals(UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE)) {
+					childDescriptorIterator.remove();
+				}
+			}
+		}
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.SEQUENCE_NODE__EXECUTABLE_NODE,
