@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CacheAdapter.java,v 1.18 2007/07/31 17:41:40 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.19 2007/08/30 15:56:34 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -109,6 +109,10 @@ public class CacheAdapter
 
 				proxies.add(proxy);
 			}
+		}
+
+		protected Map<URI, List<EObject>> getProxyMap() {
+			return Collections.unmodifiableMap(proxyMap);
 		}
 	}
 
@@ -481,4 +485,7 @@ public class CacheAdapter
 		return super.isIncluded(eReference) && eReference.isChangeable();
 	}
 
+	public Map<URI, List<EObject>> getProxyMap() {
+		return ((InverseCrossReferencer) inverseCrossReferencer).getProxyMap();
+	}
 }
