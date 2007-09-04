@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 199624
  *
- * $Id: UMLUtil.java,v 1.64 2007/05/28 20:02:27 khussey Exp $
+ * $Id: UMLUtil.java,v 1.65 2007/09/04 15:28:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -7671,6 +7672,11 @@ public class UMLUtil
 	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
 	/**
+	 * The name of the 'Ecore' profile.
+	 */
+	public static final String PROFILE__ECORE = "Ecore"; //$NON-NLS-1$
+
+	/**
 	 * The name of the 'EAttribute' stereotype.
 	 */
 	public static final String STEREOTYPE__E_ATTRIBUTE = "EAttribute"; //$NON-NLS-1$
@@ -8081,9 +8087,8 @@ public class UMLUtil
 
 	protected static EPackage getEPackage(org.eclipse.uml2.uml.Package package_) {
 		return EPackage.Registry.INSTANCE.getEPackage((String) getTaggedValue(
-			package_, "Ecore" //$NON-NLS-1$
-				+ NamedElement.SEPARATOR + STEREOTYPE__E_PACKAGE,
-			TAG_DEFINITION__NS_URI));
+			package_, PROFILE__ECORE + NamedElement.SEPARATOR
+				+ STEREOTYPE__E_PACKAGE, TAG_DEFINITION__NS_URI));
 	}
 
 	protected static EClassifier getEClassifier(Type type) {
@@ -8411,7 +8416,7 @@ public class UMLUtil
 			});
 	}
 
-	protected static Object getTaggedValue(Element element,
+	public static Object getTaggedValue(Element element,
 			String qualifiedStereotypeName, String propertyName) {
 		Stereotype stereotype = element
 			.getAppliedStereotype(qualifiedStereotypeName);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 199624
  *
- * $Id: XMI2UMLHandler.java,v 1.6 2007/02/07 17:05:08 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.7 2007/09/04 15:28:48 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -45,9 +46,9 @@ public class XMI2UMLHandler
 
 	protected static final String ECORE_EXTENSION_TYPE = "ecoreExtension"; //$NON-NLS-1$
 
-	protected final static String XMI_IDREF = "idref"; //$NON-NLS-1$
+	protected static final String XMI_IDREF = "idref"; //$NON-NLS-1$
 
-	protected final static String IDREF_ATTRIB = XMIResource.XMI_NS + ':' + XMI_IDREF;
+	protected static final String IDREF_ATTRIB = XMIResource.XMI_NS + ':' + XMI_IDREF;
 
 	public XMI2UMLHandler(XMLResource xmiResource, XMLHelper helper, Map<?, ?> options) {
 		super(xmiResource, helper, options);
