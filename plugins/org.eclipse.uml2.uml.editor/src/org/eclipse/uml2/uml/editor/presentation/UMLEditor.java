@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLEditor.java,v 1.35 2007/06/12 19:05:57 khussey Exp $
+ * $Id: UMLEditor.java,v 1.36 2007/09/04 15:28:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -183,6 +183,8 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 
+import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -941,11 +943,14 @@ public class UMLEditor
 			UML22UMLResource.Factory.INSTANCE);
 		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
 			XMI2UMLResource.Factory.INSTANCE);
+		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
+			CMOF2UMLResource.Factory.INSTANCE);
 
 		Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
 
 		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
 		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
 
 		createModelGen();
 
