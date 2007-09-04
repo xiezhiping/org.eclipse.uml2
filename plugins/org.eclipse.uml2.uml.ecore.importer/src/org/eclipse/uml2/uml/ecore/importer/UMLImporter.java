@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLImporter.java,v 1.11 2007/05/30 20:11:19 khussey Exp $
+ * $Id: UMLImporter.java,v 1.12 2007/09/04 15:28:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -41,9 +41,12 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
@@ -116,9 +119,8 @@ public class UMLImporter
 				|| UMLUtil.OPTION__PROCESS
 					.equals(options
 						.get(UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES))
+				|| UMLUtil.OPTION__PROCESS.equals(options
+					.get(UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES))
 				|| UMLUtil.OPTION__PROCESS.equals(options
 					.get(UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES))) {
 
@@ -233,7 +235,7 @@ public class UMLImporter
 			if (Diagnostic.INFO < diagnostics.getSeverity()) {
 				diagnostic = diagnostics;
 			}
-			
+
 			if (Diagnostic.ERROR > diagnostics.getSeverity()) {
 				adjustEPackages(monitor);
 			}
@@ -309,7 +311,8 @@ public class UMLImporter
 
 			if (value.endsWith('.' + UMLResource.FILE_EXTENSION)
 				|| value.endsWith('.' + UML22UMLResource.FILE_EXTENSION)
-				|| value.endsWith('.' + XMI2UMLResource.FILE_EXTENSION)) {
+				|| value.endsWith('.' + XMI2UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + CMOF2UMLResource.FILE_EXTENSION)) {
 
 				text.append(makeAbsolute(URI.createURI(value), genModelURI)
 					.toString());
@@ -344,9 +347,14 @@ public class UMLImporter
 			UML22UMLResource.Factory.INSTANCE);
 		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
 			XMI2UMLResource.Factory.INSTANCE);
+		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
+			CMOF2UMLResource.Factory.INSTANCE);
 
-		resourceSet.getURIConverter().getURIMap().putAll(
-			UML22UMLExtendedMetaData.getURIMap());
+		Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
+
+		uriMap.putAll(UML22UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(XMI2UMLExtendedMetaData.getURIMap());
+		uriMap.putAll(CMOF2UMLExtendedMetaData.getURIMap());
 
 		return resourceSet;
 	}
