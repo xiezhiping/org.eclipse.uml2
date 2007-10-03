@@ -3,5 +3,5 @@
 
 <!-- This file is just a placeholder to avoid plugin.xml warnings -->
 <toc label="Reference">
-	<topic label="API Reference" href="references/javadoc/dummy.html"/>
+	<topic label="UML2 API Reference" href="references/javadoc/dummy.html"/>
 </toc>
