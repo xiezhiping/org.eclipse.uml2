@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLGeneratorTask.java,v 1.1 2007/02/05 16:31:51 khussey Exp $
+ * $Id: UMLGeneratorTask.java,v 1.2 2007/10/11 01:23:16 jbruck Exp $
  */
 
 package org.eclipse.uml2.uml.ecore.importer.taskdefs;
@@ -40,6 +40,11 @@ import org.eclipse.uml2.uml.ecore.importer.UMLImporterApplication;
  *      -application org.eclipse.ant.core.antRunner
  *      -buildfile <i>antScript</i>
  * </p>
+ * <p>In Windows you should execute <i>eclipsec</i> instead of <i>eclipse</i> in order to have
+ * access to the Ant build script console output.</p>
+ * <p>You can also use the Eclipse UI to execute an Ant script containing this task by right-clicking the script and selecting 
+ * <i>Run As &gt; Ant Build... &gt; JRE &gt; "Run in the same JRE as the workspace&quot;</i>.</p>
+ * 
  * <p>
  * Usage example:
  * </p>
