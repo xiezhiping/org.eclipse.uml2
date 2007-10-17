@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: UML2Util.java,v 1.33 2007/07/04 13:22:19 khussey Exp $
+ * $Id: UML2Util.java,v 1.34 2007/10/17 13:53:40 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -52,7 +53,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -235,7 +236,7 @@ public class UML2Util {
 	/**
 	 * The default URI converter for resource bundle look-ups.
 	 */
-	protected static final URIConverter DEFAULT_URI_CONVERTER = new URIConverterImpl();
+	protected static final URIConverter DEFAULT_URI_CONVERTER = new ExtensibleURIConverterImpl();
 
 	/**
 	 * A cache of resource bundles.
