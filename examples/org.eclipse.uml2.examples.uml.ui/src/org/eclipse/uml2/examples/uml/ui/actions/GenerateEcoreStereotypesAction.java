@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 184249
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.7 2007/05/16 17:35:54 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.8 2007/10/18 03:21:41 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -58,12 +59,22 @@ public class GenerateEcoreStereotypesAction
 							stringUMLPrimitiveType, 0, 1);
 						generateOwnedAttribute(ePackageStereotype, "prefix", //$NON-NLS-1$
 							stringUMLPrimitiveType, 0, 1);
+						generateOwnedAttribute(
+							ePackageStereotype,
+							"annotations", //$NON-NLS-1$
+							stringUMLPrimitiveType, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
 
 						Stereotype eNamedElementStereotype = generateOwnedStereotype(
 							profile, "ENamedElement", true); //$NON-NLS-1$
 						generateOwnedAttribute(eNamedElementStereotype,
 							"xmlName", //$NON-NLS-1$
 							stringUMLPrimitiveType, 0, 1);
+						generateOwnedAttribute(
+							eNamedElementStereotype,
+							"annotations", //$NON-NLS-1$
+							stringUMLPrimitiveType, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
 
 						Stereotype eClassifierStereotype = generateOwnedStereotype(
 							profile, "EClassifier", true); //$NON-NLS-1$
@@ -156,6 +167,11 @@ public class GenerateEcoreStereotypesAction
 							operationMetaclass, false);
 						generateOwnedAttribute(eOperationStereotype,
 							"operationName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
+						generateOwnedAttribute(
+							eOperationStereotype,
+							"annotations", //$NON-NLS-1$
+							stringUMLPrimitiveType, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
 
 						Stereotype eParameterStereotype = generateOwnedStereotype(
 							profile, "EParameter", false); //$NON-NLS-1$
@@ -167,6 +183,11 @@ public class GenerateEcoreStereotypesAction
 							parameterMetaclass, false);
 						generateOwnedAttribute(eParameterStereotype,
 							"parameterName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
+						generateOwnedAttribute(
+							eParameterStereotype,
+							"annotations", //$NON-NLS-1$
+							stringUMLPrimitiveType, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
 
 						Enumeration featureKindEnumeration = generateOwnedEnumeration(
 							profile, "FeatureKind"); //$NON-NLS-1$
@@ -243,6 +264,10 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedAttribute(eReferenceStereotype,
 							"isResolveProxies", booleanPrimitiveType, 0, 1) //$NON-NLS-1$
 							.setBooleanDefaultValue(true);
+						generateOwnedAttribute(eReferenceStereotype,
+							"keys", //$NON-NLS-1$
+							propertyMetaclass, 0,
+							LiteralUnlimitedNatural.UNLIMITED);
 
 						Stereotype eTypeParameterStereotype = generateOwnedStereotype(
 							profile, "ETypeParameter", false); //$NON-NLS-1$
