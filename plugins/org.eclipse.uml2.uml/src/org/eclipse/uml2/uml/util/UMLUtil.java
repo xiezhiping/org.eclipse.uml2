@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406
  *
- * $Id: UMLUtil.java,v 1.65 2007/09/04 15:28:48 khussey Exp $
+ * $Id: UMLUtil.java,v 1.66 2007/10/18 03:21:49 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -24,6 +24,8 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -1597,6 +1599,7 @@ public class UMLUtil
 
 					for (Generalization generalization : new ArrayList<Generalization>(
 						generalizations)) {
+
 						Classifier general = generalization.getGeneral();
 
 						if (general != null) {
@@ -2168,6 +2171,12 @@ public class UMLUtil
 		 * The diagnostic code for cases where comments are encountered.
 		 */
 		public static final int COMMENT = DIAGNOSTIC_CODE_OFFSET + 15;
+
+		protected static final Pattern ANNOTATION_PATTERN = Pattern
+			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
+
+		protected static final Pattern ANNOTATION_DETAIL_PATTERN = Pattern
+			.compile("\\s+((?>\\\\.|\\S)+)\\s*+=\\s*((['\"])((?>\\\\.|.)*?)\\3)"); //$NON-NLS-1$
 
 		protected final Map<Element, EModelElement> elementToEModelElementMap = new LinkedHashMap<Element, EModelElement>();
 
@@ -3063,6 +3072,95 @@ public class UMLUtil
 			return elementToEModelElementMap.get(eObject);
 		}
 
+		private static char parseChar(String c) {
+
+			if (c == null) {
+				throw new IllegalArgumentException("null"); //$NON-NLS-1$
+			}
+
+			if ("\\b".equals(c)) { //$NON-NLS-1$
+				return '\b';
+			} else if ("\\t".equals(c)) { //$NON-NLS-1$
+				return '\t';
+			} else if ("\\n".equals(c)) { //$NON-NLS-1$
+				return '\n';
+			} else if ("\\f".equals(c)) { //$NON-NLS-1$
+				return '\f';
+			} else if ("\\r".equals(c)) { //$NON-NLS-1$
+				return '\r';
+			} else if ("\\\"".equals(c)) { //$NON-NLS-1$
+				return '\"';
+			} else if ("\\\'".equals(c)) { //$NON-NLS-1$
+				return '\'';
+			} else if ("\\\\".equals(c)) { //$NON-NLS-1$
+				return '\\';
+			}
+
+			if (c.startsWith("\\u") && c.length() == 6) { //$NON-NLS-1$
+				int i = Integer.parseInt(c.substring(2), 16);
+
+				if (i >= Character.MIN_VALUE && i <= Character.MAX_VALUE) {
+					return (char) i;
+				}
+			} else if (c.length() >= 2 && c.length() <= 4
+				&& c.charAt(0) == '\\') {
+
+				int i = Integer.parseInt(c.substring(1), 8);
+
+				if (i >= Character.MIN_VALUE && i <= Character.MAX_VALUE) {
+					return (char) i;
+				}
+			}
+
+			if (c.length() != 1) {
+				throw new IllegalArgumentException(c);
+			}
+
+			return c.charAt(0);
+		}
+
+		private static String parseString(String s) {
+
+			if (s == null) {
+				return null;
+			}
+
+			int length = s.length();
+			StringBuilder result = new StringBuilder(length);
+
+			for (int i = 0; i < length; i++) {
+				char c = s.charAt(i);
+
+				if (c == '\\' && length > i + 1) {
+
+					if ("btnfr\"\'\\".indexOf(s.charAt(i + 1)) != -1) { //$NON-NLS-1$
+						c = parseChar(s.substring(i, i + 2));
+						i++;
+					} else if (s.charAt(i + 1) == 'u' && length > i + 5) {
+						c = parseChar(s.substring(i, i + 6));
+						i += 5;
+					} else {
+						int j;
+
+						for (j = i + 1; j < length && j - i < 4; j++) {
+							char digit = s.charAt(j);
+
+							if (digit < '0' || digit > '7') {
+								break;
+							}
+						}
+
+						c = parseChar(s.substring(i, j));
+						i = j - 1;
+					}
+				}
+
+				result.append(c);
+			}
+
+			return result.toString();
+		}
+
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Element element,
 				Stereotype stereotype, String propertyName,
@@ -3272,6 +3370,46 @@ public class UMLUtil
 										true);
 								}
 							}
+						} else if (propertyName == TAG_DEFINITION__ANNOTATIONS) {
+							@SuppressWarnings("unchecked")
+							EList<String> annotations = (EList<String>) value;
+
+							for (String annotation : annotations) {
+								Matcher matcher = ANNOTATION_PATTERN
+									.matcher(annotation);
+
+								if (matcher.find()) {
+									EAnnotation eAnnotation = getEAnnotation(
+										eModelElement, parseString(matcher
+											.group(1)), true);
+
+									for (Matcher detailMatcher = ANNOTATION_DETAIL_PATTERN
+										.matcher(matcher.group(2)); detailMatcher
+										.find();) {
+
+										eAnnotation.getDetails()
+											.put(
+												parseString(detailMatcher
+													.group(1)),
+												parseString(detailMatcher
+													.group(4)));
+									}
+								}
+							}
+						}
+						if (propertyName == TAG_DEFINITION__KEYS) {
+							EList<EAttribute> eKeys = ((EReference) eModelElement)
+								.getEKeys();
+
+							@SuppressWarnings("unchecked")
+							EList<Property> keys = (EList<Property>) value;
+
+							for (Property key : keys) {
+
+								if (!isEClass((Classifier) key.getType())) {
+									eKeys.add((EAttribute) doSwitch(key));
+								}
+							}
 						}
 					}
 				} else if (OPTION__REPORT.equals(options
@@ -3347,6 +3485,10 @@ public class UMLUtil
 					element, eClassifierStereotype,
 					TAG_DEFINITION__INSTANCE_CLASS_NAME, options, diagnostics,
 					context);
+
+				processEcoreTaggedValue(eClassifier, null, element,
+					eClassifierStereotype, TAG_DEFINITION__ANNOTATIONS,
+					options, diagnostics, context);
 			}
 		}
 
@@ -3364,6 +3506,9 @@ public class UMLUtil
 
 				processEcoreTaggedValue(eEnum, null, element, eEnumStereotype,
 					TAG_DEFINITION__XML_NAME, options, diagnostics, context);
+
+				processEcoreTaggedValue(eEnum, null, element, eEnumStereotype,
+					TAG_DEFINITION__ANNOTATIONS, options, diagnostics, context);
 			}
 		}
 
@@ -3377,6 +3522,10 @@ public class UMLUtil
 				processEcoreTaggedValue(eEnumLiteral,
 					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
 					eEnumLiteralStereotype, TAG_DEFINITION__ENUM_LITERAL_NAME,
+					options, diagnostics, context);
+
+				processEcoreTaggedValue(eEnumLiteral, null, element,
+					eEnumLiteralStereotype, TAG_DEFINITION__ANNOTATIONS,
 					options, diagnostics, context);
 			}
 		}
@@ -3501,6 +3650,10 @@ public class UMLUtil
 					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
 					eOperationStereotype, TAG_DEFINITION__OPERATION_NAME,
 					options, diagnostics, context);
+
+				processEcoreTaggedValue(eOperation, null, element,
+					eOperationStereotype, TAG_DEFINITION__ANNOTATIONS, options,
+					diagnostics, context);
 			}
 		}
 
@@ -3539,6 +3692,10 @@ public class UMLUtil
 					EcorePackage.Literals.EPACKAGE__NS_URI, element,
 					ePackageStereotype, TAG_DEFINITION__NS_URI, options,
 					diagnostics, context);
+
+				processEcoreTaggedValue(ePackage, null, element,
+					ePackageStereotype, TAG_DEFINITION__ANNOTATIONS, options,
+					diagnostics, context);
 			}
 		}
 
@@ -3553,6 +3710,10 @@ public class UMLUtil
 					EcorePackage.Literals.ENAMED_ELEMENT__NAME, element,
 					eParameterStereotype, TAG_DEFINITION__PARAMETER_NAME,
 					options, diagnostics, context);
+
+				processEcoreTaggedValue(eParameter, null, element,
+					eParameterStereotype, TAG_DEFINITION__ANNOTATIONS, options,
+					diagnostics, context);
 			}
 		}
 
@@ -3601,6 +3762,10 @@ public class UMLUtil
 							element, eReferenceStereotype,
 							TAG_DEFINITION__IS_RESOLVE_PROXIES, options,
 							diagnostics, context);
+
+						processEcoreTaggedValue(eReference, null, element,
+							eReferenceStereotype, TAG_DEFINITION__KEYS,
+							options, diagnostics, context);
 					}
 
 					return eReferenceStereotype;
@@ -3640,6 +3805,10 @@ public class UMLUtil
 
 				processEcoreTaggedValue(eStructuralFeature, null, element,
 					eStructuralFeatureStereotype, TAG_DEFINITION__VISIBILITY,
+					options, diagnostics, context);
+
+				processEcoreTaggedValue(eStructuralFeature, null, element,
+					eStructuralFeatureStereotype, TAG_DEFINITION__ANNOTATIONS,
 					options, diagnostics, context);
 			}
 		}
@@ -3750,9 +3919,8 @@ public class UMLUtil
 
 					@Override
 					public Object caseEPackage(EPackage ePackage) {
-						processEcoreTaggedValues(
-
-						ePackage, entry.getKey(), options, diagnostics, context);
+						processEcoreTaggedValues(ePackage, entry.getKey(),
+							options, diagnostics, context);
 
 						return ePackage;
 					}
@@ -5155,53 +5323,62 @@ public class UMLUtil
 
 			for (final Map.Entry<Element, EModelElement> entry : elementToEModelElementMap
 				.entrySet()) {
+
 				EModelElement eModelElement = entry.getValue();
 
 				if (eModelElement != null) {
 					Element element = entry.getKey();
 
 					for (EAnnotation eAnnotation : element.getEAnnotations()) {
-						EMap<String, String> details = eAnnotation.getDetails();
 
-						if (!details.isEmpty()) {
+						if (!UML2_UML_PACKAGE_2_0_NS_URI.equals(eAnnotation
+							.getSource())) {
 
-							if (OPTION__PROCESS.equals(options
-								.get(OPTION__ANNOTATION_DETAILS))) {
+							EMap<String, String> details = eAnnotation
+								.getDetails();
 
-								if (diagnostics != null) {
+							if (!details.isEmpty()) {
+
+								if (OPTION__PROCESS.equals(options
+									.get(OPTION__ANNOTATION_DETAILS))) {
+
+									if (diagnostics != null) {
+										diagnostics
+											.add(new BasicDiagnostic(
+												Diagnostic.INFO,
+												UMLValidator.DIAGNOSTIC_SOURCE,
+												ANNOTATION_DETAILS,
+												UMLPlugin.INSTANCE
+													.getString(
+														"_UI_UML2EcoreConverter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+														getMessageSubstitutions(
+															context,
+															eModelElement,
+															eAnnotation
+																.getSource())),
+												new Object[]{eModelElement}));
+									}
+
+									getEAnnotation(eModelElement,
+										eAnnotation.getSource(), true)
+										.getDetails().putAll(details.map());
+								} else if (OPTION__REPORT.equals(options
+									.get(OPTION__ANNOTATION_DETAILS))
+									&& diagnostics != null) {
+
 									diagnostics
 										.add(new BasicDiagnostic(
-											Diagnostic.INFO,
+											Diagnostic.WARNING,
 											UMLValidator.DIAGNOSTIC_SOURCE,
 											ANNOTATION_DETAILS,
 											UMLPlugin.INSTANCE
 												.getString(
-													"_UI_UML2EcoreConverter_ProcessAnnotationDetails_diagnostic", //$NON-NLS-1$
+													"_UI_UML2EcoreConverter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
 													getMessageSubstitutions(
 														context, eModelElement,
 														eAnnotation.getSource())),
 											new Object[]{eModelElement}));
 								}
-
-								getEAnnotation(eModelElement,
-									eAnnotation.getSource(), true).getDetails()
-									.putAll(details.map());
-							} else if (OPTION__REPORT.equals(options
-								.get(OPTION__ANNOTATION_DETAILS))
-								&& diagnostics != null) {
-
-								diagnostics
-									.add(new BasicDiagnostic(
-										Diagnostic.WARNING,
-										UMLValidator.DIAGNOSTIC_SOURCE,
-										ANNOTATION_DETAILS,
-										UMLPlugin.INSTANCE
-											.getString(
-												"_UI_UML2EcoreConverter_ReportAnnotationDetails_diagnostic", //$NON-NLS-1$
-												getMessageSubstitutions(
-													context, eModelElement,
-													eAnnotation.getSource())),
-										new Object[]{eModelElement}));
 							}
 						}
 					}
@@ -6461,6 +6638,86 @@ public class UMLUtil
 				: null;
 		}
 
+		private static String escapeString(String s,
+				String additionalCharactersToEscape) {
+
+			if (s == null) {
+				return null;
+			}
+
+			int length = s.length();
+			StringBuffer result = new StringBuffer(length + 16);
+
+			for (int i = 0; i < length; i++) {
+				char c = s.charAt(i);
+
+				if (c == '\b') {
+					result.append("\\b"); //$NON-NLS-1$
+				} else if (c == '\t') {
+					result.append("\\t"); //$NON-NLS-1$
+				} else if (c == '\n') {
+					result.append("\\n"); //$NON-NLS-1$
+				} else if (c == '\f') {
+					result.append("\\f"); //$NON-NLS-1$
+				} else if (c == '\r') {
+					result.append("\\r"); //$NON-NLS-1$
+				} else if (c == '\"') {
+					result.append("\\\""); //$NON-NLS-1$
+				} else if (c == '\'') {
+					result.append("\\\'"); //$NON-NLS-1$
+				} else if (c == '\\') {
+					result.append("\\\\"); //$NON-NLS-1$
+				} else if (additionalCharactersToEscape.indexOf(c) == -1
+					&& c >= 32 && c < 127) {
+
+					result.append(c);
+				} else if (c < 256) {
+					String num = Integer.toOctalString(c);
+
+					switch (num.length()) {
+						case 1 :
+							result.append("\\00"); //$NON-NLS-1$
+							break;
+						case 2 :
+							result.append("\\0"); //$NON-NLS-1$
+							break;
+						default :
+							result.append("\\"); //$NON-NLS-1$
+							break;
+					}
+
+					result.append(num);
+				} else {
+					String num = Integer.toHexString(c);
+
+					switch (num.length()) {
+						case 1 :
+							result.append("\\u000"); //$NON-NLS-1$
+							break;
+						case 2 :
+							result.append("\\u00"); //$NON-NLS-1$
+							break;
+						case 3 :
+							result.append("\\u0"); //$NON-NLS-1$
+							break;
+						default :
+							result.append("\\u"); //$NON-NLS-1$
+							break;
+					}
+
+					result.append(num);
+				}
+			}
+
+			for (int index = result.indexOf("*/"); index != -1; index = result //$NON-NLS-1$
+				.indexOf("*/", index)) { //$NON-NLS-1$
+
+				result.replace(index, index + 1, "\\052"); //$NON-NLS-1$
+			}
+
+			return result.toString();
+		}
+
 		protected void processEcoreTaggedValue(Element element,
 				Stereotype stereotype, String propertyName,
 				EModelElement eModelElement,
@@ -6504,10 +6761,6 @@ public class UMLUtil
 								break;
 						}
 					}
-
-					if (value == null) {
-						return;
-					}
 				} else if (propertyName == TAG_DEFINITION__XML_FEATURE_KIND) {
 					Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
 						eModelElement).getOwnedType(ENUMERATION__FEATURE_KIND);
@@ -6543,10 +6796,6 @@ public class UMLUtil
 								break;
 						}
 					}
-
-					if (value == null) {
-						return;
-					}
 				} else if (propertyName == TAG_DEFINITION__XML_NAME) {
 
 					if (eModelElement instanceof EClassifier) {
@@ -6559,15 +6808,12 @@ public class UMLUtil
 
 					if (safeEquals(value, ((ENamedElement) eModelElement)
 						.getName())) {
+
 						return;
 					}
 				} else if (propertyName == TAG_DEFINITION__XML_NAMESPACE) {
 					value = ExtendedMetaData.INSTANCE
 						.getNamespace((EStructuralFeature) eModelElement);
-
-					if (value == null) {
-						return;
-					}
 				} else if (propertyName == TAG_DEFINITION__VISIBILITY) {
 					Enumeration visibilityKindEnumeration = (Enumeration) getEcoreProfile(
 						eModelElement).getOwnedType(
@@ -6606,11 +6852,66 @@ public class UMLUtil
 							}
 						}
 					}
+				} else if (propertyName == TAG_DEFINITION__ANNOTATIONS
+					&& !OPTION__PROCESS.equals(options
+						.get(OPTION__ANNOTATION_DETAILS))) {
 
-					if (value == null) {
-						return;
+					EList<String> annotations = new UniqueEList<String>();
+
+					for (EAnnotation eAnnotation : eModelElement
+						.getEAnnotations()) {
+
+						String source = eAnnotation.getSource();
+
+						if (source != null
+							&& !source.equals(EcorePackage.eNS_URI)
+							&& !source.equals(ExtendedMetaData.ANNOTATION_URI)
+							&& !source.equals(EMF_GEN_MODEL_PACKAGE_NS_URI)
+							&& !source.equals(UML2_UML_PACKAGE_2_0_NS_URI)
+							&& !source.equals(ANNOTATION__DUPLICATES)
+							&& !source.equals(ANNOTATION__REDEFINES)
+							&& !source.equals(ANNOTATION__SUBSETS)
+							&& !source.equals(ANNOTATION__UNION)) {
+
+							StringBuffer stringBuffer = new StringBuffer(
+								escapeString(source, " ="));
+
+							for (Map.Entry<String, String> entry : eAnnotation
+								.getDetails()) {
+
+								stringBuffer.append(' ');
+								stringBuffer.append(escapeString(
+									entry.getKey(), " =")); //$NON-NLS-1$
+								stringBuffer.append("=\'"); //$NON-NLS-1$
+								stringBuffer.append(escapeString(entry
+									.getValue(), "")); //$NON-NLS-1$
+								stringBuffer.append('\'');
+							}
+
+							annotations.add(stringBuffer.toString());
+						}
+					}
+
+					if (annotations.size() > 0) {
+						value = annotations;
+					}
+				} else if (propertyName == TAG_DEFINITION__KEYS) {
+					EList<Property> keys = new UniqueEList.FastCompare<Property>();
+
+					for (EAttribute eKey : ((EReference) eModelElement)
+						.getEKeys()) {
+
+						keys.add((Property) doSwitch(eKey));
+					}
+
+					if (keys.size() > 0) {
+						value = keys;
 					}
 				}
+			}
+
+			if (value == null) {
+				return;
 			}
 
 			if (OPTION__PROCESS
@@ -6667,6 +6968,10 @@ public class UMLUtil
 				processEcoreTaggedValue(element, ePackageStereotype,
 					TAG_DEFINITION__NS_URI, ePackage,
 					EcorePackage.Literals.EPACKAGE__NS_URI, options,
+					diagnostics, context);
+
+				processEcoreTaggedValue(element, ePackageStereotype,
+					TAG_DEFINITION__ANNOTATIONS, ePackage, null, options,
 					diagnostics, context);
 			}
 		}
@@ -6748,6 +7053,10 @@ public class UMLUtil
 					TAG_DEFINITION__INSTANCE_CLASS_NAME, eClassifier,
 					EcorePackage.Literals.ECLASSIFIER__INSTANCE_TYPE_NAME,
 					options, diagnostics, context);
+
+				processEcoreTaggedValue(element, eClassifierStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eClassifier, null, options,
+					diagnostics, context);
 			}
 		}
 
@@ -6787,6 +7096,10 @@ public class UMLUtil
 							TAG_DEFINITION__IS_RESOLVE_PROXIES, eReference,
 							EcorePackage.Literals.EREFERENCE__RESOLVE_PROXIES,
 							options, diagnostics, context);
+
+						processEcoreTaggedValue(element, eReferenceStereotype,
+							TAG_DEFINITION__KEYS, eReference, null, options,
+							diagnostics, context);
 					}
 
 					return eReferenceStereotype;
@@ -6823,6 +7136,10 @@ public class UMLUtil
 
 				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
 					TAG_DEFINITION__VISIBILITY, eStructuralFeature, null,
+					options, diagnostics, context);
+
+				processEcoreTaggedValue(element, eStructuralFeatureStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eStructuralFeature, null,
 					options, diagnostics, context);
 			}
 		}
@@ -7054,6 +7371,10 @@ public class UMLUtil
 
 						if (eEnumStereotype != null) {
 							safeApplyStereotype(element, eEnumStereotype);
+
+							processEcoreTaggedValue(element, eEnumStereotype,
+								TAG_DEFINITION__ANNOTATIONS, eEnum, null,
+								options, diagnostics, context);
 						}
 
 						return eEnum;
@@ -7066,6 +7387,11 @@ public class UMLUtil
 
 						if (eEnumLiteralStereotype != null) {
 							safeApplyStereotype(element, eEnumLiteralStereotype);
+
+							processEcoreTaggedValue(element,
+								eEnumLiteralStereotype,
+								TAG_DEFINITION__ANNOTATIONS, eEnumLiteral,
+								null, options, diagnostics, context);
 						}
 
 						return eEnumLiteral;
@@ -7078,6 +7404,11 @@ public class UMLUtil
 
 						if (eOperationStereotype != null) {
 							safeApplyStereotype(element, eOperationStereotype);
+
+							processEcoreTaggedValue(element,
+								eOperationStereotype,
+								TAG_DEFINITION__ANNOTATIONS, eOperation, null,
+								options, diagnostics, context);
 						}
 
 						return eOperation;
@@ -7098,6 +7429,11 @@ public class UMLUtil
 
 						if (eParameterStereotype != null) {
 							safeApplyStereotype(element, eParameterStereotype);
+
+							processEcoreTaggedValue(element,
+								eParameterStereotype,
+								TAG_DEFINITION__ANNOTATIONS, eParameter, null,
+								options, diagnostics, context);
 						}
 
 						return eParameter;
@@ -7478,8 +7814,14 @@ public class UMLUtil
 
 						String source = eAnnotation.getSource();
 
-						if (!EMF_GEN_MODEL_PACKAGE_NS_URI.equals(source)
-							&& !UML2_GEN_MODEL_PACKAGE_NS_URI.equals(source)) {
+						if (!source.equals(EcorePackage.eNS_URI)
+							&& !source.equals(ExtendedMetaData.ANNOTATION_URI)
+							&& !source.equals(EMF_GEN_MODEL_PACKAGE_NS_URI)
+							&& !source.equals(UML2_UML_PACKAGE_2_0_NS_URI)
+							&& !source.equals(ANNOTATION__DUPLICATES)
+							&& !source.equals(ANNOTATION__REDEFINES)
+							&& !source.equals(ANNOTATION__SUBSETS)
+							&& !source.equals(ANNOTATION__UNION)) {
 
 							EMap<String, String> details = eAnnotation
 								.getDetails();
@@ -7732,21 +8074,9 @@ public class UMLUtil
 	public static final String STEREOTYPE__E_REFERENCE = "EReference"; //$NON-NLS-1$
 
 	/**
-	 * The name of the 'upperBound' stereotype property.
+	 * The name of the 'annotations' stereotype property.
 	 */
-	public static final String TAG_DEFINITION__UPPER_BOUND = "upperBound"; //$NON-NLS-1$
-
-	/**
-	 * The name of the 'lowerBound' stereotype property.
-	 */
-
-	public static final String TAG_DEFINITION__LOWER_BOUND = "lowerBound"; //$NON-NLS-1$
-
-	/**
-	 * The name of the 'bounds' stereotype property.
-	 */
-
-	public static final String TAG_DEFINITION__BOUNDS = "bounds"; //$NON-NLS-1$
+	public static final String TAG_DEFINITION__ANNOTATIONS = "annotations"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'attributeName' stereotype property.
@@ -7757,6 +8087,11 @@ public class UMLUtil
 	 * The name of the 'basePackage' stereotype property.
 	 */
 	public static final String TAG_DEFINITION__BASE_PACKAGE = "basePackage"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'bounds' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__BOUNDS = "bounds"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'className' stereotype property.
@@ -7809,6 +8144,16 @@ public class UMLUtil
 	public static final String TAG_DEFINITION__IS_VOLATILE = "isVolatile"; //$NON-NLS-1$
 
 	/**
+	 * The name of the 'keys' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__KEYS = "keys"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'lowerBound' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__LOWER_BOUND = "lowerBound"; //$NON-NLS-1$
+
+	/**
 	 * The name of the 'nsPrefix' stereotype property.
 	 */
 	public static final String TAG_DEFINITION__NS_PREFIX = "nsPrefix"; //$NON-NLS-1$
@@ -7842,6 +8187,11 @@ public class UMLUtil
 	 * The name of the 'referenceName' stereotype property.
 	 */
 	public static final String TAG_DEFINITION__REFERENCE_NAME = "referenceName"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'upperBound' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__UPPER_BOUND = "upperBound"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'visibility' stereotype property.
