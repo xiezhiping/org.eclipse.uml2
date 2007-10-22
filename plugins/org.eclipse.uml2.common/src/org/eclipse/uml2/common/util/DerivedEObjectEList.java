@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,12 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: DerivedEObjectEList.java,v 1.13 2007/04/04 03:15:12 khussey Exp $
+ * $Id: DerivedEObjectEList.java,v 1.14 2007/10/22 13:27:56 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
-import java.util.AbstractSequentialList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +21,6 @@ import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
@@ -29,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.AbstractSequentialInternalEList;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.FeatureMapUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @since 1.2
  */
 public class DerivedEObjectEList<E>
-		extends AbstractSequentialList<E>
+		extends AbstractSequentialInternalEList<E>
 		implements EStructuralFeature.Setting, InternalEList.Unsettable<E> {
 
 	protected class DerivedListIterator
@@ -587,10 +587,7 @@ public class DerivedEObjectEList<E>
 		return false;
 	}
 
-	public E basicGet(int index) {
-		return basicList().get(index);
-	}
-
+	@Override
 	public List<E> basicList() {
 		return new DerivedEObjectEList<E>(dataClass, owner, featureID,
 			sourceFeatureIDs) {
@@ -602,22 +599,9 @@ public class DerivedEObjectEList<E>
 		};
 	}
 
-	public Iterator<E> basicIterator() {
-		return basicListIterator();
-	}
-
-	public ListIterator<E> basicListIterator() {
-		return basicListIterator(0);
-	}
-
+	@Override
 	public ListIterator<E> basicListIterator(int index) {
 		return listIterator(index, false);
-	}
-
-	public NotificationChain basicRemove(Object object,
-			NotificationChain notifications) {
-		remove(object);
-		return notifications;
 	}
 
 	protected boolean isNotificationRequired() {
@@ -634,20 +618,12 @@ public class DerivedEObjectEList<E>
 		owner.eNotify(notification);
 	}
 
-	public NotificationChain basicAdd(E object, NotificationChain notifications) {
-		addUnique(object);
-		return notifications;
-	}
-
 	@Override
 	public void add(int index, E object) {
 		addUnique(index, object);
 	}
 
-	public void addUnique(E object) {
-		addUnique(size(), object);
-	}
-
+	@Override
 	public void addUnique(int index, E object) {
 
 		if (isNotificationRequired()) {
@@ -666,6 +642,7 @@ public class DerivedEObjectEList<E>
 		return addAllUnique(index, objects);
 	}
 
+	@Override
 	public boolean addAllUnique(int index, Collection<? extends E> objects) {
 		int size = objects.size();
 
@@ -724,6 +701,7 @@ public class DerivedEObjectEList<E>
 		return setUnique(index, object);
 	}
 
+	@Override
 	public E setUnique(int index, E object) {
 
 		if (isNotificationRequired()) {
@@ -738,14 +716,6 @@ public class DerivedEObjectEList<E>
 		} else {
 			return super.set(index, validate(index, object));
 		}
-	}
-
-	public void move(int newPosition, Object object) {
-		throw new UnsupportedOperationException();
-	}
-
-	public E move(int newPosition, int oldPosition) {
-		throw new UnsupportedOperationException();
 	}
 
 	/**
