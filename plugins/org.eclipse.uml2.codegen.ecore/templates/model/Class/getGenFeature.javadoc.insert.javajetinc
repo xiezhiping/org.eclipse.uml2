@@ -15,7 +15,7 @@
 *   <li>'{@link <%=redefinedGenFeature.getGenClass().getQualifiedInterfaceName()%>#<%=redefinedGenFeature.getGetAccessor()%>() <em><%=redefinedGenFeature.getFormattedName()%></em>}'</li>
     <%}%>
 * </ul>
-* </p>        
+* </p>       
 <%}if(genFeature.isDerived() && UML2GenModelUtil.isUnion(genFeature)){%>
 * This feature is a derived union.   
 <%}%>

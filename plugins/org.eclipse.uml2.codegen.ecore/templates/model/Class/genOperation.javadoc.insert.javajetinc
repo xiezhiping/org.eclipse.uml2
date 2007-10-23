@@ -6,5 +6,5 @@
 *   <li>'{@link <%=redefinedGenOperation.getGenClass().getQualifiedInterfaceName()%>#<%=redefinedGenOperation.getName()%>(<%=redefinedGenOperation.getParameterTypes(", ")%>) <em><%=redefinedGenOperation.getFormattedName()%></em>}' </li>
     <%}%>
 * </ul>
-* </p>    
-<%}%>    
+* </p>
+<%}%>
