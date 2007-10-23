@@ -35,6 +35,7 @@
 <%}%>
 <%if (isInterface) {%>
 	/**
+<%@ include file="genOperation.javadoc.insert.javajetinc" fail="silent" %>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
   <%if (genOperation.hasDocumentation() || genOperation.hasParameterDocumentation()) {%>
