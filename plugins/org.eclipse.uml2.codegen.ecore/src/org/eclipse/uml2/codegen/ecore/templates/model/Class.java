@@ -267,7 +267,7 @@ public class Class
   protected final String TEXT_249 = "#";
   protected final String TEXT_250 = "() <em>";
   protected final String TEXT_251 = "</em>}'</li>";
-  protected final String TEXT_252 = NL + "* </ul>" + NL + "* </p>        ";
+  protected final String TEXT_252 = NL + "* </ul>" + NL + "* </p>       ";
   protected final String TEXT_253 = NL + "* This feature is a derived union.   ";
   protected final String TEXT_254 = NL + "\t * <!-- begin-user-doc -->";
   protected final String TEXT_255 = NL + "\t * <p>" + NL + "\t * If the meaning of the '<em>";
@@ -1762,8 +1762,8 @@ public class Class
   protected final String TEXT_1744 = "(";
   protected final String TEXT_1745 = ") <em>";
   protected final String TEXT_1746 = "</em>}' </li>";
-  protected final String TEXT_1747 = NL + "* </ul>" + NL + "* </p>    ";
-  protected final String TEXT_1748 = "    " + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->";
+  protected final String TEXT_1747 = NL + "* </ul>" + NL + "* </p>";
+  protected final String TEXT_1748 = NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->";
   protected final String TEXT_1749 = NL + "\t * <!-- begin-model-doc -->";
   protected final String TEXT_1750 = NL + "\t * ";
   protected final String TEXT_1751 = NL + "\t * @param ";
