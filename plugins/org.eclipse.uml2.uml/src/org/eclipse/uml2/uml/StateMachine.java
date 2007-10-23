@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachine.java,v 1.13 2007/06/12 12:53:18 khussey Exp $
+ * $Id: StateMachine.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,6 +50,12 @@ public interface StateMachine
 	 * Returns the value of the '<em><b>Region</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Region}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Region#getStateMachine <em>State Machine</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -143,6 +149,12 @@ public interface StateMachine
 	 * Returns the value of the '<em><b>Connection Point</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Pseudostate}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Pseudostate#getStateMachine <em>State Machine</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -195,6 +207,12 @@ public interface StateMachine
 	/**
 	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StateMachine}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -324,6 +342,12 @@ public interface StateMachine
 	boolean ancestor(State s1, State s2);
 
 	/**
+	 * <p>
+	 * This operation redefines the following operations:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#isRedefinitionContextValid(org.eclipse.uml2.uml.RedefinableElement) <em>Is Redefinition Context Valid</em>}' </li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

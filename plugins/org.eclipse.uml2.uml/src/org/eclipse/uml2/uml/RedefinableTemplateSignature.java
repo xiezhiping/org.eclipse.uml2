@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignature.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
+ * $Id: RedefinableTemplateSignature.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -46,6 +46,12 @@ public interface RedefinableTemplateSignature
 	/**
 	 * Returns the value of the '<em><b>Extended Signature</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.RedefinableTemplateSignature}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -85,6 +91,12 @@ public interface RedefinableTemplateSignature
 	/**
 	 * Returns the value of the '<em><b>Inherited Parameter</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.TemplateParameter}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.TemplateSignature#getParameters() <em>Parameter</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -99,6 +111,12 @@ public interface RedefinableTemplateSignature
 
 	/**
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

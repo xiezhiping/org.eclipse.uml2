@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interface.java,v 1.13 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Interface.java,v 1.14 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,6 +53,13 @@ public interface Interface
 	/**
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -121,6 +128,12 @@ public interface Interface
 	/**
 	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -174,6 +187,12 @@ public interface Interface
 	/**
 	 * Returns the value of the '<em><b>Redefined Interface</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Interface}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -212,6 +231,13 @@ public interface Interface
 	/**
 	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Reception}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -271,6 +297,12 @@ public interface Interface
 
 	/**
 	 * Returns the value of the '<em><b>Protocol</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -309,6 +341,13 @@ public interface Interface
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Operation}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateableElement.java,v 1.10 2007/06/12 12:53:17 khussey Exp $
+ * $Id: TemplateableElement.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,12 @@ public interface TemplateableElement
 	 * Returns the value of the '<em><b>Template Binding</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.TemplateBinding}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.TemplateBinding#getBoundElement <em>Bound Element</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -95,6 +101,12 @@ public interface TemplateableElement
 	/**
 	 * Returns the value of the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.TemplateSignature#getTemplate <em>Template</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

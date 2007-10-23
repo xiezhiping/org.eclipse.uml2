@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InvocationAction.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
+ * $Id: InvocationAction.java,v 1.11 2007/10/23 15:54:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -48,6 +48,12 @@ public interface InvocationAction
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Action#getInputs() <em>Input</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifier.java,v 1.13 2007/06/12 12:53:19 khussey Exp $
+ * $Id: BehavioredClassifier.java,v 1.14 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,6 +50,12 @@ public interface BehavioredClassifier
 	/**
 	 * Returns the value of the '<em><b>Owned Behavior</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Behavior}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -102,6 +108,12 @@ public interface BehavioredClassifier
 
 	/**
 	 * Returns the value of the '<em><b>Classifier Behavior</b></em>' reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.BehavioredClassifier#getOwnedBehaviors() <em>Owned Behavior</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -141,6 +153,13 @@ public interface BehavioredClassifier
 	 * Returns the value of the '<em><b>Interface Realization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InterfaceRealization}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InterfaceRealization#getImplementingClassifier <em>Implementing Classifier</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -197,6 +216,12 @@ public interface BehavioredClassifier
 	/**
 	 * Returns the value of the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Trigger}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

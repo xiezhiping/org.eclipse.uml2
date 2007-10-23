@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityPartition.java,v 1.19 2007/06/28 01:41:45 khussey Exp $
+ * $Id: ActivityPartition.java,v 1.20 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -105,6 +105,12 @@ public interface ActivityPartition
 	 * Returns the value of the '<em><b>Edge</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityEdge}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -146,6 +152,12 @@ public interface ActivityPartition
 	 * Returns the value of the '<em><b>Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes() <em>Contained Node</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -187,6 +199,12 @@ public interface ActivityPartition
 	 * Returns the value of the '<em><b>Subpartition</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getSuperPartition <em>Super Partition</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getSubgroups() <em>Subgroup</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -239,6 +257,12 @@ public interface ActivityPartition
 	/**
 	 * Returns the value of the '<em><b>Super Partition</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getSubpartitions <em>Subpartition</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getSuperGroup() <em>Super Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

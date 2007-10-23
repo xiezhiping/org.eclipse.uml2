@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Lifeline.java,v 1.15 2007/06/28 01:41:44 khussey Exp $
+ * $Id: Lifeline.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -75,6 +75,12 @@ public interface Lifeline
 	/**
 	 * Returns the value of the '<em><b>Interaction</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Interaction#getLifelines <em>Lifeline</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -101,6 +107,12 @@ public interface Lifeline
 
 	/**
 	 * Returns the value of the '<em><b>Selector</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

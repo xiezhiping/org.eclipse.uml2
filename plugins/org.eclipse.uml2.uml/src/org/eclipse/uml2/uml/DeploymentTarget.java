@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentTarget.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
+ * $Id: DeploymentTarget.java,v 1.9 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,13 @@ public interface DeploymentTarget
 	 * Returns the value of the '<em><b>Deployment</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Deployment}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Deployment#getLocation <em>Location</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.22 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Component.java,v 1.23 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -149,6 +149,12 @@ public interface Component
 	/**
 	 * Returns the value of the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageableElement}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -203,6 +209,12 @@ public interface Component
 	 * Returns the value of the '<em><b>Realization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ComponentRealization}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

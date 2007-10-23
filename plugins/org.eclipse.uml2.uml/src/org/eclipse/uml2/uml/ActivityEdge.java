@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdge.java,v 1.17 2007/06/28 01:41:44 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.18 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -56,6 +56,12 @@ public interface ActivityEdge
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -84,6 +90,7 @@ public interface ActivityEdge
 	 * Returns the value of the '<em><b>In Group</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges <em>Contained Edge</em>}'.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -101,6 +108,12 @@ public interface ActivityEdge
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getEdges <em>Edge</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups() <em>In Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -140,6 +153,12 @@ public interface ActivityEdge
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StructuredActivityNode#getEdges <em>Edge</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups() <em>In Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -194,6 +213,12 @@ public interface ActivityEdge
 	/**
 	 * Returns the value of the '<em><b>Redefined Edge</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityEdge}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -232,6 +257,12 @@ public interface ActivityEdge
 
 	/**
 	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -270,6 +301,12 @@ public interface ActivityEdge
 
 	/**
 	 * Returns the value of the '<em><b>Weight</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

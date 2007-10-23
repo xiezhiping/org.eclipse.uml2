@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SequenceNode.java,v 1.7 2007/06/12 12:53:16 khussey Exp $
+ * $Id: SequenceNode.java,v 1.8 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,6 +42,12 @@ public interface SequenceNode
 	/**
 	 * Returns the value of the '<em><b>Executable Node</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ExecutableNode}.
+	 * <p>
+	 * This feature redefines the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes() <em>Node</em>}'</li>
+	 * </ul>
+	 * </p>       
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

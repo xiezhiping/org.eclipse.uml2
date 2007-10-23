@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBinding.java,v 1.13 2007/06/28 01:41:44 khussey Exp $
+ * $Id: TemplateBinding.java,v 1.14 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,6 +45,12 @@ public interface TemplateBinding
 
 	/**
 	 * Returns the value of the '<em><b>Signature</b></em>' reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -72,6 +78,12 @@ public interface TemplateBinding
 	 * Returns the value of the '<em><b>Parameter Substitution</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.TemplateParameterSubstitution}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getTemplateBinding <em>Template Binding</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -98,6 +110,13 @@ public interface TemplateBinding
 	/**
 	 * Returns the value of the '<em><b>Bound Element</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.TemplateableElement#getTemplateBindings <em>Template Binding</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElement.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
+ * $Id: MultiplicityElement.java,v 1.18 2007/10/23 15:54:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -152,6 +152,12 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Upper Value</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -190,6 +196,12 @@ public interface MultiplicityElement
 
 	/**
 	 * Returns the value of the '<em><b>Lower Value</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

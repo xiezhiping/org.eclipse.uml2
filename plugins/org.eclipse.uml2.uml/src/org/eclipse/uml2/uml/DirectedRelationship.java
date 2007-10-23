@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DirectedRelationship.java,v 1.6 2007/06/12 12:53:17 khussey Exp $
+ * $Id: DirectedRelationship.java,v 1.7 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,6 +41,13 @@ public interface DirectedRelationship
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Relationship#getRelatedElements() <em>Related Element</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -56,6 +63,13 @@ public interface DirectedRelationship
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Relationship#getRelatedElements() <em>Related Element</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

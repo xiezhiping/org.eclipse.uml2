@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityNode.java,v 1.14 2007/06/28 01:41:44 khussey Exp $
+ * $Id: ActivityNode.java,v 1.15 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -95,6 +95,7 @@ public interface ActivityNode
 	 * Returns the value of the '<em><b>In Group</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes <em>Contained Node</em>}'.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -112,6 +113,12 @@ public interface ActivityNode
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getNodes <em>Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityNode#getInGroups() <em>In Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -151,6 +158,12 @@ public interface ActivityNode
 	/**
 	 * Returns the value of the '<em><b>In Structured Node</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StructuredActivityNode#getNodes <em>Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityNode#getInGroups() <em>In Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -178,6 +191,12 @@ public interface ActivityNode
 	/**
 	 * Returns the value of the '<em><b>Activity</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -247,6 +266,12 @@ public interface ActivityNode
 	 * Returns the value of the '<em><b>In Interruptible Region</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InterruptibleActivityRegion}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InterruptibleActivityRegion#getNodes <em>Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityNode#getInGroups() <em>In Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -263,6 +288,12 @@ public interface ActivityNode
 	/**
 	 * Returns the value of the '<em><b>Redefined Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

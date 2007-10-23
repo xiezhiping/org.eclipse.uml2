@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.17 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Profile.java,v 1.18 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,6 +50,12 @@ public interface Profile
 	/**
 	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Stereotype}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Package#getPackagedElements() <em>Packaged Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -101,6 +107,12 @@ public interface Profile
 	/**
 	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getElementImports() <em>Element Import</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -151,6 +163,12 @@ public interface Profile
 	/**
 	 * Returns the value of the '<em><b>Metamodel Reference</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getPackageImports() <em>Package Import</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

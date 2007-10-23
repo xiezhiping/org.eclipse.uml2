@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpression.java,v 1.12 2007/06/28 01:41:45 khussey Exp $
+ * $Id: StringExpression.java,v 1.13 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -46,6 +46,12 @@ public interface StringExpression
 	 * Returns the value of the '<em><b>Sub Expression</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StringExpression}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StringExpression#getOwningExpression <em>Owning Expression</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -101,6 +107,12 @@ public interface StringExpression
 	/**
 	 * Returns the value of the '<em><b>Owning Expression</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.StringExpression#getSubExpressions <em>Sub Expression</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExecutableNode.java,v 1.7 2007/06/12 12:53:17 khussey Exp $
+ * $Id: ExecutableNode.java,v 1.8 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,6 +41,12 @@ public interface ExecutableNode
 	 * Returns the value of the '<em><b>Handler</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ExceptionHandler}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ExceptionHandler#getProtectedNode <em>Protected Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Association.java,v 1.15 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Association.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -76,6 +76,12 @@ public interface Association
 	/**
 	 * Returns the value of the '<em><b>End Type</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Type}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Relationship#getRelatedElements() <em>Related Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -116,6 +122,12 @@ public interface Association
 	 * Returns the value of the '<em><b>Member End</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Property#getAssociation <em>Association</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -159,6 +171,12 @@ public interface Association
 	/**
 	 * Returns the value of the '<em><b>Navigable Owned End</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Association#getOwnedEnds() <em>Owned End</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -228,6 +246,14 @@ public interface Association
 	 * Returns the value of the '<em><b>Owned End</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Property#getOwningAssociation <em>Owning Association</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Association#getMemberEnds() <em>Member End</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

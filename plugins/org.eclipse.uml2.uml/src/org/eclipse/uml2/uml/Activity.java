@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Activity.java,v 1.17 2007/06/12 12:53:20 khussey Exp $
+ * $Id: Activity.java,v 1.18 2007/10/23 15:54:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -80,6 +80,12 @@ public interface Activity
 	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityGroup#getInActivity <em>In Activity</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -133,6 +139,13 @@ public interface Activity
 	/**
 	 * Returns the value of the '<em><b>Structured Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StructuredActivityNode}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -174,6 +187,12 @@ public interface Activity
 	 * Returns the value of the '<em><b>Variable</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Variable}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Variable#getActivityScope <em>Activity Scope</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -230,6 +249,12 @@ public interface Activity
 	 * Returns the value of the '<em><b>Node</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -285,6 +310,12 @@ public interface Activity
 	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityEdge}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -339,6 +370,12 @@ public interface Activity
 	/**
 	 * Returns the value of the '<em><b>Partition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

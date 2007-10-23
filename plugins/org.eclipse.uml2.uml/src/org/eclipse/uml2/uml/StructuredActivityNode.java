@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredActivityNode.java,v 1.16 2007/06/12 12:53:17 khussey Exp $
+ * $Id: StructuredActivityNode.java,v 1.17 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -51,6 +51,12 @@ public interface StructuredActivityNode
 	 * Returns the value of the '<em><b>Variable</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Variable}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Variable#getScope <em>Scope</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -107,6 +113,12 @@ public interface StructuredActivityNode
 	 * Returns the value of the '<em><b>Node</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getInStructuredNode <em>In Structured Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getContainedNodes() <em>Contained Node</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -188,6 +200,12 @@ public interface StructuredActivityNode
 	 * Returns the value of the '<em><b>Edge</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityEdge}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.ActivityGroup#getContainedEdges() <em>Contained Edge</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

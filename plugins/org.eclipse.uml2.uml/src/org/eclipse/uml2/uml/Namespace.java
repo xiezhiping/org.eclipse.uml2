@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Namespace.java,v 1.14 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Namespace.java,v 1.15 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,6 +52,12 @@ public interface Namespace
 	 * Returns the value of the '<em><b>Element Import</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ElementImport}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ElementImport#getImportingNamespace <em>Importing Namespace</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -104,6 +110,12 @@ public interface Namespace
 	 * Returns the value of the '<em><b>Package Import</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageImport}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.PackageImport#getImportingNamespace <em>Importing Namespace</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -157,6 +169,12 @@ public interface Namespace
 	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Constraint}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Constraint#getContext <em>Context</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -222,6 +240,7 @@ public interface Namespace
 	/**
 	 * Returns the value of the '<em><b>Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -261,6 +280,12 @@ public interface Namespace
 	/**
 	 * Returns the value of the '<em><b>Imported Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageableElement}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -302,6 +327,14 @@ public interface Namespace
 	 * Returns the value of the '<em><b>Owned Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.NamedElement#getNamespace <em>Namespace</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

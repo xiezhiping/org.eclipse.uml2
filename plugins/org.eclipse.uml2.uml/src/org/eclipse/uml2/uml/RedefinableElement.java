@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableElement.java,v 1.13 2007/06/12 12:53:18 khussey Exp $
+ * $Id: RedefinableElement.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -74,6 +74,7 @@ public interface RedefinableElement
 	/**
 	 * Returns the value of the '<em><b>Redefined Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.RedefinableElement}.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -114,6 +115,7 @@ public interface RedefinableElement
 	/**
 	 * Returns the value of the '<em><b>Redefinition Context</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Classifier.java,v 1.22 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Classifier.java,v 1.23 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -89,6 +89,12 @@ public interface Classifier
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Generalization}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Generalization#getSpecific <em>Specific</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -146,6 +152,13 @@ public interface Classifier
 	 * Returns the value of the '<em><b>Feature</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Feature}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -187,6 +200,12 @@ public interface Classifier
 	/**
 	 * Returns the value of the '<em><b>Inherited Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getMembers() <em>Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -227,6 +246,12 @@ public interface Classifier
 	/**
 	 * Returns the value of the '<em><b>Redefined Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -307,6 +332,12 @@ public interface Classifier
 	/**
 	 * Returns the value of the '<em><b>Owned Use Case</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.UseCase}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -399,6 +430,13 @@ public interface Classifier
 	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Substitution}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Substitution#getSubstitutingClassifier <em>Substituting Classifier</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies() <em>Client Dependency</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -454,6 +492,13 @@ public interface Classifier
 	/**
 	 * Returns the value of the '<em><b>Attribute</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -495,6 +540,12 @@ public interface Classifier
 
 	/**
 	 * Returns the value of the '<em><b>Representation</b></em>' reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getCollaborationUses() <em>Collaboration Use</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -532,6 +583,12 @@ public interface Classifier
 	/**
 	 * Returns the value of the '<em><b>Collaboration Use</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.CollaborationUse}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -823,6 +880,12 @@ public interface Classifier
 	boolean hasVisibilityOf(NamedElement n);
 
 	/**
+	 * <p>
+	 * This operation redefines the following operations:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Type#conformsTo(org.eclipse.uml2.uml.Type) <em>Conforms To</em>}' </li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

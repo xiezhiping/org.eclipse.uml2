@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionFragment.java,v 1.11 2007/06/28 01:41:44 khussey Exp $
+ * $Id: InteractionFragment.java,v 1.12 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -83,6 +83,12 @@ public interface InteractionFragment
 	/**
 	 * Returns the value of the '<em><b>General Ordering</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.GeneralOrdering}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -161,6 +167,12 @@ public interface InteractionFragment
 	/**
 	 * Returns the value of the '<em><b>Enclosing Operand</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InteractionOperand#getFragments <em>Fragment</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

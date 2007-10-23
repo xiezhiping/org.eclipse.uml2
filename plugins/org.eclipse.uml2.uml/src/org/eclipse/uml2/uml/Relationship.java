@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Relationship.java,v 1.6 2007/06/12 12:53:18 khussey Exp $
+ * $Id: Relationship.java,v 1.7 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,6 +40,7 @@ public interface Relationship
 	/**
 	 * Returns the value of the '<em><b>Related Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DataType.java,v 1.11 2007/06/12 12:53:19 khussey Exp $
+ * $Id: DataType.java,v 1.12 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -44,6 +44,13 @@ public interface DataType
 	 * Returns the value of the '<em><b>Owned Attribute</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Property}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -114,6 +121,13 @@ public interface DataType
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Operation}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Operation#getDatatype <em>Datatype</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

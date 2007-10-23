@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.20 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Package.java,v 1.21 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,6 +55,12 @@ public interface Package
 	 * Returns the value of the '<em><b>Package Merge</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageMerge}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.PackageMerge#getReceivingPackage <em>Receiving Package</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -105,6 +111,12 @@ public interface Package
 	/**
 	 * Returns the value of the '<em><b>Packaged Element</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.PackageableElement}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -159,6 +171,12 @@ public interface Package
 	 * Returns the value of the '<em><b>Owned Type</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Type}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Type#getPackage <em>Package</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Package#getPackagedElements() <em>Packaged Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -214,6 +232,12 @@ public interface Package
 	 * Returns the value of the '<em><b>Nested Package</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Package}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Package#getNestingPackage <em>Nesting Package</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Package#getPackagedElements() <em>Packaged Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -268,6 +292,12 @@ public interface Package
 	/**
 	 * Returns the value of the '<em><b>Nesting Package</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Package#getNestedPackages <em>Nested Package</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -296,6 +326,12 @@ public interface Package
 	 * Returns the value of the '<em><b>Profile Application</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ProfileApplication}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

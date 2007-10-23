@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Dependency.java,v 1.5 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Dependency.java,v 1.6 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,6 +43,12 @@ public interface Dependency
 	/**
 	 * Returns the value of the '<em><b>Supplier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getTargets() <em>Target</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -83,6 +89,12 @@ public interface Dependency
 	 * Returns the value of the '<em><b>Client</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies <em>Client Dependency</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

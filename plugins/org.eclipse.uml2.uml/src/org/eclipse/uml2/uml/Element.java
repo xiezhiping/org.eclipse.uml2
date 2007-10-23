@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Element.java,v 1.18 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Element.java,v 1.19 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,6 +52,7 @@ public interface Element
 	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Element#getOwner <em>Owner</em>}'.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -68,6 +69,7 @@ public interface Element
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Element#getOwnedElements <em>Owned Element</em>}'.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -84,6 +86,12 @@ public interface Element
 	/**
 	 * Returns the value of the '<em><b>Owned Comment</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Comment}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Class.java,v 1.16 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Class.java,v 1.17 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -55,6 +55,13 @@ public interface Class
 	 * Returns the value of the '<em><b>Owned Operation</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Operation}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -116,6 +123,12 @@ public interface Class
 	/**
 	 * Returns the value of the '<em><b>Nested Classifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -169,6 +182,12 @@ public interface Class
 	/**
 	 * Returns the value of the '<em><b>Super Class</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Class}.
+	 * <p>
+	 * This feature redefines the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getGenerals() <em>General</em>}'</li>
+	 * </ul>
+	 * </p>       
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -234,6 +253,13 @@ public interface Class
 	/**
 	 * Returns the value of the '<em><b>Owned Reception</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Reception}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Interaction.java,v 1.10 2007/06/12 12:53:16 khussey Exp $
+ * $Id: Interaction.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,6 +47,12 @@ public interface Interaction
 	 * Returns the value of the '<em><b>Lifeline</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Lifeline}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Lifeline#getInteraction <em>Interaction</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -99,6 +105,12 @@ public interface Interaction
 	 * Returns the value of the '<em><b>Fragment</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InteractionFragment}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.InteractionFragment#getEnclosingInteraction <em>Enclosing Interaction</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -153,6 +165,12 @@ public interface Interaction
 	/**
 	 * Returns the value of the '<em><b>Action</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Action}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -206,6 +224,12 @@ public interface Interaction
 	/**
 	 * Returns the value of the '<em><b>Formal Gate</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Gate}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -258,6 +282,12 @@ public interface Interaction
 	 * Returns the value of the '<em><b>Message</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Message}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Message#getInteraction <em>Interaction</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

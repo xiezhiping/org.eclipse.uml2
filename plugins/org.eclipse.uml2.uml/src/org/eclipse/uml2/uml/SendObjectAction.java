@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SendObjectAction.java,v 1.6 2006/06/07 21:39:13 khussey Exp $
+ * $Id: SendObjectAction.java,v 1.7 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -40,6 +40,12 @@ public interface SendObjectAction
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Action#getInputs() <em>Input</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -90,6 +96,12 @@ public interface SendObjectAction
 
 	/**
 	 * Returns the value of the '<em><b>Request</b></em>' containment reference.
+	 * <p>
+	 * This feature redefines the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.InvocationAction#getArguments() <em>Argument</em>}'</li>
+	 * </ul>
+	 * </p>       
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

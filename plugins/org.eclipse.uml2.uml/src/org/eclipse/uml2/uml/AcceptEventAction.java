@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AcceptEventAction.java,v 1.13 2007/06/12 12:53:17 khussey Exp $
+ * $Id: AcceptEventAction.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -72,6 +72,12 @@ public interface AcceptEventAction
 	/**
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Action#getOutputs() <em>Output</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

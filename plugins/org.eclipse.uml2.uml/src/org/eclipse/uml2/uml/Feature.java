@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Feature.java,v 1.10 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Feature.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,6 +70,7 @@ public interface Feature
 	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Classifier#getFeatures <em>Feature</em>}'.
+	 * This feature is a derived union.   
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

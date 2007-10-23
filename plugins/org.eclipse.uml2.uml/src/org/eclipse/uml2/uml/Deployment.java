@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Deployment.java,v 1.10 2007/06/28 01:41:45 khussey Exp $
+ * $Id: Deployment.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,6 +45,12 @@ public interface Deployment
 	/**
 	 * Returns the value of the '<em><b>Deployed Artifact</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.DeployedArtifact}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -86,6 +92,12 @@ public interface Deployment
 	 * Returns the value of the '<em><b>Configuration</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.DeploymentSpecification}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentSpecification#getDeployment <em>Deployment</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -138,6 +150,12 @@ public interface Deployment
 	/**
 	 * Returns the value of the '<em><b>Location</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.DeploymentTarget#getDeployments <em>Deployment</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

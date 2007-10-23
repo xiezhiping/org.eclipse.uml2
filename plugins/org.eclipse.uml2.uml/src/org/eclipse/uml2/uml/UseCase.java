@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UseCase.java,v 1.10 2007/06/12 12:53:19 khussey Exp $
+ * $Id: UseCase.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,6 +50,12 @@ public interface UseCase
 	 * Returns the value of the '<em><b>Include</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Include}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Include#getIncludingCase <em>Including Case</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -106,6 +112,12 @@ public interface UseCase
 	 * Returns the value of the '<em><b>Extend</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Extend}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Extend#getExtension <em>Extension</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -162,6 +174,12 @@ public interface UseCase
 	 * Returns the value of the '<em><b>Extension Point</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ExtensionPoint}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ExtensionPoint#getUseCase <em>Use Case</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

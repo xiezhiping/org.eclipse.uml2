@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionUse.java,v 1.11 2007/06/12 12:53:16 khussey Exp $
+ * $Id: InteractionUse.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -73,6 +73,12 @@ public interface InteractionUse
 	/**
 	 * Returns the value of the '<em><b>Actual Gate</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Gate}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
