@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204202
  * 
- * $Id: XMI2UMLExtendedMetaData.java,v 1.4 2006/12/14 15:49:34 khussey Exp $
+ * $Id: XMI2UMLExtendedMetaData.java,v 1.5 2007/10/29 17:53:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -32,6 +33,8 @@ public class XMI2UMLExtendedMetaData
 
 			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_URI), URI
 				.createURI(UMLResource.STANDARD_PROFILE_URI));
+			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI),
+				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_1_URI),
 				URI.createURI(UMLResource.STANDARD_PROFILE_URI));
 		}
@@ -60,10 +63,13 @@ public class XMI2UMLExtendedMetaData
 	public EPackage getPackage(String namespace) {
 
 		return XMI2UMLResource.UML_METAMODEL_NS_URI.equals(namespace)
+			|| XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_1_NS_URI.equals(namespace)
 			? UMLPackage.eINSTANCE
 			: super.getPackage(XMI2UMLResource.STANDARD_PROFILE_NS_URI
 				.equals(namespace)
+				|| XMI2UMLResource.STANDARD_PROFILE_2_1_1_NS_URI
+					.equals(namespace)
 				|| XMI2UMLResource.STANDARD_PROFILE_2_1_NS_URI
 					.equals(namespace)
 				? UMLResource.STANDARD_PROFILE_NS_URI

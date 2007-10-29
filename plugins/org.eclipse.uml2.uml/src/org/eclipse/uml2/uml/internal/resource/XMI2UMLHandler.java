@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
  *
- * $Id: XMI2UMLHandler.java,v 1.7 2007/09/04 15:28:48 khussey Exp $
+ * $Id: XMI2UMLHandler.java,v 1.8 2007/10/29 17:53:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -58,6 +58,7 @@ public class XMI2UMLHandler
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
@@ -75,6 +76,8 @@ public class XMI2UMLHandler
 					: uriLiteral.substring(index));
 			}
 		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)
+			|| uriLiteral
+				.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
 
 			int index = uriLiteral.indexOf('#');
