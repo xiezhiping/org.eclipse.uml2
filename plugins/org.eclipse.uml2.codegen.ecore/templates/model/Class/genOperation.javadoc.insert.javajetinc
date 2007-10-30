@@ -1,10 +1,10 @@
 <%if (UML2GenModelUtil.isRedefinition(genOperation)) {%>
-* <p>
-* This operation redefines the following operations:
-* <ul>
+	 * <p>
+	 * This operation redefines the following operations:
+	 * <ul>
     <%for (GenOperation redefinedGenOperation : UML2GenModelUtil.getRedefinedGenOperations(genOperation)) {%>
-*   <li>'{@link <%=redefinedGenOperation.getGenClass().getQualifiedInterfaceName()%>#<%=redefinedGenOperation.getName()%>(<%=redefinedGenOperation.getParameterTypes(", ")%>) <em><%=redefinedGenOperation.getFormattedName()%></em>}' </li>
+	 *   <li>'{@link <%=redefinedGenOperation.getGenClass().getQualifiedInterfaceName()%>#<%=redefinedGenOperation.getName()%>(<%=redefinedGenOperation.getParameterTypes(", ")%>) <em><%=redefinedGenOperation.getFormattedName()%></em>}' </li>
     <%}%>
-* </ul>
-* </p>
+	 * </ul>
+	 * </p>
 <%}%>
