@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 184249
+ *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.8 2007/10/18 03:21:41 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.9 2007/10/30 21:08:02 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -156,6 +156,8 @@ public class GenerateEcoreStereotypesAction
 							eNamedElementStereotype);
 						generateOwnedAttribute(eEnumLiteralStereotype,
 							"enumLiteralName", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
+						generateOwnedAttribute(eEnumLiteralStereotype,
+							"literal", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
 						Stereotype eOperationStereotype = generateOwnedStereotype(
 							profile, "EOperation", false); //$NON-NLS-1$
