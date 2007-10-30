@@ -104,6 +104,9 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFunjqEdy8S4Cr8Rc_NA" name="enumLiteralName" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7PU2XIcNEdy1svqbasVRMw" name="literal" ordered="false">
+            <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_z1OFvXjqEdy8S4Cr8Rc_NA" name="EOperation">
           <eAnnotations xmi:id="_z1OFvnjqEdy8S4Cr8Rc_NA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="EOperation"/>
@@ -1238,6 +1241,11 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnumLiteral-enumLiteralName-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-enumLiteralName-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="EEnumLiteral-literal" name="literal">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnumLiteral-literal-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-literal-_lowerValue"/>
       </ownedAttribute>
       <icon xmi:id="EEnumLiteral-_icon.0" location="../icons/full/ovr16/EEnumLiteral.gif"/>
     </packagedElement>
