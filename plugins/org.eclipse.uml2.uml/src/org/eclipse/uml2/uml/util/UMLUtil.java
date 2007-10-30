@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125
  *
- * $Id: UMLUtil.java,v 1.66 2007/10/18 03:21:49 khussey Exp $
+ * $Id: UMLUtil.java,v 1.67 2007/10/30 21:07:58 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3527,6 +3527,11 @@ public class UMLUtil
 				processEcoreTaggedValue(eEnumLiteral, null, element,
 					eEnumLiteralStereotype, TAG_DEFINITION__ANNOTATIONS,
 					options, diagnostics, context);
+
+				processEcoreTaggedValue(eEnumLiteral,
+					EcorePackage.Literals.EENUM_LITERAL__LITERAL, element,
+					eEnumLiteralStereotype, TAG_DEFINITION__LITERAL, options,
+					diagnostics, context);
 			}
 		}
 
@@ -7335,6 +7340,71 @@ public class UMLUtil
 			}
 		}
 
+		protected void processEcoreTaggedValues(Element element, EEnum eEnum,
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+			Stereotype eEnumStereotype = getEcoreStereotype(eEnum,
+				STEREOTYPE__E_ENUM);
+
+			if (eEnumStereotype != null) {
+				safeApplyStereotype(element, eEnumStereotype);
+
+				processEcoreTaggedValue(element, eEnumStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eEnum, null, options,
+					diagnostics, context);
+			}
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				EEnumLiteral eEnumLiteral, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Stereotype eEnumLiteralStereotype = getEcoreStereotype(
+				eEnumLiteral, STEREOTYPE__E_ENUM_LITERAL);
+
+			if (eEnumLiteralStereotype != null) {
+				safeApplyStereotype(element, eEnumLiteralStereotype);
+
+				processEcoreTaggedValue(element, eEnumLiteralStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eEnumLiteral, null, options,
+					diagnostics, context);
+
+				processEcoreTaggedValue(element, eEnumLiteralStereotype,
+					TAG_DEFINITION__LITERAL, eEnumLiteral,
+					EcorePackage.Literals.EENUM_LITERAL__LITERAL, options,
+					diagnostics, context);
+			}
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				EOperation eOperation, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Stereotype eOperationStereotype = getEcoreStereotype(eOperation,
+				STEREOTYPE__E_OPERATION);
+
+			if (eOperationStereotype != null) {
+				safeApplyStereotype(element, eOperationStereotype);
+
+				processEcoreTaggedValue(element, eOperationStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eOperation, null, options,
+					diagnostics, context);
+			}
+		}
+
+		protected void processEcoreTaggedValues(Element element,
+				EParameter eParameter, Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+			Stereotype eParameterStereotype = getEcoreStereotype(eParameter,
+				STEREOTYPE__E_PARAMETER);
+
+			if (eParameterStereotype != null) {
+				safeApplyStereotype(element, eParameterStereotype);
+
+				processEcoreTaggedValue(element, eParameterStereotype,
+					TAG_DEFINITION__ANNOTATIONS, eParameter, null, options,
+					diagnostics, context);
+			}
+		}
+
 		protected void processEcoreTaggedValues(
 				final Map<String, String> options,
 				final DiagnosticChain diagnostics,
@@ -7366,50 +7436,24 @@ public class UMLUtil
 
 					@Override
 					public Object caseEEnum(EEnum eEnum) {
-						Stereotype eEnumStereotype = getEcoreStereotype(eEnum,
-							STEREOTYPE__E_ENUM);
-
-						if (eEnumStereotype != null) {
-							safeApplyStereotype(element, eEnumStereotype);
-
-							processEcoreTaggedValue(element, eEnumStereotype,
-								TAG_DEFINITION__ANNOTATIONS, eEnum, null,
-								options, diagnostics, context);
-						}
+						processEcoreTaggedValues(element, eEnum, options,
+							diagnostics, context);
 
 						return eEnum;
 					}
 
 					@Override
 					public Object caseEEnumLiteral(EEnumLiteral eEnumLiteral) {
-						Stereotype eEnumLiteralStereotype = getEcoreStereotype(
-							eEnumLiteral, STEREOTYPE__E_ENUM_LITERAL);
-
-						if (eEnumLiteralStereotype != null) {
-							safeApplyStereotype(element, eEnumLiteralStereotype);
-
-							processEcoreTaggedValue(element,
-								eEnumLiteralStereotype,
-								TAG_DEFINITION__ANNOTATIONS, eEnumLiteral,
-								null, options, diagnostics, context);
-						}
+						processEcoreTaggedValues(element, eEnumLiteral,
+							options, diagnostics, context);
 
 						return eEnumLiteral;
 					}
 
 					@Override
 					public Object caseEOperation(EOperation eOperation) {
-						Stereotype eOperationStereotype = getEcoreStereotype(
-							eOperation, STEREOTYPE__E_OPERATION);
-
-						if (eOperationStereotype != null) {
-							safeApplyStereotype(element, eOperationStereotype);
-
-							processEcoreTaggedValue(element,
-								eOperationStereotype,
-								TAG_DEFINITION__ANNOTATIONS, eOperation, null,
-								options, diagnostics, context);
-						}
+						processEcoreTaggedValues(element, eOperation, options,
+							diagnostics, context);
 
 						return eOperation;
 					}
@@ -7424,17 +7468,8 @@ public class UMLUtil
 
 					@Override
 					public Object caseEParameter(EParameter eParameter) {
-						Stereotype eParameterStereotype = getEcoreStereotype(
-							eParameter, STEREOTYPE__E_PARAMETER);
-
-						if (eParameterStereotype != null) {
-							safeApplyStereotype(element, eParameterStereotype);
-
-							processEcoreTaggedValue(element,
-								eParameterStereotype,
-								TAG_DEFINITION__ANNOTATIONS, eParameter, null,
-								options, diagnostics, context);
-						}
+						processEcoreTaggedValues(element, eParameter, options,
+							diagnostics, context);
 
 						return eParameter;
 					}
@@ -8147,6 +8182,11 @@ public class UMLUtil
 	 * The name of the 'keys' stereotype property.
 	 */
 	public static final String TAG_DEFINITION__KEYS = "keys"; //$NON-NLS-1$
+
+	/**
+	 * The name of the 'literal' stereotype property.
+	 */
+	public static final String TAG_DEFINITION__LITERAL = "literal"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'lowerBound' stereotype property.
