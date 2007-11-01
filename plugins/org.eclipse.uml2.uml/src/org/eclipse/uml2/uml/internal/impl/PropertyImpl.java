@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208353
  *
- * $Id: PropertyImpl.java,v 1.43 2007/05/04 20:35:34 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.44 2007/11/01 14:47:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -141,6 +142,7 @@ public class PropertyImpl
 	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @see #getTemplateBindings()
 	 * @generated
@@ -151,6 +153,7 @@ public class PropertyImpl
 	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @see #getOwnedTemplateSignature()
 	 * @generated
@@ -661,6 +664,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -676,6 +680,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -689,6 +694,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -698,6 +704,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -716,6 +723,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -778,6 +786,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -806,6 +815,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -817,6 +827,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1694,6 +1705,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1717,6 +1729,7 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */

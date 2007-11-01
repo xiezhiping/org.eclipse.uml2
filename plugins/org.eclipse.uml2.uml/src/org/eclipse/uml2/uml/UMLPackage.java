@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208353
  *
- * $Id: UMLPackage.java,v 1.27 2007/05/04 20:35:32 khussey Exp $
+ * $Id: UMLPackage.java,v 1.28 2007/11/01 14:47:34 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -7332,6 +7333,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -7341,6 +7343,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -15171,6 +15174,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -15180,6 +15184,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -16971,6 +16976,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
@@ -16980,6 +16986,7 @@ public interface UMLPackage
 	/**
 	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * @deprecated
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
