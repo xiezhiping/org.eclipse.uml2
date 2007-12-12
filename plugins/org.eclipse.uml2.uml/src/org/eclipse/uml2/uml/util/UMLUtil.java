@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125
  *
- * $Id: UMLUtil.java,v 1.67 2007/10/30 21:07:58 khussey Exp $
+ * $Id: UMLUtil.java,v 1.68 2007/12/12 22:13:46 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2644,7 +2644,9 @@ public class UMLUtil
 								EClass generalEClass = (EClass) generalEClassifier;
 
 								if (!specificEClass
-									.isSuperTypeOf(generalEClass)) {
+									.isSuperTypeOf(generalEClass)
+									&& !generalEClass
+										.isSuperTypeOf(specificEClass)) {
 
 									specificEClass.getEGenericSuperTypes().add(
 										eGenericSuperType);
