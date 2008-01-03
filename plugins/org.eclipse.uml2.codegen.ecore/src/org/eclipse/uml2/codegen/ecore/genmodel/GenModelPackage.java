@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: GenModelPackage.java,v 1.26 2007/05/22 16:58:17 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.27 2008/01/03 14:46:03 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1119,6 +1120,60 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__PROVIDER_ROOT_EXTENDS_CLASS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__PROVIDER_ROOT_EXTENDS_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Edit Plugin ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__EDIT_PLUGIN_ID = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__EDIT_PLUGIN_ID;
+
+	/**
+	 * The feature id for the '<em><b>Edit Plugin Variables</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__EDIT_PLUGIN_VARIABLES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__EDIT_PLUGIN_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Editor Plugin ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__EDITOR_PLUGIN_ID = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_ID;
+
+	/**
+	 * The feature id for the '<em><b>Editor Plugin Variables</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__EDITOR_PLUGIN_VARIABLES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__EDITOR_PLUGIN_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Tests Plugin ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__TESTS_PLUGIN_ID = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__TESTS_PLUGIN_ID;
+
+	/**
+	 * The feature id for the '<em><b>Tests Plugin Variables</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__TESTS_PLUGIN_VARIABLES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__TESTS_PLUGIN_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
