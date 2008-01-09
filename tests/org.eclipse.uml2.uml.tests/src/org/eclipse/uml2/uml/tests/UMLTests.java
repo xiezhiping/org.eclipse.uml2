@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLTests.java,v 1.4 2007/05/04 20:35:57 khussey Exp $
+ * $Id: UMLTests.java,v 1.5 2008/01/09 18:52:23 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -173,9 +174,9 @@ public class UMLTests
 		suite.addTestSuite(ComponentRealizationTest.class);
 		suite.addTestSuite(ComponentTest.class);
 		suite.addTestSuite(NodeTest.class);
+		suite.addTestSuite(CommunicationPathTest.class);
 		suite.addTestSuite(DeviceTest.class);
 		suite.addTestSuite(ExecutionEnvironmentTest.class);
-		suite.addTestSuite(CommunicationPathTest.class);
 		suite.addTestSuite(CombinedFragmentTest.class);
 		suite.addTestSuite(ContinuationTest.class);
 		suite.addTestSuite(ConsiderIgnoreFragmentTest.class);
