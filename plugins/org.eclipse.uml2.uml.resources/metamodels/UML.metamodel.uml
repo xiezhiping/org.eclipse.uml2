@@ -4640,6 +4640,76 @@ Nodes can be interconnected through communication paths to define network struct
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Node-nestedNode-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Node-nestedNode-_lowerValue"/>
       </ownedAttribute>
+      <ownedOperation xmi:id="Node-createCommunicationPath" name="createCommunicationPath">
+        <ownedComment xmi:id="Node-createCommunicationPath-_ownedComment.0" annotatedElement="Node-createCommunicationPath">
+          <body>Creates a (binary) communication path between this node and the specified other node, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this node's nearest package.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="Node-createCommunicationPath-_ownedParameter.0" type="CommunicationPath" direction="return"/>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1IsNavigable" name="end1IsNavigable" type="Boolean" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1IsNavigable-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1IsNavigable">
+            <body>The navigability for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1Aggregation" name="end1Aggregation" type="AggregationKind" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1Aggregation-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1Aggregation">
+            <body>The aggregation for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1Name" name="end1Name" type="String" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1Name-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1Name">
+            <body>The name for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1Lower" name="end1Lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1Lower-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1Lower">
+            <body>The lower bound for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1Upper" name="end1Upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1Upper-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1Upper">
+            <body>The upper bound for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end1Node" name="end1Node" type="Node" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end1Node-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end1Node">
+            <body>The type for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end2IsNavigable" name="end2IsNavigable" type="Boolean" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end2IsNavigable-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end2IsNavigable">
+            <body>The navigability for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end2Aggregation" name="end2Aggregation" type="AggregationKind" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end2Aggregation-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end2Aggregation">
+            <body>The aggregation for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end2Name" name="end2Name" type="String" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end2Name-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end2Name">
+            <body>The name for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end2Lower" name="end2Lower" type="Integer" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end2Lower-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end2Lower">
+            <body>The lower bound for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="Node-createCommunicationPath-end2Upper" name="end2Upper" type="UnlimitedNatural" effect="read">
+          <ownedComment xmi:id="Node-createCommunicationPath-end2Upper-_ownedComment.0" annotatedElement="Node-createCommunicationPath-end2Upper">
+            <body>The upper bound for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="Node-getCommunicationPaths" name="getCommunicationPaths">
+        <ownedComment xmi:id="Node-getCommunicationPaths-_ownedComment.0" annotatedElement="Node-getCommunicationPaths">
+          <body>Retrieves the communication paths in which this node is involved.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="Node-getCommunicationPaths-_ownedParameter.0" type="CommunicationPath" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Node-getCommunicationPaths-_ownedParameter.0-_upperValue" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Node-getCommunicationPaths-_ownedParameter.0-_lowerValue"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="Device" name="Device">
       <ownedComment xmi:id="Device-_ownedComment.0" annotatedElement="Device">
