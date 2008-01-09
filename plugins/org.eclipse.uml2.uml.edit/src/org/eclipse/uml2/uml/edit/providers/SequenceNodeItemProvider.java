@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: SequenceNodeItemProvider.java,v 1.13 2007/08/30 16:14:34 jbruck Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.14 2008/01/09 18:52:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -186,7 +187,7 @@ public class SequenceNodeItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-				
+
 		for (Iterator<Object> childDescriptorIterator = newChildDescriptors
 			.iterator(); childDescriptorIterator.hasNext();) {
 			Object commandParameter = childDescriptorIterator.next();

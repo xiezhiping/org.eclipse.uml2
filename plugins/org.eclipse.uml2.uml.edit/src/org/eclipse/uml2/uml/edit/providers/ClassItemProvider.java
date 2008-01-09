@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: ClassItemProvider.java,v 1.14 2007/03/22 16:46:10 khussey Exp $
+ * $Id: ClassItemProvider.java,v 1.15 2008/01/09 18:52:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -550,15 +551,15 @@ public class ClassItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
+				.createCommunicationPath()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createDevice()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
 				.createExecutionEnvironment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createCommunicationPath()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE

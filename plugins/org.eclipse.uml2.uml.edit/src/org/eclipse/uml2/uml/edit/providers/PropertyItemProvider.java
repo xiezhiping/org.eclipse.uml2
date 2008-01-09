@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208353
+ *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188
  *
- * $Id: PropertyItemProvider.java,v 1.17 2007/11/01 14:46:36 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.18 2008/01/09 18:52:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -89,8 +89,8 @@ public class PropertyItemProvider
 			addEndPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
-//			addTemplateBindingPropertyDescriptor(object);
-//			addOwnedTemplateSignaturePropertyDescriptor(object);
+			//addTemplateBindingPropertyDescriptor(object);
+			//addOwnedTemplateSignaturePropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
@@ -567,10 +567,10 @@ public class PropertyItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures
 				.add(UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT);
-//			childrenFeatures
-//				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
-//			childrenFeatures
-//				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
+			//			childrenFeatures
+			//				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
+			//			childrenFeatures
+			//				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 			childrenFeatures.add(UMLPackage.Literals.PROPERTY__DEFAULT_VALUE);
 			childrenFeatures.add(UMLPackage.Literals.PROPERTY__QUALIFIER);
 		}
