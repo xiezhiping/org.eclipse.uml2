@@ -2101,6 +2101,79 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_h18oENlrEduDKPkA-0jJZg" name="Usage"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_E-7IoKJ9EdywJr5C4uHLKw" name="CommunicationPath"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5YOyUKJ8EdywJr5C4uHLKw" name="Node">
+      <ownedOperation xmi:id="_8asdwKJ8EdywJr5C4uHLKw" name="createCommunicationPath">
+        <ownedComment xmi:id="_8asdwaJ8EdywJr5C4uHLKw" annotatedElement="_8asdwKJ8EdywJr5C4uHLKw">
+          <body>Creates a (binary) communication path between this node and the specified other node, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this node's nearest package.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_8asdwqJ8EdywJr5C4uHLKw" type="_E-7IoKJ9EdywJr5C4uHLKw" direction="return"/>
+        <ownedParameter xmi:id="_8asdw6J8EdywJr5C4uHLKw" name="end1IsNavigable" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asdxKJ8EdywJr5C4uHLKw" annotatedElement="_8asdw6J8EdywJr5C4uHLKw">
+            <body>The navigability for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdxaJ8EdywJr5C4uHLKw" name="end1Aggregation" type="_B3q9cGwNEdq7X4sGURiZYA" effect="read">
+          <ownedComment xmi:id="_8asdxqJ8EdywJr5C4uHLKw" annotatedElement="_8asdxaJ8EdywJr5C4uHLKw">
+            <body>The aggregation for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdx6J8EdywJr5C4uHLKw" name="end1Name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asdyKJ8EdywJr5C4uHLKw" annotatedElement="_8asdx6J8EdywJr5C4uHLKw">
+            <body>The name for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdyaJ8EdywJr5C4uHLKw" name="end1Lower" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asdyqJ8EdywJr5C4uHLKw" annotatedElement="_8asdyaJ8EdywJr5C4uHLKw">
+            <body>The lower bound for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdy6J8EdywJr5C4uHLKw" name="end1Upper" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asdzKJ8EdywJr5C4uHLKw" annotatedElement="_8asdy6J8EdywJr5C4uHLKw">
+            <body>The upper bound for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdzaJ8EdywJr5C4uHLKw" name="end1Node" type="_5YOyUKJ8EdywJr5C4uHLKw" effect="read">
+          <ownedComment xmi:id="_8asdzqJ8EdywJr5C4uHLKw" annotatedElement="_8asdzaJ8EdywJr5C4uHLKw">
+            <body>The type for the first end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asdz6J8EdywJr5C4uHLKw" name="end2IsNavigable" type="_UdivYGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asd0KJ8EdywJr5C4uHLKw" annotatedElement="_8asdz6J8EdywJr5C4uHLKw">
+            <body>The navigability for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asd0aJ8EdywJr5C4uHLKw" name="end2Aggregation" type="_B3q9cGwNEdq7X4sGURiZYA" effect="read">
+          <ownedComment xmi:id="_8asd0qJ8EdywJr5C4uHLKw" annotatedElement="_8asd0aJ8EdywJr5C4uHLKw">
+            <body>The aggregation for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asd06J8EdywJr5C4uHLKw" name="end2Name" type="_aAyVgGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asd1KJ8EdywJr5C4uHLKw" annotatedElement="_8asd06J8EdywJr5C4uHLKw">
+            <body>The name for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asd1aJ8EdywJr5C4uHLKw" name="end2Lower" type="_XqvEIGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asd1qJ8EdywJr5C4uHLKw" annotatedElement="_8asd1aJ8EdywJr5C4uHLKw">
+            <body>The lower bound for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+        <ownedParameter xmi:id="_8asd16J8EdywJr5C4uHLKw" name="end2Upper" type="_dRZxsGvsEdqG6fBIPwe-mw" effect="read">
+          <ownedComment xmi:id="_8asd2KJ8EdywJr5C4uHLKw" annotatedElement="_8asd16J8EdywJr5C4uHLKw">
+            <body>The upper bound for the second end of the new communication path.</body>
+          </ownedComment>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="_8asd2aJ8EdywJr5C4uHLKw" name="getCommunicationPaths">
+        <ownedComment xmi:id="_8asd2qJ8EdywJr5C4uHLKw" annotatedElement="_8asd2aJ8EdywJr5C4uHLKw">
+          <body>Retrieves the communication paths in which this node is involved.</body>
+        </ownedComment>
+        <ownedParameter xmi:id="_8asd26J8EdywJr5C4uHLKw" type="_E-7IoKJ9EdywJr5C4uHLKw" direction="return">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8asd3KJ8EdywJr5C4uHLKw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8asd3aJ8EdywJr5C4uHLKw"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
     <profileApplication xmi:id="_o8I_umvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_o8I_u2vaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>

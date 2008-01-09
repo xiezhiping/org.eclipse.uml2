@@ -4923,7 +4923,7 @@
       <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class #//Namespace">
+  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class">
     <eOperations name="createOwnedClass" ordered="false" lowerBound="1" eType="#//Class">
       <eParameters name="name" ordered="false" lowerBound="1" eType="#//String"/>
       <eParameters name="isAbstract" ordered="false" lowerBound="1" eType="#//Boolean"/>
@@ -4972,13 +4972,25 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="createCommunicationPath" ordered="false" lowerBound="1" eType="#//CommunicationPath">
+      <eParameters name="end1IsNavigable" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="end1Aggregation" ordered="false" lowerBound="1" eType="#//AggregationKind"/>
+      <eParameters name="end1Name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="end1Lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="end1Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+      <eParameters name="end1Node" ordered="false" lowerBound="1" eType="#//Node"/>
+      <eParameters name="end2IsNavigable" ordered="false" lowerBound="1" eType="#//Boolean"/>
+      <eParameters name="end2Aggregation" ordered="false" lowerBound="1" eType="#//AggregationKind"/>
+      <eParameters name="end2Name" ordered="false" lowerBound="1" eType="#//String"/>
+      <eParameters name="end2Lower" ordered="false" lowerBound="1" eType="#//Integer"/>
+      <eParameters name="end2Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    </eOperations>
+    <eOperations name="getCommunicationPaths" ordered="false" upperBound="-1" eType="#//CommunicationPath"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedNode" ordered="false"
         upperBound="-1" eType="#//Node" containment="true">
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//Node"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironment" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationPath" eSuperTypes="#//Association">
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="association_ends" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -4993,6 +5005,8 @@
       </contents>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//Node"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironment" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment" eSuperTypes="#//InteractionFragment">
     <eOperations name="opt_loop_break_neg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eParameters name="diagnostics" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDiagnosticChain"/>

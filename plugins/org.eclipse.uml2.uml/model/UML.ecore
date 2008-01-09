@@ -10993,7 +10993,7 @@
       <eAnnotations source="subsets" references="#//Dependency/supplier"/>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class #//Namespace">
+  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//Class">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.&#xD;&#xA;In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts."/>
     </eAnnotations>
@@ -11122,6 +11122,71 @@
         </eGenericType>
       </eParameters>
     </eOperations>
+    <eOperations name="createCommunicationPath" ordered="false" lowerBound="1" eType="#//CommunicationPath">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Creates a (binary) communication path between this node and the specified other node, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this node's nearest package."/>
+      </eAnnotations>
+      <eParameters name="end1IsNavigable" ordered="false" lowerBound="1" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The navigability for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end1Aggregation" ordered="false" lowerBound="1" eType="#//AggregationKind">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The aggregation for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end1Name" ordered="false" lowerBound="1" eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The name for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end1Lower" ordered="false" lowerBound="1" eType="#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The lower bound for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end1Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The upper bound for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end1Node" ordered="false" lowerBound="1" eType="#//Node">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The type for the first end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end2IsNavigable" ordered="false" lowerBound="1" eType="#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The navigability for the second end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end2Aggregation" ordered="false" lowerBound="1" eType="#//AggregationKind">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The aggregation for the second end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end2Name" ordered="false" lowerBound="1" eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The name for the second end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end2Lower" ordered="false" lowerBound="1" eType="#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The lower bound for the second end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+      <eParameters name="end2Upper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The upper bound for the second end of the new communication path."/>
+        </eAnnotations>
+      </eParameters>
+    </eOperations>
+    <eOperations name="getCommunicationPaths" ordered="false" upperBound="-1" eType="#//CommunicationPath">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Retrieves the communication paths in which this node is involved."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedNode" ordered="false"
         upperBound="-1" eType="#//Node" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -11129,16 +11194,6 @@
       </eAnnotations>
       <eAnnotations source="subsets" references="#//Namespace/ownedMember"/>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//Node">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices)."/>
-    </eAnnotations>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironment" eSuperTypes="#//Node">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts."/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CommunicationPath" eSuperTypes="#//Association">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -11165,6 +11220,16 @@
           </eGenericType>
         </eParameters>
       </contents>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Device" eSuperTypes="#//Node">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices)."/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnvironment" eSuperTypes="#//Node">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts."/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment" eSuperTypes="#//InteractionFragment">

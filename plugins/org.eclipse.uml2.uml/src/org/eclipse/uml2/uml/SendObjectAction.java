@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: SendObjectAction.java,v 1.8 2007/10/23 16:12:31 jbruck Exp $
+ * $Id: SendObjectAction.java,v 1.9 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -101,7 +102,7 @@ public interface SendObjectAction
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.InvocationAction#getArguments() <em>Argument</em>}'</li>
 	 * </ul>
-	 * </p>       
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

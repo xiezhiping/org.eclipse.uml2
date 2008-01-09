@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: TypeOperations.java,v 1.16 2007/05/03 21:11:52 khussey Exp $
+ * $Id: TypeOperations.java,v 1.17 2008/01/09 18:56:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -16,6 +17,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -195,6 +197,17 @@ public class TypeOperations
 			String end1Name, int end1Lower, int end1Upper, Type end1Type,
 			boolean end2IsNavigable, AggregationKind end2Aggregation,
 			String end2Name, int end2Lower, int end2Upper) {
+		return createAssociation(type, end1IsNavigable, end1Aggregation,
+			end1Name, end1Lower, end1Upper, end1Type, end2IsNavigable,
+			end2Aggregation, end2Name, end2Lower, end2Upper,
+			UMLPackage.Literals.ASSOCIATION);
+	}
+
+	protected static Association createAssociation(Type type,
+			boolean end1IsNavigable, AggregationKind end1Aggregation,
+			String end1Name, int end1Lower, int end1Upper, Type end1Type,
+			boolean end2IsNavigable, AggregationKind end2Aggregation,
+			String end2Name, int end2Lower, int end2Upper, EClass eClass) {
 		validateTypeAndBounds(end1Type, end1Lower, end1Upper);
 
 		validateTypeAndBounds(type, end2Lower, end2Upper);
@@ -214,7 +227,7 @@ public class TypeOperations
 		}
 
 		Association association = (Association) package_.createOwnedType(null,
-			UMLPackage.Literals.ASSOCIATION);
+			eClass);
 
 		createAssociationEnd(type, association, end1IsNavigable,
 			end1Aggregation, end1Name, end1Lower, end1Upper, end1Type);

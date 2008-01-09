@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Namespace.java,v 1.15 2007/10/23 15:54:22 jbruck Exp $
+ * $Id: Namespace.java,v 1.16 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -240,7 +241,7 @@ public interface Namespace
 	/**
 	 * Returns the value of the '<em><b>Member</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.NamedElement}.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -334,7 +335,7 @@ public interface Namespace
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
 	 * </p>
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

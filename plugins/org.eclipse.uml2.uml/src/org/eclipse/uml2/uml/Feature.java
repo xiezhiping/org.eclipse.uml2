@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Feature.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
+ * $Id: Feature.java,v 1.12 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -70,7 +71,7 @@ public interface Feature
 	 * Returns the value of the '<em><b>Featuring Classifier</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Classifier#getFeatures <em>Feature</em>}'.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

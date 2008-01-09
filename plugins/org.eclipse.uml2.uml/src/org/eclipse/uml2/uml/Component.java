@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.23 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: Component.java,v 1.24 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Component
-		extends org.eclipse.uml2.uml.Class, Namespace {
+		extends org.eclipse.uml2.uml.Class {
 
 	/**
 	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLFactoryImpl.java,v 1.18 2007/05/04 20:35:34 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.19 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -542,12 +543,12 @@ public class UMLFactoryImpl
 				return createComponent();
 			case UMLPackage.NODE :
 				return createNode();
+			case UMLPackage.COMMUNICATION_PATH :
+				return createCommunicationPath();
 			case UMLPackage.DEVICE :
 				return createDevice();
 			case UMLPackage.EXECUTION_ENVIRONMENT :
 				return createExecutionEnvironment();
-			case UMLPackage.COMMUNICATION_PATH :
-				return createCommunicationPath();
 			case UMLPackage.COMBINED_FRAGMENT :
 				return createCombinedFragment();
 			case UMLPackage.CONTINUATION :

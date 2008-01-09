@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLAdapterFactory.java,v 1.11 2007/05/04 20:35:33 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.12 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -317,7 +318,7 @@ public class UMLAdapterFactory
 	}
 
 	/**
-	 * The switch the delegates to the <code>createXXX</code> methods.
+	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1199,6 +1200,11 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseCommunicationPath(CommunicationPath object) {
+			return createCommunicationPathAdapter();
+		}
+
+		@Override
 		public Adapter caseDevice(Device object) {
 			return createDeviceAdapter();
 		}
@@ -1206,11 +1212,6 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseExecutionEnvironment(ExecutionEnvironment object) {
 			return createExecutionEnvironmentAdapter();
-		}
-
-		@Override
-		public Adapter caseCommunicationPath(CommunicationPath object) {
-			return createCommunicationPathAdapter();
 		}
 
 		@Override

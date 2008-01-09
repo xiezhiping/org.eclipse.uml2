@@ -3271,10 +3271,25 @@
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/internal_structure/diagnostics"/>
         <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/internal_structure/context"/>
       </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Node/createCommunicationPath">
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1IsNavigable"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1Aggregation"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1Name"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1Lower"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1Upper"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end1Node"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end2IsNavigable"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end2Aggregation"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end2Name"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end2Lower"/>
+        <genParameters xsi:type="genmodel:GenParameter" ecoreParameter="UML.ecore#//Node/createCommunicationPath/end2Upper"/>
+      </genOperations>
+      <genOperations xsi:type="genmodel:GenOperation" ecoreOperation="UML.ecore#//Node/getCommunicationPaths"
+          cacheAdapterScope="Global"/>
     </genClasses>
+    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CommunicationPath"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//Device"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//ExecutionEnvironment"/>
-    <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CommunicationPath"/>
     <genClasses xsi:type="genmodel:GenClass" ecoreClass="UML.ecore#//CombinedFragment">
       <genFeatures xsi:type="genmodel:GenFeature" createChild="false" ecoreFeature="ecore:EAttribute UML.ecore#//CombinedFragment/interactionOperator"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

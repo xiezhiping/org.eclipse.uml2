@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: ActivityGroup.java,v 1.16 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: ActivityGroup.java,v 1.17 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -57,7 +58,7 @@ public interface ActivityGroup
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
 	 * </p>
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -80,7 +81,7 @@ public interface ActivityGroup
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -98,7 +99,7 @@ public interface ActivityGroup
 	 * Returns the value of the '<em><b>Contained Node</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityNode}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}'.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -173,7 +174,7 @@ public interface ActivityGroup
 	 * Returns the value of the '<em><b>Contained Edge</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityEdge}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}'.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

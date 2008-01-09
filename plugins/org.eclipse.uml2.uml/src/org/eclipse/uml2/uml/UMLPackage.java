@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208353
+ *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188
  *
- * $Id: UMLPackage.java,v 1.28 2007/11/01 14:47:34 khussey Exp $
+ * $Id: UMLPackage.java,v 1.29 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -39655,7 +39655,423 @@ public interface UMLPackage
 	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getDevice()
 	 * @generated
 	 */
-	int DEVICE = 172;
+	int DEVICE = 173;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExecutionEnvironmentImpl <em>Execution Environment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.ExecutionEnvironmentImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExecutionEnvironment()
+	 * @generated
+	 */
+	int EXECUTION_ENVIRONMENT = 174;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CommunicationPathImpl <em>Communication Path</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.internal.impl.CommunicationPathImpl
+	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCommunicationPath()
+	 * @generated
+	 */
+	int COMMUNICATION_PATH = 172;
+
+	/**
+	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__EANNOTATIONS = ASSOCIATION__EANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_ELEMENT = ASSOCIATION__OWNED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNER = ASSOCIATION__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_COMMENT = ASSOCIATION__OWNED_COMMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAME = ASSOCIATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__VISIBILITY = ASSOCIATION__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__QUALIFIED_NAME = ASSOCIATION__QUALIFIED_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__CLIENT_DEPENDENCY = ASSOCIATION__CLIENT_DEPENDENCY;
+
+	/**
+	 * The feature id for the '<em><b>Namespace</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAMESPACE = ASSOCIATION__NAMESPACE;
+
+	/**
+	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAME_EXPRESSION = ASSOCIATION__NAME_EXPRESSION;
+
+	/**
+	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__ELEMENT_IMPORT = ASSOCIATION__ELEMENT_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__PACKAGE_IMPORT = ASSOCIATION__PACKAGE_IMPORT;
+
+	/**
+	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_RULE = ASSOCIATION__OWNED_RULE;
+
+	/**
+	 * The feature id for the '<em><b>Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__MEMBER = ASSOCIATION__MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IMPORTED_MEMBER = ASSOCIATION__IMPORTED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Owned Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_MEMBER = ASSOCIATION__OWNED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_LEAF = ASSOCIATION__IS_LEAF;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REDEFINED_ELEMENT = ASSOCIATION__REDEFINED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REDEFINITION_CONTEXT = ASSOCIATION__REDEFINITION_CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNING_TEMPLATE_PARAMETER = ASSOCIATION__OWNING_TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__TEMPLATE_PARAMETER = ASSOCIATION__TEMPLATE_PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__PACKAGE = ASSOCIATION__PACKAGE;
+
+	/**
+	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__TEMPLATE_BINDING = ASSOCIATION__TEMPLATE_BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_TEMPLATE_SIGNATURE = ASSOCIATION__OWNED_TEMPLATE_SIGNATURE;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_ABSTRACT = ASSOCIATION__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__GENERALIZATION = ASSOCIATION__GENERALIZATION;
+
+	/**
+	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__POWERTYPE_EXTENT = ASSOCIATION__POWERTYPE_EXTENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__FEATURE = ASSOCIATION__FEATURE;
+
+	/**
+	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__INHERITED_MEMBER = ASSOCIATION__INHERITED_MEMBER;
+
+	/**
+	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REDEFINED_CLASSIFIER = ASSOCIATION__REDEFINED_CLASSIFIER;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__GENERAL = ASSOCIATION__GENERAL;
+
+	/**
+	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
+
+	/**
+	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__ATTRIBUTE = ASSOCIATION__ATTRIBUTE;
+
+	/**
+	 * The feature id for the '<em><b>Representation</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__REPRESENTATION = ASSOCIATION__REPRESENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Collaboration Use</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__COLLABORATION_USE = ASSOCIATION__COLLABORATION_USE;
+
+	/**
+	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_USE_CASE = ASSOCIATION__OWNED_USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__USE_CASE = ASSOCIATION__USE_CASE;
+
+	/**
+	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__RELATED_ELEMENT = ASSOCIATION__RELATED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__OWNED_END = ASSOCIATION__OWNED_END;
+
+	/**
+	 * The feature id for the '<em><b>Member End</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__MEMBER_END = ASSOCIATION__MEMBER_END;
+
+	/**
+	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__IS_DERIVED = ASSOCIATION__IS_DERIVED;
+
+	/**
+	 * The feature id for the '<em><b>End Type</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__END_TYPE = ASSOCIATION__END_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Navigable Owned End</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH__NAVIGABLE_OWNED_END = ASSOCIATION__NAVIGABLE_OWNED_END;
+
+	/**
+	 * The number of structural features of the '<em>Communication Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_PATH_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -40162,16 +40578,6 @@ public interface UMLPackage
 	int DEVICE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.ExecutionEnvironmentImpl <em>Execution Environment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.ExecutionEnvironmentImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getExecutionEnvironment()
-	 * @generated
-	 */
-	int EXECUTION_ENVIRONMENT = 173;
-
-	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40674,412 +41080,6 @@ public interface UMLPackage
 	 * @ordered
 	 */
 	int EXECUTION_ENVIRONMENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.uml2.uml.internal.impl.CommunicationPathImpl <em>Communication Path</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.internal.impl.CommunicationPathImpl
-	 * @see org.eclipse.uml2.uml.internal.impl.UMLPackageImpl#getCommunicationPath()
-	 * @generated
-	 */
-	int COMMUNICATION_PATH = 174;
-
-	/**
-	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__EANNOTATIONS = ASSOCIATION__EANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Owned Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_ELEMENT = ASSOCIATION__OWNED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owner</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNER = ASSOCIATION__OWNER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_COMMENT = ASSOCIATION__OWNED_COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAME = ASSOCIATION__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__VISIBILITY = ASSOCIATION__VISIBILITY;
-
-	/**
-	 * The feature id for the '<em><b>Qualified Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__QUALIFIED_NAME = ASSOCIATION__QUALIFIED_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Client Dependency</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__CLIENT_DEPENDENCY = ASSOCIATION__CLIENT_DEPENDENCY;
-
-	/**
-	 * The feature id for the '<em><b>Namespace</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAMESPACE = ASSOCIATION__NAMESPACE;
-
-	/**
-	 * The feature id for the '<em><b>Name Expression</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAME_EXPRESSION = ASSOCIATION__NAME_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Element Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__ELEMENT_IMPORT = ASSOCIATION__ELEMENT_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Package Import</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__PACKAGE_IMPORT = ASSOCIATION__PACKAGE_IMPORT;
-
-	/**
-	 * The feature id for the '<em><b>Owned Rule</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_RULE = ASSOCIATION__OWNED_RULE;
-
-	/**
-	 * The feature id for the '<em><b>Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__MEMBER = ASSOCIATION__MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Imported Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IMPORTED_MEMBER = ASSOCIATION__IMPORTED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Owned Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_MEMBER = ASSOCIATION__OWNED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Is Leaf</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_LEAF = ASSOCIATION__IS_LEAF;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REDEFINED_ELEMENT = ASSOCIATION__REDEFINED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Redefinition Context</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REDEFINITION_CONTEXT = ASSOCIATION__REDEFINITION_CONTEXT;
-
-	/**
-	 * The feature id for the '<em><b>Owning Template Parameter</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNING_TEMPLATE_PARAMETER = ASSOCIATION__OWNING_TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Template Parameter</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__TEMPLATE_PARAMETER = ASSOCIATION__TEMPLATE_PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__PACKAGE = ASSOCIATION__PACKAGE;
-
-	/**
-	 * The feature id for the '<em><b>Template Binding</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__TEMPLATE_BINDING = ASSOCIATION__TEMPLATE_BINDING;
-
-	/**
-	 * The feature id for the '<em><b>Owned Template Signature</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_TEMPLATE_SIGNATURE = ASSOCIATION__OWNED_TEMPLATE_SIGNATURE;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_ABSTRACT = ASSOCIATION__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Generalization</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__GENERALIZATION = ASSOCIATION__GENERALIZATION;
-
-	/**
-	 * The feature id for the '<em><b>Powertype Extent</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__POWERTYPE_EXTENT = ASSOCIATION__POWERTYPE_EXTENT;
-
-	/**
-	 * The feature id for the '<em><b>Feature</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__FEATURE = ASSOCIATION__FEATURE;
-
-	/**
-	 * The feature id for the '<em><b>Inherited Member</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__INHERITED_MEMBER = ASSOCIATION__INHERITED_MEMBER;
-
-	/**
-	 * The feature id for the '<em><b>Redefined Classifier</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REDEFINED_CLASSIFIER = ASSOCIATION__REDEFINED_CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>General</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__GENERAL = ASSOCIATION__GENERAL;
-
-	/**
-	 * The feature id for the '<em><b>Substitution</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__SUBSTITUTION = ASSOCIATION__SUBSTITUTION;
-
-	/**
-	 * The feature id for the '<em><b>Attribute</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__ATTRIBUTE = ASSOCIATION__ATTRIBUTE;
-
-	/**
-	 * The feature id for the '<em><b>Representation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__REPRESENTATION = ASSOCIATION__REPRESENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Collaboration Use</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__COLLABORATION_USE = ASSOCIATION__COLLABORATION_USE;
-
-	/**
-	 * The feature id for the '<em><b>Owned Use Case</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_USE_CASE = ASSOCIATION__OWNED_USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Use Case</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__USE_CASE = ASSOCIATION__USE_CASE;
-
-	/**
-	 * The feature id for the '<em><b>Related Element</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__RELATED_ELEMENT = ASSOCIATION__RELATED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Owned End</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__OWNED_END = ASSOCIATION__OWNED_END;
-
-	/**
-	 * The feature id for the '<em><b>Member End</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__MEMBER_END = ASSOCIATION__MEMBER_END;
-
-	/**
-	 * The feature id for the '<em><b>Is Derived</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__IS_DERIVED = ASSOCIATION__IS_DERIVED;
-
-	/**
-	 * The feature id for the '<em><b>End Type</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__END_TYPE = ASSOCIATION__END_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Navigable Owned End</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH__NAVIGABLE_OWNED_END = ASSOCIATION__NAVIGABLE_OWNED_END;
-
-	/**
-	 * The number of structural features of the '<em>Communication Path</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_PATH_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.

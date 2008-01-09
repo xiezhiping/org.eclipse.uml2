@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Element.java,v 1.19 2007/10/23 15:54:22 jbruck Exp $
+ * $Id: Element.java,v 1.20 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -52,7 +53,7 @@ public interface Element
 	 * Returns the value of the '<em><b>Owned Element</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Element}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Element#getOwner <em>Owner</em>}'.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -69,7 +70,7 @@ public interface Element
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Element#getOwnedElements <em>Owned Element</em>}'.
-	 * This feature is a derived union.   
+	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

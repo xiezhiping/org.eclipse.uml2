@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLValidator.java,v 1.22 2007/06/07 15:18:40 khussey Exp $
+ * $Id: UMLValidator.java,v 1.23 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4059,14 +4060,14 @@ public class UMLValidator
 					context);
 			case UMLPackage.NODE :
 				return validateNode((Node) value, diagnostics, context);
+			case UMLPackage.COMMUNICATION_PATH :
+				return validateCommunicationPath((CommunicationPath) value,
+					diagnostics, context);
 			case UMLPackage.DEVICE :
 				return validateDevice((Device) value, diagnostics, context);
 			case UMLPackage.EXECUTION_ENVIRONMENT :
 				return validateExecutionEnvironment(
 					(ExecutionEnvironment) value, diagnostics, context);
-			case UMLPackage.COMMUNICATION_PATH :
-				return validateCommunicationPath((CommunicationPath) value,
-					diagnostics, context);
 			case UMLPackage.COMBINED_FRAGMENT :
 				return validateCombinedFragment((CombinedFragment) value,
 					diagnostics, context);

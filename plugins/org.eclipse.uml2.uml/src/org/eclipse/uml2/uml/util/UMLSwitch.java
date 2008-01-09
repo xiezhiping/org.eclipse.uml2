@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLSwitch.java,v 1.16 2007/06/12 21:35:17 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.17 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3771,19 +3772,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseClass(component);
 				if (result == null)
-					result = caseNamespace(component);
-				if (result == null)
 					result = caseEncapsulatedClassifier(component);
 				if (result == null)
 					result = caseBehavioredClassifier(component);
-				if (result == null)
-					result = caseNamedElement(component);
 				if (result == null)
 					result = caseStructuredClassifier(component);
 				if (result == null)
 					result = caseClassifier(component);
 				if (result == null)
-					result = caseElement(component);
+					result = caseNamespace(component);
 				if (result == null)
 					result = caseRedefinableElement(component);
 				if (result == null)
@@ -3791,11 +3788,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(component);
 				if (result == null)
-					result = caseEModelElement(component);
+					result = caseNamedElement(component);
 				if (result == null)
 					result = casePackageableElement(component);
 				if (result == null)
+					result = caseElement(component);
+				if (result == null)
 					result = caseParameterableElement(component);
+				if (result == null)
+					result = caseEModelElement(component);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3833,6 +3834,37 @@ public class UMLSwitch<T> {
 					result = casePackageableElement(node);
 				if (result == null)
 					result = caseParameterableElement(node);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.COMMUNICATION_PATH : {
+				CommunicationPath communicationPath = (CommunicationPath) theEObject;
+				T result = caseCommunicationPath(communicationPath);
+				if (result == null)
+					result = caseAssociation(communicationPath);
+				if (result == null)
+					result = caseClassifier(communicationPath);
+				if (result == null)
+					result = caseRelationship(communicationPath);
+				if (result == null)
+					result = caseNamespace(communicationPath);
+				if (result == null)
+					result = caseRedefinableElement(communicationPath);
+				if (result == null)
+					result = caseType(communicationPath);
+				if (result == null)
+					result = caseTemplateableElement(communicationPath);
+				if (result == null)
+					result = caseElement(communicationPath);
+				if (result == null)
+					result = caseNamedElement(communicationPath);
+				if (result == null)
+					result = casePackageableElement(communicationPath);
+				if (result == null)
+					result = caseEModelElement(communicationPath);
+				if (result == null)
+					result = caseParameterableElement(communicationPath);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3911,37 +3943,6 @@ public class UMLSwitch<T> {
 					result = casePackageableElement(executionEnvironment);
 				if (result == null)
 					result = caseParameterableElement(executionEnvironment);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.COMMUNICATION_PATH : {
-				CommunicationPath communicationPath = (CommunicationPath) theEObject;
-				T result = caseCommunicationPath(communicationPath);
-				if (result == null)
-					result = caseAssociation(communicationPath);
-				if (result == null)
-					result = caseClassifier(communicationPath);
-				if (result == null)
-					result = caseRelationship(communicationPath);
-				if (result == null)
-					result = caseNamespace(communicationPath);
-				if (result == null)
-					result = caseRedefinableElement(communicationPath);
-				if (result == null)
-					result = caseType(communicationPath);
-				if (result == null)
-					result = caseTemplateableElement(communicationPath);
-				if (result == null)
-					result = caseElement(communicationPath);
-				if (result == null)
-					result = caseNamedElement(communicationPath);
-				if (result == null)
-					result = casePackageableElement(communicationPath);
-				if (result == null)
-					result = caseEModelElement(communicationPath);
-				if (result == null)
-					result = caseParameterableElement(communicationPath);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

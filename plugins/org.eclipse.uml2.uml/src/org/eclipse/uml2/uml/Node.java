@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Node.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: Node.java,v 1.11 2008/01/09 18:56:02 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -128,5 +129,42 @@ public interface Node
 	 */
 	boolean validateInternalStructure(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Creates a (binary) communication path between this node and the specified other node, with the specified navigabilities, aggregations, names, lower bounds, and upper bounds, and owned by this node's nearest package.
+	 * @param end1IsNavigable The navigability for the first end of the new communication path.
+	 * @param end1Aggregation The aggregation for the first end of the new communication path.
+	 * @param end1Name The name for the first end of the new communication path.
+	 * @param end1Lower The lower bound for the first end of the new communication path.
+	 * @param end1Upper The upper bound for the first end of the new communication path.
+	 * @param end1Node The type for the first end of the new communication path.
+	 * @param end2IsNavigable The navigability for the second end of the new communication path.
+	 * @param end2Aggregation The aggregation for the second end of the new communication path.
+	 * @param end2Name The name for the second end of the new communication path.
+	 * @param end2Lower The lower bound for the second end of the new communication path.
+	 * @param end2Upper The upper bound for the second end of the new communication path.
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.uml.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.uml.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1NodeRequired="true" end1NodeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.uml.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.uml.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
+	 * @generated
+	 */
+	CommunicationPath createCommunicationPath(boolean end1IsNavigable,
+			AggregationKind end1Aggregation, String end1Name, int end1Lower,
+			int end1Upper, Node end1Node, boolean end2IsNavigable,
+			AggregationKind end2Aggregation, String end2Name, int end2Lower,
+			int end2Upper);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Retrieves the communication paths in which this node is involved.
+	 * <!-- end-model-doc -->
+	 * @model kind="operation" ordered="false"
+	 * @generated
+	 */
+	EList<CommunicationPath> getCommunicationPaths();
 
 } // Node

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: NodeImpl.java,v 1.30 2007/04/25 17:47:03 khussey Exp $
+ * $Id: NodeImpl.java,v 1.31 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,10 +36,12 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.CommunicationPath;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Dependency;
@@ -378,6 +381,42 @@ public class NodeImpl
 			Map<Object, Object> context) {
 		return NodeOperations.validateInternalStructure(this, diagnostics,
 			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CommunicationPath createCommunicationPath(boolean end1IsNavigable,
+			AggregationKind end1Aggregation, String end1Name, int end1Lower,
+			int end1Upper, Node end1Node, boolean end2IsNavigable,
+			AggregationKind end2Aggregation, String end2Name, int end2Lower,
+			int end2Upper) {
+		return NodeOperations.createCommunicationPath(this, end1IsNavigable,
+			end1Aggregation, end1Name, end1Lower, end1Upper, end1Node,
+			end2IsNavigable, end2Aggregation, end2Name, end2Lower, end2Upper);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CommunicationPath> getCommunicationPaths() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			@SuppressWarnings("unchecked")
+			EList<CommunicationPath> result = (EList<CommunicationPath>) cache
+				.get(this, UMLPackage.Literals.NODE.getEOperations().get(2));
+			if (result == null) {
+				cache.put(this, UMLPackage.Literals.NODE.getEOperations()
+					.get(2), result = NodeOperations
+					.getCommunicationPaths(this));
+			}
+			return result;
+		}
+		return NodeOperations.getCommunicationPaths(this);
 	}
 
 	/**

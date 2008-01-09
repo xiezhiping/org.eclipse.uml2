@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLPackageImpl.java,v 1.20 2007/05/04 20:35:34 khussey Exp $
+ * $Id: UMLPackageImpl.java,v 1.21 2008/01/09 18:56:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -10517,7 +10518,7 @@ public class UMLPackageImpl
 	public EClass getDevice() {
 		if (deviceEClass == null) {
 			deviceEClass = (EClass) EPackage.Registry.INSTANCE.getEPackage(
-				UMLPackage.eNS_URI).getEClassifiers().get(187);
+				UMLPackage.eNS_URI).getEClassifiers().get(188);
 		}
 		return deviceEClass;
 	}
@@ -10530,7 +10531,7 @@ public class UMLPackageImpl
 	public EClass getExecutionEnvironment() {
 		if (executionEnvironmentEClass == null) {
 			executionEnvironmentEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(188);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(189);
 		}
 		return executionEnvironmentEClass;
 	}
@@ -10543,7 +10544,7 @@ public class UMLPackageImpl
 	public EClass getCommunicationPath() {
 		if (communicationPathEClass == null) {
 			communicationPathEClass = (EClass) EPackage.Registry.INSTANCE
-				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(189);
+				.getEPackage(UMLPackage.eNS_URI).getEClassifiers().get(187);
 		}
 		return communicationPathEClass;
 	}
