@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PortOperations.java,v 1.14 2007/05/03 21:11:53 khussey Exp $
+ * $Id: PortOperations.java,v 1.15 2008/01/14 20:48:06 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -239,7 +239,7 @@ public class PortOperations
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
 
-		if (type instanceof Classifier && !(type instanceof Interface)) {
+		if (type instanceof Classifier) {
 			Classifier classifier = (Classifier) port.getType();
 			ComponentOperations.usedInterfaces(null, classifier, false,
 				requireds);
