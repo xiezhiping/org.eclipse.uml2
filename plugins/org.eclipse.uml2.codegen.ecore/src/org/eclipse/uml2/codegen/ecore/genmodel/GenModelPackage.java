@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: GenModelPackage.java,v 1.28 2008/01/08 21:48:40 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.29 2008/01/15 22:00:06 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1183,6 +1183,33 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__OPTIMIZED_HAS_CHILDREN = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__OPTIMIZED_HAS_CHILDREN;
+
+	/**
+	 * The feature id for the '<em><b>Table Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__TABLE_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__TABLE_PROVIDERS;
+
+	/**
+	 * The feature id for the '<em><b>Color Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__COLOR_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__COLOR_PROVIDERS;
+
+	/**
+	 * The feature id for the '<em><b>Font Providers</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__FONT_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FONT_PROVIDERS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
