@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418
  *
- * $Id: UMLEditor.java,v 1.37 2008/01/08 22:54:20 khussey Exp $
+ * $Id: UMLEditor.java,v 1.38 2008/01/16 01:30:35 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1061,8 +1061,9 @@ public class UMLEditor
 			selectionViewer
 				.setContentProvider(new AdapterFactoryContentProvider(
 					adapterFactory));
-			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-				adapterFactory));
+			selectionViewer
+				.setLabelProvider(new AdapterFactoryLabelProvider.FontAndColorProvider(
+					adapterFactory, selectionViewer));
 			selectionViewer.setInput(editingDomain.getResourceSet());
 			selectionViewer.setSelection(new StructuredSelection(editingDomain
 				.getResourceSet().getResources().get(0)), true);
@@ -1205,8 +1206,8 @@ public class UMLEditor
 						.setContentProvider(new AdapterFactoryContentProvider(
 							adapterFactory));
 					contentOutlineViewer
-						.setLabelProvider(new AdapterFactoryLabelProvider(
-							adapterFactory));
+						.setLabelProvider(new AdapterFactoryLabelProvider.FontAndColorProvider(
+							adapterFactory, contentOutlineViewer));
 					contentOutlineViewer.setInput(editingDomain
 						.getResourceSet());
 
