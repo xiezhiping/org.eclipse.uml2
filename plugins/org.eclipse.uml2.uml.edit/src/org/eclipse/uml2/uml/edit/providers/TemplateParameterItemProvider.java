@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418
  *
- * $Id: TemplateParameterItemProvider.java,v 1.17 2008/01/09 18:52:34 khussey Exp $
+ * $Id: TemplateParameterItemProvider.java,v 1.18 2008/01/16 01:30:06 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -30,6 +30,8 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -39,6 +41,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -54,7 +57,8 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 public class TemplateParameterItemProvider
 		extends ElementItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		IItemColorProvider, IItemFontProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -1018,6 +1022,15 @@ public class TemplateParameterItemProvider
 				value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
+	}
+
+	@Override
+	public Object getForeground(Object object) {
+		ParameterableElement parameteredElement = ((TemplateParameter) object)
+			.getParameteredElement();
+		return parameteredElement != null && parameteredElement.eIsProxy()
+			? IItemColorProvider.GRAYED_OUT_COLOR
+			: super.getForeground(object);
 	}
 
 }

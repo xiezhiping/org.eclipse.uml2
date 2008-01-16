@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.22 2008/01/09 18:52:34 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.23 2008/01/16 01:30:07 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -28,6 +28,8 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
@@ -87,6 +89,8 @@ public class UMLItemProviderAdapterFactory
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemColorProvider.class);
+		supportedTypes.add(IItemFontProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
 
 		supportedTypes.add(IItemQualifiedTextProvider.class);

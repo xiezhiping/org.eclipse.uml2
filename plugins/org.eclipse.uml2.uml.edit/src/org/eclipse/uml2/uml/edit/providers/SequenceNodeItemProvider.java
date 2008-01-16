@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418
  *
- * $Id: SequenceNodeItemProvider.java,v 1.14 2008/01/09 18:52:34 khussey Exp $
+ * $Id: SequenceNodeItemProvider.java,v 1.15 2008/01/16 01:30:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -48,7 +50,8 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 public class SequenceNodeItemProvider
 		extends StructuredActivityNodeItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		IItemColorProvider, IItemFontProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.

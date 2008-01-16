@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 215418
  *
- * $Id: ManifestationItemProvider.java,v 1.9 2007/03/22 16:46:12 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.10 2008/01/16 01:30:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -29,6 +30,8 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemColorProvider;
+import org.eclipse.emf.edit.provider.IItemFontProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -43,6 +46,7 @@ import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.common.util.UML2Util;
 
 import org.eclipse.uml2.uml.Manifestation;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.eclipse.uml2.uml.edit.UMLEditPlugin;
@@ -56,7 +60,8 @@ import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 public class ManifestationItemProvider
 		extends AbstractionItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
+		IItemColorProvider, IItemFontProvider {
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -238,6 +243,17 @@ public class ManifestationItemProvider
 				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
+	}
+
+	@Override
+	public Object getForeground(Object object) {
+		Manifestation manifestation = (Manifestation) object;
+		PackageableElement utilizedElement = manifestation.getUtilizedElement();
+		return utilizedElement != null && utilizedElement.eIsProxy()
+			? IItemColorProvider.GRAYED_OUT_COLOR
+			: (manifestation.eIsProxy()
+				? IItemColorProvider.GRAYED_OUT_COLOR
+				: null);
 	}
 
 }
