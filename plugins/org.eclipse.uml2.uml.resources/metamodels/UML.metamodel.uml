@@ -15725,359 +15725,398 @@ define a collating sequence between operands and subexpressions).
   <Ecore:EAttribute xmi:id="_LWfJRd7NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="OpaqueBehavior-body"/>
   <Ecore:EGenericType xmi:id="_PUkIYN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EJavaObject_EJavaObject"/>
   <Ecore:EGenericType xmi:id="_QfhfoN7NEduglsXU_NKRsA" base_DataType="Profile-EMap_EString_EString"/>
-  <Ecore:EReference xmi:id="_UUrrVfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-attribute"/>
-  <Ecore:EReference xmi:id="_UUrrVvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-feature"/>
-  <Ecore:EReference xmi:id="_UUrrV_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-inheritedMember"/>
-  <Ecore:EOperation xmi:id="_UUrrWPoAEdu-e7JlHBQtRA" base_Operation="Classifier-general.1" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_UUrrWfoAEdu-e7JlHBQtRA" base_Operation="Classifier-inheritedMember.1" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_UUrrWvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="DirectedRelationship-source"/>
-  <Ecore:EReference xmi:id="_UUrrW_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="DirectedRelationship-target"/>
-  <Ecore:EReference xmi:id="_UUrrXPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Element-ownedElement"/>
-  <Ecore:EReference xmi:id="_UUrrXfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Element-owner"/>
-  <Ecore:EReference xmi:id="_UUrrXvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Feature-featuringClassifier"/>
-  <Ecore:EReference xmi:id="_UUrrX_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-importedMember"/>
-  <Ecore:EReference xmi:id="_UUrrYPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-ownedMember"/>
-  <Ecore:EReference xmi:id="_UUrrYfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Namespace-member"/>
-  <Ecore:EOperation xmi:id="_UUrrYvoAEdu-e7JlHBQtRA" base_Operation="Namespace-importedMember.1" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_UUrrY_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableElement-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_UUrrZPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableElement-redefinedElement"/>
-  <Ecore:EReference xmi:id="_UUrrZfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Relationship-relatedElement"/>
-  <Ecore:EReference xmi:id="_UUrrZvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Association-endType"/>
-  <Ecore:EAttribute xmi:id="_UUrrZ_oAEdu-e7JlHBQtRA" isTransient="true" isUnsettable="true" base_Property="Property-default"/>
-  <Ecore:EReference xmi:id="_UUrraPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Property-opposite"/>
-  <Ecore:EOperation xmi:id="_UUrrafoAEdu-e7JlHBQtRA" base_Operation="Property-opposite.1" operationName="getOpposite"/>
-  <Ecore:EAttribute xmi:id="_UUrravoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueExpression-language"/>
-  <Ecore:EAttribute xmi:id="_UUrra_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-isOrdered"/>
-  <Ecore:EAttribute xmi:id="_UUrrbPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-isUnique"/>
-  <Ecore:EAttribute xmi:id="_UUrrbfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-lower"/>
-  <Ecore:EAttribute xmi:id="_UUrrbvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-upper"/>
-  <Ecore:EReference xmi:id="_UUrrb_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Operation-type"/>
-  <Ecore:EOperation xmi:id="_UUrrcPoAEdu-e7JlHBQtRA" base_Operation="Operation-lower.1" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_UUrrcfoAEdu-e7JlHBQtRA" base_Operation="Operation-upper.1" operationName="upperBound"/>
-  <Ecore:EOperation xmi:id="_UUrrcvoAEdu-e7JlHBQtRA" base_Operation="Operation-type.1" operationName="getType"/>
-  <Ecore:EAttribute xmi:id="_UUrrc_oAEdu-e7JlHBQtRA" isTransient="true" isUnsettable="true" base_Property="Parameter-default"/>
-  <Ecore:EAttribute xmi:id="_UUrrdPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="ElementImport-alias"/>
-  <Ecore:EReference xmi:id="_UUrrdfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-ownedType"/>
-  <Ecore:EReference xmi:id="_UUrrdvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-nestedPackage"/>
-  <Ecore:EReference xmi:id="_UUrrd_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Package-nestingPackage"/>
-  <Ecore:EReference xmi:id="_UUrrePoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Type-package"/>
-  <Ecore:EAttribute xmi:id="_UUrrefoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="NamedElement-name"/>
-  <Ecore:EAttribute xmi:id="_UUrrevoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="NamedElement-visibility"/>
-  <Ecore:EReference xmi:id="_UUrre_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="NamedElement-namespace"/>
-  <Ecore:EAttribute xmi:id="_UUrrfPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="NamedElement-qualifiedName"/>
-  <Ecore:EOperation xmi:id="_UUrrffoAEdu-e7JlHBQtRA" base_Operation="NamedElement-qualifiedName.1" operationName="getQualifiedName"/>
-  <Ecore:EAttribute xmi:id="_UUrrfvoAEdu-e7JlHBQtRA" isUnsettable="true" xmlFeatureKind="Element" base_Property="Comment-body"/>
-  <Ecore:EAttribute xmi:id="_UXgWAvoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="LiteralString-value"/>
-  <Ecore:EAttribute xmi:id="_UXgWA_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="MultiplicityElement-upper"/>
-  <Ecore:EAttribute xmi:id="_UXgWBPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="MultiplicityElement-lower"/>
-  <Ecore:EOperation xmi:id="_UXgWBfoAEdu-e7JlHBQtRA" base_Operation="MultiplicityElement-lower.1" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_UXgWBvoAEdu-e7JlHBQtRA" base_Operation="MultiplicityElement-upper.1" operationName="getUpper"/>
-  <Ecore:EReference xmi:id="_UXqG0PoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Classifier-general"/>
-  <Ecore:EAttribute xmi:id="_UXqG0foAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Generalization-isSubstitutable"/>
-  <Ecore:EReference xmi:id="_UXqG0voAEdu-e7JlHBQtRA" isTransient="true" base_Property="Class-superClass"/>
-  <Ecore:EAttribute xmi:id="_UXqG0_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Property-isComposite"/>
-  <Ecore:EOperation xmi:id="_UXqG1PoAEdu-e7JlHBQtRA" base_Operation="Association-endType.1" operationName="getEndTypes"/>
-  <Ecore:EAttribute xmi:id="_UXqG1foAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Expression-symbol"/>
-  <Ecore:EReference xmi:id="_UXz4D_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Behavior-context"/>
-  <Ecore:EReference xmi:id="_UXz4EPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="OpaqueExpression-result"/>
-  <Ecore:EAttribute xmi:id="_UXz4EfoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueBehavior-language"/>
-  <Ecore:EAttribute xmi:id="_UX9CSPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="OpaqueAction-language"/>
-  <Ecore:EReference xmi:id="_UX9CSfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-output"/>
-  <Ecore:EReference xmi:id="_UX9CSvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-input"/>
-  <Ecore:EReference xmi:id="_UX9CS_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Action-context"/>
-  <Ecore:EReference xmi:id="_UX9CfvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-containedNode"/>
-  <Ecore:EReference xmi:id="_UX9Cf_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-subgroup"/>
-  <Ecore:EReference xmi:id="_UX9CgPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-superGroup"/>
-  <Ecore:EReference xmi:id="_UX9CgfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityNode-inGroup"/>
-  <Ecore:EReference xmi:id="_UYQjwPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Activity-structuredNode"/>
-  <Ecore:EReference xmi:id="_UYZuK_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ConnectorEnd-definingEnd"/>
-  <Ecore:EReference xmi:id="_UYZuLPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="StructuredClassifier-part"/>
-  <Ecore:EReference xmi:id="_UYZuLfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="StructuredClassifier-role"/>
-  <Ecore:EReference xmi:id="_UYsopPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityEdge-inGroup"/>
-  <Ecore:EReference xmi:id="_UYsopfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ActivityGroup-containedEdge"/>
-  <Ecore:EAttribute xmi:id="_UY2aGPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Message-messageKind"/>
-  <Ecore:EReference xmi:id="_UY2aGfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Message-signature"/>
-  <Ecore:EReference xmi:id="_UZTF8_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Port-required"/>
-  <Ecore:EReference xmi:id="_UZTF9PoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Port-provided"/>
-  <Ecore:EReference xmi:id="_UZTF9foAEdu-e7JlHBQtRA" isTransient="true" base_Property="EncapsulatedClassifier-ownedPort"/>
-  <Ecore:EReference xmi:id="_UZc25voAEdu-e7JlHBQtRA" isTransient="true" base_Property="Component-required"/>
-  <Ecore:EReference xmi:id="_UZc25_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Component-provided"/>
-  <Ecore:EOperation xmi:id="_UZc26PoAEdu-e7JlHBQtRA" base_Operation="Component-required.1" operationName="getRequireds"/>
-  <Ecore:EOperation xmi:id="_UZc26foAEdu-e7JlHBQtRA" base_Operation="Component-provided.1" operationName="getProvideds"/>
-  <Ecore:EAttribute xmi:id="_UZc26voAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Connector-kind"/>
-  <Ecore:EAttribute xmi:id="_UZc3HfoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Artifact-fileName"/>
-  <Ecore:EReference xmi:id="_UZmAj_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="DeploymentTarget-deployedElement"/>
-  <Ecore:EOperation xmi:id="_UZmAkPoAEdu-e7JlHBQtRA" base_Operation="DeploymentTarget-deployedElement.1" operationName="getDeployedElements"/>
-  <Ecore:EAttribute xmi:id="_UayUV_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isComposite"/>
-  <Ecore:EAttribute xmi:id="_UayUWPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isOrthogonal"/>
-  <Ecore:EAttribute xmi:id="_UayUWfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isSimple"/>
-  <Ecore:EAttribute xmi:id="_UayUWvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-isSubmachineState"/>
-  <Ecore:EReference xmi:id="_UayUW_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="State-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_Ua8EUPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Transition-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_Ua8EUfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Region-redefinitionContext"/>
-  <Ecore:EReference xmi:id="_UbFOZfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Profile-ownedStereotype"/>
-  <Ecore:EReference xmi:id="_UbFOZvoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Class-extension"/>
-  <Ecore:EAttribute xmi:id="_UbFOZ_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="Extension-isRequired"/>
-  <Ecore:EReference xmi:id="_UbFOaPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="Extension-metaclass"/>
-  <Ecore:EOperation xmi:id="_UbFOafoAEdu-e7JlHBQtRA" base_Operation="Extension-metaclass.1" operationName="getMetaclass"/>
-  <Ecore:EAttribute xmi:id="_UbFOavoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-content"/>
-  <Ecore:EAttribute xmi:id="_UbFOa_oAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-location"/>
-  <Ecore:EAttribute xmi:id="_UbFObPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Image-format"/>
-  <Ecore:EAttribute xmi:id="_UbFOcfoAEdu-e7JlHBQtRA" isTransient="true" base_Property="ExtensionEnd-lower"/>
-  <Ecore:EAttribute xmi:id="_UbYwRvoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Model-viewpoint"/>
-  <Ecore:EAttribute xmi:id="_Ub-mIPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="Parameter-effect"/>
-  <Ecore:EAttribute xmi:id="_UcIXf_oAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="DeploymentSpecification-deploymentLocation"/>
-  <Ecore:EAttribute xmi:id="_UcIXgPoAEdu-e7JlHBQtRA" isUnsettable="true" base_Property="DeploymentSpecification-executionLocation"/>
-  <Ecore:EReference xmi:id="_UcRhL_oAEdu-e7JlHBQtRA" isTransient="true" base_Property="ProtocolTransition-referred"/>
-  <Ecore:EReference xmi:id="_UcuNAPoAEdu-e7JlHBQtRA" isTransient="true" base_Property="RedefinableTemplateSignature-inheritedParameter"/>
-  <Ecore:EReference xmi:id="_UcuNEfoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="ConnectableElement-end"/>
-  <Ecore:EReference xmi:id="_UcuNMPoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="Vertex-incoming"/>
-  <Ecore:EReference xmi:id="_UcuNMfoAEdu-e7JlHBQtRA" isTransient="true" isVolatile="true" base_Property="Vertex-outgoing"/>
-  <Standard:Metamodel xmi:id="_G0UywPoCEdu-e7JlHBQtRA" base_Model="_0"/>
-  <Standard:Metaclass xmi:id="_G0ejwPoCEdu-e7JlHBQtRA" base_Class="Comment"/>
-  <Standard:Metaclass xmi:id="_G0ejwfoCEdu-e7JlHBQtRA" base_Class="DirectedRelationship"/>
-  <Standard:Metaclass xmi:id="_G0ejwvoCEdu-e7JlHBQtRA" base_Class="LiteralSpecification"/>
-  <Standard:Metaclass xmi:id="_G0ejw_oCEdu-e7JlHBQtRA" base_Class="LiteralInteger"/>
-  <Standard:Metaclass xmi:id="_G0ejxPoCEdu-e7JlHBQtRA" base_Class="LiteralString"/>
-  <Standard:Metaclass xmi:id="_G0ejxfoCEdu-e7JlHBQtRA" base_Class="LiteralBoolean"/>
-  <Standard:Metaclass xmi:id="_G0ejxvoCEdu-e7JlHBQtRA" base_Class="LiteralNull"/>
-  <Standard:Metaclass xmi:id="_G0ejx_oCEdu-e7JlHBQtRA" base_Class="Constraint"/>
-  <Standard:Metaclass xmi:id="_G0ejyPoCEdu-e7JlHBQtRA" base_Class="ElementImport"/>
-  <Standard:Metaclass xmi:id="_G0ejyfoCEdu-e7JlHBQtRA" base_Class="TypedElement"/>
-  <Standard:Metaclass xmi:id="_G0ejyvoCEdu-e7JlHBQtRA" base_Class="Feature"/>
-  <Standard:Metaclass xmi:id="_G0ejy_oCEdu-e7JlHBQtRA" base_Class="RedefinableElement"/>
-  <Standard:Metaclass xmi:id="_G0ejzPoCEdu-e7JlHBQtRA" base_Class="StructuralFeature"/>
-  <Standard:Metaclass xmi:id="_G0ejzfoCEdu-e7JlHBQtRA" base_Class="Slot"/>
-  <Standard:Metaclass xmi:id="_G0ejzvoCEdu-e7JlHBQtRA" base_Class="PackageImport"/>
-  <Standard:Metaclass xmi:id="_G0ejz_oCEdu-e7JlHBQtRA" base_Class="DataType"/>
-  <Standard:Metaclass xmi:id="_G0ej0PoCEdu-e7JlHBQtRA" base_Class="Enumeration"/>
-  <Standard:Metaclass xmi:id="_G0ej0foCEdu-e7JlHBQtRA" base_Class="EnumerationLiteral"/>
-  <Standard:Metaclass xmi:id="_G0ntsPoCEdu-e7JlHBQtRA" base_Class="PrimitiveType"/>
-  <Standard:Metaclass xmi:id="_G0ntsfoCEdu-e7JlHBQtRA" base_Class="Association"/>
-  <Standard:Metaclass xmi:id="_G0ntsvoCEdu-e7JlHBQtRA" base_Class="Relationship"/>
-  <Standard:Metaclass xmi:id="_G0nts_oCEdu-e7JlHBQtRA" base_Class="PackageMerge"/>
-  <Standard:Metaclass xmi:id="_G0nttPoCEdu-e7JlHBQtRA" base_Class="InstanceValue"/>
-  <Standard:Metaclass xmi:id="_G0nttfoCEdu-e7JlHBQtRA" base_Class="LiteralUnlimitedNatural"/>
-  <Standard:Metaclass xmi:id="_G0nttvoCEdu-e7JlHBQtRA" base_Class="Type"/>
-  <Standard:Metaclass xmi:id="_G0ntt_oCEdu-e7JlHBQtRA" base_Class="Expression"/>
-  <Standard:Metaclass xmi:id="_G0xesPoCEdu-e7JlHBQtRA" base_Class="OpaqueExpression"/>
-  <Standard:Metaclass xmi:id="_G0xesfoCEdu-e7JlHBQtRA" base_Class="OpaqueBehavior"/>
-  <Standard:Metaclass xmi:id="_G0xesvoCEdu-e7JlHBQtRA" base_Class="FunctionBehavior"/>
-  <Standard:Metaclass xmi:id="_G0xes_oCEdu-e7JlHBQtRA" base_Class="OpaqueAction"/>
-  <Standard:Metaclass xmi:id="_G0xetPoCEdu-e7JlHBQtRA" base_Class="CallAction"/>
-  <Standard:Metaclass xmi:id="_G0xetfoCEdu-e7JlHBQtRA" base_Class="SendSignalAction"/>
-  <Standard:Metaclass xmi:id="_G0xetvoCEdu-e7JlHBQtRA" base_Class="CallOperationAction"/>
-  <Standard:Metaclass xmi:id="_G0xet_oCEdu-e7JlHBQtRA" base_Class="CallBehaviorAction"/>
-  <Standard:Metaclass xmi:id="_G0xeuPoCEdu-e7JlHBQtRA" base_Class="MultiplicityElement"/>
-  <Standard:Metaclass xmi:id="_G06ooPoCEdu-e7JlHBQtRA" base_Class="SequenceNode"/>
-  <Standard:Metaclass xmi:id="_G06oofoCEdu-e7JlHBQtRA" base_Class="InputPin"/>
-  <Standard:Metaclass xmi:id="_G06oovoCEdu-e7JlHBQtRA" base_Class="OutputPin"/>
-  <Standard:Metaclass xmi:id="_G06oo_oCEdu-e7JlHBQtRA" base_Class="Usage"/>
-  <Standard:Metaclass xmi:id="_G06opPoCEdu-e7JlHBQtRA" base_Class="Abstraction"/>
-  <Standard:Metaclass xmi:id="_G06opfoCEdu-e7JlHBQtRA" base_Class="Dependency"/>
-  <Standard:Metaclass xmi:id="_G06opvoCEdu-e7JlHBQtRA" base_Class="Realization"/>
-  <Standard:Metaclass xmi:id="_G06op_oCEdu-e7JlHBQtRA" base_Class="Substitution"/>
-  <Standard:Metaclass xmi:id="_G06oqPoCEdu-e7JlHBQtRA" base_Class="Namespace"/>
-  <Standard:Metaclass xmi:id="_G1EZoPoCEdu-e7JlHBQtRA" base_Class="InterfaceRealization"/>
-  <Standard:Metaclass xmi:id="_G1EZofoCEdu-e7JlHBQtRA" base_Class="StructuredClassifier"/>
-  <Standard:Metaclass xmi:id="_G1EZovoCEdu-e7JlHBQtRA" base_Class="Variable"/>
-  <Standard:Metaclass xmi:id="_G1EZo_oCEdu-e7JlHBQtRA" base_Class="CollaborationUse"/>
-  <Standard:Metaclass xmi:id="_G1EZpPoCEdu-e7JlHBQtRA" base_Class="Collaboration"/>
-  <Standard:Metaclass xmi:id="_G1EZpfoCEdu-e7JlHBQtRA" base_Class="ControlNode"/>
-  <Standard:Metaclass xmi:id="_G1EZpvoCEdu-e7JlHBQtRA" base_Class="ControlFlow"/>
-  <Standard:Metaclass xmi:id="_G1EZp_oCEdu-e7JlHBQtRA" base_Class="InitialNode"/>
-  <Standard:Metaclass xmi:id="_G1EZqPoCEdu-e7JlHBQtRA" base_Class="ActivityParameterNode"/>
-  <Standard:Metaclass xmi:id="_G1EZqfoCEdu-e7JlHBQtRA" base_Class="ValuePin"/>
-  <Standard:Metaclass xmi:id="_G1OKoPoCEdu-e7JlHBQtRA" base_Class="Message"/>
-  <Standard:Metaclass xmi:id="_G1OKofoCEdu-e7JlHBQtRA" base_Class="GeneralOrdering"/>
-  <Standard:Metaclass xmi:id="_G1OKovoCEdu-e7JlHBQtRA" base_Class="ExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKo_oCEdu-e7JlHBQtRA" base_Class="OccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKpPoCEdu-e7JlHBQtRA" base_Class="MessageEnd"/>
-  <Standard:Metaclass xmi:id="_G1OKpfoCEdu-e7JlHBQtRA" base_Class="StateInvariant"/>
-  <Standard:Metaclass xmi:id="_G1OKpvoCEdu-e7JlHBQtRA" base_Class="ActionExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKp_oCEdu-e7JlHBQtRA" base_Class="BehaviorExecutionSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKqPoCEdu-e7JlHBQtRA" base_Class="ExecutionEvent"/>
-  <Standard:Metaclass xmi:id="_G1OKqfoCEdu-e7JlHBQtRA" base_Class="CreationEvent"/>
-  <Standard:Metaclass xmi:id="_G1OKqvoCEdu-e7JlHBQtRA" base_Class="DestructionEvent"/>
-  <Standard:Metaclass xmi:id="_G1OKq_oCEdu-e7JlHBQtRA" base_Class="SendOperationEvent"/>
-  <Standard:Metaclass xmi:id="_G1OKrPoCEdu-e7JlHBQtRA" base_Class="SendSignalEvent"/>
-  <Standard:Metaclass xmi:id="_G1OKrfoCEdu-e7JlHBQtRA" base_Class="MessageOccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKrvoCEdu-e7JlHBQtRA" base_Class="ExecutionOccurrenceSpecification"/>
-  <Standard:Metaclass xmi:id="_G1OKr_oCEdu-e7JlHBQtRA" base_Class="ReceiveOperationEvent"/>
-  <Standard:Metaclass xmi:id="_G1XUkPoCEdu-e7JlHBQtRA" base_Class="ReceiveSignalEvent"/>
-  <Standard:Metaclass xmi:id="_G1XUkfoCEdu-e7JlHBQtRA" base_Class="Actor"/>
-  <Standard:Metaclass xmi:id="_G1XUkvoCEdu-e7JlHBQtRA" base_Class="Extend"/>
-  <Standard:Metaclass xmi:id="_G1hFkPoCEdu-e7JlHBQtRA" base_Class="Include"/>
-  <Standard:Metaclass xmi:id="_G1hFkfoCEdu-e7JlHBQtRA" base_Class="UseCase"/>
-  <Standard:Metaclass xmi:id="_G1hFkvoCEdu-e7JlHBQtRA" base_Class="ExtensionPoint"/>
-  <Standard:Metaclass xmi:id="_G1hFk_oCEdu-e7JlHBQtRA" base_Class="CallEvent"/>
-  <Standard:Metaclass xmi:id="_G1hFlPoCEdu-e7JlHBQtRA" base_Class="ChangeEvent"/>
-  <Standard:Metaclass xmi:id="_G1hFlfoCEdu-e7JlHBQtRA" base_Class="Reception"/>
-  <Standard:Metaclass xmi:id="_G1hFlvoCEdu-e7JlHBQtRA" base_Class="Signal"/>
-  <Standard:Metaclass xmi:id="_G1hFl_oCEdu-e7JlHBQtRA" base_Class="SignalEvent"/>
-  <Standard:Metaclass xmi:id="_G1hFmPoCEdu-e7JlHBQtRA" base_Class="MessageEvent"/>
-  <Standard:Metaclass xmi:id="_G1hFmfoCEdu-e7JlHBQtRA" base_Class="AnyReceiveEvent"/>
-  <Standard:Metaclass xmi:id="_G1hFmvoCEdu-e7JlHBQtRA" base_Class="BehavioredClassifier"/>
-  <Standard:Metaclass xmi:id="_G1q2kPoCEdu-e7JlHBQtRA" base_Class="Event"/>
-  <Standard:Metaclass xmi:id="_G1q2kfoCEdu-e7JlHBQtRA" base_Class="ForkNode"/>
-  <Standard:Metaclass xmi:id="_G1q2kvoCEdu-e7JlHBQtRA" base_Class="FlowFinalNode"/>
-  <Standard:Metaclass xmi:id="_G1q2k_oCEdu-e7JlHBQtRA" base_Class="CentralBufferNode"/>
-  <Standard:Metaclass xmi:id="_G1q2lPoCEdu-e7JlHBQtRA" base_Class="ActivityPartition"/>
-  <Standard:Metaclass xmi:id="_G1q2lfoCEdu-e7JlHBQtRA" base_Class="MergeNode"/>
-  <Standard:Metaclass xmi:id="_G1q2lvoCEdu-e7JlHBQtRA" base_Class="DecisionNode"/>
-  <Standard:Metaclass xmi:id="_G1q2l_oCEdu-e7JlHBQtRA" base_Class="FinalNode"/>
-  <Standard:Metaclass xmi:id="_G1q2mPoCEdu-e7JlHBQtRA" base_Class="ActivityFinalNode"/>
-  <Standard:Metaclass xmi:id="_G1q2mfoCEdu-e7JlHBQtRA" base_Class="EncapsulatedClassifier"/>
-  <Standard:Metaclass xmi:id="_G10AgPoCEdu-e7JlHBQtRA" base_Class="ComponentRealization"/>
-  <Standard:Metaclass xmi:id="_G10AgfoCEdu-e7JlHBQtRA" base_Class="Connector"/>
-  <Standard:Metaclass xmi:id="_G10AgvoCEdu-e7JlHBQtRA" base_Class="Manifestation"/>
-  <Standard:Metaclass xmi:id="_G10Ag_oCEdu-e7JlHBQtRA" base_Class="Node"/>
-  <Standard:Metaclass xmi:id="_G10AhPoCEdu-e7JlHBQtRA" base_Class="Device"/>
-  <Standard:Metaclass xmi:id="_G10AhfoCEdu-e7JlHBQtRA" base_Class="ExecutionEnvironment"/>
-  <Standard:Metaclass xmi:id="_G10AhvoCEdu-e7JlHBQtRA" base_Class="DeploymentTarget"/>
-  <Standard:Metaclass xmi:id="_G19xgPoCEdu-e7JlHBQtRA" base_Class="DeployedArtifact"/>
-  <Standard:Metaclass xmi:id="_G19xgfoCEdu-e7JlHBQtRA" base_Class="CommunicationPath"/>
-  <Standard:Metaclass xmi:id="_G19xgvoCEdu-e7JlHBQtRA" base_Class="InstanceSpecification"/>
-  <Standard:Metaclass xmi:id="_G19xg_oCEdu-e7JlHBQtRA" base_Class="Artifact"/>
-  <Standard:Metaclass xmi:id="_G19xhPoCEdu-e7JlHBQtRA" base_Class="InteractionUse"/>
-  <Standard:Metaclass xmi:id="_G19xhfoCEdu-e7JlHBQtRA" base_Class="PartDecomposition"/>
-  <Standard:Metaclass xmi:id="_G19xhvoCEdu-e7JlHBQtRA" base_Class="InteractionOperand"/>
-  <Standard:Metaclass xmi:id="_G2G7cPoCEdu-e7JlHBQtRA" base_Class="InteractionConstraint"/>
-  <Standard:Metaclass xmi:id="_G2G7cfoCEdu-e7JlHBQtRA" base_Class="Gate"/>
-  <Standard:Metaclass xmi:id="_G2G7cvoCEdu-e7JlHBQtRA" base_Class="CombinedFragment"/>
-  <Standard:Metaclass xmi:id="_G2G7c_oCEdu-e7JlHBQtRA" base_Class="Interaction"/>
-  <Standard:Metaclass xmi:id="_G2G7dPoCEdu-e7JlHBQtRA" base_Class="Lifeline"/>
-  <Standard:Metaclass xmi:id="_G2G7dfoCEdu-e7JlHBQtRA" base_Class="Continuation"/>
-  <Standard:Metaclass xmi:id="_G2G7dvoCEdu-e7JlHBQtRA" base_Class="InteractionFragment"/>
-  <Standard:Metaclass xmi:id="_G2G7d_oCEdu-e7JlHBQtRA" base_Class="ConsiderIgnoreFragment"/>
-  <Standard:Metaclass xmi:id="_G2QscPoCEdu-e7JlHBQtRA" base_Class="CreateObjectAction"/>
-  <Standard:Metaclass xmi:id="_G2QscfoCEdu-e7JlHBQtRA" base_Class="DestroyObjectAction"/>
-  <Standard:Metaclass xmi:id="_G2QscvoCEdu-e7JlHBQtRA" base_Class="TestIdentityAction"/>
-  <Standard:Metaclass xmi:id="_G2Qsc_oCEdu-e7JlHBQtRA" base_Class="ReadSelfAction"/>
-  <Standard:Metaclass xmi:id="_G2adcPoCEdu-e7JlHBQtRA" base_Class="StructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_G2adcfoCEdu-e7JlHBQtRA" base_Class="ReadStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_G2adcvoCEdu-e7JlHBQtRA" base_Class="WriteStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_G2adc_oCEdu-e7JlHBQtRA" base_Class="ClearStructuralFeatureAction"/>
-  <Standard:Metaclass xmi:id="_G2addPoCEdu-e7JlHBQtRA" base_Class="RemoveStructuralFeatureValueAction"/>
-  <Standard:Metaclass xmi:id="_G2addfoCEdu-e7JlHBQtRA" base_Class="AddStructuralFeatureValueAction"/>
-  <Standard:Metaclass xmi:id="_G2addvoCEdu-e7JlHBQtRA" base_Class="LinkAction"/>
-  <Standard:Metaclass xmi:id="_G2add_oCEdu-e7JlHBQtRA" base_Class="ReadLinkAction"/>
-  <Standard:Metaclass xmi:id="_G2adePoCEdu-e7JlHBQtRA" base_Class="LinkEndCreationData"/>
-  <Standard:Metaclass xmi:id="_G2jnYPoCEdu-e7JlHBQtRA" base_Class="CreateLinkAction"/>
-  <Standard:Metaclass xmi:id="_G2jnYfoCEdu-e7JlHBQtRA" base_Class="DestroyLinkAction"/>
-  <Standard:Metaclass xmi:id="_G2jnYvoCEdu-e7JlHBQtRA" base_Class="WriteLinkAction"/>
-  <Standard:Metaclass xmi:id="_G2jnY_oCEdu-e7JlHBQtRA" base_Class="ClearAssociationAction"/>
-  <Standard:Metaclass xmi:id="_G2jnZPoCEdu-e7JlHBQtRA" base_Class="BroadcastSignalAction"/>
-  <Standard:Metaclass xmi:id="_G2jnZfoCEdu-e7JlHBQtRA" base_Class="SendObjectAction"/>
-  <Standard:Metaclass xmi:id="_G2jnZvoCEdu-e7JlHBQtRA" base_Class="LinkEndDestructionData"/>
-  <Standard:Metaclass xmi:id="_G2jnZ_oCEdu-e7JlHBQtRA" base_Class="ValueSpecificationAction"/>
-  <Standard:Metaclass xmi:id="_G2tYYPoCEdu-e7JlHBQtRA" base_Class="TimeExpression"/>
-  <Standard:Metaclass xmi:id="_G2tYYfoCEdu-e7JlHBQtRA" base_Class="Duration"/>
-  <Standard:Metaclass xmi:id="_G2tYYvoCEdu-e7JlHBQtRA" base_Class="DurationInterval"/>
-  <Standard:Metaclass xmi:id="_G2tYY_oCEdu-e7JlHBQtRA" base_Class="TimeConstraint"/>
-  <Standard:Metaclass xmi:id="_G2tYZPoCEdu-e7JlHBQtRA" base_Class="TimeInterval"/>
-  <Standard:Metaclass xmi:id="_G2tYZfoCEdu-e7JlHBQtRA" base_Class="DurationConstraint"/>
-  <Standard:Metaclass xmi:id="_G23JYPoCEdu-e7JlHBQtRA" base_Class="IntervalConstraint"/>
-  <Standard:Metaclass xmi:id="_G23JYfoCEdu-e7JlHBQtRA" base_Class="Interval"/>
-  <Standard:Metaclass xmi:id="_G23JYvoCEdu-e7JlHBQtRA" base_Class="Observation"/>
-  <Standard:Metaclass xmi:id="_G23JY_oCEdu-e7JlHBQtRA" base_Class="TimeObservation"/>
-  <Standard:Metaclass xmi:id="_G23JZPoCEdu-e7JlHBQtRA" base_Class="DurationObservation"/>
-  <Standard:Metaclass xmi:id="_G23JZfoCEdu-e7JlHBQtRA" base_Class="InvocationAction"/>
-  <Standard:Metaclass xmi:id="_G3ATUPoCEdu-e7JlHBQtRA" base_Class="Trigger"/>
-  <Standard:Metaclass xmi:id="_G3ATUfoCEdu-e7JlHBQtRA" base_Class="StateMachine"/>
-  <Standard:Metaclass xmi:id="_G3ATUvoCEdu-e7JlHBQtRA" base_Class="Pseudostate"/>
-  <Standard:Metaclass xmi:id="_G3ATU_oCEdu-e7JlHBQtRA" base_Class="FinalState"/>
-  <Standard:Metaclass xmi:id="_G3KEUPoCEdu-e7JlHBQtRA" base_Class="ConnectionPointReference"/>
-  <Standard:Metaclass xmi:id="_G3KEUfoCEdu-e7JlHBQtRA" base_Class="TimeEvent"/>
-  <Standard:Metaclass xmi:id="_G3TOQPoCEdu-e7JlHBQtRA" base_Class="Stereotype"/>
-  <Standard:Metaclass xmi:id="_G3c_QPoCEdu-e7JlHBQtRA" base_Class="Profile"/>
-  <Standard:Metaclass xmi:id="_G3c_QfoCEdu-e7JlHBQtRA" base_Class="Class"/>
-  <Standard:Metaclass xmi:id="_G3mwQPoCEdu-e7JlHBQtRA" base_Class="ProfileApplication"/>
-  <Standard:Metaclass xmi:id="_G3mwQfoCEdu-e7JlHBQtRA" base_Class="Extension"/>
-  <Standard:Metaclass xmi:id="_G3v6MPoCEdu-e7JlHBQtRA" base_Class="Image"/>
-  <Standard:Metaclass xmi:id="_G3v6MfoCEdu-e7JlHBQtRA" base_Class="Element"/>
-  <Standard:Metaclass xmi:id="_G4DcMPoCEdu-e7JlHBQtRA" base_Class="ExtensionEnd"/>
-  <Standard:Metaclass xmi:id="_G4DcMfoCEdu-e7JlHBQtRA" base_Class="VariableAction"/>
-  <Standard:Metaclass xmi:id="_G4DcMvoCEdu-e7JlHBQtRA" base_Class="ReadVariableAction"/>
-  <Standard:Metaclass xmi:id="_G4DcM_oCEdu-e7JlHBQtRA" base_Class="WriteVariableAction"/>
-  <Standard:Metaclass xmi:id="_G4DcNPoCEdu-e7JlHBQtRA" base_Class="ClearVariableAction"/>
-  <Standard:Metaclass xmi:id="_G4DcNfoCEdu-e7JlHBQtRA" base_Class="AddVariableValueAction"/>
-  <Standard:Metaclass xmi:id="_G4DcNvoCEdu-e7JlHBQtRA" base_Class="RemoveVariableValueAction"/>
-  <Standard:Metaclass xmi:id="_G4MmIPoCEdu-e7JlHBQtRA" base_Class="RaiseExceptionAction"/>
-  <Standard:Metaclass xmi:id="_G4MmIfoCEdu-e7JlHBQtRA" base_Class="ActionInputPin"/>
-  <Standard:Metaclass xmi:id="_G4MmIvoCEdu-e7JlHBQtRA" base_Class="GeneralizationSet"/>
-  <Standard:Metaclass xmi:id="_G4MmI_oCEdu-e7JlHBQtRA" base_Class="Generalization"/>
-  <Standard:Metaclass xmi:id="_G4MmJPoCEdu-e7JlHBQtRA" base_Class="InformationItem"/>
-  <Standard:Metaclass xmi:id="_G4WXIPoCEdu-e7JlHBQtRA" base_Class="InformationFlow"/>
-  <Standard:Metaclass xmi:id="_G4WXIfoCEdu-e7JlHBQtRA" base_Class="Model"/>
-  <Standard:Metaclass xmi:id="_G4WXIvoCEdu-e7JlHBQtRA" base_Class="ReadExtentAction"/>
-  <Standard:Metaclass xmi:id="_G4WXI_oCEdu-e7JlHBQtRA" base_Class="ReclassifyObjectAction"/>
-  <Standard:Metaclass xmi:id="_G4pSEPoCEdu-e7JlHBQtRA" base_Class="ReadIsClassifiedObjectAction"/>
-  <Standard:Metaclass xmi:id="_G4pSEfoCEdu-e7JlHBQtRA" base_Class="StartClassifierBehaviorAction"/>
-  <Standard:Metaclass xmi:id="_G4pSEvoCEdu-e7JlHBQtRA" base_Class="QualifierValue"/>
-  <Standard:Metaclass xmi:id="_G4pSE_oCEdu-e7JlHBQtRA" base_Class="LinkEndData"/>
-  <Standard:Metaclass xmi:id="_G4zDEPoCEdu-e7JlHBQtRA" base_Class="ReadLinkObjectEndAction"/>
-  <Standard:Metaclass xmi:id="_G4zDEfoCEdu-e7JlHBQtRA" base_Class="ReadLinkObjectEndQualifierAction"/>
-  <Standard:Metaclass xmi:id="_G4zDEvoCEdu-e7JlHBQtRA" base_Class="CreateLinkObjectAction"/>
-  <Standard:Metaclass xmi:id="_G4zDE_oCEdu-e7JlHBQtRA" base_Class="AcceptEventAction"/>
-  <Standard:Metaclass xmi:id="_G48NAPoCEdu-e7JlHBQtRA" base_Class="AcceptCallAction"/>
-  <Standard:Metaclass xmi:id="_G48NAfoCEdu-e7JlHBQtRA" base_Class="ReplyAction"/>
-  <Standard:Metaclass xmi:id="_G48NAvoCEdu-e7JlHBQtRA" base_Class="UnmarshallAction"/>
-  <Standard:Metaclass xmi:id="_G48NA_oCEdu-e7JlHBQtRA" base_Class="ReduceAction"/>
-  <Standard:Metaclass xmi:id="_G5PvAPoCEdu-e7JlHBQtRA" base_Class="JoinNode"/>
-  <Standard:Metaclass xmi:id="_G5PvAfoCEdu-e7JlHBQtRA" base_Class="DataStoreNode"/>
-  <Standard:Metaclass xmi:id="_G5PvAvoCEdu-e7JlHBQtRA" base_Class="ObjectFlow"/>
-  <Standard:Metaclass xmi:id="_G5PvA_oCEdu-e7JlHBQtRA" base_Class="ObjectNode"/>
-  <Standard:Metaclass xmi:id="_G5Y48PoCEdu-e7JlHBQtRA" base_Class="ParameterSet"/>
-  <Standard:Metaclass xmi:id="_G5Y48foCEdu-e7JlHBQtRA" base_Class="Activity"/>
-  <Standard:Metaclass xmi:id="_G5Y48voCEdu-e7JlHBQtRA" base_Class="Parameter"/>
-  <Standard:Metaclass xmi:id="_G5ip8PoCEdu-e7JlHBQtRA" base_Class="Action"/>
-  <Standard:Metaclass xmi:id="_G5ip8foCEdu-e7JlHBQtRA" base_Class="InterruptibleActivityRegion"/>
-  <Standard:Metaclass xmi:id="_G5ip8voCEdu-e7JlHBQtRA" base_Class="ActivityNode"/>
-  <Standard:Metaclass xmi:id="_G5rz4PoCEdu-e7JlHBQtRA" base_Class="BehavioralFeature"/>
-  <Standard:Metaclass xmi:id="_G5rz4foCEdu-e7JlHBQtRA" base_Class="Behavior"/>
-  <Standard:Metaclass xmi:id="_G51k4PoCEdu-e7JlHBQtRA" base_Class="Pin"/>
-  <Standard:Metaclass xmi:id="_G5_V4PoCEdu-e7JlHBQtRA" base_Class="ConditionalNode"/>
-  <Standard:Metaclass xmi:id="_G5_V4foCEdu-e7JlHBQtRA" base_Class="StructuredActivityNode"/>
-  <Standard:Metaclass xmi:id="_G5_V4voCEdu-e7JlHBQtRA" base_Class="LoopNode"/>
-  <Standard:Metaclass xmi:id="_G6If0PoCEdu-e7JlHBQtRA" base_Class="Clause"/>
-  <Standard:Metaclass xmi:id="_G6If0foCEdu-e7JlHBQtRA" base_Class="ActivityEdge"/>
-  <Standard:Metaclass xmi:id="_G6If0voCEdu-e7JlHBQtRA" base_Class="ActivityGroup"/>
-  <Standard:Metaclass xmi:id="_G6SQ0PoCEdu-e7JlHBQtRA" base_Class="ExpansionNode"/>
-  <Standard:Metaclass xmi:id="_G6SQ0foCEdu-e7JlHBQtRA" base_Class="ExpansionRegion"/>
-  <Standard:Metaclass xmi:id="_G6SQ0voCEdu-e7JlHBQtRA" base_Class="ExecutableNode"/>
-  <Standard:Metaclass xmi:id="_G6SQ0_oCEdu-e7JlHBQtRA" base_Class="ExceptionHandler"/>
-  <Standard:Metaclass xmi:id="_G6cB0PoCEdu-e7JlHBQtRA" base_Class="Component"/>
-  <Standard:Metaclass xmi:id="_G6lLwPoCEdu-e7JlHBQtRA" base_Class="Deployment"/>
-  <Standard:Metaclass xmi:id="_G6lLwfoCEdu-e7JlHBQtRA" base_Class="DeploymentSpecification"/>
-  <Standard:Metaclass xmi:id="_G6lLwvoCEdu-e7JlHBQtRA" base_Class="ProtocolConformance"/>
-  <Standard:Metaclass xmi:id="_G6lLw_oCEdu-e7JlHBQtRA" base_Class="Interface"/>
-  <Standard:Metaclass xmi:id="_G6u8wPoCEdu-e7JlHBQtRA" base_Class="Port"/>
-  <Standard:Metaclass xmi:id="_G6u8wfoCEdu-e7JlHBQtRA" base_Class="ProtocolTransition"/>
-  <Standard:Metaclass xmi:id="_G64GsPoCEdu-e7JlHBQtRA" base_Class="ProtocolStateMachine"/>
-  <Standard:Metaclass xmi:id="_G64GsfoCEdu-e7JlHBQtRA" base_Class="State"/>
-  <Standard:Metaclass xmi:id="_G7B3sPoCEdu-e7JlHBQtRA" base_Class="Region"/>
-  <Standard:Metaclass xmi:id="_G7LosPoCEdu-e7JlHBQtRA" base_Class="AssociationClass"/>
-  <Standard:Metaclass xmi:id="_G7LosfoCEdu-e7JlHBQtRA" base_Class="TemplateSignature"/>
-  <Standard:Metaclass xmi:id="_G7UyoPoCEdu-e7JlHBQtRA" base_Class="NamedElement"/>
-  <Standard:Metaclass xmi:id="_G7ejoPoCEdu-e7JlHBQtRA" base_Class="TemplateParameter"/>
-  <Standard:Metaclass xmi:id="_G7ejofoCEdu-e7JlHBQtRA" base_Class="StringExpression"/>
-  <Standard:Metaclass xmi:id="_G7ejovoCEdu-e7JlHBQtRA" base_Class="TemplateBinding"/>
-  <Standard:Metaclass xmi:id="_G7ejo_oCEdu-e7JlHBQtRA" base_Class="TemplateParameterSubstitution"/>
-  <Standard:Metaclass xmi:id="_G7oUoPoCEdu-e7JlHBQtRA" base_Class="TemplateableElement"/>
-  <Standard:Metaclass xmi:id="_G7oUofoCEdu-e7JlHBQtRA" base_Class="ParameterableElement"/>
-  <Standard:Metaclass xmi:id="_G7oUovoCEdu-e7JlHBQtRA" base_Class="Property"/>
-  <Standard:Metaclass xmi:id="_G77PkPoCEdu-e7JlHBQtRA" base_Class="ValueSpecification"/>
-  <Standard:Metaclass xmi:id="_G8EZgPoCEdu-e7JlHBQtRA" base_Class="Operation"/>
-  <Standard:Metaclass xmi:id="_G8OKgPoCEdu-e7JlHBQtRA" base_Class="OperationTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_G8OKgfoCEdu-e7JlHBQtRA" base_Class="PackageableElement"/>
-  <Standard:Metaclass xmi:id="_G8OKgvoCEdu-e7JlHBQtRA" base_Class="Classifier"/>
-  <Standard:Metaclass xmi:id="_G8q2cPoCEdu-e7JlHBQtRA" base_Class="ClassifierTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_G8q2cfoCEdu-e7JlHBQtRA" base_Class="RedefinableTemplateSignature"/>
-  <Standard:Metaclass xmi:id="_G8q2cvoCEdu-e7JlHBQtRA" base_Class="ConnectableElementTemplateParameter"/>
-  <Standard:Metaclass xmi:id="_G80ncPoCEdu-e7JlHBQtRA" base_Class="Package"/>
-  <Standard:Metaclass xmi:id="_G9HiYPoCEdu-e7JlHBQtRA" base_Class="ConnectableElement"/>
-  <Standard:Metaclass xmi:id="_G9HiYfoCEdu-e7JlHBQtRA" base_Class="ConnectorEnd"/>
-  <Standard:Metaclass xmi:id="_G9HiYvoCEdu-e7JlHBQtRA" base_Class="Vertex"/>
-  <Standard:Metaclass xmi:id="_G9QsUPoCEdu-e7JlHBQtRA" base_Class="Transition"/>
+  <Ecore:EOperation xmi:id="_SnLRYMb4EdyrC427ygySag" base_Operation="OpaqueExpression-getResult" visibility="None"/>
+  <Ecore:EOperation xmi:id="_xkIRwMb4EdyrC427ygySag" base_Operation="Parameter-getDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_zi8H0Mb4EdyrC427ygySag" base_Operation="Parameter-isSetDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_1Bty8Mb4EdyrC427ygySag" base_Operation="Parameter-setDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_3E_SQMb4EdyrC427ygySag" base_Operation="Parameter-unsetDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_hObjwMb6EdyrC427ygySag" base_Operation="Class-getExtensions" visibility="None"/>
+  <Ecore:EOperation xmi:id="_kCb8cMb6EdyrC427ygySag" base_Operation="ExtensionEnd-getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_lz-ykMb6EdyrC427ygySag" base_Operation="ExtensionEnd-setLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_wTSDAMb6EdyrC427ygySag" base_Operation="RedefinableTemplateSignature-getInheritedParameters" visibility="None"/>
+  <Ecore:EOperation xmi:id="_26LegMb6EdyrC427ygySag" base_Operation="OpaqueExpression-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_5WV-8Mb6EdyrC427ygySag" base_Operation="LiteralInteger-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_n89b0Mb7EdyrC427ygySag" base_Operation="LiteralBoolean-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_poGH8Mb7EdyrC427ygySag" base_Operation="MultiplicityElement-setLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_q6DfEMb7EdyrC427ygySag" base_Operation="MultiplicityElement-setUpper" visibility="None"/>
+  <Ecore:EOperation xmi:id="_sq2uUMb7EdyrC427ygySag" base_Operation="Property-getDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" base_Operation="Property-isSetDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_vxMNIMb7EdyrC427ygySag" base_Operation="Property-setDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_wtF0sMb7EdyrC427ygySag" base_Operation="Property-setIsComposite" visibility="None"/>
+  <Ecore:EOperation xmi:id="_xr-e0Mb7EdyrC427ygySag" base_Operation="Property-setOpposite" visibility="None"/>
+  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" base_Operation="Property-unsetDefault" visibility="None"/>
+  <Ecore:EOperation xmi:id="_ADORMMb8EdyrC427ygySag" base_Operation="Operation-getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Bqyr8Mb8EdyrC427ygySag" base_Operation="Operation-getUpper" visibility="None"/>
+  <Ecore:EOperation xmi:id="_DOesQMb8EdyrC427ygySag" base_Operation="Operation-setIsOrdered" visibility="None"/>
+  <Ecore:EOperation xmi:id="_E3Fo0Mb8EdyrC427ygySag" base_Operation="Operation-setIsUnique" visibility="None"/>
+  <Ecore:EOperation xmi:id="_GRiNkMb8EdyrC427ygySag" base_Operation="Operation-setLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_HxgLgMb8EdyrC427ygySag" base_Operation="Operation-setType" visibility="None"/>
+  <Ecore:EOperation xmi:id="_JMGhQMb8EdyrC427ygySag" base_Operation="Operation-setUpper" visibility="None"/>
+  <Ecore:EOperation xmi:id="_M8TccMb8EdyrC427ygySag" base_Operation="InstanceValue-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_O5LY0Mb8EdyrC427ygySag" base_Operation="LiteralUnlimitedNatural-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Qrd10Mb8EdyrC427ygySag" base_Operation="Behavior-getContext" visibility="None"/>
+  <Ecore:EOperation xmi:id="_SnJfYMb8EdyrC427ygySag" base_Operation="Port-getProvideds" visibility="None"/>
+  <Ecore:EOperation xmi:id="_UIAOIMb8EdyrC427ygySag" base_Operation="Port-getRequireds" visibility="None"/>
+  <Ecore:EOperation xmi:id="_WQMpsMb8EdyrC427ygySag" base_Operation="ConnectorEnd-getDefiningEnd" visibility="None"/>
+  <Ecore:EOperation xmi:id="_YY_iMMb8EdyrC427ygySag" base_Operation="Message-getMessageKind" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Z-ncMMb8EdyrC427ygySag" base_Operation="Message-getSignature" visibility="None"/>
+  <Ecore:EOperation xmi:id="_oEJMcMb8EdyrC427ygySag" base_Operation="Duration-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_p3eLQMb8EdyrC427ygySag" base_Operation="TimeExpression-stringValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_tDBhQMb8EdyrC427ygySag" base_Operation="LiteralString-integerValue" visibility="None"/>
+  <Ecore:EOperation xmi:id="_upizIMb8EdyrC427ygySag" base_Operation="LiteralString-unlimitedValue" visibility="None"/>
+  <Ecore:EReference xmi:id="_QcIAAMcBEdyrC427ygySag" isTransient="true" base_Property="Classifier-attribute"/>
+  <Ecore:EReference xmi:id="_QcIAAccBEdyrC427ygySag" isTransient="true" base_Property="Classifier-feature"/>
+  <Ecore:EReference xmi:id="_QcIAAscBEdyrC427ygySag" isTransient="true" base_Property="Classifier-inheritedMember"/>
+  <Ecore:EOperation xmi:id="_QcIAA8cBEdyrC427ygySag" base_Operation="Classifier-general.1" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_QcIABMcBEdyrC427ygySag" base_Operation="Classifier-inheritedMember.1" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_QcIABccBEdyrC427ygySag" isTransient="true" base_Property="DirectedRelationship-source"/>
+  <Ecore:EReference xmi:id="_QcIABscBEdyrC427ygySag" isTransient="true" base_Property="DirectedRelationship-target"/>
+  <Ecore:EReference xmi:id="_QcIAB8cBEdyrC427ygySag" isTransient="true" base_Property="Element-ownedElement"/>
+  <Ecore:EReference xmi:id="_QcIACMcBEdyrC427ygySag" isTransient="true" base_Property="Element-owner"/>
+  <Ecore:EReference xmi:id="_QcIACccBEdyrC427ygySag" isTransient="true" base_Property="Feature-featuringClassifier"/>
+  <Ecore:EReference xmi:id="_QcIACscBEdyrC427ygySag" isTransient="true" base_Property="Namespace-importedMember"/>
+  <Ecore:EReference xmi:id="_QcIAC8cBEdyrC427ygySag" isTransient="true" base_Property="Namespace-ownedMember"/>
+  <Ecore:EReference xmi:id="_QcIADMcBEdyrC427ygySag" isTransient="true" base_Property="Namespace-member"/>
+  <Ecore:EOperation xmi:id="_QcIADccBEdyrC427ygySag" base_Operation="Namespace-importedMember.1" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_QcIADscBEdyrC427ygySag" isTransient="true" base_Property="RedefinableElement-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_QcIAD8cBEdyrC427ygySag" isTransient="true" base_Property="RedefinableElement-redefinedElement"/>
+  <Ecore:EReference xmi:id="_QcIAEMcBEdyrC427ygySag" isTransient="true" base_Property="Relationship-relatedElement"/>
+  <Ecore:EReference xmi:id="_QcIAEccBEdyrC427ygySag" isTransient="true" base_Property="Association-endType"/>
+  <Ecore:EAttribute xmi:id="_QcIAEscBEdyrC427ygySag" isTransient="true" isUnsettable="true" base_Property="Property-default"/>
+  <Ecore:EReference xmi:id="_QcIAE8cBEdyrC427ygySag" isTransient="true" base_Property="Property-opposite"/>
+  <Ecore:EOperation xmi:id="_QcIAFMcBEdyrC427ygySag" base_Operation="Property-opposite.1" operationName="getOpposite" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_QcIAFccBEdyrC427ygySag" isUnsettable="true" base_Property="OpaqueExpression-language"/>
+  <Ecore:EAttribute xmi:id="_QcIAFscBEdyrC427ygySag" isTransient="true" base_Property="Operation-isOrdered"/>
+  <Ecore:EAttribute xmi:id="_QcIAF8cBEdyrC427ygySag" isTransient="true" base_Property="Operation-isUnique"/>
+  <Ecore:EAttribute xmi:id="_QcIAGMcBEdyrC427ygySag" isTransient="true" base_Property="Operation-lower"/>
+  <Ecore:EAttribute xmi:id="_QcIAGccBEdyrC427ygySag" isTransient="true" base_Property="Operation-upper"/>
+  <Ecore:EReference xmi:id="_QcIAGscBEdyrC427ygySag" isTransient="true" base_Property="Operation-type"/>
+  <Ecore:EOperation xmi:id="_QcIAG8cBEdyrC427ygySag" base_Operation="Operation-lower.1" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_QcIAHMcBEdyrC427ygySag" base_Operation="Operation-upper.1" operationName="upperBound"/>
+  <Ecore:EOperation xmi:id="_QcIAHccBEdyrC427ygySag" base_Operation="Operation-type.1" operationName="getType" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_QcIAHscBEdyrC427ygySag" isTransient="true" isUnsettable="true" base_Property="Parameter-default"/>
+  <Ecore:EAttribute xmi:id="_QcIAH8cBEdyrC427ygySag" isUnsettable="true" base_Property="ElementImport-alias"/>
+  <Ecore:EReference xmi:id="_QcIAIMcBEdyrC427ygySag" isTransient="true" base_Property="Package-ownedType"/>
+  <Ecore:EReference xmi:id="_QcIAIccBEdyrC427ygySag" isTransient="true" base_Property="Package-nestedPackage"/>
+  <Ecore:EReference xmi:id="_QcIAIscBEdyrC427ygySag" isTransient="true" base_Property="Package-nestingPackage"/>
+  <Ecore:EReference xmi:id="_QcIAI8cBEdyrC427ygySag" isTransient="true" base_Property="Type-package"/>
+  <Ecore:EAttribute xmi:id="_QcIAJMcBEdyrC427ygySag" isUnsettable="true" base_Property="NamedElement-name"/>
+  <Ecore:EAttribute xmi:id="_QcIAJccBEdyrC427ygySag" isUnsettable="true" base_Property="NamedElement-visibility"/>
+  <Ecore:EReference xmi:id="_QcIAJscBEdyrC427ygySag" isTransient="true" base_Property="NamedElement-namespace"/>
+  <Ecore:EAttribute xmi:id="_QcIAJ8cBEdyrC427ygySag" isTransient="true" base_Property="NamedElement-qualifiedName"/>
+  <Ecore:EOperation xmi:id="_QcIAKMcBEdyrC427ygySag" base_Operation="NamedElement-qualifiedName.1" operationName="getQualifiedName" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_QcIAKccBEdyrC427ygySag" isUnsettable="true" xmlFeatureKind="Element" base_Property="Comment-body"/>
+  <Ecore:EAttribute xmi:id="_QeD50scBEdyrC427ygySag" isUnsettable="true" base_Property="LiteralString-value"/>
+  <Ecore:EAttribute xmi:id="_QeD508cBEdyrC427ygySag" isTransient="true" base_Property="MultiplicityElement-upper"/>
+  <Ecore:EAttribute xmi:id="_QeD51McBEdyrC427ygySag" isTransient="true" base_Property="MultiplicityElement-lower"/>
+  <Ecore:EOperation xmi:id="_QeD51ccBEdyrC427ygySag" base_Operation="MultiplicityElement-lower.1" operationName="getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_QeD51scBEdyrC427ygySag" base_Operation="MultiplicityElement-upper.1" operationName="getUpper" visibility="None"/>
+  <Ecore:EReference xmi:id="_QeD518cBEdyrC427ygySag" isTransient="true" base_Property="Classifier-general"/>
+  <Ecore:EAttribute xmi:id="_QeD52McBEdyrC427ygySag" isUnsettable="true" base_Property="Generalization-isSubstitutable"/>
+  <Ecore:EReference xmi:id="_QeD52ccBEdyrC427ygySag" isTransient="true" base_Property="Class-superClass"/>
+  <Ecore:EAttribute xmi:id="_QeD52scBEdyrC427ygySag" isTransient="true" base_Property="Property-isComposite"/>
+  <Ecore:EOperation xmi:id="_QeNqsMcBEdyrC427ygySag" base_Operation="Association-endType.1" operationName="getEndTypes"/>
+  <Ecore:EAttribute xmi:id="_QeNqsccBEdyrC427ygySag" isUnsettable="true" base_Property="Expression-symbol"/>
+  <Ecore:EReference xmi:id="_QeXb7scBEdyrC427ygySag" isTransient="true" base_Property="Behavior-context"/>
+  <Ecore:EReference xmi:id="_QeXb78cBEdyrC427ygySag" isTransient="true" base_Property="OpaqueExpression-result"/>
+  <Ecore:EAttribute xmi:id="_QeXb8McBEdyrC427ygySag" isUnsettable="true" base_Property="OpaqueBehavior-language"/>
+  <Ecore:EAttribute xmi:id="_QegmAMcBEdyrC427ygySag" isUnsettable="true" base_Property="OpaqueAction-language"/>
+  <Ecore:EReference xmi:id="_QegmAccBEdyrC427ygySag" isTransient="true" base_Property="Action-output"/>
+  <Ecore:EReference xmi:id="_QegmAscBEdyrC427ygySag" isTransient="true" base_Property="Action-input"/>
+  <Ecore:EReference xmi:id="_QegmA8cBEdyrC427ygySag" isTransient="true" base_Property="Action-context"/>
+  <Ecore:EReference xmi:id="_QegmNscBEdyrC427ygySag" isTransient="true" base_Property="ActivityGroup-containedNode"/>
+  <Ecore:EReference xmi:id="_QegmN8cBEdyrC427ygySag" isTransient="true" base_Property="ActivityGroup-subgroup"/>
+  <Ecore:EReference xmi:id="_QegmOMcBEdyrC427ygySag" isTransient="true" base_Property="ActivityGroup-superGroup"/>
+  <Ecore:EReference xmi:id="_QegmOccBEdyrC427ygySag" isTransient="true" base_Property="ActivityNode-inGroup"/>
+  <Ecore:EReference xmi:id="_QeqXIMcBEdyrC427ygySag" isTransient="true" base_Property="Activity-structuredNode"/>
+  <Ecore:EReference xmi:id="_Qe9R7McBEdyrC427ygySag" isTransient="true" base_Property="ConnectorEnd-definingEnd"/>
+  <Ecore:EReference xmi:id="_Qe9R7ccBEdyrC427ygySag" isTransient="true" base_Property="StructuredClassifier-part"/>
+  <Ecore:EReference xmi:id="_Qe9R7scBEdyrC427ygySag" isTransient="true" base_Property="StructuredClassifier-role"/>
+  <Ecore:EReference xmi:id="_QfHDRccBEdyrC427ygySag" isTransient="true" base_Property="ActivityEdge-inGroup"/>
+  <Ecore:EReference xmi:id="_QfHDRscBEdyrC427ygySag" isTransient="true" base_Property="ActivityGroup-containedEdge"/>
+  <Ecore:EAttribute xmi:id="_QfZ92ccBEdyrC427ygySag" isTransient="true" base_Property="Message-messageKind"/>
+  <Ecore:EReference xmi:id="_Qf2pcMcBEdyrC427ygySag" isTransient="true" base_Property="Message-signature"/>
+  <Ecore:EReference xmi:id="_QgTVbMcBEdyrC427ygySag" isTransient="true" base_Property="Port-required"/>
+  <Ecore:EReference xmi:id="_QgTVbccBEdyrC427ygySag" isTransient="true" base_Property="Port-provided"/>
+  <Ecore:EReference xmi:id="_QgTVbscBEdyrC427ygySag" isTransient="true" base_Property="EncapsulatedClassifier-ownedPort"/>
+  <Ecore:EReference xmi:id="_QgcfZ8cBEdyrC427ygySag" isTransient="true" base_Property="Component-required"/>
+  <Ecore:EReference xmi:id="_QgcfaMcBEdyrC427ygySag" isTransient="true" base_Property="Component-provided"/>
+  <Ecore:EOperation xmi:id="_QgcfaccBEdyrC427ygySag" base_Operation="Component-required.1" operationName="getRequireds"/>
+  <Ecore:EOperation xmi:id="_QgcfascBEdyrC427ygySag" base_Operation="Component-provided.1" operationName="getProvideds"/>
+  <Ecore:EAttribute xmi:id="_Qgcfa8cBEdyrC427ygySag" isUnsettable="true" base_Property="Connector-kind"/>
+  <Ecore:EAttribute xmi:id="_QgcfnscBEdyrC427ygySag" isUnsettable="true" base_Property="Artifact-fileName"/>
+  <Ecore:EReference xmi:id="_QgmQaMcBEdyrC427ygySag" isTransient="true" base_Property="DeploymentTarget-deployedElement"/>
+  <Ecore:EOperation xmi:id="_QgmQaccBEdyrC427ygySag" base_Operation="DeploymentTarget-deployedElement.1" operationName="getDeployedElements"/>
+  <Ecore:EAttribute xmi:id="_QhV35McBEdyrC427ygySag" isTransient="true" base_Property="State-isComposite"/>
+  <Ecore:EAttribute xmi:id="_QhV35ccBEdyrC427ygySag" isTransient="true" base_Property="State-isOrthogonal"/>
+  <Ecore:EAttribute xmi:id="_QhV35scBEdyrC427ygySag" isTransient="true" base_Property="State-isSimple"/>
+  <Ecore:EAttribute xmi:id="_QhV358cBEdyrC427ygySag" isTransient="true" base_Property="State-isSubmachineState"/>
+  <Ecore:EReference xmi:id="_QhV36McBEdyrC427ygySag" isTransient="true" base_Property="State-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_QhV36ccBEdyrC427ygySag" isTransient="true" base_Property="Transition-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_QhV36scBEdyrC427ygySag" isTransient="true" base_Property="Region-redefinitionContext"/>
+  <Ecore:EReference xmi:id="_QhoyPscBEdyrC427ygySag" isTransient="true" base_Property="Profile-ownedStereotype"/>
+  <Ecore:EReference xmi:id="_QhoyP8cBEdyrC427ygySag" isTransient="true" base_Property="Class-extension"/>
+  <Ecore:EAttribute xmi:id="_QhoyQMcBEdyrC427ygySag" isTransient="true" base_Property="Extension-isRequired"/>
+  <Ecore:EReference xmi:id="_QhoyQccBEdyrC427ygySag" isTransient="true" base_Property="Extension-metaclass"/>
+  <Ecore:EOperation xmi:id="_QhoyQscBEdyrC427ygySag" base_Operation="Extension-metaclass.1" operationName="getMetaclass" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_QhoyQ8cBEdyrC427ygySag" isUnsettable="true" base_Property="Image-content"/>
+  <Ecore:EAttribute xmi:id="_QhoyRMcBEdyrC427ygySag" isUnsettable="true" base_Property="Image-location"/>
+  <Ecore:EAttribute xmi:id="_QhoyRccBEdyrC427ygySag" isUnsettable="true" base_Property="Image-format"/>
+  <Ecore:EAttribute xmi:id="_QhoySscBEdyrC427ygySag" isTransient="true" base_Property="ExtensionEnd-lower"/>
+  <Ecore:EAttribute xmi:id="_Qhyjp8cBEdyrC427ygySag" isUnsettable="true" base_Property="Model-viewpoint"/>
+  <Ecore:EAttribute xmi:id="_QiYZHscBEdyrC427ygySag" isUnsettable="true" base_Property="Parameter-effect"/>
+  <Ecore:EAttribute xmi:id="_QiiKe8cBEdyrC427ygySag" isUnsettable="true" base_Property="DeploymentSpecification-deploymentLocation"/>
+  <Ecore:EAttribute xmi:id="_QiiKfMcBEdyrC427ygySag" isUnsettable="true" base_Property="DeploymentSpecification-executionLocation"/>
+  <Ecore:EReference xmi:id="_Qir7TscBEdyrC427ygySag" isTransient="true" base_Property="ProtocolTransition-referred"/>
+  <Ecore:EReference xmi:id="_Qi-2ZccBEdyrC427ygySag" isTransient="true" base_Property="RedefinableTemplateSignature-inheritedParameter"/>
+  <Ecore:EReference xmi:id="_QjIm_8cBEdyrC427ygySag" isTransient="true" isVolatile="true" base_Property="ConnectableElement-end"/>
+  <Ecore:EReference xmi:id="_QjInHscBEdyrC427ygySag" isTransient="true" isVolatile="true" base_Property="Vertex-incoming"/>
+  <Ecore:EReference xmi:id="_QjInH8cBEdyrC427ygySag" isTransient="true" isVolatile="true" base_Property="Vertex-outgoing"/>
+  <Standard:Metamodel xmi:id="_lWZagMcBEdyrC427ygySag" base_Model="_0"/>
+  <Standard:Metaclass xmi:id="_lWZagccBEdyrC427ygySag" base_Class="Comment"/>
+  <Standard:Metaclass xmi:id="_lWZagscBEdyrC427ygySag" base_Class="DirectedRelationship"/>
+  <Standard:Metaclass xmi:id="_lWZag8cBEdyrC427ygySag" base_Class="LiteralSpecification"/>
+  <Standard:Metaclass xmi:id="_lWZahMcBEdyrC427ygySag" base_Class="LiteralInteger"/>
+  <Standard:Metaclass xmi:id="_lWZahccBEdyrC427ygySag" base_Class="LiteralString"/>
+  <Standard:Metaclass xmi:id="_lWZahscBEdyrC427ygySag" base_Class="LiteralBoolean"/>
+  <Standard:Metaclass xmi:id="_lWZah8cBEdyrC427ygySag" base_Class="LiteralNull"/>
+  <Standard:Metaclass xmi:id="_lWZaiMcBEdyrC427ygySag" base_Class="Constraint"/>
+  <Standard:Metaclass xmi:id="_lWZaiccBEdyrC427ygySag" base_Class="ElementImport"/>
+  <Standard:Metaclass xmi:id="_lWZaiscBEdyrC427ygySag" base_Class="TypedElement"/>
+  <Standard:Metaclass xmi:id="_lWZai8cBEdyrC427ygySag" base_Class="Feature"/>
+  <Standard:Metaclass xmi:id="_lWZajMcBEdyrC427ygySag" base_Class="RedefinableElement"/>
+  <Standard:Metaclass xmi:id="_lWZajccBEdyrC427ygySag" base_Class="StructuralFeature"/>
+  <Standard:Metaclass xmi:id="_lWZajscBEdyrC427ygySag" base_Class="Slot"/>
+  <Standard:Metaclass xmi:id="_lWZaj8cBEdyrC427ygySag" base_Class="PackageImport"/>
+  <Standard:Metaclass xmi:id="_lWZakMcBEdyrC427ygySag" base_Class="DataType"/>
+  <Standard:Metaclass xmi:id="_lWZakccBEdyrC427ygySag" base_Class="Enumeration"/>
+  <Standard:Metaclass xmi:id="_lWZakscBEdyrC427ygySag" base_Class="EnumerationLiteral"/>
+  <Standard:Metaclass xmi:id="_lWZak8cBEdyrC427ygySag" base_Class="PrimitiveType"/>
+  <Standard:Metaclass xmi:id="_lWZalMcBEdyrC427ygySag" base_Class="Association"/>
+  <Standard:Metaclass xmi:id="_lWjLgMcBEdyrC427ygySag" base_Class="Relationship"/>
+  <Standard:Metaclass xmi:id="_lWjLgccBEdyrC427ygySag" base_Class="PackageMerge"/>
+  <Standard:Metaclass xmi:id="_lWjLgscBEdyrC427ygySag" base_Class="InstanceValue"/>
+  <Standard:Metaclass xmi:id="_lWjLg8cBEdyrC427ygySag" base_Class="LiteralUnlimitedNatural"/>
+  <Standard:Metaclass xmi:id="_lWjLhMcBEdyrC427ygySag" base_Class="Type"/>
+  <Standard:Metaclass xmi:id="_lWjLhccBEdyrC427ygySag" base_Class="Expression"/>
+  <Standard:Metaclass xmi:id="_lWs8gMcBEdyrC427ygySag" base_Class="OpaqueExpression"/>
+  <Standard:Metaclass xmi:id="_lWs8gccBEdyrC427ygySag" base_Class="OpaqueBehavior"/>
+  <Standard:Metaclass xmi:id="_lWs8gscBEdyrC427ygySag" base_Class="FunctionBehavior"/>
+  <Standard:Metaclass xmi:id="_lWs8g8cBEdyrC427ygySag" base_Class="OpaqueAction"/>
+  <Standard:Metaclass xmi:id="_lWs8hMcBEdyrC427ygySag" base_Class="CallAction"/>
+  <Standard:Metaclass xmi:id="_lWs8hccBEdyrC427ygySag" base_Class="SendSignalAction"/>
+  <Standard:Metaclass xmi:id="_lWs8hscBEdyrC427ygySag" base_Class="CallOperationAction"/>
+  <Standard:Metaclass xmi:id="_lWs8h8cBEdyrC427ygySag" base_Class="CallBehaviorAction"/>
+  <Standard:Metaclass xmi:id="_lWs8iMcBEdyrC427ygySag" base_Class="MultiplicityElement"/>
+  <Standard:Metaclass xmi:id="_lW2GcMcBEdyrC427ygySag" base_Class="SequenceNode"/>
+  <Standard:Metaclass xmi:id="_lW2GcccBEdyrC427ygySag" base_Class="InputPin"/>
+  <Standard:Metaclass xmi:id="_lW2GcscBEdyrC427ygySag" base_Class="OutputPin"/>
+  <Standard:Metaclass xmi:id="_lW2Gc8cBEdyrC427ygySag" base_Class="Usage"/>
+  <Standard:Metaclass xmi:id="_lW2GdMcBEdyrC427ygySag" base_Class="Abstraction"/>
+  <Standard:Metaclass xmi:id="_lW2GdccBEdyrC427ygySag" base_Class="Dependency"/>
+  <Standard:Metaclass xmi:id="_lW2GdscBEdyrC427ygySag" base_Class="Realization"/>
+  <Standard:Metaclass xmi:id="_lW2Gd8cBEdyrC427ygySag" base_Class="Substitution"/>
+  <Standard:Metaclass xmi:id="_lW2GeMcBEdyrC427ygySag" base_Class="Namespace"/>
+  <Standard:Metaclass xmi:id="_lW_3cMcBEdyrC427ygySag" base_Class="InterfaceRealization"/>
+  <Standard:Metaclass xmi:id="_lW_3cccBEdyrC427ygySag" base_Class="StructuredClassifier"/>
+  <Standard:Metaclass xmi:id="_lXJBYMcBEdyrC427ygySag" base_Class="Variable"/>
+  <Standard:Metaclass xmi:id="_lXJBYccBEdyrC427ygySag" base_Class="CollaborationUse"/>
+  <Standard:Metaclass xmi:id="_lXJBYscBEdyrC427ygySag" base_Class="Collaboration"/>
+  <Standard:Metaclass xmi:id="_lXJBY8cBEdyrC427ygySag" base_Class="ControlNode"/>
+  <Standard:Metaclass xmi:id="_lXJBZMcBEdyrC427ygySag" base_Class="ControlFlow"/>
+  <Standard:Metaclass xmi:id="_lXJBZccBEdyrC427ygySag" base_Class="InitialNode"/>
+  <Standard:Metaclass xmi:id="_lXJBZscBEdyrC427ygySag" base_Class="ActivityParameterNode"/>
+  <Standard:Metaclass xmi:id="_lXJBZ8cBEdyrC427ygySag" base_Class="ValuePin"/>
+  <Standard:Metaclass xmi:id="_lXJBaMcBEdyrC427ygySag" base_Class="Message"/>
+  <Standard:Metaclass xmi:id="_lXSyYMcBEdyrC427ygySag" base_Class="GeneralOrdering"/>
+  <Standard:Metaclass xmi:id="_lXSyYccBEdyrC427ygySag" base_Class="ExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSyYscBEdyrC427ygySag" base_Class="OccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSyY8cBEdyrC427ygySag" base_Class="MessageEnd"/>
+  <Standard:Metaclass xmi:id="_lXSyZMcBEdyrC427ygySag" base_Class="StateInvariant"/>
+  <Standard:Metaclass xmi:id="_lXSyZccBEdyrC427ygySag" base_Class="ActionExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSyZscBEdyrC427ygySag" base_Class="BehaviorExecutionSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSyZ8cBEdyrC427ygySag" base_Class="ExecutionEvent"/>
+  <Standard:Metaclass xmi:id="_lXSyaMcBEdyrC427ygySag" base_Class="CreationEvent"/>
+  <Standard:Metaclass xmi:id="_lXSyaccBEdyrC427ygySag" base_Class="DestructionEvent"/>
+  <Standard:Metaclass xmi:id="_lXSyascBEdyrC427ygySag" base_Class="SendOperationEvent"/>
+  <Standard:Metaclass xmi:id="_lXSya8cBEdyrC427ygySag" base_Class="SendSignalEvent"/>
+  <Standard:Metaclass xmi:id="_lXSybMcBEdyrC427ygySag" base_Class="MessageOccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSybccBEdyrC427ygySag" base_Class="ExecutionOccurrenceSpecification"/>
+  <Standard:Metaclass xmi:id="_lXSybscBEdyrC427ygySag" base_Class="ReceiveOperationEvent"/>
+  <Standard:Metaclass xmi:id="_lXSyb8cBEdyrC427ygySag" base_Class="ReceiveSignalEvent"/>
+  <Standard:Metaclass xmi:id="_lXcjYMcBEdyrC427ygySag" base_Class="Actor"/>
+  <Standard:Metaclass xmi:id="_lXcjYccBEdyrC427ygySag" base_Class="Extend"/>
+  <Standard:Metaclass xmi:id="_lXcjYscBEdyrC427ygySag" base_Class="Include"/>
+  <Standard:Metaclass xmi:id="_lXcjY8cBEdyrC427ygySag" base_Class="UseCase"/>
+  <Standard:Metaclass xmi:id="_lXcjZMcBEdyrC427ygySag" base_Class="ExtensionPoint"/>
+  <Standard:Metaclass xmi:id="_lXltUMcBEdyrC427ygySag" base_Class="CallEvent"/>
+  <Standard:Metaclass xmi:id="_lXltUccBEdyrC427ygySag" base_Class="ChangeEvent"/>
+  <Standard:Metaclass xmi:id="_lXltUscBEdyrC427ygySag" base_Class="Reception"/>
+  <Standard:Metaclass xmi:id="_lXltU8cBEdyrC427ygySag" base_Class="Signal"/>
+  <Standard:Metaclass xmi:id="_lXltVMcBEdyrC427ygySag" base_Class="SignalEvent"/>
+  <Standard:Metaclass xmi:id="_lXltVccBEdyrC427ygySag" base_Class="MessageEvent"/>
+  <Standard:Metaclass xmi:id="_lXltVscBEdyrC427ygySag" base_Class="AnyReceiveEvent"/>
+  <Standard:Metaclass xmi:id="_lXltV8cBEdyrC427ygySag" base_Class="BehavioredClassifier"/>
+  <Standard:Metaclass xmi:id="_lXltWMcBEdyrC427ygySag" base_Class="Event"/>
+  <Standard:Metaclass xmi:id="_lXveUMcBEdyrC427ygySag" base_Class="ForkNode"/>
+  <Standard:Metaclass xmi:id="_lXveUccBEdyrC427ygySag" base_Class="FlowFinalNode"/>
+  <Standard:Metaclass xmi:id="_lXveUscBEdyrC427ygySag" base_Class="CentralBufferNode"/>
+  <Standard:Metaclass xmi:id="_lXveU8cBEdyrC427ygySag" base_Class="ActivityPartition"/>
+  <Standard:Metaclass xmi:id="_lXveVMcBEdyrC427ygySag" base_Class="MergeNode"/>
+  <Standard:Metaclass xmi:id="_lXveVccBEdyrC427ygySag" base_Class="DecisionNode"/>
+  <Standard:Metaclass xmi:id="_lXveVscBEdyrC427ygySag" base_Class="FinalNode"/>
+  <Standard:Metaclass xmi:id="_lXveV8cBEdyrC427ygySag" base_Class="ActivityFinalNode"/>
+  <Standard:Metaclass xmi:id="_lXveWMcBEdyrC427ygySag" base_Class="EncapsulatedClassifier"/>
+  <Standard:Metaclass xmi:id="_lXveWccBEdyrC427ygySag" base_Class="ComponentRealization"/>
+  <Standard:Metaclass xmi:id="_lX5PUMcBEdyrC427ygySag" base_Class="Connector"/>
+  <Standard:Metaclass xmi:id="_lX5PUccBEdyrC427ygySag" base_Class="Manifestation"/>
+  <Standard:Metaclass xmi:id="_lX5PUscBEdyrC427ygySag" base_Class="Node"/>
+  <Standard:Metaclass xmi:id="_lX5PU8cBEdyrC427ygySag" base_Class="Device"/>
+  <Standard:Metaclass xmi:id="_lX5PVMcBEdyrC427ygySag" base_Class="ExecutionEnvironment"/>
+  <Standard:Metaclass xmi:id="_lX5PVccBEdyrC427ygySag" base_Class="DeploymentTarget"/>
+  <Standard:Metaclass xmi:id="_lYCZQMcBEdyrC427ygySag" base_Class="DeployedArtifact"/>
+  <Standard:Metaclass xmi:id="_lYCZQccBEdyrC427ygySag" base_Class="CommunicationPath"/>
+  <Standard:Metaclass xmi:id="_lYCZQscBEdyrC427ygySag" base_Class="InstanceSpecification"/>
+  <Standard:Metaclass xmi:id="_lYCZQ8cBEdyrC427ygySag" base_Class="Artifact"/>
+  <Standard:Metaclass xmi:id="_lYCZRMcBEdyrC427ygySag" base_Class="InteractionUse"/>
+  <Standard:Metaclass xmi:id="_lYCZRccBEdyrC427ygySag" base_Class="PartDecomposition"/>
+  <Standard:Metaclass xmi:id="_lYMKQMcBEdyrC427ygySag" base_Class="InteractionOperand"/>
+  <Standard:Metaclass xmi:id="_lYMKQccBEdyrC427ygySag" base_Class="InteractionConstraint"/>
+  <Standard:Metaclass xmi:id="_lYMKQscBEdyrC427ygySag" base_Class="Gate"/>
+  <Standard:Metaclass xmi:id="_lYMKQ8cBEdyrC427ygySag" base_Class="CombinedFragment"/>
+  <Standard:Metaclass xmi:id="_lYMKRMcBEdyrC427ygySag" base_Class="Interaction"/>
+  <Standard:Metaclass xmi:id="_lYMKRccBEdyrC427ygySag" base_Class="Lifeline"/>
+  <Standard:Metaclass xmi:id="_lYMKRscBEdyrC427ygySag" base_Class="Continuation"/>
+  <Standard:Metaclass xmi:id="_lYMKR8cBEdyrC427ygySag" base_Class="InteractionFragment"/>
+  <Standard:Metaclass xmi:id="_lYVUMMcBEdyrC427ygySag" base_Class="ConsiderIgnoreFragment"/>
+  <Standard:Metaclass xmi:id="_lYVUMccBEdyrC427ygySag" base_Class="CreateObjectAction"/>
+  <Standard:Metaclass xmi:id="_lYVUMscBEdyrC427ygySag" base_Class="DestroyObjectAction"/>
+  <Standard:Metaclass xmi:id="_lYfFMMcBEdyrC427ygySag" base_Class="TestIdentityAction"/>
+  <Standard:Metaclass xmi:id="_lYfFMccBEdyrC427ygySag" base_Class="ReadSelfAction"/>
+  <Standard:Metaclass xmi:id="_lYfFMscBEdyrC427ygySag" base_Class="StructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_lYo2MMcBEdyrC427ygySag" base_Class="ReadStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_lYo2MccBEdyrC427ygySag" base_Class="WriteStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_lYo2MscBEdyrC427ygySag" base_Class="ClearStructuralFeatureAction"/>
+  <Standard:Metaclass xmi:id="_lYo2M8cBEdyrC427ygySag" base_Class="RemoveStructuralFeatureValueAction"/>
+  <Standard:Metaclass xmi:id="_lYo2NMcBEdyrC427ygySag" base_Class="AddStructuralFeatureValueAction"/>
+  <Standard:Metaclass xmi:id="_lYo2NccBEdyrC427ygySag" base_Class="LinkAction"/>
+  <Standard:Metaclass xmi:id="_lYo2NscBEdyrC427ygySag" base_Class="ReadLinkAction"/>
+  <Standard:Metaclass xmi:id="_lYo2N8cBEdyrC427ygySag" base_Class="LinkEndCreationData"/>
+  <Standard:Metaclass xmi:id="_lYyAIMcBEdyrC427ygySag" base_Class="CreateLinkAction"/>
+  <Standard:Metaclass xmi:id="_lYyAIccBEdyrC427ygySag" base_Class="DestroyLinkAction"/>
+  <Standard:Metaclass xmi:id="_lYyAIscBEdyrC427ygySag" base_Class="WriteLinkAction"/>
+  <Standard:Metaclass xmi:id="_lYyAI8cBEdyrC427ygySag" base_Class="ClearAssociationAction"/>
+  <Standard:Metaclass xmi:id="_lYyAJMcBEdyrC427ygySag" base_Class="BroadcastSignalAction"/>
+  <Standard:Metaclass xmi:id="_lYyAJccBEdyrC427ygySag" base_Class="SendObjectAction"/>
+  <Standard:Metaclass xmi:id="_lYyAJscBEdyrC427ygySag" base_Class="LinkEndDestructionData"/>
+  <Standard:Metaclass xmi:id="_lYyAJ8cBEdyrC427ygySag" base_Class="ValueSpecificationAction"/>
+  <Standard:Metaclass xmi:id="_lY7xIMcBEdyrC427ygySag" base_Class="TimeExpression"/>
+  <Standard:Metaclass xmi:id="_lY7xIccBEdyrC427ygySag" base_Class="Duration"/>
+  <Standard:Metaclass xmi:id="_lY7xIscBEdyrC427ygySag" base_Class="DurationInterval"/>
+  <Standard:Metaclass xmi:id="_lY7xI8cBEdyrC427ygySag" base_Class="TimeConstraint"/>
+  <Standard:Metaclass xmi:id="_lY7xJMcBEdyrC427ygySag" base_Class="TimeInterval"/>
+  <Standard:Metaclass xmi:id="_lZFiIMcBEdyrC427ygySag" base_Class="DurationConstraint"/>
+  <Standard:Metaclass xmi:id="_lZFiIccBEdyrC427ygySag" base_Class="IntervalConstraint"/>
+  <Standard:Metaclass xmi:id="_lZFiIscBEdyrC427ygySag" base_Class="Interval"/>
+  <Standard:Metaclass xmi:id="_lZFiI8cBEdyrC427ygySag" base_Class="Observation"/>
+  <Standard:Metaclass xmi:id="_lZFiJMcBEdyrC427ygySag" base_Class="TimeObservation"/>
+  <Standard:Metaclass xmi:id="_lZFiJccBEdyrC427ygySag" base_Class="DurationObservation"/>
+  <Standard:Metaclass xmi:id="_lZOsEMcBEdyrC427ygySag" base_Class="InvocationAction"/>
+  <Standard:Metaclass xmi:id="_lZOsEccBEdyrC427ygySag" base_Class="Trigger"/>
+  <Standard:Metaclass xmi:id="_lZOsEscBEdyrC427ygySag" base_Class="StateMachine"/>
+  <Standard:Metaclass xmi:id="_lZOsE8cBEdyrC427ygySag" base_Class="Pseudostate"/>
+  <Standard:Metaclass xmi:id="_lZYdEMcBEdyrC427ygySag" base_Class="FinalState"/>
+  <Standard:Metaclass xmi:id="_lZYdEccBEdyrC427ygySag" base_Class="ConnectionPointReference"/>
+  <Standard:Metaclass xmi:id="_lZYdEscBEdyrC427ygySag" base_Class="TimeEvent"/>
+  <Standard:Metaclass xmi:id="_lZhnAMcBEdyrC427ygySag" base_Class="Stereotype"/>
+  <Standard:Metaclass xmi:id="_lZrYAMcBEdyrC427ygySag" base_Class="Profile"/>
+  <Standard:Metaclass xmi:id="_lZrYAccBEdyrC427ygySag" base_Class="Class"/>
+  <Standard:Metaclass xmi:id="_lZ1JAMcBEdyrC427ygySag" base_Class="ProfileApplication"/>
+  <Standard:Metaclass xmi:id="_lZ1JAccBEdyrC427ygySag" base_Class="Extension"/>
+  <Standard:Metaclass xmi:id="_lZ-S8McBEdyrC427ygySag" base_Class="Image"/>
+  <Standard:Metaclass xmi:id="_lZ-S8ccBEdyrC427ygySag" base_Class="Element"/>
+  <Standard:Metaclass xmi:id="_laR08McBEdyrC427ygySag" base_Class="ExtensionEnd"/>
+  <Standard:Metaclass xmi:id="_laR08ccBEdyrC427ygySag" base_Class="VariableAction"/>
+  <Standard:Metaclass xmi:id="_laR08scBEdyrC427ygySag" base_Class="ReadVariableAction"/>
+  <Standard:Metaclass xmi:id="_laR088cBEdyrC427ygySag" base_Class="WriteVariableAction"/>
+  <Standard:Metaclass xmi:id="_laR09McBEdyrC427ygySag" base_Class="ClearVariableAction"/>
+  <Standard:Metaclass xmi:id="_laR09ccBEdyrC427ygySag" base_Class="AddVariableValueAction"/>
+  <Standard:Metaclass xmi:id="_laa-4McBEdyrC427ygySag" base_Class="RemoveVariableValueAction"/>
+  <Standard:Metaclass xmi:id="_laa-4ccBEdyrC427ygySag" base_Class="RaiseExceptionAction"/>
+  <Standard:Metaclass xmi:id="_laa-4scBEdyrC427ygySag" base_Class="ActionInputPin"/>
+  <Standard:Metaclass xmi:id="_laa-48cBEdyrC427ygySag" base_Class="GeneralizationSet"/>
+  <Standard:Metaclass xmi:id="_laa-5McBEdyrC427ygySag" base_Class="Generalization"/>
+  <Standard:Metaclass xmi:id="_lakv4McBEdyrC427ygySag" base_Class="InformationItem"/>
+  <Standard:Metaclass xmi:id="_lakv4ccBEdyrC427ygySag" base_Class="InformationFlow"/>
+  <Standard:Metaclass xmi:id="_lakv4scBEdyrC427ygySag" base_Class="Model"/>
+  <Standard:Metaclass xmi:id="_lat50McBEdyrC427ygySag" base_Class="ReadExtentAction"/>
+  <Standard:Metaclass xmi:id="_lat50ccBEdyrC427ygySag" base_Class="ReclassifyObjectAction"/>
+  <Standard:Metaclass xmi:id="_lat50scBEdyrC427ygySag" base_Class="ReadIsClassifiedObjectAction"/>
+  <Standard:Metaclass xmi:id="_lat508cBEdyrC427ygySag" base_Class="StartClassifierBehaviorAction"/>
+  <Standard:Metaclass xmi:id="_lat51McBEdyrC427ygySag" base_Class="QualifierValue"/>
+  <Standard:Metaclass xmi:id="_la3q0McBEdyrC427ygySag" base_Class="LinkEndData"/>
+  <Standard:Metaclass xmi:id="_la3q0ccBEdyrC427ygySag" base_Class="ReadLinkObjectEndAction"/>
+  <Standard:Metaclass xmi:id="_la3q0scBEdyrC427ygySag" base_Class="ReadLinkObjectEndQualifierAction"/>
+  <Standard:Metaclass xmi:id="_la3q08cBEdyrC427ygySag" base_Class="CreateLinkObjectAction"/>
+  <Standard:Metaclass xmi:id="_lbBb0McBEdyrC427ygySag" base_Class="AcceptEventAction"/>
+  <Standard:Metaclass xmi:id="_lbBb0ccBEdyrC427ygySag" base_Class="AcceptCallAction"/>
+  <Standard:Metaclass xmi:id="_lbBb0scBEdyrC427ygySag" base_Class="ReplyAction"/>
+  <Standard:Metaclass xmi:id="_lbBb08cBEdyrC427ygySag" base_Class="UnmarshallAction"/>
+  <Standard:Metaclass xmi:id="_lbKlwMcBEdyrC427ygySag" base_Class="ReduceAction"/>
+  <Standard:Metaclass xmi:id="_lbUWwMcBEdyrC427ygySag" base_Class="JoinNode"/>
+  <Standard:Metaclass xmi:id="_lbUWwccBEdyrC427ygySag" base_Class="DataStoreNode"/>
+  <Standard:Metaclass xmi:id="_lbUWwscBEdyrC427ygySag" base_Class="ObjectFlow"/>
+  <Standard:Metaclass xmi:id="_lbeHwMcBEdyrC427ygySag" base_Class="ObjectNode"/>
+  <Standard:Metaclass xmi:id="_lbeHwccBEdyrC427ygySag" base_Class="ParameterSet"/>
+  <Standard:Metaclass xmi:id="_lbeHwscBEdyrC427ygySag" base_Class="Activity"/>
+  <Standard:Metaclass xmi:id="_lbnRsMcBEdyrC427ygySag" base_Class="Parameter"/>
+  <Standard:Metaclass xmi:id="_lbnRsccBEdyrC427ygySag" base_Class="Action"/>
+  <Standard:Metaclass xmi:id="_lbxCsMcBEdyrC427ygySag" base_Class="InterruptibleActivityRegion"/>
+  <Standard:Metaclass xmi:id="_lbxCsccBEdyrC427ygySag" base_Class="ActivityNode"/>
+  <Standard:Metaclass xmi:id="_lbxCsscBEdyrC427ygySag" base_Class="BehavioralFeature"/>
+  <Standard:Metaclass xmi:id="_lb6MoMcBEdyrC427ygySag" base_Class="Behavior"/>
+  <Standard:Metaclass xmi:id="_lb6MoccBEdyrC427ygySag" base_Class="Pin"/>
+  <Standard:Metaclass xmi:id="_lcD9oMcBEdyrC427ygySag" base_Class="ConditionalNode"/>
+  <Standard:Metaclass xmi:id="_lcD9occBEdyrC427ygySag" base_Class="StructuredActivityNode"/>
+  <Standard:Metaclass xmi:id="_lcNuoMcBEdyrC427ygySag" base_Class="LoopNode"/>
+  <Standard:Metaclass xmi:id="_lcNuoccBEdyrC427ygySag" base_Class="Clause"/>
+  <Standard:Metaclass xmi:id="_lcNuoscBEdyrC427ygySag" base_Class="ActivityEdge"/>
+  <Standard:Metaclass xmi:id="_lcW4kMcBEdyrC427ygySag" base_Class="ActivityGroup"/>
+  <Standard:Metaclass xmi:id="_lcgpkMcBEdyrC427ygySag" base_Class="ExpansionNode"/>
+  <Standard:Metaclass xmi:id="_lcgpkccBEdyrC427ygySag" base_Class="ExpansionRegion"/>
+  <Standard:Metaclass xmi:id="_lcgpkscBEdyrC427ygySag" base_Class="ExecutableNode"/>
+  <Standard:Metaclass xmi:id="_lcgpk8cBEdyrC427ygySag" base_Class="ExceptionHandler"/>
+  <Standard:Metaclass xmi:id="_lcqakMcBEdyrC427ygySag" base_Class="Component"/>
+  <Standard:Metaclass xmi:id="_lcqakccBEdyrC427ygySag" base_Class="Deployment"/>
+  <Standard:Metaclass xmi:id="_lczkgMcBEdyrC427ygySag" base_Class="DeploymentSpecification"/>
+  <Standard:Metaclass xmi:id="_lczkgccBEdyrC427ygySag" base_Class="ProtocolConformance"/>
+  <Standard:Metaclass xmi:id="_lczkgscBEdyrC427ygySag" base_Class="Interface"/>
+  <Standard:Metaclass xmi:id="_lc9VgMcBEdyrC427ygySag" base_Class="Port"/>
+  <Standard:Metaclass xmi:id="_lc9VgccBEdyrC427ygySag" base_Class="ProtocolTransition"/>
+  <Standard:Metaclass xmi:id="_ldGfcMcBEdyrC427ygySag" base_Class="ProtocolStateMachine"/>
+  <Standard:Metaclass xmi:id="_ldGfcccBEdyrC427ygySag" base_Class="State"/>
+  <Standard:Metaclass xmi:id="_ldQQcMcBEdyrC427ygySag" base_Class="Region"/>
+  <Standard:Metaclass xmi:id="_ldaBcMcBEdyrC427ygySag" base_Class="AssociationClass"/>
+  <Standard:Metaclass xmi:id="_ldaBcccBEdyrC427ygySag" base_Class="TemplateSignature"/>
+  <Standard:Metaclass xmi:id="_ldjLYMcBEdyrC427ygySag" base_Class="NamedElement"/>
+  <Standard:Metaclass xmi:id="_lds8YMcBEdyrC427ygySag" base_Class="TemplateParameter"/>
+  <Standard:Metaclass xmi:id="_lds8YccBEdyrC427ygySag" base_Class="StringExpression"/>
+  <Standard:Metaclass xmi:id="_lds8YscBEdyrC427ygySag" base_Class="TemplateBinding"/>
+  <Standard:Metaclass xmi:id="_lds8Y8cBEdyrC427ygySag" base_Class="TemplateParameterSubstitution"/>
+  <Standard:Metaclass xmi:id="_ld2tYMcBEdyrC427ygySag" base_Class="TemplateableElement"/>
+  <Standard:Metaclass xmi:id="_ld2tYccBEdyrC427ygySag" base_Class="ParameterableElement"/>
+  <Standard:Metaclass xmi:id="_ld2tYscBEdyrC427ygySag" base_Class="Property"/>
+  <Standard:Metaclass xmi:id="_leJoUMcBEdyrC427ygySag" base_Class="ValueSpecification"/>
+  <Standard:Metaclass xmi:id="_leSyQMcBEdyrC427ygySag" base_Class="Operation"/>
+  <Standard:Metaclass xmi:id="_lecjQMcBEdyrC427ygySag" base_Class="OperationTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_lecjQccBEdyrC427ygySag" base_Class="PackageableElement"/>
+  <Standard:Metaclass xmi:id="_lecjQscBEdyrC427ygySag" base_Class="Classifier"/>
+  <Standard:Metaclass xmi:id="_le5PMMcBEdyrC427ygySag" base_Class="ClassifierTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_lfDAMMcBEdyrC427ygySag" base_Class="RedefinableTemplateSignature"/>
+  <Standard:Metaclass xmi:id="_lfDAMccBEdyrC427ygySag" base_Class="ConnectableElementTemplateParameter"/>
+  <Standard:Metaclass xmi:id="_lfDAMscBEdyrC427ygySag" base_Class="Package"/>
+  <Standard:Metaclass xmi:id="_lfV7IMcBEdyrC427ygySag" base_Class="ConnectableElement"/>
+  <Standard:Metaclass xmi:id="_lffFEMcBEdyrC427ygySag" base_Class="ConnectorEnd"/>
+  <Standard:Metaclass xmi:id="_lffFEccBEdyrC427ygySag" base_Class="Vertex"/>
+  <Standard:Metaclass xmi:id="_lffFEscBEdyrC427ygySag" base_Class="Transition"/>
 </xmi:XMI>

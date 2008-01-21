@@ -122,6 +122,7 @@
             </eAnnotations>
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_uRzp6cbxEdyMV8vsFuUbhw" name="visibility" ordered="false" eType="_z1OF6XjqEdy8S4Cr8Rc_NA"/>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_z1OFx3jqEdy8S4Cr8Rc_NA" name="EParameter">
           <eAnnotations xmi:id="_z1OFyHjqEdy8S4Cr8Rc_NA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="EParameter"/>
@@ -1267,6 +1268,10 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-annotations-_upperValue" value="*"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-annotations-_lowerValue"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="EOperation-visibility" name="visibility" type="VisibilityKind">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-visibility-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-visibility-_lowerValue"/>
       </ownedAttribute>
       <icon xmi:id="EOperation-_icon.0" location="../icons/full/ovr16/EOperation.gif"/>
     </packagedElement>
