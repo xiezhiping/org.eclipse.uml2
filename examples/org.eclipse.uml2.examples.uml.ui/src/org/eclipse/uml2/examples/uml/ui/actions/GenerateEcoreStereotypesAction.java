@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125
+ *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125, 204200
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.9 2007/10/30 21:08:02 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.10 2008/01/21 15:00:32 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -159,6 +159,20 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedAttribute(eEnumLiteralStereotype,
 							"literal", stringUMLPrimitiveType, 0, 1); //$NON-NLS-1$
 
+						Enumeration visibilityKindEnumeration = generateOwnedEnumeration(
+							profile, "VisibilityKind"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration,
+							"Unspecified"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration, "None"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration,
+							"ReadOnly"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration,
+							"ReadWrite"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration,
+							"ReadOnlyUnsettable"); //$NON-NLS-1$
+						generateOwnedLiteral(visibilityKindEnumeration,
+							"ReadWriteUnsettable"); //$NON-NLS-1$
+
 						Stereotype eOperationStereotype = generateOwnedStereotype(
 							profile, "EOperation", false); //$NON-NLS-1$
 						generateIcon(eOperationStereotype,
@@ -174,6 +188,8 @@ public class GenerateEcoreStereotypesAction
 							"annotations", //$NON-NLS-1$
 							stringUMLPrimitiveType, 0,
 							LiteralUnlimitedNatural.UNLIMITED);
+						generateOwnedAttribute(eOperationStereotype,
+							"visibility", visibilityKindEnumeration, 0, 1); //$NON-NLS-1$
 
 						Stereotype eParameterStereotype = generateOwnedStereotype(
 							profile, "EParameter", false); //$NON-NLS-1$
@@ -204,20 +220,6 @@ public class GenerateEcoreStereotypesAction
 						generateOwnedLiteral(featureKindEnumeration,
 							"ElementWildcard"); //$NON-NLS-1$
 						generateOwnedLiteral(featureKindEnumeration, "Group"); //$NON-NLS-1$
-
-						Enumeration visibilityKindEnumeration = generateOwnedEnumeration(
-							profile, "VisibilityKind"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration,
-							"Unspecified"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration, "None"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration,
-							"ReadOnly"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration,
-							"ReadWrite"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration,
-							"ReadOnlyUnsettable"); //$NON-NLS-1$
-						generateOwnedLiteral(visibilityKindEnumeration,
-							"ReadWriteUnsettable"); //$NON-NLS-1$
 
 						Stereotype eStructuralFeatureStereotype = generateOwnedStereotype(
 							profile, "EStructuralFeature", true); //$NON-NLS-1$
