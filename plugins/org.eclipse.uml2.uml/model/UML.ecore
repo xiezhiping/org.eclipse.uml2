@@ -762,6 +762,7 @@
     <eOperations name="getQualifiedName" ordered="false" lowerBound="1" eType="#//String">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="When there is a name, and all of the containing namespaces have a name, the qualified name is constructed from the names of the containing namespaces.&#xD;&#xA;result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()&#xA;then &#xA;    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))&#xA;else&#xA;    Set{}&#xA;endif"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="allNamespaces" upperBound="-1" eType="#//Namespace">
@@ -2406,6 +2407,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
@@ -2466,7 +2470,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getResult" ordered="false" eType="#//Parameter"/>
+    <eOperations name="getResult" ordered="false" eType="#//Parameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="value" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query value() gives an integer value for an expression intended to produce one.&#xD;&#xA;self.isIntegral()&#xD;&#xA;true"/>
@@ -2614,12 +2622,27 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getDefault" ordered="false" eType="#//String"/>
-    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="getDefault" ordered="false" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setDefault" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newDefault" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
-    <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
+    <eOperations name="unsetDefault" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setBooleanDefaultValue" ordered="false" lowerBound="1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Sets the default value for this parameter to the specified Boolean value."/>
@@ -2817,19 +2840,27 @@
       </eParameters>
     </eOperations>
     <eOperations name="setLower" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setUpper" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived lower attribute must equal the lowerBound.&#xD;&#xA;result = lowerBound()"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The derived upper attribute must equal the upperBound.&#xD;&#xA;result = upperBound()"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isMultivalued" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -3030,7 +3061,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getDefiningEnd" ordered="false" lowerBound="1" eType="#//Property"/>
+    <eOperations name="getDefiningEnd" ordered="false" lowerBound="1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="definingEnd" ordered="false"
         eType="#//Property" changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3269,18 +3304,39 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getDefault" ordered="false" eType="#//String"/>
-    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean"/>
+    <eOperations name="getDefault" ordered="false" eType="#//String">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isSetDefault" ordered="false" lowerBound="1" eType="#//Boolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setDefault" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newDefault" ordered="false" lowerBound="1" eType="#//String"/>
     </eOperations>
     <eOperations name="setIsComposite" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newIsComposite" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setOpposite" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newOpposite" ordered="false" lowerBound="1" eType="#//Property"/>
     </eOperations>
-    <eOperations name="unsetDefault" ordered="false" lowerBound="1"/>
+    <eOperations name="unsetDefault" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setIsNavigable" ordered="false" lowerBound="1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Sets the navigability of this property as indicated."/>
@@ -3350,6 +3406,7 @@
     <eOperations name="getOpposite" ordered="false" lowerBound="1" eType="#//Property">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this property is owned by a class, associated with a binary association, and the other end of the association is also owned by a class, then opposite gives the other end.&#xD;&#xA;result = if owningAssociation->isEmpty() and association.memberEnd->size() = 2&#xA;  then&#xA;    let otherEnd = (association.memberEnd - self)->any() in&#xA;      if otherEnd.owningAssociation->isEmpty() then otherEnd else Set{} endif&#xA;    else Set {}&#xA;    endif"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isComposite" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -3756,21 +3813,44 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer"/>
-    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
+    <eOperations name="getLower" ordered="false" lowerBound="1" eType="#//Integer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="setIsOrdered" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newIsOrdered" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setIsUnique" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newIsUnique" ordered="false" lowerBound="1" eType="#//Boolean"/>
     </eOperations>
     <eOperations name="setLower" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
     </eOperations>
     <eOperations name="setType" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newType" ordered="false" lowerBound="1" eType="#//Type"/>
     </eOperations>
     <eOperations name="setUpper" ordered="false" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
       <eParameters name="newUpper" ordered="false" lowerBound="1" eType="#//UnlimitedNatural"/>
     </eOperations>
     <eOperations name="getReturnResult" ordered="false" eType="#//Parameter">
@@ -3801,6 +3881,7 @@
     <eOperations name="getType" ordered="false" lowerBound="1" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.&#xD;&#xA;result = if returnResult()->notEmpty() then returnResult()->any().type else Set{} endif"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="returnResult" ordered="false" upperBound="-1" eType="#//Parameter">
@@ -4047,7 +4128,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier"/>
+    <eOperations name="getContext" ordered="false" eType="#//BehavioredClassifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReentrant" ordered="false"
         lowerBound="1" eType="#//Boolean" defaultValueLiteral="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -4152,7 +4237,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension"/>
+    <eOperations name="getExtensions" ordered="false" upperBound="-1" eType="#//Extension">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eOperations name="createOwnedOperation" ordered="false" lowerBound="1" eType="#//Operation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this class."/>
@@ -5272,8 +5361,16 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface"/>
-    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface"/>
+    <eOperations name="getProvideds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRequireds" ordered="false" upperBound="-1" eType="#//Interface">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBehavior" ordered="false"
         lowerBound="1" eType="#//Boolean" defaultValueLiteral="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -6264,6 +6361,7 @@
     <eOperations name="getMetaclass" ordered="false" lowerBound="1" eType="#//Class">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The query metaclass() returns the metaclass that is being extended (as opposed to the extending stereotype).&#xD;&#xA;result = metaclassEnd().type"/>
+        <details key="suppressedVisibility" value="true"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isRequired" ordered="false" lowerBound="1" eType="#//Boolean">
@@ -6293,9 +6391,15 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="getLower" ordered="false" lowerBound="1"
           eType="#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//MultiplicityElement/getLower"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="setLower" ordered="false" lowerBound="1">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//MultiplicityElement/setLower"/>
         <eParameters name="newLower" ordered="false" lowerBound="1" eType="#//Integer"/>
       </contents>
@@ -7287,7 +7391,11 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getInheritedParameters" ordered="false" upperBound="-1" eType="#//TemplateParameter"/>
+    <eOperations name="getInheritedParameters" ordered="false" upperBound="-1" eType="#//TemplateParameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extendedSignature" ordered="false"
         upperBound="-1" eType="#//RedefinableTemplateSignature">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -7678,6 +7786,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
@@ -7709,10 +7820,16 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="integerValue" ordered="false" lowerBound="1"
           eType="#//Integer">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/integerValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="unlimitedValue" ordered="false"
           lowerBound="1" eType="#//UnlimitedNatural">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/unlimitedValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
@@ -7744,6 +7861,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
@@ -7796,6 +7916,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
@@ -7813,6 +7936,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
       <contents xsi:type="ecore:EOperation" name="isComputable" ordered="false" lowerBound="1"
@@ -9737,8 +9863,16 @@
         </eGenericType>
       </eParameters>
     </eOperations>
-    <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind"/>
-    <eOperations name="getSignature" ordered="false" eType="#//NamedElement"/>
+    <eOperations name="getMessageKind" ordered="false" lowerBound="1" eType="#//MessageKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSignature" ordered="false" eType="#//NamedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedVisibility" value="true"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageKind" ordered="false"
         lowerBound="1" eType="#//MessageKind" changeable="false" volatile="true" transient="true"
         defaultValueLiteral="unknown" derived="true">
@@ -12890,6 +13024,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>
@@ -12917,6 +13054,9 @@
     <eAnnotations source="duplicates">
       <contents xsi:type="ecore:EOperation" name="stringValue" ordered="false" lowerBound="1"
           eType="#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="suppressedVisibility" value="true"/>
+        </eAnnotations>
         <eAnnotations source="redefines" references="#//ValueSpecification/stringValue"/>
       </contents>
     </eAnnotations>

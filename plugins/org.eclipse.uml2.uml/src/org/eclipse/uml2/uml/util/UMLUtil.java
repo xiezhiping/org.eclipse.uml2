@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200
  *
- * $Id: UMLUtil.java,v 1.68 2007/12/12 22:13:46 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.69 2008/01/21 15:00:29 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3287,89 +3287,98 @@ public class UMLUtil
 								(EStructuralFeature) eModelElement,
 								(String) value);
 						} else if (propertyName == TAG_DEFINITION__VISIBILITY) {
-							eStructuralFeature = (EStructuralFeature) eModelElement;
-							boolean isChangeable = eStructuralFeature
-								.isChangeable();
-							boolean isMany = eStructuralFeature.isMany();
-							boolean isUnsettable = eStructuralFeature
-								.isUnsettable();
-
 							Enumeration visibilityKindEnumeration = ((EnumerationLiteral) value)
 								.getEnumeration();
 
-							if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL__NONE)) {
+							if (eModelElement instanceof EOperation) {
 
-								EcoreUtil.setSuppressedVisibility(
-									eStructuralFeature, EcoreUtil.GET, true);
+								if (value == visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__NONE)) {
 
-								if (isChangeable && !isMany) {
+									EcoreUtil.setSuppressedVisibility(
+										(EOperation) eModelElement, true);
+								}
+							} else {
+								eStructuralFeature = (EStructuralFeature) eModelElement;
+								boolean isChangeable = eStructuralFeature
+									.isChangeable();
+								boolean isMany = eStructuralFeature.isMany();
+								boolean isUnsettable = eStructuralFeature
+									.isUnsettable();
+
+								if (value == visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__NONE)) {
+
 									EcoreUtil
 										.setSuppressedVisibility(
+											eStructuralFeature, EcoreUtil.GET,
+											true);
+
+									if (isChangeable && !isMany) {
+										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature, EcoreUtil.SET,
 											true);
-								}
+									}
 
-								if (isUnsettable) {
-									EcoreUtil.setSuppressedVisibility(
-										eStructuralFeature, EcoreUtil.IS_SET,
-										true);
+									if (isUnsettable) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature,
+											EcoreUtil.IS_SET, true);
 
-									if (isChangeable) {
+										if (isChangeable) {
+											EcoreUtil.setSuppressedVisibility(
+												eStructuralFeature,
+												EcoreUtil.UNSET, true);
+										}
+									}
+								} else if (value == visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY)) {
+
+									if (!isMany && isChangeable) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature, EcoreUtil.SET,
+											true);
+									}
+
+									if (isUnsettable) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature,
+											EcoreUtil.IS_SET, true);
+
+										if (isChangeable) {
+											EcoreUtil.setSuppressedVisibility(
+												eStructuralFeature,
+												EcoreUtil.UNSET, true);
+										}
+									}
+								} else if (value == visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE)) {
+
+									if (isUnsettable) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature,
+											EcoreUtil.IS_SET, true);
+
+										if (isChangeable) {
+											EcoreUtil.setSuppressedVisibility(
+												eStructuralFeature,
+												EcoreUtil.UNSET, true);
+										}
+									}
+								} else if (value == visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE)) {
+
+									if (!isMany && isChangeable) {
+										EcoreUtil.setSuppressedVisibility(
+											eStructuralFeature, EcoreUtil.SET,
+											true);
+									}
+
+									if (isUnsettable && isChangeable) {
 										EcoreUtil.setSuppressedVisibility(
 											eStructuralFeature,
 											EcoreUtil.UNSET, true);
 									}
-								}
-							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY)) {
-
-								if (!isMany && isChangeable) {
-									EcoreUtil
-										.setSuppressedVisibility(
-											eStructuralFeature, EcoreUtil.SET,
-											true);
-								}
-
-								if (isUnsettable) {
-									EcoreUtil.setSuppressedVisibility(
-										eStructuralFeature, EcoreUtil.IS_SET,
-										true);
-
-									if (isChangeable) {
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature,
-											EcoreUtil.UNSET, true);
-									}
-								}
-							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE)) {
-
-								if (isUnsettable) {
-									EcoreUtil.setSuppressedVisibility(
-										eStructuralFeature, EcoreUtil.IS_SET,
-										true);
-
-									if (isChangeable) {
-										EcoreUtil.setSuppressedVisibility(
-											eStructuralFeature,
-											EcoreUtil.UNSET, true);
-									}
-								}
-							} else if (value == visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE)) {
-
-								if (!isMany && isChangeable) {
-									EcoreUtil
-										.setSuppressedVisibility(
-											eStructuralFeature, EcoreUtil.SET,
-											true);
-								}
-
-								if (isUnsettable && isChangeable) {
-									EcoreUtil.setSuppressedVisibility(
-										eStructuralFeature, EcoreUtil.UNSET,
-										true);
 								}
 							}
 						} else if (propertyName == TAG_DEFINITION__ANNOTATIONS) {
@@ -3660,6 +3669,10 @@ public class UMLUtil
 
 				processEcoreTaggedValue(eOperation, null, element,
 					eOperationStereotype, TAG_DEFINITION__ANNOTATIONS, options,
+					diagnostics, context);
+
+				processEcoreTaggedValue(eOperation, null, element,
+					eOperationStereotype, TAG_DEFINITION__VISIBILITY, options,
 					diagnostics, context);
 			}
 		}
@@ -6827,34 +6840,45 @@ public class UMLUtil
 						ENUMERATION__VISIBILITY_KIND);
 
 					if (visibilityKindEnumeration != null) {
-						eStructuralFeature = (EStructuralFeature) eModelElement;
 
-						if (EcoreUtil.isSuppressedVisibility(
-							eStructuralFeature, EcoreUtil.GET)) {
+						if (eModelElement instanceof EOperation) {
 
-							value = visibilityKindEnumeration
-								.getOwnedLiteral(ENUMERATION_LITERAL__NONE);
+							if (EcoreUtil
+								.isSuppressedVisibility((EOperation) eModelElement)) {
+
+								value = visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__NONE);
+							}
 						} else {
+							eStructuralFeature = (EStructuralFeature) eModelElement;
 
 							if (EcoreUtil.isSuppressedVisibility(
-								eStructuralFeature, EcoreUtil.SET)) {
+								eStructuralFeature, EcoreUtil.GET)) {
 
-								if (EcoreUtil.isSuppressedVisibility(
-									eStructuralFeature, EcoreUtil.IS_SET)) {
-
-									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY);
-								} else {
-									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE);
-								}
+								value = visibilityKindEnumeration
+									.getOwnedLiteral(ENUMERATION_LITERAL__NONE);
 							} else {
 
 								if (EcoreUtil.isSuppressedVisibility(
-									eStructuralFeature, EcoreUtil.UNSET)) {
+									eStructuralFeature, EcoreUtil.SET)) {
 
-									value = visibilityKindEnumeration
-										.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE);
+									if (EcoreUtil.isSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.IS_SET)) {
+
+										value = visibilityKindEnumeration
+											.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY);
+									} else {
+										value = visibilityKindEnumeration
+											.getOwnedLiteral(ENUMERATION_LITERAL__READ_ONLY_UNSETTABLE);
+									}
+								} else {
+
+									if (EcoreUtil.isSuppressedVisibility(
+										eStructuralFeature, EcoreUtil.UNSET)) {
+
+										value = visibilityKindEnumeration
+											.getOwnedLiteral(ENUMERATION_LITERAL__READ_WRITE);
+									}
 								}
 							}
 						}
@@ -7388,6 +7412,10 @@ public class UMLUtil
 
 				processEcoreTaggedValue(element, eOperationStereotype,
 					TAG_DEFINITION__ANNOTATIONS, eOperation, null, options,
+					diagnostics, context);
+
+				processEcoreTaggedValue(element, eOperationStereotype,
+					TAG_DEFINITION__VISIBILITY, eOperation, null, options,
 					diagnostics, context);
 			}
 		}

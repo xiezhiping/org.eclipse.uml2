@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_z3j3UBZaEdqs4ZsykdgStg" name="InfrastructureLibrary">
     <eAnnotations xmi:id="_z3j3URZaEdqs4ZsykdgStg" source="uml2.diagrams">
       <contents xmi:type="notation:Diagram" xmi:id="_3ADC7B74022D41B4922F00ED" type="Class" name="InfrastructureLibrary">
@@ -16769,7 +16769,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
     </profileApplication>
     <profileApplication xmi:id="_z9-BUBZaEdqs4ZsykdgStg">
       <eAnnotations xmi:id="_z9-BURZaEdqs4ZsykdgStg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
@@ -16796,7 +16796,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_Eal-7sFlEdu60_VP7XWKdw" base_Comment="_rRgHARTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eal-78FlEdu60_VP7XWKdw" base_Comment="_rRp3-BTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eal-8MFlEdu60_VP7XWKdw" base_Comment="_rRp4AxTaEdqZu-3Jy1-uYg"/>
-  <Ecore:EOperation xmi:id="_EZZsE8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
+  <Ecore:EOperation xmi:id="_EZZsE8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName" visibility="None"/>
   <Default:Documentation xmi:id="_Eal-8cFlEdu60_VP7XWKdw" base_Comment="_rRzB6BTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eal-8sFlEdu60_VP7XWKdw" base_Comment="_rSPt1xTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eal-88FlEdu60_VP7XWKdw" base_Comment="_rSZe1BTaEdqZu-3Jy1-uYg"/>
@@ -16836,9 +16836,9 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_Eavv6sFlEdu60_VP7XWKdw" base_Comment="_rU71iRTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eavv68FlEdu60_VP7XWKdw" base_Comment="_rVE_ZBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eavv7MFlEdu60_VP7XWKdw" base_Comment="_qAlgIBVzEdqDjccWl3Bw0Q"/>
-  <Ecore:EOperation xmi:id="_EZjdE8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
+  <Ecore:EOperation xmi:id="_EZjdE8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower" visibility="None"/>
   <Default:Documentation xmi:id="_Eavv7cFlEdu60_VP7XWKdw" base_Comment="_rUyEdBTaEdqZu-3Jy1-uYg"/>
-  <Ecore:EOperation xmi:id="_EZjdFMFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
+  <Ecore:EOperation xmi:id="_EZjdFMFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper" visibility="None"/>
   <Default:Documentation xmi:id="_Eavv7sFlEdu60_VP7XWKdw" base_Comment="_rUyEfxTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eavv78FlEdu60_VP7XWKdw" base_Comment="_rUyEihTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_Eavv8MFlEdu60_VP7XWKdw" base_Comment="_rU71eBTaEdqZu-3Jy1-uYg"/>
@@ -17164,7 +17164,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_EbfW1MFlEdu60_VP7XWKdw" base_Comment="_rqPXIhTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbfW1cFlEdu60_VP7XWKdw" base_Comment="_rqiSExTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbfW1sFlEdu60_VP7XWKdw" base_Comment="_rrbp6BTaEdqZu-3Jy1-uYg"/>
-  <Ecore:EOperation xmi:id="_EaAJD8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
+  <Ecore:EOperation xmi:id="_EaAJD8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite" visibility="None"/>
   <Default:Documentation xmi:id="_EbfW18FlEdu60_VP7XWKdw" base_Comment="_rmgtuBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbfW2MFlEdu60_VP7XWKdw" base_Comment="_rm0PsRTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbfW2cFlEdu60_VP7XWKdw" base_Comment="_rm0PvRTaEdqZu-3Jy1-uYg"/>
@@ -17215,7 +17215,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_EbpHycFlEdu60_VP7XWKdw" base_Comment="_rnj2gBTaEdqZu-3Jy1-uYg"/>
   <Ecore:EOperation xmi:id="_EaJS8sFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
   <Default:Documentation xmi:id="_EbpHysFlEdu60_VP7XWKdw" base_Comment="_rnj2ixTaEdqZu-3Jy1-uYg"/>
-  <Ecore:EOperation xmi:id="_EaJS88FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
+  <Ecore:EOperation xmi:id="_EaJS88FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType" visibility="None"/>
   <Default:Documentation xmi:id="_EbpHy8FlEdu60_VP7XWKdw" base_Comment="_rnj2lhTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpHzMFlEdu60_VP7XWKdw" base_Comment="_rntAgBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpHzcFlEdu60_VP7XWKdw" base_Comment="_roAiexTaEdqZu-3Jy1-uYg"/>
@@ -17276,7 +17276,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_EbpH-sFlEdu60_VP7XWKdw" base_Comment="_rpDESBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpH-8FlEdu60_VP7XWKdw" base_Comment="_rpDEURTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpH_MFlEdu60_VP7XWKdw" base_Comment="_rpDEXBTaEdqZu-3Jy1-uYg"/>
-  <Ecore:EOperation xmi:id="_EaJS_sFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
+  <Ecore:EOperation xmi:id="_EaJS_sFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName" visibility="None"/>
   <Default:Documentation xmi:id="_EbpH_cFlEdu60_VP7XWKdw" base_Comment="_rpDEZRTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpH_sFlEdu60_VP7XWKdw" base_Comment="_rpM1WBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbpH_8FlEdu60_VP7XWKdw" base_Comment="_rsxtuRTaEdqZu-3Jy1-uYg"/>
@@ -17324,7 +17324,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Default:Documentation xmi:id="_EbyR08FlEdu60_VP7XWKdw" base_Comment="_ruaFexTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbyR1MFlEdu60_VP7XWKdw" base_Comment="_ruj2ZBTaEdqZu-3Jy1-uYg"/>
   <Default:Documentation xmi:id="_EbyR1cFlEdu60_VP7XWKdw" base_Comment="_QggOIDqAEdq16aujGBCOZg"/>
-  <Ecore:EOperation xmi:id="_EaTD8cFlEdu60_VP7XWKdw" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
+  <Ecore:EOperation xmi:id="_EaTD8cFlEdu60_VP7XWKdw" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass" visibility="None"/>
   <Default:Documentation xmi:id="_EbyR1sFlEdu60_VP7XWKdw" base_Comment="_O8Em8DqAEdq16aujGBCOZg"/>
   <Default:Documentation xmi:id="_EbyR18FlEdu60_VP7XWKdw" base_Comment="_NjHP8DqAEdq16aujGBCOZg"/>
   <Default:Documentation xmi:id="_EbyR2MFlEdu60_VP7XWKdw" base_Comment="_ruQ7cRTaEdqZu-3Jy1-uYg"/>

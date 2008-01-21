@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_s-vBgBjPEdqPB8O80Bm3OQ" name="UML">
     <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D3E0C8A930168" name="Actions">
       <packageImport xmi:id="_87aKwD9JEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3DF124BC006D"/>
@@ -14187,7 +14187,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
     </packagedElement>
     <profileApplication xmi:id="_tiM68BjPEdqPB8O80Bm3OQ">
       <eAnnotations xmi:id="_tiM68RjPEdqPB8O80Bm3OQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
@@ -14233,8 +14233,8 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
   <Ecore:EAttribute xmi:id="_2AeQwsYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
   <Ecore:EAttribute xmi:id="_2AeQw8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
   <Ecore:EAttribute xmi:id="_2AeQxMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
-  <Ecore:EOperation xmi:id="_2AeQxcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_2AeQxsYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper"/>
+  <Ecore:EOperation xmi:id="_2AeQxcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_2AeQxsYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper" visibility="None"/>
   <Ecore:EReference xmi:id="_2AeQx8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
   <Ecore:EReference xmi:id="_2AeQyMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
   <Ecore:EReference xmi:id="_2AnasMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
@@ -14253,7 +14253,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
   <Ecore:EAttribute xmi:id="_2AxLssYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
   <Ecore:EAttribute xmi:id="_2AxLs8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
   <Ecore:EReference xmi:id="_2AxLtMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
-  <Ecore:EOperation xmi:id="_2AxLtcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite"/>
+  <Ecore:EOperation xmi:id="_2AxLtcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite" visibility="None"/>
   <Ecore:EAttribute xmi:id="_2AxLtsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
   <Ecore:EAttribute xmi:id="_2AxLt8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
   <Ecore:EAttribute xmi:id="_2A6VoMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>

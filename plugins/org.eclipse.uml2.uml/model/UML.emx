@@ -2,7 +2,7 @@
 <!--xtools2_universal_type_manager-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/3" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http://www.eclipse.org/uml2/schemas/Ecore/3 pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Default="http:///schemas/Default/1" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xsi:schemaLocation="http:///schemas/Default/1 pathmap://UML2_MSL_PROFILES/Default.epx#_IN8k8MmBEdqBcN1R6EvWUw?Default/Default? http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <eAnnotations xmi:id="_o8I_sWvaEdq4DLWZOhbdEA" source="uml2.diagrams" references="_o8I_smvaEdq4DLWZOhbdEA">
       <contents xmi:type="notation:Diagram" xmi:id="_o8I_smvaEdq4DLWZOhbdEA" type="Class" name="Main">
@@ -2194,7 +2194,7 @@
     </profileApplication>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_vy-HUYinEdqtvbnfB2L_5w"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
@@ -2458,4 +2458,43 @@
   <Default:Documentation xmi:id="_aGo8wfIGEdulR8T2OJRyFQ" base_Comment="_aGo8wPIGEdulR8T2OJRyFQ"/>
   <Default:Documentation xmi:id="_cTJ3ofIGEdulR8T2OJRyFQ" base_Comment="_cTJ3oPIGEdulR8T2OJRyFQ"/>
   <Default:Documentation xmi:id="_eBbXUfIGEdulR8T2OJRyFQ" base_Comment="_eBbXUPIGEdulR8T2OJRyFQ"/>
+  <Ecore:EOperation xmi:id="_SnLRYMb4EdyrC427ygySag" base_Operation="_mv9LcFYiEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_xkIRwMb4EdyrC427ygySag" base_Operation="_7UJKkFYJEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_zi8H0Mb4EdyrC427ygySag" base_Operation="_QKbgcWXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_1Bty8Mb4EdyrC427ygySag" base_Operation="_5FAasFYjEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_3E_SQMb4EdyrC427ygySag" base_Operation="_VQnXIGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_hObjwMb6EdyrC427ygySag" base_Operation="_4xcu4FYKEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_kCb8cMb6EdyrC427ygySag" base_Operation="_WLw30FYLEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_lz-ykMb6EdyrC427ygySag" base_Operation="_3FVzkFYkEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_wTSDAMb6EdyrC427ygySag" base_Operation="_FvJUYFYLEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_26LegMb6EdyrC427ygySag" base_Operation="_qQchgGWKEdq-f4093SZhVA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_5WV-8Mb6EdyrC427ygySag" base_Operation="_e2SLUGWKEdq-f4093SZhVA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_n89b0Mb7EdyrC427ygySag" base_Operation="_aXS3gGWKEdq-f4093SZhVA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_poGH8Mb7EdyrC427ygySag" base_Operation="_qtCaIFYkEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_q6DfEMb7EdyrC427ygySag" base_Operation="_vlEgEFYkEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_sq2uUMb7EdyrC427ygySag" base_Operation="_oLamMFYJEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_uRhxMMb7EdyrC427ygySag" base_Operation="_f-9wMGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_vxMNIMb7EdyrC427ygySag" base_Operation="_vbp60FYjEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_wtF0sMb7EdyrC427ygySag" base_Operation="_d8dDkFYkEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_xr-e0Mb7EdyrC427ygySag" base_Operation="_sJdfYFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_1ce8AMb7EdyrC427ygySag" base_Operation="_kGtosGXCEdqEJs8umHJc9g" visibility="None"/>
+  <Ecore:EOperation xmi:id="_ADORMMb8EdyrC427ygySag" base_Operation="_ho5pgFYLEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Bqyr8Mb8EdyrC427ygySag" base_Operation="_ljsEEFYLEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_DOesQMb8EdyrC427ygySag" base_Operation="_LgBIAFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_E3Fo0Mb8EdyrC427ygySag" base_Operation="_QTIRsFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_GRiNkMb8EdyrC427ygySag" base_Operation="_VrpOgFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_HxgLgMb8EdyrC427ygySag" base_Operation="_kqFjwFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_JMGhQMb8EdyrC427ygySag" base_Operation="_arIAQFYlEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_M8TccMb8EdyrC427ygySag" base_Operation="_QUJ-oWWKEdq-f4093SZhVA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_O5LY0Mb8EdyrC427ygySag" base_Operation="_lSARkGWKEdq-f4093SZhVA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Qrd10Mb8EdyrC427ygySag" base_Operation="_Zp2iwFYgEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_SnJfYMb8EdyrC427ygySag" base_Operation="_gtr8cFYhEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_UIAOIMb8EdyrC427ygySag" base_Operation="_mxt7cFYhEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_WQMpsMb8EdyrC427ygySag" base_Operation="_QT7XMFYKEdqrn7iZ0eqieg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_YY_iMMb8EdyrC427ygySag" base_Operation="_8U6CAFYfEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_Z-ncMMb8EdyrC427ygySag" base_Operation="_R__uEFYjEdqB6vblk3tuMA" visibility="None"/>
+  <Ecore:EOperation xmi:id="_oEJMcMb8EdyrC427ygySag" base_Operation="_I3a88H4YEdq7cMP_l1l5Gg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_p3eLQMb8EdyrC427ygySag" base_Operation="_JdkW8H4YEdq7cMP_l1l5Gg" visibility="None"/>
+  <Ecore:EOperation xmi:id="_tDBhQMb8EdyrC427ygySag" base_Operation="_-SmgADEkEdu9VoNTbEBQkQ" visibility="None"/>
+  <Ecore:EOperation xmi:id="_upizIMb8EdyrC427ygySag" base_Operation="_FbLFMDElEdu9VoNTbEBQkQ" visibility="None"/>
 </xmi:XMI>

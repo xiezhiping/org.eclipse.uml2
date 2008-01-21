@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/4 pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_z3j3UBZaEdqs4ZsykdgStg" name="InfrastructureLibrary">
     <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D3C9FFCAA00D1" name="Core">
       <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D3C9FFCB502E0" name="Abstractions">
@@ -4719,7 +4719,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
     </packagedElement>
     <profileApplication xmi:id="_z9-BUBZaEdqs4ZsykdgStg">
       <eAnnotations xmi:id="_z9-BURZaEdqs4ZsykdgStg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
@@ -4729,7 +4729,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Ecore:EAttribute xmi:id="_DeIvwsYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CA0080E03C3"/>
   <Ecore:EAttribute xmi:id="_DeIvw8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA008400375"/>
   <Ecore:EReference xmi:id="_DeIvxMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA008A2036C"/>
-  <Ecore:EOperation xmi:id="_DeSgwMYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName"/>
+  <Ecore:EOperation xmi:id="_DeSgwMYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E1065EF023E" operationName="getQualifiedName" visibility="None"/>
   <Ecore:EReference xmi:id="_DeSgwcYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA008A20358"/>
   <Ecore:EReference xmi:id="_DeSgwsYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA0098401B9"/>
   <Ecore:EReference xmi:id="_DeSgw8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA00B92018D"/>
@@ -4739,8 +4739,8 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Ecore:EAttribute xmi:id="_DeSgx8YdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E555C7702E8"/>
   <Ecore:EAttribute xmi:id="_DeSgyMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DF78F1C034C"/>
   <Ecore:EAttribute xmi:id="_DecRwMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DF78F2B0290"/>
-  <Ecore:EOperation xmi:id="_DecRwcYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower"/>
-  <Ecore:EOperation xmi:id="_DecRwsYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper"/>
+  <Ecore:EOperation xmi:id="_DecRwcYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E140A3102FA" operationName="getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_DecRwsYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E140A6C013C" operationName="getUpper" visibility="None"/>
   <Ecore:EReference xmi:id="_DecRw8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA02BDB0015"/>
   <Ecore:EReference xmi:id="_DecRxMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CA01B20019D"/>
   <Ecore:EReference xmi:id="_DecRxcYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CADABFE01E3"/>
@@ -4784,7 +4784,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Ecore:EReference xmi:id="_DfL4p8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DE75D87003B"/>
   <Ecore:EAttribute xmi:id="_DfL4qMYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D4201104A02AF"/>
   <Ecore:EReference xmi:id="_DfL4qcYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DE6E76603BD"/>
-  <Ecore:EOperation xmi:id="_DfVpoMYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite"/>
+  <Ecore:EOperation xmi:id="_DfVpoMYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E14246901E3" operationName="getOpposite" visibility="None"/>
   <Ecore:EAttribute xmi:id="_DfVpocYdEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41FC52E503B5"/>
   <Ecore:EAttribute xmi:id="_DfVposYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D41FC52EF0215"/>
   <Ecore:EAttribute xmi:id="_DfVpo8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E03284C0289"/>
@@ -4794,7 +4794,7 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Ecore:EReference xmi:id="_DfVpp8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DEE7BDA017A"/>
   <Ecore:EOperation xmi:id="_DfVpqMYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E142F3E03CB" operationName="lowerBound"/>
   <Ecore:EOperation xmi:id="_DfVpqcYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E142F7500B3" operationName="upperBound"/>
-  <Ecore:EOperation xmi:id="_DfVpqsYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType"/>
+  <Ecore:EOperation xmi:id="_DfVpqsYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D3E142FBB01EA" operationName="getType" visibility="None"/>
   <Ecore:EAttribute xmi:id="_DfVpq8YdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3DE7647D021E"/>
   <Ecore:EAttribute xmi:id="_DfVprMYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3DEE875F0333"/>
   <Ecore:EReference xmi:id="_DfVprcYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DEE344701CC"/>
@@ -4805,13 +4805,13 @@ In addition the prefix 'MIME: ' is also reserved. This option can be used as an 
   <Ecore:EAttribute xmi:id="_DfVpssYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D41C2D63E00EE"/>
   <Ecore:EReference xmi:id="_DfVps8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFCB86501A0"/>
   <Ecore:EAttribute xmi:id="_DfVptMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_7-d1kIa_EdqhgMOAOWpjfQ"/>
-  <Ecore:EOperation xmi:id="_DfVptcYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName"/>
+  <Ecore:EOperation xmi:id="_DfVptcYdEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D42EE305C00A6" operationName="getQualifiedName" visibility="None"/>
   <Ecore:EAttribute xmi:id="_DfVptsYdEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41BDD0260325"/>
   <Ecore:EReference xmi:id="_DfezkMYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CB24B21030C"/>
   <Ecore:EReference xmi:id="_DfezkcYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03DD"/>
   <Ecore:EAttribute xmi:id="_DfezksYdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CBDA7B50011"/>
   <Ecore:EReference xmi:id="_Dfezk8YdEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CBDA7FB03E7"/>
-  <Ecore:EOperation xmi:id="_DfezlMYdEduPJbEsMYXjUQ" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass"/>
+  <Ecore:EOperation xmi:id="_DfezlMYdEduPJbEsMYXjUQ" base_Operation="_Ccgo4DakEdqq1tCaRkgBQQ" operationName="getMetaclass" visibility="None"/>
   <Ecore:EAttribute xmi:id="_DfezlcYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_GgC74HGhEdqziYxiZo0YtA"/>
   <Ecore:EAttribute xmi:id="_DfezlsYdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_LCBSQHGhEdqziYxiZo0YtA"/>
   <Ecore:EAttribute xmi:id="_Dfezl8YdEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_P1lH4HGhEdqziYxiZo0YtA"/>
