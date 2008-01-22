@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2007 IBM Corporation and others.
+ * Copyright (c) 2004, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: CacheAdapter.java,v 1.19 2007/08/30 15:56:34 jbruck Exp $
+ * $Id: CacheAdapter.java,v 1.20 2008/01/22 14:14:03 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -488,4 +489,16 @@ public class CacheAdapter
 	public Map<URI, List<EObject>> getProxyMap() {
 		return ((InverseCrossReferencer) inverseCrossReferencer).getProxyMap();
 	}
+
+	protected void resolveProxy(Resource resource, EObject eObject,
+			EObject proxy, EStructuralFeature.Setting setting) {
+		Resource eResource = setting.getEObject().eResource();
+
+		if (eResource != null
+			&& eResource.getResourceSet() == resource.getResourceSet()) {
+
+			super.resolveProxy(resource, eObject, proxy, setting);
+		}
+	}
+
 }
