@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: GenModelPackage.java,v 1.29 2008/01/15 22:00:06 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.30 2008/01/31 12:58:45 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1536,6 +1536,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__GENERATE_MODEL_WIZARD = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__GENERATE_MODEL_WIZARD;
+
+	/**
+	 * The feature id for the '<em><b>Extensible Provider Factory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__EXTENSIBLE_PROVIDER_FACTORY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__EXTENSIBLE_PROVIDER_FACTORY;
+
+	/**
+	 * The feature id for the '<em><b>Child Creation Extenders</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__CHILD_CREATION_EXTENDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__CHILD_CREATION_EXTENDERS;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.
