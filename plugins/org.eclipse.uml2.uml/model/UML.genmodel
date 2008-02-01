@@ -31,8 +31,9 @@
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"
       providerPackageSuffix="edit.providers" presentationPackageSuffix="editor.presentation"
-      generateExampleClass="false" multipleEditorPages="false" ecorePackage="UML.ecore#/"
-      resourceInterfaces="true" operationsPackage="org.eclipse.uml2.uml.internal.operations">
+      generateExampleClass="false" multipleEditorPages="false" extensibleProviderFactory="true"
+      childCreationExtenders="true" ecorePackage="UML.ecore#/" resourceInterfaces="true"
+      operationsPackage="org.eclipse.uml2.uml.internal.operations">
     <genEnums xsi:type="genmodel:GenEnum" ecoreEnum="UML.ecore#//VisibilityKind">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//VisibilityKind/public"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//VisibilityKind/private"/>
