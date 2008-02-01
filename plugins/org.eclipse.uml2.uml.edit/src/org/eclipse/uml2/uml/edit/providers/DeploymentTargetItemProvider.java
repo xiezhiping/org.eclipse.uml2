@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: DeploymentTargetItemProvider.java,v 1.7 2008/01/16 01:30:06 khussey Exp $
+ * $Id: DeploymentTargetItemProvider.java,v 1.8 2008/02/01 14:04:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,8 +20,6 @@ import org.eclipse.emf.common.command.Command;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -45,8 +43,6 @@ import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.DeploymentTarget;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
-
-import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.DeploymentTarget} object.
@@ -210,17 +206,6 @@ public class DeploymentTargetItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 			UMLFactory.eINSTANCE.createDeployment()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UMLEditPlugin.INSTANCE;
 	}
 
 	/**

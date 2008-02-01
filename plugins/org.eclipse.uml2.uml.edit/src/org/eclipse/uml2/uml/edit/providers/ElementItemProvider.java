@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ElementItemProvider.java,v 1.18 2008/01/16 01:30:04 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.19 2008/02/01 14:04:51 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -46,6 +46,7 @@ import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -305,7 +306,7 @@ public class ElementItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return UMLEditPlugin.INSTANCE;
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 	@Override

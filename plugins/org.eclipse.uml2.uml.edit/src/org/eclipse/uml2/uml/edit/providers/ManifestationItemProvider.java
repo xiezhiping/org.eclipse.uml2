@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ManifestationItemProvider.java,v 1.10 2008/01/16 01:30:08 khussey Exp $
+ * $Id: ManifestationItemProvider.java,v 1.11 2008/02/01 14:04:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -20,8 +20,6 @@ import org.eclipse.emf.common.command.Command;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -48,8 +46,6 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLPackage;
-
-import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.uml2.uml.Manifestation} object.
@@ -170,17 +166,6 @@ public class ManifestationItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UMLEditPlugin.INSTANCE;
 	}
 
 	/**

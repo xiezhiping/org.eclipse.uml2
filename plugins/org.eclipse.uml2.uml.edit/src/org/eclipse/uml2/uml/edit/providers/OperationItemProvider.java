@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: OperationItemProvider.java,v 1.16 2008/01/16 01:30:05 khussey Exp $
+ * $Id: OperationItemProvider.java,v 1.17 2008/02/01 14:04:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -22,8 +22,6 @@ import org.eclipse.emf.common.command.Command;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -53,7 +51,6 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
-import org.eclipse.uml2.uml.edit.UMLEditPlugin;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
@@ -700,17 +697,6 @@ public class OperationItemProvider
 					getFeatureText(childFeature), getTypeText(owner)});
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UMLEditPlugin.INSTANCE;
 	}
 
 	/**

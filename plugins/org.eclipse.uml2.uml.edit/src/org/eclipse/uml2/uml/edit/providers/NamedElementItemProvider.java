@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: NamedElementItemProvider.java,v 1.9 2008/01/16 01:30:06 khussey Exp $
+ * $Id: NamedElementItemProvider.java,v 1.10 2008/02/01 14:04:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -18,8 +18,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -291,17 +289,6 @@ public class NamedElementItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION,
 			UMLFactory.eINSTANCE.createStringExpression()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return UMLEditPlugin.INSTANCE;
 	}
 
 	protected static ComposedImage composeVisibilityImage(Object object,
