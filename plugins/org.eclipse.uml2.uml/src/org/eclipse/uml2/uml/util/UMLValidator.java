@@ -7,21 +7,19 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *
- * $Id: UMLValidator.java,v 1.23 2008/01/09 18:56:03 khussey Exp $
+ * $Id: UMLValidator.java,v 1.24 2008/02/03 23:28:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
@@ -270,6 +268,7 @@ import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.UnmarshallAction;
 import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.UseCase;
@@ -8542,14 +8541,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateClassifierContext", getObjectLabel(protocolStateMachine, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{protocolStateMachine}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateClassifierContext", getObjectLabel(protocolStateMachine, context)}, //$NON-NLS-1$
+						new Object[]{protocolStateMachine}, context));
 			}
 			return false;
 		}
@@ -16053,14 +16052,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateMultiplicity", getObjectLabel(readStructuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{readStructuralFeatureAction}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateMultiplicity", getObjectLabel(readStructuralFeatureAction, context)}, //$NON-NLS-1$
+						new Object[]{readStructuralFeatureAction}, context));
 			}
 			return false;
 		}
@@ -16174,14 +16173,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateMultiplicity", getObjectLabel(writeStructuralFeatureAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{writeStructuralFeatureAction}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateMultiplicity", getObjectLabel(writeStructuralFeatureAction, context)}, //$NON-NLS-1$
+						new Object[]{writeStructuralFeatureAction}, context));
 			}
 			return false;
 		}
@@ -18742,14 +18741,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateTypeOrderingMultiplicity", getObjectLabel(callOperationAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callOperationAction}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateTypeOrderingMultiplicity", getObjectLabel(callOperationAction, context)}, //$NON-NLS-1$
+						new Object[]{callOperationAction}, context));
 			}
 			return false;
 		}
@@ -18876,14 +18875,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateTypeOrderingMultiplicity", getObjectLabel(callBehaviorAction, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{callBehaviorAction}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateTypeOrderingMultiplicity", getObjectLabel(callBehaviorAction, context)}, //$NON-NLS-1$
+						new Object[]{callBehaviorAction}, context));
 			}
 			return false;
 		}
@@ -23425,14 +23424,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"validateAssociationEnds", getObjectLabel(communicationPath, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{communicationPath}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"validateAssociationEnds", getObjectLabel(communicationPath, context)}, //$NON-NLS-1$
+						new Object[]{communicationPath}, context));
 			}
 			return false;
 		}
@@ -23945,14 +23944,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_local", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transitionKind}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"state_is_local", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}, //$NON-NLS-1$
+						new Object[]{transitionKind}, context));
 			}
 			return false;
 		}
@@ -23975,14 +23974,14 @@ public class UMLValidator
 		if (false) {
 			if (diagnostics != null) {
 				diagnostics
-					.add(new BasicDiagnostic(
+					.add(createDiagnostic(
 						Diagnostic.ERROR,
 						DIAGNOSTIC_SOURCE,
 						0,
-						EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericConstraint_diagnostic", new Object[]{"state_is_external", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{transitionKind}));
+						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
+						new Object[]{
+							"state_is_external", getValueLabel(UMLPackage.Literals.TRANSITION_KIND, transitionKind, context)}, //$NON-NLS-1$
+						new Object[]{transitionKind}, context));
 			}
 			return false;
 		}
@@ -24131,6 +24130,16 @@ public class UMLValidator
 	public boolean validateUnlimitedNatural(int unlimitedNatural,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
+	}
+
+	/**
+	 * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourceLocator getResourceLocator() {
+		return UMLPlugin.INSTANCE;
 	}
 
 } //UMLValidator
