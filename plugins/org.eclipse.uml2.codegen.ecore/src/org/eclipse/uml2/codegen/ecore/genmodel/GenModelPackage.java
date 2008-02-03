@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: GenModelPackage.java,v 1.30 2008/01/31 12:58:45 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.31 2008/02/03 23:27:38 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1210,6 +1210,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__FONT_PROVIDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__FONT_PROVIDERS;
+
+	/**
+	 * The feature id for the '<em><b>Runtime Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__RUNTIME_VERSION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RUNTIME_VERSION;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
