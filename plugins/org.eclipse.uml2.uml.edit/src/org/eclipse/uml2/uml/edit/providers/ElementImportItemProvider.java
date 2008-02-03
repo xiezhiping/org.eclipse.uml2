@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ElementImportItemProvider.java,v 1.11 2008/02/01 14:04:53 khussey Exp $
+ * $Id: ElementImportItemProvider.java,v 1.12 2008/02/03 23:27:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.UMLPackage;
+
 //import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
