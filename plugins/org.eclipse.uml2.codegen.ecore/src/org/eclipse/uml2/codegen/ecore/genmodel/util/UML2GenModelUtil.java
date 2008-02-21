@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2GenModelUtil.java,v 1.21 2007/05/10 14:24:21 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.22 2008/02/21 18:43:09 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -246,7 +246,6 @@ public class UML2GenModelUtil {
 			: null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static List<GenFeature> getDuplicateGenFeatures(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
@@ -254,7 +253,6 @@ public class UML2GenModelUtil {
 			: genClass.getGenFeatures();
 	}
 
-	@SuppressWarnings("unchecked")
 	public static List<GenOperation> getDuplicateGenOperations(GenClass genClass) {
 		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
