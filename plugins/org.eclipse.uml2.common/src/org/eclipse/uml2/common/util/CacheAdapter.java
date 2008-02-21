@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: CacheAdapter.java,v 1.20 2008/01/22 14:14:03 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.21 2008/02/21 18:43:04 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -490,6 +490,7 @@ public class CacheAdapter
 		return ((InverseCrossReferencer) inverseCrossReferencer).getProxyMap();
 	}
 
+	@Override
 	protected void resolveProxy(Resource resource, EObject eObject,
 			EObject proxy, EStructuralFeature.Setting setting) {
 		Resource eResource = setting.getEObject().eResource();

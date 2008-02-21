@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UnionEObjectEList.java,v 1.5 2007/04/04 03:15:12 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.6 2008/02/21 18:43:04 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -47,7 +47,6 @@ public class UnionEObjectEList<E>
 		E resolved = (E) resolveProxy((EObject) object);
 
 		if (resolved != object) {
-			@SuppressWarnings("unchecked")
 			E oldObject = (E) data[index];
 			assign(index, validate(index, resolved));
 			didSet(index, resolved, oldObject);
