@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLExporter.java,v 1.11 2007/05/30 04:20:45 khussey Exp $
+ * $Id: UMLExporter.java,v 1.12 2008/02/21 18:42:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -77,7 +77,6 @@ public class UMLExporter
 		return super.doCheckEPackageArtifactLocation(location, packageName);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	protected Diagnostic doExport(Monitor monitor, ExportData exportData)
 			throws Exception {
