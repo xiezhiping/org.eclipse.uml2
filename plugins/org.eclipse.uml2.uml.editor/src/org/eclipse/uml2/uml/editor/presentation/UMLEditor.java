@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879
  *
- * $Id: UMLEditor.java,v 1.38 2008/01/16 01:30:35 khussey Exp $
+ * $Id: UMLEditor.java,v 1.39 2008/02/25 15:48:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -942,14 +942,23 @@ public class UMLEditor
 	public void createModel() {
 		ResourceSet resourceSet = editingDomain.getResourceSet();
 
-		Map<String, Object> extensionToFactoryMap = resourceSet
-			.getResourceFactoryRegistry().getExtensionToFactoryMap();
+		Map<String, Object> contentTypeToFactoryMap = resourceSet
+			.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
-		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
 			UML22UMLResource.Factory.INSTANCE);
-		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
-		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
 			CMOF2UMLResource.Factory.INSTANCE);
 
 		Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
@@ -1476,10 +1485,16 @@ public class UMLEditor
 				EList<Resource> resources = resourceSet.getResources();
 				Resource resource = resources.get(0);
 
-				if (!resource.getURI().fileExtension().equals(
-					uri.fileExtension())) {
-
-					Resource newResource = resourceSet.createResource(uri);
+				String fileExtension = uri.fileExtension();
+				
+				if (!resource.getURI().fileExtension().equals(fileExtension)) {
+					Resource newResource = resourceSet.createResource(uri,
+						XMI2UMLResource.FILE_EXTENSION.equals(fileExtension)
+							? XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER
+							: (CMOF2UMLResource.FILE_EXTENSION
+								.equals(fileExtension)
+								? CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER
+								: null));
 					EList<EObject> newContents = newResource.getContents();
 
 					for (Iterator<EObject> contents = resource.getContents()

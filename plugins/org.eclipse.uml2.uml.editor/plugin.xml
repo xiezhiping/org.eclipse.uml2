@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
- Copyright (c) 2005, 2007 IBM Corporation and others.
+ Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -10,8 +10,9 @@
 
  Contributors:
    IBM - initial API and implementation
+   Kenn Hussey (Embarcadero Technologies) - 156879
 
- $Id: plugin.xml,v 1.10 2007/09/04 15:28:33 khussey Exp $
+ $Id: plugin.xml,v 1.11 2008/02/25 15:48:41 khussey Exp $
 -->
 
 <plugin>
@@ -43,6 +44,13 @@
        extensions = "uml,uml2,xmi,cmof"
        class = "org.eclipse.uml2.uml.editor.presentation.UMLEditor" 
        contributorClass="org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor" >
+      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_1_0_0"/>
+      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_2_0_0"/>
+      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_2_1_0"/>
+      <contentTypeBinding contentTypeId="org.omg.uml_2_1"/>
+      <contentTypeBinding contentTypeId="org.omg.uml_2_1_1"/>
+      <contentTypeBinding contentTypeId="org.omg.uml_2_1_2"/>
+      <contentTypeBinding contentTypeId="org.omg.mof.cmof_2_0"/>
     </editor>
   </extension>    
 
