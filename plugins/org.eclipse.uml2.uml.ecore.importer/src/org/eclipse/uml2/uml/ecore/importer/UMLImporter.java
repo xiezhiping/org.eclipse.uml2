@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 156879
  *
- * $Id: UMLImporter.java,v 1.12 2007/09/04 15:28:34 khussey Exp $
+ * $Id: UMLImporter.java,v 1.13 2008/02/25 15:48:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -340,14 +341,23 @@ public class UMLImporter
 	public ResourceSet createResourceSet() {
 		ResourceSet resourceSet = super.createResourceSet();
 
-		Map<String, Object> extensionToFactoryMap = resourceSet
-			.getResourceFactoryRegistry().getExtensionToFactoryMap();
+		Map<String, Object> contentTypeToFactoryMap = resourceSet
+			.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
-		extensionToFactoryMap.put(UML22UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
 			UML22UMLResource.Factory.INSTANCE);
-		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
-		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
+			XMI2UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER,
 			CMOF2UMLResource.Factory.INSTANCE);
 
 		Map<URI, URI> uriMap = resourceSet.getURIConverter().getURIMap();
