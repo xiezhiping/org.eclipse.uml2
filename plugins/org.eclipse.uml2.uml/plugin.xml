@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
- Copyright (c) 2005, 2007 IBM Corporation and others.
+ Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -10,8 +10,9 @@
 
  Contributors:
    IBM - initial API and implementation
+   Kenn Hussey (Embarcadero Technologies) - 156879
 
- $Id: plugin.xml,v 1.6 2007/07/31 17:41:01 khussey Exp $
+ $Id: plugin.xml,v 1.7 2008/02/25 15:48:47 khussey Exp $
 -->
 
 <plugin>
@@ -41,5 +42,130 @@
 
   <extension-point id="generated_package" name="%_UI_PackageRegistry_extensionpoint" schema="schema/generated_package.exsd" />
 
-</plugin>
+  <extension
+        point="org.eclipse.emf.ecore.content_parser">
+     <parser
+           class="org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl"
+           contentTypeIdentifier="org.eclipse.uml2.uml_2_0_0" />
+     <parser
+           class="org.eclipse.uml2.uml.internal.resource.UMLResourceFactoryImpl"
+           contentTypeIdentifier="org.eclipse.uml2.uml_2_1_0" />
+  </extension>
 
+  <extension
+        point="org.eclipse.core.runtime.contentTypes">
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="uml2"
+           id="org.eclipse.uml2.uml_1_0_0"
+           name="%_UI_Eclipse_UML_1_0_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/1.0.0/UML" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="uml"
+           id="org.eclipse.uml2.uml_2_0_0"
+           name="%_UI_Eclipse_UML_2_0_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/2.0.0/UML" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="uml"
+           id="org.eclipse.uml2.uml_2_1_0"
+           name="%_UI_Eclipse_UML_2_1_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/2.1.0/UML" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="xmi"
+           id="org.omg.uml_2_1"
+           name="%_UI_OMG_UML_2_1_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://schema.omg.org/spec/UML/2.1" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="xmi"
+           id="org.omg.uml_2_1_1"
+           name="%_UI_OMG_UML_2_1_1_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://schema.omg.org/spec/UML/2.1.1" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="xmi"
+           id="org.omg.uml_2_1_2"
+           name="%_UI_OMG_UML_2_1_2_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://schema.omg.org/spec/UML/2.1.2" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.core.runtime.xml"
+           file-extensions="cmof"
+           id="org.omg.mof.cmof_2_0"
+           name="%_UI_OMG_CMOF_2_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://schema.omg.org/spec/MOF/2.0/cmof.xml" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+  </extension>
+
+</plugin>

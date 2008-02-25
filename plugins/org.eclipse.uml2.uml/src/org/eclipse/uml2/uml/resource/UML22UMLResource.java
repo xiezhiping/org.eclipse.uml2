@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 156879
  * 
- * $Id: UML22UMLResource.java,v 1.4 2006/05/10 17:12:30 khussey Exp $
+ * $Id: UML22UMLResource.java,v 1.5 2008/02/25 15:48:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -51,5 +52,7 @@ public interface UML22UMLResource
 	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/0"; //$NON-NLS-1$
 
 	String UML2_PROFILE_URI = UMLResource.PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+
+	String UML2_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_1_0_0"; //$NON-NLS-1$
 
 }
