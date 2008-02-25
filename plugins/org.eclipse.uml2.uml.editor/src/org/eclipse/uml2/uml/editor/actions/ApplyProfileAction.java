@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 215488
  *
- * $Id: ApplyProfileAction.java,v 1.7 2007/01/05 21:48:51 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.8 2008/02/25 21:15:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -31,8 +32,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
-import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class ApplyProfileAction
@@ -66,14 +67,14 @@ public class ApplyProfileAction
 
 			ResourceSet resourceSet = package_.eResource().getResourceSet();
 
-			try {
-				resourceSet.getResource(URI
-					.createURI(UMLResource.STANDARD_PROFILE_URI), true);
+			for (URI profileURI : UMLPlugin
+				.getEPackageNsURIToProfileLocationMap().values()) {
 
-				resourceSet.getResource(URI
-					.createURI(UMLResource.ECORE_PROFILE_URI), true);
-			} catch (Exception e) {
-				// ignore
+				try {
+					resourceSet.getResource(profileURI.trimFragment(), true);
+				} catch (Exception e) {
+					// ignore
+				}
 			}
 
 			for (Resource resource : resourceSet.getResources()) {
