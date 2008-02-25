@@ -10,9 +10,9 @@
 
  Contributors:
    IBM - initial API and implementation
-   Kenn Hussey (Embarcadero Technologies) - 156879
+   Kenn Hussey (Embarcadero Technologies) - 156879, 215488
 
- $Id: plugin.xml,v 1.7 2008/02/25 15:48:47 khussey Exp $
+ $Id: plugin.xml,v 1.8 2008/02/25 21:15:49 khussey Exp $
 -->
 
 <plugin>
@@ -40,7 +40,8 @@
     <fileTypes extension="uml" type="text" />
   </extension>
 
-  <extension-point id="generated_package" name="%_UI_PackageRegistry_extensionpoint" schema="schema/generated_package.exsd" />
+  <extension-point id="generated_package" name="%_UI_GeneratedPackageRegistry_extensionpoint" schema="schema/generated_package.exsd" />
+  <extension-point id="dynamic_package" name="%_UI_DynamicPackageRegistry_extensionpoint" schema="schema/dynamic_package.exsd" />
 
   <extension
         point="org.eclipse.emf.ecore.content_parser">

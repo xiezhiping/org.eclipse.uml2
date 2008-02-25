@@ -3,10 +3,10 @@
 <schema targetNamespace="org.eclipse.uml2.uml">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.uml2.uml" id="generated_package" name="UML Generated Package Registry"/>
+         <meta.schema plugin="org.eclipse.uml2.uml" id="generated_package" name="UML Dynamic Package Registry"/>
       </appInfo>
       <documentation>
-         This extension point is used to register the location of a UML package against the namespace URI (Uniform Resource Identifier) of its generated Ecore representation.
+         This extension point is used to register the location of a UML package against the namespace URI (Uniform Resource Identifier) of its dynamic Ecore representation.
       </documentation>
    </annotation>
 
@@ -49,14 +49,14 @@
          <attribute name="uri" type="string" use="required">
             <annotation>
                <documentation>
-                  A namespace URI that uniquely identifies a generated Ecore package.
+                  A namespace URI that uniquely identifies a dynamic Ecore package.
                </documentation>
             </annotation>
          </attribute>
          <attribute name="location" type="anyURI">
             <annotation>
                <documentation>
-                  The absolute or relative URI of the UML profile represented by the generated Ecore package.
+                  The absolute or relative URI of the UML profile represented by the dynamic Ecore package.
                </documentation>
             </annotation>
          </attribute>
@@ -68,7 +68,7 @@
          <meta.section type="since"/>
       </appInfo>
       <documentation>
-         2.1.0
+         2.2.0
       </documentation>
    </annotation>
 
@@ -77,9 +77,9 @@
          <meta.section type="examples"/>
       </appInfo>
       <documentation>
-         Following is an example of how a (statically defined) profile location can be registered: 
+         Following is an example of how a (dynamically defined) profile location can be registered: 
 &lt;pre&gt;
-  &lt;extension point=&quot;org.eclipse.uml2.uml.generated_package&quot;&gt;
+  &lt;extension point=&quot;org.eclipse.uml2.uml.dynamic_package&quot;&gt;
      &lt;profile uri=&quot;http://www.eclipse.org/uml2/schemas/Ecore/4&quot; location=&quot;pathmap://UML_PROFILES/Ecore.profile.uml#_0&quot;/&gt; 
   &lt;/extension&gt;
 &lt;/pre&gt;
@@ -103,7 +103,7 @@
          <meta.section type="implementation"/>
       </appInfo>
       <documentation>
-         For any statically defined UML profile, an extension to this extension point should be included in the manifest file to register the location of the profile.
+         For any dynamically defined UML profile, an extension to this extension point should be included in the manifest file to register the location of the profile.
       </documentation>
    </annotation>
 
@@ -112,7 +112,7 @@
          <meta.section type="copyright"/>
       </appInfo>
       <documentation>
-         Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.&lt;br&gt;
+         Copyright (c) 2008 IBM Corporation, Embarcacero Technologies, and others.&lt;br&gt;
 All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0 which accompanies this distribution, and is available at &lt;a 
 href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
       </documentation>

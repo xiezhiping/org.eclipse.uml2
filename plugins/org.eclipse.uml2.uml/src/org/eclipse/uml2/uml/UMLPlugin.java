@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 215488
  *
- * $Id: UMLPlugin.java,v 1.4 2007/05/28 20:10:51 khussey Exp $
+ * $Id: UMLPlugin.java,v 1.5 2008/02/25 21:15:49 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -35,7 +37,7 @@ import org.osgi.framework.BundleContext;
 public final class UMLPlugin
 		extends EMFPlugin {
 
-	protected static class GeneratedPackageRegistryReader
+	protected static class PackageRegistryReader
 			extends RegistryReader {
 
 		protected static final String TAG_PROFILE = "profile"; //$NON-NLS-1$
@@ -46,14 +48,15 @@ public final class UMLPlugin
 
 		protected Map<String, URI> ePackageNsURIToProfileLocationMap;
 
-		protected GeneratedPackageRegistryReader() {
-			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
-				.getSymbolicName(), GENERATED_PACKAGE_PPID);
+		protected PackageRegistryReader(IExtensionRegistry pluginRegistry,
+				String pluginID, String extensionPointID) {
+			super(pluginRegistry, pluginID, extensionPointID);
 		}
 
-		protected GeneratedPackageRegistryReader(
+		protected PackageRegistryReader(IExtensionRegistry pluginRegistry,
+				String pluginID, String extensionPointID,
 				Map<String, URI> ePackageNsURIToProfileLocationMap) {
-			this();
+			this(pluginRegistry, pluginID, extensionPointID);
 
 			this.ePackageNsURIToProfileLocationMap = ePackageNsURIToProfileLocationMap;
 		}
@@ -97,6 +100,38 @@ public final class UMLPlugin
 		}
 	}
 
+	protected static class GeneratedPackageRegistryReader
+			extends PackageRegistryReader {
+
+		protected GeneratedPackageRegistryReader() {
+			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+				.getSymbolicName(), GENERATED_PACKAGE_PPID);
+		}
+
+		protected GeneratedPackageRegistryReader(
+				Map<String, URI> ePackageNsURIToProfileLocationMap) {
+			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+				.getSymbolicName(), GENERATED_PACKAGE_PPID,
+				ePackageNsURIToProfileLocationMap);
+		}
+	}
+
+	protected static class DynamicPackageRegistryReader
+			extends PackageRegistryReader {
+
+		protected DynamicPackageRegistryReader() {
+			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+				.getSymbolicName(), DYNAMIC_PACKAGE_PPID);
+		}
+
+		protected DynamicPackageRegistryReader(
+				Map<String, URI> ePackageNsURIToProfileLocationMap) {
+			super(Platform.getExtensionRegistry(), getPlugin().getBundle()
+				.getSymbolicName(), DYNAMIC_PACKAGE_PPID,
+				ePackageNsURIToProfileLocationMap);
+		}
+	}
+
 	private static Map<String, URI> ePackageNsURIToProfileLocationMap;
 
 	public static Map<String, URI> getEPackageNsURIToProfileLocationMap() {
@@ -109,6 +144,8 @@ public final class UMLPlugin
 	}
 
 	protected static final String GENERATED_PACKAGE_PPID = "generated_package"; //$NON-NLS-1$
+
+	protected static final String DYNAMIC_PACKAGE_PPID = "dynamic_package"; //$NON-NLS-1$
 
 	/**
 	 * Keep track of the singleton.
@@ -188,6 +225,8 @@ public final class UMLPlugin
 			super.start(context);
 
 			new GeneratedPackageRegistryReader(
+				getEPackageNsURIToProfileLocationMap()).readRegistry();
+			new DynamicPackageRegistryReader(
 				getEPackageNsURIToProfileLocationMap()).readRegistry();
 		}
 
