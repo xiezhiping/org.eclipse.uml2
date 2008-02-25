@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 156879
  *
- * $Id: UMLExporter.java,v 1.12 2008/02/21 18:42:57 khussey Exp $
+ * $Id: UMLExporter.java,v 1.13 2008/02/25 15:48:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.exporter;
 
@@ -42,7 +43,9 @@ import org.eclipse.emf.exporter.ModelExporter;
 import org.eclipse.emf.exporter.util.ExporterUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class UMLExporter
@@ -69,7 +72,10 @@ public class UMLExporter
 	protected String doCheckEPackageArtifactLocation(String location,
 			String packageName) {
 
-		if (!location.endsWith('.' + UMLResource.FILE_EXTENSION)) {
+		if (!location.endsWith('.' + UMLResource.FILE_EXTENSION)
+			&& !location.endsWith('.' + XMI2UMLResource.FILE_EXTENSION)
+			&& !location.endsWith('.' + CMOF2UMLResource.FILE_EXTENSION)) {
+
 			return UMLExporterPlugin.INSTANCE
 				.getString("_UI_InvalidArtifactFileNameExtension_message"); //$NON-NLS-1$
 		}
@@ -83,6 +89,15 @@ public class UMLExporter
 		Diagnostic diagnostic = Diagnostic.OK_INSTANCE;
 
 		ResourceSet resourceSet = new ResourceSetImpl();
+
+		Map<String, Object> extensionToFactoryMap = resourceSet
+			.getResourceFactoryRegistry().getExtensionToFactoryMap();
+
+		extensionToFactoryMap.put(XMI2UMLResource.FILE_EXTENSION,
+			XMI2UMLResource.Factory.INSTANCE);
+		extensionToFactoryMap.put(CMOF2UMLResource.FILE_EXTENSION,
+			CMOF2UMLResource.Factory.INSTANCE);
+
 		UMLUtil.Ecore2UMLConverter ecore2umlConverter = new UMLUtil.Ecore2UMLConverter();
 
 		BasicDiagnostic diagnostics = new BasicDiagnostic(ConverterPlugin.ID,
