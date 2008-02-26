@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 218388
  *
- * $Id: CMOF2UMLHandler.java,v 1.1 2007/09/04 15:28:48 khussey Exp $
+ * $Id: CMOF2UMLHandler.java,v 1.2 2008/02/26 05:08:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 public class CMOF2UMLHandler
@@ -76,6 +78,26 @@ public class CMOF2UMLHandler
 		} else {
 			super.setAttribValue(object, name, value);
 		}
+	}
+
+	@Override
+	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
+
+		if (uriLiteral
+			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_0_URI)) {
+
+			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
+				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
+			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_INTEGER)) {
+				uriLiteral = PRIMITIVE_TYPE_INTEGER_URI;
+			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_STRING)) {
+				uriLiteral = PRIMITIVE_TYPE_STRING_URI;
+			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {
+				uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
+			}
+		}
+
+		super.handleProxy(proxy, uriLiteral);
 	}
 
 }

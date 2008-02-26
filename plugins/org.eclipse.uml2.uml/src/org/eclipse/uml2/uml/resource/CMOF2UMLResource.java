@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation) - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 218388
  *
- * $Id: CMOF2UMLResource.java,v 1.2 2008/02/25 15:48:47 khussey Exp $
+ * $Id: CMOF2UMLResource.java,v 1.3 2008/02/26 05:08:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -35,5 +35,7 @@ public interface CMOF2UMLResource
 	String FILE_EXTENSION = CMOF_METAMODEL_NS_PREFIX;
 
 	String CMOF_CONTENT_TYPE_IDENTIFIER = "org.omg.mof.cmof_2_0"; //$NON-NLS-1$
+
+	String UML_PRIMITIVE_TYPES_LIBRARY_2_0_URI = "http://schema.omg.org/spec/UML/2.0/uml.xml"; //$NON-NLS-1$
 
 }
