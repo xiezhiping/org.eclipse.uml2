@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 213218
  *
- * $Id: UML2EcoreConverterOptionsDialog.java,v 1.6 2007/04/05 05:04:48 khussey Exp $
+ * $Id: UML2EcoreConverterOptionsDialog.java,v 1.7 2008/02/27 14:53:55 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.dialogs;
 
@@ -133,6 +134,12 @@ public class UML2EcoreConverterOptionsDialog
 		createOptionArea(parent,
 			UMLExamplesUIPlugin.INSTANCE.getString("_UI_Comments_label"), //$NON-NLS-1$
 			UMLUtil.UML2EcoreConverter.OPTION__COMMENTS, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
+			processChoiceLabel);
+
+		createOptionArea(parent,
+			UMLExamplesUIPlugin.INSTANCE.getString("_UI_CamelCaseNames_label"), //$NON-NLS-1$
+			UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES, new String[]{
 				ignoreChoiceLabel, reportChoiceLabel, processChoiceLabel},
 			processChoiceLabel);
 	}
