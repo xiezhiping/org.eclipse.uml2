@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 IBM Corporation and others.
+ * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 213218
  *
- * $Id: UMLImporterApplication.java,v 1.5 2007/04/05 05:03:54 khussey Exp $
+ * $Id: UMLImporterApplication.java,v 1.6 2008/02/27 14:54:08 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -101,7 +102,8 @@ public class UMLImporterApplication
 		appendLine(result,"                               -DUPLICATE_OPERATIONS | -DUPLICATE_OPERATION_INHERITANCE |" ); //$NON-NLS-1$
 		appendLine(result,"                               -DUPLICATE_FEATURES | -DUPLICATE_FEATURE_INHERITANCE |" ); //$NON-NLS-1$
 		appendLine(result,"                               -SUPER_CLASS_ORDER | -ANNOTATION_DETAILS |" ); //$NON-NLS-1$
-		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -OPERATION_BODIES | -COMMENTS >" ); //$NON-NLS-1$
+		appendLine(result,"                               -INVARIANT_CONSTRAINTS | -OPERATION_BODIES | -COMMENTS |" ); //$NON-NLS-1$
+		appendLine(result,"                               -CAMEL_CASE_NAMES >" ); //$NON-NLS-1$
 		appendLine(result,"                             < PROCESS | IGNORE | REPORT | DISCARD >"); //$NON-NLS-1$
 		appendLine(result, "<CACHE-ADAPTER-SUPPORT> ::= -cacheAdapterSupport"); //$NON-NLS-1$
 		appendLine(result, "<FACTORY-METHODS>       ::= -factoryMethods"); //$NON-NLS-1$
@@ -185,6 +187,8 @@ public class UMLImporterApplication
 			|| UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES
 				.equalsIgnoreCase(strippedKey)
 			|| UMLUtil.UML2EcoreConverter.OPTION__COMMENTS
+				.equalsIgnoreCase(strippedKey)
+			|| UMLUtil.UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES
 				.equalsIgnoreCase(strippedKey);
 	}
 
