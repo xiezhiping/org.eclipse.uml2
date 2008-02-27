@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218
  *
- * $Id: UMLUtil.java,v 1.69 2008/01/21 15:00:29 khussey Exp $
+ * $Id: UMLUtil.java,v 1.70 2008/02/27 14:54:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2084,6 +2084,13 @@ public class UMLUtil
 		 */
 		public static final String OPTION__COMMENTS = "COMMENTS"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where names are not camel case.
+		 * Supported choices are <code>OPTION__IGNORE</code>,
+		 * <code>OPTION__REPORT</code>, and <code>OPTION__PROCESS</code>.
+		 */
+		public static final String OPTION__CAMEL_CASE_NAMES = "CAMEL_CASE_NAMES"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 2000;
 
 		/**
@@ -2172,6 +2179,11 @@ public class UMLUtil
 		 */
 		public static final int COMMENT = DIAGNOSTIC_CODE_OFFSET + 15;
 
+		/**
+		 * The diagnostic code for cases where names are not camel case.
+		 */
+		public static final int CAMEL_CASE_NAME = DIAGNOSTIC_CODE_OFFSET + 16;
+
 		protected static final Pattern ANNOTATION_PATTERN = Pattern
 			.compile("\\G\\s*((?>\\\\.|\\S)+)((?:\\s+(?>\\\\.|\\S)+\\s*+=\\s*(['\"])((?>\\\\.|.)*?)\\3)*)"); //$NON-NLS-1$
 
@@ -2190,9 +2202,99 @@ public class UMLUtil
 
 		protected void setName(ENamedElement eNamedElement, String name,
 				boolean validate) {
-			eNamedElement.setName(validate
-				? getValidJavaIdentifier(name)
-				: name);
+
+			if (!isEmpty(name)
+				&& options != null
+				&& !OPTION__IGNORE
+					.equals(options.get(OPTION__CAMEL_CASE_NAMES))) {
+
+				Iterator<String> wordIterator = parseName(name, '_', "\\s").iterator(); //$NON-NLS-1$
+				StringBuffer camelCaseNameBuffer = new StringBuffer();
+
+				String word = wordIterator.next();
+
+				if (word.length() > 0) {
+
+					if (eNamedElement instanceof EClassifier) {
+						camelCaseNameBuffer.append(word.substring(0, 1)
+							.toUpperCase());
+					} else {
+						camelCaseNameBuffer.append(word.substring(0, 1)
+							.toLowerCase());
+					}
+
+					camelCaseNameBuffer.append(word.substring(1).toLowerCase());
+				}
+
+				while (wordIterator.hasNext()) {
+					word = wordIterator.next();
+
+					if (word.length() > 0) {
+						camelCaseNameBuffer.append(word.substring(0, 1)
+							.toUpperCase());
+						camelCaseNameBuffer.append(word.substring(1)
+							.toLowerCase());
+					}
+				}
+
+				String camelCaseName = camelCaseNameBuffer.toString();
+
+				if (OPTION__PROCESS.equals(options
+					.get(OPTION__CAMEL_CASE_NAMES))) {
+
+					eNamedElement.setName(validate
+						? getValidJavaIdentifier(camelCaseName)
+						: camelCaseName);
+				} else {
+					eNamedElement.setName(validate
+						? getValidJavaIdentifier(name)
+						: name);
+				}
+
+				if (!camelCaseName.equals(name)) {
+
+					if (DEBUG) {
+						System.out.println(name + " -> " + camelCaseNameBuffer); //$NON-NLS-1$
+					}
+
+					if (OPTION__PROCESS.equals(options
+						.get(OPTION__CAMEL_CASE_NAMES))) {
+
+						if (diagnostics != null) {
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.INFO,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									CAMEL_CASE_NAME,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_UML2EcoreConverter_ProcessCamelCaseName_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												eNamedElement)),
+									new Object[]{eNamedElement}));
+						}
+					} else if (OPTION__REPORT.equals(options
+						.get(OPTION__CAMEL_CASE_NAMES))
+						&& diagnostics != null) {
+
+						diagnostics
+							.add(new BasicDiagnostic(
+								Diagnostic.WARNING,
+								UMLValidator.DIAGNOSTIC_SOURCE,
+								CAMEL_CASE_NAME,
+								UMLPlugin.INSTANCE
+									.getString(
+										"_UI_UML2EcoreConverter_ReportCamelCaseName_diagnostic", //$NON-NLS-1$
+										getMessageSubstitutions(context,
+											eNamedElement)),
+								new Object[]{eNamedElement}));
+					}
+				}
+			} else {
+				eNamedElement.setName(validate
+					? getValidJavaIdentifier(name)
+					: name);
+			}
 		}
 
 		protected void setName(ENamedElement eNamedElement,
@@ -3162,6 +3264,62 @@ public class UMLUtil
 
 			return result.toString();
 		}
+
+		  private static List<String> parseName(String name, char separator,
+				String regex) {
+			List<String> result = new ArrayList<String>();
+
+			if (name != null) {
+
+				for (String wordString : name.split(regex)) {
+					StringBuilder currentWord = new StringBuilder();
+					boolean lastIsLower = false;
+
+					for (int index = 0, length = wordString.length(); index < length; index++) {
+						char curChar = wordString.charAt(index);
+
+						if (Character.isUpperCase(curChar)
+							|| (!lastIsLower && Character.isDigit(curChar))
+							|| curChar == separator) {
+
+							if (lastIsLower && currentWord.length() > 1
+								|| curChar == separator
+								&& currentWord.length() > 0) {
+
+								result.add(currentWord.toString());
+								currentWord = new StringBuilder();
+							}
+
+							lastIsLower = false;
+						} else {
+
+							if (!lastIsLower) {
+								int currentWordLength = currentWord.length();
+
+								if (currentWordLength > 1) {
+									char lastChar = currentWord
+										.charAt(--currentWordLength);
+									currentWord.setLength(currentWordLength);
+									result.add(currentWord.toString());
+									currentWord = new StringBuilder();
+									currentWord.append(lastChar);
+								}
+							}
+
+							lastIsLower = true;
+						}
+
+						if (curChar != separator) {
+							currentWord.append(curChar);
+						}
+					}
+
+					result.add(currentWord.toString());
+				}
+			}
+
+			return result;
+		}  
 
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Element element,
