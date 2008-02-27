@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552
  *
- * $Id: UMLImporter.java,v 1.13 2008/02/25 15:48:43 khussey Exp $
+ * $Id: UMLImporter.java,v 1.14 2008/02/27 14:59:54 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -98,39 +97,8 @@ public class UMLImporter
 	public GenModel getGenModel() {
 
 		if (genModel == null) {
-
-			if (UMLUtil.OPTION__PROCESS
-				.equals(options
-					.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES))
-				|| UMLUtil.OPTION__PROCESS
-					.equals(options
-						.get(UMLUtil.UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES))
-				|| UMLUtil.OPTION__PROCESS.equals(options
-					.get(UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES))
-				|| UMLUtil.OPTION__PROCESS.equals(options
-					.get(UMLUtil.UML2EcoreConverter.OPTION__UNION_PROPERTIES))) {
-
-				genModel = org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory.eINSTANCE
-					.createGenModel();
-			} else {
-				genModel = GenModelFactory.eINSTANCE.createGenModel();
-			}
-
+			genModel = org.eclipse.uml2.codegen.ecore.genmodel.GenModelFactory.eINSTANCE
+				.createGenModel();
 			genModel.setImporterID(getID());
 		}
 
