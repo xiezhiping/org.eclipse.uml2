@@ -77,6 +77,9 @@
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFpXjqEdy8S4Cr8Rc_NA" name="base_DataType" ordered="false" lowerBound="1">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//DataType"/>
           </eStructuralFeatures>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_6hVhR-coEdy_aa-DQ9xEjg" name="base_Association" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.1.0/UML#//Association"/>
+          </eStructuralFeatures>
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_z1OFqHjqEdy8S4Cr8Rc_NA" name="EDataType" eSuperTypes="_z1OFi3jqEdy8S4Cr8Rc_NA">
           <eAnnotations xmi:id="_z1OFqXjqEdy8S4Cr8Rc_NA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="EDataType"/>
@@ -1187,6 +1190,9 @@
       <ownedAttribute xmi:id="EClass-base_DataType" name="base_DataType" association="DataType_EClass">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="EClass-base_Association" name="base_Association" association="Association_EClass">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+      </ownedAttribute>
       <icon xmi:id="EClass-_icon.0" location="../icons/full/ovr16/EClass.gif"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Extension" xmi:id="Class_EClass" name="Class_EClass" memberEnd="Class_EClass-extension_EClass EClass-base_Class">
@@ -1456,6 +1462,11 @@
     <packagedElement xmi:type="uml:Extension" xmi:id="DataType_EGenericType" name="DataType_EGenericType" memberEnd="DataType_EGenericType-extension_EGenericType EGenericType-base_DataType">
       <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="DataType_EGenericType-extension_EGenericType" name="extension_EGenericType" type="EGenericType" aggregation="composite" association="DataType_EGenericType">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DataType_EGenericType-extension_EGenericType-_lowerValue"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="Association_EClass" name="Association_EClass" memberEnd="Association_EClass-extension_EClass EClass-base_Association">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="Association_EClass-extension_EClass" name="extension_EClass" type="EClass" aggregation="composite" association="Association_EClass">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Association_EClass-extension_EClass-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
     <profileApplication xmi:id="_profileApplication.0" appliedProfile="_0">
