@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 213903
  * 
- * $Id: CMOF2UMLResourceHandler.java,v 1.1 2007/09/04 15:28:48 khussey Exp $
+ * $Id: CMOF2UMLResourceHandler.java,v 1.2 2008/03/06 04:30:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -30,8 +31,12 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLUtil;
@@ -201,7 +206,122 @@ public class CMOF2UMLResourceHandler
 				Object name = getValue(tag.getAnyAttribute(),
 					CMOF2UMLExtendedMetaData.CMOF_TAG_NAME);
 
-				if ("org.omg.xmi.nsURI".equals(name)) { //$NON-NLS-1$
+				if (CMOF2UMLExtendedMetaData.XMI_TAG__XMI_NAME.equals(name)) {
+					EObject element = getEObject(tag, resource,
+						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
+
+					if (element instanceof org.eclipse.uml2.uml.Class
+						|| element instanceof Association) {
+
+						UMLUtil.setTaggedValue((Element) element,
+							getEcoreStereotype(element,
+								UMLUtil.STEREOTYPE__E_CLASS),
+							UMLUtil.TAG_DEFINITION__XML_NAME, getValue(tag
+								.getAnyAttribute(),
+								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
+
+					} else if (element instanceof Property) {
+						UMLUtil
+							.setTaggedValue(
+								(Element) element,
+								getEcoreStereotype(
+									element,
+									UMLUtil.UML2EcoreConverter
+										.isEDataType((Classifier) ((Property) element)
+											.getType())
+										? UMLUtil.STEREOTYPE__E_ATTRIBUTE
+										: UMLUtil.STEREOTYPE__E_REFERENCE),
+								UMLUtil.TAG_DEFINITION__XML_NAME, getValue(tag
+									.getAnyAttribute(),
+									CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
+					}
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ATTRIBUTE
+					.equals(name)) {
+					EObject element = getEObject(tag, resource,
+						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
+
+					Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
+						element)
+						.getOwnedType(UMLUtil.ENUMERATION__FEATURE_KIND);
+
+					if (featureKindEnumeration != null
+						&& element instanceof Property
+						&& Boolean.getBoolean(String.valueOf(getValue(tag
+							.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))) {
+
+						UMLUtil
+							.setTaggedValue(
+								(Element) element,
+								getEcoreStereotype(element,
+									UMLUtil.UML2EcoreConverter
+										.isEDataType(((Property) element)
+											.getNamespace())
+										? UMLUtil.STEREOTYPE__E_ATTRIBUTE
+										: UMLUtil.STEREOTYPE__E_REFERENCE),
+								UMLUtil.TAG_DEFINITION__XML_FEATURE_KIND,
+								featureKindEnumeration
+									.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__ATTRIBUTE));
+					}
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ELEMENT
+					.equals(name)) {
+					EObject element = getEObject(tag, resource,
+						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
+
+					Enumeration featureKindEnumeration = (Enumeration) getEcoreProfile(
+						element)
+						.getOwnedType(UMLUtil.ENUMERATION__FEATURE_KIND);
+
+					if (featureKindEnumeration != null
+						&& element instanceof Property
+						&& Boolean.getBoolean(String.valueOf(getValue(tag
+							.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))) {
+
+						UMLUtil
+							.setTaggedValue(
+								(Element) element,
+								getEcoreStereotype(element,
+									UMLUtil.UML2EcoreConverter
+										.isEDataType(((Property) element)
+											.getNamespace())
+										? UMLUtil.STEREOTYPE__E_ATTRIBUTE
+										: UMLUtil.STEREOTYPE__E_REFERENCE),
+								UMLUtil.TAG_DEFINITION__XML_FEATURE_KIND,
+								featureKindEnumeration
+									.getOwnedLiteral(UMLUtil.ENUMERATION_LITERAL__ELEMENT));
+					}
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__SCHEMA_TYPE
+					.equals(name)) {
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ID_PROPERTY
+					.equals(name)) {
+					EObject element = getEObject(tag, resource,
+						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
+
+					if (element instanceof Property
+						&& Boolean.getBoolean(String.valueOf(getValue(tag
+							.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))
+						&& UMLUtil.UML2EcoreConverter
+							.isEDataType(((Property) element).getNamespace())) {
+
+						UMLUtil.setTaggedValue((Element) element,
+							getEcoreStereotype(element,
+								UMLUtil.STEREOTYPE__E_ATTRIBUTE),
+							UMLUtil.TAG_DEFINITION__IS_ID, Boolean.TRUE);
+					}
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__NS_URI
+					.equals(name)) {
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -215,7 +335,8 @@ public class CMOF2UMLResourceHandler
 					}
 
 					tagsToRemove.add(tag);
-				} else if ("org.omg.xmi.nsPrefix".equals(name)) { //$NON-NLS-1$
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__NS_PREFIX
+					.equals(name)) {
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -228,8 +349,6 @@ public class CMOF2UMLResourceHandler
 								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
 					}
 
-					tagsToRemove.add(tag);
-				} else if ("org.omg.xmi.schemaType".equals(name)) { //$NON-NLS-1$
 					tagsToRemove.add(tag);
 				}
 			}

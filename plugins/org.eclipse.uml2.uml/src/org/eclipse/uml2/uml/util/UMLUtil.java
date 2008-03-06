@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903
  *
- * $Id: UMLUtil.java,v 1.70 2008/02/27 14:54:04 khussey Exp $
+ * $Id: UMLUtil.java,v 1.71 2008/03/06 04:30:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2506,8 +2506,8 @@ public class UMLUtil
 					STEREOTYPE__E_GENERIC_TYPE) != null;
 		}
 
-		protected boolean isEClass(Namespace namespace) {
-			return new UMLSwitch<Boolean>() {
+		public static boolean isEDataType(Namespace namespace) {
+			return !new UMLSwitch<Boolean>() {
 
 				@Override
 				public Boolean caseClass(org.eclipse.uml2.uml.Class class_) {
@@ -2547,6 +2547,10 @@ public class UMLUtil
 				}
 
 			}.doSwitch(namespace).booleanValue();
+		}
+
+		protected boolean isEClass(Namespace namespace) {
+			return !isEDataType(namespace);
 		}
 
 		@Override
@@ -3265,7 +3269,7 @@ public class UMLUtil
 			return result.toString();
 		}
 
-		  private static List<String> parseName(String name, char separator,
+		private static List<String> parseName(String name, char separator,
 				String regex) {
 			List<String> result = new ArrayList<String>();
 
@@ -3319,7 +3323,7 @@ public class UMLUtil
 			}
 
 			return result;
-		}  
+		}
 
 		protected void processEcoreTaggedValue(EModelElement eModelElement,
 				EStructuralFeature eStructuralFeature, Element element,
@@ -8190,11 +8194,11 @@ public class UMLUtil
 
 	protected static final String ANNOTATION_DETAIL__BODY = "body"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__ATTRIBUTE = "Attribute"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__ATTRIBUTE_WILDCARD = "AttributeWilcard"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION_LITERAL__ELEMENT = "Element"; //$NON-NLS-1$
+	public static final String ENUMERATION_LITERAL__ELEMENT = "Element"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION_LITERAL__ELEMENT_ONLY = "ElementOnly"; //$NON-NLS-1$
 
@@ -8222,7 +8226,7 @@ public class UMLUtil
 
 	protected static final String ENUMERATION__CONTENT_KIND = "ContentKind"; //$NON-NLS-1$
 
-	protected static final String ENUMERATION__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
+	public static final String ENUMERATION__FEATURE_KIND = "FeatureKind"; //$NON-NLS-1$
 
 	protected static final String ENUMERATION__VISIBILITY_KIND = "VisibilityKind"; //$NON-NLS-1$
 

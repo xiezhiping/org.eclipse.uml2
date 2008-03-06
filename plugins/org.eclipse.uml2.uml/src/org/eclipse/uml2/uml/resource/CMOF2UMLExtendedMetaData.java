@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 213903
  *
- * $Id: CMOF2UMLExtendedMetaData.java,v 1.1 2007/09/04 15:28:48 khussey Exp $
+ * $Id: CMOF2UMLExtendedMetaData.java,v 1.2 2008/03/06 04:30:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -40,6 +41,20 @@ public class CMOF2UMLExtendedMetaData
 	public static final String CMOF_TAG_VALUE = EMOFExtendedMetaData.EMOF_TAG_VALUE;
 
 	public static final String CMOF_TAG_ELEMENT = EMOFExtendedMetaData.EMOF_TAG_ELEMENT;
+
+	public static final String XMI_TAG__ATTRIBUTE = "org.omg.xmi.attribute"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__ELEMENT = "org.omg.xmi.element"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__ID_PROPERTY = "org.omg.xmi.idProperty"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__NS_PREFIX = "org.omg.xmi.nsPrefix"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__NS_URI = "org.omg.xmi.nsURI"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__SCHEMA_TYPE = "org.omg.xmi.schemaType"; //$NON-NLS-1$
+
+	public static final String XMI_TAG__XMI_NAME = "org.omg.xmi.xmiName"; //$NON-NLS-1$
 
 	protected static Map<URI, URI> uriMap = null;
 
