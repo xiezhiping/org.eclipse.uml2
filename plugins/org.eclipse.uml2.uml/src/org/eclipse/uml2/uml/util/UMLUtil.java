@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669
  *
- * $Id: UMLUtil.java,v 1.71 2008/03/06 04:30:02 khussey Exp $
+ * $Id: UMLUtil.java,v 1.72 2008/03/06 04:44:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -3074,13 +3074,15 @@ public class UMLUtil
 
 			if (isEClass(namespace)) {
 				EStructuralFeature eStructuralFeature = null;
+				Classifier type = (Classifier) property.getType();
 
-				if (isEClass((Classifier) property.getType())) {
+				if (isEClass(type)) {
 					EReference eReference = (EReference) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEReference());
 					elementToEModelElementMap.put(property, eReference);
 
-					eReference.setContainment(property.isComposite());
+					eReference.setContainment(property.isComposite()
+						|| type instanceof DataType);
 				} else {
 					EAttribute eAttribute = (EAttribute) (eStructuralFeature = EcoreFactory.eINSTANCE
 						.createEAttribute());
