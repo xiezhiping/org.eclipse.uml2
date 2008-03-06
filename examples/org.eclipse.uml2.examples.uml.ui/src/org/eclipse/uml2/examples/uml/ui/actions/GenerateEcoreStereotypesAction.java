@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125, 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125, 204200, ?
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.10 2008/01/21 15:00:32 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.11 2008/03/06 04:29:52 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -103,12 +103,16 @@ public class GenerateEcoreStereotypesAction
 							profile, UMLPackage.Literals.INTERFACE);
 						org.eclipse.uml2.uml.Class dataTypeMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.DATA_TYPE);
+						org.eclipse.uml2.uml.Class associationMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.ASSOCIATION);
 						generateExtension(eClassStereotype, classMetaclass,
 							false);
 						generateExtension(eClassStereotype, interfaceMetaclass,
 							false);
 						generateExtension(eClassStereotype, dataTypeMetaclass,
 							false);
+						generateExtension(eClassStereotype,
+							associationMetaclass, false);
 						generateGeneralization(eClassStereotype,
 							eClassifierStereotype);
 						generateOwnedAttribute(eClassStereotype, "className", //$NON-NLS-1$
