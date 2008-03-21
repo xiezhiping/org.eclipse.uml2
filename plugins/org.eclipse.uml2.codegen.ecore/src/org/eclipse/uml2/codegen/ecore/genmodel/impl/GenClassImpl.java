@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 206636
  *
- * $Id: GenClassImpl.java,v 1.40 2007/05/10 20:10:05 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.41 2008/03/21 00:23:00 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -454,6 +456,24 @@ public class GenClassImpl
 			+ getOperationsClassName();
 	}
 
+	public List<GenOperation> getOperationsClassGenOperations() {
+		EList<GenOperation> result = new UniqueEList.FastCompare<GenOperation>();
+
+		if (!isInterface()) {
+
+			for (GenOperation genOperation : getImplementedGenOperations()) {
+				org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = genOperation
+					.getGenClass();
+
+				if (genClass == this || genClass.isInterface()) {
+					result.add(genOperation);
+				}
+			}
+		}
+
+		return result;
+	}
+
 	@Override
 	public String getOperationID(GenOperation genOperation) {
 
@@ -478,7 +498,7 @@ public class GenClassImpl
 
 			if (UML2GenModelUtil.isOperationsClasses(classExtendsGenClass
 				.getGenPackage())
-				&& !UML2GenModelUtil.getDuplicateGenOperations(
+				&& !UML2GenModelUtil.getOperationsClassGenOperations(
 					classExtendsGenClass).isEmpty()) {
 
 				return " extends " //$NON-NLS-1$

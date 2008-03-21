@@ -3993,8 +3993,8 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_429);
     stringBuffer.append(genClass.getGetAccessorOperation(genFeature).getBody(genModel.getIndentation(stringBuffer)));
     } else {
-    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature);
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genOperation)) {
     stringBuffer.append(TEXT_430);
     stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter"));
@@ -4024,7 +4024,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(genOperation.getObjectType(genClass));
     stringBuffer.append(TEXT_443);
     }
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_444);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_445);
@@ -4040,7 +4040,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_450);
     }
     stringBuffer.append(TEXT_451);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_452);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_453);
@@ -4287,10 +4287,10 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_556);
     }
     } else {
-    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature);
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_557);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_558);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_559);
@@ -5292,10 +5292,10 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_994);
     stringBuffer.append(setAccessorOperation.getBody(genModel.getIndentation(stringBuffer)));
     } else {
-    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingSetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingSetGenOperation(genClass, genFeature);
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_995);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_996);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_997);
@@ -5762,10 +5762,10 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1195);
     stringBuffer.append(genClass.getUnsetAccessorOperation(genFeature).getBody(genModel.getIndentation(stringBuffer)));
     } else {
-    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingUnsetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingUnsetGenOperation(genClass, genFeature);
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_1196);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1197);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1198);
@@ -5905,9 +5905,9 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(genClass.getIsSetAccessorOperation(genFeature).getBody(genModel.getIndentation(stringBuffer)));
     } else {
     { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingIsSetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_1255);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1256);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1257);
@@ -6956,9 +6956,9 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     } else {
     { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingIsSetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_1713);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1714);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1715);
@@ -6979,7 +6979,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }//for
     }}.run();
     for (GenOperation genOperation : (isImplementation ? genClass.getImplementedGenOperations() : genClass.getDeclaredGenOperations())) {
-    if (isImplementation && !UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage()) && UML2GenModelUtil.hasOCLBody(genOperation)) {
+    if (isImplementation && !UML2GenModelUtil.hasOperationsClass(genClass, genOperation) && UML2GenModelUtil.hasOCLBody(genOperation)) {
     stringBuffer.append(TEXT_1720);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1721);
@@ -7126,9 +7126,9 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1780);
     stringBuffer.append(genOperation.getBody(genModel.getIndentation(stringBuffer)));
     } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
-    if (UML2GenModelUtil.isOperationsClasses(opClass.getGenPackage())) {
+    if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_1781);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1782);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1783);
@@ -7184,11 +7184,11 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(genModel.getNonNLS(2));
     stringBuffer.append(TEXT_1807);
     }
-    } else { GenPackage opPackage = genOperation.getGenPackage();
-    if (UML2GenModelUtil.isOperationsClasses(opPackage)) { GenClass opClass = genOperation.getGenClass();
+    } else { GenClass opClass = genOperation.getGenClass();
+    if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     if (genOperation.isVoid()) {
     stringBuffer.append(TEXT_1808);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1809);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1810);
@@ -7231,7 +7231,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(genOperation.getObjectType(genClass));
     stringBuffer.append(TEXT_1828);
     }
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1829);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1830);
@@ -7252,7 +7252,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1837);
     }
     stringBuffer.append(TEXT_1838);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_1839);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_1840);
@@ -8277,7 +8277,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_2277);
     }
     if (isImplementation) {
-    if (!UML2GenModelUtil.isOperationsClasses(genClass.getGenPackage()) && UML2GenModelUtil.hasOCLOperationBodies(genClass) && !UML2GenModelUtil.hasOCLOperationBodies(genClass.getClassExtendsGenClass())) {
+    if (!UML2GenModelUtil.isOperationsClasses(genPackage) && UML2GenModelUtil.hasOCLOperationBodies(genClass) && !UML2GenModelUtil.hasOCLOperationBodies(genClass.getClassExtendsGenClass())) {
     stringBuffer.append(TEXT_2278);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
     stringBuffer.append(TEXT_2279);
@@ -9804,9 +9804,9 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     } else {
     { GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingIsSetGenOperation(genClass, genFeature); 
-    if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();
+    if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {
     stringBuffer.append(TEXT_2927);
-    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(opClass));
+    stringBuffer.append(UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation));
     stringBuffer.append(TEXT_2928);
     stringBuffer.append(genOperation.getName());
     stringBuffer.append(TEXT_2929);

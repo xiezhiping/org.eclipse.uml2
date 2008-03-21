@@ -1,4 +1,4 @@
-<%if (isImplementation && !UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage()) && UML2GenModelUtil.hasOCLBody(genOperation)) {%>
+<%if (isImplementation && !UML2GenModelUtil.hasOperationsClass(genClass, genOperation) && UML2GenModelUtil.hasOCLBody(genOperation)) {%>
 	/**
 	 * The cached OCL expression body for the '{@link #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' operation.
 	 * <!-- begin-user-doc -->
@@ -83,8 +83,8 @@
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
   <%} else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();%>
-    <%if (UML2GenModelUtil.isOperationsClasses(opClass.getGenPackage())) {%>
-		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this, <%=diagnostics%>, <%=context%>);
+    <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this, <%=diagnostics%>, <%=context%>);
     <%} else {%>
       <%if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";%>
 		if (<%=oclInv%> == null)
@@ -123,10 +123,10 @@
 		}
 		return true;
     <%}%>
-  <%} else { GenPackage opPackage = genOperation.getGenPackage();%>
-    <%if (UML2GenModelUtil.isOperationsClasses(opPackage)) { GenClass opClass = genOperation.getGenClass();%>
+  <%} else { GenClass opClass = genOperation.getGenClass();%>
+    <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
       <%if (genOperation.isVoid()) {%>
-		<%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
+		<%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
       <%} else {%>
         <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genOperation)) {%>
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
@@ -138,12 +138,12 @@
 			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
 			if (result == null)
 			{
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
 			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}
         <%}%>
-		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
       <%}%>
     <%} else if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclQry = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_QRY";
 		GenOperation redefinedGenOperation = genOperation;

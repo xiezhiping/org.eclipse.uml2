@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 208016, 206636
  *
- * $Id: UML2GenModelUtil.java,v 1.23 2008/03/21 00:20:07 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.24 2008/03/21 00:23:00 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -209,6 +209,39 @@ public class UML2GenModelUtil {
 			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
 				.getOperationsClassExtends()
 			: ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * @since 1.4
+	 */
+	public static String getImportedOperationsClassName(GenClass genClass,
+			GenOperation genOperation) {
+		GenClass opGenClass = genOperation.getGenClass();
+		return opGenClass.isInterface()
+			? getImportedOperationsClassName(genClass)
+			: getImportedOperationsClassName(opGenClass);
+	}
+
+	/**
+	 * @since 1.4
+	 */
+	public static boolean hasOperationsClass(GenClass genClass,
+			GenOperation genOperation) {
+		GenClass opGenClass = genOperation.getGenClass();
+		return opGenClass.isInterface()
+			? isOperationsClasses(genClass.getGenPackage())
+			: isOperationsClasses(opGenClass.getGenPackage());
+	}
+
+	/**
+	 * @since 1.4
+	 */
+	public static List<GenOperation> getOperationsClassGenOperations(
+			GenClass genClass) {
+		return genClass instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenClass
+			? ((org.eclipse.uml2.codegen.ecore.genmodel.GenClass) genClass)
+				.getOperationsClassGenOperations()
+			: Collections.<GenOperation> emptyList();
 	}
 
 	public static List<GenFeature> getKeyGenFeatures(GenClass genClass) {

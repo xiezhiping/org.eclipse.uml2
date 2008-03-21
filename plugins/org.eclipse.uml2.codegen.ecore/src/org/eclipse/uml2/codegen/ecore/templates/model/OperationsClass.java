@@ -163,7 +163,7 @@ public class OperationsClass
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -171,6 +171,7 @@ public class OperationsClass
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 206636
  *
  * </copyright>
  */
@@ -196,8 +197,8 @@ public class OperationsClass
     stringBuffer.append(TEXT_9);
     stringBuffer.append(genClass.getFormattedName());
     stringBuffer.append(TEXT_10);
-    if (!UML2GenModelUtil.getDuplicateGenOperations(genClass).isEmpty()) { boolean first = true;
-    for (GenOperation genOperation : UML2GenModelUtil.getDuplicateGenOperations(genClass)) {
+    if (!UML2GenModelUtil.getOperationsClassGenOperations(genClass).isEmpty()) { boolean first = true;
+    for (GenOperation genOperation : UML2GenModelUtil.getOperationsClassGenOperations(genClass)) {
     if (first) { first = false;
     stringBuffer.append(TEXT_11);
     }
@@ -238,7 +239,7 @@ public class OperationsClass
     stringBuffer.append(TEXT_27);
     stringBuffer.append(UML2GenModelUtil.getOperationsClassName(genClass));
     stringBuffer.append(TEXT_28);
-    for (GenOperation genOperation : UML2GenModelUtil.getDuplicateGenOperations(genClass)) {
+    for (GenOperation genOperation : UML2GenModelUtil.getOperationsClassGenOperations(genClass)) {
     if (UML2GenModelUtil.hasOCLBody(genOperation)) {
     stringBuffer.append(TEXT_29);
     stringBuffer.append(genOperation.getName());

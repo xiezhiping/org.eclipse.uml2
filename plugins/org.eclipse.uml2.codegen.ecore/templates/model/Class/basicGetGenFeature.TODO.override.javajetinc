@@ -1,6 +1,6 @@
-<%{ GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature); %>
-  <%if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();%>
-		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this);
+<%{ GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature);%>
+  <%if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this);
   <%} else if (UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).contains(genFeature)) {%>
     <%for (GenFeature subsetGenFeature : UML2GenModelUtil.getSubsetGenFeatures(genClass, genFeature)) {%>
       <%if (!genClass.getExtendedGenFeatures().contains(subsetGenFeature)) {%>

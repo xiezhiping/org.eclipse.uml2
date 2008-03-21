@@ -1,5 +1,5 @@
-<%{ GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature); %>
-  <%if (genOperation != null && UML2GenModelUtil.isOperationsClasses(genOperation.getGenPackage())) { GenClass opClass = genOperation.getGenClass();%>
+<%{ GenOperation genOperation = UML2GenModelUtil.getImplementedCollidingGetGenOperation(genClass, genFeature);%>
+  <%if (genOperation != null && UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
     <%if (UML2GenModelUtil.isCacheAdapterSupport(genModel) && UML2GenModelUtil.isCached(genOperation)) {%>
 		<%=genModel.getImportedName("org.eclipse.uml2.common.util.CacheAdapter")%> cache = getCacheAdapter();
 		if (cache != null)
@@ -10,12 +10,12 @@
 			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>);
 			if (result == null)
 			{
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>, result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genFeature.getQualifiedFeatureAccessor()%>, result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
 			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}
     <%}%>
-		return <%=UML2GenModelUtil.getImportedOperationsClassName(opClass)%>.<%=genOperation.getName()%>(this);
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this);
   <%} else if (UML2GenModelUtil.getImplementedUnionGenFeatures(genClass).contains(genFeature)) {%>
     <%if (genFeature.isListType()) {%>
       <%if (UML2GenModelUtil.isDerivedUnionListType(genClass, genFeature)) {%>
