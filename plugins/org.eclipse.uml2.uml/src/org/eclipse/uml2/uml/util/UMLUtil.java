@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016
  *
- * $Id: UMLUtil.java,v 1.72 2008/03/06 04:44:44 khussey Exp $
+ * $Id: UMLUtil.java,v 1.73 2008/03/21 00:15:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -5327,7 +5327,7 @@ public class UMLUtil
 					EcoreUtil.setAnnotation(eOperation, LANGUAGE__JAVA
 						.equals(language)
 						? EMF_GEN_MODEL_PACKAGE_NS_URI
-						: UML2_GEN_MODEL_PACKAGE_NS_URI,
+						: UML2_GEN_MODEL_PACKAGE_1_1_NS_URI,
 						ANNOTATION_DETAIL__BODY, bodies.get(i));
 				} else if (OPTION__REPORT.equals(options
 					.get(OPTION__OPERATION_BODIES))
@@ -7956,7 +7956,7 @@ public class UMLUtil
 
 					processBodyAnnotation(operation, LANGUAGE__OCL, EcoreUtil
 						.getAnnotation(eModelElement,
-							UML2_GEN_MODEL_PACKAGE_NS_URI,
+							UML2_GEN_MODEL_PACKAGE_1_1_NS_URI,
 							ANNOTATION_DETAIL__BODY), options, diagnostics,
 						context);
 
@@ -8234,7 +8234,9 @@ public class UMLUtil
 
 	protected static final String EMF_GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel"; //$NON-NLS-1$
 
-	protected static final String UML2_GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
+	protected static final String UML2_GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/uml2/2.2.0/GenModel"; //$NON-NLS-1$
+
+	protected static final String UML2_GEN_MODEL_PACKAGE_1_1_NS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
 
 	protected static final String LANGUAGE__JAVA = "Java"; //$NON-NLS-1$
 
