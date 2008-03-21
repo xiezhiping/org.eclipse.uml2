@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenFeature.java,v 1.9 2007/05/10 22:19:25 khussey Exp $
+ * $Id: GenFeature.java,v 1.10 2008/03/21 00:17:16 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenFeature#isKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.GenFeature#isPluralizationException <em>Pluralization Exception</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,6 +63,32 @@ public interface GenFeature
 	 * @generated
 	 */
 	void setKey(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Pluralization Exception</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Pluralization Exception</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pluralization Exception</em>' attribute.
+	 * @see #setPluralizationException(boolean)
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage#getGenFeature_PluralizationException()
+	 * @model
+	 * @generated
+	 */
+	boolean isPluralizationException();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenFeature#isPluralizationException <em>Pluralization Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Pluralization Exception</em>' attribute.
+	 * @see #isPluralizationException()
+	 * @generated
+	 */
+	void setPluralizationException(boolean value);
 
 	boolean isCached();
 
