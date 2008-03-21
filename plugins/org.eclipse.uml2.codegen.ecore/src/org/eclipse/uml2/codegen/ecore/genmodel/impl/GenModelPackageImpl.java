@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
  *
- * $Id: GenModelPackageImpl.java,v 1.6 2008/01/08 21:48:40 khussey Exp $
+ * $Id: GenModelPackageImpl.java,v 1.7 2008/03/21 00:18:13 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -294,6 +294,15 @@ public class GenModelPackageImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGenFeature_PluralizationException() {
+		return (EAttribute) genFeatureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGenModel() {
 		return genModelEClass;
 	}
@@ -458,6 +467,7 @@ public class GenModelPackageImpl
 
 		genFeatureEClass = createEClass(GEN_FEATURE);
 		createEAttribute(genFeatureEClass, GEN_FEATURE__KEY);
+		createEAttribute(genFeatureEClass, GEN_FEATURE__PLURALIZATION_EXCEPTION);
 
 		genModelEClass = createEClass(GEN_MODEL);
 		createEAttribute(genModelEClass, GEN_MODEL__FACTORY_METHODS);
@@ -583,6 +593,10 @@ public class GenModelPackageImpl
 			getGenFeature_Key(),
 			theEcorePackage.getEBoolean(),
 			"key", null, 0, 1, GenFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(
+			getGenFeature_PluralizationException(),
+			theEcorePackage.getEBoolean(),
+			"pluralizationException", null, 0, 1, GenFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(
 			genModelEClass,
