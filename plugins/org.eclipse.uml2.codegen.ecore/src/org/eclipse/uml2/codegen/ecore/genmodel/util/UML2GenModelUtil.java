@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: UML2GenModelUtil.java,v 1.22 2008/02/21 18:43:09 khussey Exp $
+ * $Id: UML2GenModelUtil.java,v 1.23 2008/03/21 00:20:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -36,6 +37,8 @@ public class UML2GenModelUtil {
 	protected UML2GenModelUtil() {
 		super();
 	}
+
+	public static final String UML2_GEN_MODEL_PACKAGE_1_1_NS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
 
 	/**
 	 * @since 1.3
@@ -781,6 +784,15 @@ public class UML2GenModelUtil {
 
 	public static boolean isTest(GenFeature genFeature) {
 		return genFeature.isTested();
+	}
+
+	/**
+	 * @since 1.4
+	 */
+	public static boolean isPluralizationException(GenFeature genFeature) {
+		return genFeature instanceof org.eclipse.uml2.codegen.ecore.genmodel.GenFeature
+			&& ((org.eclipse.uml2.codegen.ecore.genmodel.GenFeature) genFeature)
+				.isPluralizationException();
 	}
 
 	// GenOperation utilities
