@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenFeatureItemProvider.java,v 1.8 2007/01/05 21:44:07 khussey Exp $
+ * $Id: GenFeatureItemProvider.java,v 1.9 2008/03/21 00:15:42 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -72,6 +73,7 @@ public class GenFeatureItemProvider
 			super.getPropertyDescriptors(object);
 
 			addKeyPropertyDescriptor(object);
+			addPluralizationExceptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -93,6 +95,27 @@ public class GenFeatureItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_GenFeature_key_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				GenModelPackage.Literals.GEN_FEATURE__KEY, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Pluralization Exception feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPluralizationExceptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_GenFeature_pluralizationException_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_GenFeature_pluralizationException_feature", "_UI_GenFeature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				GenModelPackage.Literals.GEN_FEATURE__PLURALIZATION_EXCEPTION,
+				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_UML2PropertyCategory"), //$NON-NLS-1$
 				null));
 	}
@@ -132,6 +155,7 @@ public class GenFeatureItemProvider
 
 		switch (notification.getFeatureID(GenFeature.class)) {
 			case GenModelPackage.GEN_FEATURE__KEY :
+			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
