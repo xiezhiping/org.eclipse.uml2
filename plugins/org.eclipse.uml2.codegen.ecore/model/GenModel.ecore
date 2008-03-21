@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="genmodel"
-    nsURI="http://www.eclipse.org/uml2/1.1.0/GenModel" nsPrefix="genmodel">
+    nsURI="http://www.eclipse.org/uml2/2.2.0/GenModel" nsPrefix="genmodel">
   <eClassifiers xsi:type="ecore:EClass" name="GenBase" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenBase"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenClass" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenClass #//GenClassifier"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenClassifier" abstract="true" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenClassifier #//GenBase"/>
@@ -11,6 +11,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="GenEnumLiteral" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenEnumLiteral #//GenBase"/>
   <eClassifiers xsi:type="ecore:EClass" name="GenFeature" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenFeature #//GenTypedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pluralizationException"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenModel" eSuperTypes="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.ecore#//GenModel #//GenBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factoryMethods" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>

@@ -7,13 +7,9 @@
     modelPluginClass="org.eclipse.uml2.codegen.ecore.CodeGenEcorePlugin" editPluginClass="org.eclipse.uml2.codegen.ecore.ui.CodeGenEcoreUIPlugin"
     editorPluginClass="" updateClasspath="false" nonNLSMarkers="true" codeFormatting="true"
     testsDirectory="" testSuiteClass="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8"
-    importerID="org.eclipse.emf.importer.rose" complianceLevel="5.0" copyrightFields="false"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     binaryCompatibleReflectiveMethods="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
-  <foreignModel>GenModel.mdl</foreignModel>
-  <foreignModel>CURDIR</foreignModel>
-  <foreignModel>.</foreignModel>
-  <foreignModel>VABASE_PLUGINS_PATH</foreignModel>
-  <foreignModel>../..</foreignModel>
+  <foreignModel>GenModel.ecore</foreignModel>
   <genPackages prefix="GenModel" basePackage="org.eclipse.uml2.codegen.ecore" disposableProviderFactory="true"
       ecorePackage="GenModel.ecore#/">
     <genEnums ecoreEnum="GenModel.ecore#//GenCacheAdapterScope">
@@ -29,6 +25,7 @@
     <genClasses image="false" ecoreClass="GenModel.ecore#//GenEnumLiteral"/>
     <genClasses image="false" ecoreClass="GenModel.ecore#//GenFeature">
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenFeature/key"/>
+      <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenFeature/pluralizationException"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GenModel.ecore#//GenModel">
       <genFeatures createChild="false" propertyCategory="UML2" ecoreFeature="ecore:EAttribute GenModel.ecore#//GenModel/factoryMethods"/>
