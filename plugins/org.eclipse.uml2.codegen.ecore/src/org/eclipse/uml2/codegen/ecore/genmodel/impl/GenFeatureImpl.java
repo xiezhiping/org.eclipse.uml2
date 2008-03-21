@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenFeatureImpl.java,v 1.29 2007/05/22 16:58:17 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.30 2008/03/21 00:17:50 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -39,6 +40,7 @@ import org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isKey <em>Key</em>}</li>
+ *   <li>{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenFeatureImpl#isPluralizationException <em>Pluralization Exception</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +69,26 @@ public class GenFeatureImpl
 	 * @ordered
 	 */
 	protected static final int KEY_EFLAG = 1 << 8;
+
+	/**
+	 * The default value of the '{@link #isPluralizationException() <em>Pluralization Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPluralizationException()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PLURALIZATION_EXCEPTION_EDEFAULT = false;
+
+	/**
+	 * The flag representing the value of the '{@link #isPluralizationException() <em>Pluralization Exception</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isPluralizationException()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PLURALIZATION_EXCEPTION_EFLAG = 1 << 9;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,11 +149,42 @@ public class GenFeatureImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isPluralizationException() {
+		return (eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPluralizationException(boolean newPluralizationException) {
+		boolean oldPluralizationException = (eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0;
+		if (newPluralizationException)
+			eFlags |= PLURALIZATION_EXCEPTION_EFLAG;
+		else
+			eFlags &= ~PLURALIZATION_EXCEPTION_EFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION
+					+ EOFFSET_CORRECTION, oldPluralizationException,
+				newPluralizationException));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return isKey()
+					? Boolean.TRUE
+					: Boolean.FALSE;
+			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
+				return isPluralizationException()
 					? Boolean.TRUE
 					: Boolean.FALSE;
 		}
@@ -149,6 +202,9 @@ public class GenFeatureImpl
 			case GenModelPackage.GEN_FEATURE__KEY :
 				setKey(((Boolean) newValue).booleanValue());
 				return;
+			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
+				setPluralizationException(((Boolean) newValue).booleanValue());
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -164,6 +220,9 @@ public class GenFeatureImpl
 			case GenModelPackage.GEN_FEATURE__KEY :
 				setKey(KEY_EDEFAULT);
 				return;
+			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
+				setPluralizationException(PLURALIZATION_EXCEPTION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -178,6 +237,8 @@ public class GenFeatureImpl
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
 				return ((eFlags & KEY_EFLAG) != 0) != KEY_EDEFAULT;
+			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
+				return ((eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0) != PLURALIZATION_EXCEPTION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -206,6 +267,9 @@ public class GenFeatureImpl
 				case GenModelPackage.GEN_FEATURE__KEY :
 					return GenModelPackage.GEN_FEATURE__KEY
 						+ EOFFSET_CORRECTION;
+				case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
+					return GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION
+						+ EOFFSET_CORRECTION;
 				default :
 					return -1;
 			}
@@ -226,6 +290,8 @@ public class GenFeatureImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (key: "); //$NON-NLS-1$
 		result.append((eFlags & KEY_EFLAG) != 0);
+		result.append(", pluralizationException: "); //$NON-NLS-1$
+		result.append((eFlags & PLURALIZATION_EXCEPTION_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}
@@ -264,6 +330,7 @@ public class GenFeatureImpl
 			? "Typed" + getCapName() //$NON-NLS-1$
 			: (isListType()
 				&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
+				&& !isPluralizationException()
 				? Generator.pluralize(getCapName())
 				: ("Class".equals(getCapName()) //$NON-NLS-1$
 					? "Class_" //$NON-NLS-1$
@@ -274,6 +341,7 @@ public class GenFeatureImpl
 	public String getSafeName() {
 		return isListType()
 			&& UML2GenModelUtil.isPluralizedGetters(getGenModel())
+			&& !isPluralizationException()
 			? safeName(Generator.pluralize(uncapPrefixedName(getName())))
 			: super.getSafeName();
 	}
@@ -734,6 +802,8 @@ public class GenFeatureImpl
 		super.reconcileSettings(oldGenFeatureVersion);
 
 		setKey(UML2GenModelUtil.isKey(oldGenFeatureVersion));
+		setPluralizationException(UML2GenModelUtil
+			.isPluralizationException(oldGenFeatureVersion));
 	}
 
 	@Override
