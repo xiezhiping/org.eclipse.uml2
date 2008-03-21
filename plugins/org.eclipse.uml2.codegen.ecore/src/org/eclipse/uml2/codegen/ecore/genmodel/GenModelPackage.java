@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
  *
- * $Id: GenModelPackage.java,v 1.31 2008/02/03 23:27:38 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.32 2008/03/21 00:17:31 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -50,7 +50,7 @@ public interface GenModelPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/uml2/1.1.0/GenModel"; //$NON-NLS-1$
+	String eNS_URI = "http://www.eclipse.org/uml2/2.2.0/GenModel"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
@@ -563,13 +563,22 @@ public interface GenModelPackage
 	int GEN_FEATURE__KEY = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Pluralization Exception</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_FEATURE__PLURALIZATION_EXCEPTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Gen Feature</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GEN_FEATURE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 1;
+	int GEN_FEATURE_FEATURE_COUNT = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl <em>Gen Model</em>}' class.
@@ -1820,6 +1829,17 @@ public interface GenModelPackage
 	EAttribute getGenFeature_Key();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenFeature#isPluralizationException <em>Pluralization Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pluralization Exception</em>'.
+	 * @see org.eclipse.uml2.codegen.ecore.genmodel.GenFeature#isPluralizationException()
+	 * @see #getGenFeature()
+	 * @generated
+	 */
+	EAttribute getGenFeature_PluralizationException();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.uml2.codegen.ecore.genmodel.GenModel <em>Gen Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2067,6 +2087,15 @@ public interface GenModelPackage
 		 * @generated
 		 */
 		EAttribute GEN_FEATURE__KEY = eINSTANCE.getGenFeature_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Pluralization Exception</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEN_FEATURE__PLURALIZATION_EXCEPTION = eINSTANCE
+			.getGenFeature_PluralizationException();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.uml2.codegen.ecore.genmodel.impl.GenModelImpl <em>Gen Model</em>}' class.
