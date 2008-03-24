@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConvertToMetamodelAction.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
+ * $Id: ConvertToMetamodelAction.java,v 1.5 2008/03/24 19:57:00 jbruck Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
@@ -67,6 +68,14 @@ public class ConvertToMetamodelAction
 								return defaultCase(class_);
 							}
 
+							@Override
+							public Object caseDataType(DataType object) {
+								// simply exclude DataTypes from the caseClassifier to
+								// preserve the user-specified visibility
+								
+								return defaultCase(object);
+							}
+							
 							@Override
 							public Object caseClassifier(Classifier classifier) {
 								classifier
