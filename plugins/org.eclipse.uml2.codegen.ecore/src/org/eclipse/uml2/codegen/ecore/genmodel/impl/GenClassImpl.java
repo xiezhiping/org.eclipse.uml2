@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636
  *
- * $Id: GenClassImpl.java,v 1.41 2008/03/21 00:23:00 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.42 2008/03/24 20:25:07 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -461,7 +461,7 @@ public class GenClassImpl
 
 		if (!isInterface()) {
 
-			for (GenOperation genOperation : getImplementedGenOperations()) {
+			for (GenOperation genOperation : getImplementedGenOperations(null)) {
 				org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = genOperation
 					.getGenClass();
 
