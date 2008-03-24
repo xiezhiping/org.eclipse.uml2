@@ -9,13 +9,14 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenOperationImpl.java,v 1.18 2008/03/24 13:50:48 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.19 2008/03/24 15:50:07 jbruck Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
@@ -354,10 +355,55 @@ public class GenOperationImpl
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
 		return false;
 	}
+			
+	protected static final Pattern NEWLINE_PATTERN = Pattern.compile("([\n\r]+)");//$NON-NLS-1$
+		
+	/**
+	 * Break up the OCL expression to handle multiple line breaks.
+	 * 
+	 * @param s 
+	 * 			The string to be sanitized
+	 * @return The multi-line version of the string.
+	 * 
+	 */
+	private String splitOCLExpression(String s) {
 
+		if (isBlank(s)) {
+			return s;
+		}
+
+		StringBuilder result = new StringBuilder(s.length());
+		String lineSeparator = getGenModel().getLineDelimiter();
+
+		String[] splitStrings = NEWLINE_PATTERN.split(s);
+		int splitStringsLength = splitStrings.length;
+
+		if (splitStringsLength == 1) {
+			return splitStrings[0];
+		}
+
+		for (int i = 0; i < splitStrings.length; i++) {
+
+			String splitString = splitStrings[i];
+
+			if (i == 0) {
+				result.append(splitString + "\"+"); //$NON-NLS-1$
+				result.append(lineSeparator);
+
+			} else if (i == splitStringsLength - 1) {
+				result.append("\"" + splitString); //$NON-NLS-1$
+
+			} else {
+				result.append("\"" + splitString + "\"+"); //$NON-NLS-1$ //$NON-NLS-2$ 
+				result.append(lineSeparator);
+			}
+		}
+		return result.toString();
+	}
+	 
 	public String getOCLBody() {
-		return EcoreUtil.getAnnotation(getEcoreOperation(),
-			UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI, "body"); //$NON-NLS-1$
+		return splitOCLExpression(EcoreUtil.getAnnotation(getEcoreOperation(),
+			UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI, "body")); //$NON-NLS-1$
 	}
 
 	public boolean hasOCLBody() {
