@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenOperationImpl.java,v 1.17 2007/05/22 16:58:17 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.18 2008/03/24 13:50:48 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -356,7 +357,7 @@ public class GenOperationImpl
 
 	public String getOCLBody() {
 		return EcoreUtil.getAnnotation(getEcoreOperation(),
-			GenModelPackage.eNS_URI, "body"); //$NON-NLS-1$
+			UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI, "body"); //$NON-NLS-1$
 	}
 
 	public boolean hasOCLBody() {
