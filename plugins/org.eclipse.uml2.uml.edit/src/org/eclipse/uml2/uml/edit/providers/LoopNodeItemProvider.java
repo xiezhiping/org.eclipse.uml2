@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: LoopNodeItemProvider.java,v 1.9 2008/02/01 14:04:56 khussey Exp $
+ * $Id: LoopNodeItemProvider.java,v 1.10 2008/03/25 13:41:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -214,9 +214,7 @@ public class LoopNodeItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_LoopNode_loopVariable_feature", "_UI_LoopNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				true, null, null, null));
 	}
 
 	/**
@@ -273,7 +271,6 @@ public class LoopNodeItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__RESULT);
-			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE);
 			childrenFeatures
 				.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT);
 		}
@@ -335,7 +332,6 @@ public class LoopNodeItemProvider
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.LOOP_NODE__RESULT :
-			case UMLPackage.LOOP_NODE__LOOP_VARIABLE :
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -358,10 +354,6 @@ public class LoopNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LOOP_NODE__RESULT, UMLFactory.eINSTANCE
-				.createOutputPin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE, UMLFactory.eINSTANCE
 				.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -394,7 +386,6 @@ public class LoopNodeItemProvider
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
 			|| childFeature == UMLPackage.Literals.LOOP_NODE__RESULT
-			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE
 			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT;
 
 		if (qualify) {
