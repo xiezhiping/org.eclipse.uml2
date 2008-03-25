@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/1.1.0/GenModel" modelDirectory="/org.eclipse.uml2.uml/src"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/uml2/2.2.0/GenModel" modelDirectory="/org.eclipse.uml2.uml/src"
     creationIcons="false" creationSubmenus="true" modelPluginID="org.eclipse.uml2.uml"
     templateDirectory="/org.eclipse.uml2.uml/templates" runtimeJar="true" dynamicTemplates="true"
     modelName="UML" modelPluginClass="org.eclipse.uml2.uml.UMLPlugin" editPluginClass="org.eclipse.uml2.uml.edit.UMLEditPlugin"
@@ -26,6 +26,7 @@
     <details key="OPERATION_BODIES" value="IGNORE"/>
     <details key="INVARIANT_CONSTRAINTS" value="PROCESS"/>
     <details key="COMMENTS" value="PROCESS"/>
+    <details key="CAMEL_CASE_NAMES" value="IGNORE"/>
   </genAnnotations>
   <foreignModel>UML.merged.uml</foreignModel>
   <genPackages xsi:type="genmodel:GenPackage" prefix="UML" basePackage="org.eclipse.uml2"
@@ -4328,10 +4329,8 @@
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/result">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
-      <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"
-          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/loopVariable">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
+      <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
+          propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/loopVariable"/>
       <genFeatures xsi:type="genmodel:GenFeature" notify="false" createChild="false"
           propertySortChoices="true" ecoreFeature="ecore:EReference UML.ecore#//LoopNode/bodyOutput"/>
       <genFeatures xsi:type="genmodel:GenFeature" children="true" createChild="true"

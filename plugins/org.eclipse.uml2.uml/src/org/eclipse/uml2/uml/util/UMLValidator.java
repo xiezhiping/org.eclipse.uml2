@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *
- * $Id: UMLValidator.java,v 1.24 2008/02/03 23:28:03 khussey Exp $
+ * $Id: UMLValidator.java,v 1.25 2008/03/25 13:41:38 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -24138,6 +24138,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return UMLPlugin.INSTANCE;
 	}
