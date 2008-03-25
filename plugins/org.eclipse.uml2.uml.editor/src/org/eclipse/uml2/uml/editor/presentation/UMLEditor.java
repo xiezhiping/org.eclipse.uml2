@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879
  *
- * $Id: UMLEditor.java,v 1.39 2008/02/25 15:48:41 khussey Exp $
+ * $Id: UMLEditor.java,v 1.40 2008/03/25 13:41:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1058,9 +1058,7 @@ public class UMLEditor
 
 		// Only creates the other pages if there is something that can be edited
 		//
-		if (!getEditingDomain().getResourceSet().getResources().isEmpty()
-			&& !(getEditingDomain().getResourceSet().getResources().get(0))
-				.getContents().isEmpty()) {
+		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
 			// Create a page for the selection tree view.
 			//
 			Tree tree = new Tree(getContainer(), SWT.MULTI);
@@ -1486,7 +1484,7 @@ public class UMLEditor
 				Resource resource = resources.get(0);
 
 				String fileExtension = uri.fileExtension();
-				
+
 				if (!resource.getURI().fileExtension().equals(fileExtension)) {
 					Resource newResource = resourceSet.createResource(uri,
 						XMI2UMLResource.FILE_EXTENSION.equals(fileExtension)
