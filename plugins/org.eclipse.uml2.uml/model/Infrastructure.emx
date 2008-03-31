@@ -4976,7 +4976,7 @@ other classifiers.</body>
               <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_racnkhTaEdqZu-3Jy1-uYg"/>
             </ownedAttribute>
           </packagedElement>
-          <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind">
+          <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D3CAD9E0F01D0" name="VisibilityKind" visibility="private">
             <ownedComment xmi:id="_raJsoRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAD9E0F01D0">
               <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
             </ownedComment>
@@ -6281,22 +6281,22 @@ other classifiers.</body>
             <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_reUa9BTaEdqZu-3Jy1-uYg"/>
           </contents>
         </eAnnotations>
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010A4007B" name="Integer">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010A4007B" name="Integer" visibility="private">
           <ownedComment xmi:id="_rdk0FBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010A4007B">
             <body>An integer is a primitive type representing integer values.</body>
           </ownedComment>
         </packagedElement>
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010AC0090" name="Boolean">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010AC0090" name="Boolean" visibility="private">
           <ownedComment xmi:id="_rd3vARTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010AC0090">
             <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
           </ownedComment>
         </packagedElement>
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010B103C3" name="String">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3CA010B103C3" name="String" visibility="private">
           <ownedComment xmi:id="_reBgAxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CA010B103C3">
             <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
           </ownedComment>
         </packagedElement>
-        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3DE6A93C0003" name="UnlimitedNatural">
+        <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_3ADC7B74022D3DE6A93C0003" name="UnlimitedNatural" visibility="private">
           <ownedComment xmi:id="_reBgDRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DE6A93C0003">
             <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
           </ownedComment>
@@ -15223,7 +15223,7 @@ other classifiers.</body>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rr4V1RTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
         </packagedElement>
-        <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind">
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D4161A8F100CC" name="ParameterDirectionKind" visibility="private">
           <ownedComment xmi:id="_rpM1XRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4161A8F100CC">
             <body>Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.</body>
           </ownedComment>
@@ -15248,7 +15248,7 @@ other classifiers.</body>
             </ownedComment>
           </ownedLiteral>
         </packagedElement>
-        <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind">
+        <packagedElement xmi:type="uml:Enumeration" xmi:id="_3ADC7B74022D41C2D6020188" name="VisibilityKind" visibility="private">
           <ownedComment xmi:id="_rpfwPBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41C2D6020188">
             <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
           </ownedComment>

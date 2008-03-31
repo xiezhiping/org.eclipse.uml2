@@ -4,22 +4,22 @@
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_XqvEIGvsEdqG6fBIPwe-mw" name="Integer" visibility="private">
       <ownedComment xmi:id="_QcIAKscBEdyrC427ygySag" annotatedElement="_XqvEIGvsEdqG6fBIPwe-mw">
         <body>An integer is a primitive type representing integer values.</body>
       </ownedComment>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_UdivYGvsEdqG6fBIPwe-mw" name="Boolean" visibility="private">
       <ownedComment xmi:id="_QcIAK8cBEdyrC427ygySag" annotatedElement="_UdivYGvsEdqG6fBIPwe-mw">
         <body>A Boolean type is used for logical expression, consisting of the predefined values true and false.</body>
       </ownedComment>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_aAyVgGvsEdqG6fBIPwe-mw" name="String" visibility="private">
       <ownedComment xmi:id="_QcIALMcBEdyrC427ygySag" annotatedElement="_aAyVgGvsEdqG6fBIPwe-mw">
         <body>A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters.</body>
       </ownedComment>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_dRZxsGvsEdqG6fBIPwe-mw" name="UnlimitedNatural" visibility="private">
       <ownedComment xmi:id="_QcIALccBEdyrC427ygySag" annotatedElement="_dRZxsGvsEdqG6fBIPwe-mw">
         <body>An unlimited natural is a primitive type representing unlimited natural values.</body>
       </ownedComment>
@@ -992,7 +992,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Qdw-8McBEdyrC427ygySag"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_B3q9cGwNEdq7X4sGURiZYA" name="AggregationKind" visibility="private">
       <ownedComment xmi:id="_Qdw-8ccBEdyrC427ygySag" annotatedElement="_B3q9cGwNEdq7X4sGURiZYA">
         <body>AggregationKind is an enumeration type that specifies the literals for defining the kind of aggregation of a property.</body>
       </ownedComment>
@@ -1012,7 +1012,7 @@
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Qb-2IscBEdyrC427ygySag" name="ParameterDirectionKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Qb-2IscBEdyrC427ygySag" name="ParameterDirectionKind" visibility="private">
       <ownedComment xmi:id="_Qb-2I8cBEdyrC427ygySag" annotatedElement="_Qb-2IscBEdyrC427ygySag">
         <body>Parameter direction kind is an enumeration type that defines literals used to specify direction of parameters.</body>
       </ownedComment>
@@ -1037,7 +1037,7 @@
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_AyM_oGwMEdq7X4sGURiZYA" name="VisibilityKind" visibility="private">
       <ownedComment xmi:id="_Qb-2LMcBEdyrC427ygySag" annotatedElement="_AyM_oGwMEdq7X4sGURiZYA">
         <body>VisibilityKind is an enumeration type that defines literals to determine the visibility of elements in a model.</body>
       </ownedComment>
@@ -3391,7 +3391,7 @@ v) attributes of the class owning the Interaction
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QfQNfMcBEdyrC427ygySag" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Y_jskGvtEdqG6fBIPwe-mw" name="MessageKind" visibility="private">
       <ownedComment xmi:id="_QfQNfccBEdyrC427ygySag" annotatedElement="_Y_jskGvtEdqG6fBIPwe-mw">
         <body>This is an enumerated type that identifies the type of message.</body>
       </ownedComment>
@@ -3416,7 +3416,7 @@ v) attributes of the class owning the Interaction
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QfQNhscBEdyrC427ygySag" name="MessageSort">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QfQNhscBEdyrC427ygySag" name="MessageSort" visibility="private">
       <ownedComment xmi:id="_QfQNh8cBEdyrC427ygySag" annotatedElement="_QfQNhscBEdyrC427ygySag">
         <body>This is an enumerated type that identifies the type of communication action that was used to generate the message.</body>
       </ownedComment>
@@ -4035,7 +4035,7 @@ v) attributes of the class owning the Interaction
       </ownedComment>
       <generalization xmi:id="_Qf_zj8cBEdyrC427ygySag" general="_jKxnwGwLEdq7X4sGURiZYA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Qf_zkccBEdyrC427ygySag" name="CallConcurrencyKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_Qf_zkccBEdyrC427ygySag" name="CallConcurrencyKind" visibility="private">
       <ownedComment xmi:id="_Qf_zkscBEdyrC427ygySag" annotatedElement="_Qf_zkccBEdyrC427ygySag">
         <body>CallConcurrencyKind is an enumeration type.</body>
       </ownedComment>
@@ -4534,7 +4534,7 @@ An assembly connector is a connector between two components that defines that on
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QgTVwccBEdyrC427ygySag"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QgcfUMcBEdyrC427ygySag" name="ConnectorKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QgcfUMcBEdyrC427ygySag" name="ConnectorKind" visibility="private">
       <ownedComment xmi:id="_QgcfUccBEdyrC427ygySag" annotatedElement="_QgcfUMcBEdyrC427ygySag">
         <body>ConnectorKind is an enumeration type.</body>
       </ownedComment>
@@ -5493,7 +5493,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QgmRCscBEdyrC427ygySag"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QgmRC8cBEdyrC427ygySag" name="InteractionOperatorKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QgmRC8cBEdyrC427ygySag" name="InteractionOperatorKind" visibility="private">
       <ownedComment xmi:id="_QgmRDMcBEdyrC427ygySag" annotatedElement="_QgmRC8cBEdyrC427ygySag">
         <body>InteractionOperatorKind is an enumeration designating the different kinds of operators of combined fragments. The interaction operand defines the type of operator of a combined fragment.</body>
       </ownedComment>
@@ -7315,7 +7315,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QhC8k8cBEdyrC427ygySag" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QhV3cscBEdyrC427ygySag" name="PseudostateKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QhV3cscBEdyrC427ygySag" name="PseudostateKind" visibility="private">
       <ownedComment xmi:id="_QhV3c8cBEdyrC427ygySag" annotatedElement="_QhV3cscBEdyrC427ygySag">
         <body>PseudostateKind is an enumeration type.</body>
       </ownedComment>
@@ -7371,7 +7371,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QhV3iMcBEdyrC427ygySag" name="TransitionKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QhV3iMcBEdyrC427ygySag" name="TransitionKind" visibility="private">
       <ownedComment xmi:id="_QhV3iccBEdyrC427ygySag" annotatedElement="_QhV3iMcBEdyrC427ygySag">
         <body>TransitionKind is an enumeration type.</body>
       </ownedComment>
@@ -11214,7 +11214,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_QiPPgMcBEdyrC427ygySag"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiPPg8cBEdyrC427ygySag" name="ObjectNodeOrderingKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiPPg8cBEdyrC427ygySag" name="ObjectNodeOrderingKind" visibility="private">
       <ownedComment xmi:id="_QiPPhMcBEdyrC427ygySag" annotatedElement="_QiPPg8cBEdyrC427ygySag">
         <body>ObjectNodeOrderingKind is an enumeration indicating queuing order within a node.</body>
       </ownedComment>
@@ -11239,7 +11239,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         </ownedComment>
       </ownedLiteral>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiPPjccBEdyrC427ygySag" name="ParameterEffectKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiPPjccBEdyrC427ygySag" name="ParameterEffectKind" visibility="private">
       <ownedComment xmi:id="_QiPPjscBEdyrC427ygySag" annotatedElement="_QiPPjccBEdyrC427ygySag">
         <body>The datatype ParameterEffectKind is an enumeration that indicates the effect of a behavior on values passed in or out of its parameters.</body>
       </ownedComment>
@@ -11952,7 +11952,7 @@ stream: a stream of values flows into a single execution&#xD;
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QiiKPscBEdyrC427ygySag" value="1"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiiKP8cBEdyrC427ygySag" name="ExpansionKind">
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_QiiKP8cBEdyrC427ygySag" name="ExpansionKind" visibility="private">
       <ownedComment xmi:id="_QiiKQMcBEdyrC427ygySag" annotatedElement="_QiiKP8cBEdyrC427ygySag">
         <body>ExpansionKind is an enumeration type used to specify how multiple executions of an expansion region interact.</body>
       </ownedComment>
