@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552, 226102
  *
- * $Id: UMLImporter.java,v 1.14 2008/02/27 14:59:54 khussey Exp $
+ * $Id: UMLImporter.java,v 1.15 2008/04/09 14:37:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -279,9 +279,17 @@ public class UMLImporter
 		for (String value : originalGenModel.getForeignModel()) {
 
 			if (value.endsWith('.' + UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + UMLResource.FILE_EXTENSION
+					.toUpperCase())
 				|| value.endsWith('.' + UML22UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + UML22UMLResource.FILE_EXTENSION
+					.toUpperCase())
 				|| value.endsWith('.' + XMI2UMLResource.FILE_EXTENSION)
-				|| value.endsWith('.' + CMOF2UMLResource.FILE_EXTENSION)) {
+				|| value.endsWith('.' + XMI2UMLResource.FILE_EXTENSION
+					.toUpperCase())
+				|| value.endsWith('.' + CMOF2UMLResource.FILE_EXTENSION)
+				|| value.endsWith('.' + CMOF2UMLResource.FILE_EXTENSION
+					.toUpperCase())) {
 
 				text.append(makeAbsolute(URI.createURI(value), genModelURI)
 					.toString());
