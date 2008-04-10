@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *
- * $Id: UMLUtil.java,v 1.73 2008/03/21 00:15:46 khussey Exp $
+ * $Id: UMLUtil.java,v 1.74 2008/04/10 00:18:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2215,7 +2215,9 @@ public class UMLUtil
 
 				if (word.length() > 0) {
 
-					if (eNamedElement instanceof EClassifier) {
+					if (eNamedElement instanceof EClassifier
+						|| eNamedElement instanceof ETypeParameter) {
+
 						camelCaseNameBuffer.append(word.substring(0, 1)
 							.toUpperCase());
 					} else {
