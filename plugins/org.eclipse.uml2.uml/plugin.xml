@@ -10,9 +10,9 @@
 
  Contributors:
    IBM - initial API and implementation
-   Kenn Hussey (Embarcadero Technologies) - 156879, 215488
+   Kenn Hussey (Embarcadero Technologies) - 156879, 215488, 226397
 
- $Id: plugin.xml,v 1.8 2008/02/25 21:15:49 khussey Exp $
+ $Id: plugin.xml,v 1.9 2008/04/10 00:51:26 khussey Exp $
 -->
 
 <plugin>
@@ -145,7 +145,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespace"
-                 value="http://schema.omg.org/spec/UML/2.1.2" />
+                 value="http://schema.omg.org/spec/UML/2.1.1" />
            <parameter
                  name="kind"
                  value="xmi" />
