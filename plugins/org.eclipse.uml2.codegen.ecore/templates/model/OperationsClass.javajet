@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.10 2008/03/21 00:23:00 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.11 2008/04/10 19:08:31 khussey Exp $" %>
 <%
 /**
  * <copyright>
@@ -11,7 +11,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 206636
+ *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *
  * </copyright>
  */
@@ -136,7 +136,7 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
   <%}%>
 	 * @generated
 	 */
-	public static <%=genOperation.getTypeParameters(null)%><%=genOperation.getImportedType(null)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(null)%>)<%=genOperation.getThrows(null)%>
+	public static <%=genClass.getTypeParameters().length() > 0 && genOperation.getTypeParameters(genClass).length() > 0 ? genClass.getTypeParameters().substring(0, genClass.getTypeParameters().length() - 2) + ", " + genOperation.getTypeParameters(genClass).trim().substring(1) : genClass.getTypeParameters().trim() + genOperation.getTypeParameters(genClass).trim()%> <%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%><%=genClass.getTypeParameters().trim()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
