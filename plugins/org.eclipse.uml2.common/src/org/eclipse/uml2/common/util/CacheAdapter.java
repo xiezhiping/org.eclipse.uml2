@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *
- * $Id: CacheAdapter.java,v 1.21 2008/02/21 18:43:04 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.22 2008/04/10 01:00:22 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -167,6 +167,9 @@ public class CacheAdapter
 
 	public CacheAdapter() {
 		super();
+
+		unloadedEObjects = Collections.synchronizedMap(this
+			.<EObject, Resource> createHashMap());
 
 		unloadedResources = new Set<Resource>() {
 
@@ -499,6 +502,50 @@ public class CacheAdapter
 			&& eResource.getResourceSet() == resource.getResourceSet()) {
 
 			super.resolveProxy(resource, eObject, proxy, setting);
+		}
+	}
+
+	@Override
+	protected void selfAdapt(Notification notification) {
+		Object notifier = notification.getNotifier();
+
+		if (notifier instanceof Resource
+			&& notification.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
+
+			if (notification.getNewBooleanValue()) {
+				unloadedResources.remove(notifier);
+
+				for (Notifier child : ((Resource) notifier).getContents()) {
+					addAdapter(child);
+				}
+			} else {
+				unloadedResources.add((Resource) notifier);
+
+				synchronized (unloadedEObjects) {
+					for (Iterator<Map.Entry<EObject, Resource>> i = unloadedEObjects
+						.entrySet().iterator(); i.hasNext();) {
+
+						Map.Entry<EObject, Resource> entry = i.next();
+
+						if (entry.getValue() == notifier) {
+							i.remove();
+							EObject eObject = entry.getKey();
+							Collection<EStructuralFeature.Setting> settings = inverseCrossReferencer
+								.get(eObject);
+
+							if (settings != null) {
+
+								for (EStructuralFeature.Setting setting : settings) {
+									((InverseCrossReferencer) inverseCrossReferencer)
+										.addProxy(eObject, setting.getEObject());
+								}
+							}
+						}
+					}
+				}
+			}
+		} else {
+			super.selfAdapt(notification);
 		}
 	}
 
