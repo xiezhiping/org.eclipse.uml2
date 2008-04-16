@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
  *
- * $Id: GenModelPackage.java,v 1.32 2008/03/21 00:17:31 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.33 2008/04/16 20:05:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1230,6 +1230,15 @@ public interface GenModelPackage
 	int GEN_MODEL__RUNTIME_VERSION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RUNTIME_VERSION;
 
 	/**
+	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__LANGUAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__LANGUAGE;
+
+	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1572,6 +1581,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_PACKAGE__CHILD_CREATION_EXTENDERS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__CHILD_CREATION_EXTENDERS;
+
+	/**
+	 * The feature id for the '<em><b>Content Type Identifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__CONTENT_TYPE_IDENTIFIER = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__CONTENT_TYPE_IDENTIFIER;
+
+	/**
+	 * The feature id for the '<em><b>File Extensions</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_PACKAGE__FILE_EXTENSIONS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_PACKAGE__FILE_EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Ecore Package</b></em>' reference.

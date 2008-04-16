@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016
  *
- * $Id: GenOperationImpl.java,v 1.19 2008/03/24 15:50:07 jbruck Exp $
+ * $Id: GenOperationImpl.java,v 1.20 2008/04/16 20:05:20 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -355,9 +355,10 @@ public class GenOperationImpl
 			org.eclipse.emf.codegen.ecore.genmodel.GenOperation genOperation) {
 		return false;
 	}
-			
-	protected static final Pattern NEWLINE_PATTERN = Pattern.compile("([\n\r]+)");//$NON-NLS-1$
-		
+
+	protected static final Pattern NEWLINE_PATTERN = Pattern
+		.compile("([\n\r]+)");//$NON-NLS-1$
+
 	/**
 	 * Break up the OCL expression to handle multiple line breaks.
 	 * 
@@ -400,7 +401,7 @@ public class GenOperationImpl
 		}
 		return result.toString();
 	}
-	 
+
 	public String getOCLBody() {
 		return splitOCLExpression(EcoreUtil.getAnnotation(getEcoreOperation(),
 			UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI, "body")); //$NON-NLS-1$
