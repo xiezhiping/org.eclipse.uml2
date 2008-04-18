@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
  *
- * $Id: GenOperationImpl.java,v 1.20 2008/04/16 20:05:20 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.21 2008/04/18 17:43:26 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -63,14 +63,43 @@ public class GenOperationImpl
 	protected static final GenCacheAdapterScope CACHE_ADAPTER_SCOPE_EDEFAULT = GenCacheAdapterScope.NONE_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getCacheAdapterScope() <em>Cache Adapter Scope</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getCacheAdapterScope() <em>Cache Adapter Scope</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CACHE_ADAPTER_SCOPE_EFLAG_OFFSET = 8;
+
+	/**
+	 * The flags representing the default value of the '{@link #getCacheAdapterScope() <em>Cache Adapter Scope</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CACHE_ADAPTER_SCOPE_EFLAG_DEFAULT = CACHE_ADAPTER_SCOPE_EDEFAULT
+		.ordinal() << CACHE_ADAPTER_SCOPE_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link GenCacheAdapterScope Gen Cache Adapter Scope}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final GenCacheAdapterScope[] CACHE_ADAPTER_SCOPE_EFLAG_VALUES = GenCacheAdapterScope
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getCacheAdapterScope() <em>Cache Adapter Scope</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCacheAdapterScope()
 	 * @generated
 	 * @ordered
 	 */
-	protected GenCacheAdapterScope cacheAdapterScope = CACHE_ADAPTER_SCOPE_EDEFAULT;
+	protected static final int CACHE_ADAPTER_SCOPE_EFLAG = 0x3 << CACHE_ADAPTER_SCOPE_EFLAG_OFFSET;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,7 +135,7 @@ public class GenOperationImpl
 	 * @generated
 	 */
 	public GenCacheAdapterScope getCacheAdapterScope() {
-		return cacheAdapterScope;
+		return CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
 	}
 
 	/**
@@ -115,15 +144,17 @@ public class GenOperationImpl
 	 * @generated
 	 */
 	public void setCacheAdapterScope(GenCacheAdapterScope newCacheAdapterScope) {
-		GenCacheAdapterScope oldCacheAdapterScope = cacheAdapterScope;
-		cacheAdapterScope = newCacheAdapterScope == null
-			? CACHE_ADAPTER_SCOPE_EDEFAULT
-			: newCacheAdapterScope;
+		GenCacheAdapterScope oldCacheAdapterScope = CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET];
+		if (newCacheAdapterScope == null)
+			newCacheAdapterScope = CACHE_ADAPTER_SCOPE_EDEFAULT;
+		eFlags = eFlags
+			& ~CACHE_ADAPTER_SCOPE_EFLAG
+			| newCacheAdapterScope.ordinal() << CACHE_ADAPTER_SCOPE_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE
 					+ EOFFSET_CORRECTION, oldCacheAdapterScope,
-				cacheAdapterScope));
+				newCacheAdapterScope));
 	}
 
 	/**
@@ -179,7 +210,7 @@ public class GenOperationImpl
 	public boolean eIsSet(int featureID) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_OPERATION__CACHE_ADAPTER_SCOPE :
-				return cacheAdapterScope != CACHE_ADAPTER_SCOPE_EDEFAULT;
+				return (eFlags & CACHE_ADAPTER_SCOPE_EFLAG) != CACHE_ADAPTER_SCOPE_EFLAG_DEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -227,7 +258,8 @@ public class GenOperationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (cacheAdapterScope: "); //$NON-NLS-1$
-		result.append(cacheAdapterScope);
+		result
+			.append(CACHE_ADAPTER_SCOPE_EFLAG_VALUES[(eFlags & CACHE_ADAPTER_SCOPE_EFLAG) >>> CACHE_ADAPTER_SCOPE_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
  *
- * $Id: GenModelPackage.java,v 1.33 2008/04/16 20:05:20 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.34 2008/04/18 17:43:26 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1237,6 +1237,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__LANGUAGE = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__LANGUAGE;
+
+	/**
+	 * The feature id for the '<em><b>Packed Enums</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__PACKED_ENUMS = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__PACKED_ENUMS;
 
 	/**
 	 * The feature id for the '<em><b>Gen Packages</b></em>' containment reference list.

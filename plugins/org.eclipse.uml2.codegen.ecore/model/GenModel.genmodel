@@ -8,7 +8,7 @@
     editorPluginClass="" updateClasspath="false" nonNLSMarkers="true" codeFormatting="true"
     testsDirectory="" testSuiteClass="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    binaryCompatibleReflectiveMethods="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    binaryCompatibleReflectiveMethods="true" packedEnums="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>GenModel.ecore</foreignModel>
   <genPackages prefix="GenModel" basePackage="org.eclipse.uml2.codegen.ecore" disposableProviderFactory="true"
       ecorePackage="GenModel.ecore#/">
