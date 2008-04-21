@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ConnectorImpl.java,v 1.19 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.20 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,14 +117,42 @@ public class ConnectorImpl
 	protected static final ConnectorKind KIND_EDEFAULT = ConnectorKind.ASSEMBLY_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_OFFSET = 14;
+
+	/**
+	 * The flags representing the default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_DEFAULT = KIND_EDEFAULT.ordinal() << KIND_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link ConnectorKind Connector Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final ConnectorKind[] KIND_EFLAG_VALUES = ConnectorKind
+		.values();
+
+	/**
+	 * The flag representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getKind()
 	 * @generated
 	 * @ordered
 	 */
-	protected ConnectorKind kind = KIND_EDEFAULT;
+	protected static final int KIND_EFLAG = 1 << KIND_EFLAG_OFFSET;
 
 	/**
 	 * The flag representing whether the Kind attribute has been set.
@@ -132,7 +161,7 @@ public class ConnectorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int KIND_ESETFLAG = 1 << 12;
+	protected static final int KIND_ESETFLAG = 1 << 15;
 
 	/**
 	 * The cached value of the '{@link #getContracts() <em>Contract</em>}' reference list.
@@ -331,7 +360,7 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public ConnectorKind getKind() {
-		return kind;
+		return KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
 	}
 
 	/**
@@ -340,15 +369,15 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public void setKind(ConnectorKind newKind) {
-		ConnectorKind oldKind = kind;
-		kind = newKind == null
-			? KIND_EDEFAULT
-			: newKind;
+		ConnectorKind oldKind = KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
+		if (newKind == null)
+			newKind = KIND_EDEFAULT;
+		eFlags = eFlags & ~KIND_EFLAG | newKind.ordinal() << KIND_EFLAG_OFFSET;
 		boolean oldKindESet = (eFlags & KIND_ESETFLAG) != 0;
 		eFlags |= KIND_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CONNECTOR__KIND, oldKind, kind, !oldKindESet));
+				UMLPackage.CONNECTOR__KIND, oldKind, newKind, !oldKindESet));
 	}
 
 	/**
@@ -357,9 +386,9 @@ public class ConnectorImpl
 	 * @generated
 	 */
 	public void unsetKind() {
-		ConnectorKind oldKind = kind;
+		ConnectorKind oldKind = KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
 		boolean oldKindESet = (eFlags & KIND_ESETFLAG) != 0;
-		kind = KIND_EDEFAULT;
+		eFlags = eFlags & ~KIND_EFLAG | KIND_EFLAG_DEFAULT;
 		eFlags &= ~KIND_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
@@ -775,7 +804,8 @@ public class ConnectorImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		if ((eFlags & KIND_ESETFLAG) != 0)
-			result.append(kind);
+			result
+				.append(KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET]);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ExpansionRegionImpl.java,v 1.20 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.21 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -84,14 +85,42 @@ public class ExpansionRegionImpl
 	protected static final ExpansionKind MODE_EDEFAULT = ExpansionKind.ITERATIVE_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MODE_EFLAG_OFFSET = 14;
+
+	/**
+	 * The flags representing the default value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MODE_EFLAG_DEFAULT = MODE_EDEFAULT.ordinal() << MODE_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link ExpansionKind Expansion Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final ExpansionKind[] MODE_EFLAG_VALUES = ExpansionKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getMode() <em>Mode</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMode()
 	 * @generated
 	 * @ordered
 	 */
-	protected ExpansionKind mode = MODE_EDEFAULT;
+	protected static final int MODE_EFLAG = 0x3 << MODE_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getInputElements() <em>Input Element</em>}' reference list.
@@ -120,6 +149,7 @@ public class ExpansionRegionImpl
 	 */
 	protected ExpansionRegionImpl() {
 		super();
+		eFlags |= MODE_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -138,7 +168,7 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public ExpansionKind getMode() {
-		return mode;
+		return MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET];
 	}
 
 	/**
@@ -147,13 +177,13 @@ public class ExpansionRegionImpl
 	 * @generated
 	 */
 	public void setMode(ExpansionKind newMode) {
-		ExpansionKind oldMode = mode;
-		mode = newMode == null
-			? MODE_EDEFAULT
-			: newMode;
+		ExpansionKind oldMode = MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET];
+		if (newMode == null)
+			newMode = MODE_EDEFAULT;
+		eFlags = eFlags & ~MODE_EFLAG | newMode.ordinal() << MODE_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXPANSION_REGION__MODE, oldMode, mode));
+				UMLPackage.EXPANSION_REGION__MODE, oldMode, newMode));
 	}
 
 	/**
@@ -853,7 +883,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__NODE :
 				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.EXPANSION_REGION__MODE :
-				return mode != MODE_EDEFAULT;
+				return (eFlags & MODE_EFLAG) != MODE_EFLAG_DEFAULT;
 			case UMLPackage.EXPANSION_REGION__INPUT_ELEMENT :
 				return inputElements != null && !inputElements.isEmpty();
 			case UMLPackage.EXPANSION_REGION__OUTPUT_ELEMENT :
@@ -874,7 +904,8 @@ public class ExpansionRegionImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mode: "); //$NON-NLS-1$
-		result.append(mode);
+		result
+			.append(MODE_EFLAG_VALUES[(eFlags & MODE_EFLAG) >>> MODE_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

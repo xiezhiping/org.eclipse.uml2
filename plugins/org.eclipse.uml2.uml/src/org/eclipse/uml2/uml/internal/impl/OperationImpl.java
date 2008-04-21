@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: OperationImpl.java,v 1.35 2007/04/25 17:47:01 khussey Exp $
+ * $Id: OperationImpl.java,v 1.36 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -162,7 +163,7 @@ public class OperationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_QUERY_EFLAG = 1 << 13;
+	protected static final int IS_QUERY_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
@@ -2198,7 +2199,7 @@ public class OperationImpl
 			case UMLPackage.OPERATION__METHOD :
 				return methods != null && !methods.isEmpty();
 			case UMLPackage.OPERATION__CONCURRENCY :
-				return concurrency != CONCURRENCY_EDEFAULT;
+				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
 			case UMLPackage.OPERATION__RAISED_EXCEPTION :
 				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :

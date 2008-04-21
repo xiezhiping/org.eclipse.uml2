@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ClassImpl.java,v 1.41 2007/04/25 17:47:00 khussey Exp $
+ * $Id: ClassImpl.java,v 1.42 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -193,7 +194,7 @@ public class ClassImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ACTIVE_EFLAG = 1 << 12;
+	protected static final int IS_ACTIVE_EFLAG = 1 << 14;
 
 	/**
 	 * The cached value of the '{@link #getOwnedReceptions() <em>Owned Reception</em>}' containment reference list.
@@ -2011,8 +2012,6 @@ public class ClassImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isActive: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ACTIVE_EFLAG) != 0);
-		result.append(", isAbstract: "); //$NON-NLS-1$
-		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

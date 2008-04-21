@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: JoinNodeImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
+ * $Id: JoinNodeImpl.java,v 1.27 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -90,7 +91,7 @@ public class JoinNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_COMBINE_DUPLICATE_EFLAG = 1 << 11;
+	protected static final int IS_COMBINE_DUPLICATE_EFLAG = 1 << 13;
 
 	/**
 	 * The cached value of the '{@link #getJoinSpec() <em>Join Spec</em>}' containment reference.

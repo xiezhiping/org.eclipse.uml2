@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ProtocolTransitionImpl.java,v 1.37 2007/05/04 20:35:34 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.38 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -855,7 +856,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
-				return kind != KIND_EDEFAULT;
+				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :

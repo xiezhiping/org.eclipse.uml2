@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: TransitionImpl.java,v 1.28 2007/05/04 20:35:34 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.29 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -112,7 +113,7 @@ public class TransitionImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 10;
+	protected static final int IS_LEAF_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -125,14 +126,42 @@ public class TransitionImpl
 	protected static final TransitionKind KIND_EDEFAULT = TransitionKind.EXTERNAL_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_OFFSET = 13;
+
+	/**
+	 * The flags representing the default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_DEFAULT = KIND_EDEFAULT.ordinal() << KIND_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link TransitionKind Transition Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final TransitionKind[] KIND_EFLAG_VALUES = TransitionKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getKind()
 	 * @generated
 	 * @ordered
 	 */
-	protected TransitionKind kind = KIND_EDEFAULT;
+	protected static final int KIND_EFLAG = 0x3 << KIND_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
@@ -201,6 +230,7 @@ public class TransitionImpl
 	 */
 	protected TransitionImpl() {
 		super();
+		eFlags |= KIND_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -438,7 +468,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public TransitionKind getKind() {
-		return kind;
+		return KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
 	}
 
 	/**
@@ -447,13 +477,13 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public void setKind(TransitionKind newKind) {
-		TransitionKind oldKind = kind;
-		kind = newKind == null
-			? KIND_EDEFAULT
-			: newKind;
+		TransitionKind oldKind = KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
+		if (newKind == null)
+			newKind = KIND_EDEFAULT;
+		eFlags = eFlags & ~KIND_EFLAG | newKind.ordinal() << KIND_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TRANSITION__KIND, oldKind, kind));
+				UMLPackage.TRANSITION__KIND, oldKind, newKind));
 	}
 
 	/**
@@ -1364,7 +1394,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
 			case UMLPackage.TRANSITION__KIND :
-				return kind != KIND_EDEFAULT;
+				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
@@ -1441,7 +1471,8 @@ public class TransitionImpl
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
 		result.append(", kind: "); //$NON-NLS-1$
-		result.append(kind);
+		result
+			.append(KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

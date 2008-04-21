@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: BehaviorImpl.java,v 1.33 2007/04/25 17:47:02 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.34 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -120,7 +121,7 @@ public abstract class BehaviorImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_REENTRANT_EFLAG = 1 << 13;
+	protected static final int IS_REENTRANT_EFLAG = 1 << 15;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.

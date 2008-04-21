@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: NamedElementImpl.java,v 1.29 2007/04/25 17:47:02 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.30 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -116,14 +117,43 @@ public abstract class NamedElementImpl
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VISIBILITY_EFLAG_OFFSET = 9;
+
+	/**
+	 * The flags representing the default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VISIBILITY_EFLAG_DEFAULT = VISIBILITY_EDEFAULT
+		.ordinal() << VISIBILITY_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link VisibilityKind Visibility Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 * @ordered
+	 */
+	protected static final VisibilityKind[] VISIBILITY_EFLAG_VALUES = VisibilityKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getVisibility()
 	 * @generated
 	 * @ordered
 	 */
-	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+	protected static final int VISIBILITY_EFLAG = 0x3 << VISIBILITY_EFLAG_OFFSET;
 
 	/**
 	 * The flag representing whether the Visibility attribute has been set.
@@ -132,7 +162,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int VISIBILITY_ESETFLAG = 1 << 9;
+	protected static final int VISIBILITY_ESETFLAG = 1 << 11;
 
 	/**
 	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
@@ -265,7 +295,7 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return visibility;
+		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -274,16 +304,17 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null
-			? VISIBILITY_EDEFAULT
-			: newVisibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		if (newVisibility == null)
+			newVisibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG
+			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
 		eFlags |= VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.NAMED_ELEMENT__VISIBILITY, oldVisibility,
-				visibility, !oldVisibilityESet));
+				newVisibility, !oldVisibilityESet));
 	}
 
 	/**
@@ -292,9 +323,9 @@ public abstract class NamedElementImpl
 	 * @generated
 	 */
 	public void unsetVisibility() {
-		VisibilityKind oldVisibility = visibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 		boolean oldVisibilityESet = (eFlags & VISIBILITY_ESETFLAG) != 0;
-		visibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG | VISIBILITY_EFLAG_DEFAULT;
 		eFlags &= ~VISIBILITY_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
@@ -797,7 +828,8 @@ public abstract class NamedElementImpl
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", visibility: "); //$NON-NLS-1$
 		if ((eFlags & VISIBILITY_ESETFLAG) != 0)
-			result.append(visibility);
+			result
+				.append(VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

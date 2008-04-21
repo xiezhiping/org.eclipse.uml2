@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ParameterImpl.java,v 1.39 2007/05/04 20:35:34 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.40 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -108,7 +109,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 10;
+	protected static final int IS_ORDERED_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -128,7 +129,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 11;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -191,14 +192,43 @@ public class ParameterImpl
 	protected static final ParameterDirectionKind DIRECTION_EDEFAULT = ParameterDirectionKind.IN_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DIRECTION_EFLAG_OFFSET = 14;
+
+	/**
+	 * The flags representing the default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int DIRECTION_EFLAG_DEFAULT = DIRECTION_EDEFAULT
+		.ordinal() << DIRECTION_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link ParameterDirectionKind Parameter Direction Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final ParameterDirectionKind[] DIRECTION_EFLAG_VALUES = ParameterDirectionKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getDirection() <em>Direction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDirection()
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterDirectionKind direction = DIRECTION_EDEFAULT;
+	protected static final int DIRECTION_EFLAG = 0x3 << DIRECTION_EFLAG_OFFSET;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -238,7 +268,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_EXCEPTION_EFLAG = 1 << 12;
+	protected static final int IS_EXCEPTION_EFLAG = 1 << 16;
 
 	/**
 	 * The default value of the '{@link #isStream() <em>Is Stream</em>}' attribute.
@@ -258,7 +288,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STREAM_EFLAG = 1 << 13;
+	protected static final int IS_STREAM_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
@@ -271,14 +301,42 @@ public class ParameterImpl
 	protected static final ParameterEffectKind EFFECT_EDEFAULT = ParameterEffectKind.CREATE_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getEffect() <em>Effect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int EFFECT_EFLAG_OFFSET = 18;
+
+	/**
+	 * The flags representing the default value of the '{@link #getEffect() <em>Effect</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int EFFECT_EFLAG_DEFAULT = EFFECT_EDEFAULT.ordinal() << EFFECT_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link ParameterEffectKind Parameter Effect Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final ParameterEffectKind[] EFFECT_EFLAG_VALUES = ParameterEffectKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getEffect() <em>Effect</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEffect()
 	 * @generated
 	 * @ordered
 	 */
-	protected ParameterEffectKind effect = EFFECT_EDEFAULT;
+	protected static final int EFFECT_EFLAG = 0x3 << EFFECT_EFLAG_OFFSET;
 
 	/**
 	 * The flag representing whether the Effect attribute has been set.
@@ -287,7 +345,7 @@ public class ParameterImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int EFFECT_ESETFLAG = 1 << 14;
+	protected static final int EFFECT_ESETFLAG = 1 << 20;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -730,7 +788,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterDirectionKind getDirection() {
-		return direction;
+		return DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
 	}
 
 	/**
@@ -739,13 +797,14 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setDirection(ParameterDirectionKind newDirection) {
-		ParameterDirectionKind oldDirection = direction;
-		direction = newDirection == null
-			? DIRECTION_EDEFAULT
-			: newDirection;
+		ParameterDirectionKind oldDirection = DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET];
+		if (newDirection == null)
+			newDirection = DIRECTION_EDEFAULT;
+		eFlags = eFlags & ~DIRECTION_EFLAG
+			| newDirection.ordinal() << DIRECTION_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__DIRECTION, oldDirection, direction));
+				UMLPackage.PARAMETER__DIRECTION, oldDirection, newDirection));
 	}
 
 	/**
@@ -942,7 +1001,7 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public ParameterEffectKind getEffect() {
-		return effect;
+		return EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
 	}
 
 	/**
@@ -951,15 +1010,17 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void setEffect(ParameterEffectKind newEffect) {
-		ParameterEffectKind oldEffect = effect;
-		effect = newEffect == null
-			? EFFECT_EDEFAULT
-			: newEffect;
+		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
+		if (newEffect == null)
+			newEffect = EFFECT_EDEFAULT;
+		eFlags = eFlags & ~EFFECT_EFLAG
+			| newEffect.ordinal() << EFFECT_EFLAG_OFFSET;
 		boolean oldEffectESet = (eFlags & EFFECT_ESETFLAG) != 0;
 		eFlags |= EFFECT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PARAMETER__EFFECT, oldEffect, effect, !oldEffectESet));
+				UMLPackage.PARAMETER__EFFECT, oldEffect, newEffect,
+				!oldEffectESet));
 	}
 
 	/**
@@ -968,9 +1029,9 @@ public class ParameterImpl
 	 * @generated
 	 */
 	public void unsetEffect() {
-		ParameterEffectKind oldEffect = effect;
+		ParameterEffectKind oldEffect = EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET];
 		boolean oldEffectESet = (eFlags & EFFECT_ESETFLAG) != 0;
-		effect = EFFECT_EDEFAULT;
+		eFlags = eFlags & ~EFFECT_EFLAG | EFFECT_EFLAG_DEFAULT;
 		eFlags &= ~EFFECT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.UNSET,
@@ -1612,7 +1673,7 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__OPERATION :
 				return basicGetOperation() != null;
 			case UMLPackage.PARAMETER__DIRECTION :
-				return direction != DIRECTION_EDEFAULT;
+				return (eFlags & DIRECTION_EFLAG) != DIRECTION_EFLAG_DEFAULT;
 			case UMLPackage.PARAMETER__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PARAMETER__DEFAULT_VALUE :
@@ -1699,14 +1760,16 @@ public class ParameterImpl
 		result.append(", isUnique: "); //$NON-NLS-1$
 		result.append((eFlags & IS_UNIQUE_EFLAG) != 0);
 		result.append(", direction: "); //$NON-NLS-1$
-		result.append(direction);
+		result
+			.append(DIRECTION_EFLAG_VALUES[(eFlags & DIRECTION_EFLAG) >>> DIRECTION_EFLAG_OFFSET]);
 		result.append(", isException: "); //$NON-NLS-1$
 		result.append((eFlags & IS_EXCEPTION_EFLAG) != 0);
 		result.append(", isStream: "); //$NON-NLS-1$
 		result.append((eFlags & IS_STREAM_EFLAG) != 0);
 		result.append(", effect: "); //$NON-NLS-1$
 		if ((eFlags & EFFECT_ESETFLAG) != 0)
-			result.append(effect);
+			result
+				.append(EFFECT_EFLAG_VALUES[(eFlags & EFFECT_EFLAG) >>> EFFECT_EFLAG_OFFSET]);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

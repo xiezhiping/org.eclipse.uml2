@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PortImpl.java,v 1.29 2007/05/04 20:35:34 khussey Exp $
+ * $Id: PortImpl.java,v 1.30 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -98,7 +99,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_BEHAVIOR_EFLAG = 1 << 17;
+	protected static final int IS_BEHAVIOR_EFLAG = 1 << 21;
 
 	/**
 	 * The default value of the '{@link #isService() <em>Is Service</em>}' attribute.
@@ -118,7 +119,7 @@ public class PortImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SERVICE_EFLAG = 1 << 18;
+	protected static final int IS_SERVICE_EFLAG = 1 << 22;
 
 	/**
 	 * The cached value of the '{@link #getRedefinedPorts() <em>Redefined Port</em>}' reference list.
@@ -999,7 +1000,7 @@ public class PortImpl
 			case UMLPackage.PORT__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PORT__AGGREGATION :
-				return aggregation != AGGREGATION_EDEFAULT;
+				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PORT__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :

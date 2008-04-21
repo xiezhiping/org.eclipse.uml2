@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: MessageImpl.java,v 1.25 2007/04/25 17:47:03 khussey Exp $
+ * $Id: MessageImpl.java,v 1.26 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -103,14 +104,43 @@ public class MessageImpl
 	protected static final MessageSort MESSAGE_SORT_EDEFAULT = MessageSort.SYNCH_CALL_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MESSAGE_SORT_EFLAG_OFFSET = 12;
+
+	/**
+	 * The flags representing the default value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MESSAGE_SORT_EFLAG_DEFAULT = MESSAGE_SORT_EDEFAULT
+		.ordinal() << MESSAGE_SORT_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link MessageSort Message Sort}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final MessageSort[] MESSAGE_SORT_EFLAG_VALUES = MessageSort
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getMessageSort() <em>Message Sort</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMessageSort()
 	 * @generated
 	 * @ordered
 	 */
-	protected MessageSort messageSort = MESSAGE_SORT_EDEFAULT;
+	protected static final int MESSAGE_SORT_EFLAG = 0x7 << MESSAGE_SORT_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getReceiveEvent() <em>Receive Event</em>}' reference.
@@ -225,7 +255,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public MessageSort getMessageSort() {
-		return messageSort;
+		return MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
 	}
 
 	/**
@@ -234,13 +264,15 @@ public class MessageImpl
 	 * @generated
 	 */
 	public void setMessageSort(MessageSort newMessageSort) {
-		MessageSort oldMessageSort = messageSort;
-		messageSort = newMessageSort == null
-			? MESSAGE_SORT_EDEFAULT
-			: newMessageSort;
+		MessageSort oldMessageSort = MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET];
+		if (newMessageSort == null)
+			newMessageSort = MESSAGE_SORT_EDEFAULT;
+		eFlags = eFlags & ~MESSAGE_SORT_EFLAG
+			| newMessageSort.ordinal() << MESSAGE_SORT_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.MESSAGE__MESSAGE_SORT, oldMessageSort, messageSort));
+				UMLPackage.MESSAGE__MESSAGE_SORT, oldMessageSort,
+				newMessageSort));
 	}
 
 	/**
@@ -854,7 +886,7 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
-				return messageSort != MESSAGE_SORT_EDEFAULT;
+				return (eFlags & MESSAGE_SORT_EFLAG) != MESSAGE_SORT_EFLAG_DEFAULT;
 			case UMLPackage.MESSAGE__RECEIVE_EVENT :
 				return receiveEvent != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
@@ -883,7 +915,8 @@ public class MessageImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (messageSort: "); //$NON-NLS-1$
-		result.append(messageSort);
+		result
+			.append(MESSAGE_SORT_EFLAG_VALUES[(eFlags & MESSAGE_SORT_EFLAG) >>> MESSAGE_SORT_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

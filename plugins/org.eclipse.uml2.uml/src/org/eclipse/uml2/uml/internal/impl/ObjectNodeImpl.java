@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ObjectNodeImpl.java,v 1.25 2007/04/25 17:47:02 khussey Exp $
+ * $Id: ObjectNodeImpl.java,v 1.26 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,14 +103,43 @@ public abstract class ObjectNodeImpl
 	protected static final ObjectNodeOrderingKind ORDERING_EDEFAULT = ObjectNodeOrderingKind.FIFO_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORDERING_EFLAG_OFFSET = 13;
+
+	/**
+	 * The flags representing the default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int ORDERING_EFLAG_DEFAULT = ORDERING_EDEFAULT
+		.ordinal() << ORDERING_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link ObjectNodeOrderingKind Object Node Ordering Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final ObjectNodeOrderingKind[] ORDERING_EFLAG_VALUES = ObjectNodeOrderingKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOrdering()
 	 * @generated
 	 * @ordered
 	 */
-	protected ObjectNodeOrderingKind ordering = ORDERING_EDEFAULT;
+	protected static final int ORDERING_EFLAG = 0x3 << ORDERING_EFLAG_OFFSET;
 
 	/**
 	 * The default value of the '{@link #isControlType() <em>Is Control Type</em>}' attribute.
@@ -129,7 +159,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_CONTROL_TYPE_EFLAG = 1 << 11;
+	protected static final int IS_CONTROL_TYPE_EFLAG = 1 << 15;
 
 	/**
 	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
@@ -168,6 +198,7 @@ public abstract class ObjectNodeImpl
 	 */
 	protected ObjectNodeImpl() {
 		super();
+		eFlags |= ORDERING_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -253,7 +284,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public ObjectNodeOrderingKind getOrdering() {
-		return ordering;
+		return ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
 	}
 
 	/**
@@ -262,13 +293,14 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 */
 	public void setOrdering(ObjectNodeOrderingKind newOrdering) {
-		ObjectNodeOrderingKind oldOrdering = ordering;
-		ordering = newOrdering == null
-			? ORDERING_EDEFAULT
-			: newOrdering;
+		ObjectNodeOrderingKind oldOrdering = ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET];
+		if (newOrdering == null)
+			newOrdering = ORDERING_EDEFAULT;
+		eFlags = eFlags & ~ORDERING_EFLAG
+			| newOrdering.ordinal() << ORDERING_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.OBJECT_NODE__ORDERING, oldOrdering, ordering));
+				UMLPackage.OBJECT_NODE__ORDERING, oldOrdering, newOrdering));
 	}
 
 	/**
@@ -871,7 +903,7 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__TYPE :
 				return type != null;
 			case UMLPackage.OBJECT_NODE__ORDERING :
-				return ordering != ORDERING_EDEFAULT;
+				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
@@ -932,7 +964,8 @@ public abstract class ObjectNodeImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (ordering: "); //$NON-NLS-1$
-		result.append(ordering);
+		result
+			.append(ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET]);
 		result.append(", isControlType: "); //$NON-NLS-1$
 		result.append((eFlags & IS_CONTROL_TYPE_EFLAG) != 0);
 		result.append(')');

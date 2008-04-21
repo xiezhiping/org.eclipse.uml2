@@ -8,7 +8,8 @@
     editorPluginClass="org.eclipse.uml2.uml.editor.UMLEditorPlugin" nonNLSMarkers="true"
     rootExtendsInterface="" codeFormatting="true" booleanFlagsField="eFlags" booleanFlagsReservedBits="8"
     importerID="org.eclipse.uml2.uml.ecore.importer" containmentProxies="true" minimalReflectiveMethods="false"
-    complianceLevel="5.0" colorProviders="true" fontProviders="true" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    complianceLevel="5.0" colorProviders="true" fontProviders="true" packedEnums="true"
+    usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
     factoryMethods="true" pluralizedGetters="true" cacheAdapterSupport="true" invariantPrefix="validate">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/importer/org.eclipse.uml2.uml.ecore.importer">
     <details key="DUPLICATE_FEATURES" value="PROCESS"/>

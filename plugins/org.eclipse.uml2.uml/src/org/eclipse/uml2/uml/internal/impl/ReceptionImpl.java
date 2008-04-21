@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ReceptionImpl.java,v 1.15 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ReceptionImpl.java,v 1.16 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -433,7 +434,7 @@ public class ReceptionImpl
 			case UMLPackage.RECEPTION__METHOD :
 				return methods != null && !methods.isEmpty();
 			case UMLPackage.RECEPTION__CONCURRENCY :
-				return concurrency != CONCURRENCY_EDEFAULT;
+				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
 			case UMLPackage.RECEPTION__RAISED_EXCEPTION :
 				return raisedExceptions != null && !raisedExceptions.isEmpty();
 			case UMLPackage.RECEPTION__OWNED_PARAMETER_SET :

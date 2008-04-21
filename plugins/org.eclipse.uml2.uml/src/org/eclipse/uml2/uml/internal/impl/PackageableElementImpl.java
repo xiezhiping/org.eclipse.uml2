@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PackageableElementImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
+ * $Id: PackageableElementImpl.java,v 1.19 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -264,7 +265,7 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return visibility;
+		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -274,14 +275,15 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null
-			? VISIBILITY_EDEFAULT
-			: newVisibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		if (newVisibility == null)
+			newVisibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG
+			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGEABLE_ELEMENT__VISIBILITY, oldVisibility,
-				visibility));
+				newVisibility));
 	}
 
 	/**
@@ -291,7 +293,7 @@ public abstract class PackageableElementImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		return visibility != VISIBILITY_EDEFAULT;
+		return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -592,23 +594,6 @@ public abstract class PackageableElementImpl
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
 	}
 
 	/**

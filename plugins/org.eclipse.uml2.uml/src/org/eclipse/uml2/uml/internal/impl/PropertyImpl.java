@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208353
+ *   Kenn Hussey (Embarcadero Technologies) - 208353, 204200
  *
- * $Id: PropertyImpl.java,v 1.44 2007/11/01 14:47:34 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.45 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -189,7 +189,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_EFLAG = 1 << 15;
+	protected static final int IS_DERIVED_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #isDerivedUnion() <em>Is Derived Union</em>}' attribute.
@@ -209,7 +209,7 @@ public class PropertyImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_DERIVED_UNION_EFLAG = 1 << 16;
+	protected static final int IS_DERIVED_UNION_EFLAG = 1 << 18;
 
 	/**
 	 * The default value of the '{@link #getDefault() <em>Default</em>}' attribute.
@@ -232,14 +232,43 @@ public class PropertyImpl
 	protected static final AggregationKind AGGREGATION_EDEFAULT = AggregationKind.NONE_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int AGGREGATION_EFLAG_OFFSET = 19;
+
+	/**
+	 * The flags representing the default value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int AGGREGATION_EFLAG_DEFAULT = AGGREGATION_EDEFAULT
+		.ordinal() << AGGREGATION_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link AggregationKind Aggregation Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final AggregationKind[] AGGREGATION_EFLAG_VALUES = AggregationKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAggregation()
 	 * @generated
 	 * @ordered
 	 */
-	protected AggregationKind aggregation = AGGREGATION_EDEFAULT;
+	protected static final int AGGREGATION_EFLAG = 0x3 << AGGREGATION_EFLAG_OFFSET;
 
 	/**
 	 * The default value of the '{@link #isComposite() <em>Is Composite</em>}' attribute.
@@ -1147,7 +1176,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public AggregationKind getAggregation() {
-		return aggregation;
+		return AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
 	}
 
 	/**
@@ -1156,13 +1185,15 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public void setAggregation(AggregationKind newAggregation) {
-		AggregationKind oldAggregation = aggregation;
-		aggregation = newAggregation == null
-			? AGGREGATION_EDEFAULT
-			: newAggregation;
+		AggregationKind oldAggregation = AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET];
+		if (newAggregation == null)
+			newAggregation = AGGREGATION_EDEFAULT;
+		eFlags = eFlags & ~AGGREGATION_EFLAG
+			| newAggregation.ordinal() << AGGREGATION_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROPERTY__AGGREGATION, oldAggregation, aggregation));
+				UMLPackage.PROPERTY__AGGREGATION, oldAggregation,
+				newAggregation));
 	}
 
 	/**
@@ -2609,7 +2640,7 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEFAULT :
 				return isSetDefault();
 			case UMLPackage.PROPERTY__AGGREGATION :
-				return aggregation != AGGREGATION_EDEFAULT;
+				return (eFlags & AGGREGATION_EFLAG) != AGGREGATION_EFLAG_DEFAULT;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
 				return isComposite() != IS_COMPOSITE_EDEFAULT;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
@@ -2746,9 +2777,8 @@ public class PropertyImpl
 		result.append(", isDerivedUnion: "); //$NON-NLS-1$
 		result.append((eFlags & IS_DERIVED_UNION_EFLAG) != 0);
 		result.append(", aggregation: "); //$NON-NLS-1$
-		result.append(aggregation);
-		result.append(", isReadOnly: "); //$NON-NLS-1$
-		result.append((eFlags & IS_READ_ONLY_EFLAG) != 0);
+		result
+			.append(AGGREGATION_EFLAG_VALUES[(eFlags & AGGREGATION_EFLAG) >>> AGGREGATION_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

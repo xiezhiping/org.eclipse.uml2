@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: BehavioralFeatureImpl.java,v 1.24 2007/04/25 17:47:01 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.25 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -107,7 +108,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 10;
+	protected static final int IS_LEAF_EFLAG = 1 << 12;
 
 	/**
 	 * The default value of the '{@link #isStatic() <em>Is Static</em>}' attribute.
@@ -127,7 +128,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_STATIC_EFLAG = 1 << 11;
+	protected static final int IS_STATIC_EFLAG = 1 << 13;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
@@ -157,7 +158,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = 1 << 12;
+	protected static final int IS_ABSTRACT_EFLAG = 1 << 14;
 
 	/**
 	 * The cached value of the '{@link #getMethods() <em>Method</em>}' reference list.
@@ -180,14 +181,43 @@ public abstract class BehavioralFeatureImpl
 	protected static final CallConcurrencyKind CONCURRENCY_EDEFAULT = CallConcurrencyKind.SEQUENTIAL_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CONCURRENCY_EFLAG_OFFSET = 15;
+
+	/**
+	 * The flags representing the default value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CONCURRENCY_EFLAG_DEFAULT = CONCURRENCY_EDEFAULT
+		.ordinal() << CONCURRENCY_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link CallConcurrencyKind Call Concurrency Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final CallConcurrencyKind[] CONCURRENCY_EFLAG_VALUES = CallConcurrencyKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getConcurrency() <em>Concurrency</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getConcurrency()
 	 * @generated
 	 * @ordered
 	 */
-	protected CallConcurrencyKind concurrency = CONCURRENCY_EDEFAULT;
+	protected static final int CONCURRENCY_EFLAG = 0x3 << CONCURRENCY_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getRaisedExceptions() <em>Raised Exception</em>}' reference list.
@@ -699,7 +729,7 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public CallConcurrencyKind getConcurrency() {
-		return concurrency;
+		return CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -708,14 +738,15 @@ public abstract class BehavioralFeatureImpl
 	 * @generated
 	 */
 	public void setConcurrency(CallConcurrencyKind newConcurrency) {
-		CallConcurrencyKind oldConcurrency = concurrency;
-		concurrency = newConcurrency == null
-			? CONCURRENCY_EDEFAULT
-			: newConcurrency;
+		CallConcurrencyKind oldConcurrency = CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET];
+		if (newConcurrency == null)
+			newConcurrency = CONCURRENCY_EDEFAULT;
+		eFlags = eFlags & ~CONCURRENCY_EFLAG
+			| newConcurrency.ordinal() << CONCURRENCY_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY, oldConcurrency,
-				concurrency));
+				newConcurrency));
 	}
 
 	/**
@@ -1232,7 +1263,7 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return methods != null && !methods.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
-				return concurrency != CONCURRENCY_EDEFAULT;
+				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
 			case UMLPackage.BEHAVIORAL_FEATURE__RAISED_EXCEPTION :
 				return raisedExceptions != null && !raisedExceptions.isEmpty();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER_SET :
@@ -1324,7 +1355,8 @@ public abstract class BehavioralFeatureImpl
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(", concurrency: "); //$NON-NLS-1$
-		result.append(concurrency);
+		result
+			.append(CONCURRENCY_EFLAG_VALUES[(eFlags & CONCURRENCY_EFLAG) >>> CONCURRENCY_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

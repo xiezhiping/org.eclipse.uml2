@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PinImpl.java,v 1.29 2007/04/25 17:47:03 khussey Exp $
+ * $Id: PinImpl.java,v 1.30 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -101,7 +102,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 12;
+	protected static final int IS_ORDERED_EFLAG = 1 << 16;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -121,7 +122,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -181,7 +182,7 @@ public class PinImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_CONTROL_EFLAG = 1 << 14;
+	protected static final int IS_CONTROL_EFLAG = 1 << 18;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1084,7 +1085,7 @@ public class PinImpl
 			case UMLPackage.PIN__TYPE :
 				return type != null;
 			case UMLPackage.PIN__ORDERING :
-				return ordering != ORDERING_EDEFAULT;
+				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.PIN__UPPER_BOUND :

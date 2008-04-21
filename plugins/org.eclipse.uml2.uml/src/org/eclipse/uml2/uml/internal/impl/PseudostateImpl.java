@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PseudostateImpl.java,v 1.19 2007/05/04 20:35:34 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.20 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,14 +78,42 @@ public class PseudostateImpl
 	protected static final PseudostateKind KIND_EDEFAULT = PseudostateKind.INITIAL_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_OFFSET = 12;
+
+	/**
+	 * The flags representing the default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int KIND_EFLAG_DEFAULT = KIND_EDEFAULT.ordinal() << KIND_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link PseudostateKind Pseudostate Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final PseudostateKind[] KIND_EFLAG_VALUES = PseudostateKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getKind()
 	 * @generated
 	 * @ordered
 	 */
-	protected PseudostateKind kind = KIND_EDEFAULT;
+	protected static final int KIND_EFLAG = 0xf << KIND_EFLAG_OFFSET;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,7 +153,7 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public PseudostateKind getKind() {
-		return kind;
+		return KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
 	}
 
 	/**
@@ -133,13 +162,13 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	public void setKind(PseudostateKind newKind) {
-		PseudostateKind oldKind = kind;
-		kind = newKind == null
-			? KIND_EDEFAULT
-			: newKind;
+		PseudostateKind oldKind = KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET];
+		if (newKind == null)
+			newKind = KIND_EDEFAULT;
+		eFlags = eFlags & ~KIND_EFLAG | newKind.ordinal() << KIND_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PSEUDOSTATE__KIND, oldKind, kind));
+				UMLPackage.PSEUDOSTATE__KIND, oldKind, newKind));
 	}
 
 	/**
@@ -647,7 +676,7 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
-				return kind != KIND_EDEFAULT;
+				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return basicGetStateMachine() != null;
 			case UMLPackage.PSEUDOSTATE__STATE :
@@ -668,7 +697,8 @@ public class PseudostateImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
+		result
+			.append(KIND_EFLAG_VALUES[(eFlags & KIND_EFLAG) >>> KIND_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

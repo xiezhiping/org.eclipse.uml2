@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PackageImportImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
+ * $Id: PackageImportImpl.java,v 1.19 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -78,14 +79,43 @@ public class PackageImportImpl
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.PUBLIC_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VISIBILITY_EFLAG_OFFSET = 8;
+
+	/**
+	 * The flags representing the default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int VISIBILITY_EFLAG_DEFAULT = VISIBILITY_EDEFAULT
+		.ordinal() << VISIBILITY_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link VisibilityKind Visibility Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final VisibilityKind[] VISIBILITY_EFLAG_VALUES = VisibilityKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getVisibility()
 	 * @generated
 	 * @ordered
 	 */
-	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
+	protected static final int VISIBILITY_EFLAG = 0x3 << VISIBILITY_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getImportedPackage() <em>Imported Package</em>}' reference.
@@ -174,7 +204,7 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public VisibilityKind getVisibility() {
-		return visibility;
+		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -183,14 +213,15 @@ public class PackageImportImpl
 	 * @generated
 	 */
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null
-			? VISIBILITY_EDEFAULT
-			: newVisibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		if (newVisibility == null)
+			newVisibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG
+			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PACKAGE_IMPORT__VISIBILITY, oldVisibility,
-				visibility));
+				newVisibility));
 	}
 
 	/**
@@ -487,7 +518,7 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
 			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return visibility != VISIBILITY_EDEFAULT;
+				return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return importedPackage != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
@@ -508,7 +539,8 @@ public class PackageImportImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(visibility);
+		result
+			.append(VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}

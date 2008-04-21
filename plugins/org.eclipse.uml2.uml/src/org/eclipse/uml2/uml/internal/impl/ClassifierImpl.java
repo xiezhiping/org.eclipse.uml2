@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ClassifierImpl.java,v 1.43 2007/05/02 15:03:11 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.44 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -148,7 +149,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_LEAF_EFLAG = 1 << 10;
+	protected static final int IS_LEAF_EFLAG = 1 << 12;
 
 	/**
 	 * The cached value of the '{@link #getTemplateParameter() <em>Template Parameter</em>}' reference.
@@ -208,7 +209,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ABSTRACT_EFLAG = 1 << 11;
+	protected static final int IS_ABSTRACT_EFLAG = 1 << 13;
 
 	/**
 	 * The cached value of the '{@link #getGeneralizations() <em>Generalization</em>}' containment reference list.
@@ -679,7 +680,7 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return visibility;
+		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -689,13 +690,14 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null
-			? VISIBILITY_EDEFAULT
-			: newVisibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		if (newVisibility == null)
+			newVisibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG
+			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASSIFIER__VISIBILITY, oldVisibility, visibility));
+				UMLPackage.CLASSIFIER__VISIBILITY, oldVisibility, newVisibility));
 	}
 
 	/**
@@ -705,7 +707,7 @@ public abstract class ClassifierImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		return visibility != VISIBILITY_EDEFAULT;
+		return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -2766,8 +2768,6 @@ public abstract class ClassifierImpl
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isLeaf: "); //$NON-NLS-1$
 		result.append((eFlags & IS_LEAF_EFLAG) != 0);
-		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(visibility);
 		result.append(", isAbstract: "); //$NON-NLS-1$
 		result.append((eFlags & IS_ABSTRACT_EFLAG) != 0);
 		result.append(')');

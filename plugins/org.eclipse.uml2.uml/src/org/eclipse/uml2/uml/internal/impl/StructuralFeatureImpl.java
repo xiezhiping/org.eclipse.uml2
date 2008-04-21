@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: StructuralFeatureImpl.java,v 1.27 2007/04/25 17:47:03 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.28 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -102,7 +103,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_ORDERED_EFLAG = 1 << 12;
+	protected static final int IS_ORDERED_EFLAG = 1 << 14;
 
 	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
@@ -122,7 +123,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
+	protected static final int IS_UNIQUE_EFLAG = 1 << 15;
 
 	/**
 	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
@@ -182,7 +183,7 @@ public abstract class StructuralFeatureImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = 1 << 14;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 16;
 
 	/**
 	 * <!-- begin-user-doc -->

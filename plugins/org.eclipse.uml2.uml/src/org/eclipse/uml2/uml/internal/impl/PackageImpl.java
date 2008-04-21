@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PackageImpl.java,v 1.37 2007/05/02 15:03:11 khussey Exp $
+ * $Id: PackageImpl.java,v 1.38 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -353,7 +354,7 @@ public class PackageImpl
 	 */
 	@Override
 	public VisibilityKind getVisibility() {
-		return visibility;
+		return VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
 	}
 
 	/**
@@ -363,13 +364,14 @@ public class PackageImpl
 	 */
 	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null
-			? VISIBILITY_EDEFAULT
-			: newVisibility;
+		VisibilityKind oldVisibility = VISIBILITY_EFLAG_VALUES[(eFlags & VISIBILITY_EFLAG) >>> VISIBILITY_EFLAG_OFFSET];
+		if (newVisibility == null)
+			newVisibility = VISIBILITY_EDEFAULT;
+		eFlags = eFlags & ~VISIBILITY_EFLAG
+			| newVisibility.ordinal() << VISIBILITY_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PACKAGE__VISIBILITY, oldVisibility, visibility));
+				UMLPackage.PACKAGE__VISIBILITY, oldVisibility, newVisibility));
 	}
 
 	/**
@@ -379,7 +381,7 @@ public class PackageImpl
 	 */
 	@Override
 	public boolean isSetVisibility() {
-		return visibility != VISIBILITY_EDEFAULT;
+		return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 	}
 
 	/**
@@ -1724,23 +1726,6 @@ public class PackageImpl
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (visibility: "); //$NON-NLS-1$
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
 	}
 
 	/**

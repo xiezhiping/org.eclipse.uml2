@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.18 2007/04/25 17:47:00 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.19 2008/04/21 16:32:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -505,7 +506,7 @@ public class ActivityParameterNodeImpl
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__TYPE :
 				return type != null;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__ORDERING :
-				return ordering != ORDERING_EDEFAULT;
+				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__IS_CONTROL_TYPE :
 				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARAMETER_NODE__UPPER_BOUND :

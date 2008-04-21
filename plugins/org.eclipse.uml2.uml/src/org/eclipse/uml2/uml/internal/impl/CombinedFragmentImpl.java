@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: CombinedFragmentImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
+ * $Id: CombinedFragmentImpl.java,v 1.24 2008/04/21 16:32:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -83,14 +84,43 @@ public class CombinedFragmentImpl
 	protected static final InteractionOperatorKind INTERACTION_OPERATOR_EDEFAULT = InteractionOperatorKind.SEQ_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
+	 * The offset of the flags representing the value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INTERACTION_OPERATOR_EFLAG_OFFSET = 12;
+
+	/**
+	 * The flags representing the default value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int INTERACTION_OPERATOR_EFLAG_DEFAULT = INTERACTION_OPERATOR_EDEFAULT
+		.ordinal() << INTERACTION_OPERATOR_EFLAG_OFFSET;
+
+	/**
+	 * The array of enumeration values for '{@link InteractionOperatorKind Interaction Operator Kind}'
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	private static final InteractionOperatorKind[] INTERACTION_OPERATOR_EFLAG_VALUES = InteractionOperatorKind
+		.values();
+
+	/**
+	 * The flags representing the value of the '{@link #getInteractionOperator() <em>Interaction Operator</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInteractionOperator()
 	 * @generated
 	 * @ordered
 	 */
-	protected InteractionOperatorKind interactionOperator = INTERACTION_OPERATOR_EDEFAULT;
+	protected static final int INTERACTION_OPERATOR_EFLAG = 0xf << INTERACTION_OPERATOR_EFLAG_OFFSET;
 
 	/**
 	 * The cached value of the '{@link #getOperands() <em>Operand</em>}' containment reference list.
@@ -164,7 +194,7 @@ public class CombinedFragmentImpl
 	 * @generated
 	 */
 	public InteractionOperatorKind getInteractionOperator() {
-		return interactionOperator;
+		return INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
 	}
 
 	/**
@@ -174,14 +204,16 @@ public class CombinedFragmentImpl
 	 */
 	public void setInteractionOperator(
 			InteractionOperatorKind newInteractionOperator) {
-		InteractionOperatorKind oldInteractionOperator = interactionOperator;
-		interactionOperator = newInteractionOperator == null
-			? INTERACTION_OPERATOR_EDEFAULT
-			: newInteractionOperator;
+		InteractionOperatorKind oldInteractionOperator = INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET];
+		if (newInteractionOperator == null)
+			newInteractionOperator = INTERACTION_OPERATOR_EDEFAULT;
+		eFlags = eFlags
+			& ~INTERACTION_OPERATOR_EFLAG
+			| newInteractionOperator.ordinal() << INTERACTION_OPERATOR_EFLAG_OFFSET;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR,
-				oldInteractionOperator, interactionOperator));
+				oldInteractionOperator, newInteractionOperator));
 	}
 
 	/**
@@ -589,7 +621,7 @@ public class CombinedFragmentImpl
 			case UMLPackage.COMBINED_FRAGMENT__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
 			case UMLPackage.COMBINED_FRAGMENT__INTERACTION_OPERATOR :
-				return interactionOperator != INTERACTION_OPERATOR_EDEFAULT;
+				return (eFlags & INTERACTION_OPERATOR_EFLAG) != INTERACTION_OPERATOR_EFLAG_DEFAULT;
 			case UMLPackage.COMBINED_FRAGMENT__OPERAND :
 				return operands != null && !operands.isEmpty();
 			case UMLPackage.COMBINED_FRAGMENT__CFRAGMENT_GATE :
@@ -610,7 +642,8 @@ public class CombinedFragmentImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (interactionOperator: "); //$NON-NLS-1$
-		result.append(interactionOperator);
+		result
+			.append(INTERACTION_OPERATOR_EFLAG_VALUES[(eFlags & INTERACTION_OPERATOR_EFLAG) >>> INTERACTION_OPERATOR_EFLAG_OFFSET]);
 		result.append(')');
 		return result.toString();
 	}
