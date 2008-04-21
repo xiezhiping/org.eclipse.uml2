@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178
  *
- * $Id: UMLEditor.java,v 1.41 2008/04/16 18:30:08 khussey Exp $
+ * $Id: UMLEditor.java,v 1.42 2008/04/21 13:23:53 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -172,6 +172,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import org.eclipse.uml2.common.edit.domain.UML2AdapterFactoryEditingDomain;
 import org.eclipse.uml2.common.edit.provider.IItemQualifiedTextProvider;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.edit.providers.ElementItemProvider;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 import org.eclipse.uml2.uml.edit.providers.UMLReflectiveItemProviderAdapterFactory;
@@ -1481,6 +1482,33 @@ public class UMLEditor
 		return true;
 	}
 
+	protected void copyResource(ResourceSet resourceSet, Resource resource,
+			URI uri) {
+		String fileExtension = uri.fileExtension();
+
+		Resource newResource = resourceSet.createResource(uri,
+			XMI2UMLResource.FILE_EXTENSION.equals(fileExtension)
+				? XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER
+				: (CMOF2UMLResource.FILE_EXTENSION.equals(fileExtension)
+					? CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER
+					: null));
+		EList<EObject> newContents = newResource.getContents();
+
+		for (Iterator<EObject> contents = resource.getContents().iterator(); contents
+			.hasNext();) {
+
+			EObject eObject = contents.next();
+			contents.remove();
+			newContents.add(eObject);
+		}
+
+		EList<Resource> resources = resourceSet.getResources();
+		int index = resources.indexOf(resource);
+
+		resources.remove(index);
+		resources.move(index, newResource);
+	}
+
 	/**
 	 * This also changes the editor's input.
 	 * <!-- begin-user-doc -->
@@ -1497,38 +1525,49 @@ public class UMLEditor
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 
 			if (file != null) {
-				URI uri = URI.createPlatformResourceURI(file.getFullPath()
+				URI newURI = URI.createPlatformResourceURI(file.getFullPath()
 					.toString(), true);
 
 				ResourceSet resourceSet = editingDomain.getResourceSet();
 				EList<Resource> resources = resourceSet.getResources();
+
 				Resource resource = resources.get(0);
+				URI uri = resource.getURI();
 
 				String fileExtension = uri.fileExtension();
+				String newFileExtension = newURI.fileExtension();
 
-				if (!resource.getURI().fileExtension().equals(fileExtension)) {
-					Resource newResource = resourceSet.createResource(uri,
-						XMI2UMLResource.FILE_EXTENSION.equals(fileExtension)
-							? XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER
-							: (CMOF2UMLResource.FILE_EXTENSION
-								.equals(fileExtension)
-								? CMOF2UMLResource.CMOF_CONTENT_TYPE_IDENTIFIER
-								: null));
-					EList<EObject> newContents = newResource.getContents();
+				if (!UML2Util.safeEquals(fileExtension, newFileExtension)) {
+					copyResource(resourceSet, resource, newURI);
 
-					for (Iterator<EObject> contents = resource.getContents()
-						.iterator(); contents.hasNext();) {
+					if (MessageDialog
+						.openQuestion(
+							getSite().getShell(),
+							getTitle(),
+							UMLEditorPlugin.INSTANCE
+								.getString(
+									"_UI_Save_All_Resources_As", new Object[]{fileExtension, newFileExtension}))) { //$NON-NLS-1$
 
-						EObject eObject = contents.next();
-						contents.remove();
-						newContents.add(eObject);
+						EcoreUtil.resolveAll(resourceSet);
+
+						for (int i = 1; i < resources.size(); i++) {
+							resource = resources.get(i);
+							uri = resource.getURI();
+
+							if (UML2Util.safeEquals(uri.fileExtension(),
+								fileExtension)
+								&& (!resource.getContents().isEmpty() || isPersisted(resource))
+								&& !editingDomain.isReadOnly(resource)) {
+
+								copyResource(resourceSet, resource, uri
+									.trimFileExtension().appendFileExtension(
+										newFileExtension));
+							}
+						}
 					}
-
-					resources.remove(0);
-					resources.move(0, newResource);
 				}
 
-				doSaveAs(uri, new FileEditorInput(file));
+				doSaveAs(newURI, new FileEditorInput(file));
 			}
 		}
 	}
