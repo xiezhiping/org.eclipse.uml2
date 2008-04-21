@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 206636
+ *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *
- * $Id: GenClassImpl.java,v 1.42 2008/03/24 20:25:07 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.43 2008/04/21 16:28:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -199,15 +199,15 @@ public class GenClassImpl
 						if (getExtendedGenFeatures().contains(
 							redefinedGenFeature)) {
 
-							return (!UML2GenModelUtil
-								.isUnion(redefinedGenFeature))
+							return !UML2GenModelUtil
+								.isUnion(redefinedGenFeature)
 								&& !isRedefined(redefinedGenFeature);
 						}
 					}
 				}
 
 				return !getExtendedGenFeatures().contains(genFeature)
-					&& (!UML2GenModelUtil.isUnion(genFeature))
+					&& !UML2GenModelUtil.isUnion(genFeature)
 					&& !isRedefined(genFeature);
 			}
 		});
@@ -1377,12 +1377,11 @@ public class GenClassImpl
 
 	@Override
 	public List<GenFeature> getToStringGenFeatures() {
-		return collectGenFeatures(null, getImplementedGenFeatures(),
+		return collectGenFeatures(null, super.getToStringGenFeatures(),
 			new GenFeatureFilter() {
 
 				public boolean accept(GenFeature genFeature) {
-					return genFeature.isField()
-						&& !genFeature.isReferenceType();
+					return !isRedefined(genFeature);
 				}
 			});
 	}

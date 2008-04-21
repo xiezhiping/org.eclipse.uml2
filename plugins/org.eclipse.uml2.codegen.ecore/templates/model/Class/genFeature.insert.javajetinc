@@ -376,7 +376,11 @@
     <%} else if (genFeature.isPrimitiveType() || genFeature.isEnumType()) {%>
       <%if (genClass.isField(genFeature)) {%>
         <%if (genClass.isFlag(genFeature)) {%>
-		return ((<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != 0) != <%=genFeature.getEDefault()%>;
+          <%if (genFeature.isBooleanType()) {%>
+				return ((<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != 0) != <%=genFeature.getEDefault()%>;
+          <%} else {%>
+				return (<%=genClass.getFlagsField(genFeature)%> & <%=genFeature.getUpperName()%>_EFLAG) != <%=genFeature.getUpperName()%>_EFLAG_DEFAULT;
+          <%}%>
         <%} else {%>
 		return <%=genFeature.getSafeName()%> != <%=genFeature.getEDefault()%>;
         <%}%>
