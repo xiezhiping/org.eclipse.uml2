@@ -33,8 +33,8 @@
       disposableProviderFactory="true" loadInitialization="true" classPackageSuffix="internal.impl"
       providerPackageSuffix="edit.providers" presentationPackageSuffix="editor.presentation"
       generateExampleClass="false" multipleEditorPages="false" extensibleProviderFactory="true"
-      childCreationExtenders="true" ecorePackage="UML.ecore#/" resourceInterfaces="true"
-      operationsPackage="org.eclipse.uml2.uml.internal.operations">
+      childCreationExtenders="true" contentTypeIdentifier="org.eclipse.uml2.uml" fileExtensions="uml"
+      ecorePackage="UML.ecore#/" resourceInterfaces="true" operationsPackage="org.eclipse.uml2.uml.internal.operations">
     <genEnums xsi:type="genmodel:GenEnum" ecoreEnum="UML.ecore#//VisibilityKind">
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//VisibilityKind/public"/>
       <genEnumLiterals xsi:type="genmodel:GenEnumLiteral" ecoreEnumLiteral="UML.ecore#//VisibilityKind/private"/>

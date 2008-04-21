@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188
+ *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 204200
  *
- * $Id: UMLPackage.java,v 1.29 2008/01/09 18:56:02 khussey Exp $
+ * $Id: UMLPackage.java,v 1.30 2008/04/21 13:28:48 khussey Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -62,6 +62,14 @@ public interface UMLPackage
 	 * @generated
 	 */
 	String eNS_PREFIX = "uml"; //$NON-NLS-1$
+
+	/**
+	 * The package content type ID.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eCONTENT_TYPE = "org.eclipse.uml2.uml"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.

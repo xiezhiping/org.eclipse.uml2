@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  * 
- * $Id: UML22UMLResource.java,v 1.5 2008/02/25 15:48:47 khussey Exp $
+ * $Id: UML22UMLResource.java,v 1.6 2008/04/21 13:28:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -53,6 +53,6 @@ public interface UML22UMLResource
 
 	String UML2_PROFILE_URI = UMLResource.PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
-	String UML2_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_1_0_0"; //$NON-NLS-1$
+	String UML2_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2"; //$NON-NLS-1$
 
 }

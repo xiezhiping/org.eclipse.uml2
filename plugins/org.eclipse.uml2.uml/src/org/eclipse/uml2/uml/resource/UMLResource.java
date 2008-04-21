@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 156879
+ *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  *
- * $Id: UMLResource.java,v 1.8 2008/02/25 15:48:47 khussey Exp $
+ * $Id: UMLResource.java,v 1.9 2008/04/21 13:28:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -85,7 +85,7 @@ public interface UMLResource
 
 	String PROFILES_PATHMAP = "pathmap://UML_PROFILES/"; //$NON-NLS-1$
 
-	String ECORE_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Ecore/4"; //$NON-NLS-1$
+	String ECORE_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Ecore/5"; //$NON-NLS-1$
 
 	String ECORE_PROFILE_URI = PROFILES_PATHMAP + "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
@@ -93,8 +93,8 @@ public interface UMLResource
 
 	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
-	String UML_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_1_0"; //$NON-NLS-1$
-
 	String UML_2_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_0_0"; //$NON-NLS-1$
+
+	String UML_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_1_0"; //$NON-NLS-1$
 
 } // UMLResource
