@@ -12,7 +12,7 @@
    IBM - initial API and implementation
    Kenn Hussey (Embarcadero Technologies) - 156879, 204200
 
- $Id: plugin.xml,v 1.12 2008/04/15 17:52:00 khussey Exp $
+ $Id: plugin.xml,v 1.13 2008/04/21 13:27:42 khussey Exp $
 -->
 
 <plugin>
@@ -43,13 +43,10 @@
        icon = "icons/full/obj16/UMLModelFile.gif"
        class = "org.eclipse.uml2.uml.editor.presentation.UMLEditor" 
        contributorClass="org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor" >
-      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_1_0_0"/>
-      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_2_0_0"/>
-      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml_2_1_0"/>
-      <contentTypeBinding contentTypeId="org.omg.uml_2_1"/>
-      <contentTypeBinding contentTypeId="org.omg.uml_2_1_1"/>
-      <contentTypeBinding contentTypeId="org.omg.uml_2_1_2"/>
-      <contentTypeBinding contentTypeId="org.omg.mof.cmof_2_0"/>
+      <contentTypeBinding contentTypeId="org.eclipse.uml2"/>
+      <contentTypeBinding contentTypeId="org.eclipse.uml2.uml"/>
+      <contentTypeBinding contentTypeId="org.omg.uml"/>
+      <contentTypeBinding contentTypeId="org.omg.mof.cmof"/>
     </editor>
   </extension>    
 
