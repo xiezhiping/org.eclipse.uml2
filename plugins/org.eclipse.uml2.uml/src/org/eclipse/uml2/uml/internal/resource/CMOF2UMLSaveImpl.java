@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 213903
+ *   Kenn Hussey (Embarcadero Technologies) - 213903, 226178
  *
- * $Id: CMOF2UMLSaveImpl.java,v 1.2 2008/03/06 04:30:01 khussey Exp $
+ * $Id: CMOF2UMLSaveImpl.java,v 1.3 2008/04/21 13:25:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -235,26 +235,6 @@ public class CMOF2UMLSaveImpl
 						doc.endEmptyElement();
 					}
 
-					Object isID = UMLUtil.getTaggedValue(property,
-						qualifiedStereotypeName, UMLUtil.TAG_DEFINITION__IS_ID);
-
-					if (isID instanceof Boolean
-						&& ((Boolean) isID).booleanValue()) {
-
-						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
-						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
-						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
-							CMOF2UMLExtendedMetaData.XMI_TAG__ID_PROPERTY);
-						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-							Boolean.TRUE.toString());
-						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
-								.getIDREF(property));
-						doc.endEmptyElement();
-					}
-
 					Object xmlFeatureKind = UMLUtil.getTaggedValue(property,
 						qualifiedStereotypeName,
 						UMLUtil.TAG_DEFINITION__XML_FEATURE_KIND);
@@ -278,6 +258,31 @@ public class CMOF2UMLSaveImpl
 								.addAttribute(
 									CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
 									tagName);
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
+								Boolean.TRUE.toString());
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+								helper.getIDREF(property));
+							doc.endEmptyElement();
+						}
+					}
+
+					if (qualifiedStereotypeName
+						.endsWith(UMLUtil.STEREOTYPE__E_ATTRIBUTE)) {
+
+						Object isID = UMLUtil.getTaggedValue(property,
+							qualifiedStereotypeName,
+							UMLUtil.TAG_DEFINITION__IS_ID);
+
+						if (isID instanceof Boolean
+							&& ((Boolean) isID).booleanValue()) {
+
+							doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
+							doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
+							doc.addAttribute(
+								CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
+								CMOF2UMLExtendedMetaData.XMI_TAG__ID_PROPERTY);
 							doc.addAttribute(
 								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
 								Boolean.TRUE.toString());
