@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierOperations.java,v 1.21 2008/03/25 13:41:38 jbruck Exp $
+ * $Id: ClassifierOperations.java,v 1.22 2008/04/28 17:44:48 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -601,7 +601,9 @@ public class ClassifierOperations
 
 		for (Classifier parent : classifier.allParents()) {
 
-			if (parent != classifier && parent.getMembers().contains(n)) {
+			if (parent != classifier
+				&& !parent.allParents().contains(classifier)
+				&& parent.getMembers().contains(n)) {
 				return n.getVisibility() != VisibilityKind.PRIVATE_LITERAL;
 			}
 		}
