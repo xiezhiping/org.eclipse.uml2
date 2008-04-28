@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: NamedElementImpl.java,v 1.30 2008/04/21 16:32:41 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.31 2008/04/28 19:38:35 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -967,6 +968,57 @@ public abstract class NamedElementImpl
 		}
 
 		return super.eURIFragmentSegment(eStructuralFeature, eObject);
+	}
+	
+	@Override
+    public EObject eObjectForURIFragmentSegment(String uriFragmentSegment) {
+
+		if (uriFragmentSegment.length() > 0) {
+			// Is the first character a special character, i.e., something other
+			// than '@'?
+			//
+			char firstCharacter = uriFragmentSegment.charAt(0);
+
+			if (firstCharacter != '@' && firstCharacter != '%') {
+				// Look for trailing count.
+				//
+				int index = uriFragmentSegment.lastIndexOf("."); //$NON-NLS-1$
+				String name = index == -1
+					? uriFragmentSegment
+					: uriFragmentSegment.substring(0, index);
+				int count = 0;
+
+				if (index != -1) {
+					try {
+						count = Integer.parseInt(uriFragmentSegment
+							.substring(index + 1));
+					} catch (NumberFormatException exception) {
+						// Interpret it as part of the name.
+						//
+						name = uriFragmentSegment;
+					}
+				}
+
+				name = URI.decode(name);
+
+				// Look for a matching named element.
+				//
+				for (EObject eObject : eContents()) {
+
+					if (eObject instanceof NamedElement) {
+						NamedElement namedElement = (NamedElement) eObject;
+
+						if (name.equals(namedElement.getName()) && count-- == 0) {
+							return namedElement;
+						}
+					}
+				}
+
+				return null;
+			}
+		}
+
+		return super.eObjectForURIFragmentSegment(uriFragmentSegment);
 	}
 
 } //NamedElementImpl
