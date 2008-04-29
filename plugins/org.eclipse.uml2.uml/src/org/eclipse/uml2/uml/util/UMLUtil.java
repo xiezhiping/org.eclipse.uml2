@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *
- * $Id: UMLUtil.java,v 1.74 2008/04/10 00:18:36 khussey Exp $
+ * $Id: UMLUtil.java,v 1.75 2008/04/29 19:40:41 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1135,13 +1135,23 @@ public class UMLUtil
 				org.eclipse.uml2.uml.Package package_,
 				Collection<org.eclipse.uml2.uml.Package> allMergedPackages) {
 
+			return getAllMergedPackages(package_, allMergedPackages,
+				new UniqueEList.FastCompare<org.eclipse.uml2.uml.Package>());
+		}
+
+		private Collection<org.eclipse.uml2.uml.Package> getAllMergedPackages(
+				org.eclipse.uml2.uml.Package package_,
+				Collection<org.eclipse.uml2.uml.Package> allMergedPackages,
+				Collection<org.eclipse.uml2.uml.Package> visitedPackages) {
+
 			for (PackageMerge packageMerge : package_.getPackageMerges()) {
 				org.eclipse.uml2.uml.Package mergedPackage = packageMerge
 					.getMergedPackage();
 
-				if (mergedPackage != null) {
-					getAllMergedPackages(mergedPackage, allMergedPackages);
+				if (mergedPackage != null && visitedPackages.add(mergedPackage)) {
 
+					getAllMergedPackages(mergedPackage, allMergedPackages,
+						visitedPackages);
 					allMergedPackages.add(mergedPackage);
 				}
 			}
@@ -9193,6 +9203,31 @@ public class UMLUtil
 	protected static <F extends Feature> Collection<F> findValidRedefinitions(
 			Collection<F> redefinedFeatures, F redefiningFeature,
 			final String name, Classifier redefinitionContext) {
+
+		F redefinedFeature = findValidRedefinition(redefiningFeature, name,
+			redefinitionContext);
+
+		if (redefinedFeature == null) {
+
+			for (Classifier general : redefinitionContext.allParents()) {
+				redefinedFeature = findValidRedefinition(redefiningFeature,
+					name, general);
+
+				if (redefinedFeature != null) {
+					redefinedFeatures.add(redefinedFeature);
+				}
+			}
+		} else {
+			redefinedFeatures.add(redefinedFeature);
+		}
+
+		return redefinedFeatures;
+	}
+
+	private static <F extends Feature> F findValidRedefinition(
+			F redefiningFeature, final String name,
+			Classifier redefinitionContext) {
+
 		@SuppressWarnings("unchecked")
 		F redefinedFeature = (F) findEObject(redefinitionContext.getFeatures(),
 			new EClassMatcher(redefiningFeature) {
@@ -9213,17 +9248,7 @@ public class UMLUtil
 				}
 			});
 
-		if (redefinedFeature == null) {
-
-			for (Classifier general : redefinitionContext.getGenerals()) {
-				findValidRedefinitions(redefinedFeatures, redefiningFeature,
-					name, general);
-			}
-		} else {
-			redefinedFeatures.add(redefinedFeature);
-		}
-
-		return redefinedFeatures;
+		return redefinedFeature;
 	}
 
 	protected static boolean isSubsetValid(Property subsettingProperty,
