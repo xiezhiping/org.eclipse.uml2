@@ -11,7 +11,7 @@
     binaryCompatibleReflectiveMethods="true" packedEnums="true" usedGenPackages="platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>GenModel.ecore</foreignModel>
   <genPackages prefix="GenModel" basePackage="org.eclipse.uml2.codegen.ecore" disposableProviderFactory="true"
-      ecorePackage="GenModel.ecore#/">
+      contentTypeIdentifier="org.eclipse.uml2.genmodel" ecorePackage="GenModel.ecore#/">
     <genEnums ecoreEnum="GenModel.ecore#//GenCacheAdapterScope">
       <genEnumLiterals ecoreEnumLiteral="GenModel.ecore#//GenCacheAdapterScope/None"/>
       <genEnumLiterals ecoreEnumLiteral="GenModel.ecore#//GenCacheAdapterScope/Global"/>

@@ -10,9 +10,9 @@
 
  Contributors: 
    IBM - initial API and implementation
-   Kenn Hussey (Embarcadero Technologies) - 208016
+   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
 
- $Id: plugin.xml,v 1.6 2008/03/21 00:15:43 khussey Exp $
+ $Id: plugin.xml,v 1.7 2008/04/30 20:57:52 khussey Exp $
 -->
 
 <plugin>
@@ -39,5 +39,56 @@
        class="org.eclipse.uml2.codegen.ecore.genmodel.generator.UML2GenModelGeneratorAdapterFactory"/>
   </extension>
 
-</plugin>
+  <extension
+        point="org.eclipse.core.runtime.contentTypes">
+     <content-type
+           base-type="org.eclipse.emf.codegen.genmodel"
+           file-extensions="genmodel"
+           id="org.eclipse.uml2.genmodel"
+           name="%_UI_GenModel_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespacePattern"
+                 value="http://www\.eclipse\.org/uml2/(1\.1\.0|2\.2\.0)/GenModel" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.uml2.genmodel"
+           file-extensions="genmodel"
+           id="org.eclipse.uml2.genmodel_1_1_0"
+           name="%_UI_GenModel_1_1_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/1.1.0/GenModel" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+     <content-type
+           base-type="org.eclipse.uml2.genmodel"
+           file-extensions="genmodel"
+           id="org.eclipse.uml2.genmodel_2_2_0"
+           name="%_UI_GenModel_2_2_0_content_type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/uml2/2.2.0/GenModel" />
+           <parameter
+                 name="kind"
+                 value="xmi" />
+        </describer>
+     </content-type>
+  </extension>
 
+</plugin>

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
  *
- * $Id: GenModelPackage.java,v 1.34 2008/04/18 17:43:26 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.35 2008/04/30 20:57:51 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -59,6 +59,14 @@ public interface GenModelPackage
 	 * @generated
 	 */
 	String eNS_PREFIX = "genmodel"; //$NON-NLS-1$
+
+	/**
+	 * The package content type ID.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eCONTENT_TYPE = "org.eclipse.uml2.genmodel"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
