@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: NamedElementImpl.java,v 1.31 2008/04/28 19:38:35 jbruck Exp $
+ * $Id: NamedElementImpl.java,v 1.32 2008/05/05 15:14:24 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -969,9 +969,9 @@ public abstract class NamedElementImpl
 
 		return super.eURIFragmentSegment(eStructuralFeature, eObject);
 	}
-	
+
 	@Override
-    public EObject eObjectForURIFragmentSegment(String uriFragmentSegment) {
+	public EObject eObjectForURIFragmentSegment(String uriFragmentSegment) {
 
 		if (uriFragmentSegment.length() > 0) {
 			// Is the first character a special character, i.e., something other
