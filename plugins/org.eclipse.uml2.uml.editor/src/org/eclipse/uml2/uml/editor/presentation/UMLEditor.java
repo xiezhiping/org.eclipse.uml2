@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178
  *
- * $Id: UMLEditor.java,v 1.42 2008/04/21 13:23:53 khussey Exp $
+ * $Id: UMLEditor.java,v 1.43 2008/05/05 15:14:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -82,7 +82,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
@@ -204,26 +203,6 @@ public class UMLEditor
 		extends MultiPageEditorPart
 		implements IEditingDomainProvider, ISelectionProvider, IMenuListener,
 		IViewerProvider, IGotoMarker {
-
-	/**
-	 * The file extensions supported by this editor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final List<String> FILE_EXTENSIONS = Collections
-		.unmodifiableList(Arrays.asList(UMLEditorPlugin.INSTANCE.getString(
-			"_UI_UMLEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * A formatted list of supported file extensions, suitable for display.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String FORMATTED_FILE_EXTENSIONS = UMLEditorPlugin.INSTANCE
-		.getString("_UI_UMLEditorFilenameExtensions").replaceAll("\\s*,\\s*",
-			", ");
 
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.

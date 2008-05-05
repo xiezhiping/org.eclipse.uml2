@@ -7,13 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 227392
+ *   Kenn Hussey (Embarcadero Technologies) - 227392, 204200
  *
- * $Id: UMLModelWizard.java,v 1.9 2008/04/16 18:25:18 khussey Exp $
+ * $Id: UMLModelWizard.java,v 1.10 2008/05/05 15:14:30 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -102,6 +103,26 @@ import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 public class UMLModelWizard
 		extends Wizard
 		implements INewWizard {
+
+	/**
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<String> FILE_EXTENSIONS = Collections
+		.unmodifiableList(Arrays.asList(UMLEditorPlugin.INSTANCE.getString(
+			"_UI_UMLEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+
+	/**
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FORMATTED_FILE_EXTENSIONS = UMLEditorPlugin.INSTANCE
+		.getString("_UI_UMLEditorFilenameExtensions").replaceAll("\\s*,\\s*",
+			", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -253,7 +274,8 @@ public class UMLModelWizard
 
 						// Create a resource for this file.
 						//
-						Resource resource = resourceSet.createResource(fileURI);
+						Resource resource = resourceSet.createResource(fileURI,
+							UMLPackage.eCONTENT_TYPE);
 
 						// Add the initial model object to the contents.
 						//
@@ -348,12 +370,11 @@ public class UMLModelWizard
 		protected boolean validatePage() {
 			if (super.validatePage()) {
 				String extension = new Path(getFileName()).getFileExtension();
-				if (extension == null
-					|| !UMLEditor.FILE_EXTENSIONS.contains(extension)) {
-					String key = UMLEditor.FILE_EXTENSIONS.size() > 1
+				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+					String key = FILE_EXTENSIONS.size() > 1
 						? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
 					setErrorMessage(UMLEditorPlugin.INSTANCE.getString(key,
-						new Object[]{UMLEditor.FORMATTED_FILE_EXTENSIONS}));
+						new Object[]{FORMATTED_FILE_EXTENSIONS}));
 					return false;
 				}
 				return true;
@@ -606,7 +627,7 @@ public class UMLModelWizard
 			.getString("_UI_UMLModelWizard_description")); //$NON-NLS-1$
 		newFileCreationPage
 			.setFileName(UMLEditorPlugin.INSTANCE
-				.getString("_UI_UMLEditorFilenameDefaultBase") + "." + UMLEditor.FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+				.getString("_UI_UMLEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -636,7 +657,7 @@ public class UMLModelWizard
 					//
 					String defaultModelBaseFilename = UMLEditorPlugin.INSTANCE
 						.getString("_UI_UMLEditorFilenameDefaultBase"); //$NON-NLS-1$
-					String defaultModelFilenameExtension = UMLEditor.FILE_EXTENSIONS
+					String defaultModelFilenameExtension = FILE_EXTENSIONS
 						.get(0);
 					String modelFilename = defaultModelBaseFilename
 						+ "." + defaultModelFilenameExtension; //$NON-NLS-1$
