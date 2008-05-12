@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178
  *
- * $Id: UMLEditor.java,v 1.43 2008/05/05 15:14:30 khussey Exp $
+ * $Id: UMLEditor.java,v 1.44 2008/05/12 19:49:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -1396,8 +1396,11 @@ public class UMLEditor
 					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
 						&& !editingDomain.isReadOnly(resource)) {
 						try {
-							savedResources.add(resource);
+							long timeStamp = resource.getTimeStamp();
 							resource.save(saveOptions);
+							if (resource.getTimeStamp() != timeStamp) {
+								savedResources.add(resource);
+							}
 						} catch (Exception exception) {
 							resourceToDiagnosticMap.put(resource,
 								analyzeResourceProblems(resource, exception));
