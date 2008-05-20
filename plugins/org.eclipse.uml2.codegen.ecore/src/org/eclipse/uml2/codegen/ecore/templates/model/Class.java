@@ -8388,7 +8388,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     }
     }
-    if (isImplementation && !genModel.isReflectiveDelegation() && !genClass.getToStringGenFeatures().isEmpty()) {
+    if (!genClass.hasImplementedToStringGenOperation() && isImplementation && !genModel.isReflectiveDelegation() && !genClass.getToStringGenFeatures().isEmpty()) {
     stringBuffer.append(TEXT_2283);
     if (genModel.useClassOverrideAnnotation()) {
     stringBuffer.append(TEXT_2284);
