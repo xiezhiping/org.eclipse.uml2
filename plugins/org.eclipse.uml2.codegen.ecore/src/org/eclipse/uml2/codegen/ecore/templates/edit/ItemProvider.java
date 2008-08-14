@@ -225,84 +225,71 @@ public class ItemProvider
   protected final String TEXT_206 = NL + "\t\t\tchildFeature == ";
   protected final String TEXT_207 = NL + NL + "\t\tif (qualify)" + NL + "\t\t{" + NL + "\t\t\treturn getString" + NL + "\t\t\t\t(\"_UI_CreateChild_text2\",";
   protected final String TEXT_208 = NL + "\t\t\t\t new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });" + NL + "\t\t}" + NL + "\t\treturn super.getCreateChildText(owner, feature, child, selection);" + NL + "\t}" + NL;
-  protected final String TEXT_209 = NL + "\t/**" + NL + "\t * This returns the icon image for {@link org.eclipse.emf.edit.command.CreateChildCommand}." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_209 = NL + "\t/**" + NL + "\t * Return the resource locator for this item provider's resources." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
   protected final String TEXT_210 = NL + "\t@Override";
-  protected final String TEXT_211 = NL + "\tpublic Object getCreateChildImage(Object owner, Object feature, Object child, ";
-  protected final String TEXT_212 = " selection)" + NL + "\t{" + NL + "\t\tif (feature instanceof ";
-  protected final String TEXT_213 = " && ";
-  protected final String TEXT_214 = ".isFeatureMap((";
-  protected final String TEXT_215 = ")feature))" + NL + "\t\t{" + NL + "\t\t\t";
-  protected final String TEXT_216 = ".Entry entry = (";
-  protected final String TEXT_217 = ".Entry)child;" + NL + "\t\t\tfeature = entry.getEStructuralFeature();" + NL + "\t\t\tchild = entry.getValue();" + NL + "\t\t}" + NL + "" + NL + "\t\tif (feature instanceof ";
-  protected final String TEXT_218 = " && child instanceof ";
-  protected final String TEXT_219 = ")" + NL + "\t\t{" + NL + "\t\t\tString name = \"full/obj16/\" + ((EObject)child).eClass().getName();";
-  protected final String TEXT_220 = NL + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\treturn getResourceLocator().getImage(name);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (Exception e)" + NL + "\t\t\t{" + NL + "\t\t\t\t";
-  protected final String TEXT_221 = ".INSTANCE.log(e);" + NL + "\t\t\t}" + NL + "\t\t}" + NL + "" + NL + "\t\treturn super.getCreateChildImage(owner, feature, child, selection);" + NL + "\t}" + NL;
-  protected final String TEXT_222 = NL + "\t/**" + NL + "\t * Return the resource locator for this item provider's resources." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_223 = NL + "\t@Override";
-  protected final String TEXT_224 = NL + "\tpublic ";
-  protected final String TEXT_225 = " getResourceLocator()" + NL + "\t{";
-  protected final String TEXT_226 = NL + "\t\treturn ((";
-  protected final String TEXT_227 = ")adapterFactory).getResourceLocator();";
-  protected final String TEXT_228 = NL + "\t\treturn ";
-  protected final String TEXT_229 = ".INSTANCE;";
-  protected final String TEXT_230 = NL + "\t}" + NL;
-  protected final String TEXT_231 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_211 = NL + "\tpublic ";
+  protected final String TEXT_212 = " getResourceLocator()" + NL + "\t{";
+  protected final String TEXT_213 = NL + "\t\treturn ((";
+  protected final String TEXT_214 = ")adapterFactory).getResourceLocator();";
+  protected final String TEXT_215 = NL + "\t\treturn ";
+  protected final String TEXT_216 = ".INSTANCE;";
+  protected final String TEXT_217 = NL + "\t}" + NL;
+  protected final String TEXT_218 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_219 = NL + "\t@Override";
+  protected final String TEXT_220 = NL + "\tprotected ";
+  protected final String TEXT_221 = " createAddCommand(";
+  protected final String TEXT_222 = " domain, ";
+  protected final String TEXT_223 = " owner, ";
+  protected final String TEXT_224 = " feature, ";
+  protected final String TEXT_225 = " collection, int index) {";
+  protected final String TEXT_226 = NL + "\t\tif (feature == ";
+  protected final String TEXT_227 = ") {" + NL + "\t\t\treturn new ";
+  protected final String TEXT_228 = "(domain, owner, feature, ";
+  protected final String TEXT_229 = ", collection, index);" + NL + "\t\t}";
+  protected final String TEXT_230 = NL + "\t\treturn super.createAddCommand(domain, owner, feature, collection, index);" + NL + "\t}" + NL;
+  protected final String TEXT_231 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
   protected final String TEXT_232 = NL + "\t@Override";
   protected final String TEXT_233 = NL + "\tprotected ";
-  protected final String TEXT_234 = " createAddCommand(";
+  protected final String TEXT_234 = " createRemoveCommand(";
   protected final String TEXT_235 = " domain, ";
   protected final String TEXT_236 = " owner, ";
   protected final String TEXT_237 = " feature, ";
-  protected final String TEXT_238 = " collection, int index) {";
+  protected final String TEXT_238 = " collection) {";
   protected final String TEXT_239 = NL + "\t\tif (feature == ";
   protected final String TEXT_240 = ") {" + NL + "\t\t\treturn new ";
   protected final String TEXT_241 = "(domain, owner, feature, ";
-  protected final String TEXT_242 = ", collection, index);" + NL + "\t\t}";
-  protected final String TEXT_243 = NL + "\t\treturn super.createAddCommand(domain, owner, feature, collection, index);" + NL + "\t}" + NL;
-  protected final String TEXT_244 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_242 = ", collection);" + NL + "\t\t}";
+  protected final String TEXT_243 = NL + "\t\treturn super.createRemoveCommand(domain, owner, feature, collection);" + NL + "\t}" + NL;
+  protected final String TEXT_244 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
   protected final String TEXT_245 = NL + "\t@Override";
   protected final String TEXT_246 = NL + "\tprotected ";
-  protected final String TEXT_247 = " createRemoveCommand(";
+  protected final String TEXT_247 = " createReplaceCommand(";
   protected final String TEXT_248 = " domain, ";
   protected final String TEXT_249 = " owner, ";
   protected final String TEXT_250 = " feature, ";
-  protected final String TEXT_251 = " collection) {";
-  protected final String TEXT_252 = NL + "\t\tif (feature == ";
-  protected final String TEXT_253 = ") {" + NL + "\t\t\treturn new ";
-  protected final String TEXT_254 = "(domain, owner, feature, ";
-  protected final String TEXT_255 = ", collection);" + NL + "\t\t}";
-  protected final String TEXT_256 = NL + "\t\treturn super.createRemoveCommand(domain, owner, feature, collection);" + NL + "\t}" + NL;
-  protected final String TEXT_257 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_258 = NL + "\t@Override";
-  protected final String TEXT_259 = NL + "\tprotected ";
-  protected final String TEXT_260 = " createReplaceCommand(";
-  protected final String TEXT_261 = " domain, ";
-  protected final String TEXT_262 = " owner, ";
-  protected final String TEXT_263 = " feature, ";
-  protected final String TEXT_264 = " value, ";
-  protected final String TEXT_265 = " collection) {";
+  protected final String TEXT_251 = " value, ";
+  protected final String TEXT_252 = " collection) {";
+  protected final String TEXT_253 = NL + "\t\tif (feature == ";
+  protected final String TEXT_254 = ") {" + NL + "\t\t\treturn new ";
+  protected final String TEXT_255 = "(domain, owner, feature, ";
+  protected final String TEXT_256 = ", ";
+  protected final String TEXT_257 = ", value, collection);" + NL + "\t\t}";
+  protected final String TEXT_258 = NL + "\t\treturn super.createReplaceCommand(domain, owner, feature, value, collection);" + NL + "\t}" + NL;
+  protected final String TEXT_259 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
+  protected final String TEXT_260 = NL + "\t@Override";
+  protected final String TEXT_261 = NL + "\tprotected ";
+  protected final String TEXT_262 = " createSetCommand(";
+  protected final String TEXT_263 = " domain, ";
+  protected final String TEXT_264 = " owner, ";
+  protected final String TEXT_265 = " feature, Object value) {";
   protected final String TEXT_266 = NL + "\t\tif (feature == ";
   protected final String TEXT_267 = ") {" + NL + "\t\t\treturn new ";
   protected final String TEXT_268 = "(domain, owner, feature, ";
   protected final String TEXT_269 = ", ";
-  protected final String TEXT_270 = ", value, collection);" + NL + "\t\t}";
-  protected final String TEXT_271 = NL + "\t\treturn super.createReplaceCommand(domain, owner, feature, value, collection);" + NL + "\t}" + NL;
-  protected final String TEXT_272 = NL + "\t/**" + NL + "\t * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */";
-  protected final String TEXT_273 = NL + "\t@Override";
-  protected final String TEXT_274 = NL + "\tprotected ";
-  protected final String TEXT_275 = " createSetCommand(";
-  protected final String TEXT_276 = " domain, ";
-  protected final String TEXT_277 = " owner, ";
-  protected final String TEXT_278 = " feature, Object value) {";
-  protected final String TEXT_279 = NL + "\t\tif (feature == ";
-  protected final String TEXT_280 = ") {" + NL + "\t\t\treturn new ";
-  protected final String TEXT_281 = "(domain, owner, feature, ";
-  protected final String TEXT_282 = ", ";
-  protected final String TEXT_283 = ", value);" + NL + "\t\t}";
-  protected final String TEXT_284 = NL + "\t\treturn super.createSetCommand(domain, owner, feature, value);" + NL + "\t}" + NL;
-  protected final String TEXT_285 = NL + "}";
-  protected final String TEXT_286 = NL;
+  protected final String TEXT_270 = ", value);" + NL + "\t\t}";
+  protected final String TEXT_271 = NL + "\t\treturn super.createSetCommand(domain, owner, feature, value);" + NL + "\t}" + NL;
+  protected final String TEXT_272 = NL + "}";
+  protected final String TEXT_273 = NL;
 
   public String generate(Object argument)
   {
@@ -823,54 +810,54 @@ public class ItemProvider
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(TEXT_208);
     }
-    if (!genModel.isCreationIcons() && genClass.isModelRoot()) {
+    }
+    if (genClass.getProviderExtendsGenClass() == null || genClass.getProviderExtendsGenClass().getGenPackage() != genPackage && (!genPackage.isExtensibleProviderFactory() || genClass.getProviderExtendsGenClass().getGenPackage().isExtensibleProviderFactory() != genPackage.isExtensibleProviderFactory())) {
     stringBuffer.append(TEXT_209);
     if (genModel.useClassOverrideAnnotation()) {
     stringBuffer.append(TEXT_210);
     }
     stringBuffer.append(TEXT_211);
-    stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
-    stringBuffer.append(TEXT_212);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
-    stringBuffer.append(TEXT_213);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMapUtil"));
-    stringBuffer.append(TEXT_214);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
-    stringBuffer.append(TEXT_215);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
-    stringBuffer.append(TEXT_216);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.util.FeatureMap"));
-    stringBuffer.append(TEXT_217);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EReference"));
-    stringBuffer.append(TEXT_218);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
-    stringBuffer.append(TEXT_219);
-    stringBuffer.append(genModel.getNonNLS());
-    stringBuffer.append(TEXT_220);
-    stringBuffer.append(genClass.getGenPackage().getImportedEditPluginClassName());
-    stringBuffer.append(TEXT_221);
-    }
-    }
-    if (genClass.getProviderExtendsGenClass() == null || genClass.getProviderExtendsGenClass().getGenPackage() != genPackage && (!genPackage.isExtensibleProviderFactory() || genClass.getProviderExtendsGenClass().getGenPackage().isExtensibleProviderFactory() != genPackage.isExtensibleProviderFactory())) {
-    stringBuffer.append(TEXT_222);
-    if (genModel.useClassOverrideAnnotation()) {
-    stringBuffer.append(TEXT_223);
-    }
-    stringBuffer.append(TEXT_224);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.ResourceLocator"));
-    stringBuffer.append(TEXT_225);
+    stringBuffer.append(TEXT_212);
     if (genPackage.isExtensibleProviderFactory()) {
-    stringBuffer.append(TEXT_226);
+    stringBuffer.append(TEXT_213);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.provider.IChildCreationExtender"));
-    stringBuffer.append(TEXT_227);
+    stringBuffer.append(TEXT_214);
     } else {
-    stringBuffer.append(TEXT_228);
+    stringBuffer.append(TEXT_215);
     stringBuffer.append(genPackage.getImportedEditPluginClassName());
+    stringBuffer.append(TEXT_216);
+    }
+    stringBuffer.append(TEXT_217);
+    }
+    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty()) {
+    stringBuffer.append(TEXT_218);
+    if (genModel.useClassOverrideAnnotation()) {
+    stringBuffer.append(TEXT_219);
+    }
+    stringBuffer.append(TEXT_220);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.command.Command"));
+    stringBuffer.append(TEXT_221);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
+    stringBuffer.append(TEXT_222);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
+    stringBuffer.append(TEXT_223);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
+    stringBuffer.append(TEXT_224);
+    stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
+    stringBuffer.append(TEXT_225);
+    for (GenFeature subsetGenFeature : UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)) {
+    stringBuffer.append(TEXT_226);
+    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessor());
+    stringBuffer.append(TEXT_227);
+    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetAddCommand"));
+    stringBuffer.append(TEXT_228);
+    stringBuffer.append(UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, subsetGenFeature));
     stringBuffer.append(TEXT_229);
     }
     stringBuffer.append(TEXT_230);
     }
-    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty()) {
+    if (!UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {
     stringBuffer.append(TEXT_231);
     if (genModel.useClassOverrideAnnotation()) {
     stringBuffer.append(TEXT_232);
@@ -886,18 +873,18 @@ public class ItemProvider
     stringBuffer.append(TEXT_237);
     stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
     stringBuffer.append(TEXT_238);
-    for (GenFeature subsetGenFeature : UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)) {
+    for (GenFeature supersetGenFeature : UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true)) {
     stringBuffer.append(TEXT_239);
-    stringBuffer.append(subsetGenFeature.getQualifiedFeatureAccessor());
+    stringBuffer.append(supersetGenFeature.getQualifiedFeatureAccessor());
     stringBuffer.append(TEXT_240);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetAddCommand"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SupersetRemoveCommand"));
     stringBuffer.append(TEXT_241);
-    stringBuffer.append(UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, subsetGenFeature));
+    stringBuffer.append(UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, supersetGenFeature));
     stringBuffer.append(TEXT_242);
     }
     stringBuffer.append(TEXT_243);
     }
-    if (!UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {
+    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {
     stringBuffer.append(TEXT_244);
     if (genModel.useClassOverrideAnnotation()) {
     stringBuffer.append(TEXT_245);
@@ -911,43 +898,45 @@ public class ItemProvider
     stringBuffer.append(TEXT_249);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
     stringBuffer.append(TEXT_250);
-    stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
     stringBuffer.append(TEXT_251);
-    for (GenFeature supersetGenFeature : UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true)) {
+    stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
     stringBuffer.append(TEXT_252);
-    stringBuffer.append(supersetGenFeature.getQualifiedFeatureAccessor());
+    { List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true));
+    for (GenFeature genFeature : subsetSupersetGenFeatures) {
     stringBuffer.append(TEXT_253);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SupersetRemoveCommand"));
+    stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
     stringBuffer.append(TEXT_254);
-    stringBuffer.append(UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, supersetGenFeature));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand"));
     stringBuffer.append(TEXT_255);
-    }
+    stringBuffer.append(UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, genFeature));
     stringBuffer.append(TEXT_256);
-    }
-    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true).isEmpty()) {
+    stringBuffer.append(UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, genFeature));
     stringBuffer.append(TEXT_257);
-    if (genModel.useClassOverrideAnnotation()) {
+    }
+    }
     stringBuffer.append(TEXT_258);
     }
+    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false).isEmpty()) {
     stringBuffer.append(TEXT_259);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.command.Command"));
+    if (genModel.useClassOverrideAnnotation()) {
     stringBuffer.append(TEXT_260);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
+    }
     stringBuffer.append(TEXT_261);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.command.Command"));
     stringBuffer.append(TEXT_262);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
     stringBuffer.append(TEXT_263);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
     stringBuffer.append(TEXT_264);
-    stringBuffer.append(genModel.getImportedName(genModel.useGenerics() ? "java.util.Collection<?>" : "java.util.Collection"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
     stringBuffer.append(TEXT_265);
-    { List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, true)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, true));
+    { List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));
     for (GenFeature genFeature : subsetSupersetGenFeatures) {
     stringBuffer.append(TEXT_266);
     stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
     stringBuffer.append(TEXT_267);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand"));
+    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand"));
     stringBuffer.append(TEXT_268);
     stringBuffer.append(UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, genFeature));
     stringBuffer.append(TEXT_269);
@@ -957,38 +946,9 @@ public class ItemProvider
     }
     stringBuffer.append(TEXT_271);
     }
-    if (!UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false).isEmpty() || !UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false).isEmpty()) {
     stringBuffer.append(TEXT_272);
-    if (genModel.useClassOverrideAnnotation()) {
-    stringBuffer.append(TEXT_273);
-    }
-    stringBuffer.append(TEXT_274);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.command.Command"));
-    stringBuffer.append(TEXT_275);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain"));
-    stringBuffer.append(TEXT_276);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EObject"));
-    stringBuffer.append(TEXT_277);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature"));
-    stringBuffer.append(TEXT_278);
-    { List<GenFeature> subsetSupersetGenFeatures = new UniqueEList.FastCompare<GenFeature>(); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSubsetGenFeatures(genClass, false)); subsetSupersetGenFeatures.addAll(UML2GenModelUtil.getImplementedSupersetGenFeatures(genClass, false));
-    for (GenFeature genFeature : subsetSupersetGenFeatures) {
-    stringBuffer.append(TEXT_279);
-    stringBuffer.append(genFeature.getQualifiedFeatureAccessor());
-    stringBuffer.append(TEXT_280);
-    stringBuffer.append(genModel.getImportedName("org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand"));
-    stringBuffer.append(TEXT_281);
-    stringBuffer.append(UML2GenModelUtil.getSupersetFeatureAccessorArray(genClass, genFeature));
-    stringBuffer.append(TEXT_282);
-    stringBuffer.append(UML2GenModelUtil.getSubsetFeatureAccessorArray(genClass, genFeature));
-    stringBuffer.append(TEXT_283);
-    }
-    }
-    stringBuffer.append(TEXT_284);
-    }
-    stringBuffer.append(TEXT_285);
     genModel.emitSortedImports();
-    stringBuffer.append(TEXT_286);
+    stringBuffer.append(TEXT_273);
     return stringBuffer.toString();
   }
 }
