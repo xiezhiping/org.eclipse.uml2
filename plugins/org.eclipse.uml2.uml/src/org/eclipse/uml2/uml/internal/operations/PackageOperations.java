@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,10 +8,11 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.36 2007/05/23 19:31:12 khussey Exp $
+ * $Id: PackageOperations.java,v 1.37 2008/08/25 20:03:05 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -600,7 +602,33 @@ public class PackageOperations
 		}
 
 		copier.copyReferences();
+					
+		for (EObject key : copier.keySet()) {
+			EObject copy = copier.get(key);
 
+			for (Setting setting : new ArrayList<EStructuralFeature.Setting>(
+				getNonNavigableInverseReferences(key))) {
+
+				EStructuralFeature eStructuralFeature = setting
+					.getEStructuralFeature();
+
+				if (eStructuralFeature != null
+					&& eStructuralFeature.isChangeable()) {
+
+					if (eStructuralFeature.isMany()) {
+						Object value = setting.getEObject().eGet(
+							eStructuralFeature);
+
+						@SuppressWarnings("unchecked")
+						EList<EObject> list = ((EList<EObject>) value);
+						list.set(list.indexOf(key), copy);
+					} else {
+						setting.set(copy);
+					}
+				}
+			}
+		}	
+						
 		destroyAll(stereotypeApplications);
 
 		return profile.getOwnedExtensions(true).isEmpty()
