@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLAdapterFactory.java,v 1.12 2008/01/09 18:56:03 khussey Exp $
+ * $Id: UMLAdapterFactory.java,v 1.13 2008/10/02 20:57:04 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -228,6 +228,7 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StartClassifierBehaviorAction;
+import org.eclipse.uml2.uml.StartObjectBehaviorAction;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateInvariant;
 import org.eclipse.uml2.uml.StateMachine;
@@ -497,12 +498,6 @@ public class UMLAdapterFactory
 		}
 
 		@Override
-		public Adapter caseConnectableElementTemplateParameter(
-				ConnectableElementTemplateParameter object) {
-			return createConnectableElementTemplateParameterAdapter();
-		}
-
-		@Override
 		public Adapter caseConnectorEnd(ConnectorEnd object) {
 			return createConnectorEndAdapter();
 		}
@@ -713,6 +708,12 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseStructuralFeature(StructuralFeature object) {
 			return createStructuralFeatureAdapter();
+		}
+
+		@Override
+		public Adapter caseConnectableElementTemplateParameter(
+				ConnectableElementTemplateParameter object) {
+			return createConnectableElementTemplateParameterAdapter();
 		}
 
 		@Override
@@ -1180,6 +1181,11 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseObjectFlow(ObjectFlow object) {
+			return createObjectFlowAdapter();
+		}
+
+		@Override
 		public Adapter caseActivityFinalNode(ActivityFinalNode object) {
 			return createActivityFinalNodeAdapter();
 		}
@@ -1532,6 +1538,12 @@ public class UMLAdapterFactory
 		}
 
 		@Override
+		public Adapter caseStartObjectBehaviorAction(
+				StartObjectBehaviorAction object) {
+			return createStartObjectBehaviorActionAdapter();
+		}
+
+		@Override
 		public Adapter caseJoinNode(JoinNode object) {
 			return createJoinNodeAdapter();
 		}
@@ -1539,11 +1551,6 @@ public class UMLAdapterFactory
 		@Override
 		public Adapter caseDataStoreNode(DataStoreNode object) {
 			return createDataStoreNodeAdapter();
-		}
-
-		@Override
-		public Adapter caseObjectFlow(ObjectFlow object) {
-			return createObjectFlowAdapter();
 		}
 
 		@Override
@@ -4626,6 +4633,20 @@ public class UMLAdapterFactory
 	 * @generated
 	 */
 	public Adapter createReduceActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.uml2.uml.StartObjectBehaviorAction <em>Start Object Behavior Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.uml2.uml.StartObjectBehaviorAction
+	 * @generated
+	 */
+	public Adapter createStartObjectBehaviorActionAdapter() {
 		return null;
 	}
 

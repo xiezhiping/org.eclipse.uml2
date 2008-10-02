@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *
- * $Id: UMLUtil.java,v 1.76 2008/08/19 18:50:23 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.77 2008/10/02 20:57:04 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2466,26 +2466,21 @@ public class UMLUtil
 									for (TemplateParameterSubstitution parameterSubstitution : templateBinding
 										.getParameterSubstitutions()) {
 
-										EList<ParameterableElement> actuals = parameterSubstitution
-											.getActuals();
+										ParameterableElement actual = parameterSubstitution
+											.getActual();
 
-										ParameterableElement argument = actuals
-											.isEmpty()
-											? null
-											: actuals.get(0);
-
-										if (argument == null) {
+										if (actual == null) {
 											TemplateParameter formal = parameterSubstitution
 												.getFormal();
 
 											if (formal != null) {
-												argument = formal.getDefault();
+												actual = formal.getDefault();
 											}
 										}
 
-										if (argument instanceof Classifier) {
+										if (actual instanceof Classifier) {
 											eTypeArguments
-												.add(getEGenericType((Classifier) argument));
+												.add(getEGenericType((Classifier) actual));
 										}
 									}
 								}
@@ -5866,8 +5861,8 @@ public class UMLUtil
 
 						if (!(safeEquals(parameterSubstitution.getFormal(),
 							otherParameterSubstitution.getFormal()) && safeEquals(
-							parameterSubstitution.getActuals(),
-							otherParameterSubstitution.getActuals()))) {
+							parameterSubstitution.getActual(),
+							otherParameterSubstitution.getActual()))) {
 
 							return false;
 						}
@@ -6359,8 +6354,7 @@ public class UMLUtil
 									.createParameterSubstitution();
 								parameterSubstitution
 									.setFormal(templateParameter);
-								parameterSubstitution.getActuals().add(
-									argumentType);
+								parameterSubstitution.setActual(argumentType);
 							}
 						}
 					}

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLSwitch.java,v 1.17 2008/01/09 18:56:03 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.18 2008/10/02 20:57:04 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -226,6 +226,7 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StartClassifierBehaviorAction;
+import org.eclipse.uml2.uml.StartObjectBehaviorAction;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateInvariant;
 import org.eclipse.uml2.uml.StateMachine;
@@ -888,19 +889,6 @@ public class UMLSwitch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
-				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
-				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseTemplateParameter(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseElement(connectableElementTemplateParameter);
-				if (result == null)
-					result = caseEModelElement(connectableElementTemplateParameter);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
 			case UMLPackage.CONNECTOR_END : {
 				ConnectorEnd connectorEnd = (ConnectorEnd) theEObject;
 				T result = caseConnectorEnd(connectorEnd);
@@ -924,8 +912,6 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseDeploymentTarget(property);
 				if (result == null)
-					result = caseTemplateableElement(property);
-				if (result == null)
 					result = caseFeature(property);
 				if (result == null)
 					result = caseTypedElement(property);
@@ -936,9 +922,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseNamedElement(property);
 				if (result == null)
-					result = caseElement(property);
-				if (result == null)
 					result = caseRedefinableElement(property);
+				if (result == null)
+					result = caseElement(property);
 				if (result == null)
 					result = caseEModelElement(property);
 				if (result == null)
@@ -1485,8 +1471,6 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseDeploymentTarget(port);
 				if (result == null)
-					result = caseTemplateableElement(port);
-				if (result == null)
 					result = caseFeature(port);
 				if (result == null)
 					result = caseTypedElement(port);
@@ -1497,9 +1481,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseNamedElement(port);
 				if (result == null)
-					result = caseElement(port);
-				if (result == null)
 					result = caseRedefinableElement(port);
+				if (result == null)
+					result = caseElement(port);
 				if (result == null)
 					result = caseEModelElement(port);
 				if (result == null)
@@ -1686,8 +1670,6 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseDeploymentTarget(extensionEnd);
 				if (result == null)
-					result = caseTemplateableElement(extensionEnd);
-				if (result == null)
 					result = caseFeature(extensionEnd);
 				if (result == null)
 					result = caseTypedElement(extensionEnd);
@@ -1698,9 +1680,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseNamedElement(extensionEnd);
 				if (result == null)
-					result = caseElement(extensionEnd);
-				if (result == null)
 					result = caseRedefinableElement(extensionEnd);
+				if (result == null)
+					result = caseElement(extensionEnd);
 				if (result == null)
 					result = caseEModelElement(extensionEnd);
 				if (result == null)
@@ -1869,6 +1851,19 @@ public class UMLSwitch<T> {
 					result = caseElement(structuralFeature);
 				if (result == null)
 					result = caseEModelElement(structuralFeature);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER : {
+				ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter) theEObject;
+				T result = caseConnectableElementTemplateParameter(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseTemplateParameter(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseElement(connectableElementTemplateParameter);
+				if (result == null)
+					result = caseEModelElement(connectableElementTemplateParameter);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3718,6 +3713,23 @@ public class UMLSwitch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.OBJECT_FLOW : {
+				ObjectFlow objectFlow = (ObjectFlow) theEObject;
+				T result = caseObjectFlow(objectFlow);
+				if (result == null)
+					result = caseActivityEdge(objectFlow);
+				if (result == null)
+					result = caseRedefinableElement(objectFlow);
+				if (result == null)
+					result = caseNamedElement(objectFlow);
+				if (result == null)
+					result = caseElement(objectFlow);
+				if (result == null)
+					result = caseEModelElement(objectFlow);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.ACTIVITY_FINAL_NODE : {
 				ActivityFinalNode activityFinalNode = (ActivityFinalNode) theEObject;
 				T result = caseActivityFinalNode(activityFinalNode);
@@ -5232,6 +5244,31 @@ public class UMLSwitch<T> {
 					result = defaultCase(theEObject);
 				return result;
 			}
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION : {
+				StartObjectBehaviorAction startObjectBehaviorAction = (StartObjectBehaviorAction) theEObject;
+				T result = caseStartObjectBehaviorAction(startObjectBehaviorAction);
+				if (result == null)
+					result = caseCallAction(startObjectBehaviorAction);
+				if (result == null)
+					result = caseInvocationAction(startObjectBehaviorAction);
+				if (result == null)
+					result = caseAction(startObjectBehaviorAction);
+				if (result == null)
+					result = caseExecutableNode(startObjectBehaviorAction);
+				if (result == null)
+					result = caseActivityNode(startObjectBehaviorAction);
+				if (result == null)
+					result = caseRedefinableElement(startObjectBehaviorAction);
+				if (result == null)
+					result = caseNamedElement(startObjectBehaviorAction);
+				if (result == null)
+					result = caseElement(startObjectBehaviorAction);
+				if (result == null)
+					result = caseEModelElement(startObjectBehaviorAction);
+				if (result == null)
+					result = defaultCase(theEObject);
+				return result;
+			}
 			case UMLPackage.JOIN_NODE : {
 				JoinNode joinNode = (JoinNode) theEObject;
 				T result = caseJoinNode(joinNode);
@@ -5270,23 +5307,6 @@ public class UMLSwitch<T> {
 					result = caseElement(dataStoreNode);
 				if (result == null)
 					result = caseEModelElement(dataStoreNode);
-				if (result == null)
-					result = defaultCase(theEObject);
-				return result;
-			}
-			case UMLPackage.OBJECT_FLOW : {
-				ObjectFlow objectFlow = (ObjectFlow) theEObject;
-				T result = caseObjectFlow(objectFlow);
-				if (result == null)
-					result = caseActivityEdge(objectFlow);
-				if (result == null)
-					result = caseRedefinableElement(objectFlow);
-				if (result == null)
-					result = caseNamedElement(objectFlow);
-				if (result == null)
-					result = caseElement(objectFlow);
-				if (result == null)
-					result = caseEModelElement(objectFlow);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -8718,6 +8738,21 @@ public class UMLSwitch<T> {
 	 * @generated
 	 */
 	public T caseReduceAction(ReduceAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Start Object Behavior Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStartObjectBehaviorAction(StartObjectBehaviorAction object) {
 		return null;
 	}
 

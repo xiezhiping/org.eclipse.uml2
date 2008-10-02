@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *
- * $Id: UMLValidator.java,v 1.25 2008/03/25 13:41:38 jbruck Exp $
+ * $Id: UMLValidator.java,v 1.26 2008/10/02 20:57:04 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -241,6 +241,7 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StartClassifierBehaviorAction;
+import org.eclipse.uml2.uml.StartObjectBehaviorAction;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateInvariant;
 import org.eclipse.uml2.uml.StateMachine;
@@ -437,7 +438,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED = 128;
+	public static final int PROFILE__METACLASS_REFERENCE_NOT_SPECIALIZED = 127;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate References Same Metamodel' of 'Profile'.
@@ -445,7 +446,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROFILE__REFERENCES_SAME_METAMODEL = 129;
+	public static final int PROFILE__REFERENCES_SAME_METAMODEL = 128;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Name Not Clash' of 'Stereotype'.
@@ -453,7 +454,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__NAME_NOT_CLASH = 126;
+	public static final int STEREOTYPE__NAME_NOT_CLASH = 125;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Generalize' of 'Stereotype'.
@@ -461,7 +462,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STEREOTYPE__GENERALIZE = 127;
+	public static final int STEREOTYPE__GENERALIZE = 126;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Passive Class' of 'Class'.
@@ -469,7 +470,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASS__PASSIVE_CLASS = 69;
+	public static final int CLASS__PASSIVE_CLASS = 68;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Class Behavior' of 'Behaviored Classifier'.
@@ -477,7 +478,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 70;
+	public static final int BEHAVIORED_CLASSIFIER__CLASS_BEHAVIOR = 69;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Cycles In Generalization' of 'Classifier'.
@@ -557,7 +558,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__MUST_HAVE_NAME = 136;
+	public static final int USE_CASE__MUST_HAVE_NAME = 135;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binary Associations' of 'Use Case'.
@@ -565,7 +566,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__BINARY_ASSOCIATIONS = 137;
+	public static final int USE_CASE__BINARY_ASSOCIATIONS = 136;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Association To Use Case' of 'Use Case'.
@@ -573,7 +574,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 138;
+	public static final int USE_CASE__NO_ASSOCIATION_TO_USE_CASE = 137;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Include Self' of 'Use Case'.
@@ -581,7 +582,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 139;
+	public static final int USE_CASE__CANNOT_INCLUDE_SELF = 138;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Extension Points' of 'Extend'.
@@ -589,7 +590,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTEND__EXTENSION_POINTS = 140;
+	public static final int EXTEND__EXTENSION_POINTS = 139;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Apply To Self' of 'Constraint'.
@@ -637,7 +638,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 141;
+	public static final int EXTENSION_POINT__MUST_HAVE_NAME = 140;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Language Body Size' of 'Opaque Expression'.
@@ -704,20 +705,12 @@ public class UMLValidator
 	public static final int PARAMETER__IN_AND_OUT = 41;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Gt0' of 'Multiplicity Element'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int MULTIPLICITY_ELEMENT__UPPER_GT0 = 42;
-
-	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Lower Ge0' of 'Multiplicity Element'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 43;
+	public static final int MULTIPLICITY_ELEMENT__LOWER_GE0 = 42;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Upper Ge Lower' of 'Multiplicity Element'.
@@ -725,7 +718,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 44;
+	public static final int MULTIPLICITY_ELEMENT__UPPER_GE_LOWER = 43;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification No Side Effects' of 'Multiplicity Element'.
@@ -733,7 +726,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 45;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_NO_SIDE_EFFECTS = 44;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Value Specification Constant' of 'Multiplicity Element'.
@@ -741,7 +734,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 46;
+	public static final int MULTIPLICITY_ELEMENT__VALUE_SPECIFICATION_CONSTANT = 45;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Connector End'.
@@ -749,7 +742,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__MULTIPLICITY = 47;
+	public static final int CONNECTOR_END__MULTIPLICITY = 46;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Part With Port Empty' of 'Connector End'.
@@ -757,7 +750,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 48;
+	public static final int CONNECTOR_END__PART_WITH_PORT_EMPTY = 47;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Role And Part With Port' of 'Connector End'.
@@ -765,7 +758,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 49;
+	public static final int CONNECTOR_END__ROLE_AND_PART_WITH_PORT = 48;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Self Part With Port' of 'Connector End'.
@@ -773,7 +766,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 50;
+	public static final int CONNECTOR_END__SELF_PART_WITH_PORT = 49;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Composite' of 'Property'.
@@ -781,7 +774,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 51;
+	public static final int PROPERTY__MULTIPLICITY_OF_COMPOSITE = 50;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Context Conforms' of 'Property'.
@@ -789,7 +782,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 52;
+	public static final int PROPERTY__SUBSETTING_CONTEXT_CONFORMS = 51;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Redefined Property Inherited' of 'Property'.
@@ -797,7 +790,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 53;
+	public static final int PROPERTY__REDEFINED_PROPERTY_INHERITED = 52;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetting Rules' of 'Property'.
@@ -805,7 +798,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTING_RULES = 54;
+	public static final int PROPERTY__SUBSETTING_RULES = 53;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Readonly' of 'Property'.
@@ -813,7 +806,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__NAVIGABLE_READONLY = 55;
+	public static final int PROPERTY__NAVIGABLE_READONLY = 54;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Derived' of 'Property'.
@@ -821,7 +814,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 56;
+	public static final int PROPERTY__DERIVED_UNION_IS_DERIVED = 55;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Derived Union Is Read Only' of 'Property'.
@@ -829,7 +822,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 57;
+	public static final int PROPERTY__DERIVED_UNION_IS_READ_ONLY = 56;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subsetted Property Names' of 'Property'.
@@ -837,7 +830,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 58;
+	public static final int PROPERTY__SUBSETTED_PROPERTY_NAMES = 57;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Property'.
@@ -845,7 +838,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__DEPLOYMENT_TARGET = 59;
+	public static final int PROPERTY__DEPLOYMENT_TARGET = 58;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Binding To Attribute' of 'Property'.
@@ -853,7 +846,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 60;
+	public static final int PROPERTY__BINDING_TO_ATTRIBUTE = 59;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployed Elements' of 'Deployment Specification'.
@@ -861,7 +854,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 61;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYED_ELEMENTS = 60;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Deployment Specification'.
@@ -869,7 +862,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 62;
+	public static final int DEPLOYMENT_SPECIFICATION__DEPLOYMENT_TARGET = 61;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate At Most One Return' of 'Operation'.
@@ -877,7 +870,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__AT_MOST_ONE_RETURN = 63;
+	public static final int OPERATION__AT_MOST_ONE_RETURN = 62;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Only Body For Query' of 'Operation'.
@@ -885,7 +878,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 64;
+	public static final int OPERATION__ONLY_BODY_FOR_QUERY = 63;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameters Match' of 'Behavior'.
@@ -893,7 +886,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__PARAMETERS_MATCH = 65;
+	public static final int BEHAVIOR__PARAMETERS_MATCH = 64;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Feature Of Context Classifier' of 'Behavior'.
@@ -901,7 +894,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 66;
+	public static final int BEHAVIOR__FEATURE_OF_CONTEXT_CLASSIFIER = 65;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Realize' of 'Behavior'.
@@ -909,7 +902,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MUST_REALIZE = 67;
+	public static final int BEHAVIOR__MUST_REALIZE = 66;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Most One Behaviour' of 'Behavior'.
@@ -917,7 +910,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 68;
+	public static final int BEHAVIOR__MOST_ONE_BEHAVIOUR = 67;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Parameterized Entity' of 'Parameter Set'.
@@ -925,7 +918,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 130;
+	public static final int PARAMETER_SET__SAME_PARAMETERIZED_ENTITY = 129;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input' of 'Parameter Set'.
@@ -933,7 +926,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__INPUT = 131;
+	public static final int PARAMETER_SET__INPUT = 130;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Two Parameter Sets' of 'Parameter Set'.
@@ -941,7 +934,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 132;
+	public static final int PARAMETER_SET__TWO_PARAMETER_SETS = 131;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Interface'.
@@ -949,7 +942,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERFACE__VISIBILITY = 71;
+	public static final int INTERFACE__VISIBILITY = 70;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Query' of 'Reception'.
@@ -957,7 +950,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECEPTION__NOT_QUERY = 72;
+	public static final int RECEPTION__NOT_QUERY = 71;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Protocol Transitions' of 'Protocol State Machine'.
@@ -965,7 +958,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 73;
+	public static final int PROTOCOL_STATE_MACHINE__PROTOCOL_TRANSITIONS = 72;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Exit Do' of 'Protocol State Machine'.
@@ -973,7 +966,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 74;
+	public static final int PROTOCOL_STATE_MACHINE__ENTRY_EXIT_DO = 73;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep Or Shallow History' of 'Protocol State Machine'.
@@ -981,7 +974,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 75;
+	public static final int PROTOCOL_STATE_MACHINE__DEEP_OR_SHALLOW_HISTORY = 74;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ports Connected' of 'Protocol State Machine'.
@@ -989,7 +982,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 76;
+	public static final int PROTOCOL_STATE_MACHINE__PORTS_CONNECTED = 75;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'Protocol State Machine'.
@@ -997,7 +990,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 77;
+	public static final int PROTOCOL_STATE_MACHINE__CLASSIFIER_CONTEXT = 76;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Context' of 'State Machine'.
@@ -1005,7 +998,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 78;
+	public static final int STATE_MACHINE__CLASSIFIER_CONTEXT = 77;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Context Classifier' of 'State Machine'.
@@ -1013,7 +1006,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 79;
+	public static final int STATE_MACHINE__CONTEXT_CLASSIFIER = 78;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connection Points' of 'State Machine'.
@@ -1021,7 +1014,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__CONNECTION_POINTS = 80;
+	public static final int STATE_MACHINE__CONNECTION_POINTS = 79;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Method' of 'State Machine'.
@@ -1029,7 +1022,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE_MACHINE__METHOD = 81;
+	public static final int STATE_MACHINE__METHOD = 80;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Region'.
@@ -1037,7 +1030,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__INITIAL_VERTEX = 82;
+	public static final int REGION__INITIAL_VERTEX = 81;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deep History Vertex' of 'Region'.
@@ -1045,7 +1038,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__DEEP_HISTORY_VERTEX = 83;
+	public static final int REGION__DEEP_HISTORY_VERTEX = 82;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Shallow History Vertex' of 'Region'.
@@ -1053,7 +1046,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__SHALLOW_HISTORY_VERTEX = 84;
+	public static final int REGION__SHALLOW_HISTORY_VERTEX = 83;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Region'.
@@ -1061,7 +1054,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REGION__OWNED = 85;
+	public static final int REGION__OWNED = 84;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment Guards' of 'Transition'.
@@ -1069,7 +1062,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 86;
+	public static final int TRANSITION__FORK_SEGMENT_GUARDS = 85;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment Guards' of 'Transition'.
@@ -1077,7 +1070,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 87;
+	public static final int TRANSITION__JOIN_SEGMENT_GUARDS = 86;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Segment State' of 'Transition'.
@@ -1085,7 +1078,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__FORK_SEGMENT_STATE = 88;
+	public static final int TRANSITION__FORK_SEGMENT_STATE = 87;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Segment State' of 'Transition'.
@@ -1093,7 +1086,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__JOIN_SEGMENT_STATE = 89;
+	public static final int TRANSITION__JOIN_SEGMENT_STATE = 88;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing Pseudostates' of 'Transition'.
@@ -1101,7 +1094,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 90;
+	public static final int TRANSITION__OUTGOING_PSEUDOSTATES = 89;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Transition' of 'Transition'.
@@ -1109,7 +1102,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__INITIAL_TRANSITION = 91;
+	public static final int TRANSITION__INITIAL_TRANSITION = 90;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signatures Compatible' of 'Transition'.
@@ -1117,7 +1110,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 92;
+	public static final int TRANSITION__SIGNATURES_COMPATIBLE = 91;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Required Interfaces' of 'Port'.
@@ -1125,7 +1118,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__REQUIRED_INTERFACES = 93;
+	public static final int PORT__REQUIRED_INTERFACES = 92;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Aggregation' of 'Port'.
@@ -1133,7 +1126,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_AGGREGATION = 94;
+	public static final int PORT__PORT_AGGREGATION = 93;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Port Destroyed' of 'Port'.
@@ -1141,7 +1134,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__PORT_DESTROYED = 95;
+	public static final int PORT__PORT_DESTROYED = 94;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Default Value' of 'Port'.
@@ -1149,7 +1142,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PORT__DEFAULT_VALUE = 96;
+	public static final int PORT__DEFAULT_VALUE = 95;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine States' of 'State'.
@@ -1157,7 +1150,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_STATES = 97;
+	public static final int STATE__SUBMACHINE_STATES = 96;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Destinations Or Sources Of Transitions' of 'State'.
@@ -1165,7 +1158,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 98;
+	public static final int STATE__DESTINATIONS_OR_SOURCES_OF_TRANSITIONS = 97;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Submachine Or Regions' of 'State'.
@@ -1173,7 +1166,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__SUBMACHINE_OR_REGIONS = 99;
+	public static final int STATE__SUBMACHINE_OR_REGIONS = 98;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Composite States' of 'State'.
@@ -1181,7 +1174,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__COMPOSITE_STATES = 100;
+	public static final int STATE__COMPOSITE_STATES = 99;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Or Exit' of 'State'.
@@ -1189,7 +1182,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STATE__ENTRY_OR_EXIT = 101;
+	public static final int STATE__ENTRY_OR_EXIT = 100;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Entry Pseudostates' of 'Connection Point Reference'.
@@ -1197,7 +1190,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 102;
+	public static final int CONNECTION_POINT_REFERENCE__ENTRY_PSEUDOSTATES = 101;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Exit Pseudostates' of 'Connection Point Reference'.
@@ -1205,7 +1198,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 103;
+	public static final int CONNECTION_POINT_REFERENCE__EXIT_PSEUDOSTATES = 102;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Initial Vertex' of 'Pseudostate'.
@@ -1213,7 +1206,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__INITIAL_VERTEX = 104;
+	public static final int PSEUDOSTATE__INITIAL_VERTEX = 103;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate History Vertices' of 'Pseudostate'.
@@ -1221,7 +1214,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__HISTORY_VERTICES = 105;
+	public static final int PSEUDOSTATE__HISTORY_VERTICES = 104;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Join Vertex' of 'Pseudostate'.
@@ -1229,7 +1222,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JOIN_VERTEX = 106;
+	public static final int PSEUDOSTATE__JOIN_VERTEX = 105;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Incoming' of 'Pseudostate'.
@@ -1237,7 +1230,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 107;
+	public static final int PSEUDOSTATE__TRANSITIONS_INCOMING = 106;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Fork Vertex' of 'Pseudostate'.
@@ -1245,7 +1238,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__FORK_VERTEX = 108;
+	public static final int PSEUDOSTATE__FORK_VERTEX = 107;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transitions Outgoing' of 'Pseudostate'.
@@ -1253,7 +1246,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 109;
+	public static final int PSEUDOSTATE__TRANSITIONS_OUTGOING = 108;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Junction Vertex' of 'Pseudostate'.
@@ -1261,7 +1254,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 110;
+	public static final int PSEUDOSTATE__JUNCTION_VERTEX = 109;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Choice Vertex' of 'Pseudostate'.
@@ -1269,7 +1262,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__CHOICE_VERTEX = 111;
+	public static final int PSEUDOSTATE__CHOICE_VERTEX = 110;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing From Initial' of 'Pseudostate'.
@@ -1277,7 +1270,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 112;
+	public static final int PSEUDOSTATE__OUTGOING_FROM_INITIAL = 111;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Specialized End Number' of 'Association'.
@@ -1317,7 +1310,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 133;
+	public static final int COLLABORATION_USE__CLIENT_ELEMENTS = 132;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Every Role' of 'Collaboration Use'.
@@ -1325,7 +1318,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__EVERY_ROLE = 134;
+	public static final int COLLABORATION_USE__EVERY_ROLE = 133;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Connectors' of 'Collaboration Use'.
@@ -1333,7 +1326,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COLLABORATION_USE__CONNECTORS = 135;
+	public static final int COLLABORATION_USE__CONNECTORS = 134;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicities' of 'Structured Classifier'.
@@ -1341,7 +1334,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 113;
+	public static final int STRUCTURED_CLASSIFIER__MULTIPLICITIES = 112;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Types' of 'Connector'.
@@ -1349,7 +1342,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__TYPES = 114;
+	public static final int CONNECTOR__TYPES = 113;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible' of 'Connector'.
@@ -1357,7 +1350,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__COMPATIBLE = 115;
+	public static final int CONNECTOR__COMPATIBLE = 114;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Roles' of 'Connector'.
@@ -1365,7 +1358,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__ROLES = 116;
+	public static final int CONNECTOR__ROLES = 115;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interfaces Ports' of 'Connector'.
@@ -1373,7 +1366,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 117;
+	public static final int CONNECTOR__BETWEEN_INTERFACES_PORTS = 116;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interface Port Implements' of 'Connector'.
@@ -1381,7 +1374,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS = 118;
+	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_IMPLEMENTS = 117;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Between Interface Port Signature' of 'Connector'.
@@ -1389,7 +1382,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_SIGNATURE = 119;
+	public static final int CONNECTOR__BETWEEN_INTERFACE_PORT_SIGNATURE = 118;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Union Signature Compatible' of 'Connector'.
@@ -1397,7 +1390,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__UNION_SIGNATURE_COMPATIBLE = 120;
+	public static final int CONNECTOR__UNION_SIGNATURE_COMPATIBLE = 119;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Assembly Connector' of 'Connector'.
@@ -1405,7 +1398,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONNECTOR__ASSEMBLY_CONNECTOR = 121;
+	public static final int CONNECTOR__ASSEMBLY_CONNECTOR = 120;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Inherited Parameters' of 'Redefinable Template Signature'.
@@ -1413,7 +1406,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 142;
+	public static final int REDEFINABLE_TEMPLATE_SIGNATURE__INHERITED_PARAMETERS = 141;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Constraining Classifier' of 'Classifier Template Parameter'.
@@ -1421,7 +1414,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 143;
+	public static final int CLASSIFIER_TEMPLATE_PARAMETER__HAS_CONSTRAINING_CLASSIFIER = 142;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Owned End' of 'Extension'.
@@ -1429,7 +1422,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION__NON_OWNED_END = 122;
+	public static final int EXTENSION__NON_OWNED_END = 121;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Is Binary' of 'Extension'.
@@ -1437,7 +1430,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION__IS_BINARY = 123;
+	public static final int EXTENSION__IS_BINARY = 122;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Extension End'.
@@ -1445,7 +1438,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__MULTIPLICITY = 124;
+	public static final int EXTENSION_END__MULTIPLICITY = 123;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Aggregation' of 'Extension End'.
@@ -1453,7 +1446,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXTENSION_END__AGGREGATION = 125;
+	public static final int EXTENSION_END__AGGREGATION = 124;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Operands' of 'String Expression'.
@@ -1461,7 +1454,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRING_EXPRESSION__OPERANDS = 144;
+	public static final int STRING_EXPRESSION__OPERANDS = 143;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Subexpressions' of 'String Expression'.
@@ -1469,7 +1462,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRING_EXPRESSION__SUBEXPRESSIONS = 145;
+	public static final int STRING_EXPRESSION__SUBEXPRESSIONS = 144;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Defining Feature' of 'Instance Specification'.
@@ -1477,7 +1470,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__DEFINING_FEATURE = 146;
+	public static final int INSTANCE_SPECIFICATION__DEFINING_FEATURE = 145;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Structural Feature' of 'Instance Specification'.
@@ -1485,7 +1478,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__STRUCTURAL_FEATURE = 147;
+	public static final int INSTANCE_SPECIFICATION__STRUCTURAL_FEATURE = 146;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Target' of 'Instance Specification'.
@@ -1493,7 +1486,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_TARGET = 148;
+	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_TARGET = 147;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Deployment Artifact' of 'Instance Specification'.
@@ -1501,7 +1494,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT = 149;
+	public static final int INSTANCE_SPECIFICATION__DEPLOYMENT_ARTIFACT = 148;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Output Parameter' of 'Function Behavior'.
@@ -1509,7 +1502,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FUNCTION_BEHAVIOR__ONE_OUTPUT_PARAMETER = 150;
+	public static final int FUNCTION_BEHAVIOR__ONE_OUTPUT_PARAMETER = 149;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Types Of Parameters' of 'Function Behavior'.
@@ -1517,7 +1510,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FUNCTION_BEHAVIOR__TYPES_OF_PARAMETERS = 151;
+	public static final int FUNCTION_BEHAVIOR__TYPES_OF_PARAMETERS = 150;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Associations' of 'Actor'.
@@ -1525,7 +1518,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTOR__ASSOCIATIONS = 235;
+	public static final int ACTOR__ASSOCIATIONS = 236;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Have Name' of 'Actor'.
@@ -1533,7 +1526,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTOR__MUST_HAVE_NAME = 236;
+	public static final int ACTOR__MUST_HAVE_NAME = 237;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Sending Receiving Message Event' of 'Message'.
@@ -1541,7 +1534,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SENDING_RECEIVING_MESSAGE_EVENT = 204;
+	public static final int MESSAGE__SENDING_RECEIVING_MESSAGE_EVENT = 205;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signature Refer To' of 'Message'.
@@ -1549,7 +1542,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_REFER_TO = 205;
+	public static final int MESSAGE__SIGNATURE_REFER_TO = 206;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signature Is Operation' of 'Message'.
@@ -1557,7 +1550,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_IS_OPERATION = 206;
+	public static final int MESSAGE__SIGNATURE_IS_OPERATION = 207;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Signature Is Signal' of 'Message'.
@@ -1565,7 +1558,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__SIGNATURE_IS_SIGNAL = 207;
+	public static final int MESSAGE__SIGNATURE_IS_SIGNAL = 208;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments' of 'Message'.
@@ -1573,7 +1566,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__ARGUMENTS = 208;
+	public static final int MESSAGE__ARGUMENTS = 209;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Cross Boundaries' of 'Message'.
@@ -1581,7 +1574,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__CANNOT_CROSS_BOUNDARIES = 209;
+	public static final int MESSAGE__CANNOT_CROSS_BOUNDARIES = 210;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Occurrence Specifications' of 'Message'.
@@ -1589,7 +1582,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MESSAGE__OCCURRENCE_SPECIFICATIONS = 210;
+	public static final int MESSAGE__OCCURRENCE_SPECIFICATIONS = 211;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Interaction Uses Share Lifeline' of 'Lifeline'.
@@ -1597,7 +1590,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__INTERACTION_USES_SHARE_LIFELINE = 211;
+	public static final int LIFELINE__INTERACTION_USES_SHARE_LIFELINE = 212;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selector Specified' of 'Lifeline'.
@@ -1605,7 +1598,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__SELECTOR_SPECIFIED = 212;
+	public static final int LIFELINE__SELECTOR_SPECIFIED = 213;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Classifier' of 'Lifeline'.
@@ -1613,7 +1606,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LIFELINE__SAME_CLASSIFIER = 213;
+	public static final int LIFELINE__SAME_CLASSIFIER = 214;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parts Of Internal Structures' of 'Part Decomposition'.
@@ -1621,7 +1614,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES = 214;
+	public static final int PART_DECOMPOSITION__PARTS_OF_INTERNAL_STRUCTURES = 215;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Assume' of 'Part Decomposition'.
@@ -1629,7 +1622,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PART_DECOMPOSITION__ASSUME = 215;
+	public static final int PART_DECOMPOSITION__ASSUME = 216;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Commutativity Of Decomposition' of 'Part Decomposition'.
@@ -1637,7 +1630,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION = 216;
+	public static final int PART_DECOMPOSITION__COMMUTATIVITY_OF_DECOMPOSITION = 217;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Gates Match' of 'Interaction Use'.
@@ -1645,7 +1638,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__GATES_MATCH = 217;
+	public static final int INTERACTION_USE__GATES_MATCH = 218;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate All Lifelines' of 'Interaction Use'.
@@ -1653,7 +1646,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ALL_LIFELINES = 218;
+	public static final int INTERACTION_USE__ALL_LIFELINES = 219;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments Correspond To Parameters' of 'Interaction Use'.
@@ -1661,7 +1654,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS = 219;
+	public static final int INTERACTION_USE__ARGUMENTS_CORRESPOND_TO_PARAMETERS = 220;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Arguments Are Constants' of 'Interaction Use'.
@@ -1669,7 +1662,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS = 220;
+	public static final int INTERACTION_USE__ARGUMENTS_ARE_CONSTANTS = 221;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Messages Actual Gate' of 'Gate'.
@@ -1677,7 +1670,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GATE__MESSAGES_ACTUAL_GATE = 221;
+	public static final int GATE__MESSAGES_ACTUAL_GATE = 222;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Messages Combined Fragment' of 'Gate'.
@@ -1685,7 +1678,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int GATE__MESSAGES_COMBINED_FRAGMENT = 222;
+	public static final int GATE__MESSAGES_COMBINED_FRAGMENT = 223;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Activity Node'.
@@ -1693,7 +1686,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_NODE__OWNED = 153;
+	public static final int ACTIVITY_NODE__OWNED = 152;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned Structured Node' of 'Activity Node'.
@@ -1701,7 +1694,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_NODE__OWNED_STRUCTURED_NODE = 152;
+	public static final int ACTIVITY_NODE__OWNED_STRUCTURED_NODE = 151;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Source And Target' of 'Activity Edge'.
@@ -1709,7 +1702,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__SOURCE_AND_TARGET = 162;
+	public static final int ACTIVITY_EDGE__SOURCE_AND_TARGET = 161;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Activity Edge'.
@@ -1717,7 +1710,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__OWNED = 163;
+	public static final int ACTIVITY_EDGE__OWNED = 162;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Structured Node' of 'Activity Edge'.
@@ -1725,7 +1718,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_EDGE__STRUCTURED_NODE = 164;
+	public static final int ACTIVITY_EDGE__STRUCTURED_NODE = 163;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Supergroups' of 'Activity'.
@@ -1733,7 +1726,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__NO_SUPERGROUPS = 158;
+	public static final int ACTIVITY__NO_SUPERGROUPS = 157;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Activity Parameter Node' of 'Activity'.
@@ -1741,7 +1734,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__ACTIVITY_PARAMETER_NODE = 159;
+	public static final int ACTIVITY__ACTIVITY_PARAMETER_NODE = 158;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Autonomous' of 'Activity'.
@@ -1749,7 +1742,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY__AUTONOMOUS = 160;
+	public static final int ACTIVITY__AUTONOMOUS = 159;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Dimension Not Contained' of 'Activity Partition'.
@@ -1757,7 +1750,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__DIMENSION_NOT_CONTAINED = 165;
+	public static final int ACTIVITY_PARTITION__DIMENSION_NOT_CONTAINED = 164;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Part' of 'Activity Partition'.
@@ -1765,7 +1758,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_PART = 166;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_PART = 165;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Classifier' of 'Activity Partition'.
@@ -1773,7 +1766,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER = 167;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_CLASSIFIER = 166;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Represents Part And Is Contained' of 'Activity Partition'.
@@ -1781,7 +1774,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARTITION__REPRESENTS_PART_AND_IS_CONTAINED = 168;
+	public static final int ACTIVITY_PARTITION__REPRESENTS_PART_AND_IS_CONTAINED = 167;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Nodes And Edges' of 'Activity Group'.
@@ -1789,7 +1782,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__NODES_AND_EDGES = 155;
+	public static final int ACTIVITY_GROUP__NODES_AND_EDGES = 154;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Contained' of 'Activity Group'.
@@ -1797,7 +1790,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__NOT_CONTAINED = 156;
+	public static final int ACTIVITY_GROUP__NOT_CONTAINED = 155;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Group Owned' of 'Activity Group'.
@@ -1805,7 +1798,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_GROUP__GROUP_OWNED = 157;
+	public static final int ACTIVITY_GROUP__GROUP_OWNED = 156;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Structured Activity Node'.
@@ -1813,7 +1806,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURED_ACTIVITY_NODE__EDGES = 154;
+	public static final int STRUCTURED_ACTIVITY_NODE__EDGES = 153;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Owned' of 'Variable'.
@@ -1821,7 +1814,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VARIABLE__OWNED = 161;
+	public static final int VARIABLE__OWNED = 160;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Interrupting Edges' of 'Interruptible Activity Region'.
@@ -1829,7 +1822,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES = 169;
+	public static final int INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGES = 168;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Exception Body' of 'Exception Handler'.
@@ -1837,7 +1830,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__EXCEPTION_BODY = 170;
+	public static final int EXCEPTION_HANDLER__EXCEPTION_BODY = 169;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pins' of 'Exception Handler'.
@@ -1845,7 +1838,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__RESULT_PINS = 171;
+	public static final int EXCEPTION_HANDLER__RESULT_PINS = 170;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Input' of 'Exception Handler'.
@@ -1853,7 +1846,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__ONE_INPUT = 172;
+	public static final int EXCEPTION_HANDLER__ONE_INPUT = 171;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edge Source Target' of 'Exception Handler'.
@@ -1861,7 +1854,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXCEPTION_HANDLER__EDGE_SOURCE_TARGET = 173;
+	public static final int EXCEPTION_HANDLER__EDGE_SOURCE_TARGET = 172;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Object Flow Edges' of 'Object Node'.
@@ -1869,7 +1862,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__OBJECT_FLOW_EDGES = 174;
+	public static final int OBJECT_NODE__OBJECT_FLOW_EDGES = 173;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Unique' of 'Object Node'.
@@ -1877,7 +1870,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__NOT_UNIQUE = 175;
+	public static final int OBJECT_NODE__NOT_UNIQUE = 174;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selection Behavior' of 'Object Node'.
@@ -1885,7 +1878,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__SELECTION_BEHAVIOR = 176;
+	public static final int OBJECT_NODE__SELECTION_BEHAVIOR = 175;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Output Parameter' of 'Object Node'.
@@ -1893,7 +1886,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_NODE__INPUT_OUTPUT_PARAMETER = 177;
+	public static final int OBJECT_NODE__INPUT_OUTPUT_PARAMETER = 176;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Edges Structured Only' of 'Output Pin'.
@@ -1901,7 +1894,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OUTPUT_PIN__INCOMING_EDGES_STRUCTURED_ONLY = 178;
+	public static final int OUTPUT_PIN__INCOMING_EDGES_STRUCTURED_ONLY = 177;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Control Pins' of 'Pin'.
@@ -1909,7 +1902,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PIN__CONTROL_PINS = 179;
+	public static final int PIN__CONTROL_PINS = 178;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Outgoing Edges Structured Only' of 'Input Pin'.
@@ -1917,7 +1910,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INPUT_PIN__OUTGOING_EDGES_STRUCTURED_ONLY = 180;
+	public static final int INPUT_PIN__OUTGOING_EDGES_STRUCTURED_ONLY = 179;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Guard Directly Prior' of 'Interaction Operand'.
@@ -1925,7 +1918,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_OPERAND__GUARD_DIRECTLY_PRIOR = 223;
+	public static final int INTERACTION_OPERAND__GUARD_DIRECTLY_PRIOR = 224;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Guard Contain References' of 'Interaction Operand'.
@@ -1933,7 +1926,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_OPERAND__GUARD_CONTAIN_REFERENCES = 224;
+	public static final int INTERACTION_OPERAND__GUARD_CONTAIN_REFERENCES = 225;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Dynamic Variables' of 'Interaction Constraint'.
@@ -1941,7 +1934,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__DYNAMIC_VARIABLES = 225;
+	public static final int INTERACTION_CONSTRAINT__DYNAMIC_VARIABLES = 226;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Global Data' of 'Interaction Constraint'.
@@ -1949,7 +1942,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__GLOBAL_DATA = 226;
+	public static final int INTERACTION_CONSTRAINT__GLOBAL_DATA = 227;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint Maxint' of 'Interaction Constraint'.
@@ -1957,7 +1950,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MININT_MAXINT = 227;
+	public static final int INTERACTION_CONSTRAINT__MININT_MAXINT = 228;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint Non Negative' of 'Interaction Constraint'.
@@ -1965,7 +1958,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MININT_NON_NEGATIVE = 228;
+	public static final int INTERACTION_CONSTRAINT__MININT_NON_NEGATIVE = 229;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maxint Positive' of 'Interaction Constraint'.
@@ -1973,7 +1966,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MAXINT_POSITIVE = 229;
+	public static final int INTERACTION_CONSTRAINT__MAXINT_POSITIVE = 230;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maxint Greater Equal Minint' of 'Interaction Constraint'.
@@ -1981,7 +1974,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INTERACTION_CONSTRAINT__MAXINT_GREATER_EQUAL_MININT = 230;
+	public static final int INTERACTION_CONSTRAINT__MAXINT_GREATER_EQUAL_MININT = 231;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Lifeline' of 'Execution Specification'.
@@ -1989,7 +1982,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXECUTION_SPECIFICATION__SAME_LIFELINE = 231;
+	public static final int EXECUTION_SPECIFICATION__SAME_LIFELINE = 232;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Action Referenced' of 'Action Execution Specification'.
@@ -1997,7 +1990,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_EXECUTION_SPECIFICATION__ACTION_REFERENCED = 232;
+	public static final int ACTION_EXECUTION_SPECIFICATION__ACTION_REFERENCED = 233;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Occurrence Above' of 'Creation Event'.
@@ -2005,7 +1998,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATION_EVENT__NO_OCCURRENCE_ABOVE = 233;
+	public static final int CREATION_EVENT__NO_OCCURRENCE_ABOVE = 234;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Occurrence Specifications Below' of 'Destruction Event'.
@@ -2013,7 +2006,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DESTRUCTION_EVENT__NO_OCCURRENCE_SPECIFICATIONS_BELOW = 234;
+	public static final int DESTRUCTION_EVENT__NO_OCCURRENCE_SPECIFICATIONS_BELOW = 235;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Opt Loop Break Neg' of 'Combined Fragment'.
@@ -2021,7 +2014,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG = 247;
+	public static final int COMBINED_FRAGMENT__OPT_LOOP_BREAK_NEG = 261;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Minint And Maxint' of 'Combined Fragment'.
@@ -2029,7 +2022,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__MININT_AND_MAXINT = 248;
+	public static final int COMBINED_FRAGMENT__MININT_AND_MAXINT = 262;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Break' of 'Combined Fragment'.
@@ -2037,7 +2030,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__BREAK = 249;
+	public static final int COMBINED_FRAGMENT__BREAK = 263;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Consider And Ignore' of 'Combined Fragment'.
@@ -2045,7 +2038,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMBINED_FRAGMENT__CONSIDER_AND_IGNORE = 250;
+	public static final int COMBINED_FRAGMENT__CONSIDER_AND_IGNORE = 264;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Name' of 'Continuation'.
@@ -2053,7 +2046,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTINUATION__SAME_NAME = 251;
+	public static final int CONTINUATION__SAME_NAME = 265;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Global' of 'Continuation'.
@@ -2061,7 +2054,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTINUATION__GLOBAL = 252;
+	public static final int CONTINUATION__GLOBAL = 266;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate First Or Last Interaction Fragment' of 'Continuation'.
@@ -2069,7 +2062,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTINUATION__FIRST_OR_LAST_INTERACTION_FRAGMENT = 253;
+	public static final int CONTINUATION__FIRST_OR_LAST_INTERACTION_FRAGMENT = 267;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Consider Or Ignore' of 'Consider Ignore Fragment'.
@@ -2077,7 +2070,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSIDER_IGNORE_FRAGMENT__CONSIDER_OR_IGNORE = 254;
+	public static final int CONSIDER_IGNORE_FRAGMENT__CONSIDER_OR_IGNORE = 268;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type' of 'Consider Ignore Fragment'.
@@ -2085,7 +2078,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONSIDER_IGNORE_FRAGMENT__TYPE = 255;
+	public static final int CONSIDER_IGNORE_FRAGMENT__TYPE = 269;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Not Abstract' of 'Create Object Action'.
@@ -2093,7 +2086,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 256;
+	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 270;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Not Association Class' of 'Create Object Action'.
@@ -2101,7 +2094,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ASSOCIATION_CLASS = 257;
+	public static final int CREATE_OBJECT_ACTION__CLASSIFIER_NOT_ASSOCIATION_CLASS = 271;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Create Object Action'.
@@ -2109,7 +2102,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__SAME_TYPE = 258;
+	public static final int CREATE_OBJECT_ACTION__SAME_TYPE = 272;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Create Object Action'.
@@ -2117,7 +2110,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_OBJECT_ACTION__MULTIPLICITY = 259;
+	public static final int CREATE_OBJECT_ACTION__MULTIPLICITY = 273;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Destroy Object Action'.
@@ -2125,7 +2118,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DESTROY_OBJECT_ACTION__MULTIPLICITY = 260;
+	public static final int DESTROY_OBJECT_ACTION__MULTIPLICITY = 274;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Type' of 'Destroy Object Action'.
@@ -2133,7 +2126,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DESTROY_OBJECT_ACTION__NO_TYPE = 261;
+	public static final int DESTROY_OBJECT_ACTION__NO_TYPE = 275;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Type' of 'Test Identity Action'.
@@ -2141,7 +2134,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEST_IDENTITY_ACTION__NO_TYPE = 262;
+	public static final int TEST_IDENTITY_ACTION__NO_TYPE = 276;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Test Identity Action'.
@@ -2149,7 +2142,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEST_IDENTITY_ACTION__MULTIPLICITY = 263;
+	public static final int TEST_IDENTITY_ACTION__MULTIPLICITY = 277;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Is Boolean' of 'Test Identity Action'.
@@ -2157,7 +2150,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TEST_IDENTITY_ACTION__RESULT_IS_BOOLEAN = 264;
+	public static final int TEST_IDENTITY_ACTION__RESULT_IS_BOOLEAN = 278;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Contained' of 'Read Self Action'.
@@ -2165,7 +2158,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__CONTAINED = 265;
+	public static final int READ_SELF_ACTION__CONTAINED = 279;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Static' of 'Read Self Action'.
@@ -2173,7 +2166,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__NOT_STATIC = 266;
+	public static final int READ_SELF_ACTION__NOT_STATIC = 280;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type' of 'Read Self Action'.
@@ -2181,7 +2174,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__TYPE = 267;
+	public static final int READ_SELF_ACTION__TYPE = 281;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Read Self Action'.
@@ -2189,7 +2182,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_SELF_ACTION__MULTIPLICITY = 268;
+	public static final int READ_SELF_ACTION__MULTIPLICITY = 282;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Static' of 'Structural Feature Action'.
@@ -2197,7 +2190,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__NOT_STATIC = 269;
+	public static final int STRUCTURAL_FEATURE_ACTION__NOT_STATIC = 283;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Structural Feature Action'.
@@ -2205,7 +2198,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__SAME_TYPE = 270;
+	public static final int STRUCTURAL_FEATURE_ACTION__SAME_TYPE = 284;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Structural Feature Action'.
@@ -2213,7 +2206,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 271;
+	public static final int STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 285;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Structural Feature Action'.
@@ -2221,7 +2214,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__VISIBILITY = 272;
+	public static final int STRUCTURAL_FEATURE_ACTION__VISIBILITY = 286;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Featuring Classifier' of 'Structural Feature Action'.
@@ -2229,7 +2222,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER = 273;
+	public static final int STRUCTURAL_FEATURE_ACTION__ONE_FEATURING_CLASSIFIER = 287;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Read Structural Feature Action'.
@@ -2237,7 +2230,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_STRUCTURAL_FEATURE_ACTION__TYPE_AND_ORDERING = 274;
+	public static final int READ_STRUCTURAL_FEATURE_ACTION__TYPE_AND_ORDERING = 288;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Read Structural Feature Action'.
@@ -2245,7 +2238,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 275;
+	public static final int READ_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 289;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Pin' of 'Write Structural Feature Action'.
@@ -2253,7 +2246,23 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__INPUT_PIN = 276;
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__INPUT_PIN = 290;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Write Structural Feature Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 291;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Write Structural Feature Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 292;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Write Structural Feature Action'.
@@ -2261,7 +2270,23 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 277;
+	public static final int WRITE_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY = 293;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Clear Structural Feature Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__TYPE_OF_RESULT = 294;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Clear Structural Feature Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int CLEAR_STRUCTURAL_FEATURE_ACTION__MULTIPLICITY_OF_RESULT = 295;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Non Unique Removal' of 'Remove Structural Feature Value Action'.
@@ -2269,7 +2294,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__NON_UNIQUE_REMOVAL = 278;
+	public static final int REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__NON_UNIQUE_REMOVAL = 296;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unlimited Natural And Multiplicity' of 'Add Structural Feature Value Action'.
@@ -2277,7 +2302,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__UNLIMITED_NATURAL_AND_MULTIPLICITY = 279;
+	public static final int ADD_STRUCTURAL_FEATURE_VALUE_ACTION__UNLIMITED_NATURAL_AND_MULTIPLICITY = 297;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Association' of 'Link Action'.
@@ -2285,7 +2310,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_ACTION__SAME_ASSOCIATION = 280;
+	public static final int LINK_ACTION__SAME_ASSOCIATION = 298;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Static' of 'Link Action'.
@@ -2293,7 +2318,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_ACTION__NOT_STATIC = 281;
+	public static final int LINK_ACTION__NOT_STATIC = 299;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Pins' of 'Link Action'.
@@ -2301,7 +2326,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_ACTION__SAME_PINS = 282;
+	public static final int LINK_ACTION__SAME_PINS = 300;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Property Is Association End' of 'Link End Data'.
@@ -2309,7 +2334,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__PROPERTY_IS_ASSOCIATION_END = 283;
+	public static final int LINK_END_DATA__PROPERTY_IS_ASSOCIATION_END = 301;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Link End Data'.
@@ -2317,7 +2342,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__SAME_TYPE = 284;
+	public static final int LINK_END_DATA__SAME_TYPE = 302;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Link End Data'.
@@ -2325,7 +2350,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__MULTIPLICITY = 285;
+	public static final int LINK_END_DATA__MULTIPLICITY = 303;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifiers' of 'Link End Data'.
@@ -2333,7 +2358,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__QUALIFIERS = 286;
+	public static final int LINK_END_DATA__QUALIFIERS = 304;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate End Object Input Pin' of 'Link End Data'.
@@ -2341,7 +2366,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DATA__END_OBJECT_INPUT_PIN = 287;
+	public static final int LINK_END_DATA__END_OBJECT_INPUT_PIN = 305;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifier Attribute' of 'Qualifier Value'.
@@ -2349,7 +2374,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__QUALIFIER_ATTRIBUTE = 288;
+	public static final int QUALIFIER_VALUE__QUALIFIER_ATTRIBUTE = 306;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Qualifier' of 'Qualifier Value'.
@@ -2357,7 +2382,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__TYPE_OF_QUALIFIER = 289;
+	public static final int QUALIFIER_VALUE__TYPE_OF_QUALIFIER = 307;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Qualifier' of 'Qualifier Value'.
@@ -2365,7 +2390,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int QUALIFIER_VALUE__MULTIPLICITY_OF_QUALIFIER = 290;
+	public static final int QUALIFIER_VALUE__MULTIPLICITY_OF_QUALIFIER = 308;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Open End' of 'Read Link Action'.
@@ -2373,7 +2398,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__ONE_OPEN_END = 291;
+	public static final int READ_LINK_ACTION__ONE_OPEN_END = 309;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Read Link Action'.
@@ -2381,7 +2406,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__TYPE_AND_ORDERING = 292;
+	public static final int READ_LINK_ACTION__TYPE_AND_ORDERING = 310;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Multiplicity' of 'Read Link Action'.
@@ -2389,7 +2414,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY = 293;
+	public static final int READ_LINK_ACTION__COMPATIBLE_MULTIPLICITY = 311;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Navigable Open End' of 'Read Link Action'.
@@ -2397,7 +2422,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__NAVIGABLE_OPEN_END = 294;
+	public static final int READ_LINK_ACTION__NAVIGABLE_OPEN_END = 312;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Visibility' of 'Read Link Action'.
@@ -2405,7 +2430,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_ACTION__VISIBILITY = 295;
+	public static final int READ_LINK_ACTION__VISIBILITY = 313;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Create Link Action' of 'Link End Creation Data'.
@@ -2413,7 +2438,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_CREATION_DATA__CREATE_LINK_ACTION = 296;
+	public static final int LINK_END_CREATION_DATA__CREATE_LINK_ACTION = 314;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Single Input Pin' of 'Link End Creation Data'.
@@ -2421,7 +2446,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_CREATION_DATA__SINGLE_INPUT_PIN = 297;
+	public static final int LINK_END_CREATION_DATA__SINGLE_INPUT_PIN = 315;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Not Abstract' of 'Create Link Action'.
@@ -2429,7 +2454,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_ACTION__ASSOCIATION_NOT_ABSTRACT = 298;
+	public static final int CREATE_LINK_ACTION__ASSOCIATION_NOT_ABSTRACT = 316;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Allow Access' of 'Write Link Action'.
@@ -2437,7 +2462,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_LINK_ACTION__ALLOW_ACCESS = 299;
+	public static final int WRITE_LINK_ACTION__ALLOW_ACCESS = 317;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Destroy Link Action' of 'Link End Destruction Data'.
@@ -2445,7 +2470,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DESTRUCTION_DATA__DESTROY_LINK_ACTION = 300;
+	public static final int LINK_END_DESTRUCTION_DATA__DESTROY_LINK_ACTION = 318;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unlimited Natural And Multiplicity' of 'Link End Destruction Data'.
@@ -2453,7 +2478,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LINK_END_DESTRUCTION_DATA__UNLIMITED_NATURAL_AND_MULTIPLICITY = 301;
+	public static final int LINK_END_DESTRUCTION_DATA__UNLIMITED_NATURAL_AND_MULTIPLICITY = 319;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Clear Association Action'.
@@ -2461,7 +2486,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLEAR_ASSOCIATION_ACTION__SAME_TYPE = 302;
+	public static final int CLEAR_ASSOCIATION_ACTION__SAME_TYPE = 320;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Clear Association Action'.
@@ -2469,7 +2494,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLEAR_ASSOCIATION_ACTION__MULTIPLICITY = 303;
+	public static final int CLEAR_ASSOCIATION_ACTION__MULTIPLICITY = 321;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number And Order' of 'Broadcast Signal Action'.
@@ -2477,7 +2502,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BROADCAST_SIGNAL_ACTION__NUMBER_AND_ORDER = 304;
+	public static final int BROADCAST_SIGNAL_ACTION__NUMBER_AND_ORDER = 322;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Broadcast Signal Action'.
@@ -2485,7 +2510,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int BROADCAST_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 305;
+	public static final int BROADCAST_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 323;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate On Port Receiver' of 'Invocation Action'.
@@ -2493,7 +2518,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INVOCATION_ACTION__ON_PORT_RECEIVER = 184;
+	public static final int INVOCATION_ACTION__ON_PORT_RECEIVER = 183;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Type' of 'Value Specification Action'.
@@ -2501,7 +2526,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_SPECIFICATION_ACTION__COMPATIBLE_TYPE = 306;
+	public static final int VALUE_SPECIFICATION_ACTION__COMPATIBLE_TYPE = 324;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Value Specification Action'.
@@ -2509,7 +2534,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_SPECIFICATION_ACTION__MULTIPLICITY = 307;
+	public static final int VALUE_SPECIFICATION_ACTION__MULTIPLICITY = 325;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate First Event Multiplicity' of 'Duration Constraint'.
@@ -2517,7 +2542,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DURATION_CONSTRAINT__FIRST_EVENT_MULTIPLICITY = 308;
+	public static final int DURATION_CONSTRAINT__FIRST_EVENT_MULTIPLICITY = 326;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate First Event Multiplicity' of 'Duration Observation'.
@@ -2525,7 +2550,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DURATION_OBSERVATION__FIRST_EVENT_MULTIPLICITY = 309;
+	public static final int DURATION_OBSERVATION__FIRST_EVENT_MULTIPLICITY = 327;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Type' of 'Value Pin'.
@@ -2533,7 +2558,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_PIN__COMPATIBLE_TYPE = 202;
+	public static final int VALUE_PIN__COMPATIBLE_TYPE = 203;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Incoming Edges' of 'Value Pin'.
@@ -2541,7 +2566,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VALUE_PIN__NO_INCOMING_EDGES = 203;
+	public static final int VALUE_PIN__NO_INCOMING_EDGES = 204;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Synchronous Call' of 'Call Action'.
@@ -2549,7 +2574,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_ACTION__SYNCHRONOUS_CALL = 181;
+	public static final int CALL_ACTION__SYNCHRONOUS_CALL = 180;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number And Order' of 'Call Action'.
@@ -2557,7 +2582,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_ACTION__NUMBER_AND_ORDER = 182;
+	public static final int CALL_ACTION__NUMBER_AND_ORDER = 181;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Call Action'.
@@ -2565,7 +2590,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_ACTION__TYPE_ORDERING_MULTIPLICITY = 183;
+	public static final int CALL_ACTION__TYPE_ORDERING_MULTIPLICITY = 182;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order' of 'Send Signal Action'.
@@ -2573,7 +2598,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int SEND_SIGNAL_ACTION__NUMBER_ORDER = 185;
+	public static final int SEND_SIGNAL_ACTION__NUMBER_ORDER = 184;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Send Signal Action'.
@@ -2581,7 +2606,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int SEND_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 186;
+	public static final int SEND_SIGNAL_ACTION__TYPE_ORDERING_MULTIPLICITY = 185;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Argument Pin Equal Parameter' of 'Call Operation Action'.
@@ -2589,7 +2614,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 187;
+	public static final int CALL_OPERATION_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 186;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pin Equal Parameter' of 'Call Operation Action'.
@@ -2597,7 +2622,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__RESULT_PIN_EQUAL_PARAMETER = 188;
+	public static final int CALL_OPERATION_ACTION__RESULT_PIN_EQUAL_PARAMETER = 187;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Target Pin' of 'Call Operation Action'.
@@ -2605,7 +2630,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__TYPE_TARGET_PIN = 189;
+	public static final int CALL_OPERATION_ACTION__TYPE_TARGET_PIN = 188;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Call Operation Action'.
@@ -2613,7 +2638,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_OPERATION_ACTION__TYPE_ORDERING_MULTIPLICITY = 190;
+	public static final int CALL_OPERATION_ACTION__TYPE_ORDERING_MULTIPLICITY = 189;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Argument Pin Equal Parameter' of 'Call Behavior Action'.
@@ -2621,7 +2646,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_BEHAVIOR_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 191;
+	public static final int CALL_BEHAVIOR_ACTION__ARGUMENT_PIN_EQUAL_PARAMETER = 190;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pin Equal Parameter' of 'Call Behavior Action'.
@@ -2629,7 +2654,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_BEHAVIOR_ACTION__RESULT_PIN_EQUAL_PARAMETER = 192;
+	public static final int CALL_BEHAVIOR_ACTION__RESULT_PIN_EQUAL_PARAMETER = 191;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity' of 'Call Behavior Action'.
@@ -2637,7 +2662,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CALL_BEHAVIOR_ACTION__TYPE_ORDERING_MULTIPLICITY = 193;
+	public static final int CALL_BEHAVIOR_ACTION__TYPE_ORDERING_MULTIPLICITY = 192;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Sources And Targets' of 'Information Item'.
@@ -2645,7 +2670,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__SOURCES_AND_TARGETS = 328;
+	public static final int INFORMATION_ITEM__SOURCES_AND_TARGETS = 346;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has No' of 'Information Item'.
@@ -2653,7 +2678,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__HAS_NO = 329;
+	public static final int INFORMATION_ITEM__HAS_NO = 347;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Not Instantiable' of 'Information Item'.
@@ -2661,7 +2686,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_ITEM__NOT_INSTANTIABLE = 330;
+	public static final int INFORMATION_ITEM__NOT_INSTANTIABLE = 348;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Sources And Targets Kind' of 'Information Flow'.
@@ -2669,7 +2694,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_FLOW__SOURCES_AND_TARGETS_KIND = 331;
+	public static final int INFORMATION_FLOW__SOURCES_AND_TARGETS_KIND = 349;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Must Conform' of 'Information Flow'.
@@ -2677,7 +2702,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_FLOW__MUST_CONFORM = 332;
+	public static final int INFORMATION_FLOW__MUST_CONFORM = 350;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Convey Classifiers' of 'Information Flow'.
@@ -2685,7 +2710,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INFORMATION_FLOW__CONVEY_CLASSIFIERS = 333;
+	public static final int INFORMATION_FLOW__CONVEY_CLASSIFIERS = 351;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Scope Of Variable' of 'Variable Action'.
@@ -2693,7 +2718,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int VARIABLE_ACTION__SCOPE_OF_VARIABLE = 318;
+	public static final int VARIABLE_ACTION__SCOPE_OF_VARIABLE = 336;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Read Variable Action'.
@@ -2701,7 +2726,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_VARIABLE_ACTION__TYPE_AND_ORDERING = 319;
+	public static final int READ_VARIABLE_ACTION__TYPE_AND_ORDERING = 337;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Multiplicity' of 'Read Variable Action'.
@@ -2709,7 +2734,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_VARIABLE_ACTION__COMPATIBLE_MULTIPLICITY = 320;
+	public static final int READ_VARIABLE_ACTION__COMPATIBLE_MULTIPLICITY = 338;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Write Variable Action'.
@@ -2717,7 +2742,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_VARIABLE_ACTION__SAME_TYPE = 321;
+	public static final int WRITE_VARIABLE_ACTION__SAME_TYPE = 339;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Write Variable Action'.
@@ -2725,7 +2750,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int WRITE_VARIABLE_ACTION__MULTIPLICITY = 322;
+	public static final int WRITE_VARIABLE_ACTION__MULTIPLICITY = 340;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Single Input Pin' of 'Add Variable Value Action'.
@@ -2733,7 +2758,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ADD_VARIABLE_VALUE_ACTION__SINGLE_INPUT_PIN = 323;
+	public static final int ADD_VARIABLE_VALUE_ACTION__SINGLE_INPUT_PIN = 341;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unlimited Natural' of 'Remove Variable Value Action'.
@@ -2741,7 +2766,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REMOVE_VARIABLE_VALUE_ACTION__UNLIMITED_NATURAL = 324;
+	public static final int REMOVE_VARIABLE_VALUE_ACTION__UNLIMITED_NATURAL = 342;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Output Pin' of 'Action Input Pin'.
@@ -2749,7 +2774,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_INPUT_PIN__ONE_OUTPUT_PIN = 325;
+	public static final int ACTION_INPUT_PIN__ONE_OUTPUT_PIN = 343;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Pin' of 'Action Input Pin'.
@@ -2757,7 +2782,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_INPUT_PIN__INPUT_PIN = 326;
+	public static final int ACTION_INPUT_PIN__INPUT_PIN = 344;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Control Or Data Flow' of 'Action Input Pin'.
@@ -2765,7 +2790,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTION_INPUT_PIN__NO_CONTROL_OR_DATA_FLOW = 327;
+	public static final int ACTION_INPUT_PIN__NO_CONTROL_OR_DATA_FLOW = 345;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Is Classifier' of 'Read Extent Action'.
@@ -2773,7 +2798,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_EXTENT_ACTION__TYPE_IS_CLASSIFIER = 334;
+	public static final int READ_EXTENT_ACTION__TYPE_IS_CLASSIFIER = 352;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Read Extent Action'.
@@ -2781,7 +2806,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_EXTENT_ACTION__MULTIPLICITY_OF_RESULT = 335;
+	public static final int READ_EXTENT_ACTION__MULTIPLICITY_OF_RESULT = 353;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Classifier Not Abstract' of 'Reclassify Object Action'.
@@ -2789,7 +2814,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECLASSIFY_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 336;
+	public static final int RECLASSIFY_OBJECT_ACTION__CLASSIFIER_NOT_ABSTRACT = 354;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Reclassify Object Action'.
@@ -2797,7 +2822,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECLASSIFY_OBJECT_ACTION__MULTIPLICITY = 337;
+	public static final int RECLASSIFY_OBJECT_ACTION__MULTIPLICITY = 355;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Pin' of 'Reclassify Object Action'.
@@ -2805,7 +2830,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int RECLASSIFY_OBJECT_ACTION__INPUT_PIN = 338;
+	public static final int RECLASSIFY_OBJECT_ACTION__INPUT_PIN = 356;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Input' of 'Read Is Classified Object Action'.
@@ -2813,7 +2838,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_INPUT = 339;
+	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_INPUT = 357;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Type' of 'Read Is Classified Object Action'.
@@ -2821,7 +2846,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__NO_TYPE = 340;
+	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__NO_TYPE = 358;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Output' of 'Read Is Classified Object Action'.
@@ -2829,7 +2854,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_OUTPUT = 341;
+	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__MULTIPLICITY_OF_OUTPUT = 359;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Boolean Result' of 'Read Is Classified Object Action'.
@@ -2837,7 +2862,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__BOOLEAN_RESULT = 342;
+	public static final int READ_IS_CLASSIFIED_OBJECT_ACTION__BOOLEAN_RESULT = 360;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Start Classifier Behavior Action'.
@@ -2845,7 +2870,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__MULTIPLICITY = 343;
+	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__MULTIPLICITY = 361;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Has Classifier' of 'Start Classifier Behavior Action'.
@@ -2853,7 +2878,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__TYPE_HAS_CLASSIFIER = 344;
+	public static final int START_CLASSIFIER_BEHAVIOR_ACTION__TYPE_HAS_CLASSIFIER = 362;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Property' of 'Read Link Object End Action'.
@@ -2861,7 +2886,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__PROPERTY = 345;
+	public static final int READ_LINK_OBJECT_END_ACTION__PROPERTY = 363;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Of Association' of 'Read Link Object End Action'.
@@ -2869,7 +2894,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__ASSOCIATION_OF_ASSOCIATION = 346;
+	public static final int READ_LINK_OBJECT_END_ACTION__ASSOCIATION_OF_ASSOCIATION = 364;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ends Of Association' of 'Read Link Object End Action'.
@@ -2877,7 +2902,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__ENDS_OF_ASSOCIATION = 347;
+	public static final int READ_LINK_OBJECT_END_ACTION__ENDS_OF_ASSOCIATION = 365;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Object' of 'Read Link Object End Action'.
@@ -2885,7 +2910,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_OBJECT = 348;
+	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_OBJECT = 366;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Read Link Object End Action'.
@@ -2893,7 +2918,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_OBJECT = 349;
+	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_OBJECT = 367;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Read Link Object End Action'.
@@ -2901,7 +2926,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_RESULT = 350;
+	public static final int READ_LINK_OBJECT_END_ACTION__TYPE_OF_RESULT = 368;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Read Link Object End Action'.
@@ -2909,7 +2934,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_RESULT = 351;
+	public static final int READ_LINK_OBJECT_END_ACTION__MULTIPLICITY_OF_RESULT = 369;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Qualifier Attribute' of 'Read Link Object End Qualifier Action'.
@@ -2917,7 +2942,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER_ATTRIBUTE = 352;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__QUALIFIER_ATTRIBUTE = 370;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Of Association' of 'Read Link Object End Qualifier Action'.
@@ -2925,7 +2950,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__ASSOCIATION_OF_ASSOCIATION = 353;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__ASSOCIATION_OF_ASSOCIATION = 371;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Ends Of Association' of 'Read Link Object End Qualifier Action'.
@@ -2933,7 +2958,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__ENDS_OF_ASSOCIATION = 354;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__ENDS_OF_ASSOCIATION = 372;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Object' of 'Read Link Object End Qualifier Action'.
@@ -2941,7 +2966,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__TYPE_OF_OBJECT = 355;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__TYPE_OF_OBJECT = 373;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Qualifier' of 'Read Link Object End Qualifier Action'.
@@ -2949,7 +2974,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_QUALIFIER = 356;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_QUALIFIER = 374;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Read Link Object End Qualifier Action'.
@@ -2957,7 +2982,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_OBJECT = 357;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_OBJECT = 375;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Read Link Object End Qualifier Action'.
@@ -2965,7 +2990,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__SAME_TYPE = 358;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__SAME_TYPE = 376;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Read Link Object End Qualifier Action'.
@@ -2973,7 +2998,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_RESULT = 359;
+	public static final int READ_LINK_OBJECT_END_QUALIFIER_ACTION__MULTIPLICITY_OF_RESULT = 377;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Class' of 'Create Link Object Action'.
@@ -2981,7 +3006,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_OBJECT_ACTION__ASSOCIATION_CLASS = 360;
+	public static final int CREATE_LINK_OBJECT_ACTION__ASSOCIATION_CLASS = 378;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Result' of 'Create Link Object Action'.
@@ -2989,7 +3014,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_OBJECT_ACTION__TYPE_OF_RESULT = 361;
+	public static final int CREATE_LINK_OBJECT_ACTION__TYPE_OF_RESULT = 379;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity' of 'Create Link Object Action'.
@@ -2997,7 +3022,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CREATE_LINK_OBJECT_ACTION__MULTIPLICITY = 362;
+	public static final int CREATE_LINK_OBJECT_ACTION__MULTIPLICITY = 380;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Input Pins' of 'Accept Event Action'.
@@ -3005,7 +3030,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__NO_INPUT_PINS = 363;
+	public static final int ACCEPT_EVENT_ACTION__NO_INPUT_PINS = 381;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Output Pins' of 'Accept Event Action'.
@@ -3013,7 +3038,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__NO_OUTPUT_PINS = 364;
+	public static final int ACCEPT_EVENT_ACTION__NO_OUTPUT_PINS = 382;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Trigger Events' of 'Accept Event Action'.
@@ -3021,7 +3046,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__TRIGGER_EVENTS = 365;
+	public static final int ACCEPT_EVENT_ACTION__TRIGGER_EVENTS = 383;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall Signal Events' of 'Accept Event Action'.
@@ -3029,7 +3054,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_EVENT_ACTION__UNMARSHALL_SIGNAL_EVENTS = 366;
+	public static final int ACCEPT_EVENT_ACTION__UNMARSHALL_SIGNAL_EVENTS = 384;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result Pins' of 'Accept Call Action'.
@@ -3037,7 +3062,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__RESULT_PINS = 367;
+	public static final int ACCEPT_CALL_ACTION__RESULT_PINS = 385;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Trigger Call Event' of 'Accept Call Action'.
@@ -3045,7 +3070,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT = 368;
+	public static final int ACCEPT_CALL_ACTION__TRIGGER_CALL_EVENT = 386;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall' of 'Accept Call Action'.
@@ -3053,7 +3078,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACCEPT_CALL_ACTION__UNMARSHALL = 369;
+	public static final int ACCEPT_CALL_ACTION__UNMARSHALL = 387;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Pins Match Parameter' of 'Reply Action'.
@@ -3061,7 +3086,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REPLY_ACTION__PINS_MATCH_PARAMETER = 370;
+	public static final int REPLY_ACTION__PINS_MATCH_PARAMETER = 388;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Event On Reply To Call Trigger' of 'Reply Action'.
@@ -3069,7 +3094,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REPLY_ACTION__EVENT_ON_REPLY_TO_CALL_TRIGGER = 371;
+	public static final int REPLY_ACTION__EVENT_ON_REPLY_TO_CALL_TRIGGER = 389;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Unmarshall Action'.
@@ -3077,7 +3102,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__SAME_TYPE = 372;
+	public static final int UNMARSHALL_ACTION__SAME_TYPE = 390;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Unmarshall Action'.
@@ -3085,7 +3110,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_OBJECT = 373;
+	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_OBJECT = 391;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Of Result' of 'Unmarshall Action'.
@@ -3093,7 +3118,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__NUMBER_OF_RESULT = 374;
+	public static final int UNMARSHALL_ACTION__NUMBER_OF_RESULT = 392;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type And Ordering' of 'Unmarshall Action'.
@@ -3101,7 +3126,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__TYPE_AND_ORDERING = 375;
+	public static final int UNMARSHALL_ACTION__TYPE_AND_ORDERING = 393;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Result' of 'Unmarshall Action'.
@@ -3109,7 +3134,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_RESULT = 376;
+	public static final int UNMARSHALL_ACTION__MULTIPLICITY_OF_RESULT = 394;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Structural Feature' of 'Unmarshall Action'.
@@ -3117,7 +3142,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__STRUCTURAL_FEATURE = 377;
+	public static final int UNMARSHALL_ACTION__STRUCTURAL_FEATURE = 395;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Unmarshall Type Is Classifier' of 'Unmarshall Action'.
@@ -3125,7 +3150,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int UNMARSHALL_ACTION__UNMARSHALL_TYPE_IS_CLASSIFIER = 378;
+	public static final int UNMARSHALL_ACTION__UNMARSHALL_TYPE_IS_CLASSIFIER = 396;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Type Is Collection' of 'Reduce Action'.
@@ -3133,7 +3158,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION = 379;
+	public static final int REDUCE_ACTION__INPUT_TYPE_IS_COLLECTION = 397;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Output Types Are Compatible' of 'Reduce Action'.
@@ -3141,7 +3166,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE = 380;
+	public static final int REDUCE_ACTION__OUTPUT_TYPES_ARE_COMPATIBLE = 398;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Reducer Inputs Output' of 'Reduce Action'.
@@ -3149,7 +3174,47 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int REDUCE_ACTION__REDUCER_INPUTS_OUTPUT = 381;
+	public static final int REDUCE_ACTION__REDUCER_INPUTS_OUTPUT = 399;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Of Object' of 'Start Object Behavior Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_OF_OBJECT = 400;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Multiplicity Of Object' of 'Start Object Behavior Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int START_OBJECT_BEHAVIOR_ACTION__MULTIPLICITY_OF_OBJECT = 401;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order Arguments' of 'Start Object Behavior Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_ARGUMENTS = 402;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Number Order Results' of 'Start Object Behavior Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int START_OBJECT_BEHAVIOR_ACTION__NUMBER_ORDER_RESULTS = 403;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Type Ordering Multiplicity Match' of 'Start Object Behavior Action'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int START_OBJECT_BEHAVIOR_ACTION__TYPE_ORDERING_MULTIPLICITY_MATCH = 404;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Object Nodes' of 'Control Flow'.
@@ -3157,7 +3222,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONTROL_FLOW__OBJECT_NODES = 194;
+	public static final int CONTROL_FLOW__OBJECT_NODES = 193;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Incoming Edges' of 'Initial Node'.
@@ -3165,7 +3230,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INITIAL_NODE__NO_INCOMING_EDGES = 195;
+	public static final int INITIAL_NODE__NO_INCOMING_EDGES = 194;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Control Edges' of 'Initial Node'.
@@ -3173,7 +3238,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int INITIAL_NODE__CONTROL_EDGES = 196;
+	public static final int INITIAL_NODE__CONTROL_EDGES = 195;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Has Parameters' of 'Activity Parameter Node'.
@@ -3181,7 +3246,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS = 197;
+	public static final int ACTIVITY_PARAMETER_NODE__HAS_PARAMETERS = 196;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Type' of 'Activity Parameter Node'.
@@ -3189,7 +3254,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__SAME_TYPE = 198;
+	public static final int ACTIVITY_PARAMETER_NODE__SAME_TYPE = 197;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Edges' of 'Activity Parameter Node'.
@@ -3197,7 +3262,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_EDGES = 199;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_EDGES = 198;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Incoming Edges' of 'Activity Parameter Node'.
@@ -3205,7 +3270,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES = 200;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_INCOMING_EDGES = 199;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Outgoing Edges' of 'Activity Parameter Node'.
@@ -3213,7 +3278,23 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES = 201;
+	public static final int ACTIVITY_PARAMETER_NODE__NO_OUTGOING_EDGES = 200;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maximum One Parameter Node' of 'Activity Parameter Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int ACTIVITY_PARAMETER_NODE__MAXIMUM_ONE_PARAMETER_NODE = 201;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Maximum Two Parameter Nodes' of 'Activity Parameter Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int ACTIVITY_PARAMETER_NODE__MAXIMUM_TWO_PARAMETER_NODES = 202;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Incoming Edge' of 'Fork Node'.
@@ -3221,7 +3302,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FORK_NODE__ONE_INCOMING_EDGE = 237;
+	public static final int FORK_NODE__ONE_INCOMING_EDGE = 238;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Fork Node'.
@@ -3229,7 +3310,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FORK_NODE__EDGES = 238;
+	public static final int FORK_NODE__EDGES = 239;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Outgoing Edges' of 'Final Node'.
@@ -3237,7 +3318,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_NODE__NO_OUTGOING_EDGES = 239;
+	public static final int FINAL_NODE__NO_OUTGOING_EDGES = 240;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Outgoing Edge' of 'Merge Node'.
@@ -3245,7 +3326,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MERGE_NODE__ONE_OUTGOING_EDGE = 240;
+	public static final int MERGE_NODE__ONE_OUTGOING_EDGE = 241;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Merge Node'.
@@ -3253,23 +3334,15 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MERGE_NODE__EDGES = 241;
+	public static final int MERGE_NODE__EDGES = 242;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Incoming Edge' of 'Decision Node'.
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Outgoing Edges' of 'Decision Node'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int DECISION_NODE__ONE_INCOMING_EDGE = 242;
-
-	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Parameter' of 'Decision Node'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int DECISION_NODE__INPUT_PARAMETER = 243;
+	public static final int DECISION_NODE__INCOMING_OUTGOING_EDGES = 243;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Edges' of 'Decision Node'.
@@ -3280,12 +3353,60 @@ public class UMLValidator
 	public static final int DECISION_NODE__EDGES = 244;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Decision Input Flow Incoming' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__DECISION_INPUT_FLOW_INCOMING = 245;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Parameters' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__PARAMETERS = 246;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Zero Input Parameters' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__ZERO_INPUT_PARAMETERS = 247;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Object One Input Parameter' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__INCOMING_OBJECT_ONE_INPUT_PARAMETER = 248;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Control One Input Parameter' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__INCOMING_CONTROL_ONE_INPUT_PARAMETER = 249;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Two Input Parameters' of 'Decision Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DECISION_NODE__TWO_INPUT_PARAMETERS = 250;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate One Outgoing Edge' of 'Join Node'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int JOIN_NODE__ONE_OUTGOING_EDGE = 382;
+	public static final int JOIN_NODE__ONE_OUTGOING_EDGE = 405;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Incoming Object Flow' of 'Join Node'.
@@ -3293,7 +3414,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int JOIN_NODE__INCOMING_OBJECT_FLOW = 383;
+	public static final int JOIN_NODE__INCOMING_OBJECT_FLOW = 406;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Actions' of 'Object Flow'.
@@ -3301,7 +3422,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__NO_ACTIONS = 384;
+	public static final int OBJECT_FLOW__NO_ACTIONS = 251;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Compatible Types' of 'Object Flow'.
@@ -3309,7 +3430,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__COMPATIBLE_TYPES = 385;
+	public static final int OBJECT_FLOW__COMPATIBLE_TYPES = 252;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Same Upper Bounds' of 'Object Flow'.
@@ -3317,7 +3438,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__SAME_UPPER_BOUNDS = 386;
+	public static final int OBJECT_FLOW__SAME_UPPER_BOUNDS = 253;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Target' of 'Object Flow'.
@@ -3325,7 +3446,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__TARGET = 387;
+	public static final int OBJECT_FLOW__TARGET = 254;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Transformation Behaviour' of 'Object Flow'.
@@ -3333,7 +3454,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__TRANSFORMATION_BEHAVIOUR = 388;
+	public static final int OBJECT_FLOW__TRANSFORMATION_BEHAVIOUR = 255;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Selection Behaviour' of 'Object Flow'.
@@ -3341,7 +3462,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__SELECTION_BEHAVIOUR = 389;
+	public static final int OBJECT_FLOW__SELECTION_BEHAVIOUR = 256;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input And Output Parameter' of 'Object Flow'.
@@ -3349,7 +3470,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER = 390;
+	public static final int OBJECT_FLOW__INPUT_AND_OUTPUT_PARAMETER = 257;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Is Multicast Or Is Multireceive' of 'Object Flow'.
@@ -3357,7 +3478,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE = 391;
+	public static final int OBJECT_FLOW__IS_MULTICAST_OR_IS_MULTIRECEIVE = 258;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result No Incoming' of 'Conditional Node'.
@@ -3365,7 +3486,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CONDITIONAL_NODE__RESULT_NO_INCOMING = 392;
+	public static final int CONDITIONAL_NODE__RESULT_NO_INCOMING = 407;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Decider Output' of 'Clause'.
@@ -3373,7 +3494,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLAUSE__DECIDER_OUTPUT = 393;
+	public static final int CLAUSE__DECIDER_OUTPUT = 408;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Body Output Pins' of 'Clause'.
@@ -3381,7 +3502,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int CLAUSE__BODY_OUTPUT_PINS = 394;
+	public static final int CLAUSE__BODY_OUTPUT_PINS = 409;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Input Edges' of 'Loop Node'.
@@ -3389,7 +3510,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__INPUT_EDGES = 395;
+	public static final int LOOP_NODE__INPUT_EDGES = 410;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Body Output Pins' of 'Loop Node'.
@@ -3397,7 +3518,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__BODY_OUTPUT_PINS = 396;
+	public static final int LOOP_NODE__BODY_OUTPUT_PINS = 411;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Result No Incoming' of 'Loop Node'.
@@ -3405,7 +3526,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int LOOP_NODE__RESULT_NO_INCOMING = 397;
+	public static final int LOOP_NODE__RESULT_NO_INCOMING = 412;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Expansion Nodes' of 'Expansion Region'.
@@ -3413,7 +3534,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int EXPANSION_REGION__EXPANSION_NODES = 398;
+	public static final int EXPANSION_REGION__EXPANSION_NODES = 413;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Internal Structure' of 'Node'.
@@ -3421,7 +3542,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__INTERNAL_STRUCTURE = 245;
+	public static final int NODE__INTERNAL_STRUCTURE = 259;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Association Ends' of 'Communication Path'.
@@ -3429,7 +3550,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int COMMUNICATION_PATH__ASSOCIATION_ENDS = 246;
+	public static final int COMMUNICATION_PATH__ASSOCIATION_ENDS = 260;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Outgoing Transitions' of 'Final State'.
@@ -3437,7 +3558,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_OUTGOING_TRANSITIONS = 310;
+	public static final int FINAL_STATE__NO_OUTGOING_TRANSITIONS = 328;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Regions' of 'Final State'.
@@ -3445,7 +3566,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_REGIONS = 311;
+	public static final int FINAL_STATE__NO_REGIONS = 329;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Reference Submachine' of 'Final State'.
@@ -3453,7 +3574,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__CANNOT_REFERENCE_SUBMACHINE = 312;
+	public static final int FINAL_STATE__CANNOT_REFERENCE_SUBMACHINE = 330;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Entry Behavior' of 'Final State'.
@@ -3461,7 +3582,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_ENTRY_BEHAVIOR = 313;
+	public static final int FINAL_STATE__NO_ENTRY_BEHAVIOR = 331;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No Exit Behavior' of 'Final State'.
@@ -3469,7 +3590,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_EXIT_BEHAVIOR = 314;
+	public static final int FINAL_STATE__NO_EXIT_BEHAVIOR = 332;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate No State Behavior' of 'Final State'.
@@ -3477,7 +3598,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int FINAL_STATE__NO_STATE_BEHAVIOR = 315;
+	public static final int FINAL_STATE__NO_STATE_BEHAVIOR = 333;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate When Non Negative' of 'Time Event'.
@@ -3485,7 +3606,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TIME_EVENT__WHEN_NON_NEGATIVE = 316;
+	public static final int TIME_EVENT__WHEN_NON_NEGATIVE = 334;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Starting Time' of 'Time Event'.
@@ -3493,7 +3614,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int TIME_EVENT__STARTING_TIME = 317;
+	public static final int TIME_EVENT__STARTING_TIME = 335;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Belongs To Psm' of 'Protocol Transition'.
@@ -3501,7 +3622,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_TRANSITION__BELONGS_TO_PSM = 399;
+	public static final int PROTOCOL_TRANSITION__BELONGS_TO_PSM = 414;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Associated Actions' of 'Protocol Transition'.
@@ -3509,7 +3630,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_TRANSITION__ASSOCIATED_ACTIONS = 400;
+	public static final int PROTOCOL_TRANSITION__ASSOCIATED_ACTIONS = 415;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Refers To Operation' of 'Protocol Transition'.
@@ -3517,7 +3638,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int PROTOCOL_TRANSITION__REFERS_TO_OPERATION = 401;
+	public static final int PROTOCOL_TRANSITION__REFERS_TO_OPERATION = 416;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Cannot Be Defined' of 'Association Class'.
@@ -3525,7 +3646,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int ASSOCIATION_CLASS__CANNOT_BE_DEFINED = 402;
+	public static final int ASSOCIATION_CLASS__CANNOT_BE_DEFINED = 417;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -3533,7 +3654,7 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 402;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 417;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -3672,10 +3793,6 @@ public class UMLValidator
 			case UMLPackage.CONNECTABLE_ELEMENT :
 				return validateConnectableElement((ConnectableElement) value,
 					diagnostics, context);
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return validateConnectableElementTemplateParameter(
-					(ConnectableElementTemplateParameter) value, diagnostics,
-					context);
 			case UMLPackage.CONNECTOR_END :
 				return validateConnectorEnd((ConnectorEnd) value, diagnostics,
 					context);
@@ -3788,6 +3905,10 @@ public class UMLValidator
 			case UMLPackage.STRUCTURAL_FEATURE :
 				return validateStructuralFeature((StructuralFeature) value,
 					diagnostics, context);
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return validateConnectableElementTemplateParameter(
+					(ConnectableElementTemplateParameter) value, diagnostics,
+					context);
 			case UMLPackage.COLLABORATION_USE :
 				return validateCollaborationUse((CollaborationUse) value,
 					diagnostics, context);
@@ -4048,6 +4169,9 @@ public class UMLValidator
 			case UMLPackage.DECISION_NODE :
 				return validateDecisionNode((DecisionNode) value, diagnostics,
 					context);
+			case UMLPackage.OBJECT_FLOW :
+				return validateObjectFlow((ObjectFlow) value, diagnostics,
+					context);
 			case UMLPackage.ACTIVITY_FINAL_NODE :
 				return validateActivityFinalNode((ActivityFinalNode) value,
 					diagnostics, context);
@@ -4251,14 +4375,14 @@ public class UMLValidator
 			case UMLPackage.REDUCE_ACTION :
 				return validateReduceAction((ReduceAction) value, diagnostics,
 					context);
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION :
+				return validateStartObjectBehaviorAction(
+					(StartObjectBehaviorAction) value, diagnostics, context);
 			case UMLPackage.JOIN_NODE :
 				return validateJoinNode((JoinNode) value, diagnostics, context);
 			case UMLPackage.DATA_STORE_NODE :
 				return validateDataStoreNode((DataStoreNode) value,
 					diagnostics, context);
-			case UMLPackage.OBJECT_FLOW :
-				return validateObjectFlow((ObjectFlow) value, diagnostics,
-					context);
 			case UMLPackage.CONDITIONAL_NODE :
 				return validateConditionalNode((ConditionalNode) value,
 					diagnostics, context);
@@ -6824,9 +6948,6 @@ public class UMLValidator
 			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				parameter, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(parameter,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -6948,9 +7069,6 @@ public class UMLValidator
 			result &= validateElement_validateHasOwner(multiplicityElement,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(
-				multiplicityElement, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6963,18 +7081,6 @@ public class UMLValidator
 			result &= validateMultiplicityElement_validateValueSpecificationConstant(
 				multiplicityElement, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * Validates the validateUpperGt0 constraint of '<em>Multiplicity Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMultiplicityElement_validateUpperGt0(
-			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return multiplicityElement.validateUpperGt0(diagnostics, context);
 	}
 
 	/**
@@ -7106,9 +7212,6 @@ public class UMLValidator
 			result &= validateElement_validateHasOwner(connectorEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(
-				connectorEnd, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
@@ -7229,9 +7332,6 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				property, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(property,
-				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(property,
 				diagnostics, context);
@@ -9133,9 +9233,6 @@ public class UMLValidator
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
 				port, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(port,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(port,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -9738,9 +9835,6 @@ public class UMLValidator
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
-				structuralFeature, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(
 				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
@@ -10725,9 +10819,6 @@ public class UMLValidator
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRedefinableElement_validateRedefinitionConsistent(
-				extensionEnd, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(
 				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
@@ -13305,9 +13396,6 @@ public class UMLValidator
 			result &= validateNamedElement_validateVisibilityNeedsOwnership(
 				variable, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(variable,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(variable,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13672,9 +13760,6 @@ public class UMLValidator
 			result &= validateObjectNode_validateInputOutputParameter(
 				outputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(outputPin,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13770,9 +13855,6 @@ public class UMLValidator
 			result &= validateObjectNode_validateInputOutputParameter(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(pin,
-				diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(pin,
 				diagnostics, context);
 		if (result || diagnostics != null)
@@ -13863,9 +13945,6 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateInputOutputParameter(inputPin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(inputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(inputPin,
@@ -16140,6 +16219,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
 				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
+				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
+				writeStructuralFeatureAction, diagnostics, context);
 		return result;
 	}
 
@@ -16154,6 +16239,32 @@ public class UMLValidator
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return writeStructuralFeatureAction.validateInputPin(diagnostics,
 			context);
+	}
+
+	/**
+	 * Validates the validateTypeOfResult constraint of '<em>Write Structural Feature Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateWriteStructuralFeatureAction_validateTypeOfResult(
+			WriteStructuralFeatureAction writeStructuralFeatureAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return writeStructuralFeatureAction.validateTypeOfResult(diagnostics,
+			context);
+	}
+
+	/**
+	 * Validates the validateMultiplicityOfResult constraint of '<em>Write Structural Feature Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
+			WriteStructuralFeatureAction writeStructuralFeatureAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return writeStructuralFeatureAction.validateMultiplicityOfResult(
+			diagnostics, context);
 	}
 
 	/**
@@ -16258,7 +16369,39 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateStructuralFeatureAction_validateOneFeaturingClassifier(
 				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClearStructuralFeatureAction_validateTypeOfResult(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateClearStructuralFeatureAction_validateMultiplicityOfResult(
+				clearStructuralFeatureAction, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * Validates the validateTypeOfResult constraint of '<em>Clear Structural Feature Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClearStructuralFeatureAction_validateTypeOfResult(
+			ClearStructuralFeatureAction clearStructuralFeatureAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return clearStructuralFeatureAction.validateTypeOfResult(diagnostics,
+			context);
+	}
+
+	/**
+	 * Validates the validateMultiplicityOfResult constraint of '<em>Clear Structural Feature Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClearStructuralFeatureAction_validateMultiplicityOfResult(
+			ClearStructuralFeatureAction clearStructuralFeatureAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return clearStructuralFeatureAction.validateMultiplicityOfResult(
+			diagnostics, context);
 	}
 
 	/**
@@ -16333,6 +16476,12 @@ public class UMLValidator
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateRemoveStructuralFeatureValueAction_validateNonUniqueRemoval(
@@ -16425,6 +16574,12 @@ public class UMLValidator
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateWriteStructuralFeatureAction_validateInputPin(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateTypeOfResult(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateWriteStructuralFeatureAction_validateMultiplicityOfResult(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateAddStructuralFeatureValueAction_validateUnlimitedNaturalAndMultiplicity(
@@ -17870,9 +18025,6 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateObjectNode_validateInputOutputParameter(valuePin,
-				diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(valuePin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(valuePin,
@@ -19742,9 +19894,6 @@ public class UMLValidator
 			result &= validateObjectNode_validateInputOutputParameter(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateMultiplicityElement_validateUpperGt0(
-				actionInputPin, diagnostics, context);
-		if (result || diagnostics != null)
 			result &= validateMultiplicityElement_validateLowerGe0(
 				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
@@ -21278,6 +21427,156 @@ public class UMLValidator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateStartObjectBehaviorAction(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validate_EveryMultiplicityConforms(
+			startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryDataValueConforms(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryReferenceIsContained(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryProxyResolves(startObjectBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_UniqueID(startObjectBehaviorAction, diagnostics,
+				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryKeyUnique(startObjectBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryMapEntryUnique(startObjectBehaviorAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateNotOwnSelf(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateElement_validateHasOwner(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasNoQualifiedName(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateHasQualifiedName(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateNamedElement_validateVisibilityNeedsOwnership(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRedefinableElement_validateRedefinitionContextValid(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateRedefinableElement_validateRedefinitionConsistent(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityNode_validateOwnedStructuredNode(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityNode_validateOwned(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateInvocationAction_validateOnPortReceiver(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCallAction_validateSynchronousCall(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCallAction_validateNumberAndOrder(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateCallAction_validateTypeOrderingMultiplicity(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateTypeOfObject(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateMultiplicityOfObject(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateNumberOrderArguments(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateNumberOrderResults(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateStartObjectBehaviorAction_validateTypeOrderingMultiplicityMatch(
+				startObjectBehaviorAction, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateTypeOfObject constraint of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStartObjectBehaviorAction_validateTypeOfObject(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return startObjectBehaviorAction.validateTypeOfObject(diagnostics,
+			context);
+	}
+
+	/**
+	 * Validates the validateMultiplicityOfObject constraint of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStartObjectBehaviorAction_validateMultiplicityOfObject(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return startObjectBehaviorAction.validateMultiplicityOfObject(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateNumberOrderArguments constraint of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStartObjectBehaviorAction_validateNumberOrderArguments(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return startObjectBehaviorAction.validateNumberOrderArguments(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateNumberOrderResults constraint of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStartObjectBehaviorAction_validateNumberOrderResults(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return startObjectBehaviorAction.validateNumberOrderResults(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateTypeOrderingMultiplicityMatch constraint of '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStartObjectBehaviorAction_validateTypeOrderingMultiplicityMatch(
+			StartObjectBehaviorAction startObjectBehaviorAction,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return startObjectBehaviorAction.validateTypeOrderingMultiplicityMatch(
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateControlNode(ControlNode controlNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean result = validate_EveryMultiplicityConforms(controlNode,
@@ -21568,6 +21867,12 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validateActivityParameterNode_validateNoOutgoingEdges(
 				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateMaximumOneParameterNode(
+				activityParameterNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateActivityParameterNode_validateMaximumTwoParameterNodes(
+				activityParameterNode, diagnostics, context);
 		return result;
 	}
 
@@ -21632,6 +21937,32 @@ public class UMLValidator
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return activityParameterNode.validateNoOutgoingEdges(diagnostics,
 			context);
+	}
+
+	/**
+	 * Validates the validateMaximumOneParameterNode constraint of '<em>Activity Parameter Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActivityParameterNode_validateMaximumOneParameterNode(
+			ActivityParameterNode activityParameterNode,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return activityParameterNode.validateMaximumOneParameterNode(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateMaximumTwoParameterNodes constraint of '<em>Activity Parameter Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateActivityParameterNode_validateMaximumTwoParameterNodes(
+			ActivityParameterNode activityParameterNode,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return activityParameterNode.validateMaximumTwoParameterNodes(
+			diagnostics, context);
 	}
 
 	/**
@@ -22053,39 +22384,42 @@ public class UMLValidator
 			result &= validateActivityNode_validateOwned(decisionNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateOneIncomingEdge(
+			result &= validateDecisionNode_validateIncomingOutgoingEdges(
 				decisionNode, diagnostics, context);
-		if (result || diagnostics != null)
-			result &= validateDecisionNode_validateInputParameter(decisionNode,
-				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validateDecisionNode_validateEdges(decisionNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateDecisionInputFlowIncoming(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateParameters(decisionNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateZeroInputParameters(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateIncomingObjectOneInputParameter(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateIncomingControlOneInputParameter(
+				decisionNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validateDecisionNode_validateTwoInputParameters(
+				decisionNode, diagnostics, context);
 		return result;
 	}
 
 	/**
-	 * Validates the validateOneIncomingEdge constraint of '<em>Decision Node</em>'.
+	 * Validates the validateIncomingOutgoingEdges constraint of '<em>Decision Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateDecisionNode_validateOneIncomingEdge(
+	public boolean validateDecisionNode_validateIncomingOutgoingEdges(
 			DecisionNode decisionNode, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return decisionNode.validateOneIncomingEdge(diagnostics, context);
-	}
-
-	/**
-	 * Validates the validateInputParameter constraint of '<em>Decision Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateDecisionNode_validateInputParameter(
-			DecisionNode decisionNode, DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return decisionNode.validateInputParameter(diagnostics, context);
+		return decisionNode.validateIncomingOutgoingEdges(diagnostics, context);
 	}
 
 	/**
@@ -22098,6 +22432,81 @@ public class UMLValidator
 			DecisionNode decisionNode, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return decisionNode.validateEdges(diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateDecisionInputFlowIncoming constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateDecisionInputFlowIncoming(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateDecisionInputFlowIncoming(diagnostics,
+			context);
+	}
+
+	/**
+	 * Validates the validateParameters constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateParameters(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateParameters(diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateZeroInputParameters constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateZeroInputParameters(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateZeroInputParameters(diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateIncomingObjectOneInputParameter constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateIncomingObjectOneInputParameter(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateIncomingObjectOneInputParameter(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateIncomingControlOneInputParameter constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateIncomingControlOneInputParameter(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateIncomingControlOneInputParameter(
+			diagnostics, context);
+	}
+
+	/**
+	 * Validates the validateTwoInputParameters constraint of '<em>Decision Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionNode_validateTwoInputParameters(
+			DecisionNode decisionNode, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return decisionNode.validateTwoInputParameters(diagnostics, context);
 	}
 
 	/**
