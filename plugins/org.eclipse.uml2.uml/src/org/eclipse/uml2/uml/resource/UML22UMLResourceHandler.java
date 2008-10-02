@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.34 2007/06/12 12:53:20 khussey Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.35 2008/10/02 21:21:29 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -1777,9 +1777,7 @@ public class UML22UMLResourceHandler
 										.createPackagedElement(
 											trigger.getName(),
 											UMLPackage.Literals.TIME_EVENT);
-									((TimeEvent) event)
-										.setWhen((ValueSpecification) eObject);
-
+									
 									Object value = getValue(extension
 										.getAnyAttribute(), "isRelative", true); //$NON-NLS-1$
 
@@ -1787,6 +1785,12 @@ public class UML22UMLResourceHandler
 										((TimeEvent) event)
 											.setIsRelative(Boolean.valueOf(
 												(String) value).booleanValue());
+									}
+									// TODO: Complete in Phase 3 of UML 2.2 Compliance update.
+									if (eObject instanceof TimeExpression) {
+										((TimeEvent) event)
+											.setWhen((TimeExpression) eObject);
+										
 									}
 								}
 							}
