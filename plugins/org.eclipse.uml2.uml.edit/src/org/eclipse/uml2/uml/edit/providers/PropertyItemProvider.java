@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
  *
- * $Id: PropertyItemProvider.java,v 1.20 2008/02/01 14:04:57 khussey Exp $
+ * $Id: PropertyItemProvider.java,v 1.21 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -77,7 +77,7 @@ public class PropertyItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
@@ -89,8 +89,6 @@ public class PropertyItemProvider
 			addEndPropertyDescriptor(object);
 			addDeploymentPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
-			//addTemplateBindingPropertyDescriptor(object);
-			//addOwnedTemplateSignaturePropertyDescriptor(object);
 			addClassPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
@@ -207,48 +205,6 @@ public class PropertyItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployedElement_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT, false,
 				false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
-	 * This adds a property descriptor for the Template Binding feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTemplateBindingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateableElement_templateBinding_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_templateBinding_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-				true, false, true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
-	 * This adds a property descriptor for the Owned Template Signature feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwnedTemplateSignaturePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TemplateableElement_ownedTemplateSignature_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_TemplateableElement_ownedTemplateSignature_feature", "_UI_TemplateableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -667,8 +623,6 @@ public class PropertyItemProvider
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
 			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 			case UMLPackage.PROPERTY__QUALIFIER :
 				fireNotifyChanged(new ViewerNotification(notification,
@@ -693,18 +647,6 @@ public class PropertyItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT,
 			UMLFactory.eINSTANCE.createDeployment()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-			UMLFactory.eINSTANCE.createTemplateBinding()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-			UMLFactory.eINSTANCE.createTemplateSignature()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
-			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE

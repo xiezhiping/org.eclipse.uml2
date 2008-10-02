@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.24 2008/02/01 14:04:56 khussey Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.25 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4100,6 +4100,30 @@ public class UMLItemProviderAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.StartObjectBehaviorAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StartObjectBehaviorActionItemProvider startObjectBehaviorActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.eclipse.uml2.uml.StartObjectBehaviorAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStartObjectBehaviorActionAdapter() {
+		if (startObjectBehaviorActionItemProvider == null) {
+			startObjectBehaviorActionItemProvider = new StartObjectBehaviorActionItemProvider(
+				this);
+		}
+
+		return startObjectBehaviorActionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.uml2.uml.JoinNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4938,8 +4962,6 @@ public class UMLItemProviderAdapterFactory
 			opaqueExpressionItemProvider.dispose();
 		if (parameterItemProvider != null)
 			parameterItemProvider.dispose();
-		if (connectableElementTemplateParameterItemProvider != null)
-			connectableElementTemplateParameterItemProvider.dispose();
 		if (connectorEndItemProvider != null)
 			connectorEndItemProvider.dispose();
 		if (propertyItemProvider != null)
@@ -5004,6 +5026,8 @@ public class UMLItemProviderAdapterFactory
 			dataTypeItemProvider.dispose();
 		if (operationTemplateParameterItemProvider != null)
 			operationTemplateParameterItemProvider.dispose();
+		if (connectableElementTemplateParameterItemProvider != null)
+			connectableElementTemplateParameterItemProvider.dispose();
 		if (collaborationUseItemProvider != null)
 			collaborationUseItemProvider.dispose();
 		if (collaborationItemProvider != null)
@@ -5156,6 +5180,8 @@ public class UMLItemProviderAdapterFactory
 			mergeNodeItemProvider.dispose();
 		if (decisionNodeItemProvider != null)
 			decisionNodeItemProvider.dispose();
+		if (objectFlowItemProvider != null)
+			objectFlowItemProvider.dispose();
 		if (activityFinalNodeItemProvider != null)
 			activityFinalNodeItemProvider.dispose();
 		if (componentRealizationItemProvider != null)
@@ -5278,12 +5304,12 @@ public class UMLItemProviderAdapterFactory
 			unmarshallActionItemProvider.dispose();
 		if (reduceActionItemProvider != null)
 			reduceActionItemProvider.dispose();
+		if (startObjectBehaviorActionItemProvider != null)
+			startObjectBehaviorActionItemProvider.dispose();
 		if (joinNodeItemProvider != null)
 			joinNodeItemProvider.dispose();
 		if (dataStoreNodeItemProvider != null)
 			dataStoreNodeItemProvider.dispose();
-		if (objectFlowItemProvider != null)
-			objectFlowItemProvider.dispose();
 		if (conditionalNodeItemProvider != null)
 			conditionalNodeItemProvider.dispose();
 		if (clauseItemProvider != null)

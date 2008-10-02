@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ClassifierTemplateParameterItemProvider.java,v 1.9 2008/02/01 14:04:55 khussey Exp $
+ * $Id: ClassifierTemplateParameterItemProvider.java,v 1.10 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -68,7 +68,6 @@ public class ClassifierTemplateParameterItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAllowSubstitutablePropertyDescriptor(object);
-			addDefaultClassifierPropertyDescriptor(object);
 			addConstrainingClassifierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -92,25 +91,6 @@ public class ClassifierTemplateParameterItemProvider
 				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE,
 				true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Default Classifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDefaultClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ClassifierTemplateParameter_defaultClassifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ClassifierTemplateParameter_defaultClassifier_feature", "_UI_ClassifierTemplateParameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-				true, false, true, null, null, null));
 	}
 
 	/**

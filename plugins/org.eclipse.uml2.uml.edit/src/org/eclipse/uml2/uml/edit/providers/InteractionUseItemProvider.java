@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: InteractionUseItemProvider.java,v 1.14 2008/02/01 14:04:50 khussey Exp $
+ * $Id: InteractionUseItemProvider.java,v 1.15 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -383,6 +383,10 @@ public class InteractionUseItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE
 				.createReduceAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE
+				.createStartObjectBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT, UMLFactory.eINSTANCE

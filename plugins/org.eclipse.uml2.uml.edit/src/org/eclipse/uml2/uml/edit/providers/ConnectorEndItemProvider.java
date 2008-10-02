@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ConnectorEndItemProvider.java,v 1.11 2008/02/01 14:04:57 khussey Exp $
+ * $Id: ConnectorEndItemProvider.java,v 1.12 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -66,8 +66,8 @@ public class ConnectorEndItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDefiningEndPropertyDescriptor(object);
-			addPartWithPortPropertyDescriptor(object);
 			addRolePropertyDescriptor(object);
+			addPartWithPortPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

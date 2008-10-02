@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: DurationItemProvider.java,v 1.11 2008/02/01 14:04:56 khussey Exp $
+ * $Id: DurationItemProvider.java,v 1.12 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -32,6 +33,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Duration;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
@@ -112,6 +114,37 @@ public class DurationItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.DURATION__EXPR);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns Duration.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,7 +191,7 @@ public class DurationItemProvider
 		switch (notification.getFeatureID(Duration.class)) {
 			case UMLPackage.DURATION__EXPR :
 				fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+					notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -175,6 +208,85 @@ public class DurationItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createTimeExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createDuration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createDurationInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.DURATION__EXPR, UMLFactory.eINSTANCE
+				.createTimeInterval()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.DURATION__EXPR;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

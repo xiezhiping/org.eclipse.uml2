@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ComponentRealizationItemProvider.java,v 1.11 2008/02/01 14:04:50 khussey Exp $
+ * $Id: ComponentRealizationItemProvider.java,v 1.12 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
@@ -154,7 +155,7 @@ public class ComponentRealizationItemProvider
 
 		return (!UML2Util.isEmpty(label)
 			? appendString(text, label)
-			: appendLabel(text, componentRealization.getRealizingClassifier()))
+			: appendLabel(text, componentRealization.getRealizingClassifiers()))
 			.toString();
 	}
 
@@ -189,6 +190,27 @@ public class ComponentRealizationItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createAddCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				collection, index);
+		}
+		return super
+			.createAddCommand(domain, owner, feature, collection, index);
 	}
 
 	/**
@@ -228,6 +250,14 @@ public class ComponentRealizationItemProvider
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				null, value, collection);
+		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
 			return new SubsetSupersetReplaceCommand(
 				domain,
@@ -267,27 +297,21 @@ public class ComponentRealizationItemProvider
 				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
 				null, value);
 		}
-		if (feature == UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER) {
-			return new SubsetSupersetSetCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
-				null, value);
-		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 	@Override
 	public Object getForeground(Object object) {
-		ComponentRealization componentRealization = (ComponentRealization) object;
-		Classifier realizingClassifier = componentRealization
-			.getRealizingClassifier();
-		return realizingClassifier != null && realizingClassifier.eIsProxy()
-			? IItemColorProvider.GRAYED_OUT_COLOR
-			: (componentRealization.eIsProxy()
-				? IItemColorProvider.GRAYED_OUT_COLOR
-				: null);
+
+		for (Classifier realizingClassifier : ((ComponentRealization) object)
+			.getRealizingClassifiers()) {
+
+			if (realizingClassifier.eIsProxy()) {
+				return IItemColorProvider.GRAYED_OUT_COLOR;
+			}
+		}
+
+		return super.getForeground(object);
 	}
 
 }

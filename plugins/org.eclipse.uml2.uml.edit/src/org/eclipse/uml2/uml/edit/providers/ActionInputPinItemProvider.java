@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ActionInputPinItemProvider.java,v 1.16 2008/02/01 14:04:50 khussey Exp $
+ * $Id: ActionInputPinItemProvider.java,v 1.17 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -334,6 +334,10 @@ public class ActionInputPinItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createReduceAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createStartObjectBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,

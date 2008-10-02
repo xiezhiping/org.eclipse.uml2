@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: DecisionNodeItemProvider.java,v 1.10 2008/02/01 14:04:53 khussey Exp $
+ * $Id: DecisionNodeItemProvider.java,v 1.11 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -66,6 +66,7 @@ public class DecisionNodeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDecisionInputPropertyDescriptor(object);
+			addDecisionInputFlowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,6 +88,25 @@ public class DecisionNodeItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_DecisionNode_decisionInput_feature", "_UI_DecisionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.DECISION_NODE__DECISION_INPUT, true, false,
 				true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Decision Input Flow feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDecisionInputFlowPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_DecisionNode_decisionInputFlow_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_DecisionNode_decisionInputFlow_feature", "_UI_DecisionNode_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.DECISION_NODE__DECISION_INPUT_FLOW, true,
+				false, true, null, null, null));
 	}
 
 	/**

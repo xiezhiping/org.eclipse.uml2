@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: VertexItemProvider.java,v 1.8 2008/02/01 14:04:51 khussey Exp $
+ * $Id: VertexItemProvider.java,v 1.9 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -65,8 +65,8 @@ public class VertexItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIncomingPropertyDescriptor(object);
 			addOutgoingPropertyDescriptor(object);
+			addIncomingPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;

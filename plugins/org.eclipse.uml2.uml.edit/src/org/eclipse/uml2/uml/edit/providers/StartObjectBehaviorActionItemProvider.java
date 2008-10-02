@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ClearStructuralFeatureActionItemProvider.java,v 1.9 2008/10/02 20:59:07 jbruck Exp $
+ * $Id: StartObjectBehaviorActionItemProvider.java,v 1.1 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -18,7 +17,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -28,18 +29,19 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.uml2.uml.ClearStructuralFeatureAction;
+
+import org.eclipse.uml2.uml.StartObjectBehaviorAction;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.uml2.uml.ClearStructuralFeatureAction} object.
+ * This is the item provider adapter for a {@link org.eclipse.uml2.uml.StartObjectBehaviorAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClearStructuralFeatureActionItemProvider
-		extends StructuralFeatureActionItemProvider
+public class StartObjectBehaviorActionItemProvider
+		extends CallActionItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		IItemColorProvider, IItemFontProvider {
@@ -50,8 +52,7 @@ public class ClearStructuralFeatureActionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClearStructuralFeatureActionItemProvider(
-			AdapterFactory adapterFactory) {
+	public StartObjectBehaviorActionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -84,7 +85,7 @@ public class ClearStructuralFeatureActionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.CLEAR_STRUCTURAL_FEATURE_ACTION__RESULT);
+				.add(UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT);
 		}
 		return childrenFeatures;
 	}
@@ -103,7 +104,7 @@ public class ClearStructuralFeatureActionItemProvider
 	}
 
 	/**
-	 * This returns ClearStructuralFeatureAction.gif.
+	 * This returns StartObjectBehaviorAction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -111,20 +112,21 @@ public class ClearStructuralFeatureActionItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/ClearStructuralFeatureAction")); //$NON-NLS-1$
+			"full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ClearStructuralFeatureAction_type"), object).toString(); //$NON-NLS-1$
+		String label = ((StartObjectBehaviorAction) object).getName();
+		return label == null || label.length() == 0
+			? getString("_UI_StartObjectBehaviorAction_type") : //$NON-NLS-1$
+			getString("_UI_StartObjectBehaviorAction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -138,8 +140,8 @@ public class ClearStructuralFeatureActionItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ClearStructuralFeatureAction.class)) {
-			case UMLPackage.CLEAR_STRUCTURAL_FEATURE_ACTION__RESULT :
+		switch (notification.getFeatureID(StartObjectBehaviorAction.class)) {
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -160,8 +162,16 @@ public class ClearStructuralFeatureActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLEAR_STRUCTURAL_FEATURE_ACTION__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createValuePin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**
@@ -177,7 +187,9 @@ public class ClearStructuralFeatureActionItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT
+			|| childFeature == UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

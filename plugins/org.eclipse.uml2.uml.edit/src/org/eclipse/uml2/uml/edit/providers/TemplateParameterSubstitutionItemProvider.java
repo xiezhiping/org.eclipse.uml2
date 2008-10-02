@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *
- * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.19 2008/02/01 14:04:52 khussey Exp $
+ * $Id: TemplateParameterSubstitutionItemProvider.java,v 1.20 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -37,9 +37,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
-import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
-import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -585,74 +583,32 @@ public class TemplateParameterSubstitutionItemProvider
 	}
 
 	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected Command createAddCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection, int index) {
+	protected Command createSetCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value) {
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL) {
-			return new SubsetAddCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL},
-				collection, index);
-		}
-		return super
-			.createAddCommand(domain, owner, feature, collection, index);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL},
-				collection);
-		}
-		return super.createRemoveCommand(domain, owner, feature, collection);
-	}
-
-	/**
-	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, EObject value, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL},
-				null, value, collection);
+				null, value);
 		}
 		if (feature == UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL) {
-			return new SubsetSupersetReplaceCommand(
+			return new SubsetSupersetSetCommand(
 				domain,
 				owner,
 				feature,
 				null,
 				new EStructuralFeature[]{UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL},
-				value, collection);
+				value);
 		}
-		return super.createReplaceCommand(domain, owner, feature, value,
-			collection);
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

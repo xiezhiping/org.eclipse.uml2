@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: TemplateSignatureItemProvider.java,v 1.16 2008/02/01 14:04:54 khussey Exp $
+ * $Id: TemplateSignatureItemProvider.java,v 1.17 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -239,11 +239,11 @@ public class TemplateSignatureItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
+			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
+			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,

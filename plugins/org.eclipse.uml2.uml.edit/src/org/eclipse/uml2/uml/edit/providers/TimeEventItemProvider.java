@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: TimeEventItemProvider.java,v 1.9 2008/02/01 14:04:50 khussey Exp $
+ * $Id: TimeEventItemProvider.java,v 1.10 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -208,82 +208,7 @@ public class TimeEventItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createStringExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
 				.createTimeExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createDuration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EVENT__WHEN, UMLFactory.eINSTANCE
-				.createTimeInterval()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature,
-			Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
-			|| childFeature == UMLPackage.Literals.TIME_EVENT__WHEN;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
-				new Object[]{getTypeText(childObject),
-					getFeatureText(childFeature), getTypeText(owner)});
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

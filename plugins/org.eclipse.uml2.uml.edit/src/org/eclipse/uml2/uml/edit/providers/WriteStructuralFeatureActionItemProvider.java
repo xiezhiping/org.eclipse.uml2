@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: WriteStructuralFeatureActionItemProvider.java,v 1.7 2008/02/01 14:04:54 khussey Exp $
+ * $Id: WriteStructuralFeatureActionItemProvider.java,v 1.8 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -110,6 +110,8 @@ public class WriteStructuralFeatureActionItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures
 				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
+			childrenFeatures
+				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -154,6 +156,7 @@ public class WriteStructuralFeatureActionItemProvider
 
 		switch (notification.getFeatureID(WriteStructuralFeatureAction.class)) {
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -184,6 +187,10 @@ public class WriteStructuralFeatureActionItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
 			UMLFactory.eINSTANCE.createActionInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**

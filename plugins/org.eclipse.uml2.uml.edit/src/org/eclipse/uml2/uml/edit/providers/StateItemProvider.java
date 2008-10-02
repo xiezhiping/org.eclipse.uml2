@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: StateItemProvider.java,v 1.13 2008/02/01 14:04:52 khussey Exp $
+ * $Id: StateItemProvider.java,v 1.14 2008/10/02 20:59:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -73,8 +73,8 @@ public class StateItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
-			addIncomingPropertyDescriptor(object);
 			addOutgoingPropertyDescriptor(object);
+			addIncomingPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
 			addIsOrthogonalPropertyDescriptor(object);
