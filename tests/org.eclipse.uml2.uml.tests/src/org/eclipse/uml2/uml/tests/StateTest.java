@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateTest.java,v 1.7 2007/05/04 20:35:57 khussey Exp $
+ * $Id: StateTest.java,v 1.8 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -25,8 +25,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following features are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.State#getRedefinitionContexts() <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isComposite() <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isOrthogonal() <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isSimple() <em>Is Simple</em>}</li>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
+ * $Id: DecisionNodeTest.java,v 1.4 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -24,9 +24,14 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateOneIncomingEdge(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Incoming Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Outgoing Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateDecisionInputFlowIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decision Input Flow Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateZeroInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Zero Input Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingObjectOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Object One Input Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingControlOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Control One Input Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DecisionNode#validateTwoInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Input Parameters</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -89,25 +94,13 @@ public class DecisionNodeTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateOneIncomingEdge(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Incoming Edge</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Outgoing Edges</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.DecisionNode#validateOneIncomingEdge(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateIncomingOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testValidateOneIncomingEdge__DiagnosticChain_Map() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Parameter</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.DecisionNode#validateInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testValidateInputParameter__DiagnosticChain_Map() {
+	public void testValidateIncomingOutgoingEdges__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -120,6 +113,78 @@ public class DecisionNodeTest
 	 * @generated
 	 */
 	public void testValidateEdges__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateDecisionInputFlowIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Decision Input Flow Incoming</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateDecisionInputFlowIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateDecisionInputFlowIncoming__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateParameters__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateZeroInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Zero Input Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateZeroInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateZeroInputParameters__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingObjectOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Object One Input Parameter</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateIncomingObjectOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateIncomingObjectOneInputParameter__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateIncomingControlOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Incoming Control One Input Parameter</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateIncomingControlOneInputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateIncomingControlOneInputParameter__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.DecisionNode#validateTwoInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Two Input Parameters</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.DecisionNode#validateTwoInputParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateTwoInputParameters__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLTests.java,v 1.5 2008/01/09 18:52:23 khussey Exp $
+ * $Id: UMLTests.java,v 1.6 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -61,7 +61,6 @@ public class UMLTests
 		suite.addTestSuite(AbstractionTest.class);
 		suite.addTestSuite(OpaqueExpressionTest.class);
 		suite.addTestSuite(ParameterTest.class);
-		suite.addTestSuite(ConnectableElementTemplateParameterTest.class);
 		suite.addTestSuite(ConnectorEndTest.class);
 		suite.addTestSuite(PropertyTest.class);
 		suite.addTestSuite(DeploymentTest.class);
@@ -94,6 +93,7 @@ public class UMLTests
 		suite.addTestSuite(ParameterSetTest.class);
 		suite.addTestSuite(DataTypeTest.class);
 		suite.addTestSuite(OperationTemplateParameterTest.class);
+		suite.addTestSuite(ConnectableElementTemplateParameterTest.class);
 		suite.addTestSuite(CollaborationUseTest.class);
 		suite.addTestSuite(CollaborationTest.class);
 		suite.addTestSuite(UseCaseTest.class);
@@ -170,6 +170,7 @@ public class UMLTests
 		suite.addTestSuite(CentralBufferNodeTest.class);
 		suite.addTestSuite(MergeNodeTest.class);
 		suite.addTestSuite(DecisionNodeTest.class);
+		suite.addTestSuite(ObjectFlowTest.class);
 		suite.addTestSuite(ActivityFinalNodeTest.class);
 		suite.addTestSuite(ComponentRealizationTest.class);
 		suite.addTestSuite(ComponentTest.class);
@@ -231,9 +232,9 @@ public class UMLTests
 		suite.addTestSuite(ReplyActionTest.class);
 		suite.addTestSuite(UnmarshallActionTest.class);
 		suite.addTestSuite(ReduceActionTest.class);
+		suite.addTestSuite(StartObjectBehaviorActionTest.class);
 		suite.addTestSuite(JoinNodeTest.class);
 		suite.addTestSuite(DataStoreNodeTest.class);
-		suite.addTestSuite(ObjectFlowTest.class);
 		suite.addTestSuite(ConditionalNodeTest.class);
 		suite.addTestSuite(ClauseTest.class);
 		suite.addTestSuite(LoopNodeTest.class);

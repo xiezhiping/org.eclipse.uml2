@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityParameterNodeTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
+ * $Id: ActivityParameterNodeTest.java,v 1.4 2008/10/02 21:00:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -29,6 +29,8 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoIncomingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Incoming Edges</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateNoOutgoingEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Outgoing Edges</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -146,6 +148,30 @@ public class ActivityParameterNodeTest
 	 * @generated
 	 */
 	public void testValidateNoOutgoingEdges__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum One Parameter Node</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumOneParameterNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMaximumOneParameterNode__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Maximum Two Parameter Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ActivityParameterNode#validateMaximumTwoParameterNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMaximumTwoParameterNodes__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
