@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.sdk"
       label="%feature.label"
-      version="2.2.100.qualifier"
+      version="3.0.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -40,7 +40,7 @@ http://www.eclipse.org/legal/epl-v10.html
       version="0.0.0"/> 
 
    <includes
-      id="org.eclipse.uml2.doc"
-      version="0.0.0"/> 
+         id="org.eclipse.uml2.doc"
+         version="0.0.0"/>
 
 </feature>
