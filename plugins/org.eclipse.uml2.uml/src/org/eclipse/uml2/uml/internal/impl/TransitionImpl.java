@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: TransitionImpl.java,v 1.29 2008/04/21 16:32:42 khussey Exp $
+ * $Id: TransitionImpl.java,v 1.30 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -80,12 +80,12 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTriggers <em>Trigger</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -164,6 +164,26 @@ public class TransitionImpl
 	protected static final int KIND_EFLAG = 0x3 << KIND_EFLAG_OFFSET;
 
 	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vertex source;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vertex target;
+
+	/**
 	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,26 +222,6 @@ public class TransitionImpl
 	 * @ordered
 	 */
 	protected EList<Trigger> triggers;
-
-	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTarget()
-	 * @generated
-	 * @ordered
-	 */
-	protected Vertex target;
-
-	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSource()
-	 * @generated
-	 * @ordered
-	 */
-	protected Vertex source;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1172,6 +1172,14 @@ public class TransitionImpl
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
+			case UMLPackage.TRANSITION__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
+			case UMLPackage.TRANSITION__TARGET :
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
 					return getRedefinedTransition();
@@ -1186,14 +1194,6 @@ public class TransitionImpl
 				return basicGetEffect();
 			case UMLPackage.TRANSITION__TRIGGER :
 				return getTriggers();
-			case UMLPackage.TRANSITION__TARGET :
-				if (resolve)
-					return getTarget();
-				return basicGetTarget();
-			case UMLPackage.TRANSITION__SOURCE :
-				if (resolve)
-					return getSource();
-				return basicGetSource();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1255,6 +1255,12 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__CONTAINER :
 				setContainer((Region) newValue);
 				return;
+			case UMLPackage.TRANSITION__SOURCE :
+				setSource((Vertex) newValue);
+				return;
+			case UMLPackage.TRANSITION__TARGET :
+				setTarget((Vertex) newValue);
+				return;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) newValue);
 				return;
@@ -1267,12 +1273,6 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
-				return;
-			case UMLPackage.TRANSITION__TARGET :
-				setTarget((Vertex) newValue);
-				return;
-			case UMLPackage.TRANSITION__SOURCE :
-				setSource((Vertex) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1322,6 +1322,12 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__CONTAINER :
 				setContainer((Region) null);
 				return;
+			case UMLPackage.TRANSITION__SOURCE :
+				setSource((Vertex) null);
+				return;
+			case UMLPackage.TRANSITION__TARGET :
+				setTarget((Vertex) null);
+				return;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) null);
 				return;
@@ -1333,12 +1339,6 @@ public class TransitionImpl
 				return;
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
-				return;
-			case UMLPackage.TRANSITION__TARGET :
-				setTarget((Vertex) null);
-				return;
-			case UMLPackage.TRANSITION__SOURCE :
-				setSource((Vertex) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1397,6 +1397,10 @@ public class TransitionImpl
 				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
+			case UMLPackage.TRANSITION__SOURCE :
+				return source != null;
+			case UMLPackage.TRANSITION__TARGET :
+				return target != null;
 			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				return redefinedTransition != null;
 			case UMLPackage.TRANSITION__GUARD :
@@ -1405,10 +1409,6 @@ public class TransitionImpl
 				return effect != null;
 			case UMLPackage.TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
-			case UMLPackage.TRANSITION__TARGET :
-				return target != null;
-			case UMLPackage.TRANSITION__SOURCE :
-				return source != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

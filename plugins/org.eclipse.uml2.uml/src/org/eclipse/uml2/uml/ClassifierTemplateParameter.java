@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,15 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameter.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
+ * $Id: ClassifierTemplateParameter.java,v 1.8 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,8 +31,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#isAllowSubstitutable <em>Allow Substitutable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#getDefaultClassifier <em>Default Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#getConstrainingClassifier <em>Constraining Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#getConstrainingClassifiers <em>Constraining Classifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,54 +69,44 @@ public interface ClassifierTemplateParameter
 	void setAllowSubstitutable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Default Classifier</b></em>' reference.
+	 * Returns the value of the '<em><b>Constraining Classifier</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The classifier that is used by default if no argument is provided during template binding. If this property is empty, then there is no default.
+	 * The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Default Classifier</em>' reference.
-	 * @see #setDefaultClassifier(Classifier)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifierTemplateParameter_DefaultClassifier()
-	 * @model ordered="false"
-	 * @generated
-	 */
-	Classifier getDefaultClassifier();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#getDefaultClassifier <em>Default Classifier</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default Classifier</em>' reference.
-	 * @see #getDefaultClassifier()
-	 * @generated
-	 */
-	void setDefaultClassifier(Classifier value);
-
-	/**
-	 * Returns the value of the '<em><b>Constraining Classifier</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The classifier that constrains the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted, otherwise it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Constraining Classifier</em>' reference.
-	 * @see #setConstrainingClassifier(Classifier)
+	 * @return the value of the '<em>Constraining Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifierTemplateParameter_ConstrainingClassifier()
 	 * @model ordered="false"
 	 * @generated
 	 */
-	Classifier getConstrainingClassifier();
+	EList<Classifier> getConstrainingClassifiers();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ClassifierTemplateParameter#getConstrainingClassifier <em>Constraining Classifier</em>}' reference.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Constraining Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Constraining Classifier</em>' reference.
-	 * @see #getConstrainingClassifier()
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConstrainingClassifiers()
 	 * @generated
 	 */
-	void setConstrainingClassifier(Classifier value);
+	Classifier getConstrainingClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Constraining Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getConstrainingClassifiers()
+	 * @generated
+	 */
+	Classifier getConstrainingClassifier(String name, boolean ignoreCase,
+			EClass eClass);
 
 	/**
 	 * <!-- begin-user-doc -->

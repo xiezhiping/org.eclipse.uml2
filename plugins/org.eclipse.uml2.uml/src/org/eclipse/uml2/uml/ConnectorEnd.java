@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEnd.java,v 1.5 2007/05/04 20:35:32 khussey Exp $
+ * $Id: ConnectorEnd.java,v 1.6 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -29,8 +29,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#getDefiningEnd <em>Defining End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#getPartWithPort <em>Part With Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#getRole <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConnectorEnd#getPartWithPort <em>Part With Port</em>}</li>
  * </ul>
  * </p>
  *

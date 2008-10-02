@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.18 2007/05/04 20:35:34 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.19 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,8 +42,8 @@ import org.eclipse.uml2.uml.internal.operations.ConnectorEndOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectorEndImpl#getDefiningEnd <em>Defining End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectorEndImpl#getPartWithPort <em>Part With Port</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectorEndImpl#getRole <em>Role</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConnectorEndImpl#getPartWithPort <em>Part With Port</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,16 +54,6 @@ public class ConnectorEndImpl
 		implements ConnectorEnd {
 
 	/**
-	 * The cached value of the '{@link #getPartWithPort() <em>Part With Port</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartWithPort()
-	 * @generated
-	 * @ordered
-	 */
-	protected Property partWithPort;
-
-	/**
 	 * The cached value of the '{@link #getRole() <em>Role</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -72,6 +62,16 @@ public class ConnectorEndImpl
 	 * @ordered
 	 */
 	protected ConnectableElement role;
+
+	/**
+	 * The cached value of the '{@link #getPartWithPort() <em>Part With Port</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartWithPort()
+	 * @generated
+	 * @ordered
+	 */
+	protected Property partWithPort;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,14 +281,14 @@ public class ConnectorEndImpl
 				if (resolve)
 					return getDefiningEnd();
 				return basicGetDefiningEnd();
-			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
-				if (resolve)
-					return getPartWithPort();
-				return basicGetPartWithPort();
 			case UMLPackage.CONNECTOR_END__ROLE :
 				if (resolve)
 					return getRole();
 				return basicGetRole();
+			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
+				if (resolve)
+					return getPartWithPort();
+				return basicGetPartWithPort();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -330,11 +330,11 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
 				return;
-			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
-				setPartWithPort((Property) newValue);
-				return;
 			case UMLPackage.CONNECTOR_END__ROLE :
 				setRole((ConnectableElement) newValue);
+				return;
+			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
+				setPartWithPort((Property) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -372,11 +372,11 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
 				return;
-			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
-				setPartWithPort((Property) null);
-				return;
 			case UMLPackage.CONNECTOR_END__ROLE :
 				setRole((ConnectableElement) null);
+				return;
+			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
+				setPartWithPort((Property) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -412,10 +412,10 @@ public class ConnectorEndImpl
 				return lowerValue != null;
 			case UMLPackage.CONNECTOR_END__DEFINING_END :
 				return basicGetDefiningEnd() != null;
-			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
-				return partWithPort != null;
 			case UMLPackage.CONNECTOR_END__ROLE :
 				return role != null;
+			case UMLPackage.CONNECTOR_END__PART_WITH_PORT :
+				return partWithPort != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

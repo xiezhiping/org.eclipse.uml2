@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.27 2007/04/25 17:47:02 khussey Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -491,17 +491,6 @@ public abstract class MultiplicityElementImpl
 		if (type != null)
 			newLowerValue.setType(type);
 		return newLowerValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperGt0(this,
-			diagnostics, context);
 	}
 
 	/**

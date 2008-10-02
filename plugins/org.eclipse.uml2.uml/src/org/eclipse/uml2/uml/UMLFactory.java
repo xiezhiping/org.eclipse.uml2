@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.6 2006/01/19 23:06:36 khussey Exp $
+ * $Id: UMLFactory.java,v 1.7 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -1563,6 +1563,15 @@ public interface UMLFactory
 	 * @generated
 	 */
 	ReduceAction createReduceAction();
+
+	/**
+	 * Returns a new object of class '<em>Start Object Behavior Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Start Object Behavior Action</em>'.
+	 * @generated
+	 */
+	StartObjectBehaviorAction createStartObjectBehaviorAction();
 
 	/**
 	 * Returns a new object of class '<em>Control Flow</em>'.

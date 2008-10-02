@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.27 2008/04/21 16:32:41 khussey Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -46,6 +46,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.RemoveStructuralFeatureValueAction;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
@@ -368,6 +369,8 @@ public class RemoveStructuralFeatureValueActionImpl
 				return basicSetObject(null, msgs);
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				return basicSetValue(null, msgs);
+			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				return basicSetResult(null, msgs);
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :
 				return basicSetRemoveAt(null, msgs);
 		}
@@ -462,6 +465,10 @@ public class RemoveStructuralFeatureValueActionImpl
 				if (resolve)
 					return getValue();
 				return basicGetValue();
+			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
 				return isRemoveDuplicates()
 					? Boolean.TRUE
@@ -566,6 +573,9 @@ public class RemoveStructuralFeatureValueActionImpl
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				setValue((InputPin) newValue);
 				return;
+			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				setResult((OutputPin) newValue);
+				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
 				setIsRemoveDuplicates(((Boolean) newValue).booleanValue());
 				return;
@@ -643,6 +653,9 @@ public class RemoveStructuralFeatureValueActionImpl
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				setValue((InputPin) null);
+				return;
+			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				setResult((OutputPin) null);
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
 				setIsRemoveDuplicates(IS_REMOVE_DUPLICATES_EDEFAULT);
@@ -728,6 +741,8 @@ public class RemoveStructuralFeatureValueActionImpl
 				return object != null;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				return value != null;
+			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				return result != null;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
 				return ((eFlags & IS_REMOVE_DUPLICATES_EFLAG) != 0) != IS_REMOVE_DUPLICATES_EDEFAULT;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :

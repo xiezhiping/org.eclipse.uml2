@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ActivityParameterNodeImpl.java,v 1.19 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ActivityParameterNodeImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -188,6 +188,28 @@ public class ActivityParameterNodeImpl
 			Map<Object, Object> context) {
 		return ActivityParameterNodeOperations.validateNoOutgoingEdges(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaximumOneParameterNode(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return ActivityParameterNodeOperations.validateMaximumOneParameterNode(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMaximumTwoParameterNodes(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return ActivityParameterNodeOperations
+			.validateMaximumTwoParameterNodes(this, diagnostics, context);
 	}
 
 	/**

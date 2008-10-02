@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexOperations.java,v 1.8 2007/06/23 18:28:33 khussey Exp $
+ * $Id: VertexOperations.java,v 1.9 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -38,8 +38,8 @@ import org.eclipse.uml2.uml.Vertex;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#containingStateMachine() <em>Containing State Machine</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Get Outgoings</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Get Incomings</em>}</li>
  * </ul>
  * </p>
  *
@@ -181,6 +181,10 @@ public class VertexOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * result = Transition.allInstances()->select(t | t.target=self)
+	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Transition> getIncomings(Vertex vertex) {
@@ -275,6 +279,10 @@ public class VertexOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * result = Transition.allInstances()->select(t | t.source=self)
+	 * @param vertex The receiving '<em><b>Vertex</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Transition> getOutgoings(Vertex vertex) {

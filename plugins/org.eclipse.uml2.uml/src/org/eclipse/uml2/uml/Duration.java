@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Duration.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Duration.java,v 1.9 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,29 +41,42 @@ public interface Duration
 		extends ValueSpecification {
 
 	/**
-	 * Returns the value of the '<em><b>Expr</b></em>' reference.
+	 * Returns the value of the '<em><b>Expr</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of the Duration.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Expr</em>' reference.
+	 * @return the value of the '<em>Expr</em>' containment reference.
 	 * @see #setExpr(ValueSpecification)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDuration_Expr()
-	 * @model ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	ValueSpecification getExpr();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Duration#getExpr <em>Expr</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Duration#getExpr <em>Expr</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expr</em>' reference.
+	 * @param value the new value of the '<em>Expr</em>' containment reference.
 	 * @see #getExpr()
 	 * @generated
 	 */
 	void setExpr(ValueSpecification value);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
+	 * @see #getExpr()
+	 * @generated
+	 */
+	ValueSpecification createExpr(String name, Type type, EClass eClass);
 
 	/**
 	 * Returns the value of the '<em><b>Observation</b></em>' reference list.

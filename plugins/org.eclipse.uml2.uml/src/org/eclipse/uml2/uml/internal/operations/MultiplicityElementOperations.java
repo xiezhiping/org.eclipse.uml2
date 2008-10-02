@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementOperations.java,v 1.18 2007/05/03 21:11:52 khussey Exp $
+ * $Id: MultiplicityElementOperations.java,v 1.19 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -35,7 +35,6 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateUpperGt0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Gt0</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateLowerGe0(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Lower Ge0</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateUpperGeLower(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Upper Ge Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#validateValueSpecificationNoSideEffects(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Value Specification No Side Effects</em>}</li>
@@ -66,44 +65,6 @@ public class MultiplicityElementOperations
 	 */
 	protected MultiplicityElementOperations() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A multiplicity must define at least one valid cardinality that is greater than zero.
-	 * upperBound()->notEmpty() implies upperBound() > 0
-	 * @param multiplicityElement The receiving '<em><b>Multiplicity Element</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static boolean validateUpperGt0(
-			MultiplicityElement multiplicityElement,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = true;
-
-		int upperBound = multiplicityElement.upperBound();
-
-		if (upperBound != LiteralUnlimitedNatural.UNLIMITED && upperBound < 1) {
-			result = false;
-
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(Diagnostic.WARNING,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.MULTIPLICITY_ELEMENT__UPPER_GT0,
-						UMLPlugin.INSTANCE.getString(
-							"_UI_MultiplicityElement_UpperGT0_diagnostic", //$NON-NLS-1$
-							getMessageSubstitutions(context,
-								multiplicityElement)), new Object[]{
-							multiplicityElement, new Integer(upperBound)}));
-			}
-		}
-
-		return result;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DecisionNodeImpl.java,v 1.17 2007/04/25 17:47:01 khussey Exp $
+ * $Id: DecisionNodeImpl.java,v 1.18 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -34,6 +34,7 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -49,6 +50,7 @@ import org.eclipse.uml2.uml.internal.operations.DecisionNodeOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl#getDecisionInput <em>Decision Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl#getDecisionInputFlow <em>Decision Input Flow</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +69,16 @@ public class DecisionNodeImpl
 	 * @ordered
 	 */
 	protected Behavior decisionInput;
+
+	/**
+	 * The cached value of the '{@link #getDecisionInputFlow() <em>Decision Input Flow</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecisionInputFlow()
+	 * @generated
+	 * @ordered
+	 */
+	protected ObjectFlow decisionInputFlow;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,10 +146,18 @@ public class DecisionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateOneIncomingEdge(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return DecisionNodeOperations.validateOneIncomingEdge(this,
-			diagnostics, context);
+	public ObjectFlow getDecisionInputFlow() {
+		if (decisionInputFlow != null && decisionInputFlow.eIsProxy()) {
+			InternalEObject oldDecisionInputFlow = (InternalEObject) decisionInputFlow;
+			decisionInputFlow = (ObjectFlow) eResolveProxy(oldDecisionInputFlow);
+			if (decisionInputFlow != oldDecisionInputFlow) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW,
+						oldDecisionInputFlow, decisionInputFlow));
+			}
+		}
+		return decisionInputFlow;
 	}
 
 	/**
@@ -145,10 +165,33 @@ public class DecisionNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateInputParameter(DiagnosticChain diagnostics,
+	public ObjectFlow basicGetDecisionInputFlow() {
+		return decisionInputFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDecisionInputFlow(ObjectFlow newDecisionInputFlow) {
+		ObjectFlow oldDecisionInputFlow = decisionInputFlow;
+		decisionInputFlow = newDecisionInputFlow;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW,
+				oldDecisionInputFlow, decisionInputFlow));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIncomingOutgoingEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		return DecisionNodeOperations.validateInputParameter(this, diagnostics,
-			context);
+		return DecisionNodeOperations.validateIncomingOutgoingEdges(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -159,6 +202,72 @@ public class DecisionNodeImpl
 	public boolean validateEdges(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return DecisionNodeOperations.validateEdges(this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionInputFlowIncoming(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return DecisionNodeOperations.validateDecisionInputFlowIncoming(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return DecisionNodeOperations.validateParameters(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateZeroInputParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return DecisionNodeOperations.validateZeroInputParameters(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIncomingObjectOneInputParameter(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return DecisionNodeOperations.validateIncomingObjectOneInputParameter(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIncomingControlOneInputParameter(
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return DecisionNodeOperations.validateIncomingControlOneInputParameter(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTwoInputParameters(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return DecisionNodeOperations.validateTwoInputParameters(this,
+			diagnostics, context);
 	}
 
 	/**
@@ -227,6 +336,10 @@ public class DecisionNodeImpl
 				if (resolve)
 					return getDecisionInput();
 				return basicGetDecisionInput();
+			case UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW :
+				if (resolve)
+					return getDecisionInputFlow();
+				return basicGetDecisionInputFlow();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -302,6 +415,9 @@ public class DecisionNodeImpl
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				setDecisionInput((Behavior) newValue);
 				return;
+			case UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW :
+				setDecisionInputFlow((ObjectFlow) newValue);
+				return;
 		}
 		eDynamicSet(featureID, newValue);
 	}
@@ -358,6 +474,9 @@ public class DecisionNodeImpl
 				return;
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				setDecisionInput((Behavior) null);
+				return;
+			case UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW :
+				setDecisionInputFlow((ObjectFlow) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -419,6 +538,8 @@ public class DecisionNodeImpl
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.DECISION_NODE__DECISION_INPUT :
 				return decisionInput != null;
+			case UMLPackage.DECISION_NODE__DECISION_INPUT_FLOW :
+				return decisionInputFlow != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

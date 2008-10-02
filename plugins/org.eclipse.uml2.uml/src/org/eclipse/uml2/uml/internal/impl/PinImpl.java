@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PinImpl.java,v 1.30 2008/04/21 16:32:42 khussey Exp $
+ * $Id: PinImpl.java,v 1.31 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -537,17 +537,6 @@ public class PinImpl
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.PIN__IS_CONTROL, oldIsControl, newIsControl));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperGt0(this,
-			diagnostics, context);
 	}
 
 	/**

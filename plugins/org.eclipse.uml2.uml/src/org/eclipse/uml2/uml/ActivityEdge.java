@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: ActivityEdge.java,v 1.19 2008/01/09 18:56:02 khussey Exp $
+ * $Id: ActivityEdge.java,v 1.20 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -311,7 +311,7 @@ public interface ActivityEdge
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Number of tokens consumed from the source node on each traversal.
+	 * The minimum number of tokens that must traverse the edge at the same time.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Weight</em>' containment reference.
 	 * @see #setWeight(ValueSpecification)

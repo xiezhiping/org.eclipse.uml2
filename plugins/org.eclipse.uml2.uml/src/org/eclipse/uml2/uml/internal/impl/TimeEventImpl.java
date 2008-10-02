@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: TimeEventImpl.java,v 1.24 2008/04/21 16:32:41 khussey Exp $
+ * $Id: TimeEventImpl.java,v 1.25 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -42,9 +42,9 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TimeEvent;
+import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.eclipse.uml2.uml.internal.operations.TimeEventOperations;
@@ -96,7 +96,7 @@ public class TimeEventImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected ValueSpecification when;
+	protected TimeExpression when;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -175,10 +175,10 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification getWhen() {
+	public TimeExpression getWhen() {
 		if (when != null && when.eIsProxy()) {
 			InternalEObject oldWhen = (InternalEObject) when;
-			when = (ValueSpecification) eResolveProxy(oldWhen);
+			when = (TimeExpression) eResolveProxy(oldWhen);
 			if (when != oldWhen) {
 				InternalEObject newWhen = (InternalEObject) when;
 				NotificationChain msgs = oldWhen.eInverseRemove(this,
@@ -203,7 +203,7 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification basicGetWhen() {
+	public TimeExpression basicGetWhen() {
 		return when;
 	}
 
@@ -212,9 +212,9 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetWhen(ValueSpecification newWhen,
+	public NotificationChain basicSetWhen(TimeExpression newWhen,
 			NotificationChain msgs) {
-		ValueSpecification oldWhen = when;
+		TimeExpression oldWhen = when;
 		when = newWhen;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
@@ -232,7 +232,7 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setWhen(ValueSpecification newWhen) {
+	public void setWhen(TimeExpression newWhen) {
 		if (newWhen != when) {
 			NotificationChain msgs = null;
 			if (when != null)
@@ -256,8 +256,8 @@ public class TimeEventImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ValueSpecification createWhen(String name, Type type, EClass eClass) {
-		ValueSpecification newWhen = (ValueSpecification) create(eClass);
+	public TimeExpression createWhen(String name, Type type) {
+		TimeExpression newWhen = (TimeExpression) create(UMLPackage.Literals.TIME_EXPRESSION);
 		setWhen(newWhen);
 		if (name != null)
 			newWhen.setName(name);
@@ -415,7 +415,7 @@ public class TimeEventImpl
 				setIsRelative(((Boolean) newValue).booleanValue());
 				return;
 			case UMLPackage.TIME_EVENT__WHEN :
-				setWhen((ValueSpecification) newValue);
+				setWhen((TimeExpression) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -457,7 +457,7 @@ public class TimeEventImpl
 				setIsRelative(IS_RELATIVE_EDEFAULT);
 				return;
 			case UMLPackage.TIME_EVENT__WHEN :
-				setWhen((ValueSpecification) null);
+				setWhen((TimeExpression) null);
 				return;
 		}
 		eDynamicUnset(featureID);

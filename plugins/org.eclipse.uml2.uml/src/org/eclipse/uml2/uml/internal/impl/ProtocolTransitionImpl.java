@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ProtocolTransitionImpl.java,v 1.38 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.39 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -612,6 +612,14 @@ public class ProtocolTransitionImpl
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				if (resolve)
+					return getSource();
+				return basicGetSource();
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				if (resolve)
+					return getTarget();
+				return basicGetTarget();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
 					return getRedefinedTransition();
@@ -626,14 +634,6 @@ public class ProtocolTransitionImpl
 				return basicGetEffect();
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return getTriggers();
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				if (resolve)
-					return getTarget();
-				return basicGetTarget();
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				if (resolve)
-					return getSource();
-				return basicGetSource();
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				if (resolve)
 					return getPostCondition();
@@ -705,6 +705,12 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) newValue);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				setSource((Vertex) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				setTarget((Vertex) newValue);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) newValue);
 				return;
@@ -717,12 +723,6 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				setTarget((Vertex) newValue);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				setSource((Vertex) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				setPostCondition((Constraint) newValue);
@@ -778,6 +778,12 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				setContainer((Region) null);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				setSource((Vertex) null);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				setTarget((Vertex) null);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				setRedefinedTransition((Transition) null);
 				return;
@@ -789,12 +795,6 @@ public class ProtocolTransitionImpl
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				setTarget((Vertex) null);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				setSource((Vertex) null);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				setPostCondition((Constraint) null);
@@ -859,6 +859,10 @@ public class ProtocolTransitionImpl
 				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
 				return basicGetContainer() != null;
+			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
+				return source != null;
+			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
+				return target != null;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				return redefinedTransition != null;
 			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
@@ -867,10 +871,6 @@ public class ProtocolTransitionImpl
 				return effect != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
-			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
-				return target != null;
-			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
-				return source != null;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				return postCondition != null;
 			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :

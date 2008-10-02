@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.22 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -20,11 +20,13 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.uml2.uml.Classifier;
@@ -44,8 +46,7 @@ import org.eclipse.uml2.uml.internal.operations.ClassifierTemplateParameterOpera
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierTemplateParameterImpl#isAllowSubstitutable <em>Allow Substitutable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierTemplateParameterImpl#getDefaultClassifier <em>Default Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierTemplateParameterImpl#getConstrainingClassifier <em>Constraining Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierTemplateParameterImpl#getConstrainingClassifiers <em>Constraining Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ClassifierTemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  * </ul>
  * </p>
@@ -77,24 +78,14 @@ public class ClassifierTemplateParameterImpl
 	protected static final int ALLOW_SUBSTITUTABLE_EFLAG = 1 << 8;
 
 	/**
-	 * The cached value of the '{@link #getDefaultClassifier() <em>Default Classifier</em>}' reference.
+	 * The cached value of the '{@link #getConstrainingClassifiers() <em>Constraining Classifier</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultClassifier()
+	 * @see #getConstrainingClassifiers()
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier defaultClassifier;
-
-	/**
-	 * The cached value of the '{@link #getConstrainingClassifier() <em>Constraining Classifier</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstrainingClassifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Classifier constrainingClassifier;
+	protected EList<Classifier> constrainingClassifiers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -147,89 +138,42 @@ public class ClassifierTemplateParameterImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getDefaultClassifier() {
-		if (defaultClassifier != null && defaultClassifier.eIsProxy()) {
-			InternalEObject oldDefaultClassifier = (InternalEObject) defaultClassifier;
-			defaultClassifier = (Classifier) eResolveProxy(oldDefaultClassifier);
-			if (defaultClassifier != oldDefaultClassifier) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
-						UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-						oldDefaultClassifier, defaultClassifier));
-			}
-		}
-		return defaultClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier basicGetDefaultClassifier() {
-		return defaultClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefaultClassifier(Classifier newDefaultClassifier) {
-		Classifier oldDefaultClassifier = defaultClassifier;
-		defaultClassifier = newDefaultClassifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER,
-				oldDefaultClassifier, defaultClassifier));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier getConstrainingClassifier() {
-		if (constrainingClassifier != null && constrainingClassifier.eIsProxy()) {
-			InternalEObject oldConstrainingClassifier = (InternalEObject) constrainingClassifier;
-			constrainingClassifier = (Classifier) eResolveProxy(oldConstrainingClassifier);
-			if (constrainingClassifier != oldConstrainingClassifier) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-						this,
-						Notification.RESOLVE,
-						UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-						oldConstrainingClassifier, constrainingClassifier));
-			}
-		}
-		return constrainingClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier basicGetConstrainingClassifier() {
-		return constrainingClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConstrainingClassifier(Classifier newConstrainingClassifier) {
-		Classifier oldConstrainingClassifier = constrainingClassifier;
-		constrainingClassifier = newConstrainingClassifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
+	public EList<Classifier> getConstrainingClassifiers() {
+		if (constrainingClassifiers == null) {
+			constrainingClassifiers = new EObjectResolvingEList<Classifier>(
+				Classifier.class,
 				this,
-				Notification.SET,
-				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER,
-				oldConstrainingClassifier, constrainingClassifier));
+				UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER);
+		}
+		return constrainingClassifiers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getConstrainingClassifier(String name) {
+		return getConstrainingClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getConstrainingClassifier(String name,
+			boolean ignoreCase, EClass eClass) {
+		constrainingClassifierLoop : for (Classifier constrainingClassifier : getConstrainingClassifiers()) {
+			if (eClass != null && !eClass.isInstance(constrainingClassifier))
+				continue constrainingClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(constrainingClassifier.getName())
+				: name.equals(constrainingClassifier.getName())))
+				continue constrainingClassifierLoop;
+			return constrainingClassifier;
+		}
+		return null;
 	}
 
 	/**
@@ -400,14 +344,8 @@ public class ClassifierTemplateParameterImpl
 				return isAllowSubstitutable()
 					? Boolean.TRUE
 					: Boolean.FALSE;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :
-				if (resolve)
-					return getDefaultClassifier();
-				return basicGetDefaultClassifier();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
-				if (resolve)
-					return getConstrainingClassifier();
-				return basicGetConstrainingClassifier();
+				return getConstrainingClassifiers();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -449,11 +387,10 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :
-				setDefaultClassifier((Classifier) newValue);
-				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
-				setConstrainingClassifier((Classifier) newValue);
+				getConstrainingClassifiers().clear();
+				getConstrainingClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -491,11 +428,8 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(ALLOW_SUBSTITUTABLE_EDEFAULT);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :
-				setDefaultClassifier((Classifier) null);
-				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
-				setConstrainingClassifier((Classifier) null);
+				getConstrainingClassifiers().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -529,10 +463,9 @@ public class ClassifierTemplateParameterImpl
 				return ownedDefault != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT_CLASSIFIER :
-				return defaultClassifier != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
-				return constrainingClassifier != null;
+				return constrainingClassifiers != null
+					&& !constrainingClassifiers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

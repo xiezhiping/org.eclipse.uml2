@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeExpressionImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
+ * $Id: TimeExpressionImpl.java,v 1.19 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Observation;
@@ -57,7 +59,7 @@ public class TimeExpressionImpl
 		implements TimeExpression {
 
 	/**
-	 * The cached value of the '{@link #getExpr() <em>Expr</em>}' reference.
+	 * The cached value of the '{@link #getExpr() <em>Expr</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExpr()
@@ -105,6 +107,16 @@ public class TimeExpressionImpl
 			InternalEObject oldExpr = (InternalEObject) expr;
 			expr = (ValueSpecification) eResolveProxy(oldExpr);
 			if (expr != oldExpr) {
+				InternalEObject newExpr = (InternalEObject) expr;
+				NotificationChain msgs = oldExpr.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EXPRESSION__EXPR,
+					null, null);
+				if (newExpr.eInternalContainer() == null) {
+					msgs = newExpr.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.TIME_EXPRESSION__EXPR, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 						UMLPackage.TIME_EXPRESSION__EXPR, oldExpr, expr));
@@ -127,12 +139,59 @@ public class TimeExpressionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpr(ValueSpecification newExpr) {
+	public NotificationChain basicSetExpr(ValueSpecification newExpr,
+			NotificationChain msgs) {
 		ValueSpecification oldExpr = expr;
 		expr = newExpr;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET, UMLPackage.TIME_EXPRESSION__EXPR, oldExpr,
+				newExpr);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExpr(ValueSpecification newExpr) {
+		if (newExpr != expr) {
+			NotificationChain msgs = null;
+			if (expr != null)
+				msgs = ((InternalEObject) expr).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EXPRESSION__EXPR,
+					null, msgs);
+			if (newExpr != null)
+				msgs = ((InternalEObject) newExpr).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE - UMLPackage.TIME_EXPRESSION__EXPR,
+					null, msgs);
+			msgs = basicSetExpr(newExpr, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.TIME_EXPRESSION__EXPR, oldExpr, expr));
+				UMLPackage.TIME_EXPRESSION__EXPR, newExpr, newExpr));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ValueSpecification createExpr(String name, Type type, EClass eClass) {
+		ValueSpecification newExpr = (ValueSpecification) create(eClass);
+		setExpr(newExpr);
+		if (name != null)
+			newExpr.setName(name);
+		if (type != null)
+			newExpr.setType(type);
+		return newExpr;
 	}
 
 	/**
@@ -185,6 +244,36 @@ public class TimeExpressionImpl
 	@Override
 	public String stringValue() {
 		return TimeExpressionOperations.stringValue(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case UMLPackage.TIME_EXPRESSION__EANNOTATIONS :
+				return ((InternalEList<?>) getEAnnotations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_EXPRESSION__OWNED_COMMENT :
+				return ((InternalEList<?>) getOwnedComments()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.TIME_EXPRESSION__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.TIME_EXPRESSION__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
+			case UMLPackage.TIME_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
+				return basicSetOwningTemplateParameter(null, msgs);
+			case UMLPackage.TIME_EXPRESSION__TEMPLATE_PARAMETER :
+				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.TIME_EXPRESSION__EXPR :
+				return basicSetExpr(null, msgs);
+		}
+		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

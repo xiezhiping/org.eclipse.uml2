@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: VariableImpl.java,v 1.34 2008/04/21 16:32:42 khussey Exp $
+ * $Id: VariableImpl.java,v 1.35 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -627,17 +627,6 @@ public class VariableImpl
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.VARIABLE__SCOPE, newScope, newScope));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperGt0(this,
-			diagnostics, context);
 	}
 
 	/**

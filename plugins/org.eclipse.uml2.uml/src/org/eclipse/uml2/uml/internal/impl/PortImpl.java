@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PortImpl.java,v 1.30 2008/04/21 16:32:41 khussey Exp $
+ * $Id: PortImpl.java,v 1.31 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,9 +48,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
-import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -545,12 +543,6 @@ public class PortImpl
 				return getDeployments();
 			case UMLPackage.PORT__DEPLOYED_ELEMENT :
 				return getDeployedElements();
-			case UMLPackage.PORT__TEMPLATE_BINDING :
-				return getTemplateBindings();
-			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				if (resolve)
-					return getOwnedTemplateSignature();
-				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PORT__CLASS :
 				if (resolve)
 					return getClass_();
@@ -701,14 +693,6 @@ public class PortImpl
 				getDeployments().addAll(
 					(Collection<? extends Deployment>) newValue);
 				return;
-			case UMLPackage.PORT__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
-				return;
-			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.PORT__DATATYPE :
 				setDatatype((DataType) newValue);
 				return;
@@ -854,12 +838,6 @@ public class PortImpl
 			case UMLPackage.PORT__DEPLOYMENT :
 				getDeployments().clear();
 				return;
-			case UMLPackage.PORT__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
-			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.PORT__DATATYPE :
 				setDatatype((DataType) null);
 				return;
@@ -985,10 +963,6 @@ public class PortImpl
 				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PORT__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
-			case UMLPackage.PORT__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
-			case UMLPackage.PORT__OWNED_TEMPLATE_SIGNATURE :
-				return ownedTemplateSignature != null;
 			case UMLPackage.PORT__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.PORT__DATATYPE :

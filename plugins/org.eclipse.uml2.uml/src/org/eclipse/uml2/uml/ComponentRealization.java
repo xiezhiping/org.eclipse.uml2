@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealization.java,v 1.6 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: ComponentRealization.java,v 1.7 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +28,7 @@ package org.eclipse.uml2.uml;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getRealizingClassifier <em>Realizing Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getRealizingClassifiers <em>Realizing Classifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,7 +74,8 @@ public interface ComponentRealization
 	void setAbstraction(Component value);
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference.
+	 * Returns the value of the '<em><b>Realizing Classifier</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Classifier}.
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
@@ -81,24 +85,38 @@ public interface ComponentRealization
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A classifier that is involved in the implementation of the Component that owns this ComponentRealization.
+	 * The classifiers that are involved in the implementation of the Component that owns this Realization.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Realizing Classifier</em>' reference.
-	 * @see #setRealizingClassifier(Classifier)
+	 * @return the value of the '<em>Realizing Classifier</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponentRealization_RealizingClassifier()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	Classifier getRealizingClassifier();
+	EList<Classifier> getRealizingClassifiers();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.ComponentRealization#getRealizingClassifier <em>Realizing Classifier</em>}' reference.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Realizing Classifier</em>' reference.
-	 * @see #getRealizingClassifier()
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRealizingClassifiers()
 	 * @generated
 	 */
-	void setRealizingClassifier(Classifier value);
+	Classifier getRealizingClassifier(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>' from the '<em><b>Realizing Classifier</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Classifier} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Classifier} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getRealizingClassifiers()
+	 * @generated
+	 */
+	Classifier getRealizingClassifier(String name, boolean ignoreCase,
+			EClass eClass);
 
 } // ComponentRealization

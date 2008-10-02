@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: StateImpl.java,v 1.35 2008/04/21 16:32:41 khussey Exp $
+ * $Id: StateImpl.java,v 1.36 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -79,8 +79,8 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#isLeaf <em>Is Leaf</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOutgoings <em>Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateImpl#getOwnedElements <em>Owned Element</em>}</li>
@@ -1707,10 +1707,10 @@ public class StateImpl
 				return getRedefinedElements();
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.STATE__INCOMING :
-				return getIncomings();
 			case UMLPackage.STATE__OUTGOING :
 				return getOutgoings();
+			case UMLPackage.STATE__INCOMING :
+				return getIncomings();
 			case UMLPackage.STATE__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -1818,14 +1818,14 @@ public class StateImpl
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(((Boolean) newValue).booleanValue());
 				return;
-			case UMLPackage.STATE__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.STATE__OUTGOING :
 				getOutgoings().clear();
 				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.STATE__INCOMING :
+				getIncomings().clear();
+				getIncomings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.STATE__CONTAINER :
@@ -1910,11 +1910,11 @@ public class StateImpl
 			case UMLPackage.STATE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.STATE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.STATE__OUTGOING :
 				getOutgoings().clear();
+				return;
+			case UMLPackage.STATE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.STATE__CONTAINER :
 				setContainer((Region) null);
@@ -2002,10 +2002,10 @@ public class StateImpl
 				return isSetRedefinedElements();
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.STATE__INCOMING :
-				return !getIncomings().isEmpty();
 			case UMLPackage.STATE__OUTGOING :
 				return !getOutgoings().isEmpty();
+			case UMLPackage.STATE__INCOMING :
+				return !getIncomings().isEmpty();
 			case UMLPackage.STATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.STATE__IS_COMPOSITE :
@@ -2062,10 +2062,10 @@ public class StateImpl
 		}
 		if (baseClass == Vertex.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.STATE__INCOMING :
-					return UMLPackage.VERTEX__INCOMING;
 				case UMLPackage.STATE__OUTGOING :
 					return UMLPackage.VERTEX__OUTGOING;
+				case UMLPackage.STATE__INCOMING :
+					return UMLPackage.VERTEX__INCOMING;
 				case UMLPackage.STATE__CONTAINER :
 					return UMLPackage.VERTEX__CONTAINER;
 				default :
@@ -2096,10 +2096,10 @@ public class StateImpl
 		}
 		if (baseClass == Vertex.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.VERTEX__INCOMING :
-					return UMLPackage.STATE__INCOMING;
 				case UMLPackage.VERTEX__OUTGOING :
 					return UMLPackage.STATE__OUTGOING;
+				case UMLPackage.VERTEX__INCOMING :
+					return UMLPackage.STATE__INCOMING;
 				case UMLPackage.VERTEX__CONTAINER :
 					return UMLPackage.STATE__CONTAINER;
 				default :

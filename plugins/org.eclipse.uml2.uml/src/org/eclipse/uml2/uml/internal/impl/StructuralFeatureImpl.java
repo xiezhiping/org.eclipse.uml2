@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: StructuralFeatureImpl.java,v 1.28 2008/04/21 16:32:41 khussey Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.29 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -595,17 +595,6 @@ public abstract class StructuralFeatureImpl
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY, oldIsReadOnly,
 				newIsReadOnly));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperGt0(this,
-			diagnostics, context);
 	}
 
 	/**

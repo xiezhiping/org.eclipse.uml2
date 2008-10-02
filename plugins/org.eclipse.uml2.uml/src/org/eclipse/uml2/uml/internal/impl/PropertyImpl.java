@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 204200
  *
- * $Id: PropertyImpl.java,v 1.45 2008/04/21 16:32:42 khussey Exp $
+ * $Id: PropertyImpl.java,v 1.46 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -59,10 +59,7 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.RedefinableElement;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
-import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -72,7 +69,6 @@ import org.eclipse.uml2.uml.internal.operations.ConnectableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
 import org.eclipse.uml2.uml.internal.operations.ParameterableElementOperations;
 import org.eclipse.uml2.uml.internal.operations.PropertyOperations;
-import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -89,8 +85,6 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getClientDependencies <em>Client Dependency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getDeployedElements <em>Deployed Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getTemplateBindings <em>Template Binding</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PropertyImpl#getRedefinedElements <em>Redefined Element</em>}</li>
@@ -138,28 +132,6 @@ public class PropertyImpl
 	 * @ordered
 	 */
 	protected EList<Deployment> deployments;
-
-	/**
-	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @see #getTemplateBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TemplateBinding> templateBindings;
-
-	/**
-	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTemplateSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateSignature ownedTemplateSignature;
 
 	/**
 	 * The cached value of the '{@link #getAssociation() <em>Association</em>}' reference.
@@ -689,179 +661,6 @@ public class PropertyImpl
 			return deployedElement;
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<TemplateBinding> getTemplateBindings() {
-		if (templateBindings == null) {
-			templateBindings = new EObjectContainmentWithInverseEList.Resolving<TemplateBinding>(
-				TemplateBinding.class, this,
-				UMLPackage.PROPERTY__TEMPLATE_BINDING,
-				UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT);
-		}
-		return templateBindings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateBinding createTemplateBinding(TemplateSignature signature) {
-		TemplateBinding newTemplateBinding = (TemplateBinding) create(UMLPackage.Literals.TEMPLATE_BINDING);
-		getTemplateBindings().add(newTemplateBinding);
-		if (signature != null)
-			newTemplateBinding.setSignature(signature);
-		return newTemplateBinding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateBinding getTemplateBinding(TemplateSignature signature) {
-		return getTemplateBinding(signature, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateBinding getTemplateBinding(TemplateSignature signature,
-			boolean createOnDemand) {
-		templateBindingLoop : for (TemplateBinding templateBinding : getTemplateBindings()) {
-			if (signature != null
-				&& !signature.equals(templateBinding.getSignature()))
-				continue templateBindingLoop;
-			return templateBinding;
-		}
-		return createOnDemand
-			? createTemplateBinding(signature)
-			: null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateSignature getOwnedTemplateSignature() {
-		if (ownedTemplateSignature != null && ownedTemplateSignature.eIsProxy()) {
-			InternalEObject oldOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-			ownedTemplateSignature = (TemplateSignature) eResolveProxy(oldOwnedTemplateSignature);
-			if (ownedTemplateSignature != oldOwnedTemplateSignature) {
-				InternalEObject newOwnedTemplateSignature = (InternalEObject) ownedTemplateSignature;
-				NotificationChain msgs = oldOwnedTemplateSignature
-					.eInverseRemove(this,
-						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
-						TemplateSignature.class, null);
-				if (newOwnedTemplateSignature.eInternalContainer() == null) {
-					msgs = newOwnedTemplateSignature.eInverseAdd(this,
-						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
-						TemplateSignature.class, msgs);
-				}
-				if (msgs != null)
-					msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-						oldOwnedTemplateSignature, ownedTemplateSignature));
-			}
-		}
-		return ownedTemplateSignature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateSignature basicGetOwnedTemplateSignature() {
-		return ownedTemplateSignature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature, NotificationChain msgs) {
-		TemplateSignature oldOwnedTemplateSignature = ownedTemplateSignature;
-		ownedTemplateSignature = newOwnedTemplateSignature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-				oldOwnedTemplateSignature, newOwnedTemplateSignature);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOwnedTemplateSignature(
-			TemplateSignature newOwnedTemplateSignature) {
-		if (newOwnedTemplateSignature != ownedTemplateSignature) {
-			NotificationChain msgs = null;
-			if (ownedTemplateSignature != null)
-				msgs = ((InternalEObject) ownedTemplateSignature)
-					.eInverseRemove(this,
-						UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
-						TemplateSignature.class, msgs);
-			if (newOwnedTemplateSignature != null)
-				msgs = ((InternalEObject) newOwnedTemplateSignature)
-					.eInverseAdd(this, UMLPackage.TEMPLATE_SIGNATURE__TEMPLATE,
-						TemplateSignature.class, msgs);
-			msgs = basicSetOwnedTemplateSignature(newOwnedTemplateSignature,
-				msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-				newOwnedTemplateSignature, newOwnedTemplateSignature));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateSignature createOwnedTemplateSignature(EClass eClass) {
-		TemplateSignature newOwnedTemplateSignature = (TemplateSignature) create(eClass);
-		setOwnedTemplateSignature(newOwnedTemplateSignature);
-		return newOwnedTemplateSignature;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TemplateSignature createOwnedTemplateSignature() {
-		return createOwnedTemplateSignature(UMLPackage.Literals.TEMPLATE_SIGNATURE);
 	}
 
 	/**
@@ -1736,40 +1535,6 @@ public class PropertyImpl
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<ParameterableElement> parameterableElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			@SuppressWarnings("unchecked")
-			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
-					.getEOperations().get(0));
-			if (result == null) {
-				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
-					.getEOperations().get(0),
-					result = TemplateableElementOperations
-						.parameterableElements(this));
-			}
-			return result;
-		}
-		return TemplateableElementOperations.parameterableElements(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * @deprecated
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isTemplate() {
-		return TemplateableElementOperations.isTemplate(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -2022,17 +1787,6 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getDeployments())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				if (ownedTemplateSignature != null)
-					msgs = ((InternalEObject) ownedTemplateSignature)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-							- UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
-							null, msgs);
-				return basicSetOwnedTemplateSignature(
-					(TemplateSignature) otherEnd, msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -2089,11 +1843,6 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				return ((InternalEList<?>) getDeployments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.PROPERTY__DATATYPE :
 				return basicSetDatatype(null, msgs);
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
@@ -2229,12 +1978,6 @@ public class PropertyImpl
 				return getDeployments();
 			case UMLPackage.PROPERTY__DEPLOYED_ELEMENT :
 				return getDeployedElements();
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return getTemplateBindings();
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				if (resolve)
-					return getOwnedTemplateSignature();
-				return basicGetOwnedTemplateSignature();
 			case UMLPackage.PROPERTY__CLASS :
 				if (resolve)
 					return getClass_();
@@ -2367,14 +2110,6 @@ public class PropertyImpl
 				getDeployments().addAll(
 					(Collection<? extends Deployment>) newValue);
 				return;
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				getTemplateBindings().addAll(
-					(Collection<? extends TemplateBinding>) newValue);
-				return;
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.PROPERTY__DATATYPE :
 				setDatatype((DataType) newValue);
 				return;
@@ -2506,12 +2241,6 @@ public class PropertyImpl
 			case UMLPackage.PROPERTY__DEPLOYMENT :
 				getDeployments().clear();
 				return;
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.PROPERTY__DATATYPE :
 				setDatatype((DataType) null);
 				return;
@@ -2625,10 +2354,6 @@ public class PropertyImpl
 				return deployments != null && !deployments.isEmpty();
 			case UMLPackage.PROPERTY__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
-			case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
-			case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-				return ownedTemplateSignature != null;
 			case UMLPackage.PROPERTY__CLASS :
 				return basicGetClass_() != null;
 			case UMLPackage.PROPERTY__DATATYPE :
@@ -2700,16 +2425,6 @@ public class PropertyImpl
 					return -1;
 			}
 		}
-		if (baseClass == TemplateableElement.class) {
-			switch (derivedFeatureID) {
-				case UMLPackage.PROPERTY__TEMPLATE_BINDING :
-					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
-				case UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE :
-					return UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
-				default :
-					return -1;
-			}
-		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -2744,16 +2459,6 @@ public class PropertyImpl
 					return UMLPackage.PROPERTY__DEPLOYMENT;
 				case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :
 					return UMLPackage.PROPERTY__DEPLOYED_ELEMENT;
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == TemplateableElement.class) {
-			switch (baseFeatureID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-					return UMLPackage.PROPERTY__TEMPLATE_BINDING;
-				case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
-					return UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE;
 				default :
 					return -1;
 			}
@@ -2825,8 +2530,6 @@ public class PropertyImpl
 		UMLPackage.PROPERTY__OWNED_COMMENT,
 		UMLPackage.PROPERTY__NAME_EXPRESSION, UMLPackage.PROPERTY__UPPER_VALUE,
 		UMLPackage.PROPERTY__LOWER_VALUE, UMLPackage.PROPERTY__DEPLOYMENT,
-		UMLPackage.PROPERTY__TEMPLATE_BINDING,
-		UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE,
 		UMLPackage.PROPERTY__DEFAULT_VALUE, UMLPackage.PROPERTY__QUALIFIER};
 
 	/**
@@ -2858,8 +2561,6 @@ public class PropertyImpl
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.PROPERTY__DEPLOYMENT)
-			|| eIsSet(UMLPackage.PROPERTY__TEMPLATE_BINDING)
-			|| eIsSet(UMLPackage.PROPERTY__OWNED_TEMPLATE_SIGNATURE)
 			|| eIsSet(UMLPackage.PROPERTY__DEFAULT_VALUE)
 			|| eIsSet(UMLPackage.PROPERTY__QUALIFIER);
 	}

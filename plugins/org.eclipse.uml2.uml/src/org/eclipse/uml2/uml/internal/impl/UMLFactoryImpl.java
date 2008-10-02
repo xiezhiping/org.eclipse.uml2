@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLFactoryImpl.java,v 1.19 2008/01/09 18:56:03 khussey Exp $
+ * $Id: UMLFactoryImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -204,6 +204,7 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.StartClassifierBehaviorAction;
+import org.eclipse.uml2.uml.StartObjectBehaviorAction;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateInvariant;
 import org.eclipse.uml2.uml.StateMachine;
@@ -253,7 +254,7 @@ public class UMLFactoryImpl
 	public static UMLFactory init() {
 		try {
 			UMLFactory theUMLFactory = (UMLFactory) EPackage.Registry.INSTANCE
-				.getEFactory("http://www.eclipse.org/uml2/2.1.0/UML"); //$NON-NLS-1$ 
+				.getEFactory("http://www.eclipse.org/uml2/3.0.0/UML"); //$NON-NLS-1$ 
 			if (theUMLFactory != null) {
 				return theUMLFactory;
 			}
@@ -317,8 +318,6 @@ public class UMLFactoryImpl
 				return createOpaqueExpression();
 			case UMLPackage.PARAMETER :
 				return createParameter();
-			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
-				return createConnectableElementTemplateParameter();
 			case UMLPackage.CONNECTOR_END :
 				return createConnectorEnd();
 			case UMLPackage.PROPERTY :
@@ -383,6 +382,8 @@ public class UMLFactoryImpl
 				return createDataType();
 			case UMLPackage.OPERATION_TEMPLATE_PARAMETER :
 				return createOperationTemplateParameter();
+			case UMLPackage.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER :
+				return createConnectableElementTemplateParameter();
 			case UMLPackage.COLLABORATION_USE :
 				return createCollaborationUse();
 			case UMLPackage.COLLABORATION :
@@ -535,6 +536,8 @@ public class UMLFactoryImpl
 				return createMergeNode();
 			case UMLPackage.DECISION_NODE :
 				return createDecisionNode();
+			case UMLPackage.OBJECT_FLOW :
+				return createObjectFlow();
 			case UMLPackage.ACTIVITY_FINAL_NODE :
 				return createActivityFinalNode();
 			case UMLPackage.COMPONENT_REALIZATION :
@@ -657,12 +660,12 @@ public class UMLFactoryImpl
 				return createUnmarshallAction();
 			case UMLPackage.REDUCE_ACTION :
 				return createReduceAction();
+			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION :
+				return createStartObjectBehaviorAction();
 			case UMLPackage.JOIN_NODE :
 				return createJoinNode();
 			case UMLPackage.DATA_STORE_NODE :
 				return createDataStoreNode();
-			case UMLPackage.OBJECT_FLOW :
-				return createObjectFlow();
 			case UMLPackage.CONDITIONAL_NODE :
 				return createConditionalNode();
 			case UMLPackage.CLAUSE :
@@ -2487,6 +2490,16 @@ public class UMLFactoryImpl
 	public ReduceAction createReduceAction() {
 		ReduceActionImpl reduceAction = new ReduceActionImpl();
 		return reduceAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StartObjectBehaviorAction createStartObjectBehaviorAction() {
+		StartObjectBehaviorActionImpl startObjectBehaviorAction = new StartObjectBehaviorActionImpl();
+		return startObjectBehaviorAction;
 	}
 
 	/**

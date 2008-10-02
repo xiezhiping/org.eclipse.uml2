@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PseudostateImpl.java,v 1.20 2008/04/21 16:32:41 khussey Exp $
+ * $Id: PseudostateImpl.java,v 1.21 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -509,10 +509,10 @@ public class PseudostateImpl
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return getIncomings();
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
 				return getOutgoings();
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return getIncomings();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -564,14 +564,14 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
 				getOutgoings().clear();
 				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				getIncomings().clear();
+				getIncomings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
@@ -616,11 +616,11 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
 				getOutgoings().clear();
+				return;
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				setContainer((Region) null);
@@ -669,10 +669,10 @@ public class PseudostateImpl
 				return isSetNamespace();
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				return nameExpression != null;
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return !getIncomings().isEmpty();
 			case UMLPackage.PSEUDOSTATE__OUTGOING :
 				return !getOutgoings().isEmpty();
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return !getIncomings().isEmpty();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicGetContainer() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :

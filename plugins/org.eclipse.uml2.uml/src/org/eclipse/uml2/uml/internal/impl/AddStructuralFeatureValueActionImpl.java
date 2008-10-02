@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.27 2008/04/21 16:32:41 khussey Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -47,6 +47,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.StructuredActivityNode;
@@ -361,6 +362,8 @@ public class AddStructuralFeatureValueActionImpl
 				return basicSetObject(null, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				return basicSetValue(null, msgs);
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				return basicSetResult(null, msgs);
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT :
 				return basicSetInsertAt(null, msgs);
 		}
@@ -455,6 +458,10 @@ public class AddStructuralFeatureValueActionImpl
 				if (resolve)
 					return getValue();
 				return basicGetValue();
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
 				return isReplaceAll()
 					? Boolean.TRUE
@@ -559,6 +566,9 @@ public class AddStructuralFeatureValueActionImpl
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				setValue((InputPin) newValue);
 				return;
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				setResult((OutputPin) newValue);
+				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
 				setIsReplaceAll(((Boolean) newValue).booleanValue());
 				return;
@@ -636,6 +646,9 @@ public class AddStructuralFeatureValueActionImpl
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				setValue((InputPin) null);
+				return;
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				setResult((OutputPin) null);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
 				setIsReplaceAll(IS_REPLACE_ALL_EDEFAULT);
@@ -721,6 +734,8 @@ public class AddStructuralFeatureValueActionImpl
 				return object != null;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__VALUE :
 				return value != null;
+			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__RESULT :
+				return result != null;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
 				return ((eFlags & IS_REPLACE_ALL_EFLAG) != 0) != IS_REPLACE_ALL_EDEFAULT;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentOperations.java,v 1.14 2007/05/03 21:11:51 khussey Exp $
+ * $Id: ComponentOperations.java,v 1.15 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -249,14 +249,17 @@ public class ComponentOperations
 			false, new UniqueEList.FastCompare<Interface>());
 
 		for (ComponentRealization realization : component.getRealizations()) {
-			Classifier realizingClassifier = realization
-				.getRealizingClassifier();
 
-			if (realizingClassifier != null) {
-				usedInterfaces(component, realizingClassifier, false, requireds);
+			for (Classifier realizingClassifier : realization
+				.getRealizingClassifiers()) {
 
-				for (Classifier parent : realizingClassifier.allParents()) {
-					usedInterfaces(component, parent, false, requireds);
+				if (realizingClassifier != null) {
+					usedInterfaces(component, realizingClassifier, false,
+						requireds);
+
+					for (Classifier parent : realizingClassifier.allParents()) {
+						usedInterfaces(component, parent, false, requireds);
+					}
 				}
 			}
 		}
@@ -290,15 +293,16 @@ public class ComponentOperations
 			false, new UniqueEList.FastCompare<Interface>());
 
 		for (ComponentRealization realization : component.getRealizations()) {
-			Classifier realizingClassifier = realization
-				.getRealizingClassifier();
+			for (Classifier realizingClassifier : realization
+				.getRealizingClassifiers()) {
 
-			if (realizingClassifier != null) {
-				realizedInterfaces(component, realizingClassifier, false,
-					provideds);
+				if (realizingClassifier != null) {
+					realizedInterfaces(component, realizingClassifier, false,
+						provideds);
 
-				for (Classifier parent : realizingClassifier.allParents()) {
-					realizedInterfaces(component, parent, false, provideds);
+					for (Classifier parent : realizingClassifier.allParents()) {
+						realizedInterfaces(component, parent, false, provideds);
+					}
 				}
 			}
 		}

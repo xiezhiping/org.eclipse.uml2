@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TransitionOperations.java,v 1.12 2008/03/25 13:41:38 jbruck Exp $
+ * $Id: TransitionOperations.java,v 1.13 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -210,9 +210,7 @@ public class TransitionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Transitions outgoing pseudostates may not have a trigger.
-	 * source.oclIsKindOf(Pseudostate) and
-	 * ((source.kind <> #junction) and (source.kind <> #join) and (source.kind <> #initial)) implies trigger->isEmpty()
-	 * 
+	 * source.oclIsKindOf(Pseudostate) and (source.kind <> #initial)) implies trigger->isEmpty()
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

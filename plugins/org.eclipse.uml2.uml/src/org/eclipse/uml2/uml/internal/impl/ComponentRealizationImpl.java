@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.19 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -56,7 +56,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getAbstraction <em>Abstraction</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getRealizingClassifier <em>Realizing Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getRealizingClassifiers <em>Realizing Classifier</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,14 +67,14 @@ public class ComponentRealizationImpl
 		implements ComponentRealization {
 
 	/**
-	 * The cached value of the '{@link #getRealizingClassifier() <em>Realizing Classifier</em>}' reference.
+	 * The cached value of the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRealizingClassifier()
+	 * @see #getRealizingClassifiers()
 	 * @generated
 	 * @ordered
 	 */
-	protected Classifier realizingClassifier;
+	protected EList<Classifier> realizingClassifiers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,50 +234,52 @@ public class ComponentRealizationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Classifier getRealizingClassifier() {
-		if (realizingClassifier != null && realizingClassifier.eIsProxy()) {
-			InternalEObject oldRealizingClassifier = (InternalEObject) realizingClassifier;
-			realizingClassifier = (Classifier) eResolveProxy(oldRealizingClassifier);
-			if (realizingClassifier != oldRealizingClassifier) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-						oldRealizingClassifier, realizingClassifier));
-			}
-		}
-		return realizingClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Classifier basicGetRealizingClassifier() {
-		return realizingClassifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRealizingClassifier(Classifier newRealizingClassifier) {
-		Classifier oldRealizingClassifier = realizingClassifier;
-		realizingClassifier = newRealizingClassifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
+	public EList<Classifier> getRealizingClassifiers() {
+		if (realizingClassifiers == null) {
+			realizingClassifiers = new SubsetSupersetEObjectResolvingEList<Classifier>(
+				Classifier.class, this,
 				UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER,
-				oldRealizingClassifier, realizingClassifier));
-		Resource.Internal eInternalResource = eInternalResource();
-		if (eInternalResource == null || !eInternalResource.isLoading()) {
-			if (newRealizingClassifier != null) {
-				EList<NamedElement> suppliers = getSuppliers();
-				if (!suppliers.contains(newRealizingClassifier)) {
-					suppliers.add(newRealizingClassifier);
-				}
-			}
+				REALIZING_CLASSIFIER_ESUPERSETS, null);
 		}
+		return realizingClassifiers;
+	}
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getRealizingClassifiers() <em>Realizing Classifier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizingClassifiers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__SUPPLIER};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRealizingClassifier(String name) {
+		return getRealizingClassifier(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Classifier getRealizingClassifier(String name, boolean ignoreCase,
+			EClass eClass) {
+		realizingClassifierLoop : for (Classifier realizingClassifier : getRealizingClassifiers()) {
+			if (eClass != null && !eClass.isInstance(realizingClassifier))
+				continue realizingClassifierLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(realizingClassifier.getName())
+				: name.equals(realizingClassifier.getName())))
+				continue realizingClassifierLoop;
+			return realizingClassifier;
+		}
+		return null;
 	}
 
 	/**
@@ -436,9 +438,7 @@ public class ComponentRealizationImpl
 					return getAbstraction();
 				return basicGetAbstraction();
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				if (resolve)
-					return getRealizingClassifier();
-				return basicGetRealizingClassifier();
+				return getRealizingClassifiers();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -499,7 +499,9 @@ public class ComponentRealizationImpl
 				setAbstraction((Component) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				setRealizingClassifier((Classifier) newValue);
+				getRealizingClassifiers().clear();
+				getRealizingClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -550,7 +552,7 @@ public class ComponentRealizationImpl
 				setAbstraction((Component) null);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				setRealizingClassifier((Classifier) null);
+				getRealizingClassifiers().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -606,7 +608,8 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				return basicGetAbstraction() != null;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				return realizingClassifier != null;
+				return realizingClassifiers != null
+					&& !realizingClassifiers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

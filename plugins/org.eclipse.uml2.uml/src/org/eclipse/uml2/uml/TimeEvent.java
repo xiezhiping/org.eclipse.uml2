@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TimeEvent.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: TimeEvent.java,v 1.13 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -83,12 +81,12 @@ public interface TimeEvent
 	 * Specifies the corresponding time deadline.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>When</em>' containment reference.
-	 * @see #setWhen(ValueSpecification)
+	 * @see #setWhen(TimeExpression)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeEvent_When()
 	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
 	 * @generated
 	 */
-	ValueSpecification getWhen();
+	TimeExpression getWhen();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.TimeEvent#getWhen <em>When</em>}' containment reference.
@@ -98,20 +96,19 @@ public interface TimeEvent
 	 * @see #getWhen()
 	 * @generated
 	 */
-	void setWhen(ValueSpecification value);
+	void setWhen(TimeExpression value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>When</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.TimeExpression},with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
-	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.TimeExpression}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.TimeExpression}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.TimeExpression}.
 	 * @see #getWhen()
 	 * @generated
 	 */
-	ValueSpecification createWhen(String name, Type type, EClass eClass);
+	TimeExpression createWhen(String name, Type type);
 
 	/**
 	 * <!-- begin-user-doc -->

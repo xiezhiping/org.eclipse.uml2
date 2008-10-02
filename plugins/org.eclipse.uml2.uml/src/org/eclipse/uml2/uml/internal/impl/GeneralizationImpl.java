@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.19 2007/04/25 17:47:03 khussey Exp $
+ * $Id: GeneralizationImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -77,7 +77,7 @@ public class GeneralizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_SUBSTITUTABLE_EDEFAULT = false;
+	protected static final boolean IS_SUBSTITUTABLE_EDEFAULT = true;
 
 	/**
 	 * The flag representing the value of the '{@link #isSubstitutable() <em>Is Substitutable</em>}' attribute.
@@ -88,15 +88,6 @@ public class GeneralizationImpl
 	 * @ordered
 	 */
 	protected static final int IS_SUBSTITUTABLE_EFLAG = 1 << 8;
-
-	/**
-	 * The flag representing whether the Is Substitutable attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_SUBSTITUTABLE_ESETFLAG = 1 << 9;
 
 	/**
 	 * The cached value of the '{@link #getGeneral() <em>General</em>}' reference.
@@ -125,6 +116,7 @@ public class GeneralizationImpl
 	 */
 	protected GeneralizationImpl() {
 		super();
+		eFlags |= IS_SUBSTITUTABLE_EFLAG;
 	}
 
 	/**
@@ -209,41 +201,10 @@ public class GeneralizationImpl
 			eFlags |= IS_SUBSTITUTABLE_EFLAG;
 		else
 			eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
-		boolean oldIsSubstitutableESet = (eFlags & IS_SUBSTITUTABLE_ESETFLAG) != 0;
-		eFlags |= IS_SUBSTITUTABLE_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE,
-				oldIsSubstitutable, newIsSubstitutable, !oldIsSubstitutableESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void unsetIsSubstitutable() {
-		boolean oldIsSubstitutable = (eFlags & IS_SUBSTITUTABLE_EFLAG) != 0;
-		boolean oldIsSubstitutableESet = (eFlags & IS_SUBSTITUTABLE_ESETFLAG) != 0;
-		if (IS_SUBSTITUTABLE_EDEFAULT)
-			eFlags |= IS_SUBSTITUTABLE_EFLAG;
-		else
-			eFlags &= ~IS_SUBSTITUTABLE_EFLAG;
-		eFlags &= ~IS_SUBSTITUTABLE_ESETFLAG;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET,
-				UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE,
-				oldIsSubstitutable, IS_SUBSTITUTABLE_EDEFAULT,
-				oldIsSubstitutableESet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetIsSubstitutable() {
-		return (eFlags & IS_SUBSTITUTABLE_ESETFLAG) != 0;
+				oldIsSubstitutable, newIsSubstitutable));
 	}
 
 	/**
@@ -557,7 +518,7 @@ public class GeneralizationImpl
 				getOwnedComments().clear();
 				return;
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
-				unsetIsSubstitutable();
+				setIsSubstitutable(IS_SUBSTITUTABLE_EDEFAULT);
 				return;
 			case UMLPackage.GENERALIZATION__GENERAL :
 				setGeneral((Classifier) null);
@@ -595,7 +556,7 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__TARGET :
 				return isSetTargets();
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
-				return isSetIsSubstitutable();
+				return ((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0) != IS_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.GENERALIZATION__GENERAL :
 				return general != null;
 			case UMLPackage.GENERALIZATION__GENERALIZATION_SET :
@@ -619,10 +580,7 @@ public class GeneralizationImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isSubstitutable: "); //$NON-NLS-1$
-		if ((eFlags & IS_SUBSTITUTABLE_ESETFLAG) != 0)
-			result.append((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
+		result.append((eFlags & IS_SUBSTITUTABLE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: WriteStructuralFeatureActionImpl.java,v 1.26 2007/04/25 17:47:01 khussey Exp $
+ * $Id: WriteStructuralFeatureActionImpl.java,v 1.27 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -45,6 +45,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.StructuredActivityNode;
@@ -63,7 +64,9 @@ import org.eclipse.uml2.uml.internal.operations.WriteStructuralFeatureActionOper
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.WriteStructuralFeatureActionImpl#getResult <em>Result</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,6 +85,16 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @ordered
 	 */
 	protected InputPin value;
+
+	/**
+	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResult()
+	 * @generated
+	 * @ordered
+	 */
+	protected OutputPin result;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,10 +259,136 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public OutputPin getResult() {
+		if (result != null && result.eIsProxy()) {
+			InternalEObject oldResult = (InternalEObject) result;
+			result = (OutputPin) eResolveProxy(oldResult);
+			if (result != oldResult) {
+				InternalEObject newResult = (InternalEObject) result;
+				NotificationChain msgs = oldResult.eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+					null, null);
+				if (newResult.eInternalContainer() == null) {
+					msgs = newResult.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+						null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+						oldResult, result));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin basicGetResult() {
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetResult(OutputPin newResult,
+			NotificationChain msgs) {
+		OutputPin oldResult = result;
+		result = newResult;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET,
+				UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT, oldResult,
+				newResult);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResult(OutputPin newResult) {
+		if (newResult != result) {
+			NotificationChain msgs = null;
+			if (result != null)
+				msgs = ((InternalEObject) result).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+					null, msgs);
+			if (newResult != null)
+				msgs = ((InternalEObject) newResult).eInverseAdd(this,
+					EOPPOSITE_FEATURE_BASE
+						- UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+					null, msgs);
+			msgs = basicSetResult(newResult, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT, newResult,
+				newResult));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OutputPin createResult(String name, Type type) {
+		OutputPin newResult = (OutputPin) create(UMLPackage.Literals.OUTPUT_PIN);
+		setResult(newResult);
+		if (name != null)
+			newResult.setName(name);
+		if (type != null)
+			newResult.setType(type);
+		return newResult;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateInputPin(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return WriteStructuralFeatureActionOperations.validateInputPin(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTypeOfResult(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return WriteStructuralFeatureActionOperations.validateTypeOfResult(
+			this, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMultiplicityOfResult(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return WriteStructuralFeatureActionOperations
+			.validateMultiplicityOfResult(this, diagnostics, context);
 	}
 
 	/**
@@ -313,6 +452,8 @@ public abstract class WriteStructuralFeatureActionImpl
 				return basicSetObject(null, msgs);
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 				return basicSetValue(null, msgs);
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+				return basicSetResult(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -405,6 +546,10 @@ public abstract class WriteStructuralFeatureActionImpl
 				if (resolve)
 					return getValue();
 				return basicGetValue();
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+				if (resolve)
+					return getResult();
+				return basicGetResult();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -501,6 +646,9 @@ public abstract class WriteStructuralFeatureActionImpl
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 				setValue((InputPin) newValue);
 				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+				setResult((OutputPin) newValue);
+				return;
 		}
 		eDynamicSet(featureID, newValue);
 	}
@@ -572,6 +720,9 @@ public abstract class WriteStructuralFeatureActionImpl
 				return;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 				setValue((InputPin) null);
+				return;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+				setResult((OutputPin) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -651,6 +802,8 @@ public abstract class WriteStructuralFeatureActionImpl
 				return object != null;
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 				return value != null;
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+				return result != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -673,9 +826,56 @@ public abstract class WriteStructuralFeatureActionImpl
 	 * @generated
 	 */
 	@Override
+	public EList<OutputPin> getOutputs() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			@SuppressWarnings("unchecked")
+			EList<OutputPin> outputs = (EList<OutputPin>) cache.get(eResource,
+				this, UMLPackage.Literals.ACTION__OUTPUT);
+			if (outputs == null) {
+				cache.put(eResource, this, UMLPackage.Literals.ACTION__OUTPUT,
+					outputs = new DerivedUnionEObjectEList<OutputPin>(
+						OutputPin.class, this,
+						UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTPUT,
+						OUTPUT_ESUBSETS));
+			}
+			return outputs;
+		}
+		return new DerivedUnionEObjectEList<OutputPin>(OutputPin.class, this,
+			UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__OUTPUT, OUTPUT_ESUBSETS);
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOutputs() <em>Output</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OUTPUT_ESUBSETS = new int[]{UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isSetInputs() {
 		return super.isSetInputs()
 			|| eIsSet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetOutputs() {
+		return super.isSetOutputs()
+			|| eIsSet(UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT);
 	}
 
 } //WriteStructuralFeatureActionImpl

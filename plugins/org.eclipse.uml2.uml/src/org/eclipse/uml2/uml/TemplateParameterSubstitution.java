@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,15 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitution.java,v 1.13 2007/10/23 15:54:22 jbruck Exp $
+ * $Id: TemplateParameterSubstitution.java,v 1.14 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -26,15 +24,15 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A template parameter substitution relates the actual parameter(s) to a formal template parameter as part of a template binding.
+ * A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getFormal <em>Formal</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getActuals <em>Actual</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getOwnedActuals <em>Owned Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getActual <em>Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getOwnedActual <em>Owned Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getTemplateBinding <em>Template Binding</em>}</li>
  * </ul>
  * </p>
@@ -72,49 +70,69 @@ public interface TemplateParameterSubstitution
 	void setFormal(TemplateParameter value);
 
 	/**
-	 * Returns the value of the '<em><b>Actual</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.ParameterableElement}.
+	 * Returns the value of the '<em><b>Actual</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The elements that are the actual parameters for this substitution.
+	 * The element that is the actual parameter for this substitution.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Actual</em>' reference list.
+	 * @return the value of the '<em>Actual</em>' reference.
+	 * @see #setActual(ParameterableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameterSubstitution_Actual()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	EList<ParameterableElement> getActuals();
+	ParameterableElement getActual();
 
 	/**
-	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.ParameterableElement}.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getActual <em>Actual</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Actual</em>' reference.
+	 * @see #getActual()
+	 * @generated
+	 */
+	void setActual(ParameterableElement value);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Actual</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getActuals() <em>Actual</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getActual() <em>Actual</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The actual parameters that are owned by this substitution.
+	 * The actual parameter that is owned by this substitution.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Owned Actual</em>' containment reference list.
+	 * @return the value of the '<em>Owned Actual</em>' containment reference.
+	 * @see #setOwnedActual(ParameterableElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTemplateParameterSubstitution_OwnedActual()
 	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
-	EList<ParameterableElement> getOwnedActuals();
+	ParameterableElement getOwnedActual();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.ParameterableElement} and appends it to the '<em><b>Owned Actual</b></em>' containment reference list.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.TemplateParameterSubstitution#getOwnedActual <em>Owned Actual</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owned Actual</em>' containment reference.
+	 * @see #getOwnedActual()
+	 * @generated
+	 */
+	void setOwnedActual(ParameterableElement value);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ParameterableElement} and sets the '<em><b>Owned Actual</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ParameterableElement} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ParameterableElement}.
-	 * @see #getOwnedActuals()
+	 * @see #getOwnedActual()
 	 * @generated
 	 */
 	ParameterableElement createOwnedActual(EClass eClass);

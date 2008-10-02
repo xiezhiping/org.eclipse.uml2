@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Transition.java,v 1.22 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: Transition.java,v 1.23 2008/10/02 20:56:23 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -34,12 +34,12 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getSource <em>Source</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getTriggers <em>Trigger</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -405,9 +405,7 @@ public interface Transition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Transitions outgoing pseudostates may not have a trigger.
-	 * source.oclIsKindOf(Pseudostate) and
-	 * ((source.kind <> #junction) and (source.kind <> #join) and (source.kind <> #initial)) implies trigger->isEmpty()
-	 * 
+	 * source.oclIsKindOf(Pseudostate) and (source.kind <> #initial)) implies trigger->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

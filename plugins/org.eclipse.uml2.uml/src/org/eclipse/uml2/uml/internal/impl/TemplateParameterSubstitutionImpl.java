@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.21 2007/04/25 17:47:03 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.22 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -35,8 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
-import org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
@@ -57,9 +55,9 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterSubstitutionOpe
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getActuals <em>Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getActual <em>Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getFormal <em>Formal</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedActuals <em>Owned Actual</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getOwnedActual <em>Owned Actual</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterSubstitutionImpl#getTemplateBinding <em>Template Binding</em>}</li>
  * </ul>
  * </p>
@@ -71,14 +69,14 @@ public class TemplateParameterSubstitutionImpl
 		implements TemplateParameterSubstitution {
 
 	/**
-	 * The cached value of the '{@link #getActuals() <em>Actual</em>}' reference list.
+	 * The cached value of the '{@link #getActual() <em>Actual</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getActuals()
+	 * @see #getActual()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterableElement> actuals;
+	protected ParameterableElement actual;
 
 	/**
 	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
@@ -91,14 +89,14 @@ public class TemplateParameterSubstitutionImpl
 	protected TemplateParameter formal;
 
 	/**
-	 * The cached value of the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
+	 * The cached value of the '{@link #getOwnedActual() <em>Owned Actual</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedActuals()
+	 * @see #getOwnedActual()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ParameterableElement> ownedActuals;
+	protected ParameterableElement ownedActual;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -156,21 +154,6 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ParameterableElement> getActuals() {
-		if (actuals == null) {
-			actuals = new SubsetSupersetEObjectResolvingEList<ParameterableElement>(
-				ParameterableElement.class, this,
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, null,
-				ACTUAL_ESUBSETS);
-		}
-		return actuals;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public TemplateParameter getFormal() {
 		if (formal != null && formal.eIsProxy()) {
 			InternalEObject oldFormal = (InternalEObject) formal;
@@ -213,14 +196,107 @@ public class TemplateParameterSubstitutionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ParameterableElement> getOwnedActuals() {
-		if (ownedActuals == null) {
-			ownedActuals = new SubsetSupersetEObjectContainmentEList.Resolving<ParameterableElement>(
-				ParameterableElement.class, this,
-				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
-				OWNED_ACTUAL_ESUPERSETS, null);
+	public ParameterableElement getOwnedActual() {
+		if (ownedActual != null && ownedActual.eIsProxy()) {
+			InternalEObject oldOwnedActual = (InternalEObject) ownedActual;
+			ownedActual = (ParameterableElement) eResolveProxy(oldOwnedActual);
+			if (ownedActual != oldOwnedActual) {
+				InternalEObject newOwnedActual = (InternalEObject) ownedActual;
+				NotificationChain msgs = oldOwnedActual
+					.eInverseRemove(
+						this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+						null, null);
+				if (newOwnedActual.eInternalContainer() == null) {
+					msgs = newOwnedActual
+						.eInverseAdd(
+							this,
+							EOPPOSITE_FEATURE_BASE
+								- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+							null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(
+						this,
+						Notification.RESOLVE,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+						oldOwnedActual, ownedActual));
+			}
 		}
-		return ownedActuals;
+		return ownedActual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement basicGetOwnedActual() {
+		return ownedActual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOwnedActual(
+			ParameterableElement newOwnedActual, NotificationChain msgs) {
+		ParameterableElement oldOwnedActual = ownedActual;
+		ownedActual = newOwnedActual;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+				Notification.SET,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+				oldOwnedActual, newOwnedActual);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (newOwnedActual != null) {
+				if (newOwnedActual != actual) {
+					setActual(newOwnedActual);
+				}
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOwnedActual(ParameterableElement newOwnedActual) {
+		if (newOwnedActual != ownedActual) {
+			NotificationChain msgs = null;
+			if (ownedActual != null)
+				msgs = ((InternalEObject) ownedActual)
+					.eInverseRemove(
+						this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+						null, msgs);
+			if (newOwnedActual != null)
+				msgs = ((InternalEObject) newOwnedActual)
+					.eInverseAdd(
+						this,
+						EOPPOSITE_FEATURE_BASE
+							- UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+						null, msgs);
+			msgs = basicSetOwnedActual(newOwnedActual, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL,
+				newOwnedActual, newOwnedActual));
 	}
 
 	/**
@@ -230,7 +306,7 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	public ParameterableElement createOwnedActual(EClass eClass) {
 		ParameterableElement newOwnedActual = (ParameterableElement) create(eClass);
-		getOwnedActuals().add(newOwnedActual);
+		setOwnedActual(newOwnedActual);
 		return newOwnedActual;
 	}
 
@@ -343,8 +419,7 @@ public class TemplateParameterSubstitutionImpl
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				return ((InternalEList<?>) getOwnedActuals()).basicRemove(
-					otherEnd, msgs);
+				return basicSetOwnedActual(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				return basicSetTemplateBinding(null, msgs);
 		}
@@ -391,9 +466,13 @@ public class TemplateParameterSubstitutionImpl
 					return getFormal();
 				return basicGetFormal();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				return getActuals();
+				if (resolve)
+					return getActual();
+				return basicGetActual();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				return getOwnedActuals();
+				if (resolve)
+					return getOwnedActual();
+				return basicGetOwnedActual();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				if (resolve)
 					return getTemplateBinding();
@@ -425,14 +504,10 @@ public class TemplateParameterSubstitutionImpl
 				setFormal((TemplateParameter) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				getActuals().clear();
-				getActuals().addAll(
-					(Collection<? extends ParameterableElement>) newValue);
+				setActual((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				getOwnedActuals().clear();
-				getOwnedActuals().addAll(
-					(Collection<? extends ParameterableElement>) newValue);
+				setOwnedActual((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				setTemplateBinding((TemplateBinding) newValue);
@@ -459,10 +534,10 @@ public class TemplateParameterSubstitutionImpl
 				setFormal((TemplateParameter) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				getActuals().clear();
+				setActual((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				getOwnedActuals().clear();
+				setOwnedActual((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				setTemplateBinding((TemplateBinding) null);
@@ -490,9 +565,9 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__FORMAL :
 				return formal != null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL :
-				return actuals != null && !actuals.isEmpty();
+				return actual != null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL :
-				return ownedActuals != null && !ownedActuals.isEmpty();
+				return ownedActual != null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				return basicGetTemplateBinding() != null;
 		}
@@ -510,26 +585,6 @@ public class TemplateParameterSubstitutionImpl
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_COMMENT,
 		UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getActuals() <em>Actual</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] ACTUAL_ESUBSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__OWNED_ACTUAL};
-
-	/**
-	 * The array of superset feature identifiers for the '{@link #getOwnedActuals() <em>Owned Actual</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedActuals()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ACTUAL_ESUPERSETS = new int[]{UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -567,6 +622,54 @@ public class TemplateParameterSubstitutionImpl
 			return templateBinding;
 		}
 		return super.basicGetOwner();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement getActual() {
+		if (actual != null && actual.eIsProxy()) {
+			InternalEObject oldActual = (InternalEObject) actual;
+			actual = (ParameterableElement) eResolveProxy(oldActual);
+			if (actual != oldActual) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL,
+						oldActual, actual));
+			}
+		}
+		return actual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ParameterableElement basicGetActual() {
+		return actual;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActual(ParameterableElement newActual) {
+		ParameterableElement oldActual = actual;
+		actual = newActual;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__ACTUAL, oldActual,
+				actual));
+		Resource.Internal eInternalResource = eInternalResource();
+		if (eInternalResource == null || !eInternalResource.isLoading()) {
+			if (ownedActual != null && ownedActual != newActual) {
+				setOwnedActual(null);
+			}
+		}
 	}
 
 	/**

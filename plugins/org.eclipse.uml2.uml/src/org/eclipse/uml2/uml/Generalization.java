@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Generalization.java,v 1.14 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: Generalization.java,v 1.15 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -47,17 +47,16 @@ public interface Generalization
 
 	/**
 	 * Returns the value of the '<em><b>Is Substitutable</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
-	 * @see #isSetIsSubstitutable()
-	 * @see #unsetIsSubstitutable()
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralization_IsSubstitutable()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.Boolean" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isSubstitutable();
@@ -67,35 +66,10 @@ public interface Generalization
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Is Substitutable</em>' attribute.
-	 * @see #isSetIsSubstitutable()
-	 * @see #unsetIsSubstitutable()
 	 * @see #isSubstitutable()
 	 * @generated
 	 */
 	void setIsSubstitutable(boolean value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Generalization#isSubstitutable <em>Is Substitutable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetIsSubstitutable()
-	 * @see #isSubstitutable()
-	 * @see #setIsSubstitutable(boolean)
-	 * @generated
-	 */
-	void unsetIsSubstitutable();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Generalization#isSubstitutable <em>Is Substitutable</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Is Substitutable</em>' attribute is set.
-	 * @see #unsetIsSubstitutable()
-	 * @see #isSubstitutable()
-	 * @see #setIsSubstitutable(boolean)
-	 * @generated
-	 */
-	boolean isSetIsSubstitutable();
 
 	/**
 	 * Returns the value of the '<em><b>General</b></em>' reference.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.22 2007/05/04 20:35:34 khussey Exp $
+ * $Id: VertexImpl.java,v 1.23 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -48,8 +48,8 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
@@ -332,10 +332,10 @@ public abstract class VertexImpl
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.VERTEX__INCOMING :
-				return getIncomings();
 			case UMLPackage.VERTEX__OUTGOING :
 				return getOutgoings();
+			case UMLPackage.VERTEX__INCOMING :
+				return getIncomings();
 			case UMLPackage.VERTEX__CONTAINER :
 				if (resolve)
 					return getContainer();
@@ -377,14 +377,14 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.VERTEX__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
 			case UMLPackage.VERTEX__OUTGOING :
 				getOutgoings().clear();
 				getOutgoings().addAll(
+					(Collection<? extends Transition>) newValue);
+				return;
+			case UMLPackage.VERTEX__INCOMING :
+				getIncomings().clear();
+				getIncomings().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
@@ -420,11 +420,11 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.VERTEX__INCOMING :
-				getIncomings().clear();
-				return;
 			case UMLPackage.VERTEX__OUTGOING :
 				getOutgoings().clear();
+				return;
+			case UMLPackage.VERTEX__INCOMING :
+				getIncomings().clear();
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
 				setContainer((Region) null);
@@ -464,10 +464,10 @@ public abstract class VertexImpl
 				return isSetNamespace();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				return nameExpression != null;
-			case UMLPackage.VERTEX__INCOMING :
-				return !getIncomings().isEmpty();
 			case UMLPackage.VERTEX__OUTGOING :
 				return !getOutgoings().isEmpty();
+			case UMLPackage.VERTEX__INCOMING :
+				return !getIncomings().isEmpty();
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicGetContainer() != null;
 		}

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ParameterImpl.java,v 1.40 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.41 2008/10/02 20:56:21 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1046,17 +1046,6 @@ public class ParameterImpl
 	 */
 	public boolean isSetEffect() {
 		return (eFlags & EFFECT_ESETFLAG) != 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateUpperGt0(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return MultiplicityElementOperations.validateUpperGt0(this,
-			diagnostics, context);
 	}
 
 	/**
