@@ -14,5 +14,5 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_Ka_NIMYdEduPJbEsMYXjUQ" base_Package="_FA4sgBmMEdqvcs97umGEYQ" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.1.1/umlLM.xml"/>
+  <Ecore:EPackage xmi:id="_HuWOoMFlEdu60_VP7XWKdw" base_Package="_FA4sgBmMEdqvcs97umGEYQ" nsPrefix="uml" nsURI="http://schema.omg.org/spec/UML/2.2/umlLM.xml"/>
 </xmi:XMI>

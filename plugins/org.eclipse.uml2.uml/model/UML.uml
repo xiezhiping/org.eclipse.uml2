@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
     </packageImport>
     <packageMerge xmi:id="_H2HkkGvbEdq4DLWZOhbdEA">
       <mergedPackage xmi:type="uml:Model" href="L3.uml#_EBtHcBmMEdqvcs97umGEYQ"/>
-    </packageMerge>
-    <packageMerge xmi:id="_NTdxgPnjEdunWsS3se92JQ">
-      <mergedPackage xmi:type="uml:Model" href="10536.uml#_y16xIPnhEdunWsS3se92JQ"/>
-    </packageMerge>
-    <packageMerge xmi:id="_zhBU4PnnEdunWsS3se92JQ">
-      <mergedPackage xmi:type="uml:Model" href="10537.uml#_udv6MPnlEdunWsS3se92JQ"/>
     </packageMerge>
     <packagedElement xmi:type="uml:Class" xmi:id="_kl90MGvbEdq4DLWZOhbdEA" name="Element" isAbstract="true">
       <generalization xmi:id="_rcp_MGvbEdq4DLWZOhbdEA">
@@ -717,11 +711,13 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_aOgw0GveEdq4DLWZOhbdEA" name="ConnectorEnd">
-      <ownedOperation xmi:id="_QT7XMFYKEdqrn7iZ0eqieg" name="getDefiningEnd" visibility="protected" isQuery="true">
-        <ownedParameter xmi:id="_VkstQFYKEdqrn7iZ0eqieg" type="_Jp_1oGveEdq4DLWZOhbdEA" direction="return"/>
-      </ownedOperation>
-    </packagedElement>
+    
+    
+    
+   
+    
+    
+    
     <packagedElement xmi:type="uml:Class" xmi:id="_gfgNwGveEdq4DLWZOhbdEA" name="Message">
       <ownedOperation xmi:id="_8U6CAFYfEdqB6vblk3tuMA" name="getMessageKind" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_-_OTMFYfEdqB6vblk3tuMA" type="_Y_jskGvtEdqG6fBIPwe-mw" direction="return"/>
@@ -2000,6 +1996,45 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_xM1WoPnlEdunWsS3se92JQ" name="Vertex" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ykKV8PnlEdunWsS3se92JQ" name="Transition">
+      <ownedAttribute xmi:id="_EhVtMPnmEdunWsS3se92JQ" name="target" visibility="public" type="_xM1WoPnlEdunWsS3se92JQ" association="_EhL8MPnmEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EhVtMvnmEdunWsS3se92JQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EhVtMfnmEdunWsS3se92JQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_JPYJofnmEdunWsS3se92JQ" name="source" visibility="public" type="_xM1WoPnlEdunWsS3se92JQ" association="_JPYJoPnmEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JPYJo_nmEdunWsS3se92JQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JPYJovnmEdunWsS3se92JQ" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_EhL8MPnmEdunWsS3se92JQ" name="A_incoming_target" memberEnd="_EhVtMPnmEdunWsS3se92JQ _EhVtM_nmEdunWsS3se92JQ">
+      <ownedEnd xmi:id="_EhVtM_nmEdunWsS3se92JQ" name="incoming" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_EhL8MPnmEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EhVtNfnmEdunWsS3se92JQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EhVtNPnmEdunWsS3se92JQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_JPYJoPnmEdunWsS3se92JQ" name="A_outgoing_source" memberEnd="_JPYJofnmEdunWsS3se92JQ _JPh6oPnmEdunWsS3se92JQ">
+      <ownedEnd xmi:id="_JPh6oPnmEdunWsS3se92JQ" name="outgoing" visibility="private" type="_ykKV8PnlEdunWsS3se92JQ" association="_JPYJoPnmEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JPh6ovnmEdunWsS3se92JQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JPh6ofnmEdunWsS3se92JQ"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0dB44PnhEdunWsS3se92JQ" name="ConnectableElement" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_aOgw0GveEdq4DLWZOhbdEA" name="ConnectorEnd">
+      <ownedAttribute xmi:id="_81UZgfnhEdunWsS3se92JQ" name="role" visibility="public" type="_0dB44PnhEdunWsS3se92JQ" association="_81UZgPnhEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_81UZg_nhEdunWsS3se92JQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_81UZgvnhEdunWsS3se92JQ" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_QT7XMFYKEdqrn7iZ0eqieg" name="getDefiningEnd" visibility="protected" isQuery="true">
+        <ownedParameter xmi:id="_VkstQFYKEdqrn7iZ0eqieg" type="_Jp_1oGveEdq4DLWZOhbdEA" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_81UZgPnhEdunWsS3se92JQ" name="A_end_role" memberEnd="_81UZgfnhEdunWsS3se92JQ _81UZhPnhEdunWsS3se92JQ">
+      <ownedEnd xmi:id="_81UZhPnhEdunWsS3se92JQ" name="end" visibility="private" type="_aOgw0GveEdq4DLWZOhbdEA" association="_81UZgPnhEdunWsS3se92JQ">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_81UZhvnhEdunWsS3se92JQ" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_81UZhfnhEdunWsS3se92JQ"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:id="_0TBYYGvaEdq4DLWZOhbdEA">
       <eAnnotations xmi:id="_0TBYYWvaEdq4DLWZOhbdEA" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
@@ -2007,7 +2042,7 @@
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/2.1.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
+  <Ecore:EPackage xmi:id="_LWVYQN7NEduglsXU_NKRsA" base_Package="_o8I_sGvaEdq4DLWZOhbdEA" packageName="uml" nsPrefix="uml" nsURI="http://www.eclipse.org/uml2/3.0.0/UML" basePackage="org.eclipse.uml2" prefix="UML"/>
   <Ecore:EAttribute xmi:id="_LWVYQd7NEduglsXU_NKRsA" isUnsettable="true" xmlFeatureKind="Element" base_Property="_EOZfkC4xEduBJv9HKGdiyg"/>
   <Ecore:EDataType xmi:id="_LWfJQN7NEduglsXU_NKRsA" instanceClassName="boolean" base_PrimitiveType="_UdivYGvsEdqG6fBIPwe-mw"/>
   <Ecore:EDataType xmi:id="_LWfJQd7NEduglsXU_NKRsA" instanceClassName="int" base_PrimitiveType="_XqvEIGvsEdqG6fBIPwe-mw"/>

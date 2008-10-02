@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_s-vBgBjPEdqPB8O80Bm3OQ" name="UML">
     <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D3E0C8A930168" name="Actions">
       <packageImport xmi:id="_87aKwD9JEdqjIv4r4xIGZw" importedPackage="_3ADC7B74022D3DF124BC006D"/>
@@ -815,6 +815,64 @@
             </defaultValue>
           </ownedAttribute>
         </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_DdxfUCG7Ed2y9aVPK_72RA" name="StartObjectBehaviorAction">
+          <ownedComment xmi:id="_bnPWUCtWEd2neOJi0e6UBQ" annotatedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <body>StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.</body>
+          </ownedComment>
+          <ownedRule xmi:id="_090kECtWEd2neOJi0e6UBQ" name="type_of_object" constrainedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_8GsEMCtWEd2neOJi0e6UBQ" annotatedElement="_090kECtWEd2neOJi0e6UBQ">
+              <body>The type of the object input pin must be either a Behavior or a BehavioredClassifier with a classifier behavior.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_GS6noCtXEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_MEwqcCtXEd2neOJi0e6UBQ" name="multiplicity_of_object" constrainedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_MEwqcStXEd2neOJi0e6UBQ" annotatedElement="_MEwqcCtXEd2neOJi0e6UBQ">
+              <body>The multiplicity of the object input pin must be [1..1].</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_MEwqcitXEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_VKp38CtXEd2neOJi0e6UBQ" name="number_order_arguments" constrainedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_VKp38StXEd2neOJi0e6UBQ" annotatedElement="_VKp38CtXEd2neOJi0e6UBQ">
+              <body>The number and order of the argument pins must be the same as the number and order of the in and in-out parameters of the invoked behavior. Pins are matched to parameters by order.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_VKp38itXEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_iSyL0CtXEd2neOJi0e6UBQ" name="number_order_results" constrainedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_iSyL0StXEd2neOJi0e6UBQ" annotatedElement="_iSyL0CtXEd2neOJi0e6UBQ">
+              <body>The number and order of result pins must be the same as the number and order of the in-out, out and return parameters of the invoked behavior. Pins are matched to parameters by order.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_iSyL0itXEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_8W0VcCtXEd2neOJi0e6UBQ" name="type_ordering_multiplicity_match" constrainedElement="_DdxfUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_8W0VcStXEd2neOJi0e6UBQ" annotatedElement="_8W0VcCtXEd2neOJi0e6UBQ">
+              <body>The type, ordering, and multiplicity of an argument or result pin must be the same as the corresponding parameter of the behavior.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_8W0VcitXEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <generalization xmi:id="_MwGmUCG7Ed2y9aVPK_72RA" general="_3ADC7B74022D3DF12EC000DA"/>
+          <ownedAttribute xmi:id="_OPUWUSG7Ed2y9aVPK_72RA" name="object" type="_3ADC7B74022D384B237E021A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DF5031E" association="_OPUWUCG7Ed2y9aVPK_72RA">
+            <ownedComment xmi:id="_osFssCtWEd2neOJi0e6UBQ" annotatedElement="_OPUWUSG7Ed2y9aVPK_72RA">
+              <body>Holds the object which is either a behavior to be started or has a classifier behavior to be started.</body>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OPUWUyG7Ed2y9aVPK_72RA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OPUWUiG7Ed2y9aVPK_72RA" value="1"/>
+          </ownedAttribute>
+        </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_3ADC7B74022D395CFBA20393" name="A_result_readExtentAction" memberEnd="_3ADC7B74022D395CFBA30150 _3ADC7B74022D395CFBA301F0">
           <ownedEnd xmi:id="_3ADC7B74022D395CFBA301F0" type="_3ADC7B74022D38C95C100257" association="_3ADC7B74022D395CFBA20393">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sss5uRTaEdqZu-3Jy1-uYg" value="1"/>
@@ -999,6 +1057,12 @@
           <ownedEnd xmi:id="_DCUGomdiEdqCCpdUvbQY5w" type="_3M4wwGdhEdqCCpdUvbQY5w" association="_DCUGoGdiEdqCCpdUvbQY5w">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gfnzYU-4EduFOcgjjRrSMg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gfnzYE-4EduFOcgjjRrSMg"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_OPUWUCG7Ed2y9aVPK_72RA" memberEnd="_OPUWUSG7Ed2y9aVPK_72RA _OPac8CG7Ed2y9aVPK_72RA">
+          <ownedEnd xmi:id="_OPac8CG7Ed2y9aVPK_72RA" name="" type="_DdxfUCG7Ed2y9aVPK_72RA" association="_OPUWUCG7Ed2y9aVPK_72RA">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SWV2ESG7Ed2y9aVPK_72RA" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SWV2ECG7Ed2y9aVPK_72RA"/>
           </ownedEnd>
         </packagedElement>
       </packagedElement>
@@ -1329,6 +1393,24 @@
               <body>self.value.multiplicity.is(1,1)</body>
             </specification>
           </ownedRule>
+          <ownedRule xmi:id="_3lPb0CtiEd2neOJi0e6UBQ" name="type_of_result" constrainedElement="_3ADC7B74022D380F43690262">
+            <ownedComment xmi:id="_3lPb0StiEd2neOJi0e6UBQ" annotatedElement="_3lPb0CtiEd2neOJi0e6UBQ">
+              <body>The type of the result output pin is the same as the type of the inherited object input pin.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_3lPb0itiEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>result->notEmpty() implies self.result.type = self.object.type</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_CoJvoCtjEd2neOJi0e6UBQ" name="multiplicity_of_result" constrainedElement="_3ADC7B74022D380F43690262">
+            <ownedComment xmi:id="_CoJvoStjEd2neOJi0e6UBQ" annotatedElement="_CoJvoCtjEd2neOJi0e6UBQ">
+              <body>The multiplicity of the result output pin must be 1..1.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_CoJvoitjEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>result->notEmpty() implies self.result.multiplicity.is(1,1)</body>
+            </specification>
+          </ownedRule>
           <generalization xmi:id="_3ADC7B74022D38DC062A00DE" general="_3ADC7B74022D38DC060A01A0"/>
           <ownedAttribute xmi:id="_3ADC7B74022D39073965015A" name="value" type="_3ADC7B74022D384B237E021A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DF5031E" association="_3ADC7B74022D3907396402D5">
             <ownedComment xmi:id="_sxKi6RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D39073965015A">
@@ -1337,12 +1419,44 @@
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sxKi7RTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sxKi7BTaEdqZu-3Jy1-uYg" value="1"/>
           </ownedAttribute>
+          <ownedAttribute xmi:id="_ijxCQBk8Ed2AFo75-uQLRQ" name="result" type="_3ADC7B74022D384B2387039A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DC100E9" association="_ijq7oBk8Ed2AFo75-uQLRQ">
+            <ownedComment xmi:id="_Dax74CtiEd2neOJi0e6UBQ" annotatedElement="_ijxCQBk8Ed2AFo75-uQLRQ">
+              <body>Gives the output pin on which the result is put.</body>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ijxCQhk8Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ijxCQRk8Ed2AFo75-uQLRQ"/>
+          </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3A78723F03E1" name="ClearStructuralFeatureAction">
           <ownedComment xmi:id="_svOpQRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A78723F03E1">
             <body>A clear structural feature action is a structural feature action that removes all values of a structural feature.</body>
           </ownedComment>
+          <ownedRule xmi:id="_Pye4YCtiEd2neOJi0e6UBQ" name="type_of_result" constrainedElement="_3ADC7B74022D3A78723F03E1">
+            <ownedComment xmi:id="_hZdWICtiEd2neOJi0e6UBQ" annotatedElement="_Pye4YCtiEd2neOJi0e6UBQ">
+              <body>The type of the result output pin is the same as the type of the inherited object input pin.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_b6FjYCtiEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>result->notEmpty() implies self.result.type = self.object.type</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_oL-LwCtiEd2neOJi0e6UBQ" name="multiplicity_of_result" constrainedElement="_3ADC7B74022D3A78723F03E1">
+            <ownedComment xmi:id="_oL-LwStiEd2neOJi0e6UBQ" annotatedElement="_oL-LwCtiEd2neOJi0e6UBQ">
+              <body>The multiplicity of the result output pin must be 1..1.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_oL-LwitiEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>result->notEmpty() implies self.result.multiplicity.is(1,1)</body>
+            </specification>
+          </ownedRule>
           <generalization xmi:id="_3ADC7B74022D3A7872B7039E" general="_3ADC7B74022D38DC060A01A0"/>
+          <ownedAttribute xmi:id="_wv1fYRk8Ed2AFo75-uQLRQ" name="result" type="_3ADC7B74022D384B2387039A" aggregation="composite" subsettedProperty="_3ADC7B74022D3D716DC100E9" association="_wv1fYBk8Ed2AFo75-uQLRQ">
+            <ownedComment xmi:id="_sQj4ACthEd2neOJi0e6UBQ" annotatedElement="_wv1fYRk8Ed2AFo75-uQLRQ">
+              <body>Gives the output pin on which the result is put.</body>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wv1fYxk8Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wv1fYhk8Ed2AFo75-uQLRQ"/>
+          </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3A7870670003" name="RemoveStructuralFeatureValueAction">
           <ownedComment xmi:id="_svYaMBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3A7870670003">
@@ -1993,6 +2107,18 @@
           <ownedEnd xmi:id="_TWk18janEdqq1tCaRkgBQQ" type="_3ADC7B74022D38DC038F0193" association="_TWk18DanEdqq1tCaRkgBQQ">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LKyZQU-3EduFOcgjjRrSMg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LKyZQE-3EduFOcgjjRrSMg"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_ijq7oBk8Ed2AFo75-uQLRQ" memberEnd="_ijxCQBk8Ed2AFo75-uQLRQ _ijxCQxk8Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_ijxCQxk8Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D380F43690262" association="_ijq7oBk8Ed2AFo75-uQLRQ">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nOcBoRk8Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nOcBoBk8Ed2AFo75-uQLRQ"/>
+          </ownedEnd>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_wv1fYBk8Ed2AFo75-uQLRQ" memberEnd="_wv1fYRk8Ed2AFo75-uQLRQ _wv7mABk8Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_wv7mABk8Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D3A78723F03E1" association="_wv1fYBk8Ed2AFo75-uQLRQ">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0YzxMRk8Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0YzxMBk8Ed2AFo75-uQLRQ"/>
           </ownedEnd>
         </packagedElement>
       </packagedElement>
@@ -2928,6 +3054,24 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
               <body>true</body>
             </specification>
           </ownedRule>
+          <ownedRule xmi:id="_I83-YCtVEd2neOJi0e6UBQ" name="maximum_one_parameter_node" constrainedElement="_3ADC7B74022D3DF4B90C0266">
+            <ownedComment xmi:id="_I83-YStVEd2neOJi0e6UBQ" annotatedElement="_I83-YCtVEd2neOJi0e6UBQ">
+              <body>A parameter with direction other than inout must have at most one activity parameter node in an activity.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_I83-YitVEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_YBInwCtVEd2neOJi0e6UBQ" name="maximum_two_parameter_nodes" constrainedElement="_3ADC7B74022D3DF4B90C0266">
+            <ownedComment xmi:id="_YBInwStVEd2neOJi0e6UBQ" annotatedElement="_YBInwCtVEd2neOJi0e6UBQ">
+              <body>A parameter with direction inout must have at most two activity parameter nodes in an activity, one with incoming flows and one with outgoing flows.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_YBInwitVEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
           <generalization xmi:id="_3ADC7B74022D3DFA7016009C" general="_3ADC7B74022D337D8F5A01EA"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3DFE6D850128" name="parameter" type="_3ADC7B74022D3CAB0B3D0362" association="_3ADC7B74022D3DFE6D8401F4">
             <ownedComment xmi:id="_r4sp0hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3DFE6D850128">
@@ -3246,29 +3390,74 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <ownedComment xmi:id="_r5cQzBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B72E53E007E">
             <body>A decision node is a control node that chooses between outgoing flows.</body>
           </ownedComment>
-          <ownedRule xmi:id="_r5laqBTaEdqZu-3Jy1-uYg" name="one_incoming_edge" constrainedElement="_3ADC7B74022D3B72E53E007E">
+          <ownedRule xmi:id="_r5laqBTaEdqZu-3Jy1-uYg" name="incoming_outgoing_edges" constrainedElement="_3ADC7B74022D3B72E53E007E">
             <ownedComment xmi:id="_r5lapBTaEdqZu-3Jy1-uYg" annotatedElement="_r5laqBTaEdqZu-3Jy1-uYg">
-              <body>A decision node has one incoming edge.</body>
+              <body>A decision node has one or two incoming edges and at least one outgoing edge.</body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r5laqRTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
               <body>true</body>
             </specification>
           </ownedRule>
-          <ownedRule xmi:id="_r5lasRTaEdqZu-3Jy1-uYg" name="input_parameter" constrainedElement="_3ADC7B74022D3B72E53E007E">
+          <ownedRule xmi:id="_r5lauhTaEdqZu-3Jy1-uYg" name="edges" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_r5lathTaEdqZu-3Jy1-uYg" annotatedElement="_r5lauhTaEdqZu-3Jy1-uYg">
+              <body>The edges coming into and out of a decision node, other than the decision input flow (if any), must be either all object flows or all control flows.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_r5lauxTaEdqZu-3Jy1-uYg">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_r5lasRTaEdqZu-3Jy1-uYg" name="decision_input_flow_incoming" constrainedElement="_3ADC7B74022D3B72E53E007E">
             <ownedComment xmi:id="_r5larRTaEdqZu-3Jy1-uYg" annotatedElement="_r5lasRTaEdqZu-3Jy1-uYg">
-              <body>A decision input behavior has zero or one input parameter and one output parameter. Any input parameter must be the same as or a supertype of the type of object tokens coming along the incoming edge. The behavior cannot have side effects.</body>
+              <body>The decisionInputFlow of a decision node must be an incoming edge of the decision node.</body>
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_r5lashTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
               <body>true</body>
             </specification>
           </ownedRule>
-          <ownedRule xmi:id="_r5lauhTaEdqZu-3Jy1-uYg" name="edges" constrainedElement="_3ADC7B74022D3B72E53E007E">
-            <ownedComment xmi:id="_r5lathTaEdqZu-3Jy1-uYg" annotatedElement="_r5lauhTaEdqZu-3Jy1-uYg">
-              <body>The edges coming into and out of a decision node must be either all object flows or all control flows.</body>
+          <ownedRule xmi:id="_IBlPQCtfEd2neOJi0e6UBQ" name="parameters" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_IBlPQStfEd2neOJi0e6UBQ" annotatedElement="_IBlPQCtfEd2neOJi0e6UBQ">
+              <body>A decision input behavior has no output parameters, no in-out parameters and one return parameter.</body>
             </ownedComment>
-            <specification xmi:type="uml:OpaqueExpression" xmi:id="_r5lauxTaEdqZu-3Jy1-uYg">
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_IBlPQitfEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_QQMPcCtfEd2neOJi0e6UBQ" name="zero_input_parameters" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_QQMPcStfEd2neOJi0e6UBQ" annotatedElement="_QQMPcCtfEd2neOJi0e6UBQ">
+              <body>If the decision node has no decision input flow and an incoming control flow, then a decision input behavior has zero input parameters.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_QQMPcitfEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_bkYggCtfEd2neOJi0e6UBQ" name="incoming_object_one_input_parameter" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_bkYggStfEd2neOJi0e6UBQ" annotatedElement="_bkYggCtfEd2neOJi0e6UBQ">
+              <body>If the decision node has no decision input flow and an incoming object flow, then a decision input behavior has one input parameter whose type is the same as or a supertype of the type of object tokens offered on the incoming edge.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_bkYggitfEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_rb5y0CtfEd2neOJi0e6UBQ" name="incoming_control_one_input_parameter" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_rb5y0StfEd2neOJi0e6UBQ" annotatedElement="_rb5y0CtfEd2neOJi0e6UBQ">
+              <body>If the decision node has a decision input flow and an incoming control flow, then a decision input behavior has one input parameter whose type is the same as or a supertype of the type of object tokens offered on the decision input flow.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_rb5y0itfEd2neOJi0e6UBQ">
+              <language>OCL</language>
+              <body>true</body>
+            </specification>
+          </ownedRule>
+          <ownedRule xmi:id="_zecF4CtfEd2neOJi0e6UBQ" name="two_input_parameters" constrainedElement="_3ADC7B74022D3B72E53E007E">
+            <ownedComment xmi:id="_zecF4StfEd2neOJi0e6UBQ" annotatedElement="_zecF4CtfEd2neOJi0e6UBQ">
+              <body>If the decision node has a decision input flow and an second incoming object flow, then a decision input behavior has two input parameters, the first of which has a type that is the same as or a supertype of the type of the type of object tokens offered on the nondecision input flow and the second of which has a type that is the same as or a supertype of the type of object tokens offered on the decision input flow.</body>
+            </ownedComment>
+            <specification xmi:type="uml:OpaqueExpression" xmi:id="_zecF4itfEd2neOJi0e6UBQ">
               <language>OCL</language>
               <body>true</body>
             </specification>
@@ -3280,6 +3469,13 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r6L3kxTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r6L3khTaEdqZu-3Jy1-uYg"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_0TsdIRk7Ed2AFo75-uQLRQ" name="decisionInputFlow" type="_3ADC7B74022D3B72DADB0283" association="_0TsdIBk7Ed2AFo75-uQLRQ">
+            <ownedComment xmi:id="_kuRSoCteEd2neOJi0e6UBQ" annotatedElement="_0TsdIRk7Ed2AFo75-uQLRQ">
+              <body>An additional edge incoming to the decision node that provides a decision input value.</body>
+            </ownedComment>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0TyjwRk7Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0TyjwBk7Ed2AFo75-uQLRQ"/>
           </ownedAttribute>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3B72E4EE0123" name="FinalNode" isAbstract="true">
@@ -3375,6 +3571,12 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_f58-QDdoEdqq1tCaRkgBQQ" name="A_group_inActivity" memberEnd="_f58-QTdoEdqq1tCaRkgBQQ _f58-QjdoEdqq1tCaRkgBQQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_0TsdIBk7Ed2AFo75-uQLRQ" memberEnd="_0TsdIRk7Ed2AFo75-uQLRQ _0T4qYBk7Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_0T4qYBk7Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D3B72E53E007E" association="_0TsdIBk7Ed2AFo75-uQLRQ">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0T4qYhk7Ed2AFo75-uQLRQ" value="1"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0T4qYRk7Ed2AFo75-uQLRQ"/>
+          </ownedEnd>
+        </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_3ADC7B74022D3DF125060148" name="CompleteActivities">
         <packageImport xmi:id="_3ADC7B74022D4162BAFB02F8" importedPackage="_3ADC7B74022D334A99B00208"/>
@@ -3510,7 +3712,7 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           <generalization xmi:id="_3ADC7B74022D41B0C5250015" general="_3ADC7B74022D3CAB007101D7"/>
           <ownedAttribute xmi:id="_3ADC7B74022D3D041F7003C2" name="weight" type="_3ADC7B74022D3D0254AB023D" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3D041F70023B">
             <ownedComment xmi:id="_r-gW5xTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D041F7003C2">
-              <body>Number of tokens consumed from the source node on each traversal.</body>
+              <body>The minimum number of tokens that must traverse the edge at the same time.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r-gW6xTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r-gW6hTaEdqZu-3Jy1-uYg" value="1"/>
@@ -4990,7 +5192,7 @@ stream: a stream of values flows into a single execution&#xD;
           </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_3ADC7B74022D3DD3DDBC0046" name="A_represented_representation" memberEnd="_3ADC7B74022D3DD3DDBD0070 _3ADC7B74022D3DD3DDBD00E8">
-          <ownedEnd xmi:id="_3ADC7B74022D3DD3DDBD00E8" name="representation" type="_3ADC7B74022D3D0CE6480229" association="_3ADC7B74022D3DD3DDBC0046">
+          <ownedEnd xmi:id="_3ADC7B74022D3DD3DDBD00E8" type="_3ADC7B74022D3D0CE6480229" association="_3ADC7B74022D3DD3DDBC0046">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_skpw8BTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_skpw7xTaEdqZu-3Jy1-uYg"/>
           </ownedEnd>
@@ -5253,7 +5455,7 @@ define a collating sequence between operands and subexpressions).
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D3E2812AA028B" name="TemplateParameterSubstitution">
           <ownedComment xmi:id="_slZX4RTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E2812AA028B">
-            <body>A template parameter substitution relates the actual parameter(s) to a formal template parameter as part of a template binding.</body>
+            <body>A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.</body>
           </ownedComment>
           <ownedRule xmi:id="_sljIwxTaEdqZu-3Jy1-uYg" name="must_be_compatible" constrainedElement="_3ADC7B74022D3E2812AA028B">
             <ownedComment xmi:id="_slZX5hTaEdqZu-3Jy1-uYg" annotatedElement="_sljIwxTaEdqZu-3Jy1-uYg">
@@ -5281,16 +5483,16 @@ define a collating sequence between operands and subexpressions).
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E28148D02A3" name="actual" type="_3ADC7B74022D3E3126A90208" association="_3ADC7B74022D3E28148C03B0">
             <ownedComment xmi:id="_spa8LBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E28148D02A3">
-              <body>The elements that are the actual parameters for this substitution.</body>
+              <body>The element that is the actual parameter for this substitution.</body>
             </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_spa8MBTaEdqZu-3Jy1-uYg" value="*"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_spa8MBTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_spa8LxTaEdqZu-3Jy1-uYg" value="1"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E38D25F001F" name="ownedActual" type="_3ADC7B74022D3E3126A90208" aggregation="composite" subsettedProperty="_3ADC7B74022D3E28148D02A3 _3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3E38D25D0347">
             <ownedComment xmi:id="_sp3oFBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E38D25F001F">
-              <body>The actual parameters that are owned by this substitution.</body>
+              <body>The actual parameter that is owned by this substitution.</body>
             </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sp3oGBTaEdqZu-3Jy1-uYg" value="*"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sp3oGBTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sp3oFxTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
         </packagedElement>
@@ -5406,7 +5608,6 @@ define a collating sequence between operands and subexpressions).
             </specification>
           </ownedRule>
           <generalization xmi:id="_3ADC7B74022D3E33F5F100C8" general="_3ADC7B74022D3E3126A90208"/>
-          <generalization xmi:id="_3ADC7B74022D3E33F5F7009F" general="_3ADC7B74022D3E31269A001C"/>
           <ownedOperation xmi:id="_aNBzYGdaEdqCCpdUvbQY5w" name="isCompatibleWith" isQuery="true" redefinedOperation="_3ADC7B74022D4300AEC9029F" bodyCondition="_aNBzZGdaEdqCCpdUvbQY5w">
             <ownedComment xmi:id="_aNBzYWdaEdqCCpdUvbQY5w" annotatedElement="_aNBzYGdaEdqCCpdUvbQY5w">
               <body>The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.&#xD;
@@ -5543,18 +5744,11 @@ define a collating sequence between operands and subexpressions).
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sqAyFhTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sqAyFRTaEdqZu-3Jy1-uYg" value="1"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_am5yETctEdqq1tCaRkgBQQ" name="defaultClassifier" type="_3ADC7B74022D3E4B543E01A9" association="_am5yEDctEdqq1tCaRkgBQQ">
-            <ownedComment xmi:id="_j5VxUDcuEdqq1tCaRkgBQQ" annotatedElement="_am5yETctEdqq1tCaRkgBQQ">
-              <body>The classifier that is used by default if no argument is provided during template binding. If this property is empty, then there is no default.</body>
-            </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_am5yFDctEdqq1tCaRkgBQQ" value="1"/>
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_am5yEzctEdqq1tCaRkgBQQ"/>
-          </ownedAttribute>
           <ownedAttribute xmi:id="_iCsOMTctEdqq1tCaRkgBQQ" name="constrainingClassifier" type="_3ADC7B74022D3E4B543E01A9" association="_iCsOMDctEdqq1tCaRkgBQQ">
             <ownedComment xmi:id="_Z_mFADcuEdqq1tCaRkgBQQ" annotatedElement="_iCsOMTctEdqq1tCaRkgBQQ">
-              <body>The classifier that constrains the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted, otherwise it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.</body>
+              <body>The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.</body>
             </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iCsONDctEdqq1tCaRkgBQQ" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iCsONDctEdqq1tCaRkgBQQ" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iCsOMzctEdqq1tCaRkgBQQ"/>
           </ownedAttribute>
         </packagedElement>
@@ -5719,11 +5913,11 @@ define a collating sequence between operands and subexpressions).
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_3ADC7B74022D4127B7110076" name="A_templateParameter_parameteredElement" memberEnd="_3ADC7B74022D4127B71202BE _3ADC7B74022D4127B71202C9"/>
         <packagedElement xmi:type="uml:Association" xmi:id="_3ADC7B74022D4127B7C8012A" name="A_templateParameter_parameteredElement" memberEnd="_3ADC7B74022D4127B7C902D3 _3ADC7B74022D4127B7C902D5"/>
-        <packagedElement xmi:type="uml:Association" xmi:id="_am5yEDctEdqq1tCaRkgBQQ" name="A_defaultClassifier_classifierTemplateParameter" memberEnd="_am5yETctEdqq1tCaRkgBQQ _am5yEjctEdqq1tCaRkgBQQ">
-          <ownedEnd xmi:id="_am5yEjctEdqq1tCaRkgBQQ" type="_3ADC7B74022D3E37943B026A" association="_am5yEDctEdqq1tCaRkgBQQ"/>
-        </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_iCsOMDctEdqq1tCaRkgBQQ" name="A_constrainingClassifier_classifierTemplateParameter" memberEnd="_iCsOMTctEdqq1tCaRkgBQQ _iCsOMjctEdqq1tCaRkgBQQ">
-          <ownedEnd xmi:id="_iCsOMjctEdqq1tCaRkgBQQ" type="_3ADC7B74022D3E37943B026A" association="_iCsOMDctEdqq1tCaRkgBQQ"/>
+          <ownedEnd xmi:id="_iCsOMjctEdqq1tCaRkgBQQ" type="_3ADC7B74022D3E37943B026A" association="_iCsOMDctEdqq1tCaRkgBQQ">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c9NbkRq_Ed2ne6YnjZ0_nA" value="*"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c9NbkBq_Ed2ne6YnjZ0_nA"/>
+          </ownedEnd>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -6368,15 +6562,6 @@ define a collating sequence between operands and subexpressions).
           <ownedComment xmi:id="_sL6g0hTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAAFD5202DC">
             <body>A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.</body>
           </ownedComment>
-          <ownedRule xmi:id="_sL6g2xTaEdqZu-3Jy1-uYg" name="upper_gt_0" constrainedElement="_3ADC7B74022D3CAAFD5202DC">
-            <ownedComment xmi:id="_sL6g1xTaEdqZu-3Jy1-uYg" annotatedElement="_sL6g2xTaEdqZu-3Jy1-uYg">
-              <body>A multiplicity must define at least one valid cardinality that is greater than zero.</body>
-            </ownedComment>
-            <specification xmi:type="uml:OpaqueExpression" xmi:id="_sL6g3BTaEdqZu-3Jy1-uYg">
-              <language>OCL</language>
-              <body>upperBound()->notEmpty() implies upperBound() > 0</body>
-            </specification>
-          </ownedRule>
           <ownedRule xmi:id="_sMERwxTaEdqZu-3Jy1-uYg" name="lower_ge_0" constrainedElement="_3ADC7B74022D3CAAFD5202DC">
             <ownedComment xmi:id="_sL6g4BTaEdqZu-3Jy1-uYg" annotatedElement="_sMERwxTaEdqZu-3Jy1-uYg">
               <body>The lower bound must be a non-negative integer literal.</body>
@@ -6956,6 +7141,7 @@ define a collating sequence between operands and subexpressions).
             <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LGMhIV0oEdq3-fC14hmVtA" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LGMhIF0oEdq3-fC14hmVtA"/>
+            <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="_irZqsCtYEd2neOJi0e6UBQ" value="true"/>
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3CAB01E501C9" name="specific" type="_3ADC7B74022D3CAAECE80199" subsettedProperty="_3ADC7B74022D3CAAEEF70165 _3ADC7B74022D3CAAEEA60189" association="_3ADC7B74022D3CAB01E40162">
             <ownedComment xmi:id="_sRSJCRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3CAB01E501C9">
@@ -7931,7 +8117,7 @@ define a collating sequence between operands and subexpressions).
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sU3BaxTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sU3BahTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_3ADC7B74022D3D51535A0358" name="endType" type="_3ADC7B74022D3E5920C2014E" isOrdered="true" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3D51535902E9">
+          <ownedAttribute xmi:id="_3ADC7B74022D3D51535A0358" name="endType" type="_3ADC7B74022D3E5920C2014E" isOrdered="true" isReadOnly="true" isDerived="true" subsettedProperty="_3ADC7B74022D3D514F6E0106" association="_3ADC7B74022D3D51535902E9">
             <ownedComment xmi:id="_sV5jORTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3D51535A0358">
               <body>References the classifiers that are used as types of the ends of the association.</body>
             </ownedComment>
@@ -9271,7 +9457,7 @@ define a collating sequence between operands and subexpressions).
               <type xmi:type="uml:PrimitiveType" href="Infrastructure.uml#_3ADC7B74022D3CA010AC0090"/>
             </defaultValue>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_3ADC7B74022D3BD1DDCD0080" name="when" type="_3ADC7B74022D3D0254AB023D" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3BD1DDCC01D3">
+          <ownedAttribute xmi:id="_3ADC7B74022D3BD1DDCD0080" name="when" type="_3ADC7B74022D3E8A09D50380" aggregation="composite" subsettedProperty="_3ADC7B74022D3CAAEEA60187" association="_3ADC7B74022D3BD1DDCC01D3">
             <ownedComment xmi:id="_r0hUcRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3BD1DDCD0080">
               <body>Specifies the corresponding time deadline.</body>
             </ownedComment>
@@ -9326,7 +9512,7 @@ define a collating sequence between operands and subexpressions).
           </ownedLiteral>
           <ownedLiteral xmi:id="_3ADC7B74022D3B9A6AA900F7" name="guarded">
             <ownedComment xmi:id="_rz7emBTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3B9A6AA900F7">
-              <body>Multiple invocations of a behavioral feature may occur simultaneously to one instance, but only one is allowed to commence. The others are blocked until the performance of the first behavioral feature is complete. It is the responsibility of the system designer to ensure that deadlocks do not occur due to simultaneous blocks.</body>
+              <body>Multiple invocations of a behavioral feature may occur simultaneously to one instance, but only one is allowed to commence. The others are blocked until the performance of the currently executing behavioral feature is complete. It is the responsibility of the system designer to ensure that deadlocks do not occur due to simultaneous blocks.</body>
             </ownedComment>
           </ownedLiteral>
           <ownedLiteral xmi:id="_3ADC7B74022D3B9A6AB003E6" name="concurrent">
@@ -9463,7 +9649,7 @@ define a collating sequence between operands and subexpressions).
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3C672C530274" name="specification" type="_3ADC7B74022D3D0380EA009C" association="_3ADC7B74022D3C672C52025E">
             <ownedComment xmi:id="_r1tnQRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3C672C530274">
-              <body>Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. If a behavior does not have a specification, it is directly associated with a classifier (i.e., it is the behavior of the classifier as a whole).</body>
+              <body>Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r1tnRRTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r1tnRBTaEdqZu-3Jy1-uYg"/>
@@ -9694,7 +9880,7 @@ define a collating sequence between operands and subexpressions).
             <body>A time expression defines a value specification that represents a time value.</body>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3DE4B5650223" general="_3ADC7B74022D3D0254AB023D"/>
-          <ownedAttribute xmi:id="_OJzLAXIvEdqziYxiZo0YtA" name="expr" type="_3ADC7B74022D3D0254AB023D" association="_OJzLAHIvEdqziYxiZo0YtA">
+          <ownedAttribute xmi:id="_OJzLAXIvEdqziYxiZo0YtA" name="expr" type="_3ADC7B74022D3D0254AB023D" aggregation="composite" association="_OJzLAHIvEdqziYxiZo0YtA">
             <ownedComment xmi:id="_GHVsQHI2EdqziYxiZo0YtA" annotatedElement="_OJzLAXIvEdqziYxiZo0YtA">
               <body>The value of the time expression.</body>
             </ownedComment>
@@ -9714,7 +9900,7 @@ define a collating sequence between operands and subexpressions).
             <body>Duration defines a value specification that specifies the temporal distance between two time instants.</body>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3DE4B5DF00E8" general="_3ADC7B74022D3D0254AB023D"/>
-          <ownedAttribute xmi:id="_ToRl4XIvEdqziYxiZo0YtA" name="expr" type="_3ADC7B74022D3D0254AB023D" association="_ToRl4HIvEdqziYxiZo0YtA">
+          <ownedAttribute xmi:id="_ToRl4XIvEdqziYxiZo0YtA" name="expr" type="_3ADC7B74022D3D0254AB023D" aggregation="composite" association="_ToRl4HIvEdqziYxiZo0YtA">
             <ownedComment xmi:id="_8tiLoHIyEdqziYxiZo0YtA" annotatedElement="_ToRl4XIvEdqziYxiZo0YtA">
               <body>The value of the Duration.</body>
             </ownedComment>
@@ -9865,7 +10051,7 @@ define a collating sequence between operands and subexpressions).
             </specification>
           </ownedRule>
           <generalization xmi:id="_3ADC7B74022D41B0885D03C9" general="_3ADC7B74022D412876E902EE"/>
-          <ownedAttribute xmi:id="_K-WjkWd3EdqCCpdUvbQY5w" name="when" type="_3ADC7B74022D3D0254AB023D" aggregation="composite" association="_K-WjkGd3EdqCCpdUvbQY5w">
+          <ownedAttribute xmi:id="_K-WjkWd3EdqCCpdUvbQY5w" name="when" type="_3ADC7B74022D3DE4B43D032C" aggregation="composite" association="_K-WjkGd3EdqCCpdUvbQY5w">
             <ownedComment xmi:id="_WXwr0Gd3EdqCCpdUvbQY5w" annotatedElement="_K-WjkWd3EdqCCpdUvbQY5w">
               <body>Specifies the corresponding time deadline.</body>
             </ownedComment>
@@ -10074,7 +10260,7 @@ define a collating sequence between operands and subexpressions).
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E0257890057" name="required" type="_3ADC7B74022D3342A195014D" isReadOnly="true" isDerived="true" association="_3ADC7B74022D3E02578801B4">
             <ownedComment xmi:id="_sbHaZhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E0257890057">
-              <body>The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be Used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.</body>
+              <body>The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sbHaahTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sbHaaRTaEdqZu-3Jy1-uYg"/>
@@ -10095,7 +10281,7 @@ define a collating sequence between operands and subexpressions).
           </ownedAttribute>
           <ownedOperation xmi:id="_3ADC7B74022D4300E4980280" name="realizedInterfaces" isQuery="true" bodyCondition="_saqugRTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:id="_saqufRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300E4980280">
-              <body>Utility returning the set of realized interfaces of a component:</body>
+              <body>Utility returning the set of realized interfaces of a component.</body>
             </ownedComment>
             <ownedRule xmi:id="_saqugRTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300E4980280">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_saqughTaEdqZu-3Jy1-uYg">
@@ -10111,7 +10297,7 @@ define a collating sequence between operands and subexpressions).
           </ownedOperation>
           <ownedOperation xmi:id="_3ADC7B74022D4300E4AF032C" name="usedInterfaces" isQuery="true" bodyCondition="_saquihTaEdqZu-3Jy1-uYg">
             <ownedComment xmi:id="_saquhhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D4300E4AF032C">
-              <body>Utility returning the set of used interfaces of a component:</body>
+              <body>Utility returning the set of used interfaces of a component.</body>
             </ownedComment>
             <ownedRule xmi:id="_saquihTaEdqZu-3Jy1-uYg" name="spec" constrainedElement="_3ADC7B74022D4300E4AF032C">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_saquixTaEdqZu-3Jy1-uYg">
@@ -10129,7 +10315,7 @@ define a collating sequence between operands and subexpressions).
             <ownedRule xmi:id="_YjOdoDZ-Edqq1tCaRkgBQQ" name="spec" constrainedElement="_xc4UQDZ9Edqq1tCaRkgBQQ">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_YjOdoTZ-Edqq1tCaRkgBQQ">
                 <language>OCL</language>
-                <body>result = let usedInterfaces = UsedInterfaces(self) and&#xD;&#xA;  let realizingClassifierUsedInterfaces = UsedInterfaces(self.realizingClassifier) and&#xD;&#xA;  let typesOfUsedPorts = self.ownedPort.required in&#xD;&#xA;    ((usedInterfaces->union(realizingClassifierUsedInterfaces))->&#xD;&#xA;      union(typesOfUsedPorts))->asSet()</body>
+                <body>result = let usingInterfaces : Set(Interface) = self.implementation->collect(impl|impl.contract),&#xD;&#xA;usedInterfaces : Set(Interface) = UsedInterfaces(self),&#xD;&#xA;realizingClassifiers : Set(Classifier) = Set{self.realizingClassifier}->union(self.allParents().realizingClassifier),&#xD;&#xA;allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents()),&#xD;&#xA;realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(UsedInterfaces(c))),&#xD;&#xA;ports : Set(Port) = self.ownedPort->union(allParents.oclAsType(Set(EncapsulatedClassifier)).ownedPort),&#xD;&#xA;usedByPorts : Set(Interface) = ports.provided in ((usingInterfaces->union(usedInterfaces)->union(realizingClassifierInterfaces))->union(usedByPorts))->asSet()</body>
               </specification>
             </ownedRule>
             <ownedParameter xmi:id="_4GmaQDZ9Edqq1tCaRkgBQQ" type="_3ADC7B74022D3342A195014D" direction="return">
@@ -10141,7 +10327,7 @@ define a collating sequence between operands and subexpressions).
             <ownedRule xmi:id="_-L2r0DZ-Edqq1tCaRkgBQQ" name="spec" constrainedElement="_2cFjwDZ-Edqq1tCaRkgBQQ">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_-L2r0TZ-Edqq1tCaRkgBQQ">
                 <language>OCL</language>
-                <body>result = let implementedInterfaces = self.implementation->collect(impl|impl.contract) and&#xD;&#xA;  let realizedInterfaces = RealizedInterfaces(self) and&#xD;&#xA;  let realizingClassifierInterfaces = RealizedInterfaces(self.realizingClassifier) and&#xD;&#xA;  let typesOfRequiredPorts = self.ownedPort.provided in&#xD;&#xA;    (((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->&#xD;&#xA;      union(typesOfRequiredPorts))->asSet()</body>
+                <body>result = let implementedInterfaces : Set(Interface) = self.implementation->collect(impl|impl.contract),&#xD;&#xA;realizedInterfaces : Set(Interface) = RealizedInterfaces(self),&#xD;&#xA;realizingClassifiers : Set(Classifier) = Set{self.realizingClassifier}->union(self.allParents().realizingClassifier),&#xD;&#xA;allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents()),&#xD;&#xA;realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(RealizedInterfaces(c))),&#xD;&#xA;ports : Set(Port) = self.ownedPort->union(allParents.oclAsType(Set(EncapsulatedClassifier)).ownedPort) ,&#xD;&#xA;providedByPorts : Set(Interface) = ports.provided in ((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->union(providedByPorts))->asSet()</body>
               </specification>
             </ownedRule>
             <ownedParameter xmi:id="_5L7OIDZ-Edqq1tCaRkgBQQ" type="_3ADC7B74022D3342A195014D" direction="return">
@@ -10164,9 +10350,9 @@ define a collating sequence between operands and subexpressions).
           </ownedAttribute>
           <ownedAttribute xmi:id="_3ADC7B74022D3E02589F0011" name="realizingClassifier" type="_3ADC7B74022D3CAAECE80199" subsettedProperty="_3ADC7B74022D3AFF021C0000" association="_3ADC7B74022D3E02589E0218">
             <ownedComment xmi:id="_Lq2V0Gd6EdqCCpdUvbQY5w" annotatedElement="_3ADC7B74022D3E02589F0011">
-              <body>A classifier that is involved in the implementation of the Component that owns this ComponentRealization.</body>
+              <body>The classifiers that are involved in the implementation of the Component that owns this Realization.</body>
             </ownedComment>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sbRLbxTaEdqZu-3Jy1-uYg" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sbRLbxTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sbRLbhTaEdqZu-3Jy1-uYg" value="1"/>
           </ownedAttribute>
         </packagedElement>
@@ -10779,13 +10965,25 @@ Associated dependencies map features of the collaboration type to features in th
             <body>ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.</body>
           </ownedComment>
           <generalization xmi:id="_3ADC7B74022D3D03CEE303AC" general="_3ADC7B74022D3CAAFD3A006B"/>
-          <ownedAttribute xmi:id="_3ADC7B74022D3E2216A3012D" name="end" type="_3ADC7B74022D3B6D744E008C" isOrdered="true" association="_3ADC7B74022D3E2216A2021C">
+          <ownedAttribute xmi:id="_3ADC7B74022D3E2216A3012D" name="end" type="_3ADC7B74022D3B6D744E008C" isOrdered="true" isDerived="true" association="_3ADC7B74022D3E2216A2021C">
             <ownedComment xmi:id="_ry4VuxTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3E2216A3012D">
               <body>Denotes a connector that attaches to this connectable element.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ry4VvxTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ry4VvhTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
+          <ownedOperation xmi:id="_MKjMkCtbEd2neOJi0e6UBQ" name="end" bodyCondition="_g5pR0CtbEd2neOJi0e6UBQ">
+            <ownedRule xmi:id="_g5pR0CtbEd2neOJi0e6UBQ" name="spec">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_l82tACtbEd2neOJi0e6UBQ">
+                <language>OCL</language>
+                <body>result = ConnectorEnd.allInstances()->select(e | e.role=self)</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_ORaLYCtbEd2neOJi0e6UBQ" type="_3ADC7B74022D3B6D744E008C" direction="return">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_PQ4rYCtbEd2neOJi0e6UBQ" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ORaLYStbEd2neOJi0e6UBQ"/>
+            </ownedParameter>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D41BDAA2F0261" name="Classifier" isAbstract="true">
           <ownedComment xmi:id="_rybpzRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D41BDAA2F0261">
@@ -11917,7 +12115,7 @@ v) attributes of the class owning the Interaction
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_3ADC7B74022D416287D4015E" name="A_message_messageEnd" memberEnd="_3ADC7B74022D416287D90274 _3ADC7B74022D416287D9027E">
           <ownedEnd xmi:id="_3ADC7B74022D416287D9027E" type="_3ADC7B74022D3CC2FD900302" association="_3ADC7B74022D416287D4015E">
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sGspkRTaEdqZu-3Jy1-uYg" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sGspkRTaEdqZu-3Jy1-uYg" value="2"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sGspkBTaEdqZu-3Jy1-uYg"/>
           </ownedEnd>
         </packagedElement>
@@ -12957,7 +13155,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
             </ownedComment>
             <specification xmi:type="uml:OpaqueExpression" xmi:id="_sflqtBTaEdqZu-3Jy1-uYg">
               <language>OCL</language>
-              <body>source.oclIsKindOf(Pseudostate) and&#xA;((source.kind &lt;> #junction) and (source.kind &lt;> #join) and (source.kind &lt;> #initial)) implies trigger->isEmpty()&#xA;</body>
+              <body>source.oclIsKindOf(Pseudostate) and (source.kind &lt;> #initial)) implies trigger->isEmpty()</body>
             </specification>
           </ownedRule>
           <ownedRule xmi:id="_sflqvBTaEdqZu-3Jy1-uYg" name="initial_transition" constrainedElement="_3ADC7B74022D3288D70A0212">
@@ -13101,14 +13299,14 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_shE4jRTaEdqZu-3Jy1-uYg" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_shE4jBTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_3ADC7B74022D328902830028" name="outgoing" type="_3ADC7B74022D3288D70A0212" association="_3ADC7B74022D32890282014A">
+          <ownedAttribute xmi:id="_3ADC7B74022D328902830028" name="outgoing" type="_3ADC7B74022D3288D70A0212" isDerived="true" association="_3ADC7B74022D32890282014A">
             <ownedComment xmi:id="_shOphRTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D328902830028">
               <body>Specifies the transitions departing from this vertex.</body>
             </ownedComment>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_shOpiRTaEdqZu-3Jy1-uYg" value="*"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_shOpiBTaEdqZu-3Jy1-uYg"/>
           </ownedAttribute>
-          <ownedAttribute xmi:id="_3ADC7B74022D3289028D02BC" name="incoming" type="_3ADC7B74022D3288D70A0212" association="_3ADC7B74022D3289028C03D4">
+          <ownedAttribute xmi:id="_3ADC7B74022D3289028D02BC" name="incoming" type="_3ADC7B74022D3288D70A0212" isDerived="true" association="_3ADC7B74022D3289028C03D4">
             <ownedComment xmi:id="_shXzZhTaEdqZu-3Jy1-uYg" annotatedElement="_3ADC7B74022D3289028D02BC">
               <body>Specifies the transitions entering this vertex.</body>
             </ownedComment>
@@ -13126,6 +13324,30 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
               </specification>
             </ownedRule>
             <ownedParameter xmi:id="_sfu0sRTaEdqZu-3Jy1-uYg" type="_3ADC7B74022D327D9E410186" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_621MkCtbEd2neOJi0e6UBQ" name="outgoing" bodyCondition="_L4G8QCtcEd2neOJi0e6UBQ">
+            <ownedRule xmi:id="_L4G8QCtcEd2neOJi0e6UBQ" name="spec">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_NtE50CtcEd2neOJi0e6UBQ">
+                <language>OCL</language>
+                <body>result = Transition.allInstances()->select(t | t.source=self)</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_AuotcCtcEd2neOJi0e6UBQ" type="_3ADC7B74022D3288D70A0212" direction="return">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Bc-aICtcEd2neOJi0e6UBQ" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AuotcStcEd2neOJi0e6UBQ"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_TnkiUCtcEd2neOJi0e6UBQ" name="incoming" bodyCondition="_TnkiUStcEd2neOJi0e6UBQ">
+            <ownedRule xmi:id="_TnkiUStcEd2neOJi0e6UBQ" name="spec">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_TnkiUitcEd2neOJi0e6UBQ">
+                <language>OCL</language>
+                <body>result = Transition.allInstances()->select(t | t.target=self)</body>
+              </specification>
+            </ownedRule>
+            <ownedParameter xmi:id="_TnkiUytcEd2neOJi0e6UBQ" type="_3ADC7B74022D3288D70A0212" direction="return">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TnkiVCtcEd2neOJi0e6UBQ" value="*"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TnkiVStcEd2neOJi0e6UBQ"/>
+            </ownedParameter>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_3ADC7B74022D328A47F10064" name="Pseudostate">
@@ -14187,120 +14409,126 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
     </packagedElement>
     <profileApplication xmi:id="_tiM68BjPEdqPB8O80Bm3OQ">
       <eAnnotations xmi:id="_tiM68RjPEdqPB8O80Bm3OQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_B7dOIMEREduRdatXodjBjA"/>
       </eAnnotations>
       <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
     </profileApplication>
   </uml:Model>
-  <Ecore:EAttribute xmi:id="_1_uC0MYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
-  <Ecore:EAttribute xmi:id="_1_uC0cYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
-  <Ecore:EReference xmi:id="_1_uC0sYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
-  <Ecore:EReference xmi:id="_1_uC08YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
-  <Ecore:EReference xmi:id="_1_uC1MYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
-  <Ecore:EReference xmi:id="_1_uC1cYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
-  <Ecore:EReference xmi:id="_1_uC1sYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
-  <Ecore:EReference xmi:id="_1_3z0MYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
-  <Ecore:EReference xmi:id="_1_3z0cYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
-  <Ecore:EReference xmi:id="_1_3z0sYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
-  <Ecore:EReference xmi:id="_1_3z08YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
-  <Ecore:EAttribute xmi:id="_1_3z1MYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
-  <Ecore:EReference xmi:id="_1_3z1cYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
-  <Ecore:EReference xmi:id="_2ABk0MYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
-  <Ecore:EReference xmi:id="_2ABk0cYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
-  <Ecore:EReference xmi:id="_2ABk0sYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
-  <Ecore:EReference xmi:id="_2ABk08YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
-  <Ecore:EReference xmi:id="_2ABk1MYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
-  <Ecore:EReference xmi:id="_2ABk1cYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
-  <Ecore:EReference xmi:id="_2AKuwMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
-  <Ecore:EReference xmi:id="_2AKuwcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
-  <Ecore:EReference xmi:id="_2AKuwsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
-  <Ecore:EReference xmi:id="_2AKuw8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
-  <Ecore:EAttribute xmi:id="_2AKuxMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
-  <Ecore:EAttribute xmi:id="_2AKuxcYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
-  <Ecore:EReference xmi:id="_2AKuxsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
-  <Ecore:EReference xmi:id="_2AUfwMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
-  <Ecore:EReference xmi:id="_2AUfwcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
-  <Ecore:EAttribute xmi:id="_2AUfwsYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
-  <Ecore:EReference xmi:id="_2AUfw8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
-  <Ecore:EReference xmi:id="_2AUfxMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
-  <Ecore:EAttribute xmi:id="_2AUfxcYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351"/>
-  <Ecore:EAttribute xmi:id="_2AUfxsYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
-  <Ecore:EAttribute xmi:id="_2AUfx8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
-  <Ecore:EReference xmi:id="_2AUfyMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
-  <Ecore:EAttribute xmi:id="_2AUfycYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
-  <Ecore:EAttribute xmi:id="_2AeQwMYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
-  <Ecore:EAttribute xmi:id="_2AeQwcYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
-  <Ecore:EAttribute xmi:id="_2AeQwsYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
-  <Ecore:EAttribute xmi:id="_2AeQw8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
-  <Ecore:EAttribute xmi:id="_2AeQxMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
-  <Ecore:EOperation xmi:id="_2AeQxcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower" visibility="None"/>
-  <Ecore:EOperation xmi:id="_2AeQxsYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper" visibility="None"/>
-  <Ecore:EReference xmi:id="_2AeQx8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
-  <Ecore:EReference xmi:id="_2AeQyMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
-  <Ecore:EReference xmi:id="_2AnasMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
-  <Ecore:EReference xmi:id="_2AnascYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
-  <Ecore:EOperation xmi:id="_2AnassYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
-  <Ecore:EOperation xmi:id="_2Anas8YcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
-  <Ecore:EReference xmi:id="_2AnatMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
-  <Ecore:EReference xmi:id="_2AnatcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
-  <Ecore:EReference xmi:id="_2AnatsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
-  <Ecore:EAttribute xmi:id="_2Anat8YcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3DF4FA43024F"/>
-  <Ecore:EAttribute xmi:id="_2AnauMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
-  <Ecore:EReference xmi:id="_2AnaucYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
-  <Ecore:EReference xmi:id="_2AnausYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
-  <Ecore:EReference xmi:id="_2AxLsMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
-  <Ecore:EReference xmi:id="_2AxLscYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
-  <Ecore:EAttribute xmi:id="_2AxLssYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
-  <Ecore:EAttribute xmi:id="_2AxLs8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
-  <Ecore:EReference xmi:id="_2AxLtMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
-  <Ecore:EOperation xmi:id="_2AxLtcYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite" visibility="None"/>
-  <Ecore:EAttribute xmi:id="_2AxLtsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
-  <Ecore:EAttribute xmi:id="_2AxLt8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
-  <Ecore:EAttribute xmi:id="_2A6VoMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
-  <Ecore:EAttribute xmi:id="_2A6VocYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
-  <Ecore:EReference xmi:id="_2A6VosYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
-  <Ecore:EOperation xmi:id="_2A6Vo8YcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
-  <Ecore:EOperation xmi:id="_2A6VpMYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
-  <Ecore:EReference xmi:id="_2A6VpcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
-  <Ecore:EOperation xmi:id="_2A6VpsYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
-  <Ecore:EReference xmi:id="_2A6Vp8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
-  <Ecore:EReference xmi:id="_2A6VqMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
-  <Ecore:EReference xmi:id="_2A6VqcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
-  <Ecore:EOperation xmi:id="_2A6VqsYcEduPJbEsMYXjUQ" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
-  <Ecore:EReference xmi:id="_2A6Vq8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
-  <Ecore:EReference xmi:id="_2BEGoMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
-  <Ecore:EAttribute xmi:id="_2BEGocYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
-  <Ecore:EReference xmi:id="_2BEGosYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
-  <Ecore:EReference xmi:id="_2BEGo8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
-  <Ecore:EReference xmi:id="_2BN3oMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
-  <Ecore:EReference xmi:id="_2BN3ocYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
-  <Ecore:EAttribute xmi:id="_2BN3osYcEduPJbEsMYXjUQ" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
-  <Ecore:EAttribute xmi:id="_2BN3o8YcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
-  <Ecore:EReference xmi:id="_2BN3pMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
-  <Ecore:EReference xmi:id="_2BN3pcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
-  <Ecore:EOperation xmi:id="_2BXBkMYcEduPJbEsMYXjUQ" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
-  <Ecore:EOperation xmi:id="_2BXBkcYcEduPJbEsMYXjUQ" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
-  <Ecore:EAttribute xmi:id="_2BXBksYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
-  <Ecore:EReference xmi:id="_2BXBk8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
-  <Ecore:EReference xmi:id="_2BXBlMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
-  <Ecore:EReference xmi:id="_2BXBlcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
-  <Ecore:EReference xmi:id="_2BXBlsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
-  <Ecore:EReference xmi:id="_2BXBl8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
-  <Ecore:EReference xmi:id="_2BXBmMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
-  <Ecore:EReference xmi:id="_2BgykMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
-  <Ecore:EAttribute xmi:id="_2BgykcYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
-  <Ecore:EAttribute xmi:id="_2BgyksYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
-  <Ecore:EReference xmi:id="_2Bgyk8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
-  <Ecore:EOperation xmi:id="_2BgylMYcEduPJbEsMYXjUQ" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
-  <Ecore:EAttribute xmi:id="_2BgylcYcEduPJbEsMYXjUQ" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
-  <Ecore:EAttribute xmi:id="_2BgylsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
-  <Ecore:EReference xmi:id="_2Bgyl8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
-  <Ecore:EAttribute xmi:id="_2BqjkMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
-  <Ecore:EAttribute xmi:id="_2BqjkcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
-  <Ecore:EAttribute xmi:id="_2BqjksYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
-  <Ecore:EAttribute xmi:id="_2Bqjk8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
-  <Ecore:EReference xmi:id="_2BztgMYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
-  <Ecore:EReference xmi:id="_2BztgcYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
-  <Ecore:EReference xmi:id="_2BztgsYcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
-  <Ecore:EReference xmi:id="_2Bztg8YcEduPJbEsMYXjUQ" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
+  <Ecore:EAttribute xmi:id="_Et9m0MFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6DCF011E"/>
+  <Ecore:EAttribute xmi:id="_Et9m0cFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6E0300D3"/>
+  <Ecore:EReference xmi:id="_Et9m0sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D716DC100E9"/>
+  <Ecore:EReference xmi:id="_Et9m08FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D716DF5031E"/>
+  <Ecore:EReference xmi:id="_Et9m1MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DF3D8E90137"/>
+  <Ecore:EReference xmi:id="_Et9m1cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F00F0"/>
+  <Ecore:EReference xmi:id="_Et9m1sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C7C242F001E"/>
+  <Ecore:EReference xmi:id="_Et9m18FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B20315"/>
+  <Ecore:EReference xmi:id="_Et9m2MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F2"/>
+  <Ecore:EReference xmi:id="_Et9m2cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41B9A15A02F4"/>
+  <Ecore:EReference xmi:id="_Et9m2sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41B9A2B2031F"/>
+  <Ecore:EAttribute xmi:id="_EuHX0MFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D4063FB930031"/>
+  <Ecore:EReference xmi:id="_EuHX0cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BDACD90276"/>
+  <Ecore:EReference xmi:id="_EuHX0sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BDACD9026C"/>
+  <Ecore:EReference xmi:id="_EuHX08FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E441FC901D0"/>
+  <Ecore:EReference xmi:id="_EuHX1MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A008A"/>
+  <Ecore:EReference xmi:id="_EuHX1cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BD7B8A0094"/>
+  <Ecore:EReference xmi:id="_EuHX1sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90317"/>
+  <Ecore:EReference xmi:id="_EuHX18FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BDADE90322"/>
+  <Ecore:EReference xmi:id="_EuHX2MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B7"/>
+  <Ecore:EReference xmi:id="_EuRI0MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D410D0A3403E6"/>
+  <Ecore:EReference xmi:id="_EuRI0cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D410D0A350008"/>
+  <Ecore:EReference xmi:id="_EuRI0sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D410D08ED01B5"/>
+  <Ecore:EAttribute xmi:id="_EuRI08FlEdu60_VP7XWKdw" isTransient="true" base_Property="_k3pScEfeEdq0rbStTpEubg"/>
+  <Ecore:EAttribute xmi:id="_EuRI1MFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3D2C32860188"/>
+  <Ecore:EReference xmi:id="_EuaSwMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D4127B15000BD"/>
+  <Ecore:EReference xmi:id="_EuaSwcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60187"/>
+  <Ecore:EReference xmi:id="_EuaSwsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEA60189"/>
+  <Ecore:EAttribute xmi:id="_EuaSw8FlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D3CAC07D800D7"/>
+  <Ecore:EReference xmi:id="_EuaSxMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAEEF70165"/>
+  <Ecore:EReference xmi:id="_EuaSxcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAEF470200"/>
+  <Ecore:EAttribute xmi:id="_EuaSxsFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF00E0351"/>
+  <Ecore:EAttribute xmi:id="_EuaSx8FlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3CAAF02203B4"/>
+  <Ecore:EAttribute xmi:id="_EuaSyMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0300219"/>
+  <Ecore:EReference xmi:id="_EukDwMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00232"/>
+  <Ecore:EAttribute xmi:id="_EukDwcFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF34430265"/>
+  <Ecore:EAttribute xmi:id="_EukDwsFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D41AF3484006A"/>
+  <Ecore:EAttribute xmi:id="_EukDw8FlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3CB5DEA0029E"/>
+  <Ecore:EAttribute xmi:id="_EukDxMFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3CBBE2E9024C"/>
+  <Ecore:EAttribute xmi:id="_EukDxcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFB238029B"/>
+  <Ecore:EAttribute xmi:id="_EukDxsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFB2640028"/>
+  <Ecore:EOperation xmi:id="_EukDx8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300D208038A" operationName="getLower" visibility="None"/>
+  <Ecore:EOperation xmi:id="_EukDyMFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300D20E00CB" operationName="getUpper" visibility="None"/>
+  <Ecore:EReference xmi:id="_EukDycFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAB04790307"/>
+  <Ecore:EReference xmi:id="_EukDysFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAB02DF02A3"/>
+  <Ecore:EReference xmi:id="_EukDy8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAB21AF0364"/>
+  <Ecore:EReference xmi:id="_EukDzMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E026F600201"/>
+  <Ecore:EOperation xmi:id="_EukDzcFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300CD890196" operationName="getGenerals"/>
+  <Ecore:EOperation xmi:id="_EukDzsFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300CDD6036B" operationName="getInheritedMembers"/>
+  <Ecore:EReference xmi:id="_EukDz8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAB047902F3"/>
+  <Ecore:EReference xmi:id="_EukD0MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E026DFA035B"/>
+  <Ecore:EReference xmi:id="_EukD0cFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E026E2C0064"/>
+  <Ecore:EAttribute xmi:id="_EukD0sFlEdu60_VP7XWKdw" base_Property="_3ADC7B74022D3DF4FA43024F"/>
+  <Ecore:EAttribute xmi:id="_Eut0wMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFCC4902FB"/>
+  <Ecore:EReference xmi:id="_Eut0wcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD0094"/>
+  <Ecore:EReference xmi:id="_Eut0wsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E02674A0088"/>
+  <Ecore:EReference xmi:id="_Eut0w8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E02674A00A6"/>
+  <Ecore:EReference xmi:id="_Eut0xMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E027BEB00C8"/>
+  <Ecore:EAttribute xmi:id="_Eut0xcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFC10401EE"/>
+  <Ecore:EAttribute xmi:id="_Eut0xsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFC66A0368"/>
+  <Ecore:EReference xmi:id="_Eut0x8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DFFC0A002E5"/>
+  <Ecore:EOperation xmi:id="_Eut0yMFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300DA23034B" operationName="getOpposite" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_Eut0ycFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E04B1B500F0"/>
+  <Ecore:EAttribute xmi:id="_Eut0ysFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E04B1BD0137"/>
+  <Ecore:EAttribute xmi:id="_Eut0y8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E04B1CF009D"/>
+  <Ecore:EAttribute xmi:id="_Eut0zMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E04B1C20171"/>
+  <Ecore:EReference xmi:id="_Eut0zcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0282460399"/>
+  <Ecore:EOperation xmi:id="_Eut0zsFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300D86401A5" operationName="lowerBound"/>
+  <Ecore:EOperation xmi:id="_Eut0z8FlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300D86A03D8" operationName="upperBound"/>
+  <Ecore:EReference xmi:id="_Eut00MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D51535A0358"/>
+  <Ecore:EOperation xmi:id="_Eut00cFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300CCCA006D" operationName="getEndTypes"/>
+  <Ecore:EReference xmi:id="_Eut00sFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAF0B00228"/>
+  <Ecore:EReference xmi:id="_Eut008FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CAAF1D0036C"/>
+  <Ecore:EReference xmi:id="_Eut01MFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3DDD06680179"/>
+  <Ecore:EOperation xmi:id="_Eut01cFlEdu60_VP7XWKdw" base_Operation="_3ADC7B74022D4300D74101E4" operationName="getImportedMembers"/>
+  <Ecore:EReference xmi:id="_Eu2-sMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D514F6E0106"/>
+  <Ecore:EReference xmi:id="_Eu2-scFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0265FD01CA"/>
+  <Ecore:EAttribute xmi:id="_Eu2-ssFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3E5921F9017E"/>
+  <Ecore:EReference xmi:id="_Eu2-s8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210224"/>
+  <Ecore:EReference xmi:id="_Eu2-tMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BD9B210226"/>
+  <Ecore:EReference xmi:id="_Eu2-tcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D40F9B6900288"/>
+  <Ecore:EReference xmi:id="_EvAvsMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D06C90B02AF"/>
+  <Ecore:EAttribute xmi:id="_EvAvscFlEdu60_VP7XWKdw" isUnsettable="true" xmlFeatureKind="Element" base_Property="_3ADC7B74022D41AF6EF40300"/>
+  <Ecore:EAttribute xmi:id="_EvAvssFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D41AF6F25017A"/>
+  <Ecore:EReference xmi:id="_EvAvs8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0257890057"/>
+  <Ecore:EReference xmi:id="_EvAvtMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0257B9029B"/>
+  <Ecore:EOperation xmi:id="_EvAvtcFlEdu60_VP7XWKdw" base_Operation="_xc4UQDZ9Edqq1tCaRkgBQQ" operationName="getRequireds"/>
+  <Ecore:EOperation xmi:id="_EvAvtsFlEdu60_VP7XWKdw" base_Operation="_2cFjwDZ-Edqq1tCaRkgBQQ" operationName="getProvideds"/>
+  <Ecore:EAttribute xmi:id="_EvAvt8FlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3E0259E30107"/>
+  <Ecore:EReference xmi:id="_EvAvuMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3CCB579E00F4"/>
+  <Ecore:EReference xmi:id="_EvAvucFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D03D15C008B"/>
+  <Ecore:EReference xmi:id="_EvJ5oMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D02623F03E2"/>
+  <Ecore:EReference xmi:id="_EvJ5ocFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E22160503E3"/>
+  <Ecore:EReference xmi:id="_EvJ5osFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E0B98C901E2"/>
+  <Ecore:EReference xmi:id="_EvJ5o8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E2212D701CF"/>
+  <Ecore:EReference xmi:id="_EvJ5pMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D41BDAA5A0141"/>
+  <Ecore:EAttribute xmi:id="_EvJ5pcFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C610263"/>
+  <Ecore:EAttribute xmi:id="_EvJ5psFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3E023C6802FA"/>
+  <Ecore:EReference xmi:id="_EvJ5p8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3E045F15011E"/>
+  <Ecore:EOperation xmi:id="_EvJ5qMFlEdu60_VP7XWKdw" base_Operation="_xZVGsEb0Edq0rbStTpEubg" operationName="getDeployedElements"/>
+  <Ecore:EAttribute xmi:id="_EvJ5qcFlEdu60_VP7XWKdw" isUnsettable="true" base_Property="_3ADC7B74022D3E0330D40211"/>
+  <Ecore:EAttribute xmi:id="_EvJ5qsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D05BC66015F"/>
+  <Ecore:EReference xmi:id="_EvJ5q8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C63983E02AE"/>
+  <Ecore:EAttribute xmi:id="_EvTqoMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C612C28022F"/>
+  <Ecore:EAttribute xmi:id="_EvTqocFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C6136B401B9"/>
+  <Ecore:EAttribute xmi:id="_EvTqosFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C613764000E"/>
+  <Ecore:EAttribute xmi:id="_EvTqo8FlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3C678F5300CA"/>
+  <Ecore:EReference xmi:id="_EvTqpMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D73412C0329"/>
+  <Ecore:EReference xmi:id="_EvTqpcFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D73416A0300"/>
+  <Ecore:EReference xmi:id="_EvTqpsFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D733F2200E4"/>
+  <Ecore:EReference xmi:id="_EvdboMFlEdu60_VP7XWKdw" isTransient="true" base_Property="_3ADC7B74022D3D07F16101E5"/>
+  <Ecore:EOperation xmi:id="_kz1MAHBSEd2KHN02rE2XBg" base_Operation="_621MkCtbEd2neOJi0e6UBQ" operationName="getOutgoings"/>
+  <Ecore:EOperation xmi:id="_l3eaUHBSEd2KHN02rE2XBg" base_Operation="_TnkiUCtcEd2neOJi0e6UBQ" operationName="getIncomings"/>
+  <Ecore:EOperation xmi:id="_K697IHBTEd2KHN02rE2XBg" base_Operation="_MKjMkCtbEd2neOJi0e6UBQ" operationName="getEnds"/>
+  <Ecore:EReference xmi:id="_HkYQUIpeEd2wvtNys6G0rA" isTransient="true" isVolatile="true" base_Property="_3ADC7B74022D328902830028"/>
+  <Ecore:EReference xmi:id="_JIgVgIpeEd2wvtNys6G0rA" isTransient="true" isVolatile="true" base_Property="_3ADC7B74022D3289028D02BC"/>
+  <Ecore:EReference xmi:id="_pH3OEIpeEd2wvtNys6G0rA" isTransient="true" isVolatile="true" base_Property="_3ADC7B74022D3E2216A3012D"/>
 </xmi:XMI>
