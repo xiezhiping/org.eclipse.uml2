@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 220552, 226102
  *
- * $Id: UMLImporter.java,v 1.15 2008/04/09 14:37:18 khussey Exp $
+ * $Id: UMLImporter.java,v 1.16 2008/10/03 20:50:39 jbruck Exp $
  */
 package org.eclipse.uml2.uml.ecore.importer;
 
@@ -43,9 +43,11 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.uml2.uml.resource.XMI212UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 import org.eclipse.uml2.uml.util.UMLUtil;
@@ -324,11 +326,14 @@ public class UMLImporter
 			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
 			UML22UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
+			UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
+			UML212UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
 			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			XMI2UMLResource.UML_2_1_1_CONTENT_TYPE_IDENTIFIER,
-			XMI2UMLResource.Factory.INSTANCE);
+			XMI212UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			XMI2UMLResource.UML_2_1_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);
