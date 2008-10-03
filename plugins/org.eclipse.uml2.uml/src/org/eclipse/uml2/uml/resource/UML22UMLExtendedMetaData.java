@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLExtendedMetaData.java,v 1.5 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UML22UMLExtendedMetaData.java,v 1.6 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -2466,7 +2466,20 @@ public class UML22UMLExtendedMetaData
 
 			typeMap = new HashMap<EClassifier, String>();
 			typeMap.put(UMLPackage.Literals.TRIGGER, "uml:Signal"); //$NON-NLS-1$
-			featureToTypeMap.put("signal", typeMap); //$NON-NLS-1$			
+			featureToTypeMap.put("signal", typeMap); //$NON-NLS-1$	
+			
+			typeMap = new HashMap<EClassifier, String>();
+			typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateSignature"); //$NON-NLS-1$
+			featureToTypeMap.put("ownedTemplateSignature", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap<EClassifier, String>();
+			typeMap.put(UMLPackage.Literals.PROPERTY, "uml:TemplateBinding"); //$NON-NLS-1$
+			featureToTypeMap.put("templateBinding", typeMap); //$NON-NLS-1$
+
+			typeMap = new HashMap<EClassifier, String>();
+			typeMap.put(UMLPackage.Literals.CLASSIFIER_TEMPLATE_PARAMETER,
+				"uml:Classifier"); //$NON-NLS-1$
+			featureToTypeMap.put("defaultClassifier", typeMap); //$NON-NLS-1$
 		}
 		
 		return featureToTypeMap;

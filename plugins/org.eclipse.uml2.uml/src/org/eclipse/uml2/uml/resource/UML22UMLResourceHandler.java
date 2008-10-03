@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.35 2008/10/02 21:21:29 jbruck Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.36 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -57,6 +57,7 @@ import org.eclipse.uml2.uml.CallBehaviorAction;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Constraint;
@@ -140,6 +141,12 @@ public class UML22UMLResourceHandler
 	protected static final String STEREOTYPE__OPAQUE_EXPRESSION = "OpaqueExpression"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__TEMPLATE_SIGNATURE = "TemplateSignature"; //$NON-NLS-1$
+	
+	protected static final String STEREOTYPE__TIME_EVENT = "TimeEvent"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__TEMPLATEABLE_ELEMENT = "TemplateableElement"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__CLASSIFIER_TEMPLATE_PARAMETER = "ClassifierTemplateParameter"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__BEHAVIOR = "behavior"; //$NON-NLS-1$
 
@@ -160,6 +167,14 @@ public class UML22UMLResourceHandler
 	protected static final String TAG_DEFINITION__SIGNATURE = "signature"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__SYMBOL = "symbol"; //$NON-NLS-1$
+	
+	protected static final String TAG_DEFINITION__WHEN = "when"; //$NON-NLS-1$
+		
+	protected static final String TAG_DEFINITION__DEFAULT_CLASSIFER = "defaultClassifier"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__TEMPLATE_BINDING = "templateBinding"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__OWNED_TEMPLATE_SIGNATURE = "ownedTemplateSignature"; //$NON-NLS-1$
 
 	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
@@ -1528,9 +1543,31 @@ public class UML22UMLResourceHandler
 							+ name.substring(5));
 					}
 				}
+				
+				AnyType extension = getExtension(resource, property);
+				if (extension != null) {
 
+					EObject ownedTemplateSignature = getEObject(extension,
+						resource, "ownedTemplateSignature", true); //$NON-NLS-1$
+
+					UMLUtil.setTaggedValue(property, getUML2Stereotype(
+						property, STEREOTYPE__TEMPLATEABLE_ELEMENT),
+						TAG_DEFINITION__OWNED_TEMPLATE_SIGNATURE,
+						ownedTemplateSignature);
+
+					Collection<EObject> templateBindings = getEObjects(
+						extension, resource, "templateBinding", true); //$NON-NLS-1$
+
+					if (!templateBindings.isEmpty()) {
+						UMLUtil.setTaggedValue(property, getUML2Stereotype(
+							property, STEREOTYPE__TEMPLATEABLE_ELEMENT),
+							TAG_DEFINITION__TEMPLATE_BINDING, templateBindings);
+					}
+				}
+				
 				return super.caseProperty(property);
 			}
+					
 
 			@Override
 			public Object caseRealization(Realization realization) {
@@ -1772,12 +1809,13 @@ public class UML22UMLResourceHandler
 									"when", true); //$NON-NLS-1$
 
 								if (eObject instanceof ValueSpecification) {
+									
 									event = (TimeEvent) trigger
 										.getNearestPackage()
 										.createPackagedElement(
 											trigger.getName(),
 											UMLPackage.Literals.TIME_EVENT);
-									
+																		
 									Object value = getValue(extension
 										.getAnyAttribute(), "isRelative", true); //$NON-NLS-1$
 
@@ -1786,11 +1824,17 @@ public class UML22UMLResourceHandler
 											.setIsRelative(Boolean.valueOf(
 												(String) value).booleanValue());
 									}
-									// TODO: Complete in Phase 3 of UML 2.2 Compliance update.
+									
 									if (eObject instanceof TimeExpression) {
 										((TimeEvent) event)
 											.setWhen((TimeExpression) eObject);
 										
+									} else {
+										UMLUtil.setTaggedValue(event,
+											getUML2Stereotype(event,
+												STEREOTYPE__TIME_EVENT),
+											TAG_DEFINITION__WHEN,
+											(TimeExpression) eObject);
 									}
 								}
 							}
@@ -1807,6 +1851,33 @@ public class UML22UMLResourceHandler
 				trigger.setEvent(event);
 
 				return super.caseTrigger(trigger);
+			}
+			
+			@Override
+			public Object caseClassifierTemplateParameter(
+					ClassifierTemplateParameter classifierTemplateParameter) {
+
+				AnyType extension = getExtension(resource,
+					classifierTemplateParameter);
+
+				if (extension != null) {
+					EObject value = getEObject(extension, resource,
+						"defaultClassifier", true); //$NON-NLS-1$
+
+					if (classifierTemplateParameter.getDefault() == null) {
+
+						classifierTemplateParameter
+							.setDefault((ParameterableElement) value);
+
+					} else {
+						UMLUtil.setTaggedValue(classifierTemplateParameter,
+							getUML2Stereotype(classifierTemplateParameter,
+								STEREOTYPE__CLASSIFIER_TEMPLATE_PARAMETER),
+							TAG_DEFINITION__DEFAULT_CLASSIFER, value);
+					}
+				}
+				return super
+					.caseClassifierTemplateParameter(classifierTemplateParameter);
 			}
 
 			@Override

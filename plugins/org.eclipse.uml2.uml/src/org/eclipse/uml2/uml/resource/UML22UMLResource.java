@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  * 
- * $Id: UML22UMLResource.java,v 1.6 2008/04/21 13:28:47 khussey Exp $
+ * $Id: UML22UMLResource.java,v 1.7 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -49,7 +49,7 @@ public interface UML22UMLResource
 
 	String ECORE_PROFILE_URI = "pathmap://UML2_PROFILES/Ecore.profile.uml2"; //$NON-NLS-1$
 
-	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/0"; //$NON-NLS-1$
+	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/1"; //$NON-NLS-1$
 
 	String UML2_PROFILE_URI = UMLResource.PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 

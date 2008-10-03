@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  *
- * $Id: UMLResource.java,v 1.9 2008/04/21 13:28:47 khussey Exp $
+ * $Id: UMLResource.java,v 1.10 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -94,7 +94,9 @@ public interface UMLResource
 	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 	String UML_2_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_0_0"; //$NON-NLS-1$
+	
+	String UML_2_1_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_1_0"; //$NON-NLS-1$
 
-	String UML_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_1_0"; //$NON-NLS-1$
+	String UML_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_3_0_0"; //$NON-NLS-1$
 
 } // UMLResource
