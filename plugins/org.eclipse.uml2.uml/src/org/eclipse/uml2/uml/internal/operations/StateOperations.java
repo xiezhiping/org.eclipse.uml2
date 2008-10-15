@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateOperations.java,v 1.11 2008/03/25 13:41:38 jbruck Exp $
+ * $Id: StateOperations.java,v 1.12 2008/10/15 17:29:08 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -249,14 +249,14 @@ public class StateOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A simple state is a state without any regions.
-	 * result = region.isEmpty()
+	 * A simple state does not have any regions and it does not refer to any sub-machine state machine.
+	 * result = region.isEmpty() && !isSubmachineState()
 	 * @param state The receiving '<em><b>State</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean isSimple(State state) {
-		return state.getRegions().isEmpty();
+		return state.getRegions().isEmpty() && !isSubmachineState(state);
 	}
 
 	/**
