@@ -4370,7 +4370,7 @@ v) attributes of the class owning the Interaction
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="DecisionNode-decisionInput-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="DecisionNode-decisionInput-_lowerValue"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="DecisionNode-decisionInputFlow" name="decisionInputFlow" type="ObjectFlow" association="_packagedElement.295">
+      <ownedAttribute xmi:id="DecisionNode-decisionInputFlow" name="decisionInputFlow" type="ObjectFlow" association="A_decisionInputFlow_decisionNode">
         <ownedComment xmi:id="DecisionNode-decisionInputFlow-_ownedComment.0" annotatedElement="DecisionNode-decisionInputFlow">
           <body>An additional edge incoming to the decision node that provides a decision input value.</body>
         </ownedComment>
@@ -4427,10 +4427,10 @@ v) attributes of the class owning the Interaction
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="A_group_inActivity" name="A_group_inActivity" visibility="private" memberEnd="Activity-group ActivityGroup-inActivity"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.295" visibility="private" memberEnd="DecisionNode-decisionInputFlow _packagedElement.295-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.295-_ownedEnd.0" name="" type="DecisionNode" association="_packagedElement.295">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_packagedElement.295-_ownedEnd.0-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_packagedElement.295-_ownedEnd.0-_lowerValue"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_decisionInputFlow_decisionNode" name="A_decisionInputFlow_decisionNode" visibility="private" memberEnd="DecisionNode-decisionInputFlow A_decisionInputFlow_decisionNode-_ownedEnd.0">
+      <ownedEnd xmi:id="A_decisionInputFlow_decisionNode-_ownedEnd.0" type="DecisionNode" association="A_decisionInputFlow_decisionNode">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_decisionInputFlow_decisionNode-_ownedEnd.0-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_decisionInputFlow_decisionNode-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="EncapsulatedClassifier" name="EncapsulatedClassifier" isAbstract="true">
@@ -6116,7 +6116,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="WriteStructuralFeatureAction-value-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="WriteStructuralFeatureAction-value-_lowerValue" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="WriteStructuralFeatureAction-result" name="result" type="OutputPin" aggregation="composite" subsettedProperty="Action-output" association="_packagedElement.403">
+      <ownedAttribute xmi:id="WriteStructuralFeatureAction-result" name="result" type="OutputPin" aggregation="composite" subsettedProperty="Action-output" association="A_result_writeStructuralFeatureAction">
         <ownedComment xmi:id="WriteStructuralFeatureAction-result-_ownedComment.0" annotatedElement="WriteStructuralFeatureAction-result">
           <body>Gives the output pin on which the result is put.</body>
         </ownedComment>
@@ -6147,7 +6147,7 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         </specification>
       </ownedRule>
       <generalization xmi:id="ClearStructuralFeatureAction-_generalization.0" general="StructuralFeatureAction"/>
-      <ownedAttribute xmi:id="ClearStructuralFeatureAction-result" name="result" type="OutputPin" aggregation="composite" subsettedProperty="Action-output" association="_packagedElement.404">
+      <ownedAttribute xmi:id="ClearStructuralFeatureAction-result" name="result" type="OutputPin" aggregation="composite" subsettedProperty="Action-output" association="A_result_clearStructuralFeatureAction">
         <ownedComment xmi:id="ClearStructuralFeatureAction-result-_ownedComment.0" annotatedElement="ClearStructuralFeatureAction-result">
           <body>Gives the output pin on which the result is put.</body>
         </ownedComment>
@@ -6755,16 +6755,16 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_inputValue_linkAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.403" visibility="private" memberEnd="WriteStructuralFeatureAction-result _packagedElement.403-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.403-_ownedEnd.0" name="" type="WriteStructuralFeatureAction" association="_packagedElement.403">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_packagedElement.403-_ownedEnd.0-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_packagedElement.403-_ownedEnd.0-_lowerValue"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_result_writeStructuralFeatureAction" name="A_result_writeStructuralFeatureAction" visibility="private" memberEnd="WriteStructuralFeatureAction-result A_result_writeStructuralFeatureAction-_ownedEnd.0">
+      <ownedEnd xmi:id="A_result_writeStructuralFeatureAction-_ownedEnd.0" type="WriteStructuralFeatureAction" association="A_result_writeStructuralFeatureAction">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_result_writeStructuralFeatureAction-_ownedEnd.0-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_result_writeStructuralFeatureAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.404" visibility="private" memberEnd="ClearStructuralFeatureAction-result _packagedElement.404-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.404-_ownedEnd.0" name="" type="ClearStructuralFeatureAction" association="_packagedElement.404">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_packagedElement.404-_ownedEnd.0-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_packagedElement.404-_ownedEnd.0-_lowerValue"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_result_clearStructuralFeatureAction" name="A_result_clearStructuralFeatureAction" visibility="private" memberEnd="ClearStructuralFeatureAction-result A_result_clearStructuralFeatureAction-_ownedEnd.0">
+      <ownedEnd xmi:id="A_result_clearStructuralFeatureAction-_ownedEnd.0" type="ClearStructuralFeatureAction" association="A_result_clearStructuralFeatureAction">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_result_clearStructuralFeatureAction-_ownedEnd.0-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_result_clearStructuralFeatureAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="TimeExpression" name="TimeExpression">
@@ -10624,7 +10624,7 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         </specification>
       </ownedRule>
       <generalization xmi:id="StartObjectBehaviorAction-_generalization.0" general="CallAction"/>
-      <ownedAttribute xmi:id="StartObjectBehaviorAction-object" name="object" type="InputPin" aggregation="composite" subsettedProperty="Action-input" association="_packagedElement.565">
+      <ownedAttribute xmi:id="StartObjectBehaviorAction-object" name="object" type="InputPin" aggregation="composite" subsettedProperty="Action-input" association="A_object_startObjectBehaviorAction">
         <ownedComment xmi:id="StartObjectBehaviorAction-object-_ownedComment.0" annotatedElement="StartObjectBehaviorAction-object">
           <body>Holds the object which is either a behavior to be started or has a classifier behavior to be started.</body>
         </ownedComment>
@@ -10818,10 +10818,10 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_reducer_reduceAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_packagedElement.565" visibility="private" memberEnd="StartObjectBehaviorAction-object _packagedElement.565-_ownedEnd.0">
-      <ownedEnd xmi:id="_packagedElement.565-_ownedEnd.0" name="" type="StartObjectBehaviorAction" association="_packagedElement.565">
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_packagedElement.565-_ownedEnd.0-_upperValue" value="1"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_packagedElement.565-_ownedEnd.0-_lowerValue"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="A_object_startObjectBehaviorAction" name="A_object_startObjectBehaviorAction" visibility="private" memberEnd="StartObjectBehaviorAction-object A_object_startObjectBehaviorAction-_ownedEnd.0">
+      <ownedEnd xmi:id="A_object_startObjectBehaviorAction-_ownedEnd.0" type="StartObjectBehaviorAction" association="A_object_startObjectBehaviorAction">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="A_object_startObjectBehaviorAction-_ownedEnd.0-_upperValue" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="A_object_startObjectBehaviorAction-_ownedEnd.0-_lowerValue"/>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="JoinNode" name="JoinNode">
