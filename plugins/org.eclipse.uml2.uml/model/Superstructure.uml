@@ -1059,8 +1059,8 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gfnzYE-4EduFOcgjjRrSMg"/>
           </ownedEnd>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_OPUWUCG7Ed2y9aVPK_72RA" memberEnd="_OPUWUSG7Ed2y9aVPK_72RA _OPac8CG7Ed2y9aVPK_72RA">
-          <ownedEnd xmi:id="_OPac8CG7Ed2y9aVPK_72RA" name="" type="_DdxfUCG7Ed2y9aVPK_72RA" association="_OPUWUCG7Ed2y9aVPK_72RA">
+        <packagedElement xmi:type="uml:Association" xmi:id="_OPUWUCG7Ed2y9aVPK_72RA" name="A_object_startObjectBehaviorAction" memberEnd="_OPUWUSG7Ed2y9aVPK_72RA _OPac8CG7Ed2y9aVPK_72RA">
+          <ownedEnd xmi:id="_OPac8CG7Ed2y9aVPK_72RA" type="_DdxfUCG7Ed2y9aVPK_72RA" association="_OPUWUCG7Ed2y9aVPK_72RA">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SWV2ESG7Ed2y9aVPK_72RA" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SWV2ECG7Ed2y9aVPK_72RA"/>
           </ownedEnd>
@@ -2109,14 +2109,14 @@
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LKyZQE-3EduFOcgjjRrSMg"/>
           </ownedEnd>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_ijq7oBk8Ed2AFo75-uQLRQ" memberEnd="_ijxCQBk8Ed2AFo75-uQLRQ _ijxCQxk8Ed2AFo75-uQLRQ">
-          <ownedEnd xmi:id="_ijxCQxk8Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D380F43690262" association="_ijq7oBk8Ed2AFo75-uQLRQ">
+        <packagedElement xmi:type="uml:Association" xmi:id="_ijq7oBk8Ed2AFo75-uQLRQ" name="A_result_writeStructuralFeatureAction" memberEnd="_ijxCQBk8Ed2AFo75-uQLRQ _ijxCQxk8Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_ijxCQxk8Ed2AFo75-uQLRQ" type="_3ADC7B74022D380F43690262" association="_ijq7oBk8Ed2AFo75-uQLRQ">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nOcBoRk8Ed2AFo75-uQLRQ" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nOcBoBk8Ed2AFo75-uQLRQ"/>
           </ownedEnd>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_wv1fYBk8Ed2AFo75-uQLRQ" memberEnd="_wv1fYRk8Ed2AFo75-uQLRQ _wv7mABk8Ed2AFo75-uQLRQ">
-          <ownedEnd xmi:id="_wv7mABk8Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D3A78723F03E1" association="_wv1fYBk8Ed2AFo75-uQLRQ">
+        <packagedElement xmi:type="uml:Association" xmi:id="_wv1fYBk8Ed2AFo75-uQLRQ" name="A_result_clearStructuralFeatureAction" memberEnd="_wv1fYRk8Ed2AFo75-uQLRQ _wv7mABk8Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_wv7mABk8Ed2AFo75-uQLRQ" type="_3ADC7B74022D3A78723F03E1" association="_wv1fYBk8Ed2AFo75-uQLRQ">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0YzxMRk8Ed2AFo75-uQLRQ" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0YzxMBk8Ed2AFo75-uQLRQ"/>
           </ownedEnd>
@@ -3571,8 +3571,8 @@ If false, the call is asynchronous and the caller proceeds immediately and does 
           </ownedEnd>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_f58-QDdoEdqq1tCaRkgBQQ" name="A_group_inActivity" memberEnd="_f58-QTdoEdqq1tCaRkgBQQ _f58-QjdoEdqq1tCaRkgBQQ"/>
-        <packagedElement xmi:type="uml:Association" xmi:id="_0TsdIBk7Ed2AFo75-uQLRQ" memberEnd="_0TsdIRk7Ed2AFo75-uQLRQ _0T4qYBk7Ed2AFo75-uQLRQ">
-          <ownedEnd xmi:id="_0T4qYBk7Ed2AFo75-uQLRQ" name="" type="_3ADC7B74022D3B72E53E007E" association="_0TsdIBk7Ed2AFo75-uQLRQ">
+        <packagedElement xmi:type="uml:Association" xmi:id="_0TsdIBk7Ed2AFo75-uQLRQ" name="A_decisionInputFlow_decisionNode" memberEnd="_0TsdIRk7Ed2AFo75-uQLRQ _0T4qYBk7Ed2AFo75-uQLRQ">
+          <ownedEnd xmi:id="_0T4qYBk7Ed2AFo75-uQLRQ" type="_3ADC7B74022D3B72E53E007E" association="_0TsdIBk7Ed2AFo75-uQLRQ">
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0T4qYhk7Ed2AFo75-uQLRQ" value="1"/>
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0T4qYRk7Ed2AFo75-uQLRQ"/>
           </ownedEnd>

@@ -4427,8 +4427,8 @@ v) attributes of the class owning the Interaction
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_w6hKlJCmEd2CZp-K8yNJig" name="A_group_inActivity" memberEnd="_w6hKbpCmEd2CZp-K8yNJig _w6hKeZCmEd2CZp-K8yNJig"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w8AYQ5CmEd2CZp-K8yNJig" memberEnd="_w73O65CmEd2CZp-K8yNJig _w8AYRJCmEd2CZp-K8yNJig">
-      <ownedEnd xmi:id="_w8AYRJCmEd2CZp-K8yNJig" name="" type="_w73OzJCmEd2CZp-K8yNJig" association="_w8AYQ5CmEd2CZp-K8yNJig">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w8AYQ5CmEd2CZp-K8yNJig" name="A_decisionInputFlow_decisionNode" memberEnd="_w73O65CmEd2CZp-K8yNJig _w8AYRJCmEd2CZp-K8yNJig">
+      <ownedEnd xmi:id="_w8AYRJCmEd2CZp-K8yNJig" type="_w73OzJCmEd2CZp-K8yNJig" association="_w8AYQ5CmEd2CZp-K8yNJig">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8AYRZCmEd2CZp-K8yNJig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8AYRpCmEd2CZp-K8yNJig"/>
       </ownedEnd>
@@ -6755,14 +6755,14 @@ InteractionUse (say) U that covers L. According to the constraint above U will h
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8m1zZCmEd2CZp-K8yNJig"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w8m1zpCmEd2CZp-K8yNJig" memberEnd="_w8dExJCmEd2CZp-K8yNJig _w8m1z5CmEd2CZp-K8yNJig">
-      <ownedEnd xmi:id="_w8m1z5CmEd2CZp-K8yNJig" name="" type="_w8dEsZCmEd2CZp-K8yNJig" association="_w8m1zpCmEd2CZp-K8yNJig">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w8m1zpCmEd2CZp-K8yNJig" name="A_result_writeStructuralFeatureAction"  memberEnd="_w8dExJCmEd2CZp-K8yNJig _w8m1z5CmEd2CZp-K8yNJig">
+      <ownedEnd xmi:id="_w8m1z5CmEd2CZp-K8yNJig" type="_w8dEsZCmEd2CZp-K8yNJig" association="_w8m1zpCmEd2CZp-K8yNJig">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8m10JCmEd2CZp-K8yNJig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8m10ZCmEd2CZp-K8yNJig"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w8m10pCmEd2CZp-K8yNJig" memberEnd="_w8dE0ZCmEd2CZp-K8yNJig _w8m105CmEd2CZp-K8yNJig">
-      <ownedEnd xmi:id="_w8m105CmEd2CZp-K8yNJig" name="" type="_w8dEyJCmEd2CZp-K8yNJig" association="_w8m10pCmEd2CZp-K8yNJig">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w8m10pCmEd2CZp-K8yNJig" name="A_result_clearStructuralFeatureAction" memberEnd="_w8dE0ZCmEd2CZp-K8yNJig _w8m105CmEd2CZp-K8yNJig">
+      <ownedEnd xmi:id="_w8m105CmEd2CZp-K8yNJig" type="_w8dEyJCmEd2CZp-K8yNJig" association="_w8m10pCmEd2CZp-K8yNJig">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w8m11JCmEd2CZp-K8yNJig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w8m11ZCmEd2CZp-K8yNJig"/>
       </ownedEnd>
@@ -10818,8 +10818,8 @@ lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.<
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w985cZCmEd2CZp-K8yNJig"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_w985cpCmEd2CZp-K8yNJig" memberEnd="_w9848pCmEd2CZp-K8yNJig _w985c5CmEd2CZp-K8yNJig">
-      <ownedEnd xmi:id="_w985c5CmEd2CZp-K8yNJig" name="" type="_w9844JCmEd2CZp-K8yNJig" association="_w985cpCmEd2CZp-K8yNJig">
+    <packagedElement xmi:type="uml:Association" xmi:id="_w985cpCmEd2CZp-K8yNJig" name="A_object_startObjectBehaviorAction" memberEnd="_w9848pCmEd2CZp-K8yNJig _w985c5CmEd2CZp-K8yNJig">
+      <ownedEnd xmi:id="_w985c5CmEd2CZp-K8yNJig" type="_w9844JCmEd2CZp-K8yNJig" association="_w985cpCmEd2CZp-K8yNJig">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_w985dJCmEd2CZp-K8yNJig" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_w985dZCmEd2CZp-K8yNJig"/>
       </ownedEnd>
