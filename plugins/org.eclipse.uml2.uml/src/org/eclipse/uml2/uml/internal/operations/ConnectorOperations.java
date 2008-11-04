@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.11 2007/05/03 21:11:52 khussey Exp $
+ * $Id: ConnectorOperations.java,v 1.12 2008/11/04 16:03:07 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -240,8 +240,8 @@ public class ConnectorOperations
 			EList<Interface> provided2 = ConnectableElementOperations
 				.getProvidedInterfaces(role2);
 
-			if (intersect(provided2, required1)
-				|| intersect(provided1, required2)) {
+			if (!intersect(provided1, provided2)
+					&& !intersect(required1, required2)) {
 
 				if (diagnostics != null) {
 					diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
