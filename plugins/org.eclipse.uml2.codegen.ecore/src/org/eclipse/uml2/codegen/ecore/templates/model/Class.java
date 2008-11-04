@@ -4064,7 +4064,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_388);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_389);
     }
     stringBuffer.append(TEXT_390);
@@ -4084,7 +4084,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_397);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_398);
     }
     stringBuffer.append(TEXT_399);
@@ -5207,7 +5207,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_889);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_890);
     stringBuffer.append(genFeature.getAccessorName());
     stringBuffer.append(TEXT_891);
@@ -5278,7 +5278,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_921);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_922);
     stringBuffer.append(genFeature.getCapName());
     stringBuffer.append(TEXT_923);
@@ -5289,7 +5289,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_926);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_927);
     }
     stringBuffer.append(TEXT_928);
@@ -5984,7 +5984,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_1224);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_1225);
     }
     stringBuffer.append(TEXT_1226);
@@ -7954,7 +7954,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_2066);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_2067);
     }
     stringBuffer.append(TEXT_2068);
@@ -8062,7 +8062,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(targetClass.getQualifiedFeatureID(reverseFeature));
     stringBuffer.append(reverseOffsetCorrection);
     stringBuffer.append(TEXT_2114);
-    stringBuffer.append(targetClass.getImportedInterfaceName());
+    stringBuffer.append(targetClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_2115);
     }
     stringBuffer.append(TEXT_2116);
@@ -8505,7 +8505,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_2307);
     for (GenClass mixinGenClass : genClass.getMixinGenClasses()) {
     stringBuffer.append(TEXT_2308);
-    stringBuffer.append(mixinGenClass.getImportedInterfaceName());
+    stringBuffer.append(mixinGenClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_2309);
     stringBuffer.append(negativeOffsetCorrection);
     stringBuffer.append(TEXT_2310);
@@ -8529,7 +8529,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_2319);
     for (GenClass mixinGenClass : genClass.getMixinGenClasses()) {
     stringBuffer.append(TEXT_2320);
-    stringBuffer.append(mixinGenClass.getImportedInterfaceName());
+    stringBuffer.append(mixinGenClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_2321);
     for (GenFeature genFeature : mixinGenClass.getGenFeatures()) {
     stringBuffer.append(TEXT_2322);
@@ -8543,7 +8543,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     if (genClass.hasOffsetCorrection() && !genClass.getGenFeatures().isEmpty()) {
     stringBuffer.append(TEXT_2326);
-    stringBuffer.append(genClass.getImportedInterfaceName());
+    stringBuffer.append(genClass.getRawImportedInterfaceName());
     stringBuffer.append(TEXT_2327);
     stringBuffer.append(negativeOffsetCorrection);
     stringBuffer.append(TEXT_2328);

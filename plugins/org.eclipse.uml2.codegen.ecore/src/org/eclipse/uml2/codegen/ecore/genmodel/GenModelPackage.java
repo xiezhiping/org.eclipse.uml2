@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *
- * $Id: GenModelPackage.java,v 1.35 2008/04/30 20:57:51 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.36 2008/11/04 14:30:59 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1272,6 +1272,24 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__USED_GEN_PACKAGES = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__USED_GEN_PACKAGES;
+
+	/**
+	 * The feature id for the '<em><b>Interface Name Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__INTERFACE_NAME_PATTERN = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__INTERFACE_NAME_PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Class Name Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__CLASS_NAME_PATTERN = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CLASS_NAME_PATTERN;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
