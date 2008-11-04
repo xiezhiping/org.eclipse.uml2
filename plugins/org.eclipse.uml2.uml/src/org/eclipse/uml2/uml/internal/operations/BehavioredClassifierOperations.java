@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: BehavioredClassifierOperations.java,v 1.12 2008/08/19 18:41:04 jbruck Exp $
+ * $Id: BehavioredClassifierOperations.java,v 1.13 2008/11/04 14:30:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -151,7 +151,7 @@ public class BehavioredClassifierOperations
 					allRealizedInterfaces);
 			}
 		}
-		
+
 		for (int i = 0, size = allRealizedInterfaces.size(); i < size; i++) {
 
 			for (Classifier parent : allRealizedInterfaces.get(i).allParents()) {
@@ -161,7 +161,7 @@ public class BehavioredClassifierOperations
 				}
 			}
 		}
-			
+
 		return allRealizedInterfaces;
 	}
 

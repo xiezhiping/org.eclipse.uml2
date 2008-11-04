@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageOperations.java,v 1.37 2008/08/25 20:03:05 jbruck Exp $
+ * $Id: PackageOperations.java,v 1.38 2008/11/04 14:30:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -602,7 +602,7 @@ public class PackageOperations
 		}
 
 		copier.copyReferences();
-					
+
 		for (EObject key : copier.keySet()) {
 			EObject copy = copier.get(key);
 
@@ -627,8 +627,8 @@ public class PackageOperations
 					}
 				}
 			}
-		}	
-						
+		}
+
 		destroyAll(stereotypeApplications);
 
 		return profile.getOwnedExtensions(true).isEmpty()
