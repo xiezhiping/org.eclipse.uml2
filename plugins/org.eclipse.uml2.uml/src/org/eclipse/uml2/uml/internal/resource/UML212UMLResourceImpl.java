@@ -8,8 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
+ * $Id: UML212UMLResourceImpl.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
  */
-
 package org.eclipse.uml2.uml.internal.resource;
 
 import org.eclipse.emf.common.util.URI;
