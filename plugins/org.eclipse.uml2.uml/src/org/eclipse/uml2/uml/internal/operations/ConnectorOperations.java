@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorOperations.java,v 1.12 2008/11/04 16:03:07 jbruck Exp $
+ * $Id: ConnectorOperations.java,v 1.13 2008/11/05 15:21:41 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
