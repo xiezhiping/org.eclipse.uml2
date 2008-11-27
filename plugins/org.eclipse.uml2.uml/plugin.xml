@@ -12,7 +12,7 @@
    IBM - initial API and implementation
    Kenn Hussey (Embarcadero Technologies) - 156879, 215488, 226397, 204200
 
- $Id: plugin.xml,v 1.12 2008/10/03 20:50:37 jbruck Exp $
+ $Id: plugin.xml,v 1.13 2008/11/27 16:35:54 jbruck Exp $
 -->
 
 <plugin>
@@ -26,10 +26,16 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/uml2/2.1.0/UML" 
+       class = "org.eclipse.uml2.uml.UMLPackage" /> 
+  </extension>
+  
+   <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/uml2/3.0.0/UML" 
        class = "org.eclipse.uml2.uml.UMLPackage"
        genModel = "model/UML.genmodel" /> 
   </extension>
-
+  
   <extension point="org.eclipse.emf.ecore.extension_parser">
     <parser 
        type="uml" 
