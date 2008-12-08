@@ -700,7 +700,7 @@ public class Class
   protected final String TEXT_682 = NL + "\t\t\t}";
   protected final String TEXT_683 = NL + "\t\t}";
   protected final String TEXT_684 = NL + "\t\treturn msgs;";
-  protected final String TEXT_685 = NL + "\t\tmsgs = eDynamicInverseRemove((";
+  protected final String TEXT_685 = NL + "\t\tmsgs = eDynamicInverseAdd((";
   protected final String TEXT_686 = ")new";
   protected final String TEXT_687 = ", ";
   protected final String TEXT_688 = ", msgs);";
