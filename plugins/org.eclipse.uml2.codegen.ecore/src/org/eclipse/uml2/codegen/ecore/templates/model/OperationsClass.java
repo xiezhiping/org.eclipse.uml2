@@ -173,6 +173,7 @@ public class OperationsClass
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
+ *	 Lutz Wrage - 242726
  *
  * </copyright>
  */
