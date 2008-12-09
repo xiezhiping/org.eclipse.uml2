@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332
  *
- * $Id: UMLEditor.java,v 1.46 2008/11/04 14:29:03 khussey Exp $
+ * $Id: UMLEditor.java,v 1.47 2008/12/09 19:44:04 jbruck Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -459,9 +459,10 @@ public class UMLEditor
 							if (delta.getKind() == IResourceDelta.REMOVED
 								|| delta.getKind() == IResourceDelta.CHANGED
 								&& delta.getFlags() != IResourceDelta.MARKERS) {
-								Resource resource = resourceSet.getResource(URI
-									.createURI(delta.getFullPath().toString()),
-									false);
+								Resource resource = resourceSet
+									.getResource(URI.createPlatformResourceURI(
+										delta.getFullPath().toString(), true),
+										false);
 								if (resource != null) {
 									if (delta.getKind() == IResourceDelta.REMOVED) {
 										removedResources.add(resource);
@@ -496,7 +497,6 @@ public class UMLEditor
 								public void run() {
 									getSite().getPage().closeEditor(
 										UMLEditor.this, false);
-									UMLEditor.this.dispose();
 								}
 							});
 					}
@@ -538,7 +538,6 @@ public class UMLEditor
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
 				getSite().getPage().closeEditor(UMLEditor.this, false);
-				UMLEditor.this.dispose();
 			} else {
 				removedResources.clear();
 				changedResources.clear();
@@ -755,11 +754,6 @@ public class UMLEditor
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
-			// I don't know if this should be run this deferred
-			// because we might have to give the editor a chance to process the viewer update events
-			// and hence to update the views first.
-			//
-			//
 			Runnable runnable = new Runnable() {
 
 				public void run() {
@@ -771,7 +765,7 @@ public class UMLEditor
 					}
 				}
 			};
-			runnable.run();
+			getSite().getShell().getDisplay().asyncExec(runnable);
 		}
 	}
 
