@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *
- * $Id: GenClassImpl.java,v 1.43 2008/04/21 16:28:01 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.44 2008/12/09 19:37:18 jbruck Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1396,6 +1396,20 @@ public class GenClassImpl
 				new GenFeatureFilter() {
 
 					public boolean accept(GenFeature genFeature) {
+
+						if (UML2GenModelUtil.isDuplicate(genFeature)) {
+
+							for (GenFeature redefinedGenFeature : UML2GenModelUtil
+								.getRedefinedGenFeatures(genFeature)) {
+
+								if (!extendedGenFeatures
+									.contains(redefinedGenFeature)) {
+
+									return allGenFeatures
+										.contains(redefinedGenFeature);
+								}
+							}
+						}
 						return allGenFeatures.contains(genFeature)
 							&& !extendedGenFeatures.contains(genFeature);
 					}
@@ -1415,6 +1429,21 @@ public class GenClassImpl
 				new GenFeatureFilter() {
 
 					public boolean accept(GenFeature genFeature) {
+
+						if (UML2GenModelUtil.isDuplicate(genFeature)) {
+
+							for (GenFeature redefinedGenFeature : UML2GenModelUtil
+								.getRedefinedGenFeatures(genFeature)) {
+
+								if (!extendedGenFeatures
+									.contains(redefinedGenFeature)) {
+
+									return genFeature.isChangeable()
+										&& allGenFeatures
+											.contains(redefinedGenFeature);
+								}
+							}
+						}
 						return genFeature.isChangeable()
 							&& allGenFeatures.contains(genFeature)
 							&& !extendedGenFeatures.contains(genFeature);
