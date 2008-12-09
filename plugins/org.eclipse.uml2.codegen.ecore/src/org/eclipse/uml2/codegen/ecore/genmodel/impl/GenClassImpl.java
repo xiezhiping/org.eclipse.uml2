@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
+ *   Lutz Wrage - 241411
  *
- * $Id: GenClassImpl.java,v 1.44 2008/12/09 19:37:18 jbruck Exp $
+ * $Id: GenClassImpl.java,v 1.45 2008/12/09 20:08:23 jbruck Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
