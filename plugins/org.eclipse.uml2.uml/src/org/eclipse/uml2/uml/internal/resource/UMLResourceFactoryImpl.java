@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.9 2006/12/14 15:49:34 khussey Exp $
+ * $Id: UMLResourceFactoryImpl.java,v 1.10 2008/12/09 16:13:50 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.XMLSave.XMLTypeInfo;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,7 +93,11 @@ public class UMLResourceFactoryImpl
 					return objectType != featureType;
 				}
 			});
-
+		
+		// Avoid relative paths from workspace resources to plugin resources.
+		defaultSaveOptions.put(XMLResource.OPTION_URI_HANDLER,
+			new URIHandlerImpl.PlatformSchemeAware());
+		
 		return resource;
 	}
 
