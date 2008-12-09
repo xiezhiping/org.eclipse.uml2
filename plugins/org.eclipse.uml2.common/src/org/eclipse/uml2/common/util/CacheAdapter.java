@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *
- * $Id: CacheAdapter.java,v 1.22 2008/04/10 01:00:22 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.23 2008/12/09 15:16:57 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -136,7 +137,7 @@ public class CacheAdapter
 					return (CacheAdapter) Class.forName(property).newInstance();
 				}
 			} catch (Exception e) {
-				// ignore
+				EcorePlugin.INSTANCE.log(e);
 			}
 		}
 
