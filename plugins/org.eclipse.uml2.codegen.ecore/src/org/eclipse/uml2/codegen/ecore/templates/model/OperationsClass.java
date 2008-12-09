@@ -35,8 +35,8 @@ public class OperationsClass
   protected final String TEXT_18 = NL + " *" + NL + " * @generated" + NL + " */" + NL + "public class ";
   protected final String TEXT_19 = NL + "{";
   protected final String TEXT_20 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic static final ";
-  protected final String TEXT_21 = " copyright = \"";
-  protected final String TEXT_22 = "\";";
+  protected final String TEXT_21 = " copyright = ";
+  protected final String TEXT_22 = ";";
   protected final String TEXT_23 = NL;
   protected final String TEXT_24 = NL + "\t/**" + NL + "\t * The cached environment for evaluating OCL expressions." + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t * @ordered" + NL + "\t */" + NL + "\tprotected static final ";
   protected final String TEXT_25 = " EOCL_ENV = ";
@@ -221,11 +221,11 @@ public class OperationsClass
     stringBuffer.append(UML2GenModelUtil.getOperationsClassName(genClass));
     stringBuffer.append(UML2GenModelUtil.getOperationsClassExtends(genClass));
     stringBuffer.append(TEXT_19);
-    if (genModel.getCopyrightText() != null) {
+    if (genModel.hasCopyrightField()) {
     stringBuffer.append(TEXT_20);
     stringBuffer.append(genModel.getImportedName("java.lang.String"));
     stringBuffer.append(TEXT_21);
-    stringBuffer.append(genModel.getCopyrightText());
+    stringBuffer.append(genModel.getCopyrightFieldLiteral());
     stringBuffer.append(TEXT_22);
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(TEXT_23);

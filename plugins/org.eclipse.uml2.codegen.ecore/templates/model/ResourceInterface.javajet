@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="ResourceInterface" version="$Id: ResourceInterface.javajet,v 1.1 2005/05/17 22:06:28 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="ResourceInterface" version="$Id: ResourceInterface.javajet,v 1.2 2008/12/09 19:34:11 jbruck Exp $" %>
 <%
 /**
  * <copyright>
@@ -29,13 +29,13 @@ package <%=genPackage.getUtilitiesPackageName()%>;
  */
 public interface <%=UML2GenModelUtil.getResourceInterfaceName(genPackage)%> extends <%=UML2GenModelUtil.getImportedResourceBaseInterfaceName(genPackage)%>
 {
-<%if (genModel.getCopyrightText() != null) {%>
+<%if (genModel.hasCopyrightField()) {%>
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	<%=genModel.getImportedName("java.lang.String")%> copyright = "<%=genModel.getCopyrightText()%>";<%=genModel.getNonNLS()%>
+	<%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
 
 <%}%>
 	/**

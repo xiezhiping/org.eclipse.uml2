@@ -28,8 +28,8 @@ public class ResourceInterface
   protected final String TEXT_11 = " extends ";
   protected final String TEXT_12 = NL + "{";
   protected final String TEXT_13 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\t";
-  protected final String TEXT_14 = " copyright = \"";
-  protected final String TEXT_15 = "\";";
+  protected final String TEXT_14 = " copyright = ";
+  protected final String TEXT_15 = ";";
   protected final String TEXT_16 = NL;
   protected final String TEXT_17 = NL + "\t/**" + NL + "\t * <!-- begin-user-doc -->" + NL + "\t * The factory for '<em><b>";
   protected final String TEXT_18 = "</b></em>' resources." + NL + "\t * <!-- end-user-doc -->" + NL + "\t * @generated" + NL + "\t */" + NL + "\tpublic interface Factory" + NL + "\t\t\textends ";
@@ -87,11 +87,11 @@ public class ResourceInterface
     stringBuffer.append(TEXT_11);
     stringBuffer.append(UML2GenModelUtil.getImportedResourceBaseInterfaceName(genPackage));
     stringBuffer.append(TEXT_12);
-    if (genModel.getCopyrightText() != null) {
+    if (genModel.hasCopyrightField()) {
     stringBuffer.append(TEXT_13);
     stringBuffer.append(genModel.getImportedName("java.lang.String"));
     stringBuffer.append(TEXT_14);
-    stringBuffer.append(genModel.getCopyrightText());
+    stringBuffer.append(genModel.getCopyrightFieldLiteral());
     stringBuffer.append(TEXT_15);
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(TEXT_16);
