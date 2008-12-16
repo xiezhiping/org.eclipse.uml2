@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 247980
  *
- * $Id: GenModelItemProviderAdapterFactory.java,v 1.4 2007/01/05 21:44:07 khussey Exp $
+ * $Id: GenModelItemProviderAdapterFactory.java,v 1.5 2008/12/16 15:52:39 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.provider;
 
@@ -344,7 +345,7 @@ public class GenModelItemProviderAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class)
+			if (!(type instanceof Class<?>)
 				|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
