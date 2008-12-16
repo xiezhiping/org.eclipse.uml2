@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200, 247980
  *
- * $Id: UMLItemProviderAdapterFactory.java,v 1.25 2008/10/02 20:59:07 jbruck Exp $
+ * $Id: UMLItemProviderAdapterFactory.java,v 1.26 2008/12/16 15:52:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -4847,7 +4847,7 @@ public class UMLItemProviderAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class)
+			if (!(type instanceof Class<?>)
 				|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
