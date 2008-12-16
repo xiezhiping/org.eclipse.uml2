@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *
- * $Id: UMLEditor.java,v 1.47 2008/12/09 19:44:04 jbruck Exp $
+ * $Id: UMLEditor.java,v 1.48 2008/12/16 15:53:57 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -485,34 +485,34 @@ public class UMLEditor
 					}
 				}
 
-				ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+				final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
 				delta.accept(visitor);
 
 				if (!visitor.getRemovedResources().isEmpty()) {
-					removedResources.addAll(visitor.getRemovedResources());
-					if (!isDirty()) {
-						getSite().getShell().getDisplay().asyncExec(
-							new Runnable() {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 
-								public void run() {
-									getSite().getPage().closeEditor(
-										UMLEditor.this, false);
-								}
-							});
-					}
+						public void run() {
+							removedResources.addAll(visitor
+								.getRemovedResources());
+							if (!isDirty()) {
+								getSite().getPage().closeEditor(UMLEditor.this,
+									false);
+							}
+						}
+					});
 				}
 
 				if (!visitor.getChangedResources().isEmpty()) {
-					changedResources.addAll(visitor.getChangedResources());
-					if (getSite().getPage().getActiveEditor() == UMLEditor.this) {
-						getSite().getShell().getDisplay().asyncExec(
-							new Runnable() {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
 
-								public void run() {
-									handleActivate();
-								}
-							});
-					}
+						public void run() {
+							changedResources.addAll(visitor
+								.getChangedResources());
+							if (getSite().getPage().getActiveEditor() == UMLEditor.this) {
+								handleActivate();
+							}
+						}
+					});
 				}
 			} catch (CoreException exception) {
 				UMLEditorPlugin.INSTANCE.log(exception);
