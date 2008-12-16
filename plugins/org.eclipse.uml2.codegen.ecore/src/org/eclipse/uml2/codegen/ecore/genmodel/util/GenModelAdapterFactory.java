@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *
- * $Id: GenModelAdapterFactory.java,v 1.5 2008/01/03 14:46:03 khussey Exp $
+ * $Id: GenModelAdapterFactory.java,v 1.6 2008/12/16 15:52:48 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.util;
 
@@ -141,75 +141,75 @@ public class GenModelAdapterFactory
 		}
 
 		@Override
-		public Adapter caseGenBase_1(
+		public Adapter caseGenModel_GenBase(
 				org.eclipse.emf.codegen.ecore.genmodel.GenBase object) {
-			return createGenBase_1Adapter();
+			return createGenModel_GenBaseAdapter();
 		}
 
 		@Override
-		public Adapter caseGenClassifier_1(
+		public Adapter caseGenModel_GenClassifier(
 				org.eclipse.emf.codegen.ecore.genmodel.GenClassifier object) {
-			return createGenClassifier_1Adapter();
+			return createGenModel_GenClassifierAdapter();
 		}
 
 		@Override
-		public Adapter caseGenClass_1(
+		public Adapter caseGenModel_GenClass(
 				org.eclipse.emf.codegen.ecore.genmodel.GenClass object) {
-			return createGenClass_1Adapter();
+			return createGenModel_GenClassAdapter();
 		}
 
 		@Override
-		public Adapter caseGenDataType_1(
+		public Adapter caseGenModel_GenDataType(
 				org.eclipse.emf.codegen.ecore.genmodel.GenDataType object) {
-			return createGenDataType_1Adapter();
+			return createGenModel_GenDataTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseGenEnum_1(
+		public Adapter caseGenModel_GenEnum(
 				org.eclipse.emf.codegen.ecore.genmodel.GenEnum object) {
-			return createGenEnum_1Adapter();
+			return createGenModel_GenEnumAdapter();
 		}
 
 		@Override
-		public Adapter caseGenEnumLiteral_1(
+		public Adapter caseGenModel_GenEnumLiteral(
 				org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral object) {
-			return createGenEnumLiteral_1Adapter();
+			return createGenModel_GenEnumLiteralAdapter();
 		}
 
 		@Override
-		public Adapter caseGenTypedElement_1(
+		public Adapter caseGenModel_GenTypedElement(
 				org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement object) {
-			return createGenTypedElement_1Adapter();
+			return createGenModel_GenTypedElementAdapter();
 		}
 
 		@Override
-		public Adapter caseGenFeature_1(
+		public Adapter caseGenModel_GenFeature(
 				org.eclipse.emf.codegen.ecore.genmodel.GenFeature object) {
-			return createGenFeature_1Adapter();
+			return createGenModel_GenFeatureAdapter();
 		}
 
 		@Override
-		public Adapter caseGenModel_1(
+		public Adapter caseGenModel_GenModel(
 				org.eclipse.emf.codegen.ecore.genmodel.GenModel object) {
-			return createGenModel_1Adapter();
+			return createGenModel_GenModelAdapter();
 		}
 
 		@Override
-		public Adapter caseGenOperation_1(
+		public Adapter caseGenModel_GenOperation(
 				org.eclipse.emf.codegen.ecore.genmodel.GenOperation object) {
-			return createGenOperation_1Adapter();
+			return createGenModel_GenOperationAdapter();
 		}
 
 		@Override
-		public Adapter caseGenPackage_1(
+		public Adapter caseGenModel_GenPackage(
 				org.eclipse.emf.codegen.ecore.genmodel.GenPackage object) {
-			return createGenPackage_1Adapter();
+			return createGenModel_GenPackageAdapter();
 		}
 
 		@Override
-		public Adapter caseGenParameter_1(
+		public Adapter caseGenModel_GenParameter(
 				org.eclipse.emf.codegen.ecore.genmodel.GenParameter object) {
-			return createGenParameter_1Adapter();
+			return createGenModel_GenParameterAdapter();
 		}
 
 		@Override
@@ -409,7 +409,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenBase
 	 * @generated
 	 */
-	public Adapter createGenBase_1Adapter() {
+	public Adapter createGenModel_GenBaseAdapter() {
 		return null;
 	}
 
@@ -423,7 +423,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenClassifier
 	 * @generated
 	 */
-	public Adapter createGenClassifier_1Adapter() {
+	public Adapter createGenModel_GenClassifierAdapter() {
 		return null;
 	}
 
@@ -437,7 +437,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenClass
 	 * @generated
 	 */
-	public Adapter createGenClass_1Adapter() {
+	public Adapter createGenModel_GenClassAdapter() {
 		return null;
 	}
 
@@ -451,7 +451,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenDataType
 	 * @generated
 	 */
-	public Adapter createGenDataType_1Adapter() {
+	public Adapter createGenModel_GenDataTypeAdapter() {
 		return null;
 	}
 
@@ -465,7 +465,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenEnum
 	 * @generated
 	 */
-	public Adapter createGenEnum_1Adapter() {
+	public Adapter createGenModel_GenEnumAdapter() {
 		return null;
 	}
 
@@ -479,7 +479,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenEnumLiteral
 	 * @generated
 	 */
-	public Adapter createGenEnumLiteral_1Adapter() {
+	public Adapter createGenModel_GenEnumLiteralAdapter() {
 		return null;
 	}
 
@@ -493,7 +493,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenTypedElement
 	 * @generated
 	 */
-	public Adapter createGenTypedElement_1Adapter() {
+	public Adapter createGenModel_GenTypedElementAdapter() {
 		return null;
 	}
 
@@ -507,7 +507,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenFeature
 	 * @generated
 	 */
-	public Adapter createGenFeature_1Adapter() {
+	public Adapter createGenModel_GenFeatureAdapter() {
 		return null;
 	}
 
@@ -521,7 +521,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenModel
 	 * @generated
 	 */
-	public Adapter createGenModel_1Adapter() {
+	public Adapter createGenModel_GenModelAdapter() {
 		return null;
 	}
 
@@ -535,7 +535,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenOperation
 	 * @generated
 	 */
-	public Adapter createGenOperation_1Adapter() {
+	public Adapter createGenModel_GenOperationAdapter() {
 		return null;
 	}
 
@@ -549,7 +549,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenPackage
 	 * @generated
 	 */
-	public Adapter createGenPackage_1Adapter() {
+	public Adapter createGenModel_GenPackageAdapter() {
 		return null;
 	}
 
@@ -563,7 +563,7 @@ public class GenModelAdapterFactory
 	 * @see org.eclipse.emf.codegen.ecore.genmodel.GenParameter
 	 * @generated
 	 */
-	public Adapter createGenParameter_1Adapter() {
+	public Adapter createGenModel_GenParameterAdapter() {
 		return null;
 	}
 
