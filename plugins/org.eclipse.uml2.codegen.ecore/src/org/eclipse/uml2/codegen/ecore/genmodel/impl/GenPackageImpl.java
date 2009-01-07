@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 247980
  *
- * $Id: GenPackageImpl.java,v 1.15 2007/05/22 16:58:17 khussey Exp $
+ * $Id: GenPackageImpl.java,v 1.16 2009/01/07 13:32:57 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -170,9 +171,7 @@ public class GenPackageImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
-				return isResourceInterfaces()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isResourceInterfaces();
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
 				return getOperationsPackage();
 		}
@@ -188,7 +187,7 @@ public class GenPackageImpl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_PACKAGE__RESOURCE_INTERFACES :
-				setResourceInterfaces(((Boolean) newValue).booleanValue());
+				setResourceInterfaces((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_PACKAGE__OPERATIONS_PACKAGE :
 				setOperationsPackage((String) newValue);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *
- * $Id: GenFeatureImpl.java,v 1.30 2008/03/21 00:17:50 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.31 2009/01/07 13:32:57 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -180,13 +180,9 @@ public class GenFeatureImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
-				return isKey()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isKey();
 			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
-				return isPluralizationException()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isPluralizationException();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,10 +196,10 @@ public class GenFeatureImpl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_FEATURE__KEY :
-				setKey(((Boolean) newValue).booleanValue());
+				setKey((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_FEATURE__PLURALIZATION_EXCEPTION :
-				setPluralizationException(((Boolean) newValue).booleanValue());
+				setPluralizationException((Boolean) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

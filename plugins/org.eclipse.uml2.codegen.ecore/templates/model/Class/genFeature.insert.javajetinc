@@ -256,7 +256,7 @@
       <%}%>
 	public <%=genFeature.getListItemType(genClass)%> get<%=genFeature.getCapName()%>(<%=UML2GenModelUtil.getKeyFeatureParameters(genClass, genFeature)%><%if (UML2GenModelUtil.hasStringTypeKeyGenFeature(genFeature)) {%>, boolean ignoreCase<%}%><%if (genClass.getChildrenClasses(genFeature).size() > 1 || genFeature.getTypeGenClass().isAbstract()) {%>, <%=genModel.getImportedName("org.eclipse.emf.ecore.EClass")%> eClass<%}%><%if (UML2GenModelUtil.isFactoryMethods(genClass, genFeature)) {%>, boolean createOnDemand<%}%>)
 	{
-      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+      <%if (isJDK50) {%>
 		<%=genFeature.getUncapName()%>Loop: for (<%=genModel.getImportedName(genFeature.getListItemType(genClass))%> <%=genFeature.getUncapName()%> : <%=genFeature.getGetAccessor()%>())
 		{
       <%} else {%>

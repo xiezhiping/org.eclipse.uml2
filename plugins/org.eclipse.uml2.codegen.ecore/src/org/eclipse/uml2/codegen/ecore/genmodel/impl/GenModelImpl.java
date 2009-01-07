@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
  *
- * $Id: GenModelImpl.java,v 1.20 2008/03/21 00:18:13 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.21 2009/01/07 13:32:57 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -326,21 +326,13 @@ public class GenModelImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
-				return isFactoryMethods()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isFactoryMethods();
 			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
-				return isPluralizedGetters()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isPluralizedGetters();
 			case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
-				return isCacheAdapterSupport()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isCacheAdapterSupport();
 			case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
-				return isSafeStrings()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSafeStrings();
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				return getInvariantPrefix();
 		}
@@ -356,16 +348,16 @@ public class GenModelImpl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID - EOFFSET_CORRECTION) {
 			case GenModelPackage.GEN_MODEL__FACTORY_METHODS :
-				setFactoryMethods(((Boolean) newValue).booleanValue());
+				setFactoryMethods((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_MODEL__PLURALIZED_GETTERS :
-				setPluralizedGetters(((Boolean) newValue).booleanValue());
+				setPluralizedGetters((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_MODEL__CACHE_ADAPTER_SUPPORT :
-				setCacheAdapterSupport(((Boolean) newValue).booleanValue());
+				setCacheAdapterSupport((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_MODEL__SAFE_STRINGS :
-				setSafeStrings(((Boolean) newValue).booleanValue());
+				setSafeStrings((Boolean) newValue);
 				return;
 			case GenModelPackage.GEN_MODEL__INVARIANT_PREFIX :
 				setInvariantPrefix((String) newValue);

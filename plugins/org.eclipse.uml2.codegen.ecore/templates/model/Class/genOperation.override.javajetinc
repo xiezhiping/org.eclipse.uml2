@@ -29,7 +29,7 @@
 	 * @generated
 	 * @ordered
 	 */
-	protected static <%=genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression")%><%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>><%}%> <%=UML2GenModelUtil.getUpperName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))%>__EOCL_QRY;
+	protected static <%=genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression")%><%if (isJDK50) {%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>><%}%> <%=UML2GenModelUtil.getUpperName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))%>__EOCL_QRY;
 
   <%}%>
 <%}%>
@@ -70,7 +70,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-<%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+<%if (isJDK50) {%>
 <%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
 <%}%>
 <%}%>
@@ -171,13 +171,13 @@
 		}
 		<%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%>.Query query = EOCL_ENV.createQuery(<%=oclQry%>);
       <%if (!genOperation.getGenParameters().isEmpty()) {%>
-		<%=genModel.getImportedName("org.eclipse.ocl.EvaluationEnvironment")%><%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%><?, ?, ?, ?, ?><%}%> environment = query.getEvaluationEnvironment();
+		<%=genModel.getImportedName("org.eclipse.ocl.EvaluationEnvironment")%><%if (isJDK50) {%><?, ?, ?, ?, ?><%}%> environment = query.getEvaluationEnvironment();
         <%for (GenParameter genParameter : genOperation.getGenParameters()) {%>
 		environment.add("<%=genParameter.getName()%>", <%=genParameter.getName()%>);<%=genModel.getNonNLS()%>
         <%}%>
       <%}%>
       <%if (genOperation.isListType()) {%>
-        <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {%>
+        <%if (isJDK50) {%>
 		@SuppressWarnings("unchecked")
         <%}%>
 		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType(null)%>>) query.evaluate(this);

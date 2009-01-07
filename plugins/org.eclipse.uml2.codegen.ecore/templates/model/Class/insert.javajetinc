@@ -142,7 +142,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //isSetGenFeature.annotations.insert.javajetinc%>
+    <%if (isJDK50) { //isSetGenFeature.annotations.insert.javajetinc%>
 <%@ include file="isSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
 	public boolean isSet<%=genFeature.getAccessorName()%>()
@@ -195,7 +195,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //getGenFeature.annotations.insert.javajetinc%>
+      <%if (isJDK50) { //getGenFeature.annotations.insert.javajetinc%>
 <%@ include file="getGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genFeature.getImportedType(genClass)%> <%=genFeature.getGetAccessor()%>()
@@ -228,7 +228,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicGetGenFeature.annotations.insert.javajetinc%>
+      <%if (isJDK50) { //basicGetGenFeature.annotations.insert.javajetinc%>
 <%@ include file="basicGetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genFeature.getImportedType(genClass)%> basicGet<%=genFeature.getAccessorName()%>()
@@ -247,7 +247,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicSetGenFeature.annotations.insert.javajetinc%>
+      <%if (isJDK50) { //basicSetGenFeature.annotations.insert.javajetinc%>
 <%@ include file="basicSetGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> basicSet<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedInternalType(genClass)%> new<%=genFeature.getCapName()%>, <%=genModel.getImportedName("org.eclipse.emf.common.notify.NotificationChain")%> msgs)
@@ -277,7 +277,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-      <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //setGenFeature.annotations.insert.javajetinc%>
+      <%if (isJDK50) { //setGenFeature.annotations.insert.javajetinc%>
 <%@ include file="setGenFeature.annotations.insert.javajetinc" fail="silent" %>
       <%}%>
 	public void set<%=genFeature.getAccessorName()%>(<%=genFeature.getImportedType(genClass)%> new<%=genFeature.getCapName()%>)
@@ -304,7 +304,7 @@
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc%>
+    <%if (isJDK50) { //genOperation.annotations.insert.javajetinc%>
 <%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
     <%}%>
 	public <%=genOperation.getTypeParameters(genClass)%><%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
