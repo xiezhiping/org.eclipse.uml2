@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: RemoveStructuralFeatureValueActionImpl.java,v 1.29 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -412,9 +412,7 @@ public class RemoveStructuralFeatureValueActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINITION_CONTEXT :
@@ -470,9 +468,7 @@ public class RemoveStructuralFeatureValueActionImpl
 					return getResult();
 				return basicGetResult();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
-				return isRemoveDuplicates()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isRemoveDuplicates();
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :
 				if (resolve)
 					return getRemoveAt();
@@ -515,7 +511,7 @@ public class RemoveStructuralFeatureValueActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -577,7 +573,7 @@ public class RemoveStructuralFeatureValueActionImpl
 				setResult((OutputPin) newValue);
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REMOVE_DUPLICATES :
-				setIsRemoveDuplicates(((Boolean) newValue).booleanValue());
+				setIsRemoveDuplicates((Boolean) newValue);
 				return;
 			case UMLPackage.REMOVE_STRUCTURAL_FEATURE_VALUE_ACTION__REMOVE_AT :
 				setRemoveAt((InputPin) newValue);

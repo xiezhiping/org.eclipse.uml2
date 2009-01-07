@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: AssociationImpl.java,v 1.32 2008/04/21 16:32:41 khussey Exp $
+ * $Id: AssociationImpl.java,v 1.33 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -762,9 +762,7 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ASSOCIATION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ASSOCIATION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ASSOCIATION__REDEFINITION_CONTEXT :
@@ -788,9 +786,7 @@ public class AssociationImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.ASSOCIATION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.ASSOCIATION__POWERTYPE_EXTENT :
@@ -824,9 +820,7 @@ public class AssociationImpl
 			case UMLPackage.ASSOCIATION__MEMBER_END :
 				return getMemberEnds();
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
-				return isDerived()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerived();
 			case UMLPackage.ASSOCIATION__END_TYPE :
 				return getEndTypes();
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
@@ -884,7 +878,7 @@ public class AssociationImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -904,7 +898,7 @@ public class AssociationImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__GENERALIZATION :
 				getGeneralizations().clear();
@@ -959,7 +953,7 @@ public class AssociationImpl
 					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
-				setIsDerived(((Boolean) newValue).booleanValue());
+				setIsDerived((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				getNavigableOwnedEnds().clear();

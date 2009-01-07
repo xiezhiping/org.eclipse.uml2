@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConstraintImpl.java,v 1.23 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ConstraintImpl.java,v 1.24 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -258,7 +258,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public Namespace getContext() {
-		if (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT)
+		if (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT)
 			return null;
 		return (Namespace) eContainer();
 	}
@@ -269,7 +269,7 @@ public class ConstraintImpl
 	 * @generated
 	 */
 	public Namespace basicGetContext() {
-		if (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT)
+		if (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT)
 			return null;
 		return (Namespace) eInternalContainer();
 	}
@@ -293,7 +293,7 @@ public class ConstraintImpl
 	 */
 	public void setContext(Namespace newContext) {
 		if (newContext != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CONSTRAINT__CONTEXT && newContext != null)) {
 			if (EcoreUtil.isAncestor(this, newContext))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -443,7 +443,7 @@ public class ConstraintImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: TransitionImpl.java,v 1.30 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: TransitionImpl.java,v 1.31 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -492,7 +492,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Region getContainer() {
-		if (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.TRANSITION__CONTAINER)
 			return null;
 		return (Region) eContainer();
 	}
@@ -503,7 +503,7 @@ public class TransitionImpl
 	 * @generated
 	 */
 	public Region basicGetContainer() {
-		if (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.TRANSITION__CONTAINER)
 			return null;
 		return (Region) eInternalContainer();
 	}
@@ -527,7 +527,7 @@ public class TransitionImpl
 	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TRANSITION__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1104,7 +1104,7 @@ public class TransitionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.TRANSITION__CONTAINER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.REGION__TRANSITION, Region.class, msgs);
@@ -1159,9 +1159,7 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.TRANSITION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.TRANSITION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
@@ -1247,7 +1245,7 @@ public class TransitionImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.TRANSITION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.TRANSITION__KIND :
 				setKind((TransitionKind) newValue);

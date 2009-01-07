@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ParameterImpl.java,v 1.41 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: ParameterImpl.java,v 1.42 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1376,17 +1376,13 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER__END :
 				return getEnds();
 			case UMLPackage.PARAMETER__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.PARAMETER__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.PARAMETER__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.PARAMETER__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -1410,13 +1406,9 @@ public class ParameterImpl
 					return getDefaultValue();
 				return basicGetDefaultValue();
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
-				return isException()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isException();
 			case UMLPackage.PARAMETER__IS_STREAM :
-				return isStream()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStream();
 			case UMLPackage.PARAMETER__EFFECT :
 				return getEffect();
 		}
@@ -1470,16 +1462,16 @@ public class ParameterImpl
 				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.PARAMETER__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.PARAMETER__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.PARAMETER__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.PARAMETER__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.PARAMETER__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -1502,10 +1494,10 @@ public class ParameterImpl
 				setDefaultValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PARAMETER__IS_EXCEPTION :
-				setIsException(((Boolean) newValue).booleanValue());
+				setIsException((Boolean) newValue);
 				return;
 			case UMLPackage.PARAMETER__IS_STREAM :
-				setIsStream(((Boolean) newValue).booleanValue());
+				setIsStream((Boolean) newValue);
 				return;
 			case UMLPackage.PARAMETER__EFFECT :
 				setEffect((ParameterEffectKind) newValue);

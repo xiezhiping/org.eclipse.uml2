@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: IncludeImpl.java,v 1.18 2007/04/25 17:47:02 khussey Exp $
+ * $Id: IncludeImpl.java,v 1.19 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -216,7 +216,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public UseCase getIncludingCase() {
-		if (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE)
+		if (eContainerFeatureID() != UMLPackage.INCLUDE__INCLUDING_CASE)
 			return null;
 		return (UseCase) eContainer();
 	}
@@ -227,7 +227,7 @@ public class IncludeImpl
 	 * @generated
 	 */
 	public UseCase basicGetIncludingCase() {
-		if (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE)
+		if (eContainerFeatureID() != UMLPackage.INCLUDE__INCLUDING_CASE)
 			return null;
 		return (UseCase) eInternalContainer();
 	}
@@ -251,7 +251,7 @@ public class IncludeImpl
 	 */
 	public void setIncludingCase(UseCase newIncludingCase) {
 		if (newIncludingCase != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INCLUDE__INCLUDING_CASE && newIncludingCase != null)) {
 			if (EcoreUtil.isAncestor(this, newIncludingCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -328,7 +328,7 @@ public class IncludeImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.INCLUDE__INCLUDING_CASE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.USE_CASE__INCLUDE, UseCase.class, msgs);

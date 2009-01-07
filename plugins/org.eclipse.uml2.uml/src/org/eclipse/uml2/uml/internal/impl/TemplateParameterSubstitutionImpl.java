@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.22 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.23 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -316,7 +316,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public TemplateBinding getTemplateBinding() {
-		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
+		if (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
 			return null;
 		return (TemplateBinding) eContainer();
 	}
@@ -327,7 +327,7 @@ public class TemplateParameterSubstitutionImpl
 	 * @generated
 	 */
 	public TemplateBinding basicGetTemplateBinding() {
-		if (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
+		if (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING)
 			return null;
 		return (TemplateBinding) eInternalContainer();
 	}
@@ -351,7 +351,7 @@ public class TemplateParameterSubstitutionImpl
 	 */
 	public void setTemplateBinding(TemplateBinding newTemplateBinding) {
 		if (newTemplateBinding != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING && newTemplateBinding != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplateBinding))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -434,7 +434,7 @@ public class TemplateParameterSubstitutionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION__TEMPLATE_BINDING :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION,

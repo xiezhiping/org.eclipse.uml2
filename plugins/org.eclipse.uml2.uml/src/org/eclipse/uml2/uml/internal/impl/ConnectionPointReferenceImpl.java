@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectionPointReferenceImpl.java,v 1.22 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: ConnectionPointReferenceImpl.java,v 1.23 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -200,7 +200,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public State getState() {
-		if (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
+		if (eContainerFeatureID() != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
 			return null;
 		return (State) eContainer();
 	}
@@ -211,7 +211,7 @@ public class ConnectionPointReferenceImpl
 	 * @generated
 	 */
 	public State basicGetState() {
-		if (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
+		if (eContainerFeatureID() != UMLPackage.CONNECTION_POINT_REFERENCE__STATE)
 			return null;
 		return (State) eInternalContainer();
 	}
@@ -235,7 +235,7 @@ public class ConnectionPointReferenceImpl
 	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CONNECTION_POINT_REFERENCE__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -340,7 +340,7 @@ public class ConnectionPointReferenceImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndCreationDataImpl.java,v 1.12 2007/04/25 17:47:00 khussey Exp $
+ * $Id: LinkEndCreationDataImpl.java,v 1.13 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,9 +220,7 @@ public class LinkEndCreationDataImpl
 			case UMLPackage.LINK_END_CREATION_DATA__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.LINK_END_CREATION_DATA__IS_REPLACE_ALL :
-				return isReplaceAll()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReplaceAll();
 			case UMLPackage.LINK_END_CREATION_DATA__INSERT_AT :
 				if (resolve)
 					return getInsertAt();
@@ -262,7 +260,7 @@ public class LinkEndCreationDataImpl
 					(Collection<? extends QualifierValue>) newValue);
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__IS_REPLACE_ALL :
-				setIsReplaceAll(((Boolean) newValue).booleanValue());
+				setIsReplaceAll((Boolean) newValue);
 				return;
 			case UMLPackage.LINK_END_CREATION_DATA__INSERT_AT :
 				setInsertAt((InputPin) newValue);

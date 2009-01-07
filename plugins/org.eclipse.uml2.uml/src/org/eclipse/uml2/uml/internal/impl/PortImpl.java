@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PortImpl.java,v 1.31 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: PortImpl.java,v 1.32 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -488,17 +488,13 @@ public class PortImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.PORT__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.PORT__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PORT__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.PORT__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.PORT__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.PORT__TYPE :
@@ -506,17 +502,13 @@ public class PortImpl
 					return getType();
 				return basicGetType();
 			case UMLPackage.PORT__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.PORT__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.PORT__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.PORT__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.PORT__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -526,9 +518,7 @@ public class PortImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.PORT__IS_READ_ONLY :
-				return isReadOnly()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReadOnly();
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -552,21 +542,15 @@ public class PortImpl
 					return getDatatype();
 				return basicGetDatatype();
 			case UMLPackage.PORT__IS_DERIVED :
-				return isDerived()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerived();
 			case UMLPackage.PORT__IS_DERIVED_UNION :
-				return isDerivedUnion()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerivedUnion();
 			case UMLPackage.PORT__DEFAULT :
 				return getDefault();
 			case UMLPackage.PORT__AGGREGATION :
 				return getAggregation();
 			case UMLPackage.PORT__IS_COMPOSITE :
-				return isComposite()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isComposite();
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.PORT__OWNING_ASSOCIATION :
@@ -594,13 +578,9 @@ public class PortImpl
 					return getAssociationEnd();
 				return basicGetAssociationEnd();
 			case UMLPackage.PORT__IS_BEHAVIOR :
-				return isBehavior()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isBehavior();
 			case UMLPackage.PORT__IS_SERVICE :
-				return isService()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isService();
 			case UMLPackage.PORT__REQUIRED :
 				return getRequireds();
 			case UMLPackage.PORT__REDEFINED_PORT :
@@ -649,25 +629,25 @@ public class PortImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PORT__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__TYPE :
 				setType((Type) newValue);
 				return;
 			case UMLPackage.PORT__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.PORT__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.PORT__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -676,7 +656,7 @@ public class PortImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PORT__IS_READ_ONLY :
-				setIsReadOnly(((Boolean) newValue).booleanValue());
+				setIsReadOnly((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -697,10 +677,10 @@ public class PortImpl
 				setDatatype((DataType) newValue);
 				return;
 			case UMLPackage.PORT__IS_DERIVED :
-				setIsDerived(((Boolean) newValue).booleanValue());
+				setIsDerived((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__IS_DERIVED_UNION :
-				setIsDerivedUnion(((Boolean) newValue).booleanValue());
+				setIsDerivedUnion((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__DEFAULT :
 				setDefault((String) newValue);
@@ -709,7 +689,7 @@ public class PortImpl
 				setAggregation((AggregationKind) newValue);
 				return;
 			case UMLPackage.PORT__IS_COMPOSITE :
-				setIsComposite(((Boolean) newValue).booleanValue());
+				setIsComposite((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();
@@ -742,10 +722,10 @@ public class PortImpl
 				setAssociationEnd((Property) newValue);
 				return;
 			case UMLPackage.PORT__IS_BEHAVIOR :
-				setIsBehavior(((Boolean) newValue).booleanValue());
+				setIsBehavior((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__IS_SERVICE :
-				setIsService(((Boolean) newValue).booleanValue());
+				setIsService((Boolean) newValue);
 				return;
 			case UMLPackage.PORT__REDEFINED_PORT :
 				getRedefinedPorts().clear();

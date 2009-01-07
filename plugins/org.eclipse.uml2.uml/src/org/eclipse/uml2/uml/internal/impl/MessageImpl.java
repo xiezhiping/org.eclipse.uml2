@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: MessageImpl.java,v 1.26 2008/04/21 16:32:41 khussey Exp $
+ * $Id: MessageImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -403,7 +403,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Interaction getInteraction() {
-		if (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.MESSAGE__INTERACTION)
 			return null;
 		return (Interaction) eContainer();
 	}
@@ -414,7 +414,7 @@ public class MessageImpl
 	 * @generated
 	 */
 	public Interaction basicGetInteraction() {
-		if (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.MESSAGE__INTERACTION)
 			return null;
 		return (Interaction) eInternalContainer();
 	}
@@ -438,7 +438,7 @@ public class MessageImpl
 	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.MESSAGE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -675,7 +675,7 @@ public class MessageImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.MESSAGE__INTERACTION :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERACTION__MESSAGE, Interaction.class, msgs);

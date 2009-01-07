@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: RedefinableTemplateSignatureImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
+ * $Id: RedefinableTemplateSignatureImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -183,7 +183,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateableElement getTemplate() {
-		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
+		if (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
 		return (TemplateableElement) eContainer();
 	}
@@ -194,7 +194,7 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated
 	 */
 	public TemplateableElement basicGetTemplate() {
-		if (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
+		if (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE)
 			return null;
 		return (TemplateableElement) eInternalContainer();
 	}
@@ -218,7 +218,7 @@ public class RedefinableTemplateSignatureImpl
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
 		if (newTemplate != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
+			|| (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
 			if (EcoreUtil.isAncestor(this, newTemplate))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -540,7 +540,7 @@ public class RedefinableTemplateSignatureImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
@@ -584,9 +584,7 @@ public class RedefinableTemplateSignatureImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__REDEFINITION_CONTEXT :
@@ -645,7 +643,7 @@ public class RedefinableTemplateSignatureImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__PARAMETER :
 				getParameters().clear();

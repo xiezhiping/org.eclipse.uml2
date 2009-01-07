@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: VertexImpl.java,v 1.23 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: VertexImpl.java,v 1.24 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -170,7 +170,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Region getContainer() {
-		if (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.VERTEX__CONTAINER)
 			return null;
 		return (Region) eContainer();
 	}
@@ -181,7 +181,7 @@ public abstract class VertexImpl
 	 * @generated
 	 */
 	public Region basicGetContainer() {
-		if (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.VERTEX__CONTAINER)
 			return null;
 		return (Region) eInternalContainer();
 	}
@@ -205,7 +205,7 @@ public abstract class VertexImpl
 	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
+			|| (eContainerFeatureID() != UMLPackage.VERTEX__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -290,7 +290,7 @@ public abstract class VertexImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.VERTEX__CONTAINER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);

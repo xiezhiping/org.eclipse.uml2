@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 204200
  *
- * $Id: PropertyImpl.java,v 1.46 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: PropertyImpl.java,v 1.47 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -439,7 +439,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateParameter getOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eContainer();
 	}
@@ -450,7 +450,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eInternalContainer();
 	}
@@ -483,7 +483,7 @@ public class PropertyImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -828,7 +828,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public DataType getDatatype() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__DATATYPE)
 			return null;
 		return (DataType) eContainer();
 	}
@@ -839,7 +839,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public DataType basicGetDatatype() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__DATATYPE)
 			return null;
 		return (DataType) eInternalContainer();
 	}
@@ -863,7 +863,7 @@ public class PropertyImpl
 	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1112,7 +1112,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Association getOwningAssociation() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_ASSOCIATION)
 			return null;
 		return (Association) eContainer();
 	}
@@ -1123,7 +1123,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Association basicGetOwningAssociation() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_ASSOCIATION)
 			return null;
 		return (Association) eInternalContainer();
 	}
@@ -1155,7 +1155,7 @@ public class PropertyImpl
 	 */
 	public void setOwningAssociation(Association newOwningAssociation) {
 		if (newOwningAssociation != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__OWNING_ASSOCIATION && newOwningAssociation != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningAssociation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1425,7 +1425,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property getAssociationEnd() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__ASSOCIATION_END)
 			return null;
 		return (Property) eContainer();
 	}
@@ -1436,7 +1436,7 @@ public class PropertyImpl
 	 * @generated
 	 */
 	public Property basicGetAssociationEnd() {
-		if (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END)
+		if (eContainerFeatureID() != UMLPackage.PROPERTY__ASSOCIATION_END)
 			return null;
 		return (Property) eInternalContainer();
 	}
@@ -1460,7 +1460,7 @@ public class PropertyImpl
 	 */
 	public void setAssociationEnd(Property newAssociationEnd) {
 		if (newAssociationEnd != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROPERTY__ASSOCIATION_END && newAssociationEnd != null)) {
 			if (EcoreUtil.isAncestor(this, newAssociationEnd))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1868,7 +1868,7 @@ public class PropertyImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -1923,17 +1923,13 @@ public class PropertyImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.PROPERTY__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.PROPERTY__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PROPERTY__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.PROPERTY__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.PROPERTY__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.PROPERTY__TYPE :
@@ -1941,17 +1937,13 @@ public class PropertyImpl
 					return getType();
 				return basicGetType();
 			case UMLPackage.PROPERTY__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.PROPERTY__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.PROPERTY__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.PROPERTY__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.PROPERTY__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -1961,9 +1953,7 @@ public class PropertyImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
-				return isReadOnly()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReadOnly();
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -1987,21 +1977,15 @@ public class PropertyImpl
 					return getDatatype();
 				return basicGetDatatype();
 			case UMLPackage.PROPERTY__IS_DERIVED :
-				return isDerived()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerived();
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
-				return isDerivedUnion()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerivedUnion();
 			case UMLPackage.PROPERTY__DEFAULT :
 				return getDefault();
 			case UMLPackage.PROPERTY__AGGREGATION :
 				return getAggregation();
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				return isComposite()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isComposite();
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				return getRedefinedProperties();
 			case UMLPackage.PROPERTY__OWNING_ASSOCIATION :
@@ -2066,25 +2050,25 @@ public class PropertyImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__TYPE :
 				setType((Type) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.PROPERTY__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.PROPERTY__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -2093,7 +2077,7 @@ public class PropertyImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_READ_ONLY :
-				setIsReadOnly(((Boolean) newValue).booleanValue());
+				setIsReadOnly((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -2114,10 +2098,10 @@ public class PropertyImpl
 				setDatatype((DataType) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_DERIVED :
-				setIsDerived(((Boolean) newValue).booleanValue());
+				setIsDerived((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
-				setIsDerivedUnion(((Boolean) newValue).booleanValue());
+				setIsDerivedUnion((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__DEFAULT :
 				setDefault((String) newValue);
@@ -2126,7 +2110,7 @@ public class PropertyImpl
 				setAggregation((AggregationKind) newValue);
 				return;
 			case UMLPackage.PROPERTY__IS_COMPOSITE :
-				setIsComposite(((Boolean) newValue).booleanValue());
+				setIsComposite((Boolean) newValue);
 				return;
 			case UMLPackage.PROPERTY__REDEFINED_PROPERTY :
 				getRedefinedProperties().clear();

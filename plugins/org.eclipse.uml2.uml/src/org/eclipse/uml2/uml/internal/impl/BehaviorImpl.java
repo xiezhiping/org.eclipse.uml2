@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: BehaviorImpl.java,v 1.34 2008/04/21 16:32:41 khussey Exp $
+ * $Id: BehaviorImpl.java,v 1.35 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -990,9 +990,7 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIOR__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.BEHAVIOR__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.BEHAVIOR__REDEFINITION_CONTEXT :
@@ -1016,9 +1014,7 @@ public abstract class BehaviorImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.BEHAVIOR__POWERTYPE_EXTENT :
@@ -1072,17 +1068,13 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.BEHAVIOR__EXTENSION :
 				return getExtensions();
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				return isReentrant()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReentrant();
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
@@ -1154,7 +1146,7 @@ public abstract class BehaviorImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1174,7 +1166,7 @@ public abstract class BehaviorImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1267,7 +1259,7 @@ public abstract class BehaviorImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1275,7 +1267,7 @@ public abstract class BehaviorImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(((Boolean) newValue).booleanValue());
+				setIsReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();

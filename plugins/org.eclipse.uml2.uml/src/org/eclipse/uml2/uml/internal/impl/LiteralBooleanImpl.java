@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: LiteralBooleanImpl.java,v 1.17 2008/04/21 16:32:42 khussey Exp $
+ * $Id: LiteralBooleanImpl.java,v 1.18 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -189,9 +189,7 @@ public class LiteralBooleanImpl
 					return getType();
 				return basicGetType();
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				return isValue()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -239,7 +237,7 @@ public class LiteralBooleanImpl
 				setType((Type) newValue);
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__VALUE :
-				setValue(((Boolean) newValue).booleanValue());
+				setValue((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

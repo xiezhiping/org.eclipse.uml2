@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: DeploymentImpl.java,v 1.23 2007/04/25 17:47:04 khussey Exp $
+ * $Id: DeploymentImpl.java,v 1.24 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -271,7 +271,7 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeploymentTarget getLocation() {
-		if (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION)
+		if (eContainerFeatureID() != UMLPackage.DEPLOYMENT__LOCATION)
 			return null;
 		return (DeploymentTarget) eContainer();
 	}
@@ -282,7 +282,7 @@ public class DeploymentImpl
 	 * @generated
 	 */
 	public DeploymentTarget basicGetLocation() {
-		if (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION)
+		if (eContainerFeatureID() != UMLPackage.DEPLOYMENT__LOCATION)
 			return null;
 		return (DeploymentTarget) eInternalContainer();
 	}
@@ -315,7 +315,7 @@ public class DeploymentImpl
 	 */
 	public void setLocation(DeploymentTarget newLocation) {
 		if (newLocation != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
+			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT__LOCATION && newLocation != null)) {
 			if (EcoreUtil.isAncestor(this, newLocation))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -421,7 +421,7 @@ public class DeploymentImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InterfaceImpl.java,v 1.29 2007/04/25 17:47:01 khussey Exp $
+ * $Id: InterfaceImpl.java,v 1.30 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -963,9 +963,7 @@ public class InterfaceImpl
 			case UMLPackage.INTERFACE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.INTERFACE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.INTERFACE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.INTERFACE__REDEFINITION_CONTEXT :
@@ -989,9 +987,7 @@ public class InterfaceImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INTERFACE__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.INTERFACE__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.INTERFACE__POWERTYPE_EXTENT :
@@ -1085,7 +1081,7 @@ public class InterfaceImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERFACE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.INTERFACE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1105,7 +1101,7 @@ public class InterfaceImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.INTERFACE__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.INTERFACE__GENERALIZATION :
 				getGeneralizations().clear();

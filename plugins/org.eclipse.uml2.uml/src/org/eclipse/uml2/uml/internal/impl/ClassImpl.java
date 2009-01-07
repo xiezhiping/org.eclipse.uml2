@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ClassImpl.java,v 1.42 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ClassImpl.java,v 1.43 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1439,9 +1439,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.CLASS__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CLASS__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CLASS__REDEFINITION_CONTEXT :
@@ -1465,9 +1463,7 @@ public class ClassImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.CLASS__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.CLASS__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.CLASS__POWERTYPE_EXTENT :
@@ -1521,9 +1517,7 @@ public class ClassImpl
 			case UMLPackage.CLASS__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.CLASS__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.CLASS__EXTENSION :
@@ -1581,7 +1575,7 @@ public class ClassImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CLASS__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CLASS__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1601,7 +1595,7 @@ public class ClassImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.CLASS__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.CLASS__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1694,7 +1688,7 @@ public class ClassImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.CLASS__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.CLASS__OWNED_RECEPTION :
 				getOwnedReceptions().clear();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: OperationImpl.java,v 1.36 2008/04/21 16:32:41 khussey Exp $
+ * $Id: OperationImpl.java,v 1.37 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -392,7 +392,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateParameter getOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eContainer();
 	}
@@ -403,7 +403,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eInternalContainer();
 	}
@@ -436,7 +436,7 @@ public class OperationImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -867,7 +867,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class getClass_() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__CLASS)
 			return null;
 		return (org.eclipse.uml2.uml.Class) eContainer();
 	}
@@ -878,7 +878,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Class basicGetClass_() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__CLASS)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__CLASS)
 			return null;
 		return (org.eclipse.uml2.uml.Class) eInternalContainer();
 	}
@@ -902,7 +902,7 @@ public class OperationImpl
 	 */
 	public void setClass_(org.eclipse.uml2.uml.Class newClass) {
 		if (newClass != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.OPERATION__CLASS && newClass != null)) {
+			|| (eContainerFeatureID() != UMLPackage.OPERATION__CLASS && newClass != null)) {
 			if (EcoreUtil.isAncestor(this, newClass))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1123,7 +1123,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public DataType getDatatype() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__DATATYPE)
 			return null;
 		return (DataType) eContainer();
 	}
@@ -1134,7 +1134,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public DataType basicGetDatatype() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__DATATYPE)
 			return null;
 		return (DataType) eInternalContainer();
 	}
@@ -1158,7 +1158,7 @@ public class OperationImpl
 	 */
 	public void setDatatype(DataType newDatatype) {
 		if (newDatatype != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
+			|| (eContainerFeatureID() != UMLPackage.OPERATION__DATATYPE && newDatatype != null)) {
 			if (EcoreUtil.isAncestor(this, newDatatype))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1286,7 +1286,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Interface getInterface() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__INTERFACE)
 			return null;
 		return (Interface) eContainer();
 	}
@@ -1297,7 +1297,7 @@ public class OperationImpl
 	 * @generated
 	 */
 	public Interface basicGetInterface() {
-		if (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE)
+		if (eContainerFeatureID() != UMLPackage.OPERATION__INTERFACE)
 			return null;
 		return (Interface) eInternalContainer();
 	}
@@ -1321,7 +1321,7 @@ public class OperationImpl
 	 */
 	public void setInterface(Interface newInterface) {
 		if (newInterface != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
+			|| (eContainerFeatureID() != UMLPackage.OPERATION__INTERFACE && newInterface != null)) {
 			if (EcoreUtil.isAncestor(this, newInterface))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1727,7 +1727,7 @@ public class OperationImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -1796,25 +1796,19 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.OPERATION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.OPERATION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.OPERATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.OPERATION__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.OPERATION__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
 				return getOwnedParameters();
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.OPERATION__METHOD :
 				return getMethods();
 			case UMLPackage.OPERATION__CONCURRENCY :
@@ -1846,21 +1840,15 @@ public class OperationImpl
 					return getClass_();
 				return basicGetClass_();
 			case UMLPackage.OPERATION__IS_QUERY :
-				return isQuery()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isQuery();
 			case UMLPackage.OPERATION__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.OPERATION__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.OPERATION__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.OPERATION__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.OPERATION__PRECONDITION :
 				return getPreconditions();
 			case UMLPackage.OPERATION__POSTCONDITION :
@@ -1932,10 +1920,10 @@ public class OperationImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1943,7 +1931,7 @@ public class OperationImpl
 					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__METHOD :
 				getMethods().clear();
@@ -1983,19 +1971,19 @@ public class OperationImpl
 				setClass_((org.eclipse.uml2.uml.Class) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_QUERY :
-				setIsQuery(((Boolean) newValue).booleanValue());
+				setIsQuery((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.OPERATION__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.OPERATION__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.OPERATION__PRECONDITION :
 				getPreconditions().clear();

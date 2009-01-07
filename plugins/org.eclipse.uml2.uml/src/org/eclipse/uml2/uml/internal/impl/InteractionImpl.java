@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionImpl.java,v 1.32 2007/04/25 17:47:01 khussey Exp $
+ * $Id: InteractionImpl.java,v 1.33 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -319,7 +319,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Interaction getEnclosingInteraction() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
 			return null;
 		return (Interaction) eContainer();
 	}
@@ -330,7 +330,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public Interaction basicGetEnclosingInteraction() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_INTERACTION)
 			return null;
 		return (Interaction) eInternalContainer();
 	}
@@ -354,7 +354,7 @@ public class InteractionImpl
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -380,7 +380,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public InteractionOperand getEnclosingOperand() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
 			return null;
 		return (InteractionOperand) eContainer();
 	}
@@ -391,7 +391,7 @@ public class InteractionImpl
 	 * @generated
 	 */
 	public InteractionOperand basicGetEnclosingOperand() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_OPERAND)
 			return null;
 		return (InteractionOperand) eInternalContainer();
 	}
@@ -415,7 +415,7 @@ public class InteractionImpl
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -964,7 +964,7 @@ public class InteractionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -1027,9 +1027,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.INTERACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.INTERACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.INTERACTION__REDEFINITION_CONTEXT :
@@ -1053,9 +1051,7 @@ public class InteractionImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INTERACTION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.INTERACTION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.INTERACTION__POWERTYPE_EXTENT :
@@ -1109,17 +1105,13 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.INTERACTION__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.INTERACTION__EXTENSION :
 				return getExtensions();
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				return isReentrant()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReentrant();
 			case UMLPackage.INTERACTION__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
@@ -1213,7 +1205,7 @@ public class InteractionImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.INTERACTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1233,7 +1225,7 @@ public class InteractionImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.INTERACTION__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1326,7 +1318,7 @@ public class InteractionImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.INTERACTION__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1334,7 +1326,7 @@ public class InteractionImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				setIsReentrant(((Boolean) newValue).booleanValue());
+				setIsReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.INTERACTION__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();

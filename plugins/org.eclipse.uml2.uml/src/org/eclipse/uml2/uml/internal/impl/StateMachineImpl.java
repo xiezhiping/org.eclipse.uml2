@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StateMachineImpl.java,v 1.31 2007/04/25 17:47:02 khussey Exp $
+ * $Id: StateMachineImpl.java,v 1.32 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -727,9 +727,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STATE_MACHINE__REDEFINITION_CONTEXT :
@@ -753,9 +751,7 @@ public class StateMachineImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
@@ -809,17 +805,13 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.STATE_MACHINE__EXTENSION :
 				return getExtensions();
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				return isReentrant()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReentrant();
 			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
@@ -899,7 +891,7 @@ public class StateMachineImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -919,7 +911,7 @@ public class StateMachineImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1012,7 +1004,7 @@ public class StateMachineImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1020,7 +1012,7 @@ public class StateMachineImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				setIsReentrant(((Boolean) newValue).booleanValue());
+				setIsReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: RegionImpl.java,v 1.29 2008/04/21 16:32:41 khussey Exp $
+ * $Id: RegionImpl.java,v 1.30 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -477,7 +477,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public State getState() {
-		if (eContainerFeatureID != UMLPackage.REGION__STATE)
+		if (eContainerFeatureID() != UMLPackage.REGION__STATE)
 			return null;
 		return (State) eContainer();
 	}
@@ -488,7 +488,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public State basicGetState() {
-		if (eContainerFeatureID != UMLPackage.REGION__STATE)
+		if (eContainerFeatureID() != UMLPackage.REGION__STATE)
 			return null;
 		return (State) eInternalContainer();
 	}
@@ -512,7 +512,7 @@ public class RegionImpl
 	 */
 	public void setState(State newState) {
 		if (newState != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.REGION__STATE && newState != null)) {
+			|| (eContainerFeatureID() != UMLPackage.REGION__STATE && newState != null)) {
 			if (EcoreUtil.isAncestor(this, newState))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -578,7 +578,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public StateMachine getStateMachine() {
-		if (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE)
+		if (eContainerFeatureID() != UMLPackage.REGION__STATE_MACHINE)
 			return null;
 		return (StateMachine) eContainer();
 	}
@@ -589,7 +589,7 @@ public class RegionImpl
 	 * @generated
 	 */
 	public StateMachine basicGetStateMachine() {
-		if (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE)
+		if (eContainerFeatureID() != UMLPackage.REGION__STATE_MACHINE)
 			return null;
 		return (StateMachine) eInternalContainer();
 	}
@@ -613,7 +613,7 @@ public class RegionImpl
 	 */
 	public void setStateMachine(StateMachine newStateMachine) {
 		if (newStateMachine != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
+			|| (eContainerFeatureID() != UMLPackage.REGION__STATE_MACHINE && newStateMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newStateMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -850,7 +850,7 @@ public class RegionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.REGION__STATE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STATE__REGION, State.class, msgs);
@@ -908,9 +908,7 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.REGION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.REGION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.REGION__REDEFINITION_CONTEXT :
@@ -984,7 +982,7 @@ public class RegionImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.REGION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.REGION__SUBVERTEX :
 				getSubvertices().clear();

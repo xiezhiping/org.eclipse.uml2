@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TestIdentityActionImpl.java,v 1.26 2007/04/25 17:47:03 khussey Exp $
+ * $Id: TestIdentityActionImpl.java,v 1.27 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -612,9 +612,7 @@ public class TestIdentityActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.TEST_IDENTITY_ACTION__REDEFINITION_CONTEXT :
@@ -703,7 +701,7 @@ public class TestIdentityActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.TEST_IDENTITY_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);

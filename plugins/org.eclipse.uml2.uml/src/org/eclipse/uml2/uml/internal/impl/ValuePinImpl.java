@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ValuePinImpl.java,v 1.27 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ValuePinImpl.java,v 1.28 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -297,9 +297,7 @@ public class ValuePinImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.VALUE_PIN__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.VALUE_PIN__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.VALUE_PIN__REDEFINITION_CONTEXT :
@@ -331,9 +329,7 @@ public class ValuePinImpl
 			case UMLPackage.VALUE_PIN__ORDERING :
 				return getOrdering();
 			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
-				return isControlType()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControlType();
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
 				if (resolve)
 					return getUpperBound();
@@ -345,17 +341,13 @@ public class ValuePinImpl
 					return getSelection();
 				return basicGetSelection();
 			case UMLPackage.VALUE_PIN__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.VALUE_PIN__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.VALUE_PIN__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.VALUE_PIN__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -365,9 +357,7 @@ public class ValuePinImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.VALUE_PIN__IS_CONTROL :
-				return isControl()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControl();
 			case UMLPackage.VALUE_PIN__VALUE :
 				if (resolve)
 					return getValue();
@@ -410,7 +400,7 @@ public class ValuePinImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -451,7 +441,7 @@ public class ValuePinImpl
 				setOrdering((ObjectNodeOrderingKind) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IS_CONTROL_TYPE :
-				setIsControlType(((Boolean) newValue).booleanValue());
+				setIsControlType((Boolean) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__UPPER_BOUND :
 				setUpperBound((ValueSpecification) newValue);
@@ -464,16 +454,16 @@ public class ValuePinImpl
 				setSelection((Behavior) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -482,7 +472,7 @@ public class ValuePinImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__IS_CONTROL :
-				setIsControl(((Boolean) newValue).booleanValue());
+				setIsControl((Boolean) newValue);
 				return;
 			case UMLPackage.VALUE_PIN__VALUE :
 				setValue((ValueSpecification) newValue);

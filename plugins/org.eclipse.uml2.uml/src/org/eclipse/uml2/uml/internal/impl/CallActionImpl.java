@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: CallActionImpl.java,v 1.27 2008/04/21 16:32:41 khussey Exp $
+ * $Id: CallActionImpl.java,v 1.28 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -359,9 +359,7 @@ public abstract class CallActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.CALL_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CALL_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CALL_ACTION__REDEFINITION_CONTEXT :
@@ -407,9 +405,7 @@ public abstract class CallActionImpl
 					return getOnPort();
 				return basicGetOnPort();
 			case UMLPackage.CALL_ACTION__IS_SYNCHRONOUS :
-				return isSynchronous()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSynchronous();
 			case UMLPackage.CALL_ACTION__RESULT :
 				return getResults();
 		}
@@ -450,7 +446,7 @@ public abstract class CallActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CALL_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CALL_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -508,7 +504,7 @@ public abstract class CallActionImpl
 				setOnPort((Port) newValue);
 				return;
 			case UMLPackage.CALL_ACTION__IS_SYNCHRONOUS :
-				setIsSynchronous(((Boolean) newValue).booleanValue());
+				setIsSynchronous((Boolean) newValue);
 				return;
 			case UMLPackage.CALL_ACTION__RESULT :
 				getResults().clear();

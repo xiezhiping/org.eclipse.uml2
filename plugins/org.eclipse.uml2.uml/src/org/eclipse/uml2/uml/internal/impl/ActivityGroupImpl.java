@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityGroupImpl.java,v 1.20 2007/04/25 17:47:01 khussey Exp $
+ * $Id: ActivityGroupImpl.java,v 1.21 2009/01/07 15:55:29 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -260,7 +260,7 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public Activity getInActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
 			return null;
 		return (Activity) eContainer();
 	}
@@ -271,7 +271,7 @@ public abstract class ActivityGroupImpl
 	 * @generated
 	 */
 	public Activity basicGetInActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -295,7 +295,7 @@ public abstract class ActivityGroupImpl
 	 */
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -397,7 +397,7 @@ public abstract class ActivityGroupImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);

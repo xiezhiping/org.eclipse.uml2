@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: AddStructuralFeatureValueActionImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: AddStructuralFeatureValueActionImpl.java,v 1.29 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -405,9 +405,7 @@ public class AddStructuralFeatureValueActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__REDEFINITION_CONTEXT :
@@ -463,9 +461,7 @@ public class AddStructuralFeatureValueActionImpl
 					return getResult();
 				return basicGetResult();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
-				return isReplaceAll()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReplaceAll();
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT :
 				if (resolve)
 					return getInsertAt();
@@ -508,7 +504,7 @@ public class AddStructuralFeatureValueActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -570,7 +566,7 @@ public class AddStructuralFeatureValueActionImpl
 				setResult((OutputPin) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__IS_REPLACE_ALL :
-				setIsReplaceAll(((Boolean) newValue).booleanValue());
+				setIsReplaceAll((Boolean) newValue);
 				return;
 			case UMLPackage.ADD_STRUCTURAL_FEATURE_VALUE_ACTION__INSERT_AT :
 				setInsertAt((InputPin) newValue);

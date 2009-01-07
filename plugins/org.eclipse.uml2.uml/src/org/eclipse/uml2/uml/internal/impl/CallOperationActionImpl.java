@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CallOperationActionImpl.java,v 1.26 2007/04/25 17:47:02 khussey Exp $
+ * $Id: CallOperationActionImpl.java,v 1.27 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -428,9 +428,7 @@ public class CallOperationActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CALL_OPERATION_ACTION__REDEFINITION_CONTEXT :
@@ -476,9 +474,7 @@ public class CallOperationActionImpl
 					return getOnPort();
 				return basicGetOnPort();
 			case UMLPackage.CALL_OPERATION_ACTION__IS_SYNCHRONOUS :
-				return isSynchronous()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSynchronous();
 			case UMLPackage.CALL_OPERATION_ACTION__RESULT :
 				return getResults();
 			case UMLPackage.CALL_OPERATION_ACTION__OPERATION :
@@ -527,7 +523,7 @@ public class CallOperationActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -585,7 +581,7 @@ public class CallOperationActionImpl
 				setOnPort((Port) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__IS_SYNCHRONOUS :
-				setIsSynchronous(((Boolean) newValue).booleanValue());
+				setIsSynchronous((Boolean) newValue);
 				return;
 			case UMLPackage.CALL_OPERATION_ACTION__RESULT :
 				getResults().clear();

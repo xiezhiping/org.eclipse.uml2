@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: BehavioralFeatureImpl.java,v 1.25 2008/04/21 16:32:42 khussey Exp $
+ * $Id: BehavioralFeatureImpl.java,v 1.26 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1026,25 +1026,19 @@ public abstract class BehavioralFeatureImpl
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.BEHAVIORAL_FEATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.BEHAVIORAL_FEATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.BEHAVIORAL_FEATURE__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
 				return getOwnedParameters();
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				return getMethods();
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
@@ -1106,10 +1100,10 @@ public abstract class BehavioralFeatureImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1117,7 +1111,7 @@ public abstract class BehavioralFeatureImpl
 					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.BEHAVIORAL_FEATURE__METHOD :
 				getMethods().clear();

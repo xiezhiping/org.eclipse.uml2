@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ObjectFlowImpl.java,v 1.18 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.19 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -399,9 +399,7 @@ public class ObjectFlowImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.OBJECT_FLOW__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.OBJECT_FLOW__REDEFINITION_CONTEXT :
@@ -441,13 +439,9 @@ public class ObjectFlowImpl
 					return getActivity();
 				return basicGetActivity();
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
-				return isMulticast()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isMulticast();
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
-				return isMultireceive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isMultireceive();
 			case UMLPackage.OBJECT_FLOW__TRANSFORMATION :
 				if (resolve)
 					return getTransformation();
@@ -494,7 +488,7 @@ public class ObjectFlowImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__SOURCE :
 				setSource((ActivityNode) newValue);
@@ -528,10 +522,10 @@ public class ObjectFlowImpl
 				setActivity((Activity) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTICAST :
-				setIsMulticast(((Boolean) newValue).booleanValue());
+				setIsMulticast((Boolean) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__IS_MULTIRECEIVE :
-				setIsMultireceive(((Boolean) newValue).booleanValue());
+				setIsMultireceive((Boolean) newValue);
 				return;
 			case UMLPackage.OBJECT_FLOW__TRANSFORMATION :
 				setTransformation((Behavior) newValue);

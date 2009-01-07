@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: TemplateBindingImpl.java,v 1.20 2007/04/25 17:47:01 khussey Exp $
+ * $Id: TemplateBindingImpl.java,v 1.21 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -261,7 +261,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public TemplateableElement getBoundElement() {
-		if (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
+		if (eContainerFeatureID() != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
 			return null;
 		return (TemplateableElement) eContainer();
 	}
@@ -272,7 +272,7 @@ public class TemplateBindingImpl
 	 * @generated
 	 */
 	public TemplateableElement basicGetBoundElement() {
-		if (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
+		if (eContainerFeatureID() != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT)
 			return null;
 		return (TemplateableElement) eInternalContainer();
 	}
@@ -296,7 +296,7 @@ public class TemplateBindingImpl
 	 */
 	public void setBoundElement(TemplateableElement newBoundElement) {
 		if (newBoundElement != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
+			|| (eContainerFeatureID() != UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT && newBoundElement != null)) {
 			if (EcoreUtil.isAncestor(this, newBoundElement))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -395,7 +395,7 @@ public class TemplateBindingImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,

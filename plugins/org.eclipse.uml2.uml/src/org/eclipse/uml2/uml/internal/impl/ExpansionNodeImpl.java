@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ExpansionNodeImpl.java,v 1.20 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ExpansionNodeImpl.java,v 1.21 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -383,9 +383,7 @@ public class ExpansionNodeImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.EXPANSION_NODE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.EXPANSION_NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.EXPANSION_NODE__REDEFINITION_CONTEXT :
@@ -417,9 +415,7 @@ public class ExpansionNodeImpl
 			case UMLPackage.EXPANSION_NODE__ORDERING :
 				return getOrdering();
 			case UMLPackage.EXPANSION_NODE__IS_CONTROL_TYPE :
-				return isControlType()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControlType();
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
 				if (resolve)
 					return getUpperBound();
@@ -476,7 +472,7 @@ public class ExpansionNodeImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -517,7 +513,7 @@ public class ExpansionNodeImpl
 				setOrdering((ObjectNodeOrderingKind) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__IS_CONTROL_TYPE :
-				setIsControlType(((Boolean) newValue).booleanValue());
+				setIsControlType((Boolean) newValue);
 				return;
 			case UMLPackage.EXPANSION_NODE__UPPER_BOUND :
 				setUpperBound((ValueSpecification) newValue);

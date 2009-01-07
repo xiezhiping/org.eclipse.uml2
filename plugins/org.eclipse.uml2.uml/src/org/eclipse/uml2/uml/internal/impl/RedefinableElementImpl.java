@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: RedefinableElementImpl.java,v 1.19 2008/04/21 16:32:42 khussey Exp $
+ * $Id: RedefinableElementImpl.java,v 1.20 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -347,9 +347,7 @@ public abstract class RedefinableElementImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.REDEFINABLE_ELEMENT__REDEFINITION_CONTEXT :
@@ -392,7 +390,7 @@ public abstract class RedefinableElementImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.REDEFINABLE_ELEMENT__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

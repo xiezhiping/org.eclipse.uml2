@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LifelineImpl.java,v 1.23 2007/04/25 17:47:01 khussey Exp $
+ * $Id: LifelineImpl.java,v 1.24 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -223,7 +223,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public Interaction getInteraction() {
-		if (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.LIFELINE__INTERACTION)
 			return null;
 		return (Interaction) eContainer();
 	}
@@ -234,7 +234,7 @@ public class LifelineImpl
 	 * @generated
 	 */
 	public Interaction basicGetInteraction() {
-		if (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.LIFELINE__INTERACTION)
 			return null;
 		return (Interaction) eInternalContainer();
 	}
@@ -258,7 +258,7 @@ public class LifelineImpl
 	 */
 	public void setInteraction(Interaction newInteraction) {
 		if (newInteraction != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.LIFELINE__INTERACTION && newInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -559,7 +559,7 @@ public class LifelineImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.LIFELINE__INTERACTION :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERACTION__LIFELINE, Interaction.class, msgs);

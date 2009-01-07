@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectorEndImpl.java,v 1.19 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: ConnectorEndImpl.java,v 1.20 2009/01/07 15:55:25 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -258,17 +258,13 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.CONNECTOR_END__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.CONNECTOR_END__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.CONNECTOR_END__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -313,16 +309,16 @@ public class ConnectorEndImpl
 					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.CONNECTOR_END__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.CONNECTOR_END__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.CONNECTOR_END__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.CONNECTOR_END__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.CONNECTOR_END__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);

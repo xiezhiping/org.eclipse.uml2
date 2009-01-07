@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionPointImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
+ * $Id: ExtensionPointImpl.java,v 1.17 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -81,7 +81,7 @@ public class ExtensionPointImpl
 	 * @generated
 	 */
 	public UseCase getUseCase() {
-		if (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE)
+		if (eContainerFeatureID() != UMLPackage.EXTENSION_POINT__USE_CASE)
 			return null;
 		return (UseCase) eContainer();
 	}
@@ -92,7 +92,7 @@ public class ExtensionPointImpl
 	 * @generated
 	 */
 	public UseCase basicGetUseCase() {
-		if (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE)
+		if (eContainerFeatureID() != UMLPackage.EXTENSION_POINT__USE_CASE)
 			return null;
 		return (UseCase) eInternalContainer();
 	}
@@ -116,7 +116,7 @@ public class ExtensionPointImpl
 	 */
 	public void setUseCase(UseCase newUseCase) {
 		if (newUseCase != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
+			|| (eContainerFeatureID() != UMLPackage.EXTENSION_POINT__USE_CASE && newUseCase != null)) {
 			if (EcoreUtil.isAncestor(this, newUseCase))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -203,7 +203,7 @@ public class ExtensionPointImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.USE_CASE__EXTENSION_POINT, UseCase.class, msgs);
@@ -246,9 +246,7 @@ public class ExtensionPointImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.EXTENSION_POINT__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.EXTENSION_POINT__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.EXTENSION_POINT__REDEFINITION_CONTEXT :
@@ -295,7 +293,7 @@ public class ExtensionPointImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.EXTENSION_POINT__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.EXTENSION_POINT__USE_CASE :
 				setUseCase((UseCase) newValue);

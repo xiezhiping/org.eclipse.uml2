@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ExpansionRegionImpl.java,v 1.21 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ExpansionRegionImpl.java,v 1.22 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -465,9 +465,7 @@ public class ExpansionRegionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.EXPANSION_REGION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.EXPANSION_REGION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.EXPANSION_REGION__REDEFINITION_CONTEXT :
@@ -537,9 +535,7 @@ public class ExpansionRegionImpl
 			case UMLPackage.EXPANSION_REGION__EDGE :
 				return getEdges();
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				return isMustIsolate()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isMustIsolate();
 			case UMLPackage.EXPANSION_REGION__NODE :
 				return getNodes();
 			case UMLPackage.EXPANSION_REGION__MODE :
@@ -586,7 +582,7 @@ public class ExpansionRegionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -664,7 +660,7 @@ public class ExpansionRegionImpl
 					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__MUST_ISOLATE :
-				setMustIsolate(((Boolean) newValue).booleanValue());
+				setMustIsolate((Boolean) newValue);
 				return;
 			case UMLPackage.EXPANSION_REGION__NODE :
 				getNodes().clear();

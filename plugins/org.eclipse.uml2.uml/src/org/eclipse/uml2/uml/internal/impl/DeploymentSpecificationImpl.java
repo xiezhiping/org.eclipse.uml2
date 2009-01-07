@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: DeploymentSpecificationImpl.java,v 1.22 2008/04/21 16:32:42 khussey Exp $
+ * $Id: DeploymentSpecificationImpl.java,v 1.23 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -262,7 +262,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public Deployment getDeployment() {
-		if (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
+		if (eContainerFeatureID() != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
 			return null;
 		return (Deployment) eContainer();
 	}
@@ -273,7 +273,7 @@ public class DeploymentSpecificationImpl
 	 * @generated
 	 */
 	public Deployment basicGetDeployment() {
-		if (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
+		if (eContainerFeatureID() != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT)
 			return null;
 		return (Deployment) eInternalContainer();
 	}
@@ -297,7 +297,7 @@ public class DeploymentSpecificationImpl
 	 */
 	public void setDeployment(Deployment newDeployment) {
 		if (newDeployment != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
+			|| (eContainerFeatureID() != UMLPackage.DEPLOYMENT_SPECIFICATION__DEPLOYMENT && newDeployment != null)) {
 			if (EcoreUtil.isAncestor(this, newDeployment))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -492,7 +492,7 @@ public class DeploymentSpecificationImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -552,9 +552,7 @@ public class DeploymentSpecificationImpl
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__REDEFINITION_CONTEXT :
@@ -578,9 +576,7 @@ public class DeploymentSpecificationImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__POWERTYPE_EXTENT :
@@ -678,7 +674,7 @@ public class DeploymentSpecificationImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -698,7 +694,7 @@ public class DeploymentSpecificationImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_SPECIFICATION__GENERALIZATION :
 				getGeneralizations().clear();

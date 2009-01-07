@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: StateImpl.java,v 1.36 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: StateImpl.java,v 1.37 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -539,7 +539,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Region getContainer() {
-		if (eContainerFeatureID != UMLPackage.STATE__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.STATE__CONTAINER)
 			return null;
 		return (Region) eContainer();
 	}
@@ -550,7 +550,7 @@ public class StateImpl
 	 * @generated
 	 */
 	public Region basicGetContainer() {
-		if (eContainerFeatureID != UMLPackage.STATE__CONTAINER)
+		if (eContainerFeatureID() != UMLPackage.STATE__CONTAINER)
 			return null;
 		return (Region) eInternalContainer();
 	}
@@ -574,7 +574,7 @@ public class StateImpl
 	 */
 	public void setContainer(Region newContainer) {
 		if (newContainer != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.STATE__CONTAINER && newContainer != null)) {
+			|| (eContainerFeatureID() != UMLPackage.STATE__CONTAINER && newContainer != null)) {
 			if (EcoreUtil.isAncestor(this, newContainer))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1645,7 +1645,7 @@ public class StateImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.STATE__CONTAINER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
@@ -1700,9 +1700,7 @@ public class StateImpl
 			case UMLPackage.STATE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.STATE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.STATE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STATE__REDEFINITION_CONTEXT :
@@ -1716,21 +1714,13 @@ public class StateImpl
 					return getContainer();
 				return basicGetContainer();
 			case UMLPackage.STATE__IS_COMPOSITE :
-				return isComposite()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isComposite();
 			case UMLPackage.STATE__IS_ORTHOGONAL :
-				return isOrthogonal()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrthogonal();
 			case UMLPackage.STATE__IS_SIMPLE :
-				return isSimple()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSimple();
 			case UMLPackage.STATE__IS_SUBMACHINE_STATE :
-				return isSubmachineState()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSubmachineState();
 			case UMLPackage.STATE__SUBMACHINE :
 				if (resolve)
 					return getSubmachine();
@@ -1816,7 +1806,7 @@ public class StateImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STATE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.STATE__OUTGOING :
 				getOutgoings().clear();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StringExpressionImpl.java,v 1.24 2007/04/25 17:47:00 khussey Exp $
+ * $Id: StringExpressionImpl.java,v 1.25 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -396,7 +396,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public StringExpression getOwningExpression() {
-		if (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
+		if (eContainerFeatureID() != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
 			return null;
 		return (StringExpression) eContainer();
 	}
@@ -407,7 +407,7 @@ public class StringExpressionImpl
 	 * @generated
 	 */
 	public StringExpression basicGetOwningExpression() {
-		if (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
+		if (eContainerFeatureID() != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION)
 			return null;
 		return (StringExpression) eInternalContainer();
 	}
@@ -431,7 +431,7 @@ public class StringExpressionImpl
 	 */
 	public void setOwningExpression(StringExpression newOwningExpression) {
 		if (newOwningExpression != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
+			|| (eContainerFeatureID() != UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION && newOwningExpression != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningExpression))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -618,7 +618,7 @@ public class StringExpressionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

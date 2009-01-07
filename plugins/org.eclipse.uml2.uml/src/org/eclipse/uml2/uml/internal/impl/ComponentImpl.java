@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ComponentImpl.java,v 1.34 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.35 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -702,9 +702,7 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.COMPONENT__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.COMPONENT__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.COMPONENT__REDEFINITION_CONTEXT :
@@ -728,9 +726,7 @@ public class ComponentImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.COMPONENT__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.COMPONENT__POWERTYPE_EXTENT :
@@ -784,17 +780,13 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.COMPONENT__EXTENSION :
 				return getExtensions();
 			case UMLPackage.COMPONENT__IS_INDIRECTLY_INSTANTIATED :
-				return isIndirectlyInstantiated()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isIndirectlyInstantiated();
 			case UMLPackage.COMPONENT__REQUIRED :
 				return getRequireds();
 			case UMLPackage.COMPONENT__PROVIDED :
@@ -856,7 +848,7 @@ public class ComponentImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.COMPONENT__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.COMPONENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -876,7 +868,7 @@ public class ComponentImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.COMPONENT__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.COMPONENT__GENERALIZATION :
 				getGeneralizations().clear();
@@ -969,7 +961,7 @@ public class ComponentImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.COMPONENT__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.COMPONENT__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -977,7 +969,7 @@ public class ComponentImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.COMPONENT__IS_INDIRECTLY_INSTANTIATED :
-				setIsIndirectlyInstantiated(((Boolean) newValue).booleanValue());
+				setIsIndirectlyInstantiated((Boolean) newValue);
 				return;
 			case UMLPackage.COMPONENT__PACKAGED_ELEMENT :
 				getPackagedElements().clear();

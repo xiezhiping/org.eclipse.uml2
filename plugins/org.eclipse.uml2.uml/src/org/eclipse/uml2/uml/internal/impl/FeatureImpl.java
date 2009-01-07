@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: FeatureImpl.java,v 1.17 2008/04/21 16:32:41 khussey Exp $
+ * $Id: FeatureImpl.java,v 1.18 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -241,17 +241,13 @@ public abstract class FeatureImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.FEATURE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.FEATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.FEATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.FEATURE__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.FEATURE__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 		}
@@ -292,10 +288,10 @@ public abstract class FeatureImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.FEATURE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.FEATURE__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

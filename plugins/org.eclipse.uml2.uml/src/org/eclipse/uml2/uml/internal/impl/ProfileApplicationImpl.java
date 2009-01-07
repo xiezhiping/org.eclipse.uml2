@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplicationImpl.java,v 1.23 2007/04/25 17:47:01 khussey Exp $
+ * $Id: ProfileApplicationImpl.java,v 1.24 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -245,7 +245,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package getApplyingPackage() {
-		if (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
+		if (eContainerFeatureID() != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
 			return null;
 		return (org.eclipse.uml2.uml.Package) eContainer();
 	}
@@ -256,7 +256,7 @@ public class ProfileApplicationImpl
 	 * @generated
 	 */
 	public org.eclipse.uml2.uml.Package basicGetApplyingPackage() {
-		if (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
+		if (eContainerFeatureID() != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE)
 			return null;
 		return (org.eclipse.uml2.uml.Package) eInternalContainer();
 	}
@@ -282,7 +282,7 @@ public class ProfileApplicationImpl
 	public void setApplyingPackage(
 			org.eclipse.uml2.uml.Package newApplyingPackage) {
 		if (newApplyingPackage != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE && newApplyingPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newApplyingPackage))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -372,7 +372,7 @@ public class ProfileApplicationImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.PACKAGE__PROFILE_APPLICATION,
@@ -410,9 +410,7 @@ public class ProfileApplicationImpl
 					return getAppliedProfile();
 				return basicGetAppliedProfile();
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
-				return isStrict()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStrict();
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
 				if (resolve)
 					return getApplyingPackage();
@@ -444,7 +442,7 @@ public class ProfileApplicationImpl
 				setAppliedProfile((Profile) newValue);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__IS_STRICT :
-				setIsStrict(((Boolean) newValue).booleanValue());
+				setIsStrict((Boolean) newValue);
 				return;
 			case UMLPackage.PROFILE_APPLICATION__APPLYING_PACKAGE :
 				setApplyingPackage((org.eclipse.uml2.uml.Package) newValue);

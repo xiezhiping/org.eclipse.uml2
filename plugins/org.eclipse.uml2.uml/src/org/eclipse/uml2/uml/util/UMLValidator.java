@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
  *
- * $Id: UMLValidator.java,v 1.26 2008/10/02 20:57:04 jbruck Exp $
+ * $Id: UMLValidator.java,v 1.27 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4442,16 +4442,14 @@ public class UMLValidator
 				return validateExpansionKind((ExpansionKind) value,
 					diagnostics, context);
 			case UMLPackage.INTEGER :
-				return validateInteger(((Integer) value).intValue(),
-					diagnostics, context);
+				return validateInteger((Integer) value, diagnostics, context);
 			case UMLPackage.BOOLEAN :
-				return validateBoolean(((Boolean) value).booleanValue(),
-					diagnostics, context);
+				return validateBoolean((Boolean) value, diagnostics, context);
 			case UMLPackage.STRING :
 				return validateString((String) value, diagnostics, context);
 			case UMLPackage.UNLIMITED_NATURAL :
-				return validateUnlimitedNatural(((Integer) value).intValue(),
-					diagnostics, context);
+				return validateUnlimitedNatural((Integer) value, diagnostics,
+					context);
 			default :
 				return true;
 		}

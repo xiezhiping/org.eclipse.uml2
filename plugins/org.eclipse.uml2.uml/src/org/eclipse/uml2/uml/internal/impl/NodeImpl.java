@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: NodeImpl.java,v 1.31 2008/01/09 18:56:03 khussey Exp $
+ * $Id: NodeImpl.java,v 1.32 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -630,9 +630,7 @@ public class NodeImpl
 			case UMLPackage.NODE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.NODE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.NODE__REDEFINITION_CONTEXT :
@@ -656,9 +654,7 @@ public class NodeImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.NODE__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.NODE__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.NODE__POWERTYPE_EXTENT :
@@ -712,9 +708,7 @@ public class NodeImpl
 			case UMLPackage.NODE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.NODE__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.NODE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.NODE__EXTENSION :
@@ -778,7 +772,7 @@ public class NodeImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.NODE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.NODE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -798,7 +792,7 @@ public class NodeImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.NODE__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.NODE__GENERALIZATION :
 				getGeneralizations().clear();
@@ -891,7 +885,7 @@ public class NodeImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.NODE__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.NODE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();

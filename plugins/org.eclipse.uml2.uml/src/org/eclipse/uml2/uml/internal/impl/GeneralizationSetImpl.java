@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: GeneralizationSetImpl.java,v 1.18 2008/04/21 16:32:41 khussey Exp $
+ * $Id: GeneralizationSetImpl.java,v 1.19 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -438,13 +438,9 @@ public class GeneralizationSetImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				return isCovering()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isCovering();
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				return isDisjoint()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDisjoint();
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				if (resolve)
 					return getPowertype();
@@ -495,10 +491,10 @@ public class GeneralizationSetImpl
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_COVERING :
-				setIsCovering(((Boolean) newValue).booleanValue());
+				setIsCovering((Boolean) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__IS_DISJOINT :
-				setIsDisjoint(((Boolean) newValue).booleanValue());
+				setIsDisjoint((Boolean) newValue);
 				return;
 			case UMLPackage.GENERALIZATION_SET__POWERTYPE :
 				setPowertype((Classifier) newValue);

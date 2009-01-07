@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CollaborationImpl.java,v 1.30 2007/04/25 17:47:03 khussey Exp $
+ * $Id: CollaborationImpl.java,v 1.31 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -676,9 +676,7 @@ public class CollaborationImpl
 			case UMLPackage.COLLABORATION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.COLLABORATION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.COLLABORATION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.COLLABORATION__REDEFINITION_CONTEXT :
@@ -702,9 +700,7 @@ public class CollaborationImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.COLLABORATION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.COLLABORATION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.COLLABORATION__POWERTYPE_EXTENT :
@@ -804,7 +800,7 @@ public class CollaborationImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.COLLABORATION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.COLLABORATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -824,7 +820,7 @@ public class CollaborationImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.COLLABORATION__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.COLLABORATION__GENERALIZATION :
 				getGeneralizations().clear();

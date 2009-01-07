@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProtocolConformanceImpl.java,v 1.17 2007/04/25 17:47:03 khussey Exp $
+ * $Id: ProtocolConformanceImpl.java,v 1.18 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -190,7 +190,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine getSpecificMachine() {
-		if (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
+		if (eContainerFeatureID() != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
 			return null;
 		return (ProtocolStateMachine) eContainer();
 	}
@@ -201,7 +201,7 @@ public class ProtocolConformanceImpl
 	 * @generated
 	 */
 	public ProtocolStateMachine basicGetSpecificMachine() {
-		if (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
+		if (eContainerFeatureID() != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE)
 			return null;
 		return (ProtocolStateMachine) eInternalContainer();
 	}
@@ -225,7 +225,7 @@ public class ProtocolConformanceImpl
 	 */
 	public void setSpecificMachine(ProtocolStateMachine newSpecificMachine) {
 		if (newSpecificMachine != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE && newSpecificMachine != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecificMachine))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -296,7 +296,7 @@ public class ProtocolConformanceImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__SPECIFIC_MACHINE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.PROTOCOL_STATE_MACHINE__CONFORMANCE,

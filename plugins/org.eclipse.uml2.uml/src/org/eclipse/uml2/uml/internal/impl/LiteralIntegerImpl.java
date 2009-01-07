@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LiteralIntegerImpl.java,v 1.16 2007/04/25 17:47:01 khussey Exp $
+ * $Id: LiteralIntegerImpl.java,v 1.17 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -185,7 +185,7 @@ public class LiteralIntegerImpl
 					return getType();
 				return basicGetType();
 			case UMLPackage.LITERAL_INTEGER__VALUE :
-				return new Integer(getValue());
+				return getValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -233,7 +233,7 @@ public class LiteralIntegerImpl
 				setType((Type) newValue);
 				return;
 			case UMLPackage.LITERAL_INTEGER__VALUE :
-				setValue(((Integer) newValue).intValue());
+				setValue((Integer) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExtensionImpl.java,v 1.28 2007/04/25 17:47:02 khussey Exp $
+ * $Id: ExtensionImpl.java,v 1.29 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -287,9 +287,7 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.EXTENSION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.EXTENSION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.EXTENSION__REDEFINITION_CONTEXT :
@@ -313,9 +311,7 @@ public class ExtensionImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.EXTENSION__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.EXTENSION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.EXTENSION__POWERTYPE_EXTENT :
@@ -349,17 +345,13 @@ public class ExtensionImpl
 			case UMLPackage.EXTENSION__MEMBER_END :
 				return getMemberEnds();
 			case UMLPackage.EXTENSION__IS_DERIVED :
-				return isDerived()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerived();
 			case UMLPackage.EXTENSION__END_TYPE :
 				return getEndTypes();
 			case UMLPackage.EXTENSION__NAVIGABLE_OWNED_END :
 				return getNavigableOwnedEnds();
 			case UMLPackage.EXTENSION__IS_REQUIRED :
-				return isRequired()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isRequired();
 			case UMLPackage.EXTENSION__METACLASS :
 				if (resolve)
 					return getMetaclass();

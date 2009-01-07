@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InformationItemImpl.java,v 1.18 2007/02/26 16:17:58 khussey Exp $
+ * $Id: InformationItemImpl.java,v 1.19 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -212,9 +212,7 @@ public class InformationItemImpl
 			case UMLPackage.INFORMATION_ITEM__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.INFORMATION_ITEM__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.INFORMATION_ITEM__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.INFORMATION_ITEM__REDEFINITION_CONTEXT :
@@ -238,9 +236,7 @@ public class InformationItemImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.INFORMATION_ITEM__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.INFORMATION_ITEM__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.INFORMATION_ITEM__POWERTYPE_EXTENT :
@@ -322,7 +318,7 @@ public class InformationItemImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -342,7 +338,7 @@ public class InformationItemImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.INFORMATION_ITEM__GENERALIZATION :
 				getGeneralizations().clear();

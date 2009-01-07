@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.12 2007/04/25 17:47:01 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.13 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -220,9 +220,7 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
 				return getQualifiers();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				return isDestroyDuplicates()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDestroyDuplicates();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				if (resolve)
 					return getDestroyAt();
@@ -262,7 +260,7 @@ public class LinkEndDestructionDataImpl
 					(Collection<? extends QualifierValue>) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				setIsDestroyDuplicates(((Boolean) newValue).booleanValue());
+				setIsDestroyDuplicates((Boolean) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				setDestroyAt((InputPin) newValue);

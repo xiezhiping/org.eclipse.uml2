@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: LoopNodeImpl.java,v 1.29 2008/04/21 16:32:42 khussey Exp $
+ * $Id: LoopNodeImpl.java,v 1.30 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -798,9 +798,7 @@ public class LoopNodeImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.LOOP_NODE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.LOOP_NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.LOOP_NODE__REDEFINITION_CONTEXT :
@@ -870,15 +868,11 @@ public class LoopNodeImpl
 			case UMLPackage.LOOP_NODE__EDGE :
 				return getEdges();
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				return isMustIsolate()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isMustIsolate();
 			case UMLPackage.LOOP_NODE__NODE :
 				return getNodes();
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				return isTestedFirst()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isTestedFirst();
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				return getBodyParts();
 			case UMLPackage.LOOP_NODE__SETUP_PART :
@@ -935,7 +929,7 @@ public class LoopNodeImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -1013,7 +1007,7 @@ public class LoopNodeImpl
 					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__MUST_ISOLATE :
-				setMustIsolate(((Boolean) newValue).booleanValue());
+				setMustIsolate((Boolean) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__NODE :
 				getNodes().clear();
@@ -1021,7 +1015,7 @@ public class LoopNodeImpl
 					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__IS_TESTED_FIRST :
-				setIsTestedFirst(((Boolean) newValue).booleanValue());
+				setIsTestedFirst((Boolean) newValue);
 				return;
 			case UMLPackage.LOOP_NODE__BODY_PART :
 				getBodyParts().clear();

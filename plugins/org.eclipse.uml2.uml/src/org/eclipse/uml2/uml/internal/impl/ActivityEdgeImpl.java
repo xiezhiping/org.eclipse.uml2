@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ActivityEdgeImpl.java,v 1.26 2007/04/25 17:47:04 khussey Exp $
+ * $Id: ActivityEdgeImpl.java,v 1.27 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -266,7 +266,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public Activity getActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
 			return null;
 		return (Activity) eContainer();
 	}
@@ -277,7 +277,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public Activity basicGetActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__ACTIVITY)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -301,7 +301,7 @@ public abstract class ActivityEdgeImpl
 	 */
 	public void setActivity(Activity newActivity) {
 		if (newActivity != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__ACTIVITY && newActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -365,7 +365,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public StructuredActivityNode getInStructuredNode() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
 			return null;
 		return (StructuredActivityNode) eContainer();
 	}
@@ -376,7 +376,7 @@ public abstract class ActivityEdgeImpl
 	 * @generated
 	 */
 	public StructuredActivityNode basicGetInStructuredNode() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
 			return null;
 		return (StructuredActivityNode) eInternalContainer();
 	}
@@ -400,7 +400,7 @@ public abstract class ActivityEdgeImpl
 	 */
 	public void setInStructuredNode(StructuredActivityNode newInStructuredNode) {
 		if (newInStructuredNode != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE && newInStructuredNode != null)) {
 			if (EcoreUtil.isAncestor(this, newInStructuredNode))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1012,7 +1012,7 @@ public abstract class ActivityEdgeImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__EDGE,
@@ -1059,9 +1059,7 @@ public abstract class ActivityEdgeImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
@@ -1138,7 +1136,7 @@ public abstract class ActivityEdgeImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				setSource((ActivityNode) newValue);

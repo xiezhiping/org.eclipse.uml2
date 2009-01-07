@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartObjectBehaviorActionImpl.java,v 1.1 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: StartObjectBehaviorActionImpl.java,v 1.2 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -400,9 +400,7 @@ public class StartObjectBehaviorActionImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__REDEFINITION_CONTEXT :
@@ -448,9 +446,7 @@ public class StartObjectBehaviorActionImpl
 					return getOnPort();
 				return basicGetOnPort();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				return isSynchronous()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSynchronous();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__RESULT :
 				return getResults();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__OBJECT :
@@ -495,7 +491,7 @@ public class StartObjectBehaviorActionImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -553,7 +549,7 @@ public class StartObjectBehaviorActionImpl
 				setOnPort((Port) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__IS_SYNCHRONOUS :
-				setIsSynchronous(((Boolean) newValue).booleanValue());
+				setIsSynchronous((Boolean) newValue);
 				return;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION__RESULT :
 				getResults().clear();

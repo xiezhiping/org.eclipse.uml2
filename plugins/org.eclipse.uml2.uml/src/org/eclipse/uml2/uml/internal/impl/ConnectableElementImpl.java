@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ConnectableElementImpl.java,v 1.21 2007/05/04 20:35:34 khussey Exp $
+ * $Id: ConnectableElementImpl.java,v 1.22 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -223,7 +223,7 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 */
 	public TemplateParameter getOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eContainer();
 	}
@@ -234,7 +234,7 @@ public abstract class ConnectableElementImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eInternalContainer();
 	}
@@ -267,7 +267,7 @@ public abstract class ConnectableElementImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -386,7 +386,7 @@ public abstract class ConnectableElementImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

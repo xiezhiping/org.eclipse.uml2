@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ProtocolTransitionImpl.java,v 1.39 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: ProtocolTransitionImpl.java,v 1.40 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -599,9 +599,7 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
@@ -697,7 +695,7 @@ public class ProtocolTransitionImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				setKind((TransitionKind) newValue);

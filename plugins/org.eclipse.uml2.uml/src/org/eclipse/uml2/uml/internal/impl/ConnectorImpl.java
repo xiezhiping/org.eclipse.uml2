@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ConnectorImpl.java,v 1.20 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ConnectorImpl.java,v 1.21 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -592,17 +592,13 @@ public class ConnectorImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.CONNECTOR__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CONNECTOR__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CONNECTOR__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.CONNECTOR__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.CONNECTOR__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.CONNECTOR__TYPE :
@@ -655,10 +651,10 @@ public class ConnectorImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CONNECTOR__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CONNECTOR__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.CONNECTOR__TYPE :
 				setType((Association) newValue);

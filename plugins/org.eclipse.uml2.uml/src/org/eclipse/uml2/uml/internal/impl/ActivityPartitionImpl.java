@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ActivityPartitionImpl.java,v 1.28 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.29 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -361,7 +361,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public Activity getInActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
 			return null;
 		return (Activity) eContainer();
 	}
@@ -372,7 +372,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public Activity basicGetInActivity() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -396,7 +396,7 @@ public class ActivityPartitionImpl
 	 */
 	public void setInActivity(Activity newInActivity) {
 		if (newInActivity != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
 			if (EcoreUtil.isAncestor(this, newInActivity))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -611,7 +611,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityPartition getSuperPartition() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
 			return null;
 		return (ActivityPartition) eContainer();
 	}
@@ -622,7 +622,7 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	public ActivityPartition basicGetSuperPartition() {
-		if (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
+		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION)
 			return null;
 		return (ActivityPartition) eInternalContainer();
 	}
@@ -646,7 +646,7 @@ public class ActivityPartitionImpl
 	 */
 	public void setSuperPartition(ActivityPartition newSuperPartition) {
 		if (newSuperPartition != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
+			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION && newSuperPartition != null)) {
 			if (EcoreUtil.isAncestor(this, newSuperPartition))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -868,7 +868,7 @@ public class ActivityPartitionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
@@ -929,13 +929,9 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
 				return getContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
-				return isDimension()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDimension();
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
-				return isExternal()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isExternal();
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return getNodes();
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
@@ -991,10 +987,10 @@ public class ActivityPartitionImpl
 				setInActivity((Activity) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
-				setIsDimension(((Boolean) newValue).booleanValue());
+				setIsDimension((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
-				setIsExternal(((Boolean) newValue).booleanValue());
+				setIsExternal((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				getNodes().clear();

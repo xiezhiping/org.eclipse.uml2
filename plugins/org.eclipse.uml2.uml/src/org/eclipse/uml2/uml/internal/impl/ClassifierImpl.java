@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ClassifierImpl.java,v 1.44 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ClassifierImpl.java,v 1.45 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -606,7 +606,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateParameter getOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eContainer();
 	}
@@ -617,7 +617,7 @@ public abstract class ClassifierImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eInternalContainer();
 	}
@@ -650,7 +650,7 @@ public abstract class ClassifierImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -2233,7 +2233,7 @@ public abstract class ClassifierImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -2289,9 +2289,7 @@ public abstract class ClassifierImpl
 			case UMLPackage.CLASSIFIER__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.CLASSIFIER__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CLASSIFIER__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CLASSIFIER__REDEFINITION_CONTEXT :
@@ -2315,9 +2313,7 @@ public abstract class ClassifierImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.CLASSIFIER__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.CLASSIFIER__POWERTYPE_EXTENT :
@@ -2397,7 +2393,7 @@ public abstract class ClassifierImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -2417,7 +2413,7 @@ public abstract class ClassifierImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.CLASSIFIER__GENERALIZATION :
 				getGeneralizations().clear();

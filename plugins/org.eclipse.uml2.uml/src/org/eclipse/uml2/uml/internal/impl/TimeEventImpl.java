@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: TimeEventImpl.java,v 1.25 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: TimeEventImpl.java,v 1.26 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -361,9 +361,7 @@ public class TimeEventImpl
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				return isRelative()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isRelative();
 			case UMLPackage.TIME_EVENT__WHEN :
 				if (resolve)
 					return getWhen();
@@ -412,7 +410,7 @@ public class TimeEventImpl
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.TIME_EVENT__IS_RELATIVE :
-				setIsRelative(((Boolean) newValue).booleanValue());
+				setIsRelative((Boolean) newValue);
 				return;
 			case UMLPackage.TIME_EVENT__WHEN :
 				setWhen((TimeExpression) newValue);

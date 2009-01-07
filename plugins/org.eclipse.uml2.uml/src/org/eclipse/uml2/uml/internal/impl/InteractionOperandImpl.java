@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: InteractionOperandImpl.java,v 1.24 2007/04/25 17:47:00 khussey Exp $
+ * $Id: InteractionOperandImpl.java,v 1.25 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -271,7 +271,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public Interaction getEnclosingInteraction() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
 			return null;
 		return (Interaction) eContainer();
 	}
@@ -282,7 +282,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public Interaction basicGetEnclosingInteraction() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
 			return null;
 		return (Interaction) eInternalContainer();
 	}
@@ -306,7 +306,7 @@ public class InteractionOperandImpl
 	 */
 	public void setEnclosingInteraction(Interaction newEnclosingInteraction) {
 		if (newEnclosingInteraction != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION && newEnclosingInteraction != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingInteraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -332,7 +332,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionOperand getEnclosingOperand() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND)
 			return null;
 		return (InteractionOperand) eContainer();
 	}
@@ -343,7 +343,7 @@ public class InteractionOperandImpl
 	 * @generated
 	 */
 	public InteractionOperand basicGetEnclosingOperand() {
-		if (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND)
+		if (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND)
 			return null;
 		return (InteractionOperand) eInternalContainer();
 	}
@@ -367,7 +367,7 @@ public class InteractionOperandImpl
 	 */
 	public void setEnclosingOperand(InteractionOperand newEnclosingOperand) {
 		if (newEnclosingOperand != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
+			|| (eContainerFeatureID() != UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND && newEnclosingOperand != null)) {
 			if (EcoreUtil.isAncestor(this, newEnclosingOperand))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -691,7 +691,7 @@ public class InteractionOperandImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INTERACTION__FRAGMENT, Interaction.class, msgs);

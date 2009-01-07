@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: GeneralizationImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: GeneralizationImpl.java,v 1.21 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -294,7 +294,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Classifier getSpecific() {
-		if (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC)
+		if (eContainerFeatureID() != UMLPackage.GENERALIZATION__SPECIFIC)
 			return null;
 		return (Classifier) eContainer();
 	}
@@ -305,7 +305,7 @@ public class GeneralizationImpl
 	 * @generated
 	 */
 	public Classifier basicGetSpecific() {
-		if (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC)
+		if (eContainerFeatureID() != UMLPackage.GENERALIZATION__SPECIFIC)
 			return null;
 		return (Classifier) eInternalContainer();
 	}
@@ -329,7 +329,7 @@ public class GeneralizationImpl
 	 */
 	public void setSpecific(Classifier newSpecific) {
 		if (newSpecific != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
+			|| (eContainerFeatureID() != UMLPackage.GENERALIZATION__SPECIFIC && newSpecific != null)) {
 			if (EcoreUtil.isAncestor(this, newSpecific))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -415,7 +415,7 @@ public class GeneralizationImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.GENERALIZATION__SPECIFIC :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASSIFIER__GENERALIZATION, Classifier.class,
@@ -449,9 +449,7 @@ public class GeneralizationImpl
 			case UMLPackage.GENERALIZATION__TARGET :
 				return getTargets();
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
-				return isSubstitutable()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSubstitutable();
 			case UMLPackage.GENERALIZATION__GENERAL :
 				if (resolve)
 					return getGeneral();
@@ -486,7 +484,7 @@ public class GeneralizationImpl
 					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__IS_SUBSTITUTABLE :
-				setIsSubstitutable(((Boolean) newValue).booleanValue());
+				setIsSubstitutable((Boolean) newValue);
 				return;
 			case UMLPackage.GENERALIZATION__GENERAL :
 				setGeneral((Classifier) newValue);

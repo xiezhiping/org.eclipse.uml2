@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SlotImpl.java,v 1.22 2007/04/25 17:47:01 khussey Exp $
+ * $Id: SlotImpl.java,v 1.23 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -134,7 +134,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public InstanceSpecification getOwningInstance() {
-		if (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE)
+		if (eContainerFeatureID() != UMLPackage.SLOT__OWNING_INSTANCE)
 			return null;
 		return (InstanceSpecification) eContainer();
 	}
@@ -145,7 +145,7 @@ public class SlotImpl
 	 * @generated
 	 */
 	public InstanceSpecification basicGetOwningInstance() {
-		if (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE)
+		if (eContainerFeatureID() != UMLPackage.SLOT__OWNING_INSTANCE)
 			return null;
 		return (InstanceSpecification) eInternalContainer();
 	}
@@ -169,7 +169,7 @@ public class SlotImpl
 	 */
 	public void setOwningInstance(InstanceSpecification newOwningInstance) {
 		if (newOwningInstance != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
+			|| (eContainerFeatureID() != UMLPackage.SLOT__OWNING_INSTANCE && newOwningInstance != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningInstance))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -345,7 +345,7 @@ public class SlotImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.SLOT__OWNING_INSTANCE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.INSTANCE_SPECIFICATION__SLOT,

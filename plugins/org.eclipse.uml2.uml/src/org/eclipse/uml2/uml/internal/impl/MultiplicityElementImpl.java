@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: MultiplicityElementImpl.java,v 1.28 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: MultiplicityElementImpl.java,v 1.29 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -642,17 +642,13 @@ public abstract class MultiplicityElementImpl
 			case UMLPackage.MULTIPLICITY_ELEMENT__OWNED_COMMENT :
 				return getOwnedComments();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -685,16 +681,16 @@ public abstract class MultiplicityElementImpl
 					(Collection<? extends Comment>) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);

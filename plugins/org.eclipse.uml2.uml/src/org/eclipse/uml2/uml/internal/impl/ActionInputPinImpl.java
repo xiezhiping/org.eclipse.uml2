@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ActionInputPinImpl.java,v 1.30 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ActionInputPinImpl.java,v 1.31 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -347,9 +347,7 @@ public class ActionInputPinImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.ACTION_INPUT_PIN__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ACTION_INPUT_PIN__REDEFINITION_CONTEXT :
@@ -381,9 +379,7 @@ public class ActionInputPinImpl
 			case UMLPackage.ACTION_INPUT_PIN__ORDERING :
 				return getOrdering();
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL_TYPE :
-				return isControlType()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControlType();
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :
 				if (resolve)
 					return getUpperBound();
@@ -395,17 +391,13 @@ public class ActionInputPinImpl
 					return getSelection();
 				return basicGetSelection();
 			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.ACTION_INPUT_PIN__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -415,9 +407,7 @@ public class ActionInputPinImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
-				return isControl()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControl();
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :
 				if (resolve)
 					return getFromAction();
@@ -460,7 +450,7 @@ public class ActionInputPinImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -501,7 +491,7 @@ public class ActionInputPinImpl
 				setOrdering((ObjectNodeOrderingKind) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL_TYPE :
-				setIsControlType(((Boolean) newValue).booleanValue());
+				setIsControlType((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_BOUND :
 				setUpperBound((ValueSpecification) newValue);
@@ -514,16 +504,16 @@ public class ActionInputPinImpl
 				setSelection((Behavior) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -532,7 +522,7 @@ public class ActionInputPinImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__IS_CONTROL :
-				setIsControl(((Boolean) newValue).booleanValue());
+				setIsControl((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION_INPUT_PIN__FROM_ACTION :
 				setFromAction((Action) newValue);

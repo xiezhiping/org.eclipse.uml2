@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StereotypeImpl.java,v 1.23 2007/02/26 16:17:58 khussey Exp $
+ * $Id: StereotypeImpl.java,v 1.24 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -397,9 +397,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.STEREOTYPE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.STEREOTYPE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STEREOTYPE__REDEFINITION_CONTEXT :
@@ -423,9 +421,7 @@ public class StereotypeImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.STEREOTYPE__POWERTYPE_EXTENT :
@@ -479,9 +475,7 @@ public class StereotypeImpl
 			case UMLPackage.STEREOTYPE__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.STEREOTYPE__EXTENSION :
@@ -541,7 +535,7 @@ public class StereotypeImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -561,7 +555,7 @@ public class StereotypeImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__GENERALIZATION :
 				getGeneralizations().clear();
@@ -654,7 +648,7 @@ public class StereotypeImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.STEREOTYPE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();

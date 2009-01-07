@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ContinuationImpl.java,v 1.16 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ContinuationImpl.java,v 1.17 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,9 +199,7 @@ public class ContinuationImpl
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
 			case UMLPackage.CONTINUATION__SETTING :
-				return isSetting()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSetting();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -255,7 +253,7 @@ public class ContinuationImpl
 				setEnclosingOperand((InteractionOperand) newValue);
 				return;
 			case UMLPackage.CONTINUATION__SETTING :
-				setSetting(((Boolean) newValue).booleanValue());
+				setSetting((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

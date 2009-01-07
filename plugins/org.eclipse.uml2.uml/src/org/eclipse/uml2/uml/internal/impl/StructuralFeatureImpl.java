@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: StructuralFeatureImpl.java,v 1.29 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: StructuralFeatureImpl.java,v 1.30 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -767,17 +767,13 @@ public abstract class StructuralFeatureImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
-				return isStatic()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isStatic();
 			case UMLPackage.STRUCTURAL_FEATURE__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
@@ -785,17 +781,13 @@ public abstract class StructuralFeatureImpl
 					return getType();
 				return basicGetType();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -805,9 +797,7 @@ public abstract class StructuralFeatureImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
-				return isReadOnly()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReadOnly();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -846,25 +836,25 @@ public abstract class StructuralFeatureImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
-				setIsStatic(((Boolean) newValue).booleanValue());
+				setIsStatic((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
 				setType((Type) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -873,7 +863,7 @@ public abstract class StructuralFeatureImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
-				setIsReadOnly(((Boolean) newValue).booleanValue());
+				setIsReadOnly((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

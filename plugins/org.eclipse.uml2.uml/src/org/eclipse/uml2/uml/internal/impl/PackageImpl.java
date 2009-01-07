@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PackageImpl.java,v 1.38 2008/04/21 16:32:42 khussey Exp $
+ * $Id: PackageImpl.java,v 1.39 2009/01/07 15:55:30 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -280,7 +280,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateParameter getOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eContainer();
 	}
@@ -291,7 +291,7 @@ public class PackageImpl
 	 * @generated
 	 */
 	public TemplateParameter basicGetOwningTemplateParameter() {
-		if (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
+		if (eContainerFeatureID() != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER)
 			return null;
 		return (TemplateParameter) eInternalContainer();
 	}
@@ -324,7 +324,7 @@ public class PackageImpl
 	public void setOwningTemplateParameter(
 			TemplateParameter newOwningTemplateParameter) {
 		if (newOwningTemplateParameter != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
+			|| (eContainerFeatureID() != UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER && newOwningTemplateParameter != null)) {
 			if (EcoreUtil.isAncestor(this, newOwningTemplateParameter))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -1338,7 +1338,7 @@ public class PackageImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.PACKAGE__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

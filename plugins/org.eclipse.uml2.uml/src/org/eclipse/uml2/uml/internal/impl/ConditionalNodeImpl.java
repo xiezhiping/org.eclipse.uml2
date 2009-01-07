@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ConditionalNodeImpl.java,v 1.26 2008/04/21 16:32:41 khussey Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -469,9 +469,7 @@ public class ConditionalNodeImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.CONDITIONAL_NODE__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.CONDITIONAL_NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.CONDITIONAL_NODE__REDEFINITION_CONTEXT :
@@ -541,19 +539,13 @@ public class ConditionalNodeImpl
 			case UMLPackage.CONDITIONAL_NODE__EDGE :
 				return getEdges();
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				return isMustIsolate()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isMustIsolate();
 			case UMLPackage.CONDITIONAL_NODE__NODE :
 				return getNodes();
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				return isDeterminate()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDeterminate();
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				return isAssured()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAssured();
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				return getClauses();
 			case UMLPackage.CONDITIONAL_NODE__RESULT :
@@ -596,7 +588,7 @@ public class ConditionalNodeImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -674,7 +666,7 @@ public class ConditionalNodeImpl
 					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__MUST_ISOLATE :
-				setMustIsolate(((Boolean) newValue).booleanValue());
+				setMustIsolate((Boolean) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__NODE :
 				getNodes().clear();
@@ -682,10 +674,10 @@ public class ConditionalNodeImpl
 					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_DETERMINATE :
-				setIsDeterminate(((Boolean) newValue).booleanValue());
+				setIsDeterminate((Boolean) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__IS_ASSURED :
-				setIsAssured(((Boolean) newValue).booleanValue());
+				setIsAssured((Boolean) newValue);
 				return;
 			case UMLPackage.CONDITIONAL_NODE__CLAUSE :
 				getClauses().clear();

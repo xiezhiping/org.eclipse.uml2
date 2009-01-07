@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: AssociationClassImpl.java,v 1.32 2008/04/21 16:32:41 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.33 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -840,9 +840,7 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ASSOCIATION_CLASS__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ASSOCIATION_CLASS__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ASSOCIATION_CLASS__REDEFINITION_CONTEXT :
@@ -866,9 +864,7 @@ public class AssociationClassImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.ASSOCIATION_CLASS__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.ASSOCIATION_CLASS__POWERTYPE_EXTENT :
@@ -922,9 +918,7 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.ASSOCIATION_CLASS__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.ASSOCIATION_CLASS__EXTENSION :
@@ -936,9 +930,7 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS__MEMBER_END :
 				return getMemberEnds();
 			case UMLPackage.ASSOCIATION_CLASS__IS_DERIVED :
-				return isDerived()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isDerived();
 			case UMLPackage.ASSOCIATION_CLASS__END_TYPE :
 				return getEndTypes();
 			case UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END :
@@ -996,7 +988,7 @@ public class AssociationClassImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1016,7 +1008,7 @@ public class AssociationClassImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1109,7 +1101,7 @@ public class AssociationClassImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1127,7 +1119,7 @@ public class AssociationClassImpl
 					(Collection<? extends Property>) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__IS_DERIVED :
-				setIsDerived(((Boolean) newValue).booleanValue());
+				setIsDerived((Boolean) newValue);
 				return;
 			case UMLPackage.ASSOCIATION_CLASS__NAVIGABLE_OWNED_END :
 				getNavigableOwnedEnds().clear();

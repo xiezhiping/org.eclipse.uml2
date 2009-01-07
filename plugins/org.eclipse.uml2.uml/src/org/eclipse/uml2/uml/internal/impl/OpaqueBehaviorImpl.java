@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: OpaqueBehaviorImpl.java,v 1.21 2007/02/26 16:17:56 khussey Exp $
+ * $Id: OpaqueBehaviorImpl.java,v 1.22 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -221,9 +221,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINITION_CONTEXT :
@@ -247,9 +245,7 @@ public class OpaqueBehaviorImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.OPAQUE_BEHAVIOR__POWERTYPE_EXTENT :
@@ -303,17 +299,13 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.OPAQUE_BEHAVIOR__EXTENSION :
 				return getExtensions();
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				return isReentrant()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReentrant();
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
@@ -389,7 +381,7 @@ public class OpaqueBehaviorImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -409,7 +401,7 @@ public class OpaqueBehaviorImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__GENERALIZATION :
 				getGeneralizations().clear();
@@ -502,7 +494,7 @@ public class OpaqueBehaviorImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -510,7 +502,7 @@ public class OpaqueBehaviorImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(((Boolean) newValue).booleanValue());
+				setIsReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();

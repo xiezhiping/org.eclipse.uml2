@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.22 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.23 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -341,9 +341,7 @@ public class ClassifierTemplateParameterImpl
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
-				return isAllowSubstitutable()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAllowSubstitutable();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
 				return getConstrainingClassifiers();
 		}
@@ -385,7 +383,7 @@ public class ClassifierTemplateParameterImpl
 				setOwnedDefault((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
-				setAllowSubstitutable(((Boolean) newValue).booleanValue());
+				setAllowSubstitutable((Boolean) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
 				getConstrainingClassifiers().clear();

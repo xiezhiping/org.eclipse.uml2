@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: VariableImpl.java,v 1.35 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: VariableImpl.java,v 1.36 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -515,7 +515,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public Activity getActivityScope() {
-		if (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
+		if (eContainerFeatureID() != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
 			return null;
 		return (Activity) eContainer();
 	}
@@ -526,7 +526,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public Activity basicGetActivityScope() {
-		if (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
+		if (eContainerFeatureID() != UMLPackage.VARIABLE__ACTIVITY_SCOPE)
 			return null;
 		return (Activity) eInternalContainer();
 	}
@@ -550,7 +550,7 @@ public class VariableImpl
 	 */
 	public void setActivityScope(Activity newActivityScope) {
 		if (newActivityScope != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.VARIABLE__ACTIVITY_SCOPE && newActivityScope != null)) {
+			|| (eContainerFeatureID() != UMLPackage.VARIABLE__ACTIVITY_SCOPE && newActivityScope != null)) {
 			if (EcoreUtil.isAncestor(this, newActivityScope))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -575,7 +575,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public StructuredActivityNode getScope() {
-		if (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE)
+		if (eContainerFeatureID() != UMLPackage.VARIABLE__SCOPE)
 			return null;
 		return (StructuredActivityNode) eContainer();
 	}
@@ -586,7 +586,7 @@ public class VariableImpl
 	 * @generated
 	 */
 	public StructuredActivityNode basicGetScope() {
-		if (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE)
+		if (eContainerFeatureID() != UMLPackage.VARIABLE__SCOPE)
 			return null;
 		return (StructuredActivityNode) eInternalContainer();
 	}
@@ -610,7 +610,7 @@ public class VariableImpl
 	 */
 	public void setScope(StructuredActivityNode newScope) {
 		if (newScope != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.VARIABLE__SCOPE && newScope != null)) {
+			|| (eContainerFeatureID() != UMLPackage.VARIABLE__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, newScope))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -840,7 +840,7 @@ public class VariableImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
@@ -905,17 +905,13 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__END :
 				return getEnds();
 			case UMLPackage.VARIABLE__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.VARIABLE__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.VARIABLE__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.VARIABLE__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -983,16 +979,16 @@ public class VariableImpl
 				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.VARIABLE__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.VARIABLE__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.VARIABLE__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);

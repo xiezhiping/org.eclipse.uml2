@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: SubstitutionImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
+ * $Id: SubstitutionImpl.java,v 1.19 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -199,7 +199,7 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public Classifier getSubstitutingClassifier() {
-		if (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
+		if (eContainerFeatureID() != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
 			return null;
 		return (Classifier) eContainer();
 	}
@@ -210,7 +210,7 @@ public class SubstitutionImpl
 	 * @generated
 	 */
 	public Classifier basicGetSubstitutingClassifier() {
-		if (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
+		if (eContainerFeatureID() != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER)
 			return null;
 		return (Classifier) eInternalContainer();
 	}
@@ -243,7 +243,7 @@ public class SubstitutionImpl
 	 */
 	public void setSubstitutingClassifier(Classifier newSubstitutingClassifier) {
 		if (newSubstitutingClassifier != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
+			|| (eContainerFeatureID() != UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER && newSubstitutingClassifier != null)) {
 			if (EcoreUtil.isAncestor(this, newSubstitutingClassifier))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -348,7 +348,7 @@ public class SubstitutionImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

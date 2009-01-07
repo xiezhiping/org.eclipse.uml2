@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ComponentRealizationImpl.java,v 1.20 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: ComponentRealizationImpl.java,v 1.21 2009/01/07 15:55:26 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -166,7 +166,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public Component getAbstraction() {
-		if (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
+		if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
 			return null;
 		return (Component) eContainer();
 	}
@@ -177,7 +177,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 */
 	public Component basicGetAbstraction() {
-		if (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
+		if (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION)
 			return null;
 		return (Component) eInternalContainer();
 	}
@@ -210,7 +210,7 @@ public class ComponentRealizationImpl
 	 */
 	public void setAbstraction(Component newAbstraction) {
 		if (newAbstraction != eInternalContainer()
-			|| (eContainerFeatureID != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
+			|| (eContainerFeatureID() != UMLPackage.COMPONENT_REALIZATION__ABSTRACTION && newAbstraction != null)) {
 			if (EcoreUtil.isAncestor(this, newAbstraction))
 				throw new IllegalArgumentException(
 					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
@@ -365,7 +365,7 @@ public class ComponentRealizationImpl
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
-		switch (eContainerFeatureID) {
+		switch (eContainerFeatureID()) {
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: PinImpl.java,v 1.31 2008/10/02 20:56:21 jbruck Exp $
+ * $Id: PinImpl.java,v 1.32 2009/01/07 15:55:27 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -737,9 +737,7 @@ public class PinImpl
 					return getNameExpression();
 				return basicGetNameExpression();
 			case UMLPackage.PIN__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.PIN__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
@@ -771,9 +769,7 @@ public class PinImpl
 			case UMLPackage.PIN__ORDERING :
 				return getOrdering();
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
-				return isControlType()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControlType();
 			case UMLPackage.PIN__UPPER_BOUND :
 				if (resolve)
 					return getUpperBound();
@@ -785,17 +781,13 @@ public class PinImpl
 					return getSelection();
 				return basicGetSelection();
 			case UMLPackage.PIN__IS_ORDERED :
-				return isOrdered()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isOrdered();
 			case UMLPackage.PIN__IS_UNIQUE :
-				return isUnique()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isUnique();
 			case UMLPackage.PIN__UPPER :
-				return new Integer(getUpper());
+				return getUpper();
 			case UMLPackage.PIN__LOWER :
-				return new Integer(getLower());
+				return getLower();
 			case UMLPackage.PIN__UPPER_VALUE :
 				if (resolve)
 					return getUpperValue();
@@ -805,9 +797,7 @@ public class PinImpl
 					return getLowerValue();
 				return basicGetLowerValue();
 			case UMLPackage.PIN__IS_CONTROL :
-				return isControl()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isControl();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -846,7 +836,7 @@ public class PinImpl
 				setNameExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.PIN__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
@@ -887,7 +877,7 @@ public class PinImpl
 				setOrdering((ObjectNodeOrderingKind) newValue);
 				return;
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
-				setIsControlType(((Boolean) newValue).booleanValue());
+				setIsControlType((Boolean) newValue);
 				return;
 			case UMLPackage.PIN__UPPER_BOUND :
 				setUpperBound((ValueSpecification) newValue);
@@ -900,16 +890,16 @@ public class PinImpl
 				setSelection((Behavior) newValue);
 				return;
 			case UMLPackage.PIN__IS_ORDERED :
-				setIsOrdered(((Boolean) newValue).booleanValue());
+				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.PIN__IS_UNIQUE :
-				setIsUnique(((Boolean) newValue).booleanValue());
+				setIsUnique((Boolean) newValue);
 				return;
 			case UMLPackage.PIN__UPPER :
-				setUpper(((Integer) newValue).intValue());
+				setUpper((Integer) newValue);
 				return;
 			case UMLPackage.PIN__LOWER :
-				setLower(((Integer) newValue).intValue());
+				setLower((Integer) newValue);
 				return;
 			case UMLPackage.PIN__UPPER_VALUE :
 				setUpperValue((ValueSpecification) newValue);
@@ -918,7 +908,7 @@ public class PinImpl
 				setLowerValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PIN__IS_CONTROL :
-				setIsControl(((Boolean) newValue).booleanValue());
+				setIsControl((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);

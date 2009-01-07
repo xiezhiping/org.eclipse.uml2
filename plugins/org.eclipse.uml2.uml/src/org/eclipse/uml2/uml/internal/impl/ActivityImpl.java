@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: ActivityImpl.java,v 1.35 2008/04/21 16:32:42 khussey Exp $
+ * $Id: ActivityImpl.java,v 1.36 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -906,9 +906,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.ACTIVITY__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.ACTIVITY__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY__REDEFINITION_CONTEXT :
@@ -932,9 +930,7 @@ public class ActivityImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
@@ -988,17 +984,13 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				return getSuperClasses();
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				return isActive()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isActive();
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				return getOwnedReceptions();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return getExtensions();
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				return isReentrant()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReentrant();
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
 				return getRedefinedBehaviors();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
@@ -1024,17 +1016,13 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__NODE :
 				return getNodes();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				return isReadOnly()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isReadOnly();
 			case UMLPackage.ACTIVITY__EDGE :
 				return getEdges();
 			case UMLPackage.ACTIVITY__PARTITION :
 				return getPartitions();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				return isSingleExecution()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isSingleExecution();
 			case UMLPackage.ACTIVITY__GROUP :
 				return getGroups();
 		}
@@ -1090,7 +1078,7 @@ public class ActivityImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1110,7 +1098,7 @@ public class ActivityImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1203,7 +1191,7 @@ public class ActivityImpl
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				setIsActive(((Boolean) newValue).booleanValue());
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
@@ -1211,7 +1199,7 @@ public class ActivityImpl
 					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				setIsReentrant(((Boolean) newValue).booleanValue());
+				setIsReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
 				getRedefinedBehaviors().clear();
@@ -1252,7 +1240,7 @@ public class ActivityImpl
 					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				setIsReadOnly(((Boolean) newValue).booleanValue());
+				setIsReadOnly((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
@@ -1265,7 +1253,7 @@ public class ActivityImpl
 					(Collection<? extends ActivityPartition>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				setIsSingleExecution(((Boolean) newValue).booleanValue());
+				setIsSingleExecution((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__GROUP :
 				getGroups().clear();

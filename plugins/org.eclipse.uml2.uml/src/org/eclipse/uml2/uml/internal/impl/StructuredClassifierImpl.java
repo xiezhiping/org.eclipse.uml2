@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StructuredClassifierImpl.java,v 1.31 2007/04/25 17:47:04 khussey Exp $
+ * $Id: StructuredClassifierImpl.java,v 1.32 2009/01/07 15:55:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -647,9 +647,7 @@ public abstract class StructuredClassifierImpl
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNED_MEMBER :
 				return getOwnedMembers();
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_LEAF :
-				return isLeaf()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isLeaf();
 			case UMLPackage.STRUCTURED_CLASSIFIER__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STRUCTURED_CLASSIFIER__REDEFINITION_CONTEXT :
@@ -673,9 +671,7 @@ public abstract class StructuredClassifierImpl
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_ABSTRACT :
-				return isAbstract()
-					? Boolean.TRUE
-					: Boolean.FALSE;
+				return isAbstract();
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.STRUCTURED_CLASSIFIER__POWERTYPE_EXTENT :
@@ -763,7 +759,7 @@ public abstract class StructuredClassifierImpl
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_LEAF :
-				setIsLeaf(((Boolean) newValue).booleanValue());
+				setIsLeaf((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -783,7 +779,7 @@ public abstract class StructuredClassifierImpl
 				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__IS_ABSTRACT :
-				setIsAbstract(((Boolean) newValue).booleanValue());
+				setIsAbstract((Boolean) newValue);
 				return;
 			case UMLPackage.STRUCTURED_CLASSIFIER__GENERALIZATION :
 				getGeneralizations().clear();
