@@ -7001,7 +7001,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1659);
     }
     stringBuffer.append(TEXT_1660);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     stringBuffer.append(TEXT_1661);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_1662);
@@ -7537,7 +7537,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(genOperation.getParameterTypes(", "));
     stringBuffer.append(TEXT_1892);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression"));
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     stringBuffer.append(TEXT_1893);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.ecore.EClassifier"));
     stringBuffer.append(TEXT_1894);
@@ -7601,7 +7601,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_1916);
     } else {
     stringBuffer.append(TEXT_1917);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     if (genClass.getExtendedGenOperations().contains(genOperation) || (UML2GenModelUtil.isDuplicate(genOperation) && (!UML2GenModelUtil.isRedefinition(genOperation) || genClass.getExtendedGenOperations().contains(UML2GenModelUtil.getRedefinedGenOperations(genOperation).iterator().next())))) {
     stringBuffer.append(TEXT_1918);
     }
@@ -7805,7 +7805,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     if (!genOperation.getGenParameters().isEmpty()) {
     stringBuffer.append(TEXT_2003);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.EvaluationEnvironment"));
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     stringBuffer.append(TEXT_2004);
     }
     stringBuffer.append(TEXT_2005);
@@ -7819,7 +7819,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     }
     if (genOperation.isListType()) {
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     stringBuffer.append(TEXT_2009);
     }
     stringBuffer.append(TEXT_2010);
@@ -9038,7 +9038,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     }
     stringBuffer.append(TEXT_2530);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //isSetGenFeature.annotations.insert.javajetinc
+    if (isJDK50) { //isSetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2531);
     }
@@ -9143,7 +9143,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     for (GenFeature genFeature : UML2GenModelUtil.getImplementedRedefinedGenFeatures(genClass)) { GenFeature redefinitionGenFeature = UML2GenModelUtil.getRedefinitionGenFeatures(genClass, genFeature).iterator().next();
     if (genFeature.isGet()) {
     stringBuffer.append(TEXT_2566);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //getGenFeature.annotations.insert.javajetinc
+    if (isJDK50) { //getGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2567);
     }
@@ -9204,7 +9204,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     if (genFeature.isBasicGet()) {
     stringBuffer.append(TEXT_2590);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicGetGenFeature.annotations.insert.javajetinc
+    if (isJDK50) { //basicGetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2591);
     }
@@ -9230,7 +9230,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     if (genFeature.isBasicSet()) {
     stringBuffer.append(TEXT_2600);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //basicSetGenFeature.annotations.insert.javajetinc
+    if (isJDK50) { //basicSetGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2601);
     }
@@ -9290,7 +9290,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     if (genFeature.isSet()) {
     stringBuffer.append(TEXT_2627);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //setGenFeature.annotations.insert.javajetinc
+    if (isJDK50) { //setGenFeature.annotations.insert.javajetinc
     if (genClass.getExtendedGenFeatures().contains(genFeature) || (UML2GenModelUtil.isDuplicate(genFeature) && (!UML2GenModelUtil.isRedefinition(genFeature) || genClass.getExtendedGenFeatures().contains(UML2GenModelUtil.getRedefinedGenFeatures(genFeature).iterator().next())))) {
     stringBuffer.append(TEXT_2628);
     }
@@ -9909,7 +9909,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     stringBuffer.append(TEXT_2898);
     }
     stringBuffer.append(TEXT_2899);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    if (isJDK50) {
     stringBuffer.append(TEXT_2900);
     stringBuffer.append(genFeature.getUncapName());
     stringBuffer.append(TEXT_2901);
@@ -10393,7 +10393,7 @@ if (index != -1) { head = typeName.substring(0, index); tail = typeName.substrin
     }
     for (GenOperation genOperation : UML2GenModelUtil.getImplementedRedefinedGenOperations(genClass)) { GenOperation redefinitionGenOperation = UML2GenModelUtil.getRedefinitionGenOperations(genClass, genOperation).iterator().next();
     stringBuffer.append(TEXT_3108);
-    if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc
+    if (isJDK50) { //genOperation.annotations.insert.javajetinc
     if (genClass.getExtendedGenOperations().contains(genOperation) || (UML2GenModelUtil.isDuplicate(genOperation) && (!UML2GenModelUtil.isRedefinition(genOperation) || genClass.getExtendedGenOperations().contains(UML2GenModelUtil.getRedefinedGenOperations(genOperation).iterator().next())))) {
     stringBuffer.append(TEXT_3109);
     }
