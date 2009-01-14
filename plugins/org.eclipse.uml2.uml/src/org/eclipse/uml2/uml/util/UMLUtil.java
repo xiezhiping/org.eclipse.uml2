@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
+ *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.77 2008/10/02 20:57:04 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.78 2009/01/14 19:58:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1897,8 +1898,11 @@ public class UMLUtil
 		 *            appended.
 		 * @param context
 		 *            The cache of context-specific information.
+		 * 
+		 * @return A traceability map from resulting elements to merged elements.
 		 */
-		public void merge(org.eclipse.uml2.uml.Package package_,
+		public Map<EObject, List<EObject>> merge(
+				org.eclipse.uml2.uml.Package package_,
 				Map<String, String> options, DiagnosticChain diagnostics,
 				Map<Object, Object> context) {
 			receivingPackage = package_;
@@ -1913,6 +1917,8 @@ public class UMLUtil
 			if (options != null) {
 				processOptions(options, diagnostics, context);
 			}
+
+			return resultingToMergedEObjectMap;
 		}
 	}
 
@@ -3096,7 +3102,7 @@ public class UMLUtil
 					elementToEModelElementMap.put(property, eAttribute);
 
 					String default_ = property.getDefault();
-										
+
 					if (default_ != null) {
 
 						if (type instanceof PrimitiveType
@@ -3110,7 +3116,7 @@ public class UMLUtil
 
 						}
 						eAttribute.setDefaultValueLiteral(default_);
-					}	
+					}
 				}
 
 				EClass eClass = (EClass) doSwitch(namespace);
@@ -9329,8 +9335,10 @@ public class UMLUtil
 	 *            The receiving package.
 	 * @param options
 	 *            The options to use.
+	 * @return A traceability map from resulting elements to merged elements.
 	 */
-	public static void merge(org.eclipse.uml2.uml.Package package_,
+	public static Map<EObject, List<EObject>> merge(
+			org.eclipse.uml2.uml.Package package_,
 			Map<String, String> options) {
 
 		if (options == null) {
@@ -9387,7 +9395,7 @@ public class UMLUtil
 			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__IGNORE);
 		}
 
-		merge(package_, options, null, null);
+		return merge(package_, options, null, null);
 	}
 
 	/**
@@ -9404,8 +9412,10 @@ public class UMLUtil
 	 *            The chain of diagnostics to which problems are to be appended.
 	 * @param context
 	 *            The cache of context-specific information.
+	 * @return A traceability map from resulting elements to merged elements.
 	 */
-	public static void merge(org.eclipse.uml2.uml.Package package_,
+	public static Map<EObject, List<EObject>> merge(
+			org.eclipse.uml2.uml.Package package_,
 			Map<String, String> options, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 
@@ -9463,7 +9473,7 @@ public class UMLUtil
 			options.put(PackageMerger.OPTION__CAPABILITIES, OPTION__REPORT);
 		}
 
-		new PackageMerger().merge(package_, options, diagnostics, context);
+		return new PackageMerger().merge(package_, options, diagnostics, context);
 	}
 
 	/**
