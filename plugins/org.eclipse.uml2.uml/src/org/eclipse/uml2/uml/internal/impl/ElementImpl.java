@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,20 +8,18 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ElementImpl.java,v 1.41 2007/06/13 18:11:05 khussey Exp $
+ * $Id: ElementImpl.java,v 1.42 2009/01/16 18:37:32 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
-//import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -816,9 +814,8 @@ public abstract class ElementImpl
 
 	@Override
 	public EList<Adapter> eAdapters() {
-		EList<Adapter> eAdapters = super.eAdapters();
 
-		if ((eFlags & ADAPTING) == 0 && eAdapters.isEmpty()) {
+		if ((eFlags & ADAPTING) == 0 && !eBasicHasAdapters()) {
 			eFlags |= ADAPTING;
 
 			CacheAdapter cacheAdapter = getCacheAdapter();
@@ -830,7 +827,7 @@ public abstract class ElementImpl
 			eFlags &= ~ADAPTING;
 		}
 
-		return eAdapters;
+		return super.eAdapters();
 	}
 
 	@Override
@@ -858,19 +855,17 @@ public abstract class ElementImpl
 	public void eNotify(Notification notification) {
 
 		if (eDeliver()) {
-			BasicEList<Adapter> eBasicAdapters = eBasicAdapters();
+			Adapter[] eBasicAdapters = eBasicAdapterArray();
 
-			if (eBasicAdapters == null || eBasicAdapters.isEmpty()) {
+			if (eBasicAdapters == null) {
 				CacheAdapter cacheAdapter = getCacheAdapter();
 
 				if (cacheAdapter != null) {
 					cacheAdapter.notifyChanged(notification);
 				}
 			} else {
-				Adapter[] adapters = (Adapter[]) eBasicAdapters.data();
-
-				for (int i = 0, size = eBasicAdapters.size(); i < size; i++) {
-					adapters[i].notifyChanged(notification);
+				for (int i = 0, size = eBasicAdapters.length; i < size; i++) {
+					eBasicAdapters[i].notifyChanged(notification);
 				}
 			}
 		}
