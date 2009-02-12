@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: XMI212UMLResourceFactoryImpl.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
+ * $Id: XMI212UMLResourceFactoryImpl.java,v 1.3 2009/02/12 02:30:46 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -78,9 +78,13 @@ public class XMI212UMLResourceFactoryImpl
 
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
-		ePackageRegistry.put(UML212UMLResource.UML_METAMODEL_NS_URI,
+
+		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_NS_URI,
 			UMLPackage.eINSTANCE);
 
+		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI,
+			UMLPackage.eINSTANCE);
+		
 		ePackageRegistry
 			.put(
 				"platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore", UMLPackage.eINSTANCE); //$NON-NLS-1$
