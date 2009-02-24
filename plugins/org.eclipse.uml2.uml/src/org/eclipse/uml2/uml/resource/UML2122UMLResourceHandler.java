@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UML2122UMLResourceHandler.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
+ * $Id: UML2122UMLResourceHandler.java,v 1.3 2009/02/24 23:19:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
@@ -52,7 +53,9 @@ import org.eclipse.uml2.uml.util.UMLUtil;
 public class UML2122UMLResourceHandler
 		extends BasicResourceHandler {
 
-	protected static final boolean DEBUG = true;
+	protected static final boolean DEBUG = false;
+	
+	protected boolean resolveProxies = true;
 
 	protected static final String STEREOTYPE__TIME_EVENT = "TimeEvent"; //$NON-NLS-1$
 
@@ -317,8 +320,14 @@ public class UML2122UMLResourceHandler
 					}
 				}
 
-				for (EObject eContent : eObject.eContents()) {
-					doSwitch(eContent);
+				Iterator<?> contents = resolveProxies
+					? eObject.eContents().iterator()
+					: ((InternalEList<?>) eObject.eContents()).basicIterator();
+
+				if (contents != null) {
+					while (contents.hasNext()) {
+						doSwitch((EObject) contents.next());
+					}
 				}
 
 				return eObject;

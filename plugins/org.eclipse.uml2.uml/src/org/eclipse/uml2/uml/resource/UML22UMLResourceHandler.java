@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2006, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.36 2008/10/03 20:50:37 jbruck Exp $
+ * $Id: UML22UMLResourceHandler.java,v 1.37 2009/02/24 23:19:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -128,6 +128,8 @@ public class UML22UMLResourceHandler
 
 	protected static final boolean DEBUG = false;
 
+	protected boolean resolveProxies = true;
+	
 	protected static final String STEREOTYPE__ACTION = "Action"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__ACTIVITY = "Activity"; //$NON-NLS-1$
@@ -1927,8 +1929,14 @@ public class UML22UMLResourceHandler
 					}
 				}
 
-				for (EObject eContent : eObject.eContents()) {
-					doSwitch(eContent);
+				Iterator<?> contents = resolveProxies
+					? eObject.eContents().iterator()
+					: ((InternalEList<?>) eObject.eContents()).basicIterator();
+
+				if (contents != null) {
+					while (contents.hasNext()) {
+						doSwitch((EObject) contents.next());
+					}
 				}
 
 				return eObject;
