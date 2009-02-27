@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: UMLSwitch.java,v 1.18 2008/10/02 20:57:04 jbruck Exp $
+ * $Id: UMLSwitch.java,v 1.19 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -576,15 +576,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(association);
 				if (result == null)
-					result = caseElement(association);
+					result = casePackageableElement(association);
 				if (result == null)
 					result = caseNamedElement(association);
 				if (result == null)
-					result = casePackageableElement(association);
+					result = caseParameterableElement(association);
+				if (result == null)
+					result = caseElement(association);
 				if (result == null)
 					result = caseEModelElement(association);
-				if (result == null)
-					result = caseParameterableElement(association);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -601,13 +601,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(classifier);
 				if (result == null)
-					result = caseNamedElement(classifier);
-				if (result == null)
 					result = casePackageableElement(classifier);
 				if (result == null)
-					result = caseElement(classifier);
+					result = caseNamedElement(classifier);
 				if (result == null)
 					result = caseParameterableElement(classifier);
+				if (result == null)
+					result = caseElement(classifier);
 				if (result == null)
 					result = caseEModelElement(classifier);
 				if (result == null)
@@ -852,9 +852,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseParameterableElement(parameter);
 				if (result == null)
-					result = caseElement(parameter);
-				if (result == null)
 					result = caseNamedElement(parameter);
+				if (result == null)
+					result = caseElement(parameter);
 				if (result == null)
 					result = caseEModelElement(parameter);
 				if (result == null)
@@ -920,9 +920,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseParameterableElement(property);
 				if (result == null)
-					result = caseNamedElement(property);
-				if (result == null)
 					result = caseRedefinableElement(property);
+				if (result == null)
+					result = caseNamedElement(property);
 				if (result == null)
 					result = caseElement(property);
 				if (result == null)
@@ -998,13 +998,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(deploymentSpecification);
 				if (result == null)
-					result = caseNamedElement(deploymentSpecification);
-				if (result == null)
 					result = casePackageableElement(deploymentSpecification);
 				if (result == null)
-					result = caseElement(deploymentSpecification);
+					result = caseNamedElement(deploymentSpecification);
 				if (result == null)
 					result = caseParameterableElement(deploymentSpecification);
+				if (result == null)
+					result = caseElement(deploymentSpecification);
 				if (result == null)
 					result = caseEModelElement(deploymentSpecification);
 				if (result == null)
@@ -1027,13 +1027,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(artifact);
 				if (result == null)
-					result = caseNamedElement(artifact);
-				if (result == null)
 					result = casePackageableElement(artifact);
 				if (result == null)
-					result = caseElement(artifact);
+					result = caseNamedElement(artifact);
 				if (result == null)
 					result = caseParameterableElement(artifact);
+				if (result == null)
+					result = caseElement(artifact);
 				if (result == null)
 					result = caseEModelElement(artifact);
 				if (result == null)
@@ -1079,11 +1079,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseFeature(operation);
 				if (result == null)
-					result = caseElement(operation);
+					result = caseRedefinableElement(operation);
 				if (result == null)
 					result = caseNamedElement(operation);
 				if (result == null)
-					result = caseRedefinableElement(operation);
+					result = caseElement(operation);
 				if (result == null)
 					result = caseEModelElement(operation);
 				if (result == null)
@@ -1098,9 +1098,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseFeature(behavioralFeature);
 				if (result == null)
-					result = caseNamedElement(behavioralFeature);
-				if (result == null)
 					result = caseRedefinableElement(behavioralFeature);
+				if (result == null)
+					result = caseNamedElement(behavioralFeature);
 				if (result == null)
 					result = caseElement(behavioralFeature);
 				if (result == null)
@@ -1131,13 +1131,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(behavior);
 				if (result == null)
-					result = caseNamedElement(behavior);
-				if (result == null)
 					result = casePackageableElement(behavior);
 				if (result == null)
-					result = caseElement(behavior);
+					result = caseNamedElement(behavior);
 				if (result == null)
 					result = caseParameterableElement(behavior);
+				if (result == null)
+					result = caseElement(behavior);
 				if (result == null)
 					result = caseEModelElement(behavior);
 				if (result == null)
@@ -1164,13 +1164,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(class_);
 				if (result == null)
-					result = caseNamedElement(class_);
-				if (result == null)
 					result = casePackageableElement(class_);
 				if (result == null)
-					result = caseElement(class_);
+					result = caseNamedElement(class_);
 				if (result == null)
 					result = caseParameterableElement(class_);
+				if (result == null)
+					result = caseElement(class_);
 				if (result == null)
 					result = caseEModelElement(class_);
 				if (result == null)
@@ -1191,13 +1191,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(behavioredClassifier);
 				if (result == null)
-					result = caseNamedElement(behavioredClassifier);
-				if (result == null)
 					result = casePackageableElement(behavioredClassifier);
 				if (result == null)
-					result = caseElement(behavioredClassifier);
+					result = caseNamedElement(behavioredClassifier);
 				if (result == null)
 					result = caseParameterableElement(behavioredClassifier);
+				if (result == null)
+					result = caseElement(behavioredClassifier);
 				if (result == null)
 					result = caseEModelElement(behavioredClassifier);
 				if (result == null)
@@ -1245,13 +1245,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(interface_);
 				if (result == null)
-					result = caseNamedElement(interface_);
-				if (result == null)
 					result = casePackageableElement(interface_);
 				if (result == null)
-					result = caseElement(interface_);
+					result = caseNamedElement(interface_);
 				if (result == null)
 					result = caseParameterableElement(interface_);
+				if (result == null)
+					result = caseElement(interface_);
 				if (result == null)
 					result = caseEModelElement(interface_);
 				if (result == null)
@@ -1268,9 +1268,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseFeature(reception);
 				if (result == null)
-					result = caseNamedElement(reception);
-				if (result == null)
 					result = caseRedefinableElement(reception);
+				if (result == null)
+					result = caseNamedElement(reception);
 				if (result == null)
 					result = caseElement(reception);
 				if (result == null)
@@ -1293,13 +1293,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(signal);
 				if (result == null)
-					result = caseNamedElement(signal);
-				if (result == null)
 					result = casePackageableElement(signal);
 				if (result == null)
-					result = caseElement(signal);
+					result = caseNamedElement(signal);
 				if (result == null)
 					result = caseParameterableElement(signal);
+				if (result == null)
+					result = caseElement(signal);
 				if (result == null)
 					result = caseEModelElement(signal);
 				if (result == null)
@@ -1332,13 +1332,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(protocolStateMachine);
 				if (result == null)
-					result = caseNamedElement(protocolStateMachine);
-				if (result == null)
 					result = casePackageableElement(protocolStateMachine);
 				if (result == null)
-					result = caseElement(protocolStateMachine);
+					result = caseNamedElement(protocolStateMachine);
 				if (result == null)
 					result = caseParameterableElement(protocolStateMachine);
+				if (result == null)
+					result = caseElement(protocolStateMachine);
 				if (result == null)
 					result = caseEModelElement(protocolStateMachine);
 				if (result == null)
@@ -1369,13 +1369,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(stateMachine);
 				if (result == null)
-					result = caseNamedElement(stateMachine);
-				if (result == null)
 					result = casePackageableElement(stateMachine);
 				if (result == null)
-					result = caseElement(stateMachine);
+					result = caseNamedElement(stateMachine);
 				if (result == null)
 					result = caseParameterableElement(stateMachine);
+				if (result == null)
+					result = caseElement(stateMachine);
 				if (result == null)
 					result = caseEModelElement(stateMachine);
 				if (result == null)
@@ -1479,9 +1479,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseParameterableElement(port);
 				if (result == null)
-					result = caseNamedElement(port);
-				if (result == null)
 					result = caseRedefinableElement(port);
+				if (result == null)
+					result = caseNamedElement(port);
 				if (result == null)
 					result = caseElement(port);
 				if (result == null)
@@ -1570,13 +1570,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseNamedElement(encapsulatedClassifier);
-				if (result == null)
 					result = casePackageableElement(encapsulatedClassifier);
 				if (result == null)
-					result = caseElement(encapsulatedClassifier);
+					result = caseNamedElement(encapsulatedClassifier);
 				if (result == null)
 					result = caseParameterableElement(encapsulatedClassifier);
+				if (result == null)
+					result = caseElement(encapsulatedClassifier);
 				if (result == null)
 					result = caseEModelElement(encapsulatedClassifier);
 				if (result == null)
@@ -1597,13 +1597,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(structuredClassifier);
 				if (result == null)
-					result = caseNamedElement(structuredClassifier);
-				if (result == null)
 					result = casePackageableElement(structuredClassifier);
 				if (result == null)
-					result = caseElement(structuredClassifier);
+					result = caseNamedElement(structuredClassifier);
 				if (result == null)
 					result = caseParameterableElement(structuredClassifier);
+				if (result == null)
+					result = caseElement(structuredClassifier);
 				if (result == null)
 					result = caseEModelElement(structuredClassifier);
 				if (result == null)
@@ -1645,15 +1645,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(extension);
 				if (result == null)
-					result = caseElement(extension);
+					result = casePackageableElement(extension);
 				if (result == null)
 					result = caseNamedElement(extension);
 				if (result == null)
-					result = casePackageableElement(extension);
+					result = caseParameterableElement(extension);
+				if (result == null)
+					result = caseElement(extension);
 				if (result == null)
 					result = caseEModelElement(extension);
-				if (result == null)
-					result = caseParameterableElement(extension);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -1678,9 +1678,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseParameterableElement(extensionEnd);
 				if (result == null)
-					result = caseNamedElement(extensionEnd);
-				if (result == null)
 					result = caseRedefinableElement(extensionEnd);
+				if (result == null)
+					result = caseNamedElement(extensionEnd);
 				if (result == null)
 					result = caseElement(extensionEnd);
 				if (result == null)
@@ -1711,13 +1711,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(stereotype);
 				if (result == null)
-					result = caseNamedElement(stereotype);
-				if (result == null)
 					result = casePackageableElement(stereotype);
 				if (result == null)
-					result = caseElement(stereotype);
+					result = caseNamedElement(stereotype);
 				if (result == null)
 					result = caseParameterableElement(stereotype);
+				if (result == null)
+					result = caseElement(stereotype);
 				if (result == null)
 					result = caseEModelElement(stereotype);
 				if (result == null)
@@ -1808,13 +1808,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(dataType);
 				if (result == null)
-					result = caseNamedElement(dataType);
-				if (result == null)
 					result = casePackageableElement(dataType);
 				if (result == null)
-					result = caseElement(dataType);
+					result = caseNamedElement(dataType);
 				if (result == null)
 					result = caseParameterableElement(dataType);
+				if (result == null)
+					result = caseElement(dataType);
 				if (result == null)
 					result = caseEModelElement(dataType);
 				if (result == null)
@@ -1899,13 +1899,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(collaboration);
 				if (result == null)
-					result = caseNamedElement(collaboration);
-				if (result == null)
 					result = casePackageableElement(collaboration);
 				if (result == null)
-					result = caseElement(collaboration);
+					result = caseNamedElement(collaboration);
 				if (result == null)
 					result = caseParameterableElement(collaboration);
+				if (result == null)
+					result = caseElement(collaboration);
 				if (result == null)
 					result = caseEModelElement(collaboration);
 				if (result == null)
@@ -1928,13 +1928,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(useCase);
 				if (result == null)
-					result = caseNamedElement(useCase);
-				if (result == null)
 					result = casePackageableElement(useCase);
 				if (result == null)
-					result = caseElement(useCase);
+					result = caseNamedElement(useCase);
 				if (result == null)
 					result = caseParameterableElement(useCase);
+				if (result == null)
+					result = caseElement(useCase);
 				if (result == null)
 					result = caseEModelElement(useCase);
 				if (result == null)
@@ -1949,9 +1949,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseDirectedRelationship(include);
 				if (result == null)
-					result = caseElement(include);
-				if (result == null)
 					result = caseRelationship(include);
+				if (result == null)
+					result = caseElement(include);
 				if (result == null)
 					result = caseEModelElement(include);
 				if (result == null)
@@ -1966,9 +1966,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseDirectedRelationship(extend);
 				if (result == null)
-					result = caseElement(extend);
-				if (result == null)
 					result = caseRelationship(extend);
+				if (result == null)
+					result = caseElement(extend);
 				if (result == null)
 					result = caseEModelElement(extend);
 				if (result == null)
@@ -2030,17 +2030,17 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseValueSpecification(stringExpression);
 				if (result == null)
-					result = caseElement(stringExpression);
-				if (result == null)
 					result = casePackageableElement(stringExpression);
 				if (result == null)
 					result = caseTypedElement(stringExpression);
 				if (result == null)
-					result = caseEModelElement(stringExpression);
-				if (result == null)
 					result = caseNamedElement(stringExpression);
 				if (result == null)
 					result = caseParameterableElement(stringExpression);
+				if (result == null)
+					result = caseElement(stringExpression);
+				if (result == null)
+					result = caseEModelElement(stringExpression);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -2135,13 +2135,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(enumeration);
 				if (result == null)
-					result = caseNamedElement(enumeration);
-				if (result == null)
 					result = casePackageableElement(enumeration);
 				if (result == null)
-					result = caseElement(enumeration);
+					result = caseNamedElement(enumeration);
 				if (result == null)
 					result = caseParameterableElement(enumeration);
+				if (result == null)
+					result = caseElement(enumeration);
 				if (result == null)
 					result = caseEModelElement(enumeration);
 				if (result == null)
@@ -2219,13 +2219,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(primitiveType);
 				if (result == null)
-					result = caseNamedElement(primitiveType);
-				if (result == null)
 					result = casePackageableElement(primitiveType);
 				if (result == null)
-					result = caseElement(primitiveType);
+					result = caseNamedElement(primitiveType);
 				if (result == null)
 					result = caseParameterableElement(primitiveType);
+				if (result == null)
+					result = caseElement(primitiveType);
 				if (result == null)
 					result = caseEModelElement(primitiveType);
 				if (result == null)
@@ -2413,13 +2413,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(opaqueBehavior);
 				if (result == null)
-					result = caseNamedElement(opaqueBehavior);
-				if (result == null)
 					result = casePackageableElement(opaqueBehavior);
 				if (result == null)
-					result = caseElement(opaqueBehavior);
+					result = caseNamedElement(opaqueBehavior);
 				if (result == null)
 					result = caseParameterableElement(opaqueBehavior);
+				if (result == null)
+					result = caseElement(opaqueBehavior);
 				if (result == null)
 					result = caseEModelElement(opaqueBehavior);
 				if (result == null)
@@ -2452,13 +2452,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(functionBehavior);
 				if (result == null)
-					result = caseNamedElement(functionBehavior);
-				if (result == null)
 					result = casePackageableElement(functionBehavior);
 				if (result == null)
-					result = caseElement(functionBehavior);
+					result = caseNamedElement(functionBehavior);
 				if (result == null)
 					result = caseParameterableElement(functionBehavior);
+				if (result == null)
+					result = caseElement(functionBehavior);
 				if (result == null)
 					result = caseEModelElement(functionBehavior);
 				if (result == null)
@@ -2549,15 +2549,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseExecutableNode(structuredActivityNode);
 				if (result == null)
+					result = caseActivityNode(structuredActivityNode);
+				if (result == null)
+					result = caseRedefinableElement(structuredActivityNode);
+				if (result == null)
 					result = caseNamedElement(structuredActivityNode);
 				if (result == null)
 					result = caseElement(structuredActivityNode);
 				if (result == null)
-					result = caseActivityNode(structuredActivityNode);
-				if (result == null)
 					result = caseEModelElement(structuredActivityNode);
-				if (result == null)
-					result = caseRedefinableElement(structuredActivityNode);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -2597,13 +2597,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(activity);
 				if (result == null)
-					result = caseNamedElement(activity);
-				if (result == null)
 					result = casePackageableElement(activity);
 				if (result == null)
-					result = caseElement(activity);
+					result = caseNamedElement(activity);
 				if (result == null)
 					result = caseParameterableElement(activity);
+				if (result == null)
+					result = caseElement(activity);
 				if (result == null)
 					result = caseEModelElement(activity);
 				if (result == null)
@@ -2622,9 +2622,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseParameterableElement(variable);
 				if (result == null)
-					result = caseElement(variable);
-				if (result == null)
 					result = caseNamedElement(variable);
+				if (result == null)
+					result = caseElement(variable);
 				if (result == null)
 					result = caseEModelElement(variable);
 				if (result == null)
@@ -2718,11 +2718,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTypedElement(outputPin);
 				if (result == null)
-					result = caseElement(outputPin);
-				if (result == null)
 					result = caseRedefinableElement(outputPin);
 				if (result == null)
 					result = caseNamedElement(outputPin);
+				if (result == null)
+					result = caseElement(outputPin);
 				if (result == null)
 					result = caseEModelElement(outputPin);
 				if (result == null)
@@ -2741,11 +2741,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTypedElement(pin);
 				if (result == null)
-					result = caseElement(pin);
-				if (result == null)
 					result = caseRedefinableElement(pin);
 				if (result == null)
 					result = caseNamedElement(pin);
+				if (result == null)
+					result = caseElement(pin);
 				if (result == null)
 					result = caseEModelElement(pin);
 				if (result == null)
@@ -2766,11 +2766,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTypedElement(inputPin);
 				if (result == null)
-					result = caseElement(inputPin);
-				if (result == null)
 					result = caseRedefinableElement(inputPin);
 				if (result == null)
 					result = caseNamedElement(inputPin);
+				if (result == null)
+					result = caseElement(inputPin);
 				if (result == null)
 					result = caseEModelElement(inputPin);
 				if (result == null)
@@ -2908,15 +2908,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseExecutableNode(sequenceNode);
 				if (result == null)
+					result = caseActivityNode(sequenceNode);
+				if (result == null)
+					result = caseRedefinableElement(sequenceNode);
+				if (result == null)
 					result = caseNamedElement(sequenceNode);
 				if (result == null)
 					result = caseElement(sequenceNode);
 				if (result == null)
-					result = caseActivityNode(sequenceNode);
-				if (result == null)
 					result = caseEModelElement(sequenceNode);
-				if (result == null)
-					result = caseRedefinableElement(sequenceNode);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3011,11 +3011,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTypedElement(valuePin);
 				if (result == null)
-					result = caseElement(valuePin);
-				if (result == null)
 					result = caseRedefinableElement(valuePin);
 				if (result == null)
 					result = caseNamedElement(valuePin);
+				if (result == null)
+					result = caseElement(valuePin);
 				if (result == null)
 					result = caseEModelElement(valuePin);
 				if (result == null)
@@ -3058,19 +3058,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseClass(interaction);
 				if (result == null)
-					result = caseNamedElement(interaction);
-				if (result == null)
 					result = caseEncapsulatedClassifier(interaction);
 				if (result == null)
 					result = caseBehavioredClassifier(interaction);
 				if (result == null)
-					result = caseElement(interaction);
-				if (result == null)
 					result = caseStructuredClassifier(interaction);
 				if (result == null)
 					result = caseClassifier(interaction);
-				if (result == null)
-					result = caseEModelElement(interaction);
 				if (result == null)
 					result = caseNamespace(interaction);
 				if (result == null)
@@ -3082,7 +3076,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = casePackageableElement(interaction);
 				if (result == null)
+					result = caseNamedElement(interaction);
+				if (result == null)
 					result = caseParameterableElement(interaction);
+				if (result == null)
+					result = caseElement(interaction);
+				if (result == null)
+					result = caseEModelElement(interaction);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3500,13 +3500,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(actor);
 				if (result == null)
-					result = caseNamedElement(actor);
-				if (result == null)
 					result = casePackageableElement(actor);
 				if (result == null)
-					result = caseElement(actor);
+					result = caseNamedElement(actor);
 				if (result == null)
 					result = caseParameterableElement(actor);
+				if (result == null)
+					result = caseElement(actor);
 				if (result == null)
 					result = caseEModelElement(actor);
 				if (result == null)
@@ -3800,13 +3800,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(component);
 				if (result == null)
-					result = caseNamedElement(component);
-				if (result == null)
 					result = casePackageableElement(component);
 				if (result == null)
-					result = caseElement(component);
+					result = caseNamedElement(component);
 				if (result == null)
 					result = caseParameterableElement(component);
+				if (result == null)
+					result = caseElement(component);
 				if (result == null)
 					result = caseEModelElement(component);
 				if (result == null)
@@ -3825,13 +3825,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseBehavioredClassifier(node);
 				if (result == null)
-					result = caseNamedElement(node);
-				if (result == null)
 					result = caseStructuredClassifier(node);
 				if (result == null)
 					result = caseClassifier(node);
-				if (result == null)
-					result = caseElement(node);
 				if (result == null)
 					result = caseNamespace(node);
 				if (result == null)
@@ -3841,11 +3837,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(node);
 				if (result == null)
-					result = caseEModelElement(node);
-				if (result == null)
 					result = casePackageableElement(node);
 				if (result == null)
+					result = caseNamedElement(node);
+				if (result == null)
 					result = caseParameterableElement(node);
+				if (result == null)
+					result = caseElement(node);
+				if (result == null)
+					result = caseEModelElement(node);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3868,15 +3868,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(communicationPath);
 				if (result == null)
-					result = caseElement(communicationPath);
+					result = casePackageableElement(communicationPath);
 				if (result == null)
 					result = caseNamedElement(communicationPath);
 				if (result == null)
-					result = casePackageableElement(communicationPath);
+					result = caseParameterableElement(communicationPath);
+				if (result == null)
+					result = caseElement(communicationPath);
 				if (result == null)
 					result = caseEModelElement(communicationPath);
-				if (result == null)
-					result = caseParameterableElement(communicationPath);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3895,13 +3895,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseBehavioredClassifier(device);
 				if (result == null)
-					result = caseNamedElement(device);
-				if (result == null)
 					result = caseStructuredClassifier(device);
 				if (result == null)
 					result = caseClassifier(device);
-				if (result == null)
-					result = caseElement(device);
 				if (result == null)
 					result = caseNamespace(device);
 				if (result == null)
@@ -3911,11 +3907,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(device);
 				if (result == null)
-					result = caseEModelElement(device);
-				if (result == null)
 					result = casePackageableElement(device);
 				if (result == null)
+					result = caseNamedElement(device);
+				if (result == null)
 					result = caseParameterableElement(device);
+				if (result == null)
+					result = caseElement(device);
+				if (result == null)
+					result = caseEModelElement(device);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -3934,13 +3934,9 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseBehavioredClassifier(executionEnvironment);
 				if (result == null)
-					result = caseNamedElement(executionEnvironment);
-				if (result == null)
 					result = caseStructuredClassifier(executionEnvironment);
 				if (result == null)
 					result = caseClassifier(executionEnvironment);
-				if (result == null)
-					result = caseElement(executionEnvironment);
 				if (result == null)
 					result = caseNamespace(executionEnvironment);
 				if (result == null)
@@ -3950,11 +3946,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(executionEnvironment);
 				if (result == null)
-					result = caseEModelElement(executionEnvironment);
-				if (result == null)
 					result = casePackageableElement(executionEnvironment);
 				if (result == null)
+					result = caseNamedElement(executionEnvironment);
+				if (result == null)
 					result = caseParameterableElement(executionEnvironment);
+				if (result == null)
+					result = caseElement(executionEnvironment);
+				if (result == null)
+					result = caseEModelElement(executionEnvironment);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -4925,11 +4925,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTypedElement(actionInputPin);
 				if (result == null)
-					result = caseElement(actionInputPin);
-				if (result == null)
 					result = caseRedefinableElement(actionInputPin);
 				if (result == null)
 					result = caseNamedElement(actionInputPin);
+				if (result == null)
+					result = caseElement(actionInputPin);
 				if (result == null)
 					result = caseEModelElement(actionInputPin);
 				if (result == null)
@@ -4950,13 +4950,13 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(informationItem);
 				if (result == null)
-					result = caseNamedElement(informationItem);
-				if (result == null)
 					result = casePackageableElement(informationItem);
 				if (result == null)
-					result = caseElement(informationItem);
+					result = caseNamedElement(informationItem);
 				if (result == null)
 					result = caseParameterableElement(informationItem);
+				if (result == null)
+					result = caseElement(informationItem);
 				if (result == null)
 					result = caseEModelElement(informationItem);
 				if (result == null)
@@ -5325,15 +5325,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseExecutableNode(conditionalNode);
 				if (result == null)
+					result = caseActivityNode(conditionalNode);
+				if (result == null)
+					result = caseRedefinableElement(conditionalNode);
+				if (result == null)
 					result = caseNamedElement(conditionalNode);
 				if (result == null)
 					result = caseElement(conditionalNode);
 				if (result == null)
-					result = caseActivityNode(conditionalNode);
-				if (result == null)
 					result = caseEModelElement(conditionalNode);
-				if (result == null)
-					result = caseRedefinableElement(conditionalNode);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -5363,15 +5363,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseExecutableNode(loopNode);
 				if (result == null)
+					result = caseActivityNode(loopNode);
+				if (result == null)
+					result = caseRedefinableElement(loopNode);
+				if (result == null)
 					result = caseNamedElement(loopNode);
 				if (result == null)
 					result = caseElement(loopNode);
 				if (result == null)
-					result = caseActivityNode(loopNode);
-				if (result == null)
 					result = caseEModelElement(loopNode);
-				if (result == null)
-					result = caseRedefinableElement(loopNode);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -5411,15 +5411,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseExecutableNode(expansionRegion);
 				if (result == null)
+					result = caseActivityNode(expansionRegion);
+				if (result == null)
+					result = caseRedefinableElement(expansionRegion);
+				if (result == null)
 					result = caseNamedElement(expansionRegion);
 				if (result == null)
 					result = caseElement(expansionRegion);
 				if (result == null)
-					result = caseActivityNode(expansionRegion);
-				if (result == null)
 					result = caseEModelElement(expansionRegion);
-				if (result == null)
-					result = caseRedefinableElement(expansionRegion);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;
@@ -5455,11 +5455,11 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseBehavioredClassifier(associationClass);
 				if (result == null)
-					result = caseClassifier(associationClass);
-				if (result == null)
 					result = caseRelationship(associationClass);
 				if (result == null)
 					result = caseStructuredClassifier(associationClass);
+				if (result == null)
+					result = caseClassifier(associationClass);
 				if (result == null)
 					result = caseNamespace(associationClass);
 				if (result == null)
@@ -5469,15 +5469,15 @@ public class UMLSwitch<T> {
 				if (result == null)
 					result = caseTemplateableElement(associationClass);
 				if (result == null)
-					result = caseElement(associationClass);
+					result = casePackageableElement(associationClass);
 				if (result == null)
 					result = caseNamedElement(associationClass);
 				if (result == null)
-					result = casePackageableElement(associationClass);
+					result = caseParameterableElement(associationClass);
+				if (result == null)
+					result = caseElement(associationClass);
 				if (result == null)
 					result = caseEModelElement(associationClass);
-				if (result == null)
-					result = caseParameterableElement(associationClass);
 				if (result == null)
 					result = defaultCase(theEObject);
 				return result;

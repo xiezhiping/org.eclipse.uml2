@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Node.java,v 1.11 2008/01/09 18:56:02 khussey Exp $
+ * $Id: Node.java,v 1.12 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Node
-		extends org.eclipse.uml2.uml.Class, DeploymentTarget {
+		extends Class, DeploymentTarget {
 
 	/**
 	 * Returns the value of the '<em><b>Nested Node</b></em>' containment reference list.

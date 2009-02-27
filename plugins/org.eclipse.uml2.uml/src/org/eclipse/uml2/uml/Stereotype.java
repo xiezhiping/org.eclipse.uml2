@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.11 2007/06/12 12:53:17 khussey Exp $
+ * $Id: Stereotype.java,v 1.12 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Stereotype
-		extends org.eclipse.uml2.uml.Class {
+		extends Class {
 
 	/**
 	 * Returns the value of the '<em><b>Icon</b></em>' containment reference list.
@@ -109,8 +109,7 @@ public interface Stereotype
 	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false" isRequiredDataType="org.eclipse.uml2.uml.Boolean" isRequiredRequired="true" isRequiredOrdered="false"
 	 * @generated
 	 */
-	Extension createExtension(org.eclipse.uml2.uml.Class metaclass,
-			boolean isRequired);
+	Extension createExtension(Class metaclass, boolean isRequired);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,7 +154,7 @@ public interface Stereotype
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses();
+	EList<Class> getExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,7 +165,7 @@ public interface Stereotype
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses();
+	EList<Class> getAllExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->

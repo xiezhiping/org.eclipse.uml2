@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: NamedElement.java,v 1.21 2008/01/09 18:56:03 khussey Exp $
+ * $Id: NamedElement.java,v 1.22 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -425,7 +425,7 @@ public interface NamedElement
 	 * @model ordered="false"
 	 * @generated
 	 */
-	EList<org.eclipse.uml2.uml.Package> allOwningPackages();
+	EList<Package> allOwningPackages();
 
 	String SEPARATOR = "::"; //$NON-NLS-1$
 

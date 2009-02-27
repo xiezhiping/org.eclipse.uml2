@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.25 2008/10/02 20:56:23 jbruck Exp $
+ * $Id: Component.java,v 1.26 2009/02/27 18:37:52 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Component
-		extends org.eclipse.uml2.uml.Class {
+		extends Class {
 
 	/**
 	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.
@@ -275,7 +275,7 @@ public interface Component
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
+	Class createOwnedClass(String name, boolean isAbstract);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.12 2007/10/23 15:54:22 jbruck Exp $
+ * $Id: Type.java,v 1.13 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,13 +53,13 @@ public interface Type
 	 * Specifies the owning package of this classifier, if any.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference.
-	 * @see #setPackage(org.eclipse.uml2.uml.Package)
+	 * @see #setPackage(Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getType_Package()
 	 * @see org.eclipse.uml2.uml.Package#getOwnedTypes
 	 * @model opposite="ownedType" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Package getPackage();
+	Package getPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.Type#getPackage <em>Package</em>}' reference.
@@ -69,7 +69,7 @@ public interface Type
 	 * @see #getPackage()
 	 * @generated
 	 */
-	void setPackage(org.eclipse.uml2.uml.Package value);
+	void setPackage(Package value);
 
 	/**
 	 * <!-- begin-user-doc -->

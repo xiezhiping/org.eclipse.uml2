@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.23 2008/10/02 20:56:23 jbruck Exp $
+ * $Id: Behavior.java,v 1.24 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Behavior
-		extends org.eclipse.uml2.uml.Class {
+		extends Class {
 
 	/**
 	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.

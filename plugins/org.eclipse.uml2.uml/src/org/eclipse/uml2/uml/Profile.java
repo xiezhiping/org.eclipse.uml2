@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.18 2007/10/23 15:54:21 jbruck Exp $
+ * $Id: Profile.java,v 1.19 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.EPackage;
  * @generated
  */
 public interface Profile
-		extends org.eclipse.uml2.uml.Package {
+		extends Package {
 
 	/**
 	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -190,8 +190,7 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport createMetamodelReference(
-			org.eclipse.uml2.uml.Package importedPackage);
+	PackageImport createMetamodelReference(Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -202,8 +201,7 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport getMetamodelReference(
-			org.eclipse.uml2.uml.Package importedPackage);
+	PackageImport getMetamodelReference(Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -215,8 +213,8 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport getMetamodelReference(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
+	PackageImport getMetamodelReference(Package importedPackage,
+			boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -346,7 +344,7 @@ public interface Profile
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses();
+	EList<Class> getReferencedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->

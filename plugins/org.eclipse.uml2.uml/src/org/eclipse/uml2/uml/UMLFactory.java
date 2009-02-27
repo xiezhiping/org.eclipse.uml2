@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: UMLFactory.java,v 1.7 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: UMLFactory.java,v 1.8 2009/02/27 18:37:52 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -113,7 +113,7 @@ public interface UMLFactory
 	 * @return a new object of class '<em>Package</em>'.
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Package createPackage();
+	Package createPackage();
 
 	/**
 	 * Returns a new object of class '<em>Package Merge</em>'.
@@ -167,7 +167,7 @@ public interface UMLFactory
 	 * @return a new object of class '<em>Class</em>'.
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class createClass();
+	Class createClass();
 
 	/**
 	 * Returns a new object of class '<em>Generalization</em>'.

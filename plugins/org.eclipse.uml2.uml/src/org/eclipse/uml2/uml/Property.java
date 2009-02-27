@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.28 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: Property.java,v 1.29 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -276,7 +276,7 @@ public interface Property
 	 * @model transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
-	org.eclipse.uml2.uml.Class getClass_();
+	Class getClass_();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Property</b></em>' reference list.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Namespace.java,v 1.16 2008/01/09 18:56:03 khussey Exp $
+ * $Id: Namespace.java,v 1.17 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -139,8 +139,7 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport createPackageImport(
-			org.eclipse.uml2.uml.Package importedPackage);
+	PackageImport createPackageImport(Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
@@ -151,7 +150,7 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(org.eclipse.uml2.uml.Package importedPackage);
+	PackageImport getPackageImport(Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
@@ -163,8 +162,8 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(
-			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
+	PackageImport getPackageImport(Package importedPackage,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
@@ -413,7 +412,7 @@ public interface Namespace
 	 * @model required="true" ordered="false" package_Required="true" package_Ordered="false" visibilityRequired="true" visibilityOrdered="false"
 	 * @generated
 	 */
-	PackageImport createPackageImport(org.eclipse.uml2.uml.Package package_,
+	PackageImport createPackageImport(Package package_,
 			VisibilityKind visibility);
 
 	/**
@@ -436,7 +435,7 @@ public interface Namespace
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<org.eclipse.uml2.uml.Package> getImportedPackages();
+	EList<Package> getImportedPackages();
 
 	/**
 	 * <!-- begin-user-doc -->

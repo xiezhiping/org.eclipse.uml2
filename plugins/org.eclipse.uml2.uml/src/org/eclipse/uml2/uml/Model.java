@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.6 2006/05/26 16:34:03 khussey Exp $
+ * $Id: Model.java,v 1.7 2009/02/27 18:37:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2.uml;
  * @generated
  */
 public interface Model
-		extends org.eclipse.uml2.uml.Package {
+		extends Package {
 
 	/**
 	 * Returns the value of the '<em><b>Viewpoint</b></em>' attribute.
