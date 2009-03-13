@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologie) - 247980
  *
- * $Id: ElementOperations.java,v 1.52 2007/05/04 20:35:34 khussey Exp $
+ * $Id: ElementOperations.java,v 1.53 2009/03/13 20:34:37 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -738,7 +739,7 @@ public class ElementOperations
 					if (eType instanceof EClass) {
 						EClass eClassType = (EClass) eType;
 
-						if (newValue instanceof List) {
+						if (newValue instanceof List<?>) {
 							@SuppressWarnings("unchecked")
 							Iterator<Object> j = ((List<Object>) newValue)
 								.iterator();
@@ -759,7 +760,7 @@ public class ElementOperations
 						EFactory eFactoryInstance = eDataType.getEPackage()
 							.getEFactoryInstance();
 
-						if (newValue instanceof List) {
+						if (newValue instanceof List<?>) {
 							@SuppressWarnings("unchecked")
 							List<Object> newList = new ArrayList<Object>(
 								(List<Object>) newValue);
@@ -832,7 +833,7 @@ public class ElementOperations
 
 					if (index == -1) {
 
-						if (newValue instanceof List) {
+						if (newValue instanceof List<?>) {
 							eObject.eSet(eStructuralFeature, newValue);
 						} else {
 							throw new IllegalArgumentException(String
