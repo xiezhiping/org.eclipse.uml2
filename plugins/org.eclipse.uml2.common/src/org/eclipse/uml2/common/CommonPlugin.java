@@ -8,13 +8,16 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: CommonPlugin.java,v 1.1 2009/03/13 19:47:13 jbruck Exp $
+ * $Id: CommonPlugin.java,v 1.2 2009/03/13 19:54:31 jbruck Exp $
  */
 package org.eclipse.uml2.common;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
+/**
+ * @since 1.5
+ */
 public class CommonPlugin
 		extends EMFPlugin {
 
