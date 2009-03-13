@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *
- * $Id: UML2Util.java,v 1.35 2009/03/13 19:47:13 jbruck Exp $
+ * $Id: UML2Util.java,v 1.36 2009/03/13 20:34:43 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -616,7 +616,7 @@ public class UML2Util {
 			}
 
 			return EcoreUtil.getIdentification((EObject) object);
-		} else if (object instanceof Collection) {
+		} else if (object instanceof Collection<?>) {
 			StringBuffer messageSubstitution = new StringBuffer("["); //$NON-NLS-1$
 
 			for (Object element : ((Collection<?>) object)) {

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *
- * $Id: CacheAdapter.java,v 1.24 2009/03/13 19:47:13 jbruck Exp $
+ * $Id: CacheAdapter.java,v 1.25 2009/03/13 20:34:43 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -33,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -127,7 +125,7 @@ public class CacheAdapter
 		if (cacheAdapter instanceof CacheAdapter) {
 			return (CacheAdapter) cacheAdapter;
 		}
-		
+
 		return new CacheAdapter();
 	}
 
