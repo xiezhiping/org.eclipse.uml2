@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
  *
- * $Id: UML2Util.java,v 1.36 2009/03/13 20:34:43 khussey Exp $
+ * $Id: UML2Util.java,v 1.37 2009/03/13 20:41:16 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -1239,9 +1239,9 @@ public class UML2Util {
 	 * @return
 	 * 			The loaded class.
 	 * @since 1.5
-	 */
-	public static Object loadClassFromSystemProperty(String systemProperty) {
-
+	 */	
+	@SuppressWarnings("unchecked")
+	public static <T> T loadClassFromSystemProperty(String systemProperty) {
 		String property = System.getProperty(systemProperty);
 
 		if (!isEmpty(property)) {
@@ -1250,11 +1250,11 @@ public class UML2Util {
 				int index = property.indexOf(':');
 
 				if (index != -1) {
-					return org.eclipse.emf.common.CommonPlugin.loadClass(
+					return  (T) org.eclipse.emf.common.CommonPlugin.loadClass(
 						property.substring(0, index),
 						property.substring(index + 1)).newInstance();
 				} else {
-					return Class.forName(property).newInstance();
+					return (T) Class.forName(property).newInstance();
 				}
 			} catch (Exception e) {
 				CommonPlugin.INSTANCE.log(e);

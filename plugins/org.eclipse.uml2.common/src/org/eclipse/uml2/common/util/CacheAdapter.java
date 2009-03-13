@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *
- * $Id: CacheAdapter.java,v 1.25 2009/03/13 20:34:43 khussey Exp $
+ * $Id: CacheAdapter.java,v 1.26 2009/03/13 20:41:16 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -119,11 +119,11 @@ public class CacheAdapter
 	public static final CacheAdapter INSTANCE = createCacheAdapter();
 
 	private static CacheAdapter createCacheAdapter() {
-		Object cacheAdapter = UML2Util
+		CacheAdapter cacheAdapter = UML2Util
 			.loadClassFromSystemProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
 
-		if (cacheAdapter instanceof CacheAdapter) {
-			return (CacheAdapter) cacheAdapter;
+		if (cacheAdapter != null) {
+			return cacheAdapter;
 		}
 
 		return new CacheAdapter();
