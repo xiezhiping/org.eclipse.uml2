@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.78 2009/01/14 19:58:32 khussey Exp $
+ * $Id: UMLUtil.java,v 1.79 2009/03/13 19:47:15 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -129,6 +129,48 @@ import org.eclipse.uml2.uml.resource.UMLResource;
  */
 public class UMLUtil
 		extends UML2Util {
+
+	/**
+	 * The StereotypeApplicationHelper can be overridden to change the default
+	 * location of applied stereotypes. 
+	 * Typically, stereotype applications are placed in the same location as
+	 * the element to which the stereotype is applied, however, stereotype 
+	 * applications may be placed in other resources.
+	 * 
+	 * @since 3.0
+	 */
+	public static class StereotypeApplicationHelper {
+
+		public static final StereotypeApplicationHelper INSTANCE = createStereotypeApplicationHelper();
+
+		private static StereotypeApplicationHelper createStereotypeApplicationHelper() {
+			Object stereotypeApplicationHelper = UML2Util
+				.loadClassFromSystemProperty("org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationHelper.INSTANCE"); //$NON-NLS-1$
+
+			if (stereotypeApplicationHelper instanceof StereotypeApplicationHelper) {
+				return (StereotypeApplicationHelper) stereotypeApplicationHelper;
+			}
+			
+			return new StereotypeApplicationHelper();
+		}
+
+		protected EList<EObject> getContainmentList(Element element,
+				EClass definition) {
+			return element.eResource().getContents();
+		}
+
+		public EObject applyStereotype(Element element, EClass definition) {
+			EObject stereotypeApplication = EcoreUtil.create(definition);
+
+			CacheAdapter.INSTANCE.adapt(stereotypeApplication);
+
+			getContainmentList(element, definition).add(stereotypeApplication);
+
+			setBaseElement(stereotypeApplication, element);
+
+			return stereotypeApplication;
+		}
+	}
 
 	/**
 	 * A qualified text provider that uses names of named elements as qualified
@@ -8951,19 +8993,8 @@ public class UMLUtil
 	}
 
 	protected static EObject applyStereotype(Element element, EClass definition) {
-		EObject stereotypeApplication = EcoreUtil.create(definition);
-
-		CacheAdapter.INSTANCE.adapt(stereotypeApplication);
-
-		Resource eResource = element.eResource();
-
-		if (eResource != null) {
-			eResource.getContents().add(stereotypeApplication);
-		}
-
-		setBaseElement(stereotypeApplication, element);
-
-		return stereotypeApplication;
+		return StereotypeApplicationHelper.INSTANCE.applyStereotype(element,
+			definition);
 	}
 
 	/**
