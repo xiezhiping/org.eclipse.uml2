@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.79 2009/03/13 19:47:15 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.80 2009/03/13 20:41:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -144,13 +144,13 @@ public class UMLUtil
 		public static final StereotypeApplicationHelper INSTANCE = createStereotypeApplicationHelper();
 
 		private static StereotypeApplicationHelper createStereotypeApplicationHelper() {
-			Object stereotypeApplicationHelper = UML2Util
+			StereotypeApplicationHelper stereotypeApplicationHelper = UML2Util
 				.loadClassFromSystemProperty("org.eclipse.uml2.uml.util.UMLUtil$StereotypeApplicationHelper.INSTANCE"); //$NON-NLS-1$
 
-			if (stereotypeApplicationHelper instanceof StereotypeApplicationHelper) {
-				return (StereotypeApplicationHelper) stereotypeApplicationHelper;
+			if (stereotypeApplicationHelper != null) {
+				return stereotypeApplicationHelper;
 			}
-			
+
 			return new StereotypeApplicationHelper();
 		}
 
