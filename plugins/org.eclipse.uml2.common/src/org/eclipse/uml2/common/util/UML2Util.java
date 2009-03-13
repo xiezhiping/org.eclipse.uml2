@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *
- * $Id: UML2Util.java,v 1.34 2007/10/17 13:53:40 khussey Exp $
+ * $Id: UML2Util.java,v 1.35 2009/03/13 19:47:13 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -58,6 +58,7 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xml.type.util.XMLTypeUtil;
+import org.eclipse.uml2.common.CommonPlugin;
 import org.osgi.framework.Bundle;
 
 /**
@@ -1224,5 +1225,42 @@ public class UML2Util {
 	protected static boolean intersect(Collection<?> collection,
 			Collection<?> otherCollection) {
 		return !Collections.disjoint(collection, otherCollection);
+	}
+	
+	/**
+	 * Load a class from the specified system property.
+	 * Any exceptions resulting from class loading failures will be logged.
+	 * 
+	 * If the system property is separated with a ':' then the first part indicates
+	 * the pluginId and the trailing part indicates the class name.
+	 * 
+	 * @param systemProperty 
+	 * 			The system property containing the location of the class to be loaded.
+	 * @return
+	 * 			The loaded class.
+	 * @since 1.5
+	 */
+	public static Object loadClassFromSystemProperty(String systemProperty) {
+
+		String property = System.getProperty(systemProperty);
+
+		if (!isEmpty(property)) {
+
+			try {
+				int index = property.indexOf(':');
+
+				if (index != -1) {
+					return org.eclipse.emf.common.CommonPlugin.loadClass(
+						property.substring(0, index),
+						property.substring(index + 1)).newInstance();
+				} else {
+					return Class.forName(property).newInstance();
+				}
+			} catch (Exception e) {
+				CommonPlugin.INSTANCE.log(e);
+			}
+		}
+
+		return null;
 	}
 }

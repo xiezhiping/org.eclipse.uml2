@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2004, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 220065
  *
- * $Id: CacheAdapter.java,v 1.23 2008/12/09 15:16:57 jbruck Exp $
+ * $Id: CacheAdapter.java,v 1.24 2009/03/13 19:47:13 jbruck Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -121,26 +121,13 @@ public class CacheAdapter
 	public static final CacheAdapter INSTANCE = createCacheAdapter();
 
 	private static CacheAdapter createCacheAdapter() {
-		String property = System
-			.getProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
+		Object cacheAdapter = UML2Util
+			.loadClassFromSystemProperty("org.eclipse.uml2.common.util.CacheAdapter.INSTANCE"); //$NON-NLS-1$
 
-		if (!UML2Util.isEmpty(property)) {
-
-			try {
-				int index = property.indexOf(':');
-
-				if (index != -1) {
-					return (CacheAdapter) CommonPlugin.loadClass(
-						property.substring(0, index),
-						property.substring(index + 1)).newInstance();
-				} else {
-					return (CacheAdapter) Class.forName(property).newInstance();
-				}
-			} catch (Exception e) {
-				EcorePlugin.INSTANCE.log(e);
-			}
+		if (cacheAdapter instanceof CacheAdapter) {
+			return (CacheAdapter) cacheAdapter;
 		}
-
+		
 		return new CacheAdapter();
 	}
 
