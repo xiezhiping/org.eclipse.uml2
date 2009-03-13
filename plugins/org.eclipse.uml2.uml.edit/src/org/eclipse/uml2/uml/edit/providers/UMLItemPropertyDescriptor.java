@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 247980
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.7 2007/04/05 02:36:08 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.8 2009/03/13 20:34:27 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -35,7 +36,7 @@ public class UMLItemPropertyDescriptor
 
 		public String getQualifiedText(Object object) {
 
-			if (object instanceof List) {
+			if (object instanceof List<?>) {
 				StringBuffer text = new StringBuffer();
 
 				@SuppressWarnings("unchecked")
