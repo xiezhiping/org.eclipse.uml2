@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?><!--
+     Copyright (c) 2009 IBM Corporation and others.
+     All rights reserved. This program and the accompanying materials
+     are made available under the terms of the Eclipse Public License v1.0
+     which accompanies this distribution, and is available at
+     http://www.eclipse.org/legal/epl-v10.html
+    
+     Contributors:
+         IBM Corporation - initial API and implementation
+ -->
+
+<plugin>
+
+ <!-- Categories provided by org.eclipse.galileo -->
+   <!--
+   <extension point="org.eclipse.ui.activities">
+      <category
+            description="%activity.cat.modeling.desc"
+            id="org.eclipse.galileo.modeling.Category"
+            name="%activity.cat.modeling">
+     </category>          
+     <categoryActivityBinding
+            activityId="org.eclipse.uml2.activity"
+            categoryId="org.eclipse.galileo.modeling.Category" >                           
+      </categoryActivityBinding>            
+   </extension>
+   -->
+   
+   <extension
+         point="org.eclipse.ui.activities">
+      <!-- UML2 MDD Tools -->
+      <activity
+            description="%_UI_Capabilities_UML2_description"
+            id="org.eclipse.uml2.activity"
+            name="%_UI_Capabilities_UML2_name">
+      </activity>
+      
+      <!-- UML2 Project and UML2 Generator Model wizards --> 
+      
+      <!-- Contributions from examples --> 
+      <activityPatternBinding
+            activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.examples\.uml\.ui/.*">
+      </activityPatternBinding>
+      <!-- Model importers -->
+      <activityPatternBinding
+            activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.uml\.ecore\.importer/.*">
+      </activityPatternBinding>
+      <!-- Model exporters -->
+      <activityPatternBinding
+            activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.uml\.ecore\.exporter/.*">
+      </activityPatternBinding>
+      <!-- UML2 editor -->
+      <activityPatternBinding
+             activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.uml\.editor/.*">
+      </activityPatternBinding>
+      <!-- UML2 codegen -->
+  	  <activityPatternBinding
+            activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.codegen\.ecore/.*">
+      </activityPatternBinding>
+       <activityPatternBinding
+            activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.codegen\.ecore\.ui/.*">
+      </activityPatternBinding>
+      <!-- UML2 remaining -->
+      <activityPatternBinding
+             activityId="org.eclipse.uml2.activity"
+            pattern="org\.eclipse\.uml2\.uml\..*/.*">
+      </activityPatternBinding>
+            
+   </extension>
+   
+   <!-- Category bindings and default enablement provided by org.eclipse.galileo -->
+   <!--
+   <extension point="org.eclipse.ui.activities">
+     <categoryActivityBinding
+            activityId="org.eclipse.uml2.activity"
+            categoryId="org.eclipse.galileo.modeling.Category" >                           
+      </categoryActivityBinding>
+      <defaultEnablement
+            id="org.eclipse.uml2.activity">
+      </defaultEnablement>
+    </extension>
+   -->
+   
+</plugin>
