@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.80 2009/03/13 20:41:18 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.81 2009/04/22 17:52:24 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -156,7 +156,11 @@ public class UMLUtil
 
 		protected EList<EObject> getContainmentList(Element element,
 				EClass definition) {
-			return element.eResource().getContents();
+
+			if (element.eResource() != null) {
+				return element.eResource().getContents();
+			}
+			return null;
 		}
 
 		public EObject applyStereotype(Element element, EClass definition) {
@@ -164,8 +168,11 @@ public class UMLUtil
 
 			CacheAdapter.INSTANCE.adapt(stereotypeApplication);
 
-			getContainmentList(element, definition).add(stereotypeApplication);
-
+			EList<EObject> containmentList = getContainmentList(element,
+				definition);
+			if (containmentList != null) {
+				containmentList.add(stereotypeApplication);
+			}
 			setBaseElement(stereotypeApplication, element);
 
 			return stereotypeApplication;
