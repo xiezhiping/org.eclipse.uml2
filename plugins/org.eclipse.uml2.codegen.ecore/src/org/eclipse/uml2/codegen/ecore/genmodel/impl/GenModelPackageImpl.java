@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016
+ *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *
- * $Id: GenModelPackageImpl.java,v 1.7 2008/03/21 00:18:13 khussey Exp $
+ * $Id: GenModelPackageImpl.java,v 1.8 2009/04/22 14:26:56 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -195,8 +195,8 @@ public class GenModelPackageImpl
 
 		// Obtain or create and register package
 		GenModelPackageImpl theGenModelPackage = (GenModelPackageImpl) (EPackage.Registry.INSTANCE
-			.getEPackage(eNS_URI) instanceof GenModelPackageImpl
-			? EPackage.Registry.INSTANCE.getEPackage(eNS_URI)
+			.get(eNS_URI) instanceof GenModelPackageImpl
+			? EPackage.Registry.INSTANCE.get(eNS_URI)
 			: new GenModelPackageImpl());
 
 		isInited = true;
