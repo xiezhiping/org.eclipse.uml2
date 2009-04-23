@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.81 2009/04/22 17:52:24 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.82 2009/04/23 20:31:13 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -8115,7 +8115,8 @@ public class UMLUtil
 
 						String source = eAnnotation.getSource();
 
-						if (!source.equals(EcorePackage.eNS_URI)
+						if (source != null
+							&& !source.equals(EcorePackage.eNS_URI)
 							&& !source.equals(ExtendedMetaData.ANNOTATION_URI)
 							&& !source.equals(EMF_GEN_MODEL_PACKAGE_NS_URI)
 							&& !source.equals(UML2_UML_PACKAGE_2_0_NS_URI)
