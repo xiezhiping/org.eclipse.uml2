@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (Embarcadero Technologies) - 271470
  *
- * $Id: PackageOperations.java,v 1.38 2008/11/04 14:30:41 khussey Exp $
+ * $Id: PackageOperations.java,v 1.39 2009/04/24 14:28:01 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -756,13 +757,13 @@ public class PackageOperations
 
 		if (appliedProfile == null && recurse) {
 
-			for (Element owner = package_.getOwner(); owner != null
-				&& appliedProfile == null; owner = owner.getOwner()) {
+			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
+				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
+				.hasNext()
+				&& appliedProfile == null;) {
 
-				if (owner instanceof org.eclipse.uml2.uml.Package) {
-					appliedProfile = ((org.eclipse.uml2.uml.Package) owner)
-						.getAppliedProfile(qualifiedName);
-				}
+				appliedProfile = otherApplyingPackages.next()
+					.getAppliedProfile(qualifiedName);
 			}
 		}
 
@@ -783,10 +784,10 @@ public class PackageOperations
 		EList<ProfileApplication> allProfileApplications = new UniqueEList.FastCompare<ProfileApplication>(
 			package_.getProfileApplications());
 
-		for (org.eclipse.uml2.uml.Package owningPackage : package_
-			.allOwningPackages()) {
+		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper.INSTANCE
+			.getOtherApplyingPackages(package_)) {
 
-			allProfileApplications.addAll(owningPackage
+			allProfileApplications.addAll(applyingPackage
 				.getProfileApplications());
 		}
 
@@ -835,14 +836,14 @@ public class PackageOperations
 			.getProfileApplication(profile);
 
 		if (profileApplication == null && recurse) {
+			
+			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
+				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
+				.hasNext()
+				&& profileApplication == null;) {
 
-			for (Element owner = package_.getOwner(); owner != null
-				&& profileApplication == null; owner = owner.getOwner()) {
-
-				if (owner instanceof org.eclipse.uml2.uml.Package) {
-					profileApplication = ((org.eclipse.uml2.uml.Package) owner)
-						.getProfileApplication(profile);
-				}
+				profileApplication = otherApplyingPackages.next()
+					.getProfileApplication(profile);
 			}
 		}
 
@@ -893,10 +894,10 @@ public class PackageOperations
 		EList<Profile> allAppliedProfiles = getAppliedProfiles(package_,
 			new UniqueEList.FastCompare<Profile>());
 
-		for (org.eclipse.uml2.uml.Package owningPackage : package_
-			.allOwningPackages()) {
+		for (org.eclipse.uml2.uml.Package applyingPackage : ProfileApplicationHelper.INSTANCE
+			.getOtherApplyingPackages(package_)) {
 
-			getAppliedProfiles(owningPackage, allAppliedProfiles);
+			getAppliedProfiles(applyingPackage, allAppliedProfiles);
 		}
 
 		return ECollections.unmodifiableEList(allAppliedProfiles);

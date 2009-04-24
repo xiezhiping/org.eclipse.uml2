@@ -7,10 +7,10 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396
+ *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.82 2009/04/23 20:31:13 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.83 2009/04/24 14:28:00 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -130,6 +130,34 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 public class UMLUtil
 		extends UML2Util {
 
+	/**
+	 * The ProfileApplicationHelper can be overridden to change the way packages
+	 * are traversed when looking for profile applications relevant to an
+	 * element in a given package.
+	 * 
+	 * @since 3.0
+	 */
+	public static class ProfileApplicationHelper {
+
+		public static final ProfileApplicationHelper INSTANCE = createProfileApplicationHelper();
+
+		private static ProfileApplicationHelper createProfileApplicationHelper() {
+			ProfileApplicationHelper profileApplicationHelper = UML2Util
+				.loadClassFromSystemProperty("org.eclipse.uml2.uml.util.UMLUtil$ProfileApplicationHelper.INSTANCE"); //$NON-NLS-1$
+
+			if (profileApplicationHelper != null) {
+				return profileApplicationHelper;
+			}
+
+			return new ProfileApplicationHelper();
+		}
+
+		public Iterable<org.eclipse.uml2.uml.Package> getOtherApplyingPackages(
+				org.eclipse.uml2.uml.Package package_) {
+			return package_.allOwningPackages();
+		}
+	}
+	
 	/**
 	 * The StereotypeApplicationHelper can be overridden to change the default
 	 * location of applied stereotypes. 
@@ -7141,7 +7169,7 @@ public class UMLUtil
 							&& !source.equals(ANNOTATION__UNION)) {
 
 							StringBuffer stringBuffer = new StringBuffer(
-								escapeString(source, " ="));
+								escapeString(source, " =")); //$NON-NLS-1$
 
 							for (Map.Entry<String, String> entry : eAnnotation
 								.getDetails()) {
