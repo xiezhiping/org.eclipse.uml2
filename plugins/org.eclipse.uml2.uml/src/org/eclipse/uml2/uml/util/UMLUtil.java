@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120
  *
- * $Id: UMLUtil.java,v 1.83 2009/04/24 14:28:00 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.84 2009/05/01 13:15:08 jbruck Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -8344,6 +8344,11 @@ public class UMLUtil
 	protected static final String LANGUAGE__OCL = "OCL"; //$NON-NLS-1$
 
 	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+
+	/**
+	 * An annotation tag that can be used for backward compatibility.
+	 */
+	public static final String UML2_UML_PACKAGE_2_0_NS_URI_COMPATIBILITY = "http://www.eclipse.org/uml2/2.0.0/UML/compatibility"; //$NON-NLS-1$
 
 	/**
 	 * The name of the 'Ecore' profile.
