@@ -8,13 +8,14 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.7 2009/05/01 19:17:54 jbruck Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.8 2009/05/01 20:53:15 jbruck Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
@@ -54,7 +55,7 @@ public class ExternalizeLabelsAction
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(package_);
 			
-			final Collection<String> qualifiedNames = new ArrayList<String>();
+			final Set<String> qualifiedNames = new HashSet<String>();
 			
 			new UMLSwitch<Object>() {
 
