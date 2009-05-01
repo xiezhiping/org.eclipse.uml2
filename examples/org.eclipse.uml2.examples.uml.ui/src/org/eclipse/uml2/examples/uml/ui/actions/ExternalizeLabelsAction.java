@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,11 +8,12 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ExternalizeLabelsAction.java,v 1.6 2007/02/23 03:11:38 khussey Exp $
+ * $Id: ExternalizeLabelsAction.java,v 1.7 2009/05/01 19:17:54 jbruck Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
@@ -52,7 +53,9 @@ public class ExternalizeLabelsAction
 				.iterator().next();
 
 			final PrintWriter propertiesWriter = getPropertiesWriter(package_);
-
+			
+			final Collection<String> qualifiedNames = new ArrayList<String>();
+			
 			new UMLSwitch<Object>() {
 
 				@Override
@@ -74,9 +77,11 @@ public class ExternalizeLabelsAction
 				public Object caseNamedElement(NamedElement namedElement) {
 					String qualifiedName = namedElement.getQualifiedName();
 
-					if (!UML2Util.isEmpty(qualifiedName)) {
+					if (!UML2Util.isEmpty(qualifiedName)
+						&& !qualifiedNames.contains(qualifiedName)) {
 						externalize(propertiesWriter, namedElement,
 							qualifiedName);
+						qualifiedNames.add(qualifiedName);
 					}
 
 					return super.caseNamedElement(namedElement);
