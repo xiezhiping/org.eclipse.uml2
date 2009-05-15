@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
  *
- * $Id: PackageOperations.java,v 1.39 2009/04/24 14:28:01 jbruck Exp $
+ * $Id: PackageOperations.java,v 1.40 2009/05/15 20:43:20 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -836,7 +836,7 @@ public class PackageOperations
 			.getProfileApplication(profile);
 
 		if (profileApplication == null && recurse) {
-			
+
 			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
 				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
 				.hasNext()
