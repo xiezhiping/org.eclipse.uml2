@@ -26,6 +26,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFf3jqEdy8S4Cr8Rc_NA" name="annotations" ordered="false" upperBound="-1">
             <eAnnotations xmi:id="_z1OFgHjqEdy8S4Cr8Rc_NA" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
               <details xmi:id="_z1OFgXjqEdy8S4Cr8Rc_NA" key="name" value="annotation"/>
+              <details xmi:id="_PjFusEu-Ed6uLbw9d2wpvg" key="kind" value="element"/>
             </eAnnotations>
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
@@ -38,6 +39,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFh3jqEdy8S4Cr8Rc_NA" name="annotations" ordered="false" upperBound="-1">
             <eAnnotations xmi:id="_z1OFiHjqEdy8S4Cr8Rc_NA" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
               <details xmi:id="_z1OFiXjqEdy8S4Cr8Rc_NA" key="name" value="annotation"/>
+              <details xmi:id="_a-lUoE6-Ed665IwgB2zm1A" key="kind" value="element"/>
             </eAnnotations>
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
@@ -122,6 +124,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFw3jqEdy8S4Cr8Rc_NA" name="annotations" ordered="false" upperBound="-1">
             <eAnnotations xmi:id="_z1OFxHjqEdy8S4Cr8Rc_NA" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
               <details xmi:id="_z1OFxXjqEdy8S4Cr8Rc_NA" key="name" value="annotation"/>
+              <details xmi:id="_b2vrsE6-Ed665IwgB2zm1A" key="kind" value="element"/>
             </eAnnotations>
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
@@ -138,6 +141,7 @@
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFzXjqEdy8S4Cr8Rc_NA" name="annotations" ordered="false" upperBound="-1">
             <eAnnotations xmi:id="_z1OFznjqEdy8S4Cr8Rc_NA" source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
               <details xmi:id="_z1OFz3jqEdy8S4Cr8Rc_NA" key="name" value="annotation"/>
+              <details xmi:id="_cisywE6-Ed665IwgB2zm1A" key="kind" value="element"/>
             </eAnnotations>
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
@@ -1474,8 +1478,8 @@
     </profileApplication>
   </uml:Profile>
   <Ecore:EPackage xmi:id="_kG3ssJNUEdq27qNyfB516A" base_Package="_0" nsURI="http://www.eclipse.org/uml2/schemas/Ecore/5"/>
-  <Ecore:EAttribute xmi:id="_QKz3cHjqEdy8S4Cr8Rc_NA" xmlName="annotation" base_Property="EPackage-annotations"/>
-  <Ecore:EAttribute xmi:id="_XWpzEHjqEdy8S4Cr8Rc_NA" xmlName="annotation" base_Property="ENamedElement-annotations"/>
-  <Ecore:EAttribute xmi:id="_c6pnIHjqEdy8S4Cr8Rc_NA" xmlName="annotation" base_Property="EOperation-annotations"/>
-  <Ecore:EAttribute xmi:id="_sH1jAHjqEdy8S4Cr8Rc_NA" xmlName="annotation" base_Property="EParameter-annotations"/>
+  <Ecore:EAttribute xmi:id="_QKz3cHjqEdy8S4Cr8Rc_NA" xmlFeatureKind="Element" xmlName="annotation" base_Property="EPackage-annotations"/>
+  <Ecore:EAttribute xmi:id="_XWpzEHjqEdy8S4Cr8Rc_NA" xmlFeatureKind="Element" xmlName="annotation" base_Property="ENamedElement-annotations"/>
+  <Ecore:EAttribute xmi:id="_c6pnIHjqEdy8S4Cr8Rc_NA" xmlFeatureKind="Element" xmlName="annotation" base_Property="EOperation-annotations"/>
+  <Ecore:EAttribute xmi:id="_sH1jAHjqEdy8S4Cr8Rc_NA" xmlFeatureKind="Element" xmlName="annotation" base_Property="EParameter-annotations"/>
 </xmi:XMI>
