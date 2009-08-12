@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Component.java,v 1.26 2009/02/27 18:37:52 jbruck Exp $
+ * $Id: Component.java,v 1.27 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -42,7 +42,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Component
-		extends Class {
+		extends org.eclipse.uml2.uml.Class {
 
 	/**
 	 * Returns the value of the '<em><b>Is Indirectly Instantiated</b></em>' attribute.
@@ -275,7 +275,7 @@ public interface Component
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
-	Class createOwnedClass(String name, boolean isAbstract);
+	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
 
 	/**
 	 * <!-- begin-user-doc -->

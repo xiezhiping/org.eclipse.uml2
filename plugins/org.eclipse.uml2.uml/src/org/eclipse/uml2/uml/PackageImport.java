@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageImport.java,v 1.11 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: PackageImport.java,v 1.12 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -84,12 +84,12 @@ public interface PackageImport
 	 * Specifies the Package whose members are imported into a Namespace.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Package</em>' reference.
-	 * @see #setImportedPackage(Package)
+	 * @see #setImportedPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageImport_ImportedPackage()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	Package getImportedPackage();
+	org.eclipse.uml2.uml.Package getImportedPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.PackageImport#getImportedPackage <em>Imported Package</em>}' reference.
@@ -99,7 +99,7 @@ public interface PackageImport
 	 * @see #getImportedPackage()
 	 * @generated
 	 */
-	void setImportedPackage(Package value);
+	void setImportedPackage(org.eclipse.uml2.uml.Package value);
 
 	/**
 	 * Returns the value of the '<em><b>Importing Namespace</b></em>' container reference.

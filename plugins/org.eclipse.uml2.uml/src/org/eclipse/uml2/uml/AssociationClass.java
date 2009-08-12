@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: AssociationClass.java,v 1.7 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: AssociationClass.java,v 1.8 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface AssociationClass
-		extends Class, Association {
+		extends org.eclipse.uml2.uml.Class, Association {
 
 	/**
 	 * <!-- begin-user-doc -->

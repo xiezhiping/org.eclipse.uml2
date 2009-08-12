@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Model.java,v 1.7 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Model.java,v 1.8 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -33,7 +33,7 @@ package org.eclipse.uml2.uml;
  * @generated
  */
 public interface Model
-		extends Package {
+		extends org.eclipse.uml2.uml.Package {
 
 	/**
 	 * Returns the value of the '<em><b>Viewpoint</b></em>' attribute.

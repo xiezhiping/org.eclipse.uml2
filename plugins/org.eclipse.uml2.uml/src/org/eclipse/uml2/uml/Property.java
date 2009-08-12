@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Property.java,v 1.29 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Property.java,v 1.30 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -276,7 +276,7 @@ public interface Property
 	 * @model transient="true" changeable="false" volatile="true" ordered="false"
 	 * @generated
 	 */
-	Class getClass_();
+	org.eclipse.uml2.uml.Class getClass_();
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Property</b></em>' reference list.

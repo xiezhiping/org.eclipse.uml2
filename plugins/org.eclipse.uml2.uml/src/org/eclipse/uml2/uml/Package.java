@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Package.java,v 1.22 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Package.java,v 1.23 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -392,7 +392,7 @@ public interface Package
 	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
-	Class createOwnedClass(String name, boolean isAbstract);
+	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
 
 	/**
 	 * <!-- begin-user-doc -->

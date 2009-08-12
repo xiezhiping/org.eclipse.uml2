@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Node.java,v 1.12 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Node.java,v 1.13 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -43,7 +43,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Node
-		extends Class, DeploymentTarget {
+		extends org.eclipse.uml2.uml.Class, DeploymentTarget {
 
 	/**
 	 * Returns the value of the '<em><b>Nested Node</b></em>' containment reference list.

@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Element.java,v 1.21 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Element.java,v 1.22 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -405,7 +405,7 @@ public interface Element
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	Package getNearestPackage();
+	org.eclipse.uml2.uml.Package getNearestPackage();
 
 	/**
 	 * <!-- begin-user-doc -->

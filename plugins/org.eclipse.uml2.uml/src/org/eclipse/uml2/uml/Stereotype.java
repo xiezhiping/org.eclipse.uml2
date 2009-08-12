@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Stereotype.java,v 1.12 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Stereotype.java,v 1.13 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -41,7 +41,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Stereotype
-		extends Class {
+		extends org.eclipse.uml2.uml.Class {
 
 	/**
 	 * Returns the value of the '<em><b>Icon</b></em>' containment reference list.
@@ -109,7 +109,8 @@ public interface Stereotype
 	 * @model required="true" ordered="false" metaclassRequired="true" metaclassOrdered="false" isRequiredDataType="org.eclipse.uml2.uml.Boolean" isRequiredRequired="true" isRequiredOrdered="false"
 	 * @generated
 	 */
-	Extension createExtension(Class metaclass, boolean isRequired);
+	Extension createExtension(org.eclipse.uml2.uml.Class metaclass,
+			boolean isRequired);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,7 +155,7 @@ public interface Stereotype
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<Class> getExtendedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,7 +166,7 @@ public interface Stereotype
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<Class> getAllExtendedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getAllExtendedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Type.java,v 1.13 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Type.java,v 1.14 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -53,13 +53,13 @@ public interface Type
 	 * Specifies the owning package of this classifier, if any.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference.
-	 * @see #setPackage(Package)
+	 * @see #setPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getType_Package()
 	 * @see org.eclipse.uml2.uml.Package#getOwnedTypes
 	 * @model opposite="ownedType" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	Package getPackage();
+	org.eclipse.uml2.uml.Package getPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.Type#getPackage <em>Package</em>}' reference.
@@ -69,7 +69,7 @@ public interface Type
 	 * @see #getPackage()
 	 * @generated
 	 */
-	void setPackage(Package value);
+	void setPackage(org.eclipse.uml2.uml.Package value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: ProfileApplication.java,v 1.16 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: ProfileApplication.java,v 1.17 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -113,13 +113,13 @@ public interface ProfileApplication
 	 * The package that owns the profile application.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applying Package</em>' container reference.
-	 * @see #setApplyingPackage(Package)
+	 * @see #setApplyingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProfileApplication_ApplyingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getProfileApplications
 	 * @model opposite="profileApplication" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
-	Package getApplyingPackage();
+	org.eclipse.uml2.uml.Package getApplyingPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}' container reference.
@@ -129,7 +129,7 @@ public interface ProfileApplication
 	 * @see #getApplyingPackage()
 	 * @generated
 	 */
-	void setApplyingPackage(Package value);
+	void setApplyingPackage(org.eclipse.uml2.uml.Package value);
 
 	/**
 	 * <!-- begin-user-doc -->

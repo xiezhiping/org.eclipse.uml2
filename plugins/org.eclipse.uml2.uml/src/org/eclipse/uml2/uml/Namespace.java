@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: Namespace.java,v 1.17 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Namespace.java,v 1.18 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -139,7 +139,8 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport createPackageImport(Package importedPackage);
+	PackageImport createPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
@@ -150,7 +151,7 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(Package importedPackage);
+	PackageImport getPackageImport(org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Package Import</b></em>' containment reference list.
@@ -162,8 +163,8 @@ public interface Namespace
 	 * @see #getPackageImports()
 	 * @generated
 	 */
-	PackageImport getPackageImport(Package importedPackage,
-			boolean createOnDemand);
+	PackageImport getPackageImport(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Owned Rule</b></em>' containment reference list.
@@ -412,7 +413,7 @@ public interface Namespace
 	 * @model required="true" ordered="false" package_Required="true" package_Ordered="false" visibilityRequired="true" visibilityOrdered="false"
 	 * @generated
 	 */
-	PackageImport createPackageImport(Package package_,
+	PackageImport createPackageImport(org.eclipse.uml2.uml.Package package_,
 			VisibilityKind visibility);
 
 	/**
@@ -435,7 +436,7 @@ public interface Namespace
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<Package> getImportedPackages();
+	EList<org.eclipse.uml2.uml.Package> getImportedPackages();
 
 	/**
 	 * <!-- begin-user-doc -->

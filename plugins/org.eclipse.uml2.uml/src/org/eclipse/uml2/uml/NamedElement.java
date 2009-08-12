@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *
- * $Id: NamedElement.java,v 1.22 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: NamedElement.java,v 1.23 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -425,7 +425,7 @@ public interface NamedElement
 	 * @model ordered="false"
 	 * @generated
 	 */
-	EList<Package> allOwningPackages();
+	EList<org.eclipse.uml2.uml.Package> allOwningPackages();
 
 	String SEPARATOR = "::"; //$NON-NLS-1$
 

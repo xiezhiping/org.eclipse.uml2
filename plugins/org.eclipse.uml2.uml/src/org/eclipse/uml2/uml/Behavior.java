@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Behavior.java,v 1.24 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Behavior.java,v 1.25 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Behavior
-		extends Class {
+		extends org.eclipse.uml2.uml.Class {
 
 	/**
 	 * Returns the value of the '<em><b>Is Reentrant</b></em>' attribute.

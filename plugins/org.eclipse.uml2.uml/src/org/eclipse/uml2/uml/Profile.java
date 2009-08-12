@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Profile.java,v 1.19 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Profile.java,v 1.20 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -45,7 +45,7 @@ import org.eclipse.emf.ecore.EPackage;
  * @generated
  */
 public interface Profile
-		extends Package {
+		extends org.eclipse.uml2.uml.Package {
 
 	/**
 	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
@@ -190,7 +190,8 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport createMetamodelReference(Package importedPackage);
+	PackageImport createMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -201,7 +202,8 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport getMetamodelReference(Package importedPackage);
+	PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage);
 
 	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.PackageImport} with the specified '<em><b>Imported Package</b></em>' from the '<em><b>Metamodel Reference</b></em>' reference list.
@@ -213,8 +215,8 @@ public interface Profile
 	 * @see #getMetamodelReferences()
 	 * @generated
 	 */
-	PackageImport getMetamodelReference(Package importedPackage,
-			boolean createOnDemand);
+	PackageImport getMetamodelReference(
+			org.eclipse.uml2.uml.Package importedPackage, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -344,7 +346,7 @@ public interface Profile
 	 * @model kind="operation" ordered="false"
 	 * @generated
 	 */
-	EList<Class> getReferencedMetaclasses();
+	EList<org.eclipse.uml2.uml.Class> getReferencedMetaclasses();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: PackageMerge.java,v 1.8 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: PackageMerge.java,v 1.9 2009/08/12 21:05:19 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -50,12 +50,12 @@ public interface PackageMerge
 	 * References the Package that is to be merged with the receiving package of the PackageMerge.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Merged Package</em>' reference.
-	 * @see #setMergedPackage(Package)
+	 * @see #setMergedPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageMerge_MergedPackage()
 	 * @model required="true" ordered="false"
 	 * @generated
 	 */
-	Package getMergedPackage();
+	org.eclipse.uml2.uml.Package getMergedPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.PackageMerge#getMergedPackage <em>Merged Package</em>}' reference.
@@ -65,7 +65,7 @@ public interface PackageMerge
 	 * @see #getMergedPackage()
 	 * @generated
 	 */
-	void setMergedPackage(Package value);
+	void setMergedPackage(org.eclipse.uml2.uml.Package value);
 
 	/**
 	 * Returns the value of the '<em><b>Receiving Package</b></em>' container reference.
@@ -83,13 +83,13 @@ public interface PackageMerge
 	 * References the Package that is being extended with the contents of the merged package of the PackageMerge.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Receiving Package</em>' container reference.
-	 * @see #setReceivingPackage(Package)
+	 * @see #setReceivingPackage(org.eclipse.uml2.uml.Package)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPackageMerge_ReceivingPackage()
 	 * @see org.eclipse.uml2.uml.Package#getPackageMerges
 	 * @model opposite="packageMerge" required="true" transient="false" ordered="false"
 	 * @generated
 	 */
-	Package getReceivingPackage();
+	org.eclipse.uml2.uml.Package getReceivingPackage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.PackageMerge#getReceivingPackage <em>Receiving Package</em>}' container reference.
@@ -99,6 +99,6 @@ public interface PackageMerge
 	 * @see #getReceivingPackage()
 	 * @generated
 	 */
-	void setReceivingPackage(Package value);
+	void setReceivingPackage(org.eclipse.uml2.uml.Package value);
 
 } // PackageMerge

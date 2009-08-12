@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: Operation.java,v 1.20 2009/02/27 18:37:53 jbruck Exp $
+ * $Id: Operation.java,v 1.21 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
@@ -208,13 +208,13 @@ public interface Operation
 	 * The class that owns the operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' container reference.
-	 * @see #setClass_(Class)
+	 * @see #setClass_(org.eclipse.uml2.uml.Class)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Class()
 	 * @see org.eclipse.uml2.uml.Class#getOwnedOperations
 	 * @model opposite="ownedOperation" transient="false" ordered="false"
 	 * @generated
 	 */
-	Class getClass_();
+	org.eclipse.uml2.uml.Class getClass_();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}' container reference.
@@ -224,7 +224,7 @@ public interface Operation
 	 * @see #getClass_()
 	 * @generated
 	 */
-	void setClass_(Class value);
+	void setClass_(org.eclipse.uml2.uml.Class value);
 
 	/**
 	 * Returns the value of the '<em><b>Precondition</b></em>' reference list.
