@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Sergey Boyko (Borland) - 282440
  *
- * $Id: NamedElementImpl.java,v 1.32 2008/05/05 15:14:24 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.33 2009/08/12 21:21:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -961,6 +962,7 @@ public abstract class NamedElementImpl
 					}
 				}
 
+		        name = URI.encodeSegment(name, true);
 				return count > 0
 					? name + '.' + count
 					: name;
