@@ -40,7 +40,7 @@ http://www.eclipse.org/legal/epl-v10.html
       <import plugin="org.eclipse.emf.edit.ui" version="2.5.0" match="compatible"/>
       <import plugin="org.eclipse.emf.codegen.ecore" version="2.6.0" match="equivalent"/>
       <import plugin="org.eclipse.emf.codegen.ecore.ui" version="2.5.0" match="equivalent"/>
-      <import plugin="org.eclipse.emf.exporter" version="2.5.0" match="equivalent"/>
+      <import plugin="org.eclipse.emf.exporter" version="2.6.0" match="equivalent"/>
       <import plugin="org.eclipse.emf.importer" version="2.6.0" match="equivalent"/>
    </requires>
 
