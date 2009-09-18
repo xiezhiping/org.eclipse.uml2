@@ -33,6 +33,17 @@
 
   <%}%>
 <%}%>
+<%if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && isImplementation && genOperation.isInvariant() && genOperation.hasInvariantExpression()) {%>
+	/**
+	 * The cached validation expression for the '{@link #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' invariant operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
+	 * @generated
+	 */
+	protected static final <%=genModel.getImportedName("java.lang.String")%> <%=CodeGenUtil.upperName(genOperation.getName(), genModel.getLocale())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + CodeGenUtil.upperName(genOperation.getParameterTypes("_", false), genModel.getLocale())%>__EEXPRESSION = "<%=genOperation.getInvariantExpression("\t\t")%>";<%=genModel.getNonNLS()%>
+
+<%}%>
 <%if (isInterface) {%>
 	/**
 <%@ include file="genOperation.javadoc.insert.javajetinc" fail="silent" %>
@@ -83,10 +94,24 @@
   <%if (genOperation.hasBody()) {%>
 		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
   <%} else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();%>
-    <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
-		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this, <%=diagnostics%>, <%=context%>);
+    <%if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && genOperation.hasInvariantExpression()) {%>
+		return
+			<%=opClass.getGenPackage().getImportedValidatorClassName()%>.validate
+				(<%=genClass.getQualifiedClassifierAccessor()%>,
+				 this,
+				 <%=diagnostics%>,
+				 <%=context%>,
+				 "<%=genOperation.getValidationDelegate()%>",<%=genModel.getNonNLS()%>
+				 <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>),
+				 <%=CodeGenUtil.upperName(genOperation.getName(), genModel.getLocale())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + CodeGenUtil.upperName(genOperation.getParameterTypes("_", false), genModel.getLocale())%>__EEXPRESSION,
+				 <%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
+				 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.DIAGNOSTIC_SOURCE,
+				 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>);
     <%} else {%>
-      <%if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";%>
+      <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
+		return <%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this, <%=diagnostics%>, <%=context%>);
+      <%} else {%>
+        <%if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";%>
 		if (<%=oclInv%> == null)
 		{
 			<%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%>.Helper helper = EOCL_ENV.createOCLHelper();
@@ -101,13 +126,13 @@
 			}
 		}
 		if (!EOCL_ENV.createQuery(<%=oclInv%>).check(this))
-      <%} else {%>
+        <%} else {%>
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
 		// -> verify the details of the diagnostic, including severity and message
 		// Ensure that you remove @generated or mark it @generated NOT
 		if (false)
-      <%}%>
+        <%}%>
 		{
 			if (<%=diagnostics%> != null)
 			{
@@ -122,6 +147,7 @@
 			return false;
 		}
 		return true;
+      <%}%>
     <%}%>
   <%} else { GenClass opClass = genOperation.getGenClass();%>
     <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
