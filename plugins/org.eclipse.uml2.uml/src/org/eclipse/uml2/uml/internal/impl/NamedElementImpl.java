@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Sergey Boyko (Borland) - 282440
  *
- * $Id: NamedElementImpl.java,v 1.33 2009/08/12 21:21:02 khussey Exp $
+ * $Id: NamedElementImpl.java,v 1.34 2009/09/18 18:36:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -962,7 +962,7 @@ public abstract class NamedElementImpl
 					}
 				}
 
-		        name = URI.encodeSegment(name, true);
+				name = URI.encodeSegment(name, true);
 				return count > 0
 					? name + '.' + count
 					: name;
