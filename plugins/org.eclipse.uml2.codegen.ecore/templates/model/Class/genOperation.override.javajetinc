@@ -33,16 +33,30 @@
 
   <%}%>
 <%}%>
-<%if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && isImplementation && genOperation.isInvariant() && genOperation.hasInvariantExpression()) {%>
+<%if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && isImplementation) {%>
+  <%if (genOperation.isInvariant() && genOperation.hasInvariantExpression()) {%>
 	/**
 	 * The cached validation expression for the '{@link #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' invariant operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
 	 * @generated
+	 * @ordered
 	 */
-	protected static final <%=genModel.getImportedName("java.lang.String")%> <%=CodeGenUtil.upperName(genOperation.getName(), genModel.getLocale())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + CodeGenUtil.upperName(genOperation.getParameterTypes("_", false), genModel.getLocale())%>__EEXPRESSION = "<%=genOperation.getInvariantExpression("\t\t")%>";<%=genModel.getNonNLS()%>
+	protected static final <%=genModel.getImportedName("java.lang.String")%> <%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EEXPRESSION = "<%=genOperation.getInvariantExpression("\t\t")%>";<%=genModel.getNonNLS()%>
 
+  <%} else if (genOperation.hasInvocationDelegate()) {%>
+	/**
+	 * The cached invocation delegate for the '{@link #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
+	 * @generated
+	 * @ordered
+	 */
+	protected static final <%=genModel.getImportedName("org.eclipse.emf.ecore.EOperation")%>.Internal.InvocationDelegate <%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EINVOCATION_DELEGATE = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.EOperation")%>.Internal)<%=genOperation.getQualifiedOperationAccessor()%>).getInvocationDelegate();
+
+  <%}%>
 <%}%>
 <%if (isInterface) {%>
 	/**
@@ -102,8 +116,8 @@
 				 <%=diagnostics%>,
 				 <%=context%>,
 				 "<%=genOperation.getValidationDelegate()%>",<%=genModel.getNonNLS()%>
-				 <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>),
-				 <%=CodeGenUtil.upperName(genOperation.getName(), genModel.getLocale())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + CodeGenUtil.upperName(genOperation.getParameterTypes("_", false), genModel.getLocale())%>__EEXPRESSION,
+				 <%=genOperation.getQualifiedOperationAccessor()%>,
+				 <%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EEXPRESSION,
 				 <%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
 				 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.DIAGNOSTIC_SOURCE,
 				 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>);
@@ -149,7 +163,20 @@
 		return true;
       <%}%>
     <%}%>
-  <%} else { GenClass opClass = genOperation.getGenClass();%>
+  <%} else if (genModel.getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE && genOperation.hasInvocationDelegate()) { int size = genOperation.getGenParameters().size();%>
+		try
+		{
+    <%if (genOperation.isVoid()) {%>
+			<%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EINVOCATION_DELEGATE.dynamicInvoke(this, <%if (size > 0) {%>new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<Object>(<%=size%>, <%=genOperation.getParametersArray(genClass)%>)<%} else {%>null<%}%>);
+    <%} else {%>
+			return <%if (!isJDK50 && genOperation.isPrimitiveType()) {%>(<%}%>(<%=genOperation.getObjectType(genClass)%>)<%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EINVOCATION_DELEGATE.dynamicInvoke(this, <%if (size > 0) {%>new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<Object>(<%=size%>, <%=genOperation.getParametersArray(genClass)%>)<%} else {%>null<%}%>)<%if (!isJDK50 && genOperation.isPrimitiveType()) {%>).<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
+    <%}%>
+		}
+		catch (<%=genModel.getImportedName("java.lang.reflect.InvocationTargetException")%> ite)
+		{
+			throw new <%=genModel.getImportedName("org.eclipse.emf.common.util.WrappedException")%>(ite);
+		}
+  <%} else {%>
     <%if (UML2GenModelUtil.hasOperationsClass(genClass, genOperation)) {%>
       <%if (genOperation.isVoid()) {%>
 		<%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>);
@@ -161,10 +188,10 @@
           <%if (genModel.useGenerics() && genOperation.isUncheckedCast()) {%>
 			@SuppressWarnings("unchecked")
           <%}%>
-			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>));
+			<%=genOperation.getObjectType(genClass)%> result = (<%=genOperation.getObjectType(genClass)%>) cache.get(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genOperation.getQualifiedOperationAccessor()%>);
 			if (result == null)
 			{
-				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=opClass.getQualifiedClassifierAccessor()%>.getEOperations().get(<%=opClass.getEcoreClass().getEOperations().indexOf(genOperation.getEcoreOperation())%>), result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
+				cache.put(<%if (UML2GenModelUtil.isResourceCacheAdapterScope(genOperation)) {%>eResource(), <%}%>this, <%=genOperation.getQualifiedOperationAccessor()%>, result = <%if (genOperation.isPrimitiveType()) {%>new <%=genOperation.getObjectType(genClass)%>(<%}%><%=UML2GenModelUtil.getImportedOperationsClassName(genClass, genOperation)%>.<%=genOperation.getName()%>(this<%if (genOperation.getGenParameters().size() > 0) {%>, <%=genOperation.getParameterNames(", ")%><%}%>)<%if (genOperation.isPrimitiveType()) {%>)<%}%>);
 			}
 			return result<%if (genOperation.isPrimitiveType()) {%>.<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
 		}

@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
+ *   Kenn Hussey - 286329
  *
- * $Id: GenFeatureImpl.java,v 1.31 2009/01/07 13:32:57 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.32 2009/11/16 21:11:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -20,10 +21,12 @@ import java.util.List;
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.codegen.ecore.genmodel.GenRuntimeVersion;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.uml2.codegen.ecore.genmodel.GenBase;
 import org.eclipse.uml2.codegen.ecore.Generator;
@@ -820,6 +823,25 @@ public class GenFeatureImpl
 	@Override
 	public boolean isTested() {
 		return super.isTested() && !isUnion();
+	}
+
+	@Override
+	public boolean hasSettingDelegate() {
+
+		if (isDuplicate()
+			&& getGenModel().getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE) {
+
+			for (String settingDelegate : EcoreUtil
+				.getSettingDelegates(getGenClass().getGenPackage()
+					.getEcorePackage())) {
+				if (getEcoreFeature().getEAnnotation(settingDelegate) != null)
+					return EStructuralFeature.Internal.SettingDelegate.Factory.Registry.INSTANCE
+						.getFactory(settingDelegate) != null;
+			}
+			return false;
+		} else {
+			return super.hasSettingDelegate();
+		}
 	}
 
 } // GenFeatureImpl

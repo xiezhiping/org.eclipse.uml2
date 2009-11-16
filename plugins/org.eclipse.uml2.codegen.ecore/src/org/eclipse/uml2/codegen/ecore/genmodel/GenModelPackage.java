@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
+ *   Kenn Hussey - 286329
  *
- * $Id: GenModelPackage.java,v 1.36 2008/11/04 14:30:59 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.37 2009/11/16 21:11:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1290,6 +1291,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__CLASS_NAME_PATTERN = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__CLASS_NAME_PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Operation Reflection</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__OPERATION_REFLECTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__OPERATION_REFLECTION;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.

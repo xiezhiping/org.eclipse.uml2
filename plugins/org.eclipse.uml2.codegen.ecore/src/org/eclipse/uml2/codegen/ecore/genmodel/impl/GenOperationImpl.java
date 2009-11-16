@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: GenOperationImpl.java,v 1.21 2008/04/18 17:43:26 khussey Exp $
+ * $Id: GenOperationImpl.java,v 1.22 2009/11/16 21:11:01 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
+import org.eclipse.emf.codegen.ecore.genmodel.GenRuntimeVersion;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -441,6 +443,25 @@ public class GenOperationImpl
 
 	public boolean hasOCLBody() {
 		return !isBlank(getOCLBody());
+	}
+
+	@Override
+	public boolean hasInvocationDelegate() {
+
+		if (isDuplicate()
+			&& getGenModel().getRuntimeVersion().getValue() >= GenRuntimeVersion.EMF26_VALUE) {
+
+			for (String invocationDelegate : EcoreUtil
+				.getInvocationDelegates(getGenClass().getGenPackage()
+					.getEcorePackage())) {
+				if (getEcoreOperation().getEAnnotation(invocationDelegate) != null)
+					return EOperation.Internal.InvocationDelegate.Factory.Registry.INSTANCE
+						.getFactory(invocationDelegate) != null;
+			}
+			return false;
+		} else {
+			return super.hasInvocationDelegate();
+		}
 	}
 
 } // GenOperationImpl
