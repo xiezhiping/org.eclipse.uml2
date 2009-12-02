@@ -60,6 +60,7 @@
         </ownedParameter>
       </ownedTemplateSignature>
     </packagedElement>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="EInvocationTargetException" name="EInvocationTargetException"/>
     <profileApplication xmi:id="_profileApplication.0">
       <eAnnotations xmi:id="_profileApplication.0-_http2F2Fwww.eclipse.org2Fuml22F2.0.02FUML" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
