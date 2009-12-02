@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ElementItemProvider.java,v 1.19 2008/02/01 14:04:51 khussey Exp $
+ * $Id: ElementItemProvider.java,v 1.20 2009/12/02 18:27:49 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -207,6 +207,16 @@ public class ElementItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -375,27 +385,25 @@ public class ElementItemProvider
 
 		if (stereotypeApplications.isEmpty()) {
 			return null;
-		} else {
-			List<IItemPropertyDescriptor> stereotypeApplicationPropertyDescriptors = new ArrayList<IItemPropertyDescriptor>();
+		}
+		List<IItemPropertyDescriptor> stereotypeApplicationPropertyDescriptors = new ArrayList<IItemPropertyDescriptor>();
 
-			for (EObject stereotypeApplication : stereotypeApplications) {
-				IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
-					.adapt(stereotypeApplication, IItemPropertySource.class);
+		for (EObject stereotypeApplication : stereotypeApplications) {
+			IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory
+				.adapt(stereotypeApplication, IItemPropertySource.class);
 
-				if (itemPropertySource != null) {
+			if (itemPropertySource != null) {
 
-					for (IItemPropertyDescriptor propertyDescriptor : itemPropertySource
-						.getPropertyDescriptors(stereotypeApplication)) {
+				for (IItemPropertyDescriptor propertyDescriptor : itemPropertySource
+					.getPropertyDescriptors(stereotypeApplication)) {
 
-						stereotypeApplicationPropertyDescriptors
-							.add(new ItemPropertyDescriptorDecorator(
-								stereotypeApplication, propertyDescriptor));
-					}
+					stereotypeApplicationPropertyDescriptors
+						.add(new ItemPropertyDescriptorDecorator(
+							stereotypeApplication, propertyDescriptor));
 				}
 			}
-
-			return stereotypeApplicationPropertyDescriptors;
 		}
+		return stereotypeApplicationPropertyDescriptors;
 	}
 
 	public IItemPropertyDescriptor getStereotypeApplicationPropertyDescriptor(

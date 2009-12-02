@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *
- * $Id: ParameterItemProvider.java,v 1.16 2008/02/01 14:04:57 khussey Exp $
+ * $Id: ParameterItemProvider.java,v 1.17 2009/12/02 18:27:48 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -419,6 +419,16 @@ public class ParameterItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -485,6 +495,7 @@ public class ParameterItemProvider
 				updateChildren(notification);
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, true));
+				//$FALL-THROUGH$
 			case UMLPackage.PARAMETER__NAME :
 			case UMLPackage.PARAMETER__TYPE :
 			case UMLPackage.PARAMETER__UPPER :

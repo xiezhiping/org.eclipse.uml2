@@ -9,7 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 247980
  *
- * $Id: UMLItemPropertyDescriptor.java,v 1.8 2009/03/13 20:34:27 khussey Exp $
+ * $Id: UMLItemPropertyDescriptor.java,v 1.9 2009/12/02 18:27:51 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -52,14 +52,13 @@ public class UMLItemPropertyDescriptor
 				}
 
 				return text.toString();
-			} else {
-				IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
-					.adapt(object, IItemQualifiedTextProvider.class);
-
-				return itemQualifiedTextProvider != null
-					? itemQualifiedTextProvider.getQualifiedText(object)
-					: getText(object);
 			}
+			IItemQualifiedTextProvider itemQualifiedTextProvider = (IItemQualifiedTextProvider) adapterFactory
+				.adapt(object, IItemQualifiedTextProvider.class);
+
+			return itemQualifiedTextProvider != null
+				? itemQualifiedTextProvider.getQualifiedText(object)
+				: getText(object);
 		}
 	}
 

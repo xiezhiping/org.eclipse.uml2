@@ -8,7 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *
- * $Id: StartObjectBehaviorActionItemProvider.java,v 1.1 2008/10/02 20:59:07 jbruck Exp $
+ * $Id: StartObjectBehaviorActionItemProvider.java,v 1.2 2009/12/02 18:27:50 jbruck Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -113,6 +113,16 @@ public class StartObjectBehaviorActionItemProvider
 	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage(
 			"full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean shouldComposeCreationImage() {
+		return true;
 	}
 
 	/**
