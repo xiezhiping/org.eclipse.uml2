@@ -7,15 +7,20 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: ParameterableElementImpl.java,v 1.17 2009/01/07 15:55:31 jbruck Exp $
+ * $Id: ParameterableElementImpl.java,v 1.18 2009/12/04 15:30:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -30,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -445,6 +451,106 @@ public abstract class ParameterableElementImpl
 				return templateParameter != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETERABLE_ELEMENT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PARAMETERABLE_ELEMENT___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.PARAMETERABLE_ELEMENT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.PARAMETERABLE_ELEMENT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_MODEL :
+				return getModel();
+			case UMLPackage.PARAMETERABLE_ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PARAMETERABLE_ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PARAMETERABLE_ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PARAMETERABLE_ELEMENT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.PARAMETERABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.PARAMETERABLE_ELEMENT___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.PARAMETERABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.PARAMETERABLE_ELEMENT___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

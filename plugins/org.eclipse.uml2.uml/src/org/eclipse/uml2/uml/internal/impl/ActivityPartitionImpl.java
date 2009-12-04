@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: ActivityPartitionImpl.java,v 1.29 2009/01/07 15:55:26 jbruck Exp $
+ * $Id: ActivityPartitionImpl.java,v 1.30 2009/12/04 15:30:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -47,6 +49,9 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -1180,6 +1185,177 @@ public class ActivityPartitionImpl
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ActivityGroup.class) {
+			switch (baseOperationID) {
+				case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.ACTIVITY_GROUP___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.ACTIVITY_PARTITION___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.ACTIVITY_PARTITION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.ACTIVITY_PARTITION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.ACTIVITY_PARTITION___GET_MODEL :
+				return getModel();
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ACTIVITY_PARTITION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.ACTIVITY_PARTITION___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.ACTIVITY_PARTITION___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_LABEL :
+				return getLabel();
+			case UMLPackage.ACTIVITY_PARTITION___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY_PARTITION___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.ACTIVITY_PARTITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___SEPARATOR :
+				return separator();
+			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNodesAndEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateGroupOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_DIMENSION_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateDimensionNotContained(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsPart((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsClassifier((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART_AND_IS_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsPartAndIsContained(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

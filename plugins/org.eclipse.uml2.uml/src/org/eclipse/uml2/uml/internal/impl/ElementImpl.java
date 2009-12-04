@@ -7,11 +7,13 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: ElementImpl.java,v 1.42 2009/01/16 18:37:32 jbruck Exp $
+ * $Id: ElementImpl.java,v 1.43 2009/12/04 15:30:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -176,11 +178,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<EObject> result = (EList<EObject>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(16));
+				UMLPackage.Literals.ELEMENT___GET_STEREOTYPE_APPLICATIONS);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(16), result = ElementOperations
-					.getStereotypeApplications(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_STEREOTYPE_APPLICATIONS,
+					result = ElementOperations.getStereotypeApplications(this));
 			}
 			return result;
 		}
@@ -206,11 +208,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(18));
+				UMLPackage.Literals.ELEMENT___GET_REQUIRED_STEREOTYPES);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(18), result = ElementOperations
-					.getRequiredStereotypes(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_REQUIRED_STEREOTYPES,
+					result = ElementOperations.getRequiredStereotypes(this));
 			}
 			return result;
 		}
@@ -236,11 +238,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(20));
+				UMLPackage.Literals.ELEMENT___GET_APPLIED_STEREOTYPES);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(20), result = ElementOperations
-					.getAppliedStereotypes(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_APPLIED_STEREOTYPES,
+					result = ElementOperations.getAppliedStereotypes(this));
 			}
 			return result;
 		}
@@ -323,12 +325,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Relationship> result = (EList<Relationship>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(28));
+				UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS);
 			if (result == null) {
-				cache
-					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-						.get(28), result = ElementOperations
-						.getRelationships(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_RELATIONSHIPS,
+					result = ElementOperations.getRelationships(this));
 			}
 			return result;
 		}
@@ -354,11 +355,16 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
-				.get(this, UMLPackage.Literals.ELEMENT.getEOperations().get(30));
+				.get(
+					this,
+					UMLPackage.Literals.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(30), result = ElementOperations
-					.getSourceDirectedRelationships(this));
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS,
+						result = ElementOperations
+							.getSourceDirectedRelationships(this));
 			}
 			return result;
 		}
@@ -385,11 +391,16 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<DirectedRelationship> result = (EList<DirectedRelationship>) cache
-				.get(this, UMLPackage.Literals.ELEMENT.getEOperations().get(32));
+				.get(
+					this,
+					UMLPackage.Literals.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(32), result = ElementOperations
-					.getTargetDirectedRelationships(this));
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS,
+						result = ElementOperations
+							.getTargetDirectedRelationships(this));
 			}
 			return result;
 		}
@@ -416,11 +427,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<String> result = (EList<String>) cache.get(eResource(), this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(4));
+				UMLPackage.Literals.ELEMENT___GET_KEYWORDS);
 			if (result == null) {
-				cache.put(eResource(), this, UMLPackage.Literals.ELEMENT
-					.getEOperations().get(4), result = ElementOperations
-					.getKeywords(this));
+				cache.put(eResource(), this,
+					UMLPackage.Literals.ELEMENT___GET_KEYWORDS,
+					result = ElementOperations.getKeywords(this));
 			}
 			return result;
 		}
@@ -518,11 +529,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Stereotype> result = (EList<Stereotype>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(14));
+				UMLPackage.Literals.ELEMENT___GET_APPLICABLE_STEREOTYPES);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-					.get(14), result = ElementOperations
-					.getApplicableStereotypes(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___GET_APPLICABLE_STEREOTYPES,
+					result = ElementOperations.getApplicableStereotypes(this));
 			}
 			return result;
 		}
@@ -566,12 +577,11 @@ public abstract class ElementImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Element> result = (EList<Element>) cache.get(this,
-				UMLPackage.Literals.ELEMENT.getEOperations().get(34));
+				UMLPackage.Literals.ELEMENT___ALL_OWNED_ELEMENTS);
 			if (result == null) {
-				cache
-					.put(this, UMLPackage.Literals.ELEMENT.getEOperations()
-						.get(34), result = ElementOperations
-						.allOwnedElements(this));
+				cache.put(this,
+					UMLPackage.Literals.ELEMENT___ALL_OWNED_ELEMENTS,
+					result = ElementOperations.allOwnedElements(this));
 			}
 			return result;
 		}
@@ -687,6 +697,102 @@ public abstract class ElementImpl
 				return ownedComments != null && !ownedComments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.ELEMENT___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ELEMENT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ELEMENT___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.ELEMENT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.ELEMENT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ELEMENT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.ELEMENT___GET_MODEL :
+				return getModel();
+			case UMLPackage.ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.ELEMENT___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.ELEMENT___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ELEMENT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ELEMENT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.ELEMENT___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ELEMENT___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.ELEMENT___MUST_BE_OWNED :
+				return mustBeOwned();
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

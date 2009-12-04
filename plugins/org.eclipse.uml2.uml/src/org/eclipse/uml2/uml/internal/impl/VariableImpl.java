@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: VariableImpl.java,v 1.36 2009/01/07 15:55:31 jbruck Exp $
+ * $Id: VariableImpl.java,v 1.37 2009/12/04 15:30:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -44,7 +46,10 @@ import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -1185,6 +1190,228 @@ public class VariableImpl
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == MultiplicityElement.class) {
+			switch (baseOperationID) {
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.VARIABLE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___SET_LOWER__INT :
+					return UMLPackage.VARIABLE___SET_LOWER__INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
+					return UMLPackage.VARIABLE___SET_UPPER__INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
+					return UMLPackage.VARIABLE___GET_LOWER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
+					return UMLPackage.VARIABLE___GET_UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
+					return UMLPackage.VARIABLE___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
+					return UMLPackage.VARIABLE___INCLUDES_CARDINALITY__INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
+					return UMLPackage.VARIABLE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
+					return UMLPackage.VARIABLE___LOWER_BOUND;
+				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
+					return UMLPackage.VARIABLE___UPPER_BOUND;
+				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+					return UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
+					return UMLPackage.VARIABLE___IS__INT_INT;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.VARIABLE___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.VARIABLE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.VARIABLE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.VARIABLE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.VARIABLE___GET_MODEL :
+				return getModel();
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.VARIABLE___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.VARIABLE___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VARIABLE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VARIABLE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VARIABLE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.VARIABLE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.VARIABLE___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.VARIABLE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.VARIABLE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.VARIABLE___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.VARIABLE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_LABEL :
+				return getLabel();
+			case UMLPackage.VARIABLE___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.VARIABLE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.VARIABLE___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.VARIABLE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.VARIABLE___SEPARATOR :
+				return separator();
+			case UMLPackage.VARIABLE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.VARIABLE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.VARIABLE___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+			case UMLPackage.VARIABLE___GET_ENDS :
+				return getEnds();
+			case UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+				return validateLowerGe0((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___SET_LOWER__INT :
+				setLower((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.VARIABLE___SET_UPPER__INT :
+				setUpper((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.VARIABLE___GET_LOWER :
+				return getLower();
+			case UMLPackage.VARIABLE___GET_UPPER :
+				return getUpper();
+			case UMLPackage.VARIABLE___IS_MULTIVALUED :
+				return isMultivalued();
+			case UMLPackage.VARIABLE___INCLUDES_CARDINALITY__INT :
+				return includesCardinality((Integer) arguments.get(0));
+			case UMLPackage.VARIABLE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
+				return includesMultiplicity((MultiplicityElement) arguments
+					.get(0));
+			case UMLPackage.VARIABLE___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.VARIABLE___UPPER_BOUND :
+				return upperBound();
+			case UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+				return compatibleWith((MultiplicityElement) arguments.get(0));
+			case UMLPackage.VARIABLE___IS__INT_INT :
+				return is((Integer) arguments.get(0), (Integer) arguments
+					.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___IS_ACCESSIBLE_BY__ACTION :
+				return isAccessibleBy((Action) arguments.get(0));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

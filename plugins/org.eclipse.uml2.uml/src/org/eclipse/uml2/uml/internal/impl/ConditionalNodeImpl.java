@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: ConditionalNodeImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
+ * $Id: ConditionalNodeImpl.java,v 1.28 2009/12/04 15:30:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -50,8 +52,13 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.ExceptionHandler;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
@@ -898,6 +905,193 @@ public class ConditionalNodeImpl
 				return results != null && !results.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.CONDITIONAL_NODE___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.CONDITIONAL_NODE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.CONDITIONAL_NODE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.CONDITIONAL_NODE___GET_MODEL :
+				return getModel();
+			case UMLPackage.CONDITIONAL_NODE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.CONDITIONAL_NODE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.CONDITIONAL_NODE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.CONDITIONAL_NODE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.CONDITIONAL_NODE___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.CONDITIONAL_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.CONDITIONAL_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.CONDITIONAL_NODE___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_LABEL :
+				return getLabel();
+			case UMLPackage.CONDITIONAL_NODE___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.CONDITIONAL_NODE___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.CONDITIONAL_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___SEPARATOR :
+				return separator();
+			case UMLPackage.CONDITIONAL_NODE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
+				return validateOwnedStructuredNode((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
+				return createElementImport((PackageableElement) arguments
+					.get(0), (VisibilityKind) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
+				return createPackageImport(
+					(org.eclipse.uml2.uml.Package) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___GET_IMPORTED_ELEMENTS :
+				return getImportedElements();
+			case UMLPackage.CONDITIONAL_NODE___GET_IMPORTED_PACKAGES :
+				return getImportedPackages();
+			case UMLPackage.CONDITIONAL_NODE___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.CONDITIONAL_NODE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.CONDITIONAL_NODE___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.CONDITIONAL_NODE___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.CONDITIONAL_NODE___EXCLUDE_COLLISIONS__ELIST :
+				return excludeCollisions((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateNodesAndEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateGroupOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateEdges((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONDITIONAL_NODE___VALIDATE_RESULT_NO_INCOMING__DIAGNOSTICCHAIN_MAP :
+				return validateResultNoIncoming((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

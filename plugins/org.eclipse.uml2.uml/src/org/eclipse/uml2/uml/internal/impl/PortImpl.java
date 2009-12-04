@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: PortImpl.java,v 1.32 2009/01/07 15:55:26 jbruck Exp $
+ * $Id: PortImpl.java,v 1.33 2009/12/04 15:30:41 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -43,10 +45,15 @@ import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.MultiplicityElement;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
@@ -989,6 +996,291 @@ public class PortImpl
 				return protocol != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.PORT___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.PORT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.PORT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PORT___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.PORT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PORT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PORT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.PORT___GET_MODEL :
+				return getModel();
+			case UMLPackage.PORT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.PORT___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.PORT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.PORT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.PORT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PORT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.PORT___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.PORT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PORT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PORT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PORT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PORT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PORT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PORT___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.PORT___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PORT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.PORT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PORT___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.PORT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PORT___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.PORT___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.PORT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.PORT___GET_LABEL :
+				return getLabel();
+			case UMLPackage.PORT___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.PORT___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.PORT___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.PORT___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.PORT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.PORT___SEPARATOR :
+				return separator();
+			case UMLPackage.PORT___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.PORT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.PORT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.PORT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+				return validateLowerGe0((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
+				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationNoSideEffects(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationConstant(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___SET_LOWER__INT :
+				setLower((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_UPPER__INT :
+				setUpper((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___GET_LOWER :
+				return getLower();
+			case UMLPackage.PORT___GET_UPPER :
+				return getUpper();
+			case UMLPackage.PORT___IS_MULTIVALUED :
+				return isMultivalued();
+			case UMLPackage.PORT___INCLUDES_CARDINALITY__INT :
+				return includesCardinality((Integer) arguments.get(0));
+			case UMLPackage.PORT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
+				return includesMultiplicity((MultiplicityElement) arguments
+					.get(0));
+			case UMLPackage.PORT___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.PORT___UPPER_BOUND :
+				return upperBound();
+			case UMLPackage.PORT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+				return compatibleWith((MultiplicityElement) arguments.get(0));
+			case UMLPackage.PORT___IS__INT_INT :
+				return is((Integer) arguments.get(0), (Integer) arguments
+					.get(1));
+			case UMLPackage.PORT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.PORT___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+			case UMLPackage.PORT___GET_ENDS :
+				return getEnds();
+			case UMLPackage.PORT___GET_DEPLOYED_ELEMENTS :
+				return getDeployedElements();
+			case UMLPackage.PORT___VALIDATE_MULTIPLICITY_OF_COMPOSITE__DIAGNOSTICCHAIN_MAP :
+				return validateMultiplicityOfComposite(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_SUBSETTING_CONTEXT_CONFORMS__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettingContextConforms(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_REDEFINED_PROPERTY_INHERITED__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinedPropertyInherited(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettingRules((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_NAVIGABLE_READONLY__DIAGNOSTICCHAIN_MAP :
+				return validateNavigableReadonly((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsDerived(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DERIVED_UNION_IS_READ_ONLY__DIAGNOSTICCHAIN_MAP :
+				return validateDerivedUnionIsReadOnly(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_SUBSETTED_PROPERTY_NAMES__DIAGNOSTICCHAIN_MAP :
+				return validateSubsettedPropertyNames(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
+				return validateDeploymentTarget((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
+				return validateBindingToAttribute((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___GET_DEFAULT :
+				return getDefault();
+			case UMLPackage.PORT___IS_SET_DEFAULT :
+				return isSetDefault();
+			case UMLPackage.PORT___SET_DEFAULT__STRING :
+				setDefault((String) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_IS_COMPOSITE__BOOLEAN :
+				setIsComposite((Boolean) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_OPPOSITE__PROPERTY :
+				setOpposite((Property) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___UNSET_DEFAULT :
+				unsetDefault();
+				return null;
+			case UMLPackage.PORT___SET_IS_NAVIGABLE__BOOLEAN :
+				setIsNavigable((Boolean) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___GET_OTHER_END :
+				return getOtherEnd();
+			case UMLPackage.PORT___SET_BOOLEAN_DEFAULT_VALUE__BOOLEAN :
+				setBooleanDefaultValue((Boolean) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_INTEGER_DEFAULT_VALUE__INT :
+				setIntegerDefaultValue((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_STRING_DEFAULT_VALUE__STRING :
+				setStringDefaultValue((String) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_UNLIMITED_NATURAL_DEFAULT_VALUE__INT :
+				setUnlimitedNaturalDefaultValue((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.PORT___SET_NULL_DEFAULT_VALUE :
+				setNullDefaultValue();
+				return null;
+			case UMLPackage.PORT___IS_ATTRIBUTE__PROPERTY :
+				return isAttribute((Property) arguments.get(0));
+			case UMLPackage.PORT___GET_OPPOSITE :
+				return getOpposite();
+			case UMLPackage.PORT___IS_COMPOSITE :
+				return isComposite();
+			case UMLPackage.PORT___SUBSETTING_CONTEXT :
+				return subsettingContext();
+			case UMLPackage.PORT___IS_NAVIGABLE :
+				return isNavigable();
+			case UMLPackage.PORT___VALIDATE_REQUIRED_INTERFACES__DIAGNOSTICCHAIN_MAP :
+				return validateRequiredInterfaces((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_PORT_AGGREGATION__DIAGNOSTICCHAIN_MAP :
+				return validatePortAggregation((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_PORT_DESTROYED__DIAGNOSTICCHAIN_MAP :
+				return validatePortDestroyed(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___VALIDATE_DEFAULT_VALUE__DIAGNOSTICCHAIN_MAP :
+				return validateDefaultValue((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PORT___GET_PROVIDEDS :
+				return getProvideds();
+			case UMLPackage.PORT___GET_REQUIREDS :
+				return getRequireds();
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

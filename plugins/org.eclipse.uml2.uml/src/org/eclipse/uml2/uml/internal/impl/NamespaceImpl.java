@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2009 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,11 +7,13 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: NamespaceImpl.java,v 1.25 2007/04/25 17:47:03 khussey Exp $
+ * $Id: NamespaceImpl.java,v 1.26 2009/12/04 15:30:46 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -42,6 +44,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -522,12 +525,12 @@ public abstract class NamespaceImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<PackageableElement> result = (EList<PackageableElement>) cache
-				.get(this, UMLPackage.Literals.NAMESPACE.getEOperations()
-					.get(3));
+				.get(this,
+					UMLPackage.Literals.NAMESPACE___GET_IMPORTED_ELEMENTS);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
-					.get(3), result = NamespaceOperations
-					.getImportedElements(this));
+				cache.put(this,
+					UMLPackage.Literals.NAMESPACE___GET_IMPORTED_ELEMENTS,
+					result = NamespaceOperations.getImportedElements(this));
 			}
 			return result;
 		}
@@ -544,12 +547,12 @@ public abstract class NamespaceImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<org.eclipse.uml2.uml.Package> result = (EList<org.eclipse.uml2.uml.Package>) cache
-				.get(this, UMLPackage.Literals.NAMESPACE.getEOperations()
-					.get(4));
+				.get(this,
+					UMLPackage.Literals.NAMESPACE___GET_IMPORTED_PACKAGES);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.NAMESPACE.getEOperations()
-					.get(4), result = NamespaceOperations
-					.getImportedPackages(this));
+				cache.put(this,
+					UMLPackage.Literals.NAMESPACE___GET_IMPORTED_PACKAGES,
+					result = NamespaceOperations.getImportedPackages(this));
 			}
 			return result;
 		}
@@ -842,6 +845,158 @@ public abstract class NamespaceImpl
 				return isSetOwnedMembers();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.NAMESPACE___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.NAMESPACE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.NAMESPACE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.NAMESPACE___GET_MODEL :
+				return getModel();
+			case UMLPackage.NAMESPACE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.NAMESPACE___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.NAMESPACE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.NAMESPACE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.NAMESPACE___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.NAMESPACE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.NAMESPACE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.NAMESPACE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.NAMESPACE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.NAMESPACE___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.NAMESPACE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.NAMESPACE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMESPACE___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.NAMESPACE___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.NAMESPACE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_LABEL :
+				return getLabel();
+			case UMLPackage.NAMESPACE___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.NAMESPACE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.NAMESPACE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.NAMESPACE___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.NAMESPACE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.NAMESPACE___SEPARATOR :
+				return separator();
+			case UMLPackage.NAMESPACE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.NAMESPACE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMESPACE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
+				return createElementImport((PackageableElement) arguments
+					.get(0), (VisibilityKind) arguments.get(1));
+			case UMLPackage.NAMESPACE___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
+				return createPackageImport(
+					(org.eclipse.uml2.uml.Package) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.NAMESPACE___GET_IMPORTED_ELEMENTS :
+				return getImportedElements();
+			case UMLPackage.NAMESPACE___GET_IMPORTED_PACKAGES :
+				return getImportedPackages();
+			case UMLPackage.NAMESPACE___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.NAMESPACE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.NAMESPACE___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.NAMESPACE___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.NAMESPACE___EXCLUDE_COLLISIONS__ELIST :
+				return excludeCollisions((EList<PackageableElement>) arguments
+					.get(0));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

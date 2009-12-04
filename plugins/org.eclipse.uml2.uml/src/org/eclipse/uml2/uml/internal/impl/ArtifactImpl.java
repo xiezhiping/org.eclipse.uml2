@@ -8,15 +8,19 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: ArtifactImpl.java,v 1.32 2009/01/07 15:55:31 jbruck Exp $
+ * $Id: ArtifactImpl.java,v 1.33 2009/12/04 15:30:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAnnotation;
@@ -35,6 +39,7 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList;
 import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList;
 
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.CollaborationUse;
@@ -48,11 +53,15 @@ import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.Substitution;
 import org.eclipse.uml2.uml.TemplateBinding;
@@ -1258,6 +1267,252 @@ public class ArtifactImpl
 				return ownedAttributes != null && !ownedAttributes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.ARTIFACT___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.ARTIFACT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.ARTIFACT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.ARTIFACT___GET_MODEL :
+				return getModel();
+			case UMLPackage.ARTIFACT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.ARTIFACT___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.ARTIFACT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.ARTIFACT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.ARTIFACT___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ARTIFACT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ARTIFACT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ARTIFACT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ARTIFACT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.ARTIFACT___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.ARTIFACT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.ARTIFACT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ARTIFACT___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.ARTIFACT___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.ARTIFACT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_LABEL :
+				return getLabel();
+			case UMLPackage.ARTIFACT___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ARTIFACT___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ARTIFACT___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.ARTIFACT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.ARTIFACT___SEPARATOR :
+				return separator();
+			case UMLPackage.ARTIFACT___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.ARTIFACT___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
+				return createElementImport((PackageableElement) arguments
+					.get(0), (VisibilityKind) arguments.get(1));
+			case UMLPackage.ARTIFACT___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
+				return createPackageImport(
+					(org.eclipse.uml2.uml.Package) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.ARTIFACT___GET_IMPORTED_ELEMENTS :
+				return getImportedElements();
+			case UMLPackage.ARTIFACT___GET_IMPORTED_PACKAGES :
+				return getImportedPackages();
+			case UMLPackage.ARTIFACT___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.ARTIFACT___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.ARTIFACT___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.ARTIFACT___EXCLUDE_COLLISIONS__ELIST :
+				return excludeCollisions((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.ARTIFACT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.ARTIFACT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+			case UMLPackage.ARTIFACT___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
+				return createAssociation((Boolean) arguments.get(0),
+					(AggregationKind) arguments.get(1), (String) arguments
+						.get(2), (Integer) arguments.get(3),
+					(Integer) arguments.get(4), (Type) arguments.get(5),
+					(Boolean) arguments.get(6), (AggregationKind) arguments
+						.get(7), (String) arguments.get(8), (Integer) arguments
+						.get(9), (Integer) arguments.get(10));
+			case UMLPackage.ARTIFACT___GET_ASSOCIATIONS :
+				return getAssociations();
+			case UMLPackage.ARTIFACT___CONFORMS_TO__TYPE :
+				return conformsTo((Type) arguments.get(0));
+			case UMLPackage.ARTIFACT___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
+			case UMLPackage.ARTIFACT___IS_TEMPLATE :
+				return isTemplate();
+			case UMLPackage.ARTIFACT___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_GENERALIZATION_HIERARCHIES__DIAGNOSTICCHAIN_MAP :
+				return validateGeneralizationHierarchies(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
+				return validateSpecializeType((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
+				return validateMapsToGeneralizationSet(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ARTIFACT___GET_ALL_ATTRIBUTES :
+				return getAllAttributes();
+			case UMLPackage.ARTIFACT___GET_OPERATIONS :
+				return getOperations();
+			case UMLPackage.ARTIFACT___GET_ALL_OPERATIONS :
+				return getAllOperations();
+			case UMLPackage.ARTIFACT___GET_OPERATION__STRING_ELIST_ELIST :
+				return getOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1), (EList<Type>) arguments
+						.get(2));
+			case UMLPackage.ARTIFACT___GET_OPERATION__STRING_ELIST_ELIST_BOOLEAN :
+				return getOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1), (EList<Type>) arguments
+						.get(2), (Boolean) arguments.get(3));
+			case UMLPackage.ARTIFACT___GET_USED_INTERFACES :
+				return getUsedInterfaces();
+			case UMLPackage.ARTIFACT___GET_ALL_USED_INTERFACES :
+				return getAllUsedInterfaces();
+			case UMLPackage.ARTIFACT___GET_GENERALS :
+				return getGenerals();
+			case UMLPackage.ARTIFACT___GET_INHERITED_MEMBERS :
+				return getInheritedMembers();
+			case UMLPackage.ARTIFACT___ALL_FEATURES :
+				return allFeatures();
+			case UMLPackage.ARTIFACT___PARENTS :
+				return parents();
+			case UMLPackage.ARTIFACT___INHERITABLE_MEMBERS__CLASSIFIER :
+				return inheritableMembers((Classifier) arguments.get(0));
+			case UMLPackage.ARTIFACT___HAS_VISIBILITY_OF__NAMEDELEMENT :
+				return hasVisibilityOf((NamedElement) arguments.get(0));
+			case UMLPackage.ARTIFACT___CONFORMS_TO__CLASSIFIER :
+				return conformsTo((Classifier) arguments.get(0));
+			case UMLPackage.ARTIFACT___INHERIT__ELIST :
+				return inherit((EList<NamedElement>) arguments.get(0));
+			case UMLPackage.ARTIFACT___MAY_SPECIALIZE_TYPE__CLASSIFIER :
+				return maySpecializeType((Classifier) arguments.get(0));
+			case UMLPackage.ARTIFACT___ALL_PARENTS :
+				return allParents();
+			case UMLPackage.ARTIFACT___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
+				return createOwnedOperation((String) arguments.get(0),
+					(EList<String>) arguments.get(1), (EList<Type>) arguments
+						.get(2), (Type) arguments.get(3));
+			case UMLPackage.ARTIFACT___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
+				return createOwnedAttribute((String) arguments.get(0),
+					(Type) arguments.get(1), (Integer) arguments.get(2),
+					(Integer) arguments.get(3));
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**

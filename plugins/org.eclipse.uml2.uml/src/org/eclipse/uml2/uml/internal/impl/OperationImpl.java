@@ -8,11 +8,13 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: OperationImpl.java,v 1.37 2009/01/07 15:55:31 jbruck Exp $
+ * $Id: OperationImpl.java,v 1.38 2009/12/04 15:30:44 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -52,14 +54,17 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.OperationTemplateParameter;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.RedefinableElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
@@ -1492,13 +1497,16 @@ public class OperationImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<ParameterableElement> result = (EList<ParameterableElement>) cache
-				.get(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
-					.getEOperations().get(0));
+				.get(
+					this,
+					UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.TEMPLATEABLE_ELEMENT
-					.getEOperations().get(0),
-					result = TemplateableElementOperations
-						.parameterableElements(this));
+				cache
+					.put(
+						this,
+						UMLPackage.Literals.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS,
+						result = TemplateableElementOperations
+							.parameterableElements(this));
 			}
 			return result;
 		}
@@ -1573,10 +1581,10 @@ public class OperationImpl
 		if (cache != null) {
 			@SuppressWarnings("unchecked")
 			EList<Parameter> result = (EList<Parameter>) cache.get(this,
-				UMLPackage.Literals.OPERATION.getEOperations().get(15));
+				UMLPackage.Literals.OPERATION___RETURN_RESULT);
 			if (result == null) {
-				cache.put(this, UMLPackage.Literals.OPERATION.getEOperations()
-					.get(15), result = OperationOperations.returnResult(this));
+				cache.put(this, UMLPackage.Literals.OPERATION___RETURN_RESULT,
+					result = OperationOperations.returnResult(this));
 			}
 			return result;
 		}
@@ -2290,6 +2298,251 @@ public class OperationImpl
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ParameterableElement.class) {
+			switch (baseOperationID) {
+				case UMLPackage.PARAMETERABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+					return UMLPackage.OPERATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT;
+				case UMLPackage.PARAMETERABLE_ELEMENT___IS_TEMPLATE_PARAMETER :
+					return UMLPackage.OPERATION___IS_TEMPLATE_PARAMETER;
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == TemplateableElement.class) {
+			switch (baseOperationID) {
+				case UMLPackage.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS :
+					return UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS;
+				case UMLPackage.TEMPLATEABLE_ELEMENT___IS_TEMPLATE :
+					return UMLPackage.OPERATION___IS_TEMPLATE;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments)
+			throws InvocationTargetException {
+		switch (operationID) {
+			case UMLPackage.OPERATION___GET_EANNOTATION__STRING :
+				return getEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPERATION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
+				return validateHasOwner((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___DESTROY :
+				destroy();
+				return null;
+			case UMLPackage.OPERATION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_KEYWORDS :
+				return getKeywords();
+			case UMLPackage.OPERATION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
+			case UMLPackage.OPERATION___GET_MODEL :
+				return getModel();
+			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
+			case UMLPackage.OPERATION___GET_APPLICABLE_STEREOTYPE__STRING :
+				return getApplicableStereotype((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
+			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
+			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
+			case UMLPackage.OPERATION___GET_APPLIED_STEREOTYPE__STRING :
+				return getAppliedStereotype((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
+				return getAppliedSubstereotype((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPERATION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPERATION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPERATION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0), (String) arguments
+					.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.OPERATION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_RELATIONSHIPS :
+				return getRelationships();
+			case UMLPackage.OPERATION___GET_RELATIONSHIPS__ECLASS :
+				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
+				return getSourceDirectedRelationships();
+			case UMLPackage.OPERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
+				return getTargetDirectedRelationships();
+			case UMLPackage.OPERATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
+				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___ALL_OWNED_ELEMENTS :
+				return allOwnedElements();
+			case UMLPackage.OPERATION___MUST_BE_OWNED :
+				return mustBeOwned();
+			case UMLPackage.OPERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.OPERATION___GET_LABEL :
+				return getLabel();
+			case UMLPackage.OPERATION___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.OPERATION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.OPERATION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.OPERATION___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.OPERATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.OPERATION___SEPARATOR :
+				return separator();
+			case UMLPackage.OPERATION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.OPERATION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
+				return validateMembersDistinguishable(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
+				return createElementImport((PackageableElement) arguments
+					.get(0), (VisibilityKind) arguments.get(1));
+			case UMLPackage.OPERATION___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
+				return createPackageImport(
+					(org.eclipse.uml2.uml.Package) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
+			case UMLPackage.OPERATION___GET_IMPORTED_ELEMENTS :
+				return getImportedElements();
+			case UMLPackage.OPERATION___GET_IMPORTED_PACKAGES :
+				return getImportedPackages();
+			case UMLPackage.OPERATION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.OPERATION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.OPERATION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.OPERATION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.OPERATION___EXCLUDE_COLLISIONS__ELIST :
+				return excludeCollisions((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
+				return isConsistentWith((RedefinableElement) arguments.get(0));
+			case UMLPackage.OPERATION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
+				return isRedefinitionContextValid((RedefinableElement) arguments
+					.get(0));
+			case UMLPackage.OPERATION___CREATE_RETURN_RESULT__STRING_TYPE :
+				return createReturnResult((String) arguments.get(0),
+					(Type) arguments.get(1));
+			case UMLPackage.OPERATION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
+				return isCompatibleWith((ParameterableElement) arguments.get(0));
+			case UMLPackage.OPERATION___IS_TEMPLATE_PARAMETER :
+				return isTemplateParameter();
+			case UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
+			case UMLPackage.OPERATION___IS_TEMPLATE :
+				return isTemplate();
+			case UMLPackage.OPERATION___VALIDATE_AT_MOST_ONE_RETURN__DIAGNOSTICCHAIN_MAP :
+				return validateAtMostOneReturn((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_ONLY_BODY_FOR_QUERY__DIAGNOSTICCHAIN_MAP :
+				return validateOnlyBodyForQuery((DiagnosticChain) arguments
+					.get(0), (Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___GET_LOWER :
+				return getLower();
+			case UMLPackage.OPERATION___GET_UPPER :
+				return getUpper();
+			case UMLPackage.OPERATION___SET_IS_ORDERED__BOOLEAN :
+				setIsOrdered((Boolean) arguments.get(0));
+				return null;
+			case UMLPackage.OPERATION___SET_IS_UNIQUE__BOOLEAN :
+				setIsUnique((Boolean) arguments.get(0));
+				return null;
+			case UMLPackage.OPERATION___SET_LOWER__INT :
+				setLower((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.OPERATION___SET_TYPE__TYPE :
+				setType((Type) arguments.get(0));
+				return null;
+			case UMLPackage.OPERATION___SET_UPPER__INT :
+				setUpper((Integer) arguments.get(0));
+				return null;
+			case UMLPackage.OPERATION___GET_RETURN_RESULT :
+				return getReturnResult();
+			case UMLPackage.OPERATION___IS_ORDERED :
+				return isOrdered();
+			case UMLPackage.OPERATION___IS_UNIQUE :
+				return isUnique();
+			case UMLPackage.OPERATION___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.OPERATION___UPPER_BOUND :
+				return upperBound();
+			case UMLPackage.OPERATION___GET_TYPE :
+				return getType();
+			case UMLPackage.OPERATION___RETURN_RESULT :
+				return returnResult();
+		}
+		return eDynamicInvoke(operationID, arguments);
 	}
 
 	/**
