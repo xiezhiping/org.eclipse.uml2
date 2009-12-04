@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 296008
  *
- * $Id: BehaviorItemProvider.java,v 1.16 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: BehaviorItemProvider.java,v 1.17 2009/12/04 16:19:33 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -160,7 +161,7 @@ public class BehaviorItemProvider
 				getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__CONTEXT, true, false, false,
+				UMLPackage.Literals.BEHAVIOR__CONTEXT, false, false, false,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
