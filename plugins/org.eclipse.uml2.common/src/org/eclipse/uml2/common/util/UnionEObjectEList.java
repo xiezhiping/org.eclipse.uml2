@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: UnionEObjectEList.java,v 1.6 2008/02/21 18:43:04 khussey Exp $
+ * $Id: UnionEObjectEList.java,v 1.7 2010/03/02 03:10:40 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -128,11 +129,13 @@ public class UnionEObjectEList<E>
 		return listIterator();
 	}
 
+    @SuppressWarnings("deprecation")
 	@Override
 	public ListIterator<E> listIterator() {
 		return new EListIterator<E>();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public ListIterator<E> listIterator(int index) {
 
