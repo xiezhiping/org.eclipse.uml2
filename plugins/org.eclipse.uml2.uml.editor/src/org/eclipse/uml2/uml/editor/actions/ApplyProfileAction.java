@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215488
+ *   Kenn Hussey - 286329
  *
- * $Id: ApplyProfileAction.java,v 1.8 2008/02/25 21:15:45 khussey Exp $
+ * $Id: ApplyProfileAction.java,v 1.9 2010/03/02 03:10:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -115,7 +116,7 @@ public class ApplyProfileAction
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
 				package_, UMLPackage.Literals.PROFILE, Collections.EMPTY_LIST,
-				label, choiceOfValues);
+				label, choiceOfValues, false, false, true);
 			dialog.open();
 
 			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {

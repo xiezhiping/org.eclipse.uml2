@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: ImportTypeAction.java,v 1.4 2007/04/17 19:41:44 khussey Exp $
+ * $Id: ImportTypeAction.java,v 1.5 2010/03/02 03:10:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -139,7 +140,8 @@ public class ImportTypeAction
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
 				package_, UMLPackage.Literals.PACKAGEABLE_ELEMENT,
-				Collections.EMPTY_LIST, label, getChoiceOfValues(package_));
+				Collections.EMPTY_LIST, label, getChoiceOfValues(package_),
+				false, false, true);
 			dialog.open();
 
 			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {

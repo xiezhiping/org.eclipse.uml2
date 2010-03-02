@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 286329
  *
- * $Id: ReferenceMetaclassAction.java,v 1.5 2007/01/05 21:48:51 khussey Exp $
+ * $Id: ReferenceMetaclassAction.java,v 1.6 2010/03/02 03:10:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.actions;
 
@@ -106,7 +107,7 @@ public class ReferenceMetaclassAction
 			final FeatureEditorDialog dialog = new FeatureEditorDialog(
 				workbenchPart.getSite().getShell(), getLabelProvider(),
 				profile, UMLPackage.Literals.CLASS, Collections.EMPTY_LIST,
-				label, choiceOfValues);
+				label, choiceOfValues, false, false, true);
 			dialog.open();
 
 			if (dialog.getReturnCode() == FeatureEditorDialog.OK) {
