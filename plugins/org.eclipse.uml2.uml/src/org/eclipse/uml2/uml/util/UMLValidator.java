@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
+ *   Kenn Hussey - 286329
  *
- * $Id: UMLValidator.java,v 1.27 2009/01/07 15:55:32 jbruck Exp $
+ * $Id: UMLValidator.java,v 1.28 2010/03/02 03:10:31 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4462,6 +4463,8 @@ public class UMLValidator
 	 */
 	public boolean validateComment(Comment comment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(comment, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(comment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4470,6 +4473,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(comment, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(comment,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(comment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4495,6 +4501,8 @@ public class UMLValidator
 	 */
 	public boolean validateElement(Element element,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(element, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(element,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4503,6 +4511,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(element, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(element,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(element, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4551,6 +4562,9 @@ public class UMLValidator
 	public boolean validateDirectedRelationship(
 			DirectedRelationship directedRelationship,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(directedRelationship, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			directedRelationship, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4559,6 +4573,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(directedRelationship,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				directedRelationship, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(directedRelationship,
 				diagnostics, context);
@@ -4587,6 +4604,8 @@ public class UMLValidator
 	 */
 	public boolean validateRelationship(Relationship relationship,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(relationship, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(relationship,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4595,6 +4614,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(relationship,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				relationship, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(relationship, diagnostics,
 				context);
@@ -4623,6 +4645,9 @@ public class UMLValidator
 	public boolean validateLiteralSpecification(
 			LiteralSpecification literalSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalSpecification, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			literalSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4631,6 +4656,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(literalSpecification,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				literalSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalSpecification,
 				diagnostics, context);
@@ -4669,6 +4697,9 @@ public class UMLValidator
 	public boolean validateValueSpecification(
 			ValueSpecification valueSpecification, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(valueSpecification, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(valueSpecification,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4677,6 +4708,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(valueSpecification,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				valueSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(valueSpecification,
 				diagnostics, context);
@@ -4714,6 +4748,8 @@ public class UMLValidator
 	 */
 	public boolean validateTypedElement(TypedElement typedElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(typedElement, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(typedElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4722,6 +4758,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(typedElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				typedElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(typedElement, diagnostics,
 				context);
@@ -4758,6 +4797,8 @@ public class UMLValidator
 	 */
 	public boolean validateNamedElement(NamedElement namedElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(namedElement, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(namedElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4766,6 +4807,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(namedElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				namedElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(namedElement, diagnostics,
 				context);
@@ -4839,6 +4883,8 @@ public class UMLValidator
 	 */
 	public boolean validateDependency(Dependency dependency,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(dependency, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(dependency,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4846,6 +4892,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(dependency,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(dependency,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(dependency, diagnostics,
@@ -4883,6 +4932,9 @@ public class UMLValidator
 	public boolean validatePackageableElement(
 			PackageableElement packageableElement, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(packageableElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(packageableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4891,6 +4943,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(packageableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				packageableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(packageableElement,
 				diagnostics, context);
@@ -4929,6 +4984,9 @@ public class UMLValidator
 	public boolean validateParameterableElement(
 			ParameterableElement parameterableElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(parameterableElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			parameterableElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -4937,6 +4995,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(parameterableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				parameterableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(parameterableElement,
 				diagnostics, context);
@@ -4966,6 +5027,9 @@ public class UMLValidator
 	public boolean validateTemplateParameter(
 			TemplateParameter templateParameter, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(templateParameter, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(templateParameter,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -4974,6 +5038,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(templateParameter,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				templateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateParameter,
 				diagnostics, context);
@@ -5017,6 +5084,9 @@ public class UMLValidator
 	public boolean validateTemplateSignature(
 			TemplateSignature templateSignature, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(templateSignature, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(templateSignature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5025,6 +5095,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(templateSignature,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				templateSignature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateSignature,
 				diagnostics, context);
@@ -5068,6 +5141,9 @@ public class UMLValidator
 	public boolean validateTemplateableElement(
 			TemplateableElement templateableElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(templateableElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			templateableElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5076,6 +5152,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(templateableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				templateableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateableElement,
 				diagnostics, context);
@@ -5104,6 +5183,9 @@ public class UMLValidator
 	 */
 	public boolean validateTemplateBinding(TemplateBinding templateBinding,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(templateBinding, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(templateBinding,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5112,6 +5194,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(templateBinding,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				templateBinding, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(templateBinding, diagnostics,
 				context);
@@ -5172,6 +5257,9 @@ public class UMLValidator
 	public boolean validateTemplateParameterSubstitution(
 			TemplateParameterSubstitution templateParameterSubstitution,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(templateParameterSubstitution,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5179,6 +5267,9 @@ public class UMLValidator
 				templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				templateParameterSubstitution, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				templateParameterSubstitution, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -5224,6 +5315,8 @@ public class UMLValidator
 	 */
 	public boolean validateNamespace(Namespace namespace,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(namespace, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(namespace,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5231,6 +5324,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(namespace,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(namespace,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(namespace, diagnostics,
@@ -5282,6 +5378,8 @@ public class UMLValidator
 	 */
 	public boolean validateElementImport(ElementImport elementImport,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(elementImport, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(elementImport,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5290,6 +5388,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(elementImport,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				elementImport, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(elementImport, diagnostics,
 				context);
@@ -5349,6 +5450,8 @@ public class UMLValidator
 	 */
 	public boolean validatePackageImport(PackageImport packageImport,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(packageImport, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(packageImport,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5357,6 +5460,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(packageImport,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				packageImport, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(packageImport, diagnostics,
 				context);
@@ -5399,6 +5505,8 @@ public class UMLValidator
 	 */
 	public boolean validatePackage(org.eclipse.uml2.uml.Package package_,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(package_, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(package_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5407,6 +5515,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(package_, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(package_,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(package_, diagnostics,
 				context);
@@ -5460,6 +5571,8 @@ public class UMLValidator
 	 */
 	public boolean validatePackageMerge(PackageMerge packageMerge,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(packageMerge, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(packageMerge,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5468,6 +5581,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(packageMerge,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				packageMerge, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(packageMerge, diagnostics,
 				context);
@@ -5495,6 +5611,8 @@ public class UMLValidator
 	 */
 	public boolean validateType(Type type, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(type, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(type, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -5503,6 +5621,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(type, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(type,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(type, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5537,6 +5658,9 @@ public class UMLValidator
 	public boolean validateProfileApplication(
 			ProfileApplication profileApplication, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(profileApplication, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(profileApplication,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5545,6 +5669,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(profileApplication,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				profileApplication, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(profileApplication,
 				diagnostics, context);
@@ -5573,6 +5700,8 @@ public class UMLValidator
 	 */
 	public boolean validateProfile(Profile profile,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(profile, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(profile,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5581,6 +5710,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(profile, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(profile,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(profile, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5652,6 +5784,8 @@ public class UMLValidator
 	 */
 	public boolean validateStereotype(Stereotype stereotype,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stereotype, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(stereotype,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5659,6 +5793,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(stereotype,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(stereotype,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stereotype, diagnostics,
@@ -5754,6 +5891,8 @@ public class UMLValidator
 	 */
 	public boolean validateClass(org.eclipse.uml2.uml.Class class_,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(class_, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(class_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5762,6 +5901,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(class_, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(class_,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(class_, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5838,6 +5980,9 @@ public class UMLValidator
 	public boolean validateBehavioredClassifier(
 			BehavioredClassifier behavioredClassifier,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(behavioredClassifier, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -5846,6 +5991,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(behavioredClassifier,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				behavioredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(behavioredClassifier,
 				diagnostics, context);
@@ -5919,6 +6067,8 @@ public class UMLValidator
 	 */
 	public boolean validateClassifier(Classifier classifier,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(classifier, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(classifier,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -5926,6 +6076,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(classifier,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(classifier,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(classifier, diagnostics,
@@ -6034,6 +6187,9 @@ public class UMLValidator
 	public boolean validateRedefinableElement(
 			RedefinableElement redefinableElement, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(redefinableElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(redefinableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6042,6 +6198,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(redefinableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				redefinableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(redefinableElement,
 				diagnostics, context);
@@ -6111,6 +6270,9 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralization(Generalization generalization,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(generalization, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(generalization,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6119,6 +6281,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(generalization,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				generalization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(generalization, diagnostics,
 				context);
@@ -6163,6 +6328,9 @@ public class UMLValidator
 	public boolean validateGeneralizationSet(
 			GeneralizationSet generalizationSet, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(generalizationSet, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(generalizationSet,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6171,6 +6339,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(generalizationSet,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				generalizationSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(generalizationSet,
 				diagnostics, context);
@@ -6239,6 +6410,8 @@ public class UMLValidator
 	 */
 	public boolean validateFeature(Feature feature,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(feature, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(feature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6247,6 +6420,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(feature, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(feature,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(feature, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6287,6 +6463,8 @@ public class UMLValidator
 	 */
 	public boolean validateUseCase(UseCase useCase,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(useCase, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(useCase,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6295,6 +6473,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(useCase, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(useCase,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(useCase, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6410,6 +6591,8 @@ public class UMLValidator
 	 */
 	public boolean validateInclude(Include include,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(include, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(include,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6418,6 +6601,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(include, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(include,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(include, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6452,6 +6638,8 @@ public class UMLValidator
 	 */
 	public boolean validateExtend(Extend extend, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(extend, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(extend,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6460,6 +6648,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(extend, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(extend,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extend, diagnostics, context);
 		if (result || diagnostics != null)
@@ -6507,6 +6698,8 @@ public class UMLValidator
 	 */
 	public boolean validateConstraint(Constraint constraint,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(constraint, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(constraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6514,6 +6707,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(constraint,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(constraint,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(constraint, diagnostics,
@@ -6626,6 +6822,9 @@ public class UMLValidator
 	 */
 	public boolean validateExtensionPoint(ExtensionPoint extensionPoint,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(extensionPoint, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(extensionPoint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6634,6 +6833,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(extensionPoint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				extensionPoint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extensionPoint, diagnostics,
 				context);
@@ -6691,6 +6893,8 @@ public class UMLValidator
 	 */
 	public boolean validateSubstitution(Substitution substitution,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(substitution, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(substitution,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6699,6 +6903,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(substitution,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				substitution, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(substitution, diagnostics,
 				context);
@@ -6735,6 +6942,8 @@ public class UMLValidator
 	 */
 	public boolean validateRealization(Realization realization,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(realization, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(realization,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6742,6 +6951,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(realization,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(realization,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(realization, diagnostics,
@@ -6778,6 +6990,8 @@ public class UMLValidator
 	 */
 	public boolean validateAbstraction(Abstraction abstraction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(abstraction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(abstraction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6785,6 +6999,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(abstraction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(abstraction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(abstraction, diagnostics,
@@ -6821,6 +7038,9 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueExpression(OpaqueExpression opaqueExpression,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(opaqueExpression, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(opaqueExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6829,6 +7049,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(opaqueExpression,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				opaqueExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(opaqueExpression,
 				diagnostics, context);
@@ -6912,6 +7135,8 @@ public class UMLValidator
 	 */
 	public boolean validateParameter(Parameter parameter,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(parameter, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(parameter,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -6919,6 +7144,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(parameter,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(parameter,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(parameter, diagnostics,
@@ -7040,6 +7268,9 @@ public class UMLValidator
 	public boolean validateMultiplicityElement(
 			MultiplicityElement multiplicityElement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(multiplicityElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
@@ -7048,6 +7279,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(multiplicityElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				multiplicityElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(multiplicityElement,
 				diagnostics, context);
@@ -7139,6 +7373,9 @@ public class UMLValidator
 	public boolean validateConnectableElement(
 			ConnectableElement connectableElement, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(connectableElement, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(connectableElement,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7147,6 +7384,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(connectableElement,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				connectableElement, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connectableElement,
 				diagnostics, context);
@@ -7184,6 +7424,8 @@ public class UMLValidator
 	 */
 	public boolean validateConnectorEnd(ConnectorEnd connectorEnd,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(connectorEnd, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(connectorEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7192,6 +7434,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(connectorEnd,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				connectorEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connectorEnd, diagnostics,
 				context);
@@ -7291,6 +7536,8 @@ public class UMLValidator
 	 */
 	public boolean validateProperty(Property property,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(property, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(property,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7299,6 +7546,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(property, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(property,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(property, diagnostics,
 				context);
@@ -7501,6 +7751,9 @@ public class UMLValidator
 	 */
 	public boolean validateDeploymentTarget(DeploymentTarget deploymentTarget,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(deploymentTarget, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(deploymentTarget,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7509,6 +7762,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(deploymentTarget,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				deploymentTarget, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deploymentTarget,
 				diagnostics, context);
@@ -7545,6 +7801,8 @@ public class UMLValidator
 	 */
 	public boolean validateDeployment(Deployment deployment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(deployment, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(deployment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7552,6 +7810,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(deployment,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(deployment,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deployment, diagnostics,
@@ -7588,6 +7849,9 @@ public class UMLValidator
 	 */
 	public boolean validateDeployedArtifact(DeployedArtifact deployedArtifact,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(deployedArtifact, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(deployedArtifact,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7596,6 +7860,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(deployedArtifact,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				deployedArtifact, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deployedArtifact,
 				diagnostics, context);
@@ -7633,6 +7900,9 @@ public class UMLValidator
 	public boolean validateDeploymentSpecification(
 			DeploymentSpecification deploymentSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(deploymentSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -7640,6 +7910,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				deploymentSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				deploymentSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(deploymentSpecification,
@@ -7731,6 +8004,8 @@ public class UMLValidator
 	 */
 	public boolean validateArtifact(Artifact artifact,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(artifact, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(artifact,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7739,6 +8014,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(artifact, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(artifact,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(artifact, diagnostics,
 				context);
@@ -7795,6 +8073,8 @@ public class UMLValidator
 	 */
 	public boolean validateManifestation(Manifestation manifestation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(manifestation, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(manifestation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7803,6 +8083,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(manifestation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				manifestation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(manifestation, diagnostics,
 				context);
@@ -7839,6 +8122,8 @@ public class UMLValidator
 	 */
 	public boolean validateOperation(Operation operation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(operation, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(operation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7846,6 +8131,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(operation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(operation,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(operation, diagnostics,
@@ -7922,6 +8210,9 @@ public class UMLValidator
 	public boolean validateBehavioralFeature(
 			BehavioralFeature behavioralFeature, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(behavioralFeature, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(behavioralFeature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7930,6 +8221,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(behavioralFeature,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				behavioralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(behavioralFeature,
 				diagnostics, context);
@@ -7975,6 +8269,8 @@ public class UMLValidator
 	 */
 	public boolean validateBehavior(Behavior behavior,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(behavior, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(behavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -7983,6 +8279,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(behavior, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(behavior,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(behavior, diagnostics,
 				context);
@@ -8106,6 +8405,8 @@ public class UMLValidator
 	 */
 	public boolean validateParameterSet(ParameterSet parameterSet,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(parameterSet, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(parameterSet,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8114,6 +8415,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(parameterSet,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				parameterSet, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(parameterSet, diagnostics,
 				context);
@@ -8196,6 +8500,8 @@ public class UMLValidator
 	 */
 	public boolean validateDataType(DataType dataType,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(dataType, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(dataType,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8204,6 +8510,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(dataType, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(dataType,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(dataType, diagnostics,
 				context);
@@ -8260,6 +8569,8 @@ public class UMLValidator
 	 */
 	public boolean validateInterface(Interface interface_,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interface_, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(interface_,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8267,6 +8578,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interface_,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(interface_,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interface_, diagnostics,
@@ -8338,6 +8652,8 @@ public class UMLValidator
 	 */
 	public boolean validateReception(Reception reception,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(reception, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(reception,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8345,6 +8661,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(reception,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(reception,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(reception, diagnostics,
@@ -8404,6 +8723,8 @@ public class UMLValidator
 	 */
 	public boolean validateSignal(Signal signal, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(signal, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(signal,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8412,6 +8733,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(signal, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(signal,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(signal, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8467,6 +8791,9 @@ public class UMLValidator
 	public boolean validateProtocolStateMachine(
 			ProtocolStateMachine protocolStateMachine,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(protocolStateMachine, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8475,6 +8802,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(protocolStateMachine,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				protocolStateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(protocolStateMachine,
 				diagnostics, context);
@@ -8661,6 +8991,8 @@ public class UMLValidator
 	 */
 	public boolean validateStateMachine(StateMachine stateMachine,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateMachine, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(stateMachine,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8669,6 +9001,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(stateMachine,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				stateMachine, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stateMachine, diagnostics,
 				context);
@@ -8807,6 +9142,8 @@ public class UMLValidator
 	 */
 	public boolean validateRegion(Region region, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(region, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(region,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8815,6 +9152,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(region, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(region,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(region, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8912,6 +9252,8 @@ public class UMLValidator
 	 */
 	public boolean validateVertex(Vertex vertex, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(vertex, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(vertex,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8920,6 +9262,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(vertex, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(vertex,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(vertex, diagnostics, context);
 		if (result || diagnostics != null)
@@ -8953,6 +9298,8 @@ public class UMLValidator
 	 */
 	public boolean validateTransition(Transition transition,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(transition, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(transition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -8960,6 +9307,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(transition,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(transition,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(transition, diagnostics,
@@ -9110,6 +9460,8 @@ public class UMLValidator
 	 */
 	public boolean validateTrigger(Trigger trigger,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(trigger, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(trigger,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9118,6 +9470,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(trigger, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(trigger,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(trigger, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9152,6 +9507,8 @@ public class UMLValidator
 	 */
 	public boolean validateEvent(Event event, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(event, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(event, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -9160,6 +9517,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(event, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(event,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(event, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9193,6 +9553,8 @@ public class UMLValidator
 	 */
 	public boolean validatePort(Port port, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(port, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(port, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -9201,6 +9563,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(port, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(port,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(port, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9338,6 +9703,8 @@ public class UMLValidator
 	 */
 	public boolean validateState(State state, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(state, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(state, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -9346,6 +9713,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(state, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(state,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(state, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9461,6 +9831,9 @@ public class UMLValidator
 	public boolean validateConnectionPointReference(
 			ConnectionPointReference connectionPointReference,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(connectionPointReference,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9468,6 +9841,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				connectionPointReference, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				connectionPointReference, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connectionPointReference,
@@ -9538,6 +9914,8 @@ public class UMLValidator
 	 */
 	public boolean validatePseudostate(Pseudostate pseudostate,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pseudostate, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(pseudostate,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9545,6 +9923,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(pseudostate,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(pseudostate,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(pseudostate, diagnostics,
@@ -9717,6 +10098,9 @@ public class UMLValidator
 	public boolean validateProtocolConformance(
 			ProtocolConformance protocolConformance,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(protocolConformance, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			protocolConformance, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9725,6 +10109,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(protocolConformance,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				protocolConformance, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(protocolConformance,
 				diagnostics, context);
@@ -9754,6 +10141,9 @@ public class UMLValidator
 	public boolean validateOperationTemplateParameter(
 			OperationTemplateParameter operationTemplateParameter,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(operationTemplateParameter,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			operationTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9761,6 +10151,9 @@ public class UMLValidator
 				operationTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				operationTemplateParameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				operationTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(operationTemplateParameter,
@@ -9794,6 +10187,9 @@ public class UMLValidator
 	public boolean validateStructuralFeature(
 			StructuralFeature structuralFeature, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(structuralFeature, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(structuralFeature,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9802,6 +10198,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(structuralFeature,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				structuralFeature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuralFeature,
 				diagnostics, context);
@@ -9856,6 +10255,8 @@ public class UMLValidator
 	 */
 	public boolean validateAssociation(Association association,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(association, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(association,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -9863,6 +10264,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(association,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(association,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(association, diagnostics,
@@ -9981,6 +10385,9 @@ public class UMLValidator
 	public boolean validateConnectableElementTemplateParameter(
 			ConnectableElementTemplateParameter connectableElementTemplateParameter,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(
+			connectableElementTemplateParameter, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -9988,6 +10395,9 @@ public class UMLValidator
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				connectableElementTemplateParameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				connectableElementTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -10020,6 +10430,9 @@ public class UMLValidator
 	 */
 	public boolean validateCollaborationUse(CollaborationUse collaborationUse,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(collaborationUse, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(collaborationUse,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10028,6 +10441,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(collaborationUse,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				collaborationUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(collaborationUse,
 				diagnostics, context);
@@ -10109,6 +10525,8 @@ public class UMLValidator
 	 */
 	public boolean validateCollaboration(Collaboration collaboration,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(collaboration, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(collaboration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10117,6 +10535,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(collaboration,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				collaboration, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(collaboration, diagnostics,
 				context);
@@ -10181,6 +10602,9 @@ public class UMLValidator
 	public boolean validateStructuredClassifier(
 			StructuredClassifier structuredClassifier,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(structuredClassifier, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10189,6 +10613,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(structuredClassifier,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				structuredClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuredClassifier,
 				diagnostics, context);
@@ -10263,6 +10690,8 @@ public class UMLValidator
 	 */
 	public boolean validateConnector(Connector connector,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(connector, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(connector,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10270,6 +10699,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(connector,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(connector,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(connector, diagnostics,
@@ -10432,6 +10864,9 @@ public class UMLValidator
 	public boolean validateRedefinableTemplateSignature(
 			RedefinableTemplateSignature redefinableTemplateSignature,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(redefinableTemplateSignature,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10439,6 +10874,9 @@ public class UMLValidator
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				redefinableTemplateSignature, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				redefinableTemplateSignature, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(redefinableTemplateSignature,
@@ -10503,6 +10941,9 @@ public class UMLValidator
 	public boolean validateClassifierTemplateParameter(
 			ClassifierTemplateParameter classifierTemplateParameter,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(classifierTemplateParameter,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10510,6 +10951,9 @@ public class UMLValidator
 				classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				classifierTemplateParameter, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				classifierTemplateParameter, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(classifierTemplateParameter,
@@ -10559,6 +11003,9 @@ public class UMLValidator
 	public boolean validateInterfaceRealization(
 			InterfaceRealization interfaceRealization,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interfaceRealization, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			interfaceRealization, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10567,6 +11014,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interfaceRealization,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				interfaceRealization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interfaceRealization,
 				diagnostics, context);
@@ -10605,6 +11055,9 @@ public class UMLValidator
 	public boolean validateEncapsulatedClassifier(
 			EncapsulatedClassifier encapsulatedClassifier,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(encapsulatedClassifier,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10612,6 +11065,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				encapsulatedClassifier, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				encapsulatedClassifier, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(encapsulatedClassifier,
@@ -10674,6 +11130,8 @@ public class UMLValidator
 	 */
 	public boolean validateExtension(Extension extension,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(extension, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(extension,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10681,6 +11139,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(extension,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(extension,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extension, diagnostics,
@@ -10778,6 +11239,8 @@ public class UMLValidator
 	 */
 	public boolean validateExtensionEnd(ExtensionEnd extensionEnd,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(extensionEnd, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(extensionEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10786,6 +11249,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(extensionEnd,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				extensionEnd, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(extensionEnd, diagnostics,
 				context);
@@ -10900,6 +11366,8 @@ public class UMLValidator
 	 */
 	public boolean validateImage(Image image, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(image, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(image, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -10908,6 +11376,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(image, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(image,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(image, diagnostics, context);
 		if (result || diagnostics != null)
@@ -10932,6 +11403,9 @@ public class UMLValidator
 	 */
 	public boolean validateStringExpression(StringExpression stringExpression,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stringExpression, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(stringExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -10940,6 +11414,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(stringExpression,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				stringExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stringExpression,
 				diagnostics, context);
@@ -11006,6 +11483,8 @@ public class UMLValidator
 	 */
 	public boolean validateExpression(Expression expression,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(expression, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(expression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11013,6 +11492,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(expression,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(expression,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(expression, diagnostics,
@@ -11049,6 +11531,9 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralInteger(LiteralInteger literalInteger,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalInteger, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(literalInteger,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11057,6 +11542,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(literalInteger,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				literalInteger, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalInteger, diagnostics,
 				context);
@@ -11093,6 +11581,8 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralString(LiteralString literalString,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalString, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(literalString,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11101,6 +11591,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(literalString,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				literalString, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalString, diagnostics,
 				context);
@@ -11137,6 +11630,9 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralBoolean(LiteralBoolean literalBoolean,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalBoolean, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(literalBoolean,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11145,6 +11641,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(literalBoolean,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				literalBoolean, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalBoolean, diagnostics,
 				context);
@@ -11181,6 +11680,8 @@ public class UMLValidator
 	 */
 	public boolean validateLiteralNull(LiteralNull literalNull,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalNull, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(literalNull,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11188,6 +11689,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(literalNull,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(literalNull,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalNull, diagnostics,
@@ -11224,6 +11728,8 @@ public class UMLValidator
 	 */
 	public boolean validateSlot(Slot slot, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(slot, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(slot, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -11232,6 +11738,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(slot, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(slot,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(slot, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11257,6 +11766,9 @@ public class UMLValidator
 	public boolean validateInstanceSpecification(
 			InstanceSpecification instanceSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(instanceSpecification, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11265,6 +11777,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(instanceSpecification,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				instanceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(instanceSpecification,
 				diagnostics, context);
@@ -11366,6 +11881,8 @@ public class UMLValidator
 	 */
 	public boolean validateEnumeration(Enumeration enumeration,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(enumeration, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(enumeration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11373,6 +11890,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(enumeration,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(enumeration,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(enumeration, diagnostics,
@@ -11431,6 +11951,9 @@ public class UMLValidator
 	public boolean validateEnumerationLiteral(
 			EnumerationLiteral enumerationLiteral, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(enumerationLiteral, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(enumerationLiteral,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11439,6 +11962,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(enumerationLiteral,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				enumerationLiteral, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(enumerationLiteral,
 				diagnostics, context);
@@ -11488,6 +12014,8 @@ public class UMLValidator
 	 */
 	public boolean validatePrimitiveType(PrimitiveType primitiveType,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(primitiveType, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(primitiveType,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11496,6 +12024,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(primitiveType,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				primitiveType, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(primitiveType, diagnostics,
 				context);
@@ -11553,6 +12084,8 @@ public class UMLValidator
 	 */
 	public boolean validateInstanceValue(InstanceValue instanceValue,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(instanceValue, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(instanceValue,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11561,6 +12094,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(instanceValue,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				instanceValue, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(instanceValue, diagnostics,
 				context);
@@ -11598,6 +12134,9 @@ public class UMLValidator
 	public boolean validateLiteralUnlimitedNatural(
 			LiteralUnlimitedNatural literalUnlimitedNatural,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(literalUnlimitedNatural,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11605,6 +12144,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				literalUnlimitedNatural, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				literalUnlimitedNatural, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(literalUnlimitedNatural,
@@ -11643,6 +12185,9 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueBehavior(OpaqueBehavior opaqueBehavior,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(opaqueBehavior, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(opaqueBehavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11651,6 +12196,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(opaqueBehavior,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				opaqueBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(opaqueBehavior, diagnostics,
 				context);
@@ -11729,6 +12277,9 @@ public class UMLValidator
 	 */
 	public boolean validateFunctionBehavior(FunctionBehavior functionBehavior,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(functionBehavior, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(functionBehavior,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11737,6 +12288,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(functionBehavior,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				functionBehavior, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(functionBehavior,
 				diagnostics, context);
@@ -11846,6 +12400,8 @@ public class UMLValidator
 	 */
 	public boolean validateActor(Actor actor, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(actor, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(actor, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -11854,6 +12410,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(actor, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(actor,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actor, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11939,6 +12498,8 @@ public class UMLValidator
 	 */
 	public boolean validateUsage(Usage usage, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(usage, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(usage, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -11947,6 +12508,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(usage, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(usage,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(usage, diagnostics, context);
 		if (result || diagnostics != null)
@@ -11980,6 +12544,8 @@ public class UMLValidator
 	 */
 	public boolean validateMessage(Message message,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(message, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(message,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -11988,6 +12554,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(message, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(message,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(message, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12125,6 +12694,8 @@ public class UMLValidator
 	 */
 	public boolean validateMessageEnd(MessageEnd messageEnd,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(messageEnd, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(messageEnd,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12132,6 +12703,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(messageEnd,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(messageEnd,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(messageEnd, diagnostics,
@@ -12168,6 +12742,8 @@ public class UMLValidator
 	 */
 	public boolean validateInteraction(Interaction interaction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interaction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(interaction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12175,6 +12751,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interaction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(interaction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interaction, diagnostics,
@@ -12254,6 +12833,9 @@ public class UMLValidator
 	public boolean validateInteractionFragment(
 			InteractionFragment interactionFragment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interactionFragment, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			interactionFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12262,6 +12844,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interactionFragment,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				interactionFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionFragment,
 				diagnostics, context);
@@ -12299,6 +12884,8 @@ public class UMLValidator
 	 */
 	public boolean validateLifeline(Lifeline lifeline,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(lifeline, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(lifeline,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12307,6 +12894,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(lifeline, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(lifeline,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(lifeline, diagnostics,
 				context);
@@ -12388,6 +12978,9 @@ public class UMLValidator
 	public boolean validatePartDecomposition(
 			PartDecomposition partDecomposition, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(partDecomposition, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(partDecomposition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12396,6 +12989,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(partDecomposition,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				partDecomposition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(partDecomposition,
 				diagnostics, context);
@@ -12491,6 +13087,9 @@ public class UMLValidator
 	 */
 	public boolean validateInteractionUse(InteractionUse interactionUse,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interactionUse, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(interactionUse,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12499,6 +13098,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interactionUse,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				interactionUse, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionUse, diagnostics,
 				context);
@@ -12597,6 +13199,8 @@ public class UMLValidator
 	 */
 	public boolean validateGate(Gate gate, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(gate, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(gate, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -12605,6 +13209,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(gate, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(gate,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(gate, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12666,6 +13273,8 @@ public class UMLValidator
 	 */
 	public boolean validateAction(Action action, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(action, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(action,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12674,6 +13283,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(action, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(action,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(action, diagnostics, context);
 		if (result || diagnostics != null)
@@ -12719,6 +13331,9 @@ public class UMLValidator
 	 */
 	public boolean validateExecutableNode(ExecutableNode executableNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(executableNode, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(executableNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12727,6 +13342,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(executableNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				executableNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executableNode, diagnostics,
 				context);
@@ -12775,6 +13393,8 @@ public class UMLValidator
 	 */
 	public boolean validateActivityNode(ActivityNode activityNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activityNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12783,6 +13403,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityNode, diagnostics,
 				context);
@@ -12855,6 +13478,8 @@ public class UMLValidator
 	 */
 	public boolean validateActivityEdge(ActivityEdge activityEdge,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityEdge, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activityEdge,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12863,6 +13488,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityEdge,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityEdge, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityEdge, diagnostics,
 				context);
@@ -12950,6 +13578,8 @@ public class UMLValidator
 	 */
 	public boolean validateActivity(Activity activity,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activity, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activity,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -12958,6 +13588,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activity, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(activity,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activity, diagnostics,
 				context);
@@ -13079,6 +13712,9 @@ public class UMLValidator
 	public boolean validateActivityPartition(
 			ActivityPartition activityPartition, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityPartition, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activityPartition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13087,6 +13723,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityPartition,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityPartition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityPartition,
 				diagnostics, context);
@@ -13195,6 +13834,8 @@ public class UMLValidator
 	 */
 	public boolean validateActivityGroup(ActivityGroup activityGroup,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityGroup, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activityGroup,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13203,6 +13844,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityGroup,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityGroup, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityGroup, diagnostics,
 				context);
@@ -13276,6 +13920,9 @@ public class UMLValidator
 	public boolean validateStructuredActivityNode(
 			StructuredActivityNode structuredActivityNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(structuredActivityNode,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13283,6 +13930,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				structuredActivityNode, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				structuredActivityNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuredActivityNode,
@@ -13360,6 +14010,8 @@ public class UMLValidator
 	 */
 	public boolean validateVariable(Variable variable,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(variable, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(variable,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13368,6 +14020,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(variable, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(variable,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(variable, diagnostics,
 				context);
@@ -13430,6 +14085,9 @@ public class UMLValidator
 	public boolean validateInterruptibleActivityRegion(
 			InterruptibleActivityRegion interruptibleActivityRegion,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interruptibleActivityRegion,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13437,6 +14095,9 @@ public class UMLValidator
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				interruptibleActivityRegion, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				interruptibleActivityRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interruptibleActivityRegion,
@@ -13491,6 +14152,9 @@ public class UMLValidator
 	 */
 	public boolean validateExceptionHandler(ExceptionHandler exceptionHandler,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(exceptionHandler, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(exceptionHandler,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13499,6 +14163,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(exceptionHandler,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				exceptionHandler, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(exceptionHandler,
 				diagnostics, context);
@@ -13586,6 +14253,8 @@ public class UMLValidator
 	 */
 	public boolean validateObjectNode(ObjectNode objectNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(objectNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(objectNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13593,6 +14262,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(objectNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(objectNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(objectNode, diagnostics,
@@ -13700,6 +14372,8 @@ public class UMLValidator
 	 */
 	public boolean validateOutputPin(OutputPin outputPin,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(outputPin, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(outputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13707,6 +14381,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(outputPin,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(outputPin,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(outputPin, diagnostics,
@@ -13798,6 +14475,8 @@ public class UMLValidator
 	 */
 	public boolean validatePin(Pin pin, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(pin, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(pin, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -13805,6 +14484,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(pin, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(pin,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(pin, diagnostics, context);
 		if (result || diagnostics != null)
@@ -13887,6 +14569,8 @@ public class UMLValidator
 	 */
 	public boolean validateInputPin(InputPin inputPin,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(inputPin, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(inputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13895,6 +14579,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(inputPin, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(inputPin,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(inputPin, diagnostics,
 				context);
@@ -13985,6 +14672,9 @@ public class UMLValidator
 	 */
 	public boolean validateGeneralOrdering(GeneralOrdering generalOrdering,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(generalOrdering, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(generalOrdering,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -13993,6 +14683,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(generalOrdering,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				generalOrdering, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(generalOrdering, diagnostics,
 				context);
@@ -14030,6 +14723,9 @@ public class UMLValidator
 	public boolean validateOccurrenceSpecification(
 			OccurrenceSpecification occurrenceSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(occurrenceSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14037,6 +14733,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				occurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				occurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(occurrenceSpecification,
@@ -14076,6 +14775,9 @@ public class UMLValidator
 	public boolean validateInteractionOperand(
 			InteractionOperand interactionOperand, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interactionOperand, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(interactionOperand,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14084,6 +14786,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interactionOperand,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				interactionOperand, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionOperand,
 				diagnostics, context);
@@ -14157,6 +14862,9 @@ public class UMLValidator
 	public boolean validateInteractionConstraint(
 			InteractionConstraint interactionConstraint,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interactionConstraint, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14165,6 +14873,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interactionConstraint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				interactionConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interactionConstraint,
 				diagnostics, context);
@@ -14312,6 +15023,9 @@ public class UMLValidator
 	public boolean validateExecutionSpecification(
 			ExecutionSpecification executionSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(executionSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14319,6 +15033,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				executionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				executionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executionSpecification,
@@ -14374,6 +15091,9 @@ public class UMLValidator
 	public boolean validateExecutionOccurrenceSpecification(
 			ExecutionOccurrenceSpecification executionOccurrenceSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(executionOccurrenceSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14381,6 +15101,9 @@ public class UMLValidator
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				executionOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				executionOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -14419,6 +15142,9 @@ public class UMLValidator
 	 */
 	public boolean validateExecutionEvent(ExecutionEvent executionEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(executionEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(executionEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14427,6 +15153,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(executionEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				executionEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executionEvent, diagnostics,
 				context);
@@ -14463,6 +15192,9 @@ public class UMLValidator
 	 */
 	public boolean validateStateInvariant(StateInvariant stateInvariant,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(stateInvariant, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(stateInvariant,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14471,6 +15203,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(stateInvariant,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				stateInvariant, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(stateInvariant, diagnostics,
 				context);
@@ -14508,6 +15243,9 @@ public class UMLValidator
 	public boolean validateActionExecutionSpecification(
 			ActionExecutionSpecification actionExecutionSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(actionExecutionSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14515,6 +15253,9 @@ public class UMLValidator
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				actionExecutionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				actionExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actionExecutionSpecification,
@@ -14573,6 +15314,9 @@ public class UMLValidator
 	public boolean validateBehaviorExecutionSpecification(
 			BehaviorExecutionSpecification behaviorExecutionSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(behaviorExecutionSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14580,6 +15324,9 @@ public class UMLValidator
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				behaviorExecutionSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				behaviorExecutionSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -14621,6 +15368,8 @@ public class UMLValidator
 	 */
 	public boolean validateCreationEvent(CreationEvent creationEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(creationEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(creationEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14629,6 +15378,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(creationEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				creationEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(creationEvent, diagnostics,
 				context);
@@ -14680,6 +15432,9 @@ public class UMLValidator
 	 */
 	public boolean validateDestructionEvent(DestructionEvent destructionEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(destructionEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(destructionEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14688,6 +15443,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(destructionEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				destructionEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(destructionEvent,
 				diagnostics, context);
@@ -14741,6 +15499,9 @@ public class UMLValidator
 	public boolean validateSendOperationEvent(
 			SendOperationEvent sendOperationEvent, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sendOperationEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(sendOperationEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14749,6 +15510,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(sendOperationEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				sendOperationEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sendOperationEvent,
 				diagnostics, context);
@@ -14786,6 +15550,8 @@ public class UMLValidator
 	 */
 	public boolean validateMessageEvent(MessageEvent messageEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(messageEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(messageEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14794,6 +15560,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(messageEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				messageEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(messageEvent, diagnostics,
 				context);
@@ -14830,6 +15599,9 @@ public class UMLValidator
 	 */
 	public boolean validateSendSignalEvent(SendSignalEvent sendSignalEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sendSignalEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(sendSignalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14838,6 +15610,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(sendSignalEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				sendSignalEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sendSignalEvent, diagnostics,
 				context);
@@ -14875,6 +15650,9 @@ public class UMLValidator
 	public boolean validateMessageOccurrenceSpecification(
 			MessageOccurrenceSpecification messageOccurrenceSpecification,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(messageOccurrenceSpecification,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14882,6 +15660,9 @@ public class UMLValidator
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				messageOccurrenceSpecification, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				messageOccurrenceSpecification, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -14921,6 +15702,9 @@ public class UMLValidator
 	public boolean validateReceiveOperationEvent(
 			ReceiveOperationEvent receiveOperationEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(receiveOperationEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			receiveOperationEvent, diagnostics, context);
 		if (result || diagnostics != null)
@@ -14929,6 +15713,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(receiveOperationEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				receiveOperationEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(receiveOperationEvent,
 				diagnostics, context);
@@ -14967,6 +15754,9 @@ public class UMLValidator
 	public boolean validateReceiveSignalEvent(
 			ReceiveSignalEvent receiveSignalEvent, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(receiveSignalEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(receiveSignalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -14975,6 +15765,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(receiveSignalEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				receiveSignalEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(receiveSignalEvent,
 				diagnostics, context);
@@ -15012,6 +15805,9 @@ public class UMLValidator
 	 */
 	public boolean validateCombinedFragment(CombinedFragment combinedFragment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(combinedFragment, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(combinedFragment,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15020,6 +15816,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(combinedFragment,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				combinedFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(combinedFragment,
 				diagnostics, context);
@@ -15116,6 +15915,8 @@ public class UMLValidator
 	 */
 	public boolean validateContinuation(Continuation continuation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(continuation, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(continuation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15124,6 +15925,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(continuation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				continuation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(continuation, diagnostics,
 				context);
@@ -15207,6 +16011,9 @@ public class UMLValidator
 	public boolean validateConsiderIgnoreFragment(
 			ConsiderIgnoreFragment considerIgnoreFragment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(considerIgnoreFragment,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15214,6 +16021,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				considerIgnoreFragment, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				considerIgnoreFragment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(considerIgnoreFragment,
@@ -15295,6 +16105,8 @@ public class UMLValidator
 	 */
 	public boolean validateCallEvent(CallEvent callEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(callEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(callEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15302,6 +16114,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(callEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(callEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callEvent, diagnostics,
@@ -15338,6 +16153,8 @@ public class UMLValidator
 	 */
 	public boolean validateChangeEvent(ChangeEvent changeEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(changeEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(changeEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15345,6 +16162,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(changeEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(changeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(changeEvent, diagnostics,
@@ -15381,6 +16201,8 @@ public class UMLValidator
 	 */
 	public boolean validateSignalEvent(SignalEvent signalEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(signalEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(signalEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15388,6 +16210,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(signalEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(signalEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(signalEvent, diagnostics,
@@ -15424,6 +16249,9 @@ public class UMLValidator
 	 */
 	public boolean validateAnyReceiveEvent(AnyReceiveEvent anyReceiveEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(anyReceiveEvent, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(anyReceiveEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15432,6 +16260,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(anyReceiveEvent,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				anyReceiveEvent, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(anyReceiveEvent, diagnostics,
 				context);
@@ -15469,6 +16300,9 @@ public class UMLValidator
 	public boolean validateCreateObjectAction(
 			CreateObjectAction createObjectAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(createObjectAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(createObjectAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15477,6 +16311,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(createObjectAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				createObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(createObjectAction,
 				diagnostics, context);
@@ -15589,6 +16426,9 @@ public class UMLValidator
 	public boolean validateDestroyObjectAction(
 			DestroyObjectAction destroyObjectAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(destroyObjectAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			destroyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15597,6 +16437,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(destroyObjectAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				destroyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(destroyObjectAction,
 				diagnostics, context);
@@ -15677,6 +16520,9 @@ public class UMLValidator
 	public boolean validateTestIdentityAction(
 			TestIdentityAction testIdentityAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(testIdentityAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(testIdentityAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15685,6 +16531,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(testIdentityAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				testIdentityAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(testIdentityAction,
 				diagnostics, context);
@@ -15779,6 +16628,9 @@ public class UMLValidator
 	 */
 	public boolean validateReadSelfAction(ReadSelfAction readSelfAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readSelfAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(readSelfAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -15787,6 +16639,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(readSelfAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				readSelfAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readSelfAction, diagnostics,
 				context);
@@ -15896,6 +16751,9 @@ public class UMLValidator
 	public boolean validateStructuralFeatureAction(
 			StructuralFeatureAction structuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(structuralFeatureAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -15903,6 +16761,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				structuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				structuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(structuralFeatureAction,
@@ -16031,6 +16892,9 @@ public class UMLValidator
 	public boolean validateReadStructuralFeatureAction(
 			ReadStructuralFeatureAction readStructuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readStructuralFeatureAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16038,6 +16902,9 @@ public class UMLValidator
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				readStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				readStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readStructuralFeatureAction,
@@ -16152,6 +17019,9 @@ public class UMLValidator
 	public boolean validateWriteStructuralFeatureAction(
 			WriteStructuralFeatureAction writeStructuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(writeStructuralFeatureAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16159,6 +17029,9 @@ public class UMLValidator
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				writeStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				writeStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(writeStructuralFeatureAction,
@@ -16305,6 +17178,9 @@ public class UMLValidator
 	public boolean validateClearStructuralFeatureAction(
 			ClearStructuralFeatureAction clearStructuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clearStructuralFeatureAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16312,6 +17188,9 @@ public class UMLValidator
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				clearStructuralFeatureAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				clearStructuralFeatureAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clearStructuralFeatureAction,
@@ -16410,6 +17289,9 @@ public class UMLValidator
 	public boolean validateRemoveStructuralFeatureValueAction(
 			RemoveStructuralFeatureValueAction removeStructuralFeatureValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(removeStructuralFeatureValueAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16417,6 +17299,9 @@ public class UMLValidator
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				removeStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				removeStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -16508,6 +17393,9 @@ public class UMLValidator
 	public boolean validateAddStructuralFeatureValueAction(
 			AddStructuralFeatureValueAction addStructuralFeatureValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(addStructuralFeatureValueAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -16515,6 +17403,9 @@ public class UMLValidator
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				addStructuralFeatureValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				addStructuralFeatureValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -16605,6 +17496,8 @@ public class UMLValidator
 	 */
 	public boolean validateLinkAction(LinkAction linkAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(linkAction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(linkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16612,6 +17505,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(linkAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(linkAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkAction, diagnostics,
@@ -16703,6 +17599,8 @@ public class UMLValidator
 	 */
 	public boolean validateLinkEndData(LinkEndData linkEndData,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(linkEndData, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(linkEndData,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16710,6 +17608,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(linkEndData,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(linkEndData,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkEndData, diagnostics,
@@ -16813,6 +17714,9 @@ public class UMLValidator
 	 */
 	public boolean validateQualifierValue(QualifierValue qualifierValue,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(qualifierValue, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(qualifierValue,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16821,6 +17725,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(qualifierValue,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				qualifierValue, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(qualifierValue, diagnostics,
 				context);
@@ -16894,6 +17801,9 @@ public class UMLValidator
 	 */
 	public boolean validateReadLinkAction(ReadLinkAction readLinkAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readLinkAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(readLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -16902,6 +17812,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(readLinkAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				readLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readLinkAction, diagnostics,
 				context);
@@ -17036,6 +17949,9 @@ public class UMLValidator
 	public boolean validateLinkEndCreationData(
 			LinkEndCreationData linkEndCreationData,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(linkEndCreationData, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17044,6 +17960,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(linkEndCreationData,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				linkEndCreationData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkEndCreationData,
 				diagnostics, context);
@@ -17118,6 +18037,9 @@ public class UMLValidator
 	 */
 	public boolean validateCreateLinkAction(CreateLinkAction createLinkAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(createLinkAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(createLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17126,6 +18048,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(createLinkAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				createLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(createLinkAction,
 				diagnostics, context);
@@ -17202,6 +18127,9 @@ public class UMLValidator
 	 */
 	public boolean validateWriteLinkAction(WriteLinkAction writeLinkAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(writeLinkAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(writeLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17210,6 +18138,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(writeLinkAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				writeLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(writeLinkAction, diagnostics,
 				context);
@@ -17283,6 +18214,9 @@ public class UMLValidator
 	public boolean validateDestroyLinkAction(
 			DestroyLinkAction destroyLinkAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(destroyLinkAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(destroyLinkAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17291,6 +18225,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(destroyLinkAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				destroyLinkAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(destroyLinkAction,
 				diagnostics, context);
@@ -17352,6 +18289,9 @@ public class UMLValidator
 	public boolean validateLinkEndDestructionData(
 			LinkEndDestructionData linkEndDestructionData,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(linkEndDestructionData,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17359,6 +18299,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				linkEndDestructionData, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				linkEndDestructionData, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(linkEndDestructionData,
@@ -17436,6 +18379,9 @@ public class UMLValidator
 	public boolean validateClearAssociationAction(
 			ClearAssociationAction clearAssociationAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clearAssociationAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17443,6 +18389,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				clearAssociationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				clearAssociationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clearAssociationAction,
@@ -17525,6 +18474,9 @@ public class UMLValidator
 	public boolean validateBroadcastSignalAction(
 			BroadcastSignalAction broadcastSignalAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(broadcastSignalAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17533,6 +18485,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(broadcastSignalAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				broadcastSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(broadcastSignalAction,
 				diagnostics, context);
@@ -17617,6 +18572,9 @@ public class UMLValidator
 	 */
 	public boolean validateInvocationAction(InvocationAction invocationAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(invocationAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(invocationAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17625,6 +18583,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(invocationAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				invocationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(invocationAction,
 				diagnostics, context);
@@ -17688,6 +18649,9 @@ public class UMLValidator
 	 */
 	public boolean validateSendObjectAction(SendObjectAction sendObjectAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sendObjectAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(sendObjectAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17696,6 +18660,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(sendObjectAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				sendObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sendObjectAction,
 				diagnostics, context);
@@ -17748,6 +18715,9 @@ public class UMLValidator
 	public boolean validateValueSpecificationAction(
 			ValueSpecificationAction valueSpecificationAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(valueSpecificationAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -17755,6 +18725,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				valueSpecificationAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				valueSpecificationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(valueSpecificationAction,
@@ -17837,6 +18810,9 @@ public class UMLValidator
 	 */
 	public boolean validateTimeExpression(TimeExpression timeExpression,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(timeExpression, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(timeExpression,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17845,6 +18821,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(timeExpression,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				timeExpression, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeExpression, diagnostics,
 				context);
@@ -17881,6 +18860,8 @@ public class UMLValidator
 	 */
 	public boolean validateObservation(Observation observation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(observation, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(observation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17888,6 +18869,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(observation,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(observation,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(observation, diagnostics,
@@ -17924,6 +18908,8 @@ public class UMLValidator
 	 */
 	public boolean validateDuration(Duration duration,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(duration, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(duration,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17932,6 +18918,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(duration, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(duration,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(duration, diagnostics,
 				context);
@@ -17967,6 +18956,8 @@ public class UMLValidator
 	 */
 	public boolean validateValuePin(ValuePin valuePin,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(valuePin, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(valuePin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -17975,6 +18966,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(valuePin, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(valuePin,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(valuePin, diagnostics,
 				context);
@@ -18080,6 +19074,9 @@ public class UMLValidator
 	 */
 	public boolean validateDurationInterval(DurationInterval durationInterval,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(durationInterval, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(durationInterval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18088,6 +19085,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(durationInterval,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				durationInterval, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(durationInterval,
 				diagnostics, context);
@@ -18124,6 +19124,8 @@ public class UMLValidator
 	 */
 	public boolean validateInterval(Interval interval,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(interval, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(interval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18132,6 +19134,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(interval, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(interval,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(interval, diagnostics,
 				context);
@@ -18167,6 +19172,9 @@ public class UMLValidator
 	 */
 	public boolean validateTimeConstraint(TimeConstraint timeConstraint,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(timeConstraint, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(timeConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18175,6 +19183,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(timeConstraint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				timeConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeConstraint, diagnostics,
 				context);
@@ -18227,6 +19238,9 @@ public class UMLValidator
 	public boolean validateIntervalConstraint(
 			IntervalConstraint intervalConstraint, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(intervalConstraint, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(intervalConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18235,6 +19249,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(intervalConstraint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				intervalConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(intervalConstraint,
 				diagnostics, context);
@@ -18287,6 +19304,8 @@ public class UMLValidator
 	 */
 	public boolean validateTimeInterval(TimeInterval timeInterval,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(timeInterval, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(timeInterval,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18295,6 +19314,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(timeInterval,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				timeInterval, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeInterval, diagnostics,
 				context);
@@ -18332,6 +19354,9 @@ public class UMLValidator
 	public boolean validateDurationConstraint(
 			DurationConstraint durationConstraint, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(durationConstraint, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(durationConstraint,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18340,6 +19365,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(durationConstraint,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				durationConstraint, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(durationConstraint,
 				diagnostics, context);
@@ -18408,6 +19436,9 @@ public class UMLValidator
 	 */
 	public boolean validateTimeObservation(TimeObservation timeObservation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(timeObservation, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(timeObservation,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18416,6 +19447,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(timeObservation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				timeObservation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeObservation, diagnostics,
 				context);
@@ -18453,6 +19487,9 @@ public class UMLValidator
 	public boolean validateDurationObservation(
 			DurationObservation durationObservation,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(durationObservation, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			durationObservation, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18461,6 +19498,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(durationObservation,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				durationObservation, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(durationObservation,
 				diagnostics, context);
@@ -18514,6 +19554,8 @@ public class UMLValidator
 	 */
 	public boolean validateOpaqueAction(OpaqueAction opaqueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(opaqueAction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(opaqueAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18522,6 +19564,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(opaqueAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				opaqueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(opaqueAction, diagnostics,
 				context);
@@ -18570,6 +19615,8 @@ public class UMLValidator
 	 */
 	public boolean validateCallAction(CallAction callAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(callAction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(callAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18577,6 +19624,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(callAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(callAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callAction, diagnostics,
@@ -18674,6 +19724,9 @@ public class UMLValidator
 	 */
 	public boolean validateSendSignalAction(SendSignalAction sendSignalAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sendSignalAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(sendSignalAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18682,6 +19735,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(sendSignalAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				sendSignalAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sendSignalAction,
 				diagnostics, context);
@@ -18765,6 +19821,9 @@ public class UMLValidator
 	public boolean validateCallOperationAction(
 			CallOperationAction callOperationAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(callOperationAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -18773,6 +19832,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(callOperationAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				callOperationAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callOperationAction,
 				diagnostics, context);
@@ -18914,6 +19976,9 @@ public class UMLValidator
 	public boolean validateCallBehaviorAction(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(callBehaviorAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(callBehaviorAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -18922,6 +19987,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(callBehaviorAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				callBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(callBehaviorAction,
 				diagnostics, context);
@@ -19047,6 +20115,9 @@ public class UMLValidator
 	 */
 	public boolean validateInformationItem(InformationItem informationItem,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(informationItem, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(informationItem,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19055,6 +20126,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(informationItem,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				informationItem, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(informationItem, diagnostics,
 				context);
@@ -19157,6 +20231,9 @@ public class UMLValidator
 	 */
 	public boolean validateInformationFlow(InformationFlow informationFlow,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(informationFlow, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(informationFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19165,6 +20242,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(informationFlow,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				informationFlow, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(informationFlow, diagnostics,
 				context);
@@ -19247,6 +20327,8 @@ public class UMLValidator
 	 */
 	public boolean validateModel(Model model, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(model, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(model, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -19255,6 +20337,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(model, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(model,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(model, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19294,6 +20379,9 @@ public class UMLValidator
 	 */
 	public boolean validateVariableAction(VariableAction variableAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(variableAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(variableAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19302,6 +20390,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(variableAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				variableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(variableAction, diagnostics,
 				context);
@@ -19366,6 +20457,9 @@ public class UMLValidator
 	public boolean validateReadVariableAction(
 			ReadVariableAction readVariableAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readVariableAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(readVariableAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19374,6 +20468,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(readVariableAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				readVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readVariableAction,
 				diagnostics, context);
@@ -19458,6 +20555,9 @@ public class UMLValidator
 	public boolean validateWriteVariableAction(
 			WriteVariableAction writeVariableAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(writeVariableAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19466,6 +20566,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(writeVariableAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				writeVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(writeVariableAction,
 				diagnostics, context);
@@ -19549,6 +20652,9 @@ public class UMLValidator
 	public boolean validateClearVariableAction(
 			ClearVariableAction clearVariableAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clearVariableAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			clearVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19557,6 +20663,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(clearVariableAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				clearVariableAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clearVariableAction,
 				diagnostics, context);
@@ -19610,6 +20719,9 @@ public class UMLValidator
 	public boolean validateAddVariableValueAction(
 			AddVariableValueAction addVariableValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(addVariableValueAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19617,6 +20729,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				addVariableValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				addVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(addVariableValueAction,
@@ -19693,6 +20808,9 @@ public class UMLValidator
 	public boolean validateRemoveVariableValueAction(
 			RemoveVariableValueAction removeVariableValueAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(removeVariableValueAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19700,6 +20818,9 @@ public class UMLValidator
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				removeVariableValueAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				removeVariableValueAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(removeVariableValueAction,
@@ -19776,6 +20897,9 @@ public class UMLValidator
 	public boolean validateRaiseExceptionAction(
 			RaiseExceptionAction raiseExceptionAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(raiseExceptionAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			raiseExceptionAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -19784,6 +20908,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(raiseExceptionAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				raiseExceptionAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(raiseExceptionAction,
 				diagnostics, context);
@@ -19833,6 +20960,9 @@ public class UMLValidator
 	 */
 	public boolean validateActionInputPin(ActionInputPin actionInputPin,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(actionInputPin, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(actionInputPin,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19841,6 +20971,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(actionInputPin,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				actionInputPin, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(actionInputPin, diagnostics,
 				context);
@@ -19964,6 +21097,9 @@ public class UMLValidator
 	 */
 	public boolean validateReadExtentAction(ReadExtentAction readExtentAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readExtentAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(readExtentAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -19972,6 +21108,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(readExtentAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				readExtentAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readExtentAction,
 				diagnostics, context);
@@ -20052,6 +21191,9 @@ public class UMLValidator
 	public boolean validateReclassifyObjectAction(
 			ReclassifyObjectAction reclassifyObjectAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(reclassifyObjectAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20059,6 +21201,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				reclassifyObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				reclassifyObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(reclassifyObjectAction,
@@ -20157,6 +21302,9 @@ public class UMLValidator
 	public boolean validateReadIsClassifiedObjectAction(
 			ReadIsClassifiedObjectAction readIsClassifiedObjectAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readIsClassifiedObjectAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20164,6 +21312,9 @@ public class UMLValidator
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				readIsClassifiedObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				readIsClassifiedObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readIsClassifiedObjectAction,
@@ -20279,6 +21430,9 @@ public class UMLValidator
 	public boolean validateStartClassifierBehaviorAction(
 			StartClassifierBehaviorAction startClassifierBehaviorAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(startClassifierBehaviorAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20286,6 +21440,9 @@ public class UMLValidator
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				startClassifierBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				startClassifierBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -20369,6 +21526,9 @@ public class UMLValidator
 	public boolean validateReadLinkObjectEndAction(
 			ReadLinkObjectEndAction readLinkObjectEndAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readLinkObjectEndAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20376,6 +21536,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				readLinkObjectEndAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				readLinkObjectEndAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(readLinkObjectEndAction,
@@ -20538,6 +21701,9 @@ public class UMLValidator
 	public boolean validateReadLinkObjectEndQualifierAction(
 			ReadLinkObjectEndQualifierAction readLinkObjectEndQualifierAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(readLinkObjectEndQualifierAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20545,6 +21711,9 @@ public class UMLValidator
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				readLinkObjectEndQualifierAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				readLinkObjectEndQualifierAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(
@@ -20724,6 +21893,9 @@ public class UMLValidator
 	public boolean validateCreateLinkObjectAction(
 			CreateLinkObjectAction createLinkObjectAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(createLinkObjectAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -20731,6 +21903,9 @@ public class UMLValidator
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				createLinkObjectAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				createLinkObjectAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(createLinkObjectAction,
@@ -20845,6 +22020,9 @@ public class UMLValidator
 	public boolean validateAcceptEventAction(
 			AcceptEventAction acceptEventAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(acceptEventAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(acceptEventAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20853,6 +22031,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(acceptEventAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				acceptEventAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(acceptEventAction,
 				diagnostics, context);
@@ -20962,6 +22143,9 @@ public class UMLValidator
 	 */
 	public boolean validateAcceptCallAction(AcceptCallAction acceptCallAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(acceptCallAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(acceptCallAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -20970,6 +22154,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(acceptCallAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				acceptCallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(acceptCallAction,
 				diagnostics, context);
@@ -21075,6 +22262,8 @@ public class UMLValidator
 	 */
 	public boolean validateReplyAction(ReplyAction replyAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(replyAction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(replyAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21082,6 +22271,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(replyAction,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(replyAction,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(replyAction, diagnostics,
@@ -21161,6 +22353,9 @@ public class UMLValidator
 	 */
 	public boolean validateUnmarshallAction(UnmarshallAction unmarshallAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(unmarshallAction, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(unmarshallAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21169,6 +22364,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(unmarshallAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				unmarshallAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(unmarshallAction,
 				diagnostics, context);
@@ -21325,6 +22523,8 @@ public class UMLValidator
 	 */
 	public boolean validateReduceAction(ReduceAction reduceAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(reduceAction, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(reduceAction,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21333,6 +22533,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(reduceAction,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				reduceAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(reduceAction, diagnostics,
 				context);
@@ -21428,6 +22631,9 @@ public class UMLValidator
 	public boolean validateStartObjectBehaviorAction(
 			StartObjectBehaviorAction startObjectBehaviorAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(startObjectBehaviorAction,
+			diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
@@ -21435,6 +22641,9 @@ public class UMLValidator
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(
+				startObjectBehaviorAction, diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
 				startObjectBehaviorAction, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(startObjectBehaviorAction,
@@ -21577,6 +22786,8 @@ public class UMLValidator
 	 */
 	public boolean validateControlNode(ControlNode controlNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(controlNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(controlNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21584,6 +22795,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(controlNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(controlNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(controlNode, diagnostics,
@@ -21632,6 +22846,8 @@ public class UMLValidator
 	 */
 	public boolean validateControlFlow(ControlFlow controlFlow,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(controlFlow, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(controlFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21639,6 +22855,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(controlFlow,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(controlFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(controlFlow, diagnostics,
@@ -21705,6 +22924,8 @@ public class UMLValidator
 	 */
 	public boolean validateInitialNode(InitialNode initialNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(initialNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(initialNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21712,6 +22933,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(initialNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(initialNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(initialNode, diagnostics,
@@ -21791,6 +23015,9 @@ public class UMLValidator
 	public boolean validateActivityParameterNode(
 			ActivityParameterNode activityParameterNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityParameterNode, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
@@ -21799,6 +23026,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityParameterNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityParameterNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityParameterNode,
 				diagnostics, context);
@@ -21970,6 +23200,8 @@ public class UMLValidator
 	 */
 	public boolean validateForkNode(ForkNode forkNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(forkNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(forkNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -21978,6 +23210,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(forkNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(forkNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(forkNode, diagnostics,
 				context);
@@ -22053,6 +23288,8 @@ public class UMLValidator
 	 */
 	public boolean validateFlowFinalNode(FlowFinalNode flowFinalNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(flowFinalNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(flowFinalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22061,6 +23298,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(flowFinalNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				flowFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(flowFinalNode, diagnostics,
 				context);
@@ -22112,6 +23352,8 @@ public class UMLValidator
 	 */
 	public boolean validateFinalNode(FinalNode finalNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(finalNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(finalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22119,6 +23361,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(finalNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(finalNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(finalNode, diagnostics,
@@ -22183,6 +23428,9 @@ public class UMLValidator
 	public boolean validateCentralBufferNode(
 			CentralBufferNode centralBufferNode, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(centralBufferNode, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(centralBufferNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22191,6 +23439,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(centralBufferNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				centralBufferNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(centralBufferNode,
 				diagnostics, context);
@@ -22251,6 +23502,8 @@ public class UMLValidator
 	 */
 	public boolean validateMergeNode(MergeNode mergeNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(mergeNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(mergeNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22258,6 +23511,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(mergeNode,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(mergeNode,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(mergeNode, diagnostics,
@@ -22335,6 +23591,8 @@ public class UMLValidator
 	 */
 	public boolean validateDecisionNode(DecisionNode decisionNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(decisionNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(decisionNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22343,6 +23601,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(decisionNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				decisionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(decisionNode, diagnostics,
 				context);
@@ -22515,6 +23776,9 @@ public class UMLValidator
 	public boolean validateActivityFinalNode(
 			ActivityFinalNode activityFinalNode, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(activityFinalNode, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(activityFinalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22523,6 +23787,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(activityFinalNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				activityFinalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(activityFinalNode,
 				diagnostics, context);
@@ -22574,6 +23841,8 @@ public class UMLValidator
 	 */
 	public boolean validateJoinNode(JoinNode joinNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(joinNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(joinNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22582,6 +23851,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(joinNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(joinNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(joinNode, diagnostics,
 				context);
@@ -22658,6 +23930,8 @@ public class UMLValidator
 	 */
 	public boolean validateDataStoreNode(DataStoreNode dataStoreNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(dataStoreNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(dataStoreNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22666,6 +23940,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(dataStoreNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				dataStoreNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(dataStoreNode, diagnostics,
 				context);
@@ -22726,6 +24003,8 @@ public class UMLValidator
 	 */
 	public boolean validateObjectFlow(ObjectFlow objectFlow,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(objectFlow, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(objectFlow,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22733,6 +24012,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(objectFlow,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(objectFlow,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(objectFlow, diagnostics,
@@ -22903,6 +24185,8 @@ public class UMLValidator
 	 */
 	public boolean validateSequenceNode(SequenceNode sequenceNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(sequenceNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(sequenceNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22911,6 +24195,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(sequenceNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				sequenceNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(sequenceNode, diagnostics,
 				context);
@@ -22974,6 +24261,9 @@ public class UMLValidator
 	 */
 	public boolean validateConditionalNode(ConditionalNode conditionalNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(conditionalNode, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(conditionalNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -22982,6 +24272,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(conditionalNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				conditionalNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(conditionalNode, diagnostics,
 				context);
@@ -23060,6 +24353,8 @@ public class UMLValidator
 	 */
 	public boolean validateClause(Clause clause, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clause, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(clause,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23068,6 +24363,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(clause, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(clause,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(clause, diagnostics, context);
 		if (result || diagnostics != null)
@@ -23120,6 +24418,8 @@ public class UMLValidator
 	 */
 	public boolean validateLoopNode(LoopNode loopNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(loopNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(loopNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23128,6 +24428,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(loopNode, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(loopNode,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(loopNode, diagnostics,
 				context);
@@ -23232,6 +24535,8 @@ public class UMLValidator
 	 */
 	public boolean validateExpansionNode(ExpansionNode expansionNode,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(expansionNode, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(expansionNode,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23240,6 +24545,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(expansionNode,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				expansionNode, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(expansionNode, diagnostics,
 				context);
@@ -23300,6 +24608,9 @@ public class UMLValidator
 	 */
 	public boolean validateExpansionRegion(ExpansionRegion expansionRegion,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(expansionRegion, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(expansionRegion,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23308,6 +24619,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(expansionRegion,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				expansionRegion, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(expansionRegion, diagnostics,
 				context);
@@ -23387,6 +24701,9 @@ public class UMLValidator
 	public boolean validateComponentRealization(
 			ComponentRealization componentRealization,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(componentRealization, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			componentRealization, diagnostics, context);
 		if (result || diagnostics != null)
@@ -23395,6 +24712,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(componentRealization,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				componentRealization, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(componentRealization,
 				diagnostics, context);
@@ -23432,6 +24752,8 @@ public class UMLValidator
 	 */
 	public boolean validateComponent(Component component,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(component, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(component,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23439,6 +24761,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(component,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(component,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(component, diagnostics,
@@ -23505,6 +24830,8 @@ public class UMLValidator
 	 */
 	public boolean validateNode(Node node, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(node, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(node, diagnostics,
 			context);
 		if (result || diagnostics != null)
@@ -23513,6 +24840,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(node, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(node,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(node, diagnostics, context);
 		if (result || diagnostics != null)
@@ -23590,6 +24920,8 @@ public class UMLValidator
 	 */
 	public boolean validateDevice(Device device, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(device, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(device,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23598,6 +24930,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(device, diagnostics,
 				context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(device,
+				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(device, diagnostics, context);
 		if (result || diagnostics != null)
@@ -23665,6 +25000,9 @@ public class UMLValidator
 	public boolean validateExecutionEnvironment(
 			ExecutionEnvironment executionEnvironment,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(executionEnvironment, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(
 			executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
@@ -23673,6 +25011,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(executionEnvironment,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				executionEnvironment, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(executionEnvironment,
 				diagnostics, context);
@@ -23744,6 +25085,9 @@ public class UMLValidator
 	public boolean validateCommunicationPath(
 			CommunicationPath communicationPath, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(communicationPath, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(communicationPath,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23752,6 +25096,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(communicationPath,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				communicationPath, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(communicationPath,
 				diagnostics, context);
@@ -23853,6 +25200,8 @@ public class UMLValidator
 	 */
 	public boolean validateFinalState(FinalState finalState,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(finalState, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(finalState,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -23860,6 +25209,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(finalState,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(finalState,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(finalState, diagnostics,
@@ -24010,6 +25362,8 @@ public class UMLValidator
 	 */
 	public boolean validateTimeEvent(TimeEvent timeEvent,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(timeEvent, diagnostics, context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(timeEvent,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -24017,6 +25371,9 @@ public class UMLValidator
 				context);
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(timeEvent,
+				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(timeEvent,
 				diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(timeEvent, diagnostics,
@@ -24083,6 +25440,9 @@ public class UMLValidator
 	public boolean validateProtocolTransition(
 			ProtocolTransition protocolTransition, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(protocolTransition, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(protocolTransition,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -24091,6 +25451,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(protocolTransition,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				protocolTransition, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(protocolTransition,
 				diagnostics, context);
@@ -24205,6 +25568,9 @@ public class UMLValidator
 	 */
 	public boolean validateAssociationClass(AssociationClass associationClass,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(associationClass, diagnostics,
+			context))
+			return false;
 		boolean result = validate_EveryMultiplicityConforms(associationClass,
 			diagnostics, context);
 		if (result || diagnostics != null)
@@ -24213,6 +25579,9 @@ public class UMLValidator
 		if (result || diagnostics != null)
 			result &= validate_EveryReferenceIsContained(associationClass,
 				diagnostics, context);
+		if (result || diagnostics != null)
+			result &= validate_EveryBidirectionalReferenceIsPaired(
+				associationClass, diagnostics, context);
 		if (result || diagnostics != null)
 			result &= validate_EveryProxyResolves(associationClass,
 				diagnostics, context);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,8 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120
+ *   Kenn Hussey - 286329
  *
- * $Id: UMLUtil.java,v 1.84 2009/05/01 13:15:08 jbruck Exp $
+ * $Id: UMLUtil.java,v 1.85 2010/03/02 03:10:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -9243,7 +9244,7 @@ public class UMLUtil
 
 	protected static EList<Feature> getRedefinedFeatures(Feature feature) {
 		@SuppressWarnings("unchecked")
-		EList<Feature> redefinedFeatures = (EList<Feature>) new UMLSwitch() {
+		EList<Feature> redefinedFeatures = (EList<Feature>) new UMLSwitch<Object>() {
 
 			@Override
 			public Object caseOperation(Operation operation) {
