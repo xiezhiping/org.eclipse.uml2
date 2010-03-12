@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
  *
- * $Id: GenModelPackage.java,v 1.37 2009/11/16 21:11:01 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.38 2010/03/12 04:20:53 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1300,6 +1300,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__OPERATION_REFLECTION = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__OPERATION_REFLECTION;
+
+	/**
+	 * The feature id for the '<em><b>Rich Ajax Platform</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__RICH_AJAX_PLATFORM = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RICH_AJAX_PLATFORM;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.
