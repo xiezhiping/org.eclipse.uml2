@@ -172,7 +172,7 @@
 			return <%if (!isJDK50 && genOperation.isPrimitiveType()) {%>(<%}%>(<%=genOperation.getObjectType(genClass)%>)<%=CodeGenUtil.upperName(genClass.getUniqueName(genOperation), genModel.getLocale())%>__EINVOCATION_DELEGATE.dynamicInvoke(this, <%if (size > 0) {%>new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<Object>(<%=size%>, <%=genOperation.getParametersArray(genClass)%>)<%} else {%>null<%}%>)<%if (!isJDK50 && genOperation.isPrimitiveType()) {%>).<%=genOperation.getPrimitiveValueFunction()%>()<%}%>;
     <%}%>
 		}
-		catch (<%=genModel.getImportedName("java.lang.reflect.InvocationTargetException")%> ite)
+		catch (<%=genModel.getImportedName(isGWT ? "org.eclipse.emf.common.util.InvocationTargetException" : "java.lang.reflect.InvocationTargetException")%> ite)
 		{
 			throw new <%=genModel.getImportedName("org.eclipse.emf.common.util.WrappedException")%>(ite);
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 208016, 247980
  *   Kenn Hussey - 286329
  *
- * $Id: GenModelPackage.java,v 1.38 2010/03/12 04:20:53 khussey Exp $
+ * $Id: GenModelPackage.java,v 1.39 2010/04/29 21:00:52 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel;
 
@@ -1309,6 +1309,15 @@ public interface GenModelPackage
 	 * @ordered
 	 */
 	int GEN_MODEL__RICH_AJAX_PLATFORM = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RICH_AJAX_PLATFORM;
+
+	/**
+	 * The feature id for the '<em><b>Runtime Platform</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEN_MODEL__RUNTIME_PLATFORM = org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage.GEN_MODEL__RUNTIME_PLATFORM;
 
 	/**
 	 * The feature id for the '<em><b>Factory Methods</b></em>' attribute.

@@ -11,7 +11,7 @@
  *   Lutz Wrage - 241411
  *   Kenn Hussey - 286329
  *
- * $Id: GenClassImpl.java,v 1.46 2010/03/02 03:09:34 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.47 2010/04/29 21:00:51 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -568,9 +568,10 @@ public class GenClassImpl
 		} else if (genFeature.isEffectiveContains()) {
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
-				sb.append(getGenModel()
-					.getImportedName(
-						"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
+				sb
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentWithInverseEList")); //$NON-NLS-1$
 				sb.append(unsettable);
 				if (genFeature.isResolveProxies()) {
 					sb.append(".Resolving"); //$NON-NLS-1$
@@ -606,9 +607,10 @@ public class GenClassImpl
 					reverseFeature));
 				sb.append(")"); //$NON-NLS-1$
 			} else {
-				sb.append(getGenModel()
-					.getImportedName(
-						"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList")); //$NON-NLS-1$
+				sb
+					.append(getGenModel()
+						.getImportedName(
+							"org.eclipse.uml2.common.util.SubsetSupersetEObjectContainmentEList")); //$NON-NLS-1$
 				sb.append(unsettable);
 				if (genFeature.isResolveProxies()) {
 					sb.append(".Resolving"); //$NON-NLS-1$
@@ -645,13 +647,15 @@ public class GenClassImpl
 			if (genFeature.isBidirectional()) {
 				GenFeature reverseFeature = genFeature.getReverse();
 				if (genFeature.isResolveProxies()) {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
+					sb
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingEList")); //$NON-NLS-1$
 				} else {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseEList")); //$NON-NLS-1$
+					sb
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
 				if (reverseFeature.isListType()) {
@@ -689,13 +693,15 @@ public class GenClassImpl
 				sb.append(")"); //$NON-NLS-1$
 			} else {
 				if (genFeature.isResolveProxies()) {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList")); //$NON-NLS-1$
+					sb
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectResolvingEList")); //$NON-NLS-1$
 				} else {
-					sb.append(getGenModel()
-						.getImportedName(
-							"org.eclipse.uml2.common.util.SubsetSupersetEObjectEList")); //$NON-NLS-1$
+					sb
+						.append(getGenModel()
+							.getImportedName(
+								"org.eclipse.uml2.common.util.SubsetSupersetEObjectEList")); //$NON-NLS-1$
 				}
 				sb.append(unsettable);
 				if (getEffectiveComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
