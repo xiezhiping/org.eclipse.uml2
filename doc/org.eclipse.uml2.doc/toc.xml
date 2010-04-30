@@ -2,7 +2,7 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <!--
- Copyright (c) 2006, 2008 IBM Corporation and others.
+ Copyright (c) 2006, 2010 IBM Corporation and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
  Contributors: 
    IBM - initial API and implementation
 
- $Id: toc.xml,v 1.4 2008/05/20 17:46:11 jbruck Exp $
+ $Id: toc.xml,v 1.5 2010/04/30 19:10:41 jbruck Exp $
 -->
 
 <!-- ====================================================================== -->
@@ -40,15 +40,17 @@
 	</topic>		
 	<topic label="Articles">
 		<topic label="Defining Generics with UML Templates" href="http://www.eclipse.org/articles/article.php?file=Article-Defining-Generics-with-UML-Templates/index.html" />
+		<topic label="Customizing UML: Which Technique is Right for You?" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Customizing_UML2_Which_Technique_is_Right_For_You/article.html" />
 	</topic>
 	<topic label="Presentations">
 		<topic label="New Features of UML2" href="http://www.eclipse.org/modeling/mdt/uml2/docs/presentations/EclipseCon2008_LongTalk_NewFeaturesOfUML2_files/frame.htm" />
 	</topic>
 	<topic label="Online Docs">
 			<topic label="UML2 2.1 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_2.1_Migration_Guide/guide.html" />
+			<topic label="UML2 2.2 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_3.0_Migration_Guide/guide.html" />
 			<topic label="Release Notes">
-			<topic label="What&apos;s New in v2.2" href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=2.2.x" />
-			<topic label="Previous Releases"  href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=2.1.x" />
+			<topic label="What&apos;s New in v3.1" href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=3.1.x" />		
+			<topic label="Previous Releases"  href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=2.2.x" />
 		</topic>
 		<topic label="UML2 FAQ" href="http://wiki.eclipse.org/MDT-UML2-FAQ" />
 	</topic>
