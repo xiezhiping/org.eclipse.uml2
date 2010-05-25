@@ -8,10 +8,10 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
- *   Nicolas Rouquette (JPL) - 260120
+ *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329
  *
- * $Id: UMLUtil.java,v 1.85 2010/03/02 03:10:32 khussey Exp $
+ * $Id: UMLUtil.java,v 1.86 2010/05/25 13:37:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1544,7 +1544,6 @@ public class UMLUtil
 										new Object[]{subsettingProperty,
 											subsettedProperty}));
 							}
-						}
 
 						if (OPTION__PROCESS.equals(options
 							.get(OPTION__INVALID_SUBSETS))) {
@@ -1587,6 +1586,7 @@ public class UMLUtil
 										.remove(subsettedProperty);
 								}
 							}
+						}
 						}
 					}
 				}
@@ -1730,6 +1730,7 @@ public class UMLUtil
 										}
 
 										g.remove();
+										otherGeneralization.destroy();
 									} else if (OPTION__REPORT
 										.equals(options
 											.get(OPTION__REDUNDANT_GENERALIZATIONS))
