@@ -9,9 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 313601
  *
- * $Id: UMLUtil.java,v 1.86 2010/05/25 13:37:10 khussey Exp $
+ * $Id: UMLUtil.java,v 1.87 2010/05/26 15:54:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -9076,7 +9076,10 @@ public class UMLUtil
 							: nearestPackage).applyProfile(profile);
 					}
 
-					stereotypeApplication = element.applyStereotype(stereotype);
+					stereotypeApplication = element
+						.isStereotypeRequired(stereotype)
+						? element.getStereotypeApplication(stereotype)
+						: element.applyStereotype(stereotype);
 				}
 			}
 
