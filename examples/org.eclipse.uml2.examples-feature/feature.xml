@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.examples"
       label="%feature.label"
-      version="3.0.0.qualifier"
+      version="3.1.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
@@ -23,8 +23,8 @@ http://www.eclipse.org/legal/epl-v10.html
    </license>
 
    <url>
-      <update label="%update.label" url="http://download.eclipse.org/modeling/mdt/updates/"/>
-      <discovery label="%update.label" url="http://download.eclipse.org/modeling/mdt/updates/"/>
+      <update label="%update.label" url="http://www.eclipse.org/modeling/updates/"/>
+      <discovery label="%update.label" url="http://www.eclipse.org/modeling/updates/"/>
    </url>
 
    <includes
