@@ -9,9 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601
+ *   Kenn Hussey - 286329, 313601, 314971
  *
- * $Id: UMLUtil.java,v 1.87 2010/05/26 15:54:18 khussey Exp $
+ * $Id: UMLUtil.java,v 1.88 2010/05/31 20:24:36 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -1991,7 +1991,13 @@ public class UMLUtil
 			copyAll(mergedPackages);
 			copyReferences();
 
-			receivingPackage.getPackageMerges().clear();
+			for (Iterator<PackageMerge> packageMerges = receivingPackage
+				.getPackageMerges().iterator(); packageMerges.hasNext();) {
+
+				PackageMerge packageMerge = packageMerges.next();
+				packageMerges.remove();
+				packageMerge.destroy();
+			}
 
 			if (options != null) {
 				processOptions(options, diagnostics, context);
