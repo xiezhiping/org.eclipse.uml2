@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2"
       label="%feature.label"
-      version="3.1.0.qualifier"
+      version="3.2.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg">
 
