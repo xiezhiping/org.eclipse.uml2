@@ -66,20 +66,20 @@
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_z1OFm3jqEdy8S4Cr8Rc_NA" name="EClass" eSuperTypes="_z1OFi3jqEdy8S4Cr8Rc_NA">
           <eAnnotations xmi:id="_z1OFnHjqEdy8S4Cr8Rc_NA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="EClass"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFnXjqEdy8S4Cr8Rc_NA" name="base_Class" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFnXjqEdy8S4Cr8Rc_NA" name="base_Class" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
           </eStructuralFeatures>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFn3jqEdy8S4Cr8Rc_NA" name="base_Interface" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFn3jqEdy8S4Cr8Rc_NA" name="base_Interface" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFoXjqEdy8S4Cr8Rc_NA" name="className" ordered="false">
             <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_z1OFo3jqEdy8S4Cr8Rc_NA" name="xmlContentKind" ordered="false" eType="_z1OFlHjqEdy8S4Cr8Rc_NA"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFpXjqEdy8S4Cr8Rc_NA" name="base_DataType" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OFpXjqEdy8S4Cr8Rc_NA" name="base_DataType" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//DataType"/>
           </eStructuralFeatures>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_6hVhR-coEdy_aa-DQ9xEjg" name="base_Association" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_6hVhR-coEdy_aa-DQ9xEjg" name="base_Association" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Association"/>
           </eStructuralFeatures>
         </eClassifiers>
@@ -220,13 +220,13 @@
         </eClassifiers>
         <eClassifiers xmi:type="ecore:EClass" xmi:id="_z1OGDHjqEdy8S4Cr8Rc_NA" name="EGenericType">
           <eAnnotations xmi:id="_z1OGDXjqEdy8S4Cr8Rc_NA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="EGenericType"/>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGDnjqEdy8S4Cr8Rc_NA" name="base_Class" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGDnjqEdy8S4Cr8Rc_NA" name="base_Class" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Class"/>
           </eStructuralFeatures>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGEHjqEdy8S4Cr8Rc_NA" name="base_Interface" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGEHjqEdy8S4Cr8Rc_NA" name="base_Interface" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//Interface"/>
           </eStructuralFeatures>
-          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGEnjqEdy8S4Cr8Rc_NA" name="base_DataType" ordered="false" lowerBound="1">
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGEnjqEdy8S4Cr8Rc_NA" name="base_DataType" ordered="false">
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/3.0.0/UML#//DataType"/>
           </eStructuralFeatures>
           <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_z1OGFHjqEdy8S4Cr8Rc_NA" name="upperBound" ordered="false">
@@ -1178,9 +1178,11 @@
       <generalization xmi:id="EClass-_generalization.0" general="EClassifier"/>
       <ownedAttribute xmi:id="EClass-base_Class" name="base_Class" association="Class_EClass">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-base_Class-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EClass-base_Interface" name="base_Interface" association="Interface_EClass">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-base_Interface-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EClass-className" name="className">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -1193,9 +1195,11 @@
       </ownedAttribute>
       <ownedAttribute xmi:id="EClass-base_DataType" name="base_DataType" association="DataType_EClass">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-base_DataType-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EClass-base_Association" name="base_Association" association="Association_EClass">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Association"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-base_Association-_lowerValue"/>
       </ownedAttribute>
       <icon xmi:id="EClass-_icon.0" location="../icons/full/ovr16/EClass.gif"/>
     </packagedElement>
@@ -1434,12 +1438,15 @@
     <packagedElement xmi:type="uml:Stereotype" xmi:id="EGenericType" name="EGenericType">
       <ownedAttribute xmi:id="EGenericType-base_Class" name="base_Class" association="Class_EGenericType">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-base_Class-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EGenericType-base_Interface" name="base_Interface" association="Interface_EGenericType">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Interface"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-base_Interface-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EGenericType-base_DataType" name="base_DataType" association="DataType_EGenericType">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EGenericType-base_DataType-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EGenericType-upperBound" name="upperBound">
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
