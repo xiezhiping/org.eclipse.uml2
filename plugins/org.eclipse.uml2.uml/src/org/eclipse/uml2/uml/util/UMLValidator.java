@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 320318
  *
- * $Id: UMLValidator.java,v 1.28 2010/03/02 03:10:31 khussey Exp $
+ * $Id: UMLValidator.java,v 1.29 2010/08/19 18:41:42 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -20,7 +20,9 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
@@ -4530,6 +4532,19 @@ public class UMLValidator
 			result &= validateElement_validateHasOwner(element, diagnostics,
 				context);
 		return result;
+	}
+
+	@Override
+	public boolean validate_BidirectionalReferenceIsPaired(EObject eObject,
+			EReference eReference, EReference eOpposite,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// XXX 320318 - work around missing subsets constraints
+		return eReference == UMLPackage.Literals.ELEMENT__OWNER
+			|| eReference == UMLPackage.Literals.ELEMENT__OWNED_ELEMENT
+			|| eReference == UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE
+			|| eReference == UMLPackage.Literals.NAMESPACE__OWNED_MEMBER
+			|| super.validate_BidirectionalReferenceIsPaired(eObject,
+				eReference, eOpposite, diagnostics, context);
 	}
 
 	/**
