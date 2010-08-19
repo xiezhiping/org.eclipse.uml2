@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 321461
  *
- * $Id: GenerateProfileAction.java,v 1.8 2007/01/04 18:47:13 khussey Exp $
+ * $Id: GenerateProfileAction.java,v 1.9 2010/08/19 18:39:38 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -81,8 +82,8 @@ public abstract class GenerateProfileAction
 	protected org.eclipse.uml2.uml.Class getReferencedUMLMetaclass(
 			Profile profile, EClass eClass) {
 		Model umlMetamodel = UML2Util.load(
-			profile.eResource().getResourceSet(), URI
-				.createURI(UMLResource.UML_METAMODEL_URI),
+			profile.eResource().getResourceSet(),
+			URI.createURI(UMLResource.UML_METAMODEL_URI),
 			UMLPackage.Literals.MODEL);
 
 		if (!profile.getReferencedMetamodels().contains(umlMetamodel)) {
@@ -175,8 +176,8 @@ public abstract class GenerateProfileAction
 		if (eResource instanceof XMIResource) {
 			XMIResource xmiResource = (XMIResource) eResource;
 
-			xmiResource.setID(profile, UML2Util
-				.getXMIIdentifier((InternalEObject) profile));
+			xmiResource.setID(profile,
+				UML2Util.getXMIIdentifier((InternalEObject) profile));
 
 			for (TreeIterator<EObject> eAllContents = profile.eAllContents(); eAllContents
 				.hasNext();) {
@@ -187,11 +188,14 @@ public abstract class GenerateProfileAction
 				if (internalEObject instanceof EAnnotation) {
 					eAllContents.prune();
 				} else {
-					xmiResource.setID(internalEObject, UML2Util
-						.getXMIIdentifier(internalEObject));
+					xmiResource.setID(internalEObject,
+						UML2Util.getXMIIdentifier(internalEObject));
 				}
 			}
 		}
 	}
 
+	protected Property getMetaclassEnd(Extension extension) {
+		return extension.getStereotypeEnd().getOtherEnd();
+	}
 }

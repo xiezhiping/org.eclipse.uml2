@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,10 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125, 204200, ?
+ *   Kenn Hussey (Embarcadero Technologies) - 184249, 208125, 204200
+ *   Kenn Hussey - 321461
  *
- * $Id: GenerateEcoreStereotypesAction.java,v 1.11 2008/03/06 04:29:52 khussey Exp $
+ * $Id: GenerateEcoreStereotypesAction.java,v 1.12 2010/08/19 18:39:38 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -105,14 +106,18 @@ public class GenerateEcoreStereotypesAction
 							profile, UMLPackage.Literals.DATA_TYPE);
 						org.eclipse.uml2.uml.Class associationMetaclass = getReferencedUMLMetaclass(
 							profile, UMLPackage.Literals.ASSOCIATION);
-						generateExtension(eClassStereotype, classMetaclass,
-							false);
-						generateExtension(eClassStereotype, interfaceMetaclass,
-							false);
-						generateExtension(eClassStereotype, dataTypeMetaclass,
-							false);
-						generateExtension(eClassStereotype,
-							associationMetaclass, false);
+						getMetaclassEnd(
+							generateExtension(eClassStereotype, classMetaclass,
+								false)).setLower(0);
+						getMetaclassEnd(
+							generateExtension(eClassStereotype,
+								interfaceMetaclass, false)).setLower(0);
+						getMetaclassEnd(
+							generateExtension(eClassStereotype,
+								dataTypeMetaclass, false)).setLower(0);
+						getMetaclassEnd(
+							generateExtension(eClassStereotype,
+								associationMetaclass, false)).setLower(0);
 						generateGeneralization(eClassStereotype,
 							eClassifierStereotype);
 						generateOwnedAttribute(eClassStereotype, "className", //$NON-NLS-1$
@@ -299,12 +304,15 @@ public class GenerateEcoreStereotypesAction
 							profile, "EGenericType", false); //$NON-NLS-1$
 						generateIcon(eGenericTypeStereotype,
 							"../icons/full/ovr16/EGenericType.gif"); //$NON-NLS-1$
-						generateExtension(eGenericTypeStereotype,
-							classMetaclass, false);
-						generateExtension(eGenericTypeStereotype,
-							interfaceMetaclass, false);
-						generateExtension(eGenericTypeStereotype,
-							dataTypeMetaclass, false);
+						getMetaclassEnd(
+							generateExtension(eGenericTypeStereotype,
+								classMetaclass, false)).setLower(0);
+						getMetaclassEnd(
+							generateExtension(eGenericTypeStereotype,
+								interfaceMetaclass, false)).setLower(0);
+						getMetaclassEnd(
+							generateExtension(eGenericTypeStereotype,
+								dataTypeMetaclass, false)).setLower(0);
 						generateOwnedAttribute(eGenericTypeStereotype,
 							"upperBound", //$NON-NLS-1$
 							classifierMetaclass, 0, 1);
