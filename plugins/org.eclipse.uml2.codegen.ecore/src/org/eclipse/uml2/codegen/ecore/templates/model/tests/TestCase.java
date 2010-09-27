@@ -525,8 +525,7 @@ public class TestCase
     }
     }
     stringBuffer.append(TEXT_131);
-    stringBuffer.append(genModel.capName(genOperation.getName()));
-    stringBuffer.append(genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false));
+    stringBuffer.append(genClass.getUniqueName(genOperation));
     stringBuffer.append(TEXT_132);
     stringBuffer.append(TEXT_133);
     stringBuffer.append(TEXT_134);
