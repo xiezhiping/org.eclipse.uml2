@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: ElementTest.java,v 1.9 2007/05/04 20:35:57 khussey Exp $
+ * $Id: ElementTest.java,v 1.10 2010/09/28 20:59:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -198,8 +199,8 @@ public abstract class ElementTest
 					PackageableElement packageableElement) {
 				caseElement(packageableElement);
 
-				UMLFactory.eINSTANCE.createPackage().getPackagedElements().add(
-					packageableElement);
+				UMLFactory.eINSTANCE.createPackage().getPackagedElements()
+					.add(packageableElement);
 
 				assertTrue(getFixture().validateHasOwner(null, null));
 
@@ -217,18 +218,20 @@ public abstract class ElementTest
 	 */
 	public void testDestroy() {
 		final Comment comment1 = UMLFactory.eINSTANCE.createComment();
-		new ResourceSetImpl().createResource(
-			URI.createFileURI(String.valueOf(new Date().getTime()))
-				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents()
-			.add(comment1);
+		new ResourceSetImpl()
+			.createResource(
+				URI.createFileURI(String.valueOf(new Date().getTime()))
+					.appendFileExtension(UMLResource.FILE_EXTENSION))
+			.getContents().add(comment1);
 
 		ResourceSet resourceSet = new ResourceSetImpl();
 
 		Comment comment2 = UMLFactory.eINSTANCE.createComment();
-		resourceSet.createResource(
-			URI.createFileURI(String.valueOf(new Date().getTime()))
-				.appendFileExtension(UMLResource.FILE_EXTENSION)).getContents()
-			.add(comment2);
+		resourceSet
+			.createResource(
+				URI.createFileURI(String.valueOf(new Date().getTime()))
+					.appendFileExtension(UMLResource.FILE_EXTENSION))
+			.getContents().add(comment2);
 
 		EList<EObject> contents = resourceSet.createResource(
 			URI.createFileURI(String.valueOf(new Date().getTime()))
@@ -402,8 +405,8 @@ public abstract class ElementTest
 
 				nestedPackage.getPackagedElements().add(packageableElement);
 
-				assertSame(nestedPackage, packageableElement
-					.getNearestPackage());
+				assertSame(nestedPackage,
+					packageableElement.getNearestPackage());
 
 				return packageableElement;
 			}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: ParameterTest.java,v 1.12 2008/10/02 21:00:20 jbruck Exp $
+ * $Id: ParameterTest.java,v 1.13 2010/09/28 20:59:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -459,14 +460,14 @@ public class ParameterTest
 		ValueSpecification defaultValue = getFixture().getDefaultValue();
 
 		assertTrue(defaultValue instanceof LiteralInteger);
-		assertEquals(Integer.MIN_VALUE, ((LiteralInteger) defaultValue)
-			.getValue());
+		assertEquals(Integer.MIN_VALUE,
+			((LiteralInteger) defaultValue).getValue());
 
 		getFixture().setIntegerDefaultValue(Integer.MAX_VALUE);
 
 		assertSame(defaultValue, getFixture().getDefaultValue());
-		assertEquals(Integer.MAX_VALUE, ((LiteralInteger) defaultValue)
-			.getValue());
+		assertEquals(Integer.MAX_VALUE,
+			((LiteralInteger) defaultValue).getValue());
 	}
 
 	/**

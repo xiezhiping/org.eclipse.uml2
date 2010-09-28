@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: NamespaceTest.java,v 1.7 2007/02/14 20:06:14 khussey Exp $
+ * $Id: NamespaceTest.java,v 1.8 2010/09/28 20:59:45 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
@@ -139,8 +140,8 @@ public abstract class NamespaceTest
 				i);
 
 			assertSame(packageableElement, elementImport.getImportedElement());
-			assertSame(VisibilityKind.PRIVATE_LITERAL, elementImport
-				.getVisibility());
+			assertSame(VisibilityKind.PRIVATE_LITERAL,
+				elementImport.getVisibility());
 
 			try {
 				getFixture().createElementImport(packageableElement,
@@ -191,8 +192,8 @@ public abstract class NamespaceTest
 		PackageImport packageImport = getFixture().getPackageImports().get(0);
 
 		assertSame(package_, packageImport.getImportedPackage());
-		assertSame(VisibilityKind.PRIVATE_LITERAL, packageImport
-			.getVisibility());
+		assertSame(VisibilityKind.PRIVATE_LITERAL,
+			packageImport.getVisibility());
 
 		try {
 			getFixture().createPackageImport(package_,
