@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: StateOperations.java,v 1.12 2008/10/15 17:29:08 jbruck Exp $
+ * $Id: StateOperations.java,v 1.13 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -422,8 +423,8 @@ public class StateOperations
 	}
 
 	protected static EList<Region> getAllRegions(State state) {
-		EList<Region> allRegions = new UniqueEList.FastCompare<Region>(state
-			.getRegions());
+		EList<Region> allRegions = new UniqueEList.FastCompare<Region>(
+			state.getRegions());
 
 		for (State redefinedState : getAllRedefinedStates(state)) {
 			allRegions.addAll(redefinedState.getRegions());

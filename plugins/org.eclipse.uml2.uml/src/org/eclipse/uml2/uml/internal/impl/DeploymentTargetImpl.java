@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: DeploymentTargetImpl.java,v 1.23 2007/04/25 17:47:00 khussey Exp $
+ * $Id: DeploymentTargetImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -203,7 +204,8 @@ public abstract class DeploymentTargetImpl
 				.get(this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT);
 			if (result == null) {
-				cache.put(this,
+				cache.put(
+					this,
 					UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT,
 					result = DeploymentTargetOperations
 						.getDeployedElements(this));

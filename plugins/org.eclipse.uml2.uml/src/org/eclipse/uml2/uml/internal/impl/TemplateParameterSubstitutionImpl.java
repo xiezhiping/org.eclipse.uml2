@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: TemplateParameterSubstitutionImpl.java,v 1.24 2009/12/04 15:30:42 khussey Exp $
+ * $Id: TemplateParameterSubstitutionImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -648,8 +648,8 @@ public class TemplateParameterSubstitutionImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -670,8 +670,9 @@ public class TemplateParameterSubstitutionImpl
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.TEMPLATE_PARAMETER_SUBSTITUTION___VALIDATE_MUST_BE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateMustBeCompatible((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMustBeCompatible(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

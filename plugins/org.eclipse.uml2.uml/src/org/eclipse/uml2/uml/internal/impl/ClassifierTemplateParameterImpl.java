@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ClassifierTemplateParameterImpl.java,v 1.24 2009/12/04 15:30:42 khussey Exp $
+ * $Id: ClassifierTemplateParameterImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -542,8 +542,8 @@ public class ClassifierTemplateParameterImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -564,8 +564,9 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_MUST_BE_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
-				return validateMustBeCompatible((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMustBeCompatible(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_HAS_CONSTRAINING_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateHasConstrainingClassifier(
 					(DiagnosticChain) arguments.get(0),

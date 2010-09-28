@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: NamespaceOperations.java,v 1.15 2007/05/03 21:11:52 khussey Exp $
+ * $Id: NamespaceOperations.java,v 1.16 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -249,8 +250,8 @@ public class NamespaceOperations
 
 		return new UnionEObjectEList<PackageableElement>(
 			(InternalEObject) namespace,
-			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER, importedMembers
-				.size(), importedMembers.toArray());
+			UMLPackage.Literals.NAMESPACE__IMPORTED_MEMBER,
+			importedMembers.size(), importedMembers.toArray());
 	}
 
 	protected static EList<String> getNamesOfMember(Namespace namespace,

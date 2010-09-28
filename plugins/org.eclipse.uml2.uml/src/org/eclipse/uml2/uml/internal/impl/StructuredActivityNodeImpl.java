@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: StructuredActivityNodeImpl.java,v 1.37 2009/12/04 15:30:41 khussey Exp $
+ * $Id: StructuredActivityNodeImpl.java,v 1.38 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1880,8 +1880,8 @@ public class StructuredActivityNodeImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1902,11 +1902,13 @@ public class StructuredActivityNodeImpl
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1944,8 +1946,9 @@ public class StructuredActivityNodeImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateOwnedStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1954,8 +1957,9 @@ public class StructuredActivityNodeImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
-				return createElementImport((PackageableElement) arguments
-					.get(0), (VisibilityKind) arguments.get(1));
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
 			case UMLPackage.STRUCTURED_ACTIVITY_NODE___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
 				return createPackageImport(
 					(org.eclipse.uml2.uml.Package) arguments.get(0),

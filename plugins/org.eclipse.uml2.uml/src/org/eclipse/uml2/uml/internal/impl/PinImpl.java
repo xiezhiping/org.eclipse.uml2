@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: PinImpl.java,v 1.33 2009/12/04 15:30:42 khussey Exp $
+ * $Id: PinImpl.java,v 1.34 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1270,8 +1270,8 @@ public class PinImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.PIN___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.PIN___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1292,11 +1292,13 @@ public class PinImpl
 			case UMLPackage.PIN___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1334,23 +1336,27 @@ public class PinImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.PIN___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateOwnedStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateObjectFlowEdges(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_NOT_UNIQUE__DIAGNOSTICCHAIN_MAP :
 				return validateNotUnique((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateSelectionBehavior((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSelectionBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateInputOutputParameter(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
 				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1389,8 +1395,8 @@ public class PinImpl
 			case UMLPackage.PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PIN___IS__INT_INT :
-				return is((Integer) arguments.get(0), (Integer) arguments
-					.get(1));
+				return is((Integer) arguments.get(0),
+					(Integer) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_CONTROL_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateControlPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

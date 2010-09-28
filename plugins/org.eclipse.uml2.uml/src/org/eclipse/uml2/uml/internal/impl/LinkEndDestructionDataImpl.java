@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: LinkEndDestructionDataImpl.java,v 1.14 2009/12/04 15:30:44 khussey Exp $
+ * $Id: LinkEndDestructionDataImpl.java,v 1.15 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -407,8 +407,8 @@ public class LinkEndDestructionDataImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -442,11 +442,13 @@ public class LinkEndDestructionDataImpl
 				return validateQualifiers((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
-				return validateEndObjectInputPin((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateEndObjectInputPin(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_DESTROY_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
-				return validateDestroyLinkAction((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateDestroyLinkAction(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_UNLIMITED_NATURAL_AND_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateUnlimitedNaturalAndMultiplicity(
 					(DiagnosticChain) arguments.get(0),

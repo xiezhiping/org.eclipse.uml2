@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
+ *   Kenn Hussey - 323181
  *
- * $Id: PackageOperations.java,v 1.40 2009/05/15 20:43:20 jbruck Exp $
+ * $Id: PackageOperations.java,v 1.41 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -172,20 +173,26 @@ public class PackageOperations
 
 						for (int i = 0, size = values.size(); i < size; i++) {
 							copyValues.add(i, targetEFactory.createFromString(
-								targetEDataType, eFactory.convertToString(
-									eDataType, values.get(i))));
+								targetEDataType,
+								eFactory.convertToString(eDataType,
+									values.get(i))));
 						}
 					} else {
 						copyValues.add(targetEFactory.createFromString(
-							targetEDataType, eFactory.convertToString(
-								eDataType, eObject.eGet(eAttribute))));
+							targetEDataType,
+							eFactory.convertToString(eDataType,
+								eObject.eGet(eAttribute))));
 					}
 				} else {
 					copyEObject.eSet(targetEAttribute, targetEFactory
-						.createFromString(targetEDataType, eFactory
-							.convertToString(eDataType, eAttribute.isMany()
-								? ((EList<?>) eObject.eGet(eAttribute)).get(0)
-								: eObject.eGet(eAttribute))));
+						.createFromString(
+							targetEDataType,
+							eFactory.convertToString(
+								eDataType,
+								eAttribute.isMany()
+									? ((EList<?>) eObject.eGet(eAttribute))
+										.get(0)
+									: eObject.eGet(eAttribute))));
 				}
 			}
 		}
@@ -268,8 +275,8 @@ public class PackageOperations
 							if (eReference.isMany()) {
 								@SuppressWarnings("unchecked")
 								EList<EObject> values = (EList<EObject>) value;
-								copyEObject.eSet(targetEReference, copy(values
-									.get(0)));
+								copyEObject.eSet(targetEReference,
+									copy(values.get(0)));
 							} else {
 								copyEObject.eSet(targetEReference,
 									copy((EObject) value));
@@ -587,11 +594,15 @@ public class PackageOperations
 									.getContents();
 
 								if (eResource == copy.eResource()) {
-									contents.move(contents
-										.indexOf(stereotypeApplication), copy);
+									contents
+										.move(contents
+											.indexOf(stereotypeApplication),
+											copy);
 								} else {
-									contents.set(contents
-										.indexOf(stereotypeApplication), copy);
+									contents
+										.set(contents
+											.indexOf(stereotypeApplication),
+											copy);
 								}
 							}
 						}
@@ -759,8 +770,7 @@ public class PackageOperations
 
 			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
 				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
-				.hasNext()
-				&& appliedProfile == null;) {
+				.hasNext() && appliedProfile == null;) {
 
 				appliedProfile = otherApplyingPackages.next()
 					.getAppliedProfile(qualifiedName);
@@ -839,8 +849,7 @@ public class PackageOperations
 
 			for (Iterator<org.eclipse.uml2.uml.Package> otherApplyingPackages = ProfileApplicationHelper.INSTANCE
 				.getOtherApplyingPackages(package_).iterator(); otherApplyingPackages
-				.hasNext()
-				&& profileApplication == null;) {
+				.hasNext() && profileApplication == null;) {
 
 				profileApplication = otherApplyingPackages.next()
 					.getProfileApplication(profile);

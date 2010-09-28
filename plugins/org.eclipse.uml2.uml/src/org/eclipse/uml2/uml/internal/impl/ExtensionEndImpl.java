@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ExtensionEndImpl.java,v 1.25 2009/12/04 15:30:42 khussey Exp $
+ * $Id: ExtensionEndImpl.java,v 1.26 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -260,8 +260,8 @@ public class ExtensionEndImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.EXTENSION_END___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.EXTENSION_END___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -282,11 +282,13 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.EXTENSION_END___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -361,8 +363,8 @@ public class ExtensionEndImpl
 			case UMLPackage.EXTENSION_END___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.EXTENSION_END___IS__INT_INT :
-				return is((Integer) arguments.get(0), (Integer) arguments
-					.get(1));
+				return is((Integer) arguments.get(0),
+					(Integer) arguments.get(1));
 			case UMLPackage.EXTENSION_END___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.EXTENSION_END___IS_TEMPLATE_PARAMETER :
@@ -384,11 +386,13 @@ public class ExtensionEndImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_SUBSETTING_RULES__DIAGNOSTICCHAIN_MAP :
-				return validateSubsettingRules((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSubsettingRules(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_NAVIGABLE_READONLY__DIAGNOSTICCHAIN_MAP :
-				return validateNavigableReadonly((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateNavigableReadonly(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_DERIVED_UNION_IS_DERIVED__DIAGNOSTICCHAIN_MAP :
 				return validateDerivedUnionIsDerived(
 					(DiagnosticChain) arguments.get(0),
@@ -402,11 +406,13 @@ public class ExtensionEndImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_DEPLOYMENT_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateDeploymentTarget((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateDeploymentTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___VALIDATE_BINDING_TO_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
-				return validateBindingToAttribute((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateBindingToAttribute(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTENSION_END___GET_DEFAULT :
 				return getDefault();
 			case UMLPackage.EXTENSION_END___IS_SET_DEFAULT :

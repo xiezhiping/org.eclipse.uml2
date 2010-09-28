@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ProtocolStateMachineImpl.java,v 1.31 2009/12/04 15:30:41 khussey Exp $
+ * $Id: ProtocolStateMachineImpl.java,v 1.32 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1238,8 +1238,8 @@ public class ProtocolStateMachineImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1260,11 +1260,13 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1293,8 +1295,9 @@ public class ProtocolStateMachineImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
-				return createElementImport((PackageableElement) arguments
-					.get(0), (VisibilityKind) arguments.get(1));
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
 				return createPackageImport(
 					(org.eclipse.uml2.uml.Package) arguments.get(0),
@@ -1334,12 +1337,13 @@ public class ProtocolStateMachineImpl
 				return isTemplateParameter();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
-					(AggregationKind) arguments.get(1), (String) arguments
-						.get(2), (Integer) arguments.get(3),
+					(AggregationKind) arguments.get(1),
+					(String) arguments.get(2), (Integer) arguments.get(3),
 					(Integer) arguments.get(4), (Type) arguments.get(5),
-					(Boolean) arguments.get(6), (AggregationKind) arguments
-						.get(7), (String) arguments.get(8), (Integer) arguments
-						.get(9), (Integer) arguments.get(10));
+					(Boolean) arguments.get(6),
+					(AggregationKind) arguments.get(7),
+					(String) arguments.get(8), (Integer) arguments.get(9),
+					(Integer) arguments.get(10));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_ASSOCIATIONS :
 				return getAssociations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CONFORMS_TO__TYPE :
@@ -1357,8 +1361,9 @@ public class ProtocolStateMachineImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
@@ -1371,12 +1376,12 @@ public class ProtocolStateMachineImpl
 				return getAllOperations();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_OPERATION__STRING_ELIST_ELIST :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_OPERATION__STRING_ELIST_ELIST_BOOLEAN :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Boolean) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_USED_INTERFACES :
 				return getUsedInterfaces();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_ALL_USED_INTERFACES :
@@ -1402,8 +1407,9 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE___ALL_PARENTS :
 				return allParents();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicities(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -1423,13 +1429,14 @@ public class ProtocolStateMachineImpl
 				return getExtensions();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
 				return createOwnedOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Type) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_METACLASS :
 				return isMetaclass();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
-				return validateParametersMatch((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateParametersMatch(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_FEATURE_OF_CONTEXT_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
@@ -1438,42 +1445,49 @@ public class ProtocolStateMachineImpl
 				return validateMustRealize((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMostOneBehaviour(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___GET_CONTEXT :
 				return getContext();
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CLASSIFIER_CONTEXT__DIAGNOSTICCHAIN_MAP :
-				return validateClassifierContext((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateClassifierContext(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CONTEXT_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
-				return validateContextClassifier((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateContextClassifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_CONNECTION_POINTS__DIAGNOSTICCHAIN_MAP :
-				return validateConnectionPoints((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateConnectionPoints(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_METHOD__DIAGNOSTICCHAIN_MAP :
 				return validateMethod((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___LCA__STATE_STATE :
 				return LCA((State) arguments.get(0), (State) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___ANCESTOR__STATE_STATE :
-				return ancestor((State) arguments.get(0), (State) arguments
-					.get(1));
+				return ancestor((State) arguments.get(0),
+					(State) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___IS_REDEFINITION_CONTEXT_VALID__STATEMACHINE :
 				return isRedefinitionContextValid((StateMachine) arguments
 					.get(0));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PROTOCOL_TRANSITIONS__DIAGNOSTICCHAIN_MAP :
-				return validateProtocolTransitions((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateProtocolTransitions(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_ENTRY_EXIT_DO__DIAGNOSTICCHAIN_MAP :
 				return validateEntryExitDo((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_DEEP_OR_SHALLOW_HISTORY__DIAGNOSTICCHAIN_MAP :
-				return validateDeepOrShallowHistory((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateDeepOrShallowHistory(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_STATE_MACHINE___VALIDATE_PORTS_CONNECTED__DIAGNOSTICCHAIN_MAP :
-				return validatePortsConnected((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validatePortsConnected(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

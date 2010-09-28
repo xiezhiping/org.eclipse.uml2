@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ConnectorEndImpl.java,v 1.21 2009/12/04 15:30:41 khussey Exp $
+ * $Id: ConnectorEndImpl.java,v 1.22 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -492,8 +492,8 @@ public class ConnectorEndImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.CONNECTOR_END___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -551,20 +551,23 @@ public class ConnectorEndImpl
 			case UMLPackage.CONNECTOR_END___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.CONNECTOR_END___IS__INT_INT :
-				return is((Integer) arguments.get(0), (Integer) arguments
-					.get(1));
+				return is((Integer) arguments.get(0),
+					(Integer) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_PART_WITH_PORT_EMPTY__DIAGNOSTICCHAIN_MAP :
-				return validatePartWithPortEmpty((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validatePartWithPortEmpty(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_ROLE_AND_PART_WITH_PORT__DIAGNOSTICCHAIN_MAP :
-				return validateRoleAndPartWithPort((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateRoleAndPartWithPort(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___VALIDATE_SELF_PART_WITH_PORT__DIAGNOSTICCHAIN_MAP :
-				return validateSelfPartWithPort((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSelfPartWithPort(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTOR_END___GET_DEFINING_END :
 				return getDefiningEnd();
 		}

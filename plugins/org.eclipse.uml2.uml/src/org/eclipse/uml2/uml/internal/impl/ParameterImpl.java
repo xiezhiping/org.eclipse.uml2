@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ParameterImpl.java,v 1.43 2009/12/04 15:30:41 khussey Exp $
+ * $Id: ParameterImpl.java,v 1.44 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1847,8 +1847,8 @@ public class ParameterImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.PARAMETER___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1869,11 +1869,13 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.PARAMETER___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1941,20 +1943,22 @@ public class ParameterImpl
 			case UMLPackage.PARAMETER___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
 				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PARAMETER___IS__INT_INT :
-				return is((Integer) arguments.get(0), (Integer) arguments
-					.get(1));
+				return is((Integer) arguments.get(0),
+					(Integer) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_CONNECTOR_END__DIAGNOSTICCHAIN_MAP :
 				return validateConnectorEnd((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_STREAM_AND_EXCEPTION__DIAGNOSTICCHAIN_MAP :
-				return validateStreamAndException((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateStreamAndException(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_NOT_EXCEPTION__DIAGNOSTICCHAIN_MAP :
 				return validateNotException((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_REENTRANT_BEHAVIORS__DIAGNOSTICCHAIN_MAP :
-				return validateReentrantBehaviors((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateReentrantBehaviors(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PARAMETER___VALIDATE_IN_AND_OUT__DIAGNOSTICCHAIN_MAP :
 				return validateInAndOut((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

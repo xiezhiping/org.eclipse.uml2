@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologie) - 247980
+ *   Kenn Hussey - 323181
  *
- * $Id: ElementOperations.java,v 1.53 2009/03/13 20:34:37 khussey Exp $
+ * $Id: ElementOperations.java,v 1.54 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -205,8 +206,8 @@ public class ElementOperations
 
 		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
 
-			if (setting.getEStructuralFeature().getName().startsWith(
-				Extension.METACLASS_ROLE_PREFIX)) {
+			if (setting.getEStructuralFeature().getName()
+				.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
 
 				EObject eObject = setting.getEObject();
 
@@ -328,8 +329,8 @@ public class ElementOperations
 
 		for (EStructuralFeature.Setting setting : getNonNavigableInverseReferences(element)) {
 
-			if (setting.getEStructuralFeature().getName().startsWith(
-				Extension.METACLASS_ROLE_PREFIX)) {
+			if (setting.getEStructuralFeature().getName()
+				.startsWith(Extension.METACLASS_ROLE_PREFIX)) {
 
 				Stereotype stereotype = getStereotype(setting.getEObject());
 
@@ -449,8 +450,8 @@ public class ElementOperations
 							.substring(0, segment.indexOf('['))));
 
 					try {
-						index = Integer.parseInt(segment.substring(segment
-							.indexOf('[') + 1, segment.indexOf(']')));
+						index = Integer.parseInt(segment.substring(
+							segment.indexOf('[') + 1, segment.indexOf(']')));
 					} catch (Exception e) {
 						return false;
 					}
@@ -490,14 +491,15 @@ public class ElementOperations
 
 							return index == -1
 								? !list.isEmpty()
-								: !safeEquals(eStructuralFeature
-									.getDefaultValue(), list.get(index));
+								: !safeEquals(
+									eStructuralFeature.getDefaultValue(),
+									list.get(index));
 						} else {
 							return eObject == null
 								? false
-								: !safeEquals(eStructuralFeature
-									.getDefaultValue(), eObject
-									.eGet(eStructuralFeature));
+								: !safeEquals(
+									eStructuralFeature.getDefaultValue(),
+									eObject.eGet(eStructuralFeature));
 						}
 					}
 				}
@@ -552,11 +554,11 @@ public class ElementOperations
 						.substring(0, segment.indexOf('['))));
 
 				try {
-					index = Integer.parseInt(segment.substring(segment
-						.indexOf('[') + 1, segment.indexOf(']')));
+					index = Integer.parseInt(segment.substring(
+						segment.indexOf('[') + 1, segment.indexOf(']')));
 				} catch (Exception e) {
-					throw new IllegalArgumentException(String
-						.valueOf(propertyName));
+					throw new IllegalArgumentException(
+						String.valueOf(propertyName));
 				}
 			}
 
@@ -570,8 +572,8 @@ public class ElementOperations
 
 				if (eObject == null || !(eType instanceof EClass)) {
 
-					throw new IllegalArgumentException(String
-						.valueOf(propertyName));
+					throw new IllegalArgumentException(
+						String.valueOf(propertyName));
 				}
 
 				eClass = (EClass) eType;
@@ -674,11 +676,11 @@ public class ElementOperations
 						.substring(0, segment.indexOf('['))));
 
 				try {
-					index = Integer.parseInt(segment.substring(segment
-						.indexOf('[') + 1, segment.indexOf(']')));
+					index = Integer.parseInt(segment.substring(
+						segment.indexOf('[') + 1, segment.indexOf(']')));
 				} catch (Exception e) {
-					throw new IllegalArgumentException(String
-						.valueOf(propertyName));
+					throw new IllegalArgumentException(
+						String.valueOf(propertyName));
 				}
 			}
 
@@ -691,8 +693,8 @@ public class ElementOperations
 			if (i + 1 < length) {
 
 				if (!(eType instanceof EClass)) {
-					throw new IllegalArgumentException(String
-						.valueOf(propertyName));
+					throw new IllegalArgumentException(
+						String.valueOf(propertyName));
 				}
 
 				eClass = (EClass) eType;
@@ -706,8 +708,8 @@ public class ElementOperations
 					if (size <= index) {
 
 						if (!((EReference) eStructuralFeature).isContainment()) {
-							throw new IllegalArgumentException(String
-								.valueOf(propertyName));
+							throw new IllegalArgumentException(
+								String.valueOf(propertyName));
 						}
 
 						for (int j = size; j <= index; j++) {
@@ -722,12 +724,12 @@ public class ElementOperations
 					if (value == null) {
 
 						if (!((EReference) eStructuralFeature).isContainment()) {
-							throw new IllegalArgumentException(String
-								.valueOf(propertyName));
+							throw new IllegalArgumentException(
+								String.valueOf(propertyName));
 						}
 
-						eObject.eSet(eStructuralFeature, value = EcoreUtil
-							.create(eClass));
+						eObject.eSet(eStructuralFeature,
+							value = EcoreUtil.create(eClass));
 					}
 
 					eObject = (EObject) value;
@@ -747,13 +749,13 @@ public class ElementOperations
 							while (j.hasNext()) {
 
 								if (!eClassType.isInstance(j.next())) {
-									throw new IllegalArgumentException(String
-										.valueOf(newValue));
+									throw new IllegalArgumentException(
+										String.valueOf(newValue));
 								}
 							}
 						} else if (!eClassType.isInstance(newValue)) {
-							throw new IllegalArgumentException(String
-								.valueOf(newValue));
+							throw new IllegalArgumentException(
+								String.valueOf(newValue));
 						}
 					} else if (eType instanceof EDataType) {
 						EDataType eDataType = (EDataType) eType;
@@ -836,8 +838,8 @@ public class ElementOperations
 						if (newValue instanceof List<?>) {
 							eObject.eSet(eStructuralFeature, newValue);
 						} else {
-							throw new IllegalArgumentException(String
-								.valueOf(newValue));
+							throw new IllegalArgumentException(
+								String.valueOf(newValue));
 						}
 					} else {
 						@SuppressWarnings("unchecked")

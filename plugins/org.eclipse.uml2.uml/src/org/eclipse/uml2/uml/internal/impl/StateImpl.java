@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: StateImpl.java,v 1.38 2009/12/04 15:30:46 khussey Exp $
+ * $Id: StateImpl.java,v 1.39 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -2210,8 +2210,8 @@ public class StateImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.STATE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.STATE___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -2232,11 +2232,13 @@ public class StateImpl
 			case UMLPackage.STATE___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.STATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -2265,8 +2267,9 @@ public class StateImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
-				return createElementImport((PackageableElement) arguments
-					.get(0), (VisibilityKind) arguments.get(1));
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
 			case UMLPackage.STATE___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
 				return createPackageImport(
 					(org.eclipse.uml2.uml.Package) arguments.get(0),
@@ -2307,18 +2310,21 @@ public class StateImpl
 			case UMLPackage.STATE___GET_INCOMINGS :
 				return getIncomings();
 			case UMLPackage.STATE___VALIDATE_SUBMACHINE_STATES__DIAGNOSTICCHAIN_MAP :
-				return validateSubmachineStates((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSubmachineStates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_DESTINATIONS_OR_SOURCES_OF_TRANSITIONS__DIAGNOSTICCHAIN_MAP :
 				return validateDestinationsOrSourcesOfTransitions(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_SUBMACHINE_OR_REGIONS__DIAGNOSTICCHAIN_MAP :
-				return validateSubmachineOrRegions((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSubmachineOrRegions(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_COMPOSITE_STATES__DIAGNOSTICCHAIN_MAP :
-				return validateCompositeStates((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateCompositeStates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE___VALIDATE_ENTRY_OR_EXIT__DIAGNOSTICCHAIN_MAP :
 				return validateEntryOrExit((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

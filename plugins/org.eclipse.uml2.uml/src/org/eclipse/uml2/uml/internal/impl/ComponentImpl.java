@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ComponentImpl.java,v 1.36 2009/12/04 15:30:46 khussey Exp $
+ * $Id: ComponentImpl.java,v 1.37 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1331,8 +1331,8 @@ public class ComponentImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.COMPONENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.COMPONENT___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1353,11 +1353,13 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.COMPONENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1386,8 +1388,9 @@ public class ComponentImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
-				return createElementImport((PackageableElement) arguments
-					.get(0), (VisibilityKind) arguments.get(1));
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
 				return createPackageImport(
 					(org.eclipse.uml2.uml.Package) arguments.get(0),
@@ -1427,12 +1430,13 @@ public class ComponentImpl
 				return isTemplateParameter();
 			case UMLPackage.COMPONENT___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
-					(AggregationKind) arguments.get(1), (String) arguments
-						.get(2), (Integer) arguments.get(3),
+					(AggregationKind) arguments.get(1),
+					(String) arguments.get(2), (Integer) arguments.get(3),
 					(Integer) arguments.get(4), (Type) arguments.get(5),
-					(Boolean) arguments.get(6), (AggregationKind) arguments
-						.get(7), (String) arguments.get(8), (Integer) arguments
-						.get(9), (Integer) arguments.get(10));
+					(Boolean) arguments.get(6),
+					(AggregationKind) arguments.get(7),
+					(String) arguments.get(8), (Integer) arguments.get(9),
+					(Integer) arguments.get(10));
 			case UMLPackage.COMPONENT___GET_ASSOCIATIONS :
 				return getAssociations();
 			case UMLPackage.COMPONENT___CONFORMS_TO__TYPE :
@@ -1450,8 +1454,9 @@ public class ComponentImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
@@ -1464,12 +1469,12 @@ public class ComponentImpl
 				return getAllOperations();
 			case UMLPackage.COMPONENT___GET_OPERATION__STRING_ELIST_ELIST :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2));
 			case UMLPackage.COMPONENT___GET_OPERATION__STRING_ELIST_ELIST_BOOLEAN :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Boolean) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
 			case UMLPackage.COMPONENT___GET_USED_INTERFACES :
 				return getUsedInterfaces();
 			case UMLPackage.COMPONENT___GET_ALL_USED_INTERFACES :
@@ -1495,8 +1500,9 @@ public class ComponentImpl
 			case UMLPackage.COMPONENT___ALL_PARENTS :
 				return allParents();
 			case UMLPackage.COMPONENT___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicities(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.COMPONENT___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -1516,8 +1522,8 @@ public class ComponentImpl
 				return getExtensions();
 			case UMLPackage.COMPONENT___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
 				return createOwnedOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Type) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
 			case UMLPackage.COMPONENT___IS_METACLASS :
 				return isMetaclass();
 			case UMLPackage.COMPONENT___CREATE_OWNED_CLASS__STRING_BOOLEAN :

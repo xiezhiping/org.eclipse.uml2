@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: VertexOperations.java,v 1.9 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: VertexOperations.java,v 1.10 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -128,8 +129,8 @@ public class VertexOperations
 
 		@Override
 		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(eStructuralFeature
-				.getFeatureID(), Vertex.class);
+			return owner.eDerivedStructuralFeatureID(
+				eStructuralFeature.getFeatureID(), Vertex.class);
 		}
 
 		@Override
@@ -226,8 +227,8 @@ public class VertexOperations
 
 		@Override
 		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(eStructuralFeature
-				.getFeatureID(), Vertex.class);
+			return owner.eDerivedStructuralFeatureID(
+				eStructuralFeature.getFeatureID(), Vertex.class);
 		}
 
 		@Override

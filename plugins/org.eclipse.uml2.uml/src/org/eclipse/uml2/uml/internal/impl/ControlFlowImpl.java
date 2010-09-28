@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ControlFlowImpl.java,v 1.4 2009/12/04 15:30:42 khussey Exp $
+ * $Id: ControlFlowImpl.java,v 1.5 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -144,8 +144,8 @@ public class ControlFlowImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.CONTROL_FLOW___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -166,11 +166,13 @@ public class ControlFlowImpl
 			case UMLPackage.CONTROL_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.CONTROL_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -208,14 +210,16 @@ public class ControlFlowImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateSourceAndTarget((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSourceAndTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONTROL_FLOW___VALIDATE_OBJECT_NODES__DIAGNOSTICCHAIN_MAP :
 				return validateObjectNodes((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: PortOperations.java,v 1.17 2008/05/14 15:18:40 jbruck Exp $
+ * $Id: PortOperations.java,v 1.18 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -225,8 +226,8 @@ public class PortOperations
 		}
 
 		return new UnionEObjectEList<Interface>((InternalEObject) port,
-			UMLPackage.Literals.PORT__PROVIDED, provideds.size(), provideds
-				.toArray());
+			UMLPackage.Literals.PORT__PROVIDED, provideds.size(),
+			provideds.toArray());
 	}
 
 	/**
@@ -251,8 +252,8 @@ public class PortOperations
 		}
 
 		return new UnionEObjectEList<Interface>((InternalEObject) port,
-			UMLPackage.Literals.PORT__REQUIRED, requireds.size(), requireds
-				.toArray());
+			UMLPackage.Literals.PORT__REQUIRED, requireds.size(),
+			requireds.toArray());
 	}
 
 } // PortOperations

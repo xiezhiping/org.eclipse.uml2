@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: UnmarshallActionImpl.java,v 1.29 2009/12/04 15:30:45 khussey Exp $
+ * $Id: UnmarshallActionImpl.java,v 1.30 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -935,8 +935,8 @@ public class UnmarshallActionImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.UNMARSHALL_ACTION___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -957,11 +957,13 @@ public class UnmarshallActionImpl
 			case UMLPackage.UNMARSHALL_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -999,8 +1001,9 @@ public class UnmarshallActionImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateOwnedStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1008,20 +1011,25 @@ public class UnmarshallActionImpl
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfObject((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicityOfObject(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_NUMBER_OF_RESULT__DIAGNOSTICCHAIN_MAP :
-				return validateNumberOfResult((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateNumberOfResult(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_TYPE_AND_ORDERING__DIAGNOSTICCHAIN_MAP :
-				return validateTypeAndOrdering((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateTypeAndOrdering(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_MULTIPLICITY_OF_RESULT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfResult((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicityOfResult(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_STRUCTURAL_FEATURE__DIAGNOSTICCHAIN_MAP :
-				return validateStructuralFeature((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateStructuralFeature(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.UNMARSHALL_ACTION___VALIDATE_UNMARSHALL_TYPE_IS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateUnmarshallTypeIsClassifier(
 					(DiagnosticChain) arguments.get(0),

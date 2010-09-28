@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: QualifierValueImpl.java,v 1.13 2009/12/04 15:30:44 khussey Exp $
+ * $Id: QualifierValueImpl.java,v 1.14 2010/09/28 21:02:14 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -386,8 +386,8 @@ public class QualifierValueImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.QUALIFIER_VALUE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.QUALIFIER_VALUE___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -408,11 +408,13 @@ public class QualifierValueImpl
 			case UMLPackage.QUALIFIER_VALUE___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.QUALIFIER_VALUE___VALIDATE_QUALIFIER_ATTRIBUTE__DIAGNOSTICCHAIN_MAP :
-				return validateQualifierAttribute((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateQualifierAttribute(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.QUALIFIER_VALUE___VALIDATE_TYPE_OF_QUALIFIER__DIAGNOSTICCHAIN_MAP :
-				return validateTypeOfQualifier((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateTypeOfQualifier(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.QUALIFIER_VALUE___VALIDATE_MULTIPLICITY_OF_QUALIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicityOfQualifier(
 					(DiagnosticChain) arguments.get(0),

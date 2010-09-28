@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2009 IBM Corporation and others.
+ * Copyright (c) 2008, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: StartObjectBehaviorActionImpl.java,v 1.3 2009/12/04 15:30:42 khussey Exp $
+ * $Id: StartObjectBehaviorActionImpl.java,v 1.4 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -799,8 +799,8 @@ public class StartObjectBehaviorActionImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -821,11 +821,13 @@ public class StartObjectBehaviorActionImpl
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -863,20 +865,24 @@ public class StartObjectBehaviorActionImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateOwnedStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_ON_PORT_RECEIVER__DIAGNOSTICCHAIN_MAP :
-				return validateOnPortReceiver((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateOnPortReceiver(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_SYNCHRONOUS_CALL__DIAGNOSTICCHAIN_MAP :
-				return validateSynchronousCall((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSynchronousCall(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_AND_ORDER__DIAGNOSTICCHAIN_MAP :
-				return validateNumberAndOrder((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateNumberAndOrder(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOrderingMultiplicity(
 					(DiagnosticChain) arguments.get(0),
@@ -885,14 +891,17 @@ public class StartObjectBehaviorActionImpl
 				return validateTypeOfObject((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_MULTIPLICITY_OF_OBJECT__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicityOfObject((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicityOfObject(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_ORDER_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
-				return validateNumberOrderArguments((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateNumberOrderArguments(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_NUMBER_ORDER_RESULTS__DIAGNOSTICCHAIN_MAP :
-				return validateNumberOrderResults((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateNumberOrderResults(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.START_OBJECT_BEHAVIOR_ACTION___VALIDATE_TYPE_ORDERING_MULTIPLICITY_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateTypeOrderingMultiplicityMatch(
 					(DiagnosticChain) arguments.get(0),

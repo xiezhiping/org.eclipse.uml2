@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: ObjectFlowImpl.java,v 1.20 2009/12/04 15:30:42 khussey Exp $
+ * $Id: ObjectFlowImpl.java,v 1.21 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -756,8 +756,8 @@ public class ObjectFlowImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.OBJECT_FLOW___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -778,11 +778,13 @@ public class ObjectFlowImpl
 			case UMLPackage.OBJECT_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -820,23 +822,27 @@ public class ObjectFlowImpl
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
-				return validateSourceAndTarget((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSourceAndTarget(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateStructuredNode((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateStructuredNode(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_NO_ACTIONS__DIAGNOSTICCHAIN_MAP :
 				return validateNoActions((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_COMPATIBLE_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateCompatibleTypes((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateCompatibleTypes(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SAME_UPPER_BOUNDS__DIAGNOSTICCHAIN_MAP :
-				return validateSameUpperBounds((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSameUpperBounds(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateTarget((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -845,8 +851,9 @@ public class ObjectFlowImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_SELECTION_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateSelectionBehaviour((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSelectionBehaviour(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_FLOW___VALIDATE_INPUT_AND_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateInputAndOutputParameter(
 					(DiagnosticChain) arguments.get(0),

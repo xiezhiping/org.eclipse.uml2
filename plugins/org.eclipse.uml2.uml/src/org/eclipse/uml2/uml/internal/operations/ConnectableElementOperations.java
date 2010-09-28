@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2006, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: ConnectableElementOperations.java,v 1.6 2008/10/02 20:56:22 jbruck Exp $
+ * $Id: ConnectableElementOperations.java,v 1.7 2010/09/28 21:02:15 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -65,8 +66,8 @@ public class ConnectableElementOperations
 
 		@Override
 		public int getFeatureID() {
-			return owner.eDerivedStructuralFeatureID(eStructuralFeature
-				.getFeatureID(), ConnectableElement.class);
+			return owner.eDerivedStructuralFeatureID(
+				eStructuralFeature.getFeatureID(), ConnectableElement.class);
 		}
 
 		@Override

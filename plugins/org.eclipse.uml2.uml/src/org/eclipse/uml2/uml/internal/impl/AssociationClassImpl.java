@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: AssociationClassImpl.java,v 1.34 2009/12/04 15:30:42 khussey Exp $
+ * $Id: AssociationClassImpl.java,v 1.35 2010/09/28 21:02:13 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
@@ -1582,8 +1582,8 @@ public class AssociationClassImpl
 				return getValue((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0), (String) arguments
-					.get(1), arguments.get(2));
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
 				return null;
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_EANNOTATION__STRING :
 				return createEAnnotation((String) arguments.get(0));
@@ -1604,11 +1604,13 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS___MUST_BE_OWNED :
 				return mustBeOwned();
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasQualifiedName((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
 				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
@@ -1637,8 +1639,9 @@ public class AssociationClassImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_ELEMENT_IMPORT__PACKAGEABLEELEMENT_VISIBILITYKIND :
-				return createElementImport((PackageableElement) arguments
-					.get(0), (VisibilityKind) arguments.get(1));
+				return createElementImport(
+					(PackageableElement) arguments.get(0),
+					(VisibilityKind) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_PACKAGE_IMPORT__PACKAGE_VISIBILITYKIND :
 				return createPackageImport(
 					(org.eclipse.uml2.uml.Package) arguments.get(0),
@@ -1678,12 +1681,13 @@ public class AssociationClassImpl
 				return isTemplateParameter();
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_ASSOCIATION__BOOLEAN_AGGREGATIONKIND_STRING_INT_INT_TYPE_BOOLEAN_AGGREGATIONKIND_STRING_INT_INT :
 				return createAssociation((Boolean) arguments.get(0),
-					(AggregationKind) arguments.get(1), (String) arguments
-						.get(2), (Integer) arguments.get(3),
+					(AggregationKind) arguments.get(1),
+					(String) arguments.get(2), (Integer) arguments.get(3),
 					(Integer) arguments.get(4), (Type) arguments.get(5),
-					(Boolean) arguments.get(6), (AggregationKind) arguments
-						.get(7), (String) arguments.get(8), (Integer) arguments
-						.get(9), (Integer) arguments.get(10));
+					(Boolean) arguments.get(6),
+					(AggregationKind) arguments.get(7),
+					(String) arguments.get(8), (Integer) arguments.get(9),
+					(Integer) arguments.get(10));
 			case UMLPackage.ASSOCIATION_CLASS___GET_ASSOCIATIONS :
 				return getAssociations();
 			case UMLPackage.ASSOCIATION_CLASS___CONFORMS_TO__TYPE :
@@ -1701,8 +1705,9 @@ public class AssociationClassImpl
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializeType((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSpecializeType(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_MAPS_TO_GENERALIZATION_SET__DIAGNOSTICCHAIN_MAP :
 				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
@@ -1715,12 +1720,12 @@ public class AssociationClassImpl
 				return getAllOperations();
 			case UMLPackage.ASSOCIATION_CLASS___GET_OPERATION__STRING_ELIST_ELIST :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2));
 			case UMLPackage.ASSOCIATION_CLASS___GET_OPERATION__STRING_ELIST_ELIST_BOOLEAN :
 				return getOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Boolean) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
 			case UMLPackage.ASSOCIATION_CLASS___GET_USED_INTERFACES :
 				return getUsedInterfaces();
 			case UMLPackage.ASSOCIATION_CLASS___GET_ALL_USED_INTERFACES :
@@ -1746,8 +1751,9 @@ public class AssociationClassImpl
 			case UMLPackage.ASSOCIATION_CLASS___ALL_PARENTS :
 				return allParents();
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
-				return validateMultiplicities((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateMultiplicities(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_OWNED_ATTRIBUTE__STRING_TYPE_INT_INT :
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
@@ -1767,29 +1773,34 @@ public class AssociationClassImpl
 				return getExtensions();
 			case UMLPackage.ASSOCIATION_CLASS___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
 				return createOwnedOperation((String) arguments.get(0),
-					(EList<String>) arguments.get(1), (EList<Type>) arguments
-						.get(2), (Type) arguments.get(3));
+					(EList<String>) arguments.get(1),
+					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
 			case UMLPackage.ASSOCIATION_CLASS___IS_METACLASS :
 				return isMetaclass();
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_SPECIALIZED_END_NUMBER__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializedEndNumber((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSpecializedEndNumber(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_SPECIALIZED_END_TYPES__DIAGNOSTICCHAIN_MAP :
-				return validateSpecializedEndTypes((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateSpecializedEndTypes(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_BINARY_ASSOCIATIONS__DIAGNOSTICCHAIN_MAP :
-				return validateBinaryAssociations((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateBinaryAssociations(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_ASSOCIATION_ENDS__DIAGNOSTICCHAIN_MAP :
-				return validateAssociationEnds((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateAssociationEnds(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___IS_BINARY :
 				return isBinary();
 			case UMLPackage.ASSOCIATION_CLASS___GET_END_TYPES :
 				return getEndTypes();
 			case UMLPackage.ASSOCIATION_CLASS___VALIDATE_CANNOT_BE_DEFINED__DIAGNOSTICCHAIN_MAP :
-				return validateCannotBeDefined((DiagnosticChain) arguments
-					.get(0), (Map<Object, Object>) arguments.get(1));
+				return validateCannotBeDefined(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ASSOCIATION_CLASS___ALL_CONNECTIONS :
 				return allConnections();
 		}
