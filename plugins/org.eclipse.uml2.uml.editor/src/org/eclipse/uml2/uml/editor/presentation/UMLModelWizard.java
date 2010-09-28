@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 227392, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: UMLModelWizard.java,v 1.11 2009/12/02 18:28:16 jbruck Exp $
+ * $Id: UMLModelWizard.java,v 1.12 2010/09/28 20:59:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -213,8 +214,8 @@ public class UMLModelWizard
 					}
 				}
 			}
-			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE
-				.getComparator());
+			Collections.sort(initialObjectNames,
+				CommonPlugin.INSTANCE.getComparator());
 		}
 		return initialObjectNames;
 	}
@@ -322,11 +323,14 @@ public class UMLModelWizard
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor(new FileEditorInput(modelFile), workbench
-					.getEditorRegistry().getDefaultEditor(
-						modelFile.getFullPath().toString(),
-						Platform.getContentTypeManager().getContentType(
-							UMLPackage.eCONTENT_TYPE)).getId());
+				page.openEditor(
+					new FileEditorInput(modelFile),
+					workbench
+						.getEditorRegistry()
+						.getDefaultEditor(
+							modelFile.getFullPath().toString(),
+							Platform.getContentTypeManager().getContentType(
+								UMLPackage.eCONTENT_TYPE)).getId());
 			} catch (PartInitException exception) {
 				MessageDialog
 					.openError(
@@ -391,8 +395,8 @@ public class UMLModelWizard
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot().getFile(
-				getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 

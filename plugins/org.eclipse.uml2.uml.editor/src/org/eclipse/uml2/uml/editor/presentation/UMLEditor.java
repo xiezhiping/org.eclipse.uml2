@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: UMLEditor.java,v 1.49 2010/03/02 03:10:43 khussey Exp $
+ * $Id: UMLEditor.java,v 1.50 2010/09/28 20:59:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -407,8 +407,8 @@ public class UMLEditor
 						}
 
 						if (updateProblemIndication) {
-							getSite().getShell().getDisplay().asyncExec(
-								new Runnable() {
+							getSite().getShell().getDisplay()
+								.asyncExec(new Runnable() {
 
 									public void run() {
 										updateProblemIndication();
@@ -689,8 +689,8 @@ public class UMLEditor
 				super.handleError(exception);
 
 				BasicDiagnostic diagnostic = new BasicDiagnostic(
-					UMLEditorPlugin.INSTANCE.getSymbolicName(), 0, exception
-						.getLocalizedMessage(), null);
+					UMLEditorPlugin.INSTANCE.getSymbolicName(), 0,
+					exception.getLocalizedMessage(), null);
 				diagnostic.add(BasicDiagnostic.toDiagnostic(exception));
 
 				DiagnosticDialog.openProblem(getSite().getShell(), null,
@@ -930,8 +930,8 @@ public class UMLEditor
 
 		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(
-				resource, exception));
+			resourceToDiagnosticMap.put(resource,
+				analyzeResourceProblems(resource, exception));
 		}
 		editingDomain.getResourceSet().eAdapters()
 			.add(problemIndicationAdapter);
@@ -1541,9 +1541,9 @@ public class UMLEditor
 								&& (!resource.getContents().isEmpty() || isPersisted(resource))
 								&& !editingDomain.isReadOnly(resource)) {
 
-								copyResource(resourceSet, resource, uri
-									.trimFileExtension().appendFileExtension(
-										newFileExtension));
+								copyResource(resourceSet, resource,
+									uri.trimFileExtension()
+										.appendFileExtension(newFileExtension));
 							}
 						}
 					}

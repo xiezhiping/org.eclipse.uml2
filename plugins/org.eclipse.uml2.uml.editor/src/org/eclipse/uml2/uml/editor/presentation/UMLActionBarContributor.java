@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: UMLActionBarContributor.java,v 1.9 2007/05/28 20:02:28 khussey Exp $
+ * $Id: UMLActionBarContributor.java,v 1.10 2010/09/28 20:59:43 khussey Exp $
  */
 package org.eclipse.uml2.uml.editor.presentation;
 
@@ -123,8 +124,8 @@ public class UMLActionBarContributor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IAction refreshViewerAction = new Action(UMLEditorPlugin.INSTANCE
-		.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+	protected IAction refreshViewerAction = new Action(
+		UMLEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
 	{
 
 		@Override
@@ -337,8 +338,8 @@ public class UMLActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
-			.getString("_UI_UMLEditor_menu"), "org.eclipse.uml2.umlMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+		IMenuManager submenuManager = new MenuManager(
+			UMLEditorPlugin.INSTANCE.getString("_UI_UMLEditor_menu"), "org.eclipse.uml2.umlMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
 		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
 		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
 		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
@@ -347,14 +348,14 @@ public class UMLActionBarContributor
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
-			.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		createChildMenuManager = new MenuManager(
+			UMLEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
-			.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		createSiblingMenuManager = new MenuManager(
+			UMLEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
 		// Force an update because Eclipse hides empty menus now.
@@ -667,8 +668,8 @@ public class UMLActionBarContributor
 					MenuManager submenuManager = (MenuManager) contributionItem;
 					if (submenuActions
 						.containsKey(submenuManager.getMenuText())) {
-						depopulateManager(submenuManager, submenuActions
-							.get(contributionItem));
+						depopulateManager(submenuManager,
+							submenuActions.get(contributionItem));
 						manager.remove(contributionItem);
 					}
 				}
@@ -687,14 +688,14 @@ public class UMLActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
-			.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		submenuManager = new MenuManager(
+			UMLEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createChildSubmenuActions, null);
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-		submenuManager = new MenuManager(UMLEditorPlugin.INSTANCE
-			.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		submenuManager = new MenuManager(
+			UMLEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingSubmenuActions, null);
 		populateManager(submenuManager, createSiblingActions, null);
 		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
