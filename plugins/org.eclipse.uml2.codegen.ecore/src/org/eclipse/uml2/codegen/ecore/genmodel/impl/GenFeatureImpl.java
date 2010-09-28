@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
- *   Kenn Hussey - 286329
+ *   Kenn Hussey - 286329, 323181
  *
- * $Id: GenFeatureImpl.java,v 1.32 2009/11/16 21:11:01 khussey Exp $
+ * $Id: GenFeatureImpl.java,v 1.33 2010/09/28 21:19:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -407,8 +407,7 @@ public class GenFeatureImpl
 			.getSubsettedEcoreFeatures(getEcoreFeature())) {
 
 			if (((EStructuralFeature.Internal) subsettedEcoreFeature)
-				.isContainment()
-				&& !subsettedEcoreFeature.isDerived()) {
+				.isContainment() && !subsettedEcoreFeature.isDerived()) {
 
 				return true;
 			}
@@ -651,15 +650,18 @@ public class GenFeatureImpl
 						.next();
 
 					if (count++ == index) {
-						return formattedKeyFeatureName.append(
-							"'<em><b>" //$NON-NLS-1$
-								+ format(keyGenFeature.getCapName()
-									+ (keyGenFeature.isListType()
-										? Generator
-											.pluralize(nestedKeyGenFeature
-												.getCapName())
-										: nestedKeyGenFeature.getCapName()),
-									' ', null, false, false) + "</b></em>'") //$NON-NLS-1$
+						return formattedKeyFeatureName
+							.append(
+								"'<em><b>" //$NON-NLS-1$
+									+ format(
+										keyGenFeature.getCapName()
+											+ (keyGenFeature.isListType()
+												? Generator
+													.pluralize(nestedKeyGenFeature
+														.getCapName())
+												: nestedKeyGenFeature
+													.getCapName()), ' ', null,
+										false, false) + "</b></em>'") //$NON-NLS-1$
 							.toString();
 					}
 				}
