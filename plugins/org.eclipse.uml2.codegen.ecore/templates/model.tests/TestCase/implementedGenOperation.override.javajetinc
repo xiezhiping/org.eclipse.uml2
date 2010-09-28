@@ -1,0 +1,21 @@
+
+	/**
+	 * Tests the '{@link <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>) <em><%=genOperation.getFormattedName()%></em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see <%=genOperation.getGenClass().getQualifiedInterfaceName()%>#<%=genOperation.getName()%>(<%=genOperation.getParameterTypes(", ")%>)
+	 * @generated
+	 */
+  <%if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) { //genOperation.annotations.insert.javajetinc%>
+<%@ include file="genOperation.annotations.insert.javajetinc" fail="silent" %>
+  <%}%>
+	public void test<%=genModel.capName(genOperation.getName())%><%=genOperation.getGenParameters().size() == 0 ? "" : "__" + genOperation.getParameterTypes("_", false)%>()
+	{
+<%@ include file="implementedGenOperation.TODO.override.javajetinc" fail="alternative" %>
+<%@ start %>
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+<%@ end %><%//implementedGenOperation.todo.override.javajetinc%>
+	}
+<%@ include file="implementedGenOperation.insert.javajetinc" fail="silent" %>
