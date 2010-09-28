@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ClassItemProvider.java,v 1.18 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: ClassItemProvider.java,v 1.19 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -345,8 +346,8 @@ public class ClassItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Class")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Class")); //$NON-NLS-1$
 	}
 
 	/**
@@ -471,120 +472,120 @@ public class ClassItemProvider
 			UMLFactory.eINSTANCE.createTrigger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createAssociation()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createAssociation()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createArtifact()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createDeploymentSpecification()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDeploymentSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createClass()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createInterface()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInterface()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createSignal()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createSignal()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createStateMachine()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createProtocolStateMachine()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createExtension()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createStereotype()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createDataType()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createCollaboration()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createUseCase()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createEnumeration()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createPrimitiveType()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createPrimitiveType()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createOpaqueBehavior()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createFunctionBehavior()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createActivity()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createInteraction()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createActor()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createActor()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createComponent()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createNode()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createNode()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createCommunicationPath()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createDevice()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createDevice()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createExecutionEnvironment()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createExecutionEnvironment()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createInformationItem()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInformationItem()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER, UMLFactory.eINSTANCE
-				.createAssociationClass()));
+			UMLPackage.Literals.CLASS__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createAssociationClass()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__OWNED_OPERATION, UMLFactory.eINSTANCE
-				.createOperation()));
+			UMLPackage.Literals.CLASS__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASS__OWNED_RECEPTION, UMLFactory.eINSTANCE
-				.createReception()));
+			UMLPackage.Literals.CLASS__OWNED_RECEPTION,
+			UMLFactory.eINSTANCE.createReception()));
 	}
 
 	/**

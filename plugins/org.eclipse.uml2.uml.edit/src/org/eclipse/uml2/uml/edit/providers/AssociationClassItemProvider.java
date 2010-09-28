@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: AssociationClassItemProvider.java,v 1.17 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: AssociationClassItemProvider.java,v 1.18 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -252,8 +253,8 @@ public class AssociationClassItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/AssociationClass")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/AssociationClass")); //$NON-NLS-1$
 	}
 
 	/**
@@ -274,8 +275,9 @@ public class AssociationClassItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
-			object), "_UI_AssociationClass_type"); //$NON-NLS-1$
+		StringBuffer text = appendType(
+			appendKeywords(new StringBuffer(), object),
+			"_UI_AssociationClass_type"); //$NON-NLS-1$
 
 		AssociationClass associationClass = (AssociationClass) object;
 
@@ -308,8 +310,7 @@ public class AssociationClassItemProvider
 
 							if (!UML2Util.isEmpty(typeName)) {
 								memberEndName = Character.toLowerCase(typeName
-									.charAt(0))
-									+ typeName.substring(1);
+									.charAt(0)) + typeName.substring(1);
 							}
 						}
 
@@ -367,16 +368,16 @@ public class AssociationClassItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
-				.createProperty()));
+			UMLPackage.Literals.ASSOCIATION__OWNED_END,
+			UMLFactory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
-				.createPort()));
+			UMLPackage.Literals.ASSOCIATION__OWNED_END,
+			UMLFactory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ASSOCIATION__OWNED_END, UMLFactory.eINSTANCE
-				.createExtensionEnd()));
+			UMLPackage.Literals.ASSOCIATION__OWNED_END,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END,

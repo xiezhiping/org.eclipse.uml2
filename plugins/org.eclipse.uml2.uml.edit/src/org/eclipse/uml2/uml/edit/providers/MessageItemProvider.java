@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: MessageItemProvider.java,v 1.11 2009/12/02 18:27:49 jbruck Exp $
+ * $Id: MessageItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -347,60 +348,60 @@ public class MessageItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MESSAGE__ARGUMENT, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.MESSAGE__ARGUMENT,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**

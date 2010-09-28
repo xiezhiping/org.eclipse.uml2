@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 296008
+ *   Kenn Hussey - 296008, 323181
  *
- * $Id: BehaviorItemProvider.java,v 1.17 2009/12/04 16:19:33 khussey Exp $
+ * $Id: BehaviorItemProvider.java,v 1.18 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -304,48 +304,48 @@ public class BehaviorItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER, UMLFactory.eINSTANCE
-				.createParameter()));
+			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER,
+			UMLFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET,

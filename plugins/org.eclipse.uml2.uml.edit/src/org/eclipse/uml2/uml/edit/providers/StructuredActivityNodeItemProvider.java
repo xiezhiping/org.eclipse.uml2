@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: StructuredActivityNodeItemProvider.java,v 1.19 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: StructuredActivityNodeItemProvider.java,v 1.20 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -450,8 +451,8 @@ public class StructuredActivityNodeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/StructuredActivityNode")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/StructuredActivityNode")); //$NON-NLS-1$
 	}
 
 	/**
@@ -519,32 +520,32 @@ public class StructuredActivityNodeItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, UMLFactory.eINSTANCE
-				.createElementImport()));
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
+			UMLFactory.eINSTANCE.createElementImport()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
-				.createPackageImport()));
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
+			UMLFactory.eINSTANCE.createPackageImport()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__VARIABLE,

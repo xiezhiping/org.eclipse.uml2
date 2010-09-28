@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ParameterSetItemProvider.java,v 1.11 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: ParameterSetItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -156,8 +157,8 @@ public class ParameterSetItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/ParameterSet")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/ParameterSet")); //$NON-NLS-1$
 	}
 
 	/**
@@ -178,8 +179,8 @@ public class ParameterSetItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
-			object), "_UI_ParameterSet_type"); //$NON-NLS-1$
+		StringBuffer text = appendType(
+			appendKeywords(new StringBuffer(), object), "_UI_ParameterSet_type"); //$NON-NLS-1$
 
 		ParameterSet parameterSet = (ParameterSet) object;
 		String label = parameterSet.getLabel(shouldTranslate());
@@ -246,24 +247,24 @@ public class ParameterSetItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.PARAMETER_SET__CONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.PARAMETER_SET__CONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.PARAMETER_SET__CONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.PARAMETER_SET__CONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PARAMETER_SET__CONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.PARAMETER_SET__CONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ValuePinItemProvider.java,v 1.12 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: ValuePinItemProvider.java,v 1.13 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -132,8 +133,8 @@ public class ValuePinItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/ValuePin")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/ValuePin")); //$NON-NLS-1$
 	}
 
 	/**
@@ -155,8 +156,9 @@ public class ValuePinItemProvider
 	@Override
 	public String getText(Object object) {
 		return MultiplicityElementItemProvider.appendMultiplicity(
-			appendLabel(appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ValuePin_type"), object), object).toString(); //$NON-NLS-1$
+			appendLabel(
+				appendType(appendKeywords(new StringBuffer(), object),
+					"_UI_ValuePin_type"), object), object).toString(); //$NON-NLS-1$
 	}
 
 	/**
@@ -192,60 +194,60 @@ public class ValuePinItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_PIN__VALUE, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.VALUE_PIN__VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**

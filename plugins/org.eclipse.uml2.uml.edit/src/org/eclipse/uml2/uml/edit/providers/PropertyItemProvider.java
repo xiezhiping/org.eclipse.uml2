@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: PropertyItemProvider.java,v 1.22 2009/12/02 18:27:48 jbruck Exp $
+ * $Id: PropertyItemProvider.java,v 1.23 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -554,8 +555,8 @@ public class PropertyItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Property")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Property")); //$NON-NLS-1$
 	}
 
 	/**
@@ -576,8 +577,8 @@ public class PropertyItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
-			object), "_UI_Property_type"); //$NON-NLS-1$
+		StringBuffer text = appendType(
+			appendKeywords(new StringBuffer(), object), "_UI_Property_type"); //$NON-NLS-1$
 
 		Property property = (Property) object;
 		Type type = property.getType();
@@ -659,72 +660,72 @@ public class PropertyItemProvider
 			UMLFactory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
-				.createProperty()));
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createProperty()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
-				.createPort()));
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createPort()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER, UMLFactory.eINSTANCE
-				.createExtensionEnd()));
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 	}
 
 	/**

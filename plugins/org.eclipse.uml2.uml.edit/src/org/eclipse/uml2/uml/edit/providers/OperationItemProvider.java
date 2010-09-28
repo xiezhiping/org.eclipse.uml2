@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: OperationItemProvider.java,v 1.18 2009/12/02 18:27:48 jbruck Exp $
+ * $Id: OperationItemProvider.java,v 1.19 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -483,8 +484,8 @@ public class OperationItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Operation")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Operation")); //$NON-NLS-1$
 	}
 
 	/**
@@ -505,15 +506,16 @@ public class OperationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		StringBuffer text = appendLabel(appendType(appendKeywords(
-			new StringBuffer(), object), "_UI_Operation_type"), object); //$NON-NLS-1$
+		StringBuffer text = appendLabel(
+			appendType(appendKeywords(new StringBuffer(), object),
+				"_UI_Operation_type"), object); //$NON-NLS-1$
 
 		Operation operation = (Operation) object;
 
 		appendString(text, "("); //$NON-NLS-1$
 
-		List<Parameter> ownedParameters = new ArrayList<Parameter>(operation
-			.getOwnedParameters());
+		List<Parameter> ownedParameters = new ArrayList<Parameter>(
+			operation.getOwnedParameters());
 		ownedParameters.removeAll(operation.returnResult());
 
 		for (Iterator<Parameter> parameters = ownedParameters.iterator(); parameters
@@ -624,64 +626,64 @@ public class OperationItemProvider
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.OPERATION__PRECONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.OPERATION__PRECONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.OPERATION__PRECONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.OPERATION__PRECONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__PRECONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.OPERATION__PRECONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.OPERATION__POSTCONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.OPERATION__POSTCONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.OPERATION__POSTCONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.OPERATION__POSTCONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__POSTCONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.OPERATION__POSTCONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.OPERATION__BODY_CONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.OPERATION__BODY_CONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.OPERATION__BODY_CONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.OPERATION__BODY_CONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OPERATION__BODY_CONDITION, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.OPERATION__BODY_CONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 	/**

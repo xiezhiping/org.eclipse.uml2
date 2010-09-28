@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ReduceActionItemProvider.java,v 1.10 2009/12/02 18:27:47 jbruck Exp $
+ * $Id: ReduceActionItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -154,8 +155,8 @@ public class ReduceActionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/ReduceAction")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/ReduceAction")); //$NON-NLS-1$
 	}
 
 	/**
@@ -219,20 +220,20 @@ public class ReduceActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__RESULT, UMLFactory.eINSTANCE
-				.createOutputPin()));
+			UMLPackage.Literals.REDUCE_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__COLLECTION, UMLFactory.eINSTANCE
-				.createInputPin()));
+			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
+			UMLFactory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__COLLECTION, UMLFactory.eINSTANCE
-				.createValuePin()));
+			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
+			UMLFactory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__COLLECTION, UMLFactory.eINSTANCE
-				.createActionInputPin()));
+			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
+			UMLFactory.eINSTANCE.createActionInputPin()));
 	}
 
 	/**

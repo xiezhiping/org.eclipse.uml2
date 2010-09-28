@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: CallActionItemProvider.java,v 1.8 2009/12/02 18:27:51 jbruck Exp $
+ * $Id: CallActionItemProvider.java,v 1.9 2010/09/28 21:00:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -207,8 +208,8 @@ public class CallActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CALL_ACTION__RESULT, UMLFactory.eINSTANCE
-				.createOutputPin()));
+			UMLPackage.Literals.CALL_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**

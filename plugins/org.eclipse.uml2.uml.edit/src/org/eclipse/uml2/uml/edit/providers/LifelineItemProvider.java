@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: LifelineItemProvider.java,v 1.10 2009/12/02 18:27:48 jbruck Exp $
+ * $Id: LifelineItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -215,8 +216,8 @@ public class LifelineItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Lifeline")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Lifeline")); //$NON-NLS-1$
 	}
 
 	/**
@@ -275,60 +276,60 @@ public class LifelineItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LIFELINE__SELECTOR, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.LIFELINE__SELECTOR,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**

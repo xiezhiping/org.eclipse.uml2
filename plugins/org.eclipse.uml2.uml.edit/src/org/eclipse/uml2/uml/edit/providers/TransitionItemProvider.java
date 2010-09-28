@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: TransitionItemProvider.java,v 1.19 2009/12/02 18:27:49 jbruck Exp $
+ * $Id: TransitionItemProvider.java,v 1.20 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -423,52 +424,52 @@ public class TransitionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createStateMachine()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createProtocolStateMachine()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createOpaqueBehavior()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createFunctionBehavior()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createActivity()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createActivity()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT, UMLFactory.eINSTANCE
-				.createInteraction()));
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__TRIGGER, UMLFactory.eINSTANCE
-				.createTrigger()));
+			UMLPackage.Literals.TRANSITION__TRIGGER,
+			UMLFactory.eINSTANCE.createTrigger()));
 	}
 
 	/**

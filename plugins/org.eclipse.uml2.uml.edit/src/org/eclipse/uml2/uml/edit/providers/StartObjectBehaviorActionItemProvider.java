@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2010 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,9 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey - 323181
  *
- * $Id: StartObjectBehaviorActionItemProvider.java,v 1.2 2009/12/02 18:27:50 jbruck Exp $
+ * $Id: StartObjectBehaviorActionItemProvider.java,v 1.3 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -111,8 +112,10 @@ public class StartObjectBehaviorActionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
+		return overlayImage(
+			object,
+			getResourceLocator().getImage(
+				"full/obj16/StartObjectBehaviorAction")); //$NON-NLS-1$
 	}
 
 	/**

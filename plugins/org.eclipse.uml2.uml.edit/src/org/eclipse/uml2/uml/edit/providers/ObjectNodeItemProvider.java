@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ObjectNodeItemProvider.java,v 1.9 2009/12/02 18:27:48 jbruck Exp $
+ * $Id: ObjectNodeItemProvider.java,v 1.10 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -289,60 +290,60 @@ public class ObjectNodeItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**

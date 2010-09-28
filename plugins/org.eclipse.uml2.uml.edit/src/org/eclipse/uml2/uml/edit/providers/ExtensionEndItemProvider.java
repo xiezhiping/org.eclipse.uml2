@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ExtensionEndItemProvider.java,v 1.11 2009/12/02 18:27:51 jbruck Exp $
+ * $Id: ExtensionEndItemProvider.java,v 1.12 2010/09/28 21:00:20 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -81,8 +82,8 @@ public class ExtensionEndItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/ExtensionEnd")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/ExtensionEnd")); //$NON-NLS-1$
 	}
 
 	/**
@@ -103,8 +104,8 @@ public class ExtensionEndItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		StringBuffer text = appendType(appendKeywords(new StringBuffer(),
-			object), "_UI_ExtensionEnd_type"); //$NON-NLS-1$
+		StringBuffer text = appendType(
+			appendKeywords(new StringBuffer(), object), "_UI_ExtensionEnd_type"); //$NON-NLS-1$
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) object;
 		Type type = extensionEnd.getType();

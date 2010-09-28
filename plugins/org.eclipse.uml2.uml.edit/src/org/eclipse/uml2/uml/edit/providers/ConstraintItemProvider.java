@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: ConstraintItemProvider.java,v 1.10 2009/12/02 18:27:49 jbruck Exp $
+ * $Id: ConstraintItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -175,8 +176,8 @@ public class ConstraintItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage(
-			"full/obj16/Constraint")); //$NON-NLS-1$
+		return overlayImage(object,
+			getResourceLocator().getImage("full/obj16/Constraint")); //$NON-NLS-1$
 	}
 
 	/**
@@ -235,60 +236,60 @@ public class ConstraintItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createOpaqueExpression()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createExpression()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createStringExpression()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createLiteralInteger()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createLiteralString()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createLiteralBoolean()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createLiteralNull()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createInstanceValue()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createLiteralUnlimitedNatural()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createTimeExpression()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createDuration()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createInterval()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createDurationInterval()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CONSTRAINT__SPECIFICATION, UMLFactory.eINSTANCE
-				.createTimeInterval()));
+			UMLPackage.Literals.CONSTRAINT__SPECIFICATION,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 	}
 
 	/**

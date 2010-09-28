@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey - 323181
  *
- * $Id: NamespaceItemProvider.java,v 1.9 2009/12/02 18:27:51 jbruck Exp $
+ * $Id: NamespaceItemProvider.java,v 1.10 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -297,32 +298,32 @@ public class NamespaceItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT, UMLFactory.eINSTANCE
-				.createElementImport()));
+			UMLPackage.Literals.NAMESPACE__ELEMENT_IMPORT,
+			UMLFactory.eINSTANCE.createElementImport()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT, UMLFactory.eINSTANCE
-				.createPackageImport()));
+			UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT,
+			UMLFactory.eINSTANCE.createPackageImport()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createInteractionConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createIntervalConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createTimeConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.NAMESPACE__OWNED_RULE, UMLFactory.eINSTANCE
-				.createDurationConstraint()));
+			UMLPackage.Literals.NAMESPACE__OWNED_RULE,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 	}
 
 }
