@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
- *   Kenn Hussey - 286329, 320318
+ *   Kenn Hussey - 286329, 320318, 323000
  *
- * $Id: UMLValidator.java,v 1.29 2010/08/19 18:41:42 khussey Exp $
+ * $Id: UMLValidator.java,v 1.30 2010/10/26 20:28:03 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -4538,8 +4538,16 @@ public class UMLValidator
 	public boolean validate_BidirectionalReferenceIsPaired(EObject eObject,
 			EReference eReference, EReference eOpposite,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// XXX 320318 - work around missing subsets constraints
-		return eReference == UMLPackage.Literals.ELEMENT__OWNER
+		// XXX 320318, 323000 - work around missing subsets constraints
+		return eReference == UMLPackage.Literals.ACTIVITY_EDGE__IN_GROUP
+			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_EDGE
+			|| eReference == UMLPackage.Literals.ACTIVITY_NODE__IN_GROUP
+			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__CONTAINED_NODE
+			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__SUBGROUP
+			|| eReference == UMLPackage.Literals.ACTIVITY_GROUP__SUPER_GROUP
+			|| eReference == UMLPackage.Literals.CLASSIFIER__FEATURE
+			|| eReference == UMLPackage.Literals.FEATURE__FEATURING_CLASSIFIER
+			|| eReference == UMLPackage.Literals.ELEMENT__OWNER
 			|| eReference == UMLPackage.Literals.ELEMENT__OWNED_ELEMENT
 			|| eReference == UMLPackage.Literals.NAMED_ELEMENT__NAMESPACE
 			|| eReference == UMLPackage.Literals.NAMESPACE__OWNED_MEMBER
