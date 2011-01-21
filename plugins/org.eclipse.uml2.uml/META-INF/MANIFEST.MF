@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.uml2.uml; singleton:=true
-Bundle-Version: 3.1.100.qualifier
+Bundle-Version: 3.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.uml2.uml.UMLPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -15,7 +15,7 @@ Export-Package: org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.resource,
  org.eclipse.uml2.uml.util
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
- org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="[2.5.0,3.0.0)";visibility:=reexport,
  org.eclipse.uml2.common;bundle-version="[1.5.0,2.0.0)";visibility:=reexport,
  org.eclipse.emf.mapping.ecore2xml;bundle-version="[2.5.0,3.0.0)"
