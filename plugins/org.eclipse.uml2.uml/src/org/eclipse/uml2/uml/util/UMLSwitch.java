@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 205188
  *   Kenn Hussey - 323181
  *
- * $Id: UMLSwitch.java,v 1.20 2011/01/21 01:17:37 khussey Exp $
+ * $Id: UMLSwitch.java,v 1.21 2011/01/27 21:39:04 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
