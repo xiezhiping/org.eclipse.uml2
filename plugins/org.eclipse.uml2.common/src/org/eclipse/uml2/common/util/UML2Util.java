@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 247980
+ *   Keith Campbell (IBM) - 343783
  *
- * $Id: UML2Util.java,v 1.37 2009/03/13 20:41:16 jbruck Exp $
+ * $Id: UML2Util.java,v 1.38 2011/05/02 21:20:47 khussey Exp $
  */
 package org.eclipse.uml2.common.util;
 
@@ -1138,7 +1139,8 @@ public class UML2Util {
 		for (EReference eReference : eObject.eClass().getEAllReferences()) {
 
 			if (eReference.isChangeable() && !eReference.isContainer()
-				&& !eReference.isContainment() && eObject.eIsSet(eReference)) {
+				&& !eReference.isContainment() && !eReference.isDerived()
+				&& eObject.eIsSet(eReference)) {
 
 				if (eReference.isMany()) {
 
