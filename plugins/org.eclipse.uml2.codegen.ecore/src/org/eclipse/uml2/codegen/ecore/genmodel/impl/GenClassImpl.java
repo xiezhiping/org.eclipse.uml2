@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
- *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey - 286329, 323181, 344908
  *
- * $Id: GenClassImpl.java,v 1.48 2010/09/28 21:19:30 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.49 2011/05/06 03:02:05 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -24,6 +24,7 @@ import java.util.Map;
 import org.eclipse.emf.codegen.ecore.genmodel.GenFeature;
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenOperation;
+import org.eclipse.emf.codegen.ecore.genmodel.GenRuntimeVersion;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
@@ -470,7 +471,12 @@ public class GenClassImpl
 				org.eclipse.emf.codegen.ecore.genmodel.GenClass genClass = genOperation
 					.getGenClass();
 
-				if (genClass == this || genClass.isInterface()) {
+				if ((genClass == this || genClass.isInterface())
+					&& !genOperation.hasBody()
+					&& (genClass.getGenModel().getRuntimeVersion().getValue() < GenRuntimeVersion.EMF26_VALUE || (!genOperation
+						.hasInvariantExpression() && !genOperation
+						.hasInvocationDelegate()))) {
+
 					result.add(genOperation);
 				}
 			}

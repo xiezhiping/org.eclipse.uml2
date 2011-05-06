@@ -1,9 +1,9 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.13 2008/12/09 20:08:55 jbruck Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.14 2011/05/06 03:02:05 khussey Exp $" %>
 <%
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
+ *   Kenn Hussey - 344908
  *
  * </copyright>
  */
@@ -139,9 +140,7 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
 	 */
 	public static <%=genClass.getTypeParameters().length() > 0 && genOperation.getTypeParameters(genClass).length() > 0 ? genClass.getTypeParameters().substring(0, genClass.getTypeParameters().length() - 2) + ", " + genOperation.getTypeParameters(genClass).trim().substring(1) : genClass.getTypeParameters().trim() + genOperation.getTypeParameters(genClass).trim()%> <%=genOperation.getImportedType(genClass)%> <%=genOperation.getName()%>(<%=genClass.getImportedInterfaceName()%><%=genClass.getTypeParameters().trim()%> <%=genClass.safeName(genClass.getUncapName())%><%if (!genOperation.getGenParameters().isEmpty()) {%>, <%}%><%=genOperation.getParameters(genClass)%>)<%=genOperation.getThrows(genClass)%>
 	{
-  <%if (genOperation.hasBody()) {%>
-		<%=genOperation.getBody(genModel.getIndentation(stringBuffer))%>
-  <%} else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();%>
+  <%if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();%>
       <%if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";%>
 		if (<%=oclInv%> == null)
 		{

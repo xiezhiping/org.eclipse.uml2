@@ -95,66 +95,65 @@ public class OperationsClass
   protected final String TEXT_78 = ", ";
   protected final String TEXT_79 = ")";
   protected final String TEXT_80 = NL + "\t{";
-  protected final String TEXT_81 = NL + "\t\t";
-  protected final String TEXT_82 = NL + "\t\tif (";
-  protected final String TEXT_83 = " == null)" + NL + "\t\t{" + NL + "\t\t\t";
-  protected final String TEXT_84 = ".Helper helper = EOCL_ENV.createOCLHelper();" + NL + "\t\t\thelper.setContext(";
-  protected final String TEXT_85 = ");" + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\t";
-  protected final String TEXT_86 = " = helper.createInvariant(";
-  protected final String TEXT_87 = "__EOCL_EXP);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (";
-  protected final String TEXT_88 = " pe)" + NL + "\t\t\t{" + NL + "\t\t\t\tthrow new UnsupportedOperationException(pe.getLocalizedMessage());" + NL + "\t\t\t}" + NL + "\t\t}" + NL + "\t\tif (!EOCL_ENV.createQuery(";
-  protected final String TEXT_89 = ").check(";
-  protected final String TEXT_90 = "))";
-  protected final String TEXT_91 = NL + "\t\t// TODO: implement this method" + NL + "\t\t// -> specify the condition that violates the invariant" + NL + "\t\t// -> verify the details of the diagnostic, including severity and message" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t\tif (false)";
-  protected final String TEXT_92 = NL + "\t\t{" + NL + "\t\t\tif (";
-  protected final String TEXT_93 = " != null)" + NL + "\t\t\t{" + NL + "\t\t\t\t";
-  protected final String TEXT_94 = ".add" + NL + "\t\t\t\t\t(new ";
-  protected final String TEXT_95 = NL + "\t\t\t\t\t\t(";
-  protected final String TEXT_96 = ".ERROR," + NL + "\t\t\t\t\t\t ";
-  protected final String TEXT_97 = ".DIAGNOSTIC_SOURCE," + NL + "\t\t\t\t\t\t ";
-  protected final String TEXT_98 = ".";
-  protected final String TEXT_99 = "," + NL + "\t\t\t\t\t\t org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(\"_UI_GenericInvariant_diagnostic\", new Object[] { \"";
-  protected final String TEXT_100 = "\", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(";
-  protected final String TEXT_101 = ", ";
-  protected final String TEXT_102 = ") }),";
-  protected final String TEXT_103 = NL + "\t\t\t\t\t\t new Object [] { ";
-  protected final String TEXT_104 = " }));" + NL + "\t\t\t}" + NL + "\t\t\treturn false;" + NL + "\t\t}" + NL + "\t\treturn true;";
-  protected final String TEXT_105 = NL + "\t\tif (";
-  protected final String TEXT_106 = " == null)" + NL + "\t\t{" + NL + "\t\t\t";
-  protected final String TEXT_107 = ".Helper helper = EOCL_ENV.createOCLHelper();" + NL + "\t\t\thelper.setOperationContext(";
-  protected final String TEXT_108 = ", ";
-  protected final String TEXT_109 = ".getEAllOperations().get(";
-  protected final String TEXT_110 = "));" + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\t";
-  protected final String TEXT_111 = " = helper.createQuery(";
-  protected final String TEXT_112 = "__EOCL_EXP);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (";
-  protected final String TEXT_113 = " pe)" + NL + "\t\t\t{" + NL + "\t\t\t\tthrow new UnsupportedOperationException(pe.getLocalizedMessage());" + NL + "\t\t\t}" + NL + "\t\t}" + NL + "\t\t";
-  protected final String TEXT_114 = ".Query query = EOCL_ENV.createQuery(";
-  protected final String TEXT_115 = ");";
-  protected final String TEXT_116 = NL + "\t\t";
-  protected final String TEXT_117 = "<?, ?, ?, ?, ?>";
-  protected final String TEXT_118 = " environment = query.getEvaluationEnvironment();";
-  protected final String TEXT_119 = NL + "\t\tenvironment.add(\"";
-  protected final String TEXT_120 = "\", ";
-  protected final String TEXT_121 = ");";
-  protected final String TEXT_122 = NL + "\t\t@SuppressWarnings(\"unchecked\")";
-  protected final String TEXT_123 = NL + "\t\t";
-  protected final String TEXT_124 = "<";
-  protected final String TEXT_125 = "> result = (";
-  protected final String TEXT_126 = "<";
-  protected final String TEXT_127 = ">) query.evaluate(";
-  protected final String TEXT_128 = ");" + NL + "\t\treturn new ";
-  protected final String TEXT_129 = ".UnmodifiableEList<";
-  protected final String TEXT_130 = ">(result.size(), result.toArray());";
-  protected final String TEXT_131 = NL + "\t\treturn ((";
-  protected final String TEXT_132 = ") query.evaluate(";
-  protected final String TEXT_133 = ")).";
-  protected final String TEXT_134 = "();";
-  protected final String TEXT_135 = NL + "\t\treturn (";
-  protected final String TEXT_136 = ") query.evaluate(";
-  protected final String TEXT_137 = ");";
-  protected final String TEXT_138 = NL + "\t\t// TODO: implement this method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t\tthrow new UnsupportedOperationException();";
-  protected final String TEXT_139 = NL + "\t}" + NL;
-  protected final String TEXT_140 = NL + "} // ";
+  protected final String TEXT_81 = NL + "\t\tif (";
+  protected final String TEXT_82 = " == null)" + NL + "\t\t{" + NL + "\t\t\t";
+  protected final String TEXT_83 = ".Helper helper = EOCL_ENV.createOCLHelper();" + NL + "\t\t\thelper.setContext(";
+  protected final String TEXT_84 = ");" + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\t";
+  protected final String TEXT_85 = " = helper.createInvariant(";
+  protected final String TEXT_86 = "__EOCL_EXP);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (";
+  protected final String TEXT_87 = " pe)" + NL + "\t\t\t{" + NL + "\t\t\t\tthrow new UnsupportedOperationException(pe.getLocalizedMessage());" + NL + "\t\t\t}" + NL + "\t\t}" + NL + "\t\tif (!EOCL_ENV.createQuery(";
+  protected final String TEXT_88 = ").check(";
+  protected final String TEXT_89 = "))";
+  protected final String TEXT_90 = NL + "\t\t// TODO: implement this method" + NL + "\t\t// -> specify the condition that violates the invariant" + NL + "\t\t// -> verify the details of the diagnostic, including severity and message" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t\tif (false)";
+  protected final String TEXT_91 = NL + "\t\t{" + NL + "\t\t\tif (";
+  protected final String TEXT_92 = " != null)" + NL + "\t\t\t{" + NL + "\t\t\t\t";
+  protected final String TEXT_93 = ".add" + NL + "\t\t\t\t\t(new ";
+  protected final String TEXT_94 = NL + "\t\t\t\t\t\t(";
+  protected final String TEXT_95 = ".ERROR," + NL + "\t\t\t\t\t\t ";
+  protected final String TEXT_96 = ".DIAGNOSTIC_SOURCE," + NL + "\t\t\t\t\t\t ";
+  protected final String TEXT_97 = ".";
+  protected final String TEXT_98 = "," + NL + "\t\t\t\t\t\t org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString(\"_UI_GenericInvariant_diagnostic\", new Object[] { \"";
+  protected final String TEXT_99 = "\", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(";
+  protected final String TEXT_100 = ", ";
+  protected final String TEXT_101 = ") }),";
+  protected final String TEXT_102 = NL + "\t\t\t\t\t\t new Object [] { ";
+  protected final String TEXT_103 = " }));" + NL + "\t\t\t}" + NL + "\t\t\treturn false;" + NL + "\t\t}" + NL + "\t\treturn true;";
+  protected final String TEXT_104 = NL + "\t\tif (";
+  protected final String TEXT_105 = " == null)" + NL + "\t\t{" + NL + "\t\t\t";
+  protected final String TEXT_106 = ".Helper helper = EOCL_ENV.createOCLHelper();" + NL + "\t\t\thelper.setOperationContext(";
+  protected final String TEXT_107 = ", ";
+  protected final String TEXT_108 = ".getEAllOperations().get(";
+  protected final String TEXT_109 = "));" + NL + "\t\t\ttry" + NL + "\t\t\t{" + NL + "\t\t\t\t";
+  protected final String TEXT_110 = " = helper.createQuery(";
+  protected final String TEXT_111 = "__EOCL_EXP);" + NL + "\t\t\t}" + NL + "\t\t\tcatch (";
+  protected final String TEXT_112 = " pe)" + NL + "\t\t\t{" + NL + "\t\t\t\tthrow new UnsupportedOperationException(pe.getLocalizedMessage());" + NL + "\t\t\t}" + NL + "\t\t}" + NL + "\t\t";
+  protected final String TEXT_113 = ".Query query = EOCL_ENV.createQuery(";
+  protected final String TEXT_114 = ");";
+  protected final String TEXT_115 = NL + "\t\t";
+  protected final String TEXT_116 = "<?, ?, ?, ?, ?>";
+  protected final String TEXT_117 = " environment = query.getEvaluationEnvironment();";
+  protected final String TEXT_118 = NL + "\t\tenvironment.add(\"";
+  protected final String TEXT_119 = "\", ";
+  protected final String TEXT_120 = ");";
+  protected final String TEXT_121 = NL + "\t\t@SuppressWarnings(\"unchecked\")";
+  protected final String TEXT_122 = NL + "\t\t";
+  protected final String TEXT_123 = "<";
+  protected final String TEXT_124 = "> result = (";
+  protected final String TEXT_125 = "<";
+  protected final String TEXT_126 = ">) query.evaluate(";
+  protected final String TEXT_127 = ");" + NL + "\t\treturn new ";
+  protected final String TEXT_128 = ".UnmodifiableEList<";
+  protected final String TEXT_129 = ">(result.size(), result.toArray());";
+  protected final String TEXT_130 = NL + "\t\treturn ((";
+  protected final String TEXT_131 = ") query.evaluate(";
+  protected final String TEXT_132 = ")).";
+  protected final String TEXT_133 = "();";
+  protected final String TEXT_134 = NL + "\t\treturn (";
+  protected final String TEXT_135 = ") query.evaluate(";
+  protected final String TEXT_136 = ");";
+  protected final String TEXT_137 = NL + "\t\t// TODO: implement this method" + NL + "\t\t// Ensure that you remove @generated or mark it @generated NOT" + NL + "\t\tthrow new UnsupportedOperationException();";
+  protected final String TEXT_138 = NL + "\t}" + NL;
+  protected final String TEXT_139 = NL + "} // ";
 
   public String generate(Object argument)
   {
@@ -163,7 +162,7 @@ public class OperationsClass
 /**
  * <copyright>
  *
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -173,6 +172,7 @@ public class OperationsClass
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
+ *   Kenn Hussey - 344908
  *
  * </copyright>
  */
@@ -373,58 +373,55 @@ public class OperationsClass
     stringBuffer.append(TEXT_79);
     stringBuffer.append(genOperation.getThrows(genClass));
     stringBuffer.append(TEXT_80);
-    if (genOperation.hasBody()) {
-    stringBuffer.append(TEXT_81);
-    stringBuffer.append(genOperation.getBody(genModel.getIndentation(stringBuffer)));
-    } else if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
+    if (genOperation.isInvariant()) {GenClass opClass = genOperation.getGenClass(); String diagnostics = genOperation.getGenParameters().get(0).getName(); String context = genOperation.getGenParameters().get(1).getName();
     if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclInv = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_INV";
+    stringBuffer.append(TEXT_81);
+    stringBuffer.append(oclInv);
     stringBuffer.append(TEXT_82);
-    stringBuffer.append(oclInv);
-    stringBuffer.append(TEXT_83);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
-    stringBuffer.append(TEXT_84);
+    stringBuffer.append(TEXT_83);
     stringBuffer.append(opClass.getQualifiedClassifierAccessor());
-    stringBuffer.append(TEXT_85);
+    stringBuffer.append(TEXT_84);
     stringBuffer.append(oclInv);
-    stringBuffer.append(TEXT_86);
+    stringBuffer.append(TEXT_85);
     stringBuffer.append(UML2GenModelUtil.getUpperName(genOperation.getName()));
     stringBuffer.append(genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false)));
-    stringBuffer.append(TEXT_87);
+    stringBuffer.append(TEXT_86);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ParserException"));
-    stringBuffer.append(TEXT_88);
+    stringBuffer.append(TEXT_87);
     stringBuffer.append(oclInv);
-    stringBuffer.append(TEXT_89);
+    stringBuffer.append(TEXT_88);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_90);
+    stringBuffer.append(TEXT_89);
     } else {
-    stringBuffer.append(TEXT_91);
+    stringBuffer.append(TEXT_90);
     }
+    stringBuffer.append(TEXT_91);
+    stringBuffer.append(diagnostics);
     stringBuffer.append(TEXT_92);
     stringBuffer.append(diagnostics);
     stringBuffer.append(TEXT_93);
-    stringBuffer.append(diagnostics);
-    stringBuffer.append(TEXT_94);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.BasicDiagnostic"));
-    stringBuffer.append(TEXT_95);
+    stringBuffer.append(TEXT_94);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic"));
+    stringBuffer.append(TEXT_95);
+    stringBuffer.append(opClass.getGenPackage().getImportedValidatorClassName());
     stringBuffer.append(TEXT_96);
     stringBuffer.append(opClass.getGenPackage().getImportedValidatorClassName());
     stringBuffer.append(TEXT_97);
-    stringBuffer.append(opClass.getGenPackage().getImportedValidatorClassName());
-    stringBuffer.append(TEXT_98);
     stringBuffer.append(opClass.getOperationID(genOperation));
-    stringBuffer.append(TEXT_99);
+    stringBuffer.append(TEXT_98);
     stringBuffer.append(genOperation.getName());
-    stringBuffer.append(TEXT_100);
+    stringBuffer.append(TEXT_99);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_101);
+    stringBuffer.append(TEXT_100);
     stringBuffer.append(context);
-    stringBuffer.append(TEXT_102);
+    stringBuffer.append(TEXT_101);
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(genModel.getNonNLS(2));
-    stringBuffer.append(TEXT_103);
+    stringBuffer.append(TEXT_102);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_104);
+    stringBuffer.append(TEXT_103);
     } else if (UML2GenModelUtil.hasOCLBody(genOperation)) { String oclQry = UML2GenModelUtil.getUpperName(genOperation.getName()) + (genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false))) + "__EOCL_QRY";
 		GenOperation redefinedGenOperation = genOperation;
 		while (UML2GenModelUtil.isDuplicate(redefinedGenOperation)) {
@@ -436,86 +433,86 @@ public class OperationsClass
 			}
 		}
 		int index = genOperation.getGenClass().getAllGenOperations().indexOf(redefinedGenOperation);
-    stringBuffer.append(TEXT_105);
+    stringBuffer.append(TEXT_104);
     stringBuffer.append(oclQry);
-    stringBuffer.append(TEXT_106);
+    stringBuffer.append(TEXT_105);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
+    stringBuffer.append(TEXT_106);
+    stringBuffer.append(genOperation.getGenClass().getQualifiedClassifierAccessor());
     stringBuffer.append(TEXT_107);
     stringBuffer.append(genOperation.getGenClass().getQualifiedClassifierAccessor());
     stringBuffer.append(TEXT_108);
-    stringBuffer.append(genOperation.getGenClass().getQualifiedClassifierAccessor());
-    stringBuffer.append(TEXT_109);
     stringBuffer.append(index);
-    stringBuffer.append(TEXT_110);
+    stringBuffer.append(TEXT_109);
     stringBuffer.append(oclQry);
-    stringBuffer.append(TEXT_111);
+    stringBuffer.append(TEXT_110);
     stringBuffer.append(UML2GenModelUtil.getUpperName(genOperation.getName()));
     stringBuffer.append(genOperation.getGenParameters().size() == 0 ? "" : "__" + UML2GenModelUtil.getUpperName(genOperation.getParameterTypes("_", false)));
-    stringBuffer.append(TEXT_112);
+    stringBuffer.append(TEXT_111);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ParserException"));
-    stringBuffer.append(TEXT_113);
+    stringBuffer.append(TEXT_112);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
-    stringBuffer.append(TEXT_114);
+    stringBuffer.append(TEXT_113);
     stringBuffer.append(oclQry);
-    stringBuffer.append(TEXT_115);
+    stringBuffer.append(TEXT_114);
     if (!genOperation.getGenParameters().isEmpty()) {
-    stringBuffer.append(TEXT_116);
+    stringBuffer.append(TEXT_115);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.EvaluationEnvironment"));
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
-    stringBuffer.append(TEXT_117);
+    stringBuffer.append(TEXT_116);
     }
-    stringBuffer.append(TEXT_118);
+    stringBuffer.append(TEXT_117);
     for (GenParameter genParameter : genOperation.getGenParameters()) {
+    stringBuffer.append(TEXT_118);
+    stringBuffer.append(genParameter.getName());
     stringBuffer.append(TEXT_119);
     stringBuffer.append(genParameter.getName());
     stringBuffer.append(TEXT_120);
-    stringBuffer.append(genParameter.getName());
-    stringBuffer.append(TEXT_121);
     stringBuffer.append(genModel.getNonNLS());
     }
     }
     if (genOperation.isListType()) {
     if (genModel.getComplianceLevel().getValue() >= GenJDKLevel.JDK50) {
+    stringBuffer.append(TEXT_121);
+    }
     stringBuffer.append(TEXT_122);
-    }
+    stringBuffer.append(genModel.getImportedName("java.util.Collection"));
     stringBuffer.append(TEXT_123);
-    stringBuffer.append(genModel.getImportedName("java.util.Collection"));
+    stringBuffer.append(genOperation.getListItemType(null));
     stringBuffer.append(TEXT_124);
-    stringBuffer.append(genOperation.getListItemType(null));
-    stringBuffer.append(TEXT_125);
     stringBuffer.append(genModel.getImportedName("java.util.Collection"));
+    stringBuffer.append(TEXT_125);
+    stringBuffer.append(genOperation.getListItemType(null));
     stringBuffer.append(TEXT_126);
-    stringBuffer.append(genOperation.getListItemType(null));
+    stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     stringBuffer.append(TEXT_127);
-    stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_128);
     stringBuffer.append(genModel.getImportedName("org.eclipse.emf.common.util.BasicEList"));
-    stringBuffer.append(TEXT_129);
+    stringBuffer.append(TEXT_128);
     stringBuffer.append(genOperation.getListItemType(null));
-    stringBuffer.append(TEXT_130);
+    stringBuffer.append(TEXT_129);
     } else if (genOperation.isPrimitiveType()) {
-    stringBuffer.append(TEXT_131);
+    stringBuffer.append(TEXT_130);
     stringBuffer.append(genOperation.getObjectType(null));
+    stringBuffer.append(TEXT_131);
+    stringBuffer.append(genClass.safeName(genClass.getUncapName()));
     stringBuffer.append(TEXT_132);
-    stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_133);
     stringBuffer.append(genOperation.getPrimitiveValueFunction());
-    stringBuffer.append(TEXT_134);
+    stringBuffer.append(TEXT_133);
     } else {
-    stringBuffer.append(TEXT_135);
+    stringBuffer.append(TEXT_134);
     stringBuffer.append(genOperation.getImportedType(null));
-    stringBuffer.append(TEXT_136);
+    stringBuffer.append(TEXT_135);
     stringBuffer.append(genClass.safeName(genClass.getUncapName()));
-    stringBuffer.append(TEXT_137);
+    stringBuffer.append(TEXT_136);
     }
     } else {
-    stringBuffer.append(TEXT_138);
+    stringBuffer.append(TEXT_137);
     //Operations/genOperation.todo.override.javajetinc
     }
-    stringBuffer.append(TEXT_139);
+    stringBuffer.append(TEXT_138);
     //Operations/genOperation.override.javajetinc
     }
-    stringBuffer.append(TEXT_140);
+    stringBuffer.append(TEXT_139);
     stringBuffer.append(UML2GenModelUtil.getOperationsClassName(genClass));
     genModel.emitSortedImports();
     return stringBuffer.toString();
