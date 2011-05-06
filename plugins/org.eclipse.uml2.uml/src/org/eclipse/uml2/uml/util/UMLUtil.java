@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,9 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601, 314971
+ *   Kenn Hussey - 286329, 313601, 314971, 344907
  *
- * $Id: UMLUtil.java,v 1.88 2010/05/31 20:24:36 khussey Exp $
+ * $Id: UMLUtil.java,v 1.89 2011/05/06 01:42:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2723,7 +2723,7 @@ public class UMLUtil
 					if (specification != null
 						&& !(eModelElement instanceof EOperation
 							&& options != null && OPTION__PROCESS
-							.equals(options.get(OPERATION_BODY)))) {
+							.equals(options.get(OPTION__OPERATION_BODIES)))) {
 
 						addDocumentation(eModelElement, specification
 							.stringValue());
