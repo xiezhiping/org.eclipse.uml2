@@ -153,6 +153,8 @@
 		{
 			if (<%=diagnostics%> != null)
 			{
+<%@ include file="genOperation.diagnostics.override.javajetinc" fail="alternative" %>
+<%@ start %>
 				<%=diagnostics%>.add
 					(new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicDiagnostic")%>
 						(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
@@ -160,6 +162,7 @@
 						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>,
 						 <%=genModel.getImportedName("org.eclipse.emf.ecore.plugin.EcorePlugin")%>.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "<%=genOperation.getName()%>", <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EObjectValidator")%>.getObjectLabel(this, <%=context%>) }),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
 						 new Object [] { this }));
+<%@ end %><%//genOperation.diagnostics.override.javajetinc%>
 			}
 			return false;
 		}

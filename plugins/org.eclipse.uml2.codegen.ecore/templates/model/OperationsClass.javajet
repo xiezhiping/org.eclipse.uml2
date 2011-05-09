@@ -1,4 +1,4 @@
-<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.15 2011/05/09 03:27:09 khussey Exp $" %>
+<%@ jet package="org.eclipse.uml2.codegen.ecore.templates.model" imports="org.eclipse.emf.codegen.ecore.genmodel.* org.eclipse.uml2.codegen.ecore.genmodel.util.UML2GenModelUtil" class="OperationsClass" version="$Id: OperationsClass.javajet,v 1.16 2011/05/09 03:33:03 khussey Exp $" %>
 <%
 /**
  * <copyright>
@@ -13,7 +13,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
- *   Kenn Hussey - 344908, 284810
+ *   Kenn Hussey - 344908, 284810, 345083
  *
  * </copyright>
  */
@@ -166,6 +166,8 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
 		{
 			if (<%=diagnostics%> != null)
 			{
+<%@ include file="Operations/genOperation.diagnostics.override.javajetinc" fail="alternative" %>
+<%@ start %>
 				<%=diagnostics%>.add
 					(new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicDiagnostic")%>
 						(<%=genModel.getImportedName("org.eclipse.emf.common.util.Diagnostic")%>.ERROR,
@@ -173,6 +175,7 @@ public class <%=UML2GenModelUtil.getOperationsClassName(genClass)%><%=UML2GenMod
 						 <%=opClass.getGenPackage().getImportedValidatorClassName()%>.<%=opClass.getOperationID(genOperation)%>,
 						 org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE.getString("_UI_GenericInvariant_diagnostic", new Object[] { "<%=genOperation.getName()%>", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(<%=genClass.safeName(genClass.getUncapName())%>, <%=context%>) }),<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
 						 new Object [] { <%=genClass.safeName(genClass.getUncapName())%> }));
+<%@ end %><%//Operations/genOperation.diagnostics.override.javajetinc%>
 			}
 			return false;
 		}
