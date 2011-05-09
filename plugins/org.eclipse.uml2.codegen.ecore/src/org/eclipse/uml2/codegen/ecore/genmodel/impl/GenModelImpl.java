@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208016, 247980
+ *   Kenn Hussey - 284809
  *
- * $Id: GenModelImpl.java,v 1.21 2009/01/07 13:32:57 khussey Exp $
+ * $Id: GenModelImpl.java,v 1.22 2011/05/09 03:32:04 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -595,6 +596,16 @@ public class GenModelImpl
 		return super.isSuppressedAnnotation(source)
 			|| (isSuppressGenModelAnnotations() && UML2GenModelUtil.UML2_GEN_MODEL_PACKAGE_1_1_NS_URI
 				.equals(source));
+	}
+
+	@Override
+	protected void addQualifiedModelPackageNames(List<String> packageNames,
+			GenPackage genPackage) {
+		super.addQualifiedModelPackageNames(packageNames, genPackage);
+		
+		if (genPackage.hasClassifiers() && UML2GenModelUtil.isOperationsClasses(genPackage)) {
+			packageNames.add(UML2GenModelUtil.getOperationsPackageName(genPackage));
+		}
 	}
 
 }
