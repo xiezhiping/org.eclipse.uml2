@@ -172,7 +172,7 @@ public class OperationsClass
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 224693
  *	 Lutz Wrage - 242726
- *   Kenn Hussey - 344908
+ *   Kenn Hussey - 344908, 284810
  *
  * </copyright>
  */
@@ -229,7 +229,7 @@ public class OperationsClass
     stringBuffer.append(genModel.getNonNLS());
     stringBuffer.append(TEXT_22);
     }
-    if (UML2GenModelUtil.hasOCLOperationBodies(genClass) && !UML2GenModelUtil.hasOCLOperationBodies(genClass.getClassExtendsGenClass())) {
+    if (UML2GenModelUtil.hasOCLOperationBodies(genClass) && (!UML2GenModelUtil.hasOCLOperationBodies(genClass.getClassExtendsGenClass()) || !UML2GenModelUtil.isOperationsClasses(genClass.getClassExtendsGenClass().getGenPackage()))) {
     stringBuffer.append(TEXT_23);
     stringBuffer.append(genModel.getImportedName("org.eclipse.ocl.ecore.OCL"));
     stringBuffer.append(TEXT_24);
