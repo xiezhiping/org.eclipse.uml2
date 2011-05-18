@@ -9,9 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 206636, 204200
  *   Lutz Wrage - 241411
- *   Kenn Hussey - 286329, 323181, 344908
+ *   Kenn Hussey - 286329, 323181, 344908, 346183
  *
- * $Id: GenClassImpl.java,v 1.49 2011/05/06 03:02:05 khussey Exp $
+ * $Id: GenClassImpl.java,v 1.50 2011/05/18 02:59:30 khussey Exp $
  */
 package org.eclipse.uml2.codegen.ecore.genmodel.impl;
 
@@ -1473,6 +1473,23 @@ public class GenClassImpl
 		}
 
 		return false;
+	}
+
+	@Override
+	public String getUniqueName(GenOperation genOperation) {
+		GenOperation redefinedGenOperation = genOperation;
+
+		while (UML2GenModelUtil.isDuplicate(redefinedGenOperation)) {
+			List<GenOperation> redefinedGenOperations = UML2GenModelUtil.getRedefinedGenOperations(redefinedGenOperation);
+
+			if (redefinedGenOperations.size() > 0) {
+				redefinedGenOperation = redefinedGenOperations.get(0);
+			} else {
+				break;
+			}
+		}
+
+		return super.getUniqueName(redefinedGenOperation);
 	}
 
 }
