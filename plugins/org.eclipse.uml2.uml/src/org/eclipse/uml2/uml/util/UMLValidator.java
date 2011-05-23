@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,9 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 204200
- *   Kenn Hussey - 286329, 320318, 323000
+ *   Kenn Hussey - 286329, 320318, 323000, 323181
  *
- * $Id: UMLValidator.java,v 1.30 2010/10/26 20:28:03 khussey Exp $
+ * $Id: UMLValidator.java,v 1.31 2011/05/23 17:47:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -8984,27 +8984,8 @@ public class UMLValidator
 	public boolean validateProtocolStateMachine_validateClassifierContext(
 			ProtocolStateMachine protocolStateMachine,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateClassifierContext", getObjectLabel(protocolStateMachine, context)}, //$NON-NLS-1$
-						new Object[]{protocolStateMachine}, context));
-			}
-			return false;
-		}
-		return validateStateMachine_validateClassifierContext(
-			protocolStateMachine, diagnostics, context);
+		return protocolStateMachine.validateClassifierContext(diagnostics,
+			context);
 	}
 
 	/**
@@ -17011,27 +16992,8 @@ public class UMLValidator
 	public boolean validateReadStructuralFeatureAction_validateMultiplicity(
 			ReadStructuralFeatureAction readStructuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateMultiplicity", getObjectLabel(readStructuralFeatureAction, context)}, //$NON-NLS-1$
-						new Object[]{readStructuralFeatureAction}, context));
-			}
-			return false;
-		}
-		return validateStructuralFeatureAction_validateMultiplicity(
-			readStructuralFeatureAction, diagnostics, context);
+		return readStructuralFeatureAction.validateMultiplicity(diagnostics,
+			context);
 	}
 
 	/**
@@ -17170,27 +17132,8 @@ public class UMLValidator
 	public boolean validateWriteStructuralFeatureAction_validateMultiplicity(
 			WriteStructuralFeatureAction writeStructuralFeatureAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateMultiplicity", getObjectLabel(writeStructuralFeatureAction, context)}, //$NON-NLS-1$
-						new Object[]{writeStructuralFeatureAction}, context));
-			}
-			return false;
-		}
-		return validateStructuralFeatureAction_validateMultiplicity(
-			writeStructuralFeatureAction, diagnostics, context);
+		return writeStructuralFeatureAction.validateMultiplicity(diagnostics,
+			context);
 	}
 
 	/**
@@ -19968,27 +19911,8 @@ public class UMLValidator
 	public boolean validateCallOperationAction_validateTypeOrderingMultiplicity(
 			CallOperationAction callOperationAction,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateTypeOrderingMultiplicity", getObjectLabel(callOperationAction, context)}, //$NON-NLS-1$
-						new Object[]{callOperationAction}, context));
-			}
-			return false;
-		}
-		return validateCallAction_validateTypeOrderingMultiplicity(
-			callOperationAction, diagnostics, context);
+		return callOperationAction.validateTypeOrderingMultiplicity(
+			diagnostics, context);
 	}
 
 	/**
@@ -20108,27 +20032,8 @@ public class UMLValidator
 	public boolean validateCallBehaviorAction_validateTypeOrderingMultiplicity(
 			CallBehaviorAction callBehaviorAction, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateTypeOrderingMultiplicity", getObjectLabel(callBehaviorAction, context)}, //$NON-NLS-1$
-						new Object[]{callBehaviorAction}, context));
-			}
-			return false;
-		}
-		return validateCallAction_validateTypeOrderingMultiplicity(
-			callBehaviorAction, diagnostics, context);
+		return callBehaviorAction.validateTypeOrderingMultiplicity(diagnostics,
+			context);
 	}
 
 	/**
@@ -25193,27 +25098,7 @@ public class UMLValidator
 	public boolean validateCommunicationPath_validateAssociationEnds(
 			CommunicationPath communicationPath, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO override the constraint, if desired
-		// -> uncomment the scaffolding
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(createDiagnostic(
-						Diagnostic.ERROR,
-						DIAGNOSTIC_SOURCE,
-						0,
-						"_UI_GenericConstraint_diagnostic", //$NON-NLS-1$
-						new Object[]{
-							"validateAssociationEnds", getObjectLabel(communicationPath, context)}, //$NON-NLS-1$
-						new Object[]{communicationPath}, context));
-			}
-			return false;
-		}
-		return validateAssociation_validateAssociationEnds(communicationPath,
-			diagnostics, context);
+		return communicationPath.validateAssociationEnds(diagnostics, context);
 	}
 
 	/**
