@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_ihtF8L5MEeCUg9_01zj7Og" name="L2" metamodelReference="_qhsNEMlJEeCA2KY6CawwCg">
+    <packageImport xmi:id="_qhsNEMlJEeCA2KY6CawwCg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhs0IMlJEeCA2KY6CawwCg" name="Abstraction_Derive" memberEnd="_qhs0IclJEeCA2KY6CawwCg _qh0v8slJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhs0IclJEeCA2KY6CawwCg" name="extension_Derive" visibility="public" type="_qh0v8MlJEeCA2KY6CawwCg" aggregation="composite" association="_qhs0IMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhs0IslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhs0I8lJEeCA2KY6CawwCg" name="Abstraction_Refine" memberEnd="_qhs0JMlJEeCA2KY6CawwCg _qh5BZ8lJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhs0JMlJEeCA2KY6CawwCg" name="extension_Refine" visibility="public" type="_qh5BZclJEeCA2KY6CawwCg" aggregation="composite" association="_qhs0I8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhs0JclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhuCQMlJEeCA2KY6CawwCg" name="Abstraction_Trace" memberEnd="_qhuCQclJEeCA2KY6CawwCg _qh6Pi8lJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhuCQclJEeCA2KY6CawwCg" name="extension_Trace" visibility="public" type="_qh6PiclJEeCA2KY6CawwCg" aggregation="composite" association="_qhuCQMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhuCQslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhupUMlJEeCA2KY6CawwCg" name="Artifact_Document" memberEnd="_qhupUclJEeCA2KY6CawwCg _qh1XA8lJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhupUclJEeCA2KY6CawwCg" name="extension_Document" visibility="public" type="_qh1XAMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhupUMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhupUslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhupU8lJEeCA2KY6CawwCg" name="Artifact_Executable" memberEnd="_qhupVMlJEeCA2KY6CawwCg _qh1XCslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhupVMlJEeCA2KY6CawwCg" name="extension_Executable" visibility="public" type="_qh1XB8lJEeCA2KY6CawwCg" aggregation="composite" association="_qhupU8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhupVclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhupVslJEeCA2KY6CawwCg" name="Artifact_File" memberEnd="_qhupV8lJEeCA2KY6CawwCg _qh1XDclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhupV8lJEeCA2KY6CawwCg" name="extension_File" visibility="public" type="_qh1XC8lJEeCA2KY6CawwCg" aggregation="composite" association="_qhupVslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhupWMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhvQYMlJEeCA2KY6CawwCg" name="Artifact_Library" memberEnd="_qhvQYclJEeCA2KY6CawwCg _qh2lLclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhvQYclJEeCA2KY6CawwCg" name="extension_Library" visibility="public" type="_qh2lKslJEeCA2KY6CawwCg" aggregation="composite" association="_qhvQYMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhvQYslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhvQY8lJEeCA2KY6CawwCg" name="Artifact_Script" memberEnd="_qhvQZMlJEeCA2KY6CawwCg _qh5BbslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhvQZMlJEeCA2KY6CawwCg" name="extension_Script" visibility="public" type="_qh5Ba8lJEeCA2KY6CawwCg" aggregation="composite" association="_qhvQY8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhvQZclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhvQZslJEeCA2KY6CawwCg" name="Artifact_Source" memberEnd="_qhvQZ8lJEeCA2KY6CawwCg _qh6PgMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhvQZ8lJEeCA2KY6CawwCg" name="extension_Source" visibility="public" type="_qh5oeMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhvQZslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhvQaMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhv3cMlJEeCA2KY6CawwCg" name="BehavioralFeature_Create" memberEnd="_qhv3cclJEeCA2KY6CawwCg _qh0I6clJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhv3cclJEeCA2KY6CawwCg" name="extension_Create" visibility="public" type="_qh0I5clJEeCA2KY6CawwCg" aggregation="composite" association="_qhv3cMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhv3cslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhv3c8lJEeCA2KY6CawwCg" name="BehavioralFeature_Destroy" memberEnd="_qhv3dMlJEeCA2KY6CawwCg _qh0v-clJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhv3dMlJEeCA2KY6CawwCg" name="extension_Destroy" visibility="public" type="_qh0v98lJEeCA2KY6CawwCg" aggregation="composite" association="_qhv3c8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhv3dclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhv3dslJEeCA2KY6CawwCg" name="Class_Auxiliary" memberEnd="_qhv3d8lJEeCA2KY6CawwCg _qhzh1clJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhv3d8lJEeCA2KY6CawwCg" name="extension_Auxiliary" visibility="public" type="_qhzh08lJEeCA2KY6CawwCg" aggregation="composite" association="_qhv3dslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhv3eMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhv3eclJEeCA2KY6CawwCg" name="Class_Focus" memberEnd="_qhv3eslJEeCA2KY6CawwCg _qh1-EslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhv3eslJEeCA2KY6CawwCg" name="extension_Focus" visibility="public" type="_qh1-EMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhv3eclJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhv3e8lJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhwegMlJEeCA2KY6CawwCg" name="Class_ImplementationClass" memberEnd="_qhwegclJEeCA2KY6CawwCg _qh2lJMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhwegclJEeCA2KY6CawwCg" name="extension_ImplementationClass" visibility="public" type="_qh2lIMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhwegMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhwegslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhweg8lJEeCA2KY6CawwCg" name="Class_Metaclass" memberEnd="_qhwehMlJEeCA2KY6CawwCg _qh3MMslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhwehMlJEeCA2KY6CawwCg" name="extension_Metaclass" visibility="public" type="_qh3MMMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhweg8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhwehclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhwehslJEeCA2KY6CawwCg" name="Class_Type" memberEnd="_qhweh8lJEeCA2KY6CawwCg _qh62lMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhweh8lJEeCA2KY6CawwCg" name="extension_Type" visibility="public" type="_qh62kMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhwehslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhweiMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxFkMlJEeCA2KY6CawwCg" name="Class_Utility" memberEnd="_qhxFkclJEeCA2KY6CawwCg _qh62mclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxFkclJEeCA2KY6CawwCg" name="extension_Utility" visibility="public" type="_qh62lclJEeCA2KY6CawwCg" aggregation="composite" association="_qhxFkMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxFkslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxFk8lJEeCA2KY6CawwCg" name="Classifier_Realization" memberEnd="_qhxFlMlJEeCA2KY6CawwCg _qh5BZMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxFlMlJEeCA2KY6CawwCg" name="extension_Realization" visibility="public" type="_qh5BYMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhxFk8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxFlclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxFlslJEeCA2KY6CawwCg" name="Classifier_Specification" memberEnd="_qhxFl8lJEeCA2KY6CawwCg _qh6PhclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxFl8lJEeCA2KY6CawwCg" name="extension_Specification" visibility="public" type="_qh6PgclJEeCA2KY6CawwCg" aggregation="composite" association="_qhxFlslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxFmMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxsoMlJEeCA2KY6CawwCg" name="Component_Entity" memberEnd="_qhxsoclJEeCA2KY6CawwCg _qh1XBslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxsoclJEeCA2KY6CawwCg" name="extension_Entity" visibility="public" type="_qh1XBMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhxsoMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxsoslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxso8lJEeCA2KY6CawwCg" name="Component_Implement" memberEnd="_qhxspMlJEeCA2KY6CawwCg _qh1-GslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxspMlJEeCA2KY6CawwCg" name="extension_Implement" visibility="public" type="_qh1-FslJEeCA2KY6CawwCg" aggregation="composite" association="_qhxso8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxspclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhxspslJEeCA2KY6CawwCg" name="Component_Process" memberEnd="_qhxsp8lJEeCA2KY6CawwCg _qh4aVclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhxsp8lJEeCA2KY6CawwCg" name="extension_Process" visibility="public" type="_qh4aU8lJEeCA2KY6CawwCg" aggregation="composite" association="_qhxspslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhxsqMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhyTsMlJEeCA2KY6CawwCg" name="Component_Service" memberEnd="_qhyTsclJEeCA2KY6CawwCg _qh5od8lJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhyTsclJEeCA2KY6CawwCg" name="extension_Service" visibility="public" type="_qh5odclJEeCA2KY6CawwCg" aggregation="composite" association="_qhyTsMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhyTsslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhyTs8lJEeCA2KY6CawwCg" name="Component_Subsystem" memberEnd="_qhyTtMlJEeCA2KY6CawwCg _qh6PiMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhyTtMlJEeCA2KY6CawwCg" name="extension_Subsystem" visibility="public" type="_qh6PhslJEeCA2KY6CawwCg" aggregation="composite" association="_qhyTs8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhyTtclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhyTtslJEeCA2KY6CawwCg" name="Package_Framework" memberEnd="_qhyTt8lJEeCA2KY6CawwCg _qh1-FclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhyTt8lJEeCA2KY6CawwCg" name="extension_Framework" visibility="public" type="_qh1-E8lJEeCA2KY6CawwCg" aggregation="composite" association="_qhyTtslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhyTuMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhyTuclJEeCA2KY6CawwCg" name="Package_ModelLibrary" memberEnd="_qhyTuslJEeCA2KY6CawwCg _qh4aUslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhyTuslJEeCA2KY6CawwCg" name="extension_ModelLibrary" visibility="public" type="_qh4aUMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhyTuclJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhyTu8lJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhy6wMlJEeCA2KY6CawwCg" name="Usage_Call" memberEnd="_qhy6wclJEeCA2KY6CawwCg _qh0I5MlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhy6wclJEeCA2KY6CawwCg" name="extension_Call" visibility="public" type="_qh0I4MlJEeCA2KY6CawwCg" aggregation="composite" association="_qhy6wMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhy6wslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhy6w8lJEeCA2KY6CawwCg" name="Usage_Create" memberEnd="_qhy6xMlJEeCA2KY6CawwCg _qh0I6slJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhy6xMlJEeCA2KY6CawwCg" name="extension_Create" visibility="public" type="_qh0I5clJEeCA2KY6CawwCg" aggregation="composite" association="_qhy6w8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhy6xclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhy6xslJEeCA2KY6CawwCg" name="Usage_Instantiate" memberEnd="_qhy6x8lJEeCA2KY6CawwCg _qh2lKclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhy6x8lJEeCA2KY6CawwCg" name="extension_Instantiate" visibility="public" type="_qh2lJclJEeCA2KY6CawwCg" aggregation="composite" association="_qhy6xslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhy6yMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhy6yclJEeCA2KY6CawwCg" name="Usage_Responsibility" memberEnd="_qhy6yslJEeCA2KY6CawwCg _qh5BaslJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhy6yslJEeCA2KY6CawwCg" name="extension_Responsibility" visibility="public" type="_qh5BaMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhy6yclJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhy6y8lJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qhzh0MlJEeCA2KY6CawwCg" name="Usage_Send" memberEnd="_qhzh0clJEeCA2KY6CawwCg _qh5odMlJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qhzh0clJEeCA2KY6CawwCg" name="extension_Send" visibility="public" type="_qh5ocMlJEeCA2KY6CawwCg" aggregation="composite" association="_qhzh0MlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qhzh0slJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qhzh08lJEeCA2KY6CawwCg" name="Auxiliary">
+      <ownedComment xmi:id="_qhzh1MlJEeCA2KY6CawwCg" annotatedElement="_qhzh08lJEeCA2KY6CawwCg">
+        <body>A class that supports another more central or fundamental class, typically by implementing secondary logic or control flow. The class that the auxiliary supports may be defined explicitly using a Focus class or implicitly as the supplier of dependency relationship whose client is an auxiliary class. Auxiliary classes are typically used together with Focus classes, and are particularly useful for specifying the secondary business logic or control flow of components during design. See also: «Focus».</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qhzh1clJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhv3dslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh0I4MlJEeCA2KY6CawwCg" name="Call">
+      <ownedComment xmi:id="_qh0I4clJEeCA2KY6CawwCg" annotatedElement="_qh0I4MlJEeCA2KY6CawwCg">
+        <body>A usage dependency whose source is an operation and whose target is an operation. The relationship may also be subsumed to the class containing an operation, with the meaning that there exists an operation in the class to which the dependency applies. A call dependency specifies that the source operation or an operation in the source class invokes the target operation or an operation in the target class. A call dependency may connect a source operation to any target operation that is within scope including, but not limited to, operations of the enclosing classifier and operations of other visible classifiers.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh0I4slJEeCA2KY6CawwCg" name="client_and_supplier_are_operations" constrainedElement="_qh0I4MlJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh0I48lJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Usage.client->forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier->forAll(oclIsKindOf(Operation))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh0I5MlJEeCA2KY6CawwCg" name="base_Usage" visibility="public" association="_qhy6wMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh0I5clJEeCA2KY6CawwCg" name="Create">
+      <ownedComment xmi:id="_qh0I5slJEeCA2KY6CawwCg" annotatedElement="_qh0I5clJEeCA2KY6CawwCg">
+        <body>When applied to a usage dependency, it specifies that the client classifier creates instances of the supplier classifier. When applied to a BehavioralFeature, it specifies that the designated feature creates an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh0I58lJEeCA2KY6CawwCg" name="client_and_supplier_are_classifiers" constrainedElement="_qh0I5clJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh0I6MlJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Usage->notEmpty() implies (self.base_Usage.client->forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier->forAll(oclIsKindOf(Classifier)))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh0I6clJEeCA2KY6CawwCg" name="base_BehavioralFeature" visibility="public" association="_qhv3cMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#BehavioralFeature"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qh0I6slJEeCA2KY6CawwCg" name="base_Usage" visibility="public" association="_qhy6w8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh0v8MlJEeCA2KY6CawwCg" name="Derive">
+      <ownedComment xmi:id="_qh0v8clJEeCA2KY6CawwCg" annotatedElement="_qh0v8MlJEeCA2KY6CawwCg">
+        <body>Specifies a derivation relationship among model elements that are usually, but not necessarily, of the same type. A derived dependency specifies that the client may be computed from the supplier. The mapping specifies the computation. The client may be implemented for design reasons, such as efficiency, even though it is logically redundant.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh0v8slJEeCA2KY6CawwCg" name="base_Abstraction" visibility="public" association="_qhs0IMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Abstraction"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_qh0v88lJEeCA2KY6CawwCg" name="computation" visibility="public" aggregation="composite">
+        <ownedComment xmi:id="_qh0v9MlJEeCA2KY6CawwCg" annotatedElement="_qh0v88lJEeCA2KY6CawwCg">
+          <body>The specification for computing the derived client element from the derivation supplier element.</body>
+        </ownedComment>
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#ValueSpecification"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qh0v9clJEeCA2KY6CawwCg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qh0v9slJEeCA2KY6CawwCg" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh0v98lJEeCA2KY6CawwCg" name="Destroy">
+      <ownedComment xmi:id="_qh0v-MlJEeCA2KY6CawwCg" annotatedElement="_qh0v98lJEeCA2KY6CawwCg">
+        <body>Specifies that the designated feature destroys an instance of the classifier to which the feature is attached.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh0v-clJEeCA2KY6CawwCg" name="base_BehavioralFeature" visibility="public" association="_qhv3c8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#BehavioralFeature"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1XAMlJEeCA2KY6CawwCg" name="Document">
+      <ownedComment xmi:id="_qh1XAclJEeCA2KY6CawwCg" annotatedElement="_qh1XAMlJEeCA2KY6CawwCg">
+        <body>A specific kind of file that is not an «Executable», «Library», «Script» or «Source». Subclass of «File».</body>
+      </ownedComment>
+      <generalization xmi:id="_qh1XAslJEeCA2KY6CawwCg" general="_qh1XC8lJEeCA2KY6CawwCg"/>
+      <ownedAttribute xmi:id="_qh1XA8lJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" redefinedProperty="_qh1XDclJEeCA2KY6CawwCg" association="_qhupUMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1XBMlJEeCA2KY6CawwCg" name="Entity">
+      <ownedComment xmi:id="_qh1XBclJEeCA2KY6CawwCg" annotatedElement="_qh1XBMlJEeCA2KY6CawwCg">
+        <body>A persistent information component representing a business concept.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh1XBslJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_qhxsoMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1XB8lJEeCA2KY6CawwCg" name="Executable">
+      <ownedComment xmi:id="_qh1XCMlJEeCA2KY6CawwCg" annotatedElement="_qh1XB8lJEeCA2KY6CawwCg">
+        <body>A program file that can be executed on a computer system. Subclass of «File».</body>
+      </ownedComment>
+      <generalization xmi:id="_qh1XCclJEeCA2KY6CawwCg" general="_qh1XC8lJEeCA2KY6CawwCg"/>
+      <ownedAttribute xmi:id="_qh1XCslJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" redefinedProperty="_qh1XDclJEeCA2KY6CawwCg" association="_qhupU8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1XC8lJEeCA2KY6CawwCg" name="File" isAbstract="true">
+      <ownedComment xmi:id="_qh1XDMlJEeCA2KY6CawwCg" annotatedElement="_qh1XC8lJEeCA2KY6CawwCg">
+        <body>A physical file in the context of the system developed.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh1XDclJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" association="_qhupVslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1-EMlJEeCA2KY6CawwCg" name="Focus">
+      <ownedComment xmi:id="_qh1-EclJEeCA2KY6CawwCg" annotatedElement="_qh1-EMlJEeCA2KY6CawwCg">
+        <body>A class that defines the core logic or control flow for one or more auxiliary classes that support it. Support classes may be defined explicitly using Auxiliary classes or implicitly as clients of dependency relationships whose supplier is a focus class. Focus classes are typically used together with one or more Auxiliary classes, and are particularly useful for specifying the core business logic or control flow of components during design. See also: «Auxiliary».</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh1-EslJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhv3eclJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1-E8lJEeCA2KY6CawwCg" name="Framework">
+      <ownedComment xmi:id="_qh1-FMlJEeCA2KY6CawwCg" annotatedElement="_qh1-E8lJEeCA2KY6CawwCg">
+        <body>A package that contains model elements that specify a reusable architecture for all or part of a system. Frameworks typically include classes, patterns, or templates. When frameworks are specialized for an application domain they are sometimes referred to as application frameworks.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh1-FclJEeCA2KY6CawwCg" name="base_Package" visibility="public" association="_qhyTtslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh1-FslJEeCA2KY6CawwCg" name="Implement">
+      <ownedComment xmi:id="_qh1-F8lJEeCA2KY6CawwCg" annotatedElement="_qh1-FslJEeCA2KY6CawwCg">
+        <body>A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate «Specification» to which it has a Dependency.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh1-GMlJEeCA2KY6CawwCg" name="implements_specification" constrainedElement="_qh1-FslJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh1-GclJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Component.clientDependency.supplier->select(oclIsKindOf(Classifier)).oclAsType(Classifier).extension_Specificaiton->notEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh1-GslJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_qhxso8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh2lIMlJEeCA2KY6CawwCg" name="ImplementationClass">
+      <ownedComment xmi:id="_qh2lIclJEeCA2KY6CawwCg" annotatedElement="_qh2lIMlJEeCA2KY6CawwCg">
+        <body>The implementation of a class in some programming language (e.g., C++, Smalltalk, Java) in which an instance may not have more than one class. This is in contrast to Class, for which an instance may have multiple classes at one time and may gain or lose classes over time, and an object (a child of instance) may dynamically have multiple classes. An Implementation class is said to realize a Classifier if it provides all of the operations defined for the Classifier with the same behavior as specified for the Classifier's operations. An Implementation Class may realize a number of different Types. Note that the physical attributes and associations of the Implementation class do not have to be the same as those of any Classifier it realizes and that the Implementation Class may provide methods for its operations in terms of its physical attributes and associations. See also: «Type».</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh2lIslJEeCA2KY6CawwCg" name="cannot_be_realization" constrainedElement="_qh2lIMlJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh2lI8lJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Realization->isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh2lJMlJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhwegMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh2lJclJEeCA2KY6CawwCg" name="Instantiate">
+      <ownedComment xmi:id="_qh2lJslJEeCA2KY6CawwCg" annotatedElement="_qh2lJclJEeCA2KY6CawwCg">
+        <body>A usage dependency among classifiers indicating that operations on the client create instances of the supplier.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh2lJ8lJEeCA2KY6CawwCg" name="client_and_supplier_are_classifiers" constrainedElement="_qh2lJclJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh2lKMlJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Usage.client->forAll(oclIsKindOf(Classifier)) and self.base_Usage.supplier->forAll(oclIsKindOf(Classifier))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh2lKclJEeCA2KY6CawwCg" name="base_Usage" visibility="public" association="_qhy6xslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh2lKslJEeCA2KY6CawwCg" name="Library">
+      <ownedComment xmi:id="_qh2lK8lJEeCA2KY6CawwCg" annotatedElement="_qh2lKslJEeCA2KY6CawwCg">
+        <body>A static or dynamic library file. Subclass of «File».</body>
+      </ownedComment>
+      <generalization xmi:id="_qh2lLMlJEeCA2KY6CawwCg" general="_qh1XC8lJEeCA2KY6CawwCg"/>
+      <ownedAttribute xmi:id="_qh2lLclJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" redefinedProperty="_qh1XDclJEeCA2KY6CawwCg" association="_qhvQYMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh3MMMlJEeCA2KY6CawwCg" name="Metaclass">
+      <ownedComment xmi:id="_qh3MMclJEeCA2KY6CawwCg" annotatedElement="_qh3MMMlJEeCA2KY6CawwCg">
+        <body>A class whose instances are also classes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh3MMslJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhweg8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh4aUMlJEeCA2KY6CawwCg" name="ModelLibrary">
+      <ownedComment xmi:id="_qh4aUclJEeCA2KY6CawwCg" annotatedElement="_qh4aUMlJEeCA2KY6CawwCg">
+        <body>A package that contains model elements that are intended to be reused by other packages. Model libraries are frequently used in conjunction with applied profiles. This is expressed by defining a dependency between a profile and a model library package, or by defining a model library as contained in a profile package. The classes in a model library are not stereotypes and tagged definitions extending the metamodel. A model library is analogous to a class library in some programming languages. When a model library is defined as a part of a profile, it is imported or deleted with the application or removal of the profile. The profile is implicitly applied to its model library. In the other case, when the model library is defined as an external package imported by a profile, the profile requires that the model library be there in the model at the stage of the profile application. The application or the removal of the profile does not affect the presence of the model library elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh4aUslJEeCA2KY6CawwCg" name="base_Package" visibility="public" association="_qhyTuclJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh4aU8lJEeCA2KY6CawwCg" name="Process">
+      <ownedComment xmi:id="_qh4aVMlJEeCA2KY6CawwCg" annotatedElement="_qh4aU8lJEeCA2KY6CawwCg">
+        <body>A transaction based component.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh4aVclJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_qhxspslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5BYMlJEeCA2KY6CawwCg" name="Realization">
+      <ownedComment xmi:id="_qh5BYclJEeCA2KY6CawwCg" annotatedElement="_qh5BYMlJEeCA2KY6CawwCg">
+        <body>A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by «realization» will only have realizing Classifiers that implement behavior specified by a separate «Specification» Component. See «specification». This differs from «ImplementationClass» because an «ImplementationClass» is a realization of a Class that can have features such as attributes and methods that are useful to system designers.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh5BYslJEeCA2KY6CawwCg" name="cannot_be_implementationClass" constrainedElement="_qh5BYMlJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh5BY8lJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_ImplementationClass->isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh5BZMlJEeCA2KY6CawwCg" name="base_Classifier" visibility="public" association="_qhxFk8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5BZclJEeCA2KY6CawwCg" name="Refine">
+      <ownedComment xmi:id="_qh5BZslJEeCA2KY6CawwCg" annotatedElement="_qh5BZclJEeCA2KY6CawwCg">
+        <body>Specifies a refinement relationship between model elements at different semantic levels, such as analysis and design. The mapping specifies the relationship between the two elements or sets of elements. The mapping may or may not be computable, and it may be unidirectional or bidirectional. Refinement can be used to model transformations from analysis to design and other such changes.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh5BZ8lJEeCA2KY6CawwCg" name="base_Abstraction" visibility="public" association="_qhs0I8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Abstraction"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5BaMlJEeCA2KY6CawwCg" name="Responsibility">
+      <ownedComment xmi:id="_qh5BaclJEeCA2KY6CawwCg" annotatedElement="_qh5BaMlJEeCA2KY6CawwCg">
+        <body>A contract or an obligation of an element in its relationship to other elements.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh5BaslJEeCA2KY6CawwCg" name="base_Usage" visibility="public" association="_qhy6yclJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5Ba8lJEeCA2KY6CawwCg" name="Script">
+      <ownedComment xmi:id="_qh5BbMlJEeCA2KY6CawwCg" annotatedElement="_qh5Ba8lJEeCA2KY6CawwCg">
+        <body>A script file that can be interpreted by a computer system. Subclass of «File».</body>
+      </ownedComment>
+      <generalization xmi:id="_qh5BbclJEeCA2KY6CawwCg" general="_qh1XC8lJEeCA2KY6CawwCg"/>
+      <ownedAttribute xmi:id="_qh5BbslJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" redefinedProperty="_qh1XDclJEeCA2KY6CawwCg" association="_qhvQY8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5ocMlJEeCA2KY6CawwCg" name="Send">
+      <ownedComment xmi:id="_qh5occlJEeCA2KY6CawwCg" annotatedElement="_qh5ocMlJEeCA2KY6CawwCg">
+        <body>A usage dependency whose client is an operation and whose supplier is a signal, specifying that the client sends the supplier signal.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh5ocslJEeCA2KY6CawwCg" name="client_operation_sends_supplier_signal" constrainedElement="_qh5ocMlJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh5oc8lJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Usage.client->forAll(oclIsKindOf(Operation)) and self.base_Usage.supplier->forAll(oclIsKindOf(Signal))</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh5odMlJEeCA2KY6CawwCg" name="base_Usage" visibility="public" association="_qhzh0MlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5odclJEeCA2KY6CawwCg" name="Service">
+      <ownedComment xmi:id="_qh5odslJEeCA2KY6CawwCg" annotatedElement="_qh5odclJEeCA2KY6CawwCg">
+        <body>A stateless, functional component (computes a value).</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh5od8lJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_qhyTsMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh5oeMlJEeCA2KY6CawwCg" name="Source">
+      <ownedComment xmi:id="_qh5oeclJEeCA2KY6CawwCg" annotatedElement="_qh5oeMlJEeCA2KY6CawwCg">
+        <body>A source file that can be compiled into an executable file. Subclass of «File».</body>
+      </ownedComment>
+      <generalization xmi:id="_qh5oeslJEeCA2KY6CawwCg" general="_qh1XC8lJEeCA2KY6CawwCg"/>
+      <ownedAttribute xmi:id="_qh6PgMlJEeCA2KY6CawwCg" name="base_Artifact" visibility="public" redefinedProperty="_qh1XDclJEeCA2KY6CawwCg" association="_qhvQZslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh6PgclJEeCA2KY6CawwCg" name="Specification">
+      <ownedComment xmi:id="_qh6PgslJEeCA2KY6CawwCg" annotatedElement="_qh6PgclJEeCA2KY6CawwCg">
+        <body>A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass».</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh6Pg8lJEeCA2KY6CawwCg" name="cannot_be_type" constrainedElement="_qh6PgclJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh6PhMlJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Classifier.extension_Type->isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh6PhclJEeCA2KY6CawwCg" name="base_Classifier" visibility="public" association="_qhxFlslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Classifier"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh6PhslJEeCA2KY6CawwCg" name="Subsystem">
+      <ownedComment xmi:id="_qh6Ph8lJEeCA2KY6CawwCg" annotatedElement="_qh6PhslJEeCA2KY6CawwCg">
+        <body>A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: «Specification» and «Realization».</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh6PiMlJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_qhyTs8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh6PiclJEeCA2KY6CawwCg" name="Trace">
+      <ownedComment xmi:id="_qh6PislJEeCA2KY6CawwCg" annotatedElement="_qh6PiclJEeCA2KY6CawwCg">
+        <body>Specifies a trace relationship between model elements or sets of model elements that represent the same concept in different models. Traces are mainly used for tracking requirements and changes across models. Since model changes can occur in both directions, the directionality of the dependency can often be ignored. The mapping specifies the relationship between the two, but it is rarely computable and is usually informal.</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_qh6Pi8lJEeCA2KY6CawwCg" name="base_Abstraction" visibility="public" association="_qhuCQMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Abstraction"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh62kMlJEeCA2KY6CawwCg" name="Type">
+      <ownedComment xmi:id="_qh62kclJEeCA2KY6CawwCg" annotatedElement="_qh62kMlJEeCA2KY6CawwCg">
+        <body>A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass».</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh62kslJEeCA2KY6CawwCg" name="cannot_be_specification" constrainedElement="_qh62kMlJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh62k8lJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Class.extension_Specification->isEmpty()</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh62lMlJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhwehslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_qh62lclJEeCA2KY6CawwCg" name="Utility">
+      <ownedComment xmi:id="_qh62lslJEeCA2KY6CawwCg" annotatedElement="_qh62lclJEeCA2KY6CawwCg">
+        <body>A class that has no instances, but rather denotes a named collection of static attributes and static operations, all of which are class-scoped.</body>
+      </ownedComment>
+      <ownedRule xmi:id="_qh62l8lJEeCA2KY6CawwCg" name="is_utility" constrainedElement="_qh62lclJEeCA2KY6CawwCg">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_qh62mMlJEeCA2KY6CawwCg">
+          <language>OCL</language>
+          <body>self.base_Class.feature->forAll(isStatic)</body>
+        </specification>
+      </ownedRule>
+      <ownedAttribute xmi:id="_qh62mclJEeCA2KY6CawwCg" name="base_Class" visibility="public" association="_qhxFkMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_6ryEUL5MEeCUg9_01zj7Og">
+      <eAnnotations xmi:id="_6ryrYL5MEeCUg9_01zj7Og" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_7-6gIL5MEeCUg9_01zj7Og" base_Package="_ihtF8L5MEeCUg9_01zj7Og" packageName="l2" nsPrefix="l2" nsURI="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2" basePackage="org.eclipse.uml2.uml.profile" prefix="L2"/>
+</xmi:XMI>
