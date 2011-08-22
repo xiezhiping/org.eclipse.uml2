@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
- * $Id: GenerateStandardStereotypesAction.java,v 1.4 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
@@ -20,7 +20,7 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 
-public class GenerateStandardStereotypesAction
+public class GenerateStandardL2StereotypesAction
 		extends GenerateProfileAction {
 
 	@Override
@@ -39,13 +39,6 @@ public class GenerateStandardStereotypesAction
 							profile, UMLPackage.Literals.CLASS);
 						generateExtension(auxiliaryStereotype, classMetaclass,
 							false);
-
-						Stereotype buildComponentStereotype = generateOwnedStereotype(
-							profile, "BuildComponent", false); //$NON-NLS-1$
-						org.eclipse.uml2.uml.Class componentMetaclass = getReferencedUMLMetaclass(
-							profile, UMLPackage.Literals.COMPONENT);
-						generateExtension(buildComponentStereotype,
-							componentMetaclass, false);
 
 						Stereotype callStereotype = generateOwnedStereotype(
 							profile, "Call", false); //$NON-NLS-1$
@@ -68,6 +61,10 @@ public class GenerateStandardStereotypesAction
 							profile, UMLPackage.Literals.ABSTRACTION);
 						generateExtension(deriveStereotype,
 							abstractionMetaclass, false);
+						org.eclipse.uml2.uml.Class valueSpecificationMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.VALUE_SPECIFICATION);
+						generateOwnedAttribute(deriveStereotype, "computation", //$NON-NLS-1$
+							valueSpecificationMetaclass, 1, 1);
 
 						Stereotype destroyStereotype = generateOwnedStereotype(
 							profile, "Destroy", false); //$NON-NLS-1$
@@ -83,6 +80,8 @@ public class GenerateStandardStereotypesAction
 
 						Stereotype entityStereotype = generateOwnedStereotype(
 							profile, "Entity", false); //$NON-NLS-1$
+						org.eclipse.uml2.uml.Class componentMetaclass = getReferencedUMLMetaclass(
+							profile, UMLPackage.Literals.COMPONENT);
 						generateExtension(entityStereotype, componentMetaclass,
 							false);
 
@@ -92,9 +91,11 @@ public class GenerateStandardStereotypesAction
 							artifactMetaclass, false);
 
 						Stereotype fileStereotype = generateOwnedStereotype(
-							profile, "File", false); //$NON-NLS-1$
+							profile, "File", true); //$NON-NLS-1$
 						generateExtension(fileStereotype, artifactMetaclass,
 							false);
+						generateGeneralization(documentStereotype, fileStereotype);
+						generateGeneralization(executableStereotype, fileStereotype);
 
 						Stereotype focusStereotype = generateOwnedStereotype(
 							profile, "Focus", false); //$NON-NLS-1$
@@ -127,17 +128,11 @@ public class GenerateStandardStereotypesAction
 							profile, "Library", false); //$NON-NLS-1$
 						generateExtension(libraryStereotype, artifactMetaclass,
 							false);
+						generateGeneralization(libraryStereotype, fileStereotype);
 
 						Stereotype metaclassStereotype = generateOwnedStereotype(
 							profile, "Metaclass", false); //$NON-NLS-1$
 						generateExtension(metaclassStereotype, classMetaclass,
-							false);
-
-						Stereotype metamodelStereotype = generateOwnedStereotype(
-							profile, "Metamodel", false); //$NON-NLS-1$
-						org.eclipse.uml2.uml.Class modelMetaclass = getReferencedUMLMetaclass(
-							profile, UMLPackage.Literals.MODEL);
-						generateExtension(metamodelStereotype, modelMetaclass,
 							false);
 
 						Stereotype modelLibraryStereotype = generateOwnedStereotype(
@@ -171,6 +166,7 @@ public class GenerateStandardStereotypesAction
 							profile, "Script", false); //$NON-NLS-1$
 						generateExtension(scriptStereotype, artifactMetaclass,
 							false);
+						generateGeneralization(scriptStereotype, fileStereotype);
 
 						Stereotype sendStereotype = generateOwnedStereotype(
 							profile, "Send", false); //$NON-NLS-1$
@@ -185,6 +181,7 @@ public class GenerateStandardStereotypesAction
 							profile, "Source", false); //$NON-NLS-1$
 						generateExtension(sourceStereotype, artifactMetaclass,
 							false);
+						generateGeneralization(sourceStereotype, fileStereotype);
 
 						Stereotype specificationStereotype = generateOwnedStereotype(
 							profile, "Specification", false); //$NON-NLS-1$
@@ -195,11 +192,6 @@ public class GenerateStandardStereotypesAction
 							profile, "Subsystem", false); //$NON-NLS-1$
 						generateExtension(subsystemStereotype,
 							componentMetaclass, false);
-
-						Stereotype systemModelStereotype = generateOwnedStereotype(
-							profile, "SystemModel", false); //$NON-NLS-1$
-						generateExtension(systemModelStereotype,
-							modelMetaclass, false);
 
 						Stereotype traceStereotype = generateOwnedStereotype(
 							profile, "Trace", false); //$NON-NLS-1$
@@ -218,7 +210,7 @@ public class GenerateStandardStereotypesAction
 						setIDs(profile);
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
-					"_UI_GenerateStandardStereotypesActionCommand_label", //$NON-NLS-1$
+					"_UI_GenerateStandardL2StereotypesActionCommand_label", //$NON-NLS-1$
 					new Object[]{getLabelProvider().getText(profile)})));
 		}
 	}

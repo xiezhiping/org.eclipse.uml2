@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,17 +7,23 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ConvertToModelLibraryAction.java,v 1.3 2007/01/04 18:47:13 khussey Exp $
  */
 package org.eclipse.uml2.examples.uml.ui.actions;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.uml2.examples.uml.ui.UMLExamplesUIPlugin;
-import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -31,21 +37,22 @@ public class ConvertToModelLibraryAction
 	public void run(IAction action) {
 
 		if (command != UnexecutableCommand.INSTANCE) {
-			final Model model = (Model) collection.iterator().next();
+			final org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) collection
+				.iterator().next();
 
 			editingDomain.getCommandStack().execute(
 				new RefreshingChangeCommand(editingDomain, new Runnable() {
 
 					public void run() {
-						EcoreUtil.resolveAll(model);
+						EcoreUtil.resolveAll(package_);
 
-						Profile umlProfile = applyProfile(model,
-							UMLResource.STANDARD_PROFILE_URI);
+						Profile l2Profile = applyProfile(package_,
+							UMLResource.STANDARD_L2_PROFILE_URI);
 
-						if (umlProfile != null) {
+						if (l2Profile != null) {
 							applyStereotype(
-								model,
-								umlProfile
+								package_,
+								l2Profile
 									.getOwnedStereotype(STEREOTYPE_NAME__MODEL_LIBRARY));
 						}
 
@@ -61,12 +68,25 @@ public class ConvertToModelLibraryAction
 
 								return this;
 							}
-						}.doSwitch(model);
+						}.doSwitch(package_);
 					}
 				}, UMLExamplesUIPlugin.INSTANCE.getString(
 					"_UI_ConvertToModelLibraryActionCommand_label", //$NON-NLS-1$
-					new Object[]{getLabelProvider().getText(model)})));
+					new Object[]{getLabelProvider().getText(package_)})));
 		}
+	}
+
+	@Override
+	protected Command createActionCommand(EditingDomain editingDomain,
+			Collection<?> collection) {
+
+		if (collection.size() == 1
+			&& collection.iterator().next() instanceof org.eclipse.uml2.uml.Package) {
+
+			return IdentityCommand.INSTANCE;
+		}
+
+		return UnexecutableCommand.INSTANCE;
 	}
 
 }
