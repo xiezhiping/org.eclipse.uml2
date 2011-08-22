@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_bcyzQMIyEeCDwPTas6MRfw" name="L3" metamodelReference="_9WrWEMlJEeCA2KY6CawwCg">
+    <packageImport xmi:id="_9WrWEMlJEeCA2KY6CawwCg">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_9WskMMlJEeCA2KY6CawwCg" name="Component_BuildComponent" memberEnd="_9WskMclJEeCA2KY6CawwCg _9WtLQclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9WskMclJEeCA2KY6CawwCg" name="extension_BuildComponent" visibility="public" type="_9WtLQMlJEeCA2KY6CawwCg" aggregation="composite" association="_9WskMMlJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9WskMslJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_9WskM8lJEeCA2KY6CawwCg" name="Model_Metamodel" memberEnd="_9WskNMlJEeCA2KY6CawwCg _9WtLQ8lJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9WskNMlJEeCA2KY6CawwCg" name="extension_Metamodel" visibility="public" type="_9WtLQslJEeCA2KY6CawwCg" aggregation="composite" association="_9WskM8lJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9WskNclJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_9WskNslJEeCA2KY6CawwCg" name="Model_SystemModel" memberEnd="_9WskN8lJEeCA2KY6CawwCg _9WtLRclJEeCA2KY6CawwCg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9WskN8lJEeCA2KY6CawwCg" name="extension_SystemModel" visibility="public" type="_9WtLRMlJEeCA2KY6CawwCg" aggregation="composite" association="_9WskNslJEeCA2KY6CawwCg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9WskOMlJEeCA2KY6CawwCg"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_9WtLQMlJEeCA2KY6CawwCg" name="BuildComponent">
+      <ownedAttribute xmi:id="_9WtLQclJEeCA2KY6CawwCg" name="base_Component" visibility="public" association="_9WskMMlJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_9WtLQslJEeCA2KY6CawwCg" name="Metamodel">
+      <ownedAttribute xmi:id="_9WtLQ8lJEeCA2KY6CawwCg" name="base_Model" visibility="public" association="_9WskM8lJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_9WtLRMlJEeCA2KY6CawwCg" name="SystemModel">
+      <ownedAttribute xmi:id="_9WtLRclJEeCA2KY6CawwCg" name="base_Model" visibility="public" association="_9WskNslJEeCA2KY6CawwCg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+      </ownedAttribute>
+    </packagedElement>
+    <profileApplication xmi:id="_or21kMIyEeCDwPTas6MRfw">
+      <eAnnotations xmi:id="_or88MMIyEeCDwPTas6MRfw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_pyGE4MIyEeCDwPTas6MRfw" base_Package="_bcyzQMIyEeCDwPTas6MRfw" packageName="l3" nsPrefix="l3" nsURI="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3" basePackage="org.eclipse.uml2.uml.profile" prefix="L3"/>
+</xmi:XMI>

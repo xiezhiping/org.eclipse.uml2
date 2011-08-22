@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_bcyzQMIyEeCDwPTas6MRfw" name="L3">
+    <packageMerge xmi:id="_h2x0IMIyEeCDwPTas6MRfw">
+      <mergedPackage xmi:type="uml:Profile" href="../../org.eclipse.uml2/model/StandardProfileL3.xmi#_0"/>
+    </packageMerge>
+    <profileApplication xmi:id="_or21kMIyEeCDwPTas6MRfw">
+      <eAnnotations xmi:id="_or88MMIyEeCDwPTas6MRfw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_pyGE4MIyEeCDwPTas6MRfw" base_Package="_bcyzQMIyEeCDwPTas6MRfw" packageName="l3" nsPrefix="l3" nsURI="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3" basePackage="org.eclipse.uml2.uml.profile" prefix="L3"/>
+</xmi:XMI>

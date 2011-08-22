@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ Copyright (c) 2011 CEA and others.
+ All rights reserved.   This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+ Contributors:
+   CEA - initial API and implementation
+
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+       uri="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3"
+       class="org.eclipse.uml2.uml.profile.l3.L3Package"
+       genModel="model/L3.genmodel"/>
+  </extension>
+
+  <extension point="org.eclipse.uml2.uml.generated_package">
+    <profile
+       uri="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3"
+       location="pathmap://UML_PROFILES/StandardL3.profile.uml#_0"/> 
+  </extension>
+
+</plugin>
