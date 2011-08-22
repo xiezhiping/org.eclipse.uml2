@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuralFeatureActionTest.java,v 1.5 2007/02/14 20:06:13 khussey Exp $
  */
@@ -21,10 +22,10 @@ import org.eclipse.uml2.uml.StructuralFeatureAction;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateOneFeaturingClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Featuring Classifier</em>}</li>
  * </ul>
  * </p>

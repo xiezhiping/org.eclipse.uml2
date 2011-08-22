@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RegionTest.java,v 1.6 2007/02/14 20:06:13 khussey Exp $
  */
@@ -30,17 +31,18 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionConsistent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Consistent</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateNonLeafRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Leaf Redefinition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.RedefinableElement#validateRedefinitionContextValid(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Redefinition Context Valid</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#validateInitialVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#validateDeepHistoryVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Deep History Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#validateShallowHistoryVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Shallow History Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#validateOwned(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Owned</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#redefinitionContext() <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#isRedefinitionContextValid(org.eclipse.uml2.uml.Region) <em>Is Redefinition Context Valid</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#containingStateMachine() <em>Containing State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#validateInitialVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#belongsToPSM() <em>Belongs To PSM</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#containingStateMachine() <em>Containing State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#isRedefinitionContextValid(org.eclipse.uml2.uml.Region) <em>Is Redefinition Context Valid</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#redefinitionContext() <em>Redefinition Context</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -134,6 +136,18 @@ public class RegionTest
 	 * @generated
 	 */
 	public void testValidateRedefinitionConsistent__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.RedefinableElement#validateNonLeafRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Non Leaf Redefinition</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.RedefinableElement#validateNonLeafRedefinition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNonLeafRedefinition__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

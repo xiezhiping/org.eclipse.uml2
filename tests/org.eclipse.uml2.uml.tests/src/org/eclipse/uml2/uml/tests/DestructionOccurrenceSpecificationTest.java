@@ -1,36 +1,35 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
+ *   CEA - initial API and implementation
  *
- * $Id: DestructionEventTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.uml2.uml.DestructionEvent;
+import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Destruction Event</b></em>'.
+ * A test case for the model object '<em><b>Destruction Occurrence Specification</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DestructionEvent#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Occurrence Specifications Below</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.DestructionOccurrenceSpecification#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Occurrence Specifications Below</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class DestructionEventTest
-		extends EventTest {
+public class DestructionOccurrenceSpecificationTest
+		extends MessageOccurrenceSpecificationTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -38,28 +37,28 @@ public class DestructionEventTest
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(DestructionEventTest.class);
+		TestRunner.run(DestructionOccurrenceSpecificationTest.class);
 	}
 
 	/**
-	 * Constructs a new Destruction Event test case with the given name.
+	 * Constructs a new Destruction Occurrence Specification test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DestructionEventTest(String name) {
+	public DestructionOccurrenceSpecificationTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Destruction Event test case.
+	 * Returns the fixture for this Destruction Occurrence Specification test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected DestructionEvent getFixture() {
-		return (DestructionEvent) fixture;
+	protected DestructionOccurrenceSpecification getFixture() {
+		return (DestructionOccurrenceSpecification) fixture;
 	}
 
 	/**
@@ -71,7 +70,8 @@ public class DestructionEventTest
 	@Override
 	protected void setUp()
 			throws Exception {
-		setFixture(UMLFactory.eINSTANCE.createDestructionEvent());
+		setFixture(UMLFactory.eINSTANCE
+			.createDestructionOccurrenceSpecification());
 	}
 
 	/**
@@ -87,10 +87,10 @@ public class DestructionEventTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.DestructionEvent#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Occurrence Specifications Below</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.DestructionOccurrenceSpecification#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Occurrence Specifications Below</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.DestructionEvent#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.DestructionOccurrenceSpecification#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
 	public void testValidateNoOccurrenceSpecificationsBelow__DiagnosticChain_Map() {
@@ -98,4 +98,4 @@ public class DestructionEventTest
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-} //DestructionEventTest
+} //DestructionOccurrenceSpecificationTest

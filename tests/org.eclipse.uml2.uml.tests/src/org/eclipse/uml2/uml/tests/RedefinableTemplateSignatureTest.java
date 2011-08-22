@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RedefinableTemplateSignatureTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
@@ -153,6 +154,30 @@ public class RedefinableTemplateSignatureTest
 	@Override
 	public void testIsConsistentWith__RedefinableElement() {
 		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.TemplateSignature#getTemplate() <em>Template</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.TemplateSignature#getTemplate()
+	 * @generated
+	 */
+	public void testGetTemplate() {
+		// TODO: implement this redefined feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.TemplateSignature#setTemplate(org.eclipse.uml2.uml.TemplateableElement) <em>Template</em>}' feature setter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.TemplateSignature#setTemplate(org.eclipse.uml2.uml.TemplateableElement)
+	 * @generated
+	 */
+	public void testSetTemplate() {
+		// TODO: implement this redefined feature setter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

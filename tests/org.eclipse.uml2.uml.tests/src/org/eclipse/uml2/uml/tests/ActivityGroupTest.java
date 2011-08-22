@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityGroupTest.java,v 1.5 2007/02/14 20:06:12 khussey Exp $
  */
@@ -22,14 +23,14 @@ import org.eclipse.uml2.uml.ActivityGroup;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNodesAndEdges(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Nodes And Edges</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Contained</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateGroupOwned(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Group Owned</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityGroup#validateNotContained(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Contained</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
 public abstract class ActivityGroupTest
-		extends ElementTest {
+		extends NamedElementTest {
 
 	/**
 	 * Constructs a new Activity Group test case with the given name.

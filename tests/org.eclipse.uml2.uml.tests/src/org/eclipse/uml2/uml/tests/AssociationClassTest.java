@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AssociationClassTest.java,v 1.7 2007/02/14 20:06:12 khussey Exp $
  */
@@ -36,7 +37,7 @@ import org.eclipse.uml2.uml.UMLFactory;
  *   <li>{@link org.eclipse.uml2.uml.Association#validateAssociationEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association Ends</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#isBinary() <em>Is Binary</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.AssociationClass#validateCannotBeDefined(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Be Defined</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.AssociationClass#allConnections() <em>All Connections</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.AssociationClass#validateDisjointAttributesEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Disjoint Attributes Ends</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -183,13 +184,13 @@ public class AssociationClassTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.AssociationClass#allConnections() <em>All Connections</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.AssociationClass#validateDisjointAttributesEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Disjoint Attributes Ends</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.AssociationClass#allConnections()
+	 * @see org.eclipse.uml2.uml.AssociationClass#validateDisjointAttributesEnds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testAllConnections() {
+	public void testValidateDisjointAttributesEnds__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

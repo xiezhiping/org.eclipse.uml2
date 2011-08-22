@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: VertexTest.java,v 1.6 2008/10/02 21:00:20 jbruck Exp $
  */
@@ -21,8 +22,8 @@ import org.eclipse.uml2.uml.Vertex;
  * <p>
  * The following features are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings() <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings() <em>Outgoing</em>}</li>
  * </ul>
  * </p>
  * <p>

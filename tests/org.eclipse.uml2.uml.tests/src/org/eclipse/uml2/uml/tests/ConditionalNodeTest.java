@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ConditionalNodeTest.java,v 1.6 2007/02/14 20:06:11 khussey Exp $
  */
@@ -25,6 +26,11 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateResultNoIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result No Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateOneClauseWithExecutableNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Clause With Executable Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ConditionalNode#validateClauseNoPredecessor(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Clause No Predecessor</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -95,6 +101,78 @@ public class ConditionalNodeTest
 	 */
 	public void testValidateResultNoIncoming__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConditionalNode#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Input Pins</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConditionalNode#validateNoInputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateNoInputPins__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConditionalNode#validateOneClauseWithExecutableNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Clause With Executable Node</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConditionalNode#validateOneClauseWithExecutableNode(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateOneClauseWithExecutableNode__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConditionalNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Matching Output Pins</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConditionalNode#validateMatchingOutputPins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateMatchingOutputPins__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConditionalNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Executable Nodes</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConditionalNode#validateExecutableNodes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateExecutableNodes__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.ConditionalNode#validateClauseNoPredecessor(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Clause No Predecessor</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.ConditionalNode#validateClauseNoPredecessor(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateClauseNoPredecessor__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeOutputs() <em>Structured Node Output</em>}' feature getter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeOutputs()
+	 * @generated
+	 */
+	public void testGetStructuredNodeOutputs() {
+		// TODO: implement this redefined feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 

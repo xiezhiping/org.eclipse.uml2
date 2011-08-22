@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionUseTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
@@ -25,9 +26,11 @@ import org.eclipse.uml2.uml.UMLFactory;
  * The following operations are tested:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateGatesMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Gates Match</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateAllLifelines(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate All Lifelines</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsCorrespondToParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Correspond To Parameters</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsAreConstants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Are Constants</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueRecipientCoverage(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Recipient Coverage</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsCorrespondToParameters(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Correspond To Parameters</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueTypeRecipientCorrespondence(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Type Recipient Correspondence</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#validateAllLifelines(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate All Lifelines</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -126,6 +129,18 @@ public class InteractionUseTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueTypeRecipientCorrespondence(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Type Recipient Correspondence</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.InteractionUse#validateReturnValueTypeRecipientCorrespondence(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateReturnValueTypeRecipientCorrespondence__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.InteractionUse#validateArgumentsAreConstants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments Are Constants</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -133,6 +148,18 @@ public class InteractionUseTest
 	 * @generated
 	 */
 	public void testValidateArgumentsAreConstants__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.InteractionUse#validateReturnValueRecipientCoverage(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Return Value Recipient Coverage</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.InteractionUse#validateReturnValueRecipientCoverage(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateReturnValueRecipientCoverage__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

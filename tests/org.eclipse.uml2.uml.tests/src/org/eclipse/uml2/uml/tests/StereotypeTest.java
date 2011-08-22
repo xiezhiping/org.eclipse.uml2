@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StereotypeTest.java,v 1.3 2007/02/14 20:06:13 khussey Exp $
  */
@@ -22,19 +23,27 @@ import org.eclipse.uml2.uml.UMLFactory;
  * A test case for the model object '<em><b>Stereotype</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are tested:
+ * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Profile</em>}</li>
+ * </ul>
+ * </p>
+ * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createExtension(org.eclipse.uml2.uml.Class, boolean) <em>Create Extension</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Get Profile</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword() <em>Get Keyword</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String) <em>Create Icon</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String, java.lang.String) <em>Create Icon</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword() <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#containingProfile() <em>Containing Profile</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -109,6 +118,18 @@ public class StereotypeTest
 	}
 
 	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateAssociationEndOwnership__DiagnosticChain_Map() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
 	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -133,13 +154,25 @@ public class StereotypeTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Get Profile</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Profile</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.uml2.uml.Stereotype#getProfile()
 	 * @generated
 	 */
 	public void testGetProfile() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations Only</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	public void testValidateBinaryAssociationsOnly__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
@@ -164,6 +197,18 @@ public class StereotypeTest
 	 * @generated
 	 */
 	public void testGetKeyword__boolean() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.Stereotype#containingProfile() <em>Containing Profile</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.Stereotype#containingProfile()
+	 * @generated
+	 */
+	public void testContainingProfile() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReduceActionTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
@@ -24,9 +25,9 @@ import org.eclipse.uml2.uml.UMLFactory;
  * <p>
  * The following operations are tested:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateReducerInputsOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Reducer Inputs Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateInputTypeIsCollection(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Type Is Collection</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateOutputTypesAreCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Output Types Are Compatible</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReduceAction#validateReducerInputsOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Reducer Inputs Output</em>}</li>
  * </ul>
  * </p>
  * @generated

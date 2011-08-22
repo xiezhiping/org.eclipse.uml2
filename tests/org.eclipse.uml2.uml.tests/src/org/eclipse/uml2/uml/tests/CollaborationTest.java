@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: CollaborationTest.java,v 1.6 2007/02/14 20:06:12 khussey Exp $
  */
@@ -22,22 +23,17 @@ import org.eclipse.uml2.uml.UMLFactory;
  * A test case for the model object '<em><b>Collaboration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are tested:
- * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getParts() <em>Part</em>}</li>
- * </ul>
- * </p>
- * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicities</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Class Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
 public class CollaborationTest
-		extends BehavioredClassifierTest {
+		extends StructuredClassifierTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -94,37 +90,37 @@ public class CollaborationTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StructuredClassifier#getParts() <em>Part</em>}' feature getter.
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Class Behavior</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StructuredClassifier#getParts()
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#validateClassBehavior(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
 	 * @generated
 	 */
-	public void testGetParts() {
+	public void testValidateClassBehavior__DiagnosticChain_Map() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicities</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces() <em>Get All Implemented Interfaces</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getAllImplementedInterfaces()
 	 * @generated
 	 */
-	public void testValidateMultiplicities__DiagnosticChain_Map() {
+	public void testGetAllImplementedInterfaces() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces() <em>Get Implemented Interfaces</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int)
+	 * @see org.eclipse.uml2.uml.BehavioredClassifier#getImplementedInterfaces()
 	 * @generated
 	 */
-	public void testCreateOwnedAttribute__String_Type_int_int() {
+	public void testGetImplementedInterfaces() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}

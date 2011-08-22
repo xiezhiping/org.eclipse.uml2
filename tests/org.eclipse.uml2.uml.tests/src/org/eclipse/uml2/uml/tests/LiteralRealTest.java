@@ -1,38 +1,36 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   CEA - initial API and implementation
  *
- * $Id: LiteralBooleanTest.java,v 1.3 2007/02/14 20:06:12 khussey Exp $
  */
 package org.eclipse.uml2.uml.tests;
 
 import junit.textui.TestRunner;
 
-import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Literal Boolean</b></em>'.
+ * A test case for the model object '<em><b>Literal Real</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LiteralBoolean#stringValue() <em>String Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LiteralBoolean#booleanValue() <em>Boolean Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LiteralBoolean#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralReal#stringValue() <em>String Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralReal#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LiteralReal#realValue() <em>Real Value</em>}</li>
  * </ul>
  * </p>
  * @generated
  */
-public class LiteralBooleanTest
+public class LiteralRealTest
 		extends LiteralSpecificationTest {
 
 	/**
@@ -41,28 +39,28 @@ public class LiteralBooleanTest
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(LiteralBooleanTest.class);
+		TestRunner.run(LiteralRealTest.class);
 	}
 
 	/**
-	 * Constructs a new Literal Boolean test case with the given name.
+	 * Constructs a new Literal Real test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralBooleanTest(String name) {
+	public LiteralRealTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Literal Boolean test case.
+	 * Returns the fixture for this Literal Real test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected LiteralBoolean getFixture() {
-		return (LiteralBoolean) fixture;
+	protected LiteralReal getFixture() {
+		return (LiteralReal) fixture;
 	}
 
 	/**
@@ -74,7 +72,7 @@ public class LiteralBooleanTest
 	@Override
 	protected void setUp()
 			throws Exception {
-		setFixture(UMLFactory.eINSTANCE.createLiteralBoolean());
+		setFixture(UMLFactory.eINSTANCE.createLiteralReal());
 	}
 
 	/**
@@ -90,10 +88,23 @@ public class LiteralBooleanTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.LiteralBoolean#isComputable() <em>Is Computable</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.LiteralReal#stringValue() <em>String Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.LiteralBoolean#isComputable()
+	 * @see org.eclipse.uml2.uml.LiteralReal#stringValue()
+	 * @generated
+	 */
+	@Override
+	public void testStringValue() {
+		// TODO: implement this feature getter test method
+		// Ensure that you remove @generated or mark it @generated NOT
+	}
+
+	/**
+	 * Tests the '{@link org.eclipse.uml2.uml.LiteralReal#isComputable() <em>Is Computable</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.uml2.uml.LiteralReal#isComputable()
 	 * @generated
 	 */
 	@Override
@@ -103,29 +114,16 @@ public class LiteralBooleanTest
 	}
 
 	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.LiteralBoolean#booleanValue() <em>Boolean Value</em>}' operation.
+	 * Tests the '{@link org.eclipse.uml2.uml.LiteralReal#realValue() <em>Real Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.LiteralBoolean#booleanValue()
+	 * @see org.eclipse.uml2.uml.LiteralReal#realValue()
 	 * @generated
 	 */
 	@Override
-	public void testBooleanValue() {
+	public void testRealValue() {
 		// TODO: implement this feature getter test method
 		// Ensure that you remove @generated or mark it @generated NOT
 	}
 
-	/**
-	 * Tests the '{@link org.eclipse.uml2.uml.LiteralBoolean#stringValue() <em>String Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.uml2.uml.LiteralBoolean#stringValue()
-	 * @generated
-	 */
-	@Override
-	public void testStringValue() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-	}
-
-} //LiteralBooleanTest
+} //LiteralRealTest
