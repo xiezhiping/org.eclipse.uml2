@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AddVariableValueActionItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
@@ -70,8 +71,8 @@ public class AddVariableValueActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsReplaceAllPropertyDescriptor(object);
 			addInsertAtPropertyDescriptor(object);
+			addIsReplaceAllPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -226,11 +227,11 @@ public class AddVariableValueActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
-			UMLFactory.eINSTANCE.createValuePin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -245,8 +246,8 @@ public class AddVariableValueActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.WRITE_VARIABLE_ACTION__VALUE
 			|| childFeature == UMLPackage.Literals.ADD_VARIABLE_VALUE_ACTION__INSERT_AT;
 

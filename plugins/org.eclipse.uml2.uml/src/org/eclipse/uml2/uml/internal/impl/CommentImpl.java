@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: CommentImpl.java,v 1.13 2007/04/25 17:47:04 khussey Exp $
  */
@@ -34,8 +35,8 @@ import org.eclipse.uml2.uml.UMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.CommentImpl#getBody <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.CommentImpl#getAnnotatedElements <em>Annotated Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.CommentImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +45,16 @@ import org.eclipse.uml2.uml.UMLPackage;
 public class CommentImpl
 		extends ElementImpl
 		implements Comment {
+
+	/**
+	 * The cached value of the '{@link #getAnnotatedElements() <em>Annotated Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotatedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Element> annotatedElements;
 
 	/**
 	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -73,16 +84,6 @@ public class CommentImpl
 	 * @ordered
 	 */
 	protected static final int BODY_ESETFLAG = 1 << 8;
-
-	/**
-	 * The cached value of the '{@link #getAnnotatedElements() <em>Annotated Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnnotatedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Element> annotatedElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,18 +175,18 @@ public class CommentImpl
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.COMMENT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMMENT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.COMMENT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.COMMENT__BODY :
-				return getBody();
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				return getAnnotatedElements();
+			case UMLPackage.COMMENT__BODY :
+				return getBody();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -209,13 +210,13 @@ public class CommentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.COMMENT__BODY :
-				setBody((String) newValue);
-				return;
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				getAnnotatedElements().clear();
 				getAnnotatedElements().addAll(
 					(Collection<? extends Element>) newValue);
+				return;
+			case UMLPackage.COMMENT__BODY :
+				setBody((String) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -235,11 +236,11 @@ public class CommentImpl
 			case UMLPackage.COMMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.COMMENT__BODY :
-				unsetBody();
-				return;
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				getAnnotatedElements().clear();
+				return;
+			case UMLPackage.COMMENT__BODY :
+				unsetBody();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -255,17 +256,17 @@ public class CommentImpl
 		switch (featureID) {
 			case UMLPackage.COMMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.COMMENT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COMMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COMMENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.COMMENT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.COMMENT__BODY :
-				return isSetBody();
 			case UMLPackage.COMMENT__ANNOTATED_ELEMENT :
 				return annotatedElements != null
 					&& !annotatedElements.isEmpty();
+			case UMLPackage.COMMENT__BODY :
+				return isSetBody();
 		}
 		return eDynamicIsSet(featureID);
 	}

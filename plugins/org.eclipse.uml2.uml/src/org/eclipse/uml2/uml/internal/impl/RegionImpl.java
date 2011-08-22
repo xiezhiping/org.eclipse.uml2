@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RegionImpl.java,v 1.32 2010/09/28 21:02:14 khussey Exp $
  */
@@ -75,13 +76,13 @@ import org.eclipse.uml2.uml.internal.operations.RegionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getExtendedRegion <em>Extended Region</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getStateMachine <em>State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getTransitions <em>Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.RegionImpl#getSubvertices <em>Subvertex</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,14 +113,14 @@ public class RegionImpl
 	protected static final int IS_LEAF_EFLAG = 1 << 12;
 
 	/**
-	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
+	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSubvertices()
+	 * @see #getExtendedRegion()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Vertex> subvertices;
+	protected Region extendedRegion;
 
 	/**
 	 * The cached value of the '{@link #getTransitions() <em>Transition</em>}' containment reference list.
@@ -132,14 +133,14 @@ public class RegionImpl
 	protected EList<Transition> transitions;
 
 	/**
-	 * The cached value of the '{@link #getExtendedRegion() <em>Extended Region</em>}' reference.
+	 * The cached value of the '{@link #getSubvertices() <em>Subvertex</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExtendedRegion()
+	 * @see #getSubvertices()
 	 * @generated
 	 * @ordered
 	 */
-	protected Region extendedRegion;
+	protected EList<Vertex> subvertices;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,34 +190,6 @@ public class RegionImpl
 		return new DerivedUnionEObjectEList<RedefinableElement>(
 			RedefinableElement.class, this,
 			UMLPackage.REGION__REDEFINED_ELEMENT, REDEFINED_ELEMENT_ESUBSETS);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RedefinableElement getRedefinedElement(String name) {
-		return getRedefinedElement(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RedefinableElement getRedefinedElement(String name,
-			boolean ignoreCase, EClass eClass) {
-		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
-			if (eClass != null && !eClass.isInstance(redefinedElement))
-				continue redefinedElementLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(redefinedElement.getName())
-				: name.equals(redefinedElement.getName())))
-				continue redefinedElementLoop;
-			return redefinedElement;
-		}
-		return null;
 	}
 
 	/**
@@ -663,6 +636,17 @@ public class RegionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNonLeafRedefinition(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations.validateNonLeafRedefinition(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isRedefinitionContextValidGen(RedefinableElement redefined) {
 		return isRedefinitionContextValid(redefined);
 	}
@@ -785,12 +769,6 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_RULE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedRules())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REGION__SUBVERTEX :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubvertices())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.REGION__TRANSITION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTransitions())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -799,6 +777,12 @@ public class RegionImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetStateMachine((StateMachine) otherEnd, msgs);
+			case UMLPackage.REGION__TRANSITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTransitions())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.REGION__SUBVERTEX :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubvertices())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -832,16 +816,16 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.REGION__SUBVERTEX :
-				return ((InternalEList<?>) getSubvertices()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.REGION__TRANSITION :
-				return ((InternalEList<?>) getTransitions()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.REGION__STATE :
 				return basicSetState(null, msgs);
 			case UMLPackage.REGION__STATE_MACHINE :
 				return basicSetStateMachine(null, msgs);
+			case UMLPackage.REGION__TRANSITION :
+				return ((InternalEList<?>) getTransitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.REGION__SUBVERTEX :
+				return ((InternalEList<?>) getSubvertices()).basicRemove(
+					otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -875,64 +859,64 @@ public class RegionImpl
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.REGION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.REGION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.REGION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.REGION__NAME :
-				return getName();
-			case UMLPackage.REGION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.REGION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.REGION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.REGION__NAME :
+				return getName();
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.REGION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.REGION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.REGION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.REGION__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.REGION__MEMBER :
-				return getMembers();
-			case UMLPackage.REGION__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.REGION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.REGION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.REGION__MEMBER :
+				return getMembers();
 			case UMLPackage.REGION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.REGION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.REGION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.REGION__SUBVERTEX :
-				return getSubvertices();
-			case UMLPackage.REGION__TRANSITION :
-				return getTransitions();
-			case UMLPackage.REGION__STATE :
-				if (resolve)
-					return getState();
-				return basicGetState();
 			case UMLPackage.REGION__EXTENDED_REGION :
 				if (resolve)
 					return getExtendedRegion();
 				return basicGetExtendedRegion();
+			case UMLPackage.REGION__STATE :
+				if (resolve)
+					return getState();
+				return basicGetState();
 			case UMLPackage.REGION__STATE_MACHINE :
 				if (resolve)
 					return getStateMachine();
 				return basicGetStateMachine();
+			case UMLPackage.REGION__TRANSITION :
+				return getTransitions();
+			case UMLPackage.REGION__SUBVERTEX :
+				return getSubvertices();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -956,19 +940,19 @@ public class RegionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.REGION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.REGION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.REGION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.REGION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -988,24 +972,24 @@ public class RegionImpl
 			case UMLPackage.REGION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
-			case UMLPackage.REGION__SUBVERTEX :
-				getSubvertices().clear();
-				getSubvertices()
-					.addAll((Collection<? extends Vertex>) newValue);
+			case UMLPackage.REGION__EXTENDED_REGION :
+				setExtendedRegion((Region) newValue);
+				return;
+			case UMLPackage.REGION__STATE :
+				setState((State) newValue);
+				return;
+			case UMLPackage.REGION__STATE_MACHINE :
+				setStateMachine((StateMachine) newValue);
 				return;
 			case UMLPackage.REGION__TRANSITION :
 				getTransitions().clear();
 				getTransitions().addAll(
 					(Collection<? extends Transition>) newValue);
 				return;
-			case UMLPackage.REGION__STATE :
-				setState((State) newValue);
-				return;
-			case UMLPackage.REGION__EXTENDED_REGION :
-				setExtendedRegion((Region) newValue);
-				return;
-			case UMLPackage.REGION__STATE_MACHINE :
-				setStateMachine((StateMachine) newValue);
+			case UMLPackage.REGION__SUBVERTEX :
+				getSubvertices().clear();
+				getSubvertices()
+					.addAll((Collection<? extends Vertex>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1025,17 +1009,17 @@ public class RegionImpl
 			case UMLPackage.REGION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.REGION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.REGION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.REGION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.REGION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.REGION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.REGION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1049,20 +1033,20 @@ public class RegionImpl
 			case UMLPackage.REGION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
-			case UMLPackage.REGION__SUBVERTEX :
-				getSubvertices().clear();
-				return;
-			case UMLPackage.REGION__TRANSITION :
-				getTransitions().clear();
+			case UMLPackage.REGION__EXTENDED_REGION :
+				setExtendedRegion((Region) null);
 				return;
 			case UMLPackage.REGION__STATE :
 				setState((State) null);
 				return;
-			case UMLPackage.REGION__EXTENDED_REGION :
-				setExtendedRegion((Region) null);
-				return;
 			case UMLPackage.REGION__STATE_MACHINE :
 				setStateMachine((StateMachine) null);
+				return;
+			case UMLPackage.REGION__TRANSITION :
+				getTransitions().clear();
+				return;
+			case UMLPackage.REGION__SUBVERTEX :
+				getSubvertices().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1078,55 +1062,55 @@ public class RegionImpl
 		switch (featureID) {
 			case UMLPackage.REGION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.REGION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.REGION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.REGION__OWNER :
 				return isSetOwner();
-			case UMLPackage.REGION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.REGION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.REGION__NAME :
 				return isSetName();
-			case UMLPackage.REGION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.REGION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.REGION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.REGION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.REGION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.REGION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.REGION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.REGION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.REGION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.REGION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.REGION__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.REGION__MEMBER :
-				return isSetMembers();
-			case UMLPackage.REGION__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.REGION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.REGION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.REGION__MEMBER :
+				return isSetMembers();
 			case UMLPackage.REGION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.REGION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.REGION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.REGION__SUBVERTEX :
-				return subvertices != null && !subvertices.isEmpty();
-			case UMLPackage.REGION__TRANSITION :
-				return transitions != null && !transitions.isEmpty();
-			case UMLPackage.REGION__STATE :
-				return basicGetState() != null;
 			case UMLPackage.REGION__EXTENDED_REGION :
 				return extendedRegion != null;
+			case UMLPackage.REGION__STATE :
+				return basicGetState() != null;
 			case UMLPackage.REGION__STATE_MACHINE :
 				return basicGetStateMachine() != null;
+			case UMLPackage.REGION__TRANSITION :
+				return transitions != null && !transitions.isEmpty();
+			case UMLPackage.REGION__SUBVERTEX :
+				return subvertices != null && !subvertices.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1184,10 +1168,12 @@ public class RegionImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.REGION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.REGION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.REGION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.REGION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.REDEFINABLE_ELEMENT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 					return UMLPackage.REGION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT;
 				case UMLPackage.REDEFINABLE_ELEMENT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
@@ -1211,117 +1197,119 @@ public class RegionImpl
 		switch (operationID) {
 			case UMLPackage.REGION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.REGION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.REGION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.REGION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.REGION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.REGION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.REGION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.REGION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.REGION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.REGION___GET_MODEL :
-				return getModel();
-			case UMLPackage.REGION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.REGION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.REGION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.REGION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.REGION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.REGION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.REGION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.REGION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.REGION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.REGION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.REGION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.REGION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.REGION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.REGION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.REGION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.REGION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___GET_MODEL :
+				return getModel();
+			case UMLPackage.REGION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.REGION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.REGION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.REGION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.REGION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.REGION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.REGION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.REGION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.REGION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.REGION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.REGION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.REGION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.REGION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.REGION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.REGION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.REGION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.REGION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.REGION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.REGION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REGION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.REGION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.REGION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.REGION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.REGION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.REGION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.REGION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.REGION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.REGION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.REGION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.REGION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.REGION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.REGION___SEPARATOR :
 				return separator();
-			case UMLPackage.REGION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.REGION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1338,24 +1326,30 @@ public class RegionImpl
 				return getImportedElements();
 			case UMLPackage.REGION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.REGION___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.REGION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.REGION___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.REGION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.REGION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.REGION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.REGION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.REGION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.REGION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.REGION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.REGION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.REGION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1363,10 +1357,6 @@ public class RegionImpl
 			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.REGION___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateInitialVertex(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___VALIDATE_DEEP_HISTORY_VERTEX__DIAGNOSTICCHAIN_MAP :
 				return validateDeepHistoryVertex(
 					(DiagnosticChain) arguments.get(0),
@@ -1378,14 +1368,18 @@ public class RegionImpl
 			case UMLPackage.REGION___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.REGION___REDEFINITION_CONTEXT :
-				return redefinitionContext();
-			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REGION :
-				return isRedefinitionContextValid((Region) arguments.get(0));
-			case UMLPackage.REGION___CONTAINING_STATE_MACHINE :
-				return containingStateMachine();
+			case UMLPackage.REGION___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateInitialVertex(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.REGION___BELONGS_TO_PSM :
 				return belongsToPSM();
+			case UMLPackage.REGION___CONTAINING_STATE_MACHINE :
+				return containingStateMachine();
+			case UMLPackage.REGION___IS_REDEFINITION_CONTEXT_VALID__REGION :
+				return isRedefinitionContextValid((Region) arguments.get(0));
+			case UMLPackage.REGION___REDEFINITION_CONTEXT :
+				return redefinitionContext();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1418,6 +1412,34 @@ public class RegionImpl
 	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.REGION__EXTENDED_REGION};
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
+		}
+		return null;
+	}
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1426,8 +1448,8 @@ public class RegionImpl
 	 * @ordered
 	 */
 	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
-		UMLPackage.REGION__OWNED_RULE, UMLPackage.REGION__SUBVERTEX,
-		UMLPackage.REGION__TRANSITION};
+		UMLPackage.REGION__OWNED_RULE, UMLPackage.REGION__TRANSITION,
+		UMLPackage.REGION__SUBVERTEX};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1459,8 +1481,8 @@ public class RegionImpl
 	@Override
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.REGION__SUBVERTEX)
-			|| eIsSet(UMLPackage.REGION__TRANSITION);
+			|| eIsSet(UMLPackage.REGION__TRANSITION)
+			|| eIsSet(UMLPackage.REGION__SUBVERTEX);
 	}
 
 	/**

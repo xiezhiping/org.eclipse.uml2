@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UMLFactory.java,v 1.8 2009/02/27 18:37:52 jbruck Exp $
  */
@@ -629,6 +630,15 @@ public interface UMLFactory
 	LiteralNull createLiteralNull();
 
 	/**
+	 * Returns a new object of class '<em>Literal Real</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Real</em>'.
+	 * @generated
+	 */
+	LiteralReal createLiteralReal();
+
+	/**
 	 * Returns a new object of class '<em>Slot</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -845,15 +855,6 @@ public interface UMLFactory
 	OutputPin createOutputPin();
 
 	/**
-	 * Returns a new object of class '<em>Pin</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Pin</em>'.
-	 * @generated
-	 */
-	Pin createPin();
-
-	/**
 	 * Returns a new object of class '<em>Input Pin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -908,15 +909,6 @@ public interface UMLFactory
 	ExecutionOccurrenceSpecification createExecutionOccurrenceSpecification();
 
 	/**
-	 * Returns a new object of class '<em>Execution Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Execution Event</em>'.
-	 * @generated
-	 */
-	ExecutionEvent createExecutionEvent();
-
-	/**
 	 * Returns a new object of class '<em>State Invariant</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -944,42 +936,6 @@ public interface UMLFactory
 	BehaviorExecutionSpecification createBehaviorExecutionSpecification();
 
 	/**
-	 * Returns a new object of class '<em>Creation Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Creation Event</em>'.
-	 * @generated
-	 */
-	CreationEvent createCreationEvent();
-
-	/**
-	 * Returns a new object of class '<em>Destruction Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Destruction Event</em>'.
-	 * @generated
-	 */
-	DestructionEvent createDestructionEvent();
-
-	/**
-	 * Returns a new object of class '<em>Send Operation Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Send Operation Event</em>'.
-	 * @generated
-	 */
-	SendOperationEvent createSendOperationEvent();
-
-	/**
-	 * Returns a new object of class '<em>Send Signal Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Send Signal Event</em>'.
-	 * @generated
-	 */
-	SendSignalEvent createSendSignalEvent();
-
-	/**
 	 * Returns a new object of class '<em>Message Occurrence Specification</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -987,24 +943,6 @@ public interface UMLFactory
 	 * @generated
 	 */
 	MessageOccurrenceSpecification createMessageOccurrenceSpecification();
-
-	/**
-	 * Returns a new object of class '<em>Receive Operation Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Receive Operation Event</em>'.
-	 * @generated
-	 */
-	ReceiveOperationEvent createReceiveOperationEvent();
-
-	/**
-	 * Returns a new object of class '<em>Receive Signal Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Receive Signal Event</em>'.
-	 * @generated
-	 */
-	ReceiveSignalEvent createReceiveSignalEvent();
 
 	/**
 	 * Returns a new object of class '<em>Combined Fragment</em>'.
@@ -1086,6 +1024,15 @@ public interface UMLFactory
 	 * @generated
 	 */
 	DestroyObjectAction createDestroyObjectAction();
+
+	/**
+	 * Returns a new object of class '<em>Destruction Occurrence Specification</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Destruction Occurrence Specification</em>'.
+	 * @generated
+	 */
+	DestructionOccurrenceSpecification createDestructionOccurrenceSpecification();
 
 	/**
 	 * Returns a new object of class '<em>Test Identity Action</em>'.

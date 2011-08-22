@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TimeConstraintImpl.java,v 1.25 2009/01/07 15:55:26 jbruck Exp $
  */
@@ -230,7 +231,6 @@ public class TimeConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public ValueSpecification createSpecification(String name, Type type,
 			EClass eClass) {
 		ValueSpecification newSpecification = (ValueSpecification) create(eClass);
@@ -262,30 +262,30 @@ public class TimeConstraintImpl
 		switch (featureID) {
 			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.TIME_CONSTRAINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_CONSTRAINT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.TIME_CONSTRAINT__NAME :
-				return getName();
-			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.TIME_CONSTRAINT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.TIME_CONSTRAINT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.TIME_CONSTRAINT__NAME :
+				return getName();
 			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.TIME_CONSTRAINT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.TIME_CONSTRAINT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -296,14 +296,14 @@ public class TimeConstraintImpl
 				return basicGetTemplateParameter();
 			case UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
-			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				return isFirstEvent();
 		}
@@ -329,19 +329,19 @@ public class TimeConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_CONSTRAINT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.TIME_CONSTRAINT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -354,11 +354,11 @@ public class TimeConstraintImpl
 				getConstrainedElements().addAll(
 					(Collection<? extends Element>) newValue);
 				return;
-			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
-				setSpecification((ValueSpecification) newValue);
-				return;
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);
+				return;
+			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) newValue);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				setFirstEvent((Boolean) newValue);
@@ -381,17 +381,17 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TIME_CONSTRAINT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.TIME_CONSTRAINT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -402,11 +402,11 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
 				return;
-			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
-				setSpecification((ValueSpecification) null);
-				return;
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
 				setContext((Namespace) null);
+				return;
+			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) null);
 				return;
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				setFirstEvent(FIRST_EVENT_EDEFAULT);
@@ -425,27 +425,27 @@ public class TimeConstraintImpl
 		switch (featureID) {
 			case UMLPackage.TIME_CONSTRAINT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TIME_CONSTRAINT__OWNER :
 				return isSetOwner();
-			case UMLPackage.TIME_CONSTRAINT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TIME_CONSTRAINT__NAME :
 				return isSetName();
-			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.TIME_CONSTRAINT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.TIME_CONSTRAINT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.TIME_CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.TIME_CONSTRAINT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.TIME_CONSTRAINT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.TIME_CONSTRAINT__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.TIME_CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_CONSTRAINT__TEMPLATE_PARAMETER :
@@ -453,10 +453,10 @@ public class TimeConstraintImpl
 			case UMLPackage.TIME_CONSTRAINT__CONSTRAINED_ELEMENT :
 				return constrainedElements != null
 					&& !constrainedElements.isEmpty();
-			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
-				return isSetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.TIME_CONSTRAINT__SPECIFICATION :
+				return isSetSpecification();
 			case UMLPackage.TIME_CONSTRAINT__FIRST_EVENT :
 				return ((eFlags & FIRST_EVENT_EFLAG) != 0) != FIRST_EVENT_EDEFAULT;
 		}

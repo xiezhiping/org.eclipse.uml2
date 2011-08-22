@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: VariableImpl.java,v 1.38 2010/09/28 21:02:13 khussey Exp $
  */
@@ -42,7 +43,6 @@ import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Comment;
-import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -72,13 +72,13 @@ import org.eclipse.uml2.uml.internal.operations.VariableOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#isUnique <em>Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getScope <em>Scope</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getActivityScope <em>Activity Scope</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VariableImpl#getScope <em>Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,16 +129,6 @@ public class VariableImpl
 	protected static final int IS_UNIQUE_EFLAG = 1 << 13;
 
 	/**
-	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpper()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int UPPER_EDEFAULT = 1;
-
-	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,16 +139,6 @@ public class VariableImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification upperValue;
-
-	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,6 +147,26 @@ public class VariableImpl
 	 * @ordered
 	 */
 	protected ValueSpecification lowerValue;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -789,14 +789,14 @@ public class VariableImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.VARIABLE__SCOPE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetScope((StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivityScope((Activity) otherEnd, msgs);
+			case UMLPackage.VARIABLE__SCOPE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetScope((StructuredActivityNode) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -825,14 +825,14 @@ public class VariableImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.VARIABLE__UPPER_VALUE :
-				return basicSetUpperValue(null, msgs);
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
-			case UMLPackage.VARIABLE__SCOPE :
-				return basicSetScope(null, msgs);
+			case UMLPackage.VARIABLE__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				return basicSetActivityScope(null, msgs);
+			case UMLPackage.VARIABLE__SCOPE :
+				return basicSetScope(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -850,13 +850,13 @@ public class VariableImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
+			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
 			case UMLPackage.VARIABLE__SCOPE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STRUCTURED_ACTIVITY_NODE__VARIABLE,
 					StructuredActivityNode.class, msgs);
-			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.ACTIVITY__VARIABLE, Activity.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -871,30 +871,30 @@ public class VariableImpl
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.VARIABLE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.VARIABLE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VARIABLE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.VARIABLE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.VARIABLE__NAME :
-				return getName();
-			case UMLPackage.VARIABLE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.VARIABLE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.VARIABLE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.VARIABLE__NAME :
+				return getName();
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.VARIABLE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.VARIABLE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.VARIABLE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.VARIABLE__TYPE :
 				if (resolve)
 					return getType();
@@ -913,26 +913,26 @@ public class VariableImpl
 				return isOrdered();
 			case UMLPackage.VARIABLE__IS_UNIQUE :
 				return isUnique();
-			case UMLPackage.VARIABLE__UPPER :
-				return getUpper();
 			case UMLPackage.VARIABLE__LOWER :
 				return getLower();
-			case UMLPackage.VARIABLE__UPPER_VALUE :
-				if (resolve)
-					return getUpperValue();
-				return basicGetUpperValue();
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				if (resolve)
 					return getLowerValue();
 				return basicGetLowerValue();
-			case UMLPackage.VARIABLE__SCOPE :
+			case UMLPackage.VARIABLE__UPPER :
+				return getUpper();
+			case UMLPackage.VARIABLE__UPPER_VALUE :
 				if (resolve)
-					return getScope();
-				return basicGetScope();
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				if (resolve)
 					return getActivityScope();
 				return basicGetActivityScope();
+			case UMLPackage.VARIABLE__SCOPE :
+				if (resolve)
+					return getScope();
+				return basicGetScope();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -956,19 +956,19 @@ public class VariableImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.VARIABLE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.VARIABLE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.VARIABLE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.VARIABLE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.VARIABLE__TYPE :
 				setType((Type) newValue);
@@ -979,33 +979,29 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.VARIABLE__END :
-				getEnds().clear();
-				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
-				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				setIsOrdered((Boolean) newValue);
 				return;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
 				setIsUnique((Boolean) newValue);
 				return;
-			case UMLPackage.VARIABLE__UPPER :
-				setUpper((Integer) newValue);
-				return;
 			case UMLPackage.VARIABLE__LOWER :
 				setLower((Integer) newValue);
-				return;
-			case UMLPackage.VARIABLE__UPPER_VALUE :
-				setUpperValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
 				return;
-			case UMLPackage.VARIABLE__SCOPE :
-				setScope((StructuredActivityNode) newValue);
+			case UMLPackage.VARIABLE__UPPER :
+				setUpper((Integer) newValue);
+				return;
+			case UMLPackage.VARIABLE__UPPER_VALUE :
+				setUpperValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				setActivityScope((Activity) newValue);
+				return;
+			case UMLPackage.VARIABLE__SCOPE :
+				setScope((StructuredActivityNode) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1025,17 +1021,17 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.VARIABLE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.VARIABLE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.VARIABLE__NAME :
+				unsetName();
+				return;
 			case UMLPackage.VARIABLE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.VARIABLE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.VARIABLE__TYPE :
 				setType((Type) null);
@@ -1046,32 +1042,29 @@ public class VariableImpl
 			case UMLPackage.VARIABLE__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.VARIABLE__END :
-				getEnds().clear();
-				return;
 			case UMLPackage.VARIABLE__IS_ORDERED :
 				setIsOrdered(IS_ORDERED_EDEFAULT);
 				return;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
-			case UMLPackage.VARIABLE__UPPER :
-				setUpper(UPPER_EDEFAULT);
-				return;
 			case UMLPackage.VARIABLE__LOWER :
 				setLower(LOWER_EDEFAULT);
-				return;
-			case UMLPackage.VARIABLE__UPPER_VALUE :
-				setUpperValue((ValueSpecification) null);
 				return;
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
 				return;
-			case UMLPackage.VARIABLE__SCOPE :
-				setScope((StructuredActivityNode) null);
+			case UMLPackage.VARIABLE__UPPER :
+				setUpper(UPPER_EDEFAULT);
+				return;
+			case UMLPackage.VARIABLE__UPPER_VALUE :
+				setUpperValue((ValueSpecification) null);
 				return;
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				setActivityScope((Activity) null);
+				return;
+			case UMLPackage.VARIABLE__SCOPE :
+				setScope((StructuredActivityNode) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1087,27 +1080,27 @@ public class VariableImpl
 		switch (featureID) {
 			case UMLPackage.VARIABLE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.VARIABLE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.VARIABLE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.VARIABLE__OWNER :
 				return isSetOwner();
-			case UMLPackage.VARIABLE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.VARIABLE__NAME :
 				return isSetName();
-			case UMLPackage.VARIABLE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.VARIABLE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.VARIABLE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.VARIABLE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.VARIABLE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.VARIABLE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.VARIABLE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.VARIABLE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.VARIABLE__TYPE :
 				return type != null;
 			case UMLPackage.VARIABLE__OWNING_TEMPLATE_PARAMETER :
@@ -1120,18 +1113,18 @@ public class VariableImpl
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.VARIABLE__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
-			case UMLPackage.VARIABLE__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.VARIABLE__LOWER :
 				return getLower() != LOWER_EDEFAULT;
-			case UMLPackage.VARIABLE__UPPER_VALUE :
-				return upperValue != null;
 			case UMLPackage.VARIABLE__LOWER_VALUE :
 				return lowerValue != null;
-			case UMLPackage.VARIABLE__SCOPE :
-				return basicGetScope() != null;
+			case UMLPackage.VARIABLE__UPPER :
+				return getUpper() != UPPER_EDEFAULT;
+			case UMLPackage.VARIABLE__UPPER_VALUE :
+				return upperValue != null;
 			case UMLPackage.VARIABLE__ACTIVITY_SCOPE :
 				return basicGetActivityScope() != null;
+			case UMLPackage.VARIABLE__SCOPE :
+				return basicGetScope() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1149,14 +1142,14 @@ public class VariableImpl
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED;
 				case UMLPackage.VARIABLE__IS_UNIQUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE;
-				case UMLPackage.VARIABLE__UPPER :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
 				case UMLPackage.VARIABLE__LOWER :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER;
-				case UMLPackage.VARIABLE__UPPER_VALUE :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				case UMLPackage.VARIABLE__LOWER_VALUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE;
+				case UMLPackage.VARIABLE__UPPER :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
+				case UMLPackage.VARIABLE__UPPER_VALUE :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1177,14 +1170,14 @@ public class VariableImpl
 					return UMLPackage.VARIABLE__IS_ORDERED;
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 					return UMLPackage.VARIABLE__IS_UNIQUE;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-					return UMLPackage.VARIABLE__UPPER;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
 					return UMLPackage.VARIABLE__LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-					return UMLPackage.VARIABLE__UPPER_VALUE;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 					return UMLPackage.VARIABLE__LOWER_VALUE;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
+					return UMLPackage.VARIABLE__UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
+					return UMLPackage.VARIABLE__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1201,10 +1194,10 @@ public class VariableImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.VARIABLE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
@@ -1213,24 +1206,24 @@ public class VariableImpl
 					return UMLPackage.VARIABLE___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
 					return UMLPackage.VARIABLE___SET_UPPER__INT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
-					return UMLPackage.VARIABLE___GET_LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
-					return UMLPackage.VARIABLE___GET_UPPER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
-					return UMLPackage.VARIABLE___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+					return UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
 					return UMLPackage.VARIABLE___INCLUDES_CARDINALITY__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 					return UMLPackage.VARIABLE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
-					return UMLPackage.VARIABLE___LOWER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
-					return UMLPackage.VARIABLE___UPPER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-					return UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
 					return UMLPackage.VARIABLE___IS__INT_INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
+					return UMLPackage.VARIABLE___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
+					return UMLPackage.VARIABLE___GET_LOWER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
+					return UMLPackage.VARIABLE___LOWER_BOUND;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
+					return UMLPackage.VARIABLE___GET_UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
+					return UMLPackage.VARIABLE___UPPER_BOUND;
 				default :
 					return -1;
 			}
@@ -1250,128 +1243,130 @@ public class VariableImpl
 		switch (operationID) {
 			case UMLPackage.VARIABLE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.VARIABLE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.VARIABLE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.VARIABLE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.VARIABLE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.VARIABLE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.VARIABLE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.VARIABLE___GET_MODEL :
-				return getModel();
-			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.VARIABLE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.VARIABLE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.VARIABLE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.VARIABLE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.VARIABLE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.VARIABLE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.VARIABLE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.VARIABLE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_MODEL :
+				return getModel();
+			case UMLPackage.VARIABLE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.VARIABLE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.VARIABLE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.VARIABLE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.VARIABLE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.VARIABLE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.VARIABLE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VARIABLE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VARIABLE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.VARIABLE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.VARIABLE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.VARIABLE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.VARIABLE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.VARIABLE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.VARIABLE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.VARIABLE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VARIABLE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.VARIABLE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.VARIABLE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.VARIABLE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.VARIABLE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.VARIABLE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.VARIABLE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.VARIABLE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.VARIABLE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.VARIABLE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.VARIABLE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.VARIABLE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.VARIABLE___SEPARATOR :
 				return separator();
-			case UMLPackage.VARIABLE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.VARIABLE___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.VARIABLE___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
 			case UMLPackage.VARIABLE___GET_ENDS :
 				return getEnds();
-			case UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-				return validateLowerGe0((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VARIABLE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VARIABLE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationNoSideEffects(
@@ -1387,26 +1382,26 @@ public class VariableImpl
 			case UMLPackage.VARIABLE___SET_UPPER__INT :
 				setUpper((Integer) arguments.get(0));
 				return null;
-			case UMLPackage.VARIABLE___GET_LOWER :
-				return getLower();
-			case UMLPackage.VARIABLE___GET_UPPER :
-				return getUpper();
-			case UMLPackage.VARIABLE___IS_MULTIVALUED :
-				return isMultivalued();
+			case UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.VARIABLE___INCLUDES_CARDINALITY__INT :
 				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.VARIABLE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
-			case UMLPackage.VARIABLE___LOWER_BOUND :
-				return lowerBound();
-			case UMLPackage.VARIABLE___UPPER_BOUND :
-				return upperBound();
-			case UMLPackage.VARIABLE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.VARIABLE___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
+			case UMLPackage.VARIABLE___IS_MULTIVALUED :
+				return isMultivalued();
+			case UMLPackage.VARIABLE___GET_LOWER :
+				return getLower();
+			case UMLPackage.VARIABLE___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.VARIABLE___GET_UPPER :
+				return getUpper();
+			case UMLPackage.VARIABLE___UPPER_BOUND :
+				return upperBound();
 			case UMLPackage.VARIABLE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1445,8 +1440,8 @@ public class VariableImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.VARIABLE__OWNED_COMMENT,
-		UMLPackage.VARIABLE__NAME_EXPRESSION, UMLPackage.VARIABLE__UPPER_VALUE,
-		UMLPackage.VARIABLE__LOWER_VALUE};
+		UMLPackage.VARIABLE__NAME_EXPRESSION, UMLPackage.VARIABLE__LOWER_VALUE,
+		UMLPackage.VARIABLE__UPPER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1456,8 +1451,8 @@ public class VariableImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.VARIABLE__UPPER_VALUE)
-			|| eIsSet(UMLPackage.VARIABLE__LOWER_VALUE);
+			|| eIsSet(UMLPackage.VARIABLE__LOWER_VALUE)
+			|| eIsSet(UMLPackage.VARIABLE__UPPER_VALUE);
 	}
 
 	/**
@@ -1467,13 +1462,13 @@ public class VariableImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
-		StructuredActivityNode scope = basicGetScope();
-		if (scope != null) {
-			return scope;
-		}
 		Activity activityScope = basicGetActivityScope();
 		if (activityScope != null) {
 			return activityScope;
+		}
+		StructuredActivityNode scope = basicGetScope();
+		if (scope != null) {
+			return scope;
 		}
 		return super.basicGetNamespace();
 	}
@@ -1485,8 +1480,9 @@ public class VariableImpl
 	 */
 	@Override
 	public boolean isSetNamespace() {
-		return super.isSetNamespace() || eIsSet(UMLPackage.VARIABLE__SCOPE)
-			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE);
+		return super.isSetNamespace()
+			|| eIsSet(UMLPackage.VARIABLE__ACTIVITY_SCOPE)
+			|| eIsSet(UMLPackage.VARIABLE__SCOPE);
 	}
 
 } //VariableImpl

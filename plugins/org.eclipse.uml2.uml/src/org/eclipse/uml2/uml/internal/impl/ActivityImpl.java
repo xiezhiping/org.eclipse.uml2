@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityImpl.java,v 1.38 2010/09/28 21:02:14 khussey Exp $
  */
@@ -69,7 +70,6 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
-import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Reception;
 import org.eclipse.uml2.uml.RedefinableElement;
@@ -80,7 +80,6 @@ import org.eclipse.uml2.uml.Substitution;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
@@ -96,16 +95,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getVariables <em>Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isReadOnly <em>Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#isSingleExecution <em>Is Single Execution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityImpl#getPartitions <em>Partition</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,6 +113,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityOperations;
 public class ActivityImpl
 		extends BehaviorImpl
 		implements Activity {
+
+	/**
+	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityGroup> groups;
 
 	/**
 	 * The cached value of the '{@link #getNodes() <em>Node</em>}' containment reference list.
@@ -126,14 +135,14 @@ public class ActivityImpl
 	protected EList<ActivityNode> nodes;
 
 	/**
-	 * The cached value of the '{@link #getGroups() <em>Group</em>}' containment reference list.
+	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGroups()
+	 * @see #getEdges()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ActivityGroup> groups;
+	protected EList<ActivityEdge> edges;
 
 	/**
 	 * The cached value of the '{@link #getVariables() <em>Variable</em>}' containment reference list.
@@ -163,27 +172,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = 1 << 16;
-
-	/**
-	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEdges()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityEdge> edges;
-
-	/**
-	 * The cached value of the '{@link #getPartitions() <em>Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPartitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityPartition> partitions;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 17;
 
 	/**
 	 * The default value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
@@ -203,7 +192,17 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 17;
+	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 18;
+
+	/**
+	 * The cached value of the '{@link #getPartitions() <em>Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityPartition> partitions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -290,17 +289,6 @@ public class ActivityImpl
 				GROUP_ESUBSETS, UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY);
 		}
 		return groups;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityGroup createGroup(EClass eClass) {
-		ActivityGroup newGroup = (ActivityGroup) create(eClass);
-		getGroups().add(newGroup);
-		return newGroup;
 	}
 
 	/**
@@ -447,34 +435,6 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StructuredActivityNode getStructuredNode(String name) {
-		return getStructuredNode(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StructuredActivityNode getStructuredNode(String name,
-			boolean ignoreCase, EClass eClass) {
-		structuredNodeLoop : for (StructuredActivityNode structuredNode : getStructuredNodes()) {
-			if (eClass != null && !eClass.isInstance(structuredNode))
-				continue structuredNodeLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(structuredNode.getName())
-				: name.equals(structuredNode.getName())))
-				continue structuredNodeLoop;
-			return structuredNode;
-		}
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Variable> getVariables() {
 		if (variables == null) {
 			variables = new EObjectContainmentWithInverseEList.Resolving<Variable>(
@@ -605,47 +565,6 @@ public class ActivityImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityPartition createPartition(String name) {
-		ActivityPartition newPartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
-		getPartitions().add(newPartition);
-		if (name != null)
-			newPartition.setName(name);
-		return newPartition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityPartition getPartition(String name) {
-		return getPartition(name, false, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityPartition getPartition(String name, boolean ignoreCase,
-			boolean createOnDemand) {
-		partitionLoop : for (ActivityPartition partition : getPartitions()) {
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(partition.getName())
-				: name.equals(partition.getName())))
-				continue partitionLoop;
-			return partition;
-		}
-		return createOnDemand
-			? createPartition(name)
-			: null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateNoSupergroups(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ActivityOperations.validateNoSupergroups(this, diagnostics,
@@ -712,9 +631,6 @@ public class ActivityImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -723,17 +639,20 @@ public class ActivityImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterfaceRealizations())
@@ -747,17 +666,17 @@ public class ActivityImpl
 						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
 						BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
-			case UMLPackage.ACTIVITY__VARIABLE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__NODE :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEdges())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__GROUP :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGroups())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__VARIABLE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getVariables())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY__NODE :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getNodes())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -796,22 +715,19 @@ public class ActivityImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ACTIVITY__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.ACTIVITY__COLLABORATION_USE :
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
@@ -819,26 +735,26 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
 				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				return ((InternalEList<?>) getOwnedTriggers()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
-				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
+			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
+				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_OPERATION :
 				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
+				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
@@ -851,17 +767,17 @@ public class ActivityImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
-			case UMLPackage.ACTIVITY__VARIABLE :
-				return ((InternalEList<?>) getVariables()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY__NODE :
-				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
-					msgs);
 			case UMLPackage.ACTIVITY__EDGE :
 				return ((InternalEList<?>) getEdges()).basicRemove(otherEnd,
 					msgs);
 			case UMLPackage.ACTIVITY__GROUP :
 				return ((InternalEList<?>) getGroups()).basicRemove(otherEnd,
+					msgs);
+			case UMLPackage.ACTIVITY__VARIABLE :
+				return ((InternalEList<?>) getVariables()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY__NODE :
+				return ((InternalEList<?>) getNodes()).basicRemove(otherEnd,
 					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -877,42 +793,42 @@ public class ActivityImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ACTIVITY__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ACTIVITY__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ACTIVITY__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ACTIVITY__NAME :
-				return getName();
-			case UMLPackage.ACTIVITY__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ACTIVITY__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ACTIVITY__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ACTIVITY__NAME :
+				return getName();
 			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ACTIVITY__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ACTIVITY__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ACTIVITY__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.ACTIVITY__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.ACTIVITY__MEMBER :
-				return getMembers();
-			case UMLPackage.ACTIVITY__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.ACTIVITY__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.ACTIVITY__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.ACTIVITY__MEMBER :
+				return getMembers();
 			case UMLPackage.ACTIVITY__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.ACTIVITY__REDEFINED_ELEMENT :
@@ -931,108 +847,108 @@ public class ActivityImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
-			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				return isAbstract();
+			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
+				return getTemplateBindings();
+			case UMLPackage.ACTIVITY__FEATURE :
+				return getFeatures();
+			case UMLPackage.ACTIVITY__ATTRIBUTE :
+				return getAttributes();
+			case UMLPackage.ACTIVITY__COLLABORATION_USE :
+				return getCollaborationUses();
+			case UMLPackage.ACTIVITY__GENERAL :
+				return getGenerals();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return getPowertypeExtents();
-			case UMLPackage.ACTIVITY__FEATURE :
-				return getFeatures();
 			case UMLPackage.ACTIVITY__INHERITED_MEMBER :
 				return getInheritedMembers();
-			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
-				return getRedefinedClassifiers();
-			case UMLPackage.ACTIVITY__GENERAL :
-				return getGenerals();
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				return getSubstitutions();
-			case UMLPackage.ACTIVITY__ATTRIBUTE :
-				return getAttributes();
-			case UMLPackage.ACTIVITY__REPRESENTATION :
-				if (resolve)
-					return getRepresentation();
-				return basicGetRepresentation();
-			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				return getCollaborationUses();
+			case UMLPackage.ACTIVITY__IS_ABSTRACT :
+				return isAbstract();
+			case UMLPackage.ACTIVITY__IS_FINAL_SPECIALIZATION :
+				return isFinalSpecialization();
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				return getOwnedUseCases();
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return getUseCases();
+			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
+				return getRedefinedClassifiers();
+			case UMLPackage.ACTIVITY__REPRESENTATION :
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				return getSubstitutions();
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
+			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
+				return getOwnedConnectors();
 			case UMLPackage.ACTIVITY__PART :
 				return getParts();
 			case UMLPackage.ACTIVITY__ROLE :
 				return getRoles();
-			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
-				return getOwnedConnectors();
 			case UMLPackage.ACTIVITY__OWNED_PORT :
 				return getOwnedPorts();
-			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				return getOwnedBehaviors();
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
 				if (resolve)
 					return getClassifierBehavior();
 				return basicGetClassifierBehavior();
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
-			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				return getOwnedTriggers();
-			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
-				return getNestedClassifiers();
+			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
+				return getOwnedBehaviors();
 			case UMLPackage.ACTIVITY__OWNED_OPERATION :
 				return getOwnedOperations();
-			case UMLPackage.ACTIVITY__SUPER_CLASS :
-				return getSuperClasses();
-			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				return isActive();
-			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
-				return getOwnedReceptions();
 			case UMLPackage.ACTIVITY__EXTENSION :
 				return getExtensions();
-			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				return isReentrant();
-			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
-				return getRedefinedBehaviors();
-			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
-				return getOwnedParameters();
+			case UMLPackage.ACTIVITY__IS_ACTIVE :
+				return isActive();
+			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
+				return getNestedClassifiers();
+			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
+				return getOwnedReceptions();
+			case UMLPackage.ACTIVITY__SUPER_CLASS :
+				return getSuperClasses();
 			case UMLPackage.ACTIVITY__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
-			case UMLPackage.ACTIVITY__PRECONDITION :
-				return getPreconditions();
-			case UMLPackage.ACTIVITY__POSTCONDITION :
-				return getPostconditions();
+			case UMLPackage.ACTIVITY__IS_REENTRANT :
+				return isReentrant();
+			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
+				return getOwnedParameters();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				return getPostconditions();
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
+				return getRedefinedBehaviors();
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				if (resolve)
 					return getSpecification();
 				return basicGetSpecification();
+			case UMLPackage.ACTIVITY__EDGE :
+				return getEdges();
+			case UMLPackage.ACTIVITY__GROUP :
+				return getGroups();
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
 				return getStructuredNodes();
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return getVariables();
-			case UMLPackage.ACTIVITY__NODE :
-				return getNodes();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return isReadOnly();
-			case UMLPackage.ACTIVITY__EDGE :
-				return getEdges();
-			case UMLPackage.ACTIVITY__PARTITION :
-				return getPartitions();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return isSingleExecution();
-			case UMLPackage.ACTIVITY__GROUP :
-				return getGroups();
+			case UMLPackage.ACTIVITY__PARTITION :
+				return getPartitions();
+			case UMLPackage.ACTIVITY__NODE :
+				return getNodes();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1056,19 +972,19 @@ public class ActivityImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ACTIVITY__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ACTIVITY__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ACTIVITY__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1097,16 +1013,23 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
+			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
+				return;
 			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
+			case UMLPackage.ACTIVITY__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				setIsAbstract((Boolean) newValue);
+			case UMLPackage.ACTIVITY__GENERAL :
+				getGenerals().clear();
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1118,28 +1041,11 @@ public class ActivityImpl
 				getPowertypeExtents().addAll(
 					(Collection<? extends GeneralizationSet>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+			case UMLPackage.ACTIVITY__IS_ABSTRACT :
+				setIsAbstract((Boolean) newValue);
 				return;
-			case UMLPackage.ACTIVITY__GENERAL :
-				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
-				return;
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
-				return;
-			case UMLPackage.ACTIVITY__REPRESENTATION :
-				setRepresentation((CollaborationUse) newValue);
-				return;
-			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+			case UMLPackage.ACTIVITY__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
@@ -1149,6 +1055,19 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection<? extends UseCase>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__REPRESENTATION :
+				setRepresentation((CollaborationUse) newValue);
+				return;
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				getSubstitutions().clear();
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -1160,15 +1079,6 @@ public class ActivityImpl
 				getOwnedConnectors().addAll(
 					(Collection<? extends Connector>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_PORT :
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection<? extends Port>) newValue);
-				return;
-			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
-				return;
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
 				return;
@@ -1177,20 +1087,28 @@ public class ActivityImpl
 				getInterfaceRealizations().addAll(
 					(Collection<? extends InterfaceRealization>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				getOwnedTriggers().clear();
-				getOwnedTriggers().addAll(
-					(Collection<? extends Trigger>) newValue);
+			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
+				getOwnedBehaviors().clear();
+				getOwnedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__IS_ACTIVE :
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll(
 					(Collection<? extends Classifier>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
+				getOwnedReceptions().clear();
+				getOwnedReceptions().addAll(
+					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1198,75 +1116,67 @@ public class ActivityImpl
 					.addAll(
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				setIsActive((Boolean) newValue);
-				return;
-			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
-				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
-				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant((Boolean) newValue);
-				return;
-			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
-				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll(
 					(Collection<? extends Parameter>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__PRECONDITION :
-				getPreconditions().clear();
-				getPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__POSTCONDITION :
 				getPostconditions().clear();
 				getPostconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
-				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
+				getRedefinedBehaviors().clear();
+				getRedefinedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
-				return;
-			case UMLPackage.ACTIVITY__VARIABLE :
-				getVariables().clear();
-				getVariables()
-					.addAll((Collection<? extends Variable>) newValue);
-				return;
-			case UMLPackage.ACTIVITY__NODE :
-				getNodes().clear();
-				getNodes()
-					.addAll((Collection<? extends ActivityNode>) newValue);
-				return;
-			case UMLPackage.ACTIVITY__IS_READ_ONLY :
-				setIsReadOnly((Boolean) newValue);
 				return;
 			case UMLPackage.ACTIVITY__EDGE :
 				getEdges().clear();
 				getEdges()
 					.addAll((Collection<? extends ActivityEdge>) newValue);
 				return;
+			case UMLPackage.ACTIVITY__GROUP :
+				getGroups().clear();
+				getGroups().addAll(
+					(Collection<? extends ActivityGroup>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__VARIABLE :
+				getVariables().clear();
+				getVariables()
+					.addAll((Collection<? extends Variable>) newValue);
+				return;
+			case UMLPackage.ACTIVITY__IS_READ_ONLY :
+				setIsReadOnly((Boolean) newValue);
+				return;
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				setIsSingleExecution((Boolean) newValue);
+				return;
 			case UMLPackage.ACTIVITY__PARTITION :
 				getPartitions().clear();
 				getPartitions().addAll(
 					(Collection<? extends ActivityPartition>) newValue);
 				return;
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				setIsSingleExecution((Boolean) newValue);
-				return;
-			case UMLPackage.ACTIVITY__GROUP :
-				getGroups().clear();
-				getGroups().addAll(
-					(Collection<? extends ActivityGroup>) newValue);
+			case UMLPackage.ACTIVITY__NODE :
+				getNodes().clear();
+				getNodes()
+					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1286,17 +1196,17 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ACTIVITY__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.ACTIVITY__NAME :
+				unsetName();
+				return;
 			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.ACTIVITY__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1319,14 +1229,17 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
-			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ACTIVITY__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ACTIVITY__GENERAL :
+				getGenerals().clear();
 				return;
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1334,20 +1247,11 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
 				return;
-			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
+			case UMLPackage.ACTIVITY__IS_ABSTRACT :
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY__GENERAL :
-				getGenerals().clear();
-				return;
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				getSubstitutions().clear();
-				return;
-			case UMLPackage.ACTIVITY__REPRESENTATION :
-				setRepresentation((CollaborationUse) null);
-				return;
-			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				getCollaborationUses().clear();
+			case UMLPackage.ACTIVITY__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization(IS_FINAL_SPECIALIZATION_EDEFAULT);
 				return;
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
@@ -1355,17 +1259,20 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__USE_CASE :
 				getUseCases().clear();
 				return;
+			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				return;
+			case UMLPackage.ACTIVITY__REPRESENTATION :
+				setRepresentation((CollaborationUse) null);
+				return;
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				getSubstitutions().clear();
+				return;
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				return;
-			case UMLPackage.ACTIVITY__OWNED_PORT :
-				getOwnedPorts().clear();
-				return;
-			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				getOwnedBehaviors().clear();
 				return;
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) null);
@@ -1373,65 +1280,65 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				getInterfaceRealizations().clear();
 				return;
-			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				getOwnedTriggers().clear();
-				return;
-			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
-				getNestedClassifiers().clear();
+			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
+				getOwnedBehaviors().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_OPERATION :
 				getOwnedOperations().clear();
 				return;
-			case UMLPackage.ACTIVITY__SUPER_CLASS :
-				getSuperClasses().clear();
-				return;
 			case UMLPackage.ACTIVITY__IS_ACTIVE :
 				setIsActive(IS_ACTIVE_EDEFAULT);
+				return;
+			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
+				getNestedClassifiers().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.ACTIVITY__SUPER_CLASS :
+				getSuperClasses().clear();
+				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
-				return;
-			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
-				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				return;
-			case UMLPackage.ACTIVITY__PRECONDITION :
-				getPreconditions().clear();
+			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
+				getOwnedParameterSets().clear();
 				return;
 			case UMLPackage.ACTIVITY__POSTCONDITION :
 				getPostconditions().clear();
 				return;
-			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
-				getOwnedParameterSets().clear();
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
+				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				setSpecification((BehavioralFeature) null);
 				return;
+			case UMLPackage.ACTIVITY__EDGE :
+				getEdges().clear();
+				return;
+			case UMLPackage.ACTIVITY__GROUP :
+				getGroups().clear();
+				return;
 			case UMLPackage.ACTIVITY__VARIABLE :
 				getVariables().clear();
-				return;
-			case UMLPackage.ACTIVITY__NODE :
-				getNodes().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
 				return;
-			case UMLPackage.ACTIVITY__EDGE :
-				getEdges().clear();
+			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
+				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
 				return;
 			case UMLPackage.ACTIVITY__PARTITION :
 				getPartitions().clear();
 				return;
-			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
-				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
-				return;
-			case UMLPackage.ACTIVITY__GROUP :
-				getGroups().clear();
+			case UMLPackage.ACTIVITY__NODE :
+				getNodes().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1447,39 +1354,39 @@ public class ActivityImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY__OWNER :
 				return isSetOwner();
-			case UMLPackage.ACTIVITY__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTIVITY__NAME :
 				return isSetName();
-			case UMLPackage.ACTIVITY__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ACTIVITY__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ACTIVITY__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ACTIVITY__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ACTIVITY__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ACTIVITY__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ACTIVITY__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.ACTIVITY__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ACTIVITY__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.ACTIVITY__MEMBER :
-				return isSetMembers();
-			case UMLPackage.ACTIVITY__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.ACTIVITY__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.ACTIVITY__MEMBER :
+				return isSetMembers();
 			case UMLPackage.ACTIVITY__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTIVITY__REDEFINED_ELEMENT :
@@ -1492,104 +1399,104 @@ public class ActivityImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ACTIVITY__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
-			case UMLPackage.ACTIVITY__IS_ABSTRACT :
-				return isSetIsAbstract();
+			case UMLPackage.ACTIVITY__TEMPLATE_BINDING :
+				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ACTIVITY__FEATURE :
+				return isSetFeatures();
+			case UMLPackage.ACTIVITY__ATTRIBUTE :
+				return isSetAttributes();
+			case UMLPackage.ACTIVITY__COLLABORATION_USE :
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
+			case UMLPackage.ACTIVITY__GENERAL :
+				return isSetGenerals();
 			case UMLPackage.ACTIVITY__GENERALIZATION :
 				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.ACTIVITY__POWERTYPE_EXTENT :
 				return powertypeExtents != null && !powertypeExtents.isEmpty();
-			case UMLPackage.ACTIVITY__FEATURE :
-				return isSetFeatures();
 			case UMLPackage.ACTIVITY__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
-			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
-				return redefinedClassifiers != null
-					&& !redefinedClassifiers.isEmpty();
-			case UMLPackage.ACTIVITY__GENERAL :
-				return isSetGenerals();
-			case UMLPackage.ACTIVITY__SUBSTITUTION :
-				return substitutions != null && !substitutions.isEmpty();
-			case UMLPackage.ACTIVITY__ATTRIBUTE :
-				return isSetAttributes();
-			case UMLPackage.ACTIVITY__REPRESENTATION :
-				return representation != null;
-			case UMLPackage.ACTIVITY__COLLABORATION_USE :
-				return collaborationUses != null
-					&& !collaborationUses.isEmpty();
+			case UMLPackage.ACTIVITY__IS_ABSTRACT :
+				return isSetIsAbstract();
+			case UMLPackage.ACTIVITY__IS_FINAL_SPECIALIZATION :
+				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.ACTIVITY__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.ACTIVITY__USE_CASE :
 				return useCases != null && !useCases.isEmpty();
+			case UMLPackage.ACTIVITY__REDEFINED_CLASSIFIER :
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
+			case UMLPackage.ACTIVITY__REPRESENTATION :
+				return representation != null;
+			case UMLPackage.ACTIVITY__SUBSTITUTION :
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
+			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.ACTIVITY__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.ACTIVITY__ROLE :
 				return isSetRoles();
-			case UMLPackage.ACTIVITY__OWNED_CONNECTOR :
-				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
-				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
 			case UMLPackage.ACTIVITY__CLASSIFIER_BEHAVIOR :
 				return classifierBehavior != null;
 			case UMLPackage.ACTIVITY__INTERFACE_REALIZATION :
 				return interfaceRealizations != null
 					&& !interfaceRealizations.isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_TRIGGER :
-				return ownedTriggers != null && !ownedTriggers.isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_BEHAVIOR :
+				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
+			case UMLPackage.ACTIVITY__OWNED_OPERATION :
+				return ownedOperations != null && !ownedOperations.isEmpty();
+			case UMLPackage.ACTIVITY__EXTENSION :
+				return !getExtensions().isEmpty();
+			case UMLPackage.ACTIVITY__IS_ACTIVE :
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.ACTIVITY__NESTED_CLASSIFIER :
 				return nestedClassifiers != null
 					&& !nestedClassifiers.isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_OPERATION :
-				return ownedOperations != null && !ownedOperations.isEmpty();
-			case UMLPackage.ACTIVITY__SUPER_CLASS :
-				return isSetSuperClasses();
-			case UMLPackage.ACTIVITY__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.ACTIVITY__OWNED_RECEPTION :
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
-			case UMLPackage.ACTIVITY__EXTENSION :
-				return !getExtensions().isEmpty();
-			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
-			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
-				return redefinedBehaviors != null
-					&& !redefinedBehaviors.isEmpty();
-			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
-				return ownedParameters != null && !ownedParameters.isEmpty();
+			case UMLPackage.ACTIVITY__SUPER_CLASS :
+				return isSetSuperClasses();
 			case UMLPackage.ACTIVITY__CONTEXT :
 				return basicGetContext() != null;
-			case UMLPackage.ACTIVITY__PRECONDITION :
-				return preconditions != null && !preconditions.isEmpty();
-			case UMLPackage.ACTIVITY__POSTCONDITION :
-				return postconditions != null && !postconditions.isEmpty();
+			case UMLPackage.ACTIVITY__IS_REENTRANT :
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :
 				return ownedParameterSets != null
 					&& !ownedParameterSets.isEmpty();
+			case UMLPackage.ACTIVITY__POSTCONDITION :
+				return postconditions != null && !postconditions.isEmpty();
+			case UMLPackage.ACTIVITY__PRECONDITION :
+				return preconditions != null && !preconditions.isEmpty();
+			case UMLPackage.ACTIVITY__REDEFINED_BEHAVIOR :
+				return redefinedBehaviors != null
+					&& !redefinedBehaviors.isEmpty();
 			case UMLPackage.ACTIVITY__SPECIFICATION :
 				return specification != null;
+			case UMLPackage.ACTIVITY__EDGE :
+				return edges != null && !edges.isEmpty();
+			case UMLPackage.ACTIVITY__GROUP :
+				return groups != null && !groups.isEmpty();
 			case UMLPackage.ACTIVITY__STRUCTURED_NODE :
 				return !getStructuredNodes().isEmpty();
 			case UMLPackage.ACTIVITY__VARIABLE :
 				return variables != null && !variables.isEmpty();
-			case UMLPackage.ACTIVITY__NODE :
-				return nodes != null && !nodes.isEmpty();
 			case UMLPackage.ACTIVITY__IS_READ_ONLY :
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
-			case UMLPackage.ACTIVITY__EDGE :
-				return edges != null && !edges.isEmpty();
-			case UMLPackage.ACTIVITY__PARTITION :
-				return partitions != null && !partitions.isEmpty();
 			case UMLPackage.ACTIVITY__IS_SINGLE_EXECUTION :
 				return ((eFlags & IS_SINGLE_EXECUTION_EFLAG) != 0) != IS_SINGLE_EXECUTION_EDEFAULT;
-			case UMLPackage.ACTIVITY__GROUP :
-				return groups != null && !groups.isEmpty();
+			case UMLPackage.ACTIVITY__PARTITION :
+				return partitions != null && !partitions.isEmpty();
+			case UMLPackage.ACTIVITY__NODE :
+				return nodes != null && !nodes.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1606,117 +1513,119 @@ public class ActivityImpl
 		switch (operationID) {
 			case UMLPackage.ACTIVITY___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.ACTIVITY___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.ACTIVITY___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.ACTIVITY___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.ACTIVITY___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.ACTIVITY___GET_MODEL :
-				return getModel();
-			case UMLPackage.ACTIVITY___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.ACTIVITY___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.ACTIVITY___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.ACTIVITY___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.ACTIVITY___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.ACTIVITY___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_MODEL :
+				return getModel();
+			case UMLPackage.ACTIVITY___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.ACTIVITY___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.ACTIVITY___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.ACTIVITY___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.ACTIVITY___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ACTIVITY___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.ACTIVITY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.ACTIVITY___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.ACTIVITY___GET_LABEL :
 				return getLabel();
 			case UMLPackage.ACTIVITY___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.ACTIVITY___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.ACTIVITY___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.ACTIVITY___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.ACTIVITY___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.ACTIVITY___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.ACTIVITY___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.ACTIVITY___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.ACTIVITY___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1733,24 +1642,30 @@ public class ActivityImpl
 				return getImportedElements();
 			case UMLPackage.ACTIVITY___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.ACTIVITY___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.ACTIVITY___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.ACTIVITY___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.ACTIVITY___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.ACTIVITY___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.ACTIVITY___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.ACTIVITY___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.ACTIVITY___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.ACTIVITY___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.ACTIVITY___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1775,18 +1690,10 @@ public class ActivityImpl
 				return getAssociations();
 			case UMLPackage.ACTIVITY___CONFORMS_TO__TYPE :
 				return conformsTo((Type) arguments.get(0));
-			case UMLPackage.ACTIVITY___PARAMETERABLE_ELEMENTS :
-				return parameterableElements();
 			case UMLPackage.ACTIVITY___IS_TEMPLATE :
 				return isTemplate();
-			case UMLPackage.ACTIVITY___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_GENERALIZATION_HIERARCHIES__DIAGNOSTICCHAIN_MAP :
-				return validateGeneralizationHierarchies(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
 			case UMLPackage.ACTIVITY___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
@@ -1795,12 +1702,20 @@ public class ActivityImpl
 				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___GET_ALL_ATTRIBUTES :
 				return getAllAttributes();
-			case UMLPackage.ACTIVITY___GET_OPERATIONS :
-				return getOperations();
 			case UMLPackage.ACTIVITY___GET_ALL_OPERATIONS :
 				return getAllOperations();
+			case UMLPackage.ACTIVITY___GET_ALL_USED_INTERFACES :
+				return getAllUsedInterfaces();
 			case UMLPackage.ACTIVITY___GET_OPERATION__STRING_ELIST_ELIST :
 				return getOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
@@ -1809,30 +1724,30 @@ public class ActivityImpl
 				return getOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
 					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
+			case UMLPackage.ACTIVITY___GET_OPERATIONS :
+				return getOperations();
 			case UMLPackage.ACTIVITY___GET_USED_INTERFACES :
 				return getUsedInterfaces();
-			case UMLPackage.ACTIVITY___GET_ALL_USED_INTERFACES :
-				return getAllUsedInterfaces();
-			case UMLPackage.ACTIVITY___GET_GENERALS :
-				return getGenerals();
-			case UMLPackage.ACTIVITY___GET_INHERITED_MEMBERS :
-				return getInheritedMembers();
 			case UMLPackage.ACTIVITY___ALL_FEATURES :
 				return allFeatures();
-			case UMLPackage.ACTIVITY___PARENTS :
-				return parents();
-			case UMLPackage.ACTIVITY___INHERITABLE_MEMBERS__CLASSIFIER :
-				return inheritableMembers((Classifier) arguments.get(0));
-			case UMLPackage.ACTIVITY___HAS_VISIBILITY_OF__NAMEDELEMENT :
-				return hasVisibilityOf((NamedElement) arguments.get(0));
-			case UMLPackage.ACTIVITY___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
-			case UMLPackage.ACTIVITY___INHERIT__ELIST :
-				return inherit((EList<NamedElement>) arguments.get(0));
-			case UMLPackage.ACTIVITY___MAY_SPECIALIZE_TYPE__CLASSIFIER :
-				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.ACTIVITY___ALL_PARENTS :
 				return allParents();
+			case UMLPackage.ACTIVITY___CONFORMS_TO__CLASSIFIER :
+				return conformsTo((Classifier) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_GENERALS :
+				return getGenerals();
+			case UMLPackage.ACTIVITY___HAS_VISIBILITY_OF__NAMEDELEMENT :
+				return hasVisibilityOf((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY___INHERIT__ELIST :
+				return inherit((EList<NamedElement>) arguments.get(0));
+			case UMLPackage.ACTIVITY___INHERITABLE_MEMBERS__CLASSIFIER :
+				return inheritableMembers((Classifier) arguments.get(0));
+			case UMLPackage.ACTIVITY___GET_INHERITED_MEMBERS :
+				return getInheritedMembers();
+			case UMLPackage.ACTIVITY___MAY_SPECIALIZE_TYPE__CLASSIFIER :
+				return maySpecializeType((Classifier) arguments.get(0));
+			case UMLPackage.ACTIVITY___PARENTS :
+				return parents();
 			case UMLPackage.ACTIVITY___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicities(
 					(DiagnosticChain) arguments.get(0),
@@ -1841,25 +1756,38 @@ public class ActivityImpl
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
 					(Integer) arguments.get(3));
+			case UMLPackage.ACTIVITY___GET_PARTS :
+				return getParts();
+			case UMLPackage.ACTIVITY___GET_OWNED_PORTS :
+				return getOwnedPorts();
 			case UMLPackage.ACTIVITY___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateClassBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___GET_IMPLEMENTED_INTERFACES :
-				return getImplementedInterfaces();
 			case UMLPackage.ACTIVITY___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();
+			case UMLPackage.ACTIVITY___GET_IMPLEMENTED_INTERFACES :
+				return getImplementedInterfaces();
 			case UMLPackage.ACTIVITY___VALIDATE_PASSIVE_CLASS__DIAGNOSTICCHAIN_MAP :
 				return validatePassiveClass((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___GET_EXTENSIONS :
-				return getExtensions();
 			case UMLPackage.ACTIVITY___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
 				return createOwnedOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
 					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
 			case UMLPackage.ACTIVITY___IS_METACLASS :
 				return isMetaclass();
+			case UMLPackage.ACTIVITY___GET_EXTENSIONS :
+				return getExtensions();
+			case UMLPackage.ACTIVITY___GET_SUPER_CLASSES :
+				return getSuperClasses();
+			case UMLPackage.ACTIVITY___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
+				return validateMostOneBehaviour(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
+				return validateMustRealize((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateParametersMatch(
 					(DiagnosticChain) arguments.get(0),
@@ -1868,15 +1796,11 @@ public class ActivityImpl
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
-				return validateMustRealize((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___GET_CONTEXT :
 				return getContext();
+			case UMLPackage.ACTIVITY___VALIDATE_AUTONOMOUS__DIAGNOSTICCHAIN_MAP :
+				return validateAutonomous((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY___VALIDATE_NO_SUPERGROUPS__DIAGNOSTICCHAIN_MAP :
 				return validateNoSupergroups(
 					(DiagnosticChain) arguments.get(0),
@@ -1885,9 +1809,8 @@ public class ActivityImpl
 				return validateActivityParameterNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY___VALIDATE_AUTONOMOUS__DIAGNOSTICCHAIN_MAP :
-				return validateAutonomous((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY___GET_STRUCTURED_NODES :
+				return getStructuredNodes();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1912,35 +1835,15 @@ public class ActivityImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedMembers()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
-		UMLPackage.ACTIVITY__OWNED_RULE, UMLPackage.ACTIVITY__OWNED_USE_CASE,
-		UMLPackage.ACTIVITY__OWNED_ATTRIBUTE,
-		UMLPackage.ACTIVITY__OWNED_CONNECTOR,
-		UMLPackage.ACTIVITY__OWNED_BEHAVIOR,
-		UMLPackage.ACTIVITY__OWNED_TRIGGER,
-		UMLPackage.ACTIVITY__NESTED_CLASSIFIER,
-		UMLPackage.ACTIVITY__OWNED_OPERATION,
-		UMLPackage.ACTIVITY__OWNED_RECEPTION,
-		UMLPackage.ACTIVITY__OWNED_PARAMETER,
-		UMLPackage.ACTIVITY__OWNED_PARAMETER_SET, UMLPackage.ACTIVITY__VARIABLE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements() || eIsSet(UMLPackage.ACTIVITY__NODE)
-			|| eIsSet(UMLPackage.ACTIVITY__EDGE)
-			|| eIsSet(UMLPackage.ACTIVITY__GROUP);
+		return super.isSetOwnedElements() || eIsSet(UMLPackage.ACTIVITY__EDGE)
+			|| eIsSet(UMLPackage.ACTIVITY__GROUP)
+			|| eIsSet(UMLPackage.ACTIVITY__NODE);
 	}
 
 	/**
@@ -1967,12 +1870,31 @@ public class ActivityImpl
 		UMLPackage.ACTIVITY__NAME_EXPRESSION,
 		UMLPackage.ACTIVITY__ELEMENT_IMPORT,
 		UMLPackage.ACTIVITY__PACKAGE_IMPORT, UMLPackage.ACTIVITY__OWNED_MEMBER,
-		UMLPackage.ACTIVITY__TEMPLATE_BINDING,
 		UMLPackage.ACTIVITY__OWNED_TEMPLATE_SIGNATURE,
-		UMLPackage.ACTIVITY__GENERALIZATION, UMLPackage.ACTIVITY__SUBSTITUTION,
+		UMLPackage.ACTIVITY__TEMPLATE_BINDING,
 		UMLPackage.ACTIVITY__COLLABORATION_USE,
-		UMLPackage.ACTIVITY__INTERFACE_REALIZATION, UMLPackage.ACTIVITY__NODE,
-		UMLPackage.ACTIVITY__EDGE, UMLPackage.ACTIVITY__GROUP};
+		UMLPackage.ACTIVITY__GENERALIZATION, UMLPackage.ACTIVITY__SUBSTITUTION,
+		UMLPackage.ACTIVITY__INTERFACE_REALIZATION, UMLPackage.ACTIVITY__EDGE,
+		UMLPackage.ACTIVITY__GROUP, UMLPackage.ACTIVITY__NODE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedMembers() <em>Owned Member</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedMembers()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY__OWNED_RULE, UMLPackage.ACTIVITY__OWNED_USE_CASE,
+		UMLPackage.ACTIVITY__OWNED_ATTRIBUTE,
+		UMLPackage.ACTIVITY__OWNED_CONNECTOR,
+		UMLPackage.ACTIVITY__OWNED_BEHAVIOR,
+		UMLPackage.ACTIVITY__OWNED_OPERATION,
+		UMLPackage.ACTIVITY__NESTED_CLASSIFIER,
+		UMLPackage.ACTIVITY__OWNED_RECEPTION,
+		UMLPackage.ACTIVITY__OWNED_PARAMETER,
+		UMLPackage.ACTIVITY__OWNED_PARAMETER_SET, UMLPackage.ACTIVITY__VARIABLE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getGroups() <em>Group</em>}' containment reference list.
@@ -1985,6 +1907,58 @@ public class ActivityImpl
 	protected static final int[] GROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY__PARTITION};
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ActivityGroup createGroup(EClass eClass) {
+		return createGroup(null, eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup createGroup(String name, EClass eClass) {
+		ActivityGroup newGroup = (ActivityGroup) create(eClass);
+		getGroups().add(newGroup);
+		if (name != null)
+			newGroup.setName(name);
+		return newGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getGroup(String name) {
+		return getGroup(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getGroup(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		groupLoop : for (ActivityGroup group : getGroups()) {
+			if (eClass != null && !eClass.isInstance(group))
+				continue groupLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(group.getName())
+				: name.equals(group.getName())))
+				continue groupLoop;
+			return group;
+		}
+		return createOnDemand && eClass != null
+			? createGroup(name, eClass)
+			: null;
+	}
+
+	/**
 	 * The array of superset feature identifiers for the '{@link #getStructuredNodes() <em>Structured Node</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1993,7 +1967,35 @@ public class ActivityImpl
 	 * @ordered
 	 */
 	protected static final int[] STRUCTURED_NODE_ESUPERSETS = new int[]{
-		UMLPackage.ACTIVITY__NODE, UMLPackage.ACTIVITY__GROUP};
+		UMLPackage.ACTIVITY__GROUP, UMLPackage.ACTIVITY__NODE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode getStructuredNode(String name) {
+		return getStructuredNode(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructuredActivityNode getStructuredNode(String name,
+			boolean ignoreCase, EClass eClass) {
+		structuredNodeLoop : for (StructuredActivityNode structuredNode : getStructuredNodes()) {
+			if (eClass != null && !eClass.isInstance(structuredNode))
+				continue structuredNodeLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(structuredNode.getName())
+				: name.equals(structuredNode.getName())))
+				continue structuredNodeLoop;
+			return structuredNode;
+		}
+		return null;
+	}
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getPartitions() <em>Partition</em>}' reference list.
@@ -2004,5 +2006,46 @@ public class ActivityImpl
 	 * @ordered
 	 */
 	protected static final int[] PARTITION_ESUPERSETS = new int[]{UMLPackage.ACTIVITY__GROUP};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition createPartition(String name) {
+		ActivityPartition newPartition = (ActivityPartition) create(UMLPackage.Literals.ACTIVITY_PARTITION);
+		getPartitions().add(newPartition);
+		if (name != null)
+			newPartition.setName(name);
+		return newPartition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getPartition(String name) {
+		return getPartition(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityPartition getPartition(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		partitionLoop : for (ActivityPartition partition : getPartitions()) {
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(partition.getName())
+				: name.equals(partition.getName())))
+				continue partitionLoop;
+			return partition;
+		}
+		return createOnDemand
+			? createPartition(name)
+			: null;
+	}
 
 } //ActivityImpl

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: WriteStructuralFeatureAction.java,v 1.9 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#getValue <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#getResult <em>Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,7 +59,7 @@ public interface WriteStructuralFeatureAction
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getWriteStructuralFeatureAction_Value()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getValue();
@@ -145,8 +146,8 @@ public interface WriteStructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type input pin is the same as the classifier of the structural feature.
-	 * self.value.type = self.structuralFeature.featuringClassifier
+	 * The type of the value input pin is the same as the type of the structural feature.
+	 * self.value->notEmpty() implies self.value.type =  self.structuralFeature.type
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

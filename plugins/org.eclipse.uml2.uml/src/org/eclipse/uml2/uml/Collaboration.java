@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Collaboration.java,v 1.8 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -37,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface Collaboration
-		extends BehavioredClassifier, StructuredClassifier {
+		extends StructuredClassifier, BehavioredClassifier {
 
 	/**
 	 * Returns the value of the '<em><b>Collaboration Role</b></em>' reference list.

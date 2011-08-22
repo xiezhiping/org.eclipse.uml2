@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: SendObjectAction.java,v 1.9 2008/01/09 18:56:02 khussey Exp $
  */
@@ -27,8 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.SendObjectAction#getTarget <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.SendObjectAction#getRequest <em>Request</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.SendObjectAction#getTarget <em>Target</em>}</li>
  * </ul>
  * </p>
  *

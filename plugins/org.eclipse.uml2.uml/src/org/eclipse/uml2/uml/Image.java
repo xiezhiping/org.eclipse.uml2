@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Image.java,v 1.5 2006/05/12 20:38:03 khussey Exp $
  */
@@ -25,8 +26,8 @@ package org.eclipse.uml2.uml;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Image#getContent <em>Content</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Image#getLocation <em>Location</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Image#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Image#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,7 +50,7 @@ public interface Image
 	 * @see #unsetContent()
 	 * @see #setContent(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getImage_Content()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getContent();
@@ -101,7 +102,7 @@ public interface Image
 	 * @see #unsetLocation()
 	 * @see #setLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getImage_Location()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getLocation();
@@ -146,16 +147,14 @@ public interface Image
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP.
-	 * 
-	 * In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
+	 * This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Format</em>' attribute.
 	 * @see #isSetFormat()
 	 * @see #unsetFormat()
 	 * @see #setFormat(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getImage_Format()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getFormat();

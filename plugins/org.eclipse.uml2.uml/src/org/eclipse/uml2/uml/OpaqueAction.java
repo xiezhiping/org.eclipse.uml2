@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OpaqueAction.java,v 1.11 2007/10/23 15:54:20 jbruck Exp $
  */
@@ -29,8 +30,8 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueAction#getBodies <em>Body</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueAction#getLanguages <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueAction#getInputValues <em>Input Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueAction#getLanguages <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueAction#getOutputValues <em>Output Value</em>}</li>
  * </ul>
  * </p>
@@ -54,7 +55,7 @@ public interface OpaqueAction
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_Body()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.types.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -93,7 +94,7 @@ public interface OpaqueAction
 	 * @see #isSetLanguages()
 	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueAction_Language()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String"
 	 * @generated
 	 */
 	EList<String> getLanguages();

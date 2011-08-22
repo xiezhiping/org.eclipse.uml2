@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TransitionOperations.java,v 1.13 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -39,15 +40,18 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Transition#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#validateForkSegmentGuards(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Segment Guards</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateStateIsExternal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate State Is External</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#validateJoinSegmentGuards(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Segment Guards</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#validateForkSegmentState(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Segment State</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#validateJoinSegmentState(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Segment State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateStateIsInternal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate State Is Internal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#validateOutgoingPseudostates(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing Pseudostates</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#validateInitialTransition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateJoinSegmentState(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Segment State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateForkSegmentState(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Segment State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#validateSignaturesCompatible(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signatures Compatible</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#redefinitionContext() <em>Redefinition Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateStateIsLocal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate State Is Local</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateInitialTransition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#validateForkSegmentGuards(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Segment Guards</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#containingStateMachine() <em>Containing State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#redefinitionContext() <em>Redefinition Context</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,6 +132,42 @@ public class TransitionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateJoinSegmentGuards", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{transition}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A transition with kind internal must have a state as its source, and its source and target must be equal.
+	 * (kind = TransitionKind::internal) implies
+	 * 		(source.oclIsKindOf (State) and source = target)
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateStateIsInternal(Transition transition,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.TRANSITION__STATE_IS_INTERNAL,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsInternal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{transition}));
 			}
 			return false;
@@ -244,7 +284,7 @@ public class TransitionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype <<create>>.
+	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype >.
 	 * self.source.oclIsKindOf(Pseudostate) implies
 	 * (self.source.oclAsType(Pseudostate).kind = #initial) implies
 	 * (self.source.container = self.stateMachine.top) implies
@@ -285,7 +325,6 @@ public class TransitionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
-	 * 
 	 * true
 	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -309,6 +348,43 @@ public class TransitionOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateSignaturesCompatible", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{transition}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A transition with kind local must have a composite state or an entry point as its source.
+	 * (kind = TransitionKind::local) implies
+	 * 		((source.oclIsKindOf (State) and source.oclAsType(State).isComposite) or
+	 * 		(source.oclIsKindOf (Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint))
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateStateIsLocal(Transition transition,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.TRANSITION__STATE_IS_LOCAL,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsLocal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{transition}));
 			}
 			return false;
@@ -403,6 +479,42 @@ public class TransitionOperations
 		}
 
 		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A transition with kind external can source any vertex except entry points.
+	 * (kind = TransitionKind::external) implies
+	 * 	not (source.oclIsKindOf(Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint)
+	 * @param transition The receiving '<em><b>Transition</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateStateIsExternal(Transition transition,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.TRANSITION__STATE_IS_EXTERNAL,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateStateIsExternal", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(transition, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{transition}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	protected static EList<Transition> getAllRedefinedTransitions(

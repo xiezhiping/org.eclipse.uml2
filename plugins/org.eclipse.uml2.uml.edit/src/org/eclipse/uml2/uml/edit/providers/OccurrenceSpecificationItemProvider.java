@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OccurrenceSpecificationItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
@@ -66,9 +67,8 @@ public class OccurrenceSpecificationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addToBeforePropertyDescriptor(object);
-			addEventPropertyDescriptor(object);
 			addToAfterPropertyDescriptor(object);
+			addToBeforePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,25 +89,6 @@ public class OccurrenceSpecificationItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_toBefore_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__TO_BEFORE, true,
-				false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Event feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEventPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_OccurrenceSpecification_event_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_OccurrenceSpecification_event_feature", "_UI_OccurrenceSpecification_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.OCCURRENCE_SPECIFICATION__EVENT, true,
 				false, true, null, null, null));
 	}
 

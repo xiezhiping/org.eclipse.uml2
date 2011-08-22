@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188, 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InterfaceItemProvider.java,v 1.18 2010/09/28 21:00:20 khussey Exp $
  */
@@ -17,11 +18,14 @@ package org.eclipse.uml2.uml.edit.providers;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -33,6 +37,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.command.SubsetAddCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -70,12 +77,12 @@ public class InterfaceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOwnedAttributePropertyDescriptor(object);
-			addOwnedOperationPropertyDescriptor(object);
 			addNestedClassifierPropertyDescriptor(object);
-			addRedefinedInterfacePropertyDescriptor(object);
+			addOwnedAttributePropertyDescriptor(object);
 			addOwnedReceptionPropertyDescriptor(object);
 			addProtocolPropertyDescriptor(object);
+			addRedefinedInterfacePropertyDescriptor(object);
+			addOwnedOperationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -218,14 +225,14 @@ public class InterfaceItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE);
-			childrenFeatures
-				.add(UMLPackage.Literals.INTERFACE__OWNED_OPERATION);
-			childrenFeatures
 				.add(UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE);
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERFACE__OWNED_RECEPTION);
 			childrenFeatures.add(UMLPackage.Literals.INTERFACE__PROTOCOL);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERFACE__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -290,11 +297,11 @@ public class InterfaceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Interface.class)) {
-			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
-			case UMLPackage.INTERFACE__OWNED_OPERATION :
 			case UMLPackage.INTERFACE__NESTED_CLASSIFIER :
+			case UMLPackage.INTERFACE__OWNED_ATTRIBUTE :
 			case UMLPackage.INTERFACE__OWNED_RECEPTION :
 			case UMLPackage.INTERFACE__PROTOCOL :
+			case UMLPackage.INTERFACE__OWNED_OPERATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -315,24 +322,20 @@ public class InterfaceItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createProperty()));
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createClass()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createPort()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
-			UMLFactory.eINSTANCE.createExtensionEnd()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
-			UMLFactory.eINSTANCE.createOperation()));
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createAssociation()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createExtension()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
@@ -344,7 +347,7 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createClass()));
+			UMLFactory.eINSTANCE.createDataType()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
@@ -364,26 +367,6 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createExtension()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createStereotype()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createDataType()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createCollaboration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createUseCase()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createEnumeration()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -392,11 +375,11 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+			UMLFactory.eINSTANCE.createCollaboration()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
+			UMLFactory.eINSTANCE.createUseCase()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
@@ -412,15 +395,19 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createAssociationClass()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createCommunicationPath()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createComponent()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
 			UMLFactory.eINSTANCE.createNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createCommunicationPath()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
@@ -432,11 +419,27 @@ public class InterfaceItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createInformationItem()));
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
-			UMLFactory.eINSTANCE.createAssociationClass()));
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER,
+			UMLFactory.eINSTANCE.createInformationItem()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createProperty()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_ATTRIBUTE,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__OWNED_RECEPTION,
@@ -445,6 +448,10 @@ public class InterfaceItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERFACE__PROTOCOL,
 			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERFACE__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**
@@ -459,8 +466,8 @@ public class InterfaceItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.INTERFACE__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.INTERFACE__PROTOCOL;
@@ -471,6 +478,77 @@ public class InterfaceItemProvider
 					getFeatureText(childFeature), getTypeText(owner)});
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createAddCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection, int)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createAddCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+				collection, index);
+		}
+		return super
+			.createAddCommand(domain, owner, feature, collection, index);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
+				collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.INTERFACE__REDEFINED_INTERFACE},
+				value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
 	}
 
 }

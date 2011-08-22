@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InformationFlowOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InformationFlow#validateSourcesAndTargetsKind(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Sources And Targets Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#validateMustConform(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Must Conform</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InformationFlow#validateSourcesAndTargetsKind(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Sources And Targets Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#validateConveyClassifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Convey Classifiers</em>}</li>
  * </ul>
  * </p>
@@ -55,12 +56,12 @@ public class InformationFlowOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).
-	 * (self.source->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
+	 * (self.informationSource->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
 	 *   oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
 	 *   oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
 	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
 	 *   oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and
-	 *     (self.target->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
+	 *     (self.informationTarget->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
 	 *       oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
 	 *       oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
 	 *       oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
@@ -135,7 +136,6 @@ public class InformationFlowOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An information flow can only convey classifiers that are allowed to represent an information item.
-	 * 
 	 * self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)
 	 *   or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))
 	 * @param informationFlow The receiving '<em><b>Information Flow</b></em>' model object.

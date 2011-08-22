@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: BehavioralFeature.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -23,19 +24,19 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.
- * A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.
  * A behavioral feature owns zero or more parameter sets.
+ * A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getOwnedParameters <em>Owned Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getConcurrency <em>Concurrency</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#isAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getMethods <em>Method</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getConcurrency <em>Concurrency</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getRaisedExceptions <em>Raised Exception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getOwnedParameterSets <em>Owned Parameter Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioralFeature#getRaisedExceptions <em>Raised Exception</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,7 +118,7 @@ public interface BehavioralFeature
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_IsAbstract()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -209,7 +210,6 @@ public interface BehavioralFeature
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the Types representing exceptions that may be raised during an invocation of this feature.
-	 * The signals that the behavioral feature raises as exceptions.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Raised Exception</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioralFeature_RaisedException()
@@ -307,7 +307,7 @@ public interface BehavioralFeature
 	 * @param name The name for the new return result, or null.
 	 * @param type The type for the new return result, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" typeOrdered="false"
 	 * @generated
 	 */
 	Parameter createReturnResult(String name, Type type);

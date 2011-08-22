@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExceptionHandlerImpl.java,v 1.21 2010/09/28 21:02:14 khussey Exp $
  */
@@ -53,9 +54,9 @@ import org.eclipse.uml2.uml.internal.operations.ExceptionHandlerOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getExceptionInput <em>Exception Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getExceptionTypes <em>Exception Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getHandlerBody <em>Handler Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExceptionHandlerImpl#getProtectedNode <em>Protected Node</em>}</li>
  * </ul>
  * </p>
@@ -65,16 +66,6 @@ import org.eclipse.uml2.uml.internal.operations.ExceptionHandlerOperations;
 public class ExceptionHandlerImpl
 		extends ElementImpl
 		implements ExceptionHandler {
-
-	/**
-	 * The cached value of the '{@link #getHandlerBody() <em>Handler Body</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getHandlerBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected ExecutableNode handlerBody;
 
 	/**
 	 * The cached value of the '{@link #getExceptionInput() <em>Exception Input</em>}' reference.
@@ -95,6 +86,16 @@ public class ExceptionHandlerImpl
 	 * @ordered
 	 */
 	protected EList<Classifier> exceptionTypes;
+
+	/**
+	 * The cached value of the '{@link #getHandlerBody() <em>Handler Body</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHandlerBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExecutableNode handlerBody;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -428,24 +429,24 @@ public class ExceptionHandlerImpl
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
-				if (resolve)
-					return getHandlerBody();
-				return basicGetHandlerBody();
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				if (resolve)
 					return getExceptionInput();
 				return basicGetExceptionInput();
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				return getExceptionTypes();
+			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
+				if (resolve)
+					return getHandlerBody();
+				return basicGetHandlerBody();
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				if (resolve)
 					return getProtectedNode();
@@ -473,9 +474,6 @@ public class ExceptionHandlerImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
-				setHandlerBody((ExecutableNode) newValue);
-				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				setExceptionInput((ObjectNode) newValue);
 				return;
@@ -483,6 +481,9 @@ public class ExceptionHandlerImpl
 				getExceptionTypes().clear();
 				getExceptionTypes().addAll(
 					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
+				setHandlerBody((ExecutableNode) newValue);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				setProtectedNode((ExecutableNode) newValue);
@@ -505,14 +506,14 @@ public class ExceptionHandlerImpl
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
-				setHandlerBody((ExecutableNode) null);
-				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				setExceptionInput((ObjectNode) null);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				getExceptionTypes().clear();
+				return;
+			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
+				setHandlerBody((ExecutableNode) null);
 				return;
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				setProtectedNode((ExecutableNode) null);
@@ -531,18 +532,18 @@ public class ExceptionHandlerImpl
 		switch (featureID) {
 			case UMLPackage.EXCEPTION_HANDLER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXCEPTION_HANDLER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER__OWNER :
 				return isSetOwner();
-			case UMLPackage.EXCEPTION_HANDLER__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
-				return handlerBody != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_INPUT :
 				return exceptionInput != null;
 			case UMLPackage.EXCEPTION_HANDLER__EXCEPTION_TYPE :
 				return exceptionTypes != null && !exceptionTypes.isEmpty();
+			case UMLPackage.EXCEPTION_HANDLER__HANDLER_BODY :
+				return handlerBody != null;
 			case UMLPackage.EXCEPTION_HANDLER__PROTECTED_NODE :
 				return basicGetProtectedNode() != null;
 		}
@@ -561,82 +562,82 @@ public class ExceptionHandlerImpl
 		switch (operationID) {
 			case UMLPackage.EXCEPTION_HANDLER___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.EXCEPTION_HANDLER___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.EXCEPTION_HANDLER___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.EXCEPTION_HANDLER___GET_MODEL :
-				return getModel();
-			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.EXCEPTION_HANDLER___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.EXCEPTION_HANDLER___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.EXCEPTION_HANDLER___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.EXCEPTION_HANDLER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.EXCEPTION_HANDLER___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_MODEL :
+				return getModel();
+			case UMLPackage.EXCEPTION_HANDLER___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.EXCEPTION_HANDLER___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.EXCEPTION_HANDLER___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.EXCEPTION_HANDLER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.EXCEPTION_HANDLER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.EXCEPTION_HANDLER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.EXCEPTION_HANDLER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.EXCEPTION_HANDLER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.EXCEPTION_HANDLER___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.EXCEPTION_HANDLER___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.EXCEPTION_HANDLER___MUST_BE_OWNED :

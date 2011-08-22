@@ -1,16 +1,13 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   CEA - initial API and implementation
  *
- * $Id: ReceiveOperationEventItemProvider.java,v 1.12 2010/09/28 21:00:18 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -29,18 +26,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
-//import org.eclipse.uml2.uml.ReceiveOperationEvent;
+import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.uml2.uml.ReceiveOperationEvent} object.
+ * This is the item provider adapter for a {@link org.eclipse.uml2.uml.LiteralReal} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ReceiveOperationEventItemProvider
-		extends MessageEventItemProvider
+public class LiteralRealItemProvider
+		extends LiteralSpecificationItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		IItemColorProvider, IItemFontProvider {
@@ -51,7 +50,7 @@ public class ReceiveOperationEventItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReceiveOperationEventItemProvider(AdapterFactory adapterFactory) {
+	public LiteralRealItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -66,32 +65,32 @@ public class ReceiveOperationEventItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOperationPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Operation feature.
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOperationPropertyDescriptor(Object object) {
+	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_ReceiveOperationEvent_operation_feature"), //$NON-NLS-1$
+				getString("_UI_LiteralReal_value_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_ReceiveOperationEvent_operation_feature", "_UI_ReceiveOperationEvent_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.RECEIVE_OPERATION_EVENT__OPERATION, true,
-				false, true, null, null, null));
+					"_UI_PropertyDescriptor_description", "_UI_LiteralReal_value_feature", "_UI_LiteralReal_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.LITERAL_REAL__VALUE, true, false, false,
+				ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns ReceiveOperationEvent.gif.
+	 * This returns LiteralReal.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +98,7 @@ public class ReceiveOperationEventItemProvider
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object,
-			getResourceLocator().getImage("full/obj16/ReceiveOperationEvent")); //$NON-NLS-1$
+			getResourceLocator().getImage("full/obj16/LiteralReal")); //$NON-NLS-1$
 	}
 
 	/**
@@ -116,13 +115,14 @@ public class ReceiveOperationEventItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ReceiveOperationEvent_type"), object).toString(); //$NON-NLS-1$
+		String label = ((LiteralReal) object).getName();
+		return label == null || label.length() == 0
+			? getString("_UI_LiteralReal_type") : //$NON-NLS-1$
+			getString("_UI_LiteralReal_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -135,6 +135,13 @@ public class ReceiveOperationEventItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(LiteralReal.class)) {
+			case UMLPackage.LITERAL_REAL__VALUE :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

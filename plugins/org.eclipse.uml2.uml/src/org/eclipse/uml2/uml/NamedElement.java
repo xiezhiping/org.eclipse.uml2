@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: NamedElement.java,v 1.23 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -27,19 +28,19 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A named element is an element in a model that may have a name.
  * A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).
+ * A named element is an element in a model that may have a name.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getVisibility <em>Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getClientDependencies <em>Client Dependency</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNameExpression <em>Name Expression</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getQualifiedName <em>Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.NamedElement#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,7 +63,7 @@ public interface NamedElement
 	 * @see #unsetName()
 	 * @see #setName(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_Name()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getName();
@@ -166,7 +167,7 @@ public interface NamedElement
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Qualified Name</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getNamedElement_QualifiedName()
-	 * @model dataType="org.eclipse.uml2.uml.String" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getQualifiedName();
@@ -344,7 +345,7 @@ public interface NamedElement
 	 * <!-- begin-model-doc -->
 	 * Retrieves a localized label for this named element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getLabel();
@@ -356,7 +357,7 @@ public interface NamedElement
 	 * Retrieves a label for this named element, localized if indicated.
 	 * @param localize Whether to localize the label.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" ordered="false" localizeDataType="org.eclipse.uml2.uml.Boolean" localizeRequired="true" localizeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" ordered="false" localizeDataType="org.eclipse.uml2.types.Boolean" localizeRequired="true" localizeOrdered="false"
 	 * @generated
 	 */
 	String getLabel(boolean localize);
@@ -398,7 +399,7 @@ public interface NamedElement
 	 * else true
 	 * endif
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false" nsRequired="true" nsOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false" nsRequired="true" nsOrdered="false"
 	 * @generated
 	 */
 	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
@@ -410,7 +411,7 @@ public interface NamedElement
 	 * The query separator() gives the string that is used to separate names when constructing a qualified name.
 	 * result = '::'
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.String" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.String" required="true" ordered="false"
 	 * @generated
 	 */
 	String separator();

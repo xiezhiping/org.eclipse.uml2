@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Association.java,v 1.16 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -26,16 +27,16 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.
+ * An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Association#getOwnedEnds <em>Owned End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#getMemberEnds <em>Member End</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Association#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#getEndTypes <em>End Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#isDerived <em>Is Derived</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#getMemberEnds <em>Member End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Association#getOwnedEnds <em>Owned End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Association#getNavigableOwnedEnds <em>Navigable Owned End</em>}</li>
  * </ul>
  * </p>
@@ -58,7 +59,7 @@ public interface Association
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getAssociation_IsDerived()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -249,8 +250,8 @@ public interface Association
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Association#getMemberEnds() <em>Member End</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Association#getMemberEnds() <em>Member End</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
 	 * </p>
@@ -325,7 +326,7 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An association specializing another association has the same number of ends as the other association.
-	 * self.parents()->forAll(p | p.memberEnd.size() = self.memberEnd.size())
+	 * parents()->select(oclIsKindOf(Association)).oclAsType(Association)->forAll(p | p.memberEnd->size() = self.memberEnd->size())
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -340,7 +341,9 @@ public interface Association
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
-	 * true
+	 * Sequence{1..self.memberEnd->size()}->
+	 * 	forAll(i | self.general->select(oclIsKindOf(Association)).oclAsType(Association)->
+	 * 		forAll(ga |self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -386,7 +389,7 @@ public interface Association
 	 * <!-- begin-model-doc -->
 	 * Determines whether this association is a binary association, i.e. whether it has exactly two member ends.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isBinary();

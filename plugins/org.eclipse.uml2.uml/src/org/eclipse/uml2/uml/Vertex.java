@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Vertex.java,v 1.13 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -28,9 +29,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Vertex#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Vertex#getOutgoings <em>Outgoing</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,7 +52,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Outgoing</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Outgoing()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getOutgoings();
@@ -90,7 +91,7 @@ public interface Vertex
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getVertex_Incoming()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	EList<Transition> getIncomings();

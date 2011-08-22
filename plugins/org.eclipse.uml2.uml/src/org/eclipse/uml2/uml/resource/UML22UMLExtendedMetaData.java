@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation and others.
+ * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  * 
  * $Id: UML22UMLExtendedMetaData.java,v 1.6 2008/10/03 20:50:37 jbruck Exp $
  */
@@ -39,9 +40,10 @@ public class UML22UMLExtendedMetaData
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
 			uriMap.put(URI.createURI(UML22UMLResource.UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
 
-			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
-			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_PROFILE_URI));
+			// FIXME
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
 		}
 

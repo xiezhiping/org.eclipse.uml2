@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2006, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: XMI2UMLHandler.java,v 1.9 2008/10/03 20:50:37 jbruck Exp $
  */
@@ -36,6 +37,10 @@ public class XMI2UMLHandler
 
 	protected static final String PRIMITIVE_TYPE_INTEGER_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_INTEGER;
 
+	protected static final String PRIMITIVE_TYPE_REAL = "Real"; //$NON-NLS-1$
+
+	protected static final String PRIMITIVE_TYPE_REAL_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_REAL;
+
 	protected static final String PRIMITIVE_TYPE_STRING = "String"; //$NON-NLS-1$
 
 	protected static final String PRIMITIVE_TYPE_STRING_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_STRING;
@@ -43,6 +48,12 @@ public class XMI2UMLHandler
 	protected static final String PRIMITIVE_TYPE_UNLIMITED_NATURAL = "UnlimitedNatural"; //$NON-NLS-1$
 
 	protected static final String PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_UNLIMITED_NATURAL;
+
+	protected static final String STEREOTYPE_BUILD_COMPONENT = "BuildComponent"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE_METAMODEL = "Metamodel"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE_SYSTEM_MODEL = "SystemModel"; //$NON-NLS-1$
 
 	protected static final String ECORE_EXTENSION_TYPE = "ecoreExtension"; //$NON-NLS-1$
 
@@ -57,10 +68,10 @@ public class XMI2UMLHandler
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_3_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_2_URI)
 			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_2_URI)) {
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
@@ -76,16 +87,46 @@ public class XMI2UMLHandler
 					? "#_0" //$NON-NLS-1$
 					: uriLiteral.substring(index));
 			}
-		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)
+		} else if (uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_3_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_2_URI)
 			|| uriLiteral
 				.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_2_URI)) {
+			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
 
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_PROFILE_URI + (index == -1
+			uriLiteral = (uriLiteral.endsWith(STEREOTYPE_BUILD_COMPONENT)
+				|| uriLiteral.endsWith(STEREOTYPE_METAMODEL)
+				|| uriLiteral.endsWith(STEREOTYPE_SYSTEM_MODEL)
+				? UMLResource.STANDARD_L3_PROFILE_URI
+				: UMLResource.STANDARD_L2_PROFILE_URI)
+				+ (index == -1
+					? "#_0" //$NON-NLS-1$
+					: uriLiteral.substring(index));
+		} else if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+			int index = uriLiteral.indexOf('#');
+			uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
+		} else if (uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI)) {
+			int index = uriLiteral.indexOf('#');
+			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
+				? "#_0" //$NON-NLS-1$
+				: uriLiteral.substring(index));
+		} else if (uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)) {
+			int index = uriLiteral.indexOf('#');
+			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1
+				? "#_0" //$NON-NLS-1$
+				: uriLiteral.substring(index));
+		} else if (uriLiteral
+			.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+			int index = uriLiteral.indexOf('#');
+			uriLiteral = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI
+				+ (index == -1
+					? "#_0" //$NON-NLS-1$
+					: uriLiteral.substring(index));
 		}
 
 		super.handleProxy(proxy, uriLiteral);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExtendImpl.java,v 1.27 2010/09/28 21:02:14 khussey Exp $
  */
@@ -68,8 +69,9 @@ import org.eclipse.uml2.uml.internal.operations.ExtendOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtendedCase <em>Extended Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtensionLocations <em>Extension Location</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExtendImpl#getExtension <em>Extension</em>}</li>
  * </ul>
@@ -82,16 +84,6 @@ public class ExtendImpl
 		implements Extend {
 
 	/**
-	 * The cached value of the '{@link #getExtendedCase() <em>Extended Case</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtendedCase()
-	 * @generated
-	 * @ordered
-	 */
-	protected UseCase extendedCase;
-
-	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,6 +92,16 @@ public class ExtendImpl
 	 * @ordered
 	 */
 	protected Constraint condition;
+
+	/**
+	 * The cached value of the '{@link #getExtendedCase() <em>Extended Case</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtendedCase()
+	 * @generated
+	 * @ordered
+	 */
+	protected UseCase extendedCase;
 
 	/**
 	 * The cached value of the '{@link #getExtensionLocations() <em>Extension Location</em>}' reference list.
@@ -566,44 +568,44 @@ public class ExtendImpl
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.EXTEND__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.EXTEND__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXTEND__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.EXTEND__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.EXTEND__NAME :
-				return getName();
-			case UMLPackage.EXTEND__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.EXTEND__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.EXTEND__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.EXTEND__NAME :
+				return getName();
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.EXTEND__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.EXTEND__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.EXTEND__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.EXTEND__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.EXTEND__SOURCE :
 				return getSources();
 			case UMLPackage.EXTEND__TARGET :
 				return getTargets();
-			case UMLPackage.EXTEND__EXTENDED_CASE :
-				if (resolve)
-					return getExtendedCase();
-				return basicGetExtendedCase();
 			case UMLPackage.EXTEND__CONDITION :
 				if (resolve)
 					return getCondition();
 				return basicGetCondition();
+			case UMLPackage.EXTEND__EXTENDED_CASE :
+				if (resolve)
+					return getExtendedCase();
+				return basicGetExtendedCase();
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				return getExtensionLocations();
 			case UMLPackage.EXTEND__EXTENSION :
@@ -633,25 +635,25 @@ public class ExtendImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXTEND__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.EXTEND__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.EXTEND__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.EXTEND__EXTENDED_CASE :
-				setExtendedCase((UseCase) newValue);
+			case UMLPackage.EXTEND__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.EXTEND__CONDITION :
 				setCondition((Constraint) newValue);
+				return;
+			case UMLPackage.EXTEND__EXTENDED_CASE :
+				setExtendedCase((UseCase) newValue);
 				return;
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				getExtensionLocations().clear();
@@ -679,23 +681,23 @@ public class ExtendImpl
 			case UMLPackage.EXTEND__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXTEND__NAME :
-				unsetName();
-				return;
-			case UMLPackage.EXTEND__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.EXTEND__NAME :
+				unsetName();
 				return;
 			case UMLPackage.EXTEND__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.EXTEND__EXTENDED_CASE :
-				setExtendedCase((UseCase) null);
+			case UMLPackage.EXTEND__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.EXTEND__CONDITION :
 				setCondition((Constraint) null);
+				return;
+			case UMLPackage.EXTEND__EXTENDED_CASE :
+				setExtendedCase((UseCase) null);
 				return;
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				getExtensionLocations().clear();
@@ -717,37 +719,37 @@ public class ExtendImpl
 		switch (featureID) {
 			case UMLPackage.EXTEND__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXTEND__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXTEND__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXTEND__OWNER :
 				return isSetOwner();
-			case UMLPackage.EXTEND__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXTEND__NAME :
 				return isSetName();
-			case UMLPackage.EXTEND__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.EXTEND__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.EXTEND__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.EXTEND__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.EXTEND__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.EXTEND__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.EXTEND__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.EXTEND__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.EXTEND__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.EXTEND__SOURCE :
 				return isSetSources();
 			case UMLPackage.EXTEND__TARGET :
 				return isSetTargets();
-			case UMLPackage.EXTEND__EXTENDED_CASE :
-				return extendedCase != null;
 			case UMLPackage.EXTEND__CONDITION :
 				return condition != null;
+			case UMLPackage.EXTEND__EXTENDED_CASE :
+				return extendedCase != null;
 			case UMLPackage.EXTEND__EXTENSION_LOCATION :
 				return extensionLocations != null
 					&& !extensionLocations.isEmpty();
@@ -825,117 +827,119 @@ public class ExtendImpl
 		switch (operationID) {
 			case UMLPackage.EXTEND___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.EXTEND___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTEND___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.EXTEND___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.EXTEND___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.EXTEND___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.EXTEND___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.EXTEND___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.EXTEND___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.EXTEND___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.EXTEND___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.EXTEND___GET_MODEL :
-				return getModel();
-			case UMLPackage.EXTEND___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.EXTEND___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.EXTEND___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.EXTEND___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.EXTEND___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.EXTEND___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.EXTEND___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.EXTEND___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.EXTEND___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.EXTEND___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.EXTEND___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.EXTEND___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.EXTEND___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.EXTEND___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.EXTEND___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.EXTEND___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___GET_MODEL :
+				return getModel();
+			case UMLPackage.EXTEND___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.EXTEND___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.EXTEND___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXTEND___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.EXTEND___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.EXTEND___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.EXTEND___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXTEND___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.EXTEND___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.EXTEND___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.EXTEND___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.EXTEND___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.EXTEND___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.EXTEND___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.EXTEND___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.EXTEND___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.EXTEND___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.EXTEND___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.EXTEND___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.EXTEND___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.EXTEND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.EXTEND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.EXTEND___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.EXTEND___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.EXTEND___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.EXTEND___GET_LABEL :
 				return getLabel();
 			case UMLPackage.EXTEND___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.EXTEND___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.EXTEND___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.EXTEND___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.EXTEND___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.EXTEND___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.EXTEND___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.EXTEND___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.EXTEND___SEPARATOR :
 				return separator();
-			case UMLPackage.EXTEND___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.EXTEND___VALIDATE_EXTENSION_POINTS__DIAGNOSTICCHAIN_MAP :
 				return validateExtensionPoints(
 					(DiagnosticChain) arguments.get(0),
@@ -1020,9 +1024,46 @@ public class ExtendImpl
 	 * @generated
 	 */
 	@Override
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Namespace basicGetNamespace() {
+		UseCase extension = basicGetExtension();
+		if (extension != null) {
+			return extension;
+		}
+		return super.basicGetNamespace();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.EXTEND__CONDITION);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetNamespace() {
+		return super.isSetNamespace() || eIsSet(UMLPackage.EXTEND__EXTENSION);
 	}
 
 } //ExtendImpl

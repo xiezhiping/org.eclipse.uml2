@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExecutionSpecification.java,v 1.5 2007/04/25 17:47:06 khussey Exp $
  */
@@ -28,8 +29,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ExecutionSpecification#getStart <em>Start</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExecutionSpecification#getFinish <em>Finish</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExecutionSpecification#getStart <em>Start</em>}</li>
  * </ul>
  * </p>
  *

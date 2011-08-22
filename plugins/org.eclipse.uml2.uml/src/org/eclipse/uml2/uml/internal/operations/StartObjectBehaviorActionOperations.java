@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StartObjectBehaviorActionOperations.java,v 1.1 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -30,11 +31,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Arguments</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderResults(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Results</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateMultiplicityOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOrderingMultiplicityMatch(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity Match</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateNumberOrderArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Number Order Arguments</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StartObjectBehaviorAction#validateTypeOfObject(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Object</em>}</li>
  * </ul>
  * </p>
  *

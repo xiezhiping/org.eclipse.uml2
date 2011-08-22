@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2010 IBM Corporation and others.
+ * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StartObjectBehaviorActionItemProvider.java,v 1.3 2010/09/28 21:00:19 khussey Exp $
  */
@@ -21,6 +22,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -68,8 +70,30 @@ public class StartObjectBehaviorActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addObjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Object feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addObjectPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_StartObjectBehaviorAction_object_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_StartObjectBehaviorAction_object_feature", "_UI_StartObjectBehaviorAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT, true,
+				false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -180,11 +204,11 @@ public class StartObjectBehaviorActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
-			UMLFactory.eINSTANCE.createValuePin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -199,8 +223,8 @@ public class StartObjectBehaviorActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.INVOCATION_ACTION__ARGUMENT
 			|| childFeature == UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION__OBJECT;
 

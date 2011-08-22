@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ProtocolTransitionItemProvider.java,v 1.17 2010/09/28 21:00:19 khussey Exp $
  */
@@ -79,8 +80,8 @@ public class ProtocolTransitionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addPostConditionPropertyDescriptor(object);
-			addReferredPropertyDescriptor(object);
 			addPreConditionPropertyDescriptor(object);
+			addReferredPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -122,9 +123,7 @@ public class ProtocolTransitionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ProtocolTransition_referred_feature", "_UI_ProtocolTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROTOCOL_TRANSITION__REFERRED, false,
-				false, false, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
+				false, false, null, null, null));
 	}
 
 	/**
@@ -227,11 +226,11 @@ public class ProtocolTransitionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROTOCOL_TRANSITION__POST_CONDITION,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 	}
 
 	/**

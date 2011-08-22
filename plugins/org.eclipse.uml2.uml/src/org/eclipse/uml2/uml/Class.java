@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Class.java,v 1.18 2008/01/09 18:56:03 khussey Exp $
  */
@@ -28,20 +29,20 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A class describes a set of objects that share the same specifications of features, constraints, and semantics.
- * A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.
  * A class has the capability to have an internal structure and ports.
  * Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
+ * A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Class#getNestedClassifiers <em>Nested Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedOperations <em>Owned Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Class#getSuperClasses <em>Super Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Class#isActive <em>Is Active</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedReceptions <em>Owned Reception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#getExtensions <em>Extension</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#isActive <em>Is Active</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getNestedClassifiers <em>Nested Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getOwnedReceptions <em>Owned Reception</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getSuperClasses <em>Super Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -236,7 +237,7 @@ public interface Class
 	 * @return the value of the '<em>Is Active</em>' attribute.
 	 * @see #setIsActive(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClass_IsActive()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isActive();
@@ -257,8 +258,8 @@ public interface Class
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getFeatures() <em>Feature</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -383,7 +384,7 @@ public interface Class
 	 * @param parameterTypes The parameter types for the new operation, or null.
 	 * @param returnType The return type for the new operation, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" returnTypeOrdered="false"
 	 * @generated
 	 */
 	Operation createOwnedOperation(String name, EList<String> parameterNames,
@@ -395,7 +396,7 @@ public interface Class
 	 * <!-- begin-model-doc -->
 	 * Determines whether this class is a metaclass.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMetaclass();

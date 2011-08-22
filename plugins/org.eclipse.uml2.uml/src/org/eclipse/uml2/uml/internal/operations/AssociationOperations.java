@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AssociationOperations.java,v 1.12 2007/05/03 21:11:52 khussey Exp $
  */
@@ -66,7 +67,7 @@ public class AssociationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An association specializing another association has the same number of ends as the other association.
-	 * self.parents()->forAll(p | p.memberEnd.size() = self.memberEnd.size())
+	 * parents()->select(oclIsKindOf(Association)).oclAsType(Association)->forAll(p | p.memberEnd->size() = self.memberEnd->size())
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -101,7 +102,9 @@ public class AssociationOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * When an association specializes another association, every end of the specific association corresponds to an end of the general association, and the specific end reaches the same type or a subtype of the more general end.
-	 * true
+	 * Sequence{1..self.memberEnd->size()}->
+	 * 	forAll(i | self.general->select(oclIsKindOf(Association)).oclAsType(Association)->
+	 * 		forAll(ga |self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))
 	 * @param association The receiving '<em><b>Association</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

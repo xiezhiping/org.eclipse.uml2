@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityNode.java,v 1.16 2008/01/09 18:56:02 khussey Exp $
  */
@@ -33,13 +34,13 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getActivity <em>Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getOutgoings <em>Outgoing</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getIncomings <em>Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInInterruptibleRegions <em>In Interruptible Region</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityNode#getRedefinedNodes <em>Redefined Node</em>}</li>
  * </ul>
  * </p>
@@ -111,6 +112,30 @@ public interface ActivityNode
 	EList<ActivityGroup> getInGroups();
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInGroups()
+	 * @generated
+	 */
+	ActivityGroup getInGroup(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInGroups()
+	 * @generated
+	 */
+	ActivityGroup getInGroup(String name, boolean ignoreCase, EClass eClass);
+
+	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getNodes <em>Node</em>}'.
@@ -162,6 +187,7 @@ public interface ActivityNode
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.ActivityNode#getInGroups() <em>In Group</em>}'</li>
 	 * </ul>
 	 * </p>
@@ -285,6 +311,30 @@ public interface ActivityNode
 	 * @generated
 	 */
 	EList<InterruptibleActivityRegion> getInInterruptibleRegions();
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} with the specified '<em><b>Name</b></em>' from the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInInterruptibleRegions()
+	 * @generated
+	 */
+	InterruptibleActivityRegion getInInterruptibleRegion(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} with the specified '<em><b>Name</b></em>' from the '<em><b>In Interruptible Region</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.InterruptibleActivityRegion} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInInterruptibleRegions()
+	 * @generated
+	 */
+	InterruptibleActivityRegion getInInterruptibleRegion(String name,
+			boolean ignoreCase);
 
 	/**
 	 * Returns the value of the '<em><b>Redefined Node</b></em>' reference list.

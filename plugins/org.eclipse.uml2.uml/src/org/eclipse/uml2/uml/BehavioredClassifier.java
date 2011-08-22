@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: BehavioredClassifier.java,v 1.14 2007/10/23 15:54:23 jbruck Exp $
  */
@@ -33,10 +34,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getClassifierBehavior <em>Classifier Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getInterfaceRealizations <em>Interface Realization</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getOwnedTriggers <em>Owned Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.BehavioredClassifier#getOwnedBehaviors <em>Owned Behavior</em>}</li>
  * </ul>
  * </p>
  *
@@ -214,68 +214,11 @@ public interface BehavioredClassifier
 			Interface contract, boolean ignoreCase, boolean createOnDemand);
 
 	/**
-	 * Returns the value of the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Trigger}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
-	 * </ul>
-	 * </p>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References Trigger descriptions owned by a Classifier.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getBehavioredClassifier_OwnedTrigger()
-	 * @model containment="true" resolveProxies="true" ordered="false"
-	 * @generated
-	 */
-	EList<Trigger> getOwnedTriggers();
-
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Trigger}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Trigger}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.Trigger}.
-	 * @see #getOwnedTriggers()
-	 * @generated
-	 */
-	Trigger createOwnedTrigger(String name);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOwnedTriggers()
-	 * @generated
-	 */
-	Trigger getOwnedTrigger(String name);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Trigger</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Trigger} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Trigger} on demand if not found.
-	 * @return The first {@link org.eclipse.uml2.uml.Trigger} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOwnedTriggers()
-	 * @generated
-	 */
-	Trigger getOwnedTrigger(String name, boolean ignoreCase,
-			boolean createOnDemand);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If a behavior is classifier behavior, it does not have a specification.
-	 * self.classifierBehavior.notEmpty() implies self.specification.isEmpty()
+	 * self.classifierBehavior->notEmpty() implies self.classifierBehavior.specification->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

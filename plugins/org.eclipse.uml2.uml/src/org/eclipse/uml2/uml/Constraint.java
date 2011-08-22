@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Constraint.java,v 1.15 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -33,8 +34,8 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Constraint#getConstrainedElements <em>Constrained Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Constraint#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Constraint#getContext <em>Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Constraint#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -195,21 +196,6 @@ public interface Constraint
 	 * @generated
 	 */
 	boolean validateNoSideEffects(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A constraint cannot be applied to itself.
-	 * not constrainedElement->includes(self)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNotAppliedToSelf(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // Constraint

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,11 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Component.java,v 1.27 2009/08/12 21:05:18 jbruck Exp $
  */
 package org.eclipse.uml2.uml;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -30,10 +33,10 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Component#isIndirectlyInstantiated <em>Is Indirectly Instantiated</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds <em>Required</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#getProvideds <em>Provided</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#getPackagedElements <em>Packaged Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#getProvideds <em>Provided</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#getRealizations <em>Realization</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds <em>Required</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,12 +53,12 @@ public interface Component
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at runtime (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute, e.g. <<specification>>, <<focus>>, <<subsystem>>.
+	 * isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Indirectly Instantiated</em>' attribute.
 	 * @see #setIsIndirectlyInstantiated(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComponent_IsIndirectlyInstantiated()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isIndirectlyInstantiated();
@@ -107,6 +110,36 @@ public interface Component
 	 * @generated
 	 */
 	Interface getRequired(String name, boolean ignoreCase);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A component cannot nest classifiers.
+	 * self.nestedClassifier->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNoNestedClassifiers(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * component nested in a Class cannot have any packaged elements.
+	 * (not self.class->isEmpty()) implies self.packagedElement->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNoPackagedElements(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * Returns the value of the '<em><b>Provided</b></em>' reference list.
@@ -272,7 +305,7 @@ public interface Component
 	 * @param name The name for the new class, or null.
 	 * @param isAbstract Whether the new class should be abstract.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.types.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
@@ -284,7 +317,7 @@ public interface Component
 	 * Creates a enumeration with the specified name as a packaged element of this component.
 	 * @param name The name for the new enumeration, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	Enumeration createOwnedEnumeration(String name);
@@ -296,7 +329,7 @@ public interface Component
 	 * Creates a primitive type with the specified name as a packaged element of this component.
 	 * @param name The name for the new primitive type, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	PrimitiveType createOwnedPrimitiveType(String name);
@@ -308,7 +341,7 @@ public interface Component
 	 * Creates an interface with the specified name as a packaged element of this component.
 	 * @param name The name for the new interface, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	Interface createOwnedInterface(String name);

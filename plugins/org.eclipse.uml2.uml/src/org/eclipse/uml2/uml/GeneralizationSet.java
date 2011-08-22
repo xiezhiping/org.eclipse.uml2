@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: GeneralizationSet.java,v 1.12 2007/06/12 12:53:18 khussey Exp $
  */
@@ -55,7 +56,7 @@ public interface GeneralizationSet
 	 * @return the value of the '<em>Is Covering</em>' attribute.
 	 * @see #setIsCovering(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralizationSet_IsCovering()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isCovering();
@@ -81,7 +82,7 @@ public interface GeneralizationSet
 	 * @return the value of the '<em>Is Disjoint</em>' attribute.
 	 * @see #setIsDisjoint(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralizationSet_IsDisjoint()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDisjoint();

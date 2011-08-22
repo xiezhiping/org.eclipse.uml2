@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: MessageImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
@@ -67,15 +68,15 @@ import org.eclipse.uml2.uml.internal.operations.MessageOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getArguments <em>Argument</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getConnector <em>Connector</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageKind <em>Message Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getMessageSort <em>Message Sort</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getReceiveEvent <em>Receive Event</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getSendEvent <em>Send Event</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getConnector <em>Connector</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getInteraction <em>Interaction</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getArguments <em>Argument</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.MessageImpl#getSignature <em>Signature</em>}</li>
  * </ul>
  * </p>
@@ -85,6 +86,26 @@ import org.eclipse.uml2.uml.internal.operations.MessageOperations;
 public class MessageImpl
 		extends NamedElementImpl
 		implements Message {
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ValueSpecification> arguments;
+
+	/**
+	 * The cached value of the '{@link #getConnector() <em>Connector</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnector()
+	 * @generated
+	 * @ordered
+	 */
+	protected Connector connector;
 
 	/**
 	 * The default value of the '{@link #getMessageKind() <em>Message Kind</em>}' attribute.
@@ -166,24 +187,14 @@ public class MessageImpl
 	protected MessageEnd sendEvent;
 
 	/**
-	 * The cached value of the '{@link #getConnector() <em>Connector</em>}' reference.
+	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConnector()
+	 * @see #getSignature()
 	 * @generated
 	 * @ordered
 	 */
-	protected Connector connector;
-
-	/**
-	 * The cached value of the '{@link #getArguments() <em>Argument</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getArguments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ValueSpecification> arguments;
+	protected NamedElement signature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,10 +537,16 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NamedElement getSignature() {
-		NamedElement signature = basicGetSignature();
-		return signature != null && signature.eIsProxy()
-			? (NamedElement) eResolveProxy((InternalEObject) signature)
-			: signature;
+		if (signature != null && signature.eIsProxy()) {
+			InternalEObject oldSignature = (InternalEObject) signature;
+			signature = (NamedElement) eResolveProxy(oldSignature);
+			if (signature != oldSignature) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						UMLPackage.MESSAGE__SIGNATURE, oldSignature, signature));
+			}
+		}
+		return signature;
 	}
 
 	/**
@@ -538,7 +555,20 @@ public class MessageImpl
 	 * @generated
 	 */
 	public NamedElement basicGetSignature() {
-		return MessageOperations.getSignature(this);
+		return signature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSignature(NamedElement newSignature) {
+		NamedElement oldSignature = signature;
+		signature = newSignature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.MESSAGE__SIGNATURE, oldSignature, signature));
 	}
 
 	/**
@@ -661,11 +691,11 @@ public class MessageImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.MESSAGE__INTERACTION :
-				return basicSetInteraction(null, msgs);
 			case UMLPackage.MESSAGE__ARGUMENT :
 				return ((InternalEList<?>) getArguments()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.MESSAGE__INTERACTION :
+				return basicSetInteraction(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -696,30 +726,40 @@ public class MessageImpl
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.MESSAGE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MESSAGE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.MESSAGE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.MESSAGE__NAME :
-				return getName();
-			case UMLPackage.MESSAGE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.MESSAGE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.MESSAGE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.MESSAGE__NAME :
+				return getName();
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.MESSAGE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.MESSAGE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.MESSAGE__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.MESSAGE__ARGUMENT :
+				return getArguments();
+			case UMLPackage.MESSAGE__CONNECTOR :
+				if (resolve)
+					return getConnector();
+				return basicGetConnector();
+			case UMLPackage.MESSAGE__INTERACTION :
+				if (resolve)
+					return getInteraction();
+				return basicGetInteraction();
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind();
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
@@ -732,16 +772,6 @@ public class MessageImpl
 				if (resolve)
 					return getSendEvent();
 				return basicGetSendEvent();
-			case UMLPackage.MESSAGE__CONNECTOR :
-				if (resolve)
-					return getConnector();
-				return basicGetConnector();
-			case UMLPackage.MESSAGE__INTERACTION :
-				if (resolve)
-					return getInteraction();
-				return basicGetInteraction();
-			case UMLPackage.MESSAGE__ARGUMENT :
-				return getArguments();
 			case UMLPackage.MESSAGE__SIGNATURE :
 				if (resolve)
 					return getSignature();
@@ -769,19 +799,30 @@ public class MessageImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.MESSAGE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.MESSAGE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.MESSAGE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.MESSAGE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.MESSAGE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.MESSAGE__ARGUMENT :
+				getArguments().clear();
+				getArguments().addAll(
+					(Collection<? extends ValueSpecification>) newValue);
+				return;
+			case UMLPackage.MESSAGE__CONNECTOR :
+				setConnector((Connector) newValue);
+				return;
+			case UMLPackage.MESSAGE__INTERACTION :
+				setInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
 				setMessageSort((MessageSort) newValue);
@@ -792,16 +833,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__SEND_EVENT :
 				setSendEvent((MessageEnd) newValue);
 				return;
-			case UMLPackage.MESSAGE__CONNECTOR :
-				setConnector((Connector) newValue);
-				return;
-			case UMLPackage.MESSAGE__INTERACTION :
-				setInteraction((Interaction) newValue);
-				return;
-			case UMLPackage.MESSAGE__ARGUMENT :
-				getArguments().clear();
-				getArguments().addAll(
-					(Collection<? extends ValueSpecification>) newValue);
+			case UMLPackage.MESSAGE__SIGNATURE :
+				setSignature((NamedElement) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -821,17 +854,26 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
+			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
 			case UMLPackage.MESSAGE__NAME :
 				unsetName();
+				return;
+			case UMLPackage.MESSAGE__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
 				return;
 			case UMLPackage.MESSAGE__VISIBILITY :
 				unsetVisibility();
 				return;
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				getClientDependencies().clear();
+			case UMLPackage.MESSAGE__ARGUMENT :
+				getArguments().clear();
 				return;
-			case UMLPackage.MESSAGE__NAME_EXPRESSION :
-				setNameExpression((StringExpression) null);
+			case UMLPackage.MESSAGE__CONNECTOR :
+				setConnector((Connector) null);
+				return;
+			case UMLPackage.MESSAGE__INTERACTION :
+				setInteraction((Interaction) null);
 				return;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
 				setMessageSort(MESSAGE_SORT_EDEFAULT);
@@ -842,14 +884,8 @@ public class MessageImpl
 			case UMLPackage.MESSAGE__SEND_EVENT :
 				setSendEvent((MessageEnd) null);
 				return;
-			case UMLPackage.MESSAGE__CONNECTOR :
-				setConnector((Connector) null);
-				return;
-			case UMLPackage.MESSAGE__INTERACTION :
-				setInteraction((Interaction) null);
-				return;
-			case UMLPackage.MESSAGE__ARGUMENT :
-				getArguments().clear();
+			case UMLPackage.MESSAGE__SIGNATURE :
+				setSignature((NamedElement) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -865,27 +901,33 @@ public class MessageImpl
 		switch (featureID) {
 			case UMLPackage.MESSAGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.MESSAGE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MESSAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MESSAGE__OWNER :
 				return isSetOwner();
-			case UMLPackage.MESSAGE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MESSAGE__NAME :
 				return isSetName();
-			case UMLPackage.MESSAGE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.MESSAGE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.MESSAGE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.MESSAGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.MESSAGE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.MESSAGE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.MESSAGE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.MESSAGE__VISIBILITY :
+				return isSetVisibility();
+			case UMLPackage.MESSAGE__ARGUMENT :
+				return arguments != null && !arguments.isEmpty();
+			case UMLPackage.MESSAGE__CONNECTOR :
+				return connector != null;
+			case UMLPackage.MESSAGE__INTERACTION :
+				return basicGetInteraction() != null;
 			case UMLPackage.MESSAGE__MESSAGE_KIND :
 				return getMessageKind() != MESSAGE_KIND_EDEFAULT;
 			case UMLPackage.MESSAGE__MESSAGE_SORT :
@@ -894,14 +936,8 @@ public class MessageImpl
 				return receiveEvent != null;
 			case UMLPackage.MESSAGE__SEND_EVENT :
 				return sendEvent != null;
-			case UMLPackage.MESSAGE__CONNECTOR :
-				return connector != null;
-			case UMLPackage.MESSAGE__INTERACTION :
-				return basicGetInteraction() != null;
-			case UMLPackage.MESSAGE__ARGUMENT :
-				return arguments != null && !arguments.isEmpty();
 			case UMLPackage.MESSAGE__SIGNATURE :
-				return basicGetSignature() != null;
+				return signature != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -918,119 +954,136 @@ public class MessageImpl
 		switch (operationID) {
 			case UMLPackage.MESSAGE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.MESSAGE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.MESSAGE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.MESSAGE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.MESSAGE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.MESSAGE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.MESSAGE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.MESSAGE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.MESSAGE___GET_MODEL :
-				return getModel();
-			case UMLPackage.MESSAGE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.MESSAGE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.MESSAGE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.MESSAGE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.MESSAGE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.MESSAGE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.MESSAGE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.MESSAGE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.MESSAGE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.MESSAGE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_MODEL :
+				return getModel();
+			case UMLPackage.MESSAGE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.MESSAGE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.MESSAGE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.MESSAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.MESSAGE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.MESSAGE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.MESSAGE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.MESSAGE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.MESSAGE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.MESSAGE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.MESSAGE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.MESSAGE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.MESSAGE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.MESSAGE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.MESSAGE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.MESSAGE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.MESSAGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.MESSAGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.MESSAGE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.MESSAGE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.MESSAGE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.MESSAGE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.MESSAGE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.MESSAGE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.MESSAGE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.MESSAGE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.MESSAGE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.MESSAGE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.MESSAGE___SEPARATOR :
 				return separator();
-			case UMLPackage.MESSAGE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.MESSAGE___VALIDATE_SENDING_RECEIVING_MESSAGE_EVENT__DIAGNOSTICCHAIN_MAP :
 				return validateSendingReceivingMessageEvent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
+				return validateArguments((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_CANNOT_CROSS_BOUNDARIES__DIAGNOSTICCHAIN_MAP :
+				return validateCannotCrossBoundaries(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
+				return validateSignatureIsSignal(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
+				return validateOccurrenceSpecifications(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_REFER_TO__DIAGNOSTICCHAIN_MAP :
@@ -1041,25 +1094,8 @@ public class MessageImpl
 				return validateSignatureIsOperation(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_SIGNATURE_IS_SIGNAL__DIAGNOSTICCHAIN_MAP :
-				return validateSignatureIsSignal(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_ARGUMENTS__DIAGNOSTICCHAIN_MAP :
-				return validateArguments((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_CANNOT_CROSS_BOUNDARIES__DIAGNOSTICCHAIN_MAP :
-				return validateCannotCrossBoundaries(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.MESSAGE___VALIDATE_OCCURRENCE_SPECIFICATIONS__DIAGNOSTICCHAIN_MAP :
-				return validateOccurrenceSpecifications(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.MESSAGE___GET_MESSAGE_KIND :
 				return getMessageKind();
-			case UMLPackage.MESSAGE___GET_SIGNATURE :
-				return getSignature();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

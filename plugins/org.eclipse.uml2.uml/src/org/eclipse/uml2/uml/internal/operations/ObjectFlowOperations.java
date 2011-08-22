@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ObjectFlowOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
@@ -30,13 +31,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateInputAndOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input And Output Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateNoActions(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Actions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behaviour</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behaviour</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateCompatibleTypes(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Types</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSameUpperBounds(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Upper Bounds</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTarget(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateTransformationBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transformation Behaviour</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateSelectionBehaviour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Selection Behaviour</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateInputAndOutputParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input And Output Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#validateIsMulticastOrIsMultireceive(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Is Multicast Or Is Multireceive</em>}</li>
  * </ul>
  * </p>
@@ -95,7 +96,6 @@ public class ObjectFlowOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Object nodes connected by an object flow, with optionally intervening control nodes, must have compatible types. In particular, the downstream object node type must be the same or a supertype of the upstream object node type.
-	 * 
 	 * true
 	 * @param objectFlow The receiving '<em><b>Object Flow</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

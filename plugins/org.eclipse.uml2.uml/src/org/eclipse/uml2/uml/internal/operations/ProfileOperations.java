@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,7 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 354452
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ProfileOperations.java,v 1.37 2010/09/28 21:02:15 khussey Exp $
  */
@@ -45,7 +46,6 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 
@@ -62,15 +62,14 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateMetaclassReferenceNotSpecialized(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Metaclass Reference Not Specialized</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#validateReferencesSameMetamodel(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate References Same Metamodel</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#create(org.eclipse.uml2.uml.Classifier) <em>Create</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define() <em>Define</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#define(java.util.Map, org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Define</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition() <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getDefinition(org.eclipse.uml2.uml.NamedElement) <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#getOwnedExtensions(boolean) <em>Get Owned Extensions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetaclasses() <em>Get Referenced Metaclasses</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getReferencedMetamodels() <em>Get Referenced Metamodels</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Profile#getOwnedExtensions(boolean) <em>Get Owned Extensions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Profile#isDefined() <em>Is Defined</em>}</li>
  * </ul>
  * </p>
  *
@@ -216,19 +215,6 @@ public class ProfileOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static Stereotype createOwnedStereotype(Profile profile,
-			String name, boolean isAbstract) {
-		Stereotype ownedStereotype = (Stereotype) profile.createOwnedType(name,
-			UMLPackage.Literals.STEREOTYPE);
-		ownedStereotype.setIsAbstract(isAbstract);
-		return ownedStereotype;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Determines whether this profile is defined.
 	 * @param profile The receiving '<em><b>Profile</b></em>' model object.
@@ -326,12 +312,14 @@ public class ProfileOperations
 			NamedElement namedElement, EPackage profileDefinition) {
 
 		if (namedElement instanceof Classifier) {
+			ENamedElement packageDefinition = getDefinition(profile,
+				((Classifier) namedElement).getPackage(), profileDefinition);
 
-			if (profileDefinition != null) {
+			if (packageDefinition instanceof EPackage) {
 
-				if (profileDefinition.eContainer() instanceof EAnnotation) {
+				if (packageDefinition.eContainer() instanceof EAnnotation) {
 
-					for (EClassifier eClassifier : profileDefinition
+					for (EClassifier eClassifier : ((EPackage) packageDefinition)
 						.getEClassifiers()) {
 
 						EAnnotation eAnnotation = eClassifier
@@ -345,7 +333,7 @@ public class ProfileOperations
 						}
 					}
 				} else {
-					return profileDefinition
+					return ((EPackage) packageDefinition)
 						.getEClassifier(getValidJavaIdentifier(namedElement
 							.getName()));
 				}
@@ -367,10 +355,48 @@ public class ProfileOperations
 				? ((EEnum) namespaceDefinition).getEEnumLiteral(namedElement
 					.getName())
 				: null;
-		} else if (namedElement instanceof org.eclipse.uml2.uml.Package) {
+		} else if (namedElement instanceof Profile) {
 			return namedElement == profile
 				? profileDefinition
 				: null;
+		} else if (namedElement instanceof org.eclipse.uml2.uml.Package) {
+			ENamedElement packageDefinition = getDefinition(profile,
+				((org.eclipse.uml2.uml.Package) namedElement)
+					.getNestingPackage(), profileDefinition);
+
+			if (packageDefinition instanceof EPackage) {
+
+				if (profileDefinition.eContainer() instanceof EAnnotation) {
+
+					for (EPackage eSubpackage : ((EPackage) packageDefinition)
+						.getESubpackages()) {
+
+						EAnnotation eAnnotation = eSubpackage
+							.getEAnnotation(UML2_UML_PACKAGE_4_0_NS_URI);
+
+						if (eAnnotation != null
+							&& eAnnotation.getReferences().contains(
+								namedElement)) {
+
+							return eSubpackage;
+						}
+					}
+				} else {
+					String name = getValidJavaIdentifier(namedElement.getName());
+
+					for (EPackage eSubpackage : ((EPackage) packageDefinition)
+						.getESubpackages()) {
+
+						if (safeEquals(eSubpackage.getName(), name)) {
+							return eSubpackage;
+						}
+					}
+				}
+			}
+
+			return getDefinition(profile,
+				((org.eclipse.uml2.uml.Package) namedElement)
+					.containingProfile(), profileDefinition);
 		} else {
 			return null;
 		}
@@ -410,7 +436,7 @@ public class ProfileOperations
 			PackageableElement importedElement = metaclassReference
 				.getImportedElement();
 
-			if (importedElement != null) {
+			if (importedElement instanceof org.eclipse.uml2.uml.Class) {
 				referencedMetaclasses
 					.add((org.eclipse.uml2.uml.Class) importedElement);
 			}
@@ -437,7 +463,7 @@ public class ProfileOperations
 			org.eclipse.uml2.uml.Package importedPackage = metamodelReference
 				.getImportedPackage();
 
-			if (importedPackage != null) {
+			if (importedPackage instanceof Model) {
 				referencedMetamodels.add((Model) importedPackage);
 			}
 		}

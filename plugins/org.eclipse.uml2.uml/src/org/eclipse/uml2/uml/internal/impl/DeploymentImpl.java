@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DeploymentImpl.java,v 1.24 2009/01/07 15:55:32 jbruck Exp $
  */
@@ -56,10 +57,11 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getClients <em>Client</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getConfigurations <em>Configuration</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentImpl#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
@@ -71,16 +73,6 @@ public class DeploymentImpl
 		implements Deployment {
 
 	/**
-	 * The cached value of the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployedArtifacts()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<DeployedArtifact> deployedArtifacts;
-
-	/**
 	 * The cached value of the '{@link #getConfigurations() <em>Configuration</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -89,6 +81,16 @@ public class DeploymentImpl
 	 * @ordered
 	 */
 	protected EList<DeploymentSpecification> configurations;
+
+	/**
+	 * The cached value of the '{@link #getDeployedArtifacts() <em>Deployed Artifact</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployedArtifacts()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<DeployedArtifact> deployedArtifacts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,34 +181,6 @@ public class DeploymentImpl
 				DEPLOYED_ARTIFACT_ESUPERSETS, null);
 		}
 		return deployedArtifacts;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DeployedArtifact getDeployedArtifact(String name) {
-		return getDeployedArtifact(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DeployedArtifact getDeployedArtifact(String name,
-			boolean ignoreCase, EClass eClass) {
-		deployedArtifactLoop : for (DeployedArtifact deployedArtifact : getDeployedArtifacts()) {
-			if (eClass != null && !eClass.isInstance(deployedArtifact))
-				continue deployedArtifactLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(deployedArtifact.getName())
-				: name.equals(deployedArtifact.getName())))
-				continue deployedArtifactLoop;
-			return deployedArtifact;
-		}
-		return null;
 	}
 
 	/**
@@ -444,30 +418,30 @@ public class DeploymentImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPLOYMENT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.DEPLOYMENT__NAME :
-				return getName();
-			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.DEPLOYMENT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.DEPLOYMENT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.DEPLOYMENT__NAME :
+				return getName();
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.DEPLOYMENT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.DEPLOYMENT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.DEPLOYMENT__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -482,14 +456,14 @@ public class DeploymentImpl
 				return getSources();
 			case UMLPackage.DEPLOYMENT__TARGET :
 				return getTargets();
-			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				return getClients();
-			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
-				return getDeployedArtifacts();
+			case UMLPackage.DEPLOYMENT__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				return getConfigurations();
+			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
+				return getDeployedArtifacts();
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				if (resolve)
 					return getLocation();
@@ -517,19 +491,19 @@ public class DeploymentImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.DEPLOYMENT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -537,25 +511,25 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				getClients().clear();
 				getClients().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
-				getDeployedArtifacts().clear();
-				getDeployedArtifacts().addAll(
-					(Collection<? extends DeployedArtifact>) newValue);
+			case UMLPackage.DEPLOYMENT__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				getConfigurations().clear();
 				getConfigurations().addAll(
 					(Collection<? extends DeploymentSpecification>) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
+				getDeployedArtifacts().clear();
+				getDeployedArtifacts().addAll(
+					(Collection<? extends DeployedArtifact>) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				setLocation((DeploymentTarget) newValue);
@@ -578,17 +552,17 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DEPLOYMENT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.DEPLOYMENT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.DEPLOYMENT__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -596,17 +570,17 @@ public class DeploymentImpl
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				getClients().clear();
 				return;
-			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
-				getDeployedArtifacts().clear();
+			case UMLPackage.DEPLOYMENT__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.DEPLOYMENT__CONFIGURATION :
 				getConfigurations().clear();
+				return;
+			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
+				getDeployedArtifacts().clear();
 				return;
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				setLocation((DeploymentTarget) null);
@@ -625,27 +599,27 @@ public class DeploymentImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPLOYMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPLOYMENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.DEPLOYMENT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPLOYMENT__NAME :
 				return isSetName();
-			case UMLPackage.DEPLOYMENT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.DEPLOYMENT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.DEPLOYMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.DEPLOYMENT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.DEPLOYMENT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.DEPLOYMENT__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPLOYMENT__TEMPLATE_PARAMETER :
@@ -656,15 +630,15 @@ public class DeploymentImpl
 				return isSetSources();
 			case UMLPackage.DEPLOYMENT__TARGET :
 				return isSetTargets();
-			case UMLPackage.DEPLOYMENT__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.DEPLOYMENT__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.DEPLOYMENT__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
+			case UMLPackage.DEPLOYMENT__CONFIGURATION :
+				return configurations != null && !configurations.isEmpty();
 			case UMLPackage.DEPLOYMENT__DEPLOYED_ARTIFACT :
 				return deployedArtifacts != null
 					&& !deployedArtifacts.isEmpty();
-			case UMLPackage.DEPLOYMENT__CONFIGURATION :
-				return configurations != null && !configurations.isEmpty();
 			case UMLPackage.DEPLOYMENT__LOCATION :
 				return basicGetLocation() != null;
 		}
@@ -683,6 +657,33 @@ public class DeploymentImpl
 		UMLPackage.DEPLOYMENT__OWNED_COMMENT,
 		UMLPackage.DEPLOYMENT__NAME_EXPRESSION,
 		UMLPackage.DEPLOYMENT__CONFIGURATION};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element basicGetOwner() {
+		DeploymentTarget location = basicGetLocation();
+		if (location != null) {
+			return location;
+		}
+		return super.basicGetOwner();
+	}
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
@@ -719,10 +720,48 @@ public class DeploymentImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DeployedArtifact getDeployedArtifact(String name) {
+		return getDeployedArtifact(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DeployedArtifact getDeployedArtifact(String name,
+			boolean ignoreCase, EClass eClass) {
+		deployedArtifactLoop : for (DeployedArtifact deployedArtifact : getDeployedArtifacts()) {
+			if (eClass != null && !eClass.isInstance(deployedArtifact))
+				continue deployedArtifactLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployedArtifact.getName())
+				: name.equals(deployedArtifact.getName())))
+				continue deployedArtifactLoop;
+			return deployedArtifact;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
 			|| eIsSet(UMLPackage.DEPLOYMENT__CONFIGURATION);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetOwner() {
+		return super.isSetOwner() || eIsSet(UMLPackage.DEPLOYMENT__LOCATION);
 	}
 
 } //DeploymentImpl

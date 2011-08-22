@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Expression.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -22,15 +23,15 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.
  * An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
+ * An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Expression#getSymbol <em>Symbol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Expression#getOperands <em>Operand</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Expression#getSymbol <em>Symbol</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +54,7 @@ public interface Expression
 	 * @see #unsetSymbol()
 	 * @see #setSymbol(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExpression_Symbol()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getSymbol();

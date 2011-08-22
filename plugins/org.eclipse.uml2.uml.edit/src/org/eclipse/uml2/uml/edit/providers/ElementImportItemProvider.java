@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ElementImportItemProvider.java,v 1.14 2010/09/28 21:00:18 khussey Exp $
  */
@@ -70,10 +71,10 @@ public class ElementImportItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVisibilityPropertyDescriptor(object);
 			addAliasPropertyDescriptor(object);
 			addImportedElementPropertyDescriptor(object);
 			addImportingNamespacePropertyDescriptor(object);
+			addVisibilityPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -203,8 +204,8 @@ public class ElementImportItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ElementImport.class)) {
-			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
 			case UMLPackage.ELEMENT_IMPORT__ALIAS :
+			case UMLPackage.ELEMENT_IMPORT__VISIBILITY :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

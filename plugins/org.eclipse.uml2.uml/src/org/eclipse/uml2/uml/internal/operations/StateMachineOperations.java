@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StateMachineOperations.java,v 1.13 2007/05/03 21:11:52 khussey Exp $
  */
@@ -37,10 +38,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Context Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateConnectionPoints(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Connection Points</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateClassifierContext(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Classifier Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateMethod(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Method</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#validateContextClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Context Classifier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#LCA(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>LCA</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#ancestor(org.eclipse.uml2.uml.State, org.eclipse.uml2.uml.State) <em>Ancestor</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#isRedefinitionContextValid(org.eclipse.uml2.uml.StateMachine) <em>Is Redefinition Context Valid</em>}</li>
@@ -255,34 +256,37 @@ public class StateMachineOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean
+	 * The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
+	 * result = 
+	 * if (s2 = s1) then 
+	 * 	true 
+	 * else 
+	 * 	if (s2.container->isEmpty() or not s2.container.owner.oclIsKindOf(State)) then 
+	 * 		false 
+	 * 	else 
+	 * 		ancestor(s1, s2.container.owner.oclAsType(State))
+	 * 	endif
+	 * endif 
 	 * 
-	 * result = if (s2 = s1) then
-	 * true
-	 * else if (s1.container->isEmpty) then
-	 * true
-	 * else if (s2.container->isEmpty) then
-	 * false
-	 * else (ancestor (s1, s2.container))
 	 * @param stateMachine The receiving '<em><b>State Machine</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static boolean ancestor(StateMachine stateMachine, State s1, State s2) {
 
-		if (s1 == s2) {
+		if (s2 == s1) {
 			return true;
 		} else {
-			Region container1 = s1 == null
+			Region container2 = s2 == null
 				? null
-				: s1.getContainer();
+				: s2.getContainer();
 
-			if (container1 == null) {
+			if (container2 == null) {
 				return false;
 			} else {
-				State container1State = container1.getState();
-				return container1State != null
-					&& stateMachine.ancestor(container1State, s2);
+				State container2State = container2.getState();
+				return container2State != null
+					&& stateMachine.ancestor(s1, container2State);
 			}
 		}
 	}

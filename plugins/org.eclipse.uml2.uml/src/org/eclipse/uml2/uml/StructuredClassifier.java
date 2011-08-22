@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuredClassifier.java,v 1.12 2008/01/09 18:56:03 khussey Exp $
  */
@@ -34,9 +35,9 @@ import org.eclipse.emf.ecore.EClass;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getOwnedAttributes <em>Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getOwnedConnectors <em>Owned Connector</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getParts <em>Part</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles <em>Role</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getOwnedConnectors <em>Owned Connector</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,9 +54,9 @@ public interface StructuredClassifier
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.StructuredClassifier#getRoles() <em>Role</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Classifier#getAttributes() <em>Attribute</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -296,7 +297,7 @@ public interface StructuredClassifier
 	 * @param lower The lower bound for the new attribute.
 	 * @param upper The upper bound for the new attribute.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.uml.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.uml.UnlimitedNatural" upperRequired="true" upperOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" typeOrdered="false" lowerDataType="org.eclipse.uml2.types.Integer" lowerRequired="true" lowerOrdered="false" upperDataType="org.eclipse.uml2.types.UnlimitedNatural" upperRequired="true" upperOrdered="false"
 	 * @generated
 	 */
 	Property createOwnedAttribute(String name, Type type, int lower, int upper);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UnmarshallAction.java,v 1.12 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -32,9 +33,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#getObject <em>Object</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#getResults <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#getUnmarshallType <em>Unmarshall Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.UnmarshallAction#getObject <em>Object</em>}</li>
  * </ul>
  * </p>
  *
@@ -264,7 +265,6 @@ public interface UnmarshallAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of each result output pin must be compatible with the multiplicity of the corresponding structural features of the unmarshall classifier.
-	 * 
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

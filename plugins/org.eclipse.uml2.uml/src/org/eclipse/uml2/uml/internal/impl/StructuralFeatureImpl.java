@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuralFeatureImpl.java,v 1.32 2010/09/28 21:02:12 khussey Exp $
  */
@@ -67,10 +68,10 @@ import org.eclipse.uml2.uml.internal.operations.MultiplicityElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#isUnique <em>Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StructuralFeatureImpl#isReadOnly <em>Is Read Only</em>}</li>
  * </ul>
  * </p>
@@ -132,16 +133,6 @@ public abstract class StructuralFeatureImpl
 	protected static final int IS_UNIQUE_EFLAG = 1 << 15;
 
 	/**
-	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpper()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int UPPER_EDEFAULT = 1;
-
-	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,16 +143,6 @@ public abstract class StructuralFeatureImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification upperValue;
-
-	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -170,6 +151,26 @@ public abstract class StructuralFeatureImpl
 	 * @ordered
 	 */
 	protected ValueSpecification lowerValue;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The default value of the '{@link #isReadOnly() <em>Is Read Only</em>}' attribute.
@@ -730,10 +731,10 @@ public abstract class StructuralFeatureImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				return basicSetUpperValue(null, msgs);
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -748,40 +749,40 @@ public abstract class StructuralFeatureImpl
 		switch (featureID) {
 			case UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				return getName();
-			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.STRUCTURAL_FEATURE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.STRUCTURAL_FEATURE__NAME :
+				return getName();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.STRUCTURAL_FEATURE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
-				return isStatic();
 			case UMLPackage.STRUCTURAL_FEATURE__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
+			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
+				return isStatic();
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
 				if (resolve)
 					return getType();
@@ -790,18 +791,18 @@ public abstract class StructuralFeatureImpl
 				return isOrdered();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				return isUnique();
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				return getUpper();
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 				return getLower();
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				if (resolve)
-					return getUpperValue();
-				return basicGetUpperValue();
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 				if (resolve)
 					return getLowerValue();
 				return basicGetLowerValue();
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
+				return getUpper();
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
 				return isReadOnly();
 		}
@@ -827,19 +828,19 @@ public abstract class StructuralFeatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.STRUCTURAL_FEATURE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -856,17 +857,17 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				setIsUnique((Boolean) newValue);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				setUpper((Integer) newValue);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 				setLower((Integer) newValue);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				setUpperValue((ValueSpecification) newValue);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
+				setUpper((Integer) newValue);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+				setUpperValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
 				setIsReadOnly((Boolean) newValue);
@@ -889,17 +890,17 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.STRUCTURAL_FEATURE__NAME :
+				unsetName();
+				return;
 			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -916,17 +917,17 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				setUpper(UPPER_EDEFAULT);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 				setLower(LOWER_EDEFAULT);
 				return;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				setUpperValue((ValueSpecification) null);
-				return;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
+				setUpper(UPPER_EDEFAULT);
+				return;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+				setUpperValue((ValueSpecification) null);
 				return;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
 				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
@@ -945,51 +946,51 @@ public abstract class StructuralFeatureImpl
 		switch (featureID) {
 			case UMLPackage.STRUCTURAL_FEATURE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__OWNER :
 				return isSetOwner();
-			case UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STRUCTURAL_FEATURE__NAME :
 				return isSetName();
-			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.STRUCTURAL_FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.STRUCTURAL_FEATURE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.STRUCTURAL_FEATURE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.STRUCTURAL_FEATURE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.STRUCTURAL_FEATURE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.STRUCTURAL_FEATURE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
-				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
+			case UMLPackage.STRUCTURAL_FEATURE__IS_STATIC :
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__TYPE :
 				return type != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 				return getLower() != LOWER_EDEFAULT;
-			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-				return upperValue != null;
 			case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 				return lowerValue != null;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER :
+				return getUpper() != UPPER_EDEFAULT;
+			case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+				return upperValue != null;
 			case UMLPackage.STRUCTURAL_FEATURE__IS_READ_ONLY :
 				return ((eFlags & IS_READ_ONLY_EFLAG) != 0) != IS_READ_ONLY_EDEFAULT;
 		}
@@ -1017,14 +1018,14 @@ public abstract class StructuralFeatureImpl
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED;
 				case UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE;
-				case UMLPackage.STRUCTURAL_FEATURE__UPPER :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
 				case UMLPackage.STRUCTURAL_FEATURE__LOWER :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER;
-				case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				case UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE;
+				case UMLPackage.STRUCTURAL_FEATURE__UPPER :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
+				case UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1053,14 +1054,14 @@ public abstract class StructuralFeatureImpl
 					return UMLPackage.STRUCTURAL_FEATURE__IS_ORDERED;
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 					return UMLPackage.STRUCTURAL_FEATURE__IS_UNIQUE;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-					return UMLPackage.STRUCTURAL_FEATURE__UPPER;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
 					return UMLPackage.STRUCTURAL_FEATURE__LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-					return UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 					return UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
+					return UMLPackage.STRUCTURAL_FEATURE__UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
+					return UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1083,10 +1084,10 @@ public abstract class StructuralFeatureImpl
 		}
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
@@ -1095,24 +1096,24 @@ public abstract class StructuralFeatureImpl
 					return UMLPackage.STRUCTURAL_FEATURE___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
 					return UMLPackage.STRUCTURAL_FEATURE___SET_UPPER__INT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
-					return UMLPackage.STRUCTURAL_FEATURE___GET_LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
-					return UMLPackage.STRUCTURAL_FEATURE___GET_UPPER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
-					return UMLPackage.STRUCTURAL_FEATURE___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+					return UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
 					return UMLPackage.STRUCTURAL_FEATURE___INCLUDES_CARDINALITY__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 					return UMLPackage.STRUCTURAL_FEATURE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
-					return UMLPackage.STRUCTURAL_FEATURE___LOWER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
-					return UMLPackage.STRUCTURAL_FEATURE___UPPER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-					return UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
 					return UMLPackage.STRUCTURAL_FEATURE___IS__INT_INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
+					return UMLPackage.STRUCTURAL_FEATURE___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
+					return UMLPackage.STRUCTURAL_FEATURE___GET_LOWER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
+					return UMLPackage.STRUCTURAL_FEATURE___LOWER_BOUND;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
+					return UMLPackage.STRUCTURAL_FEATURE___GET_UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
+					return UMLPackage.STRUCTURAL_FEATURE___UPPER_BOUND;
 				default :
 					return -1;
 			}
@@ -1132,123 +1133,129 @@ public abstract class StructuralFeatureImpl
 		switch (operationID) {
 			case UMLPackage.STRUCTURAL_FEATURE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.STRUCTURAL_FEATURE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.STRUCTURAL_FEATURE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.STRUCTURAL_FEATURE___GET_MODEL :
-				return getModel();
-			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.STRUCTURAL_FEATURE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.STRUCTURAL_FEATURE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_MODEL :
+				return getModel();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.STRUCTURAL_FEATURE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.STRUCTURAL_FEATURE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.STRUCTURAL_FEATURE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.STRUCTURAL_FEATURE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STRUCTURAL_FEATURE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.STRUCTURAL_FEATURE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.STRUCTURAL_FEATURE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.STRUCTURAL_FEATURE___SEPARATOR :
 				return separator();
-			case UMLPackage.STRUCTURAL_FEATURE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1256,11 +1263,11 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-				return validateLowerGe0((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRUCTURAL_FEATURE___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationNoSideEffects(
@@ -1276,26 +1283,26 @@ public abstract class StructuralFeatureImpl
 			case UMLPackage.STRUCTURAL_FEATURE___SET_UPPER__INT :
 				setUpper((Integer) arguments.get(0));
 				return null;
-			case UMLPackage.STRUCTURAL_FEATURE___GET_LOWER :
-				return getLower();
-			case UMLPackage.STRUCTURAL_FEATURE___GET_UPPER :
-				return getUpper();
-			case UMLPackage.STRUCTURAL_FEATURE___IS_MULTIVALUED :
-				return isMultivalued();
+			case UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___INCLUDES_CARDINALITY__INT :
 				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
-			case UMLPackage.STRUCTURAL_FEATURE___LOWER_BOUND :
-				return lowerBound();
-			case UMLPackage.STRUCTURAL_FEATURE___UPPER_BOUND :
-				return upperBound();
-			case UMLPackage.STRUCTURAL_FEATURE___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.STRUCTURAL_FEATURE___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
+			case UMLPackage.STRUCTURAL_FEATURE___IS_MULTIVALUED :
+				return isMultivalued();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_LOWER :
+				return getLower();
+			case UMLPackage.STRUCTURAL_FEATURE___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.STRUCTURAL_FEATURE___GET_UPPER :
+				return getUpper();
+			case UMLPackage.STRUCTURAL_FEATURE___UPPER_BOUND :
+				return upperBound();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1332,8 +1339,8 @@ public abstract class StructuralFeatureImpl
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.STRUCTURAL_FEATURE__OWNED_COMMENT,
 		UMLPackage.STRUCTURAL_FEATURE__NAME_EXPRESSION,
-		UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE,
-		UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE};
+		UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE,
+		UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1343,8 +1350,8 @@ public abstract class StructuralFeatureImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE)
-			|| eIsSet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE);
+			|| eIsSet(UMLPackage.STRUCTURAL_FEATURE__LOWER_VALUE)
+			|| eIsSet(UMLPackage.STRUCTURAL_FEATURE__UPPER_VALUE);
 	}
 
 } //StructuralFeatureImpl

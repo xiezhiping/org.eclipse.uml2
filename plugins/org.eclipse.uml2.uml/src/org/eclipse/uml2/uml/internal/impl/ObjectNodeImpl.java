@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ObjectNodeImpl.java,v 1.29 2010/09/28 21:02:14 khussey Exp $
  */
@@ -74,11 +75,11 @@ import org.eclipse.uml2.uml.internal.operations.ObjectNodeOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getOrdering <em>Ordering</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#isControlType <em>Is Control Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getInStates <em>In State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#isControlType <em>Is Control Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getOrdering <em>Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getSelection <em>Selection</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ObjectNodeImpl#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  * </p>
  *
@@ -99,6 +100,36 @@ public abstract class ObjectNodeImpl
 	protected Type type;
 
 	/**
+	 * The cached value of the '{@link #getInStates() <em>In State</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<State> inStates;
+
+	/**
+	 * The default value of the '{@link #isControlType() <em>Is Control Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isControlType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_CONTROL_TYPE_EDEFAULT = false;
+
+	/**
+	 * The flag representing the value of the '{@link #isControlType() <em>Is Control Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isControlType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_CONTROL_TYPE_EFLAG = 1 << 13;
+
+	/**
 	 * The default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -115,7 +146,7 @@ public abstract class ObjectNodeImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int ORDERING_EFLAG_OFFSET = 13;
+	protected static final int ORDERING_EFLAG_OFFSET = 14;
 
 	/**
 	 * The flags representing the default value of the '{@link #getOrdering() <em>Ordering</em>}' attribute.
@@ -148,24 +179,14 @@ public abstract class ObjectNodeImpl
 	protected static final int ORDERING_EFLAG = 0x3 << ORDERING_EFLAG_OFFSET;
 
 	/**
-	 * The default value of the '{@link #isControlType() <em>Is Control Type</em>}' attribute.
+	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isControlType()
+	 * @see #getSelection()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_CONTROL_TYPE_EDEFAULT = false;
-
-	/**
-	 * The flag representing the value of the '{@link #isControlType() <em>Is Control Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isControlType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int IS_CONTROL_TYPE_EFLAG = 1 << 15;
+	protected Behavior selection;
 
 	/**
 	 * The cached value of the '{@link #getUpperBound() <em>Upper Bound</em>}' containment reference.
@@ -176,26 +197,6 @@ public abstract class ObjectNodeImpl
 	 * @ordered
 	 */
 	protected ValueSpecification upperBound;
-
-	/**
-	 * The cached value of the '{@link #getInStates() <em>In State</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInStates()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<State> inStates;
-
-	/**
-	 * The cached value of the '{@link #getSelection() <em>Selection</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSelection()
-	 * @generated
-	 * @ordered
-	 */
-	protected Behavior selection;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -533,17 +534,6 @@ public abstract class ObjectNodeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotUnique(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ObjectNodeOperations.validateNotUnique(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateSelectionBehavior(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ObjectNodeOperations.validateSelectionBehavior(this,
@@ -581,22 +571,22 @@ public abstract class ObjectNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<?>) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<?>) getInInterruptibleRegions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
 		}
@@ -613,74 +603,74 @@ public abstract class ObjectNodeImpl
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.OBJECT_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OBJECT_NODE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.OBJECT_NODE__NAME :
-				return getName();
-			case UMLPackage.OBJECT_NODE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.OBJECT_NODE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.OBJECT_NODE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.OBJECT_NODE__NAME :
+				return getName();
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.OBJECT_NODE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.OBJECT_NODE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.OBJECT_NODE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.OBJECT_NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.OBJECT_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.OBJECT_NODE__TYPE :
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.OBJECT_NODE__ORDERING :
-				return getOrdering();
-			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
-				return isControlType();
-			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
-				if (resolve)
-					return getUpperBound();
-				return basicGetUpperBound();
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				return getInStates();
+			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
+				return isControlType();
+			case UMLPackage.OBJECT_NODE__ORDERING :
+				return getOrdering();
 			case UMLPackage.OBJECT_NODE__SELECTION :
 				if (resolve)
 					return getSelection();
 				return basicGetSelection();
+			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -704,28 +694,39 @@ public abstract class ObjectNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.OBJECT_NODE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.OBJECT_NODE__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__ACTIVITY :
-				setActivity((Activity) newValue);
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				getOutgoings().clear();
@@ -737,17 +738,6 @@ public abstract class ObjectNodeImpl
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
@@ -756,21 +746,21 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.OBJECT_NODE__ORDERING :
-				setOrdering((ObjectNodeOrderingKind) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
-				setIsControlType((Boolean) newValue);
-				return;
-			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
-				setUpperBound((ValueSpecification) newValue);
-				return;
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				getInStates().clear();
 				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
+			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
+				setIsControlType((Boolean) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__ORDERING :
+				setOrdering((ObjectNodeOrderingKind) newValue);
+				return;
 			case UMLPackage.OBJECT_NODE__SELECTION :
 				setSelection((Behavior) newValue);
+				return;
+			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
+				setUpperBound((ValueSpecification) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -790,26 +780,32 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OBJECT_NODE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.OBJECT_NODE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.OBJECT_NODE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.OBJECT_NODE__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.OBJECT_NODE__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.OBJECT_NODE__ACTIVITY :
-				setActivity((Activity) null);
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				getOutgoings().clear();
@@ -817,32 +813,26 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				getIncomings().clear();
 				return;
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				return;
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.OBJECT_NODE__ORDERING :
-				setOrdering(ORDERING_EDEFAULT);
+			case UMLPackage.OBJECT_NODE__IN_STATE :
+				getInStates().clear();
 				return;
 			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
 				setIsControlType(IS_CONTROL_TYPE_EDEFAULT);
 				return;
-			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
-				setUpperBound((ValueSpecification) null);
-				return;
-			case UMLPackage.OBJECT_NODE__IN_STATE :
-				getInStates().clear();
+			case UMLPackage.OBJECT_NODE__ORDERING :
+				setOrdering(ORDERING_EDEFAULT);
 				return;
 			case UMLPackage.OBJECT_NODE__SELECTION :
 				setSelection((Behavior) null);
+				return;
+			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
+				setUpperBound((ValueSpecification) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -858,62 +848,62 @@ public abstract class ObjectNodeImpl
 		switch (featureID) {
 			case UMLPackage.OBJECT_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OBJECT_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OBJECT_NODE__OWNER :
 				return isSetOwner();
-			case UMLPackage.OBJECT_NODE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OBJECT_NODE__NAME :
 				return isSetName();
-			case UMLPackage.OBJECT_NODE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.OBJECT_NODE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.OBJECT_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.OBJECT_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.OBJECT_NODE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.OBJECT_NODE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.OBJECT_NODE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.OBJECT_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.OBJECT_NODE__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.OBJECT_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.OBJECT_NODE__ACTIVITY :
 				return basicGetActivity() != null;
+			case UMLPackage.OBJECT_NODE__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.OBJECT_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.OBJECT_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.OBJECT_NODE__OUTGOING :
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.OBJECT_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.OBJECT_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.OBJECT_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.OBJECT_NODE__TYPE :
 				return type != null;
-			case UMLPackage.OBJECT_NODE__ORDERING :
-				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
-			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
-				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
-			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
-				return upperBound != null;
 			case UMLPackage.OBJECT_NODE__IN_STATE :
 				return inStates != null && !inStates.isEmpty();
+			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
+				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
+			case UMLPackage.OBJECT_NODE__ORDERING :
+				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.OBJECT_NODE__SELECTION :
 				return selection != null;
+			case UMLPackage.OBJECT_NODE__UPPER_BOUND :
+				return upperBound != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -966,123 +956,129 @@ public abstract class ObjectNodeImpl
 		switch (operationID) {
 			case UMLPackage.OBJECT_NODE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.OBJECT_NODE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.OBJECT_NODE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.OBJECT_NODE___GET_MODEL :
-				return getModel();
-			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.OBJECT_NODE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.OBJECT_NODE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.OBJECT_NODE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.OBJECT_NODE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.OBJECT_NODE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.OBJECT_NODE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_MODEL :
+				return getModel();
+			case UMLPackage.OBJECT_NODE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.OBJECT_NODE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.OBJECT_NODE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.OBJECT_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OBJECT_NODE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.OBJECT_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OBJECT_NODE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.OBJECT_NODE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.OBJECT_NODE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.OBJECT_NODE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.OBJECT_NODE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.OBJECT_NODE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.OBJECT_NODE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.OBJECT_NODE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OBJECT_NODE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.OBJECT_NODE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.OBJECT_NODE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.OBJECT_NODE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.OBJECT_NODE___SEPARATOR :
 				return separator();
-			case UMLPackage.OBJECT_NODE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.OBJECT_NODE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OBJECT_NODE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1090,26 +1086,23 @@ public abstract class ObjectNodeImpl
 			case UMLPackage.OBJECT_NODE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.OBJECT_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
 				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
+			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
+				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_NOT_UNIQUE__DIAGNOSTICCHAIN_MAP :
-				return validateNotUnique((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OBJECT_NODE___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateSelectionBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OBJECT_NODE___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
-				return validateInputOutputParameter(
+			case UMLPackage.OBJECT_NODE___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
@@ -1127,11 +1120,11 @@ public abstract class ObjectNodeImpl
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ordering: "); //$NON-NLS-1$
+		result.append(" (isControlType: "); //$NON-NLS-1$
+		result.append((eFlags & IS_CONTROL_TYPE_EFLAG) != 0);
+		result.append(", ordering: "); //$NON-NLS-1$
 		result
 			.append(ORDERING_EFLAG_VALUES[(eFlags & ORDERING_EFLAG) >>> ORDERING_EFLAG_OFFSET]);
-		result.append(", isControlType: "); //$NON-NLS-1$
-		result.append((eFlags & IS_CONTROL_TYPE_EFLAG) != 0);
 		result.append(')');
 		return result.toString();
 	}

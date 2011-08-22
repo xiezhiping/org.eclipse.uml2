@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: WriteVariableAction.java,v 1.8 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -57,7 +58,7 @@ public interface WriteVariableAction
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(InputPin)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getWriteVariableAction_Value()
-	 * @model containment="true" resolveProxies="true" required="true" ordered="false"
+	 * @model containment="true" resolveProxies="true" ordered="false"
 	 * @generated
 	 */
 	InputPin getValue();
@@ -102,7 +103,7 @@ public interface WriteVariableAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type input pin is the same as the type of the variable.
-	 * self.value.type = self.variable.type
+	 * self.value -> notEmpty() implies self.value.type = self.variable.type
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

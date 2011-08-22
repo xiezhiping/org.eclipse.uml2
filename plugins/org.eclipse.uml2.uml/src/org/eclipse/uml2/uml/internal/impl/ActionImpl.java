@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActionImpl.java,v 1.30 2009/01/07 15:55:31 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.impl;
 
 import java.util.Collection;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -34,7 +37,6 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
@@ -49,6 +51,7 @@ import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+import org.eclipse.uml2.uml.internal.operations.ActionOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,12 +60,13 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getOutputs <em>Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getContext <em>Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#isLocallyReentrant <em>Is Locally Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getLocalPostconditions <em>Local Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActionImpl#getLocalPreconditions <em>Local Precondition</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,14 +77,24 @@ public abstract class ActionImpl
 		implements Action {
 
 	/**
-	 * The cached value of the '{@link #getLocalPreconditions() <em>Local Precondition</em>}' containment reference list.
+	 * The default value of the '{@link #isLocallyReentrant() <em>Is Locally Reentrant</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLocalPreconditions()
+	 * @see #isLocallyReentrant()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Constraint> localPreconditions;
+	protected static final boolean IS_LOCALLY_REENTRANT_EDEFAULT = false;
+
+	/**
+	 * The flag representing the value of the '{@link #isLocallyReentrant() <em>Is Locally Reentrant</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLocallyReentrant()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_LOCALLY_REENTRANT_EFLAG = 1 << 13;
 
 	/**
 	 * The cached value of the '{@link #getLocalPostconditions() <em>Local Postcondition</em>}' containment reference list.
@@ -91,6 +105,16 @@ public abstract class ActionImpl
 	 * @ordered
 	 */
 	protected EList<Constraint> localPostconditions;
+
+	/**
+	 * The cached value of the '{@link #getLocalPreconditions() <em>Local Precondition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocalPreconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Constraint> localPreconditions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,9 +197,9 @@ public abstract class ActionImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.ACTION__OWNED_COMMENT, UMLPackage.ACTION__NAME_EXPRESSION,
-		UMLPackage.ACTION__HANDLER, UMLPackage.ACTION__OUTPUT,
-		UMLPackage.ACTION__INPUT, UMLPackage.ACTION__LOCAL_PRECONDITION,
-		UMLPackage.ACTION__LOCAL_POSTCONDITION};
+		UMLPackage.ACTION__HANDLER, UMLPackage.ACTION__INPUT,
+		UMLPackage.ACTION__LOCAL_POSTCONDITION,
+		UMLPackage.ACTION__LOCAL_PRECONDITION, UMLPackage.ACTION__OUTPUT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -274,10 +298,33 @@ public abstract class ActionImpl
 	 * @generated NOT
 	 */
 	public Classifier basicGetContext() {
-		return eInternalContainer() instanceof Behavior
-			? (Classifier) ((Behavior) eContainer()).eGet(
-				UMLPackage.Literals.BEHAVIOR__CONTEXT, false)
-			: null;
+		return ActionOperations.getContext(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isLocallyReentrant() {
+		return (eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsLocallyReentrant(boolean newIsLocallyReentrant) {
+		boolean oldIsLocallyReentrant = (eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0;
+		if (newIsLocallyReentrant)
+			eFlags |= IS_LOCALLY_REENTRANT_EFLAG;
+		else
+			eFlags &= ~IS_LOCALLY_REENTRANT_EFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.ACTION__IS_LOCALLY_REENTRANT, oldIsLocallyReentrant,
+				newIsLocallyReentrant));
 	}
 
 	/**
@@ -430,30 +477,30 @@ public abstract class ActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
+			case UMLPackage.ACTION__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<?>) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ACTION__INCOMING :
 				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<?>) getInInterruptibleRegions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList<?>) getLocalPreconditions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
@@ -469,70 +516,72 @@ public abstract class ActionImpl
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ACTION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ACTION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ACTION__NAME :
-				return getName();
-			case UMLPackage.ACTION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ACTION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ACTION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ACTION__NAME :
+				return getName();
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ACTION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ACTION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.ACTION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.ACTION__ACTIVITY :
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
+			case UMLPackage.ACTION__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.ACTION__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.ACTION__INCOMING :
 				return getIncomings();
-			case UMLPackage.ACTION__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.ACTION__HANDLER :
 				return getHandlers();
-			case UMLPackage.ACTION__OUTPUT :
-				return getOutputs();
-			case UMLPackage.ACTION__INPUT :
-				return getInputs();
 			case UMLPackage.ACTION__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				return getLocalPreconditions();
+			case UMLPackage.ACTION__INPUT :
+				return getInputs();
+			case UMLPackage.ACTION__IS_LOCALLY_REENTRANT :
+				return isLocallyReentrant();
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+				return getLocalPreconditions();
+			case UMLPackage.ACTION__OUTPUT :
+				return getOutputs();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -556,28 +605,39 @@ public abstract class ActionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ACTION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ACTION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ACTION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.ACTION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.ACTION__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.ACTION__ACTIVITY :
-				setActivity((Activity) newValue);
+			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.ACTION__OUTGOING :
 				getOutgoings().clear();
@@ -589,17 +649,6 @@ public abstract class ActionImpl
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
-			case UMLPackage.ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
-				return;
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
@@ -610,14 +659,17 @@ public abstract class ActionImpl
 				getHandlers().addAll(
 					(Collection<? extends ExceptionHandler>) newValue);
 				return;
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+			case UMLPackage.ACTION__IS_LOCALLY_REENTRANT :
+				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
 				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+				getLocalPreconditions().clear();
+				getLocalPreconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
 		}
@@ -638,26 +690,32 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ACTION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.ACTION__NAME :
+				unsetName();
 				return;
 			case UMLPackage.ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.ACTION__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.ACTION__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.ACTION__ACTIVITY :
-				setActivity((Activity) null);
+			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.ACTION__OUTGOING :
 				getOutgoings().clear();
@@ -665,23 +723,20 @@ public abstract class ActionImpl
 			case UMLPackage.ACTION__INCOMING :
 				getIncomings().clear();
 				return;
-			case UMLPackage.ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				return;
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				return;
 			case UMLPackage.ACTION__HANDLER :
 				getHandlers().clear();
 				return;
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
+			case UMLPackage.ACTION__IS_LOCALLY_REENTRANT :
+				setIsLocallyReentrant(IS_LOCALLY_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
+				return;
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+				getLocalPreconditions().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -697,66 +752,85 @@ public abstract class ActionImpl
 		switch (featureID) {
 			case UMLPackage.ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ACTION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTION__OWNER :
 				return isSetOwner();
-			case UMLPackage.ACTION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTION__NAME :
 				return isSetName();
-			case UMLPackage.ACTION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ACTION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ACTION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ACTION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ACTION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ACTION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.ACTION__ACTIVITY :
 				return basicGetActivity() != null;
+			case UMLPackage.ACTION__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.ACTION__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.ACTION__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.ACTION__OUTGOING :
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.ACTION__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.ACTION__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.ACTION__HANDLER :
 				return handlers != null && !handlers.isEmpty();
-			case UMLPackage.ACTION__OUTPUT :
-				return isSetOutputs();
-			case UMLPackage.ACTION__INPUT :
-				return isSetInputs();
 			case UMLPackage.ACTION__CONTEXT :
 				return basicGetContext() != null;
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
-				return localPreconditions != null
-					&& !localPreconditions.isEmpty();
+			case UMLPackage.ACTION__INPUT :
+				return isSetInputs();
+			case UMLPackage.ACTION__IS_LOCALLY_REENTRANT :
+				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
+			case UMLPackage.ACTION__OUTPUT :
+				return isSetOutputs();
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isLocallyReentrant: "); //$NON-NLS-1$
+		result.append((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0);
+		result.append(')');
+		return result.toString();
 	}
 
 	/**
@@ -775,9 +849,9 @@ public abstract class ActionImpl
 	 */
 	@Override
 	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements() || isSetOutputs() || isSetInputs()
-			|| eIsSet(UMLPackage.ACTION__LOCAL_PRECONDITION)
-			|| eIsSet(UMLPackage.ACTION__LOCAL_POSTCONDITION);
+		return super.isSetOwnedElements() || isSetInputs()
+			|| eIsSet(UMLPackage.ACTION__LOCAL_POSTCONDITION)
+			|| eIsSet(UMLPackage.ACTION__LOCAL_PRECONDITION) || isSetOutputs();
 	}
 
 	/**

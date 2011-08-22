@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OperationImpl.java,v 1.39 2010/09/28 21:02:14 khussey Exp $
  */
@@ -89,26 +90,26 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateParameter <em>Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwningTemplateParameter <em>Owning Template Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedRules <em>Owned Rule</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isOrdered <em>Is Ordered</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getUpper <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getPostconditions <em>Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRedefinedOperations <em>Redefined Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getDatatype <em>Datatype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getOwnedParameters <em>Owned Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OperationImpl#getRaisedExceptions <em>Raised Exception</em>}</li>
  * </ul>
@@ -131,6 +132,16 @@ public class OperationImpl
 	protected TemplateParameter templateParameter;
 
 	/**
+	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTemplateSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature ownedTemplateSignature;
+
+	/**
 	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -141,14 +152,24 @@ public class OperationImpl
 	protected EList<TemplateBinding> templateBindings;
 
 	/**
-	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
+	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTemplateSignature()
+	 * @see #getBodyCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected TemplateSignature ownedTemplateSignature;
+	protected Constraint bodyCondition;
+
+	/**
+	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isOrdered()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ORDERED_EDEFAULT = false;
 
 	/**
 	 * The default value of the '{@link #isQuery() <em>Is Query</em>}' attribute.
@@ -171,16 +192,6 @@ public class OperationImpl
 	protected static final int IS_QUERY_EFLAG = 1 << 17;
 
 	/**
-	 * The default value of the '{@link #isOrdered() <em>Is Ordered</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isOrdered()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_ORDERED_EDEFAULT = false;
-
-	/**
 	 * The default value of the '{@link #isUnique() <em>Is Unique</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,14 +212,14 @@ public class OperationImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
-	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUpper()
+	 * @see #getPostconditions()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int UPPER_EDEFAULT = 1;
+	protected EList<Constraint> postconditions;
 
 	/**
 	 * The cached value of the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
@@ -221,16 +232,6 @@ public class OperationImpl
 	protected EList<Constraint> preconditions;
 
 	/**
-	 * The cached value of the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostconditions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Constraint> postconditions;
-
-	/**
 	 * The cached value of the '{@link #getRedefinedOperations() <em>Redefined Operation</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -241,14 +242,14 @@ public class OperationImpl
 	protected EList<Operation> redefinedOperations;
 
 	/**
-	 * The cached value of the '{@link #getBodyCondition() <em>Body Condition</em>}' reference.
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBodyCondition()
+	 * @see #getUpper()
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint bodyCondition;
+	protected static final int UPPER_EDEFAULT = 1;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -808,26 +809,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsOrdered(boolean newIsOrdered) {
-		OperationOperations.setIsOrdered(this, newIsOrdered);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isUnique() {
 		return OperationOperations.isUnique(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsUnique(boolean newIsUnique) {
-		OperationOperations.setIsUnique(this, newIsUnique);
 	}
 
 	/**
@@ -844,26 +827,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLower(int newLower) {
-		OperationOperations.setLower(this, newLower);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public int getUpper() {
 		return OperationOperations.getUpper(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUpper(int newUpper) {
-		OperationOperations.setUpper(this, newUpper);
 	}
 
 	/**
@@ -945,58 +910,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createPrecondition(String name, EClass eClass) {
-		Constraint newPrecondition = (Constraint) create(eClass);
-		getPreconditions().add(newPrecondition);
-		if (name != null)
-			newPrecondition.setName(name);
-		return newPrecondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPrecondition(String name) {
-		return createPrecondition(name, UMLPackage.Literals.CONSTRAINT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint getPrecondition(String name) {
-		return getPrecondition(name, false, null, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint getPrecondition(String name, boolean ignoreCase,
-			EClass eClass, boolean createOnDemand) {
-		preconditionLoop : for (Constraint precondition : getPreconditions()) {
-			if (eClass != null && !eClass.isInstance(precondition))
-				continue preconditionLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(precondition.getName())
-				: name.equals(precondition.getName())))
-				continue preconditionLoop;
-			return precondition;
-		}
-		return createOnDemand && eClass != null
-			? createPrecondition(name, eClass)
-			: null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Constraint> getPostconditions() {
 		if (postconditions == null) {
 			postconditions = new SubsetSupersetEObjectResolvingEList<Constraint>(
@@ -1004,58 +917,6 @@ public class OperationImpl
 				POSTCONDITION_ESUPERSETS, null);
 		}
 		return postconditions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPostcondition(String name, EClass eClass) {
-		Constraint newPostcondition = (Constraint) create(eClass);
-		getPostconditions().add(newPostcondition);
-		if (name != null)
-			newPostcondition.setName(name);
-		return newPostcondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint createPostcondition(String name) {
-		return createPostcondition(name, UMLPackage.Literals.CONSTRAINT);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint getPostcondition(String name) {
-		return getPostcondition(name, false, null, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Constraint getPostcondition(String name, boolean ignoreCase,
-			EClass eClass, boolean createOnDemand) {
-		postconditionLoop : for (Constraint postcondition : getPostconditions()) {
-			if (eClass != null && !eClass.isInstance(postcondition))
-				continue postconditionLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(postcondition.getName())
-				: name.equals(postcondition.getName())))
-				continue postconditionLoop;
-			return postcondition;
-		}
-		return createOnDemand && eClass != null
-			? createPostcondition(name, eClass)
-			: null;
 	}
 
 	/**
@@ -1281,15 +1142,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(Type newType) {
-		OperationOperations.setType(this, newType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Interface getInterface() {
 		if (eContainerFeatureID() != UMLPackage.OPERATION__INTERFACE)
 			return null;
@@ -1364,7 +1216,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Parameter createOwnedParameter(String name, Type type) {
 		Parameter newOwnedParameter = (Parameter) create(UMLPackage.Literals.PARAMETER);
 		getOwnedParameters().add(newOwnedParameter);
@@ -1380,7 +1231,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Parameter getOwnedParameter(String name, Type type) {
 		return getOwnedParameter(name, type, false, false);
 	}
@@ -1390,7 +1240,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Parameter getOwnedParameter(String name, Type type,
 			boolean ignoreCase, boolean createOnDemand) {
 		ownedParameterLoop : for (Parameter ownedParameter : getOwnedParameters()) {
@@ -1435,7 +1284,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Type getRaisedException(String name) {
 		return getRaisedException(name, false, null);
 	}
@@ -1445,7 +1293,6 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public Type getRaisedException(String name, boolean ignoreCase,
 			EClass eClass) {
 		raisedExceptionLoop : for (Type raisedException : getRaisedExceptions()) {
@@ -1558,8 +1405,8 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int lowerBound() {
-		return OperationOperations.lowerBound(this);
+	public void setIsOrdered(boolean newIsOrdered) {
+		OperationOperations.setIsOrdered(this, newIsOrdered);
 	}
 
 	/**
@@ -1567,8 +1414,35 @@ public class OperationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int upperBound() {
-		return OperationOperations.upperBound(this);
+	public void setIsUnique(boolean newIsUnique) {
+		OperationOperations.setIsUnique(this, newIsUnique);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLower(int newLower) {
+		OperationOperations.setLower(this, newLower);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(Type newType) {
+		OperationOperations.setType(this, newType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUpper(int newUpper) {
+		OperationOperations.setUpper(this, newUpper);
 	}
 
 	/**
@@ -1642,9 +1516,6 @@ public class OperationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -1653,10 +1524,9 @@ public class OperationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInterface((Interface) otherEnd, msgs);
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -1666,6 +1536,10 @@ public class OperationImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetDatatype((DataType) otherEnd, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInterface((Interface) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -1699,12 +1573,12 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.OPERATION__METHOD :
 				return ((InternalEList<?>) getMethods()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				return ((InternalEList<?>) getOwnedParameters()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				return ((InternalEList<?>) getOwnedParameterSets())
 					.basicRemove(otherEnd, msgs);
@@ -1712,17 +1586,17 @@ public class OperationImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicSetInterface(null, msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return basicSetClass_(null, msgs);
 			case UMLPackage.OPERATION__DATATYPE :
 				return basicSetDatatype(null, msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicSetInterface(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1740,10 +1614,6 @@ public class OperationImpl
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT,
 					TemplateParameter.class, msgs);
-			case UMLPackage.OPERATION__INTERFACE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
-					msgs);
 			case UMLPackage.OPERATION__CLASS :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.CLASS__OWNED_OPERATION,
@@ -1753,6 +1623,10 @@ public class OperationImpl
 					.eInverseRemove(this,
 						UMLPackage.DATA_TYPE__OWNED_OPERATION, DataType.class,
 						msgs);
+			case UMLPackage.OPERATION__INTERFACE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.INTERFACE__OWNED_OPERATION, Interface.class,
+					msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -1767,64 +1641,64 @@ public class OperationImpl
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.OPERATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPERATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.OPERATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.OPERATION__NAME :
-				return getName();
-			case UMLPackage.OPERATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.OPERATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.OPERATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.OPERATION__NAME :
+				return getName();
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.OPERATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.OPERATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.OPERATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.OPERATION__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.OPERATION__MEMBER :
-				return getMembers();
-			case UMLPackage.OPERATION__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.OPERATION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.OPERATION__MEMBER :
+				return getMembers();
 			case UMLPackage.OPERATION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.OPERATION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.OPERATION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.OPERATION__IS_STATIC :
-				return isStatic();
 			case UMLPackage.OPERATION__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
-			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				return getOwnedParameters();
+			case UMLPackage.OPERATION__IS_STATIC :
+				return isStatic();
+			case UMLPackage.OPERATION__CONCURRENCY :
+				return getConcurrency();
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				return isAbstract();
 			case UMLPackage.OPERATION__METHOD :
 				return getMethods();
-			case UMLPackage.OPERATION__CONCURRENCY :
-				return getConcurrency();
-			case UMLPackage.OPERATION__RAISED_EXCEPTION :
-				return getRaisedExceptions();
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				return getOwnedParameters();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.OPERATION__RAISED_EXCEPTION :
+				return getRaisedExceptions();
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -1833,48 +1707,48 @@ public class OperationImpl
 				if (resolve)
 					return getTemplateParameter();
 				return basicGetTemplateParameter();
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.OPERATION__INTERFACE :
-				if (resolve)
-					return getInterface();
-				return basicGetInterface();
-			case UMLPackage.OPERATION__CLASS :
-				if (resolve)
-					return getClass_();
-				return basicGetClass_();
-			case UMLPackage.OPERATION__IS_QUERY :
-				return isQuery();
-			case UMLPackage.OPERATION__IS_ORDERED :
-				return isOrdered();
-			case UMLPackage.OPERATION__IS_UNIQUE :
-				return isUnique();
-			case UMLPackage.OPERATION__LOWER :
-				return getLower();
-			case UMLPackage.OPERATION__UPPER :
-				return getUpper();
-			case UMLPackage.OPERATION__PRECONDITION :
-				return getPreconditions();
-			case UMLPackage.OPERATION__POSTCONDITION :
-				return getPostconditions();
-			case UMLPackage.OPERATION__REDEFINED_OPERATION :
-				return getRedefinedOperations();
-			case UMLPackage.OPERATION__DATATYPE :
-				if (resolve)
-					return getDatatype();
-				return basicGetDatatype();
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				if (resolve)
 					return getBodyCondition();
 				return basicGetBodyCondition();
+			case UMLPackage.OPERATION__CLASS :
+				if (resolve)
+					return getClass_();
+				return basicGetClass_();
+			case UMLPackage.OPERATION__DATATYPE :
+				if (resolve)
+					return getDatatype();
+				return basicGetDatatype();
+			case UMLPackage.OPERATION__INTERFACE :
+				if (resolve)
+					return getInterface();
+				return basicGetInterface();
+			case UMLPackage.OPERATION__IS_ORDERED :
+				return isOrdered();
+			case UMLPackage.OPERATION__IS_QUERY :
+				return isQuery();
+			case UMLPackage.OPERATION__IS_UNIQUE :
+				return isUnique();
+			case UMLPackage.OPERATION__LOWER :
+				return getLower();
+			case UMLPackage.OPERATION__POSTCONDITION :
+				return getPostconditions();
+			case UMLPackage.OPERATION__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.OPERATION__REDEFINED_OPERATION :
+				return getRedefinedOperations();
 			case UMLPackage.OPERATION__TYPE :
 				if (resolve)
 					return getType();
 				return basicGetType();
+			case UMLPackage.OPERATION__UPPER :
+				return getUpper();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1898,19 +1772,19 @@ public class OperationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPERATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.OPERATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.OPERATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.OPERATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1933,10 +1807,8 @@ public class OperationImpl
 			case UMLPackage.OPERATION__IS_STATIC :
 				setIsStatic((Boolean) newValue);
 				return;
-			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				getOwnedParameters().clear();
-				getOwnedParameters().addAll(
-					(Collection<? extends Parameter>) newValue);
+			case UMLPackage.OPERATION__CONCURRENCY :
+				setConcurrency((CallConcurrencyKind) newValue);
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				setIsAbstract((Boolean) newValue);
@@ -1945,18 +1817,20 @@ public class OperationImpl
 				getMethods().clear();
 				getMethods().addAll((Collection<? extends Behavior>) newValue);
 				return;
-			case UMLPackage.OPERATION__CONCURRENCY :
-				setConcurrency((CallConcurrencyKind) newValue);
-				return;
-			case UMLPackage.OPERATION__RAISED_EXCEPTION :
-				getRaisedExceptions().clear();
-				getRaisedExceptions().addAll(
-					(Collection<? extends Type>) newValue);
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				getOwnedParameters().clear();
+				getOwnedParameters().addAll(
+					(Collection<? extends Parameter>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
 				getOwnedParameterSets().addAll(
 					(Collection<? extends ParameterSet>) newValue);
+				return;
+			case UMLPackage.OPERATION__RAISED_EXCEPTION :
+				getRaisedExceptions().clear();
+				getRaisedExceptions().addAll(
+					(Collection<? extends Type>) newValue);
 				return;
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -1964,58 +1838,43 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
+			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
+				return;
 			case UMLPackage.OPERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
-				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) newValue);
+			case UMLPackage.OPERATION__BODY_CONDITION :
+				setBodyCondition((Constraint) newValue);
 				return;
 			case UMLPackage.OPERATION__CLASS :
 				setClass_((org.eclipse.uml2.uml.Class) newValue);
 				return;
+			case UMLPackage.OPERATION__DATATYPE :
+				setDatatype((DataType) newValue);
+				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) newValue);
+				return;
 			case UMLPackage.OPERATION__IS_QUERY :
 				setIsQuery((Boolean) newValue);
-				return;
-			case UMLPackage.OPERATION__IS_ORDERED :
-				setIsOrdered((Boolean) newValue);
-				return;
-			case UMLPackage.OPERATION__IS_UNIQUE :
-				setIsUnique((Boolean) newValue);
-				return;
-			case UMLPackage.OPERATION__LOWER :
-				setLower((Integer) newValue);
-				return;
-			case UMLPackage.OPERATION__UPPER :
-				setUpper((Integer) newValue);
-				return;
-			case UMLPackage.OPERATION__PRECONDITION :
-				getPreconditions().clear();
-				getPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.OPERATION__POSTCONDITION :
 				getPostconditions().clear();
 				getPostconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
+			case UMLPackage.OPERATION__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
 			case UMLPackage.OPERATION__REDEFINED_OPERATION :
 				getRedefinedOperations().clear();
 				getRedefinedOperations().addAll(
 					(Collection<? extends Operation>) newValue);
-				return;
-			case UMLPackage.OPERATION__DATATYPE :
-				setDatatype((DataType) newValue);
-				return;
-			case UMLPackage.OPERATION__BODY_CONDITION :
-				setBodyCondition((Constraint) newValue);
-				return;
-			case UMLPackage.OPERATION__TYPE :
-				setType((Type) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -2035,17 +1894,17 @@ public class OperationImpl
 			case UMLPackage.OPERATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OPERATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.OPERATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.OPERATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.OPERATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.OPERATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -2062,8 +1921,8 @@ public class OperationImpl
 			case UMLPackage.OPERATION__IS_STATIC :
 				setIsStatic(IS_STATIC_EDEFAULT);
 				return;
-			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				getOwnedParameters().clear();
+			case UMLPackage.OPERATION__CONCURRENCY :
+				setConcurrency(CONCURRENCY_EDEFAULT);
 				return;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				setIsAbstract(IS_ABSTRACT_EDEFAULT);
@@ -2071,14 +1930,14 @@ public class OperationImpl
 			case UMLPackage.OPERATION__METHOD :
 				getMethods().clear();
 				return;
-			case UMLPackage.OPERATION__CONCURRENCY :
-				setConcurrency(CONCURRENCY_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__RAISED_EXCEPTION :
-				getRaisedExceptions().clear();
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				getOwnedParameters().clear();
 				return;
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				getOwnedParameterSets().clear();
+				return;
+			case UMLPackage.OPERATION__RAISED_EXCEPTION :
+				getRaisedExceptions().clear();
 				return;
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -2086,50 +1945,35 @@ public class OperationImpl
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
-			case UMLPackage.OPERATION__INTERFACE :
-				setInterface((Interface) null);
-				return;
-			case UMLPackage.OPERATION__CLASS :
-				setClass_((org.eclipse.uml2.uml.Class) null);
-				return;
-			case UMLPackage.OPERATION__IS_QUERY :
-				setIsQuery(IS_QUERY_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__IS_ORDERED :
-				setIsOrdered(IS_ORDERED_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__IS_UNIQUE :
-				setIsUnique(IS_UNIQUE_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__LOWER :
-				setLower(LOWER_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__UPPER :
-				setUpper(UPPER_EDEFAULT);
-				return;
-			case UMLPackage.OPERATION__PRECONDITION :
-				getPreconditions().clear();
-				return;
-			case UMLPackage.OPERATION__POSTCONDITION :
-				getPostconditions().clear();
-				return;
-			case UMLPackage.OPERATION__REDEFINED_OPERATION :
-				getRedefinedOperations().clear();
-				return;
-			case UMLPackage.OPERATION__DATATYPE :
-				setDatatype((DataType) null);
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
 				return;
 			case UMLPackage.OPERATION__BODY_CONDITION :
 				setBodyCondition((Constraint) null);
 				return;
-			case UMLPackage.OPERATION__TYPE :
-				setType((Type) null);
+			case UMLPackage.OPERATION__CLASS :
+				setClass_((org.eclipse.uml2.uml.Class) null);
+				return;
+			case UMLPackage.OPERATION__DATATYPE :
+				setDatatype((DataType) null);
+				return;
+			case UMLPackage.OPERATION__INTERFACE :
+				setInterface((Interface) null);
+				return;
+			case UMLPackage.OPERATION__IS_QUERY :
+				setIsQuery(IS_QUERY_EDEFAULT);
+				return;
+			case UMLPackage.OPERATION__POSTCONDITION :
+				getPostconditions().clear();
+				return;
+			case UMLPackage.OPERATION__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.OPERATION__REDEFINED_OPERATION :
+				getRedefinedOperations().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -2145,97 +1989,97 @@ public class OperationImpl
 		switch (featureID) {
 			case UMLPackage.OPERATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.OPERATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OPERATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OPERATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.OPERATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OPERATION__NAME :
 				return isSetName();
-			case UMLPackage.OPERATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.OPERATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.OPERATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.OPERATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.OPERATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.OPERATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.OPERATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.OPERATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.OPERATION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.OPERATION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.OPERATION__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.OPERATION__MEMBER :
-				return isSetMembers();
-			case UMLPackage.OPERATION__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.OPERATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.OPERATION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.OPERATION__MEMBER :
+				return isSetMembers();
 			case UMLPackage.OPERATION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.OPERATION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.OPERATION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.OPERATION__IS_STATIC :
-				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UMLPackage.OPERATION__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
-			case UMLPackage.OPERATION__OWNED_PARAMETER :
-				return isSetOwnedParameters();
+			case UMLPackage.OPERATION__IS_STATIC :
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
+			case UMLPackage.OPERATION__CONCURRENCY :
+				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
 			case UMLPackage.OPERATION__IS_ABSTRACT :
 				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
 			case UMLPackage.OPERATION__METHOD :
 				return methods != null && !methods.isEmpty();
-			case UMLPackage.OPERATION__CONCURRENCY :
-				return (eFlags & CONCURRENCY_EFLAG) != CONCURRENCY_EFLAG_DEFAULT;
-			case UMLPackage.OPERATION__RAISED_EXCEPTION :
-				return isSetRaisedExceptions();
+			case UMLPackage.OPERATION__OWNED_PARAMETER :
+				return isSetOwnedParameters();
 			case UMLPackage.OPERATION__OWNED_PARAMETER_SET :
 				return ownedParameterSets != null
 					&& !ownedParameterSets.isEmpty();
+			case UMLPackage.OPERATION__RAISED_EXCEPTION :
+				return isSetRaisedExceptions();
 			case UMLPackage.OPERATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPERATION__TEMPLATE_PARAMETER :
 				return isSetTemplateParameter();
-			case UMLPackage.OPERATION__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 				return ownedTemplateSignature != null;
-			case UMLPackage.OPERATION__INTERFACE :
-				return basicGetInterface() != null;
+			case UMLPackage.OPERATION__TEMPLATE_BINDING :
+				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.OPERATION__BODY_CONDITION :
+				return bodyCondition != null;
 			case UMLPackage.OPERATION__CLASS :
 				return basicGetClass_() != null;
-			case UMLPackage.OPERATION__IS_QUERY :
-				return ((eFlags & IS_QUERY_EFLAG) != 0) != IS_QUERY_EDEFAULT;
+			case UMLPackage.OPERATION__DATATYPE :
+				return basicGetDatatype() != null;
+			case UMLPackage.OPERATION__INTERFACE :
+				return basicGetInterface() != null;
 			case UMLPackage.OPERATION__IS_ORDERED :
 				return isOrdered() != IS_ORDERED_EDEFAULT;
+			case UMLPackage.OPERATION__IS_QUERY :
+				return ((eFlags & IS_QUERY_EFLAG) != 0) != IS_QUERY_EDEFAULT;
 			case UMLPackage.OPERATION__IS_UNIQUE :
 				return isUnique() != IS_UNIQUE_EDEFAULT;
 			case UMLPackage.OPERATION__LOWER :
 				return getLower() != LOWER_EDEFAULT;
-			case UMLPackage.OPERATION__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
-			case UMLPackage.OPERATION__PRECONDITION :
-				return preconditions != null && !preconditions.isEmpty();
 			case UMLPackage.OPERATION__POSTCONDITION :
 				return postconditions != null && !postconditions.isEmpty();
+			case UMLPackage.OPERATION__PRECONDITION :
+				return preconditions != null && !preconditions.isEmpty();
 			case UMLPackage.OPERATION__REDEFINED_OPERATION :
 				return redefinedOperations != null
 					&& !redefinedOperations.isEmpty();
-			case UMLPackage.OPERATION__DATATYPE :
-				return basicGetDatatype() != null;
-			case UMLPackage.OPERATION__BODY_CONDITION :
-				return bodyCondition != null;
 			case UMLPackage.OPERATION__TYPE :
 				return basicGetType() != null;
+			case UMLPackage.OPERATION__UPPER :
+				return getUpper() != UPPER_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -2259,10 +2103,10 @@ public class OperationImpl
 		}
 		if (baseClass == TemplateableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.OPERATION__TEMPLATE_BINDING :
-					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
 				case UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE :
 					return UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+				case UMLPackage.OPERATION__TEMPLATE_BINDING :
+					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
 				default :
 					return -1;
 			}
@@ -2289,10 +2133,10 @@ public class OperationImpl
 		}
 		if (baseClass == TemplateableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-					return UMLPackage.OPERATION__TEMPLATE_BINDING;
 				case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 					return UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE;
+				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
+					return UMLPackage.OPERATION__TEMPLATE_BINDING;
 				default :
 					return -1;
 			}
@@ -2319,10 +2163,10 @@ public class OperationImpl
 		}
 		if (baseClass == TemplateableElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS :
-					return UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS;
 				case UMLPackage.TEMPLATEABLE_ELEMENT___IS_TEMPLATE :
 					return UMLPackage.OPERATION___IS_TEMPLATE;
+				case UMLPackage.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS :
+					return UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS;
 				default :
 					return -1;
 			}
@@ -2342,117 +2186,119 @@ public class OperationImpl
 		switch (operationID) {
 			case UMLPackage.OPERATION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.OPERATION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.OPERATION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.OPERATION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.OPERATION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.OPERATION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.OPERATION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.OPERATION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.OPERATION___GET_MODEL :
-				return getModel();
-			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.OPERATION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.OPERATION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.OPERATION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.OPERATION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.OPERATION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.OPERATION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.OPERATION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OPERATION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OPERATION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.OPERATION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_MODEL :
+				return getModel();
+			case UMLPackage.OPERATION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.OPERATION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.OPERATION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.OPERATION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.OPERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OPERATION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.OPERATION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OPERATION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPERATION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPERATION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.OPERATION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.OPERATION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.OPERATION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.OPERATION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.OPERATION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OPERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPERATION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.OPERATION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.OPERATION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.OPERATION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.OPERATION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.OPERATION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.OPERATION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OPERATION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.OPERATION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.OPERATION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.OPERATION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.OPERATION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.OPERATION___SEPARATOR :
 				return separator();
-			case UMLPackage.OPERATION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.OPERATION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -2469,24 +2315,30 @@ public class OperationImpl
 				return getImportedElements();
 			case UMLPackage.OPERATION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.OPERATION___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.OPERATION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.OPERATION___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.OPERATION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.OPERATION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.OPERATION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.OPERATION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.OPERATION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.OPERATION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPERATION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPERATION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -2501,10 +2353,10 @@ public class OperationImpl
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.OPERATION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS :
-				return parameterableElements();
 			case UMLPackage.OPERATION___IS_TEMPLATE :
 				return isTemplate();
+			case UMLPackage.OPERATION___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
 			case UMLPackage.OPERATION___VALIDATE_AT_MOST_ONE_RETURN__DIAGNOSTICCHAIN_MAP :
 				return validateAtMostOneReturn(
 					(DiagnosticChain) arguments.get(0),
@@ -2513,10 +2365,8 @@ public class OperationImpl
 				return validateOnlyBodyForQuery(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPERATION___GET_LOWER :
-				return getLower();
-			case UMLPackage.OPERATION___GET_UPPER :
-				return getUpper();
+			case UMLPackage.OPERATION___GET_RETURN_RESULT :
+				return getReturnResult();
 			case UMLPackage.OPERATION___SET_IS_ORDERED__BOOLEAN :
 				setIsOrdered((Boolean) arguments.get(0));
 				return null;
@@ -2532,20 +2382,18 @@ public class OperationImpl
 			case UMLPackage.OPERATION___SET_UPPER__INT :
 				setUpper((Integer) arguments.get(0));
 				return null;
-			case UMLPackage.OPERATION___GET_RETURN_RESULT :
-				return getReturnResult();
 			case UMLPackage.OPERATION___IS_ORDERED :
 				return isOrdered();
 			case UMLPackage.OPERATION___IS_UNIQUE :
 				return isUnique();
-			case UMLPackage.OPERATION___LOWER_BOUND :
-				return lowerBound();
-			case UMLPackage.OPERATION___UPPER_BOUND :
-				return upperBound();
-			case UMLPackage.OPERATION___GET_TYPE :
-				return getType();
+			case UMLPackage.OPERATION___GET_LOWER :
+				return getLower();
 			case UMLPackage.OPERATION___RETURN_RESULT :
 				return returnResult();
+			case UMLPackage.OPERATION___GET_TYPE :
+				return getType();
+			case UMLPackage.OPERATION___GET_UPPER :
+				return getUpper();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -2606,8 +2454,8 @@ public class OperationImpl
 		UMLPackage.OPERATION__ELEMENT_IMPORT,
 		UMLPackage.OPERATION__PACKAGE_IMPORT,
 		UMLPackage.OPERATION__OWNED_MEMBER,
-		UMLPackage.OPERATION__TEMPLATE_BINDING,
-		UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE};
+		UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.OPERATION__TEMPLATE_BINDING};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2617,21 +2465,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING)
-			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE);
+			|| eIsSet(UMLPackage.OPERATION__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.OPERATION__TEMPLATE_BINDING);
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinitionContexts()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__INTERFACE, UMLPackage.OPERATION__CLASS,
-		UMLPackage.OPERATION__DATATYPE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2654,9 +2490,9 @@ public class OperationImpl
 	@Override
 	public boolean isSetRedefinitionContexts() {
 		return super.isSetRedefinitionContexts()
-			|| eIsSet(UMLPackage.OPERATION__INTERFACE)
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -2674,6 +2510,10 @@ public class OperationImpl
 		if (datatype != null) {
 			return datatype;
 		}
+		Interface interface_ = basicGetInterface();
+		if (interface_ != null) {
+			return interface_;
+		}
 		return super.basicGetNamespace();
 	}
 
@@ -2685,7 +2525,8 @@ public class OperationImpl
 	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace() || eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -2697,7 +2538,20 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] FEATURING_CLASSIFIER_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE};
+		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
+		UMLPackage.OPERATION__INTERFACE};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinitionContexts() <em>Redefinition Context</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinitionContexts()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINITION_CONTEXT_ESUBSETS = new int[]{
+		UMLPackage.OPERATION__CLASS, UMLPackage.OPERATION__DATATYPE,
+		UMLPackage.OPERATION__INTERFACE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2708,7 +2562,8 @@ public class OperationImpl
 	public boolean isSetFeaturingClassifiers() {
 		return super.isSetFeaturingClassifiers()
 			|| eIsSet(UMLPackage.OPERATION__CLASS)
-			|| eIsSet(UMLPackage.OPERATION__DATATYPE);
+			|| eIsSet(UMLPackage.OPERATION__DATATYPE)
+			|| eIsSet(UMLPackage.OPERATION__INTERFACE);
 	}
 
 	/**
@@ -2730,9 +2585,70 @@ public class OperationImpl
 	 * @ordered
 	 */
 	protected static final int[] OWNED_RULE_ESUBSETS = new int[]{
-		UMLPackage.OPERATION__PRECONDITION,
-		UMLPackage.OPERATION__POSTCONDITION,
-		UMLPackage.OPERATION__BODY_CONDITION};
+		UMLPackage.OPERATION__BODY_CONDITION,
+		UMLPackage.OPERATION__POSTCONDITION, UMLPackage.OPERATION__PRECONDITION};
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostconditions()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostcondition(String name, EClass eClass) {
+		Constraint newPostcondition = (Constraint) create(eClass);
+		getPostconditions().add(newPostcondition);
+		if (name != null)
+			newPostcondition.setName(name);
+		return newPostcondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPostcondition(String name) {
+		return createPostcondition(name, UMLPackage.Literals.CONSTRAINT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPostcondition(String name) {
+		return getPostcondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPostcondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		postconditionLoop : for (Constraint postcondition : getPostconditions()) {
+			if (eClass != null && !eClass.isInstance(postcondition))
+				continue postconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(postcondition.getName())
+				: name.equals(postcondition.getName())))
+				continue postconditionLoop;
+			return postcondition;
+		}
+		return createOnDemand && eClass != null
+			? createPostcondition(name, eClass)
+			: null;
+	}
 
 	/**
 	 * The array of superset feature identifiers for the '{@link #getPreconditions() <em>Precondition</em>}' reference list.
@@ -2745,14 +2661,56 @@ public class OperationImpl
 	protected static final int[] PRECONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
 
 	/**
-	 * The array of superset feature identifiers for the '{@link #getPostconditions() <em>Postcondition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPostconditions()
 	 * @generated
-	 * @ordered
 	 */
-	protected static final int[] POSTCONDITION_ESUPERSETS = new int[]{UMLPackage.OPERATION__OWNED_RULE};
+	public Constraint createPrecondition(String name, EClass eClass) {
+		Constraint newPrecondition = (Constraint) create(eClass);
+		getPreconditions().add(newPrecondition);
+		if (name != null)
+			newPrecondition.setName(name);
+		return newPrecondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint createPrecondition(String name) {
+		return createPrecondition(name, UMLPackage.Literals.CONSTRAINT);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPrecondition(String name) {
+		return getPrecondition(name, false, null, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Constraint getPrecondition(String name, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand) {
+		preconditionLoop : for (Constraint precondition : getPreconditions()) {
+			if (eClass != null && !eClass.isInstance(precondition))
+				continue preconditionLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(precondition.getName())
+				: name.equals(precondition.getName())))
+				continue preconditionLoop;
+			return precondition;
+		}
+		return createOnDemand && eClass != null
+			? createPrecondition(name, eClass)
+			: null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

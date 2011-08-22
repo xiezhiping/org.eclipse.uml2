@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StateItemProvider.java,v 1.16 2010/09/28 21:00:19 khussey Exp $
  */
@@ -17,11 +18,14 @@ package org.eclipse.uml2.uml.edit.providers;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -34,6 +38,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.eclipse.uml2.common.edit.command.SubsetSupersetReplaceCommand;
+import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
+import org.eclipse.uml2.common.edit.command.SupersetRemoveCommand;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -74,22 +81,22 @@ public class StateItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
-			addOutgoingPropertyDescriptor(object);
-			addIncomingPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
+			addIncomingPropertyDescriptor(object);
+			addOutgoingPropertyDescriptor(object);
+			addConnectionPropertyDescriptor(object);
+			addConnectionPointPropertyDescriptor(object);
+			addDeferrableTriggerPropertyDescriptor(object);
+			addDoActivityPropertyDescriptor(object);
+			addEntryPropertyDescriptor(object);
+			addExitPropertyDescriptor(object);
 			addIsCompositePropertyDescriptor(object);
 			addIsOrthogonalPropertyDescriptor(object);
 			addIsSimplePropertyDescriptor(object);
 			addIsSubmachineStatePropertyDescriptor(object);
-			addSubmachinePropertyDescriptor(object);
-			addConnectionPropertyDescriptor(object);
-			addConnectionPointPropertyDescriptor(object);
 			addRedefinedStatePropertyDescriptor(object);
 			addStateInvariantPropertyDescriptor(object);
-			addEntryPropertyDescriptor(object);
-			addExitPropertyDescriptor(object);
-			addDoActivityPropertyDescriptor(object);
-			addDeferrableTriggerPropertyDescriptor(object);
+			addSubmachinePropertyDescriptor(object);
 			addRegionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -157,6 +164,26 @@ public class StateItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Container feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
 	 * This adds a property descriptor for the Outgoing feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,8 +198,10 @@ public class StateItemProvider
 				getString("_UI_Vertex_outgoing_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_outgoing_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__OUTGOING, true, false, true, null,
-				null, null));
+				UMLPackage.Literals.VERTEX__OUTGOING, false, false, false,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -190,27 +219,9 @@ public class StateItemProvider
 				getString("_UI_Vertex_incoming_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Vertex_incoming_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__INCOMING, true, false, true, null,
-				null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Container feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContainerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Vertex_container_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Vertex_container_feature", "_UI_Vertex_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.VERTEX__CONTAINER, true, false, true, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				UMLPackage.Literals.VERTEX__INCOMING, false, false, false,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -515,11 +526,11 @@ public class StateItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UMLPackage.Literals.STATE__CONNECTION);
 			childrenFeatures.add(UMLPackage.Literals.STATE__CONNECTION_POINT);
-			childrenFeatures.add(UMLPackage.Literals.STATE__STATE_INVARIANT);
+			childrenFeatures.add(UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER);
+			childrenFeatures.add(UMLPackage.Literals.STATE__DO_ACTIVITY);
 			childrenFeatures.add(UMLPackage.Literals.STATE__ENTRY);
 			childrenFeatures.add(UMLPackage.Literals.STATE__EXIT);
-			childrenFeatures.add(UMLPackage.Literals.STATE__DO_ACTIVITY);
-			childrenFeatures.add(UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER);
+			childrenFeatures.add(UMLPackage.Literals.STATE__STATE_INVARIANT);
 			childrenFeatures.add(UMLPackage.Literals.STATE__REGION);
 		}
 		return childrenFeatures;
@@ -595,11 +606,11 @@ public class StateItemProvider
 				return;
 			case UMLPackage.STATE__CONNECTION :
 			case UMLPackage.STATE__CONNECTION_POINT :
-			case UMLPackage.STATE__STATE_INVARIANT :
+			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
+			case UMLPackage.STATE__DO_ACTIVITY :
 			case UMLPackage.STATE__ENTRY :
 			case UMLPackage.STATE__EXIT :
-			case UMLPackage.STATE__DO_ACTIVITY :
-			case UMLPackage.STATE__DEFERRABLE_TRIGGER :
+			case UMLPackage.STATE__STATE_INVARIANT :
 			case UMLPackage.STATE__REGION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
@@ -629,6 +640,82 @@ public class StateItemProvider
 			UMLFactory.eINSTANCE.createPseudostate()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER,
+			UMLFactory.eINSTANCE.createTrigger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__DO_ACTIVITY,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__ENTRY,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.STATE__EXIT,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__STATE_INVARIANT,
 			UMLFactory.eINSTANCE.createConstraint()));
 
@@ -642,87 +729,11 @@ public class StateItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__STATE_INVARIANT,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__STATE_INVARIANT,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__ENTRY,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__EXIT,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DO_ACTIVITY,
-			UMLFactory.eINSTANCE.createInteraction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.STATE__DEFERRABLE_TRIGGER,
-			UMLFactory.eINSTANCE.createTrigger()));
+			UMLPackage.Literals.STATE__STATE_INVARIANT,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STATE__REGION,
@@ -743,9 +754,9 @@ public class StateItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.STATE__STATE_INVARIANT
+			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY
 			|| childFeature == UMLPackage.Literals.STATE__ENTRY
-			|| childFeature == UMLPackage.Literals.STATE__EXIT
-			|| childFeature == UMLPackage.Literals.STATE__DO_ACTIVITY;
+			|| childFeature == UMLPackage.Literals.STATE__EXIT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -753,6 +764,68 @@ public class StateItemProvider
 					getFeatureText(childFeature), getTypeText(owner)});
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createRemoveCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.STATE__STATE_INVARIANT},
+				collection);
+		}
+		return super.createRemoveCommand(domain, owner, feature, collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createReplaceCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EObject, java.util.Collection)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, EObject value, Collection<?> collection) {
+		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.STATE__STATE_INVARIANT},
+				value, collection);
+		}
+		return super.createReplaceCommand(domain, owner, feature, value,
+			collection);
+	}
+
+	/**
+	 * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#createSetCommand(org.eclipse.emf.edit.domain.EditingDomain, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object)
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected Command createSetCommand(EditingDomain domain, EObject owner,
+			EStructuralFeature feature, Object value) {
+		if (feature == UMLPackage.Literals.STATE__STATE_INVARIANT) {
+			return new SubsetSupersetSetCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value);
+		}
+		return super.createSetCommand(domain, owner, feature, value);
 	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: SubstitutionImpl.java,v 1.19 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -35,6 +36,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.StringExpression;
@@ -50,6 +52,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.SubstitutionImpl#getContract <em>Contract</em>}</li>
@@ -90,6 +93,33 @@ public class SubstitutionImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.SUBSTITUTION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element basicGetOwner() {
+		Classifier substitutingClassifier = basicGetSubstitutingClassifier();
+		if (substitutingClassifier != null) {
+			return substitutingClassifier;
+		}
+		return super.basicGetOwner();
 	}
 
 	/**
@@ -371,30 +401,30 @@ public class SubstitutionImpl
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SUBSTITUTION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.SUBSTITUTION__NAME :
-				return getName();
-			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.SUBSTITUTION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.SUBSTITUTION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.SUBSTITUTION__NAME :
+				return getName();
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.SUBSTITUTION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.SUBSTITUTION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.SUBSTITUTION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -409,10 +439,10 @@ public class SubstitutionImpl
 				return getSources();
 			case UMLPackage.SUBSTITUTION__TARGET :
 				return getTargets();
-			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				return getClients();
+			case UMLPackage.SUBSTITUTION__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				if (resolve)
 					return getMapping();
@@ -448,19 +478,19 @@ public class SubstitutionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.SUBSTITUTION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.SUBSTITUTION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.SUBSTITUTION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -468,14 +498,14 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				getClients().clear();
 				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.SUBSTITUTION__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.SUBSTITUTION__MAPPING :
@@ -505,17 +535,17 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.SUBSTITUTION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.SUBSTITUTION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.SUBSTITUTION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -523,11 +553,11 @@ public class SubstitutionImpl
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.SUBSTITUTION__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				setMapping((OpaqueExpression) null);
@@ -552,27 +582,27 @@ public class SubstitutionImpl
 		switch (featureID) {
 			case UMLPackage.SUBSTITUTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SUBSTITUTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.SUBSTITUTION__OWNER :
 				return isSetOwner();
-			case UMLPackage.SUBSTITUTION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.SUBSTITUTION__NAME :
 				return isSetName();
-			case UMLPackage.SUBSTITUTION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.SUBSTITUTION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.SUBSTITUTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.SUBSTITUTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.SUBSTITUTION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.SUBSTITUTION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.SUBSTITUTION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.SUBSTITUTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.SUBSTITUTION__TEMPLATE_PARAMETER :
@@ -583,10 +613,10 @@ public class SubstitutionImpl
 				return isSetSources();
 			case UMLPackage.SUBSTITUTION__TARGET :
 				return isSetTargets();
-			case UMLPackage.SUBSTITUTION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.SUBSTITUTION__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.SUBSTITUTION__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.SUBSTITUTION__MAPPING :
 				return mapping != null;
 			case UMLPackage.SUBSTITUTION__CONTRACT :
@@ -595,6 +625,17 @@ public class SubstitutionImpl
 				return basicGetSubstitutingClassifier() != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.SUBSTITUTION__SUBSTITUTING_CLASSIFIER);
 	}
 
 } //SubstitutionImpl

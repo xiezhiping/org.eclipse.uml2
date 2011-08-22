@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReduceActionItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
@@ -71,10 +72,33 @@ public class ReduceActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReducerPropertyDescriptor(object);
+			addCollectionPropertyDescriptor(object);
 			addIsOrderedPropertyDescriptor(object);
+			addReducerPropertyDescriptor(object);
+			addResultPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Collection feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCollectionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ReduceAction_collection_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReduceAction_collection_feature", "_UI_ReduceAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.REDUCE_ACTION__COLLECTION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -94,6 +118,27 @@ public class ReduceActionItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_ReduceAction_reducer_feature", "_UI_ReduceAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDUCE_ACTION__REDUCER, true, false, true,
 				null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Result feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ReduceAction_result_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ReduceAction_result_feature", "_UI_ReduceAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.REDUCE_ACTION__RESULT, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -128,8 +173,8 @@ public class ReduceActionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.REDUCE_ACTION__RESULT);
 			childrenFeatures.add(UMLPackage.Literals.REDUCE_ACTION__COLLECTION);
+			childrenFeatures.add(UMLPackage.Literals.REDUCE_ACTION__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -198,8 +243,8 @@ public class ReduceActionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.REDUCE_ACTION__RESULT :
 			case UMLPackage.REDUCE_ACTION__COLLECTION :
+			case UMLPackage.REDUCE_ACTION__RESULT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -220,20 +265,20 @@ public class ReduceActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
+			UMLFactory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
-			UMLFactory.eINSTANCE.createInputPin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
 			UMLFactory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REDUCE_ACTION__COLLECTION,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLPackage.Literals.REDUCE_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -248,8 +293,8 @@ public class ReduceActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

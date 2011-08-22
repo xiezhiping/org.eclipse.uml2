@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReadLinkAction.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -51,7 +52,6 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The pin on which are put the objects participating in the association at the end not specified by the inputs.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Result</em>' containment reference.
 	 * @see #setResult(OutputPin)
@@ -103,7 +103,7 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type and ordering of the result output pin are same as the type and ordering of the open association end.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * self.result.type = openend.type
 	 * and self.result.ordering = openend.ordering
 	 * 
@@ -121,7 +121,7 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the open association end must be compatible with the multiplicity of the result output pin.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -138,7 +138,7 @@ public interface ReadLinkAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.isNavigable()
 	 * 
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -156,7 +156,7 @@ public interface ReadLinkAction
 	 * <!-- begin-model-doc -->
 	 * Visibility of the open end must allow access to the object performing the action.
 	 * let host : Classifier = self.context in
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.visibility = #public
 	 * or self.endData->exists(oed | not oed.end = openend
 	 * and (host = oed.end.participant

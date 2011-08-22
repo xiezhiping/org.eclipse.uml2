@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InformationFlowImpl.java,v 1.18 2010/09/28 21:02:13 khussey Exp $
  */
@@ -61,10 +62,10 @@ import org.eclipse.uml2.uml.internal.operations.InformationFlowOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRelatedElements <em>Related Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getConveyeds <em>Conveyed</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getInformationSources <em>Information Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getInformationTargets <em>Information Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizingActivityEdges <em>Realizing Activity Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizingConnectors <em>Realizing Connector</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InformationFlowImpl#getRealizingMessages <em>Realizing Message</em>}</li>
@@ -76,16 +77,6 @@ import org.eclipse.uml2.uml.internal.operations.InformationFlowOperations;
 public class InformationFlowImpl
 		extends PackageableElementImpl
 		implements InformationFlow {
-
-	/**
-	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRealizations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Relationship> realizations;
 
 	/**
 	 * The cached value of the '{@link #getConveyeds() <em>Conveyed</em>}' reference list.
@@ -116,6 +107,16 @@ public class InformationFlowImpl
 	 * @ordered
 	 */
 	protected EList<NamedElement> informationTargets;
+
+	/**
+	 * The cached value of the '{@link #getRealizations() <em>Realization</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRealizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Relationship> realizations;
 
 	/**
 	 * The cached value of the '{@link #getRealizingActivityEdges() <em>Realizing Activity Edge</em>}' reference list.
@@ -545,30 +546,30 @@ public class InformationFlowImpl
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INFORMATION_FLOW__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.INFORMATION_FLOW__NAME :
-				return getName();
-			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.INFORMATION_FLOW__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.INFORMATION_FLOW__NAME :
+				return getName();
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.INFORMATION_FLOW__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -583,14 +584,14 @@ public class InformationFlowImpl
 				return getSources();
 			case UMLPackage.INFORMATION_FLOW__TARGET :
 				return getTargets();
-			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				return getRealizations();
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				return getConveyeds();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
 				return getInformationSources();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
 				return getInformationTargets();
+			case UMLPackage.INFORMATION_FLOW__REALIZATION :
+				return getRealizations();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				return getRealizingActivityEdges();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_CONNECTOR :
@@ -620,30 +621,25 @@ public class InformationFlowImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INFORMATION_FLOW__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.INFORMATION_FLOW__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
-				return;
-			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				getRealizations().clear();
-				getRealizations().addAll(
-					(Collection<? extends Relationship>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				getConveyeds().clear();
@@ -659,6 +655,11 @@ public class InformationFlowImpl
 				getInformationTargets().clear();
 				getInformationTargets().addAll(
 					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.INFORMATION_FLOW__REALIZATION :
+				getRealizations().clear();
+				getRealizations().addAll(
+					(Collection<? extends Relationship>) newValue);
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				getRealizingActivityEdges().clear();
@@ -693,26 +694,23 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INFORMATION_FLOW__NAME :
-				unsetName();
-				return;
-			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.INFORMATION_FLOW__NAME :
+				unsetName();
+				return;
 			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
 				return;
 			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
-				return;
-			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				getRealizations().clear();
 				return;
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				getConveyeds().clear();
@@ -722,6 +720,9 @@ public class InformationFlowImpl
 				return;
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
 				getInformationTargets().clear();
+				return;
+			case UMLPackage.INFORMATION_FLOW__REALIZATION :
+				getRealizations().clear();
 				return;
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				getRealizingActivityEdges().clear();
@@ -746,27 +747,27 @@ public class InformationFlowImpl
 		switch (featureID) {
 			case UMLPackage.INFORMATION_FLOW__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INFORMATION_FLOW__OWNER :
 				return isSetOwner();
-			case UMLPackage.INFORMATION_FLOW__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__NAME :
 				return isSetName();
-			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.INFORMATION_FLOW__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.INFORMATION_FLOW__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.INFORMATION_FLOW__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.INFORMATION_FLOW__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.INFORMATION_FLOW__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.INFORMATION_FLOW__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INFORMATION_FLOW__TEMPLATE_PARAMETER :
@@ -777,8 +778,6 @@ public class InformationFlowImpl
 				return isSetSources();
 			case UMLPackage.INFORMATION_FLOW__TARGET :
 				return isSetTargets();
-			case UMLPackage.INFORMATION_FLOW__REALIZATION :
-				return realizations != null && !realizations.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__CONVEYED :
 				return conveyeds != null && !conveyeds.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_SOURCE :
@@ -787,6 +786,8 @@ public class InformationFlowImpl
 			case UMLPackage.INFORMATION_FLOW__INFORMATION_TARGET :
 				return informationTargets != null
 					&& !informationTargets.isEmpty();
+			case UMLPackage.INFORMATION_FLOW__REALIZATION :
+				return realizations != null && !realizations.isEmpty();
 			case UMLPackage.INFORMATION_FLOW__REALIZING_ACTIVITY_EDGE :
 				return realizingActivityEdges != null
 					&& !realizingActivityEdges.isEmpty();
@@ -868,127 +869,129 @@ public class InformationFlowImpl
 		switch (operationID) {
 			case UMLPackage.INFORMATION_FLOW___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.INFORMATION_FLOW___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.INFORMATION_FLOW___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.INFORMATION_FLOW___GET_MODEL :
-				return getModel();
-			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.INFORMATION_FLOW___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.INFORMATION_FLOW___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.INFORMATION_FLOW___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.INFORMATION_FLOW___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_MODEL :
+				return getModel();
+			case UMLPackage.INFORMATION_FLOW___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.INFORMATION_FLOW___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.INFORMATION_FLOW___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.INFORMATION_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INFORMATION_FLOW___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.INFORMATION_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INFORMATION_FLOW___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.INFORMATION_FLOW___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.INFORMATION_FLOW___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.INFORMATION_FLOW___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___GET_LABEL :
 				return getLabel();
 			case UMLPackage.INFORMATION_FLOW___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.INFORMATION_FLOW___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INFORMATION_FLOW___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.INFORMATION_FLOW___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.INFORMATION_FLOW___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.INFORMATION_FLOW___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.INFORMATION_FLOW___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.INFORMATION_FLOW___SEPARATOR :
 				return separator();
-			case UMLPackage.INFORMATION_FLOW___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.INFORMATION_FLOW___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.INFORMATION_FLOW___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
+			case UMLPackage.INFORMATION_FLOW___VALIDATE_MUST_CONFORM__DIAGNOSTICCHAIN_MAP :
+				return validateMustConform((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_SOURCES_AND_TARGETS_KIND__DIAGNOSTICCHAIN_MAP :
 				return validateSourcesAndTargetsKind(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INFORMATION_FLOW___VALIDATE_MUST_CONFORM__DIAGNOSTICCHAIN_MAP :
-				return validateMustConform((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INFORMATION_FLOW___VALIDATE_CONVEY_CLASSIFIERS__DIAGNOSTICCHAIN_MAP :
 				return validateConveyClassifiers(

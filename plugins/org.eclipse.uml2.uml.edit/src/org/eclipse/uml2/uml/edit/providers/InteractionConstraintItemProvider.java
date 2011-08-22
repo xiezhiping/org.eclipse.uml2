@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionConstraintItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
@@ -70,8 +71,8 @@ public class InteractionConstraintItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addMinintPropertyDescriptor(object);
 			addMaxintPropertyDescriptor(object);
+			addMinintPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -132,9 +133,9 @@ public class InteractionConstraintItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT);
-			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT);
 		}
 		return childrenFeatures;
 	}
@@ -199,8 +200,8 @@ public class InteractionConstraintItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(InteractionConstraint.class)) {
-			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
 			case UMLPackage.INTERACTION_CONSTRAINT__MAXINT :
+			case UMLPackage.INTERACTION_CONSTRAINT__MININT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -221,66 +222,6 @@ public class InteractionConstraintItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createStringExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createDuration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
-			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
 			UMLFactory.eINSTANCE.createExpression()));
 
@@ -290,31 +231,7 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
@@ -330,7 +247,99 @@ public class InteractionConstraintItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
 			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createDuration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createDurationInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**
@@ -347,8 +356,8 @@ public class InteractionConstraintItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.CONSTRAINT__SPECIFICATION
-			|| childFeature == UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT
-			|| childFeature == UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT;
+			|| childFeature == UMLPackage.Literals.INTERACTION_CONSTRAINT__MAXINT
+			|| childFeature == UMLPackage.Literals.INTERACTION_CONSTRAINT__MININT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

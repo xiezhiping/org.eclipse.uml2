@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ObjectFlow.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
  */
@@ -31,8 +32,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#isMulticast <em>Is Multicast</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#isMultireceive <em>Is Multireceive</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#getTransformation <em>Transformation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#getSelection <em>Selection</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ObjectFlow#getTransformation <em>Transformation</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,7 +55,7 @@ public interface ObjectFlow
 	 * @return the value of the '<em>Is Multicast</em>' attribute.
 	 * @see #setIsMulticast(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectFlow_IsMulticast()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMulticast();
@@ -80,7 +81,7 @@ public interface ObjectFlow
 	 * @return the value of the '<em>Is Multireceive</em>' attribute.
 	 * @see #setIsMultireceive(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getObjectFlow_IsMultireceive()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMultireceive();
@@ -165,7 +166,6 @@ public interface ObjectFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Object nodes connected by an object flow, with optionally intervening control nodes, must have compatible types. In particular, the downstream object node type must be the same or a supertype of the upstream object node type.
-	 * 
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

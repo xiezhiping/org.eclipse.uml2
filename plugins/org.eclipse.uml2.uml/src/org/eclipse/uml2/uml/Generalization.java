@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Generalization.java,v 1.15 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -31,9 +32,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Generalization#isSubstitutable <em>Is Substitutable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Generalization#getGeneral <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Generalization#getGeneralizationSets <em>Generalization Set</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Generalization#isSubstitutable <em>Is Substitutable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Generalization#getSpecific <em>Specific</em>}</li>
  * </ul>
  * </p>
@@ -56,7 +57,7 @@ public interface Generalization
 	 * @return the value of the '<em>Is Substitutable</em>' attribute.
 	 * @see #setIsSubstitutable(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getGeneralization_IsSubstitutable()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" ordered="false"
 	 * @generated
 	 */
 	boolean isSubstitutable();

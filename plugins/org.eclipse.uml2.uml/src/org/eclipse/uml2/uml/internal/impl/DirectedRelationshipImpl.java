@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DirectedRelationshipImpl.java,v 1.14 2007/04/25 17:47:04 khussey Exp $
  */
@@ -151,14 +152,14 @@ public abstract class DirectedRelationshipImpl
 		switch (featureID) {
 			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :
@@ -179,12 +180,12 @@ public abstract class DirectedRelationshipImpl
 		switch (featureID) {
 			case UMLPackage.DIRECTED_RELATIONSHIP__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DIRECTED_RELATIONSHIP__OWNER :
 				return isSetOwner();
-			case UMLPackage.DIRECTED_RELATIONSHIP__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DIRECTED_RELATIONSHIP__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.DIRECTED_RELATIONSHIP__SOURCE :

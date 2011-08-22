@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200, 215418, 156879, 227392, 226178, 232332, 247980
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UMLEditor.java,v 1.50 2010/09/28 20:59:43 khussey Exp $
  */
@@ -191,6 +192,7 @@ import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.UML212UMLResource;
 import org.eclipse.uml2.uml.resource.UML22UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.UML22UMLResource;
+import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI212UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
@@ -944,11 +946,14 @@ public class UMLEditor
 			.getResourceFactoryRegistry().getContentTypeToFactoryMap();
 
 		contentTypeToFactoryMap.put(
-			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
-			UML22UMLResource.Factory.INSTANCE);
+			UML302UMLResource.UML_3_0_0_CONTENT_TYPE_IDENTIFIER,
+			UML302UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			UML212UMLResource.UML_2_1_0_CONTENT_TYPE_IDENTIFIER,
 			UML212UMLResource.Factory.INSTANCE);
+		contentTypeToFactoryMap.put(
+			UML22UMLResource.UML2_CONTENT_TYPE_IDENTIFIER,
+			UML22UMLResource.Factory.INSTANCE);
 		contentTypeToFactoryMap.put(
 			XMI2UMLResource.UML_CONTENT_TYPE_IDENTIFIER,
 			XMI2UMLResource.Factory.INSTANCE);

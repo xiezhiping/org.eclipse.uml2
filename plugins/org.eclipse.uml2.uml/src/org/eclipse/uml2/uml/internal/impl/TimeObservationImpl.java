@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TimeObservationImpl.java,v 1.11 2009/01/07 15:55:25 jbruck Exp $
  */
@@ -176,30 +177,30 @@ public class TimeObservationImpl
 		switch (featureID) {
 			case UMLPackage.TIME_OBSERVATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.TIME_OBSERVATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TIME_OBSERVATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.TIME_OBSERVATION__NAME :
-				return getName();
-			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.TIME_OBSERVATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.TIME_OBSERVATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.TIME_OBSERVATION__NAME :
+				return getName();
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.TIME_OBSERVATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.TIME_OBSERVATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -237,19 +238,19 @@ public class TimeObservationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TIME_OBSERVATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.TIME_OBSERVATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -281,17 +282,17 @@ public class TimeObservationImpl
 			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TIME_OBSERVATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.TIME_OBSERVATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -319,27 +320,27 @@ public class TimeObservationImpl
 		switch (featureID) {
 			case UMLPackage.TIME_OBSERVATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TIME_OBSERVATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TIME_OBSERVATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.TIME_OBSERVATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TIME_OBSERVATION__NAME :
 				return isSetName();
-			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.TIME_OBSERVATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.TIME_OBSERVATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.TIME_OBSERVATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.TIME_OBSERVATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.TIME_OBSERVATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.TIME_OBSERVATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.TIME_OBSERVATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.TIME_OBSERVATION__TEMPLATE_PARAMETER :

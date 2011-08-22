@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UMLResource.java,v 1.10 2008/10/03 20:50:37 jbruck Exp $
  */
@@ -89,14 +90,22 @@ public interface UMLResource
 
 	String ECORE_PROFILE_URI = PROFILES_PATHMAP + "Ecore." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
-	String STANDARD_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Standard/1"; //$NON-NLS-1$
+	String STANDARD_L2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2"; //$NON-NLS-1$
 
-	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+	String STANDARD_L2_PROFILE_URI = PROFILES_PATHMAP + "StandardL2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+
+	String STANDARD_L3_PROFILE_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML/Profile/L3"; //$NON-NLS-1$
+
+	String STANDARD_L3_PROFILE_URI = PROFILES_PATHMAP + "StandardL3." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 	String UML_2_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_0_0"; //$NON-NLS-1$
 	
 	String UML_2_1_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_2_1_0"; //$NON-NLS-1$
 
-	String UML_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_3_0_0"; //$NON-NLS-1$
+	String UML_3_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_3_0_0"; //$NON-NLS-1$
+
+	String UML_4_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_4_0_0"; //$NON-NLS-1$
+
+	String UML_CONTENT_TYPE_IDENTIFIER = UML_4_0_0_CONTENT_TYPE_IDENTIFIER;
 
 } // UMLResource

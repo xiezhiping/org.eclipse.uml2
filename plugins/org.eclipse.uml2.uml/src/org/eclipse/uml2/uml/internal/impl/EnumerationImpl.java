@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: EnumerationImpl.java,v 1.28 2009/01/07 15:55:25 jbruck Exp $
  */
@@ -146,6 +147,19 @@ public class EnumerationImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EnumerationLiteral createOwnedLiteral(String name) {
+		EnumerationLiteral newOwnedLiteral = (EnumerationLiteral) create(UMLPackage.Literals.ENUMERATION_LITERAL);
+		getOwnedLiterals().add(newOwnedLiteral);
+		if (name != null)
+			newOwnedLiteral.setName(name);
+		return newOwnedLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EnumerationLiteral getOwnedLiteral(String name) {
 		return getOwnedLiteral(name, false, false);
 	}
@@ -167,19 +181,6 @@ public class EnumerationImpl
 		return createOnDemand
 			? createOwnedLiteral(name)
 			: null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EnumerationLiteral createOwnedLiteral(String name) {
-		EnumerationLiteral newOwnedLiteral = (EnumerationLiteral) create(UMLPackage.Literals.ENUMERATION_LITERAL);
-		getOwnedLiterals().add(newOwnedLiteral);
-		if (name != null)
-			newOwnedLiteral.setName(name);
-		return newOwnedLiteral;
 	}
 
 	/**
@@ -220,9 +221,6 @@ public class EnumerationImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -231,17 +229,20 @@ public class EnumerationImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOwnedAttributes())
@@ -289,22 +290,19 @@ public class EnumerationImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.ENUMERATION__COLLABORATION_USE :
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
 				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
@@ -312,6 +310,9 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
@@ -335,42 +336,42 @@ public class EnumerationImpl
 		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ENUMERATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ENUMERATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ENUMERATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ENUMERATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ENUMERATION__NAME :
-				return getName();
-			case UMLPackage.ENUMERATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ENUMERATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ENUMERATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ENUMERATION__NAME :
+				return getName();
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ENUMERATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ENUMERATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ENUMERATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.ENUMERATION__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.ENUMERATION__MEMBER :
-				return getMembers();
-			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.ENUMERATION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.ENUMERATION__MEMBER :
+				return getMembers();
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.ENUMERATION__REDEFINED_ELEMENT :
@@ -389,40 +390,42 @@ public class EnumerationImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.ENUMERATION__IS_ABSTRACT :
-				return isAbstract();
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				return getTemplateBindings();
+			case UMLPackage.ENUMERATION__FEATURE :
+				return getFeatures();
+			case UMLPackage.ENUMERATION__ATTRIBUTE :
+				return getAttributes();
+			case UMLPackage.ENUMERATION__COLLABORATION_USE :
+				return getCollaborationUses();
+			case UMLPackage.ENUMERATION__GENERAL :
+				return getGenerals();
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				return getPowertypeExtents();
-			case UMLPackage.ENUMERATION__FEATURE :
-				return getFeatures();
 			case UMLPackage.ENUMERATION__INHERITED_MEMBER :
 				return getInheritedMembers();
-			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
-				return getRedefinedClassifiers();
-			case UMLPackage.ENUMERATION__GENERAL :
-				return getGenerals();
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				return getSubstitutions();
-			case UMLPackage.ENUMERATION__ATTRIBUTE :
-				return getAttributes();
-			case UMLPackage.ENUMERATION__REPRESENTATION :
-				if (resolve)
-					return getRepresentation();
-				return basicGetRepresentation();
-			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				return getCollaborationUses();
+			case UMLPackage.ENUMERATION__IS_ABSTRACT :
+				return isAbstract();
+			case UMLPackage.ENUMERATION__IS_FINAL_SPECIALIZATION :
+				return isFinalSpecialization();
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
 				return getOwnedUseCases();
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return getUseCases();
+			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
+				return getRedefinedClassifiers();
+			case UMLPackage.ENUMERATION__REPRESENTATION :
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				return getSubstitutions();
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
 			case UMLPackage.ENUMERATION__OWNED_OPERATION :
@@ -452,19 +455,19 @@ public class EnumerationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ENUMERATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ENUMERATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ENUMERATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ENUMERATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -493,16 +496,23 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
+			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
+				return;
 			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
+			case UMLPackage.ENUMERATION__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
-			case UMLPackage.ENUMERATION__IS_ABSTRACT :
-				setIsAbstract((Boolean) newValue);
+			case UMLPackage.ENUMERATION__GENERAL :
+				getGenerals().clear();
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				getGeneralizations().clear();
@@ -514,28 +524,11 @@ public class EnumerationImpl
 				getPowertypeExtents().addAll(
 					(Collection<? extends GeneralizationSet>) newValue);
 				return;
-			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+			case UMLPackage.ENUMERATION__IS_ABSTRACT :
+				setIsAbstract((Boolean) newValue);
 				return;
-			case UMLPackage.ENUMERATION__GENERAL :
-				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
-				return;
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
-				return;
-			case UMLPackage.ENUMERATION__REPRESENTATION :
-				setRepresentation((CollaborationUse) newValue);
-				return;
-			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+			case UMLPackage.ENUMERATION__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization((Boolean) newValue);
 				return;
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
@@ -545,6 +538,19 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection<? extends UseCase>) newValue);
+				return;
+			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.ENUMERATION__REPRESENTATION :
+				setRepresentation((CollaborationUse) newValue);
+				return;
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				getSubstitutions().clear();
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -579,17 +585,17 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ENUMERATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ENUMERATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.ENUMERATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.ENUMERATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -612,14 +618,17 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
-			case UMLPackage.ENUMERATION__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
+				return;
+			case UMLPackage.ENUMERATION__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				return;
+			case UMLPackage.ENUMERATION__GENERAL :
+				getGenerals().clear();
 				return;
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				getGeneralizations().clear();
@@ -627,26 +636,26 @@ public class EnumerationImpl
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
 				return;
-			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
+			case UMLPackage.ENUMERATION__IS_ABSTRACT :
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
-			case UMLPackage.ENUMERATION__GENERAL :
-				getGenerals().clear();
-				return;
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				getSubstitutions().clear();
-				return;
-			case UMLPackage.ENUMERATION__REPRESENTATION :
-				setRepresentation((CollaborationUse) null);
-				return;
-			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				getCollaborationUses().clear();
+			case UMLPackage.ENUMERATION__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization(IS_FINAL_SPECIALIZATION_EDEFAULT);
 				return;
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
 				return;
 			case UMLPackage.ENUMERATION__USE_CASE :
 				getUseCases().clear();
+				return;
+			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				return;
+			case UMLPackage.ENUMERATION__REPRESENTATION :
+				setRepresentation((CollaborationUse) null);
+				return;
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				getSubstitutions().clear();
 				return;
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -671,39 +680,39 @@ public class EnumerationImpl
 		switch (featureID) {
 			case UMLPackage.ENUMERATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ENUMERATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ENUMERATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.ENUMERATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ENUMERATION__NAME :
 				return isSetName();
-			case UMLPackage.ENUMERATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ENUMERATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ENUMERATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ENUMERATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ENUMERATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ENUMERATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ENUMERATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.ENUMERATION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.ENUMERATION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.ENUMERATION__MEMBER :
-				return isSetMembers();
-			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.ENUMERATION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.ENUMERATION__MEMBER :
+				return isSetMembers();
 			case UMLPackage.ENUMERATION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ENUMERATION__REDEFINED_ELEMENT :
@@ -716,38 +725,40 @@ public class EnumerationImpl
 				return isSetTemplateParameter();
 			case UMLPackage.ENUMERATION__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
-			case UMLPackage.ENUMERATION__IS_ABSTRACT :
-				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+			case UMLPackage.ENUMERATION__TEMPLATE_BINDING :
+				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.ENUMERATION__FEATURE :
+				return isSetFeatures();
+			case UMLPackage.ENUMERATION__ATTRIBUTE :
+				return isSetAttributes();
+			case UMLPackage.ENUMERATION__COLLABORATION_USE :
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
+			case UMLPackage.ENUMERATION__GENERAL :
+				return !getGenerals().isEmpty();
 			case UMLPackage.ENUMERATION__GENERALIZATION :
 				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.ENUMERATION__POWERTYPE_EXTENT :
 				return powertypeExtents != null && !powertypeExtents.isEmpty();
-			case UMLPackage.ENUMERATION__FEATURE :
-				return isSetFeatures();
 			case UMLPackage.ENUMERATION__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
-			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
-				return redefinedClassifiers != null
-					&& !redefinedClassifiers.isEmpty();
-			case UMLPackage.ENUMERATION__GENERAL :
-				return !getGenerals().isEmpty();
-			case UMLPackage.ENUMERATION__SUBSTITUTION :
-				return substitutions != null && !substitutions.isEmpty();
-			case UMLPackage.ENUMERATION__ATTRIBUTE :
-				return isSetAttributes();
-			case UMLPackage.ENUMERATION__REPRESENTATION :
-				return representation != null;
-			case UMLPackage.ENUMERATION__COLLABORATION_USE :
-				return collaborationUses != null
-					&& !collaborationUses.isEmpty();
+			case UMLPackage.ENUMERATION__IS_ABSTRACT :
+				return ((eFlags & IS_ABSTRACT_EFLAG) != 0) != IS_ABSTRACT_EDEFAULT;
+			case UMLPackage.ENUMERATION__IS_FINAL_SPECIALIZATION :
+				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.ENUMERATION__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.ENUMERATION__USE_CASE :
 				return useCases != null && !useCases.isEmpty();
+			case UMLPackage.ENUMERATION__REDEFINED_CLASSIFIER :
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
+			case UMLPackage.ENUMERATION__REPRESENTATION :
+				return representation != null;
+			case UMLPackage.ENUMERATION__SUBSTITUTION :
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_ATTRIBUTE :
 				return ownedAttributes != null && !ownedAttributes.isEmpty();
 			case UMLPackage.ENUMERATION__OWNED_OPERATION :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Model.java,v 1.8 2009/08/12 21:05:19 jbruck Exp $
  */
@@ -47,7 +48,7 @@ public interface Model
 	 * @see #unsetViewpoint()
 	 * @see #setViewpoint(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getModel_Viewpoint()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getViewpoint();
@@ -93,7 +94,7 @@ public interface Model
 	 * <!-- begin-model-doc -->
 	 * Determines whether this model is a metamodel.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMetamodel();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AssociationItemProvider.java,v 1.19 2010/09/28 21:00:19 khussey Exp $
  */
@@ -86,10 +87,10 @@ public class AssociationItemProvider
 			super.getPropertyDescriptors(object);
 
 			addRelatedElementPropertyDescriptor(object);
-			addOwnedEndPropertyDescriptor(object);
-			addMemberEndPropertyDescriptor(object);
-			addIsDerivedPropertyDescriptor(object);
 			addEndTypePropertyDescriptor(object);
+			addIsDerivedPropertyDescriptor(object);
+			addMemberEndPropertyDescriptor(object);
+			addOwnedEndPropertyDescriptor(object);
 			addNavigableOwnedEndPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -176,25 +177,6 @@ public class AssociationItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Navigable Owned End feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNavigableOwnedEndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Association_navigableOwnedEnd_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Association_navigableOwnedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END, true,
-				false, true, null, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Owned End feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +195,25 @@ public class AssociationItemProvider
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Navigable Owned End feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNavigableOwnedEndPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Association_navigableOwnedEnd_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Association_navigableOwnedEnd_feature", "_UI_Association_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -354,7 +355,6 @@ public class AssociationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Association.class)) {
-			case UMLPackage.ASSOCIATION__MEMBER_END :
 			case UMLPackage.ASSOCIATION__IS_DERIVED :
 			case UMLPackage.ASSOCIATION__NAVIGABLE_OWNED_END :
 				fireNotifyChanged(new ViewerNotification(notification,
@@ -417,8 +417,8 @@ public class AssociationItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
 			|| childFeature == UMLPackage.Literals.ASSOCIATION__OWNED_END
 			|| childFeature == UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END;
 
@@ -468,20 +468,20 @@ public class AssociationItemProvider
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
-				collection);
-		}
 		if (feature == UMLPackage.Literals.ASSOCIATION__MEMBER_END) {
 			return new SupersetRemoveCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__OWNED_END},
+				collection);
+		}
+		if (feature == UMLPackage.Literals.ASSOCIATION__OWNED_END) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.ASSOCIATION__NAVIGABLE_OWNED_END},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);

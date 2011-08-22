@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Port.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,11 +33,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Port#isBehavior <em>Is Behavior</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#isConjugated <em>Is Conjugated</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#isService <em>Is Service</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Port#getRequireds <em>Required</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Port#getRedefinedPorts <em>Redefined Port</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Port#getProvideds <em>Provided</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#getProtocol <em>Protocol</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#getProvideds <em>Provided</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#getRedefinedPorts <em>Redefined Port</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#getRequireds <em>Required</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,7 +60,7 @@ public interface Port
 	 * @return the value of the '<em>Is Behavior</em>' attribute.
 	 * @see #setIsBehavior(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_IsBehavior()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isBehavior();
@@ -74,6 +76,32 @@ public interface Port
 	void setIsBehavior(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Is Conjugated</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Is Conjugated</em>' attribute.
+	 * @see #setIsConjugated(boolean)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_IsConjugated()
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isConjugated();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Port#isConjugated <em>Is Conjugated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Conjugated</em>' attribute.
+	 * @see #isConjugated()
+	 * @generated
+	 */
+	void setIsConjugated(boolean value);
+
+	/**
 	 * Returns the value of the '<em><b>Is Service</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
@@ -84,7 +112,7 @@ public interface Port
 	 * @return the value of the '<em>Is Service</em>' attribute.
 	 * @see #setIsService(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_IsService()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isService();
@@ -105,7 +133,7 @@ public interface Port
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the interfaces specifying the set of operations and receptions which the classifier expects its environment to handle. This association is derived as the set of interfaces required by the type of the port or its supertypes.
+	 * References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Required</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_Required()
@@ -143,7 +171,7 @@ public interface Port
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Property#getRedefinedProperties() <em>Redefined Property</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -189,8 +217,7 @@ public interface Port
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the interfaces specifying the set of operations and receptions which the classifier offers to its environment, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived from the interfaces realized by the type of the port or by the type of the port, if the port was typed by an interface.
-	 * 
+	 * References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provided</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getPort_Provided()
@@ -246,21 +273,6 @@ public interface Port
 	 * @generated
 	 */
 	void setProtocol(ProtocolStateMachine value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The required interfaces of a port must be provided by elements to which the port is connected.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateRequiredInterfaces(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

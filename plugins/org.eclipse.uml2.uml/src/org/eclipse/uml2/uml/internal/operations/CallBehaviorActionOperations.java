@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: CallBehaviorActionOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.CallBehaviorAction#validateArgumentPinEqualParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Argument Pin Equal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CallBehaviorAction#validateResultPinEqualParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Pin Equal Parameter</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.CallBehaviorAction#validateArgumentPinEqualParameter(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Argument Pin Equal Parameter</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CallBehaviorAction#validateTypeOrderingMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Ordering Multiplicity</em>}</li>
  * </ul>
  * </p>
@@ -127,7 +128,6 @@ public class CallBehaviorActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of the behavior.
-	 * 
 	 * true
 	 * @param callBehaviorAction The receiving '<em><b>Call Behavior Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

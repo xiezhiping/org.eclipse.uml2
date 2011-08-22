@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ComponentRealization.java,v 1.7 2008/10/02 20:56:23 jbruck Exp $
  */
@@ -27,8 +28,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getRealizingClassifiers <em>Realizing Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ComponentRealization#getAbstraction <em>Abstraction</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,8 +46,8 @@ public interface ComponentRealization
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -79,7 +80,7 @@ public interface ComponentRealization
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getSuppliers() <em>Supplier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

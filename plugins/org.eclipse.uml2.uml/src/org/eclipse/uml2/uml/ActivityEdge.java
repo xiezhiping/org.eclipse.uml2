@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityEdge.java,v 1.20 2008/10/02 20:56:23 jbruck Exp $
  */
@@ -34,15 +35,15 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getGuard <em>Guard</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInterrupts <em>Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getRedefinedEdges <em>Redefined Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getRedefinedEdges <em>Redefined Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getWeight <em>Weight</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInStructuredNode <em>In Structured Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityEdge#getActivity <em>Activity</em>}</li>
  * </ul>
  * </p>
@@ -106,6 +107,30 @@ public interface ActivityEdge
 	EList<ActivityGroup> getInGroups();
 
 	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInGroups()
+	 * @generated
+	 */
+	ActivityGroup getInGroup(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>In Group</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getInGroups()
+	 * @generated
+	 */
+	ActivityGroup getInGroup(String name, boolean ignoreCase, EClass eClass);
+
+	/**
 	 * Returns the value of the '<em><b>In Partition</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ActivityPartition}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ActivityPartition#getEdges <em>Edge</em>}'.
@@ -158,6 +183,7 @@ public interface ActivityEdge
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.ActivityEdge#getInGroups() <em>In Group</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

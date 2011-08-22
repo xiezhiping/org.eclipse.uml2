@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuralFeatureAction.java,v 1.9 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#getStructuralFeature <em>Structural Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#getObject <em>Object</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#getStructuralFeature <em>Structural Feature</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,7 +80,6 @@ public interface StructuralFeatureAction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Gives the input pin from which the object whose structural feature is to be read or written is obtained.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Object</em>' containment reference.
 	 * @see #setObject(InputPin)
@@ -143,8 +143,9 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin is the same as the classifier of the object passed on this pin.
-	 * true
+	 * The structural feature must either be owned by the type of the object input pin, or it must be an owned end of a binary association with the type of the opposite end being the type of the object input pin.
+	 * self.structuralFeature.featuringClassifier.oclAsType(Type)->includes(self.object.type) or
+	 * 	self.structuralFeature.oclAsType(Property).opposite.type = self.object.type
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -158,8 +159,8 @@ public interface StructuralFeatureAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin must be 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object input pin must be 1..1.
+	 * self.object.lowerBound()=1 and self.object.upperBound()=1
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

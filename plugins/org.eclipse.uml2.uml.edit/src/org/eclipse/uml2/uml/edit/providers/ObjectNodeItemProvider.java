@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ObjectNodeItemProvider.java,v 1.10 2010/09/28 21:00:18 khussey Exp $
  */
@@ -71,11 +72,11 @@ public class ObjectNodeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTypePropertyDescriptor(object);
-			addOrderingPropertyDescriptor(object);
-			addIsControlTypePropertyDescriptor(object);
-			addUpperBoundPropertyDescriptor(object);
 			addInStatePropertyDescriptor(object);
+			addIsControlTypePropertyDescriptor(object);
+			addOrderingPropertyDescriptor(object);
 			addSelectionPropertyDescriptor(object);
+			addUpperBoundPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -264,8 +265,8 @@ public class ObjectNodeItemProvider
 
 		switch (notification.getFeatureID(ObjectNode.class)) {
 			case UMLPackage.OBJECT_NODE__TYPE :
-			case UMLPackage.OBJECT_NODE__ORDERING :
 			case UMLPackage.OBJECT_NODE__IS_CONTROL_TYPE :
+			case UMLPackage.OBJECT_NODE__ORDERING :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -291,10 +292,6 @@ public class ObjectNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -303,31 +300,7 @@ public class ObjectNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
@@ -343,7 +316,39 @@ public class ObjectNodeItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
 			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

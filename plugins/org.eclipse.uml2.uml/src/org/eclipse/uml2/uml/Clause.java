@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Clause.java,v 1.8 2007/06/12 12:53:17 khussey Exp $
  */
@@ -32,12 +33,12 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Clause#getTests <em>Test</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Clause#getBodies <em>Body</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Clause#getBodyOutputs <em>Body Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Clause#getDecider <em>Decider</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Clause#getPredecessorClauses <em>Predecessor Clause</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Clause#getSuccessorClauses <em>Successor Clause</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Clause#getDecider <em>Decider</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Clause#getBodyOutputs <em>Body Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Clause#getTests <em>Test</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,7 +59,7 @@ public interface Clause
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClause_Test()
-	 * @model ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	EList<ExecutableNode> getTests();
@@ -238,6 +239,21 @@ public interface Clause
 	 * @generated
 	 */
 	boolean validateDeciderOutput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The test and body parts must be disjoint.
+	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateTestAndBody(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**

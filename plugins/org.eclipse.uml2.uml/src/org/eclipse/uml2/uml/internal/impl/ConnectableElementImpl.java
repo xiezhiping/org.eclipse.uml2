@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ConnectableElementImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
@@ -412,30 +413,30 @@ public abstract class ConnectableElementImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				return getName();
-			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.CONNECTABLE_ELEMENT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.CONNECTABLE_ELEMENT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
+				return getName();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.CONNECTABLE_ELEMENT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.CONNECTABLE_ELEMENT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				if (resolve)
 					return getType();
@@ -473,19 +474,19 @@ public abstract class ConnectableElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				setType((Type) newValue);
@@ -495,10 +496,6 @@ public abstract class ConnectableElementImpl
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
-				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__END :
-				getEnds().clear();
-				getEnds().addAll((Collection<? extends ConnectorEnd>) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -518,17 +515,17 @@ public abstract class ConnectableElementImpl
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				setType((Type) null);
@@ -538,9 +535,6 @@ public abstract class ConnectableElementImpl
 				return;
 			case UMLPackage.CONNECTABLE_ELEMENT__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
-				return;
-			case UMLPackage.CONNECTABLE_ELEMENT__END :
-				getEnds().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -556,27 +550,27 @@ public abstract class ConnectableElementImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTABLE_ELEMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.CONNECTABLE_ELEMENT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONNECTABLE_ELEMENT__NAME :
 				return isSetName();
-			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.CONNECTABLE_ELEMENT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.CONNECTABLE_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.CONNECTABLE_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.CONNECTABLE_ELEMENT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.CONNECTABLE_ELEMENT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.CONNECTABLE_ELEMENT__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.CONNECTABLE_ELEMENT__TYPE :
 				return type != null;
 			case UMLPackage.CONNECTABLE_ELEMENT__OWNING_TEMPLATE_PARAMETER :
@@ -661,117 +655,119 @@ public abstract class ConnectableElementImpl
 		switch (operationID) {
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTABLE_ELEMENT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.CONNECTABLE_ELEMENT___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.CONNECTABLE_ELEMENT___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_MODEL :
-				return getModel();
-			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_MODEL :
+				return getModel();
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONNECTABLE_ELEMENT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.CONNECTABLE_ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.CONNECTABLE_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.CONNECTABLE_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_LABEL :
 				return getLabel();
 			case UMLPackage.CONNECTABLE_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.CONNECTABLE_ELEMENT___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONNECTABLE_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.CONNECTABLE_ELEMENT___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.CONNECTABLE_ELEMENT___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.CONNECTABLE_ELEMENT___SEPARATOR :
 				return separator();
-			case UMLPackage.CONNECTABLE_ELEMENT___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.CONNECTABLE_ELEMENT___IS_TEMPLATE_PARAMETER :

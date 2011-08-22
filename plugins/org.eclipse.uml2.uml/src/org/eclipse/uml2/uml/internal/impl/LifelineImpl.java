@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LifelineImpl.java,v 1.26 2010/09/28 21:02:13 khussey Exp $
  */
@@ -67,10 +68,10 @@ import org.eclipse.uml2.uml.internal.operations.LifelineOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getDecomposedAs <em>Decomposed As</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getInteraction <em>Interaction</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getRepresents <em>Represents</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LifelineImpl#getCoveredBys <em>Covered By</em>}</li>
  * </ul>
  * </p>
@@ -80,6 +81,16 @@ import org.eclipse.uml2.uml.internal.operations.LifelineOperations;
 public class LifelineImpl
 		extends NamedElementImpl
 		implements Lifeline {
+
+	/**
+	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDecomposedAs()
+	 * @generated
+	 * @ordered
+	 */
+	protected PartDecomposition decomposedAs;
 
 	/**
 	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
@@ -100,16 +111,6 @@ public class LifelineImpl
 	 * @ordered
 	 */
 	protected ValueSpecification selector;
-
-	/**
-	 * The cached value of the '{@link #getDecomposedAs() <em>Decomposed As</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDecomposedAs()
-	 * @generated
-	 * @ordered
-	 */
-	protected PartDecomposition decomposedAs;
 
 	/**
 	 * The cached value of the '{@link #getCoveredBys() <em>Covered By</em>}' reference list.
@@ -581,46 +582,46 @@ public class LifelineImpl
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.LIFELINE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LIFELINE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.LIFELINE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.LIFELINE__NAME :
-				return getName();
-			case UMLPackage.LIFELINE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.LIFELINE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.LIFELINE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.LIFELINE__NAME :
+				return getName();
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.LIFELINE__REPRESENTS :
+			case UMLPackage.LIFELINE__NAMESPACE :
 				if (resolve)
-					return getRepresents();
-				return basicGetRepresents();
-			case UMLPackage.LIFELINE__INTERACTION :
-				if (resolve)
-					return getInteraction();
-				return basicGetInteraction();
-			case UMLPackage.LIFELINE__SELECTOR :
-				if (resolve)
-					return getSelector();
-				return basicGetSelector();
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.LIFELINE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.LIFELINE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.LIFELINE__DECOMPOSED_AS :
 				if (resolve)
 					return getDecomposedAs();
 				return basicGetDecomposedAs();
+			case UMLPackage.LIFELINE__INTERACTION :
+				if (resolve)
+					return getInteraction();
+				return basicGetInteraction();
+			case UMLPackage.LIFELINE__REPRESENTS :
+				if (resolve)
+					return getRepresents();
+				return basicGetRepresents();
+			case UMLPackage.LIFELINE__SELECTOR :
+				if (resolve)
+					return getSelector();
+				return basicGetSelector();
 			case UMLPackage.LIFELINE__COVERED_BY :
 				return getCoveredBys();
 		}
@@ -646,31 +647,31 @@ public class LifelineImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LIFELINE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.LIFELINE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.LIFELINE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.LIFELINE__REPRESENTS :
-				setRepresents((ConnectableElement) newValue);
+			case UMLPackage.LIFELINE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
+			case UMLPackage.LIFELINE__DECOMPOSED_AS :
+				setDecomposedAs((PartDecomposition) newValue);
 				return;
 			case UMLPackage.LIFELINE__INTERACTION :
 				setInteraction((Interaction) newValue);
 				return;
+			case UMLPackage.LIFELINE__REPRESENTS :
+				setRepresents((ConnectableElement) newValue);
+				return;
 			case UMLPackage.LIFELINE__SELECTOR :
 				setSelector((ValueSpecification) newValue);
-				return;
-			case UMLPackage.LIFELINE__DECOMPOSED_AS :
-				setDecomposedAs((PartDecomposition) newValue);
 				return;
 			case UMLPackage.LIFELINE__COVERED_BY :
 				getCoveredBys().clear();
@@ -695,29 +696,29 @@ public class LifelineImpl
 			case UMLPackage.LIFELINE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.LIFELINE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.LIFELINE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.LIFELINE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.LIFELINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.LIFELINE__REPRESENTS :
-				setRepresents((ConnectableElement) null);
+			case UMLPackage.LIFELINE__VISIBILITY :
+				unsetVisibility();
+				return;
+			case UMLPackage.LIFELINE__DECOMPOSED_AS :
+				setDecomposedAs((PartDecomposition) null);
 				return;
 			case UMLPackage.LIFELINE__INTERACTION :
 				setInteraction((Interaction) null);
 				return;
+			case UMLPackage.LIFELINE__REPRESENTS :
+				setRepresents((ConnectableElement) null);
+				return;
 			case UMLPackage.LIFELINE__SELECTOR :
 				setSelector((ValueSpecification) null);
-				return;
-			case UMLPackage.LIFELINE__DECOMPOSED_AS :
-				setDecomposedAs((PartDecomposition) null);
 				return;
 			case UMLPackage.LIFELINE__COVERED_BY :
 				getCoveredBys().clear();
@@ -736,35 +737,35 @@ public class LifelineImpl
 		switch (featureID) {
 			case UMLPackage.LIFELINE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.LIFELINE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LIFELINE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LIFELINE__OWNER :
 				return isSetOwner();
-			case UMLPackage.LIFELINE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.LIFELINE__NAME :
 				return isSetName();
-			case UMLPackage.LIFELINE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.LIFELINE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.LIFELINE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.LIFELINE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.LIFELINE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.LIFELINE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.LIFELINE__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.LIFELINE__REPRESENTS :
-				return represents != null;
-			case UMLPackage.LIFELINE__INTERACTION :
-				return basicGetInteraction() != null;
-			case UMLPackage.LIFELINE__SELECTOR :
-				return selector != null;
+			case UMLPackage.LIFELINE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.LIFELINE__DECOMPOSED_AS :
 				return decomposedAs != null;
+			case UMLPackage.LIFELINE__INTERACTION :
+				return basicGetInteraction() != null;
+			case UMLPackage.LIFELINE__REPRESENTS :
+				return represents != null;
+			case UMLPackage.LIFELINE__SELECTOR :
+				return selector != null;
 			case UMLPackage.LIFELINE__COVERED_BY :
 				return coveredBys != null && !coveredBys.isEmpty();
 		}
@@ -783,123 +784,125 @@ public class LifelineImpl
 		switch (operationID) {
 			case UMLPackage.LIFELINE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.LIFELINE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LIFELINE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LIFELINE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.LIFELINE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.LIFELINE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.LIFELINE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.LIFELINE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.LIFELINE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.LIFELINE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.LIFELINE___GET_MODEL :
-				return getModel();
-			case UMLPackage.LIFELINE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.LIFELINE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.LIFELINE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.LIFELINE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.LIFELINE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.LIFELINE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.LIFELINE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LIFELINE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LIFELINE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.LIFELINE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_MODEL :
+				return getModel();
+			case UMLPackage.LIFELINE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.LIFELINE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.LIFELINE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.LIFELINE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LIFELINE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.LIFELINE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LIFELINE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LIFELINE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LIFELINE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.LIFELINE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LIFELINE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.LIFELINE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.LIFELINE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.LIFELINE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.LIFELINE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.LIFELINE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LIFELINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LIFELINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.LIFELINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.LIFELINE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.LIFELINE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.LIFELINE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.LIFELINE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.LIFELINE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.LIFELINE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.LIFELINE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.LIFELINE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.LIFELINE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.LIFELINE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.LIFELINE___SEPARATOR :
 				return separator();
-			case UMLPackage.LIFELINE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.LIFELINE___VALIDATE_INTERACTION_USES_SHARE_LIFELINE__DIAGNOSTICCHAIN_MAP :
-				return validateInteractionUsesShareLifeline(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_SELECTOR_SPECIFIED__DIAGNOSTICCHAIN_MAP :
 				return validateSelectorSpecified(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LIFELINE___VALIDATE_INTERACTION_USES_SHARE_LIFELINE__DIAGNOSTICCHAIN_MAP :
+				return validateInteractionUsesShareLifeline(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LIFELINE___VALIDATE_SAME_CLASSIFIER__DIAGNOSTICCHAIN_MAP :

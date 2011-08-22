@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ValueSpecificationActionItemProvider.java,v 1.11 2010/09/28 21:00:18 khussey Exp $
  */
@@ -70,8 +71,8 @@ public class ValueSpecificationActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
 			addResultPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -132,9 +133,9 @@ public class ValueSpecificationActionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE);
-			childrenFeatures
 				.add(UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__RESULT);
+			childrenFeatures
+				.add(UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -200,8 +201,8 @@ public class ValueSpecificationActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ValueSpecificationAction.class)) {
-			case UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE :
 			case UMLPackage.VALUE_SPECIFICATION_ACTION__RESULT :
+			case UMLPackage.VALUE_SPECIFICATION_ACTION__VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -222,8 +223,8 @@ public class ValueSpecificationActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
@@ -235,31 +236,7 @@ public class ValueSpecificationActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
@@ -275,11 +252,39 @@ public class ValueSpecificationActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
 			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+			UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**
@@ -296,8 +301,8 @@ public class ValueSpecificationActionItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.VALUE_SPECIFICATION_ACTION__VALUE
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

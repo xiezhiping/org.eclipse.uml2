@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PartDecompositionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
@@ -30,9 +31,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.PartDecomposition#validatePartsOfInternalStructures(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parts Of Internal Structures</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.PartDecomposition#validateAssume(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Assume</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.PartDecomposition#validateCommutativityOfDecomposition(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Commutativity Of Decomposition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.PartDecomposition#validateAssume(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Assume</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.PartDecomposition#validatePartsOfInternalStructures(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Parts Of Internal Structures</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,12 +91,7 @@ public class PartDecompositionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Within X there is a sequence of constructs along L (such constructs are CombinedFragments, InteractionUse and (plain) OccurrenceSpecifications). Then a corresponding sequence of constructs must appear within D, matched one-to-one in the same order.
-	 * 
-	 * i) CombinedFragment covering L are matched with an extra-global CombinedFragment in D
-	 * ii) An InteractionUse covering L are matched with a global (i.e. covering all Lifelines) InteractionUse in D.
-	 * iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D
-	 * 
+	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Within X there is a sequence of constructs along L (such constructs are CombinedFragments, InteractionUse and (plain) OccurrenceSpecifications). Then a corresponding sequence of constructs must appear within D, matched one-to-one in the same order. i) CombinedFragment covering L are matched with an extra-global CombinedFragment in D ii) An InteractionUse covering L are matched with a global (i.e. covering all Lifelines) InteractionUse in D. iii) A plain OccurrenceSpecification on L is considered an actualGate that must be matched by a formalGate of D
 	 * true
 	 * @param partDecomposition The receiving '<em><b>Part Decomposition</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -130,9 +126,7 @@ public class PartDecompositionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Assume also that there is within X an
-	 * InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)
-	 * 
+	 * Assume that within Interaction X, Lifeline L is of class C and decomposed to D. Assume also that there is within X an InteractionUse (say) U that covers L. According to the constraint above U will have a counterpart CU within D. Within the Interaction referenced by U, L should also be decomposed, and the decomposition should reference CU. (This rule is called commutativity of decomposition)
 	 * true
 	 * @param partDecomposition The receiving '<em><b>Part Decomposition</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

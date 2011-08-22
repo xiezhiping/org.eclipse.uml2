@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StringExpressionOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
@@ -91,9 +92,7 @@ public class StringExpressionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to
-	 * define a collating sequence between operands and subexpressions).
-	 * 
+	 * If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to define a collating sequence between operands and subexpressions).
 	 * if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty()
 	 * @param stringExpression The receiving '<em><b>String Expression</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

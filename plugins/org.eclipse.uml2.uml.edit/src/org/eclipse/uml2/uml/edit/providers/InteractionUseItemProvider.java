@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionUseItemProvider.java,v 1.17 2010/09/28 21:00:18 khussey Exp $
  */
@@ -70,9 +71,11 @@ public class InteractionUseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRefersToPropertyDescriptor(object);
 			addActualGatePropertyDescriptor(object);
 			addArgumentPropertyDescriptor(object);
+			addRefersToPropertyDescriptor(object);
+			addReturnValuePropertyDescriptor(object);
+			addReturnValueRecipientPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -94,6 +97,46 @@ public class InteractionUseItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_refersTo_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.INTERACTION_USE__REFERS_TO, true, false,
 				true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Return Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReturnValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_InteractionUse_returnValue_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_returnValue_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Return Value Recipient feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReturnValueRecipientPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_InteractionUse_returnValueRecipient_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_InteractionUse_returnValueRecipient_feature", "_UI_InteractionUse_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE_RECIPIENT,
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -154,6 +197,8 @@ public class InteractionUseItemProvider
 			childrenFeatures
 				.add(UMLPackage.Literals.INTERACTION_USE__ACTUAL_GATE);
 			childrenFeatures.add(UMLPackage.Literals.INTERACTION_USE__ARGUMENT);
+			childrenFeatures
+				.add(UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -220,6 +265,7 @@ public class InteractionUseItemProvider
 		switch (notification.getFeatureID(InteractionUse.class)) {
 			case UMLPackage.INTERACTION_USE__ACTUAL_GATE :
 			case UMLPackage.INTERACTION_USE__ARGUMENT :
+			case UMLPackage.INTERACTION_USE__RETURN_VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -245,171 +291,147 @@ public class InteractionUseItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createOpaqueAction()));
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createStructuredActivityNode()));
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createSendSignalAction()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createCallOperationAction()));
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createCallBehaviorAction()));
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createSequenceNode()));
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createCreateObjectAction()));
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createDestroyObjectAction()));
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createTestIdentityAction()));
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadSelfAction()));
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
+			UMLFactory.eINSTANCE.createLiteralReal()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
+			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadLinkAction()));
+			UMLFactory.eINSTANCE.createTimeExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createCreateLinkAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createDestroyLinkAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createClearAssociationAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createSendObjectAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadVariableAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createClearVariableAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createAddVariableValueAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createRaiseExceptionAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralReal()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadExtentAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
+			UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
+	}
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadLinkObjectEndAction()));
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature,
+			Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReadLinkObjectEndQualifierAction()));
+		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
+			|| childFeature == UMLPackage.Literals.INTERACTION_USE__ARGUMENT
+			|| childFeature == UMLPackage.Literals.INTERACTION_USE__RETURN_VALUE;
 
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createAcceptEventAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createAcceptCallAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReplyAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createUnmarshallAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createReduceAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createStartObjectBehaviorAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createConditionalNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createLoopNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_USE__ARGUMENT,
-			UMLFactory.eINSTANCE.createExpansionRegion()));
+		if (qualify) {
+			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
+				new Object[]{getTypeText(childObject),
+					getFeatureText(childFeature), getTypeText(owner)});
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

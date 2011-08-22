@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InformationFlow.java,v 1.9 2007/10/23 15:54:23 jbruck Exp $
  */
@@ -32,10 +33,10 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getConveyeds <em>Conveyed</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getInformationSources <em>Information Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getInformationTargets <em>Information Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getRealizations <em>Realization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getRealizingActivityEdges <em>Realizing Activity Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getRealizingConnectors <em>Realizing Connector</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InformationFlow#getRealizingMessages <em>Realizing Message</em>}</li>
@@ -316,12 +317,12 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The sources and targets of the information flow can only be one of the following kind: Actor, Node, UseCase, Artifact, Class, Component, Port, Property, Interface, Package, ActivityNode, ActivityPartition and InstanceSpecification except when its classifier is a relationship (i.e. it represents a link).
-	 * (self.source->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
+	 * (self.informationSource->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
 	 *   oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
 	 *   oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
 	 *   oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
 	 *   oclIsKindOf(ActivityPartition) or oclIsKindOf(InstanceSpecification))) and
-	 *     (self.target->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
+	 *     (self.informationTarget->forAll(p | p->oclIsKindOf(Actor) or oclIsKindOf(Node) or
 	 *       oclIsKindOf(UseCase) or oclIsKindOf(Artifact) or oclIsKindOf(Class) or
 	 *       oclIsKindOf(Component) or oclIsKindOf(Port) or oclIsKindOf(Property) or
 	 *       oclIsKindOf(Interface) or oclIsKindOf(Package) or oclIsKindOf(ActivityNode) or
@@ -355,7 +356,6 @@ public interface InformationFlow
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An information flow can only convey classifiers that are allowed to represent an information item.
-	 * 
 	 * self.conveyed.represented->forAll(p | p->oclIsKindOf(Class) or oclIsKindOf(Interface)
 	 *   or oclIsKindOf(InformationItem) or oclIsKindOf(Signal) or oclIsKindOf(Component))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
+ *   CEA - initial API and implementation
  *
- * $Id: DestructionEventOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
@@ -18,33 +17,33 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
-import org.eclipse.uml2.uml.DestructionEvent;
+import org.eclipse.uml2.uml.ExpansionNode;
 
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
  * <!-- begin-user-doc -->
- * A static utility class that provides operations related to '<em><b>Destruction Event</b></em>' model objects.
+ * A static utility class that provides operations related to '<em><b>Expansion Node</b></em>' model objects.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.DestructionEvent#validateNoOccurrenceSpecificationsBelow(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Occurrence Specifications Below</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExpansionNode#validateRegionAsInputOrOutput(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Region As Input Or Output</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class DestructionEventOperations
-		extends NamedElementOperations {
+public class ExpansionNodeOperations
+		extends ObjectNodeOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DestructionEventOperations() {
+	protected ExpansionNodeOperations() {
 		super();
 	}
 
@@ -52,16 +51,16 @@ public class DestructionEventOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * No other OccurrenceSpecifications may appear below an OccurrenceSpecification which references a DestructionEvent on a given Lifeline in an InteractionOperand.
+	 * One of regionAsInput or regionAsOutput must be non-empty, but not both.
 	 * true
-	 * @param destructionEvent The receiving '<em><b>Destruction Event</b></em>' model object.
+	 * @param expansionNode The receiving '<em><b>Expansion Node</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
 	 * @generated
 	 */
-	public static boolean validateNoOccurrenceSpecificationsBelow(
-			DestructionEvent destructionEvent, DiagnosticChain diagnostics,
+	public static boolean validateRegionAsInputOrOutput(
+			ExpansionNode expansionNode, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		// TODO: implement this method
 		// -> specify the condition that violates the invariant
@@ -73,15 +72,15 @@ public class DestructionEventOperations
 					.add(new BasicDiagnostic(
 						Diagnostic.ERROR,
 						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.DESTRUCTION_EVENT__NO_OCCURRENCE_SPECIFICATIONS_BELOW,
+						UMLValidator.EXPANSION_NODE__REGION_AS_INPUT_OR_OUTPUT,
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoOccurrenceSpecificationsBelow", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(destructionEvent, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{destructionEvent}));
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRegionAsInputOrOutput", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(expansionNode, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{expansionNode}));
 			}
 			return false;
 		}
 		return true;
 	}
 
-} // DestructionEventOperations
+} // ExpansionNodeOperations

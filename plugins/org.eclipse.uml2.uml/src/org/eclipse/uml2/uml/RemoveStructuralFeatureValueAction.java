@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RemoveStructuralFeatureValueAction.java,v 1.11 2007/10/23 15:54:23 jbruck Exp $
  */
@@ -53,7 +54,7 @@ public interface RemoveStructuralFeatureValueAction
 	 * @return the value of the '<em>Is Remove Duplicates</em>' attribute.
 	 * @see #setIsRemoveDuplicates(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRemoveStructuralFeatureValueAction_IsRemoveDuplicates()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRemoveDuplicates();
@@ -128,9 +129,16 @@ public interface RemoveStructuralFeatureValueAction
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions removing a value from ordered nonunique structural features must have a single removeAt input pin if isRemoveDuplicates is false. It must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the action has no removeAt input pin.
-	 * 
-	 * true
+	 * Actions removing a value from ordered non-unique structural features must have a single removeAt input pin and no value input pin if isRemoveDuplicates is false. The removeAt pin must be of type Unlimited Natural with multiplicity 1..1. Otherwise, the action has a value input pin and no removeAt input pin.
+	 * if not self.structuralFeature.isOrdered or self.structuralFeature.isUnique or  isRemoveDuplicates then
+	 *   self.removeAt -> isEmpty() and self.value -> notEmpty()
+	 * else
+	 *   self.value -> isEmpty() and
+	 *   self.removeAt -> notEmpty() and
+	 *   self.removeAt.type = UnlimitedNatural and
+	 *   self.removeAt.lower = 1 and
+	 *   self.removeAt.upper = 1
+	 * endif
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

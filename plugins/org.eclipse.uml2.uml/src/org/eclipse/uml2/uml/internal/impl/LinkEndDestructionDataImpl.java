@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LinkEndDestructionDataImpl.java,v 1.15 2010/09/28 21:02:14 khussey Exp $
  */
@@ -45,8 +46,8 @@ import org.eclipse.uml2.uml.internal.operations.LinkEndDestructionDataOperations
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDestructionDataImpl#isDestroyDuplicates <em>Is Destroy Duplicates</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDestructionDataImpl#getDestroyAt <em>Destroy At</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDestructionDataImpl#isDestroyDuplicates <em>Is Destroy Duplicates</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,6 +56,16 @@ import org.eclipse.uml2.uml.internal.operations.LinkEndDestructionDataOperations
 public class LinkEndDestructionDataImpl
 		extends LinkEndDataImpl
 		implements LinkEndDestructionData {
+
+	/**
+	 * The cached value of the '{@link #getDestroyAt() <em>Destroy At</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDestroyAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin destroyAt;
 
 	/**
 	 * The default value of the '{@link #isDestroyDuplicates() <em>Is Destroy Duplicates</em>}' attribute.
@@ -75,16 +86,6 @@ public class LinkEndDestructionDataImpl
 	 * @ordered
 	 */
 	protected static final int IS_DESTROY_DUPLICATES_EFLAG = 1 << 8;
-
-	/**
-	 * The cached value of the '{@link #getDestroyAt() <em>Destroy At</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDestroyAt()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin destroyAt;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -205,30 +206,30 @@ public class LinkEndDestructionDataImpl
 		switch (featureID) {
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
-				if (resolve)
-					return getValue();
-				return basicGetValue();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				if (resolve)
 					return getEnd();
 				return basicGetEnd();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
 				return getQualifiers();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				return isDestroyDuplicates();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				if (resolve)
 					return getDestroyAt();
 				return basicGetDestroyAt();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
+				return isDestroyDuplicates();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -252,9 +253,6 @@ public class LinkEndDestructionDataImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
-				setValue((InputPin) newValue);
-				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				setEnd((Property) newValue);
 				return;
@@ -263,11 +261,14 @@ public class LinkEndDestructionDataImpl
 				getQualifiers().addAll(
 					(Collection<? extends QualifierValue>) newValue);
 				return;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				setIsDestroyDuplicates((Boolean) newValue);
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
+				setValue((InputPin) newValue);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				setDestroyAt((InputPin) newValue);
+				return;
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
+				setIsDestroyDuplicates((Boolean) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -287,20 +288,20 @@ public class LinkEndDestructionDataImpl
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
-				setValue((InputPin) null);
-				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				setEnd((Property) null);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
 				getQualifiers().clear();
 				return;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				setIsDestroyDuplicates(IS_DESTROY_DUPLICATES_EDEFAULT);
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
+				setValue((InputPin) null);
 				return;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				setDestroyAt((InputPin) null);
+				return;
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
+				setIsDestroyDuplicates(IS_DESTROY_DUPLICATES_EDEFAULT);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -316,22 +317,22 @@ public class LinkEndDestructionDataImpl
 		switch (featureID) {
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNER :
 				return isSetOwner();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
-				return value != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__END :
 				return end != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__QUALIFIER :
 				return qualifiers != null && !qualifiers.isEmpty();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
-				return ((eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__VALUE :
+				return value != null;
 			case UMLPackage.LINK_END_DESTRUCTION_DATA__DESTROY_AT :
 				return destroyAt != null;
+			case UMLPackage.LINK_END_DESTRUCTION_DATA__IS_DESTROY_DUPLICATES :
+				return ((eFlags & IS_DESTROY_DUPLICATES_EFLAG) != 0) != IS_DESTROY_DUPLICATES_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -348,109 +349,109 @@ public class LinkEndDestructionDataImpl
 		switch (operationID) {
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_MODEL :
-				return getModel();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_MODEL :
+				return getModel();
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
-				return validatePropertyIsAssociationEnd(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
-				return validateQualifiers((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateEndObjectInputPin(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_DESTROY_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
-				return validateDestroyLinkAction(
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validatePropertyIsAssociationEnd(
 					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
+				return validateQualifiers((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_UNLIMITED_NATURAL_AND_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateUnlimitedNaturalAndMultiplicity(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DESTRUCTION_DATA___VALIDATE_DESTROY_LINK_ACTION__DIAGNOSTICCHAIN_MAP :
+				return validateDestroyLinkAction(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

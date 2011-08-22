@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Activity.java,v 1.18 2007/10/23 15:54:23 jbruck Exp $
  */
@@ -32,14 +33,14 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getStructuredNodes <em>Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#getVariables <em>Variable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isReadOnly <em>Is Read Only</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getEdges <em>Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Activity#isSingleExecution <em>Is Single Execution</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Activity#getGroups <em>Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getPartitions <em>Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Activity#getNodes <em>Node</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,7 +62,7 @@ public interface Activity
 	 * @return the value of the '<em>Is Read Only</em>' attribute.
 	 * @see #setIsReadOnly(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_IsReadOnly()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReadOnly();
@@ -106,9 +107,47 @@ public interface Activity
 	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to create.
 	 * @return The new {@link org.eclipse.uml2.uml.ActivityGroup}.
 	 * @see #getGroups()
-	 * @generated
+	 * @generated NOT
 	 */
 	ActivityGroup createGroup(EClass eClass);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ActivityGroup}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ActivityGroup}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ActivityGroup}.
+	 * @see #getGroups()
+	 * @generated
+	 */
+	ActivityGroup createGroup(String name, EClass eClass);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getGroups()
+	 * @generated
+	 */
+	ActivityGroup getGroup(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>' from the '<em><b>Group</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ActivityGroup} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ActivityGroup} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ActivityGroup} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getGroups()
+	 * @generated
+	 */
+	ActivityGroup getGroup(String name, boolean ignoreCase, EClass eClass,
+			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Is Single Execution</b></em>' attribute.
@@ -121,7 +160,7 @@ public interface Activity
 	 * @return the value of the '<em>Is Single Execution</em>' attribute.
 	 * @see #setIsSingleExecution(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivity_IsSingleExecution()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSingleExecution();
@@ -142,8 +181,8 @@ public interface Activity
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getGroups() <em>Group</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Activity#getNodes() <em>Node</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

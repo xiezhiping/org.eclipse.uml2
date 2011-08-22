@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Type.java,v 1.14 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -88,7 +89,7 @@ public interface Type
 	 * @param end2Lower The lower bound for the second end of the new association.
 	 * @param end2Upper The upper bound for the second end of the new association.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.uml.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.uml.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1TypeRequired="true" end1TypeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.uml.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.uml.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
+	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.types.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.types.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.types.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.types.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1TypeRequired="true" end1TypeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.types.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.types.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.types.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.types.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
 	 * @generated
 	 */
 	Association createAssociation(boolean end1IsNavigable,
@@ -115,7 +116,7 @@ public interface Type
 	 * The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated
 	 */
 	boolean conformsTo(Type other);

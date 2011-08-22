@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReplyActionItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
@@ -71,8 +72,8 @@ public class ReplyActionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addReplyToCallPropertyDescriptor(object);
-			addReturnInformationPropertyDescriptor(object);
 			addReplyValuePropertyDescriptor(object);
+			addReturnInformationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -151,9 +152,9 @@ public class ReplyActionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE);
 			childrenFeatures
 				.add(UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION);
-			childrenFeatures.add(UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -218,8 +219,8 @@ public class ReplyActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ReplyAction.class)) {
-			case UMLPackage.REPLY_ACTION__RETURN_INFORMATION :
 			case UMLPackage.REPLY_ACTION__REPLY_VALUE :
+			case UMLPackage.REPLY_ACTION__RETURN_INFORMATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -240,28 +241,28 @@ public class ReplyActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE,
 			UMLFactory.eINSTANCE.createInputPin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
-			UMLFactory.eINSTANCE.createValuePin()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
-			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE,
-			UMLFactory.eINSTANCE.createInputPin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE,
 			UMLFactory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE,
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
 			UMLFactory.eINSTANCE.createActionInputPin()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION,
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -276,10 +277,10 @@ public class ReplyActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
-			|| childFeature == UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION
-			|| childFeature == UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE;
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
+			|| childFeature == UMLPackage.Literals.REPLY_ACTION__REPLY_VALUE
+			|| childFeature == UMLPackage.Literals.REPLY_ACTION__RETURN_INFORMATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

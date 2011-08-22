@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExpansionRegion.java,v 1.10 2007/06/12 12:53:19 khussey Exp $
  */
@@ -31,8 +32,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.ExpansionRegion#getMode <em>Mode</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ExpansionRegion#getInputElements <em>Input Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExpansionRegion#getOutputElements <em>Output Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExpansionRegion#getInputElements <em>Input Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,11 +51,7 @@ public interface ExpansionRegion
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The way in which the executions interact:
-	 * parallel: all interactions are independent
-	 * iterative: the interactions occur in order of the elements
-	 * stream: a stream of values flows into a single execution
-	 * 
+	 * The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Mode</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ExpansionKind

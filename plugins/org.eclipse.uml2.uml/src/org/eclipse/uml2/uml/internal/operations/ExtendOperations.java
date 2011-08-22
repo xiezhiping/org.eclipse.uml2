@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExtendOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
@@ -53,8 +54,6 @@ public class ExtendOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The extension points referenced by the extend relationship must belong to the use case that is being extended.
-	 * 
-	 * 
 	 * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))
 	 * @param extend The receiving '<em><b>Extend</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

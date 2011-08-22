@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InstanceSpecificationItemProvider.java,v 1.13 2010/09/28 21:00:19 khussey Exp $
  */
@@ -295,10 +296,6 @@ public class InstanceSpecificationItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -307,31 +304,7 @@ public class InstanceSpecificationItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
@@ -347,7 +320,39 @@ public class InstanceSpecificationItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
 			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INSTANCE_SPECIFICATION__SPECIFICATION,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 208353, 205188, 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PropertyItemProvider.java,v 1.23 2010/09/28 21:00:18 khussey Exp $
  */
@@ -88,23 +89,25 @@ public class PropertyItemProvider
 			addOwningTemplateParameterPropertyDescriptor(object);
 			addTemplateParameterPropertyDescriptor(object);
 			addEndPropertyDescriptor(object);
-			addDeploymentPropertyDescriptor(object);
 			addDeployedElementPropertyDescriptor(object);
-			addClassPropertyDescriptor(object);
+			addDeploymentPropertyDescriptor(object);
 			addDatatypePropertyDescriptor(object);
+			addInterfacePropertyDescriptor(object);
+			addAggregationPropertyDescriptor(object);
+			addAssociationEndPropertyDescriptor(object);
+			addQualifierPropertyDescriptor(object);
+			addClassPropertyDescriptor(object);
+			addDefaultPropertyDescriptor(object);
+			addDefaultValuePropertyDescriptor(object);
+			addIsCompositePropertyDescriptor(object);
 			addIsDerivedPropertyDescriptor(object);
 			addIsDerivedUnionPropertyDescriptor(object);
-			addDefaultPropertyDescriptor(object);
-			addAggregationPropertyDescriptor(object);
-			addIsCompositePropertyDescriptor(object);
-			addRedefinedPropertyPropertyDescriptor(object);
-			addOwningAssociationPropertyDescriptor(object);
-			addDefaultValuePropertyDescriptor(object);
+			addIsIDPropertyDescriptor(object);
 			addOppositePropertyDescriptor(object);
+			addOwningAssociationPropertyDescriptor(object);
+			addRedefinedPropertyPropertyDescriptor(object);
 			addSubsettedPropertyPropertyDescriptor(object);
 			addAssociationPropertyDescriptor(object);
-			addQualifierPropertyDescriptor(object);
-			addAssociationEndPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -164,27 +167,8 @@ public class PropertyItemProvider
 				getString("_UI_ConnectableElement_end_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_ConnectableElement_end_feature", "_UI_ConnectableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CONNECTABLE_ELEMENT__END, true, false,
-				true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Deployment feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDeploymentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
-				true, null, null,
+				UMLPackage.Literals.CONNECTABLE_ELEMENT__END, false, false,
+				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -211,22 +195,24 @@ public class PropertyItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Class feature.
+	 * This adds a property descriptor for the Deployment feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addClassPropertyDescriptor(Object object) {
+	protected void addDeploymentPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Property_class_feature"), //$NON-NLS-1$
+				getString("_UI_DeploymentTarget_deployment_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_class_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__CLASS, false, false, false, null,
-				null, null));
+					"_UI_PropertyDescriptor_description", "_UI_DeploymentTarget_deployment_feature", "_UI_DeploymentTarget_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -247,6 +233,47 @@ public class PropertyItemProvider
 				UMLPackage.Literals.PROPERTY__DATATYPE, true, false, true,
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Interface feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addInterfacePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_interface_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_interface_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__INTERFACE, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Class feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_class_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_class_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__CLASS, true, false, true, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -289,6 +316,25 @@ public class PropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Is ID feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsIDPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_isID_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_isID_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__IS_ID, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Default feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -308,6 +354,27 @@ public class PropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Default Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefaultValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
 	 * This adds a property descriptor for the Aggregation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,6 +391,48 @@ public class PropertyItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_Property_aggregation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROPERTY__AGGREGATION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Association End feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAssociationEndPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Qualifier feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addQualifierPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__QUALIFIER, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -367,27 +476,6 @@ public class PropertyItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Owning Association feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwningAssociationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
 	 * This adds a property descriptor for the Association feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -404,27 +492,6 @@ public class PropertyItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_Property_association_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROPERTY__ASSOCIATION, true, false, true,
 				null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Default Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDefaultValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Property_defaultValue_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_defaultValue_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__DEFAULT_VALUE, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
 	}
 
 	/**
@@ -449,6 +516,27 @@ public class PropertyItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Owning Association feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwningAssociationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Property_owningAssociation_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Property_owningAssociation_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROPERTY__OWNING_ASSOCIATION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
 	 * This adds a property descriptor for the Subsetted Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -465,48 +553,6 @@ public class PropertyItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_Property_subsettedProperty_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.PROPERTY__SUBSETTED_PROPERTY, true, false,
 				true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Qualifier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addQualifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Property_qualifier_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_qualifier_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__QUALIFIER, true, false, true,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
-	 * This adds a property descriptor for the Association End feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAssociationEndPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Property_associationEnd_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Property_associationEnd_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROPERTY__ASSOCIATION_END, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
 	}
 
 	/**
@@ -624,18 +670,18 @@ public class PropertyItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Property.class)) {
+			case UMLPackage.PROPERTY__AGGREGATION :
+			case UMLPackage.PROPERTY__DEFAULT :
+			case UMLPackage.PROPERTY__IS_COMPOSITE :
 			case UMLPackage.PROPERTY__IS_DERIVED :
 			case UMLPackage.PROPERTY__IS_DERIVED_UNION :
-			case UMLPackage.PROPERTY__DEFAULT :
-			case UMLPackage.PROPERTY__AGGREGATION :
-			case UMLPackage.PROPERTY__IS_COMPOSITE :
-			case UMLPackage.PROPERTY__ASSOCIATION :
+			case UMLPackage.PROPERTY__IS_ID :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
 			case UMLPackage.PROPERTY__DEPLOYMENT :
-			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 			case UMLPackage.PROPERTY__QUALIFIER :
+			case UMLPackage.PROPERTY__DEFAULT_VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -660,8 +706,16 @@ public class PropertyItemProvider
 			UMLFactory.eINSTANCE.createDeployment()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createProperty()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createPort()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__QUALIFIER,
+			UMLFactory.eINSTANCE.createExtensionEnd()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
@@ -673,31 +727,7 @@ public class PropertyItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
@@ -713,19 +743,39 @@ public class PropertyItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
 			UMLFactory.eINSTANCE.createTimeInterval()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER,
-			UMLFactory.eINSTANCE.createProperty()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER,
-			UMLFactory.eINSTANCE.createPort()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROPERTY__QUALIFIER,
-			UMLFactory.eINSTANCE.createExtensionEnd()));
+			UMLPackage.Literals.PROPERTY__DEFAULT_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**
@@ -741,8 +791,8 @@ public class PropertyItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
-			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
 			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
 			|| childFeature == UMLPackage.Literals.PROPERTY__DEFAULT_VALUE;
 
 		if (qualify) {

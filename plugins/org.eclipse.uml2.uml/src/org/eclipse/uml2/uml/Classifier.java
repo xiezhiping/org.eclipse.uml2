@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Classifier.java,v 1.24 2008/01/09 18:56:02 khussey Exp $
  */
@@ -29,26 +30,27 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.
  * A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
- * A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.
  * Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.
+ * A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#isAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getFeatures <em>Feature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getAttributes <em>Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getCollaborationUses <em>Collaboration Use</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals <em>General</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getGeneralizations <em>Generalization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getPowertypeExtents <em>Powertype Extent</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getFeatures <em>Feature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getInheritedMembers <em>Inherited Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getGenerals <em>General</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getSubstitutions <em>Substitution</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getAttributes <em>Attribute</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getRepresentation <em>Representation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Classifier#getCollaborationUses <em>Collaboration Use</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#isAbstract <em>Is Abstract</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#isFinalSpecialization <em>Is Final Specialization</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getOwnedUseCases <em>Owned Use Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Classifier#getUseCases <em>Use Case</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getRedefinedClassifiers <em>Redefined Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getRepresentation <em>Representation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Classifier#getSubstitutions <em>Substitution</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,12 +68,11 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Abstract</em>' attribute.
 	 * @see #setIsAbstract(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_IsAbstract()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isAbstract();
@@ -85,6 +86,32 @@ public interface Classifier
 	 * @generated
 	 */
 	void setIsAbstract(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Is Final Specialization</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Is Final Specialization</em>' attribute.
+	 * @see #setIsFinalSpecialization(boolean)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_IsFinalSpecialization()
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isFinalSpecialization();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Classifier#isFinalSpecialization <em>Is Final Specialization</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Final Specialization</em>' attribute.
+	 * @see #isFinalSpecialization()
+	 * @generated
+	 */
+	void setIsFinalSpecialization(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Generalization</b></em>' containment reference list.
@@ -163,8 +190,8 @@ public interface Classifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
 	 * Specifies each feature defined in the classifier.
+	 * Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Feature</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_Feature()
@@ -296,8 +323,8 @@ public interface Classifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the general classifier in the Generalization relationship.
 	 * Specifies the general Classifiers for this Classifier.
+	 * References the general classifier in the Generalization relationship.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getClassifier_General()
@@ -672,21 +699,6 @@ public interface Classifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
-	 * not self.allParents()->includes(self)
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateGeneralizationHierarchies(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances also be its subclasses.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -696,6 +708,21 @@ public interface Classifier
 	 * @generated
 	 */
 	boolean validateMapsToGeneralizationSet(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The parents of a classifier must be non-final.
+	 * self.parents()->forAll(not isFinalSpecialization)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateNonFinalParents(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
@@ -774,7 +801,7 @@ public interface Classifier
 	 * @param parameterNames The parameter names of the operation to retrieve, or null.
 	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false"
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false"
 	 * @generated
 	 */
 	Operation getOperation(String name, EList<String> parameterNames,
@@ -790,7 +817,7 @@ public interface Classifier
 	 * @param parameterTypes The parameter types of the operation to retrieve, or null.
 	 * @param ignoreCase Whether to ignore case in String comparisons.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.uml.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.uml.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
+	 * @model ordered="false" nameDataType="org.eclipse.uml2.types.String" nameOrdered="false" parameterNamesDataType="org.eclipse.uml2.types.String" parameterNamesMany="true" parameterNamesOrdered="false" parameterTypesMany="true" parameterTypesOrdered="false" ignoreCaseDataType="org.eclipse.uml2.types.Boolean" ignoreCaseRequired="true" ignoreCaseOrdered="false"
 	 * @generated
 	 */
 	Operation getOperation(String name, EList<String> parameterNames,
@@ -825,7 +852,7 @@ public interface Classifier
 	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
 	 * result = self.oclIsKindOf(c.oclType)
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
 	 * @generated
 	 */
 	boolean maySpecializeType(Classifier c);
@@ -872,10 +899,10 @@ public interface Classifier
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
-	 * self.allParents()->collect(c | c.member)->includes(n)
-	 * result = if (self.inheritedMember->includes(n)) then (n.visibility <> #private) else true
+	 * self.allParents()->including(self)->collect(c | c.member)->includes(n)
+	 * result = (n.visibility <> VisibilityKind::private)
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
 	 * @generated
 	 */
 	boolean hasVisibilityOf(NamedElement n);
@@ -893,7 +920,7 @@ public interface Classifier
 	 * The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
 	 * result = (self=other) or (self.allParents()->includes(other))
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated
 	 */
 	boolean conformsTo(Classifier other);
@@ -902,8 +929,8 @@ public interface Classifier
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The inherit operation is overridden to exclude redefined properties.
 	 * The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
+	 * The inherit operation is overridden to exclude redefined properties.
 	 * result = inhs
 	 * <!-- end-model-doc -->
 	 * @model ordered="false" inhsMany="true" inhsOrdered="false"

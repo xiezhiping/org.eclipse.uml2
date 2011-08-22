@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Comment.java,v 1.7 2007/06/12 12:53:17 khussey Exp $
  */
@@ -26,8 +27,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Comment#getBody <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Comment#getAnnotatedElements <em>Annotated Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Comment#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,7 +51,7 @@ public interface Comment
 	 * @see #unsetBody()
 	 * @see #setBody(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getComment_Body()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */

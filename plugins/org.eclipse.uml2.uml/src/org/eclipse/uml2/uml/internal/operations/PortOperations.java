@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PortOperations.java,v 1.18 2010/09/28 21:02:15 khussey Exp $
  */
@@ -43,9 +44,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Port#validateRequiredInterfaces(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Required Interfaces</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Port#validatePortAggregation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Port Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#validatePortDestroyed(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Port Destroyed</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Port#validatePortAggregation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Port Aggregation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#validateDefaultValue(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Default Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#getProvideds() <em>Get Provideds</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Port#getRequireds() <em>Get Requireds</em>}</li>
@@ -64,41 +64,6 @@ public class PortOperations
 	 */
 	protected PortOperations() {
 		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The required interfaces of a port must be provided by elements to which the port is connected.
-	 * true
-	 * @param port The receiving '<em><b>Port</b></em>' model object.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static boolean validateRequiredInterfaces(Port port,
-			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						UMLValidator.DIAGNOSTIC_SOURCE,
-						UMLValidator.PORT__REQUIRED_INTERFACES,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateRequiredInterfaces", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(port, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{port}));
-			}
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -204,24 +169,45 @@ public class PortOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for Port::/provided : Interface
+	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Interface> getProvideds(Port port) {
 		EList<Interface> provideds = new UniqueEList.FastCompare<Interface>();
+
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
 
-		if (type instanceof Interface) {
-			provideds.add((Interface) type);
-		} else if (type instanceof Classifier) {
-			Classifier classifier = (Classifier) port.getType();
-			ComponentOperations.realizedInterfaces(null, classifier, false,
-				provideds);
+		if (port.isConjugated()) {
 
-			for (Classifier parent : classifier.allParents()) {
-
-				ComponentOperations.realizedInterfaces(null, parent, false,
+			if (type instanceof Classifier) {
+				Classifier classifier = (Classifier) port.getType();
+				ComponentOperations.usedInterfaces(null, classifier, false,
 					provideds);
+
+				for (Classifier parent : classifier.allParents()) {
+					ComponentOperations.usedInterfaces(null, parent, false,
+						provideds);
+				}
+			}
+		} else {
+
+			if (type instanceof Interface) {
+				provideds.add((Interface) type);
+			} else if (type instanceof Classifier) {
+				Classifier classifier = (Classifier) port.getType();
+				ComponentOperations.realizedInterfaces(null, classifier, false,
+					provideds);
+
+				for (Classifier parent : classifier.allParents()) {
+
+					ComponentOperations.realizedInterfaces(null, parent, false,
+						provideds);
+				}
 			}
 		}
 
@@ -233,21 +219,45 @@ public class PortOperations
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for Port::/required : Interface
+	 * true
+	 * @param port The receiving '<em><b>Port</b></em>' model object.
+	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
 	public static EList<Interface> getRequireds(Port port) {
 		EList<Interface> requireds = new UniqueEList.FastCompare<Interface>();
+
 		Type type = (Type) port.eGet(UMLPackage.Literals.TYPED_ELEMENT__TYPE,
 			false);
 
-		if (type instanceof Classifier) {
-			Classifier classifier = (Classifier) port.getType();
-			ComponentOperations.usedInterfaces(null, classifier, false,
-				requireds);
+		if (port.isConjugated()) {
 
-			for (Classifier parent : classifier.allParents()) {
-				ComponentOperations.usedInterfaces(null, parent, false,
+			if (type instanceof Interface) {
+				requireds.add((Interface) type);
+			} else if (type instanceof Classifier) {
+				Classifier classifier = (Classifier) port.getType();
+				ComponentOperations.realizedInterfaces(null, classifier, false,
 					requireds);
+
+				for (Classifier parent : classifier.allParents()) {
+
+					ComponentOperations.realizedInterfaces(null, parent, false,
+						requireds);
+				}
+			}
+		} else {
+
+			if (type instanceof Classifier) {
+				Classifier classifier = (Classifier) port.getType();
+				ComponentOperations.usedInterfaces(null, classifier, false,
+					requireds);
+
+				for (Classifier parent : classifier.allParents()) {
+					ComponentOperations.usedInterfaces(null, parent, false,
+						requireds);
+				}
 			}
 		}
 

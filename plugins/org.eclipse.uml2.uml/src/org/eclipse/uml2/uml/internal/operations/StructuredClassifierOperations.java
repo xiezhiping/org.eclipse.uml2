@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuredClassifierOperations.java,v 1.8 2007/05/03 21:11:51 khussey Exp $
  */
@@ -18,6 +19,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 
@@ -35,6 +37,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#validateMultiplicities(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicities</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#createOwnedAttribute(java.lang.String, org.eclipse.uml2.uml.Type, int, int) <em>Create Owned Attribute</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuredClassifier#getParts() <em>Get Parts</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,6 +109,21 @@ public class StructuredClassifierOperations
 			int lower, int upper) {
 		return TypeOperations.createOwnedAttribute(structuredClassifier, name,
 			type, lower, upper);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for StructuredClassifier::/part : Property
+	 * true
+	 * @param structuredClassifier The receiving '<em><b>Structured Classifier</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Property> getParts(
+			StructuredClassifier structuredClassifier) {
+		return structuredClassifier.getParts();
 	}
 
 } // StructuredClassifierOperations

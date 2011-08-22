@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Action.java,v 1.15 2008/01/09 18:56:02 khussey Exp $
  */
@@ -23,19 +24,20 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
+ * An action has pre- and post-conditions.
  * An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
  * An action represents a single step within an activity, that is, one that is not further decomposed within the activity.
- * An action has pre- and post-conditions.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Action#getOutputs <em>Output</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Action#getInputs <em>Input</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Action#getContext <em>Context</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Action#getLocalPreconditions <em>Local Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#getInputs <em>Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#isLocallyReentrant <em>Is Locally Reentrant</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Action#getLocalPostconditions <em>Local Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#getLocalPreconditions <em>Local Precondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Action#getOutputs <em>Output</em>}</li>
  * </ul>
  * </p>
  *
@@ -140,6 +142,32 @@ public interface Action
 	 * @generated
 	 */
 	InputPin getInput(String name, Type type, boolean ignoreCase, EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>Is Locally Reentrant</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Is Locally Reentrant</em>' attribute.
+	 * @see #setIsLocallyReentrant(boolean)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getAction_IsLocallyReentrant()
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isLocallyReentrant();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Action#isLocallyReentrant <em>Is Locally Reentrant</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Locally Reentrant</em>' attribute.
+	 * @see #isLocallyReentrant()
+	 * @generated
+	 */
+	void setIsLocallyReentrant(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' reference.

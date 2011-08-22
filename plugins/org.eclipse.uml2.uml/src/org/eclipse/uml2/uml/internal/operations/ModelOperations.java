@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ModelOperations.java,v 1.7 2007/05/03 21:11:53 khussey Exp $
  */
@@ -51,7 +52,7 @@ public class ModelOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetamodel(Model model) {
-		return model.getAppliedStereotype("Standard" //$NON-NLS-1$
+		return model.getAppliedStereotype("StandardL3" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metamodel") != null; //$NON-NLS-1$
 	}
 

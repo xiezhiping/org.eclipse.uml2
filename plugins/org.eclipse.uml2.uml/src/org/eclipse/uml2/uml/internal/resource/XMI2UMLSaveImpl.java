@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2007 IBM Corporation and others.
+ * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: XMI2UMLSaveImpl.java,v 1.4 2007/05/04 20:35:32 khussey Exp $
  */
@@ -25,7 +26,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
 import org.eclipse.uml2.uml.UMLPackage;
 
 public class XMI2UMLSaveImpl
-		extends XMISaveImpl {
+		extends UMLSaveImpl {
 
 	protected static class Lookup
 			extends XMISaveImpl.Lookup {

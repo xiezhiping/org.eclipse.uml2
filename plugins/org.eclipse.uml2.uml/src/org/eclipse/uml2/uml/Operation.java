@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Operation.java,v 1.21 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -26,27 +27,27 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
- * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
  * Operation specializes TemplateableElement in order to support specification of template operations and bound operations. Operation specializes ParameterableElement to specify that an operation can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
+ * An operation may invoke both the execution of method behaviors as well as other behavioral responses.
+ * An operation is a behavioral feature of a classifier that specifies the name, type, parameters, and constraints for invoking an associated behavior.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#isQuery <em>Is Query</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getInterface <em>Interface</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered <em>Is Ordered</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#isQuery <em>Is Query</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique <em>Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper <em>Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getPostconditions <em>Postcondition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getPreconditions <em>Precondition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getRedefinedOperations <em>Redefined Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getDatatype <em>Datatype</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getBodyCondition <em>Body Condition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper <em>Upper</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,7 +69,7 @@ public interface Operation
 	 * @return the value of the '<em>Is Query</em>' attribute.
 	 * @see #setIsQuery(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsQuery()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isQuery();
@@ -93,22 +94,11 @@ public interface Operation
 	 * Specifies whether the return parameter is ordered or not, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
-	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsOrdered()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#isOrdered <em>Is Ordered</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Ordered</em>' attribute.
-	 * @see #isOrdered()
-	 * @generated
-	 */
-	void setIsOrdered(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Unique</b></em>' attribute.
@@ -120,22 +110,11 @@ public interface Operation
 	 * Specifies whether the return parameter is unique or not, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Unique</em>' attribute.
-	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_IsUnique()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnique();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#isUnique <em>Is Unique</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Unique</em>' attribute.
-	 * @see #isUnique()
-	 * @generated
-	 */
-	void setIsUnique(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Lower</b></em>' attribute.
@@ -143,26 +122,15 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This information is derived from the return result for this Operation.
 	 * Specifies the lower multiplicity of the return parameter, if present.
+	 * This information is derived from the return result for this Operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lower</em>' attribute.
-	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Lower()
-	 * @model default="1" dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.types.Integer" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getLower <em>Lower</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lower</em>' attribute.
-	 * @see #getLower()
-	 * @generated
-	 */
-	void setLower(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Upper</b></em>' attribute.
@@ -170,26 +138,15 @@ public interface Operation
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This information is derived from the return result for this Operation.
 	 * Specifies the upper multiplicity of the return parameter, if present.
+	 * This information is derived from the return result for this Operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Upper</em>' attribute.
-	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Upper()
-	 * @model default="1" dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.types.UnlimitedNatural" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getUpper <em>Upper</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Upper</em>' attribute.
-	 * @see #getUpper()
-	 * @generated
-	 */
-	void setUpper(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Class</b></em>' container reference.
@@ -197,9 +154,9 @@ public interface Operation
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -423,9 +380,9 @@ public interface Operation
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -515,22 +472,11 @@ public interface Operation
 	 * Specifies the return result of the operation, if present.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(Type)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOperation_Type()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	Type getType();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Operation#getType <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
-	void setType(Type value);
 
 	/**
 	 * Returns the value of the '<em><b>Interface</b></em>' container reference.
@@ -538,6 +484,8 @@ public interface Operation
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
@@ -609,26 +557,42 @@ public interface Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
+	 * @model newIsOrderedDataType="org.eclipse.uml2.types.Boolean" newIsOrderedRequired="true" newIsOrderedOrdered="false"
 	 * @generated
 	 */
-	int lowerBound();
+	void setIsOrdered(boolean newIsOrdered);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
+	 * @model newIsUniqueDataType="org.eclipse.uml2.types.Boolean" newIsUniqueRequired="true" newIsUniqueOrdered="false"
 	 * @generated
 	 */
-	int upperBound();
+	void setIsUnique(boolean newIsUnique);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model newLowerDataType="org.eclipse.uml2.types.Integer" newLowerRequired="true" newLowerOrdered="false"
+	 * @generated
+	 */
+	void setLower(int newLower);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model newTypeRequired="true" newTypeOrdered="false"
+	 * @generated
+	 */
+	void setType(Type newType);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model newUpperDataType="org.eclipse.uml2.types.UnlimitedNatural" newUpperRequired="true" newUpperOrdered="false"
+	 * @generated
+	 */
+	void setUpper(int newUpper);
 
 	/**
 	 * <!-- begin-user-doc -->

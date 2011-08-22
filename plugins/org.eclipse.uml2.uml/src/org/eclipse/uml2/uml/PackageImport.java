@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PackageImport.java,v 1.12 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -28,9 +29,9 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.PackageImport#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.PackageImport#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.PackageImport#getImportingNamespace <em>Importing Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.PackageImport#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *

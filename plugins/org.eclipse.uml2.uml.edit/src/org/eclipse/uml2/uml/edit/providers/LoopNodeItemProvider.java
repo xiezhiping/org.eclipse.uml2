@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LoopNodeItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
@@ -71,15 +72,15 @@ public class LoopNodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsTestedFirstPropertyDescriptor(object);
-			addBodyPartPropertyDescriptor(object);
-			addSetupPartPropertyDescriptor(object);
-			addDeciderPropertyDescriptor(object);
-			addTestPropertyDescriptor(object);
-			addResultPropertyDescriptor(object);
-			addLoopVariablePropertyDescriptor(object);
 			addBodyOutputPropertyDescriptor(object);
+			addBodyPartPropertyDescriptor(object);
+			addDeciderPropertyDescriptor(object);
+			addIsTestedFirstPropertyDescriptor(object);
+			addLoopVariablePropertyDescriptor(object);
 			addLoopVariableInputPropertyDescriptor(object);
+			addResultPropertyDescriptor(object);
+			addSetupPartPropertyDescriptor(object);
+			addTestPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -271,9 +272,9 @@ public class LoopNodeItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__RESULT);
 			childrenFeatures
 				.add(UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT);
+			childrenFeatures.add(UMLPackage.Literals.LOOP_NODE__RESULT);
 		}
 		return childrenFeatures;
 	}
@@ -342,8 +343,8 @@ public class LoopNodeItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.LOOP_NODE__RESULT :
 			case UMLPackage.LOOP_NODE__LOOP_VARIABLE_INPUT :
+			case UMLPackage.LOOP_NODE__RESULT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -364,20 +365,20 @@ public class LoopNodeItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LOOP_NODE__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
+			UMLFactory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
-			UMLFactory.eINSTANCE.createInputPin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
 			UMLFactory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLPackage.Literals.LOOP_NODE__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 	}
 
 	/**
@@ -392,12 +393,14 @@ public class LoopNodeItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
 			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__NODE
-			|| childFeature == UMLPackage.Literals.LOOP_NODE__RESULT
-			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT;
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_INPUT
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__LOOP_VARIABLE_INPUT
+			|| childFeature == UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE__STRUCTURED_NODE_OUTPUT
+			|| childFeature == UMLPackage.Literals.LOOP_NODE__RESULT;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

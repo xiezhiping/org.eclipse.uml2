@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExpressionImpl.java,v 1.23 2008/04/21 16:32:41 khussey Exp $
  */
@@ -52,8 +53,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getSymbol <em>Symbol</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getOperands <em>Operand</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExpressionImpl#getSymbol <em>Symbol</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,6 +63,16 @@ import org.eclipse.uml2.uml.VisibilityKind;
 public class ExpressionImpl
 		extends ValueSpecificationImpl
 		implements Expression {
+
+	/**
+	 * The cached value of the '{@link #getOperands() <em>Operand</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperands()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ValueSpecification> operands;
 
 	/**
 	 * The default value of the '{@link #getSymbol() <em>Symbol</em>}' attribute.
@@ -91,16 +102,6 @@ public class ExpressionImpl
 	 * @ordered
 	 */
 	protected static final int SYMBOL_ESETFLAG = 1 << 12;
-
-	/**
-	 * The cached value of the '{@link #getOperands() <em>Operand</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperands()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ValueSpecification> operands;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -300,30 +301,30 @@ public class ExpressionImpl
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.EXPRESSION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXPRESSION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.EXPRESSION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.EXPRESSION__NAME :
-				return getName();
-			case UMLPackage.EXPRESSION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.EXPRESSION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.EXPRESSION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.EXPRESSION__NAME :
+				return getName();
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.EXPRESSION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.EXPRESSION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.EXPRESSION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -336,10 +337,10 @@ public class ExpressionImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.EXPRESSION__SYMBOL :
-				return getSymbol();
 			case UMLPackage.EXPRESSION__OPERAND :
 				return getOperands();
+			case UMLPackage.EXPRESSION__SYMBOL :
+				return getSymbol();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -363,19 +364,19 @@ public class ExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXPRESSION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.EXPRESSION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.EXPRESSION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.EXPRESSION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -386,13 +387,13 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.EXPRESSION__SYMBOL :
-				setSymbol((String) newValue);
-				return;
 			case UMLPackage.EXPRESSION__OPERAND :
 				getOperands().clear();
 				getOperands().addAll(
 					(Collection<? extends ValueSpecification>) newValue);
+				return;
+			case UMLPackage.EXPRESSION__SYMBOL :
+				setSymbol((String) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -412,17 +413,17 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXPRESSION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.EXPRESSION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.EXPRESSION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.EXPRESSION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -433,11 +434,11 @@ public class ExpressionImpl
 			case UMLPackage.EXPRESSION__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.EXPRESSION__SYMBOL :
-				unsetSymbol();
-				return;
 			case UMLPackage.EXPRESSION__OPERAND :
 				getOperands().clear();
+				return;
+			case UMLPackage.EXPRESSION__SYMBOL :
+				unsetSymbol();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -453,37 +454,37 @@ public class ExpressionImpl
 		switch (featureID) {
 			case UMLPackage.EXPRESSION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXPRESSION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXPRESSION__OWNER :
 				return isSetOwner();
-			case UMLPackage.EXPRESSION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXPRESSION__NAME :
 				return isSetName();
-			case UMLPackage.EXPRESSION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.EXPRESSION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.EXPRESSION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.EXPRESSION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.EXPRESSION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.EXPRESSION__TEMPLATE_PARAMETER :
 				return templateParameter != null;
 			case UMLPackage.EXPRESSION__TYPE :
 				return type != null;
-			case UMLPackage.EXPRESSION__SYMBOL :
-				return isSetSymbol();
 			case UMLPackage.EXPRESSION__OPERAND :
 				return operands != null && !operands.isEmpty();
+			case UMLPackage.EXPRESSION__SYMBOL :
+				return isSetSymbol();
 		}
 		return eDynamicIsSet(featureID);
 	}

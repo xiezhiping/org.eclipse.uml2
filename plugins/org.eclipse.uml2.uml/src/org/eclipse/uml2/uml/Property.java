@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Property.java,v 1.30 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -26,31 +27,33 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
- * A property represents a set of instances that are owned by a containing classifier instance.
- * A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.
  * Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.
+ * A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.
  * Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.
+ * A property represents a set of instances that are owned by a containing classifier instance.
+ * A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getDatatype <em>Datatype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getInterface <em>Interface</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getAggregation <em>Aggregation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getAssociationEnd <em>Association End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getQualifiers <em>Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#isDerivedUnion <em>Is Derived Union</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getDefault <em>Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getAggregation <em>Aggregation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#isComposite <em>Is Composite</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getRedefinedProperties <em>Redefined Property</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getOwningAssociation <em>Owning Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#isID <em>Is ID</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getOwningAssociation <em>Owning Association</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Property#getRedefinedProperties <em>Redefined Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getSubsettedProperties <em>Subsetted Property</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Property#getAssociation <em>Association</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getQualifiers <em>Qualifier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Property#getAssociationEnd <em>Association End</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +72,7 @@ public interface Property
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -96,18 +100,53 @@ public interface Property
 	void setDatatype(DataType value);
 
 	/**
+	 * Returns the value of the '<em><b>Interface</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Interface#getOwnedAttributes <em>Owned Attribute</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Interface that owns the Property
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Interface</em>' container reference.
+	 * @see #setInterface(Interface)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Interface()
+	 * @see org.eclipse.uml2.uml.Interface#getOwnedAttributes
+	 * @model opposite="ownedAttribute" transient="false" ordered="false"
+	 * @generated
+	 */
+	Interface getInterface();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Property#getInterface <em>Interface</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Interface</em>' container reference.
+	 * @see #getInterface()
+	 * @generated
+	 */
+	void setInterface(Interface value);
+
+	/**
 	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If isDerived is true, the value of the attribute is derived from information elsewhere.
 	 * Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
+	 * If isDerived is true, the value of the attribute is derived from information elsewhere.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Derived</em>' attribute.
 	 * @see #setIsDerived(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerived()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();
@@ -133,7 +172,7 @@ public interface Property
 	 * @return the value of the '<em>Is Derived Union</em>' attribute.
 	 * @see #setIsDerivedUnion(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsDerivedUnion()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerivedUnion();
@@ -149,19 +188,45 @@ public interface Property
 	void setIsDerivedUnion(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Is ID</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * True indicates this property can be used to uniquely identify an instance of the containing Class.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Is ID</em>' attribute.
+	 * @see #setIsID(boolean)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsID()
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isID();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Property#isID <em>Is ID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is ID</em>' attribute.
+	 * @see #isID()
+	 * @generated
+	 */
+	void setIsID(boolean value);
+
+	/**
 	 * Returns the value of the '<em><b>Default</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies a String that represents a value to be used when no argument is supplied for the Property.
 	 * A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
+	 * Specifies a String that represents a value to be used when no argument is supplied for the Property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default</em>' attribute.
 	 * @see #isSetDefault()
 	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Default()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -242,7 +307,7 @@ public interface Property
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see #setIsComposite(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_IsComposite()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -264,12 +329,13 @@ public interface Property
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the Class that owns the Property.
+	 * References the Class that owns the Property.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' reference.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getProperty_Class()
@@ -332,9 +398,10 @@ public interface Property
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Property#getAssociation() <em>Association</em>}'</li>
-	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.Feature#getFeaturingClassifiers() <em>Featuring Classifier</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Property#getAssociation() <em>Association</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinitionContexts() <em>Redefinition Context</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -612,8 +679,8 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
 	 * A multiplicity on an aggregate end of a composite aggregation must not have an upper bound greater than 1.
+	 * A multiplicity of a composite aggregation must not have an upper bound greater than 1.
 	 * isComposite implies (upperBound()->isEmpty() or upperBound() <= 1)
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -677,21 +744,6 @@ public interface Property
 	 * @generated
 	 */
 	boolean validateSubsettingRules(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Only a navigable property can be marked as readOnly.
-	 * isReadOnly implies isNavigable()
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateNavigableReadonly(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**
@@ -777,7 +829,7 @@ public interface Property
 	 * Sets the navigability of this property as indicated.
 	 * @param isNavigable The new navigability.
 	 * <!-- end-model-doc -->
-	 * @model isNavigableDataType="org.eclipse.uml2.uml.Boolean" isNavigableRequired="true" isNavigableOrdered="false"
+	 * @model isNavigableDataType="org.eclipse.uml2.types.Boolean" isNavigableRequired="true" isNavigableOrdered="false"
 	 * @generated
 	 */
 	void setIsNavigable(boolean isNavigable);
@@ -800,7 +852,7 @@ public interface Property
 	 * Sets the default value for this property to the specified Boolean value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.Boolean" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setBooleanDefaultValue(boolean value);
@@ -812,7 +864,7 @@ public interface Property
 	 * Sets the default value for this property to the specified integer value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.Integer" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setIntegerDefaultValue(int value);
@@ -824,7 +876,7 @@ public interface Property
 	 * Sets the default value for this property to the specified string value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.String" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setStringDefaultValue(String value);
@@ -836,7 +888,7 @@ public interface Property
 	 * Sets the default value for this property to the specified unlimited natural value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.UnlimitedNatural" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setUnlimitedNaturalDefaultValue(int value);
@@ -856,10 +908,22 @@ public interface Property
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Sets the default value for this property to the specified real value.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
+	 * @model valueDataType="org.eclipse.uml2.types.Real" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setRealDefaultValue(double value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * The query isAttribute() is true if the Property is defined as an attribute of some classifier.
 	 * result = Classifier.allInstances->exists(c | c.attribute->includes(p))
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" pRequired="true" pOrdered="false"
 	 * @generated
 	 */
 	boolean isAttribute(Property p);
@@ -886,7 +950,7 @@ public interface Property
 	 * The query isNavigable() indicates whether it is possible to navigate across the property.
 	 * result = not classifier->isEmpty() or association.owningAssociation.navigableOwnedEnd->includes(self)
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isNavigable();

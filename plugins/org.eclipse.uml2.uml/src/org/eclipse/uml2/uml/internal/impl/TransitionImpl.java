@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TransitionImpl.java,v 1.33 2010/09/28 21:02:14 khussey Exp $
  */
@@ -80,17 +81,17 @@ import org.eclipse.uml2.uml.internal.operations.TransitionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedElements <em>Redefined Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinitionContexts <em>Redefinition Context</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#isLeaf <em>Is Leaf</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getRedefinedTransition <em>Redefined Transition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getTriggers <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TransitionImpl#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -119,6 +120,26 @@ public class TransitionImpl
 	 * @ordered
 	 */
 	protected static final int IS_LEAF_EFLAG = 1 << 12;
+
+	/**
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEffect()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior effect;
+
+	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint guard;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -169,6 +190,16 @@ public class TransitionImpl
 	protected static final int KIND_EFLAG = 0x3 << KIND_EFLAG_OFFSET;
 
 	/**
+	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedTransition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Transition redefinedTransition;
+
+	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -187,36 +218,6 @@ public class TransitionImpl
 	 * @ordered
 	 */
 	protected Vertex target;
-
-	/**
-	 * The cached value of the '{@link #getRedefinedTransition() <em>Redefined Transition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedTransition()
-	 * @generated
-	 * @ordered
-	 */
-	protected Transition redefinedTransition;
-
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected Constraint guard;
-
-	/**
-	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEffect()
-	 * @generated
-	 * @ordered
-	 */
-	protected Behavior effect;
 
 	/**
 	 * The cached value of the '{@link #getTriggers() <em>Trigger</em>}' containment reference list.
@@ -278,34 +279,6 @@ public class TransitionImpl
 			RedefinableElement.class, this,
 			UMLPackage.TRANSITION__REDEFINED_ELEMENT,
 			REDEFINED_ELEMENT_ESUBSETS);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RedefinableElement getRedefinedElement(String name) {
-		return getRedefinedElement(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RedefinableElement getRedefinedElement(String name,
-			boolean ignoreCase, EClass eClass) {
-		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
-			if (eClass != null && !eClass.isInstance(redefinedElement))
-				continue redefinedElementLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(redefinedElement.getName())
-				: name.equals(redefinedElement.getName())))
-				continue redefinedElementLoop;
-			return redefinedElement;
-		}
-		return null;
 	}
 
 	/**
@@ -919,6 +892,17 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateNonLeafRedefinition(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return RedefinableElementOperations.validateNonLeafRedefinition(this,
+			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateForkSegmentGuards(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return TransitionOperations.validateForkSegmentGuards(this,
@@ -934,6 +918,17 @@ public class TransitionImpl
 			Map<Object, Object> context) {
 		return TransitionOperations.validateJoinSegmentGuards(this,
 			diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateIsInternal(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return TransitionOperations.validateStateIsInternal(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -996,6 +991,17 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateStateIsLocal(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return TransitionOperations.validateStateIsLocal(this, diagnostics,
+			context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Classifier redefinitionContext() {
 		return TransitionOperations.redefinitionContext(this);
 	}
@@ -1026,6 +1032,17 @@ public class TransitionImpl
 	public boolean isRedefinitionContextValid(RedefinableElement redefined) {
 		return RedefinableElementOperations.isRedefinitionContextValid(this,
 			redefined);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateStateIsExternal(DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		return TransitionOperations.validateStateIsExternal(this, diagnostics,
+			context);
 	}
 
 	/**
@@ -1090,13 +1107,13 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TRANSITION__CONTAINER :
-				return basicSetContainer(null, msgs);
 			case UMLPackage.TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.TRANSITION__TRIGGER :
 				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.TRANSITION__CONTAINER :
+				return basicSetContainer(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1127,54 +1144,62 @@ public class TransitionImpl
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.TRANSITION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.TRANSITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TRANSITION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TRANSITION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.TRANSITION__NAME :
-				return getName();
-			case UMLPackage.TRANSITION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.TRANSITION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.TRANSITION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.TRANSITION__NAME :
+				return getName();
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.TRANSITION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.TRANSITION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.TRANSITION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.TRANSITION__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.TRANSITION__MEMBER :
-				return getMembers();
-			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.TRANSITION__MEMBER :
+				return getMembers();
 			case UMLPackage.TRANSITION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.TRANSITION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
+			case UMLPackage.TRANSITION__EFFECT :
+				if (resolve)
+					return getEffect();
+				return basicGetEffect();
+			case UMLPackage.TRANSITION__GUARD :
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.TRANSITION__KIND :
 				return getKind();
-			case UMLPackage.TRANSITION__CONTAINER :
+			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
-					return getContainer();
-				return basicGetContainer();
+					return getRedefinedTransition();
+				return basicGetRedefinedTransition();
 			case UMLPackage.TRANSITION__SOURCE :
 				if (resolve)
 					return getSource();
@@ -1183,20 +1208,12 @@ public class TransitionImpl
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
-			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
-				if (resolve)
-					return getRedefinedTransition();
-				return basicGetRedefinedTransition();
-			case UMLPackage.TRANSITION__GUARD :
-				if (resolve)
-					return getGuard();
-				return basicGetGuard();
-			case UMLPackage.TRANSITION__EFFECT :
-				if (resolve)
-					return getEffect();
-				return basicGetEffect();
 			case UMLPackage.TRANSITION__TRIGGER :
 				return getTriggers();
+			case UMLPackage.TRANSITION__CONTAINER :
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -1220,19 +1237,19 @@ public class TransitionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TRANSITION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.TRANSITION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.TRANSITION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.TRANSITION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1252,11 +1269,17 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.TRANSITION__EFFECT :
+				setEffect((Behavior) newValue);
+				return;
+			case UMLPackage.TRANSITION__GUARD :
+				setGuard((Constraint) newValue);
+				return;
 			case UMLPackage.TRANSITION__KIND :
 				setKind((TransitionKind) newValue);
 				return;
-			case UMLPackage.TRANSITION__CONTAINER :
-				setContainer((Region) newValue);
+			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
+				setRedefinedTransition((Transition) newValue);
 				return;
 			case UMLPackage.TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -1264,18 +1287,12 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__TARGET :
 				setTarget((Vertex) newValue);
 				return;
-			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
-				setRedefinedTransition((Transition) newValue);
-				return;
-			case UMLPackage.TRANSITION__GUARD :
-				setGuard((Constraint) newValue);
-				return;
-			case UMLPackage.TRANSITION__EFFECT :
-				setEffect((Behavior) newValue);
-				return;
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
+				return;
+			case UMLPackage.TRANSITION__CONTAINER :
+				setContainer((Region) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -1295,17 +1312,17 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TRANSITION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.TRANSITION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.TRANSITION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.TRANSITION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1319,11 +1336,17 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
+			case UMLPackage.TRANSITION__EFFECT :
+				setEffect((Behavior) null);
+				return;
+			case UMLPackage.TRANSITION__GUARD :
+				setGuard((Constraint) null);
+				return;
 			case UMLPackage.TRANSITION__KIND :
 				setKind(KIND_EDEFAULT);
 				return;
-			case UMLPackage.TRANSITION__CONTAINER :
-				setContainer((Region) null);
+			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
+				setRedefinedTransition((Transition) null);
 				return;
 			case UMLPackage.TRANSITION__SOURCE :
 				setSource((Vertex) null);
@@ -1331,17 +1354,11 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION__TARGET :
 				setTarget((Vertex) null);
 				return;
-			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
-				setRedefinedTransition((Transition) null);
-				return;
-			case UMLPackage.TRANSITION__GUARD :
-				setGuard((Constraint) null);
-				return;
-			case UMLPackage.TRANSITION__EFFECT :
-				setEffect((Behavior) null);
-				return;
 			case UMLPackage.TRANSITION__TRIGGER :
 				getTriggers().clear();
+				return;
+			case UMLPackage.TRANSITION__CONTAINER :
+				setContainer((Region) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -1357,61 +1374,61 @@ public class TransitionImpl
 		switch (featureID) {
 			case UMLPackage.TRANSITION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TRANSITION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TRANSITION__OWNER :
 				return isSetOwner();
-			case UMLPackage.TRANSITION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.TRANSITION__NAME :
 				return isSetName();
-			case UMLPackage.TRANSITION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.TRANSITION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.TRANSITION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.TRANSITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.TRANSITION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.TRANSITION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.TRANSITION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.TRANSITION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.TRANSITION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.TRANSITION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.TRANSITION__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.TRANSITION__MEMBER :
-				return isSetMembers();
-			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.TRANSITION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.TRANSITION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.TRANSITION__MEMBER :
+				return isSetMembers();
 			case UMLPackage.TRANSITION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.TRANSITION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
+			case UMLPackage.TRANSITION__EFFECT :
+				return effect != null;
+			case UMLPackage.TRANSITION__GUARD :
+				return guard != null;
 			case UMLPackage.TRANSITION__KIND :
 				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
-			case UMLPackage.TRANSITION__CONTAINER :
-				return basicGetContainer() != null;
+			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
+				return redefinedTransition != null;
 			case UMLPackage.TRANSITION__SOURCE :
 				return source != null;
 			case UMLPackage.TRANSITION__TARGET :
 				return target != null;
-			case UMLPackage.TRANSITION__REDEFINED_TRANSITION :
-				return redefinedTransition != null;
-			case UMLPackage.TRANSITION__GUARD :
-				return guard != null;
-			case UMLPackage.TRANSITION__EFFECT :
-				return effect != null;
 			case UMLPackage.TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
+			case UMLPackage.TRANSITION__CONTAINER :
+				return basicGetContainer() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1469,10 +1486,12 @@ public class TransitionImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == RedefinableElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.TRANSITION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.REDEFINABLE_ELEMENT___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.REDEFINABLE_ELEMENT___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
 					return UMLPackage.TRANSITION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT;
 				case UMLPackage.REDEFINABLE_ELEMENT___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
@@ -1496,117 +1515,119 @@ public class TransitionImpl
 		switch (operationID) {
 			case UMLPackage.TRANSITION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.TRANSITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.TRANSITION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.TRANSITION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.TRANSITION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.TRANSITION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.TRANSITION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.TRANSITION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.TRANSITION___GET_MODEL :
-				return getModel();
-			case UMLPackage.TRANSITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.TRANSITION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.TRANSITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.TRANSITION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.TRANSITION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.TRANSITION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.TRANSITION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.TRANSITION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TRANSITION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TRANSITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.TRANSITION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_MODEL :
+				return getModel();
+			case UMLPackage.TRANSITION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.TRANSITION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.TRANSITION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TRANSITION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TRANSITION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.TRANSITION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TRANSITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.TRANSITION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.TRANSITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.TRANSITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.TRANSITION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.TRANSITION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.TRANSITION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.TRANSITION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.TRANSITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.TRANSITION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.TRANSITION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.TRANSITION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.TRANSITION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.TRANSITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.TRANSITION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.TRANSITION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.TRANSITION___SEPARATOR :
 				return separator();
-			case UMLPackage.TRANSITION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.TRANSITION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1623,24 +1644,30 @@ public class TransitionImpl
 				return getImportedElements();
 			case UMLPackage.TRANSITION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.TRANSITION___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.TRANSITION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.TRANSITION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.TRANSITION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.TRANSITION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.TRANSITION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.TRANSITION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1648,38 +1675,49 @@ public class TransitionImpl
 			case UMLPackage.TRANSITION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentGuards(
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsExternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
 				return validateJoinSegmentGuards(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentState(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateJoinSegmentState(
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsInternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
 				return validateOutgoingPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
-				return validateInitialTransition(
+			case UMLPackage.TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateJoinSegmentState(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentState(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___VALIDATE_SIGNATURES_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
 				return validateSignaturesCompatible(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.TRANSITION___REDEFINITION_CONTEXT :
-				return redefinitionContext();
+			case UMLPackage.TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
+				return validateInitialTransition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentGuards(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TRANSITION___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
+			case UMLPackage.TRANSITION___REDEFINITION_CONTEXT :
+				return redefinitionContext();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -1719,6 +1757,34 @@ public class TransitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public RedefinableElement getRedefinedElement(String name) {
+		return getRedefinedElement(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RedefinableElement getRedefinedElement(String name,
+			boolean ignoreCase, EClass eClass) {
+		redefinedElementLoop : for (RedefinableElement redefinedElement : getRedefinedElements()) {
+			if (eClass != null && !eClass.isInstance(redefinedElement))
+				continue redefinedElementLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(redefinedElement.getName())
+				: name.equals(redefinedElement.getName())))
+				continue redefinedElementLoop;
+			return redefinedElement;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Namespace basicGetNamespace() {
 		Region container = basicGetContainer();
@@ -1752,7 +1818,8 @@ public class TransitionImpl
 		UMLPackage.TRANSITION__NAME_EXPRESSION,
 		UMLPackage.TRANSITION__ELEMENT_IMPORT,
 		UMLPackage.TRANSITION__PACKAGE_IMPORT,
-		UMLPackage.TRANSITION__OWNED_MEMBER, UMLPackage.TRANSITION__EFFECT};
+		UMLPackage.TRANSITION__OWNED_MEMBER, UMLPackage.TRANSITION__EFFECT,
+		UMLPackage.TRANSITION__TRIGGER};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getOwnedRules() <em>Owned Rule</em>}' containment reference list.
@@ -1781,7 +1848,8 @@ public class TransitionImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.TRANSITION__EFFECT);
+			|| eIsSet(UMLPackage.TRANSITION__EFFECT)
+			|| eIsSet(UMLPackage.TRANSITION__TRIGGER);
 	}
 
 } //TransitionImpl

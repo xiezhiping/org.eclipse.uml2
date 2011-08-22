@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LiteralBooleanImpl.java,v 1.20 2010/09/28 21:02:14 khussey Exp $
  */
@@ -161,30 +162,30 @@ public class LiteralBooleanImpl
 		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LITERAL_BOOLEAN__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				return getName();
-			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.LITERAL_BOOLEAN__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.LITERAL_BOOLEAN__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.LITERAL_BOOLEAN__NAME :
+				return getName();
 			case UMLPackage.LITERAL_BOOLEAN__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.LITERAL_BOOLEAN__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.LITERAL_BOOLEAN__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -222,19 +223,19 @@ public class LiteralBooleanImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.LITERAL_BOOLEAN__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.LITERAL_BOOLEAN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -266,17 +267,17 @@ public class LiteralBooleanImpl
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.LITERAL_BOOLEAN__NAME :
-				unsetName();
-				return;
-			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.LITERAL_BOOLEAN__NAME :
+				unsetName();
+				return;
 			case UMLPackage.LITERAL_BOOLEAN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -304,27 +305,27 @@ public class LiteralBooleanImpl
 		switch (featureID) {
 			case UMLPackage.LITERAL_BOOLEAN__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LITERAL_BOOLEAN__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LITERAL_BOOLEAN__OWNER :
 				return isSetOwner();
-			case UMLPackage.LITERAL_BOOLEAN__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.LITERAL_BOOLEAN__NAME :
 				return isSetName();
-			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.LITERAL_BOOLEAN__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.LITERAL_BOOLEAN__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.LITERAL_BOOLEAN__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.LITERAL_BOOLEAN__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.LITERAL_BOOLEAN__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.LITERAL_BOOLEAN__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.LITERAL_BOOLEAN__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.LITERAL_BOOLEAN__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.LITERAL_BOOLEAN__TEMPLATE_PARAMETER :
@@ -349,133 +350,137 @@ public class LiteralBooleanImpl
 		switch (operationID) {
 			case UMLPackage.LITERAL_BOOLEAN___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LITERAL_BOOLEAN___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.LITERAL_BOOLEAN___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.LITERAL_BOOLEAN___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.LITERAL_BOOLEAN___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.LITERAL_BOOLEAN___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.LITERAL_BOOLEAN___GET_MODEL :
-				return getModel();
-			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.LITERAL_BOOLEAN___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.LITERAL_BOOLEAN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.LITERAL_BOOLEAN___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.LITERAL_BOOLEAN___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.LITERAL_BOOLEAN___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LITERAL_BOOLEAN___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LITERAL_BOOLEAN___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.LITERAL_BOOLEAN___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_MODEL :
+				return getModel();
+			case UMLPackage.LITERAL_BOOLEAN___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.LITERAL_BOOLEAN___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.LITERAL_BOOLEAN___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.LITERAL_BOOLEAN___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LITERAL_BOOLEAN___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.LITERAL_BOOLEAN___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LITERAL_BOOLEAN___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LITERAL_BOOLEAN___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.LITERAL_BOOLEAN___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.LITERAL_BOOLEAN___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.LITERAL_BOOLEAN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.LITERAL_BOOLEAN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LITERAL_BOOLEAN___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.LITERAL_BOOLEAN___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.LITERAL_BOOLEAN___GET_LABEL :
 				return getLabel();
 			case UMLPackage.LITERAL_BOOLEAN___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.LITERAL_BOOLEAN___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.LITERAL_BOOLEAN___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.LITERAL_BOOLEAN___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.LITERAL_BOOLEAN___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.LITERAL_BOOLEAN___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.LITERAL_BOOLEAN___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.LITERAL_BOOLEAN___SEPARATOR :
 				return separator();
-			case UMLPackage.LITERAL_BOOLEAN___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.LITERAL_BOOLEAN___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.LITERAL_BOOLEAN___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.LITERAL_BOOLEAN___IS_COMPUTABLE :
-				return isComputable();
-			case UMLPackage.LITERAL_BOOLEAN___INTEGER_VALUE :
-				return integerValue();
 			case UMLPackage.LITERAL_BOOLEAN___BOOLEAN_VALUE :
 				return booleanValue();
+			case UMLPackage.LITERAL_BOOLEAN___INTEGER_VALUE :
+				return integerValue();
+			case UMLPackage.LITERAL_BOOLEAN___IS_COMPUTABLE :
+				return isComputable();
+			case UMLPackage.LITERAL_BOOLEAN___IS_NULL :
+				return isNull();
+			case UMLPackage.LITERAL_BOOLEAN___REAL_VALUE :
+				return realValue();
 			case UMLPackage.LITERAL_BOOLEAN___STRING_VALUE :
 				return stringValue();
 			case UMLPackage.LITERAL_BOOLEAN___UNLIMITED_VALUE :
 				return unlimitedValue();
-			case UMLPackage.LITERAL_BOOLEAN___IS_NULL :
-				return isNull();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

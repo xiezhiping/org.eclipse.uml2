@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Enumeration.java,v 1.11 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -61,6 +62,17 @@ public interface Enumeration
 	EList<EnumerationLiteral> getOwnedLiterals();
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.EnumerationLiteral}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Literal</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.EnumerationLiteral}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.EnumerationLiteral}.
+	 * @see #getOwnedLiterals()
+	 * @generated
+	 */
+	EnumerationLiteral createOwnedLiteral(String name);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.EnumerationLiteral} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Literal</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,16 +96,5 @@ public interface Enumeration
 	 */
 	EnumerationLiteral getOwnedLiteral(String name, boolean ignoreCase,
 			boolean createOnDemand);
-
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.EnumerationLiteral}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Literal</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.EnumerationLiteral}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.EnumerationLiteral}.
-	 * @see #getOwnedLiterals()
-	 * @generated
-	 */
-	EnumerationLiteral createOwnedLiteral(String name);
 
 } // Enumeration

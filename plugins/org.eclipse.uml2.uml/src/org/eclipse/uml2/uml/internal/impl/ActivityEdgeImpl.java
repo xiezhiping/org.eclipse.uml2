@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityEdgeImpl.java,v 1.29 2010/09/28 21:02:13 khussey Exp $
  */
@@ -69,18 +70,18 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwnedElements <em>Owned Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInGroups <em>In Group</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedElements <em>Redefined Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInterrupts <em>Interrupts</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getRedefinedEdges <em>Redefined Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInPartitions <em>In Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getWeight <em>Weight</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInterrupts <em>Interrupts</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityEdgeImpl#getActivity <em>Activity</em>}</li>
  * </ul>
  * </p>
@@ -90,6 +91,46 @@ import org.eclipse.uml2.uml.internal.operations.ActivityEdgeOperations;
 public abstract class ActivityEdgeImpl
 		extends RedefinableElementImpl
 		implements ActivityEdge {
+
+	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification guard;
+
+	/**
+	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInPartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityPartition> inPartitions;
+
+	/**
+	 * The cached value of the '{@link #getInterrupts() <em>Interrupts</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInterrupts()
+	 * @generated
+	 * @ordered
+	 */
+	protected InterruptibleActivityRegion interrupts;
+
+	/**
+	 * The cached value of the '{@link #getRedefinedEdges() <em>Redefined Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityEdge> redefinedEdges;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -112,36 +153,6 @@ public abstract class ActivityEdgeImpl
 	protected ActivityNode target;
 
 	/**
-	 * The cached value of the '{@link #getRedefinedEdges() <em>Redefined Edge</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedEdges()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityEdge> redefinedEdges;
-
-	/**
-	 * The cached value of the '{@link #getInPartitions() <em>In Partition</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInPartitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityPartition> inPartitions;
-
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification guard;
-
-	/**
 	 * The cached value of the '{@link #getWeight() <em>Weight</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,16 +161,6 @@ public abstract class ActivityEdgeImpl
 	 * @ordered
 	 */
 	protected ValueSpecification weight;
-
-	/**
-	 * The cached value of the '{@link #getInterrupts() <em>Interrupts</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInterrupts()
-	 * @generated
-	 * @ordered
-	 */
-	protected InterruptibleActivityRegion interrupts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -931,6 +932,23 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetInStructuredNode(
+					(StructuredActivityNode) otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				if (interrupts != null)
+					msgs = ((InternalEObject) interrupts)
+						.eInverseRemove(
+							this,
+							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
+							InterruptibleActivityRegion.class, msgs);
+				return basicSetInterrupts(
+					(InterruptibleActivityRegion) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				if (source != null)
 					msgs = ((InternalEObject) source).eInverseRemove(this,
@@ -943,23 +961,6 @@ public abstract class ActivityEdgeImpl
 						UMLPackage.ACTIVITY_NODE__INCOMING, ActivityNode.class,
 						msgs);
 				return basicSetTarget((ActivityNode) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				if (interrupts != null)
-					msgs = ((InternalEObject) interrupts)
-						.eInverseRemove(
-							this,
-							UMLPackage.INTERRUPTIBLE_ACTIVITY_REGION__INTERRUPTING_EDGE,
-							InterruptibleActivityRegion.class, msgs);
-				return basicSetInterrupts(
-					(InterruptibleActivityRegion) otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetInStructuredNode(
-					(StructuredActivityNode) otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -988,21 +989,21 @@ public abstract class ActivityEdgeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__GUARD :
+				return basicSetGuard(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				return basicSetInterrupts(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				return basicSetSource(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return basicSetTarget(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				return basicSetGuard(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return basicSetWeight(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				return basicSetInterrupts(null, msgs);
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				return basicSetActivity(null, msgs);
 		}
@@ -1039,36 +1040,54 @@ public abstract class ActivityEdgeImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ACTIVITY_EDGE__NAME :
-				return getName();
-			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ACTIVITY_EDGE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ACTIVITY_EDGE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ACTIVITY_EDGE__NAME :
+				return getName();
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ACTIVITY_EDGE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ACTIVITY_EDGE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
+			case UMLPackage.ACTIVITY_EDGE__GUARD :
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				if (resolve)
+					return getInterrupts();
+				return basicGetInterrupts();
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				return getRedefinedEdges();
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				if (resolve)
 					return getSource();
@@ -1077,28 +1096,10 @@ public abstract class ActivityEdgeImpl
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				return getRedefinedEdges();
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				if (resolve)
-					return getGuard();
-				return basicGetGuard();
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				if (resolve)
 					return getWeight();
 				return basicGetWeight();
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				if (resolve)
-					return getInterrupts();
-				return basicGetInterrupts();
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				if (resolve)
 					return getActivity();
@@ -1126,22 +1127,41 @@ public abstract class ActivityEdgeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__GUARD :
+				setGuard((ValueSpecification) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				setInterrupts((InterruptibleActivityRegion) newValue);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				getRedefinedEdges().clear();
+				getRedefinedEdges().addAll(
+					(Collection<? extends ActivityEdge>) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				setSource((ActivityNode) newValue);
@@ -1149,27 +1169,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				setTarget((ActivityNode) newValue);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				getRedefinedEdges().clear();
-				getRedefinedEdges().addAll(
-					(Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				setGuard((ValueSpecification) newValue);
-				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				setInterrupts((InterruptibleActivityRegion) newValue);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				setActivity((Activity) newValue);
@@ -1192,20 +1193,35 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_EDGE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.ACTIVITY_EDGE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__GUARD :
+				setGuard((ValueSpecification) null);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				getInPartitions().clear();
+				return;
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				setInStructuredNode((StructuredActivityNode) null);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				setInterrupts((InterruptibleActivityRegion) null);
+				return;
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				getRedefinedEdges().clear();
 				return;
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				setSource((ActivityNode) null);
@@ -1213,23 +1229,8 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				setTarget((ActivityNode) null);
 				return;
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				getRedefinedEdges().clear();
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				setGuard((ValueSpecification) null);
-				return;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				setWeight((ValueSpecification) null);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				setInterrupts((InterruptibleActivityRegion) null);
-				return;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				setInStructuredNode((StructuredActivityNode) null);
 				return;
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				setActivity((Activity) null);
@@ -1248,51 +1249,51 @@ public abstract class ActivityEdgeImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_EDGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE__OWNER :
 				return isSetOwner();
-			case UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__NAME :
 				return isSetName();
-			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ACTIVITY_EDGE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ACTIVITY_EDGE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ACTIVITY_EDGE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ACTIVITY_EDGE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.ACTIVITY_EDGE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.ACTIVITY_EDGE__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.ACTIVITY_EDGE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
+			case UMLPackage.ACTIVITY_EDGE__GUARD :
+				return guard != null;
+			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
+				return interrupts != null;
+			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
+				return redefinedEdges != null && !redefinedEdges.isEmpty();
 			case UMLPackage.ACTIVITY_EDGE__SOURCE :
 				return source != null;
 			case UMLPackage.ACTIVITY_EDGE__TARGET :
 				return target != null;
-			case UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE :
-				return redefinedEdges != null && !redefinedEdges.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.ACTIVITY_EDGE__GUARD :
-				return guard != null;
 			case UMLPackage.ACTIVITY_EDGE__WEIGHT :
 				return weight != null;
-			case UMLPackage.ACTIVITY_EDGE__INTERRUPTS :
-				return interrupts != null;
-			case UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
-			case UMLPackage.ACTIVITY_EDGE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.ACTIVITY_EDGE__ACTIVITY :
 				return basicGetActivity() != null;
 		}
@@ -1311,123 +1312,129 @@ public abstract class ActivityEdgeImpl
 		switch (operationID) {
 			case UMLPackage.ACTIVITY_EDGE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.ACTIVITY_EDGE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.ACTIVITY_EDGE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.ACTIVITY_EDGE___GET_MODEL :
-				return getModel();
-			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_EDGE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.ACTIVITY_EDGE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.ACTIVITY_EDGE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.ACTIVITY_EDGE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_MODEL :
+				return getModel();
+			case UMLPackage.ACTIVITY_EDGE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.ACTIVITY_EDGE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.ACTIVITY_EDGE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.ACTIVITY_EDGE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_EDGE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.ACTIVITY_EDGE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_EDGE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ACTIVITY_EDGE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_EDGE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_EDGE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_EDGE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.ACTIVITY_EDGE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.ACTIVITY_EDGE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY_EDGE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.ACTIVITY_EDGE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.ACTIVITY_EDGE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.ACTIVITY_EDGE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.ACTIVITY_EDGE___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY_EDGE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1435,12 +1442,12 @@ public abstract class ActivityEdgeImpl
 			case UMLPackage.ACTIVITY_EDGE___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
+			case UMLPackage.ACTIVITY_EDGE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
+				return validateOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_SOURCE_AND_TARGET__DIAGNOSTICCHAIN_MAP :
 				return validateSourceAndTarget(
 					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_EDGE___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
-				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_EDGE___VALIDATE_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
 				return validateStructuredNode(
@@ -1451,22 +1458,16 @@ public abstract class ActivityEdgeImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Element basicGetOwner() {
+		StructuredActivityNode inStructuredNode = basicGetInStructuredNode();
+		if (inStructuredNode != null) {
+			return inStructuredNode;
+		}
 		Activity activity = basicGetActivity();
 		if (activity != null) {
 			return activity;
@@ -1481,7 +1482,9 @@ public abstract class ActivityEdgeImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner() || eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY);
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE)
+			|| eIsSet(UMLPackage.ACTIVITY_EDGE__ACTIVITY);
 	}
 
 	/**
@@ -1506,6 +1509,19 @@ public abstract class ActivityEdgeImpl
 	}
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT,
+		UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION,
+		UMLPackage.ACTIVITY_EDGE__GUARD, UMLPackage.ACTIVITY_EDGE__WEIGHT};
+
+	/**
 	 * The array of subset feature identifiers for the '{@link #getInGroups() <em>In Group</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1518,17 +1534,42 @@ public abstract class ActivityEdgeImpl
 		UMLPackage.ACTIVITY_EDGE__IN_STRUCTURED_NODE};
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
+	 * @generated
+	 */
+	public ActivityGroup getInGroup(String name) {
+		return getInGroup(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getInGroup(String name, boolean ignoreCase,
+			EClass eClass) {
+		inGroupLoop : for (ActivityGroup inGroup : getInGroups()) {
+			if (eClass != null && !eClass.isInstance(inGroup))
+				continue inGroupLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(inGroup.getName())
+				: name.equals(inGroup.getName())))
+				continue inGroupLoop;
+			return inGroup;
+		}
+		return null;
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
-		UMLPackage.ACTIVITY_EDGE__OWNED_COMMENT,
-		UMLPackage.ACTIVITY_EDGE__NAME_EXPRESSION,
-		UMLPackage.ACTIVITY_EDGE__GUARD, UMLPackage.ACTIVITY_EDGE__WEIGHT};
+	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{UMLPackage.ACTIVITY_EDGE__REDEFINED_EDGE};
 
 	/**
 	 * <!-- begin-user-doc -->

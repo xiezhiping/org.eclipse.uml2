@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: State.java,v 1.19 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -33,19 +34,19 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.State#getConnections <em>Connection</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getConnectionPoints <em>Connection Point</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getDeferrableTriggers <em>Deferrable Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getDoActivity <em>Do Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getExit <em>Exit</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isComposite <em>Is Composite</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isOrthogonal <em>Is Orthogonal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isSimple <em>Is Simple</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#isSubmachineState <em>Is Submachine State</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getSubmachine <em>Submachine</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getConnections <em>Connection</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getConnectionPoints <em>Connection Point</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#getRedefinedState <em>Redefined State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#getStateInvariant <em>State Invariant</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getEntry <em>Entry</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getExit <em>Exit</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getDoActivity <em>Do Activity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.State#getDeferrableTriggers <em>Deferrable Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.State#getSubmachine <em>Submachine</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.State#getRegions <em>Region</em>}</li>
  * </ul>
  * </p>
@@ -67,7 +68,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Composite</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsComposite()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isComposite();
@@ -82,7 +83,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Orthogonal</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsOrthogonal()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrthogonal();
@@ -97,7 +98,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Simple</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSimple()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSimple();
@@ -112,7 +113,7 @@ public interface State
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Submachine State</em>' attribute.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_IsSubmachineState()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isSubmachineState();
@@ -210,7 +211,7 @@ public interface State
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -294,39 +295,38 @@ public interface State
 	void setRedefinedState(State value);
 
 	/**
-	 * Returns the value of the '<em><b>State Invariant</b></em>' containment reference.
+	 * Returns the value of the '<em><b>State Invariant</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Namespace#getOwnedRules() <em>Owned Rule</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
-	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>State Invariant</em>' containment reference.
+	 * @return the value of the '<em>State Invariant</em>' reference.
 	 * @see #setStateInvariant(Constraint)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_StateInvariant()
-	 * @model containment="true" resolveProxies="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	Constraint getStateInvariant();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.State#getStateInvariant <em>State Invariant</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.State#getStateInvariant <em>State Invariant</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>State Invariant</em>' containment reference.
+	 * @param value the new value of the '<em>State Invariant</em>' reference.
 	 * @see #getStateInvariant()
 	 * @generated
 	 */
 	void setStateInvariant(Constraint value);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint}, with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -338,7 +338,7 @@ public interface State
 	Constraint createStateInvariant(String name, EClass eClass);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' containment reference.
+	 * Creates a new {@link org.eclipse.uml2.uml.Constraint},with the specified '<em><b>Name</b></em>', and sets the '<em><b>State Invariant</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Constraint}, or <code>null</code>.
@@ -360,7 +360,6 @@ public interface State
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Entry</em>' containment reference.
 	 * @see #setEntry(Behavior)
@@ -481,11 +480,16 @@ public interface State
 	/**
 	 * Returns the value of the '<em><b>Deferrable Trigger</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Trigger}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Deferrable Trigger</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getState_DeferrableTrigger()
@@ -695,7 +699,7 @@ public interface State
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(State redefined);

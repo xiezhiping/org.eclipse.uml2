@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 296008, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: BehaviorItemProvider.java,v 1.18 2010/09/28 21:00:19 khussey Exp $
  */
@@ -77,11 +78,13 @@ public class BehaviorItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsReentrantPropertyDescriptor(object);
-			addRedefinedBehaviorPropertyDescriptor(object);
-			addOwnedParameterPropertyDescriptor(object);
 			addContextPropertyDescriptor(object);
+			addIsReentrantPropertyDescriptor(object);
+			addOwnedParameterPropertyDescriptor(object);
 			addOwnedParameterSetPropertyDescriptor(object);
+			addPostconditionPropertyDescriptor(object);
+			addPreconditionPropertyDescriptor(object);
+			addRedefinedBehaviorPropertyDescriptor(object);
 			addSpecificationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -107,25 +110,6 @@ public class BehaviorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Redefined Behavior feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRedefinedBehaviorPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Behavior_redefinedBehavior_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Behavior_redefinedBehavior_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR, true, false,
-				true, null, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Owned Parameter feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -147,27 +131,6 @@ public class BehaviorItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Context feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.BEHAVIOR__CONTEXT, false, false, false,
-				null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
 	 * This adds a property descriptor for the Owned Parameter Set feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,6 +147,88 @@ public class BehaviorItemProvider
 					"_UI_PropertyDescriptor_description", "_UI_Behavior_ownedParameterSet_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET, true, false,
 				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Postcondition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPostconditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Behavior_postcondition_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Behavior_postcondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.BEHAVIOR__POSTCONDITION, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Precondition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPreconditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Behavior_precondition_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Behavior_precondition_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.BEHAVIOR__PRECONDITION, true, false, true,
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Redefined Behavior feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRedefinedBehaviorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Behavior_redefinedBehavior_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Behavior_redefinedBehavior_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR, true, false,
+				true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Context feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContextPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Behavior_context_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Behavior_context_feature", "_UI_Behavior_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.BEHAVIOR__CONTEXT, false, false, false,
+				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -277,8 +322,8 @@ public class BehaviorItemProvider
 
 		switch (notification.getFeatureID(Behavior.class)) {
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-			case UMLPackage.BEHAVIOR__PRECONDITION :
 			case UMLPackage.BEHAVIOR__POSTCONDITION :
+			case UMLPackage.BEHAVIOR__PRECONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -308,48 +353,48 @@ public class BehaviorItemProvider
 			UMLFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-			UMLFactory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
-			UMLFactory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.BEHAVIOR__OWNED_PARAMETER_SET,
 			UMLFactory.eINSTANCE.createParameterSet()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.BEHAVIOR__PRECONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 	}
 
 	/**
@@ -365,16 +410,16 @@ public class BehaviorItemProvider
 		Object childObject = child;
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.BEHAVIOR__PRECONDITION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
 			|| childFeature == UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE
 			|| childFeature == UMLPackage.Literals.CLASS__NESTED_CLASSIFIER
 			|| childFeature == UMLPackage.Literals.STRUCTURED_CLASSIFIER__OWNED_ATTRIBUTE
 			|| childFeature == UMLPackage.Literals.ENCAPSULATED_CLASSIFIER__OWNED_PORT
-			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
-			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -393,6 +438,14 @@ public class BehaviorItemProvider
 	@Override
 	protected Command createAddCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection, int index) {
+		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
+			return new SubsetAddCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				collection, index);
+		}
 		if (feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
 			return new SubsetAddCommand(
 				domain,
@@ -401,12 +454,12 @@ public class BehaviorItemProvider
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
 				collection, index);
 		}
-		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
+		if (feature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
 			return new SubsetAddCommand(
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
 				collection, index);
 		}
 		return super
@@ -425,8 +478,16 @@ public class BehaviorItemProvider
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SupersetRemoveCommand(domain, owner, feature,
 				new EStructuralFeature[]{
-					UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-					UMLPackage.Literals.BEHAVIOR__POSTCONDITION}, collection);
+					UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+					UMLPackage.Literals.BEHAVIOR__PRECONDITION}, collection);
+		}
+		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR},
+				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
 	}
@@ -440,14 +501,6 @@ public class BehaviorItemProvider
 	@Override
 	protected Command createReplaceCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, EObject value, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
-				null, value, collection);
-		}
 		if (feature == UMLPackage.Literals.BEHAVIOR__POSTCONDITION) {
 			return new SubsetSupersetReplaceCommand(
 				domain,
@@ -456,12 +509,37 @@ public class BehaviorItemProvider
 				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
 				null, value, collection);
 		}
+		if (feature == UMLPackage.Literals.BEHAVIOR__PRECONDITION) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.NAMESPACE__OWNED_RULE},
+				null, value, collection);
+		}
+		if (feature == UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER},
+				null, value, collection);
+		}
 		if (feature == UMLPackage.Literals.NAMESPACE__OWNED_RULE) {
 			return new SubsetSupersetReplaceCommand(domain, owner, feature,
 				null, new EStructuralFeature[]{
-					UMLPackage.Literals.BEHAVIOR__PRECONDITION,
-					UMLPackage.Literals.BEHAVIOR__POSTCONDITION}, value,
+					UMLPackage.Literals.BEHAVIOR__POSTCONDITION,
+					UMLPackage.Literals.BEHAVIOR__PRECONDITION}, value,
 				collection);
+		}
+		if (feature == UMLPackage.Literals.CLASSIFIER__REDEFINED_CLASSIFIER) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.BEHAVIOR__REDEFINED_BEHAVIOR},
+				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
 			collection);

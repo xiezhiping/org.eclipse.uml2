@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LinkEndCreationData.java,v 1.7 2007/04/25 17:47:04 khussey Exp $
  */
@@ -28,8 +29,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndCreationData#isReplaceAll <em>Is Replace All</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndCreationData#getInsertAt <em>Insert At</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndCreationData#isReplaceAll <em>Is Replace All</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,7 +52,7 @@ public interface LinkEndCreationData
 	 * @return the value of the '<em>Is Replace All</em>' attribute.
 	 * @see #setIsReplaceAll(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLinkEndCreationData_IsReplaceAll()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isReplaceAll();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Transition.java,v 1.23 2008/10/02 20:56:23 jbruck Exp $
  */
@@ -32,14 +33,14 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getEffect <em>Effect</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getKind <em>Kind</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getRedefinedTransition <em>Redefined Transition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getRedefinedTransition <em>Redefined Transition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getGuard <em>Guard</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Transition#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Transition#getTriggers <em>Trigger</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Transition#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,7 +58,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates  the precise type of the transition.
+	 * Indicates the precise type of the transition.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.TransitionKind
@@ -111,6 +112,22 @@ public interface Transition
 	 * @generated
 	 */
 	void setContainer(Region value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A transition with kind external can source any vertex except entry points.
+	 * (kind = TransitionKind::external) implies
+	 * 	not (source.oclIsKindOf(Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateStateIsExternal(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
@@ -268,6 +285,12 @@ public interface Transition
 	/**
 	 * Returns the value of the '<em><b>Trigger</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.Trigger}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -374,6 +397,22 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * A transition with kind internal must have a state as its source, and its source and target must be equal.
+	 * (kind = TransitionKind::internal) implies
+	 * 		(source.oclIsKindOf (State) and source = target)
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateStateIsInternal(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * A fork segment must always target a state.
 	 * (source.oclIsKindOf(Pseudostate) and source.kind = #fork) implies (target.oclIsKindOf(State))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -419,7 +458,7 @@ public interface Transition
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype <<create>>.
+	 * An initial transition at the topmost level (region of a statemachine) either has no trigger or it has a trigger with the stereotype >.
 	 * self.source.oclIsKindOf(Pseudostate) implies
 	 * (self.source.oclAsType(Pseudostate).kind = #initial) implies
 	 * (self.source.container = self.stateMachine.top) implies
@@ -440,7 +479,6 @@ public interface Transition
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * In case of more than one trigger, the signatures of these must be compatible in case the parameters of the signal are assigned to local variables/attributes.
-	 * 
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -449,6 +487,23 @@ public interface Transition
 	 * @generated
 	 */
 	boolean validateSignaturesCompatible(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A transition with kind local must have a composite state or an entry point as its source.
+	 * (kind = TransitionKind::local) implies
+	 * 		((source.oclIsKindOf (State) and source.oclAsType(State).isComposite) or
+	 * 		(source.oclIsKindOf (Pseudostate) and source.oclAsType(Pseudostate).kind = PseudostateKind::entryPoint))
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateStateIsLocal(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**

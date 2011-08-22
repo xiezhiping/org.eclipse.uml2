@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TimeEvent.java,v 1.13 2008/10/02 20:56:23 jbruck Exp $
  */
@@ -22,8 +23,8 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A time event specifies a point in time. At the specified time, the event occurs.
  * A time event can be defined relative to entering the current state of the executing state machine.
+ * A time event specifies a point in time. At the specified time, the event occurs.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -52,7 +53,7 @@ public interface TimeEvent
 	 * @return the value of the '<em>Is Relative</em>' attribute.
 	 * @see #setIsRelative(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getTimeEvent_IsRelative()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isRelative();

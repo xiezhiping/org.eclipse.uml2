@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OpaqueExpressionImpl.java,v 1.24 2010/09/28 21:02:14 khussey Exp $
  */
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
@@ -58,10 +58,10 @@ import org.eclipse.uml2.uml.internal.operations.OpaqueExpressionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueExpressionImpl#getBehavior <em>Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueExpressionImpl#getBodies <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueExpressionImpl#getLanguages <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueExpressionImpl#getResult <em>Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.OpaqueExpressionImpl#getBehavior <em>Behavior</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +70,16 @@ import org.eclipse.uml2.uml.internal.operations.OpaqueExpressionOperations;
 public class OpaqueExpressionImpl
 		extends ValueSpecificationImpl
 		implements OpaqueExpression {
+
+	/**
+	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
+	 * @generated
+	 * @ordered
+	 */
+	protected Behavior behavior;
 
 	/**
 	 * The cached value of the '{@link #getBodies() <em>Body</em>}' attribute list.
@@ -90,16 +100,6 @@ public class OpaqueExpressionImpl
 	 * @ordered
 	 */
 	protected EList<String> languages;
-
-	/**
-	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBehavior()
-	 * @generated
-	 * @ordered
-	 */
-	protected Behavior behavior;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -336,30 +336,30 @@ public class OpaqueExpressionImpl
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				return getName();
-			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.OPAQUE_EXPRESSION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.OPAQUE_EXPRESSION__NAME :
+				return getName();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.OPAQUE_EXPRESSION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -372,6 +372,10 @@ public class OpaqueExpressionImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
+			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
+				if (resolve)
+					return getBehavior();
+				return basicGetBehavior();
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				return getBodies();
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
@@ -380,10 +384,6 @@ public class OpaqueExpressionImpl
 				if (resolve)
 					return getResult();
 				return basicGetResult();
-			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
-				if (resolve)
-					return getBehavior();
-				return basicGetBehavior();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -407,19 +407,19 @@ public class OpaqueExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.OPAQUE_EXPRESSION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -430,6 +430,9 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				setType((Type) newValue);
 				return;
+			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
+				setBehavior((Behavior) newValue);
+				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				getBodies().clear();
 				getBodies().addAll((Collection<? extends String>) newValue);
@@ -437,9 +440,6 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				getLanguages().clear();
 				getLanguages().addAll((Collection<? extends String>) newValue);
-				return;
-			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
-				setBehavior((Behavior) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -459,17 +459,17 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.OPAQUE_EXPRESSION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.OPAQUE_EXPRESSION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -480,14 +480,14 @@ public class OpaqueExpressionImpl
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				setType((Type) null);
 				return;
+			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
+				setBehavior((Behavior) null);
+				return;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				unsetBodies();
 				return;
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				unsetLanguages();
-				return;
-			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
-				setBehavior((Behavior) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -503,41 +503,41 @@ public class OpaqueExpressionImpl
 		switch (featureID) {
 			case UMLPackage.OPAQUE_EXPRESSION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNER :
 				return isSetOwner();
-			case UMLPackage.OPAQUE_EXPRESSION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.OPAQUE_EXPRESSION__NAME :
 				return isSetName();
-			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.OPAQUE_EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.OPAQUE_EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.OPAQUE_EXPRESSION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.OPAQUE_EXPRESSION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.OPAQUE_EXPRESSION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.OPAQUE_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TEMPLATE_PARAMETER :
 				return templateParameter != null;
 			case UMLPackage.OPAQUE_EXPRESSION__TYPE :
 				return type != null;
+			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
+				return behavior != null;
 			case UMLPackage.OPAQUE_EXPRESSION__BODY :
 				return isSetBodies();
 			case UMLPackage.OPAQUE_EXPRESSION__LANGUAGE :
 				return isSetLanguages();
 			case UMLPackage.OPAQUE_EXPRESSION__RESULT :
 				return basicGetResult() != null;
-			case UMLPackage.OPAQUE_EXPRESSION__BEHAVIOR :
-				return behavior != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -554,155 +554,159 @@ public class OpaqueExpressionImpl
 		switch (operationID) {
 			case UMLPackage.OPAQUE_EXPRESSION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.OPAQUE_EXPRESSION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.OPAQUE_EXPRESSION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.OPAQUE_EXPRESSION___GET_MODEL :
-				return getModel();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.OPAQUE_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.OPAQUE_EXPRESSION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.OPAQUE_EXPRESSION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_MODEL :
+				return getModel();
+			case UMLPackage.OPAQUE_EXPRESSION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.OPAQUE_EXPRESSION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.OPAQUE_EXPRESSION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.OPAQUE_EXPRESSION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.OPAQUE_EXPRESSION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.OPAQUE_EXPRESSION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.OPAQUE_EXPRESSION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.OPAQUE_EXPRESSION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.OPAQUE_EXPRESSION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.OPAQUE_EXPRESSION___SEPARATOR :
 				return separator();
-			case UMLPackage.OPAQUE_EXPRESSION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.OPAQUE_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.OPAQUE_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_COMPUTABLE :
-				return isComputable();
-			case UMLPackage.OPAQUE_EXPRESSION___INTEGER_VALUE :
-				return integerValue();
 			case UMLPackage.OPAQUE_EXPRESSION___BOOLEAN_VALUE :
 				return booleanValue();
+			case UMLPackage.OPAQUE_EXPRESSION___INTEGER_VALUE :
+				return integerValue();
+			case UMLPackage.OPAQUE_EXPRESSION___IS_COMPUTABLE :
+				return isComputable();
+			case UMLPackage.OPAQUE_EXPRESSION___IS_NULL :
+				return isNull();
+			case UMLPackage.OPAQUE_EXPRESSION___REAL_VALUE :
+				return realValue();
 			case UMLPackage.OPAQUE_EXPRESSION___STRING_VALUE :
 				return stringValue();
 			case UMLPackage.OPAQUE_EXPRESSION___UNLIMITED_VALUE :
 				return unlimitedValue();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_NULL :
-				return isNull();
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_LANGUAGE_BODY_SIZE__DIAGNOSTICCHAIN_MAP :
 				return validateLanguageBodySize(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
-				return validateOnlyReturnResultParameters(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONE_RETURN_RESULT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateOneReturnResultParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___VALIDATE_ONLY_RETURN_RESULT_PARAMETERS__DIAGNOSTICCHAIN_MAP :
+				return validateOnlyReturnResultParameters(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.OPAQUE_EXPRESSION___IS_INTEGRAL :
+				return isIntegral();
+			case UMLPackage.OPAQUE_EXPRESSION___IS_NON_NEGATIVE :
+				return isNonNegative();
+			case UMLPackage.OPAQUE_EXPRESSION___IS_POSITIVE :
+				return isPositive();
 			case UMLPackage.OPAQUE_EXPRESSION___GET_RESULT :
 				return getResult();
 			case UMLPackage.OPAQUE_EXPRESSION___VALUE :
 				return value();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_INTEGRAL :
-				return isIntegral();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_POSITIVE :
-				return isPositive();
-			case UMLPackage.OPAQUE_EXPRESSION___IS_NON_NEGATIVE :
-				return isNonNegative();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

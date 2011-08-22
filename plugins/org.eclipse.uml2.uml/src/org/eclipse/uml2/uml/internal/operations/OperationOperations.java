@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OperationOperations.java,v 1.14 2007/05/03 21:11:52 khussey Exp $
  */
@@ -41,20 +42,18 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Operation#validateAtMostOneReturn(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate At Most One Return</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#validateOnlyBodyForQuery(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Only Body For Query</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getLower() <em>Get Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper() <em>Get Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getReturnResult() <em>Get Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setIsOrdered(boolean) <em>Set Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setIsUnique(boolean) <em>Set Is Unique</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setLower(int) <em>Set Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setType(org.eclipse.uml2.uml.Type) <em>Set Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#setUpper(int) <em>Set Upper</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getReturnResult() <em>Get Return Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isOrdered() <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isUnique() <em>Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#lowerBound() <em>Lower Bound</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#upperBound() <em>Upper Bound</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Operation#getType() <em>Get Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getLower() <em>Get Lower</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#returnResult() <em>Return Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getType() <em>Get Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Operation#getUpper() <em>Get Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Operation#isConsistentWith(org.eclipse.uml2.uml.RedefinableElement) <em>Is Consistent With</em>}</li>
  * </ul>
  * </p>
@@ -179,40 +178,6 @@ public class OperationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If this operation has a return parameter, lower equals the value of lower for that parameter. Otherwise lower is not defined.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().lower else Set{} endif
-	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static int lowerBound(Operation operation) {
-		Parameter returnResult = operation.getReturnResult();
-		return returnResult != null
-			? returnResult.lowerBound()
-			: 1;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If this operation has a return parameter, upper equals the value of upper for that parameter. Otherwise upper is not defined.
-	 * result = if returnResult()->notEmpty() then returnResult()->any().upper else Set{} endif
-	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
-	 * <!-- end-model-doc -->
-	 * @generated NOT
-	 */
-	public static int upperBound(Operation operation) {
-		Parameter returnResult = operation.getReturnResult();
-		return returnResult != null
-			? returnResult.upperBound()
-			: 1;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * If this operation has a return parameter, type equals the value of type for that parameter. Otherwise type is not defined.
 	 * result = if returnResult()->notEmpty() then returnResult()->any().type else Set{} endif
 	 * @param operation The receiving '<em><b>Operation</b></em>' model object.
@@ -256,7 +221,10 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static int getLower(Operation operation) {
-		return operation.lowerBound();
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.getLower()
+			: 1;
 	}
 
 	/**
@@ -265,7 +233,10 @@ public class OperationOperations
 	 * @generated NOT
 	 */
 	public static int getUpper(Operation operation) {
-		return operation.upperBound();
+		Parameter returnResult = operation.getReturnResult();
+		return returnResult != null
+			? returnResult.getUpper()
+			: 1;
 	}
 
 	/**

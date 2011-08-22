@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,9 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
- *   Kenn Hussey - 286329, 313601, 314971, 344907
+ *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184
+ *   Kenn Hussey (CEA) - 327039
+ *   Yann Tanguy (CEA) - 350402
  *
  * $Id: UMLUtil.java,v 1.89 2011/05/06 01:42:10 khussey Exp $
  */
@@ -69,6 +71,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.types.TypesFactory;
+import org.eclipse.uml2.types.TypesPackage;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -411,6 +415,20 @@ public class UMLUtil
 		 */
 		public static final String OPTION__CAPABILITIES = "CAPABILITIES"; //$NON-NLS-1$
 
+		/**
+		 * The option for handling cases where a classifier with an empty
+		 * qualified name is detected. Supported choices are
+		 * <code>OPTION__IGNORE</code> and <code>OPTION__REPORT</code>.
+		 */
+		public static final String OPTION__EMPTY_QUALIFIED_NAMES = "EMPTY_QUALIFIED_NAMES"; //$NON-NLS-1$
+
+		/**
+		 * The option for handling cases where an indistinguishable classifier
+		 * is detected. Supported choices are <code>OPTION__IGNORE</code> and
+		 * <code>OPTION__REPORT</code>.
+		 */
+		public static final String OPTION__INDISTINGUISHABLE_CLASSIFIERS = "INDISTINGUISHABLE_CLASSIFIERS"; //$NON-NLS-1$
+
 		private static final int DIAGNOSTIC_CODE_OFFSET = 1000;
 
 		/**
@@ -464,6 +482,18 @@ public class UMLUtil
 		 * missing.
 		 */
 		public static final int CAPABILITY = DIAGNOSTIC_CODE_OFFSET + 9;
+
+		/**
+		 * The diagnostic code for cases where the qualified named of a
+		 * classifier in a receiving or merged package is empty.
+		 */
+		public static final int EMPTY_QUALIFIED_NAME = DIAGNOSTIC_CODE_OFFSET + 10;
+
+		/**
+		 * The diagnostic code for cases where a classifier in a receiving or
+		 * merged package is indistinguishable.
+		 */
+		public static final int INDISTINGUISHABLE_CLASSIFIER = DIAGNOSTIC_CODE_OFFSET + 11;
 
 		protected org.eclipse.uml2.uml.Package receivingPackage = null;
 
@@ -616,6 +646,13 @@ public class UMLUtil
 				&& mergedClassifier.isAbstract());
 		}
 
+		protected void mergeClassifier_IsFinalSpecialization(
+				Classifier receivingClassifier, Classifier mergedClassifier) {
+			receivingClassifier.setIsFinalSpecialization(receivingClassifier
+				.isFinalSpecialization()
+				&& mergedClassifier.isFinalSpecialization());
+		}
+
 		protected void mergeLiteralInteger_Value(
 				LiteralInteger receivingLiteralInteger,
 				LiteralInteger mergedLiteralInteger) {
@@ -676,6 +713,13 @@ public class UMLUtil
 				|| mergedProperty.isDerivedUnion());
 		}
 
+		protected void mergeRedefinableElement_IsLeaf(
+				RedefinableElement receivingRedefinableElement,
+				RedefinableElement mergedRedefinableElement) {
+			receivingRedefinableElement.setIsLeaf(receivingRedefinableElement
+				.isLeaf() && mergedRedefinableElement.isLeaf());
+		}
+
 		protected void mergeStructuralFeature_IsReadOnly(
 				StructuralFeature receivingStructuralFeature,
 				StructuralFeature mergedStructuralFeature) {
@@ -700,6 +744,9 @@ public class UMLUtil
 					} else if (eAttribute == UMLPackage.Literals.CLASSIFIER__IS_ABSTRACT) {
 						mergeClassifier_IsAbstract((Classifier) copyEObject,
 							(Classifier) eObject);
+					} else if (eAttribute == UMLPackage.Literals.CLASSIFIER__IS_FINAL_SPECIALIZATION) {
+						mergeClassifier_IsFinalSpecialization(
+							(Classifier) copyEObject, (Classifier) eObject);
 					} else if (eAttribute == UMLPackage.Literals.LITERAL_INTEGER__VALUE
 						&& copyEObject.eContainingFeature() == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE) {
 
@@ -728,6 +775,10 @@ public class UMLUtil
 					} else if (eAttribute == UMLPackage.Literals.PROPERTY__IS_DERIVED_UNION) {
 						mergeProperty_IsDerivedUnion((Property) copyEObject,
 							(Property) eObject);
+					} else if (eAttribute == UMLPackage.Literals.REDEFINABLE_ELEMENT__IS_LEAF) {
+						mergeRedefinableElement_IsLeaf(
+							(RedefinableElement) copyEObject,
+							(RedefinableElement) eObject);
 					} else if (eAttribute == UMLPackage.Literals.STRUCTURAL_FEATURE__IS_READ_ONLY) {
 						mergeStructuralFeature_IsReadOnly(
 							(StructuralFeature) copyEObject,
@@ -876,39 +927,7 @@ public class UMLUtil
 				public EObject caseAssociation(Association association) {
 					Association matchingAssociation = (Association) findEObject(
 						getMatchCandidates(association), new NameMatcher(
-							association) {
-
-							@Override
-							public boolean matches(EObject otherEObject) {
-
-								if (super.matches(otherEObject)) {
-									otherEObject = getPreviouslyMergedEObject(otherEObject);
-
-									List<Property> memberEnds = ((Association) eObject)
-										.getMemberEnds();
-									List<Property> otherMemberEnds = ((Association) otherEObject)
-										.getMemberEnds();
-
-									if (memberEnds.size() == otherMemberEnds
-										.size()) {
-
-										for (Property memberEnd : memberEnds) {
-
-											if (findEObject(otherMemberEnds,
-												new TypeMatcher(memberEnd)) == null) {
-
-												return false;
-											}
-										}
-
-										return true;
-									}
-
-								}
-
-								return false;
-							}
-						});
+							association));
 
 					return matchingAssociation == null
 						? super.caseAssociation(association)
@@ -1762,6 +1781,82 @@ public class UMLUtil
 			}
 		}
 
+		protected void processEmptyQualifiedNames(Map<String, String> options,
+				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			if (OPTION__REPORT.equals(options
+				.get(OPTION__EMPTY_QUALIFIED_NAMES)) && diagnostics != null) {
+
+				EList<org.eclipse.uml2.uml.Package> packages = new UniqueEList<org.eclipse.uml2.uml.Package>();
+				packages.add(receivingPackage);
+				packages.addAll(mergedPackages);
+
+				for (org.eclipse.uml2.uml.Package package_ : packages) {
+
+					for (Type ownedType : package_.getOwnedTypes()) {
+
+						if (UML2Util.isEmpty(ownedType.getQualifiedName())) {
+
+							diagnostics
+								.add(new BasicDiagnostic(
+									Diagnostic.ERROR,
+									UMLValidator.DIAGNOSTIC_SOURCE,
+									EMPTY_QUALIFIED_NAME,
+									UMLPlugin.INSTANCE
+										.getString(
+											"_UI_PackageMerger_ReportEmptyQualifiedName_diagnostic", //$NON-NLS-1$
+											getMessageSubstitutions(context,
+												ownedType, package_)),
+									new Object[]{ownedType, package_}));
+						}
+					}
+				}
+			}
+		}
+
+		protected void processIndistinguishableClassifiers(
+				Map<String, String> options, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+
+			if (OPTION__REPORT.equals(options
+				.get(OPTION__INDISTINGUISHABLE_CLASSIFIERS))
+				&& diagnostics != null) {
+
+				EList<org.eclipse.uml2.uml.Package> packages = new UniqueEList<org.eclipse.uml2.uml.Package>();
+				packages.add(receivingPackage);
+				packages.addAll(mergedPackages);
+
+				for (org.eclipse.uml2.uml.Package package_ : packages) {
+					EList<Type> ownedTypes = package_.getOwnedTypes();
+
+					for (Type ownedType : ownedTypes) {
+
+						for (Type otherOwnedType : ownedTypes) {
+
+							if (ownedType != otherOwnedType
+								&& !ownedType.isDistinguishableFrom(
+									otherOwnedType, package_)) {
+
+								diagnostics
+									.add(new BasicDiagnostic(
+										Diagnostic.ERROR,
+										UMLValidator.DIAGNOSTIC_SOURCE,
+										INDISTINGUISHABLE_CLASSIFIER,
+										UMLPlugin.INSTANCE
+											.getString(
+												"_UI_PackageMerger_ReportIndistinguishableClassifier_diagnostic", //$NON-NLS-1$
+												getMessageSubstitutions(
+													context, ownedType,
+													package_)), new Object[]{
+											ownedType, package_}));
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+
 		protected void processAssociationSpecializations(
 				Map<String, String> options, DiagnosticChain diagnostics,
 				Map<Object, Object> context) {
@@ -1912,6 +2007,18 @@ public class UMLUtil
 
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__EMPTY_QUALIFIED_NAMES))) {
+
+				processEmptyQualifiedNames(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options
+				.get(OPTION__INDISTINGUISHABLE_CLASSIFIERS))) {
+
+				processIndistinguishableClassifiers(options, diagnostics, context);
+			}
 
 			if (!OPTION__IGNORE.equals(options
 				.get(OPTION__DIFFERENT_PROPERTY_STATICITY))) {
@@ -2422,15 +2529,7 @@ public class UMLUtil
 
 				if (!isEmpty(qualifiedName) && type instanceof PrimitiveType) {
 
-					if ("UMLPrimitiveTypes::Boolean".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.Literals.EBOOLEAN;
-					} else if ("UMLPrimitiveTypes::Integer".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.Literals.EINT;
-					} else if ("UMLPrimitiveTypes::String".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.Literals.ESTRING;
-					} else if ("UMLPrimitiveTypes::UnlimitedNatural".equals(qualifiedName)) { //$NON-NLS-1$
-						eType = EcorePackage.Literals.EINT;
-					} else if ("JavaPrimitiveTypes::boolean".equals(qualifiedName)) { //$NON-NLS-1$
+					if ("JavaPrimitiveTypes::boolean".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.Literals.EBOOLEAN;
 					} else if ("JavaPrimitiveTypes::byte".equals(qualifiedName)) { //$NON-NLS-1$
 						eType = EcorePackage.Literals.EBYTE;
@@ -3051,6 +3150,8 @@ public class UMLUtil
 					: eSuperPackage.getNsPrefix() + '.') + ePackage.getName());
 			}
 
+			ePackage.setNsURI(package_.getURI());
+
 			if (isEmpty(ePackage.getNsURI())) {
 				ePackage.setNsURI("http:///" //$NON-NLS-1$
 					+ ePackage.getNsPrefix().replace('.', '/') + ".ecore"); //$NON-NLS-1$
@@ -3192,16 +3293,18 @@ public class UMLUtil
 
 						if (type instanceof PrimitiveType
 							&& safeEquals(
-								"UMLPrimitiveTypes::UnlimitedNatural", type.getQualifiedName())) {//$NON-NLS-1$
+								"PrimitiveTypes::UnlimitedNatural", type.getQualifiedName())) {//$NON-NLS-1$
 
-							default_ = UMLFactory.eINSTANCE
+							default_ = TypesFactory.eINSTANCE
 								.createFromString(
-									UMLPackage.Literals.UNLIMITED_NATURAL,
+									TypesPackage.Literals.UNLIMITED_NATURAL,
 									default_).toString();
 
 						}
 						eAttribute.setDefaultValueLiteral(default_);
 					}
+					
+					eAttribute.setID(property.isID());
 				}
 
 				EClass eClass = (EClass) doSwitch(namespace);
@@ -4527,6 +4630,7 @@ public class UMLUtil
 							true);
 
 						eStructuralFeature.setChangeable(false);
+						eStructuralFeature.setTransient(true);
 						eStructuralFeature.setVolatile(true);
 					} else if (OPTION__REPORT.equals(options
 						.get(OPTION__UNION_PROPERTIES))
@@ -4583,6 +4687,7 @@ public class UMLUtil
 									.setContainment(false);
 							}
 
+							eStructuralFeature.setTransient(true);
 							eStructuralFeature.setVolatile(true);
 						} else if (OPTION__REPORT.equals(options
 							.get(OPTION__DERIVED_FEATURES))
@@ -5682,6 +5787,14 @@ public class UMLUtil
 		protected void processOptions(Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
+			if (!OPTION__IGNORE.equals(options.get(OPTION__DERIVED_FEATURES))) {
+				processDerivedFeatures(options, diagnostics, context);
+			}
+
+			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_PROPERTIES))) {
+				processUnionProperties(options, diagnostics, context);
+			}
+
 			if (!OPTION__IGNORE
 				.equals(options.get(OPTION__ECORE_TAGGED_VALUES))) {
 
@@ -5704,14 +5817,6 @@ public class UMLUtil
 				.get(OPTION__SUBSETTING_PROPERTIES))) {
 
 				processSubsettingProperties(options, diagnostics, context);
-			}
-
-			if (!OPTION__IGNORE.equals(options.get(OPTION__DERIVED_FEATURES))) {
-				processDerivedFeatures(options, diagnostics, context);
-			}
-
-			if (!OPTION__IGNORE.equals(options.get(OPTION__UNION_PROPERTIES))) {
-				processUnionProperties(options, diagnostics, context);
 			}
 
 			if (!OPTION__IGNORE.equals(options
@@ -5786,7 +5891,7 @@ public class UMLUtil
 		@Override
 		public Object casePackage(org.eclipse.uml2.uml.Package package_) {
 
-			if (packages.contains(package_)) {
+			if (packages.contains(package_.containingProfile())) {
 				return super.casePackage(package_);
 			} else {
 				EPackage ePackage = (EPackage) doSwitch(packages.iterator()
@@ -5804,46 +5909,51 @@ public class UMLUtil
 				String profileName = ePackage.getName();
 
 				ePackage.setNsPrefix(profileName);
+				ePackage.setNsURI(profile.getURI());
 
-				org.eclipse.uml2.uml.Package nestingPackage = profile
-					.getNestingPackage();
-				String profileParentQualifiedName = nestingPackage == null
-					? EMPTY_STRING
-					: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
+				if (isEmpty(ePackage.getNsURI())) {
+					org.eclipse.uml2.uml.Package nestingPackage = profile
+						.getNestingPackage();
+					String profileParentQualifiedName = nestingPackage == null
+						? EMPTY_STRING
+						: getQualifiedName(nestingPackage, "."); //$NON-NLS-1$
 
-				String version = String.valueOf(0);
-				EPackage definition = profile.getDefinition();
+					String version = String.valueOf(0);
+					EPackage definition = profile.getDefinition();
 
-				if (definition != null) {
+					if (definition != null) {
 
-					try {
-						String nsURI = definition.getNsURI();
-						int lastIndex = nsURI.lastIndexOf('/');
+						try {
+							String nsURI = definition.getNsURI();
+							int lastIndex = nsURI.lastIndexOf('/');
 
-						if (lastIndex > 7) { // 2.0 format
-							version = String.valueOf(Integer.parseInt(nsURI
-								.substring(lastIndex + 1)) + 1);
-						} else { // 1.x format
-							String nsPrefix = definition.getNsPrefix();
-							version = String.valueOf(Integer.parseInt(nsPrefix
-								.substring(nsPrefix.lastIndexOf('_') + 1)) + 1);
+							if (lastIndex > 7) { // 2.0 format
+								version = String.valueOf(Integer.parseInt(nsURI
+									.substring(lastIndex + 1)) + 1);
+							} else { // 1.x format
+								String nsPrefix = definition.getNsPrefix();
+								version = String.valueOf(Integer
+									.parseInt(nsPrefix.substring(nsPrefix
+										.lastIndexOf('_') + 1)) + 1);
+							}
+						} catch (Exception e) {
+							// ignore
 						}
-					} catch (Exception e) {
-						// ignore
 					}
+
+					StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$
+					nsURI.append(profileParentQualifiedName);
+					nsURI.append("/schemas/"); //$NON-NLS-1$
+					nsURI.append(profileName);
+					nsURI.append('/');
+					// ensure profiles with same name have different namespace
+					// URIs
+					nsURI.append(EcoreUtil.generateUUID());
+					nsURI.append('/');
+					nsURI.append(version);
+
+					ePackage.setNsURI(nsURI.toString());
 				}
-
-				StringBuffer nsURI = new StringBuffer("http://"); //$NON-NLS-1$
-				nsURI.append(profileParentQualifiedName);
-				nsURI.append("/schemas/"); //$NON-NLS-1$
-				nsURI.append(profileName);
-				nsURI.append('/');
-				// ensure profiles with same name have different namespace URIs
-				nsURI.append(EcoreUtil.generateUUID());
-				nsURI.append('/');
-				nsURI.append(version);
-
-				ePackage.setNsURI(nsURI.toString());
 			}
 
 			return ePackage;
@@ -5863,7 +5973,9 @@ public class UMLUtil
 				Element element, Map<String, String> options,
 				DiagnosticChain diagnostics, Map<Object, Object> context) {
 
-			if (packages.contains(element)) {
+			if (packages.contains(((org.eclipse.uml2.uml.Package) element)
+				.containingProfile())) {
+
 				super.processEcoreTaggedValues(ePackage, element, options,
 					diagnostics, context);
 			}
@@ -5878,7 +5990,7 @@ public class UMLUtil
 				@Override
 				public Object caseClassifier(Classifier classifier) {
 					setName(eNamedElement, packages.contains(classifier
-						.getPackage())
+						.getPackage().containingProfile())
 						? classifier.getName()
 						: getQualifiedName(classifier, "_"), true); //$NON-NLS-1$
 					return classifier;
@@ -5904,10 +6016,17 @@ public class UMLUtil
 		public Object doSwitch(EObject eObject) {
 			EObject eModelElement = (EObject) super.doSwitch(eObject);
 
-			if (eModelElement instanceof EClassifier) {
+			String source = eModelElement instanceof EClassifier
+				? UML2_UML_PACKAGE_2_0_NS_URI
+				: (eModelElement instanceof EPackage && !packages
+					.contains(eObject))
+					? UML2_UML_PACKAGE_4_0_NS_URI
+					: null;
+
+			if (source != null) {
 				EList<EObject> references = getEAnnotation(
-					(EClassifier) eModelElement, UML2_UML_PACKAGE_2_0_NS_URI,
-					true).getReferences();
+					(EModelElement) eModelElement, source, true)
+					.getReferences();
 
 				if (references.isEmpty()) {
 					references.add(eObject);
@@ -6470,6 +6589,7 @@ public class UMLUtil
 				property.setIsReadOnly(!eAttribute.isChangeable());
 				property.setIsDerived(eAttribute.isDerived());
 				property.setVisibility(VisibilityKind.PUBLIC_LITERAL);
+				property.setIsID(eAttribute.isID());
 
 				caseETypedElement(eAttribute);
 
@@ -6694,6 +6814,7 @@ public class UMLUtil
 			}
 
 			package_.setName(ePackage.getName());
+			package_.setURI(ePackage.getNsURI());
 
 			defaultCase(ePackage);
 
@@ -7269,11 +7390,6 @@ public class UMLUtil
 					diagnostics, context);
 
 				processEcoreTaggedValue(element, ePackageStereotype,
-					TAG_DEFINITION__NS_URI, ePackage,
-					EcorePackage.Literals.EPACKAGE__NS_URI, options,
-					diagnostics, context);
-
-				processEcoreTaggedValue(element, ePackageStereotype,
 					TAG_DEFINITION__ANNOTATIONS, ePackage, null, options,
 					diagnostics, context);
 			}
@@ -7369,23 +7485,6 @@ public class UMLUtil
 				final DiagnosticChain diagnostics,
 				final Map<Object, Object> context) {
 			Stereotype eStructuralFeatureStereotype = new EcoreSwitch<Stereotype>() {
-
-				@Override
-				public Stereotype caseEAttribute(EAttribute eAttribute) {
-					Stereotype eAttributeStereotype = getEcoreStereotype(
-						eAttribute, STEREOTYPE__E_ATTRIBUTE);
-
-					if (eAttributeStereotype != null) {
-						safeApplyStereotype(element, eAttributeStereotype);
-
-						processEcoreTaggedValue(element, eAttributeStereotype,
-							TAG_DEFINITION__IS_ID, eAttribute,
-							EcorePackage.Literals.EATTRIBUTE__ID, options,
-							diagnostics, context);
-					}
-
-					return eAttributeStereotype;
-				}
 
 				@Override
 				public Stereotype caseEReference(EReference eReference) {
@@ -8353,6 +8452,8 @@ public class UMLUtil
 
 	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
 
+	protected static final String UML2_UML_PACKAGE_4_0_NS_URI = "http://www.eclipse.org/uml2/4.0.0/UML"; //$NON-NLS-1$
+
 	/**
 	 * An annotation tag that can be used for backward compatibility.
 	 */
@@ -8786,9 +8887,10 @@ public class UMLUtil
 	}
 
 	protected static EPackage getEPackage(org.eclipse.uml2.uml.Package package_) {
-		return EPackage.Registry.INSTANCE.getEPackage((String) getTaggedValue(
+		String nsURI = (String) getTaggedValue(
 			package_, PROFILE__ECORE + NamedElement.SEPARATOR
-				+ STEREOTYPE__E_PACKAGE, TAG_DEFINITION__NS_URI));
+			+ STEREOTYPE__E_PACKAGE, TAG_DEFINITION__NS_URI);
+		return EPackage.Registry.INSTANCE.getEPackage(isEmpty(nsURI) ? package_.getURI() : nsURI);
 	}
 
 	protected static EClassifier getEClassifier(Type type) {
@@ -8972,6 +9074,27 @@ public class UMLUtil
 			? null
 			: getStereotype(stereotypeApplication.eClass(),
 				stereotypeApplication);
+	}
+
+	/**
+	 * Retrieves the stereotype application of the specified class for the
+	 * specified element, or null if no such stereotype application exists.
+	 * 
+	 * @param element The element to which the stereotype is applied.
+	 * @param clazz The class of the stereotype application to retrieve.
+	 * @return The stereotype application.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends EObject> T getStereotypeApplication(Element element, Class<T> clazz) {
+
+		for (EObject stereotypeApplication : element.getStereotypeApplications()) {
+			
+			if (clazz.isInstance(stereotypeApplication)) {
+				return (T) stereotypeApplication;
+			}
+		}
+		
+		return null;
 	}
 
 	/**

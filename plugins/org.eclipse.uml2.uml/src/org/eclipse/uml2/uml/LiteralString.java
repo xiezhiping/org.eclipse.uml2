@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LiteralString.java,v 1.4 2006/05/12 20:38:06 khussey Exp $
  */
@@ -47,7 +48,7 @@ public interface LiteralString
 	 * @see #unsetValue()
 	 * @see #setValue(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLiteralString_Value()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getValue();

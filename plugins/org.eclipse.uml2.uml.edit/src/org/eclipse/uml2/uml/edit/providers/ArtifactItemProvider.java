@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ArtifactItemProvider.java,v 1.14 2010/09/28 21:00:19 khussey Exp $
  */
@@ -80,10 +81,10 @@ public class ArtifactItemProvider
 			super.getPropertyDescriptors(object);
 
 			addFileNamePropertyDescriptor(object);
-			addNestedArtifactPropertyDescriptor(object);
 			addManifestationPropertyDescriptor(object);
-			addOwnedOperationPropertyDescriptor(object);
+			addNestedArtifactPropertyDescriptor(object);
 			addOwnedAttributePropertyDescriptor(object);
+			addOwnedOperationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -204,10 +205,10 @@ public class ArtifactItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT);
 			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__MANIFESTATION);
-			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__OWNED_OPERATION);
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT);
 			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE);
+			childrenFeatures.add(UMLPackage.Literals.ARTIFACT__OWNED_OPERATION);
 		}
 		return childrenFeatures;
 	}
@@ -276,10 +277,10 @@ public class ArtifactItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
 			case UMLPackage.ARTIFACT__MANIFESTATION :
-			case UMLPackage.ARTIFACT__OWNED_OPERATION :
+			case UMLPackage.ARTIFACT__NESTED_ARTIFACT :
 			case UMLPackage.ARTIFACT__OWNED_ATTRIBUTE :
+			case UMLPackage.ARTIFACT__OWNED_OPERATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -300,20 +301,16 @@ public class ArtifactItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__MANIFESTATION,
+			UMLFactory.eINSTANCE.createManifestation()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT,
 			UMLFactory.eINSTANCE.createArtifact()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ARTIFACT__NESTED_ARTIFACT,
 			UMLFactory.eINSTANCE.createDeploymentSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ARTIFACT__MANIFESTATION,
-			UMLFactory.eINSTANCE.createManifestation()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ARTIFACT__OWNED_OPERATION,
-			UMLFactory.eINSTANCE.createOperation()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE,
@@ -326,6 +323,10 @@ public class ArtifactItemProvider
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ARTIFACT__OWNED_ATTRIBUTE,
 			UMLFactory.eINSTANCE.createExtensionEnd()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ARTIFACT__OWNED_OPERATION,
+			UMLFactory.eINSTANCE.createOperation()));
 	}
 
 	/**
@@ -340,8 +341,8 @@ public class ArtifactItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE;
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ProtocolTransitionImpl.java,v 1.42 2010/09/28 21:02:13 khussey Exp $
  */
@@ -81,8 +82,8 @@ import org.eclipse.uml2.uml.internal.operations.ProtocolTransitionOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getOwnedRules <em>Owned Rule</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getPostCondition <em>Post Condition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ProtocolTransitionImpl#getReferreds <em>Referred</em>}</li>
  * </ul>
  * </p>
  *
@@ -548,13 +549,13 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
 				return ((InternalEList<?>) getOwnedRules()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				return basicSetContainer(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
 				return basicSetEffect(null, msgs);
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				return basicSetContainer(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -569,54 +570,62 @@ public class ProtocolTransitionImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.PROTOCOL_TRANSITION__NAME :
-				return getName();
-			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.PROTOCOL_TRANSITION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.PROTOCOL_TRANSITION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.PROTOCOL_TRANSITION__NAME :
+				return getName();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.PROTOCOL_TRANSITION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.PROTOCOL_TRANSITION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
-				return getMembers();
-			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
+				return getMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
+			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
+				if (resolve)
+					return getEffect();
+				return basicGetEffect();
+			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
+				if (resolve)
+					return getGuard();
+				return basicGetGuard();
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				return getKind();
-			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
 				if (resolve)
-					return getContainer();
-				return basicGetContainer();
+					return getRedefinedTransition();
+				return basicGetRedefinedTransition();
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				if (resolve)
 					return getSource();
@@ -625,30 +634,22 @@ public class ProtocolTransitionImpl
 				if (resolve)
 					return getTarget();
 				return basicGetTarget();
-			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
-				if (resolve)
-					return getRedefinedTransition();
-				return basicGetRedefinedTransition();
-			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				if (resolve)
-					return getGuard();
-				return basicGetGuard();
-			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-				if (resolve)
-					return getEffect();
-				return basicGetEffect();
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return getTriggers();
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				if (resolve)
+					return getContainer();
+				return basicGetContainer();
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				if (resolve)
 					return getPostCondition();
 				return basicGetPostCondition();
-			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :
-				return getReferreds();
 			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
 				if (resolve)
 					return getPreCondition();
 				return basicGetPreCondition();
+			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :
+				return getReferreds();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -672,19 +673,19 @@ public class ProtocolTransitionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -704,11 +705,17 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
+				setEffect((Behavior) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
+				setGuard((Constraint) newValue);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				setKind((TransitionKind) newValue);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				setContainer((Region) newValue);
+			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
+				setRedefinedTransition((Transition) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				setSource((Vertex) newValue);
@@ -716,18 +723,12 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				setTarget((Vertex) newValue);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
-				setRedefinedTransition((Transition) newValue);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				setGuard((Constraint) newValue);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-				setEffect((Behavior) newValue);
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
 				getTriggers().addAll((Collection<? extends Trigger>) newValue);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				setContainer((Region) newValue);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				setPostCondition((Constraint) newValue);
@@ -753,17 +754,17 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -777,11 +778,17 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
 				return;
+			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
+				setEffect((Behavior) null);
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
+				setGuard((Constraint) null);
+				return;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				setKind(KIND_EDEFAULT);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				setContainer((Region) null);
+			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
+				setRedefinedTransition((Transition) null);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				setSource((Vertex) null);
@@ -789,17 +796,11 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				setTarget((Vertex) null);
 				return;
-			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
-				setRedefinedTransition((Transition) null);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				setGuard((Constraint) null);
-				return;
-			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-				setEffect((Behavior) null);
-				return;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				getTriggers().clear();
+				return;
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				setContainer((Region) null);
 				return;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				setPostCondition((Constraint) null);
@@ -821,67 +822,67 @@ public class ProtocolTransitionImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_TRANSITION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNER :
 				return isSetOwner();
-			case UMLPackage.PROTOCOL_TRANSITION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__NAME :
 				return isSetName();
-			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.PROTOCOL_TRANSITION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.PROTOCOL_TRANSITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.PROTOCOL_TRANSITION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.PROTOCOL_TRANSITION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.PROTOCOL_TRANSITION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.PROTOCOL_TRANSITION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.PROTOCOL_TRANSITION__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
-				return isSetMembers();
-			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.PROTOCOL_TRANSITION__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__MEMBER :
+				return isSetMembers();
 			case UMLPackage.PROTOCOL_TRANSITION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.PROTOCOL_TRANSITION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
+			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
+				return effect != null;
+			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
+				return guard != null;
 			case UMLPackage.PROTOCOL_TRANSITION__KIND :
 				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
-			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
-				return basicGetContainer() != null;
+			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
+				return redefinedTransition != null;
 			case UMLPackage.PROTOCOL_TRANSITION__SOURCE :
 				return source != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TARGET :
 				return target != null;
-			case UMLPackage.PROTOCOL_TRANSITION__REDEFINED_TRANSITION :
-				return redefinedTransition != null;
-			case UMLPackage.PROTOCOL_TRANSITION__GUARD :
-				return guard != null;
-			case UMLPackage.PROTOCOL_TRANSITION__EFFECT :
-				return effect != null;
 			case UMLPackage.PROTOCOL_TRANSITION__TRIGGER :
 				return triggers != null && !triggers.isEmpty();
+			case UMLPackage.PROTOCOL_TRANSITION__CONTAINER :
+				return basicGetContainer() != null;
 			case UMLPackage.PROTOCOL_TRANSITION__POST_CONDITION :
 				return postCondition != null;
-			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :
-				return !getReferreds().isEmpty();
 			case UMLPackage.PROTOCOL_TRANSITION__PRE_CONDITION :
 				return preCondition != null;
+			case UMLPackage.PROTOCOL_TRANSITION__REFERRED :
+				return !getReferreds().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -898,117 +899,119 @@ public class ProtocolTransitionImpl
 		switch (operationID) {
 			case UMLPackage.PROTOCOL_TRANSITION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.PROTOCOL_TRANSITION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.PROTOCOL_TRANSITION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.PROTOCOL_TRANSITION___GET_MODEL :
-				return getModel();
-			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.PROTOCOL_TRANSITION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.PROTOCOL_TRANSITION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_MODEL :
+				return getModel();
+			case UMLPackage.PROTOCOL_TRANSITION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PROTOCOL_TRANSITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.PROTOCOL_TRANSITION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PROTOCOL_TRANSITION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.PROTOCOL_TRANSITION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.PROTOCOL_TRANSITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.PROTOCOL_TRANSITION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.PROTOCOL_TRANSITION___SEPARATOR :
 				return separator();
-			case UMLPackage.PROTOCOL_TRANSITION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1025,24 +1028,30 @@ public class ProtocolTransitionImpl
 				return getImportedElements();
 			case UMLPackage.PROTOCOL_TRANSITION___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.PROTOCOL_TRANSITION___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.PROTOCOL_TRANSITION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.PROTOCOL_TRANSITION___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.PROTOCOL_TRANSITION___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.PROTOCOL_TRANSITION___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.PROTOCOL_TRANSITION___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1050,49 +1059,62 @@ public class ProtocolTransitionImpl
 			case UMLPackage.PROTOCOL_TRANSITION___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentGuards(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_EXTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsExternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
 				return validateJoinSegmentGuards(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateForkSegmentState(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
-				return validateJoinSegmentState(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_INTERNAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsInternal(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_OUTGOING_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
 				return validateOutgoingPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
-				return validateInitialTransition(
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_JOIN_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateJoinSegmentState(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_STATE__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentState(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_SIGNATURES_COMPATIBLE__DIAGNOSTICCHAIN_MAP :
 				return validateSignaturesCompatible(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___REDEFINITION_CONTEXT :
-				return redefinitionContext();
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_STATE_IS_LOCAL__DIAGNOSTICCHAIN_MAP :
+				return validateStateIsLocal((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_INITIAL_TRANSITION__DIAGNOSTICCHAIN_MAP :
+				return validateInitialTransition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_FORK_SEGMENT_GUARDS__DIAGNOSTICCHAIN_MAP :
+				return validateForkSegmentGuards(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_BELONGS_TO_PSM__DIAGNOSTICCHAIN_MAP :
-				return validateBelongsToPsm((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PROTOCOL_TRANSITION___REDEFINITION_CONTEXT :
+				return redefinitionContext();
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_REFERS_TO_OPERATION__DIAGNOSTICCHAIN_MAP :
+				return validateRefersToOperation(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_ASSOCIATED_ACTIONS__DIAGNOSTICCHAIN_MAP :
 				return validateAssociatedActions(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_REFERS_TO_OPERATION__DIAGNOSTICCHAIN_MAP :
-				return validateRefersToOperation(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.PROTOCOL_TRANSITION___VALIDATE_BELONGS_TO_PSM__DIAGNOSTICCHAIN_MAP :
+				return validateBelongsToPsm((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PROTOCOL_TRANSITION___GET_REFERREDS :
+				return getReferreds();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityPartitionImpl.java,v 1.31 2010/09/28 21:02:14 khussey Exp $
  */
@@ -56,7 +57,6 @@ import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
 import org.eclipse.uml2.uml.internal.operations.ActivityPartitionOperations;
 
 /**
@@ -66,19 +66,16 @@ import org.eclipse.uml2.uml.internal.operations.ActivityPartitionOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSuperGroup <em>Super Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedNodes <em>Contained Node</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getInActivity <em>In Activity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubgroups <em>Subgroup</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSuperGroup <em>Super Group</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getContainedEdges <em>Contained Edge</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#isExternal <em>Is External</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSubpartitions <em>Subpartition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getSuperPartition <em>Super Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityPartitionImpl#getEdges <em>Edge</em>}</li>
  * </ul>
  * </p>
@@ -86,7 +83,7 @@ import org.eclipse.uml2.uml.internal.operations.ActivityPartitionOperations;
  * @generated
  */
 public class ActivityPartitionImpl
-		extends NamedElementImpl
+		extends ActivityGroupImpl
 		implements ActivityPartition {
 
 	/**
@@ -140,16 +137,6 @@ public class ActivityPartitionImpl
 	protected EList<ActivityNode> nodes;
 
 	/**
-	 * The cached value of the '{@link #getSubpartitions() <em>Subpartition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubpartitions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ActivityPartition> subpartitions;
-
-	/**
 	 * The cached value of the '{@link #getRepresents() <em>Represents</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +145,16 @@ public class ActivityPartitionImpl
 	 * @ordered
 	 */
 	protected Element represents;
+
+	/**
+	 * The cached value of the '{@link #getSubpartitions() <em>Subpartition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubpartitions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ActivityPartition> subpartitions;
 
 	/**
 	 * The cached value of the '{@link #getEdges() <em>Edge</em>}' reference list.
@@ -193,6 +190,7 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ActivityGroup> getSubgroups() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -220,33 +218,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	@Override
-	public EList<Element> getOwnedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			Resource eResource = eResource();
-			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
-			if (ownedElements == null) {
-				cache.put(eResource, this,
-					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
-					ownedElements = new DerivedUnionEObjectEList<Element>(
-						Element.class, this,
-						UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT,
-						OWNED_ELEMENT_ESUBSETS));
-			}
-			return ownedElements;
-		}
-		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-			UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT,
-			OWNED_ELEMENT_ESUBSETS);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<ActivityNode> getContainedNodes() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -278,34 +249,7 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActivityNode getContainedNode(String name) {
-		return getContainedNode(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityNode getContainedNode(String name, boolean ignoreCase,
-			EClass eClass) {
-		containedNodeLoop : for (ActivityNode containedNode : getContainedNodes()) {
-			if (eClass != null && !eClass.isInstance(containedNode))
-				continue containedNodeLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(containedNode.getName())
-				: name.equals(containedNode.getName())))
-				continue containedNodeLoop;
-			return containedNode;
-		}
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EList<ActivityEdge> getContainedEdges() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
@@ -330,94 +274,6 @@ public class ActivityPartitionImpl
 		return new DerivedUnionEObjectEList<ActivityEdge>(ActivityEdge.class,
 			this, UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE,
 			CONTAINED_EDGE_ESUBSETS);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityEdge getContainedEdge(String name) {
-		return getContainedEdge(name, false, null);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActivityEdge getContainedEdge(String name, boolean ignoreCase,
-			EClass eClass) {
-		containedEdgeLoop : for (ActivityEdge containedEdge : getContainedEdges()) {
-			if (eClass != null && !eClass.isInstance(containedEdge))
-				continue containedEdgeLoop;
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(containedEdge.getName())
-				: name.equals(containedEdge.getName())))
-				continue containedEdgeLoop;
-			return containedEdge;
-		}
-		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activity getInActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
-			return null;
-		return (Activity) eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Activity basicGetInActivity() {
-		if (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY)
-			return null;
-		return (Activity) eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetInActivity(Activity newInActivity,
-			NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newInActivity,
-			UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInActivity(Activity newInActivity) {
-		if (newInActivity != eInternalContainer()
-			|| (eContainerFeatureID() != UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY && newInActivity != null)) {
-			if (EcoreUtil.isAncestor(this, newInActivity))
-				throw new IllegalArgumentException(
-					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newInActivity != null)
-				msgs = ((InternalEObject) newInActivity).eInverseAdd(this,
-					UMLPackage.ACTIVITY__GROUP, Activity.class, msgs);
-			msgs = basicSetInActivity(newInActivity, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY, newInActivity,
-				newInActivity));
 	}
 
 	/**
@@ -718,39 +574,6 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNodesAndEdges(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityGroupOperations.validateNodesAndEdges(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateNotContained(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityGroupOperations.validateNotContained(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateGroupOwned(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ActivityGroupOperations.validateGroupOwned(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateDimensionNotContained(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return ActivityPartitionOperations.validateDimensionNotContained(this,
@@ -895,60 +718,60 @@ public class ActivityPartitionImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_PARTITION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				return getName();
-			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ACTIVITY_PARTITION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ACTIVITY_PARTITION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ACTIVITY_PARTITION__NAME :
+				return getName();
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ACTIVITY_PARTITION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ACTIVITY_PARTITION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
+				return getContainedNodes();
+			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-				if (resolve)
-					return getInActivity();
-				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return getContainedEdges();
-			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-				return getContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
 				return isDimension();
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				return isExternal();
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return getNodes();
+			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
+				if (resolve)
+					return getRepresents();
+				return basicGetRepresents();
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				return getSubpartitions();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				if (resolve)
 					return getSuperPartition();
 				return basicGetSuperPartition();
-			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
-				if (resolve)
-					return getRepresents();
-				return basicGetRepresents();
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				return getEdges();
 		}
@@ -974,19 +797,19 @@ public class ActivityPartitionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_PARTITION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
@@ -1002,6 +825,9 @@ public class ActivityPartitionImpl
 				getNodes()
 					.addAll((Collection<? extends ActivityNode>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
+				setRepresents((Element) newValue);
+				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				getSubpartitions().clear();
 				getSubpartitions().addAll(
@@ -1009,9 +835,6 @@ public class ActivityPartitionImpl
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				setSuperPartition((ActivityPartition) newValue);
-				return;
-			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
-				setRepresents((Element) newValue);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				getEdges().clear();
@@ -1036,17 +859,17 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ACTIVITY_PARTITION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.ACTIVITY_PARTITION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
 				setInActivity((Activity) null);
@@ -1060,14 +883,14 @@ public class ActivityPartitionImpl
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				getNodes().clear();
 				return;
+			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
+				setRepresents((Element) null);
+				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				getSubpartitions().clear();
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				setSuperPartition((ActivityPartition) null);
-				return;
-			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
-				setRepresents((Element) null);
 				return;
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				getEdges().clear();
@@ -1086,127 +909,53 @@ public class ActivityPartitionImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_PARTITION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_PARTITION__OWNER :
 				return isSetOwner();
-			case UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__NAME :
 				return isSetName();
-			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ACTIVITY_PARTITION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ACTIVITY_PARTITION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ACTIVITY_PARTITION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ACTIVITY_PARTITION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ACTIVITY_PARTITION__VISIBILITY :
+				return isSetVisibility();
+			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
+				return isSetContainedNodes();
+			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
+				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
 				return isSetContainedEdges();
-			case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-				return isSetContainedNodes();
 			case UMLPackage.ACTIVITY_PARTITION__IS_DIMENSION :
 				return ((eFlags & IS_DIMENSION_EFLAG) != 0) != IS_DIMENSION_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__IS_EXTERNAL :
 				return ((eFlags & IS_EXTERNAL_EFLAG) != 0) != IS_EXTERNAL_EDEFAULT;
 			case UMLPackage.ACTIVITY_PARTITION__NODE :
 				return nodes != null && !nodes.isEmpty();
+			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
+				return represents != null;
 			case UMLPackage.ACTIVITY_PARTITION__SUBPARTITION :
 				return subpartitions != null && !subpartitions.isEmpty();
 			case UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION :
 				return basicGetSuperPartition() != null;
-			case UMLPackage.ACTIVITY_PARTITION__REPRESENTS :
-				return represents != null;
 			case UMLPackage.ACTIVITY_PARTITION__EDGE :
 				return edges != null && !edges.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ActivityGroup.class) {
-			switch (derivedFeatureID) {
-				case UMLPackage.ACTIVITY_PARTITION__SUBGROUP :
-					return UMLPackage.ACTIVITY_GROUP__SUBGROUP;
-				case UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP :
-					return UMLPackage.ACTIVITY_GROUP__SUPER_GROUP;
-				case UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY :
-					return UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY;
-				case UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE :
-					return UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE;
-				case UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE :
-					return UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ActivityGroup.class) {
-			switch (baseFeatureID) {
-				case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
-					return UMLPackage.ACTIVITY_PARTITION__SUBGROUP;
-				case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
-					return UMLPackage.ACTIVITY_PARTITION__SUPER_GROUP;
-				case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-					return UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY;
-				case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
-					return UMLPackage.ACTIVITY_PARTITION__CONTAINED_EDGE;
-				case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-					return UMLPackage.ACTIVITY_PARTITION__CONTAINED_NODE;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == ActivityGroup.class) {
-			switch (baseOperationID) {
-				case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP;
-				case UMLPackage.ACTIVITY_GROUP___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.ACTIVITY_PARTITION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**
@@ -1221,134 +970,128 @@ public class ActivityPartitionImpl
 		switch (operationID) {
 			case UMLPackage.ACTIVITY_PARTITION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.ACTIVITY_PARTITION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.ACTIVITY_PARTITION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.ACTIVITY_PARTITION___GET_MODEL :
-				return getModel();
-			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_PARTITION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.ACTIVITY_PARTITION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_MODEL :
+				return getModel();
+			case UMLPackage.ACTIVITY_PARTITION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.ACTIVITY_PARTITION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.ACTIVITY_PARTITION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_PARTITION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_PARTITION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ACTIVITY_PARTITION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_PARTITION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_PARTITION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.ACTIVITY_PARTITION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.ACTIVITY_PARTITION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.ACTIVITY_PARTITION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ACTIVITY_PARTITION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.ACTIVITY_PARTITION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.ACTIVITY_PARTITION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.ACTIVITY_PARTITION___SEPARATOR :
 				return separator();
-			case UMLPackage.ACTIVITY_PARTITION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateGroupOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_DIMENSION_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateDimensionNotContained(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART__DIAGNOSTICCHAIN_MAP :
-				return validateRepresentsPart(
-					(DiagnosticChain) arguments.get(0),
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
 				return validateRepresentsClassifier(
@@ -1356,6 +1099,14 @@ public class ActivityPartitionImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART_AND_IS_CONTAINED__DIAGNOSTICCHAIN_MAP :
 				return validateRepresentsPartAndIsContained(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_REPRESENTS_PART__DIAGNOSTICCHAIN_MAP :
+				return validateRepresentsPart(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_PARTITION___VALIDATE_DIMENSION_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateDimensionNotContained(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
@@ -1382,36 +1133,15 @@ public class ActivityPartitionImpl
 	}
 
 	/**
-	 * The array of subset feature identifiers for the '{@link #getSubgroups() <em>Subgroup</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubgroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] SUBGROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__SUBPARTITION};
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetSubgroups() {
-		return eIsSet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
+		return super.isSetSubgroups()
+			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__SUBPARTITION);
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
-		UMLPackage.ACTIVITY_PARTITION__OWNED_COMMENT,
-		UMLPackage.ACTIVITY_PARTITION__NAME_EXPRESSION,
-		UMLPackage.ACTIVITY_PARTITION__SUBGROUP};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1419,21 +1149,12 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	@Override
-	public boolean isSetOwnedElements() {
-		return super.isSetOwnedElements() || isSetSubgroups();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ActivityGroup basicGetSuperGroup() {
 		ActivityPartition superPartition = basicGetSuperPartition();
 		if (superPartition != null) {
 			return superPartition;
 		}
-		return null;
+		return super.basicGetSuperGroup();
 	}
 
 	/**
@@ -1442,18 +1163,6 @@ public class ActivityPartitionImpl
 	 * @generated
 	 */
 	@Override
-	public Element getOwner() {
-		Element owner = basicGetOwner();
-		return owner != null && owner.eIsProxy()
-			? (Element) eResolveProxy((InternalEObject) owner)
-			: owner;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ActivityGroup getSuperGroup() {
 		ActivityGroup superGroup = basicGetSuperGroup();
 		return superGroup != null && superGroup.eIsProxy()
@@ -1466,47 +1175,11 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetSuperGroup() {
-		return eIsSet(UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION);
+		return super.isSetSuperGroup()
+			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__SUPER_PARTITION);
 	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Element basicGetOwner() {
-		if (isSetSuperGroup()) {
-			return basicGetSuperGroup();
-		}
-		Activity inActivity = basicGetInActivity();
-		if (inActivity != null) {
-			return inActivity;
-		}
-		return super.basicGetOwner();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isSetOwner() {
-		return super.isSetOwner() || isSetSuperGroup()
-			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__IN_ACTIVITY);
-	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedEdges()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] CONTAINED_EDGE_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__EDGE};
 
 	/**
 	 * The array of subset feature identifiers for the '{@link #getContainedNodes() <em>Contained Node</em>}' reference list.
@@ -1519,12 +1192,34 @@ public class ActivityPartitionImpl
 	protected static final int[] CONTAINED_NODE_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__NODE};
 
 	/**
+	 * The array of subset feature identifiers for the '{@link #getSubgroups() <em>Subgroup</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSubgroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] SUBGROUP_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__SUBPARTITION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getContainedEdges() <em>Contained Edge</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainedEdges()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] CONTAINED_EDGE_ESUBSETS = new int[]{UMLPackage.ACTIVITY_PARTITION__EDGE};
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetContainedNodes() {
-		return eIsSet(UMLPackage.ACTIVITY_PARTITION__NODE);
+		return super.isSetContainedNodes()
+			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__NODE);
 	}
 
 	/**
@@ -1532,8 +1227,10 @@ public class ActivityPartitionImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetContainedEdges() {
-		return eIsSet(UMLPackage.ACTIVITY_PARTITION__EDGE);
+		return super.isSetContainedEdges()
+			|| eIsSet(UMLPackage.ACTIVITY_PARTITION__EDGE);
 	}
 
 } //ActivityPartitionImpl

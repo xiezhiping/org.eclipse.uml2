@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExecutionOccurrenceSpecificationImpl.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
  */
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
-import org.eclipse.uml2.uml.Event;
-import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.GeneralOrdering;
@@ -43,7 +42,6 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExecutionOccurrenceSpecificationImpl#getExecution <em>Execution</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ExecutionOccurrenceSpecificationImpl#getEvent <em>Event</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,101 +130,36 @@ public class ExecutionOccurrenceSpecificationImpl
 	 * @generated
 	 */
 	@Override
-	public Event getEvent() {
-		if (event != null && event.eIsProxy()) {
-			InternalEObject oldEvent = (InternalEObject) event;
-			event = (Event) eResolveProxy(oldEvent);
-			if (event != oldEvent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT,
-						oldEvent, event));
-			}
-		}
-		return event;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Event basicGetEvent() {
-		return event;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEventGen(Event newEvent) {
-		Event oldEvent = event;
-		event = newEvent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT, oldEvent,
-				event));
-	}
-
-	@Override
-	public void setEvent(Event newEvent) {
-
-		if (newEvent != null && !(newEvent instanceof ExecutionEvent)) {
-			throw new IllegalArgumentException(newEvent.toString());
-		}
-
-		setEventGen(newEvent);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSetEvent() {
-		return event != null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
-				return getName();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
+				return getName();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				return getCovereds();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				return getGeneralOrderings();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				if (resolve)
 					return getEnclosingInteraction();
@@ -235,14 +168,12 @@ public class ExecutionOccurrenceSpecificationImpl
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				return getToBefores();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
-				if (resolve)
-					return getEvent();
-				return basicGetEvent();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
+				return getGeneralOrderings();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				return getToAfters();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				return getToBefores();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
 				if (resolve)
 					return getExecution();
@@ -270,28 +201,23 @@ public class ExecutionOccurrenceSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -299,17 +225,19 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
 				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				getToBefores().clear();
-				getToBefores().addAll(
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
+				getGeneralOrderings().addAll(
 					(Collection<? extends GeneralOrdering>) newValue);
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
-				setEvent((Event) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
 				getToAfters().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
+				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				getToBefores().clear();
+				getToBefores().addAll(
 					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
@@ -333,23 +261,20 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
+				unsetName();
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				getCovereds().clear();
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) null);
@@ -357,14 +282,14 @@ public class ExecutionOccurrenceSpecificationImpl
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
 				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				getToBefores().clear();
-				return;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
-				setEvent((Event) null);
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				getToAfters().clear();
+				return;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				getToBefores().clear();
 				return;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
 				setExecution((ExecutionSpecification) null);
@@ -383,41 +308,39 @@ public class ExecutionOccurrenceSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME :
 				return isSetName();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__COVERED :
 				return isSetCovereds();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
-				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
-				return toBefores != null && !toBefores.isEmpty();
-			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EVENT :
-				return isSetEvent();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__GENERAL_ORDERING :
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_AFTER :
 				return toAfters != null && !toAfters.isEmpty();
+			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__TO_BEFORE :
+				return toBefores != null && !toBefores.isEmpty();
 			case UMLPackage.EXECUTION_OCCURRENCE_SPECIFICATION__EXECUTION :
 				return execution != null;
 		}

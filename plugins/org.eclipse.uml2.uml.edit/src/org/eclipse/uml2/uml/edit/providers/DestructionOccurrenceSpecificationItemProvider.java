@@ -1,16 +1,13 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
- *   Kenn Hussey - 323181
+ *   CEA - initial API and implementation
  *
- * $Id: ExecutionEventItemProvider.java,v 1.10 2010/09/28 21:00:19 khussey Exp $
  */
 package org.eclipse.uml2.uml.edit.providers;
 
@@ -29,16 +26,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-//import org.eclipse.uml2.uml.ExecutionEvent;
+import org.eclipse.uml2.uml.DestructionOccurrenceSpecification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.uml2.uml.ExecutionEvent} object.
+ * This is the item provider adapter for a {@link org.eclipse.uml2.uml.DestructionOccurrenceSpecification} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutionEventItemProvider
-		extends EventItemProvider
+public class DestructionOccurrenceSpecificationItemProvider
+		extends MessageOccurrenceSpecificationItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		IItemColorProvider, IItemFontProvider {
@@ -49,7 +46,8 @@ public class ExecutionEventItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExecutionEventItemProvider(AdapterFactory adapterFactory) {
+	public DestructionOccurrenceSpecificationItemProvider(
+			AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -69,15 +67,17 @@ public class ExecutionEventItemProvider
 	}
 
 	/**
-	 * This returns ExecutionEvent.gif.
+	 * This returns DestructionOccurrenceSpecification.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-			getResourceLocator().getImage("full/obj16/ExecutionEvent")); //$NON-NLS-1$
+		return overlayImage(
+			object,
+			getResourceLocator().getImage(
+				"full/obj16/DestructionOccurrenceSpecification")); //$NON-NLS-1$
 	}
 
 	/**
@@ -94,13 +94,14 @@ public class ExecutionEventItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		return appendLabel(
-			appendType(appendKeywords(new StringBuffer(), object),
-				"_UI_ExecutionEvent_type"), object).toString(); //$NON-NLS-1$
+		String label = ((DestructionOccurrenceSpecification) object).getName();
+		return label == null || label.length() == 0
+			? getString("_UI_DestructionOccurrenceSpecification_type") : //$NON-NLS-1$
+			getString("_UI_DestructionOccurrenceSpecification_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ClassOperations.java,v 1.22 2010/09/28 21:02:15 khussey Exp $
  */
@@ -48,9 +49,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Class#validatePassiveClass(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Passive Class</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Class#getExtensions() <em>Get Extensions</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#createOwnedOperation(java.lang.String, org.eclipse.emf.common.util.EList, org.eclipse.emf.common.util.EList, org.eclipse.uml2.uml.Type) <em>Create Owned Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#isMetaclass() <em>Is Metaclass</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getExtensions() <em>Get Extensions</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Class#getSuperClasses() <em>Get Super Classes</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Class#inherit(org.eclipse.emf.common.util.EList) <em>Inherit</em>}</li>
  * </ul>
  * </p>
@@ -58,7 +60,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class ClassOperations
-		extends StructuredClassifierOperations {
+		extends EncapsulatedClassifierOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,6 +142,21 @@ public class ClassOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Missing derivation for Class::/superClass : Class
+	 * true
+	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<org.eclipse.uml2.uml.Class> getSuperClasses(
+			org.eclipse.uml2.uml.Class class_) {
+		return class_.getSuperClasses();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Creates an operation with the specified name, parameter names, parameter types, and return type (or null) as an owned operation of this class.
 	 * @param class_ The receiving '<em><b>Class</b></em>' model object.
 	 * @param name The name for the new operation, or null.
@@ -167,7 +184,7 @@ public class ClassOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
-		return class_.getAppliedStereotype("Standard" //$NON-NLS-1$
+		return class_.getAppliedStereotype("StandardL2" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metaclass") != null; //$NON-NLS-1$
 	}
 

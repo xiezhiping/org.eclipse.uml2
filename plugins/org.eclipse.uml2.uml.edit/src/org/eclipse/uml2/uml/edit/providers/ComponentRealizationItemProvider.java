@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ComponentRealizationItemProvider.java,v 1.14 2010/09/28 21:00:19 khussey Exp $
  */
@@ -82,8 +83,8 @@ public class ComponentRealizationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addAbstractionPropertyDescriptor(object);
 			addRealizingClassifierPropertyDescriptor(object);
+			addAbstractionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -218,7 +219,7 @@ public class ComponentRealizationItemProvider
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
 				collection, index);
 		}
 		return super
@@ -239,7 +240,7 @@ public class ComponentRealizationItemProvider
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
 				collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
@@ -247,7 +248,7 @@ public class ComponentRealizationItemProvider
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -267,7 +268,7 @@ public class ComponentRealizationItemProvider
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
 				null, value, collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__CLIENT) {
@@ -276,7 +277,7 @@ public class ComponentRealizationItemProvider
 				owner,
 				feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
 				value, collection);
 		}
 		if (feature == UMLPackage.Literals.DEPENDENCY__SUPPLIER) {
@@ -285,7 +286,7 @@ public class ComponentRealizationItemProvider
 				owner,
 				feature,
 				null,
-				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__REALIZING_CLASSIFIER},
+				new EStructuralFeature[]{UMLPackage.Literals.COMPONENT_REALIZATION__ABSTRACTION},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,
@@ -306,7 +307,7 @@ public class ComponentRealizationItemProvider
 				domain,
 				owner,
 				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__CLIENT},
+				new EStructuralFeature[]{UMLPackage.Literals.DEPENDENCY__SUPPLIER},
 				null, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);

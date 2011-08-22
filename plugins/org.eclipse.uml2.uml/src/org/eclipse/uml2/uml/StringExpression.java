@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StringExpression.java,v 1.13 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StringExpression#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StringExpression#getOwningExpression <em>Owning Expression</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StringExpression#getSubExpressions <em>Sub Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -156,9 +157,7 @@ public interface StringExpression
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to
-	 * define a collating sequence between operands and subexpressions).
-	 * 
+	 * If a StringExpression has sub-expressions, it cannot have operands and vice versa (this avoids the problem of having to define a collating sequence between operands and subexpressions).
 	 * if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

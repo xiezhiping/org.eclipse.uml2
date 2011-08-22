@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LoopNode.java,v 1.15 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,15 +33,15 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#isTestedFirst <em>Is Tested First</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getBodyParts <em>Body Part</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getSetupParts <em>Setup Part</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getDecider <em>Decider</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getTests <em>Test</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getResults <em>Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LoopNode#getLoopVariables <em>Loop Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getBodyOutputs <em>Body Output</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getBodyParts <em>Body Part</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getDecider <em>Decider</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#isTestedFirst <em>Is Tested First</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getLoopVariables <em>Loop Variable</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LoopNode#getLoopVariableInputs <em>Loop Variable Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getResults <em>Result</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getSetupParts <em>Setup Part</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LoopNode#getTests <em>Test</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,14 +58,12 @@ public interface LoopNode
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If true, the test is performed before the first execution of the body.
-	 * If false, the body is executed once before the test is performed.
-	 * 
+	 * If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Is Tested First</em>' attribute.
 	 * @see #setIsTestedFirst(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_IsTestedFirst()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isTestedFirst();
@@ -192,7 +191,7 @@ public interface LoopNode
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Test</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getLoopNode_Test()
-	 * @model ordered="false"
+	 * @model required="true" ordered="false"
 	 * @generated
 	 */
 	EList<ExecutableNode> getTests();
@@ -225,9 +224,9 @@ public interface LoopNode
 	 * Returns the value of the '<em><b>Result</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.OutputPin}.
 	 * <p>
-	 * This feature subsets the following features:
+	 * This feature redefines the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Action#getOutputs() <em>Output</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeOutputs() <em>Structured Node Output</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -365,9 +364,9 @@ public interface LoopNode
 	 * Returns the value of the '<em><b>Loop Variable Input</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.InputPin}.
 	 * <p>
-	 * This feature subsets the following features:
+	 * This feature redefines the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Action#getInputs() <em>Input</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.StructuredActivityNode#getStructuredNodeInputs() <em>Structured Node Input</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -448,6 +447,21 @@ public interface LoopNode
 	 * @generated
 	 */
 	boolean validateInputEdges(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The union of the ExecutableNodes in the setupPart, test and bodyPart of a LoopNode must be the same as the subset of nodes contained in the LoopNode (considered as a StructuredActivityNode) that are ExecutableNodes.
+	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateExecutableNodes(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 	/**

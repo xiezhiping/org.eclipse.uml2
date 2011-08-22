@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Profile.java,v 1.20 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -34,7 +35,6 @@ import org.eclipse.emf.ecore.EPackage;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Profile#getOwnedStereotypes <em>Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getMetaclassReferences <em>Metaclass Reference</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Profile#getMetamodelReferences <em>Metamodel Reference</em>}</li>
  * </ul>
@@ -46,63 +46,6 @@ import org.eclipse.emf.ecore.EPackage;
  */
 public interface Profile
 		extends org.eclipse.uml2.uml.Package {
-
-	/**
-	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Stereotype}.
-	 * <p>
-	 * This feature subsets the following features:
-	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.Package#getPackagedElements() <em>Packaged Element</em>}'</li>
-	 * </ul>
-	 * </p>
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References the Stereotypes that are owned by the Profile.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
-	 * @see org.eclipse.uml2.uml.UMLPackage#getProfile_OwnedStereotype()
-	 * @model transient="true" volatile="true" derived="true" ordered="false"
-	 * @generated
-	 */
-	EList<Stereotype> getOwnedStereotypes();
-
-	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Stereotype}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Owned Stereotype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Stereotype}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.Stereotype}.
-	 * @see #getOwnedStereotypes()
-	 * @generated
-	 */
-	Stereotype createOwnedStereotype(String name);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOwnedStereotypes()
-	 * @generated
-	 */
-	Stereotype getOwnedStereotype(String name);
-
-	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
-	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Stereotype} on demand if not found.
-	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
-	 * @see #getOwnedStereotypes()
-	 * @generated
-	 */
-	Stereotype getOwnedStereotype(String name, boolean ignoreCase,
-			boolean createOnDemand);
 
 	/**
 	 * Returns the value of the '<em><b>Metaclass Reference</b></em>' reference list.
@@ -224,9 +167,8 @@ public interface Profile
 	 * <!-- begin-model-doc -->
 	 * An element imported as a metaclassReference is not specialized or generalized in a Profile.
 	 * self.metaclassReference.importedElement->
-	 *   select(c | c.oclIsKindOf(Classifier) and
-	 *     (c.generalization.namespace = self or
-	 *       (c.specialization.namespace = self) )->isEmpty()
+	 * 	select(c | c.oclIsKindOf(Classifier) and
+	 * 		(c.generalization.namespace = self or	c.specialization.namespace = self))->isEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
@@ -241,7 +183,7 @@ public interface Profile
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * All elements imported either as metaclassReferences or through metamodelReferences are members of the same base reference metamodel.
-	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages())->
+	 * self.metamodelReference.importedPackage.elementImport.importedElement.allOwningPackages()->
 	 *   union(self.metaclassReference.importedElement.allOwningPackages() )->notEmpty()
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -268,22 +210,9 @@ public interface Profile
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.
-	 * @param name The name for the new stereotype, or null.
-	 * @param isAbstract Whether the new stereotype should be abstract.
-	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
-	 * @generated
-	 */
-	Stereotype createOwnedStereotype(String name, boolean isAbstract);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
 	 * Determines whether this profile is defined.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDefined();
@@ -366,7 +295,7 @@ public interface Profile
 	 * Retrieves the extensions owned by this profile, excluding non-required extensions if indicated.
 	 * @param requiredOnly Whether to retrieve only required extensions.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" requiredOnlyDataType="org.eclipse.uml2.uml.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
+	 * @model ordered="false" requiredOnlyDataType="org.eclipse.uml2.types.Boolean" requiredOnlyRequired="true" requiredOnlyOrdered="false"
 	 * @generated
 	 */
 	EList<Extension> getOwnedExtensions(boolean requiredOnly);

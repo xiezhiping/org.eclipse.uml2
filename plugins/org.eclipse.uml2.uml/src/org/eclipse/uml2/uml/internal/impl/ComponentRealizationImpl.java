@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ComponentRealizationImpl.java,v 1.21 2009/01/07 15:55:26 jbruck Exp $
  */
@@ -55,8 +56,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getSuppliers <em>Supplier</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getAbstraction <em>Abstraction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getRealizingClassifiers <em>Realizing Classifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ComponentRealizationImpl#getAbstraction <em>Abstraction</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,7 +133,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
+	protected static final int[] CLIENT_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,7 +159,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER};
+	protected static final int[] SUPPLIER_ESUBSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__ABSTRACTION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,9 +195,9 @@ public class ComponentRealizationImpl
 		Resource.Internal eInternalResource = eInternalResource();
 		if (eInternalResource == null || !eInternalResource.isLoading()) {
 			if (newAbstraction != null) {
-				EList<NamedElement> clients = getClients();
-				if (!clients.contains(newAbstraction)) {
-					clients.add(newAbstraction);
+				EList<NamedElement> suppliers = getSuppliers();
+				if (!suppliers.contains(newAbstraction)) {
+					suppliers.add(newAbstraction);
 				}
 			}
 		}
@@ -252,7 +253,7 @@ public class ComponentRealizationImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__SUPPLIER};
+	protected static final int[] REALIZING_CLASSIFIER_ESUPERSETS = new int[]{UMLPackage.COMPONENT_REALIZATION__CLIENT};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -387,30 +388,30 @@ public class ComponentRealizationImpl
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.COMPONENT_REALIZATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				return getName();
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.COMPONENT_REALIZATION__NAME :
+				return getName();
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -425,20 +426,20 @@ public class ComponentRealizationImpl
 				return getSources();
 			case UMLPackage.COMPONENT_REALIZATION__TARGET :
 				return getTargets();
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				return getClients();
+			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				if (resolve)
 					return getMapping();
 				return basicGetMapping();
+			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
+				return getRealizingClassifiers();
 			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
 				if (resolve)
 					return getAbstraction();
 				return basicGetAbstraction();
-			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
-				return getRealizingClassifiers();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -462,19 +463,19 @@ public class ComponentRealizationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.COMPONENT_REALIZATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -482,26 +483,26 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				getClients().clear();
 				getClients().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
+			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) newValue);
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				setAbstraction((Component) newValue);
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				getRealizingClassifiers().clear();
 				getRealizingClassifiers().addAll(
 					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				setAbstraction((Component) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -521,17 +522,17 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.COMPONENT_REALIZATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.COMPONENT_REALIZATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -539,20 +540,20 @@ public class ComponentRealizationImpl
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) null);
 				return;
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				setAbstraction((Component) null);
-				return;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				getRealizingClassifiers().clear();
+				return;
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				setAbstraction((Component) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -568,27 +569,27 @@ public class ComponentRealizationImpl
 		switch (featureID) {
 			case UMLPackage.COMPONENT_REALIZATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.COMPONENT_REALIZATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.COMPONENT_REALIZATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__NAME :
 				return isSetName();
-			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.COMPONENT_REALIZATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.COMPONENT_REALIZATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.COMPONENT_REALIZATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.COMPONENT_REALIZATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.COMPONENT_REALIZATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.COMPONENT_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.COMPONENT_REALIZATION__TEMPLATE_PARAMETER :
@@ -599,17 +600,17 @@ public class ComponentRealizationImpl
 				return isSetSources();
 			case UMLPackage.COMPONENT_REALIZATION__TARGET :
 				return isSetTargets();
-			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.COMPONENT_REALIZATION__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.COMPONENT_REALIZATION__MAPPING :
 				return mapping != null;
-			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
-				return basicGetAbstraction() != null;
 			case UMLPackage.COMPONENT_REALIZATION__REALIZING_CLASSIFIER :
 				return realizingClassifiers != null
 					&& !realizingClassifiers.isEmpty();
+			case UMLPackage.COMPONENT_REALIZATION__ABSTRACTION :
+				return basicGetAbstraction() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}

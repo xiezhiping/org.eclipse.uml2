@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Extend.java,v 1.14 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,8 +33,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Extend#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extend#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Extend#getExtendedCase <em>Extended Case</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extend#getExtensionLocations <em>Extension Location</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Extend#getExtension <em>Extension</em>}</li>
  * </ul>
@@ -89,7 +90,6 @@ public interface Extend
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Condition</em>' containment reference.
 	 * @see #setCondition(Constraint)
@@ -139,7 +139,6 @@ public interface Extend
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extension Location</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getExtend_ExtensionLocation()
@@ -177,6 +176,7 @@ public interface Extend
 	 * <p>
 	 * This feature subsets the following features:
 	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.NamedElement#getNamespace() <em>Namespace</em>}'</li>
 	 *   <li>'{@link org.eclipse.uml2.uml.DirectedRelationship#getSources() <em>Source</em>}'</li>
 	 * </ul>
 	 * </p>
@@ -209,8 +209,6 @@ public interface Extend
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The extension points referenced by the extend relationship must belong to the use case that is being extended.
-	 * 
-	 * 
 	 * extensionLocation->forAll (xp | extendedCase.extensionPoint->includes(xp))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

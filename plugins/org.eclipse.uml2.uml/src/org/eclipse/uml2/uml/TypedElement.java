@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2006 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TypedElement.java,v 1.4 2006/06/07 21:39:13 khussey Exp $
  */
@@ -18,8 +19,8 @@ package org.eclipse.uml2.uml;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A typed element is a kind of named element that represents an element with a type.
  * A typed element has a type.
+ * A typed element is a kind of named element that represents an element with a type.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -41,8 +42,8 @@ public interface TypedElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This information is derived from the return result for this Operation.
 	 * The type of the TypedElement.
+	 * This information is derived from the return result for this Operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)

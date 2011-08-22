@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PackageMergerOptionsDialog.java,v 1.2 2007/01/05 21:48:51 khussey Exp $
  */
@@ -30,6 +31,20 @@ public class PackageMergerOptionsDialog
 	@Override
 	protected void createOptionAreas(Composite parent) {
 		super.createOptionAreas(parent);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE.getString("_UI_EmptyQualifiedNames_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__EMPTY_QUALIFIED_NAMES, new String[]{
+				ignoreChoiceLabel, reportChoiceLabel}, reportChoiceLabel);
+
+		createOptionArea(
+			parent,
+			UMLEditorPlugin.INSTANCE
+				.getString("_UI_IndistinguishableClassifiers_label"), //$NON-NLS-1$
+			UMLUtil.PackageMerger.OPTION__INDISTINGUISHABLE_CLASSIFIERS,
+			new String[]{ignoreChoiceLabel, reportChoiceLabel},
+			reportChoiceLabel);
 
 		createOptionArea(
 			parent,

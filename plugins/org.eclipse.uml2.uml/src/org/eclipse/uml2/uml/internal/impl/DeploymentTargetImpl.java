@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DeploymentTargetImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
@@ -52,8 +53,8 @@ import org.eclipse.uml2.uml.internal.operations.DeploymentTargetOperations;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getClientDependencies <em>Client Dependency</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployedElements <em>Deployed Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DeploymentTargetImpl#getDeployments <em>Deployment</em>}</li>
  * </ul>
  * </p>
  *
@@ -148,47 +149,6 @@ public abstract class DeploymentTargetImpl
 				DEPLOYMENT_ESUPERSETS, null, UMLPackage.DEPLOYMENT__LOCATION);
 		}
 		return deployments;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deployment createDeployment(String name) {
-		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
-		getDeployments().add(newDeployment);
-		if (name != null)
-			newDeployment.setName(name);
-		return newDeployment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deployment getDeployment(String name) {
-		return getDeployment(name, false, false);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Deployment getDeployment(String name, boolean ignoreCase,
-			boolean createOnDemand) {
-		deploymentLoop : for (Deployment deployment : getDeployments()) {
-			if (name != null && !(ignoreCase
-				? name.equalsIgnoreCase(deployment.getName())
-				: name.equals(deployment.getName())))
-				continue deploymentLoop;
-			return deployment;
-		}
-		return createOnDemand
-			? createDeployment(name)
-			: null;
 	}
 
 	/**
@@ -303,34 +263,34 @@ public abstract class DeploymentTargetImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				return getName();
-			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.DEPLOYMENT_TARGET__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.DEPLOYMENT_TARGET__NAME :
+				return getName();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				return getDeployments();
+			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.DEPLOYMENT_TARGET__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :
 				return getDeployedElements();
+			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
+				return getDeployments();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -354,19 +314,19 @@ public abstract class DeploymentTargetImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.DEPLOYMENT_TARGET__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
 				getDeployments().clear();
@@ -391,17 +351,17 @@ public abstract class DeploymentTargetImpl
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DEPLOYMENT_TARGET__NAME :
-				unsetName();
-				return;
-			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.DEPLOYMENT_TARGET__NAME :
+				unsetName();
+				return;
 			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
 				getDeployments().clear();
@@ -420,31 +380,31 @@ public abstract class DeploymentTargetImpl
 		switch (featureID) {
 			case UMLPackage.DEPLOYMENT_TARGET__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPLOYMENT_TARGET__OWNER :
 				return isSetOwner();
-			case UMLPackage.DEPLOYMENT_TARGET__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPLOYMENT_TARGET__NAME :
 				return isSetName();
-			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.DEPLOYMENT_TARGET__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.DEPLOYMENT_TARGET__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.DEPLOYMENT_TARGET__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
-				return deployments != null && !deployments.isEmpty();
+			case UMLPackage.DEPLOYMENT_TARGET__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYED_ELEMENT :
 				return !getDeployedElements().isEmpty();
+			case UMLPackage.DEPLOYMENT_TARGET__DEPLOYMENT :
+				return deployments != null && !deployments.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -481,6 +441,47 @@ public abstract class DeploymentTargetImpl
 	 * @ordered
 	 */
 	protected static final int[] DEPLOYMENT_ESUPERSETS = new int[]{UMLPackage.DEPLOYMENT_TARGET__CLIENT_DEPENDENCY};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment createDeployment(String name) {
+		Deployment newDeployment = (Deployment) create(UMLPackage.Literals.DEPLOYMENT);
+		getDeployments().add(newDeployment);
+		if (name != null)
+			newDeployment.setName(name);
+		return newDeployment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment getDeployment(String name) {
+		return getDeployment(name, false, false);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment getDeployment(String name, boolean ignoreCase,
+			boolean createOnDemand) {
+		deploymentLoop : for (Deployment deployment : getDeployments()) {
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(deployment.getName())
+				: name.equals(deployment.getName())))
+				continue deploymentLoop;
+			return deployment;
+		}
+		return createOnDemand
+			? createDeployment(name)
+			: null;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

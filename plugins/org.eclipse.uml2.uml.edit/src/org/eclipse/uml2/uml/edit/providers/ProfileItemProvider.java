@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ProfileItemProvider.java,v 1.15 2010/09/28 21:00:18 khussey Exp $
  */
@@ -79,30 +80,10 @@ public class ProfileItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOwnedStereotypePropertyDescriptor(object);
 			addMetaclassReferencePropertyDescriptor(object);
 			addMetamodelReferencePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Owned Stereotype feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOwnedStereotypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Profile_ownedStereotype_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Profile_ownedStereotype_feature", "_UI_Profile_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE, true, false,
-				true, null, null, null));
 	}
 
 	/**
@@ -190,7 +171,6 @@ public class ProfileItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Profile.class)) {
-			case UMLPackage.PROFILE__OWNED_STEREOTYPE :
 			case UMLPackage.PROFILE__METACLASS_REFERENCE :
 			case UMLPackage.PROFILE__METAMODEL_REFERENCE :
 				fireNotifyChanged(new ViewerNotification(notification,
@@ -211,10 +191,6 @@ public class ProfileItemProvider
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE,
-			UMLFactory.eINSTANCE.createStereotype()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PROFILE__METACLASS_REFERENCE,
@@ -244,9 +220,9 @@ public class ProfileItemProvider
 			|| childFeature == UMLPackage.Literals.NAMESPACE__PACKAGE_IMPORT
 			|| childFeature == UMLPackage.Literals.PROFILE__METAMODEL_REFERENCE
 			|| childFeature == UMLPackage.Literals.NAMESPACE__OWNED_RULE
-			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE
-			|| childFeature == UMLPackage.Literals.PROFILE__OWNED_STEREOTYPE
-			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE;
+			|| childFeature == UMLPackage.Literals.PACKAGE__NESTED_PACKAGE
+			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_STEREOTYPE
+			|| childFeature == UMLPackage.Literals.PACKAGE__OWNED_TYPE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

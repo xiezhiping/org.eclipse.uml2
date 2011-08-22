@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StringExpressionImpl.java,v 1.27 2010/09/28 21:02:14 khussey Exp $
  */
@@ -67,11 +68,11 @@ import org.eclipse.uml2.uml.internal.operations.TemplateableElementOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwnedTemplateSignature <em>Owned Template Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getTemplateBindings <em>Template Binding</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getOwningExpression <em>Owning Expression</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StringExpressionImpl#getSubExpressions <em>Sub Expression</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,16 +83,6 @@ public class StringExpressionImpl
 		implements StringExpression {
 
 	/**
-	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTemplateBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TemplateBinding> templateBindings;
-
-	/**
 	 * The cached value of the '{@link #getOwnedTemplateSignature() <em>Owned Template Signature</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,6 +91,16 @@ public class StringExpressionImpl
 	 * @ordered
 	 */
 	protected TemplateSignature ownedTemplateSignature;
+
+	/**
+	 * The cached value of the '{@link #getTemplateBindings() <em>Template Binding</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateBindings()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TemplateBinding> templateBindings;
 
 	/**
 	 * The cached value of the '{@link #getSubExpressions() <em>Sub Expression</em>}' containment reference list.
@@ -552,9 +553,6 @@ public class StringExpressionImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -565,14 +563,17 @@ public class StringExpressionImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
-			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubExpressions())
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetOwningExpression((StringExpression) otherEnd,
 					msgs);
+			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubExpressions())
+					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -604,16 +605,16 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				return ((InternalEList<?>) getOperands()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
+				return basicSetOwningExpression(null, msgs);
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				return ((InternalEList<?>) getSubExpressions()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-				return basicSetOwningExpression(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -649,30 +650,30 @@ public class StringExpressionImpl
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STRING_EXPRESSION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.STRING_EXPRESSION__NAME :
-				return getName();
-			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.STRING_EXPRESSION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.STRING_EXPRESSION__NAME :
+				return getName();
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.STRING_EXPRESSION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -685,22 +686,22 @@ public class StringExpressionImpl
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.STRING_EXPRESSION__SYMBOL :
-				return getSymbol();
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				return getOperands();
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return getTemplateBindings();
+			case UMLPackage.STRING_EXPRESSION__SYMBOL :
+				return getSymbol();
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return getSubExpressions();
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+				return getTemplateBindings();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				if (resolve)
 					return getOwningExpression();
 				return basicGetOwningExpression();
+			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
+				return getSubExpressions();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -724,19 +725,19 @@ public class StringExpressionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STRING_EXPRESSION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.STRING_EXPRESSION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -747,29 +748,29 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.STRING_EXPRESSION__SYMBOL :
-				setSymbol((String) newValue);
-				return;
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				getOperands().clear();
 				getOperands().addAll(
 					(Collection<? extends ValueSpecification>) newValue);
+				return;
+			case UMLPackage.STRING_EXPRESSION__SYMBOL :
+				setSymbol((String) newValue);
+				return;
+			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
+			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
+				setOwningExpression((StringExpression) newValue);
 				return;
 			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
 				getSubExpressions().clear();
 				getSubExpressions().addAll(
 					(Collection<? extends StringExpression>) newValue);
-				return;
-			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
-				setOwningExpression((StringExpression) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -789,17 +790,17 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.STRING_EXPRESSION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.STRING_EXPRESSION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -810,23 +811,23 @@ public class StringExpressionImpl
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.STRING_EXPRESSION__SYMBOL :
-				unsetSymbol();
-				return;
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				getOperands().clear();
 				return;
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
+			case UMLPackage.STRING_EXPRESSION__SYMBOL :
+				unsetSymbol();
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
-			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				getSubExpressions().clear();
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
 				return;
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				setOwningExpression((StringExpression) null);
+				return;
+			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
+				getSubExpressions().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -842,45 +843,45 @@ public class StringExpressionImpl
 		switch (featureID) {
 			case UMLPackage.STRING_EXPRESSION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STRING_EXPRESSION__OWNER :
 				return isSetOwner();
-			case UMLPackage.STRING_EXPRESSION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__NAME :
 				return isSetName();
-			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.STRING_EXPRESSION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.STRING_EXPRESSION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.STRING_EXPRESSION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.STRING_EXPRESSION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.STRING_EXPRESSION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.STRING_EXPRESSION__TEMPLATE_PARAMETER :
 				return templateParameter != null;
 			case UMLPackage.STRING_EXPRESSION__TYPE :
 				return type != null;
-			case UMLPackage.STRING_EXPRESSION__SYMBOL :
-				return isSetSymbol();
 			case UMLPackage.STRING_EXPRESSION__OPERAND :
 				return operands != null && !operands.isEmpty();
-			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.STRING_EXPRESSION__SYMBOL :
+				return isSetSymbol();
 			case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 				return ownedTemplateSignature != null;
-			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
-				return subExpressions != null && !subExpressions.isEmpty();
+			case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.STRING_EXPRESSION__OWNING_EXPRESSION :
 				return basicGetOwningExpression() != null;
+			case UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION :
+				return subExpressions != null && !subExpressions.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -894,10 +895,10 @@ public class StringExpressionImpl
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (derivedFeatureID) {
-				case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
-					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
 				case UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE :
 					return UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE;
+				case UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING :
+					return UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING;
 				default :
 					return -1;
 			}
@@ -914,10 +915,10 @@ public class StringExpressionImpl
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (baseFeatureID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
-					return UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING;
 				case UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE :
 					return UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE;
+				case UMLPackage.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING :
+					return UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING;
 				default :
 					return -1;
 			}
@@ -934,10 +935,10 @@ public class StringExpressionImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == TemplateableElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS :
-					return UMLPackage.STRING_EXPRESSION___PARAMETERABLE_ELEMENTS;
 				case UMLPackage.TEMPLATEABLE_ELEMENT___IS_TEMPLATE :
 					return UMLPackage.STRING_EXPRESSION___IS_TEMPLATE;
+				case UMLPackage.TEMPLATEABLE_ELEMENT___PARAMETERABLE_ELEMENTS :
+					return UMLPackage.STRING_EXPRESSION___PARAMETERABLE_ELEMENTS;
 				default :
 					return -1;
 			}
@@ -957,137 +958,141 @@ public class StringExpressionImpl
 		switch (operationID) {
 			case UMLPackage.STRING_EXPRESSION___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRING_EXPRESSION___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRING_EXPRESSION___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STRING_EXPRESSION___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.STRING_EXPRESSION___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.STRING_EXPRESSION___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.STRING_EXPRESSION___GET_MODEL :
-				return getModel();
-			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.STRING_EXPRESSION___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.STRING_EXPRESSION___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.STRING_EXPRESSION___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.STRING_EXPRESSION___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STRING_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STRING_EXPRESSION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.STRING_EXPRESSION___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_MODEL :
+				return getModel();
+			case UMLPackage.STRING_EXPRESSION___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.STRING_EXPRESSION___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.STRING_EXPRESSION___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.STRING_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STRING_EXPRESSION___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.STRING_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STRING_EXPRESSION___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STRING_EXPRESSION___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.STRING_EXPRESSION___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.STRING_EXPRESSION___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STRING_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.STRING_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRING_EXPRESSION___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STRING_EXPRESSION___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.STRING_EXPRESSION___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STRING_EXPRESSION___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.STRING_EXPRESSION___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___GET_LABEL :
 				return getLabel();
 			case UMLPackage.STRING_EXPRESSION___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.STRING_EXPRESSION___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STRING_EXPRESSION___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.STRING_EXPRESSION___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.STRING_EXPRESSION___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.STRING_EXPRESSION___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.STRING_EXPRESSION___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.STRING_EXPRESSION___SEPARATOR :
 				return separator();
-			case UMLPackage.STRING_EXPRESSION___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.STRING_EXPRESSION___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.STRING_EXPRESSION___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.STRING_EXPRESSION___IS_COMPUTABLE :
-				return isComputable();
-			case UMLPackage.STRING_EXPRESSION___INTEGER_VALUE :
-				return integerValue();
 			case UMLPackage.STRING_EXPRESSION___BOOLEAN_VALUE :
 				return booleanValue();
+			case UMLPackage.STRING_EXPRESSION___INTEGER_VALUE :
+				return integerValue();
+			case UMLPackage.STRING_EXPRESSION___IS_COMPUTABLE :
+				return isComputable();
+			case UMLPackage.STRING_EXPRESSION___IS_NULL :
+				return isNull();
+			case UMLPackage.STRING_EXPRESSION___REAL_VALUE :
+				return realValue();
 			case UMLPackage.STRING_EXPRESSION___STRING_VALUE :
 				return stringValue();
 			case UMLPackage.STRING_EXPRESSION___UNLIMITED_VALUE :
 				return unlimitedValue();
-			case UMLPackage.STRING_EXPRESSION___IS_NULL :
-				return isNull();
-			case UMLPackage.STRING_EXPRESSION___PARAMETERABLE_ELEMENTS :
-				return parameterableElements();
 			case UMLPackage.STRING_EXPRESSION___IS_TEMPLATE :
 				return isTemplate();
+			case UMLPackage.STRING_EXPRESSION___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
 			case UMLPackage.STRING_EXPRESSION___VALIDATE_OPERANDS__DIAGNOSTICCHAIN_MAP :
 				return validateOperands((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1111,8 +1116,8 @@ public class StringExpressionImpl
 		UMLPackage.STRING_EXPRESSION__OWNED_COMMENT,
 		UMLPackage.STRING_EXPRESSION__NAME_EXPRESSION,
 		UMLPackage.STRING_EXPRESSION__OPERAND,
-		UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
 		UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE,
+		UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING,
 		UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION};
 
 	/**
@@ -1123,8 +1128,8 @@ public class StringExpressionImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING)
 			|| eIsSet(UMLPackage.STRING_EXPRESSION__OWNED_TEMPLATE_SIGNATURE)
+			|| eIsSet(UMLPackage.STRING_EXPRESSION__TEMPLATE_BINDING)
 			|| eIsSet(UMLPackage.STRING_EXPRESSION__SUB_EXPRESSION);
 	}
 

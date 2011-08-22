@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TransitionItemProvider.java,v 1.20 2010/09/28 21:00:19 khussey Exp $
  */
@@ -82,14 +83,14 @@ public class TransitionItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
+			addEffectPropertyDescriptor(object);
+			addGuardPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
-			addContainerPropertyDescriptor(object);
+			addRedefinedTransitionPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
-			addRedefinedTransitionPropertyDescriptor(object);
-			addGuardPropertyDescriptor(object);
-			addEffectPropertyDescriptor(object);
 			addTriggerPropertyDescriptor(object);
+			addContainerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -397,8 +398,8 @@ public class TransitionItemProvider
 
 		switch (notification.getFeatureID(Transition.class)) {
 			case UMLPackage.TRANSITION__IS_LEAF :
-			case UMLPackage.TRANSITION__KIND :
 			case UMLPackage.TRANSITION__GUARD :
+			case UMLPackage.TRANSITION__KIND :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
@@ -424,6 +425,30 @@ public class TransitionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createProtocolStateMachine()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createActivity()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createInteraction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createOpaqueBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TRANSITION__EFFECT,
+			UMLFactory.eINSTANCE.createFunctionBehavior()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__GUARD,
 			UMLFactory.eINSTANCE.createConstraint()));
 
@@ -437,35 +462,11 @@ public class TransitionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__GUARD,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__GUARD,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createProtocolStateMachine()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createOpaqueBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createFunctionBehavior()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createActivity()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TRANSITION__EFFECT,
-			UMLFactory.eINSTANCE.createInteraction()));
+			UMLPackage.Literals.TRANSITION__GUARD,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TRANSITION__TRIGGER,

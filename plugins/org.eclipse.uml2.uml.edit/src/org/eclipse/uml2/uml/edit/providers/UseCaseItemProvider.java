@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UseCaseItemProvider.java,v 1.13 2010/09/28 21:00:19 khussey Exp $
  */
@@ -70,9 +71,9 @@ public class UseCaseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIncludePropertyDescriptor(object);
 			addExtendPropertyDescriptor(object);
 			addExtensionPointPropertyDescriptor(object);
+			addIncludePropertyDescriptor(object);
 			addSubjectPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -171,9 +172,9 @@ public class UseCaseItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.USE_CASE__INCLUDE);
 			childrenFeatures.add(UMLPackage.Literals.USE_CASE__EXTEND);
 			childrenFeatures.add(UMLPackage.Literals.USE_CASE__EXTENSION_POINT);
+			childrenFeatures.add(UMLPackage.Literals.USE_CASE__INCLUDE);
 		}
 		return childrenFeatures;
 	}
@@ -238,9 +239,9 @@ public class UseCaseItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(UseCase.class)) {
-			case UMLPackage.USE_CASE__INCLUDE :
 			case UMLPackage.USE_CASE__EXTEND :
 			case UMLPackage.USE_CASE__EXTENSION_POINT :
+			case UMLPackage.USE_CASE__INCLUDE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -261,16 +262,16 @@ public class UseCaseItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.USE_CASE__INCLUDE,
-			UMLFactory.eINSTANCE.createInclude()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.USE_CASE__EXTEND,
 			UMLFactory.eINSTANCE.createExtend()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.USE_CASE__EXTENSION_POINT,
 			UMLFactory.eINSTANCE.createExtensionPoint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.USE_CASE__INCLUDE,
+			UMLFactory.eINSTANCE.createInclude()));
 	}
 
 	/**
@@ -285,10 +286,10 @@ public class UseCaseItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
-			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR
-			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR;
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__CLASSIFIER_BEHAVIOR
+			|| childFeature == UMLPackage.Literals.BEHAVIORED_CLASSIFIER__OWNED_BEHAVIOR;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

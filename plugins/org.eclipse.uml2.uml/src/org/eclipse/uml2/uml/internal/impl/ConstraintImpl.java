@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ConstraintImpl.java,v 1.26 2010/09/28 21:02:14 khussey Exp $
  */
@@ -63,11 +64,11 @@ import org.eclipse.uml2.uml.internal.operations.ConstraintOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getConstrainedElements <em>Constrained Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ConstraintImpl#getSpecification <em>Specification</em>}</li>
  * </ul>
  * </p>
  *
@@ -365,17 +366,6 @@ public class ConstraintImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateNotAppliedToSelf(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ConstraintOperations.validateNotAppliedToSelf(this, diagnostics,
-			context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
@@ -432,10 +422,10 @@ public class ConstraintImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
-			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				return basicSetSpecification(null, msgs);
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				return basicSetContext(null, msgs);
+			case UMLPackage.CONSTRAINT__SPECIFICATION :
+				return basicSetSpecification(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -470,30 +460,30 @@ public class ConstraintImpl
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.CONSTRAINT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONSTRAINT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CONSTRAINT__NAME :
-				return getName();
-			case UMLPackage.CONSTRAINT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.CONSTRAINT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.CONSTRAINT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.CONSTRAINT__NAME :
+				return getName();
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.CONSTRAINT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.CONSTRAINT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.CONSTRAINT__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -504,14 +494,14 @@ public class ConstraintImpl
 				return basicGetTemplateParameter();
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				return getConstrainedElements();
-			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				if (resolve)
-					return getSpecification();
-				return basicGetSpecification();
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
+			case UMLPackage.CONSTRAINT__SPECIFICATION :
+				if (resolve)
+					return getSpecification();
+				return basicGetSpecification();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -535,19 +525,19 @@ public class ConstraintImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONSTRAINT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.CONSTRAINT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.CONSTRAINT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.CONSTRAINT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -560,11 +550,11 @@ public class ConstraintImpl
 				getConstrainedElements().addAll(
 					(Collection<? extends Element>) newValue);
 				return;
-			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				setSpecification((ValueSpecification) newValue);
-				return;
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				setContext((Namespace) newValue);
+				return;
+			case UMLPackage.CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -584,17 +574,17 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONSTRAINT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.CONSTRAINT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.CONSTRAINT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.CONSTRAINT__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -605,11 +595,11 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				getConstrainedElements().clear();
 				return;
-			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				setSpecification((ValueSpecification) null);
-				return;
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				setContext((Namespace) null);
+				return;
+			case UMLPackage.CONSTRAINT__SPECIFICATION :
+				setSpecification((ValueSpecification) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -625,27 +615,27 @@ public class ConstraintImpl
 		switch (featureID) {
 			case UMLPackage.CONSTRAINT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONSTRAINT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONSTRAINT__OWNER :
 				return isSetOwner();
-			case UMLPackage.CONSTRAINT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONSTRAINT__NAME :
 				return isSetName();
-			case UMLPackage.CONSTRAINT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.CONSTRAINT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.CONSTRAINT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.CONSTRAINT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.CONSTRAINT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.CONSTRAINT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.CONSTRAINT__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.CONSTRAINT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CONSTRAINT__TEMPLATE_PARAMETER :
@@ -653,10 +643,10 @@ public class ConstraintImpl
 			case UMLPackage.CONSTRAINT__CONSTRAINED_ELEMENT :
 				return constrainedElements != null
 					&& !constrainedElements.isEmpty();
-			case UMLPackage.CONSTRAINT__SPECIFICATION :
-				return specification != null;
 			case UMLPackage.CONSTRAINT__CONTEXT :
 				return basicGetContext() != null;
+			case UMLPackage.CONSTRAINT__SPECIFICATION :
+				return specification != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -673,129 +663,123 @@ public class ConstraintImpl
 		switch (operationID) {
 			case UMLPackage.CONSTRAINT___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSTRAINT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSTRAINT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.CONSTRAINT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.CONSTRAINT___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.CONSTRAINT___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.CONSTRAINT___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.CONSTRAINT___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.CONSTRAINT___GET_MODEL :
-				return getModel();
-			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.CONSTRAINT___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.CONSTRAINT___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.CONSTRAINT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.CONSTRAINT___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.CONSTRAINT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.CONSTRAINT___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONSTRAINT___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONSTRAINT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.CONSTRAINT___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_MODEL :
+				return getModel();
+			case UMLPackage.CONSTRAINT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.CONSTRAINT___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.CONSTRAINT___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONSTRAINT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONSTRAINT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONSTRAINT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONSTRAINT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.CONSTRAINT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.CONSTRAINT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.CONSTRAINT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.CONSTRAINT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.CONSTRAINT___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.CONSTRAINT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.CONSTRAINT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.CONSTRAINT___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.CONSTRAINT___GET_LABEL :
 				return getLabel();
 			case UMLPackage.CONSTRAINT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.CONSTRAINT___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.CONSTRAINT___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONSTRAINT___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.CONSTRAINT___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.CONSTRAINT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.CONSTRAINT___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.CONSTRAINT___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.CONSTRAINT___SEPARATOR :
 				return separator();
-			case UMLPackage.CONSTRAINT___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.CONSTRAINT___IS_COMPATIBLE_WITH__PARAMETERABLEELEMENT :
 				return isCompatibleWith((ParameterableElement) arguments.get(0));
 			case UMLPackage.CONSTRAINT___IS_TEMPLATE_PARAMETER :
 				return isTemplateParameter();
-			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotApplyToSelf(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
-				return validateValueSpecificationBoolean(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONSTRAINT___VALIDATE_BOOLEAN_VALUE__DIAGNOSTICCHAIN_MAP :
 				return validateBooleanValue((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -803,8 +787,12 @@ public class ConstraintImpl
 				return validateNoSideEffects(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLIED_TO_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotAppliedToSelf(
+			case UMLPackage.CONSTRAINT___VALIDATE_NOT_APPLY_TO_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotApplyToSelf(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONSTRAINT___VALIDATE_VALUE_SPECIFICATION_BOOLEAN__DIAGNOSTICCHAIN_MAP :
+				return validateValueSpecificationBoolean(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

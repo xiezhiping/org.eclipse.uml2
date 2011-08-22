@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReadLinkActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
@@ -30,11 +31,11 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateOneOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Open End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateTypeAndOrdering(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type And Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateCompatibleMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Compatible Multiplicity</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateNavigableOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Open End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateOneOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Open End</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReadLinkAction#validateNavigableOpenEnd(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Navigable Open End</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,7 +93,7 @@ public class ReadLinkActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type and ordering of the result output pin are same as the type and ordering of the open association end.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * self.result.type = openend.type
 	 * and self.result.ordering = openend.ordering
 	 * 
@@ -131,7 +132,7 @@ public class ReadLinkActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The multiplicity of the open association end must be compatible with the multiplicity of the result output pin.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.multiplicity.compatibleWith(self.result.multiplicity)
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
@@ -169,7 +170,7 @@ public class ReadLinkActionOperations
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The open end must be navigable.
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.isNavigable()
 	 * 
 	 * @param readLinkAction The receiving '<em><b>Read Link Action</b></em>' model object.
@@ -208,7 +209,7 @@ public class ReadLinkActionOperations
 	 * <!-- begin-model-doc -->
 	 * Visibility of the open end must allow access to the object performing the action.
 	 * let host : Classifier = self.context in
-	 * let openend : AssociationEnd = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
+	 * let openend : Property = self.endData->select(ed | ed.value->size() = 0)->asSequence()->first().end in
 	 * openend.visibility = #public
 	 * or self.endData->exists(oed | not oed.end = openend
 	 * and (host = oed.end.participant

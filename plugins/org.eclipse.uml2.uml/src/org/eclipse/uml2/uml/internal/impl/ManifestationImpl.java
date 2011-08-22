@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ManifestationImpl.java,v 1.17 2007/04/25 17:47:04 khussey Exp $
  */
@@ -171,30 +172,30 @@ public class ManifestationImpl
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.MANIFESTATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.MANIFESTATION__NAME :
-				return getName();
-			case UMLPackage.MANIFESTATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.MANIFESTATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.MANIFESTATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.MANIFESTATION__NAME :
+				return getName();
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.MANIFESTATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.MANIFESTATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.MANIFESTATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -209,10 +210,10 @@ public class ManifestationImpl
 				return getSources();
 			case UMLPackage.MANIFESTATION__TARGET :
 				return getTargets();
-			case UMLPackage.MANIFESTATION__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.MANIFESTATION__CLIENT :
 				return getClients();
+			case UMLPackage.MANIFESTATION__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.MANIFESTATION__MAPPING :
 				if (resolve)
 					return getMapping();
@@ -244,19 +245,19 @@ public class ManifestationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.MANIFESTATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.MANIFESTATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.MANIFESTATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.MANIFESTATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -264,14 +265,14 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.MANIFESTATION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.MANIFESTATION__CLIENT :
 				getClients().clear();
 				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.MANIFESTATION__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.MANIFESTATION__MAPPING :
@@ -298,17 +299,17 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.MANIFESTATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.MANIFESTATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.MANIFESTATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.MANIFESTATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -316,11 +317,11 @@ public class ManifestationImpl
 			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.MANIFESTATION__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.MANIFESTATION__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.MANIFESTATION__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.MANIFESTATION__MAPPING :
 				setMapping((OpaqueExpression) null);
@@ -342,27 +343,27 @@ public class ManifestationImpl
 		switch (featureID) {
 			case UMLPackage.MANIFESTATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.MANIFESTATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.MANIFESTATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.MANIFESTATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.MANIFESTATION__NAME :
 				return isSetName();
-			case UMLPackage.MANIFESTATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.MANIFESTATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.MANIFESTATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.MANIFESTATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.MANIFESTATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.MANIFESTATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.MANIFESTATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.MANIFESTATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.MANIFESTATION__TEMPLATE_PARAMETER :
@@ -373,10 +374,10 @@ public class ManifestationImpl
 				return isSetSources();
 			case UMLPackage.MANIFESTATION__TARGET :
 				return isSetTargets();
-			case UMLPackage.MANIFESTATION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.MANIFESTATION__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.MANIFESTATION__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.MANIFESTATION__MAPPING :
 				return mapping != null;
 			case UMLPackage.MANIFESTATION__UTILIZED_ELEMENT :

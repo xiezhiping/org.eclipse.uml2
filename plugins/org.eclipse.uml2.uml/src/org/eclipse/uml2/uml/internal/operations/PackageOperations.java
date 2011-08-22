@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,8 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 271470
- *   Kenn Hussey - 323181
+ *   Kenn Hussey - 323181, 348433
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PackageOperations.java,v 1.41 2010/09/28 21:02:15 khussey Exp $
  */
@@ -73,23 +74,29 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Package#validateElementsPublicOrPrivate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Elements Public Or Private</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#applyProfile(org.eclipse.uml2.uml.Profile) <em>Apply Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedClass(java.lang.String, boolean) <em>Create Owned Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedEnumeration(java.lang.String) <em>Create Owned Enumeration</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#isProfileApplied(org.eclipse.uml2.uml.Profile) <em>Is Profile Applied</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#applyProfile(org.eclipse.uml2.uml.Profile) <em>Apply Profile</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#unapplyProfile(org.eclipse.uml2.uml.Profile) <em>Unapply Profile</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getAppliedProfiles() <em>Get Applied Profiles</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#createOwnedStereotype(java.lang.String, boolean) <em>Create Owned Stereotype</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getAllAppliedProfiles() <em>Get All Applied Profiles</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getAllProfileApplications() <em>Get All Profile Applications</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getAppliedProfile(java.lang.String) <em>Get Applied Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getAppliedProfile(java.lang.String, boolean) <em>Get Applied Profile</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getAllProfileApplications() <em>Get All Profile Applications</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getAppliedProfiles() <em>Get Applied Profiles</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile) <em>Get Profile Application</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplication(org.eclipse.uml2.uml.Profile, boolean) <em>Get Profile Application</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#isModelLibrary() <em>Is Model Library</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#visibleMembers() <em>Visible Members</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#isProfileApplied(org.eclipse.uml2.uml.Profile) <em>Is Profile Applied</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#unapplyProfile(org.eclipse.uml2.uml.Profile) <em>Unapply Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#allApplicableStereotypes() <em>All Applicable Stereotypes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#containingProfile() <em>Containing Profile</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#makesVisible(org.eclipse.uml2.uml.NamedElement) <em>Makes Visible</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages() <em>Get Nested Packages</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedStereotypes() <em>Get Owned Stereotypes</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes() <em>Get Owned Types</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#visibleMembers() <em>Visible Members</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#mustBeOwned() <em>Must Be Owned</em>}</li>
  * </ul>
  * </p>
@@ -122,14 +129,15 @@ public class PackageOperations
 
 		@Override
 		protected EClass getTarget(EClass eClass) {
-			return (EClass) profile.getDefinition(getNamedElement(eClass));
+			return (EClass) profile.getDefinition(getNamedElement(eClass,
+				profile));
 		}
 
 		@Override
 		protected EStructuralFeature getTarget(
 				EStructuralFeature eStructuralFeature) {
-			return (EStructuralFeature) profile
-				.getDefinition(getNamedElement(eStructuralFeature));
+			return (EStructuralFeature) profile.getDefinition(getNamedElement(
+				eStructuralFeature, profile));
 		}
 
 		@Override
@@ -500,6 +508,26 @@ public class PackageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * @param name The name for the new stereotype, or null.
+	 * @param isAbstract Whether the new stereotype should be abstract.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Stereotype createOwnedStereotype(
+			org.eclipse.uml2.uml.Package package_, String name,
+			boolean isAbstract) {
+		Stereotype ownedStereotype = (Stereotype) package_.createOwnedType(
+			name, UMLPackage.Literals.STEREOTYPE);
+		ownedStereotype.setIsAbstract(isAbstract);
+		return ownedStereotype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Determines whether the specified profile is applied to this package.
 	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
 	 * @param profile The profile in question.
@@ -509,6 +537,21 @@ public class PackageOperations
 	public static boolean isProfileApplied(
 			org.eclipse.uml2.uml.Package package_, Profile profile) {
 		return getProfileApplication(package_, profile) != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for Package::/ownedType : Type
+	 * true
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOY
+	 */
+	public static EList<Type> getOwnedTypes(
+			org.eclipse.uml2.uml.Package package_) {
+		return package_.getOwnedTypes();
 	}
 
 	/**
@@ -689,6 +732,60 @@ public class PackageOperations
 		return package_.getAllAppliedProfiles().contains(profile)
 			? ECollections.<EObject> emptyEList()
 			: unapplyAllNonApplicableStereotypes(package_);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
+	 * result = 
+	 * self.ownedStereotype->union(self.ownedMember->
+	 * 	select(oclIsKindOf(Package)).oclAsType(Package).allApplicableStereotypes()->flatten())->asSet()
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Stereotype> allApplicableStereotypes(
+			org.eclipse.uml2.uml.Package package_) {
+		return allApplicableStereotypes(package_,
+			new UniqueEList.FastCompare<Stereotype>());
+	}
+
+	protected static EList<Stereotype> allApplicableStereotypes(
+			org.eclipse.uml2.uml.Package package_,
+			EList<Stereotype> allApplicableStereotypes) {
+		allApplicableStereotypes.addAll(package_.getOwnedStereotypes());
+
+		for (org.eclipse.uml2.uml.Package nestedPackage : package_
+			.getNestedPackages()) {
+
+			allApplicableStereotypes(nestedPackage, allApplicableStereotypes);
+		}
+
+		return allApplicableStereotypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
+	 * result =
+	 * if self.oclIsKindOf(Profile) then 
+	 * 	self.oclAsType(Profile)
+	 * else
+	 * 	self.namespace.oclAsType(Package).containingProfile()
+	 * endif
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Profile containingProfile(
+			org.eclipse.uml2.uml.Package package_) {
+		return (Profile) (package_ instanceof Profile
+			? package_
+			: getOwningElement(package_, UMLPackage.Literals.PROFILE, true));
 	}
 
 	protected static EList<Profile> getAppliedProfiles(
@@ -885,7 +982,7 @@ public class PackageOperations
 	 * @generated NOT
 	 */
 	public static boolean isModelLibrary(org.eclipse.uml2.uml.Package package_) {
-		return package_.getAppliedStereotype("Standard" //$NON-NLS-1$
+		return package_.getAppliedStereotype("StandardL3" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "ModelLibrary") != null; //$NON-NLS-1$
 	}
 
@@ -1026,6 +1123,36 @@ public class PackageOperations
 		}
 
 		return false;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for Package::/nestedPackage : Package
+	 * true
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<org.eclipse.uml2.uml.Package> getNestedPackages(
+			org.eclipse.uml2.uml.Package package_) {
+		return package_.getNestedPackages();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Missing derivation for Package::/ownedStereotype : Stereotype
+	 * true
+	 * @param package_ The receiving '<em><b>Package</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static EList<Stereotype> getOwnedStereotypes(
+			org.eclipse.uml2.uml.Package package_) {
+		return package_.getOwnedStereotypes();
 	}
 
 	/**

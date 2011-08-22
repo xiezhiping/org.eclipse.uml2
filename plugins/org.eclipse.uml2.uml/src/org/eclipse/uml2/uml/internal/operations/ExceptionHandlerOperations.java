@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExceptionHandlerOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
@@ -91,7 +92,7 @@ public class ExceptionHandlerOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The result pins of the exception handler body must correspond in number and types to the result pins of the protected node.
+	 * If the protected node is a StructuredActivityNode with output pins, then the exception handler body must also be a StructuredActivityNode with output pins that correspond in number and types to those of the protected node.
 	 * true
 	 * @param exceptionHandler The receiving '<em><b>Exception Handler</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

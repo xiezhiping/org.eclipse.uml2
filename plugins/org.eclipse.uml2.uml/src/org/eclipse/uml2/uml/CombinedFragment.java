@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: CombinedFragment.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -30,9 +31,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getCfragmentGates <em>Cfragment Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getInteractionOperator <em>Interaction Operator</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getOperands <em>Operand</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.CombinedFragment#getCfragmentGates <em>Cfragment Gate</em>}</li>
  * </ul>
  * </p>
  *
@@ -190,7 +191,7 @@ public interface CombinedFragment
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the interactionOperator is opt, loop, break, or neg there must be exactly one operand
+	 * If the interactionOperator is opt, loop, break, assert or neg, there must be exactly one operand.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

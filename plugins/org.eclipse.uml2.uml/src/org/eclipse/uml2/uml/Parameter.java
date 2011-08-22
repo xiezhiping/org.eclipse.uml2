@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Parameter.java,v 1.21 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -27,21 +28,21 @@ import org.eclipse.emf.ecore.EClass;
  *
  * <!-- begin-model-doc -->
  * A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.
- * Parameters are allowed to be treated as connectable elements.
  * Parameters have support for streaming, exceptions, and parameter sets.
+ * Parameters are allowed to be treated as connectable elements.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getDirection <em>Direction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefault <em>Default</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getDirection <em>Direction</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isException <em>Is Exception</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Parameter#isStream <em>Is Stream</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Parameter#getEffect <em>Effect</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getOperation <em>Operation</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Parameter#getParameterSets <em>Parameter Set</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,7 +154,7 @@ public interface Parameter
 	 * @see #unsetDefault()
 	 * @see #setDefault(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_Default()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	String getDefault();
@@ -248,7 +249,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Exception</em>' attribute.
 	 * @see #setIsException(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsException()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isException();
@@ -274,7 +275,7 @@ public interface Parameter
 	 * @return the value of the '<em>Is Stream</em>' attribute.
 	 * @see #setIsStream(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getParameter_IsStream()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isStream();
@@ -426,7 +427,7 @@ public interface Parameter
 	 * Sets the default value for this parameter to the specified Boolean value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.Boolean" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.Boolean" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setBooleanDefaultValue(boolean value);
@@ -438,7 +439,7 @@ public interface Parameter
 	 * Sets the default value for this parameter to the specified integer value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.Integer" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.Integer" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setIntegerDefaultValue(int value);
@@ -450,7 +451,7 @@ public interface Parameter
 	 * Sets the default value for this parameter to the specified string value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.String" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.String" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setStringDefaultValue(String value);
@@ -462,7 +463,7 @@ public interface Parameter
 	 * Sets the default value for this parameter to the specified unlimited natural value.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @model valueDataType="org.eclipse.uml2.uml.UnlimitedNatural" valueRequired="true" valueOrdered="false"
+	 * @model valueDataType="org.eclipse.uml2.types.UnlimitedNatural" valueRequired="true" valueOrdered="false"
 	 * @generated
 	 */
 	void setUnlimitedNaturalDefaultValue(int value);
@@ -477,5 +478,17 @@ public interface Parameter
 	 * @generated
 	 */
 	void setNullDefaultValue();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Sets the default value for this parameter to the specified real value.
+	 * @param value The new default value.
+	 * <!-- end-model-doc -->
+	 * @model valueDataType="org.eclipse.uml2.types.Real" valueRequired="true" valueOrdered="false"
+	 * @generated
+	 */
+	void setRealDefaultValue(double value);
 
 } // Parameter

@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
+ * An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
  * <!-- end-model-doc -->
  *
  * <p>

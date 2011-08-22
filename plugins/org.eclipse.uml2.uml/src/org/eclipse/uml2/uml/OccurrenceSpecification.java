@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OccurrenceSpecification.java,v 1.8 2007/06/12 12:53:19 khussey Exp $
  */
@@ -26,9 +27,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.OccurrenceSpecification#getToBefores <em>To Before</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OccurrenceSpecification#getEvent <em>Event</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OccurrenceSpecification#getToAfters <em>To After</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.OccurrenceSpecification#getToBefores <em>To Before</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,7 +47,6 @@ public interface OccurrenceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>To Before</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOccurrenceSpecification_ToBefore()
@@ -81,31 +80,6 @@ public interface OccurrenceSpecification
 	GeneralOrdering getToBefore(String name, boolean ignoreCase);
 
 	/**
-	 * Returns the value of the '<em><b>Event</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * References a specification of the occurring event.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' reference.
-	 * @see #setEvent(Event)
-	 * @see org.eclipse.uml2.uml.UMLPackage#getOccurrenceSpecification_Event()
-	 * @model required="true" ordered="false"
-	 * @generated
-	 */
-	Event getEvent();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.OccurrenceSpecification#getEvent <em>Event</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Event</em>' reference.
-	 * @see #getEvent()
-	 * @generated
-	 */
-	void setEvent(Event value);
-
-	/**
 	 * Returns the value of the '<em><b>To After</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.GeneralOrdering}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.GeneralOrdering#getBefore <em>Before</em>}'.
@@ -113,7 +87,6 @@ public interface OccurrenceSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>To After</em>' reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOccurrenceSpecification_ToAfter()

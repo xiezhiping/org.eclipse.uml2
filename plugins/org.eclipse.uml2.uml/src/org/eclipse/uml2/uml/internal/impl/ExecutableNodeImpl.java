@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExecutableNodeImpl.java,v 1.23 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -160,26 +161,26 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetActivity((Activity) otherEnd, msgs);
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetInStructuredNode(
 					(StructuredActivityNode) otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetActivity((Activity) otherEnd, msgs);
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutgoings())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getIncomings())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInPartitions())
-					.basicAdd(otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInInterruptibleRegions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getHandlers())
@@ -208,22 +209,22 @@ public abstract class ExecutableNodeImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				return basicSetActivity(null, msgs);
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<?>) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<?>) getInInterruptibleRegions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
@@ -241,54 +242,54 @@ public abstract class ExecutableNodeImpl
 		switch (featureID) {
 			case UMLPackage.EXECUTABLE_NODE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.EXECUTABLE_NODE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.EXECUTABLE_NODE__NAME :
-				return getName();
-			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.EXECUTABLE_NODE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.EXECUTABLE_NODE__NAME :
+				return getName();
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.EXECUTABLE_NODE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
+			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return getIncomings();
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :
@@ -316,28 +317,39 @@ public abstract class ExecutableNodeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.EXECUTABLE_NODE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.EXECUTABLE_NODE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				setActivity((Activity) newValue);
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				getOutgoings().clear();
@@ -348,17 +360,6 @@ public abstract class ExecutableNodeImpl
 				getIncomings().clear();
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
-				return;
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
@@ -388,38 +389,38 @@ public abstract class ExecutableNodeImpl
 			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.EXECUTABLE_NODE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.EXECUTABLE_NODE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
-				setActivity((Activity) null);
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				getOutgoings().clear();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				getIncomings().clear();
-				return;
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				getRedefinedNodes().clear();
@@ -441,48 +442,48 @@ public abstract class ExecutableNodeImpl
 		switch (featureID) {
 			case UMLPackage.EXECUTABLE_NODE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.EXECUTABLE_NODE__OWNER :
 				return isSetOwner();
-			case UMLPackage.EXECUTABLE_NODE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__NAME :
 				return isSetName();
-			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.EXECUTABLE_NODE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.EXECUTABLE_NODE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.EXECUTABLE_NODE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.EXECUTABLE_NODE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.EXECUTABLE_NODE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.EXECUTABLE_NODE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.EXECUTABLE_NODE__ACTIVITY :
 				return basicGetActivity() != null;
+			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.EXECUTABLE_NODE__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__OUTGOING :
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.EXECUTABLE_NODE__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.EXECUTABLE_NODE__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.EXECUTABLE_NODE__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.EXECUTABLE_NODE__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.EXECUTABLE_NODE__HANDLER :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityGroupImpl.java,v 1.23 2010/09/28 21:02:13 khussey Exp $
  */
@@ -43,10 +44,15 @@ import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
 
 /**
@@ -56,12 +62,12 @@ import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSubgroups <em>Subgroup</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getSuperGroup <em>Super Group</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedEdges <em>Contained Edge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getContainedNodes <em>Contained Node</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ActivityGroupImpl#getInActivity <em>In Activity</em>}</li>
  * </ul>
  * </p>
@@ -69,7 +75,7 @@ import org.eclipse.uml2.uml.internal.operations.ActivityGroupOperations;
  * @generated
  */
 public abstract class ActivityGroupImpl
-		extends ElementImpl
+		extends NamedElementImpl
 		implements ActivityGroup {
 
 	/**
@@ -114,6 +120,34 @@ public abstract class ActivityGroupImpl
 		}
 		return new DerivedUnionEObjectEList<ActivityGroup>(ActivityGroup.class,
 			this, UMLPackage.ACTIVITY_GROUP__SUBGROUP, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getSubgroup(String name) {
+		return getSubgroup(name, false, null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityGroup getSubgroup(String name, boolean ignoreCase,
+			EClass eClass) {
+		subgroupLoop : for (ActivityGroup subgroup : getSubgroups()) {
+			if (eClass != null && !eClass.isInstance(subgroup))
+				continue subgroupLoop;
+			if (name != null && !(ignoreCase
+				? name.equalsIgnoreCase(subgroup.getName())
+				: name.equals(subgroup.getName())))
+				continue subgroupLoop;
+			return subgroup;
+		}
+		return null;
 	}
 
 	/**
@@ -363,6 +397,9 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getClientDependencies())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -386,6 +423,11 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				return ((InternalEList<?>) getClientDependencies())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
+				return basicSetNameExpression(null, msgs);
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				return basicSetInActivity(null, msgs);
 		}
@@ -418,28 +460,44 @@ public abstract class ActivityGroupImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				return getOwnedComments();
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				return getClientDependencies();
+			case UMLPackage.ACTIVITY_GROUP__NAME :
+				return getName();
+			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
+				if (resolve)
+					return getNameExpression();
+				return basicGetNameExpression();
+			case UMLPackage.ACTIVITY_GROUP__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ACTIVITY_GROUP__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
+				return getVisibility();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
+				return getContainedNodes();
+			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
+				if (resolve)
+					return getInActivity();
+				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return getSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				if (resolve)
 					return getSuperGroup();
 				return basicGetSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				if (resolve)
-					return getInActivity();
-				return basicGetInActivity();
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return getContainedEdges();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-				return getContainedNodes();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -463,6 +521,20 @@ public abstract class ActivityGroupImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				getClientDependencies().addAll(
+					(Collection<? extends Dependency>) newValue);
+				return;
+			case UMLPackage.ACTIVITY_GROUP__NAME :
+				setName((String) newValue);
+				return;
+			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
+				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
+				return;
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				setInActivity((Activity) newValue);
 				return;
@@ -484,6 +556,18 @@ public abstract class ActivityGroupImpl
 			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				getClientDependencies().clear();
+				return;
+			case UMLPackage.ACTIVITY_GROUP__NAME :
+				unsetName();
+				return;
+			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
+				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
 				setInActivity((Activity) null);
 				return;
@@ -501,22 +585,37 @@ public abstract class ActivityGroupImpl
 		switch (featureID) {
 			case UMLPackage.ACTIVITY_GROUP__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ACTIVITY_GROUP__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP__OWNER :
 				return isSetOwner();
-			case UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ACTIVITY_GROUP__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
+			case UMLPackage.ACTIVITY_GROUP__NAME :
+				return isSetName();
+			case UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ACTIVITY_GROUP__NAMESPACE :
+				return isSetNamespace();
+			case UMLPackage.ACTIVITY_GROUP__QUALIFIED_NAME :
+				return QUALIFIED_NAME_EDEFAULT == null
+					? getQualifiedName() != null
+					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
+			case UMLPackage.ACTIVITY_GROUP__VISIBILITY :
+				return isSetVisibility();
+			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
+				return isSetContainedNodes();
+			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
+				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_GROUP__SUBGROUP :
 				return isSetSubgroups();
 			case UMLPackage.ACTIVITY_GROUP__SUPER_GROUP :
 				return isSetSuperGroup();
-			case UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY :
-				return basicGetInActivity() != null;
 			case UMLPackage.ACTIVITY_GROUP__CONTAINED_EDGE :
 				return isSetContainedEdges();
-			case UMLPackage.ACTIVITY_GROUP__CONTAINED_NODE :
-				return isSetContainedNodes();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -533,95 +632,128 @@ public abstract class ActivityGroupImpl
 		switch (operationID) {
 			case UMLPackage.ACTIVITY_GROUP___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.ACTIVITY_GROUP___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.ACTIVITY_GROUP___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.ACTIVITY_GROUP___GET_MODEL :
-				return getModel();
-			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_GROUP___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.ACTIVITY_GROUP___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.ACTIVITY_GROUP___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.ACTIVITY_GROUP___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_MODEL :
+				return getModel();
+			case UMLPackage.ACTIVITY_GROUP___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.ACTIVITY_GROUP___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.ACTIVITY_GROUP___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.ACTIVITY_GROUP___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.ACTIVITY_GROUP___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.ACTIVITY_GROUP___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.ACTIVITY_GROUP___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.ACTIVITY_GROUP___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.ACTIVITY_GROUP___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.ACTIVITY_GROUP___MUST_BE_OWNED :
 				return mustBeOwned();
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___CREATE_DEPENDENCY__NAMEDELEMENT :
+				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___GET_LABEL :
+				return getLabel();
+			case UMLPackage.ACTIVITY_GROUP___GET_LABEL__BOOLEAN :
+				return getLabel((Boolean) arguments.get(0));
+			case UMLPackage.ACTIVITY_GROUP___ALL_NAMESPACES :
+				return allNamespaces();
+			case UMLPackage.ACTIVITY_GROUP___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
+			case UMLPackage.ACTIVITY_GROUP___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
+				return isDistinguishableFrom((NamedElement) arguments.get(0),
+					(Namespace) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.ACTIVITY_GROUP___GET_QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ACTIVITY_GROUP___SEPARATOR :
+				return separator();
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NODES_AND_EDGES__DIAGNOSTICCHAIN_MAP :
 				return validateNodesAndEdges(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
-				return validateNotContained((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.ACTIVITY_GROUP___VALIDATE_GROUP_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateGroupOwned((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.ACTIVITY_GROUP___VALIDATE_NOT_CONTAINED__DIAGNOSTICCHAIN_MAP :
+				return validateNotContained((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
@@ -646,6 +778,7 @@ public abstract class ActivityGroupImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.ACTIVITY_GROUP__OWNED_COMMENT,
+		UMLPackage.ACTIVITY_GROUP__NAME_EXPRESSION,
 		UMLPackage.ACTIVITY_GROUP__SUBGROUP};
 
 	/**
@@ -708,12 +841,12 @@ public abstract class ActivityGroupImpl
 	 */
 	@Override
 	public Element basicGetOwner() {
-		if (isSetSuperGroup()) {
-			return basicGetSuperGroup();
-		}
 		Activity inActivity = basicGetInActivity();
 		if (inActivity != null) {
 			return inActivity;
+		}
+		if (isSetSuperGroup()) {
+			return basicGetSuperGroup();
 		}
 		return super.basicGetOwner();
 	}
@@ -725,8 +858,9 @@ public abstract class ActivityGroupImpl
 	 */
 	@Override
 	public boolean isSetOwner() {
-		return super.isSetOwner() || isSetSuperGroup()
-			|| eIsSet(UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY);
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.ACTIVITY_GROUP__IN_ACTIVITY)
+			|| isSetSuperGroup();
 	}
 
 	/**

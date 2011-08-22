@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: MessageOperations.java,v 1.11 2007/05/03 21:11:51 khussey Exp $
  */
@@ -21,31 +22,20 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 
-import org.eclipse.uml2.uml.CallEvent;
-import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.Message;
-import org.eclipse.uml2.uml.MessageEnd;
-import org.eclipse.uml2.uml.MessageEvent;
 import org.eclipse.uml2.uml.MessageKind;
-import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.ReceiveOperationEvent;
-import org.eclipse.uml2.uml.ReceiveSignalEvent;
-import org.eclipse.uml2.uml.SendOperationEvent;
-import org.eclipse.uml2.uml.SendSignalEvent;
 import org.eclipse.uml2.uml.Signal;
-import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.eclipse.uml2.uml.util.UMLValidator;
 
 /**
@@ -57,14 +47,13 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * The following operations are supported:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateSendingReceivingMessageEvent(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Sending Receiving Message Event</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureReferTo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Refer To</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Operation</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsSignal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Signal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateArguments(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Arguments</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateCannotCrossBoundaries(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Cannot Cross Boundaries</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsSignal(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Signal</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#validateOccurrenceSpecifications(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Occurrence Specifications</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureReferTo(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Refer To</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#validateSignatureIsOperation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Signature Is Operation</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getMessageKind() <em>Get Message Kind</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#getSignature() <em>Get Signature</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,7 +75,7 @@ public class MessageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the sending MessageEvent and the receiving MessageEvent of the same Message are on the same Lifeline, the sending MessageEvent must be ordered before the receiving MessageEvent.
+	 * If the sendEvent and the receiveEvent of the same Message are on the same Lifeline, the sendEvent must be ordered before the receiveEvent.
 	 * true
 	 * @param message The receiving '<em><b>Message</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -284,13 +273,7 @@ public class MessageOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Arguments of a Message must only be:
-	 * i) attributes of the sending lifeline
-	 * ii) constants
-	 * iii) symbolic values (which are wildcard values representing any legal value)
-	 * iv) explicit parameters of the enclosing Interaction
-	 * v) attributes of the class owning the Interaction
-	 * 
+	 * Arguments of a Message must only be: i) attributes of the sending lifeline ii) constants iii) symbolic values (which are wildcard values representing any legal value) iv) explicit parameters of the enclosing Interaction v) attributes of the class owning the Interaction
 	 * true
 	 * @param message The receiving '<em><b>Message</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -404,89 +387,6 @@ public class MessageOperations
 			: (message.eGet(UMLPackage.Literals.MESSAGE__RECEIVE_EVENT, false) == null
 				? MessageKind.LOST_LITERAL
 				: MessageKind.COMPLETE_LITERAL);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public static NamedElement getSignature(Message message) {
-		MessageEvent messageEvent = null;
-
-		MessageEnd sendEvent = message.getSendEvent();
-
-		if (sendEvent instanceof MessageOccurrenceSpecification) {
-			Event event = ((MessageOccurrenceSpecification) sendEvent)
-				.getEvent();
-
-			if (event instanceof MessageEvent) {
-				messageEvent = (MessageEvent) event;
-			}
-		}
-
-		if (messageEvent == null) {
-			MessageEnd receiveEvent = message.getReceiveEvent();
-
-			if (receiveEvent instanceof MessageOccurrenceSpecification) {
-				Event event = ((MessageOccurrenceSpecification) receiveEvent)
-					.getEvent();
-
-				if (event instanceof MessageEvent) {
-					messageEvent = (MessageEvent) event;
-				}
-			}
-		}
-
-		if (messageEvent == null) {
-			return null;
-		} else {
-			return (NamedElement) new UMLSwitch<Object>() {
-
-				@Override
-				public Object caseCallEvent(CallEvent callEvent) {
-					return callEvent.eGet(
-						UMLPackage.Literals.CALL_EVENT__OPERATION, false);
-				}
-
-				@Override
-				public Object caseReceiveOperationEvent(
-						ReceiveOperationEvent receiveOperationEvent) {
-					return receiveOperationEvent.eGet(
-						UMLPackage.Literals.RECEIVE_OPERATION_EVENT__OPERATION,
-						false);
-				}
-
-				@Override
-				public Object caseReceiveSignalEvent(
-						ReceiveSignalEvent receiveSignalEvent) {
-					return receiveSignalEvent
-						.eGet(UMLPackage.Literals.RECEIVE_SIGNAL_EVENT__SIGNAL,
-							false);
-				}
-
-				@Override
-				public Object caseSendOperationEvent(
-						SendOperationEvent sendOperationEvent) {
-					return sendOperationEvent.eGet(
-						UMLPackage.Literals.SEND_OPERATION_EVENT__OPERATION,
-						false);
-				}
-
-				@Override
-				public Object caseSendSignalEvent(
-						SendSignalEvent sendSignalEvent) {
-					return sendSignalEvent.eGet(
-						UMLPackage.Literals.SEND_SIGNAL_EVENT__SIGNAL, false);
-				}
-
-				@Override
-				public Object caseSignalEvent(SignalEvent signalEvent) {
-					return signalEvent.eGet(
-						UMLPackage.Literals.SIGNAL_EVENT__SIGNAL, false);
-				}
-			}.doSwitch(messageEvent);
-		}
 	}
 
 } // MessageOperations

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StateMachineImpl.java,v 1.34 2010/09/28 21:02:13 khussey Exp $
  */
@@ -58,7 +59,6 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterSet;
 import org.eclipse.uml2.uml.ParameterableElement;
-import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.Reception;
@@ -72,7 +72,6 @@ import org.eclipse.uml2.uml.Substitution;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
-import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
@@ -88,10 +87,9 @@ import org.eclipse.uml2.uml.internal.operations.StateMachineOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getOwnedMembers <em>Owned Member</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRedefinedElements <em>Redefined Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getConnectionPoints <em>Connection Point</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getSubmachineStates <em>Submachine State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.StateMachineImpl#getExtendedStateMachines <em>Extended State Machine</em>}</li>
  * </ul>
  * </p>
@@ -103,14 +101,14 @@ public class StateMachineImpl
 		implements StateMachine {
 
 	/**
-	 * The cached value of the '{@link #getRegions() <em>Region</em>}' containment reference list.
+	 * The cached value of the '{@link #getConnectionPoints() <em>Connection Point</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRegions()
+	 * @see #getConnectionPoints()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Region> regions;
+	protected EList<Pseudostate> connectionPoints;
 
 	/**
 	 * The cached value of the '{@link #getSubmachineStates() <em>Submachine State</em>}' reference list.
@@ -123,14 +121,14 @@ public class StateMachineImpl
 	protected EList<State> submachineStates;
 
 	/**
-	 * The cached value of the '{@link #getConnectionPoints() <em>Connection Point</em>}' containment reference list.
+	 * The cached value of the '{@link #getRegions() <em>Region</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConnectionPoints()
+	 * @see #getRegions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Pseudostate> connectionPoints;
+	protected EList<Region> regions;
 
 	/**
 	 * The cached value of the '{@link #getExtendedStateMachines() <em>Extended State Machine</em>}' reference list.
@@ -186,39 +184,6 @@ public class StateMachineImpl
 		}
 		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
 			this, UMLPackage.STATE_MACHINE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<RedefinableElement> getRedefinedElements() {
-		CacheAdapter cache = getCacheAdapter();
-		if (cache != null) {
-			Resource eResource = eResource();
-			@SuppressWarnings("unchecked")
-			EList<RedefinableElement> redefinedElements = (EList<RedefinableElement>) cache
-				.get(eResource, this,
-					UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT);
-			if (redefinedElements == null) {
-				cache
-					.put(
-						eResource,
-						this,
-						UMLPackage.Literals.REDEFINABLE_ELEMENT__REDEFINED_ELEMENT,
-						redefinedElements = new DerivedUnionEObjectEList<RedefinableElement>(
-							RedefinableElement.class, this,
-							UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT,
-							REDEFINED_ELEMENT_ESUBSETS));
-			}
-			return redefinedElements;
-		}
-		return new DerivedUnionEObjectEList<RedefinableElement>(
-			RedefinableElement.class, this,
-			UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT,
-			REDEFINED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -421,6 +386,16 @@ public class StateMachineImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSetExtendedStateMachines() {
+		return extendedStateMachines != null
+			&& !extendedStateMachines.isEmpty();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateClassifierContext(DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
 		return StateMachineOperations.validateClassifierContext(this,
@@ -536,9 +511,6 @@ public class StateMachineImpl
 							TemplateParameter.class, msgs);
 				return basicSetTemplateParameter((TemplateParameter) otherEnd,
 					msgs);
-			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				if (ownedTemplateSignature != null)
 					msgs = ((InternalEObject) ownedTemplateSignature)
@@ -549,17 +521,20 @@ public class StateMachineImpl
 							null, msgs);
 				return basicSetOwnedTemplateSignature(
 					(TemplateSignature) otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getTemplateBindings())
+					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getGeneralizations())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getPowertypeExtents())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
-					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getUseCases())
+					.basicAdd(otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubstitutions())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getInterfaceRealizations())
@@ -573,14 +548,14 @@ public class StateMachineImpl
 						this, UMLPackage.BEHAVIORAL_FEATURE__METHOD,
 						BehavioralFeature.class, msgs);
 				return basicSetSpecification((BehavioralFeature) otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__REGION :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getRegions())
+			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getConnectionPoints())
 					.basicAdd(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getSubmachineStates())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
-				return ((InternalEList<InternalEObject>) (InternalEList<?>) getConnectionPoints())
+			case UMLPackage.STATE_MACHINE__REGION :
+				return ((InternalEList<InternalEObject>) (InternalEList<?>) getRegions())
 					.basicAdd(otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
@@ -619,22 +594,19 @@ public class StateMachineImpl
 				return basicSetOwningTemplateParameter(null, msgs);
 			case UMLPackage.STATE_MACHINE__TEMPLATE_PARAMETER :
 				return basicSetTemplateParameter(null, msgs);
+			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				return basicSetOwnedTemplateSignature(null, msgs);
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
 				return ((InternalEList<?>) getTemplateBindings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				return basicSetOwnedTemplateSignature(null, msgs);
+			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
+				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				return ((InternalEList<?>) getGeneralizations()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				return ((InternalEList<?>) getPowertypeExtents()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				return ((InternalEList<?>) getSubstitutions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				return ((InternalEList<?>) getCollaborationUses()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				return ((InternalEList<?>) getOwnedUseCases()).basicRemove(
@@ -642,26 +614,26 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return ((InternalEList<?>) getUseCases()).basicRemove(otherEnd,
 					msgs);
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				return ((InternalEList<?>) getSubstitutions()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return ((InternalEList<?>) getOwnedAttributes()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
 				return ((InternalEList<?>) getOwnedConnectors()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return ((InternalEList<?>) getInterfaceRealizations())
 					.basicRemove(otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				return ((InternalEList<?>) getOwnedTriggers()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
-				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
+			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
+				return ((InternalEList<?>) getOwnedBehaviors()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
 				return ((InternalEList<?>) getOwnedOperations()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
+				return ((InternalEList<?>) getNestedClassifiers()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				return ((InternalEList<?>) getOwnedReceptions()).basicRemove(
@@ -674,15 +646,15 @@ public class StateMachineImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__SPECIFICATION :
 				return basicSetSpecification(null, msgs);
-			case UMLPackage.STATE_MACHINE__REGION :
-				return ((InternalEList<?>) getRegions()).basicRemove(otherEnd,
-					msgs);
-			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
-				return ((InternalEList<?>) getSubmachineStates()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return ((InternalEList<?>) getConnectionPoints()).basicRemove(
 					otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return ((InternalEList<?>) getSubmachineStates()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.STATE_MACHINE__REGION :
+				return ((InternalEList<?>) getRegions()).basicRemove(otherEnd,
+					msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -697,42 +669,42 @@ public class StateMachineImpl
 		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.STATE_MACHINE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.STATE_MACHINE__NAME :
-				return getName();
-			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.STATE_MACHINE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.STATE_MACHINE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.STATE_MACHINE__NAME :
+				return getName();
 			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.STATE_MACHINE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.STATE_MACHINE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.STATE_MACHINE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.STATE_MACHINE__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.STATE_MACHINE__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.STATE_MACHINE__MEMBER :
-				return getMembers();
-			case UMLPackage.STATE_MACHINE__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.STATE_MACHINE__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.STATE_MACHINE__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.STATE_MACHINE__MEMBER :
+				return getMembers();
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT :
@@ -751,98 +723,98 @@ public class StateMachineImpl
 				if (resolve)
 					return getPackage();
 				return basicGetPackage();
-			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
-				return getTemplateBindings();
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				if (resolve)
 					return getOwnedTemplateSignature();
 				return basicGetOwnedTemplateSignature();
-			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				return isAbstract();
+			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
+				return getTemplateBindings();
+			case UMLPackage.STATE_MACHINE__FEATURE :
+				return getFeatures();
+			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
+				return getAttributes();
+			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
+				return getCollaborationUses();
+			case UMLPackage.STATE_MACHINE__GENERAL :
+				return getGenerals();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				return getGeneralizations();
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				return getPowertypeExtents();
-			case UMLPackage.STATE_MACHINE__FEATURE :
-				return getFeatures();
 			case UMLPackage.STATE_MACHINE__INHERITED_MEMBER :
 				return getInheritedMembers();
-			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
-				return getRedefinedClassifiers();
-			case UMLPackage.STATE_MACHINE__GENERAL :
-				return getGenerals();
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				return getSubstitutions();
-			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
-				return getAttributes();
-			case UMLPackage.STATE_MACHINE__REPRESENTATION :
-				if (resolve)
-					return getRepresentation();
-				return basicGetRepresentation();
-			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				return getCollaborationUses();
+			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
+				return isAbstract();
+			case UMLPackage.STATE_MACHINE__IS_FINAL_SPECIALIZATION :
+				return isFinalSpecialization();
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				return getOwnedUseCases();
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return getUseCases();
+			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
+				return getRedefinedClassifiers();
+			case UMLPackage.STATE_MACHINE__REPRESENTATION :
+				if (resolve)
+					return getRepresentation();
+				return basicGetRepresentation();
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				return getSubstitutions();
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return getOwnedAttributes();
+			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
+				return getOwnedConnectors();
 			case UMLPackage.STATE_MACHINE__PART :
 				return getParts();
 			case UMLPackage.STATE_MACHINE__ROLE :
 				return getRoles();
-			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
-				return getOwnedConnectors();
 			case UMLPackage.STATE_MACHINE__OWNED_PORT :
 				return getOwnedPorts();
-			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				return getOwnedBehaviors();
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				if (resolve)
 					return getClassifierBehavior();
 				return basicGetClassifierBehavior();
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return getInterfaceRealizations();
-			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				return getOwnedTriggers();
-			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
-				return getNestedClassifiers();
+			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
+				return getOwnedBehaviors();
 			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
 				return getOwnedOperations();
-			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
-				return getSuperClasses();
-			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				return isActive();
-			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
-				return getOwnedReceptions();
 			case UMLPackage.STATE_MACHINE__EXTENSION :
 				return getExtensions();
-			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				return isReentrant();
-			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
-				return getRedefinedBehaviors();
-			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
-				return getOwnedParameters();
+			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
+				return isActive();
+			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
+				return getNestedClassifiers();
+			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
+				return getOwnedReceptions();
+			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
+				return getSuperClasses();
 			case UMLPackage.STATE_MACHINE__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
-			case UMLPackage.STATE_MACHINE__PRECONDITION :
-				return getPreconditions();
-			case UMLPackage.STATE_MACHINE__POSTCONDITION :
-				return getPostconditions();
+			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
+				return isReentrant();
+			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
+				return getOwnedParameters();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				return getOwnedParameterSets();
+			case UMLPackage.STATE_MACHINE__POSTCONDITION :
+				return getPostconditions();
+			case UMLPackage.STATE_MACHINE__PRECONDITION :
+				return getPreconditions();
+			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
+				return getRedefinedBehaviors();
 			case UMLPackage.STATE_MACHINE__SPECIFICATION :
 				if (resolve)
 					return getSpecification();
 				return basicGetSpecification();
-			case UMLPackage.STATE_MACHINE__REGION :
-				return getRegions();
-			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
-				return getSubmachineStates();
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return getConnectionPoints();
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return getSubmachineStates();
+			case UMLPackage.STATE_MACHINE__REGION :
+				return getRegions();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
 				return getExtendedStateMachines();
 		}
@@ -868,19 +840,19 @@ public class StateMachineImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.STATE_MACHINE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -909,16 +881,23 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
+			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
+				setOwnedTemplateSignature((TemplateSignature) newValue);
+				return;
 			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
 				getTemplateBindings().clear();
 				getTemplateBindings().addAll(
 					(Collection<? extends TemplateBinding>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
-				setOwnedTemplateSignature((TemplateSignature) newValue);
+			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				getCollaborationUses().addAll(
+					(Collection<? extends CollaborationUse>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				setIsAbstract((Boolean) newValue);
+			case UMLPackage.STATE_MACHINE__GENERAL :
+				getGenerals().clear();
+				getGenerals().addAll(
+					(Collection<? extends Classifier>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				getGeneralizations().clear();
@@ -930,28 +909,11 @@ public class StateMachineImpl
 				getPowertypeExtents().addAll(
 					(Collection<? extends GeneralizationSet>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
-				getRedefinedClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
+				setIsAbstract((Boolean) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__GENERAL :
-				getGenerals().clear();
-				getGenerals().addAll(
-					(Collection<? extends Classifier>) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				getSubstitutions().clear();
-				getSubstitutions().addAll(
-					(Collection<? extends Substitution>) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__REPRESENTATION :
-				setRepresentation((CollaborationUse) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				getCollaborationUses().clear();
-				getCollaborationUses().addAll(
-					(Collection<? extends CollaborationUse>) newValue);
+			case UMLPackage.STATE_MACHINE__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
@@ -961,6 +923,19 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				getUseCases().addAll((Collection<? extends UseCase>) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				getRedefinedClassifiers().addAll(
+					(Collection<? extends Classifier>) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__REPRESENTATION :
+				setRepresentation((CollaborationUse) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				getSubstitutions().clear();
+				getSubstitutions().addAll(
+					(Collection<? extends Substitution>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
@@ -972,15 +947,6 @@ public class StateMachineImpl
 				getOwnedConnectors().addAll(
 					(Collection<? extends Connector>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_PORT :
-				getOwnedPorts().clear();
-				getOwnedPorts().addAll((Collection<? extends Port>) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				getOwnedBehaviors().clear();
-				getOwnedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
-				return;
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) newValue);
 				return;
@@ -989,20 +955,28 @@ public class StateMachineImpl
 				getInterfaceRealizations().addAll(
 					(Collection<? extends InterfaceRealization>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				getOwnedTriggers().clear();
-				getOwnedTriggers().addAll(
-					(Collection<? extends Trigger>) newValue);
+			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
+				getOwnedBehaviors().clear();
+				getOwnedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
+				getOwnedOperations().clear();
+				getOwnedOperations().addAll(
+					(Collection<? extends Operation>) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
+				setIsActive((Boolean) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
 				getNestedClassifiers().clear();
 				getNestedClassifiers().addAll(
 					(Collection<? extends Classifier>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
-				getOwnedOperations().clear();
-				getOwnedOperations().addAll(
-					(Collection<? extends Operation>) newValue);
+			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
+				getOwnedReceptions().clear();
+				getOwnedReceptions().addAll(
+					(Collection<? extends Reception>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
 				getSuperClasses().clear();
@@ -1010,58 +984,50 @@ public class StateMachineImpl
 					.addAll(
 						(Collection<? extends org.eclipse.uml2.uml.Class>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				setIsActive((Boolean) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
-				getOwnedReceptions().clear();
-				getOwnedReceptions().addAll(
-					(Collection<? extends Reception>) newValue);
-				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant((Boolean) newValue);
-				return;
-			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
-				getRedefinedBehaviors().clear();
-				getRedefinedBehaviors().addAll(
-					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				getOwnedParameters().addAll(
 					(Collection<? extends Parameter>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__PRECONDITION :
-				getPreconditions().clear();
-				getPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
+				getOwnedParameterSets().clear();
+				getOwnedParameterSets().addAll(
+					(Collection<? extends ParameterSet>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__POSTCONDITION :
 				getPostconditions().clear();
 				getPostconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
-				getOwnedParameterSets().clear();
-				getOwnedParameterSets().addAll(
-					(Collection<? extends ParameterSet>) newValue);
+			case UMLPackage.STATE_MACHINE__PRECONDITION :
+				getPreconditions().clear();
+				getPreconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
+			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
+				getRedefinedBehaviors().clear();
+				getRedefinedBehaviors().addAll(
+					(Collection<? extends Behavior>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__SPECIFICATION :
 				setSpecification((BehavioralFeature) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__REGION :
-				getRegions().clear();
-				getRegions().addAll((Collection<? extends Region>) newValue);
+			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
+				getConnectionPoints().clear();
+				getConnectionPoints().addAll(
+					(Collection<? extends Pseudostate>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
 				getSubmachineStates().clear();
 				getSubmachineStates().addAll(
 					(Collection<? extends State>) newValue);
 				return;
-			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
-				getConnectionPoints().clear();
-				getConnectionPoints().addAll(
-					(Collection<? extends Pseudostate>) newValue);
+			case UMLPackage.STATE_MACHINE__REGION :
+				getRegions().clear();
+				getRegions().addAll((Collection<? extends Region>) newValue);
 				return;
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
 				getExtendedStateMachines().clear();
@@ -1086,17 +1052,17 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.STATE_MACHINE__NAME :
+				unsetName();
+				return;
 			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.STATE_MACHINE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -1119,14 +1085,17 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				setPackage((org.eclipse.uml2.uml.Package) null);
 				return;
-			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
-				getTemplateBindings().clear();
-				return;
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				setOwnedTemplateSignature((TemplateSignature) null);
 				return;
-			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
+			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
+				getTemplateBindings().clear();
+				return;
+			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
+				getCollaborationUses().clear();
+				return;
+			case UMLPackage.STATE_MACHINE__GENERAL :
+				getGenerals().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				getGeneralizations().clear();
@@ -1134,20 +1103,11 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				getPowertypeExtents().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
-				getRedefinedClassifiers().clear();
+			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
+				setIsAbstract(IS_ABSTRACT_EDEFAULT);
 				return;
-			case UMLPackage.STATE_MACHINE__GENERAL :
-				getGenerals().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				getSubstitutions().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__REPRESENTATION :
-				setRepresentation((CollaborationUse) null);
-				return;
-			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				getCollaborationUses().clear();
+			case UMLPackage.STATE_MACHINE__IS_FINAL_SPECIALIZATION :
+				setIsFinalSpecialization(IS_FINAL_SPECIALIZATION_EDEFAULT);
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				getOwnedUseCases().clear();
@@ -1155,17 +1115,20 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				getUseCases().clear();
 				return;
+			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
+				getRedefinedClassifiers().clear();
+				return;
+			case UMLPackage.STATE_MACHINE__REPRESENTATION :
+				setRepresentation((CollaborationUse) null);
+				return;
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				getSubstitutions().clear();
+				return;
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				getOwnedAttributes().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
 				getOwnedConnectors().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__OWNED_PORT :
-				getOwnedPorts().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				getOwnedBehaviors().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				setClassifierBehavior((Behavior) null);
@@ -1173,53 +1136,53 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				getInterfaceRealizations().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				getOwnedTriggers().clear();
-				return;
-			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
-				getNestedClassifiers().clear();
+			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
+				getOwnedBehaviors().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
 				getOwnedOperations().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
-				getSuperClasses().clear();
-				return;
 			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
 				setIsActive(IS_ACTIVE_EDEFAULT);
+				return;
+			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
+				getNestedClassifiers().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				getOwnedReceptions().clear();
 				return;
+			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
+				getSuperClasses().clear();
+				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
 				setIsReentrant(IS_REENTRANT_EDEFAULT);
-				return;
-			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
-				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__PRECONDITION :
-				getPreconditions().clear();
+			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
+				getOwnedParameterSets().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__POSTCONDITION :
 				getPostconditions().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
-				getOwnedParameterSets().clear();
+			case UMLPackage.STATE_MACHINE__PRECONDITION :
+				getPreconditions().clear();
+				return;
+			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
+				getRedefinedBehaviors().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__SPECIFICATION :
 				setSpecification((BehavioralFeature) null);
 				return;
-			case UMLPackage.STATE_MACHINE__REGION :
-				getRegions().clear();
+			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
+				getConnectionPoints().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
 				getSubmachineStates().clear();
 				return;
-			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
-				getConnectionPoints().clear();
+			case UMLPackage.STATE_MACHINE__REGION :
+				getRegions().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
 				getExtendedStateMachines().clear();
@@ -1238,39 +1201,39 @@ public class StateMachineImpl
 		switch (featureID) {
 			case UMLPackage.STATE_MACHINE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.STATE_MACHINE__OWNER :
 				return isSetOwner();
-			case UMLPackage.STATE_MACHINE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.STATE_MACHINE__NAME :
 				return isSetName();
-			case UMLPackage.STATE_MACHINE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.STATE_MACHINE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.STATE_MACHINE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.STATE_MACHINE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.STATE_MACHINE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.STATE_MACHINE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.STATE_MACHINE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.STATE_MACHINE__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.STATE_MACHINE__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.STATE_MACHINE__MEMBER :
-				return isSetMembers();
-			case UMLPackage.STATE_MACHINE__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.STATE_MACHINE__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.STATE_MACHINE__MEMBER :
+				return isSetMembers();
 			case UMLPackage.STATE_MACHINE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__REDEFINED_ELEMENT :
@@ -1283,97 +1246,95 @@ public class StateMachineImpl
 				return isSetTemplateParameter();
 			case UMLPackage.STATE_MACHINE__PACKAGE :
 				return basicGetPackage() != null;
-			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
-				return templateBindings != null && !templateBindings.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_TEMPLATE_SIGNATURE :
 				return isSetOwnedTemplateSignature();
-			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
-				return isSetIsAbstract();
+			case UMLPackage.STATE_MACHINE__TEMPLATE_BINDING :
+				return templateBindings != null && !templateBindings.isEmpty();
+			case UMLPackage.STATE_MACHINE__FEATURE :
+				return isSetFeatures();
+			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
+				return isSetAttributes();
+			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
+				return collaborationUses != null
+					&& !collaborationUses.isEmpty();
+			case UMLPackage.STATE_MACHINE__GENERAL :
+				return isSetGenerals();
 			case UMLPackage.STATE_MACHINE__GENERALIZATION :
 				return generalizations != null && !generalizations.isEmpty();
 			case UMLPackage.STATE_MACHINE__POWERTYPE_EXTENT :
 				return powertypeExtents != null && !powertypeExtents.isEmpty();
-			case UMLPackage.STATE_MACHINE__FEATURE :
-				return isSetFeatures();
 			case UMLPackage.STATE_MACHINE__INHERITED_MEMBER :
 				return !getInheritedMembers().isEmpty();
-			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
-				return redefinedClassifiers != null
-					&& !redefinedClassifiers.isEmpty();
-			case UMLPackage.STATE_MACHINE__GENERAL :
-				return isSetGenerals();
-			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
-				return substitutions != null && !substitutions.isEmpty();
-			case UMLPackage.STATE_MACHINE__ATTRIBUTE :
-				return isSetAttributes();
-			case UMLPackage.STATE_MACHINE__REPRESENTATION :
-				return representation != null;
-			case UMLPackage.STATE_MACHINE__COLLABORATION_USE :
-				return collaborationUses != null
-					&& !collaborationUses.isEmpty();
+			case UMLPackage.STATE_MACHINE__IS_ABSTRACT :
+				return isSetIsAbstract();
+			case UMLPackage.STATE_MACHINE__IS_FINAL_SPECIALIZATION :
+				return ((eFlags & IS_FINAL_SPECIALIZATION_EFLAG) != 0) != IS_FINAL_SPECIALIZATION_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__OWNED_USE_CASE :
 				return ownedUseCases != null && !ownedUseCases.isEmpty();
 			case UMLPackage.STATE_MACHINE__USE_CASE :
 				return useCases != null && !useCases.isEmpty();
+			case UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER :
+				return redefinedClassifiers != null
+					&& !redefinedClassifiers.isEmpty();
+			case UMLPackage.STATE_MACHINE__REPRESENTATION :
+				return representation != null;
+			case UMLPackage.STATE_MACHINE__SUBSTITUTION :
+				return substitutions != null && !substitutions.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE :
 				return isSetOwnedAttributes();
+			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
+				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.STATE_MACHINE__PART :
 				return !getParts().isEmpty();
 			case UMLPackage.STATE_MACHINE__ROLE :
 				return isSetRoles();
-			case UMLPackage.STATE_MACHINE__OWNED_CONNECTOR :
-				return ownedConnectors != null && !ownedConnectors.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PORT :
 				return !getOwnedPorts().isEmpty();
-			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
-				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
 			case UMLPackage.STATE_MACHINE__CLASSIFIER_BEHAVIOR :
 				return classifierBehavior != null;
 			case UMLPackage.STATE_MACHINE__INTERFACE_REALIZATION :
 				return interfaceRealizations != null
 					&& !interfaceRealizations.isEmpty();
-			case UMLPackage.STATE_MACHINE__OWNED_TRIGGER :
-				return ownedTriggers != null && !ownedTriggers.isEmpty();
+			case UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR :
+				return ownedBehaviors != null && !ownedBehaviors.isEmpty();
+			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
+				return ownedOperations != null && !ownedOperations.isEmpty();
+			case UMLPackage.STATE_MACHINE__EXTENSION :
+				return !getExtensions().isEmpty();
+			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
+				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER :
 				return nestedClassifiers != null
 					&& !nestedClassifiers.isEmpty();
-			case UMLPackage.STATE_MACHINE__OWNED_OPERATION :
-				return ownedOperations != null && !ownedOperations.isEmpty();
-			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
-				return isSetSuperClasses();
-			case UMLPackage.STATE_MACHINE__IS_ACTIVE :
-				return ((eFlags & IS_ACTIVE_EFLAG) != 0) != IS_ACTIVE_EDEFAULT;
 			case UMLPackage.STATE_MACHINE__OWNED_RECEPTION :
 				return ownedReceptions != null && !ownedReceptions.isEmpty();
-			case UMLPackage.STATE_MACHINE__EXTENSION :
-				return !getExtensions().isEmpty();
-			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
-			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
-				return redefinedBehaviors != null
-					&& !redefinedBehaviors.isEmpty();
-			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
-				return ownedParameters != null && !ownedParameters.isEmpty();
+			case UMLPackage.STATE_MACHINE__SUPER_CLASS :
+				return isSetSuperClasses();
 			case UMLPackage.STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
-			case UMLPackage.STATE_MACHINE__PRECONDITION :
-				return preconditions != null && !preconditions.isEmpty();
-			case UMLPackage.STATE_MACHINE__POSTCONDITION :
-				return postconditions != null && !postconditions.isEmpty();
+			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
+				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
+				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :
 				return ownedParameterSets != null
 					&& !ownedParameterSets.isEmpty();
+			case UMLPackage.STATE_MACHINE__POSTCONDITION :
+				return postconditions != null && !postconditions.isEmpty();
+			case UMLPackage.STATE_MACHINE__PRECONDITION :
+				return preconditions != null && !preconditions.isEmpty();
+			case UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR :
+				return isSetRedefinedBehaviors();
 			case UMLPackage.STATE_MACHINE__SPECIFICATION :
 				return specification != null;
-			case UMLPackage.STATE_MACHINE__REGION :
-				return regions != null && !regions.isEmpty();
-			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
-				return submachineStates != null && !submachineStates.isEmpty();
 			case UMLPackage.STATE_MACHINE__CONNECTION_POINT :
 				return connectionPoints != null && !connectionPoints.isEmpty();
+			case UMLPackage.STATE_MACHINE__SUBMACHINE_STATE :
+				return submachineStates != null && !submachineStates.isEmpty();
+			case UMLPackage.STATE_MACHINE__REGION :
+				return regions != null && !regions.isEmpty();
 			case UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE :
-				return extendedStateMachines != null
-					&& !extendedStateMachines.isEmpty();
+				return isSetExtendedStateMachines();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -1390,117 +1351,119 @@ public class StateMachineImpl
 		switch (operationID) {
 			case UMLPackage.STATE_MACHINE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.STATE_MACHINE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.STATE_MACHINE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.STATE_MACHINE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.STATE_MACHINE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.STATE_MACHINE___GET_MODEL :
-				return getModel();
-			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.STATE_MACHINE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.STATE_MACHINE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.STATE_MACHINE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.STATE_MACHINE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.STATE_MACHINE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.STATE_MACHINE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.STATE_MACHINE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_MODEL :
+				return getModel();
+			case UMLPackage.STATE_MACHINE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.STATE_MACHINE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.STATE_MACHINE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.STATE_MACHINE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.STATE_MACHINE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.STATE_MACHINE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.STATE_MACHINE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.STATE_MACHINE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.STATE_MACHINE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.STATE_MACHINE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.STATE_MACHINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.STATE_MACHINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.STATE_MACHINE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.STATE_MACHINE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.STATE_MACHINE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.STATE_MACHINE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.STATE_MACHINE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.STATE_MACHINE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.STATE_MACHINE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.STATE_MACHINE___SEPARATOR :
 				return separator();
-			case UMLPackage.STATE_MACHINE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.STATE_MACHINE___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1517,24 +1480,30 @@ public class StateMachineImpl
 				return getImportedElements();
 			case UMLPackage.STATE_MACHINE___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.STATE_MACHINE___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.STATE_MACHINE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.STATE_MACHINE___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.STATE_MACHINE___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.STATE_MACHINE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.STATE_MACHINE___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.STATE_MACHINE___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.STATE_MACHINE___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.STATE_MACHINE___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1559,18 +1528,10 @@ public class StateMachineImpl
 				return getAssociations();
 			case UMLPackage.STATE_MACHINE___CONFORMS_TO__TYPE :
 				return conformsTo((Type) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___PARAMETERABLE_ELEMENTS :
-				return parameterableElements();
 			case UMLPackage.STATE_MACHINE___IS_TEMPLATE :
 				return isTemplate();
-			case UMLPackage.STATE_MACHINE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
-				return validateNoCyclesInGeneralization(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___VALIDATE_GENERALIZATION_HIERARCHIES__DIAGNOSTICCHAIN_MAP :
-				return validateGeneralizationHierarchies(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___PARAMETERABLE_ELEMENTS :
+				return parameterableElements();
 			case UMLPackage.STATE_MACHINE___VALIDATE_SPECIALIZE_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSpecializeType(
 					(DiagnosticChain) arguments.get(0),
@@ -1579,12 +1540,20 @@ public class StateMachineImpl
 				return validateMapsToGeneralizationSet(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_NON_FINAL_PARENTS__DIAGNOSTICCHAIN_MAP :
+				return validateNonFinalParents(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_NO_CYCLES_IN_GENERALIZATION__DIAGNOSTICCHAIN_MAP :
+				return validateNoCyclesInGeneralization(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___GET_ALL_ATTRIBUTES :
 				return getAllAttributes();
-			case UMLPackage.STATE_MACHINE___GET_OPERATIONS :
-				return getOperations();
 			case UMLPackage.STATE_MACHINE___GET_ALL_OPERATIONS :
 				return getAllOperations();
+			case UMLPackage.STATE_MACHINE___GET_ALL_USED_INTERFACES :
+				return getAllUsedInterfaces();
 			case UMLPackage.STATE_MACHINE___GET_OPERATION__STRING_ELIST_ELIST :
 				return getOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
@@ -1593,30 +1562,30 @@ public class StateMachineImpl
 				return getOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
 					(EList<Type>) arguments.get(2), (Boolean) arguments.get(3));
+			case UMLPackage.STATE_MACHINE___GET_OPERATIONS :
+				return getOperations();
 			case UMLPackage.STATE_MACHINE___GET_USED_INTERFACES :
 				return getUsedInterfaces();
-			case UMLPackage.STATE_MACHINE___GET_ALL_USED_INTERFACES :
-				return getAllUsedInterfaces();
-			case UMLPackage.STATE_MACHINE___GET_GENERALS :
-				return getGenerals();
-			case UMLPackage.STATE_MACHINE___GET_INHERITED_MEMBERS :
-				return getInheritedMembers();
 			case UMLPackage.STATE_MACHINE___ALL_FEATURES :
 				return allFeatures();
-			case UMLPackage.STATE_MACHINE___PARENTS :
-				return parents();
-			case UMLPackage.STATE_MACHINE___INHERITABLE_MEMBERS__CLASSIFIER :
-				return inheritableMembers((Classifier) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___HAS_VISIBILITY_OF__NAMEDELEMENT :
-				return hasVisibilityOf((NamedElement) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___CONFORMS_TO__CLASSIFIER :
-				return conformsTo((Classifier) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___INHERIT__ELIST :
-				return inherit((EList<NamedElement>) arguments.get(0));
-			case UMLPackage.STATE_MACHINE___MAY_SPECIALIZE_TYPE__CLASSIFIER :
-				return maySpecializeType((Classifier) arguments.get(0));
 			case UMLPackage.STATE_MACHINE___ALL_PARENTS :
 				return allParents();
+			case UMLPackage.STATE_MACHINE___CONFORMS_TO__CLASSIFIER :
+				return conformsTo((Classifier) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_GENERALS :
+				return getGenerals();
+			case UMLPackage.STATE_MACHINE___HAS_VISIBILITY_OF__NAMEDELEMENT :
+				return hasVisibilityOf((NamedElement) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___INHERIT__ELIST :
+				return inherit((EList<NamedElement>) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___INHERITABLE_MEMBERS__CLASSIFIER :
+				return inheritableMembers((Classifier) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___GET_INHERITED_MEMBERS :
+				return getInheritedMembers();
+			case UMLPackage.STATE_MACHINE___MAY_SPECIALIZE_TYPE__CLASSIFIER :
+				return maySpecializeType((Classifier) arguments.get(0));
+			case UMLPackage.STATE_MACHINE___PARENTS :
+				return parents();
 			case UMLPackage.STATE_MACHINE___VALIDATE_MULTIPLICITIES__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicities(
 					(DiagnosticChain) arguments.get(0),
@@ -1625,25 +1594,38 @@ public class StateMachineImpl
 				return createOwnedAttribute((String) arguments.get(0),
 					(Type) arguments.get(1), (Integer) arguments.get(2),
 					(Integer) arguments.get(3));
+			case UMLPackage.STATE_MACHINE___GET_PARTS :
+				return getParts();
+			case UMLPackage.STATE_MACHINE___GET_OWNED_PORTS :
+				return getOwnedPorts();
 			case UMLPackage.STATE_MACHINE___VALIDATE_CLASS_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
 				return validateClassBehavior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___GET_IMPLEMENTED_INTERFACES :
-				return getImplementedInterfaces();
 			case UMLPackage.STATE_MACHINE___GET_ALL_IMPLEMENTED_INTERFACES :
 				return getAllImplementedInterfaces();
+			case UMLPackage.STATE_MACHINE___GET_IMPLEMENTED_INTERFACES :
+				return getImplementedInterfaces();
 			case UMLPackage.STATE_MACHINE___VALIDATE_PASSIVE_CLASS__DIAGNOSTICCHAIN_MAP :
 				return validatePassiveClass((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___GET_EXTENSIONS :
-				return getExtensions();
 			case UMLPackage.STATE_MACHINE___CREATE_OWNED_OPERATION__STRING_ELIST_ELIST_TYPE :
 				return createOwnedOperation((String) arguments.get(0),
 					(EList<String>) arguments.get(1),
 					(EList<Type>) arguments.get(2), (Type) arguments.get(3));
 			case UMLPackage.STATE_MACHINE___IS_METACLASS :
 				return isMetaclass();
+			case UMLPackage.STATE_MACHINE___GET_EXTENSIONS :
+				return getExtensions();
+			case UMLPackage.STATE_MACHINE___GET_SUPER_CLASSES :
+				return getSuperClasses();
+			case UMLPackage.STATE_MACHINE___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
+				return validateMostOneBehaviour(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
+				return validateMustRealize((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___VALIDATE_PARAMETERS_MATCH__DIAGNOSTICCHAIN_MAP :
 				return validateParametersMatch(
 					(DiagnosticChain) arguments.get(0),
@@ -1652,29 +1634,22 @@ public class StateMachineImpl
 				return validateFeatureOfContextClassifier(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___VALIDATE_MUST_REALIZE__DIAGNOSTICCHAIN_MAP :
-				return validateMustRealize((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___VALIDATE_MOST_ONE_BEHAVIOUR__DIAGNOSTICCHAIN_MAP :
-				return validateMostOneBehaviour(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___GET_CONTEXT :
 				return getContext();
-			case UMLPackage.STATE_MACHINE___VALIDATE_CLASSIFIER_CONTEXT__DIAGNOSTICCHAIN_MAP :
-				return validateClassifierContext(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.STATE_MACHINE___VALIDATE_CONTEXT_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
-				return validateContextClassifier(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___VALIDATE_CONNECTION_POINTS__DIAGNOSTICCHAIN_MAP :
 				return validateConnectionPoints(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_CLASSIFIER_CONTEXT__DIAGNOSTICCHAIN_MAP :
+				return validateClassifierContext(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___VALIDATE_METHOD__DIAGNOSTICCHAIN_MAP :
 				return validateMethod((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.STATE_MACHINE___VALIDATE_CONTEXT_CLASSIFIER__DIAGNOSTICCHAIN_MAP :
+				return validateContextClassifier(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.STATE_MACHINE___LCA__STATE_STATE :
 				return LCA((State) arguments.get(0), (State) arguments.get(1));
@@ -1702,14 +1677,13 @@ public class StateMachineImpl
 		UMLPackage.STATE_MACHINE__OWNED_ATTRIBUTE,
 		UMLPackage.STATE_MACHINE__OWNED_CONNECTOR,
 		UMLPackage.STATE_MACHINE__OWNED_BEHAVIOR,
-		UMLPackage.STATE_MACHINE__OWNED_TRIGGER,
-		UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER,
 		UMLPackage.STATE_MACHINE__OWNED_OPERATION,
+		UMLPackage.STATE_MACHINE__NESTED_CLASSIFIER,
 		UMLPackage.STATE_MACHINE__OWNED_RECEPTION,
 		UMLPackage.STATE_MACHINE__OWNED_PARAMETER,
 		UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET,
-		UMLPackage.STATE_MACHINE__REGION,
-		UMLPackage.STATE_MACHINE__CONNECTION_POINT};
+		UMLPackage.STATE_MACHINE__CONNECTION_POINT,
+		UMLPackage.STATE_MACHINE__REGION};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1719,22 +1693,9 @@ public class StateMachineImpl
 	@Override
 	public boolean isSetOwnedMembers() {
 		return super.isSetOwnedMembers()
-			|| eIsSet(UMLPackage.STATE_MACHINE__REGION)
-			|| eIsSet(UMLPackage.STATE_MACHINE__CONNECTION_POINT);
+			|| eIsSet(UMLPackage.STATE_MACHINE__CONNECTION_POINT)
+			|| eIsSet(UMLPackage.STATE_MACHINE__REGION);
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getRedefinedElements() <em>Redefined Element</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRedefinedElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] REDEFINED_ELEMENT_ESUBSETS = new int[]{
-		UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER,
-		UMLPackage.STATE_MACHINE__REDEFINED_BEHAVIOR,
-		UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1742,9 +1703,29 @@ public class StateMachineImpl
 	 * @generated
 	 */
 	@Override
-	public boolean isSetRedefinedElements() {
-		return super.isSetRedefinedElements()
-			|| eIsSet(UMLPackage.STATE_MACHINE__EXTENDED_STATE_MACHINE);
+	public EList<Behavior> getRedefinedBehaviors() {
+		@SuppressWarnings("unchecked")
+		EList<Behavior> extendedStateMachine = (EList<Behavior>) ((EList<?>) getExtendedStateMachines());
+		return extendedStateMachine;
+	}
+
+	/**
+	 * The array of superset feature identifiers for the '{@link #getRedefinedBehaviors() <em>Redefined Behavior</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRedefinedBehaviors()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] REDEFINED_BEHAVIOR_ESUPERSETS = new int[]{UMLPackage.STATE_MACHINE__REDEFINED_CLASSIFIER};
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetRedefinedBehaviors() {
+		return false;
 	}
 
 	/**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RegionItemProvider.java,v 1.11 2010/09/28 21:00:19 khussey Exp $
  */
@@ -74,11 +75,11 @@ public class RegionItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
-			addSubvertexPropertyDescriptor(object);
-			addTransitionPropertyDescriptor(object);
-			addStatePropertyDescriptor(object);
 			addExtendedRegionPropertyDescriptor(object);
+			addStatePropertyDescriptor(object);
 			addStateMachinePropertyDescriptor(object);
+			addTransitionPropertyDescriptor(object);
+			addSubvertexPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -258,8 +259,8 @@ public class RegionItemProvider
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UMLPackage.Literals.REGION__SUBVERTEX);
 			childrenFeatures.add(UMLPackage.Literals.REGION__TRANSITION);
+			childrenFeatures.add(UMLPackage.Literals.REGION__SUBVERTEX);
 		}
 		return childrenFeatures;
 	}
@@ -328,8 +329,8 @@ public class RegionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.REGION__SUBVERTEX :
 			case UMLPackage.REGION__TRANSITION :
+			case UMLPackage.REGION__SUBVERTEX :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -350,6 +351,18 @@ public class RegionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__TRANSITION,
+			UMLFactory.eINSTANCE.createTransition()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__TRANSITION,
+			UMLFactory.eINSTANCE.createProtocolTransition()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.REGION__SUBVERTEX,
+			UMLFactory.eINSTANCE.createPseudostate()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REGION__SUBVERTEX,
 			UMLFactory.eINSTANCE.createState()));
 
@@ -359,19 +372,7 @@ public class RegionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.REGION__SUBVERTEX,
-			UMLFactory.eINSTANCE.createPseudostate()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REGION__SUBVERTEX,
 			UMLFactory.eINSTANCE.createFinalState()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REGION__TRANSITION,
-			UMLFactory.eINSTANCE.createTransition()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.REGION__TRANSITION,
-			UMLFactory.eINSTANCE.createProtocolTransition()));
 	}
 
 }

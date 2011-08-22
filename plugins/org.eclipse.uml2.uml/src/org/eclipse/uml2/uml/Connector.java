@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Connector.java,v 1.17 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -26,19 +27,18 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
+ * A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.
  * Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
- * A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the internal realization of that behavior by the component's parts. It represents the forwarding of signals (operation requests and events): a signal that arrives at a port that has a delegation connector to a part or to another port will be passed on to that target for handling.
- * An assembly connector is a connector between two components that defines that one component provides the services that another component requires. An assembly connector is a connector that is defined from a required interface or port to a provided interface or port.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Connector#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Connector#getRedefinedConnectors <em>Redefined Connector</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Connector#getContracts <em>Contract</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Connector#getEnds <em>End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Connector#getContracts <em>Contract</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Connector#getRedefinedConnectors <em>Redefined Connector</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Connector#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,54 +155,15 @@ public interface Connector
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the kind of connector.
+	 * Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' attribute.
 	 * @see org.eclipse.uml2.uml.ConnectorKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
-	 * @see #setKind(ConnectorKind)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getConnector_Kind()
-	 * @model unsettable="true" ordered="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	ConnectorKind getKind();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.eclipse.uml2.uml.ConnectorKind
-	 * @see #isSetKind()
-	 * @see #unsetKind()
-	 * @see #getKind()
-	 * @generated
-	 */
-	void setKind(ConnectorKind value);
-
-	/**
-	 * Unsets the value of the '{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSetKind()
-	 * @see #getKind()
-	 * @see #setKind(ConnectorKind)
-	 * @generated
-	 */
-	void unsetKind();
-
-	/**
-	 * Returns whether the value of the '{@link org.eclipse.uml2.uml.Connector#getKind <em>Kind</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Kind</em>' attribute is set.
-	 * @see #unsetKind()
-	 * @see #getKind()
-	 * @see #setKind(ConnectorKind)
-	 * @generated
-	 */
-	boolean isSetKind();
 
 	/**
 	 * Returns the value of the '<em><b>Contract</b></em>' reference list.
@@ -292,7 +253,7 @@ public interface Connector
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A delegation connector must only be defined between used Interfaces or Ports of the same kind, e.g. between two provided Ports or between two required Ports.
+	 * Each feature of each of the required interfaces of each Port or Part at the end of a connector must have at least one compatible feature among the features of the provided interfaces of Ports or Parts at the other ends, where the required set of (interface) features of a delegating port from the context of the delegating connector is the set of features that exist in the port's provided interfaces, and the provided set of (interface) features of a delegating port from the context of the delegating connector is the set of features that exist in the port's required interfaces.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -301,66 +262,6 @@ public interface Connector
 	 * @generated
 	 */
 	boolean validateBetweenInterfacesPorts(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a delegation connector is defined between a used Interface or Port and an internal Part Classifier, then that Classifier must have an 'implements' relationship to the Interface type of that Port.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateBetweenInterfacePortImplements(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * If a delegation connector is defined between a source Interface or Port and a target Interface or Port, then the target Interface must support a signature compatible subset of Operations of the source Interface or Port.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateBetweenInterfacePortSignature(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * In a complete model, if a source Port has delegation connectors to a set of delegated target Ports, then the union of the Interfaces of these target Ports must be signature compatible with the Interface that types the source Port.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateUnionSignatureCompatible(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An assembly connector must only be defined from a required Interface or Ports to a provided Interface or Port.
-	 * true
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	boolean validateAssemblyConnector(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // Connector

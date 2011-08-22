@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityGroupItemProvider.java,v 1.10 2009/12/02 18:27:49 jbruck Exp $
  */
@@ -29,6 +30,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.UMLPackage;
 
 /**
@@ -38,7 +40,7 @@ import org.eclipse.uml2.uml.UMLPackage;
  * @generated
  */
 public class ActivityGroupItemProvider
-		extends ElementItemProvider
+		extends NamedElementItemProvider
 		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		IItemColorProvider, IItemFontProvider {
@@ -64,11 +66,11 @@ public class ActivityGroupItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addContainedNodePropertyDescriptor(object);
+			addInActivityPropertyDescriptor(object);
 			addSubgroupPropertyDescriptor(object);
 			addSuperGroupPropertyDescriptor(object);
-			addInActivityPropertyDescriptor(object);
 			addContainedEdgePropertyDescriptor(object);
-			addContainedNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -196,7 +198,10 @@ public class ActivityGroupItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ActivityGroup_type"); //$NON-NLS-1$
+		String label = ((ActivityGroup) object).getName();
+		return label == null || label.length() == 0
+			? getString("_UI_ActivityGroup_type") : //$NON-NLS-1$
+			getString("_UI_ActivityGroup_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**

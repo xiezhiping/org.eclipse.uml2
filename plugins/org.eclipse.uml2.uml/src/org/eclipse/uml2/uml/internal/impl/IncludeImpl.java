@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: IncludeImpl.java,v 1.19 2009/01/07 15:55:26 jbruck Exp $
  */
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DirectedRelationship;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Include;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.StringExpression;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -53,6 +55,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getRelatedElements <em>Related Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getTargets <em>Target</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getAddition <em>Addition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.IncludeImpl#getIncludingCase <em>Including Case</em>}</li>
  * </ul>
@@ -346,30 +349,30 @@ public class IncludeImpl
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.INCLUDE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.INCLUDE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INCLUDE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.INCLUDE__NAME :
-				return getName();
-			case UMLPackage.INCLUDE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.INCLUDE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.INCLUDE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.INCLUDE__NAME :
+				return getName();
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.INCLUDE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.INCLUDE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.INCLUDE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.INCLUDE__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.INCLUDE__SOURCE :
@@ -407,19 +410,19 @@ public class IncludeImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INCLUDE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.INCLUDE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.INCLUDE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.INCLUDE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.INCLUDE__ADDITION :
 				setAddition((UseCase) newValue);
@@ -445,17 +448,17 @@ public class IncludeImpl
 			case UMLPackage.INCLUDE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INCLUDE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.INCLUDE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.INCLUDE__NAME :
+				unsetName();
+				return;
 			case UMLPackage.INCLUDE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.INCLUDE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.INCLUDE__ADDITION :
 				setAddition((UseCase) null);
@@ -477,27 +480,27 @@ public class IncludeImpl
 		switch (featureID) {
 			case UMLPackage.INCLUDE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INCLUDE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INCLUDE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INCLUDE__OWNER :
 				return isSetOwner();
-			case UMLPackage.INCLUDE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INCLUDE__NAME :
 				return isSetName();
-			case UMLPackage.INCLUDE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.INCLUDE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.INCLUDE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.INCLUDE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.INCLUDE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.INCLUDE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.INCLUDE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.INCLUDE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.INCLUDE__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.INCLUDE__SOURCE :
@@ -622,8 +625,46 @@ public class IncludeImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Namespace getNamespace() {
+		Namespace namespace = basicGetNamespace();
+		return namespace != null && namespace.eIsProxy()
+			? (Namespace) eResolveProxy((InternalEObject) namespace)
+			: namespace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Namespace basicGetNamespace() {
+		UseCase includingCase = basicGetIncludingCase();
+		if (includingCase != null) {
+			return includingCase;
+		}
+		return super.basicGetNamespace();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSetTargets() {
 		return eIsSet(UMLPackage.INCLUDE__ADDITION);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetNamespace() {
+		return super.isSetNamespace()
+			|| eIsSet(UMLPackage.INCLUDE__INCLUDING_CASE);
 	}
 
 } //IncludeImpl

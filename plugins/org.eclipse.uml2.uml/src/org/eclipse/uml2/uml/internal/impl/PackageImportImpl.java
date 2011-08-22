@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PackageImportImpl.java,v 1.22 2010/09/28 21:02:14 khussey Exp $
  */
@@ -59,9 +60,9 @@ import org.eclipse.uml2.uml.internal.operations.PackageImportOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportedPackage <em>Imported Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getImportingNamespace <em>Importing Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PackageImportImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,16 @@ import org.eclipse.uml2.uml.internal.operations.PackageImportOperations;
 public class PackageImportImpl
 		extends DirectedRelationshipImpl
 		implements PackageImport {
+
+	/**
+	 * The cached value of the '{@link #getImportedPackage() <em>Imported Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImportedPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.eclipse.uml2.uml.Package importedPackage;
 
 	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
@@ -119,16 +130,6 @@ public class PackageImportImpl
 	 * @ordered
 	 */
 	protected static final int VISIBILITY_EFLAG = 0x3 << VISIBILITY_EFLAG_OFFSET;
-
-	/**
-	 * The cached value of the '{@link #getImportedPackage() <em>Imported Package</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImportedPackage()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.eclipse.uml2.uml.Package importedPackage;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -411,22 +412,20 @@ public class PackageImportImpl
 		switch (featureID) {
 			case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.PACKAGE_IMPORT__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.PACKAGE_IMPORT__SOURCE :
 				return getSources();
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return getTargets();
-			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return getVisibility();
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				if (resolve)
 					return getImportedPackage();
@@ -435,6 +434,8 @@ public class PackageImportImpl
 				if (resolve)
 					return getImportingNamespace();
 				return basicGetImportingNamespace();
+			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
+				return getVisibility();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -458,14 +459,14 @@ public class PackageImportImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				setImportedPackage((org.eclipse.uml2.uml.Package) newValue);
 				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
 				setImportingNamespace((Namespace) newValue);
+				return;
+			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -485,14 +486,14 @@ public class PackageImportImpl
 			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				setImportedPackage((org.eclipse.uml2.uml.Package) null);
 				return;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
 				setImportingNamespace((Namespace) null);
+				return;
+			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
+				setVisibility(VISIBILITY_EDEFAULT);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -508,24 +509,24 @@ public class PackageImportImpl
 		switch (featureID) {
 			case UMLPackage.PACKAGE_IMPORT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PACKAGE_IMPORT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT__OWNER :
 				return isSetOwner();
-			case UMLPackage.PACKAGE_IMPORT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PACKAGE_IMPORT__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.PACKAGE_IMPORT__SOURCE :
 				return isSetSources();
 			case UMLPackage.PACKAGE_IMPORT__TARGET :
 				return isSetTargets();
-			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
-				return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTED_PACKAGE :
 				return importedPackage != null;
 			case UMLPackage.PACKAGE_IMPORT__IMPORTING_NAMESPACE :
 				return basicGetImportingNamespace() != null;
+			case UMLPackage.PACKAGE_IMPORT__VISIBILITY :
+				return (eFlags & VISIBILITY_EFLAG) != VISIBILITY_EFLAG_DEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -542,82 +543,82 @@ public class PackageImportImpl
 		switch (operationID) {
 			case UMLPackage.PACKAGE_IMPORT___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PACKAGE_IMPORT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PACKAGE_IMPORT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PACKAGE_IMPORT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.PACKAGE_IMPORT___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.PACKAGE_IMPORT___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.PACKAGE_IMPORT___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.PACKAGE_IMPORT___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.PACKAGE_IMPORT___GET_MODEL :
-				return getModel();
-			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.PACKAGE_IMPORT___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.PACKAGE_IMPORT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.PACKAGE_IMPORT___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.PACKAGE_IMPORT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.PACKAGE_IMPORT___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PACKAGE_IMPORT___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PACKAGE_IMPORT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.PACKAGE_IMPORT___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_MODEL :
+				return getModel();
+			case UMLPackage.PACKAGE_IMPORT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.PACKAGE_IMPORT___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.PACKAGE_IMPORT___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.PACKAGE_IMPORT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PACKAGE_IMPORT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.PACKAGE_IMPORT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PACKAGE_IMPORT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PACKAGE_IMPORT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PACKAGE_IMPORT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PACKAGE_IMPORT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.PACKAGE_IMPORT___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.PACKAGE_IMPORT___MUST_BE_OWNED :

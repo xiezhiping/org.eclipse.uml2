@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Region.java,v 1.16 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,11 +33,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Region#getSubvertices <em>Subvertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#getTransitions <em>Transition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Region#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#getExtendedRegion <em>Extended Region</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Region#getStateMachine <em>State Machine</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#getTransitions <em>Transition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Region#getSubvertices <em>Subvertex</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,7 +122,7 @@ public interface Region
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The set of transitions owned by the region. Note that internal transitions are owned by a region, but applies to the source state.
+	 * The set of transitions owned by the region.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Transition</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getRegion_Transition()
@@ -373,7 +374,7 @@ public interface Region
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(Region redefined);
@@ -406,7 +407,7 @@ public interface Region
 	 * state.container.belongsToPSM ()
 	 * else false
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean belongsToPSM();

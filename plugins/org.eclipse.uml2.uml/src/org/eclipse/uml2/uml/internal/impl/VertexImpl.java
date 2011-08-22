@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: VertexImpl.java,v 1.26 2010/09/28 21:02:14 khussey Exp $
  */
@@ -54,9 +55,9 @@ import org.eclipse.uml2.uml.internal.operations.VertexOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getIncomings <em>Incoming</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.VertexImpl#getOutgoings <em>Outgoing</em>}</li>
  * </ul>
  * </p>
  *
@@ -314,38 +315,38 @@ public abstract class VertexImpl
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.VERTEX__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.VERTEX__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.VERTEX__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.VERTEX__NAME :
-				return getName();
-			case UMLPackage.VERTEX__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.VERTEX__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.VERTEX__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.VERTEX__NAME :
+				return getName();
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.VERTEX__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.VERTEX__INCOMING :
-				return getIncomings();
+			case UMLPackage.VERTEX__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.VERTEX__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.VERTEX__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.VERTEX__CONTAINER :
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
+			case UMLPackage.VERTEX__INCOMING :
+				return getIncomings();
+			case UMLPackage.VERTEX__OUTGOING :
+				return getOutgoings();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -369,29 +370,19 @@ public abstract class VertexImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.VERTEX__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.VERTEX__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.VERTEX__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.VERTEX__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
-			case UMLPackage.VERTEX__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
+			case UMLPackage.VERTEX__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
 				setContainer((Region) newValue);
@@ -414,23 +405,17 @@ public abstract class VertexImpl
 			case UMLPackage.VERTEX__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.VERTEX__NAME :
-				unsetName();
-				return;
-			case UMLPackage.VERTEX__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.VERTEX__NAME :
+				unsetName();
 				return;
 			case UMLPackage.VERTEX__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.VERTEX__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.VERTEX__INCOMING :
-				getIncomings().clear();
+			case UMLPackage.VERTEX__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.VERTEX__CONTAINER :
 				setContainer((Region) null);
@@ -449,33 +434,33 @@ public abstract class VertexImpl
 		switch (featureID) {
 			case UMLPackage.VERTEX__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.VERTEX__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.VERTEX__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.VERTEX__OWNER :
 				return isSetOwner();
-			case UMLPackage.VERTEX__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.VERTEX__NAME :
 				return isSetName();
-			case UMLPackage.VERTEX__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.VERTEX__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.VERTEX__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.VERTEX__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.VERTEX__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.VERTEX__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.VERTEX__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.VERTEX__OUTGOING :
-				return !getOutgoings().isEmpty();
-			case UMLPackage.VERTEX__INCOMING :
-				return !getIncomings().isEmpty();
+			case UMLPackage.VERTEX__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.VERTEX__CONTAINER :
 				return basicGetContainer() != null;
+			case UMLPackage.VERTEX__INCOMING :
+				return !getIncomings().isEmpty();
+			case UMLPackage.VERTEX__OUTGOING :
+				return !getOutgoings().isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -492,123 +477,125 @@ public abstract class VertexImpl
 		switch (operationID) {
 			case UMLPackage.VERTEX___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.VERTEX___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VERTEX___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.VERTEX___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.VERTEX___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.VERTEX___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.VERTEX___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.VERTEX___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.VERTEX___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.VERTEX___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.VERTEX___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.VERTEX___GET_MODEL :
-				return getModel();
-			case UMLPackage.VERTEX___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.VERTEX___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.VERTEX___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.VERTEX___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.VERTEX___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.VERTEX___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.VERTEX___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.VERTEX___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.VERTEX___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.VERTEX___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.VERTEX___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.VERTEX___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.VERTEX___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.VERTEX___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___GET_MODEL :
+				return getModel();
+			case UMLPackage.VERTEX___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.VERTEX___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.VERTEX___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.VERTEX___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.VERTEX___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.VERTEX___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.VERTEX___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.VERTEX___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.VERTEX___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.VERTEX___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VERTEX___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.VERTEX___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.VERTEX___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.VERTEX___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.VERTEX___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.VERTEX___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.VERTEX___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.VERTEX___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.VERTEX___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.VERTEX___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.VERTEX___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.VERTEX___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.VERTEX___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.VERTEX___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.VERTEX___GET_LABEL :
 				return getLabel();
 			case UMLPackage.VERTEX___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.VERTEX___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.VERTEX___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.VERTEX___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.VERTEX___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.VERTEX___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.VERTEX___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.VERTEX___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.VERTEX___SEPARATOR :
 				return separator();
-			case UMLPackage.VERTEX___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.VERTEX___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
-			case UMLPackage.VERTEX___GET_OUTGOINGS :
-				return getOutgoings();
 			case UMLPackage.VERTEX___GET_INCOMINGS :
 				return getIncomings();
+			case UMLPackage.VERTEX___GET_OUTGOINGS :
+				return getOutgoings();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}

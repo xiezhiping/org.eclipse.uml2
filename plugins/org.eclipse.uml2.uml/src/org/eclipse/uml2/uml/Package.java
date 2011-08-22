@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Package.java,v 1.23 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -27,20 +28,22 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A package is used to group elements, and provides a namespace for the grouped elements.
  * A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.
  * Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.
+ * A package is used to group elements, and provides a namespace for the grouped elements.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getPackageMerges <em>Package Merge</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Package#getPackagedElements <em>Packaged Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getURI <em>URI</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestedPackages <em>Nested Package</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getNestingPackage <em>Nesting Package</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedStereotypes <em>Owned Stereotype</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getPackageMerges <em>Package Merge</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getPackagedElements <em>Packaged Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Package#getProfileApplications <em>Profile Application</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Package#getOwnedTypes <em>Owned Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +53,31 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Package
 		extends Namespace, PackageableElement, TemplateableElement {
+
+	/**
+	 * Returns the value of the '<em><b>URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>URI</em>' attribute.
+	 * @see #setURI(String)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_URI()
+	 * @model dataType="org.eclipse.uml2.types.String" ordered="false"
+	 * @generated
+	 */
+	String getURI();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Package#getURI <em>URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>URI</em>' attribute.
+	 * @see #getURI()
+	 * @generated
+	 */
+	void setURI(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Package Merge</b></em>' containment reference list.
@@ -264,6 +292,17 @@ public interface Package
 	Package createNestedPackage(String name, EClass eClass);
 
 	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Package}, or <code>null</code>.
+	 * @return The new {@link org.eclipse.uml2.uml.Package}.
+	 * @see #getNestedPackages()
+	 * @generated
+	 */
+	Package createNestedPackage(String name);
+
+	/**
 	 * Retrieves the first {@link org.eclipse.uml2.uml.Package} with the specified '<em><b>Name</b></em>' from the '<em><b>Nested Package</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -323,6 +362,50 @@ public interface Package
 	void setNestingPackage(Package value);
 
 	/**
+	 * Returns the value of the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.Stereotype}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Package#getPackagedElements() <em>Packaged Element</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * References the Stereotypes that are owned by the Package
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Stereotype</em>' reference list.
+	 * @see org.eclipse.uml2.uml.UMLPackage#getPackage_OwnedStereotype()
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @generated
+	 */
+	EList<Stereotype> getOwnedStereotypes();
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedStereotypes()
+	 * @generated
+	 */
+	Stereotype getOwnedStereotype(String name);
+
+	/**
+	 * Retrieves the first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>' from the '<em><b>Owned Stereotype</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Stereotype} to retrieve, or <code>null</code>.
+	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
+	 * @return The first {@link org.eclipse.uml2.uml.Stereotype} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @see #getOwnedStereotypes()
+	 * @generated
+	 */
+	Stereotype getOwnedStereotype(String name, boolean ignoreCase);
+
+	/**
 	 * Returns the value of the '<em><b>Profile Application</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.ProfileApplication}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.ProfileApplication#getApplyingPackage <em>Applying Package</em>}'.
@@ -371,17 +454,6 @@ public interface Package
 			Map<Object, Object> context);
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Package}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Nested Package</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Package}, or <code>null</code>.
-	 * @return The new {@link org.eclipse.uml2.uml.Package}.
-	 * @see #getNestedPackages()
-	 * @generated
-	 */
-	Package createNestedPackage(String name);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -389,7 +461,7 @@ public interface Package
 	 * @param name The name for the new class, or null.
 	 * @param isAbstract Whether the new class should be abstract.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.uml.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.types.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
 	 * @generated
 	 */
 	org.eclipse.uml2.uml.Class createOwnedClass(String name, boolean isAbstract);
@@ -401,7 +473,7 @@ public interface Package
 	 * Creates a enumeration with the specified name as an owned type of this package.
 	 * @param name The name for the new enumeration, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	Enumeration createOwnedEnumeration(String name);
@@ -413,7 +485,7 @@ public interface Package
 	 * Creates a primitive type with the specified name as an owned type of this package.
 	 * @param name The name for the new primitive type, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	PrimitiveType createOwnedPrimitiveType(String name);
@@ -422,10 +494,23 @@ public interface Package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Creates a(n) (abstract) stereotype with the specified name as an owned stereotype of this profile.
+	 * @param name The name for the new stereotype, or null.
+	 * @param isAbstract Whether the new stereotype should be abstract.
+	 * <!-- end-model-doc -->
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false" isAbstractDataType="org.eclipse.uml2.types.Boolean" isAbstractRequired="true" isAbstractOrdered="false"
+	 * @generated
+	 */
+	Stereotype createOwnedStereotype(String name, boolean isAbstract);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Determines whether the specified profile is applied to this package.
 	 * @param profile The profile in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" profileRequired="true" profileOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" profileRequired="true" profileOrdered="false"
 	 * @generated
 	 */
 	boolean isProfileApplied(Profile profile);
@@ -458,6 +543,37 @@ public interface Package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
+	 * result = 
+	 * self.ownedStereotype->union(self.ownedMember->
+	 * 	select(oclIsKindOf(Package)).oclAsType(Package).allApplicableStereotypes()->flatten())->asSet()
+	 * <!-- end-model-doc -->
+	 * @model ordered="false"
+	 * @generated
+	 */
+	EList<Stereotype> allApplicableStereotypes();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
+	 * result =
+	 * if self.oclIsKindOf(Profile) then 
+	 * 	self.oclAsType(Profile)
+	 * else
+	 * 	self.namespace.oclAsType(Package).containingProfile()
+	 * endif
+	 * <!-- end-model-doc -->
+	 * @model ordered="false"
+	 * @generated
+	 */
+	Profile containingProfile();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Retrieves the profiles that are applied to this package.
 	 * <!-- end-model-doc -->
 	 * @model kind="operation" ordered="false"
@@ -472,7 +588,7 @@ public interface Package
 	 * Retrieves the profile with the specified qualified name that is applied to this package, or null if no such profile is applied.
 	 * @param qualifiedName The qualified name of the applied profile to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	Profile getAppliedProfile(String qualifiedName);
@@ -485,7 +601,7 @@ public interface Package
 	 * @param qualifiedName The qualified name of the applied profile to retrieve.
 	 * @param recurse Whether to look in nesting packages.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false" recurseDataType="org.eclipse.uml2.types.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
 	Profile getAppliedProfile(String qualifiedName, boolean recurse);
@@ -521,7 +637,7 @@ public interface Package
 	 * @param profile The profile whose application to retrieve.
 	 * @param recurse Whether to look in nesting packages.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" profileRequired="true" profileOrdered="false" recurseDataType="org.eclipse.uml2.uml.Boolean" recurseRequired="true" recurseOrdered="false"
+	 * @model ordered="false" profileRequired="true" profileOrdered="false" recurseDataType="org.eclipse.uml2.types.Boolean" recurseRequired="true" recurseOrdered="false"
 	 * @generated
 	 */
 	ProfileApplication getProfileApplication(Profile profile, boolean recurse);
@@ -533,7 +649,7 @@ public interface Package
 	 * Creates an interface with the specified name as an owned type of this package.
 	 * @param name The name for the new interface, or null.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.uml.String" nameRequired="true" nameOrdered="false"
+	 * @model required="true" ordered="false" nameDataType="org.eclipse.uml2.types.String" nameRequired="true" nameOrdered="false"
 	 * @generated
 	 */
 	Interface createOwnedInterface(String name);
@@ -544,7 +660,7 @@ public interface Package
 	 * <!-- begin-model-doc -->
 	 * Determines whether this package is a model library.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isModelLibrary();
@@ -582,7 +698,7 @@ public interface Package
 	 * (elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or
 	 * (packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" elRequired="true" elOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" elRequired="true" elOrdered="false"
 	 * @generated
 	 */
 	boolean makesVisible(NamedElement el);

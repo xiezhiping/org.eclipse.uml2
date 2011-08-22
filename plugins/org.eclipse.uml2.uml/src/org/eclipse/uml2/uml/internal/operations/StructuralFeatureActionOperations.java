@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuralFeatureActionOperations.java,v 1.6 2007/05/03 21:11:52 khussey Exp $
  */
@@ -30,10 +31,10 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateSameType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateVisibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Visibility</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StructuralFeatureAction#validateOneFeaturingClassifier(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate One Featuring Classifier</em>}</li>
  * </ul>
  * </p>
@@ -41,7 +42,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class StructuralFeatureActionOperations
-		extends ActivityNodeOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,8 +93,9 @@ public class StructuralFeatureActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the object input pin is the same as the classifier of the object passed on this pin.
-	 * true
+	 * The structural feature must either be owned by the type of the object input pin, or it must be an owned end of a binary association with the type of the opposite end being the type of the object input pin.
+	 * self.structuralFeature.featuringClassifier.oclAsType(Type)->includes(self.object.type) or
+	 * 	self.structuralFeature.oclAsType(Property).opposite.type = self.object.type
 	 * @param structuralFeatureAction The receiving '<em><b>Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -128,8 +130,8 @@ public class StructuralFeatureActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The multiplicity of the input pin must be 1..1.
-	 * self.object.multiplicity.is(1,1)
+	 * The multiplicity of the object input pin must be 1..1.
+	 * self.object.lowerBound()=1 and self.object.upperBound()=1
 	 * @param structuralFeatureAction The receiving '<em><b>Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

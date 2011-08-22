@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StateMachine.java,v 1.14 2007/10/23 15:54:22 jbruck Exp $
  */
@@ -32,9 +33,9 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#getRegions <em>Region</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getConnectionPoints <em>Connection Point</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#getSubmachineStates <em>Submachine State</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.StateMachine#getRegions <em>Region</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.StateMachine#getExtendedStateMachines <em>Extended State Machine</em>}</li>
  * </ul>
  * </p>
@@ -208,9 +209,9 @@ public interface StateMachine
 	 * Returns the value of the '<em><b>Extended State Machine</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.StateMachine}.
 	 * <p>
-	 * This feature subsets the following features:
+	 * This feature redefines the following features:
 	 * <ul>
-	 *   <li>'{@link org.eclipse.uml2.uml.RedefinableElement#getRedefinedElements() <em>Redefined Element</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Behavior#getRedefinedBehaviors() <em>Redefined Behavior</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->
@@ -326,17 +327,20 @@ public interface StateMachine
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The query ancestor(s1, s2) checks whether s2 is an ancestor state of state s1. context StateMachine::ancestor (s1 : State, s2 : State) : Boolean
+	 * The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
+	 * result = 
+	 * if (s2 = s1) then 
+	 * 	true 
+	 * else 
+	 * 	if (s2.container->isEmpty() or not s2.container.owner.oclIsKindOf(State)) then 
+	 * 		false 
+	 * 	else 
+	 * 		ancestor(s1, s2.container.owner.oclAsType(State))
+	 * 	endif
+	 * endif 
 	 * 
-	 * result = if (s2 = s1) then
-	 * true
-	 * else if (s1.container->isEmpty) then
-	 * true
-	 * else if (s2.container->isEmpty) then
-	 * false
-	 * else (ancestor (s1, s2.container))
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" s1Required="true" s1Ordered="false" s2Required="true" s2Ordered="false"
 	 * @generated
 	 */
 	boolean ancestor(State s1, State s2);
@@ -354,7 +358,7 @@ public interface StateMachine
 	 * The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" redefinedRequired="true" redefinedOrdered="false"
 	 * @generated
 	 */
 	boolean isRedefinitionContextValid(StateMachine redefined);

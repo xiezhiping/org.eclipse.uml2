@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: CollaborationUseOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
@@ -90,7 +91,7 @@ public class CollaborationUseOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Every role in the collaboration is bound within the collaboration use to a connectable element within the classifier or operation.
+	 * Every role in the collaboration is bound within the collaboration use to a connectable element within the owning classifier.
 	 * true
 	 * @param collaborationUse The receiving '<em><b>Collaboration Use</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.

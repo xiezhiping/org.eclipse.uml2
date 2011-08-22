@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PseudostateImpl.java,v 1.24 2010/09/28 21:02:13 khussey Exp $
  */
@@ -35,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Pseudostate;
@@ -45,7 +45,6 @@ import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -59,10 +58,9 @@ import org.eclipse.uml2.uml.internal.operations.PseudostateOperations;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getNamespace <em>Namespace</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getState <em>State</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getStateMachine <em>State Machine</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PseudostateImpl#getState <em>State</em>}</li>
  * </ul>
  * </p>
  *
@@ -415,14 +413,14 @@ public class PseudostateImpl
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetContainer((Region) otherEnd, msgs);
-			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetStateMachine((StateMachine) otherEnd, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE :
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetState((State) otherEnd, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetStateMachine((StateMachine) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -449,10 +447,10 @@ public class PseudostateImpl
 				return basicSetNameExpression(null, msgs);
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicSetContainer(null, msgs);
-			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
-				return basicSetStateMachine(null, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE :
 				return basicSetState(null, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
+				return basicSetStateMachine(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -469,13 +467,13 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.REGION__SUBVERTEX, Region.class, msgs);
+			case UMLPackage.PSEUDOSTATE__STATE :
+				return eInternalContainer().eInverseRemove(this,
+					UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return eInternalContainer().eInverseRemove(this,
 					UMLPackage.STATE_MACHINE__CONNECTION_POINT,
 					StateMachine.class, msgs);
-			case UMLPackage.PSEUDOSTATE__STATE :
-				return eInternalContainer().eInverseRemove(this,
-					UMLPackage.STATE__CONNECTION_POINT, State.class, msgs);
 		}
 		return eDynamicBasicRemoveFromContainer(msgs);
 	}
@@ -490,48 +488,48 @@ public class PseudostateImpl
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.PSEUDOSTATE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PSEUDOSTATE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.PSEUDOSTATE__NAME :
-				return getName();
-			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.PSEUDOSTATE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.PSEUDOSTATE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.PSEUDOSTATE__NAME :
+				return getName();
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return getIncomings();
+			case UMLPackage.PSEUDOSTATE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.PSEUDOSTATE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.PSEUDOSTATE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return getIncomings();
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return getOutgoings();
+			case UMLPackage.PSEUDOSTATE__STATE :
+				if (resolve)
+					return getState();
+				return basicGetState();
 			case UMLPackage.PSEUDOSTATE__KIND :
 				return getKind();
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				if (resolve)
 					return getStateMachine();
 				return basicGetStateMachine();
-			case UMLPackage.PSEUDOSTATE__STATE :
-				if (resolve)
-					return getState();
-				return basicGetState();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -555,41 +553,31 @@ public class PseudostateImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PSEUDOSTATE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.PSEUDOSTATE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
+			case UMLPackage.PSEUDOSTATE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				setContainer((Region) newValue);
+				return;
+			case UMLPackage.PSEUDOSTATE__STATE :
+				setState((State) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__KIND :
 				setKind((PseudostateKind) newValue);
 				return;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				setStateMachine((StateMachine) newValue);
-				return;
-			case UMLPackage.PSEUDOSTATE__STATE :
-				setState((State) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -609,35 +597,29 @@ public class PseudostateImpl
 			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PSEUDOSTATE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.PSEUDOSTATE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				getIncomings().clear();
+			case UMLPackage.PSEUDOSTATE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				setContainer((Region) null);
+				return;
+			case UMLPackage.PSEUDOSTATE__STATE :
+				setState((State) null);
 				return;
 			case UMLPackage.PSEUDOSTATE__KIND :
 				setKind(KIND_EDEFAULT);
 				return;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				setStateMachine((StateMachine) null);
-				return;
-			case UMLPackage.PSEUDOSTATE__STATE :
-				setState((State) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -653,39 +635,39 @@ public class PseudostateImpl
 		switch (featureID) {
 			case UMLPackage.PSEUDOSTATE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PSEUDOSTATE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PSEUDOSTATE__OWNER :
 				return isSetOwner();
-			case UMLPackage.PSEUDOSTATE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PSEUDOSTATE__NAME :
 				return isSetName();
-			case UMLPackage.PSEUDOSTATE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.PSEUDOSTATE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.PSEUDOSTATE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.PSEUDOSTATE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.PSEUDOSTATE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.PSEUDOSTATE__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.PSEUDOSTATE__OUTGOING :
-				return !getOutgoings().isEmpty();
-			case UMLPackage.PSEUDOSTATE__INCOMING :
-				return !getIncomings().isEmpty();
+			case UMLPackage.PSEUDOSTATE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.PSEUDOSTATE__CONTAINER :
 				return basicGetContainer() != null;
+			case UMLPackage.PSEUDOSTATE__INCOMING :
+				return !getIncomings().isEmpty();
+			case UMLPackage.PSEUDOSTATE__OUTGOING :
+				return !getOutgoings().isEmpty();
+			case UMLPackage.PSEUDOSTATE__STATE :
+				return basicGetState() != null;
 			case UMLPackage.PSEUDOSTATE__KIND :
 				return (eFlags & KIND_EFLAG) != KIND_EFLAG_DEFAULT;
 			case UMLPackage.PSEUDOSTATE__STATE_MACHINE :
 				return basicGetStateMachine() != null;
-			case UMLPackage.PSEUDOSTATE__STATE :
-				return basicGetState() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -702,147 +684,127 @@ public class PseudostateImpl
 		switch (operationID) {
 			case UMLPackage.PSEUDOSTATE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.PSEUDOSTATE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.PSEUDOSTATE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.PSEUDOSTATE___GET_MODEL :
-				return getModel();
-			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.PSEUDOSTATE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.PSEUDOSTATE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.PSEUDOSTATE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.PSEUDOSTATE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.PSEUDOSTATE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.PSEUDOSTATE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_MODEL :
+				return getModel();
+			case UMLPackage.PSEUDOSTATE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.PSEUDOSTATE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.PSEUDOSTATE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.PSEUDOSTATE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PSEUDOSTATE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.PSEUDOSTATE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PSEUDOSTATE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PSEUDOSTATE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.PSEUDOSTATE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.PSEUDOSTATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.PSEUDOSTATE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.PSEUDOSTATE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.PSEUDOSTATE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.PSEUDOSTATE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.PSEUDOSTATE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PSEUDOSTATE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.PSEUDOSTATE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.PSEUDOSTATE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.PSEUDOSTATE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.PSEUDOSTATE___SEPARATOR :
 				return separator();
-			case UMLPackage.PSEUDOSTATE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.PSEUDOSTATE___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
-			case UMLPackage.PSEUDOSTATE___GET_OUTGOINGS :
-				return getOutgoings();
 			case UMLPackage.PSEUDOSTATE___GET_INCOMINGS :
 				return getIncomings();
-			case UMLPackage.PSEUDOSTATE___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateInitialVertex(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_HISTORY_VERTICES__DIAGNOSTICCHAIN_MAP :
-				return validateHistoryVertices(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_JOIN_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateJoinVertex((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_INCOMING__DIAGNOSTICCHAIN_MAP :
-				return validateTransitionsIncoming(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_FORK_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateForkVertex((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___GET_OUTGOINGS :
+				return getOutgoings();
 			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_OUTGOING__DIAGNOSTICCHAIN_MAP :
 				return validateTransitionsOutgoing(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PSEUDOSTATE___VALIDATE_JUNCTION_VERTEX__DIAGNOSTICCHAIN_MAP :
-				return validateJunctionVertex(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_CHOICE_VERTEX__DIAGNOSTICCHAIN_MAP :
@@ -850,6 +812,28 @@ public class PseudostateImpl
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PSEUDOSTATE___VALIDATE_OUTGOING_FROM_INITIAL__DIAGNOSTICCHAIN_MAP :
 				return validateOutgoingFromInitial(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_JOIN_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateJoinVertex((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_JUNCTION_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateJunctionVertex(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_HISTORY_VERTICES__DIAGNOSTICCHAIN_MAP :
+				return validateHistoryVertices(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_INITIAL_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateInitialVertex(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_FORK_VERTEX__DIAGNOSTICCHAIN_MAP :
+				return validateForkVertex((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PSEUDOSTATE___VALIDATE_TRANSITIONS_INCOMING__DIAGNOSTICCHAIN_MAP :
+				return validateTransitionsIncoming(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
@@ -881,6 +865,10 @@ public class PseudostateImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
+		State state = basicGetState();
+		if (state != null) {
+			return state;
+		}
 		StateMachine stateMachine = basicGetStateMachine();
 		if (stateMachine != null) {
 			return stateMachine;
@@ -894,46 +882,9 @@ public class PseudostateImpl
 	 * @generated
 	 */
 	@Override
-	public Element getOwner() {
-		Element owner = basicGetOwner();
-		return owner != null && owner.eIsProxy()
-			? (Element) eResolveProxy((InternalEObject) owner)
-			: owner;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public boolean isSetNamespace() {
-		return super.isSetNamespace()
+		return super.isSetNamespace() || eIsSet(UMLPackage.PSEUDOSTATE__STATE)
 			|| eIsSet(UMLPackage.PSEUDOSTATE__STATE_MACHINE);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Element basicGetOwner() {
-		State state = basicGetState();
-		if (state != null) {
-			return state;
-		}
-		return super.basicGetOwner();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isSetOwner() {
-		return super.isSetOwner() || eIsSet(UMLPackage.PSEUDOSTATE__STATE);
 	}
 
 } //PseudostateImpl

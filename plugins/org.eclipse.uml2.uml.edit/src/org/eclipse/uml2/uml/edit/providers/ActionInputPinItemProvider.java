@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActionInputPinItemProvider.java,v 1.19 2010/09/28 21:00:18 khussey Exp $
  */
@@ -197,7 +198,11 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createOpaqueAction()));
+			UMLFactory.eINSTANCE.createAcceptEventAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createAcceptCallAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -205,87 +210,7 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createSendSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCallOperationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCallBehaviorAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createSequenceNode()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCreateObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createDestroyObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createTestIdentityAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReadSelfAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createAddStructuralFeatureValueAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReadLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCreateLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createDestroyLinkAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createClearAssociationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createSendObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createValueSpecificationAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReadVariableAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createClearVariableAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -293,7 +218,63 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
+			UMLFactory.eINSTANCE.createBroadcastSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCallBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCallOperationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createClearAssociationAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createClearStructuralFeatureAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createClearVariableAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createConditionalNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCreateLinkAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createCreateObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createDestroyLinkAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createDestroyObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createExpansionRegion()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createLoopNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createOpaqueAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -305,15 +286,11 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createReadIsClassifiedObjectAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
+			UMLFactory.eINSTANCE.createReadLinkAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -325,23 +302,19 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createCreateLinkObjectAction()));
+			UMLFactory.eINSTANCE.createReadSelfAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createAcceptEventAction()));
+			UMLFactory.eINSTANCE.createReadStructuralFeatureAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createAcceptCallAction()));
+			UMLFactory.eINSTANCE.createReadVariableAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createReplyAction()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createUnmarshallAction()));
+			UMLFactory.eINSTANCE.createReclassifyObjectAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
@@ -349,19 +322,47 @@ public class ActionInputPinItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createRemoveStructuralFeatureValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createRemoveVariableValueAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createReplyAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createSendObjectAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createSendSignalAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createSequenceNode()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
+			UMLFactory.eINSTANCE.createStartClassifierBehaviorAction()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
 			UMLFactory.eINSTANCE.createStartObjectBehaviorAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createConditionalNode()));
+			UMLFactory.eINSTANCE.createTestIdentityAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createLoopNode()));
+			UMLFactory.eINSTANCE.createUnmarshallAction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION_INPUT_PIN__FROM_ACTION,
-			UMLFactory.eINSTANCE.createExpansionRegion()));
+			UMLFactory.eINSTANCE.createValueSpecificationAction()));
 	}
 
 	/**
@@ -378,8 +379,8 @@ public class ActionInputPinItemProvider
 
 		boolean qualify = childFeature == UMLPackage.Literals.NAMED_ELEMENT__NAME_EXPRESSION
 			|| childFeature == UMLPackage.Literals.OBJECT_NODE__UPPER_BOUND
-			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
-			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

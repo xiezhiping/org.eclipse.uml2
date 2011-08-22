@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: SlotImpl.java,v 1.23 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -364,14 +365,14 @@ public class SlotImpl
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.SLOT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.SLOT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.SLOT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.SLOT__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				if (resolve)
 					return getDefiningFeature();
@@ -457,12 +458,12 @@ public class SlotImpl
 		switch (featureID) {
 			case UMLPackage.SLOT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.SLOT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SLOT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.SLOT__OWNER :
 				return isSetOwner();
-			case UMLPackage.SLOT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.SLOT__DEFINING_FEATURE :
 				return definingFeature != null;
 			case UMLPackage.SLOT__VALUE :

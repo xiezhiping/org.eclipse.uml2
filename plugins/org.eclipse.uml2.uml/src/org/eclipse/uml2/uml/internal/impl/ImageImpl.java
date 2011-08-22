@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ImageImpl.java,v 1.7 2007/04/25 17:47:03 khussey Exp $
  */
@@ -33,8 +34,8 @@ import org.eclipse.uml2.uml.UMLPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ImageImpl#getContent <em>Content</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.ImageImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.ImageImpl#getFormat <em>Format</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.ImageImpl#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,35 +75,6 @@ public class ImageImpl
 	protected static final int CONTENT_ESETFLAG = 1 << 8;
 
 	/**
-	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String LOCATION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLocation()
-	 * @generated
-	 * @ordered
-	 */
-	protected String location = LOCATION_EDEFAULT;
-
-	/**
-	 * The flag representing whether the Location attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int LOCATION_ESETFLAG = 1 << 9;
-
-	/**
 	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,7 +101,36 @@ public class ImageImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int FORMAT_ESETFLAG = 1 << 10;
+	protected static final int FORMAT_ESETFLAG = 1 << 9;
+
+	/**
+	 * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LOCATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String location = LOCATION_EDEFAULT;
+
+	/**
+	 * The flag representing whether the Location attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int LOCATION_ESETFLAG = 1 << 10;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -308,20 +309,20 @@ public class ImageImpl
 		switch (featureID) {
 			case UMLPackage.IMAGE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.IMAGE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.IMAGE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.IMAGE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.IMAGE__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.IMAGE__CONTENT :
 				return getContent();
-			case UMLPackage.IMAGE__LOCATION :
-				return getLocation();
 			case UMLPackage.IMAGE__FORMAT :
 				return getFormat();
+			case UMLPackage.IMAGE__LOCATION :
+				return getLocation();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -348,11 +349,11 @@ public class ImageImpl
 			case UMLPackage.IMAGE__CONTENT :
 				setContent((String) newValue);
 				return;
-			case UMLPackage.IMAGE__LOCATION :
-				setLocation((String) newValue);
-				return;
 			case UMLPackage.IMAGE__FORMAT :
 				setFormat((String) newValue);
+				return;
+			case UMLPackage.IMAGE__LOCATION :
+				setLocation((String) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -375,11 +376,11 @@ public class ImageImpl
 			case UMLPackage.IMAGE__CONTENT :
 				unsetContent();
 				return;
-			case UMLPackage.IMAGE__LOCATION :
-				unsetLocation();
-				return;
 			case UMLPackage.IMAGE__FORMAT :
 				unsetFormat();
+				return;
+			case UMLPackage.IMAGE__LOCATION :
+				unsetLocation();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -395,18 +396,18 @@ public class ImageImpl
 		switch (featureID) {
 			case UMLPackage.IMAGE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.IMAGE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.IMAGE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.IMAGE__OWNER :
 				return isSetOwner();
-			case UMLPackage.IMAGE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.IMAGE__CONTENT :
 				return isSetContent();
-			case UMLPackage.IMAGE__LOCATION :
-				return isSetLocation();
 			case UMLPackage.IMAGE__FORMAT :
 				return isSetFormat();
+			case UMLPackage.IMAGE__LOCATION :
+				return isSetLocation();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -427,14 +428,14 @@ public class ImageImpl
 			result.append(content);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
-		result.append(", location: "); //$NON-NLS-1$
-		if ((eFlags & LOCATION_ESETFLAG) != 0)
-			result.append(location);
-		else
-			result.append("<unset>"); //$NON-NLS-1$
 		result.append(", format: "); //$NON-NLS-1$
 		if ((eFlags & FORMAT_ESETFLAG) != 0)
 			result.append(format);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
+		result.append(", location: "); //$NON-NLS-1$
+		if ((eFlags & LOCATION_ESETFLAG) != 0)
+			result.append(location);
 		else
 			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');

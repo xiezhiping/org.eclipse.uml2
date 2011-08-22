@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,10 +7,14 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ExpansionNode.java,v 1.1 2005/11/14 22:25:58 khussey Exp $
  */
 package org.eclipse.uml2.uml;
+
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +28,8 @@ package org.eclipse.uml2.uml;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ExpansionNode#getRegionAsOutput <em>Region As Output</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ExpansionNode#getRegionAsInput <em>Region As Input</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ExpansionNode#getRegionAsOutput <em>Region As Output</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,6 +66,21 @@ public interface ExpansionNode
 	 * @generated
 	 */
 	void setRegionAsOutput(ExpansionRegion value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * One of regionAsInput or regionAsOutput must be non-empty, but not both.
+	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateRegionAsInputOrOutput(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 	/**
 	 * Returns the value of the '<em><b>Region As Input</b></em>' reference.

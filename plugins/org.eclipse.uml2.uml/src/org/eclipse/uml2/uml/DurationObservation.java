@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DurationObservation.java,v 1.8 2007/06/12 12:53:16 khussey Exp $
  */
@@ -92,7 +93,7 @@ public interface DurationObservation
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>First Event</em>' attribute list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDurationObservation_FirstEvent()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" upper="2" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" upper="2" ordered="false"
 	 * @generated
 	 */
 	EList<Boolean> getFirstEvents();

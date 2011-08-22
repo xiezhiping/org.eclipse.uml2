@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LinkActionOperations.java,v 1.7 2007/05/03 21:11:51 khussey Exp $
  */
@@ -34,9 +35,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.LinkAction#validateSamePins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkAction#validateSameAssociation(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Association</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkAction#validateNotStatic(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Not Static</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.LinkAction#validateSamePins(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Same Pins</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkAction#association() <em>Association</em>}</li>
  * </ul>
  * </p>
@@ -44,7 +45,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class LinkActionOperations
-		extends ActivityNodeOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->

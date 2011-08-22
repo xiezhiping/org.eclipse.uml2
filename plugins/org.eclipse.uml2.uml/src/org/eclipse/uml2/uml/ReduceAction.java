@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ReduceAction.java,v 1.9 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -30,10 +31,10 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ReduceAction#getReducer <em>Reducer</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ReduceAction#getResult <em>Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#getCollection <em>Collection</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ReduceAction#isOrdered <em>Is Ordered</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReduceAction#getReducer <em>Reducer</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ReduceAction#getResult <em>Result</em>}</li>
  * </ul>
  * </p>
  *
@@ -179,7 +180,7 @@ public interface ReduceAction
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getReduceAction_IsOrdered()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LinkEndData.java,v 1.10 2007/06/12 12:53:17 khussey Exp $
  */
@@ -30,9 +31,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.LinkEndData#getValue <em>Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#getEnd <em>End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.LinkEndData#getQualifiers <em>Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.LinkEndData#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,7 +74,7 @@ public interface LinkEndData
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Association end for which this link-end data specifies values.
+	 * Association end for which this link-end data specifies values.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>End</em>' reference.
 	 * @see #setEnd(Property)
@@ -96,6 +97,12 @@ public interface LinkEndData
 	/**
 	 * Returns the value of the '<em><b>Qualifier</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.uml2.uml.QualifierValue}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

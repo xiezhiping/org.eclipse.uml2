@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OpaqueActionItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
@@ -72,8 +73,8 @@ public class OpaqueActionItemProvider
 			super.getPropertyDescriptors(object);
 
 			addBodyPropertyDescriptor(object);
-			addLanguagePropertyDescriptor(object);
 			addInputValuePropertyDescriptor(object);
+			addLanguagePropertyDescriptor(object);
 			addOutputValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -272,11 +273,11 @@ public class OpaqueActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE,
-			UMLFactory.eINSTANCE.createValuePin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OPAQUE_ACTION__INPUT_VALUE,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLFactory.eINSTANCE.createValuePin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.OPAQUE_ACTION__OUTPUT_VALUE,
@@ -295,8 +296,8 @@ public class OpaqueActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

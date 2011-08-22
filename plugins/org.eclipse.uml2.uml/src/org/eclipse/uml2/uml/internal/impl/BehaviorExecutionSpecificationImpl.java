@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: BehaviorExecutionSpecificationImpl.java,v 1.16 2007/04/25 17:47:00 khussey Exp $
  */
@@ -132,34 +133,32 @@ public class BehaviorExecutionSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
-				return getName();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
+				return getName();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				return getCovereds();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				return getGeneralOrderings();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				if (resolve)
 					return getEnclosingInteraction();
@@ -168,14 +167,16 @@ public class BehaviorExecutionSpecificationImpl
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
-				if (resolve)
-					return getStart();
-				return basicGetStart();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
+				return getGeneralOrderings();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
 				if (resolve)
 					return getFinish();
 				return basicGetFinish();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
+				if (resolve)
+					return getStart();
+				return basicGetStart();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR :
 				if (resolve)
 					return getBehavior();
@@ -203,28 +204,23 @@ public class BehaviorExecutionSpecificationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
-				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
@@ -232,11 +228,16 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
-				setStart((OccurrenceSpecification) newValue);
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
 				setFinish((OccurrenceSpecification) newValue);
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
+				setStart((OccurrenceSpecification) newValue);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR :
 				setBehavior((Behavior) newValue);
@@ -259,23 +260,20 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
+				unsetName();
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				getCovereds().clear();
-				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) null);
@@ -283,11 +281,14 @@ public class BehaviorExecutionSpecificationImpl
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
 				return;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
-				setStart((OccurrenceSpecification) null);
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
 				setFinish((OccurrenceSpecification) null);
+				return;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
+				setStart((OccurrenceSpecification) null);
 				return;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR :
 				setBehavior((Behavior) null);
@@ -306,39 +307,39 @@ public class BehaviorExecutionSpecificationImpl
 		switch (featureID) {
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME :
 				return isSetName();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
-				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
-			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
-				return start != null;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__GENERAL_ORDERING :
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__FINISH :
 				return finish != null;
+			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__START :
+				return start != null;
 			case UMLPackage.BEHAVIOR_EXECUTION_SPECIFICATION__BEHAVIOR :
 				return behavior != null;
 		}

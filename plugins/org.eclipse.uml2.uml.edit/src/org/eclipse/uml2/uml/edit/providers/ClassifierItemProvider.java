@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ClassifierItemProvider.java,v 1.15 2010/09/28 21:00:20 khussey Exp $
  */
@@ -86,21 +87,22 @@ public class ClassifierItemProvider
 			addOwningTemplateParameterPropertyDescriptor(object);
 			addTemplateParameterPropertyDescriptor(object);
 			addPackagePropertyDescriptor(object);
-			addTemplateBindingPropertyDescriptor(object);
 			addOwnedTemplateSignaturePropertyDescriptor(object);
-			addIsAbstractPropertyDescriptor(object);
+			addTemplateBindingPropertyDescriptor(object);
+			addFeaturePropertyDescriptor(object);
+			addAttributePropertyDescriptor(object);
+			addCollaborationUsePropertyDescriptor(object);
+			addGeneralPropertyDescriptor(object);
 			addGeneralizationPropertyDescriptor(object);
 			addPowertypeExtentPropertyDescriptor(object);
-			addFeaturePropertyDescriptor(object);
 			addInheritedMemberPropertyDescriptor(object);
-			addRedefinedClassifierPropertyDescriptor(object);
-			addGeneralPropertyDescriptor(object);
-			addSubstitutionPropertyDescriptor(object);
-			addAttributePropertyDescriptor(object);
-			addRepresentationPropertyDescriptor(object);
-			addCollaborationUsePropertyDescriptor(object);
+			addIsAbstractPropertyDescriptor(object);
+			addIsFinalSpecializationPropertyDescriptor(object);
 			addOwnedUseCasePropertyDescriptor(object);
 			addUseCasePropertyDescriptor(object);
+			addRedefinedClassifierPropertyDescriptor(object);
+			addRepresentationPropertyDescriptor(object);
+			addSubstitutionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -288,21 +290,41 @@ public class ClassifierItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Generalization feature.
+	 * This adds a property descriptor for the Is Final Specialization feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addGeneralizationPropertyDescriptor(Object object) {
+	protected void addIsFinalSpecializationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Classifier_generalization_feature"), //$NON-NLS-1$
+				getString("_UI_Classifier_isFinalSpecialization_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Classifier_generalization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__GENERALIZATION, true, false,
+					"_UI_PropertyDescriptor_description", "_UI_Classifier_isFinalSpecialization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.CLASSIFIER__IS_FINAL_SPECIALIZATION, true,
+				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
+				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Owned Use Case feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOwnedUseCasePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Classifier_ownedUseCase_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Classifier_ownedUseCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE, true, false,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -363,7 +385,7 @@ public class ClassifierItemProvider
 				getString("_UI_Classifier_inheritedMember_feature"), //$NON-NLS-1$
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_Classifier_inheritedMember_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, true, false,
+				UMLPackage.Literals.CLASSIFIER__INHERITED_MEMBER, false, false,
 				false, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -410,21 +432,21 @@ public class ClassifierItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Owned Use Case feature.
+	 * This adds a property descriptor for the Generalization feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOwnedUseCasePropertyDescriptor(Object object) {
+	protected void addGeneralizationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Classifier_ownedUseCase_feature"), //$NON-NLS-1$
+				getString("_UI_Classifier_generalization_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Classifier_ownedUseCase_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE, true, false,
+					"_UI_PropertyDescriptor_description", "_UI_Classifier_generalization_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.CLASSIFIER__GENERALIZATION, true, false,
 				true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
@@ -450,27 +472,6 @@ public class ClassifierItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Substitution feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSubstitutionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Classifier_substitution_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Classifier_substitution_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
-				}));
-	}
-
-	/**
 	 * This adds a property descriptor for the Attribute feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -489,25 +490,6 @@ public class ClassifierItemProvider
 				null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
-	}
-
-	/**
-	 * This adds a property descriptor for the Representation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepresentationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Classifier_representation_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Classifier_representation_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.CLASSIFIER__REPRESENTATION, true, false,
-				true, null, null, null));
 	}
 
 	/**
@@ -532,6 +514,46 @@ public class ClassifierItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Representation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRepresentationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Classifier_representation_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Classifier_representation_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.CLASSIFIER__REPRESENTATION, true, false,
+				true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Substitution feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubstitutionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Classifier_substitution_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Classifier_substitution_feature", "_UI_Classifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.CLASSIFIER__SUBSTITUTION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -545,16 +567,16 @@ public class ClassifierItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
-			childrenFeatures
 				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE);
 			childrenFeatures
-				.add(UMLPackage.Literals.CLASSIFIER__GENERALIZATION);
-			childrenFeatures.add(UMLPackage.Literals.CLASSIFIER__SUBSTITUTION);
+				.add(UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING);
 			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE);
 			childrenFeatures
+				.add(UMLPackage.Literals.CLASSIFIER__GENERALIZATION);
+			childrenFeatures
 				.add(UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE);
+			childrenFeatures.add(UMLPackage.Literals.CLASSIFIER__SUBSTITUTION);
 		}
 		return childrenFeatures;
 	}
@@ -610,16 +632,17 @@ public class ClassifierItemProvider
 		switch (notification.getFeatureID(Classifier.class)) {
 			case UMLPackage.CLASSIFIER__IS_LEAF :
 			case UMLPackage.CLASSIFIER__IS_ABSTRACT :
+			case UMLPackage.CLASSIFIER__IS_FINAL_SPECIALIZATION :
 			case UMLPackage.CLASSIFIER__REPRESENTATION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 			case UMLPackage.CLASSIFIER__OWNED_TEMPLATE_SIGNATURE :
-			case UMLPackage.CLASSIFIER__GENERALIZATION :
-			case UMLPackage.CLASSIFIER__SUBSTITUTION :
+			case UMLPackage.CLASSIFIER__TEMPLATE_BINDING :
 			case UMLPackage.CLASSIFIER__COLLABORATION_USE :
+			case UMLPackage.CLASSIFIER__GENERALIZATION :
 			case UMLPackage.CLASSIFIER__OWNED_USE_CASE :
+			case UMLPackage.CLASSIFIER__SUBSTITUTION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -640,10 +663,6 @@ public class ClassifierItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
-			UMLFactory.eINSTANCE.createTemplateBinding()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
 			UMLFactory.eINSTANCE.createTemplateSignature()));
 
@@ -652,24 +671,28 @@ public class ClassifierItemProvider
 			UMLFactory.eINSTANCE.createRedefinableTemplateSignature()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
-			UMLFactory.eINSTANCE.createGeneralization()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
-			UMLFactory.eINSTANCE.createSubstitution()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.CLASSIFIER__REPRESENTATION,
-			UMLFactory.eINSTANCE.createCollaborationUse()));
+			UMLPackage.Literals.TEMPLATEABLE_ELEMENT__TEMPLATE_BINDING,
+			UMLFactory.eINSTANCE.createTemplateBinding()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE,
 			UMLFactory.eINSTANCE.createCollaborationUse()));
 
 		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__GENERALIZATION,
+			UMLFactory.eINSTANCE.createGeneralization()));
+
+		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.CLASSIFIER__OWNED_USE_CASE,
 			UMLFactory.eINSTANCE.createUseCase()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__REPRESENTATION,
+			UMLFactory.eINSTANCE.createCollaborationUse()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.CLASSIFIER__SUBSTITUTION,
+			UMLFactory.eINSTANCE.createSubstitution()));
 	}
 
 	/**
@@ -684,8 +707,8 @@ public class ClassifierItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION
-			|| childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE;
+		boolean qualify = childFeature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE
+			|| childFeature == UMLPackage.Literals.CLASSIFIER__REPRESENTATION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$
@@ -725,20 +748,20 @@ public class ClassifierItemProvider
 	@Override
 	protected Command createRemoveCommand(EditingDomain domain, EObject owner,
 			EStructuralFeature feature, Collection<?> collection) {
-		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SupersetRemoveCommand(
-				domain,
-				owner,
-				feature,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
-				collection);
-		}
 		if (feature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
 			return new SupersetRemoveCommand(
 				domain,
 				owner,
 				feature,
 				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REPRESENTATION},
+				collection);
+		}
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SupersetRemoveCommand(
+				domain,
+				owner,
+				feature,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
 				collection);
 		}
 		return super.createRemoveCommand(domain, owner, feature, collection);
@@ -761,15 +784,6 @@ public class ClassifierItemProvider
 				new EStructuralFeature[]{UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY},
 				null, value, collection);
 		}
-		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
-			return new SubsetSupersetReplaceCommand(
-				domain,
-				owner,
-				feature,
-				null,
-				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
-				value, collection);
-		}
 		if (feature == UMLPackage.Literals.CLASSIFIER__COLLABORATION_USE) {
 			return new SubsetSupersetReplaceCommand(
 				domain,
@@ -777,6 +791,15 @@ public class ClassifierItemProvider
 				feature,
 				null,
 				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__REPRESENTATION},
+				value, collection);
+		}
+		if (feature == UMLPackage.Literals.NAMED_ELEMENT__CLIENT_DEPENDENCY) {
+			return new SubsetSupersetReplaceCommand(
+				domain,
+				owner,
+				feature,
+				null,
+				new EStructuralFeature[]{UMLPackage.Literals.CLASSIFIER__SUBSTITUTION},
 				value, collection);
 		}
 		return super.createReplaceCommand(domain, owner, feature, value,

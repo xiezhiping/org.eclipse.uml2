@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Sergey Boyko (Borland) - 282440
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: NamedElementImpl.java,v 1.36 2010/09/28 21:02:14 khussey Exp $
  */
@@ -65,14 +66,14 @@ import org.eclipse.uml2.uml.internal.operations.NamedElementOperations;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getNamespace <em>Namespace</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getVisibility <em>Visibility</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getClientDependencies <em>Client Dependency</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getNameExpression <em>Name Expression</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.NamedElementImpl#getVisibility <em>Visibility</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,6 +82,16 @@ import org.eclipse.uml2.uml.internal.operations.NamedElementOperations;
 public abstract class NamedElementImpl
 		extends ElementImpl
 		implements NamedElement {
+
+	/**
+	 * The cached value of the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClientDependencies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Dependency> clientDependencies;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -110,6 +121,26 @@ public abstract class NamedElementImpl
 	 * @ordered
 	 */
 	protected static final int NAME_ESETFLAG = 1 << 8;
+
+	/**
+	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNameExpression()
+	 * @generated
+	 * @ordered
+	 */
+	protected StringExpression nameExpression;
+
+	/**
+	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQualifiedName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String QUALIFIED_NAME_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
@@ -168,36 +199,6 @@ public abstract class NamedElementImpl
 	 * @ordered
 	 */
 	protected static final int VISIBILITY_ESETFLAG = 1 << 11;
-
-	/**
-	 * The default value of the '{@link #getQualifiedName() <em>Qualified Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQualifiedName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String QUALIFIED_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getClientDependencies() <em>Client Dependency</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getClientDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Dependency> clientDependencies;
-
-	/**
-	 * The cached value of the '{@link #getNameExpression() <em>Name Expression</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNameExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected StringExpression nameExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -685,30 +686,30 @@ public abstract class NamedElementImpl
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.NAMED_ELEMENT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.NAMED_ELEMENT__NAME :
-				return getName();
-			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.NAMED_ELEMENT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.NAMED_ELEMENT__NAME :
+				return getName();
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.NAMED_ELEMENT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
+				return getVisibility();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -732,19 +733,19 @@ public abstract class NamedElementImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.NAMED_ELEMENT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.NAMED_ELEMENT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -764,17 +765,17 @@ public abstract class NamedElementImpl
 			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.NAMED_ELEMENT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.NAMED_ELEMENT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
+				unsetVisibility();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -790,27 +791,27 @@ public abstract class NamedElementImpl
 		switch (featureID) {
 			case UMLPackage.NAMED_ELEMENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.NAMED_ELEMENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.NAMED_ELEMENT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.NAMED_ELEMENT__NAME :
 				return isSetName();
-			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.NAMED_ELEMENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.NAMED_ELEMENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.NAMED_ELEMENT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.NAMED_ELEMENT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.NAMED_ELEMENT__VISIBILITY :
+				return isSetVisibility();
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -827,117 +828,119 @@ public abstract class NamedElementImpl
 		switch (operationID) {
 			case UMLPackage.NAMED_ELEMENT___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMED_ELEMENT___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.NAMED_ELEMENT___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.NAMED_ELEMENT___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.NAMED_ELEMENT___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.NAMED_ELEMENT___GET_MODEL :
-				return getModel();
-			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.NAMED_ELEMENT___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.NAMED_ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.NAMED_ELEMENT___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.NAMED_ELEMENT___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_MODEL :
+				return getModel();
+			case UMLPackage.NAMED_ELEMENT___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.NAMED_ELEMENT___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.NAMED_ELEMENT___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.NAMED_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.NAMED_ELEMENT___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.NAMED_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.NAMED_ELEMENT___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.NAMED_ELEMENT___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.NAMED_ELEMENT___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.NAMED_ELEMENT___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.NAMED_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.NAMED_ELEMENT___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.NAMED_ELEMENT___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.NAMED_ELEMENT___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.NAMED_ELEMENT___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.NAMED_ELEMENT___GET_LABEL :
 				return getLabel();
 			case UMLPackage.NAMED_ELEMENT___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.NAMED_ELEMENT___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.NAMED_ELEMENT___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.NAMED_ELEMENT___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.NAMED_ELEMENT___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.NAMED_ELEMENT___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.NAMED_ELEMENT___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.NAMED_ELEMENT___SEPARATOR :
 				return separator();
-			case UMLPackage.NAMED_ELEMENT___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
@@ -973,15 +976,8 @@ public abstract class NamedElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Namespace basicGetNamespaceGen() {
-		return null;
-	}
-
 	public Namespace basicGetNamespace() {
-		InternalEObject eInternalContainer = eInternalContainer();
-		return eInternalContainer instanceof Namespace
-			? (Namespace) eInternalContainer
-			: basicGetNamespaceGen();
+		return NamedElementOperations.getNamespace(this);
 	}
 
 	/**

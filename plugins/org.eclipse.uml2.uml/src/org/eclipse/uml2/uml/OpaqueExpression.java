@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: OpaqueExpression.java,v 1.14 2007/06/12 12:53:18 khussey Exp $
  */
@@ -31,10 +32,10 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getBehavior <em>Behavior</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getBodies <em>Body</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getLanguages <em>Language</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getResult <em>Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.OpaqueExpression#getBehavior <em>Behavior</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,7 +58,7 @@ public interface OpaqueExpression
 	 * @see #isSetBodies()
 	 * @see #unsetBodies()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Body()
-	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unique="false" unsettable="true" dataType="org.eclipse.uml2.types.String"
 	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
@@ -96,7 +97,7 @@ public interface OpaqueExpression
 	 * @see #isSetLanguages()
 	 * @see #unsetLanguages()
 	 * @see org.eclipse.uml2.uml.UMLPackage#getOpaqueExpression_Language()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String"
 	 * @generated
 	 */
 	EList<String> getLanguages();
@@ -216,7 +217,7 @@ public interface OpaqueExpression
 	 * self.isIntegral()
 	 * true
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Integer" required="true" ordered="false"
 	 * @generated
 	 */
 	int value();
@@ -228,7 +229,7 @@ public interface OpaqueExpression
 	 * The query isIntegral() tells whether an expression is intended to produce an integer.
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isIntegral();
@@ -238,10 +239,10 @@ public interface OpaqueExpression
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The query isPositive() tells whether an integer expression has a positive value.
-	 * self.isIntegral()
 	 * result = false
+	 * self.isIntegral()
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isPositive();
@@ -254,7 +255,7 @@ public interface OpaqueExpression
 	 * self.isIntegral()
 	 * result = false
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isNonNegative();

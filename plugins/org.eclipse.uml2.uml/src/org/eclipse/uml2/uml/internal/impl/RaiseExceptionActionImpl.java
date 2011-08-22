@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RaiseExceptionActionImpl.java,v 1.27 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -254,30 +255,30 @@ public class RaiseExceptionActionImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
 				return basicSetActivity(null, msgs);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<?>) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<?>) getInInterruptibleRegions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				return ((InternalEList<?>) getHandlers()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				return ((InternalEList<?>) getLocalPreconditions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				return ((InternalEList<?>) getLocalPostconditions())
+					.basicRemove(otherEnd, msgs);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
+				return ((InternalEList<?>) getLocalPreconditions())
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
 				return basicSetException(null, msgs);
@@ -295,70 +296,72 @@ public class RaiseExceptionActionImpl
 		switch (featureID) {
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
-				return getName();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
+				return getName();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				return getIncomings();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				return getHandlers();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTPUT :
-				return getOutputs();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
-				return getInputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CONTEXT :
 				if (resolve)
 					return getContext();
 				return basicGetContext();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				return getLocalPreconditions();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
+				return getInputs();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
+				return isLocallyReentrant();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				return getLocalPostconditions();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
+				return getLocalPreconditions();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTPUT :
+				return getOutputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
 				if (resolve)
 					return getException();
@@ -386,28 +389,39 @@ public class RaiseExceptionActionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
-				setActivity((Activity) newValue);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				getOutgoings().clear();
@@ -419,17 +433,6 @@ public class RaiseExceptionActionImpl
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
-				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
@@ -440,14 +443,17 @@ public class RaiseExceptionActionImpl
 				getHandlers().addAll(
 					(Collection<? extends ExceptionHandler>) newValue);
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
-				getLocalPreconditions().addAll(
-					(Collection<? extends Constraint>) newValue);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
+				setIsLocallyReentrant((Boolean) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
 				getLocalPostconditions().addAll(
+					(Collection<? extends Constraint>) newValue);
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
+				getLocalPreconditions().clear();
+				getLocalPreconditions().addAll(
 					(Collection<? extends Constraint>) newValue);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
@@ -471,26 +477,32 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
+				unsetName();
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
-				setActivity((Activity) null);
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				getOutgoings().clear();
@@ -498,23 +510,20 @@ public class RaiseExceptionActionImpl
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				getIncomings().clear();
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				getHandlers().clear();
 				return;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				getLocalPreconditions().clear();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
+				setIsLocallyReentrant(IS_LOCALLY_REENTRANT_EDEFAULT);
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				getLocalPostconditions().clear();
+				return;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
+				getLocalPreconditions().clear();
 				return;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
 				setException((InputPin) null);
@@ -533,64 +542,66 @@ public class RaiseExceptionActionImpl
 		switch (featureID) {
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNER :
 				return isSetOwner();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME :
 				return isSetName();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.RAISE_EXCEPTION_ACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__ACTIVITY :
 				return basicGetActivity() != null;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTGOING :
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__HANDLER :
 				return handlers != null && !handlers.isEmpty();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTPUT :
-				return isSetOutputs();
-			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
-				return isSetInputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__CONTEXT :
 				return basicGetContext() != null;
-			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
-				return localPreconditions != null
-					&& !localPreconditions.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__INPUT :
+				return isSetInputs();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__IS_LOCALLY_REENTRANT :
+				return ((eFlags & IS_LOCALLY_REENTRANT_EFLAG) != 0) != IS_LOCALLY_REENTRANT_EDEFAULT;
 			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_POSTCONDITION :
 				return localPostconditions != null
 					&& !localPostconditions.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__LOCAL_PRECONDITION :
+				return localPreconditions != null
+					&& !localPreconditions.isEmpty();
+			case UMLPackage.RAISE_EXCEPTION_ACTION__OUTPUT :
+				return isSetOutputs();
 			case UMLPackage.RAISE_EXCEPTION_ACTION__EXCEPTION :
 				return exception != null;
 		}

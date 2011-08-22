@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PinImpl.java,v 1.34 2010/09/28 21:02:14 khussey Exp $
  */
@@ -76,17 +77,17 @@ import org.eclipse.uml2.uml.internal.operations.PinOperations;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#isUnique <em>Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.PinImpl#isControl <em>Is Control</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PinImpl
+public abstract class PinImpl
 		extends ObjectNodeImpl
 		implements Pin {
 
@@ -131,16 +132,6 @@ public class PinImpl
 	protected static final int IS_UNIQUE_EFLAG = 1 << 17;
 
 	/**
-	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpper()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int UPPER_EDEFAULT = 1;
-
-	/**
 	 * The default value of the '{@link #getLower() <em>Lower</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,16 +142,6 @@ public class PinImpl
 	protected static final int LOWER_EDEFAULT = 1;
 
 	/**
-	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUpperValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected ValueSpecification upperValue;
-
-	/**
 	 * The cached value of the '{@link #getLowerValue() <em>Lower Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,6 +150,26 @@ public class PinImpl
 	 * @ordered
 	 */
 	protected ValueSpecification lowerValue;
+
+	/**
+	 * The default value of the '{@link #getUpper() <em>Upper</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpper()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int UPPER_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getUpperValue() <em>Upper Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpperValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected ValueSpecification upperValue;
 
 	/**
 	 * The default value of the '{@link #isControl() <em>Is Control</em>}' attribute.
@@ -682,28 +683,28 @@ public class PinImpl
 					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				return basicSetNameExpression(null, msgs);
-			case UMLPackage.PIN__IN_STRUCTURED_NODE :
-				return basicSetInStructuredNode(null, msgs);
 			case UMLPackage.PIN__ACTIVITY :
 				return basicSetActivity(null, msgs);
+			case UMLPackage.PIN__IN_PARTITION :
+				return ((InternalEList<?>) getInPartitions()).basicRemove(
+					otherEnd, msgs);
+			case UMLPackage.PIN__IN_STRUCTURED_NODE :
+				return basicSetInStructuredNode(null, msgs);
+			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
+				return ((InternalEList<?>) getInInterruptibleRegions())
+					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__OUTGOING :
 				return ((InternalEList<?>) getOutgoings()).basicRemove(
 					otherEnd, msgs);
 			case UMLPackage.PIN__INCOMING :
 				return ((InternalEList<?>) getIncomings()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.PIN__IN_PARTITION :
-				return ((InternalEList<?>) getInPartitions()).basicRemove(
-					otherEnd, msgs);
-			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				return ((InternalEList<?>) getInInterruptibleRegions())
-					.basicRemove(otherEnd, msgs);
 			case UMLPackage.PIN__UPPER_BOUND :
 				return basicSetUpperBound(null, msgs);
-			case UMLPackage.PIN__UPPER_VALUE :
-				return basicSetUpperValue(null, msgs);
 			case UMLPackage.PIN__LOWER_VALUE :
 				return basicSetLowerValue(null, msgs);
+			case UMLPackage.PIN__UPPER_VALUE :
+				return basicSetUpperValue(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -718,90 +719,90 @@ public class PinImpl
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.PIN__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.PIN__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PIN__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.PIN__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.PIN__NAME :
-				return getName();
-			case UMLPackage.PIN__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.PIN__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.PIN__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.PIN__NAME :
+				return getName();
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.PIN__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.PIN__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.PIN__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.PIN__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.PIN__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.PIN__IN_STRUCTURED_NODE :
-				if (resolve)
-					return getInStructuredNode();
-				return basicGetInStructuredNode();
 			case UMLPackage.PIN__ACTIVITY :
 				if (resolve)
 					return getActivity();
 				return basicGetActivity();
+			case UMLPackage.PIN__IN_GROUP :
+				return getInGroups();
+			case UMLPackage.PIN__IN_PARTITION :
+				return getInPartitions();
+			case UMLPackage.PIN__IN_STRUCTURED_NODE :
+				if (resolve)
+					return getInStructuredNode();
+				return basicGetInStructuredNode();
+			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
+				return getInInterruptibleRegions();
 			case UMLPackage.PIN__OUTGOING :
 				return getOutgoings();
 			case UMLPackage.PIN__INCOMING :
 				return getIncomings();
-			case UMLPackage.PIN__IN_PARTITION :
-				return getInPartitions();
-			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				return getInInterruptibleRegions();
-			case UMLPackage.PIN__IN_GROUP :
-				return getInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				return getRedefinedNodes();
 			case UMLPackage.PIN__TYPE :
 				if (resolve)
 					return getType();
 				return basicGetType();
-			case UMLPackage.PIN__ORDERING :
-				return getOrdering();
-			case UMLPackage.PIN__IS_CONTROL_TYPE :
-				return isControlType();
-			case UMLPackage.PIN__UPPER_BOUND :
-				if (resolve)
-					return getUpperBound();
-				return basicGetUpperBound();
 			case UMLPackage.PIN__IN_STATE :
 				return getInStates();
+			case UMLPackage.PIN__IS_CONTROL_TYPE :
+				return isControlType();
+			case UMLPackage.PIN__ORDERING :
+				return getOrdering();
 			case UMLPackage.PIN__SELECTION :
 				if (resolve)
 					return getSelection();
 				return basicGetSelection();
+			case UMLPackage.PIN__UPPER_BOUND :
+				if (resolve)
+					return getUpperBound();
+				return basicGetUpperBound();
 			case UMLPackage.PIN__IS_ORDERED :
 				return isOrdered();
 			case UMLPackage.PIN__IS_UNIQUE :
 				return isUnique();
-			case UMLPackage.PIN__UPPER :
-				return getUpper();
 			case UMLPackage.PIN__LOWER :
 				return getLower();
-			case UMLPackage.PIN__UPPER_VALUE :
-				if (resolve)
-					return getUpperValue();
-				return basicGetUpperValue();
 			case UMLPackage.PIN__LOWER_VALUE :
 				if (resolve)
 					return getLowerValue();
 				return basicGetLowerValue();
+			case UMLPackage.PIN__UPPER :
+				return getUpper();
+			case UMLPackage.PIN__UPPER_VALUE :
+				if (resolve)
+					return getUpperValue();
+				return basicGetUpperValue();
 			case UMLPackage.PIN__IS_CONTROL :
 				return isControl();
 		}
@@ -827,28 +828,39 @@ public class PinImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.PIN__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.PIN__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.PIN__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.PIN__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.PIN__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
 				return;
+			case UMLPackage.PIN__ACTIVITY :
+				setActivity((Activity) newValue);
+				return;
+			case UMLPackage.PIN__IN_PARTITION :
+				getInPartitions().clear();
+				getInPartitions().addAll(
+					(Collection<? extends ActivityPartition>) newValue);
+				return;
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) newValue);
 				return;
-			case UMLPackage.PIN__ACTIVITY :
-				setActivity((Activity) newValue);
+			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
+				getInInterruptibleRegions()
+					.addAll(
+						(Collection<? extends InterruptibleActivityRegion>) newValue);
 				return;
 			case UMLPackage.PIN__OUTGOING :
 				getOutgoings().clear();
@@ -860,17 +872,6 @@ public class PinImpl
 				getIncomings().addAll(
 					(Collection<? extends ActivityEdge>) newValue);
 				return;
-			case UMLPackage.PIN__IN_PARTITION :
-				getInPartitions().clear();
-				getInPartitions().addAll(
-					(Collection<? extends ActivityPartition>) newValue);
-				return;
-			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				getInInterruptibleRegions()
-					.addAll(
-						(Collection<? extends InterruptibleActivityRegion>) newValue);
-				return;
 			case UMLPackage.PIN__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				getRedefinedNodes().addAll(
@@ -879,21 +880,21 @@ public class PinImpl
 			case UMLPackage.PIN__TYPE :
 				setType((Type) newValue);
 				return;
-			case UMLPackage.PIN__ORDERING :
-				setOrdering((ObjectNodeOrderingKind) newValue);
-				return;
-			case UMLPackage.PIN__IS_CONTROL_TYPE :
-				setIsControlType((Boolean) newValue);
-				return;
-			case UMLPackage.PIN__UPPER_BOUND :
-				setUpperBound((ValueSpecification) newValue);
-				return;
 			case UMLPackage.PIN__IN_STATE :
 				getInStates().clear();
 				getInStates().addAll((Collection<? extends State>) newValue);
 				return;
+			case UMLPackage.PIN__IS_CONTROL_TYPE :
+				setIsControlType((Boolean) newValue);
+				return;
+			case UMLPackage.PIN__ORDERING :
+				setOrdering((ObjectNodeOrderingKind) newValue);
+				return;
 			case UMLPackage.PIN__SELECTION :
 				setSelection((Behavior) newValue);
+				return;
+			case UMLPackage.PIN__UPPER_BOUND :
+				setUpperBound((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PIN__IS_ORDERED :
 				setIsOrdered((Boolean) newValue);
@@ -901,17 +902,17 @@ public class PinImpl
 			case UMLPackage.PIN__IS_UNIQUE :
 				setIsUnique((Boolean) newValue);
 				return;
-			case UMLPackage.PIN__UPPER :
-				setUpper((Integer) newValue);
-				return;
 			case UMLPackage.PIN__LOWER :
 				setLower((Integer) newValue);
 				return;
-			case UMLPackage.PIN__UPPER_VALUE :
-				setUpperValue((ValueSpecification) newValue);
-				return;
 			case UMLPackage.PIN__LOWER_VALUE :
 				setLowerValue((ValueSpecification) newValue);
+				return;
+			case UMLPackage.PIN__UPPER :
+				setUpper((Integer) newValue);
+				return;
+			case UMLPackage.PIN__UPPER_VALUE :
+				setUpperValue((ValueSpecification) newValue);
 				return;
 			case UMLPackage.PIN__IS_CONTROL :
 				setIsControl((Boolean) newValue);
@@ -934,26 +935,32 @@ public class PinImpl
 			case UMLPackage.PIN__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.PIN__NAME :
-				unsetName();
-				return;
-			case UMLPackage.PIN__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.PIN__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.PIN__NAME :
+				unsetName();
 				return;
 			case UMLPackage.PIN__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
+			case UMLPackage.PIN__VISIBILITY :
+				unsetVisibility();
+				return;
 			case UMLPackage.PIN__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
+				return;
+			case UMLPackage.PIN__ACTIVITY :
+				setActivity((Activity) null);
+				return;
+			case UMLPackage.PIN__IN_PARTITION :
+				getInPartitions().clear();
 				return;
 			case UMLPackage.PIN__IN_STRUCTURED_NODE :
 				setInStructuredNode((StructuredActivityNode) null);
 				return;
-			case UMLPackage.PIN__ACTIVITY :
-				setActivity((Activity) null);
+			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
+				getInInterruptibleRegions().clear();
 				return;
 			case UMLPackage.PIN__OUTGOING :
 				getOutgoings().clear();
@@ -961,32 +968,26 @@ public class PinImpl
 			case UMLPackage.PIN__INCOMING :
 				getIncomings().clear();
 				return;
-			case UMLPackage.PIN__IN_PARTITION :
-				getInPartitions().clear();
-				return;
-			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				getInInterruptibleRegions().clear();
-				return;
 			case UMLPackage.PIN__REDEFINED_NODE :
 				getRedefinedNodes().clear();
 				return;
 			case UMLPackage.PIN__TYPE :
 				setType((Type) null);
 				return;
-			case UMLPackage.PIN__ORDERING :
-				setOrdering(ORDERING_EDEFAULT);
+			case UMLPackage.PIN__IN_STATE :
+				getInStates().clear();
 				return;
 			case UMLPackage.PIN__IS_CONTROL_TYPE :
 				setIsControlType(IS_CONTROL_TYPE_EDEFAULT);
 				return;
-			case UMLPackage.PIN__UPPER_BOUND :
-				setUpperBound((ValueSpecification) null);
-				return;
-			case UMLPackage.PIN__IN_STATE :
-				getInStates().clear();
+			case UMLPackage.PIN__ORDERING :
+				setOrdering(ORDERING_EDEFAULT);
 				return;
 			case UMLPackage.PIN__SELECTION :
 				setSelection((Behavior) null);
+				return;
+			case UMLPackage.PIN__UPPER_BOUND :
+				setUpperBound((ValueSpecification) null);
 				return;
 			case UMLPackage.PIN__IS_ORDERED :
 				setIsOrdered(IS_ORDERED_EDEFAULT);
@@ -994,17 +995,17 @@ public class PinImpl
 			case UMLPackage.PIN__IS_UNIQUE :
 				setIsUnique(IS_UNIQUE_EDEFAULT);
 				return;
-			case UMLPackage.PIN__UPPER :
-				setUpper(UPPER_EDEFAULT);
-				return;
 			case UMLPackage.PIN__LOWER :
 				setLower(LOWER_EDEFAULT);
 				return;
-			case UMLPackage.PIN__UPPER_VALUE :
-				setUpperValue((ValueSpecification) null);
-				return;
 			case UMLPackage.PIN__LOWER_VALUE :
 				setLowerValue((ValueSpecification) null);
+				return;
+			case UMLPackage.PIN__UPPER :
+				setUpper(UPPER_EDEFAULT);
+				return;
+			case UMLPackage.PIN__UPPER_VALUE :
+				setUpperValue((ValueSpecification) null);
 				return;
 			case UMLPackage.PIN__IS_CONTROL :
 				setIsControl(IS_CONTROL_EDEFAULT);
@@ -1023,74 +1024,74 @@ public class PinImpl
 		switch (featureID) {
 			case UMLPackage.PIN__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.PIN__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PIN__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PIN__OWNER :
 				return isSetOwner();
-			case UMLPackage.PIN__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.PIN__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.PIN__NAME :
 				return isSetName();
-			case UMLPackage.PIN__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.PIN__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.PIN__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.PIN__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.PIN__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.PIN__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.PIN__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.PIN__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.PIN__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.PIN__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.PIN__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.PIN__IN_STRUCTURED_NODE :
-				return basicGetInStructuredNode() != null;
 			case UMLPackage.PIN__ACTIVITY :
 				return basicGetActivity() != null;
+			case UMLPackage.PIN__IN_GROUP :
+				return isSetInGroups();
+			case UMLPackage.PIN__IN_PARTITION :
+				return inPartitions != null && !inPartitions.isEmpty();
+			case UMLPackage.PIN__IN_STRUCTURED_NODE :
+				return basicGetInStructuredNode() != null;
+			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
+				return inInterruptibleRegions != null
+					&& !inInterruptibleRegions.isEmpty();
 			case UMLPackage.PIN__OUTGOING :
 				return outgoings != null && !outgoings.isEmpty();
 			case UMLPackage.PIN__INCOMING :
 				return incomings != null && !incomings.isEmpty();
-			case UMLPackage.PIN__IN_PARTITION :
-				return inPartitions != null && !inPartitions.isEmpty();
-			case UMLPackage.PIN__IN_INTERRUPTIBLE_REGION :
-				return inInterruptibleRegions != null
-					&& !inInterruptibleRegions.isEmpty();
-			case UMLPackage.PIN__IN_GROUP :
-				return isSetInGroups();
 			case UMLPackage.PIN__REDEFINED_NODE :
 				return redefinedNodes != null && !redefinedNodes.isEmpty();
 			case UMLPackage.PIN__TYPE :
 				return type != null;
-			case UMLPackage.PIN__ORDERING :
-				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
-			case UMLPackage.PIN__IS_CONTROL_TYPE :
-				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
-			case UMLPackage.PIN__UPPER_BOUND :
-				return upperBound != null;
 			case UMLPackage.PIN__IN_STATE :
 				return inStates != null && !inStates.isEmpty();
+			case UMLPackage.PIN__IS_CONTROL_TYPE :
+				return ((eFlags & IS_CONTROL_TYPE_EFLAG) != 0) != IS_CONTROL_TYPE_EDEFAULT;
+			case UMLPackage.PIN__ORDERING :
+				return (eFlags & ORDERING_EFLAG) != ORDERING_EFLAG_DEFAULT;
 			case UMLPackage.PIN__SELECTION :
 				return selection != null;
+			case UMLPackage.PIN__UPPER_BOUND :
+				return upperBound != null;
 			case UMLPackage.PIN__IS_ORDERED :
 				return ((eFlags & IS_ORDERED_EFLAG) != 0) != IS_ORDERED_EDEFAULT;
 			case UMLPackage.PIN__IS_UNIQUE :
 				return ((eFlags & IS_UNIQUE_EFLAG) != 0) != IS_UNIQUE_EDEFAULT;
-			case UMLPackage.PIN__UPPER :
-				return getUpper() != UPPER_EDEFAULT;
 			case UMLPackage.PIN__LOWER :
 				return getLower() != LOWER_EDEFAULT;
-			case UMLPackage.PIN__UPPER_VALUE :
-				return upperValue != null;
 			case UMLPackage.PIN__LOWER_VALUE :
 				return lowerValue != null;
+			case UMLPackage.PIN__UPPER :
+				return getUpper() != UPPER_EDEFAULT;
+			case UMLPackage.PIN__UPPER_VALUE :
+				return upperValue != null;
 			case UMLPackage.PIN__IS_CONTROL :
 				return ((eFlags & IS_CONTROL_EFLAG) != 0) != IS_CONTROL_EDEFAULT;
 		}
@@ -1110,14 +1111,14 @@ public class PinImpl
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED;
 				case UMLPackage.PIN__IS_UNIQUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE;
-				case UMLPackage.PIN__UPPER :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
 				case UMLPackage.PIN__LOWER :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER;
-				case UMLPackage.PIN__UPPER_VALUE :
-					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				case UMLPackage.PIN__LOWER_VALUE :
 					return UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE;
+				case UMLPackage.PIN__UPPER :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER;
+				case UMLPackage.PIN__UPPER_VALUE :
+					return UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1138,14 +1139,14 @@ public class PinImpl
 					return UMLPackage.PIN__IS_ORDERED;
 				case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
 					return UMLPackage.PIN__IS_UNIQUE;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
-					return UMLPackage.PIN__UPPER;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
 					return UMLPackage.PIN__LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
-					return UMLPackage.PIN__UPPER_VALUE;
 				case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
 					return UMLPackage.PIN__LOWER_VALUE;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
+					return UMLPackage.PIN__UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
+					return UMLPackage.PIN__UPPER_VALUE;
 				default :
 					return -1;
 			}
@@ -1162,10 +1163,10 @@ public class PinImpl
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == MultiplicityElement.class) {
 			switch (baseOperationID) {
-				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-					return UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP;
+				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+					return UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 					return UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP;
 				case UMLPackage.MULTIPLICITY_ELEMENT___VALIDATE_VALUE_SPECIFICATION_CONSTANT__DIAGNOSTICCHAIN_MAP :
@@ -1174,24 +1175,24 @@ public class PinImpl
 					return UMLPackage.PIN___SET_LOWER__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___SET_UPPER__INT :
 					return UMLPackage.PIN___SET_UPPER__INT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
-					return UMLPackage.PIN___GET_LOWER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
-					return UMLPackage.PIN___GET_UPPER;
-				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
-					return UMLPackage.PIN___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+					return UMLPackage.PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_CARDINALITY__INT :
 					return UMLPackage.PIN___INCLUDES_CARDINALITY__INT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 					return UMLPackage.PIN___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT;
-				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
-					return UMLPackage.PIN___LOWER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
-					return UMLPackage.PIN___UPPER_BOUND;
-				case UMLPackage.MULTIPLICITY_ELEMENT___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-					return UMLPackage.PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT;
 				case UMLPackage.MULTIPLICITY_ELEMENT___IS__INT_INT :
 					return UMLPackage.PIN___IS__INT_INT;
+				case UMLPackage.MULTIPLICITY_ELEMENT___IS_MULTIVALUED :
+					return UMLPackage.PIN___IS_MULTIVALUED;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_LOWER :
+					return UMLPackage.PIN___GET_LOWER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___LOWER_BOUND :
+					return UMLPackage.PIN___LOWER_BOUND;
+				case UMLPackage.MULTIPLICITY_ELEMENT___GET_UPPER :
+					return UMLPackage.PIN___GET_UPPER;
+				case UMLPackage.MULTIPLICITY_ELEMENT___UPPER_BOUND :
+					return UMLPackage.PIN___UPPER_BOUND;
 				default :
 					return -1;
 			}
@@ -1211,123 +1212,129 @@ public class PinImpl
 		switch (operationID) {
 			case UMLPackage.PIN___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.PIN___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.PIN___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.PIN___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.PIN___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.PIN___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.PIN___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.PIN___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.PIN___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.PIN___GET_MODEL :
-				return getModel();
-			case UMLPackage.PIN___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.PIN___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.PIN___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.PIN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.PIN___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.PIN___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.PIN___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.PIN___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.PIN___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.PIN___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.PIN___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.PIN___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PIN___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.PIN___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.PIN___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.PIN___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___GET_MODEL :
+				return getModel();
+			case UMLPackage.PIN___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.PIN___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.PIN___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.PIN___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.PIN___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.PIN___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PIN___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.PIN___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.PIN___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.PIN___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PIN___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.PIN___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.PIN___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.PIN___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.PIN___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.PIN___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.PIN___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.PIN___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.PIN___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.PIN___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.PIN___GET_LABEL :
 				return getLabel();
 			case UMLPackage.PIN___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.PIN___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.PIN___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.PIN___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.PIN___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.PIN___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.PIN___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.PIN___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.PIN___SEPARATOR :
 				return separator();
-			case UMLPackage.PIN___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
-			case UMLPackage.PIN___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
-				return validateRedefinitionContextValid(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_REDEFINITION_CONSISTENT__DIAGNOSTICCHAIN_MAP :
 				return validateRedefinitionConsistent(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_NON_LEAF_REDEFINITION__DIAGNOSTICCHAIN_MAP :
+				return validateNonLeafRedefinition(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_REDEFINITION_CONTEXT_VALID__DIAGNOSTICCHAIN_MAP :
+				return validateRedefinitionContextValid(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___IS_CONSISTENT_WITH__REDEFINABLEELEMENT :
@@ -1335,33 +1342,30 @@ public class PinImpl
 			case UMLPackage.PIN___IS_REDEFINITION_CONTEXT_VALID__REDEFINABLEELEMENT :
 				return isRedefinitionContextValid((RedefinableElement) arguments
 					.get(0));
-			case UMLPackage.PIN___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
-				return validateOwnedStructuredNode(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_OWNED__DIAGNOSTICCHAIN_MAP :
 				return validateOwned((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
-				return validateObjectFlowEdges(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_NOT_UNIQUE__DIAGNOSTICCHAIN_MAP :
-				return validateNotUnique((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
-				return validateSelectionBehavior(
+			case UMLPackage.PIN___VALIDATE_OWNED_STRUCTURED_NODE__DIAGNOSTICCHAIN_MAP :
+				return validateOwnedStructuredNode(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_INPUT_OUTPUT_PARAMETER__DIAGNOSTICCHAIN_MAP :
 				return validateInputOutputParameter(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
-				return validateLowerGe0((DiagnosticChain) arguments.get(0),
+			case UMLPackage.PIN___VALIDATE_SELECTION_BEHAVIOR__DIAGNOSTICCHAIN_MAP :
+				return validateSelectionBehavior(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_OBJECT_FLOW_EDGES__DIAGNOSTICCHAIN_MAP :
+				return validateObjectFlowEdges(
+					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_UPPER_GE_LOWER__DIAGNOSTICCHAIN_MAP :
 				return validateUpperGeLower((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.PIN___VALIDATE_LOWER_GE0__DIAGNOSTICCHAIN_MAP :
+				return validateLowerGe0((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.PIN___VALIDATE_VALUE_SPECIFICATION_NO_SIDE_EFFECTS__DIAGNOSTICCHAIN_MAP :
 				return validateValueSpecificationNoSideEffects(
@@ -1377,26 +1381,26 @@ public class PinImpl
 			case UMLPackage.PIN___SET_UPPER__INT :
 				setUpper((Integer) arguments.get(0));
 				return null;
-			case UMLPackage.PIN___GET_LOWER :
-				return getLower();
-			case UMLPackage.PIN___GET_UPPER :
-				return getUpper();
-			case UMLPackage.PIN___IS_MULTIVALUED :
-				return isMultivalued();
+			case UMLPackage.PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
+				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PIN___INCLUDES_CARDINALITY__INT :
 				return includesCardinality((Integer) arguments.get(0));
 			case UMLPackage.PIN___INCLUDES_MULTIPLICITY__MULTIPLICITYELEMENT :
 				return includesMultiplicity((MultiplicityElement) arguments
 					.get(0));
-			case UMLPackage.PIN___LOWER_BOUND :
-				return lowerBound();
-			case UMLPackage.PIN___UPPER_BOUND :
-				return upperBound();
-			case UMLPackage.PIN___COMPATIBLE_WITH__MULTIPLICITYELEMENT :
-				return compatibleWith((MultiplicityElement) arguments.get(0));
 			case UMLPackage.PIN___IS__INT_INT :
 				return is((Integer) arguments.get(0),
 					(Integer) arguments.get(1));
+			case UMLPackage.PIN___IS_MULTIVALUED :
+				return isMultivalued();
+			case UMLPackage.PIN___GET_LOWER :
+				return getLower();
+			case UMLPackage.PIN___LOWER_BOUND :
+				return lowerBound();
+			case UMLPackage.PIN___GET_UPPER :
+				return getUpper();
+			case UMLPackage.PIN___UPPER_BOUND :
+				return upperBound();
 			case UMLPackage.PIN___VALIDATE_CONTROL_PINS__DIAGNOSTICCHAIN_MAP :
 				return validateControlPins((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
@@ -1435,8 +1439,8 @@ public class PinImpl
 	 */
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.PIN__OWNED_COMMENT, UMLPackage.PIN__NAME_EXPRESSION,
-		UMLPackage.PIN__UPPER_BOUND, UMLPackage.PIN__UPPER_VALUE,
-		UMLPackage.PIN__LOWER_VALUE};
+		UMLPackage.PIN__UPPER_BOUND, UMLPackage.PIN__LOWER_VALUE,
+		UMLPackage.PIN__UPPER_VALUE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1446,8 +1450,8 @@ public class PinImpl
 	@Override
 	public boolean isSetOwnedElements() {
 		return super.isSetOwnedElements()
-			|| eIsSet(UMLPackage.PIN__UPPER_VALUE)
-			|| eIsSet(UMLPackage.PIN__LOWER_VALUE);
+			|| eIsSet(UMLPackage.PIN__LOWER_VALUE)
+			|| eIsSet(UMLPackage.PIN__UPPER_VALUE);
 	}
 
 } //PinImpl

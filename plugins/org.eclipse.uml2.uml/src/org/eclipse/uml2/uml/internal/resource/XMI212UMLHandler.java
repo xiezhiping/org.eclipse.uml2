@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: XMI212UMLHandler.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
  */
@@ -54,6 +55,12 @@ public class XMI212UMLHandler
 	protected static final String PRIMITIVE_TYPE_UNLIMITED_NATURAL = "UnlimitedNatural"; //$NON-NLS-1$
 
 	protected static final String PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_UNLIMITED_NATURAL;
+
+	protected static final String STEREOTYPE_BUILD_COMPONENT = "BuildComponent"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE_METAMODEL = "Metamodel"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE_SYSTEM_MODEL = "SystemModel"; //$NON-NLS-1$
 
 	protected static final String ECORE_EXTENSION_TYPE = "ecoreExtension"; //$NON-NLS-1$
 
@@ -107,10 +114,8 @@ public class XMI212UMLHandler
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_2_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
@@ -126,16 +131,19 @@ public class XMI212UMLHandler
 					? "#_0" //$NON-NLS-1$
 					: uriLiteral.substring(index));
 			}
-		} else if (uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_2_URI)) {
+		} else if (uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI)
+			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
 
 			int index = uriLiteral.indexOf('#');
-			uriLiteral = UMLResource.STANDARD_PROFILE_URI + (index == -1
-				? "#_0" //$NON-NLS-1$
-				: uriLiteral.substring(index));
+			uriLiteral = (uriLiteral.endsWith(STEREOTYPE_BUILD_COMPONENT)
+				|| uriLiteral.endsWith(STEREOTYPE_METAMODEL)
+				|| uriLiteral.endsWith(STEREOTYPE_SYSTEM_MODEL)
+				? UMLResource.STANDARD_L3_PROFILE_URI
+				: UMLResource.STANDARD_L2_PROFILE_URI)
+				+ (index == -1
+					? "#_0" //$NON-NLS-1$
+					: uriLiteral.substring(index));
 		}
 
 		super.handleProxy(proxy, uriLiteral);
@@ -145,7 +153,7 @@ public class XMI212UMLHandler
 	protected void processElement(String name, String prefix, String localName) {
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+			&& XMI2UMLResource.XMI_2_1_NS_URI.equals(helper.getURI(prefix))
 			&& attribs != null
 			&& EcorePackage.eNS_URI.equals(attribs
 				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ClassifierTemplateParameterImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
@@ -315,34 +316,34 @@ public class ClassifierTemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				if (resolve)
-					return getSignature();
-				return basicGetSignature();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (resolve)
+					return getParameteredElement();
+				return basicGetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				if (resolve)
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return isAllowSubstitutable();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
@@ -370,20 +371,20 @@ public class ClassifierTemplateParameterImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				setSignature((TemplateSignature) newValue);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) newValue);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
+				setDefault((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
-				setDefault((ParameterableElement) newValue);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
+				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				setSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable((Boolean) newValue);
@@ -411,20 +412,20 @@ public class ClassifierTemplateParameterImpl
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				setSignature((TemplateSignature) null);
-				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) null);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
+				setDefault((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) null);
 				return;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
-				setDefault((ParameterableElement) null);
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
+				return;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				setSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				setAllowSubstitutable(ALLOW_SUBSTITUTABLE_EDEFAULT);
@@ -446,22 +447,22 @@ public class ClassifierTemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
-				return basicGetSignature() != null;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return isSetParameteredElement();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__DEFAULT :
 				return default_ != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return ownedParameteredElement != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return isSetParameteredElement();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return ownedDefault != null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__SIGNATURE :
+				return basicGetSignature() != null;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__ALLOW_SUBSTITUTABLE :
 				return ((eFlags & ALLOW_SUBSTITUTABLE_EFLAG) != 0) != ALLOW_SUBSTITUTABLE_EDEFAULT;
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER__CONSTRAINING_CLASSIFIER :
@@ -483,82 +484,82 @@ public class ClassifierTemplateParameterImpl
 		switch (operationID) {
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_MODEL :
-				return getModel();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_MODEL :
+				return getModel();
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.CLASSIFIER_TEMPLATE_PARAMETER___MUST_BE_OWNED :

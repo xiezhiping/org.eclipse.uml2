@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActivityPartition.java,v 1.20 2007/10/23 15:54:23 jbruck Exp $
  */
@@ -35,9 +36,9 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#isDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#isExternal <em>Is External</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getNodes <em>Node</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getSubpartitions <em>Subpartition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getSuperPartition <em>Super Partition</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getRepresents <em>Represents</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ActivityPartition#getEdges <em>Edge</em>}</li>
  * </ul>
  * </p>
@@ -47,7 +48,7 @@ import org.eclipse.emf.ecore.EClass;
  * @generated
  */
 public interface ActivityPartition
-		extends NamedElement, ActivityGroup {
+		extends ActivityGroup {
 
 	/**
 	 * Returns the value of the '<em><b>Is Dimension</b></em>' attribute.
@@ -60,7 +61,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Is Dimension</em>' attribute.
 	 * @see #setIsDimension(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_IsDimension()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDimension();
@@ -86,7 +87,7 @@ public interface ActivityPartition
 	 * @return the value of the '<em>Is External</em>' attribute.
 	 * @see #setIsExternal(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getActivityPartition_IsExternal()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isExternal();

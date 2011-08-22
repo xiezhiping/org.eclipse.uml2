@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Element.java,v 1.22 2009/08/12 21:05:18 jbruck Exp $
  */
@@ -36,9 +37,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedComments <em>Owned Comment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Element#getOwner <em>Owner</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Element#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
  * </p>
  *
@@ -186,7 +187,7 @@ public interface Element
 	 * Retrieves the stereotype with the specified qualified name that is required for this element, or null if no such stereotype is required.
 	 * @param qualifiedName The qualified name of the required stereotype to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	Stereotype getRequiredStereotype(String qualifiedName);
@@ -209,7 +210,7 @@ public interface Element
 	 * Retrieves the stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is  applied.
 	 * @param qualifiedName The qualified name of the applied stereotype to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	Stereotype getAppliedStereotype(String qualifiedName);
@@ -234,7 +235,7 @@ public interface Element
 	 * @param stereotype The superstereotype of the applied substereotype to retrieve.
 	 * @param qualifiedName The qualified name of the applied substereotype to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	Stereotype getAppliedSubstereotype(Stereotype stereotype,
@@ -248,7 +249,7 @@ public interface Element
 	 * @param stereotype The stereotype for which to test the property.
 	 * @param propertyName The name of the property in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.types.String" propertyNameRequired="true" propertyNameOrdered="false"
 	 * @generated
 	 */
 	boolean hasValue(Stereotype stereotype, String propertyName);
@@ -261,7 +262,7 @@ public interface Element
 	 * @param stereotype The stereotype for which to retrieve the value.
 	 * @param propertyName The name of the property whose value to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false"
+	 * @model ordered="false" stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.types.String" propertyNameRequired="true" propertyNameOrdered="false"
 	 * @generated
 	 */
 	Object getValue(Stereotype stereotype, String propertyName);
@@ -275,7 +276,7 @@ public interface Element
 	 * @param propertyName The name of the property whose value to set.
 	 * @param newValue The new value for the property.
 	 * <!-- end-model-doc -->
-	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.uml.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
+	 * @model stereotypeRequired="true" stereotypeOrdered="false" propertyNameDataType="org.eclipse.uml2.types.String" propertyNameRequired="true" propertyNameOrdered="false" newValueRequired="true" newValueOrdered="false"
 	 * @generated
 	 */
 	void setValue(Stereotype stereotype, String propertyName, Object newValue);
@@ -287,7 +288,7 @@ public interface Element
 	 * Creates an annotation with the specified source and this element as its model element.
 	 * @param source The source for the new annotation.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" sourceDataType="org.eclipse.uml2.uml.String" sourceRequired="true" sourceOrdered="false"
+	 * @model required="true" ordered="false" sourceDataType="org.eclipse.uml2.types.String" sourceRequired="true" sourceOrdered="false"
 	 * @generated
 	 */
 	EAnnotation createEAnnotation(String source);
@@ -367,7 +368,7 @@ public interface Element
 	 * <!-- begin-model-doc -->
 	 * Retrieves the keywords for this element.
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	EList<String> getKeywords();
@@ -379,7 +380,7 @@ public interface Element
 	 * Adds the specified keyword to this element.
 	 * @param keyword The keyword to add.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.types.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
 	boolean addKeyword(String keyword);
@@ -391,7 +392,7 @@ public interface Element
 	 * Removes the specified keyword from this element.
 	 * @param keyword The keyword to remove.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.types.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
 	boolean removeKeyword(String keyword);
@@ -425,7 +426,7 @@ public interface Element
 	 * Determines whether the specified stereotype is applicable to this element.
 	 * @param stereotype The stereotype in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
 	boolean isStereotypeApplicable(Stereotype stereotype);
@@ -437,7 +438,7 @@ public interface Element
 	 * Determines whether the specified stereotype is required for this element.
 	 * @param stereotype The stereotype in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
 	boolean isStereotypeRequired(Stereotype stereotype);
@@ -449,7 +450,7 @@ public interface Element
 	 * Determines whether the specified stereotype is applied to this element.
 	 * @param stereotype The stereotype in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" stereotypeRequired="true" stereotypeOrdered="false"
 	 * @generated
 	 */
 	boolean isStereotypeApplied(Stereotype stereotype);
@@ -496,7 +497,7 @@ public interface Element
 	 * Retrieves the stereotype with the specified qualified name that is applicable to this element, or null if no such stereotype is applicable.
 	 * @param qualifiedName The qualified name of the applicable stereotype to retrieve.
 	 * <!-- end-model-doc -->
-	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.uml.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
+	 * @model ordered="false" qualifiedNameDataType="org.eclipse.uml2.types.String" qualifiedNameRequired="true" qualifiedNameOrdered="false"
 	 * @generated
 	 */
 	Stereotype getApplicableStereotype(String qualifiedName);
@@ -508,7 +509,7 @@ public interface Element
 	 * Determines whether this element has the specified keyword.
 	 * @param keyword The keyword in question.
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.uml.String" keywordRequired="true" keywordOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" keywordDataType="org.eclipse.uml2.types.String" keywordRequired="true" keywordOrdered="false"
 	 * @generated
 	 */
 	boolean hasKeyword(String keyword);
@@ -543,7 +544,7 @@ public interface Element
 	 * The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
 	 * result = true
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean mustBeOwned();

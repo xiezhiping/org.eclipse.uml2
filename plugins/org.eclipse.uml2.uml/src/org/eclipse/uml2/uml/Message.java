@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Message.java,v 1.18 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,13 +33,13 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Message#getArguments <em>Argument</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#getConnector <em>Connector</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Message#getInteraction <em>Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getMessageKind <em>Message Kind</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getMessageSort <em>Message Sort</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getReceiveEvent <em>Receive Event</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getSendEvent <em>Send Event</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#getConnector <em>Connector</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#getInteraction <em>Interaction</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Message#getArguments <em>Argument</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Message#getSignature <em>Signature</em>}</li>
  * </ul>
  * </p>
@@ -271,20 +272,31 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The definition of the type or signature of the Message (depending on its kind). The associated named element is derived from the message end that constitutes the sending or receiving message event. If both a sending event and a receiving message event are present, the signature is obtained from the sending event.
+	 * The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Signature</em>' reference.
+	 * @see #setSignature(NamedElement)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMessage_Signature()
-	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	NamedElement getSignature();
 
 	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.Message#getSignature <em>Signature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Signature</em>' reference.
+	 * @see #getSignature()
+	 * @generated
+	 */
+	void setSignature(NamedElement value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * If the sending MessageEvent and the receiving MessageEvent of the same Message are on the same Lifeline, the sending MessageEvent must be ordered before the receiving MessageEvent.
+	 * If the sendEvent and the receiveEvent of the same Message are on the same Lifeline, the sendEvent must be ordered before the receiveEvent.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -344,13 +356,7 @@ public interface Message
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Arguments of a Message must only be:
-	 * i) attributes of the sending lifeline
-	 * ii) constants
-	 * iii) symbolic values (which are wildcard values representing any legal value)
-	 * iv) explicit parameters of the enclosing Interaction
-	 * v) attributes of the class owning the Interaction
-	 * 
+	 * Arguments of a Message must only be: i) attributes of the sending lifeline ii) constants iii) symbolic values (which are wildcard values representing any legal value) iv) explicit parameters of the enclosing Interaction v) attributes of the class owning the Interaction
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

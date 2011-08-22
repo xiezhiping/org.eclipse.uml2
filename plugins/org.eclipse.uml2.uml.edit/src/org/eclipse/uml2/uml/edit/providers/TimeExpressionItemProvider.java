@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TimeExpressionItemProvider.java,v 1.14 2010/09/28 21:00:19 khussey Exp $
  */
@@ -92,7 +93,9 @@ public class TimeExpressionItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_TimeExpression_expr_feature", "_UI_TimeExpression_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.TIME_EXPRESSION__EXPR, true, false, true,
-				null, null, null));
+				null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -223,10 +226,6 @@ public class TimeExpressionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
 			UMLFactory.eINSTANCE.createExpression()));
 
 		newChildDescriptors.add(createChildParameter(
@@ -235,31 +234,7 @@ public class TimeExpressionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
@@ -275,7 +250,39 @@ public class TimeExpressionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
 			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.TIME_EXPRESSION__EXPR,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**

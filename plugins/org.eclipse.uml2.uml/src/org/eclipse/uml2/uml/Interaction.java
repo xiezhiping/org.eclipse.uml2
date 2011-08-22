@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Interaction.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -28,10 +29,10 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Interaction#getLifelines <em>Lifeline</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Interaction#getFragments <em>Fragment</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interaction#getActions <em>Action</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interaction#getFormalGates <em>Formal Gate</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Interaction#getFragments <em>Fragment</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Interaction#getLifelines <em>Lifeline</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Interaction#getMessages <em>Message</em>}</li>
  * </ul>
  * </p>
@@ -234,7 +235,6 @@ public interface Interaction
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
-	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal Gate</em>' containment reference list.
 	 * @see org.eclipse.uml2.uml.UMLPackage#getInteraction_FormalGate()

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ProtocolConformanceImpl.java,v 1.18 2009/01/07 15:55:26 jbruck Exp $
  */
@@ -315,14 +316,14 @@ public class ProtocolConformanceImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.PROTOCOL_CONFORMANCE__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.PROTOCOL_CONFORMANCE__SOURCE :
@@ -404,12 +405,12 @@ public class ProtocolConformanceImpl
 		switch (featureID) {
 			case UMLPackage.PROTOCOL_CONFORMANCE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.PROTOCOL_CONFORMANCE__OWNER :
 				return isSetOwner();
-			case UMLPackage.PROTOCOL_CONFORMANCE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.PROTOCOL_CONFORMANCE__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.PROTOCOL_CONFORMANCE__SOURCE :

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: UMLResourceFactoryImpl.java,v 1.10 2008/12/09 16:13:50 jbruck Exp $
  */
@@ -65,6 +66,8 @@ public class UMLResourceFactoryImpl
 		UMLResource resource = (UMLResource) createResourceGen(uri);
 
 		resource.setXMIVersion("2.1"); //$NON-NLS-1$
+		// TODO
+		//resource.setXMIVersion("20100901"); //$NON-NLS-1$
 
 		Map<Object, Object> defaultLoadOptions = resource.getDefaultLoadOptions();
 

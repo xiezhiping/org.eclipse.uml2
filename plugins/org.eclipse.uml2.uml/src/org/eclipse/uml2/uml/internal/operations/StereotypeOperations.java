@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StereotypeOperations.java,v 1.16 2007/06/01 16:00:39 khussey Exp $
  */
@@ -45,17 +46,20 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateBinaryAssociationsOnly(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Binary Associations Only</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateGeneralize(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Generalize</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateNameNotClash(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Name Not Clash</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#validateAssociationEndOwnership(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Association End Ownership</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createExtension(org.eclipse.uml2.uml.Class, boolean) <em>Create Extension</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Get Profile</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword() <em>Get Keyword</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String) <em>Create Icon</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Stereotype#createIcon(java.lang.String, java.lang.String) <em>Create Icon</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getAllExtendedMetaclasses() <em>Get All Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getDefinition() <em>Get Definition</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getExtendedMetaclasses() <em>Get Extended Metaclasses</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword() <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getKeyword(boolean) <em>Get Keyword</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#containingProfile() <em>Containing Profile</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Stereotype#getProfile() <em>Get Profile</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +75,41 @@ public class StereotypeOperations
 	 */
 	protected StereotypeOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Stereotypes may only participate in binary associations.
+	 * ownedAttribute.association->forAll(memberEnd->size()=2)
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateBinaryAssociationsOnly(Stereotype stereotype,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.STEREOTYPE__BINARY_ASSOCIATIONS_ONLY,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateBinaryAssociationsOnly", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{stereotype}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -101,6 +140,44 @@ public class StereotypeOperations
 						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
 							.getString(
 								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNameNotClash", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{stereotype}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Where a stereotype’s property is an association end for an association other than a kind of extension, and the other end is not a stereotype, the other end must be owned by the association itself.
+	 * ownedAttribute
+	 * ->select(association->notEmpty() and not association.oclIsKindOf(Extension) and not type.oclIsKindOf(Stereotype))
+	 * ->forAll(opposite.owner = association)
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateAssociationEndOwnership(
+			Stereotype stereotype, DiagnosticChain diagnostics,
+			Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.STEREOTYPE__ASSOCIATION_END_OWNERSHIP,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateAssociationEndOwnership", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(stereotype, context)}), //$NON-NLS-1$ //$NON-NLS-2$
 						new Object[]{stereotype}));
 			}
 			return false;
@@ -182,8 +259,9 @@ public class StereotypeOperations
 		}
 
 		String metaclassName = metaclass.getName();
-		Extension extension = (Extension) profile.createOwnedType(metaclassName
-			+ '_' + name, UMLPackage.Literals.EXTENSION);
+		Extension extension = (Extension) stereotype.getNearestPackage()
+			.createOwnedType(metaclassName + '_' + name,
+				UMLPackage.Literals.EXTENSION);
 
 		ExtensionEnd extensionEnd = (ExtensionEnd) extension.createOwnedEnd(
 			Extension.STEREOTYPE_ROLE_PREFIX + name, stereotype,
@@ -211,10 +289,7 @@ public class StereotypeOperations
 	 * @generated NOT
 	 */
 	public static Profile getProfile(Stereotype stereotype) {
-		org.eclipse.uml2.uml.Package package_ = stereotype.getPackage();
-		return package_ instanceof Profile
-			? (Profile) package_
-			: null;
+		return containingProfile(stereotype);
 	}
 
 	/**
@@ -248,15 +323,25 @@ public class StereotypeOperations
 				: qualifiedName.replace(':', '_')), EMPTY_STRING, localize);
 
 		if (isEmpty(keyword)) {
-			String identifier = getValidJavaIdentifier(stereotype.getName());
-
-			keyword = identifier.length() > 0
-				? Character.toLowerCase(identifier.charAt(0))
-					+ identifier.substring(1)
-				: identifier;
+			keyword = getValidJavaIdentifier(stereotype.getName());
 		}
 
 		return keyword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
+	 * result = self.namespace.oclAsType(Package).containingProfile()
+	 * @param stereotype The receiving '<em><b>Stereotype</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static Profile containingProfile(Stereotype stereotype) {
+		return (Profile) getOwningElement(stereotype,
+			UMLPackage.Literals.PROFILE, true);
 	}
 
 	protected static EList<org.eclipse.uml2.uml.Class> getExtendedMetaclasses(

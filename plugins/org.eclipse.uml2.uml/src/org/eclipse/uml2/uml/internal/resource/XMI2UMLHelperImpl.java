@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006 IBM Corporation and others.
+ * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: XMI2UMLHelperImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
@@ -33,8 +34,10 @@ public class XMI2UMLHelperImpl
 			href = XMI2UMLResource.UML_METAMODEL_URI + href.substring(href.indexOf('#'));
 		} else if (href.startsWith(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
 			href = XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + href.substring(href.indexOf('#'));
-		} else if (href.startsWith(UMLResource.STANDARD_PROFILE_URI)) {
-			href = XMI2UMLResource.STANDARD_PROFILE_URI + href.substring(href.indexOf('#'));
+		} else if (href.startsWith(UMLResource.STANDARD_L2_PROFILE_URI)) {
+			href = XMI2UMLResource.STANDARD_L2_PROFILE_URI + href.substring(href.indexOf('#'));
+		} else if (href.startsWith(UMLResource.STANDARD_L3_PROFILE_URI)) {
+			href = XMI2UMLResource.STANDARD_L3_PROFILE_URI + href.substring(href.indexOf('#'));
 		}
 
 		return href;

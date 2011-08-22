@@ -267,7 +267,7 @@ public class ElementOperations
 				if (appliedProfile != null) {
 
 					for (Stereotype stereotype : appliedProfile
-						.getOwnedStereotypes()) {
+						.allApplicableStereotypes()) {
 
 						ENamedElement appliedDefinition = profileApplication
 							.getAppliedDefinition(stereotype);
@@ -1517,7 +1517,7 @@ public class ElementOperations
 				if (appliedProfile != null) {
 
 					for (Stereotype stereotype : appliedProfile
-						.getOwnedStereotypes()) {
+						.allApplicableStereotypes()) {
 
 						ENamedElement appliedDefinition = profileApplication
 							.getAppliedDefinition(stereotype);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: LinkEndDataImpl.java,v 1.17 2010/09/28 21:02:13 khussey Exp $
  */
@@ -30,10 +31,14 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.uml2.common.util.CacheAdapter;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndData;
 import org.eclipse.uml2.uml.Property;
@@ -50,9 +55,10 @@ import org.eclipse.uml2.uml.internal.operations.LinkEndDataOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDataImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDataImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDataImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDataImpl#getQualifiers <em>Qualifier</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.LinkEndDataImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,16 +67,6 @@ import org.eclipse.uml2.uml.internal.operations.LinkEndDataOperations;
 public class LinkEndDataImpl
 		extends ElementImpl
 		implements LinkEndData {
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected InputPin value;
 
 	/**
 	 * The cached value of the '{@link #getEnd() <em>End</em>}' reference.
@@ -93,6 +89,16 @@ public class LinkEndDataImpl
 	protected EList<QualifierValue> qualifiers;
 
 	/**
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected InputPin value;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -110,6 +116,45 @@ public class LinkEndDataImpl
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.LINK_END_DATA;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Element> getOwnedElements() {
+		CacheAdapter cache = getCacheAdapter();
+		if (cache != null) {
+			Resource eResource = eResource();
+			@SuppressWarnings("unchecked")
+			EList<Element> ownedElements = (EList<Element>) cache.get(
+				eResource, this, UMLPackage.Literals.ELEMENT__OWNED_ELEMENT);
+			if (ownedElements == null) {
+				cache.put(eResource, this,
+					UMLPackage.Literals.ELEMENT__OWNED_ELEMENT,
+					ownedElements = new DerivedUnionEObjectEList<Element>(
+						Element.class, this,
+						UMLPackage.LINK_END_DATA__OWNED_ELEMENT,
+						OWNED_ELEMENT_ESUBSETS));
+			}
+			return ownedElements;
+		}
+		return new DerivedUnionEObjectEList<Element>(Element.class, this,
+			UMLPackage.LINK_END_DATA__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
+	}
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getOwnedElements() <em>Owned Element</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
+		UMLPackage.LINK_END_DATA__OWNED_COMMENT,
+		UMLPackage.LINK_END_DATA__QUALIFIER};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,24 +347,24 @@ public class LinkEndDataImpl
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.LINK_END_DATA__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.LINK_END_DATA__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.LINK_END_DATA__VALUE :
-				if (resolve)
-					return getValue();
-				return basicGetValue();
 			case UMLPackage.LINK_END_DATA__END :
 				if (resolve)
 					return getEnd();
 				return basicGetEnd();
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
 				return getQualifiers();
+			case UMLPackage.LINK_END_DATA__VALUE :
+				if (resolve)
+					return getValue();
+				return basicGetValue();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -343,9 +388,6 @@ public class LinkEndDataImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.LINK_END_DATA__VALUE :
-				setValue((InputPin) newValue);
-				return;
 			case UMLPackage.LINK_END_DATA__END :
 				setEnd((Property) newValue);
 				return;
@@ -353,6 +395,9 @@ public class LinkEndDataImpl
 				getQualifiers().clear();
 				getQualifiers().addAll(
 					(Collection<? extends QualifierValue>) newValue);
+				return;
+			case UMLPackage.LINK_END_DATA__VALUE :
+				setValue((InputPin) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -372,14 +417,14 @@ public class LinkEndDataImpl
 			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.LINK_END_DATA__VALUE :
-				setValue((InputPin) null);
-				return;
 			case UMLPackage.LINK_END_DATA__END :
 				setEnd((Property) null);
 				return;
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
 				getQualifiers().clear();
+				return;
+			case UMLPackage.LINK_END_DATA__VALUE :
+				setValue((InputPin) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -395,18 +440,18 @@ public class LinkEndDataImpl
 		switch (featureID) {
 			case UMLPackage.LINK_END_DATA__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.LINK_END_DATA__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.LINK_END_DATA__OWNER :
 				return isSetOwner();
-			case UMLPackage.LINK_END_DATA__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.LINK_END_DATA__VALUE :
-				return value != null;
 			case UMLPackage.LINK_END_DATA__END :
 				return end != null;
 			case UMLPackage.LINK_END_DATA__QUALIFIER :
 				return qualifiers != null && !qualifiers.isEmpty();
+			case UMLPackage.LINK_END_DATA__VALUE :
+				return value != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -423,105 +468,116 @@ public class LinkEndDataImpl
 		switch (operationID) {
 			case UMLPackage.LINK_END_DATA___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DATA___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.LINK_END_DATA___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.LINK_END_DATA___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.LINK_END_DATA___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.LINK_END_DATA___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.LINK_END_DATA___GET_MODEL :
-				return getModel();
-			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.LINK_END_DATA___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.LINK_END_DATA___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.LINK_END_DATA___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.LINK_END_DATA___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.LINK_END_DATA___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.LINK_END_DATA___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.LINK_END_DATA___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DATA___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DATA___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.LINK_END_DATA___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.LINK_END_DATA___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_MODEL :
+				return getModel();
+			case UMLPackage.LINK_END_DATA___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.LINK_END_DATA___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.LINK_END_DATA___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.LINK_END_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.LINK_END_DATA___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.LINK_END_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.LINK_END_DATA___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.LINK_END_DATA___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.LINK_END_DATA___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.LINK_END_DATA___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.LINK_END_DATA___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.LINK_END_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
-				return validatePropertyIsAssociationEnd(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DATA___VALIDATE_SAME_TYPE__DIAGNOSTICCHAIN_MAP :
 				return validateSameType((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DATA___VALIDATE_MULTIPLICITY__DIAGNOSTICCHAIN_MAP :
 				return validateMultiplicity((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.LINK_END_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
-				return validateQualifiers((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.LINK_END_DATA___VALIDATE_END_OBJECT_INPUT_PIN__DIAGNOSTICCHAIN_MAP :
 				return validateEndObjectInputPin(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___VALIDATE_PROPERTY_IS_ASSOCIATION_END__DIAGNOSTICCHAIN_MAP :
+				return validatePropertyIsAssociationEnd(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.LINK_END_DATA___VALIDATE_QUALIFIERS__DIAGNOSTICCHAIN_MAP :
+				return validateQualifiers((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
 		}
 		return eDynamicInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetOwnedElements() {
+		return super.isSetOwnedElements()
+			|| eIsSet(UMLPackage.LINK_END_DATA__QUALIFIER);
 	}
 
 } //LinkEndDataImpl

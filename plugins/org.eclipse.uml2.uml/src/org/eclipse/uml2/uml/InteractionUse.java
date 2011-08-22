@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionUse.java,v 1.12 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -32,9 +33,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getRefersTo <em>Refers To</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getActualGates <em>Actual Gate</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getArguments <em>Argument</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getRefersTo <em>Refers To</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getReturnValue <em>Return Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.InteractionUse#getReturnValueRecipient <em>Return Value Recipient</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,6 +72,75 @@ public interface InteractionUse
 	 * @generated
 	 */
 	void setRefersTo(Interaction value);
+
+	/**
+	 * Returns the value of the '<em><b>Return Value</b></em>' containment reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The value of the executed Interaction.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Return Value</em>' containment reference.
+	 * @see #setReturnValue(ValueSpecification)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_ReturnValue()
+	 * @model containment="true" resolveProxies="true" ordered="false"
+	 * @generated
+	 */
+	ValueSpecification getReturnValue();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.InteractionUse#getReturnValue <em>Return Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Return Value</em>' containment reference.
+	 * @see #getReturnValue()
+	 * @generated
+	 */
+	void setReturnValue(ValueSpecification value);
+
+	/**
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and sets the '<em><b>Return Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
+	 * @see #getReturnValue()
+	 * @generated
+	 */
+	ValueSpecification createReturnValue(String name, Type type, EClass eClass);
+
+	/**
+	 * Returns the value of the '<em><b>Return Value Recipient</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The recipient of the return value.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Return Value Recipient</em>' reference.
+	 * @see #setReturnValueRecipient(Property)
+	 * @see org.eclipse.uml2.uml.UMLPackage#getInteractionUse_ReturnValueRecipient()
+	 * @model ordered="false"
+	 * @generated
+	 */
+	Property getReturnValueRecipient();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.uml2.uml.InteractionUse#getReturnValueRecipient <em>Return Value Recipient</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Return Value Recipient</em>' reference.
+	 * @see #getReturnValueRecipient()
+	 * @generated
+	 */
+	void setReturnValueRecipient(Property value);
 
 	/**
 	 * Returns the value of the '<em><b>Actual Gate</b></em>' containment reference list.
@@ -128,7 +200,13 @@ public interface InteractionUse
 
 	/**
 	 * Returns the value of the '<em><b>Argument</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.uml2.uml.Action}.
+	 * The list contents are of type {@link org.eclipse.uml2.uml.ValueSpecification}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwnedElements() <em>Owned Element</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -139,45 +217,48 @@ public interface InteractionUse
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<Action> getArguments();
+	EList<ValueSpecification> getArguments();
 
 	/**
-	 * Creates a new {@link org.eclipse.uml2.uml.Action}, with the specified '<em><b>Name</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
+	 * Creates a new {@link org.eclipse.uml2.uml.ValueSpecification}, with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', and appends it to the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.Action}, or <code>null</code>.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Action} to create.
-	 * @return The new {@link org.eclipse.uml2.uml.Action}.
+	 * @param name The '<em><b>Name</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' for the new {@link org.eclipse.uml2.uml.ValueSpecification}, or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to create.
+	 * @return The new {@link org.eclipse.uml2.uml.ValueSpecification}.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	Action createArgument(String name, EClass eClass);
+	ValueSpecification createArgument(String name, Type type, EClass eClass);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
-	 * @return The first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @return The first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	Action getArgument(String name);
+	ValueSpecification getArgument(String name, Type type);
 
 	/**
-	 * Retrieves the first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
+	 * Retrieves the first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>' from the '<em><b>Argument</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
+	 * @param name The '<em><b>Name</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param type The '<em><b>Type</b></em>' of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
 	 * @param ignoreCase Whether to ignore case in {@link java.lang.String} comparisons.
-	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.Action} to retrieve, or <code>null</code>.
-	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.Action} on demand if not found.
-	 * @return The first {@link org.eclipse.uml2.uml.Action} with the specified '<em><b>Name</b></em>', or <code>null</code>.
+	 * @param eClass The Ecore class of the {@link org.eclipse.uml2.uml.ValueSpecification} to retrieve, or <code>null</code>.
+	 * @param createOnDemand Whether to create a {@link org.eclipse.uml2.uml.ValueSpecification} on demand if not found.
+	 * @return The first {@link org.eclipse.uml2.uml.ValueSpecification} with the specified '<em><b>Name</b></em>', and '<em><b>Type</b></em>', or <code>null</code>.
 	 * @see #getArguments()
 	 * @generated
 	 */
-	Action getArgument(String name, boolean ignoreCase, EClass eClass,
-			boolean createOnDemand);
+	ValueSpecification getArgument(String name, Type type, boolean ignoreCase,
+			EClass eClass, boolean createOnDemand);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,7 +279,7 @@ public interface InteractionUse
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The InteractionUse must cover all Lifelines of the enclosing Interaction which appear within the referred Interaction.
+	 * The InteractionUse must cover all Lifelines of the enclosing Interaction that represent the same properties as lifelines within the referred Interaction.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
@@ -228,6 +309,21 @@ public interface InteractionUse
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * The type of the returnValue must correspond to the type of the returnValueRecipient.
+	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateReturnValueTypeRecipientCorrespondence(
+			DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * The arguments must only be constants, parameters of the enclosing Interaction or attributes of the classifier owning the enclosing Interaction.
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
@@ -237,6 +333,21 @@ public interface InteractionUse
 	 * @generated
 	 */
 	boolean validateArgumentsAreConstants(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The returnValueRecipient must be a Property of a ConnectableElement that is represented by a Lifeline covered by this InteractionUse.
+	 * true
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean validateReturnValueRecipientCoverage(DiagnosticChain diagnostics,
 			Map<Object, Object> context);
 
 } // InteractionUse

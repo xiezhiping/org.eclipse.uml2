@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ActionItemProvider.java,v 1.10 2009/12/02 18:27:50 jbruck Exp $
  */
@@ -30,6 +31,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.eclipse.uml2.uml.Action;
@@ -69,11 +71,12 @@ public class ActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOutputPropertyDescriptor(object);
-			addInputPropertyDescriptor(object);
 			addContextPropertyDescriptor(object);
-			addLocalPreconditionPropertyDescriptor(object);
+			addInputPropertyDescriptor(object);
+			addIsLocallyReentrantPropertyDescriptor(object);
 			addLocalPostconditionPropertyDescriptor(object);
+			addLocalPreconditionPropertyDescriptor(object);
+			addOutputPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -119,22 +122,42 @@ public class ActionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Context feature.
+	 * This adds a property descriptor for the Is Locally Reentrant feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addContextPropertyDescriptor(Object object) {
+	protected void addIsLocallyReentrantPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Action_context_feature"), //$NON-NLS-1$
+				getString("_UI_Action_isLocallyReentrant_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Action_context_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTION__CONTEXT, false, false, false, null,
-				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+					"_UI_PropertyDescriptor_description", "_UI_Action_isLocallyReentrant_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.ACTION__IS_LOCALLY_REENTRANT, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Local Postcondition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLocalPostconditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Action_localPostcondition_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_Action_localPostcondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION, true, false,
+				true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -160,23 +183,22 @@ public class ActionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Local Postcondition feature.
+	 * This adds a property descriptor for the Context feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLocalPostconditionPropertyDescriptor(Object object) {
+	protected void addContextPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 			.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 					.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_Action_localPostcondition_feature"), //$NON-NLS-1$
+				getString("_UI_Action_context_feature"), //$NON-NLS-1$
 				getString(
-					"_UI_PropertyDescriptor_description", "_UI_Action_localPostcondition_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION, true, false,
-				true, null, null,
-				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+					"_UI_PropertyDescriptor_description", "_UI_Action_context_feature", "_UI_Action_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.ACTION__CONTEXT, false, false, false, null,
+				null, new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
 
@@ -194,9 +216,9 @@ public class ActionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.ACTION__LOCAL_PRECONDITION);
-			childrenFeatures
 				.add(UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION);
+			childrenFeatures
+				.add(UMLPackage.Literals.ACTION__LOCAL_PRECONDITION);
 		}
 		return childrenFeatures;
 	}
@@ -250,8 +272,12 @@ public class ActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Action.class)) {
-			case UMLPackage.ACTION__LOCAL_PRECONDITION :
+			case UMLPackage.ACTION__IS_LOCALLY_REENTRANT :
+				fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+				return;
 			case UMLPackage.ACTION__LOCAL_POSTCONDITION :
+			case UMLPackage.ACTION__LOCAL_PRECONDITION :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -272,26 +298,6 @@ public class ActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
-			UMLFactory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
-			UMLFactory.eINSTANCE.createInteractionConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
-			UMLFactory.eINSTANCE.createIntervalConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
 			UMLFactory.eINSTANCE.createConstraint()));
 
@@ -305,11 +311,31 @@ public class ActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createInteractionConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createIntervalConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
 			UMLFactory.eINSTANCE.createDurationConstraint()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.ACTION__LOCAL_PRECONDITION,
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 	}
 
 	/**
@@ -324,8 +350,8 @@ public class ActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

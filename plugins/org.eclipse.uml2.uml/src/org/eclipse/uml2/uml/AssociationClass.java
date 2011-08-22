@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AssociationClass.java,v 1.8 2009/08/12 21:05:19 jbruck Exp $
  */
@@ -15,8 +16,6 @@ package org.eclipse.uml2.uml;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,12 +53,15 @@ public interface AssociationClass
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation allConnections results in the set of all AssociationEnds of the Association.
-	 * result = memberEnd->union ( self.parents ()->collect (p | p.allConnections () )
+	 * The owned attributes and owned ends of an AssociationClass are disjoint
+	 * ownedAttribute->intersection(ownedEnd)->isEmpty()
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @model lower="2" ordered="false"
+	 * @model
 	 * @generated
 	 */
-	EList<Property> allConnections();
+	boolean validateDisjointAttributesEnds(DiagnosticChain diagnostics,
+			Map<Object, Object> context);
 
 } // AssociationClass

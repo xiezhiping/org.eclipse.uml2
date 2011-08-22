@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionOperandImpl.java,v 1.27 2010/09/28 21:02:14 khussey Exp $
  */
@@ -70,12 +71,12 @@ import org.eclipse.uml2.uml.internal.operations.InteractionOperandOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getNamespace <em>Namespace</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getCovereds <em>Covered</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getEnclosingInteraction <em>Enclosing Interaction</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getEnclosingOperand <em>Enclosing Operand</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getGeneralOrderings <em>General Ordering</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InteractionOperandImpl#getFragments <em>Fragment</em>}</li>
@@ -671,13 +672,13 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				return ((InternalEList<?>) getCovereds()).basicRemove(otherEnd,
 					msgs);
-			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
-					otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				return basicSetEnclosingInteraction(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				return basicSetEnclosingOperand(null, msgs);
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				return ((InternalEList<?>) getGeneralOrderings()).basicRemove(
+					otherEnd, msgs);
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				return basicSetGuard(null, msgs);
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
@@ -717,46 +718,44 @@ public class InteractionOperandImpl
 		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERACTION_OPERAND__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.INTERACTION_OPERAND__NAME :
-				return getName();
-			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.INTERACTION_OPERAND__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.INTERACTION_OPERAND__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.INTERACTION_OPERAND__NAME :
+				return getName();
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.INTERACTION_OPERAND__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.INTERACTION_OPERAND__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				return getElementImports();
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
 				return getPackageImports();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
 				return getOwnedRules();
-			case UMLPackage.INTERACTION_OPERAND__MEMBER :
-				return getMembers();
-			case UMLPackage.INTERACTION_OPERAND__IMPORTED_MEMBER :
-				return getImportedMembers();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER :
 				return getOwnedMembers();
+			case UMLPackage.INTERACTION_OPERAND__IMPORTED_MEMBER :
+				return getImportedMembers();
+			case UMLPackage.INTERACTION_OPERAND__MEMBER :
+				return getMembers();
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				return getCovereds();
-			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				return getGeneralOrderings();
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				if (resolve)
 					return getEnclosingInteraction();
@@ -765,6 +764,8 @@ public class InteractionOperandImpl
 				if (resolve)
 					return getEnclosingOperand();
 				return basicGetEnclosingOperand();
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				return getGeneralOrderings();
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				if (resolve)
 					return getGuard();
@@ -794,19 +795,19 @@ public class InteractionOperandImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERACTION_OPERAND__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.INTERACTION_OPERAND__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -827,16 +828,16 @@ public class InteractionOperandImpl
 				getCovereds().clear();
 				getCovereds().addAll((Collection<? extends Lifeline>) newValue);
 				return;
-			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
-				getGeneralOrderings().addAll(
-					(Collection<? extends GeneralOrdering>) newValue);
-				return;
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) newValue);
+				return;
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
+				getGeneralOrderings().addAll(
+					(Collection<? extends GeneralOrdering>) newValue);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				setGuard((InteractionConstraint) newValue);
@@ -864,17 +865,17 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERACTION_OPERAND__NAME :
-				unsetName();
-				return;
-			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.INTERACTION_OPERAND__NAME :
+				unsetName();
+				return;
 			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				getElementImports().clear();
@@ -888,14 +889,14 @@ public class InteractionOperandImpl
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				getCovereds().clear();
 				return;
-			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				getGeneralOrderings().clear();
-				return;
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				setEnclosingInteraction((Interaction) null);
 				return;
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				setEnclosingOperand((InteractionOperand) null);
+				return;
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				getGeneralOrderings().clear();
 				return;
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				setGuard((InteractionConstraint) null);
@@ -917,47 +918,47 @@ public class InteractionOperandImpl
 		switch (featureID) {
 			case UMLPackage.INTERACTION_OPERAND__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERACTION_OPERAND__OWNER :
 				return isSetOwner();
-			case UMLPackage.INTERACTION_OPERAND__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__NAME :
 				return isSetName();
-			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.INTERACTION_OPERAND__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.INTERACTION_OPERAND__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.INTERACTION_OPERAND__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.INTERACTION_OPERAND__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.INTERACTION_OPERAND__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.INTERACTION_OPERAND__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.INTERACTION_OPERAND__ELEMENT_IMPORT :
 				return elementImports != null && !elementImports.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__PACKAGE_IMPORT :
 				return packageImports != null && !packageImports.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_RULE :
 				return ownedRules != null && !ownedRules.isEmpty();
-			case UMLPackage.INTERACTION_OPERAND__MEMBER :
-				return isSetMembers();
-			case UMLPackage.INTERACTION_OPERAND__IMPORTED_MEMBER :
-				return !getImportedMembers().isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__OWNED_MEMBER :
 				return isSetOwnedMembers();
+			case UMLPackage.INTERACTION_OPERAND__IMPORTED_MEMBER :
+				return !getImportedMembers().isEmpty();
+			case UMLPackage.INTERACTION_OPERAND__MEMBER :
+				return isSetMembers();
 			case UMLPackage.INTERACTION_OPERAND__COVERED :
 				return covereds != null && !covereds.isEmpty();
-			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 				return basicGetEnclosingInteraction() != null;
 			case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 				return basicGetEnclosingOperand() != null;
+			case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+				return generalOrderings != null && !generalOrderings.isEmpty();
 			case UMLPackage.INTERACTION_OPERAND__GUARD :
 				return guard != null;
 			case UMLPackage.INTERACTION_OPERAND__FRAGMENT :
@@ -977,12 +978,12 @@ public class InteractionOperandImpl
 			switch (derivedFeatureID) {
 				case UMLPackage.INTERACTION_OPERAND__COVERED :
 					return UMLPackage.INTERACTION_FRAGMENT__COVERED;
-				case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
-					return UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING;
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION :
 					return UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION;
 				case UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND :
 					return UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND;
+				case UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING :
+					return UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING;
 				default :
 					return -1;
 			}
@@ -1001,12 +1002,12 @@ public class InteractionOperandImpl
 			switch (baseFeatureID) {
 				case UMLPackage.INTERACTION_FRAGMENT__COVERED :
 					return UMLPackage.INTERACTION_OPERAND__COVERED;
-				case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
-					return UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING;
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_INTERACTION :
 					return UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION;
 				case UMLPackage.INTERACTION_FRAGMENT__ENCLOSING_OPERAND :
 					return UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND;
+				case UMLPackage.INTERACTION_FRAGMENT__GENERAL_ORDERING :
+					return UMLPackage.INTERACTION_OPERAND__GENERAL_ORDERING;
 				default :
 					return -1;
 			}
@@ -1026,117 +1027,119 @@ public class InteractionOperandImpl
 		switch (operationID) {
 			case UMLPackage.INTERACTION_OPERAND___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_OPERAND___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.INTERACTION_OPERAND___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.INTERACTION_OPERAND___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.INTERACTION_OPERAND___GET_MODEL :
-				return getModel();
-			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.INTERACTION_OPERAND___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.INTERACTION_OPERAND___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.INTERACTION_OPERAND___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.INTERACTION_OPERAND___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.INTERACTION_OPERAND___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.INTERACTION_OPERAND___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.INTERACTION_OPERAND___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_MODEL :
+				return getModel();
+			case UMLPackage.INTERACTION_OPERAND___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.INTERACTION_OPERAND___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.INTERACTION_OPERAND___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.INTERACTION_OPERAND___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.INTERACTION_OPERAND___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.INTERACTION_OPERAND___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.INTERACTION_OPERAND___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.INTERACTION_OPERAND___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.INTERACTION_OPERAND___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.INTERACTION_OPERAND___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.INTERACTION_OPERAND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_OPERAND___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.INTERACTION_OPERAND___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.INTERACTION_OPERAND___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.INTERACTION_OPERAND___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.INTERACTION_OPERAND___GET_LABEL :
 				return getLabel();
 			case UMLPackage.INTERACTION_OPERAND___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INTERACTION_OPERAND___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.INTERACTION_OPERAND___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.INTERACTION_OPERAND___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.INTERACTION_OPERAND___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.INTERACTION_OPERAND___SEPARATOR :
 				return separator();
-			case UMLPackage.INTERACTION_OPERAND___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.INTERACTION_OPERAND___VALIDATE_MEMBERS_DISTINGUISHABLE__DIAGNOSTICCHAIN_MAP :
 				return validateMembersDistinguishable(
 					(DiagnosticChain) arguments.get(0),
@@ -1153,24 +1156,26 @@ public class InteractionOperandImpl
 				return getImportedElements();
 			case UMLPackage.INTERACTION_OPERAND___GET_IMPORTED_PACKAGES :
 				return getImportedPackages();
-			case UMLPackage.INTERACTION_OPERAND___GET_IMPORTED_MEMBERS :
-				return getImportedMembers();
-			case UMLPackage.INTERACTION_OPERAND___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
-				return getNamesOfMember((NamedElement) arguments.get(0));
-			case UMLPackage.INTERACTION_OPERAND___MEMBERS_ARE_DISTINGUISHABLE :
-				return membersAreDistinguishable();
-			case UMLPackage.INTERACTION_OPERAND___IMPORT_MEMBERS__ELIST :
-				return importMembers((EList<PackageableElement>) arguments
-					.get(0));
 			case UMLPackage.INTERACTION_OPERAND___EXCLUDE_COLLISIONS__ELIST :
 				return excludeCollisions((EList<PackageableElement>) arguments
 					.get(0));
-			case UMLPackage.INTERACTION_OPERAND___VALIDATE_GUARD_DIRECTLY_PRIOR__DIAGNOSTICCHAIN_MAP :
-				return validateGuardDirectlyPrior(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___GET_NAMES_OF_MEMBER__NAMEDELEMENT :
+				return getNamesOfMember((NamedElement) arguments.get(0));
+			case UMLPackage.INTERACTION_OPERAND___IMPORT_MEMBERS__ELIST :
+				return importMembers((EList<PackageableElement>) arguments
+					.get(0));
+			case UMLPackage.INTERACTION_OPERAND___GET_IMPORTED_MEMBERS :
+				return getImportedMembers();
+			case UMLPackage.INTERACTION_OPERAND___MEMBERS_ARE_DISTINGUISHABLE :
+				return membersAreDistinguishable();
+			case UMLPackage.INTERACTION_OPERAND___GET_OWNED_MEMBERS :
+				return getOwnedMembers();
 			case UMLPackage.INTERACTION_OPERAND___VALIDATE_GUARD_CONTAIN_REFERENCES__DIAGNOSTICCHAIN_MAP :
 				return validateGuardContainReferences(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.INTERACTION_OPERAND___VALIDATE_GUARD_DIRECTLY_PRIOR__DIAGNOSTICCHAIN_MAP :
+				return validateGuardDirectlyPrior(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}
@@ -1226,6 +1231,10 @@ public class InteractionOperandImpl
 	 */
 	@Override
 	public Namespace basicGetNamespace() {
+		Interaction enclosingInteraction = basicGetEnclosingInteraction();
+		if (enclosingInteraction != null) {
+			return enclosingInteraction;
+		}
 		InteractionOperand enclosingOperand = basicGetEnclosingOperand();
 		if (enclosingOperand != null) {
 			return enclosingOperand;
@@ -1241,6 +1250,7 @@ public class InteractionOperandImpl
 	@Override
 	public boolean isSetNamespace() {
 		return super.isSetNamespace()
+			|| eIsSet(UMLPackage.INTERACTION_OPERAND__ENCLOSING_INTERACTION)
 			|| eIsSet(UMLPackage.INTERACTION_OPERAND__ENCLOSING_OPERAND);
 	}
 

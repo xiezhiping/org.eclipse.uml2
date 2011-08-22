@@ -71,6 +71,7 @@ public class ProfileApplicationItemProvider
 
 			addAppliedProfilePropertyDescriptor(object);
 			addIsStrictPropertyDescriptor(object);
+			addApplyingPackagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +113,27 @@ public class ProfileApplicationItemProvider
 				UMLPackage.Literals.PROFILE_APPLICATION__IS_STRICT, true,
 				false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null,
 				null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Applying Package feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addApplyingPackagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ProfileApplication_applyingPackage_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_ProfileApplication_applyingPackage_feature", "_UI_ProfileApplication_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.PROFILE_APPLICATION__APPLYING_PACKAGE,
+				true, false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**

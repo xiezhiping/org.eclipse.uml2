@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DeploymentSpecification.java,v 1.10 2007/06/28 01:41:44 khussey Exp $
  */
@@ -53,7 +54,7 @@ public interface DeploymentSpecification
 	 * @see #unsetDeploymentLocation()
 	 * @see #setDeploymentLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_DeploymentLocation()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getDeploymentLocation();
@@ -105,7 +106,7 @@ public interface DeploymentSpecification
 	 * @see #unsetExecutionLocation()
 	 * @see #setExecutionLocation(String)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDeploymentSpecification_ExecutionLocation()
-	 * @model unsettable="true" dataType="org.eclipse.uml2.uml.String" ordered="false"
+	 * @model unsettable="true" dataType="org.eclipse.uml2.types.String" ordered="false"
 	 * @generated
 	 */
 	String getExecutionLocation();
@@ -148,6 +149,12 @@ public interface DeploymentSpecification
 	/**
 	 * Returns the value of the '<em><b>Deployment</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.uml2.uml.Deployment#getConfigurations <em>Configuration</em>}'.
+	 * <p>
+	 * This feature subsets the following features:
+	 * <ul>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
+	 * </ul>
+	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -193,7 +200,7 @@ public interface DeploymentSpecification
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The DeploymentTarget of a DeploymentSpecification is a kind of ExecutionEnvironment.
-	 * result = self.deployment->forAll (d | d.location..oclIsKindOf(ExecutionEnvironment))
+	 * self.deployment->forAll (d | d.location.oclIsKindOf(ExecutionEnvironment))
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->

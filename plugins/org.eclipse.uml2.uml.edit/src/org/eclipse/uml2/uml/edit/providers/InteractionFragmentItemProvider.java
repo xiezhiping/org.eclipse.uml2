@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionFragmentItemProvider.java,v 1.8 2009/12/02 18:27:49 jbruck Exp $
  */
@@ -69,9 +70,9 @@ public class InteractionFragmentItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCoveredPropertyDescriptor(object);
-			addGeneralOrderingPropertyDescriptor(object);
 			addEnclosingInteractionPropertyDescriptor(object);
 			addEnclosingOperandPropertyDescriptor(object);
+			addGeneralOrderingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}

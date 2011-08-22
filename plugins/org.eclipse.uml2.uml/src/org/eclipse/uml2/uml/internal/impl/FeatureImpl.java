@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: FeatureImpl.java,v 1.18 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -216,40 +217,40 @@ public abstract class FeatureImpl
 		switch (featureID) {
 			case UMLPackage.FEATURE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.FEATURE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.FEATURE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.FEATURE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.FEATURE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.FEATURE__NAME :
-				return getName();
-			case UMLPackage.FEATURE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.FEATURE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.FEATURE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.FEATURE__NAME :
+				return getName();
 			case UMLPackage.FEATURE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.FEATURE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.FEATURE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.FEATURE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.FEATURE__IS_LEAF :
 				return isLeaf();
 			case UMLPackage.FEATURE__REDEFINED_ELEMENT :
 				return getRedefinedElements();
 			case UMLPackage.FEATURE__REDEFINITION_CONTEXT :
 				return getRedefinitionContexts();
-			case UMLPackage.FEATURE__IS_STATIC :
-				return isStatic();
 			case UMLPackage.FEATURE__FEATURING_CLASSIFIER :
 				return getFeaturingClassifiers();
+			case UMLPackage.FEATURE__IS_STATIC :
+				return isStatic();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -273,19 +274,19 @@ public abstract class FeatureImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.FEATURE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.FEATURE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.FEATURE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.FEATURE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.FEATURE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.FEATURE__IS_LEAF :
 				setIsLeaf((Boolean) newValue);
@@ -311,17 +312,17 @@ public abstract class FeatureImpl
 			case UMLPackage.FEATURE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.FEATURE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.FEATURE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.FEATURE__NAME :
+				unsetName();
+				return;
 			case UMLPackage.FEATURE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.FEATURE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.FEATURE__IS_LEAF :
 				setIsLeaf(IS_LEAF_EDEFAULT);
@@ -343,37 +344,37 @@ public abstract class FeatureImpl
 		switch (featureID) {
 			case UMLPackage.FEATURE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.FEATURE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.FEATURE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.FEATURE__OWNER :
 				return isSetOwner();
-			case UMLPackage.FEATURE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.FEATURE__NAME :
 				return isSetName();
-			case UMLPackage.FEATURE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.FEATURE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.FEATURE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.FEATURE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.FEATURE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.FEATURE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.FEATURE__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.FEATURE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.FEATURE__IS_LEAF :
 				return ((eFlags & IS_LEAF_EFLAG) != 0) != IS_LEAF_EDEFAULT;
 			case UMLPackage.FEATURE__REDEFINED_ELEMENT :
 				return isSetRedefinedElements();
 			case UMLPackage.FEATURE__REDEFINITION_CONTEXT :
 				return isSetRedefinitionContexts();
-			case UMLPackage.FEATURE__IS_STATIC :
-				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 			case UMLPackage.FEATURE__FEATURING_CLASSIFIER :
 				return isSetFeaturingClassifiers();
+			case UMLPackage.FEATURE__IS_STATIC :
+				return ((eFlags & IS_STATIC_EFLAG) != 0) != IS_STATIC_EDEFAULT;
 		}
 		return eDynamicIsSet(featureID);
 	}

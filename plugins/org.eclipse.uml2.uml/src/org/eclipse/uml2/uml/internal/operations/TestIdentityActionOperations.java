@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TestIdentityActionOperations.java,v 1.6 2007/05/03 21:11:51 khussey Exp $
  */
@@ -30,8 +31,8 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.TestIdentityAction#validateNoType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TestIdentityAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.TestIdentityAction#validateNoType(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.TestIdentityAction#validateResultIsBoolean(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Result Is Boolean</em>}</li>
  * </ul>
  * </p>
@@ -39,7 +40,7 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * @generated
  */
 public class TestIdentityActionOperations
-		extends ActivityNodeOperations {
+		extends ActionOperations {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -129,8 +130,9 @@ public class TestIdentityActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of the result is Boolean.
-	 * self.result.type.oclIsTypeOf(Boolean)
+	 * The type of the result is the UML standard primitive type Boolean. (This is not directly representable in OCL at the metamodel level.)
+	 * true
+	 * 
 	 * @param testIdentityAction The receiving '<em><b>Test Identity Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

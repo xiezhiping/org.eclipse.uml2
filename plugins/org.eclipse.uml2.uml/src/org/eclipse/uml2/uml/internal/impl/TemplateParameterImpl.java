@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TemplateParameterImpl.java,v 1.23 2010/09/28 21:02:13 khussey Exp $
  */
@@ -55,13 +56,13 @@ import org.eclipse.uml2.uml.internal.operations.TemplateParameterOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getDefault <em>Default</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getParameteredElement <em>Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedParameteredElement <em>Owned Parametered Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getOwnedDefault <em>Owned Default</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateParameterImpl#getSignature <em>Signature</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,16 +73,6 @@ public class TemplateParameterImpl
 		implements TemplateParameter {
 
 	/**
-	 * The cached value of the '{@link #getParameteredElement() <em>Parametered Element</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameteredElement()
-	 * @generated
-	 * @ordered
-	 */
-	protected ParameterableElement parameteredElement;
-
-	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,6 +81,16 @@ public class TemplateParameterImpl
 	 * @ordered
 	 */
 	protected ParameterableElement default_;
+
+	/**
+	 * The cached value of the '{@link #getParameteredElement() <em>Parametered Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameteredElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ParameterableElement parameteredElement;
 
 	/**
 	 * The cached value of the '{@link #getOwnedParameteredElement() <em>Owned Parametered Element</em>}' containment reference.
@@ -612,19 +613,6 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return ((InternalEList<InternalEObject>) (InternalEList<?>) getEAnnotations())
 					.basicAdd(otherEnd, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetSignature((TemplateSignature) otherEnd, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (parameteredElement != null)
-					msgs = ((InternalEObject) parameteredElement)
-						.eInverseRemove(
-							this,
-							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
-							ParameterableElement.class, msgs);
-				return basicSetParameteredElement(
-					(ParameterableElement) otherEnd, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				if (ownedParameteredElement != null)
 					msgs = ((InternalEObject) ownedParameteredElement)
@@ -635,6 +623,19 @@ public class TemplateParameterImpl
 							null, msgs);
 				return basicSetOwnedParameteredElement(
 					(ParameterableElement) otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (parameteredElement != null)
+					msgs = ((InternalEObject) parameteredElement)
+						.eInverseRemove(
+							this,
+							UMLPackage.PARAMETERABLE_ELEMENT__TEMPLATE_PARAMETER,
+							ParameterableElement.class, msgs);
+				return basicSetParameteredElement(
+					(ParameterableElement) otherEnd, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetSignature((TemplateSignature) otherEnd, msgs);
 		}
 		return eDynamicInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -654,14 +655,14 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				return ((InternalEList<?>) getOwnedComments()).basicRemove(
 					otherEnd, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				return basicSetSignature(null, msgs);
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				return basicSetOwnedParameteredElement(null, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return basicSetParameteredElement(null, msgs);
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return basicSetOwnedDefault(null, msgs);
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				return basicSetSignature(null, msgs);
 		}
 		return eDynamicInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -693,34 +694,34 @@ public class TemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				if (resolve)
-					return getSignature();
-				return basicGetSignature();
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				if (resolve)
-					return getParameteredElement();
-				return basicGetParameteredElement();
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				if (resolve)
-					return getOwnedParameteredElement();
-				return basicGetOwnedParameteredElement();
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				if (resolve)
 					return getDefault();
 				return basicGetDefault();
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				if (resolve)
+					return getOwnedParameteredElement();
+				return basicGetOwnedParameteredElement();
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				if (resolve)
+					return getParameteredElement();
+				return basicGetParameteredElement();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				if (resolve)
 					return getOwnedDefault();
 				return basicGetOwnedDefault();
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				if (resolve)
+					return getSignature();
+				return basicGetSignature();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -744,20 +745,20 @@ public class TemplateParameterImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				setSignature((TemplateSignature) newValue);
-				return;
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) newValue);
+			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
+				setDefault((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) newValue);
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
-				setDefault((ParameterableElement) newValue);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) newValue);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) newValue);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				setSignature((TemplateSignature) newValue);
 				return;
 		}
 		eDynamicSet(featureID, newValue);
@@ -777,20 +778,20 @@ public class TemplateParameterImpl
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				setSignature((TemplateSignature) null);
-				return;
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				setParameteredElement((ParameterableElement) null);
+			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
+				setDefault((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
 				setOwnedParameteredElement((ParameterableElement) null);
 				return;
-			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
-				setDefault((ParameterableElement) null);
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				setParameteredElement((ParameterableElement) null);
 				return;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				setOwnedDefault((ParameterableElement) null);
+				return;
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				setSignature((TemplateSignature) null);
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -806,22 +807,22 @@ public class TemplateParameterImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_PARAMETER__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER__OWNER :
 				return isSetOwner();
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
-			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
-				return basicGetSignature() != null;
-			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
-				return parameteredElement != null;
-			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
-				return ownedParameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__DEFAULT :
 				return default_ != null;
+			case UMLPackage.TEMPLATE_PARAMETER__OWNED_PARAMETERED_ELEMENT :
+				return ownedParameteredElement != null;
+			case UMLPackage.TEMPLATE_PARAMETER__PARAMETERED_ELEMENT :
+				return parameteredElement != null;
 			case UMLPackage.TEMPLATE_PARAMETER__OWNED_DEFAULT :
 				return ownedDefault != null;
+			case UMLPackage.TEMPLATE_PARAMETER__SIGNATURE :
+				return basicGetSignature() != null;
 		}
 		return eDynamicIsSet(featureID);
 	}
@@ -838,82 +839,82 @@ public class TemplateParameterImpl
 		switch (operationID) {
 			case UMLPackage.TEMPLATE_PARAMETER___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TEMPLATE_PARAMETER___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TEMPLATE_PARAMETER___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TEMPLATE_PARAMETER___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.TEMPLATE_PARAMETER___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.TEMPLATE_PARAMETER___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.TEMPLATE_PARAMETER___GET_MODEL :
-				return getModel();
-			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_PARAMETER___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.TEMPLATE_PARAMETER___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_MODEL :
+				return getModel();
+			case UMLPackage.TEMPLATE_PARAMETER___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATE_PARAMETER___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TEMPLATE_PARAMETER___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_PARAMETER___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.TEMPLATE_PARAMETER___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATE_PARAMETER___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.TEMPLATE_PARAMETER___MUST_BE_OWNED :

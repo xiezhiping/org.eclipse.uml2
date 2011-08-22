@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Deployment.java,v 1.11 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -29,8 +30,8 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Deployment#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Deployment#getConfigurations <em>Configuration</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Deployment#getDeployedArtifacts <em>Deployed Artifact</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Deployment#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
@@ -154,6 +155,7 @@ public interface Deployment
 	 * This feature subsets the following features:
 	 * <ul>
 	 *   <li>'{@link org.eclipse.uml2.uml.Dependency#getClients() <em>Client</em>}'</li>
+	 *   <li>'{@link org.eclipse.uml2.uml.Element#getOwner() <em>Owner</em>}'</li>
 	 * </ul>
 	 * </p>
 	 * <!-- begin-user-doc -->

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: AbstractionImpl.java,v 1.22 2007/04/25 17:47:02 khussey Exp $
  */
@@ -257,30 +258,30 @@ public class AbstractionImpl
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.ABSTRACTION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.ABSTRACTION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.ABSTRACTION__NAME :
-				return getName();
-			case UMLPackage.ABSTRACTION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.ABSTRACTION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.ABSTRACTION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.ABSTRACTION__NAME :
+				return getName();
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.ABSTRACTION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.ABSTRACTION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.ABSTRACTION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -295,10 +296,10 @@ public class AbstractionImpl
 				return getSources();
 			case UMLPackage.ABSTRACTION__TARGET :
 				return getTargets();
-			case UMLPackage.ABSTRACTION__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.ABSTRACTION__CLIENT :
 				return getClients();
+			case UMLPackage.ABSTRACTION__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.ABSTRACTION__MAPPING :
 				if (resolve)
 					return getMapping();
@@ -326,19 +327,19 @@ public class AbstractionImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.ABSTRACTION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.ABSTRACTION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.ABSTRACTION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.ABSTRACTION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -346,14 +347,14 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.ABSTRACTION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.ABSTRACTION__CLIENT :
 				getClients().clear();
 				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.ABSTRACTION__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.ABSTRACTION__MAPPING :
@@ -377,17 +378,17 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.ABSTRACTION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.ABSTRACTION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.ABSTRACTION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.ABSTRACTION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -395,11 +396,11 @@ public class AbstractionImpl
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.ABSTRACTION__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.ABSTRACTION__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.ABSTRACTION__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.ABSTRACTION__MAPPING :
 				setMapping((OpaqueExpression) null);
@@ -418,27 +419,27 @@ public class AbstractionImpl
 		switch (featureID) {
 			case UMLPackage.ABSTRACTION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.ABSTRACTION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.ABSTRACTION__OWNER :
 				return isSetOwner();
-			case UMLPackage.ABSTRACTION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.ABSTRACTION__NAME :
 				return isSetName();
-			case UMLPackage.ABSTRACTION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.ABSTRACTION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.ABSTRACTION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.ABSTRACTION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.ABSTRACTION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.ABSTRACTION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.ABSTRACTION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.ABSTRACTION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.ABSTRACTION__TEMPLATE_PARAMETER :
@@ -449,10 +450,10 @@ public class AbstractionImpl
 				return isSetSources();
 			case UMLPackage.ABSTRACTION__TARGET :
 				return isSetTargets();
-			case UMLPackage.ABSTRACTION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.ABSTRACTION__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.ABSTRACTION__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.ABSTRACTION__MAPPING :
 				return mapping != null;
 		}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: WriteStructuralFeatureActionOperations.java,v 1.7 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -30,9 +31,9 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateInputPin(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Input Pin</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateTypeOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Type Of Result</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateMultiplicityOfResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity Of Result</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.WriteStructuralFeatureAction#validateMultiplicity(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Multiplicity</em>}</li>
  * </ul>
  * </p>
@@ -55,8 +56,8 @@ public class WriteStructuralFeatureActionOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type input pin is the same as the classifier of the structural feature.
-	 * self.value.type = self.structuralFeature.featuringClassifier
+	 * The type of the value input pin is the same as the type of the structural feature.
+	 * self.value->notEmpty() implies self.value.type =  self.structuralFeature.type
 	 * @param writeStructuralFeatureAction The receiving '<em><b>Write Structural Feature Action</b></em>' model object.
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

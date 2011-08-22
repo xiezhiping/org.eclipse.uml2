@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: WriteStructuralFeatureActionItemProvider.java,v 1.9 2009/12/02 18:27:48 jbruck Exp $
  */
@@ -69,9 +70,31 @@ public class WriteStructuralFeatureActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addResultPropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Result feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResultPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_WriteStructuralFeatureAction_result_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_WriteStructuralFeatureAction_result_feature", "_UI_WriteStructuralFeatureAction_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+				true, false, true, null, null,
+				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
+				}));
 	}
 
 	/**
@@ -109,9 +132,9 @@ public class WriteStructuralFeatureActionItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
-			childrenFeatures
 				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT);
+			childrenFeatures
+				.add(UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -165,8 +188,8 @@ public class WriteStructuralFeatureActionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WriteStructuralFeatureAction.class)) {
-			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT :
+			case UMLPackage.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -187,20 +210,20 @@ public class WriteStructuralFeatureActionItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createInputPin()));
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
+			UMLFactory.eINSTANCE.createOutputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
-			UMLFactory.eINSTANCE.createValuePin()));
+			UMLFactory.eINSTANCE.createInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
 			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__RESULT,
-			UMLFactory.eINSTANCE.createOutputPin()));
+			UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE,
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -215,8 +238,8 @@ public class WriteStructuralFeatureActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
 			|| childFeature == UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT
 			|| childFeature == UMLPackage.Literals.WRITE_STRUCTURAL_FEATURE_ACTION__VALUE;
 

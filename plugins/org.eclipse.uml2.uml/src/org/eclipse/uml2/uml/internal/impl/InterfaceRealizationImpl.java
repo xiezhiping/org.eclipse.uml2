@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InterfaceRealizationImpl.java,v 1.19 2009/01/07 15:55:31 jbruck Exp $
  */
@@ -35,6 +36,7 @@ import org.eclipse.uml2.common.util.SubsetSupersetEObjectWithInverseResolvingELi
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
@@ -51,6 +53,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getClients <em>Client</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.InterfaceRealizationImpl#getContract <em>Contract</em>}</li>
@@ -91,6 +94,33 @@ public class InterfaceRealizationImpl
 	@Override
 	protected EClass eStaticClass() {
 		return UMLPackage.Literals.INTERFACE_REALIZATION;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element getOwner() {
+		Element owner = basicGetOwner();
+		return owner != null && owner.eIsProxy()
+			? (Element) eResolveProxy((InternalEObject) owner)
+			: owner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Element basicGetOwner() {
+		BehavioredClassifier implementingClassifier = basicGetImplementingClassifier();
+		if (implementingClassifier != null) {
+			return implementingClassifier;
+		}
+		return super.basicGetOwner();
 	}
 
 	/**
@@ -378,30 +408,30 @@ public class InterfaceRealizationImpl
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				return getName();
-			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.INTERFACE_REALIZATION__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.INTERFACE_REALIZATION__NAME :
+				return getName();
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.INTERFACE_REALIZATION__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -416,10 +446,10 @@ public class InterfaceRealizationImpl
 				return getSources();
 			case UMLPackage.INTERFACE_REALIZATION__TARGET :
 				return getTargets();
-			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				return getClients();
+			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
+				return getSuppliers();
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				if (resolve)
 					return getMapping();
@@ -455,19 +485,19 @@ public class InterfaceRealizationImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.INTERFACE_REALIZATION__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -475,14 +505,14 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				getClients().clear();
 				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
@@ -512,17 +542,17 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__NAME :
-				unsetName();
-				return;
-			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.INTERFACE_REALIZATION__NAME :
+				unsetName();
+				return;
 			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -530,11 +560,11 @@ public class InterfaceRealizationImpl
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
+				getSuppliers().clear();
 				return;
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				setMapping((OpaqueExpression) null);
@@ -559,27 +589,27 @@ public class InterfaceRealizationImpl
 		switch (featureID) {
 			case UMLPackage.INTERFACE_REALIZATION__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.INTERFACE_REALIZATION__OWNER :
 				return isSetOwner();
-			case UMLPackage.INTERFACE_REALIZATION__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__NAME :
 				return isSetName();
-			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.INTERFACE_REALIZATION__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.INTERFACE_REALIZATION__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.INTERFACE_REALIZATION__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.INTERFACE_REALIZATION__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.INTERFACE_REALIZATION__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.INTERFACE_REALIZATION__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.INTERFACE_REALIZATION__TEMPLATE_PARAMETER :
@@ -590,10 +620,10 @@ public class InterfaceRealizationImpl
 				return isSetSources();
 			case UMLPackage.INTERFACE_REALIZATION__TARGET :
 				return isSetTargets();
-			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.INTERFACE_REALIZATION__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.INTERFACE_REALIZATION__MAPPING :
 				return mapping != null;
 			case UMLPackage.INTERFACE_REALIZATION__CONTRACT :
@@ -602,6 +632,17 @@ public class InterfaceRealizationImpl
 				return basicGetImplementingClassifier() != null;
 		}
 		return eDynamicIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isSetOwner() {
+		return super.isSetOwner()
+			|| eIsSet(UMLPackage.INTERFACE_REALIZATION__IMPLEMENTING_CLASSIFIER);
 	}
 
 } //InterfaceRealizationImpl

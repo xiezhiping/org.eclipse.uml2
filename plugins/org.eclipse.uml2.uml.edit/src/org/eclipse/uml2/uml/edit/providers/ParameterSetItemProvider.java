@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ParameterSetItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
@@ -72,8 +73,8 @@ public class ParameterSetItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParameterPropertyDescriptor(object);
 			addConditionPropertyDescriptor(object);
+			addParameterPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -260,11 +261,11 @@ public class ParameterSetItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PARAMETER_SET__CONDITION,
-			UMLFactory.eINSTANCE.createTimeConstraint()));
+			UMLFactory.eINSTANCE.createDurationConstraint()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.PARAMETER_SET__CONDITION,
-			UMLFactory.eINSTANCE.createDurationConstraint()));
+			UMLFactory.eINSTANCE.createTimeConstraint()));
 	}
 
 	@Override

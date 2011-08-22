@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ChangeEventImpl.java,v 1.22 2007/04/25 17:47:01 khussey Exp $
  */
@@ -261,30 +262,30 @@ public class ChangeEventImpl
 		switch (featureID) {
 			case UMLPackage.CHANGE_EVENT__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.CHANGE_EVENT__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CHANGE_EVENT__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CHANGE_EVENT__NAME :
-				return getName();
-			case UMLPackage.CHANGE_EVENT__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.CHANGE_EVENT__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.CHANGE_EVENT__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.CHANGE_EVENT__NAME :
+				return getName();
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.CHANGE_EVENT__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.CHANGE_EVENT__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.CHANGE_EVENT__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -320,19 +321,19 @@ public class ChangeEventImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CHANGE_EVENT__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.CHANGE_EVENT__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.CHANGE_EVENT__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.CHANGE_EVENT__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -361,17 +362,17 @@ public class ChangeEventImpl
 			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CHANGE_EVENT__NAME :
-				unsetName();
-				return;
-			case UMLPackage.CHANGE_EVENT__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.CHANGE_EVENT__NAME :
+				unsetName();
+				return;
 			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.CHANGE_EVENT__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -396,27 +397,27 @@ public class ChangeEventImpl
 		switch (featureID) {
 			case UMLPackage.CHANGE_EVENT__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CHANGE_EVENT__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CHANGE_EVENT__OWNER :
 				return isSetOwner();
-			case UMLPackage.CHANGE_EVENT__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CHANGE_EVENT__NAME :
 				return isSetName();
-			case UMLPackage.CHANGE_EVENT__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.CHANGE_EVENT__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.CHANGE_EVENT__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.CHANGE_EVENT__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.CHANGE_EVENT__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.CHANGE_EVENT__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.CHANGE_EVENT__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.CHANGE_EVENT__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.CHANGE_EVENT__TEMPLATE_PARAMETER :

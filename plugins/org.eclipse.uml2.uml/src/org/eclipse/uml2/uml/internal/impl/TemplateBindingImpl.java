@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: TemplateBindingImpl.java,v 1.23 2010/09/28 21:02:13 khussey Exp $
  */
@@ -57,12 +58,12 @@ import org.eclipse.uml2.uml.internal.operations.TemplateBindingOperations;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getOwnedElements <em>Owned Element</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getOwner <em>Owner</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getSources <em>Source</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getSignature <em>Signature</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getOwner <em>Owner</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getParameterSubstitutions <em>Parameter Substitution</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.TemplateBindingImpl#getBoundElement <em>Bound Element</em>}</li>
  * </ul>
  * </p>
@@ -74,16 +75,6 @@ public class TemplateBindingImpl
 		implements TemplateBinding {
 
 	/**
-	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSignature()
-	 * @generated
-	 * @ordered
-	 */
-	protected TemplateSignature signature;
-
-	/**
 	 * The cached value of the '{@link #getParameterSubstitutions() <em>Parameter Substitution</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,6 +83,16 @@ public class TemplateBindingImpl
 	 * @ordered
 	 */
 	protected EList<TemplateParameterSubstitution> parameterSubstitutions;
+
+	/**
+	 * The cached value of the '{@link #getSignature() <em>Signature</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSignature()
+	 * @generated
+	 * @ordered
+	 */
+	protected TemplateSignature signature;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -417,26 +418,26 @@ public class TemplateBindingImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.TEMPLATE_BINDING__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
-				return getOwnedComments();
 			case UMLPackage.TEMPLATE_BINDING__RELATED_ELEMENT :
 				return getRelatedElements();
 			case UMLPackage.TEMPLATE_BINDING__SOURCE :
 				return getSources();
 			case UMLPackage.TEMPLATE_BINDING__TARGET :
 				return getTargets();
+			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
+				return getParameterSubstitutions();
 			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
 				if (resolve)
 					return getSignature();
 				return basicGetSignature();
-			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
-				return getParameterSubstitutions();
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				if (resolve)
 					return getBoundElement();
@@ -464,14 +465,14 @@ public class TemplateBindingImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
-				setSignature((TemplateSignature) newValue);
-				return;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				getParameterSubstitutions().clear();
 				getParameterSubstitutions()
 					.addAll(
 						(Collection<? extends TemplateParameterSubstitution>) newValue);
+				return;
+			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
+				setSignature((TemplateSignature) newValue);
 				return;
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				setBoundElement((TemplateableElement) newValue);
@@ -494,11 +495,11 @@ public class TemplateBindingImpl
 			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
-				setSignature((TemplateSignature) null);
-				return;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				getParameterSubstitutions().clear();
+				return;
+			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
+				setSignature((TemplateSignature) null);
 				return;
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				setBoundElement((TemplateableElement) null);
@@ -517,23 +518,23 @@ public class TemplateBindingImpl
 		switch (featureID) {
 			case UMLPackage.TEMPLATE_BINDING__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.TEMPLATE_BINDING__OWNER :
 				return isSetOwner();
-			case UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.TEMPLATE_BINDING__RELATED_ELEMENT :
 				return isSetRelatedElements();
 			case UMLPackage.TEMPLATE_BINDING__SOURCE :
 				return isSetSources();
 			case UMLPackage.TEMPLATE_BINDING__TARGET :
 				return isSetTargets();
-			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
-				return signature != null;
 			case UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION :
 				return parameterSubstitutions != null
 					&& !parameterSubstitutions.isEmpty();
+			case UMLPackage.TEMPLATE_BINDING__SIGNATURE :
+				return signature != null;
 			case UMLPackage.TEMPLATE_BINDING__BOUND_ELEMENT :
 				return basicGetBoundElement() != null;
 		}
@@ -552,82 +553,82 @@ public class TemplateBindingImpl
 		switch (operationID) {
 			case UMLPackage.TEMPLATE_BINDING___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.TEMPLATE_BINDING___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TEMPLATE_BINDING___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.TEMPLATE_BINDING___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.TEMPLATE_BINDING___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.TEMPLATE_BINDING___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.TEMPLATE_BINDING___GET_MODEL :
-				return getModel();
-			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.TEMPLATE_BINDING___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.TEMPLATE_BINDING___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.TEMPLATE_BINDING___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_BINDING___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_BINDING___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.TEMPLATE_BINDING___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.TEMPLATE_BINDING___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_MODEL :
+				return getModel();
+			case UMLPackage.TEMPLATE_BINDING___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.TEMPLATE_BINDING___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.TEMPLATE_BINDING___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.TEMPLATE_BINDING___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.TEMPLATE_BINDING___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.TEMPLATE_BINDING___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.TEMPLATE_BINDING___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TEMPLATE_BINDING___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.TEMPLATE_BINDING___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.TEMPLATE_BINDING___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.TEMPLATE_BINDING___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.TEMPLATE_BINDING___MUST_BE_OWNED :
@@ -643,16 +644,6 @@ public class TemplateBindingImpl
 		}
 		return eDynamicInvoke(operationID, arguments);
 	}
-
-	/**
-	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargets()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.TEMPLATE_BINDING__SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -676,6 +667,16 @@ public class TemplateBindingImpl
 	protected static final int[] OWNED_ELEMENT_ESUBSETS = new int[]{
 		UMLPackage.TEMPLATE_BINDING__OWNED_COMMENT,
 		UMLPackage.TEMPLATE_BINDING__PARAMETER_SUBSTITUTION};
+
+	/**
+	 * The array of subset feature identifiers for the '{@link #getTargets() <em>Target</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTargets()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int[] TARGET_ESUBSETS = new int[]{UMLPackage.TEMPLATE_BINDING__SIGNATURE};
 
 	/**
 	 * <!-- begin-user-doc -->

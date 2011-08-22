@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: PseudostateOperations.java,v 1.7 2007/05/03 21:11:52 khussey Exp $
  */
@@ -30,15 +31,15 @@ import org.eclipse.uml2.uml.util.UMLValidator;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateInitialVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Vertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateHistoryVertices(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate History Vertices</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJoinVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Vertex</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Incoming</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateForkVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsOutgoing(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Outgoing</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJunctionVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Junction Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateChoiceVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Choice Vertex</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateOutgoingFromInitial(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Outgoing From Initial</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJoinVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Join Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateJunctionVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Junction Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateHistoryVertices(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate History Vertices</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateInitialVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Initial Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateForkVertex(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Fork Vertex</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Pseudostate#validateTransitionsIncoming(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Transitions Incoming</em>}</li>
  * </ul>
  * </p>
  *

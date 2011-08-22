@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ValueSpecificationOperations.java,v 1.11 2007/05/03 21:11:52 khussey Exp $
  */
@@ -20,6 +21,7 @@ import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -38,12 +40,13 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  * <p>
  * The following operations are supported:
  * <ul>
- *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#isComputable() <em>Is Computable</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#integerValue() <em>Integer Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#booleanValue() <em>Boolean Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#integerValue() <em>Integer Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#isComputable() <em>Is Computable</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#isNull() <em>Is Null</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#realValue() <em>Real Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#stringValue() <em>String Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#unlimitedValue() <em>Unlimited Value</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#isNull() <em>Is Null</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.ValueSpecification#isCompatibleWith(org.eclipse.uml2.uml.ParameterableElement) <em>Is Compatible With</em>}</li>
  * </ul>
  * </p>
@@ -150,6 +153,20 @@ public class ValueSpecificationOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * The query realValue() gives a single Real value when one can be computed.
+	 * result = Set{}
+	 * @param valueSpecification The receiving '<em><b>Value Specification</b></em>' model object.
+	 * <!-- end-model-doc -->
+	 * @generated NOT
+	 */
+	public static float realValue(ValueSpecification valueSpecification) {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
 	 * 
 	 * result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)
@@ -221,6 +238,12 @@ public class ValueSpecificationOperations
 			public Object caseLiteralInteger(LiteralInteger literalInteger) {
 				literalInteger.setValue(Integer.parseInt(newValue));
 				return literalInteger;
+			}
+
+			@Override
+			public Object caseLiteralReal(LiteralReal literalReal) {
+				literalReal.setValue(Float.parseFloat(newValue));
+				return literalReal;
 			}
 
 			@Override

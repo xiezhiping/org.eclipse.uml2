@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DependencyImpl.java,v 1.18 2007/04/25 17:47:01 khussey Exp $
  */
@@ -51,8 +52,8 @@ import org.eclipse.uml2.uml.VisibilityKind;
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getRelatedElements <em>Related Element</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getTargets <em>Target</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getClients <em>Client</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.internal.impl.DependencyImpl#getSuppliers <em>Supplier</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,16 +64,6 @@ public class DependencyImpl
 		implements Dependency {
 
 	/**
-	 * The cached value of the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSuppliers()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NamedElement> suppliers;
-
-	/**
 	 * The cached value of the '{@link #getClients() <em>Client</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,6 +72,16 @@ public class DependencyImpl
 	 * @ordered
 	 */
 	protected EList<NamedElement> clients;
+
+	/**
+	 * The cached value of the '{@link #getSuppliers() <em>Supplier</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuppliers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedElement> suppliers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -337,30 +338,30 @@ public class DependencyImpl
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.DEPENDENCY__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.DEPENDENCY__NAME :
-				return getName();
-			case UMLPackage.DEPENDENCY__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.DEPENDENCY__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.DEPENDENCY__NAME :
+				return getName();
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
+			case UMLPackage.DEPENDENCY__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				if (resolve)
 					return getOwningTemplateParameter();
@@ -375,10 +376,10 @@ public class DependencyImpl
 				return getSources();
 			case UMLPackage.DEPENDENCY__TARGET :
 				return getTargets();
-			case UMLPackage.DEPENDENCY__SUPPLIER :
-				return getSuppliers();
 			case UMLPackage.DEPENDENCY__CLIENT :
 				return getClients();
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				return getSuppliers();
 		}
 		return eDynamicGet(featureID, resolve, coreType);
 	}
@@ -402,19 +403,19 @@ public class DependencyImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.DEPENDENCY__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.DEPENDENCY__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.DEPENDENCY__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) newValue);
@@ -422,14 +423,14 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) newValue);
 				return;
-			case UMLPackage.DEPENDENCY__SUPPLIER :
-				getSuppliers().clear();
-				getSuppliers().addAll(
-					(Collection<? extends NamedElement>) newValue);
-				return;
 			case UMLPackage.DEPENDENCY__CLIENT :
 				getClients().clear();
 				getClients().addAll(
+					(Collection<? extends NamedElement>) newValue);
+				return;
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				getSuppliers().clear();
+				getSuppliers().addAll(
 					(Collection<? extends NamedElement>) newValue);
 				return;
 		}
@@ -450,17 +451,17 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.DEPENDENCY__NAME :
-				unsetName();
-				return;
-			case UMLPackage.DEPENDENCY__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				return;
+			case UMLPackage.DEPENDENCY__NAME :
+				unsetName();
+				return;
 			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
+				return;
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				setOwningTemplateParameter((TemplateParameter) null);
@@ -468,11 +469,11 @@ public class DependencyImpl
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
 				setTemplateParameter((TemplateParameter) null);
 				return;
-			case UMLPackage.DEPENDENCY__SUPPLIER :
-				getSuppliers().clear();
-				return;
 			case UMLPackage.DEPENDENCY__CLIENT :
 				getClients().clear();
+				return;
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				getSuppliers().clear();
 				return;
 		}
 		eDynamicUnset(featureID);
@@ -488,27 +489,27 @@ public class DependencyImpl
 		switch (featureID) {
 			case UMLPackage.DEPENDENCY__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.DEPENDENCY__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.DEPENDENCY__OWNER :
 				return isSetOwner();
-			case UMLPackage.DEPENDENCY__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.DEPENDENCY__NAME :
 				return isSetName();
-			case UMLPackage.DEPENDENCY__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.DEPENDENCY__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.DEPENDENCY__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.DEPENDENCY__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.DEPENDENCY__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.DEPENDENCY__NAME_EXPRESSION :
-				return nameExpression != null;
+			case UMLPackage.DEPENDENCY__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.DEPENDENCY__OWNING_TEMPLATE_PARAMETER :
 				return basicGetOwningTemplateParameter() != null;
 			case UMLPackage.DEPENDENCY__TEMPLATE_PARAMETER :
@@ -519,10 +520,10 @@ public class DependencyImpl
 				return isSetSources();
 			case UMLPackage.DEPENDENCY__TARGET :
 				return isSetTargets();
-			case UMLPackage.DEPENDENCY__SUPPLIER :
-				return suppliers != null && !suppliers.isEmpty();
 			case UMLPackage.DEPENDENCY__CLIENT :
 				return clients != null && !clients.isEmpty();
+			case UMLPackage.DEPENDENCY__SUPPLIER :
+				return suppliers != null && !suppliers.isEmpty();
 		}
 		return eDynamicIsSet(featureID);
 	}

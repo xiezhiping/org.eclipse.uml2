@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey - 286329, 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ConnectionPointReferenceImpl.java,v 1.25 2010/09/28 21:02:14 khussey Exp $
  */
@@ -44,7 +45,6 @@ import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StringExpression;
-import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -365,38 +365,38 @@ public class ConnectionPointReferenceImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
 				return getEAnnotations();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
+				return getOwnedComments();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT :
 				return getOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
 				if (resolve)
 					return getOwner();
 				return basicGetOwner();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				return getOwnedComments();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				return getName();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				return getVisibility();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				return getClientDependencies();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
-				if (resolve)
-					return getNamespace();
-				return basicGetNamespace();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
+				return getName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				if (resolve)
 					return getNameExpression();
 				return basicGetNameExpression();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return getOutgoings();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return getIncomings();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
+				if (resolve)
+					return getNamespace();
+				return basicGetNamespace();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME :
+				return getQualifiedName();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
+				return getVisibility();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				if (resolve)
 					return getContainer();
 				return basicGetContainer();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
+				return getIncomings();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return getOutgoings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				return getEntries();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
@@ -428,29 +428,19 @@ public class ConnectionPointReferenceImpl
 				getOwnedComments().addAll(
 					(Collection<? extends Comment>) newValue);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				setName((String) newValue);
-				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				setVisibility((VisibilityKind) newValue);
-				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
 				getClientDependencies().addAll(
 					(Collection<? extends Dependency>) newValue);
 				return;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
+				setName((String) newValue);
+				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) newValue);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				getOutgoings().clear();
-				getOutgoings().addAll(
-					(Collection<? extends Transition>) newValue);
-				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				getIncomings().clear();
-				getIncomings().addAll(
-					(Collection<? extends Transition>) newValue);
+			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
+				setVisibility((VisibilityKind) newValue);
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				setContainer((Region) newValue);
@@ -485,23 +475,17 @@ public class ConnectionPointReferenceImpl
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
 				getOwnedComments().clear();
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
-				unsetName();
-				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				unsetVisibility();
-				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
 				getClientDependencies().clear();
+				return;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
+				unsetName();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
 				setNameExpression((StringExpression) null);
 				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				getOutgoings().clear();
-				return;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				getIncomings().clear();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
+				unsetVisibility();
 				return;
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				setContainer((Region) null);
@@ -529,33 +513,33 @@ public class ConnectionPointReferenceImpl
 		switch (featureID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EANNOTATIONS :
 				return eAnnotations != null && !eAnnotations.isEmpty();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
+				return ownedComments != null && !ownedComments.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_ELEMENT :
 				return isSetOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNER :
 				return isSetOwner();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OWNED_COMMENT :
-				return ownedComments != null && !ownedComments.isEmpty();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
+				return clientDependencies != null
+					&& !clientDependencies.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME :
 				return isSetName();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
-				return isSetVisibility();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
+				return nameExpression != null;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
+				return isSetNamespace();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__QUALIFIED_NAME :
 				return QUALIFIED_NAME_EDEFAULT == null
 					? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
-			case UMLPackage.CONNECTION_POINT_REFERENCE__CLIENT_DEPENDENCY :
-				return clientDependencies != null
-					&& !clientDependencies.isEmpty();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAMESPACE :
-				return isSetNamespace();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__NAME_EXPRESSION :
-				return nameExpression != null;
-			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
-				return !getOutgoings().isEmpty();
-			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
-				return !getIncomings().isEmpty();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__VISIBILITY :
+				return isSetVisibility();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__CONTAINER :
 				return basicGetContainer() != null;
+			case UMLPackage.CONNECTION_POINT_REFERENCE__INCOMING :
+				return !getIncomings().isEmpty();
+			case UMLPackage.CONNECTION_POINT_REFERENCE__OUTGOING :
+				return !getOutgoings().isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__ENTRY :
 				return entries != null && !entries.isEmpty();
 			case UMLPackage.CONNECTION_POINT_REFERENCE__EXIT :
@@ -578,129 +562,131 @@ public class ConnectionPointReferenceImpl
 		switch (operationID) {
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_EANNOTATION__STRING :
 				return getEAnnotation((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
-				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_OWNER__DIAGNOSTICCHAIN_MAP :
 				return validateHasOwner((DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_NOT_OWN_SELF__DIAGNOSTICCHAIN_MAP :
+				return validateNotOwnSelf((DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___ADD_KEYWORD__STRING :
+				return addKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___APPLY_STEREOTYPE__STEREOTYPE :
+				return applyStereotype((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_EANNOTATION__STRING :
+				return createEAnnotation((String) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___DESTROY :
 				destroy();
 				return null;
-			case UMLPackage.CONNECTION_POINT_REFERENCE___HAS_KEYWORD__STRING :
-				return hasKeyword((String) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_KEYWORDS :
 				return getKeywords();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___ADD_KEYWORD__STRING :
-				return addKeyword((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___REMOVE_KEYWORD__STRING :
-				return removeKeyword((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_NEAREST_PACKAGE :
-				return getNearestPackage();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_MODEL :
-				return getModel();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
-				return isStereotypeApplicable((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
-				return isStereotypeRequired((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
-				return isStereotypeApplied((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___APPLY_STEREOTYPE__STEREOTYPE :
-				return applyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___UNAPPLY_STEREOTYPE__STEREOTYPE :
-				return unapplyStereotype((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLICABLE_STEREOTYPES :
-				return getApplicableStereotypes();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLICABLE_STEREOTYPE__STRING :
 				return getApplicableStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATIONS :
-				return getStereotypeApplications();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
-				return getStereotypeApplication((Stereotype) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_REQUIRED_STEREOTYPES :
-				return getRequiredStereotypes();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_REQUIRED_STEREOTYPE__STRING :
-				return getRequiredStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_STEREOTYPES :
-				return getAppliedStereotypes();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLICABLE_STEREOTYPES :
+				return getApplicableStereotypes();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_STEREOTYPE__STRING :
 				return getAppliedStereotype((String) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
-				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_STEREOTYPES :
+				return getAppliedStereotypes();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_SUBSTEREOTYPE__STEREOTYPE_STRING :
 				return getAppliedSubstereotype((Stereotype) arguments.get(0),
 					(String) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___HAS_VALUE__STEREOTYPE_STRING :
-				return hasValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_VALUE__STEREOTYPE_STRING :
-				return getValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
-				setValue((Stereotype) arguments.get(0),
-					(String) arguments.get(1), arguments.get(2));
-				return null;
-			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_EANNOTATION__STRING :
-				return createEAnnotation((String) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_APPLIED_SUBSTEREOTYPES__STEREOTYPE :
+				return getAppliedSubstereotypes((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_MODEL :
+				return getModel();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_NEAREST_PACKAGE :
+				return getNearestPackage();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_RELATIONSHIPS :
 				return getRelationships();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_RELATIONSHIPS__ECLASS :
 				return getRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_REQUIRED_STEREOTYPE__STRING :
+				return getRequiredStereotype((String) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_REQUIRED_STEREOTYPES :
+				return getRequiredStereotypes();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_SOURCE_DIRECTED_RELATIONSHIPS :
 				return getSourceDirectedRelationships();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_SOURCE_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getSourceDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATION__STEREOTYPE :
+				return getStereotypeApplication((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_STEREOTYPE_APPLICATIONS :
+				return getStereotypeApplications();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_TARGET_DIRECTED_RELATIONSHIPS :
 				return getTargetDirectedRelationships();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_TARGET_DIRECTED_RELATIONSHIPS__ECLASS :
 				return getTargetDirectedRelationships((EClass) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_VALUE__STEREOTYPE_STRING :
+				return getValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___HAS_KEYWORD__STRING :
+				return hasKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___HAS_VALUE__STEREOTYPE_STRING :
+				return hasValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_APPLICABLE__STEREOTYPE :
+				return isStereotypeApplicable((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_APPLIED__STEREOTYPE :
+				return isStereotypeApplied((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_STEREOTYPE_REQUIRED__STEREOTYPE :
+				return isStereotypeRequired((Stereotype) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___REMOVE_KEYWORD__STRING :
+				return removeKeyword((String) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___SET_VALUE__STEREOTYPE_STRING_OBJECT :
+				setValue((Stereotype) arguments.get(0),
+					(String) arguments.get(1), arguments.get(2));
+				return null;
+			case UMLPackage.CONNECTION_POINT_REFERENCE___UNAPPLY_STEREOTYPE__STEREOTYPE :
+				return unapplyStereotype((Stereotype) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_OWNED_ELEMENTS :
 				return allOwnedElements();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___MUST_BE_OWNED :
 				return mustBeOwned();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
-				return validateHasNoQualifiedName(
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
+				return validateVisibilityNeedsOwnership(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
 				return validateHasQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_VISIBILITY_NEEDS_OWNERSHIP__DIAGNOSTICCHAIN_MAP :
-				return validateVisibilityNeedsOwnership(
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_HAS_NO_QUALIFIED_NAME__DIAGNOSTICCHAIN_MAP :
+				return validateHasNoQualifiedName(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_DEPENDENCY__NAMEDELEMENT :
 				return createDependency((NamedElement) arguments.get(0));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_USAGE__NAMEDELEMENT :
+				return createUsage((NamedElement) arguments.get(0));
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_LABEL :
 				return getLabel();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_LABEL__BOOLEAN :
 				return getLabel((Boolean) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___CREATE_USAGE__NAMEDELEMENT :
-				return createUsage((NamedElement) arguments.get(0));
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_QUALIFIED_NAME :
-				return getQualifiedName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_NAMESPACES :
 				return allNamespaces();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_OWNING_PACKAGES :
+				return allOwningPackages();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___IS_DISTINGUISHABLE_FROM__NAMEDELEMENT_NAMESPACE :
 				return isDistinguishableFrom((NamedElement) arguments.get(0),
 					(Namespace) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_NAMESPACE :
+				return getNamespace();
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_QUALIFIED_NAME :
+				return getQualifiedName();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___SEPARATOR :
 				return separator();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___ALL_OWNING_PACKAGES :
-				return allOwningPackages();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___CONTAINING_STATE_MACHINE :
 				return containingStateMachine();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_OUTGOINGS :
-				return getOutgoings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_INCOMINGS :
 				return getIncomings();
-			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_ENTRY_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
-				return validateEntryPseudostates(
-					(DiagnosticChain) arguments.get(0),
-					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___GET_OUTGOINGS :
+				return getOutgoings();
 			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_EXIT_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
 				return validateExitPseudostates(
+					(DiagnosticChain) arguments.get(0),
+					(Map<Object, Object>) arguments.get(1));
+			case UMLPackage.CONNECTION_POINT_REFERENCE___VALIDATE_ENTRY_PSEUDOSTATES__DIAGNOSTICCHAIN_MAP :
+				return validateEntryPseudostates(
 					(DiagnosticChain) arguments.get(0),
 					(Map<Object, Object>) arguments.get(1));
 		}

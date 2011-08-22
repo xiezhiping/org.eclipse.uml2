@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: DestroyObjectAction.java,v 1.10 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -54,7 +55,7 @@ public interface DestroyObjectAction
 	 * @return the value of the '<em>Is Destroy Links</em>' attribute.
 	 * @see #setIsDestroyLinks(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDestroyObjectAction_IsDestroyLinks()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDestroyLinks();
@@ -80,7 +81,7 @@ public interface DestroyObjectAction
 	 * @return the value of the '<em>Is Destroy Owned Objects</em>' attribute.
 	 * @see #setIsDestroyOwnedObjects(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getDestroyObjectAction_IsDestroyOwnedObjects()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDestroyOwnedObjects();

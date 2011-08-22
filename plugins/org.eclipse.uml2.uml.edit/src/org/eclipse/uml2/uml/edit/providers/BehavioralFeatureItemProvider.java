@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: BehavioralFeatureItemProvider.java,v 1.10 2009/12/02 18:27:49 jbruck Exp $
  */
@@ -73,14 +74,14 @@ public class BehavioralFeatureItemProvider
 			addIsLeafPropertyDescriptor(object);
 			addRedefinedElementPropertyDescriptor(object);
 			addRedefinitionContextPropertyDescriptor(object);
-			addIsStaticPropertyDescriptor(object);
 			addFeaturingClassifierPropertyDescriptor(object);
-			addOwnedParameterPropertyDescriptor(object);
+			addIsStaticPropertyDescriptor(object);
+			addConcurrencyPropertyDescriptor(object);
 			addIsAbstractPropertyDescriptor(object);
 			addMethodPropertyDescriptor(object);
-			addConcurrencyPropertyDescriptor(object);
-			addRaisedExceptionPropertyDescriptor(object);
+			addOwnedParameterPropertyDescriptor(object);
 			addOwnedParameterSetPropertyDescriptor(object);
+			addRaisedExceptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -377,8 +378,8 @@ public class BehavioralFeatureItemProvider
 		switch (notification.getFeatureID(BehavioralFeature.class)) {
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_LEAF :
 			case UMLPackage.BEHAVIORAL_FEATURE__IS_STATIC :
-			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
 			case UMLPackage.BEHAVIORAL_FEATURE__CONCURRENCY :
+			case UMLPackage.BEHAVIORAL_FEATURE__IS_ABSTRACT :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;

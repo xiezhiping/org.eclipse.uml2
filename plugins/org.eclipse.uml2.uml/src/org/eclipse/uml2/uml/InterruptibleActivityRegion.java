@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InterruptibleActivityRegion.java,v 1.9 2007/10/23 15:54:21 jbruck Exp $
  */
@@ -138,7 +139,6 @@ public interface InterruptibleActivityRegion
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Interrupting edges of a region must have their source node in the region and their target node outside the region in the same activity containing the region.
-	 * 
 	 * true
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2006, 2009 IBM Corporation and others.
+ * Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  * 
  * $Id: UML22UMLResourceHandler.java,v 1.37 2009/02/24 23:19:53 jbruck Exp $
  */
@@ -61,13 +62,11 @@ import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.DestructionEvent;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Event;
-import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Expression;
@@ -96,10 +95,6 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Realization;
-import org.eclipse.uml2.uml.ReceiveOperationEvent;
-import org.eclipse.uml2.uml.ReceiveSignalEvent;
-import org.eclipse.uml2.uml.SendOperationEvent;
-import org.eclipse.uml2.uml.SendSignalEvent;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.State;
@@ -414,8 +409,9 @@ public class UML22UMLResourceHandler
 
 		final List<EAnnotation> annotationsToRemove = new ArrayList<EAnnotation>();
 
-		final Map<org.eclipse.uml2.uml.Package, DestructionEvent> destructionEvents = new HashMap<org.eclipse.uml2.uml.Package, DestructionEvent>();
-		final Map<org.eclipse.uml2.uml.Package, ExecutionEvent> executionEvents = new HashMap<org.eclipse.uml2.uml.Package, ExecutionEvent>();
+// FIXME
+//		final Map<org.eclipse.uml2.uml.Package, DestructionEvent> destructionEvents = new HashMap<org.eclipse.uml2.uml.Package, DestructionEvent>();
+//		final Map<org.eclipse.uml2.uml.Package, ExecutionEvent> executionEvents = new HashMap<org.eclipse.uml2.uml.Package, ExecutionEvent>();
 		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> sendEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
 		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> receiveEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
 
@@ -658,24 +654,25 @@ public class UML22UMLResourceHandler
 			@Override
 			public Object caseExecutionOccurrenceSpecification(
 					ExecutionOccurrenceSpecification executionOccurrenceSpecification) {
-				org.eclipse.uml2.uml.Package nearestPackage = executionOccurrenceSpecification
-					.getNearestPackage();
-
-				if (nearestPackage != null) {
-					ExecutionEvent executionEvent = executionEvents
-						.get(nearestPackage);
-
-					if (executionEvent == null) {
-						executionEvents.put(nearestPackage,
-							executionEvent = (ExecutionEvent) nearestPackage
-								.createPackagedElement(null,
-									UMLPackage.Literals.EXECUTION_EVENT));
-					}
-
-					executionOccurrenceSpecification.setEvent(executionEvent);
-				}
-
-				defaultCase(executionOccurrenceSpecification);
+// FIXME
+//				org.eclipse.uml2.uml.Package nearestPackage = executionOccurrenceSpecification
+//					.getNearestPackage();
+//
+//				if (nearestPackage != null) {
+//					ExecutionEvent executionEvent = executionEvents
+//						.get(nearestPackage);
+//
+//					if (executionEvent == null) {
+//						executionEvents.put(nearestPackage,
+//							executionEvent = (ExecutionEvent) nearestPackage
+//								.createPackagedElement(null,
+//									UMLPackage.Literals.EXECUTION_EVENT));
+//					}
+//
+//					executionOccurrenceSpecification.setEvent(executionEvent);
+//				}
+//
+//				defaultCase(executionOccurrenceSpecification);
 
 				return executionOccurrenceSpecification;
 			}
@@ -752,20 +749,21 @@ public class UML22UMLResourceHandler
 
 			@Override
 			public Object caseInteractionUse(InteractionUse interactionUse) {
-				AnyType extension = getExtension(resource, interactionUse);
-
-				if (extension != null) {
-					EObject eObject = getEObject(extension, resource,
-						"argument", true); //$NON-NLS-1$
-
-					if (eObject instanceof InputPin) {
-						InputPin inputValue = (InputPin) eObject;
-						((OpaqueAction) interactionUse.createArgument(
-							inputValue.getName(),
-							UMLPackage.Literals.OPAQUE_ACTION))
-							.getInputValues().add(inputValue);
-					}
-				}
+// FIXME
+//				AnyType extension = getExtension(resource, interactionUse);
+//
+//				if (extension != null) {
+//					EObject eObject = getEObject(extension, resource,
+//						"argument", true); //$NON-NLS-1$
+//
+//					if (eObject instanceof InputPin) {
+//						InputPin inputValue = (InputPin) eObject;
+//						((OpaqueAction) interactionUse.createArgument(
+//							inputValue.getName(),
+//							UMLPackage.Literals.OPAQUE_ACTION))
+//							.getInputValues().add(inputValue);
+//					}
+//				}
 
 				return super.caseInteractionUse(interactionUse);
 			}
@@ -924,70 +922,72 @@ public class UML22UMLResourceHandler
 							switch (message.getMessageSort().getValue()) {
 								case MessageSort.SYNCH_CALL :
 								case MessageSort.ASYNCH_CALL :
-									SendOperationEvent sendOperationEvent = signature instanceof Operation
-										? (nearestSendEvents == null
-											? null
-											: (SendOperationEvent) nearestSendEvents
-												.get(signature))
-										: null;
-
-									if (sendOperationEvent == null) {
-										sendOperationEvent = (SendOperationEvent) nearestPackage
-											.createPackagedElement(
-												null,
-												UMLPackage.Literals.SEND_OPERATION_EVENT);
-
-										if (signature instanceof Operation) {
-											sendOperationEvent
-												.setOperation((Operation) signature);
-
-											if (nearestSendEvents == null) {
-												sendEvents
-													.put(
-														nearestPackage,
-														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
-											}
-
-											nearestSendEvents.put(signature,
-												sendOperationEvent);
-										}
-									}
-
-									messageOccurrenceSpecification
-										.setEvent(sendOperationEvent);
+// FIXME
+//									SendOperationEvent sendOperationEvent = signature instanceof Operation
+//										? (nearestSendEvents == null
+//											? null
+//											: (SendOperationEvent) nearestSendEvents
+//												.get(signature))
+//										: null;
+//
+//									if (sendOperationEvent == null) {
+//										sendOperationEvent = (SendOperationEvent) nearestPackage
+//											.createPackagedElement(
+//												null,
+//												UMLPackage.Literals.SEND_OPERATION_EVENT);
+//
+//										if (signature instanceof Operation) {
+//											sendOperationEvent
+//												.setOperation((Operation) signature);
+//
+//											if (nearestSendEvents == null) {
+//												sendEvents
+//													.put(
+//														nearestPackage,
+//														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
+//											}
+//
+//											nearestSendEvents.put(signature,
+//												sendOperationEvent);
+//										}
+//									}
+//
+//									messageOccurrenceSpecification
+//										.setEvent(sendOperationEvent);
 									break;
 								case MessageSort.ASYNCH_SIGNAL :
-									SendSignalEvent sendSignalEvent = signature instanceof Signal
-										? (nearestSendEvents == null
-											? null
-											: (SendSignalEvent) nearestSendEvents
-												.get(signature))
-										: null;
-
-									if (sendSignalEvent == null) {
-										sendSignalEvent = (SendSignalEvent) nearestPackage
-											.createPackagedElement(
-												null,
-												UMLPackage.Literals.SEND_SIGNAL_EVENT);
-
-										if (signature instanceof Signal) {
-											sendSignalEvent
-												.setSignal((Signal) signature);
-
-											if (nearestSendEvents == null) {
-												sendEvents
-													.put(
-														nearestPackage,
-														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
-											}
-
-											nearestSendEvents.put(signature,
-												sendSignalEvent);
-										}
-									}
-
-									messageOccurrenceSpecification
-										.setEvent(sendSignalEvent);
+// FIXME
+//									SendSignalEvent sendSignalEvent = signature instanceof Signal
+//										? (nearestSendEvents == null
+//											? null
+//											: (SendSignalEvent) nearestSendEvents
+//												.get(signature))
+//										: null;
+//
+//									if (sendSignalEvent == null) {
+//										sendSignalEvent = (SendSignalEvent) nearestPackage
+//											.createPackagedElement(
+//												null,
+//												UMLPackage.Literals.SEND_SIGNAL_EVENT);
+//
+//										if (signature instanceof Signal) {
+//											sendSignalEvent
+//												.setSignal((Signal) signature);
+//
+//											if (nearestSendEvents == null) {
+//												sendEvents
+//													.put(
+//														nearestPackage,
+//														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
+//											}
+//
+//											nearestSendEvents.put(signature,
+//												sendSignalEvent);
+//										}
+//									}
+//
+//									messageOccurrenceSpecification
+//										.setEvent(sendSignalEvent);
 									break;
 							}
 						} else if (message.getReceiveEvent() == messageOccurrenceSpecification) {
@@ -997,70 +997,72 @@ public class UML22UMLResourceHandler
 							switch (message.getMessageSort().getValue()) {
 								case MessageSort.SYNCH_CALL :
 								case MessageSort.ASYNCH_CALL :
-									ReceiveOperationEvent receiveOperationEvent = signature instanceof Operation
-										? (nearestReceiveEvents == null
-											? null
-											: (ReceiveOperationEvent) nearestReceiveEvents
-												.get(signature))
-										: null;
-
-									if (receiveOperationEvent == null) {
-										receiveOperationEvent = (ReceiveOperationEvent) nearestPackage
-											.createPackagedElement(
-												null,
-												UMLPackage.Literals.RECEIVE_OPERATION_EVENT);
-
-										if (signature instanceof Operation) {
-											receiveOperationEvent
-												.setOperation((Operation) signature);
-
-											if (nearestReceiveEvents == null) {
-												receiveEvents
-													.put(
-														nearestPackage,
-														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
-											}
-
-											nearestReceiveEvents.put(signature,
-												receiveOperationEvent);
-										}
-									}
-
-									messageOccurrenceSpecification
-										.setEvent(receiveOperationEvent);
+// FIXME
+//									ReceiveOperationEvent receiveOperationEvent = signature instanceof Operation
+//										? (nearestReceiveEvents == null
+//											? null
+//											: (ReceiveOperationEvent) nearestReceiveEvents
+//												.get(signature))
+//										: null;
+//
+//									if (receiveOperationEvent == null) {
+//										receiveOperationEvent = (ReceiveOperationEvent) nearestPackage
+//											.createPackagedElement(
+//												null,
+//												UMLPackage.Literals.RECEIVE_OPERATION_EVENT);
+//
+//										if (signature instanceof Operation) {
+//											receiveOperationEvent
+//												.setOperation((Operation) signature);
+//
+//											if (nearestReceiveEvents == null) {
+//												receiveEvents
+//													.put(
+//														nearestPackage,
+//														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
+//											}
+//
+//											nearestReceiveEvents.put(signature,
+//												receiveOperationEvent);
+//										}
+//									}
+//
+//									messageOccurrenceSpecification
+//										.setEvent(receiveOperationEvent);
 									break;
 								case MessageSort.ASYNCH_SIGNAL :
-									ReceiveSignalEvent receiveSignalEvent = signature instanceof Signal
-										? (nearestReceiveEvents == null
-											? null
-											: (ReceiveSignalEvent) nearestReceiveEvents
-												.get(signature))
-										: null;
-
-									if (receiveSignalEvent == null) {
-										receiveSignalEvent = (ReceiveSignalEvent) nearestPackage
-											.createPackagedElement(
-												null,
-												UMLPackage.Literals.RECEIVE_SIGNAL_EVENT);
-
-										if (signature instanceof Signal) {
-											receiveSignalEvent
-												.setSignal((Signal) signature);
-
-											if (nearestReceiveEvents == null) {
-												receiveEvents
-													.put(
-														nearestPackage,
-														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
-											}
-
-											nearestReceiveEvents.put(signature,
-												receiveSignalEvent);
-										}
-									}
-
-									messageOccurrenceSpecification
-										.setEvent(receiveSignalEvent);
+// FIXME
+//									ReceiveSignalEvent receiveSignalEvent = signature instanceof Signal
+//										? (nearestReceiveEvents == null
+//											? null
+//											: (ReceiveSignalEvent) nearestReceiveEvents
+//												.get(signature))
+//										: null;
+//
+//									if (receiveSignalEvent == null) {
+//										receiveSignalEvent = (ReceiveSignalEvent) nearestPackage
+//											.createPackagedElement(
+//												null,
+//												UMLPackage.Literals.RECEIVE_SIGNAL_EVENT);
+//
+//										if (signature instanceof Signal) {
+//											receiveSignalEvent
+//												.setSignal((Signal) signature);
+//
+//											if (nearestReceiveEvents == null) {
+//												receiveEvents
+//													.put(
+//														nearestPackage,
+//														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
+//											}
+//
+//											nearestReceiveEvents.put(signature,
+//												receiveSignalEvent);
+//										}
+//									}
+//
+//									messageOccurrenceSpecification
+//										.setEvent(receiveSignalEvent);
 									break;
 							}
 						}
@@ -1133,30 +1135,30 @@ public class UML22UMLResourceHandler
 			@Override
 			public Object caseOccurrenceSpecification(
 					OccurrenceSpecification occurrenceSpecification) {
-
-				if (occurrenceSpecification.getEvent() == null) {
-					org.eclipse.uml2.uml.Package nearestPackage = occurrenceSpecification
-						.getNearestPackage();
-
-					if (nearestPackage != null) {
-						DestructionEvent destructionEvent = destructionEvents
-							.get(nearestPackage);
-
-						if (destructionEvent == null) {
-							destructionEvents
-								.put(
-									nearestPackage,
-									destructionEvent = (DestructionEvent) nearestPackage
-										.createPackagedElement(
-											null,
-											UMLPackage.Literals.DESTRUCTION_EVENT));
-						}
-
-						occurrenceSpecification.setEvent(destructionEvent);
-					}
-				}
-
-				defaultCase(occurrenceSpecification);
+// FIXME
+//				if (occurrenceSpecification.getEvent() == null) {
+//					org.eclipse.uml2.uml.Package nearestPackage = occurrenceSpecification
+//						.getNearestPackage();
+//
+//					if (nearestPackage != null) {
+//						DestructionEvent destructionEvent = destructionEvents
+//							.get(nearestPackage);
+//
+//						if (destructionEvent == null) {
+//							destructionEvents
+//								.put(
+//									nearestPackage,
+//									destructionEvent = (DestructionEvent) nearestPackage
+//										.createPackagedElement(
+//											null,
+//											UMLPackage.Literals.DESTRUCTION_EVENT));
+//						}
+//
+//						occurrenceSpecification.setEvent(destructionEvent);
+//					}
+//				}
+//
+//				defaultCase(occurrenceSpecification);
 
 				return occurrenceSpecification;
 			}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: StructuralFeatureActionItemProvider.java,v 1.8 2009/12/02 18:27:47 jbruck Exp $
  */
@@ -68,8 +69,8 @@ public class StructuralFeatureActionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStructuralFeaturePropertyDescriptor(object);
 			addObjectPropertyDescriptor(object);
+			addStructuralFeaturePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -208,11 +209,11 @@ public class StructuralFeatureActionItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
-			UMLFactory.eINSTANCE.createValuePin()));
+			UMLFactory.eINSTANCE.createActionInputPin()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.STRUCTURAL_FEATURE_ACTION__OBJECT,
-			UMLFactory.eINSTANCE.createActionInputPin()));
+			UMLFactory.eINSTANCE.createValuePin()));
 	}
 
 	/**
@@ -227,8 +228,8 @@ public class StructuralFeatureActionItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION
-			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION;
+		boolean qualify = childFeature == UMLPackage.Literals.ACTION__LOCAL_POSTCONDITION
+			|| childFeature == UMLPackage.Literals.ACTION__LOCAL_PRECONDITION;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

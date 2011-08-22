@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: RedefinableTemplateSignatureItemProvider.java,v 1.17 2010/09/28 21:00:19 khussey Exp $
  */
@@ -79,8 +80,8 @@ public class RedefinableTemplateSignatureItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addParameterPropertyDescriptor(object);
 			addOwnedParameterPropertyDescriptor(object);
+			addParameterPropertyDescriptor(object);
 			addTemplatePropertyDescriptor(object);
 			addExtendedSignaturePropertyDescriptor(object);
 			addInheritedParameterPropertyDescriptor(object);
@@ -206,7 +207,7 @@ public class RedefinableTemplateSignatureItemProvider
 				getString(
 					"_UI_PropertyDescriptor_description", "_UI_RedefinableTemplateSignature_classifier_feature", "_UI_RedefinableTemplateSignature_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE__CLASSIFIER,
-				true, false, false, null, null,
+				true, false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
 	}
@@ -318,11 +319,11 @@ public class RedefinableTemplateSignatureItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
+			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,
-			UMLFactory.eINSTANCE.createConnectableElementTemplateParameter()));
+			UMLFactory.eINSTANCE.createOperationTemplateParameter()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.TEMPLATE_SIGNATURE__OWNED_PARAMETER,

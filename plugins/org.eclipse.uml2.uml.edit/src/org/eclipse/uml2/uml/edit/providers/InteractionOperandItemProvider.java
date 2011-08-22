@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 323181
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: InteractionOperandItemProvider.java,v 1.12 2010/09/28 21:00:19 khussey Exp $
  */
@@ -71,9 +72,9 @@ public class InteractionOperandItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCoveredPropertyDescriptor(object);
-			addGeneralOrderingPropertyDescriptor(object);
 			addEnclosingInteractionPropertyDescriptor(object);
 			addEnclosingOperandPropertyDescriptor(object);
+			addGeneralOrderingPropertyDescriptor(object);
 			addGuardPropertyDescriptor(object);
 			addFragmentPropertyDescriptor(object);
 		}
@@ -319,7 +320,7 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createInteraction()));
+			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -331,7 +332,7 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
+			UMLFactory.eINSTANCE.createInteraction()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -339,11 +340,7 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createStateInvariant()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createActionExecutionSpecification()));
+			UMLFactory.eINSTANCE.createOccurrenceSpecification()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -351,15 +348,11 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
 			UMLFactory.eINSTANCE.createCombinedFragment()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
@@ -367,7 +360,19 @@ public class InteractionOperandItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
-			UMLFactory.eINSTANCE.createConsiderIgnoreFragment()));
+			UMLFactory.eINSTANCE.createMessageOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createDestructionOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createExecutionOccurrenceSpecification()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.INTERACTION_OPERAND__FRAGMENT,
+			UMLFactory.eINSTANCE.createStateInvariant()));
 	}
 
 	/**

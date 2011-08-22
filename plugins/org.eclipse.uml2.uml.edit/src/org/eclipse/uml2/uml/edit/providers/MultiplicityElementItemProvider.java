@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2010 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 215418, 204200
  *   Kenn Hussey - 286329
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: MultiplicityElementItemProvider.java,v 1.13 2010/03/02 03:10:10 khussey Exp $
  */
@@ -77,10 +78,10 @@ public class MultiplicityElementItemProvider
 
 			addIsOrderedPropertyDescriptor(object);
 			addIsUniquePropertyDescriptor(object);
-			addUpperPropertyDescriptor(object);
 			addLowerPropertyDescriptor(object);
-			addUpperValuePropertyDescriptor(object);
 			addLowerValuePropertyDescriptor(object);
+			addUpperPropertyDescriptor(object);
+			addUpperValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -145,25 +146,6 @@ public class MultiplicityElementItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Lower feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLowerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-			.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-					.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
-				getString(
-					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true, false,
-				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Upper Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -182,6 +164,25 @@ public class MultiplicityElementItemProvider
 				false, true, null, null,
 				new String[]{"org.eclipse.ui.views.properties.expert" //$NON-NLS-1$
 				}));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lower feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLowerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+					.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MultiplicityElement_lower_feature"), //$NON-NLS-1$
+				getString(
+					"_UI_PropertyDescriptor_description", "_UI_MultiplicityElement_lower_feature", "_UI_MultiplicityElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER, true, false,
+				false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -219,9 +220,9 @@ public class MultiplicityElementItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures
-				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
-			childrenFeatures
 				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE);
+			childrenFeatures
+				.add(UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE);
 		}
 		return childrenFeatures;
 	}
@@ -274,13 +275,13 @@ public class MultiplicityElementItemProvider
 		switch (notification.getFeatureID(MultiplicityElement.class)) {
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_ORDERED :
 			case UMLPackage.MULTIPLICITY_ELEMENT__IS_UNIQUE :
-			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER :
+			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 				return;
-			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 			case UMLPackage.MULTIPLICITY_ELEMENT__LOWER_VALUE :
+			case UMLPackage.MULTIPLICITY_ELEMENT__UPPER_VALUE :
 				fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), true, false));
 				return;
@@ -316,66 +317,6 @@ public class MultiplicityElementItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createStringExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createDuration()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createDurationInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
-			UMLFactory.eINSTANCE.createTimeInterval()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createOpaqueExpression()));
-
-		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 			UMLFactory.eINSTANCE.createExpression()));
 
@@ -385,31 +326,7 @@ public class MultiplicityElementItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralInteger()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralString()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralBoolean()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralNull()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createInstanceValue()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
-
-		newChildDescriptors.add(createChildParameter(
-			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
-			UMLFactory.eINSTANCE.createTimeExpression()));
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
@@ -425,7 +342,99 @@ public class MultiplicityElementItemProvider
 
 		newChildDescriptors.add(createChildParameter(
 			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
 			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createStringExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createOpaqueExpression()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDuration()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createDurationInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createInstanceValue()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralInteger()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralNull()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralString()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createLiteralUnlimitedNatural()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeInterval()));
+
+		newChildDescriptors.add(createChildParameter(
+			UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE,
+			UMLFactory.eINSTANCE.createTimeExpression()));
 	}
 
 	/**
@@ -440,8 +449,8 @@ public class MultiplicityElementItemProvider
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE
-			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE;
+		boolean qualify = childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__LOWER_VALUE
+			|| childFeature == UMLPackage.Literals.MULTIPLICITY_ELEMENT__UPPER_VALUE;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2", //$NON-NLS-1$

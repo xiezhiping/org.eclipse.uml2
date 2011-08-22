@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: MultiplicityElement.java,v 1.19 2008/10/02 20:56:22 jbruck Exp $
  */
@@ -32,10 +33,10 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isOrdered <em>Is Ordered</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#isUnique <em>Is Unique</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper <em>Upper</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLower <em>Lower</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpperValue <em>Upper Value</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getLowerValue <em>Lower Value</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpper <em>Upper</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.MultiplicityElement#getUpperValue <em>Upper Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,7 +58,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Is Ordered</em>' attribute.
 	 * @see #setIsOrdered(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_IsOrdered()
-	 * @model default="false" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isOrdered();
@@ -83,7 +84,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Is Unique</em>' attribute.
 	 * @see #setIsUnique(boolean)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_IsUnique()
-	 * @model default="true" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model default="true" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isUnique();
@@ -109,7 +110,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Upper</em>' attribute.
 	 * @see #setUpper(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Upper()
-	 * @model default="1" dataType="org.eclipse.uml2.uml.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.types.UnlimitedNatural" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getUpper();
@@ -135,7 +136,7 @@ public interface MultiplicityElement
 	 * @return the value of the '<em>Lower</em>' attribute.
 	 * @see #setLower(int)
 	 * @see org.eclipse.uml2.uml.UMLPackage#getMultiplicityElement_Lower()
-	 * @model default="1" dataType="org.eclipse.uml2.uml.Integer" transient="true" volatile="true" derived="true" ordered="false"
+	 * @model default="1" dataType="org.eclipse.uml2.types.Integer" transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	int getLower();
@@ -306,7 +307,7 @@ public interface MultiplicityElement
 	 * upperBound()->notEmpty()
 	 * result = upperBound() > 1
 	 * <!-- end-model-doc -->
-	 * @model kind="operation" dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false"
+	 * @model kind="operation" dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false"
 	 * @generated
 	 */
 	boolean isMultivalued();
@@ -319,7 +320,7 @@ public interface MultiplicityElement
 	 * upperBound()->notEmpty() and lowerBound()->notEmpty()
 	 * result = (lowerBound() <= C) and (upperBound() >= C)
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.uml.Integer" CRequired="true" COrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" CDataType="org.eclipse.uml2.types.Integer" CRequired="true" COrdered="false"
 	 * @generated
 	 */
 	boolean includesCardinality(int C);
@@ -332,7 +333,7 @@ public interface MultiplicityElement
 	 * self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()
 	 * result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" MRequired="true" MOrdered="false"
 	 * @generated
 	 */
 	boolean includesMultiplicity(MultiplicityElement M);
@@ -344,7 +345,7 @@ public interface MultiplicityElement
 	 * The query lowerBound() returns the lower bound of the multiplicity as an integer.
 	 * result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Integer" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.Integer" ordered="false"
 	 * @generated
 	 */
 	int lowerBound();
@@ -356,7 +357,7 @@ public interface MultiplicityElement
 	 * The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
 	 * result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.UnlimitedNatural" required="true" ordered="false"
+	 * @model dataType="org.eclipse.uml2.types.UnlimitedNatural" ordered="false"
 	 * @generated
 	 */
 	int upperBound();
@@ -368,7 +369,7 @@ public interface MultiplicityElement
 	 * The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
 	 * result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" otherRequired="true" otherOrdered="false"
 	 * @generated
 	 */
 	boolean compatibleWith(MultiplicityElement other);
@@ -380,7 +381,7 @@ public interface MultiplicityElement
 	 * The operation is determines if the upper and lower bound of the ranges are the ones given.
 	 * result = (lowerbound = self.lowerbound and upperbound = self.upperbound)
 	 * <!-- end-model-doc -->
-	 * @model dataType="org.eclipse.uml2.uml.Boolean" required="true" ordered="false" lowerboundDataType="org.eclipse.uml2.uml.Integer" lowerboundRequired="true" lowerboundOrdered="false" upperboundDataType="org.eclipse.uml2.uml.Integer" upperboundRequired="true" upperboundOrdered="false"
+	 * @model dataType="org.eclipse.uml2.types.Boolean" required="true" ordered="false" lowerboundDataType="org.eclipse.uml2.types.Integer" lowerboundRequired="true" lowerboundOrdered="false" upperboundDataType="org.eclipse.uml2.types.Integer" upperboundRequired="true" upperboundOrdered="false"
 	 * @generated
 	 */
 	boolean is(int lowerbound, int upperbound);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2009 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 205188
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: Node.java,v 1.13 2009/08/12 21:05:19 jbruck Exp $
  */
@@ -27,8 +28,7 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A node is computational resource upon which artifacts may be deployed for execution.
- * Nodes can be interconnected through communication paths to define network structures.
+ * A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -147,7 +147,7 @@ public interface Node
 	 * @param end2Lower The lower bound for the second end of the new communication path.
 	 * @param end2Upper The upper bound for the second end of the new communication path.
 	 * <!-- end-model-doc -->
-	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.uml.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.uml.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1NodeRequired="true" end1NodeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.uml.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.uml.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.uml.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.uml.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
+	 * @model required="true" ordered="false" end1IsNavigableDataType="org.eclipse.uml2.types.Boolean" end1IsNavigableRequired="true" end1IsNavigableOrdered="false" end1AggregationRequired="true" end1AggregationOrdered="false" end1NameDataType="org.eclipse.uml2.types.String" end1NameRequired="true" end1NameOrdered="false" end1LowerDataType="org.eclipse.uml2.types.Integer" end1LowerRequired="true" end1LowerOrdered="false" end1UpperDataType="org.eclipse.uml2.types.UnlimitedNatural" end1UpperRequired="true" end1UpperOrdered="false" end1NodeRequired="true" end1NodeOrdered="false" end2IsNavigableDataType="org.eclipse.uml2.types.Boolean" end2IsNavigableRequired="true" end2IsNavigableOrdered="false" end2AggregationRequired="true" end2AggregationOrdered="false" end2NameDataType="org.eclipse.uml2.types.String" end2NameRequired="true" end2NameOrdered="false" end2LowerDataType="org.eclipse.uml2.types.Integer" end2LowerRequired="true" end2LowerOrdered="false" end2UpperDataType="org.eclipse.uml2.types.UnlimitedNatural" end2UpperRequired="true" end2UpperOrdered="false"
 	 * @generated
 	 */
 	CommunicationPath createCommunicationPath(boolean end1IsNavigable,

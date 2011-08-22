@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2008 IBM Corporation and others.
+ * Copyright (c) 2005, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,11 +7,16 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
  * $Id: ComponentOperations.java,v 1.15 2008/10/02 20:56:22 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.operations;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
@@ -22,12 +27,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.UnionEObjectEList;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.PrimitiveType;
+import org.eclipse.uml2.uml.util.UMLValidator;
 import org.eclipse.uml2.uml.Realization;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -41,14 +48,16 @@ import org.eclipse.uml2.uml.Usage;
  * <p>
  * The following operations are supported:
  * <ul>
+ *   <li>{@link org.eclipse.uml2.uml.Component#validateNoNestedClassifiers(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Nested Classifiers</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#validateNoPackagedElements(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate No Packaged Elements</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedClass(java.lang.String, boolean) <em>Create Owned Class</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedEnumeration(java.lang.String) <em>Create Owned Enumeration</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedInterface(java.lang.String) <em>Create Owned Interface</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#realizedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Realized Interfaces</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#usedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Used Interfaces</em>}</li>
- *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds() <em>Get Requireds</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#createOwnedPrimitiveType(java.lang.String) <em>Create Owned Primitive Type</em>}</li>
  *   <li>{@link org.eclipse.uml2.uml.Component#getProvideds() <em>Get Provideds</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#realizedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Realized Interfaces</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#getRequireds() <em>Get Requireds</em>}</li>
+ *   <li>{@link org.eclipse.uml2.uml.Component#usedInterfaces(org.eclipse.uml2.uml.Classifier) <em>Used Interfaces</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +73,76 @@ public class ComponentOperations
 	 */
 	protected ComponentOperations() {
 		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A component cannot nest classifiers.
+	 * self.nestedClassifier->isEmpty()
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoNestedClassifiers(Component component,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.COMPONENT__NO_NESTED_CLASSIFIERS,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoNestedClassifiers", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(component, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{component}));
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * component nested in a Class cannot have any packaged elements.
+	 * (not self.class->isEmpty()) implies self.packagedElement->isEmpty()
+	 * @param component The receiving '<em><b>Component</b></em>' model object.
+	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
+	 * @param context The cache of context-specific information.
+	 * <!-- end-model-doc -->
+	 * @generated
+	 */
+	public static boolean validateNoPackagedElements(Component component,
+			DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// TODO: implement this method
+		// -> specify the condition that violates the invariant
+		// -> verify the details of the diagnostic, including severity and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics
+					.add(new BasicDiagnostic(
+						Diagnostic.ERROR,
+						UMLValidator.DIAGNOSTIC_SOURCE,
+						UMLValidator.COMPONENT__NO_PACKAGED_ELEMENTS,
+						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+							.getString(
+								"_UI_GenericInvariant_diagnostic", new Object[]{"validateNoPackagedElements", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(component, context)}), //$NON-NLS-1$ //$NON-NLS-2$
+						new Object[]{component}));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -235,11 +314,16 @@ public class ComponentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * result = let usedInterfaces = UsedInterfaces(self) and
-	 *   let realizingClassifierUsedInterfaces = UsedInterfaces(self.realizingClassifier) and
-	 *   let typesOfUsedPorts = self.ownedPort.required in
-	 *     ((usedInterfaces->union(realizingClassifierUsedInterfaces))->
-	 *       union(typesOfUsedPorts))->asSet()
+	 * Missing derivation for Component::/required : Interface
+	 * result = 
+	 * let 	usedInterfaces : Set(Interface) = UsedInterfaces(self),
+	 * 		realizingClassifiers : Set(Classifier) = Set{self.realizingClassifier}->union(self.allParents().realizingClassifier),
+	 * 		allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents()),
+	 * 		realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(UsedInterfaces(c))),
+	 * 		ports : Set(Port) = self.ownedPort->union(allParents.oclAsType(Set(EncapsulatedClassifier)).ownedPort),
+	 * 		usedByPorts : Set(Interface) = ports.required
+	 * in		usedInterfaces->union(realizingClassifierInterfaces) ->union(usedByPorts)->asSet()
+	 * 
 	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -248,25 +332,51 @@ public class ComponentOperations
 		EList<Interface> requireds = usedInterfaces(component, component,
 			false, new UniqueEList.FastCompare<Interface>());
 
-		for (ComponentRealization realization : component.getRealizations()) {
+		EList<Component> components = new UniqueEList.FastCompare<Component>();
+		components.add(component);
 
-			for (Classifier realizingClassifier : realization
-				.getRealizingClassifiers()) {
+		for (Classifier parent : component.allParents()) {
 
-				if (realizingClassifier != null) {
-					usedInterfaces(component, realizingClassifier, false,
-						requireds);
+			if (parent instanceof Component) {
+				components.add((Component) parent);
+			}
+		}
 
-					for (Classifier parent : realizingClassifier.allParents()) {
-						usedInterfaces(component, parent, false, requireds);
+		for (Component c : components) {
+
+			for (ComponentRealization realization : c.getRealizations()) {
+
+				for (Classifier realizingClassifier : realization
+					.getRealizingClassifiers()) {
+
+					if (realizingClassifier != null) {
+						usedInterfaces(c, realizingClassifier, false, requireds);
+
+						for (Classifier parent : realizingClassifier
+							.allParents()) {
+							usedInterfaces(c, parent, false, requireds);
+						}
 					}
 				}
 			}
 		}
 
-		for (Port ownedPort : component.getOwnedPorts()) {
-			requireds.addAll(((InternalEList<Interface>) ownedPort
-				.getRequireds()).basicList());
+		EList<EncapsulatedClassifier> classifiers = new UniqueEList.FastCompare<EncapsulatedClassifier>();
+		classifiers.add(component);
+
+		for (Classifier parent : component.allParents()) {
+
+			if (parent instanceof EncapsulatedClassifier) {
+				classifiers.add((EncapsulatedClassifier) parent);
+			}
+		}
+
+		for (EncapsulatedClassifier c : classifiers) {
+
+			for (Port ownedPort : c.getOwnedPorts()) {
+				requireds.addAll(((InternalEList<Interface>) ownedPort
+					.getRequireds()).basicList());
+			}
 		}
 
 		return new UnionEObjectEList<Interface>((InternalEObject) component,
@@ -278,12 +388,16 @@ public class ComponentOperations
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * result = let implementedInterfaces = self.implementation->collect(impl|impl.contract) and
-	 *   let realizedInterfaces = RealizedInterfaces(self) and
-	 *   let realizingClassifierInterfaces = RealizedInterfaces(self.realizingClassifier) and
-	 *   let typesOfRequiredPorts = self.ownedPort.provided in
-	 *     (((implementedInterfaces->union(realizedInterfaces)->union(realizingClassifierInterfaces))->
-	 *       union(typesOfRequiredPorts))->asSet()
+	 * Missing derivation for Component::/provided : Interface
+	 * result =
+	 * let 	realizedInterfaces : Set(Interface) = RealizedInterfaces(self) ,
+	 * 		realizingClassifiers : Set(Classifier) = Set{self.realizingClassifier}->union(self.allParents().realizingClassifier),
+	 * 		allRealizingClassifiers : Set(Classifier) = realizingClassifiers->union(realizingClassifiers.allParents()) ,
+	 * 		realizingClassifierInterfaces : Set(Interface) = allRealizingClassifiers->iterate(c; rci : Set(Interface) = Set{} | rci->union(RealizedInterfaces(c))) ,
+	 * 		ports : Set(Port) = self.ownedPort->union(allParents.oclAsType(Set(EncapsulatedClassifier)).ownedPort) ,
+	 * 		providedByPorts : Set(Interface) = ports.provided 
+	 * in 	realizedInterfaces->union(realizingClassifierInterfaces) ->union(providedByPorts)->asSet()
+	 * 
 	 * @param component The receiving '<em><b>Component</b></em>' model object.
 	 * <!-- end-model-doc -->
 	 * @generated NOT
@@ -292,24 +406,52 @@ public class ComponentOperations
 		EList<Interface> provideds = realizedInterfaces(component, component,
 			false, new UniqueEList.FastCompare<Interface>());
 
-		for (ComponentRealization realization : component.getRealizations()) {
-			for (Classifier realizingClassifier : realization
-				.getRealizingClassifiers()) {
+		EList<Component> components = new UniqueEList.FastCompare<Component>();
+		components.add(component);
 
-				if (realizingClassifier != null) {
-					realizedInterfaces(component, realizingClassifier, false,
-						provideds);
+		for (Classifier parent : component.allParents()) {
 
-					for (Classifier parent : realizingClassifier.allParents()) {
-						realizedInterfaces(component, parent, false, provideds);
+			if (parent instanceof Component) {
+				components.add((Component) parent);
+			}
+		}
+
+		for (Component c : components) {
+
+			for (ComponentRealization realization : c.getRealizations()) {
+
+				for (Classifier realizingClassifier : realization
+					.getRealizingClassifiers()) {
+
+					if (realizingClassifier != null) {
+						realizedInterfaces(c, realizingClassifier, false,
+							provideds);
+
+						for (Classifier parent : realizingClassifier
+							.allParents()) {
+							realizedInterfaces(c, parent, false, provideds);
+						}
 					}
 				}
 			}
 		}
 
-		for (Port ownedPort : component.getOwnedPorts()) {
-			provideds.addAll(((InternalEList<Interface>) ownedPort
-				.getProvideds()).basicList());
+		EList<EncapsulatedClassifier> classifiers = new UniqueEList.FastCompare<EncapsulatedClassifier>();
+		classifiers.add(component);
+
+		for (Classifier parent : component.allParents()) {
+
+			if (parent instanceof EncapsulatedClassifier) {
+				classifiers.add((EncapsulatedClassifier) parent);
+			}
+		}
+
+		for (EncapsulatedClassifier c : classifiers) {
+
+			for (Port ownedPort : c.getOwnedPorts()) {
+				provideds.addAll(((InternalEList<Interface>) ownedPort
+					.getProvideds()).basicList());
+			}
 		}
 
 		return new UnionEObjectEList<Interface>((InternalEObject) component,
