@@ -159,7 +159,7 @@ public class ValueSpecificationOperations
 	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static float realValue(ValueSpecification valueSpecification) {
+	public static double realValue(ValueSpecification valueSpecification) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -242,7 +242,7 @@ public class ValueSpecificationOperations
 
 			@Override
 			public Object caseLiteralReal(LiteralReal literalReal) {
-				literalReal.setValue(Float.parseFloat(newValue));
+				literalReal.setValue(Double.parseDouble(newValue));
 				return literalReal;
 			}
 

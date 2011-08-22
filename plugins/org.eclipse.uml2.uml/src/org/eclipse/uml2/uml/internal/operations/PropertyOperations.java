@@ -802,25 +802,9 @@ public class PropertyOperations
 	 * @param property The receiving '<em><b>Property</b></em>' model object.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static void setRealDefaultValue(Property property, double value) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Sets the default value for this property to the specified real value.
-	 * @param property The receiving '<em><b>Property</b></em>' model object.
-	 * @param value The new default value.
-	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static void setRealDefaultValue(Property property, float value) {
+	public static void setRealDefaultValue(Property property, double value) {
 		ValueSpecification defaultValue = property.getDefaultValue();
 
 		((LiteralReal) (defaultValue instanceof LiteralReal

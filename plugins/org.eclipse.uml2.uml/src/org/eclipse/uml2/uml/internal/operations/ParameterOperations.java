@@ -399,25 +399,9 @@ public class ParameterOperations
 	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
 	 * @param value The new default value.
 	 * <!-- end-model-doc -->
-	 * @generated
-	 */
-	public static void setRealDefaultValue(Parameter parameter, double value) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Sets the default value for this parameter to the specified real value.
-	 * @param parameter The receiving '<em><b>Parameter</b></em>' model object.
-	 * @param value The new default value.
-	 * <!-- end-model-doc -->
 	 * @generated NOT
 	 */
-	public static void setRealDefaultValue(Parameter parameter, float value) {
+	public static void setRealDefaultValue(Parameter parameter, double value) {
 		ValueSpecification defaultValue = parameter.getDefaultValue();
 
 		((LiteralReal) (defaultValue instanceof LiteralReal
