@@ -184,7 +184,7 @@ public class ClassOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetaclass(org.eclipse.uml2.uml.Class class_) {
-		return class_.getAppliedStereotype("StandardL2" //$NON-NLS-1$
+		return class_.getAppliedStereotype("StandardProfileL2" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metaclass") != null; //$NON-NLS-1$
 	}
 

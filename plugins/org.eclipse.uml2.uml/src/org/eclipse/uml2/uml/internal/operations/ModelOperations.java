@@ -52,7 +52,7 @@ public class ModelOperations
 	 * @generated NOT
 	 */
 	public static boolean isMetamodel(Model model) {
-		return model.getAppliedStereotype("StandardL3" //$NON-NLS-1$
+		return model.getAppliedStereotype("StandardProfileL3" //$NON-NLS-1$
 			+ NamedElement.SEPARATOR + "Metamodel") != null; //$NON-NLS-1$
 	}
 
