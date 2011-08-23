@@ -17,9 +17,12 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.profile.l2.L2Plugin;
 import org.eclipse.uml2.uml.profile.l2.Utility;
 
 import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +36,9 @@ import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public class UtilityOperations {
+public class UtilityOperations extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,29 +58,35 @@ public class UtilityOperations {
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateIsUtility(Utility utility,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						L2Validator.DIAGNOSTIC_SOURCE,
-						L2Validator.UTILITY__IS_UTILITY,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateIsUtility", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(utility, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{utility}));
+		boolean result = true;
+
+		org.eclipse.uml2.uml.Class base_Class = utility.getBase_Class();
+
+		if (base_Class != null) {
+
+			for (Feature feature : base_Class.getFeatures()) {
+
+				if (!feature.isStatic()) {
+					result = false;
+					break;
+				}
 			}
-			return false;
+
+			if (!result && diagnostics != null) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					L2Validator.DIAGNOSTIC_SOURCE,
+					L2Validator.UTILITY__IS_UTILITY, L2Plugin.INSTANCE
+						.getString("_UI_Utility_IsUtility_diagnostic", //$NON-NLS-1$
+							getMessageSubstitutions(context, base_Class)),
+					new Object[]{base_Class}));
+			}
 		}
-		return true;
+
+		return result;
 	}
 
 } // UtilityOperations

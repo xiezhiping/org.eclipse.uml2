@@ -17,9 +17,15 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.profile.l2.Implement;
+import org.eclipse.uml2.uml.profile.l2.L2Plugin;
+import org.eclipse.uml2.uml.profile.l2.Specification;
 
 import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +39,9 @@ import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public class ImplementOperations {
+public class ImplementOperations extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,29 +61,41 @@ public class ImplementOperations {
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateImplementsSpecification(Implement implement,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						L2Validator.DIAGNOSTIC_SOURCE,
-						L2Validator.IMPLEMENT__IMPLEMENTS_SPECIFICATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateImplementsSpecification", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(implement, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{implement}));
+		boolean result = true;
+
+		Component base_Component = implement.getBase_Component();
+
+		if (base_Component != null) {
+			result = false;
+
+			LOOP : for (Dependency dependency : base_Component
+				.getClientDependencies()) {
+
+				for (NamedElement supplier : dependency.getSuppliers()) {
+
+					if (getStereotypeApplication(supplier, Specification.class) != null) {
+						result = true;
+						break LOOP;
+					}
+				}
 			}
-			return false;
+
+			if (!result && diagnostics != null) {
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					L2Validator.DIAGNOSTIC_SOURCE,
+					L2Validator.IMPLEMENT__IMPLEMENTS_SPECIFICATION,
+					L2Plugin.INSTANCE.getString(
+						"_UI_Implement_ImplementsSpecification_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Component)),
+					new Object[]{base_Component}));
+			}
 		}
-		return true;
+
+		return result;
 	}
 
 } // ImplementOperations

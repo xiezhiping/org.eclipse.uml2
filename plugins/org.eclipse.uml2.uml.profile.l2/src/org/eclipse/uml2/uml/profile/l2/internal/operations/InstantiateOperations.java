@@ -17,9 +17,14 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.profile.l2.Instantiate;
+import org.eclipse.uml2.uml.profile.l2.L2Plugin;
 
 import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +38,9 @@ import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public class InstantiateOperations {
+public class InstantiateOperations extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,30 +60,51 @@ public class InstantiateOperations {
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateClientAndSupplierAreClassifiers(
 			Instantiate instantiate, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
+		boolean result = true;
+
+		Usage base_Usage = instantiate.getBase_Usage();
+
+		if (base_Usage != null) {
+
+			for (NamedElement client : base_Usage.getClients()) {
+
+				if (!(client instanceof Classifier)) {
+					result = false;
+					break;
+				}
+			}
+
+			if (result) {
+
+				for (NamedElement supplier : base_Usage.getSuppliers()) {
+
+					if (!(supplier instanceof Classifier)) {
+						result = false;
+						break;
+					}
+				}
+			}
+
+			if (!result && diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						L2Validator.DIAGNOSTIC_SOURCE,
 						L2Validator.INSTANTIATE__CLIENT_AND_SUPPLIER_ARE_CLASSIFIERS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						L2Plugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateClientAndSupplierAreClassifiers", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(instantiate, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{instantiate}));
+								"_UI_Instantiate_ClientAndSupplierAreClassifiers_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context, base_Usage)),
+						new Object[]{base_Usage}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 } // InstantiateOperations

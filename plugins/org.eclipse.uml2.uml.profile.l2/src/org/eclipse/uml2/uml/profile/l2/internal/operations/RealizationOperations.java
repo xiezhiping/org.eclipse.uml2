@@ -17,9 +17,13 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.profile.l2.ImplementationClass;
+import org.eclipse.uml2.uml.profile.l2.L2Plugin;
 import org.eclipse.uml2.uml.profile.l2.Realization;
 
 import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +37,9 @@ import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public class RealizationOperations {
+public class RealizationOperations extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,30 +59,37 @@ public class RealizationOperations {
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateCannotBeImplementationClass(
 			Realization realization, DiagnosticChain diagnostics,
 			Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		Classifier base_Classifier = realization.getBase_Classifier();
+
+		if (base_Classifier != null
+			&& getStereotypeApplication(base_Classifier,
+				ImplementationClass.class) != null) {
+
+			result = false;
+
 			if (diagnostics != null) {
 				diagnostics
 					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
+						Diagnostic.WARNING,
 						L2Validator.DIAGNOSTIC_SOURCE,
 						L2Validator.REALIZATION__CANNOT_BE_IMPLEMENTATION_CLASS,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
+						L2Plugin.INSTANCE
 							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotBeImplementationClass", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(realization, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{realization}));
+								"_UI_Realization_CannotBeImplementationClass_diagnostic", //$NON-NLS-1$
+								getMessageSubstitutions(context,
+									base_Classifier)),
+						new Object[]{base_Classifier}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 } // RealizationOperations

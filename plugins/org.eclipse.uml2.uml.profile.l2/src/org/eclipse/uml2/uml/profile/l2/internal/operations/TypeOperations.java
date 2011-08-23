@@ -17,9 +17,12 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 
+import org.eclipse.uml2.uml.profile.l2.L2Plugin;
+import org.eclipse.uml2.uml.profile.l2.Specification;
 import org.eclipse.uml2.uml.profile.l2.Type;
 
 import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +36,9 @@ import org.eclipse.uml2.uml.profile.l2.util.L2Validator;
  * </ul>
  * </p>
  *
- * @generated
+ * @generated not
  */
-public class TypeOperations {
+public class TypeOperations extends UMLUtil {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -55,29 +58,31 @@ public class TypeOperations {
 	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
 	 * @param context The cache of context-specific information.
 	 * <!-- end-model-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static boolean validateCannotBeSpecification(Type type,
 			DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO: implement this method
-		// -> specify the condition that violates the invariant
-		// -> verify the details of the diagnostic, including severity and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		boolean result = true;
+
+		org.eclipse.uml2.uml.Class base_Class = type.getBase_Class();
+
+		if (base_Class != null
+			&& getStereotypeApplication(base_Class, Specification.class) != null) {
+
+			result = false;
+
 			if (diagnostics != null) {
-				diagnostics
-					.add(new BasicDiagnostic(
-						Diagnostic.ERROR,
-						L2Validator.DIAGNOSTIC_SOURCE,
-						L2Validator.TYPE__CANNOT_BE_SPECIFICATION,
-						org.eclipse.emf.ecore.plugin.EcorePlugin.INSTANCE
-							.getString(
-								"_UI_GenericInvariant_diagnostic", new Object[]{"validateCannotBeSpecification", org.eclipse.emf.ecore.util.EObjectValidator.getObjectLabel(type, context)}), //$NON-NLS-1$ //$NON-NLS-2$
-						new Object[]{type}));
+				diagnostics.add(new BasicDiagnostic(Diagnostic.WARNING,
+					L2Validator.DIAGNOSTIC_SOURCE,
+					L2Validator.TYPE__CANNOT_BE_SPECIFICATION,
+					L2Plugin.INSTANCE.getString(
+						"_UI_Type_CannotBeSpecification_diagnostic", //$NON-NLS-1$
+						getMessageSubstitutions(context, base_Class)),
+					new Object[]{base_Class}));
 			}
-			return false;
 		}
-		return true;
+
+		return result;
 	}
 
 } // TypeOperations
