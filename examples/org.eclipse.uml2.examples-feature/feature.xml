@@ -4,7 +4,9 @@
       label="%feature.label"
       version="4.0.0.qualifier"
       provider-name="%feature.provider-name"
-      image="eclipse_update_120.jpg">
+      image="eclipse_update_120.jpg"
+      license-feature="org.eclipse.uml2.license"
+      license-feature-version="4.0.0.qualifier">
 
    <description>
       %description
@@ -30,14 +32,6 @@ http://www.eclipse.org/legal/epl-v10.html
    <includes
          id="org.eclipse.uml2.examples.source"
          version="0.0.0"/>
-
-   <requires>
-      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="compatible"/>
-      <import plugin="org.eclipse.core.resources" version="3.5.0" match="compatible"/>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.ecore.editor" version="2.5.0" match="compatible"/>
-      <import plugin="org.eclipse.uml2.uml.editor" version="3.0.0" match="compatible"/>
-   </requires>
 
    <plugin
          id="org.eclipse.uml2.examples"
