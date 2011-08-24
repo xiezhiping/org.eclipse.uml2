@@ -2,7 +2,7 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <!--
- Copyright (c) 2006, 2010 IBM Corporation and others.
+ Copyright (c) 2006, 2011 IBM Corporation, CEA, and others.
  All rights reserved.   This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
@@ -10,8 +10,8 @@
 
  Contributors: 
    IBM - initial API and implementation
+   Kenn Hussey (CEA) - 351776
 
- $Id: toc.xml,v 1.5 2010/04/30 19:10:41 jbruck Exp $
 -->
 
 <!-- ====================================================================== -->
@@ -19,18 +19,6 @@
 <!-- ====================================================================== -->
 
 <toc label="UML2 Developer Guide">
-	<anchor id="reference-before" />
-	<topic label="Reference">
-		<link toc="topics_Reference.xml"/>
-		<anchor id="reference-ext-pt-before" />
-		<topic label="Extension Points Reference">
-			<topic label="org.eclipse.uml2.uml.generated_package" href="references/extension-points/org_eclipse_uml2_uml_generated_package.html" />
-			<topic label="org.eclipse.uml2.uml.dynamic_package" href="references/extension-points/org_eclipse_uml2_uml_dynamic_package.html" />
-		</topic>
-		<anchor id="reference-ext-pt-after" />
-		<anchor id="other-reference"/>
-	</topic>
-	<anchor id="reference-after" />
 	<topic label="Getting Started">
 		<topic label="Getting Started With UML2" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Getting_Started_with_UML2/article.html" />
 		<topic label="Introduction to UML2 Profiles" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Introduction_to_UML2_Profiles/article.html" />
@@ -54,5 +42,4 @@
 		</topic>
 		<topic label="UML2 FAQ" href="http://wiki.eclipse.org/MDT-UML2-FAQ" />
 	</topic>
-	
 </toc>
