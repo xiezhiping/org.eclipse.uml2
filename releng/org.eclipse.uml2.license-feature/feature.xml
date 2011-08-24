@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uml2.license"
       label="UML2 License"
-      version="4.0.0.qualifier"
+      version="1.0.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description>

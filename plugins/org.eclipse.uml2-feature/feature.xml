@@ -5,8 +5,8 @@
       version="4.0.0.qualifier"
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg"
-      license-feature="org.eclipse.emf.license"
-      license-feature-version="4.0.0.qualifier">
+      license-feature="org.eclipse.uml2.license"
+      license-feature-version="1.0.0.qualifier">
 
    <description>
       %description

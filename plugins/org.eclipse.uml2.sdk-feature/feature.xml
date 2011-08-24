@@ -6,7 +6,7 @@
       provider-name="%feature.provider-name"
       image="eclipse_update_120.jpg"
       license-feature="org.eclipse.uml2.license"
-      license-feature-version="4.0.0.qualifier">
+      license-feature-version="1.0.0.qualifier">
 
    <description>
       %description
