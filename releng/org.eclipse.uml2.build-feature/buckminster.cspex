@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:cspecExtension xmlns:com="http://www.eclipse.org/buckminster/Common-1.0" xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0">
+
+	<cs:dependencies>
+		<cs:dependency name="org.eclipse.uml2.releng.buckminster" componentType="buckminster" />
+		<cs:dependency name="org.eclipse.uml2.tests" componentType="eclipse.feature" />
+
+		<!-- indirect target platform dependencies -->
+		<cs:dependency name="org.eclipse.emf" componentType="eclipse.feature" />
+		<cs:dependency name="org.eclipse.rcp" componentType="eclipse.feature" />
+		<cs:dependency name="org.eclipse.pde.core" componentType="osgi.bundle" />
+		<cs:dependency name="org.eclipse.pde.junit.runtime" componentType="osgi.bundle" />
+		<cs:dependency name="org.eclipse.equinox.frameworkadmin.equinox" componentType="osgi.bundle" />
+	</cs:dependencies>
+
+	<cs:actions>
+
+		<cs:private name="site.tp" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="create.target.platform.metadata" />
+			</cs:actorProperties>
+			<cs:products alias="output" base="${buckminster.output}/site.tp/" />
+		</cs:private>
+
+		<cs:public name="package.uml2-Update" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="package.site" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="package.name" value="mdt-uml2-Update" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repository" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.output}/zips/" />
+		</cs:public>
+
+		<cs:private name="install.uml2-base-platform" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="install.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="target.platform.ius" value="org.eclipse.emf.feature.group,org.eclipse.rcp.feature.group" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repositories" />
+				<cs:attribute name="site.tp" alias="target.platform.repository" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.temp}/uml2-base-platform/" />
+		</cs:private>
+
+		<cs:private name="uml2.license.files" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="install.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="ius" value="org.eclipse.uml2.license_root" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repositories" />
+				<cs:attribute name="site.tp" alias="target.platform.repository" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.temp}/uml2.license.files/" />
+		</cs:private>
+
+		<cs:private name="install.uml2-SDK" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="install.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="ius" value="org.eclipse.uml2.sdk.feature.group" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repositories" />
+				<cs:attribute name="site.tp" alias="target.platform.repository" />
+				<cs:attribute name="install.uml2-base-platform" alias="install.pools" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.temp}/uml2-SDK/" />
+		</cs:private>
+
+		<cs:public name="package.uml2-SDK" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="package.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="package.name" value="mdt-uml2-SDK" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="install.uml2-SDK" alias="install.pools" />
+				<cs:attribute name="uml2.license.files" alias="license.files" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.output}/zips/" />
+		</cs:public>
+
+		<cs:private name="install.uml2-Examples" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="install.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="ius" value="org.eclipse.uml2.examples.feature.group" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repositories" />
+				<cs:attribute name="site.tp" alias="target.platform.repository" />
+				<cs:attribute name="install.uml2-runtime" alias="install.pools" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.temp}/uml2-Examples/" />
+		</cs:private>
+
+		<cs:public name="package.uml2-Examples" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="package.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="package.name" value="mdt-uml2-examples" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="install.uml2-Examples" alias="install.pools" />
+				<cs:attribute name="uml2.license.files" alias="license.files" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.output}/zips/" />
+		</cs:public>
+
+		<cs:private name="install.uml2-runtime" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="install.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="ius" value="org.eclipse.uml2.feature.group" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="site.p2" alias="repositories" />
+				<cs:attribute name="site.tp" alias="target.platform.repository" />
+				<cs:attribute name="install.uml2-base-platform" alias="install.pools" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.temp}/uml2-runtime/" />
+		</cs:private>
+
+		<cs:public name="package.uml2-runtime" actor="ant">
+			<cs:actorProperties>
+				<cs:property key="buildFile" value="packaging.ant" />
+				<cs:property key="targets" value="package.ius" />
+			</cs:actorProperties>
+			<cs:properties>
+				<cs:property key="package.name" value="mdt-uml2-runtime" />
+			</cs:properties>
+			<cs:prerequisites>
+				<cs:attribute name="install.uml2-runtime" alias="install.pools" />
+				<cs:attribute name="uml2.license.files" alias="license.files" />
+			</cs:prerequisites>
+			<cs:products alias="output" base="${buckminster.output}/zips/" />
+		</cs:public>
+
+	</cs:actions>
+
+	<cs:groups>
+		<cs:public name="build">
+			<cs:attribute name="package.uml2-Update" />
+			<cs:attribute name="package.uml2-SDK" />
+			<cs:attribute name="package.uml2-Examples" />
+			<cs:attribute name="package.uml2-runtime" />
+		</cs:public>
+	</cs:groups>
+
+</cs:cspecExtension>
