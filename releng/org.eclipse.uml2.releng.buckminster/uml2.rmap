@@ -16,57 +16,57 @@
 	<searchPath name="uml2">
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,plugins/{1}">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},plugins/{1}">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,plugins/{1}-feature">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},plugins/{1}-feature">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,doc/{1}">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},doc/{1}">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,doc/{1}-feature">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},doc/{1}-feature">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,examples/{1}">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},examples/{1}">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,examples/{1}-feature">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},examples/{1}-feature">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="osgi.bundle" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,tests/{1}">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},tests/{1}">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
 		<provider componentTypes="eclipse.feature" readerType="git" source="true">
 			<property key="git.remote.uri" value="${source.repository.location}" />
-			<uri format="{0}/org.eclipse.uml2,tests/{1}-feature">
-				<bc:propertyRef key="git.clones.root" />
+			<uri format="{0},tests/{1}-feature">
+				<bc:propertyRef key="uml2.clone.root" />
 				<bc:propertyRef key="buckminster.component" />
 			</uri>
 		</provider>
@@ -196,6 +196,7 @@
 	<property key="build.type" value="I" />
 	<property key="eclipse.download" value="http://download.eclipse.org" />
 	<property key="git.clones.root" value="${user.home}/git" />
+	<property key="uml2.clone.root" value="${git.clones.root}/org.eclipse.uml2" />
 	<property key="resolve.target.platform" value="false" />
 	<property key="source.repository.location" value="git://git.eclipse.org/gitroot/uml2/org.eclipse.uml2.git" />
 </rmap>
