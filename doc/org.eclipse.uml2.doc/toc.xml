@@ -35,7 +35,7 @@
 	</topic>
 	<topic label="Online Docs">
 			<topic label="UML2 2.1 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_2.1_Migration_Guide/guide.html" />
-			<topic label="UML2 2.2 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_3.0_Migration_Guide/guide.html" />
+			<topic label="UML2 3.0 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_3.0_Migration_Guide/guide.html" />
 			<topic label="Release Notes">
 			<topic label="What&apos;s New in v3.1" href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=3.1.x" />		
 			<topic label="Previous Releases"  href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=2.2.x" />
