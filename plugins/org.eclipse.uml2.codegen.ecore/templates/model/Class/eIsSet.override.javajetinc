@@ -26,7 +26,7 @@
       <%if (genFeature.isUnsettable()) {%>
 				return isSet<%=genFeature.getAccessorName()%>();
       <%} else {%>
-				return <%=genFeature.getUpperName()%>_ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
+				return <%=genFeature.getUpperName()%>__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
       <%}%>
     <%} else if (genFeature.isListType() && !genFeature.isUnsettable()) {%>
       <%if (genFeature.isWrappedFeatureMapType()) {%>
