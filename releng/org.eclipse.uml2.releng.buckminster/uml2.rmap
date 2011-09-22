@@ -113,7 +113,6 @@
 	</searchPath>
 
 	<searchPath name="emf">
-	<!--
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
 			<uri format="{0}/modeling/emf/emf/updates/2.8-I-builds">
 				<bc:propertyRef key="eclipse.download" />
@@ -134,7 +133,7 @@
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
-	-->
+	<!--
 		<provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false" resolutionFilter="(&amp;(resolve.target.platform=true)(build.type=N))">
 			<uri format="{0}/modeling/emf/emf/updates/2.7">
 				<bc:propertyRef key="eclipse.download" />
@@ -155,6 +154,7 @@
 				<bc:propertyRef key="eclipse.download" />
 			</uri>
 		</provider>
+	-->
 	</searchPath>
 
 	<searchPath name="eclipse.test">
