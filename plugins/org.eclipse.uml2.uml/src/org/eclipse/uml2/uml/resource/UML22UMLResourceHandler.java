@@ -9,7 +9,6 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
  * 
- * $Id: UML22UMLResourceHandler.java,v 1.37 2009/02/24 23:19:53 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -17,7 +16,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -44,9 +42,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
+
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.Action;
@@ -60,8 +60,11 @@ import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Constraint;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.Element;
@@ -77,7 +80,6 @@ import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InteractionUse;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageEnd;
-import org.eclipse.uml2.uml.MessageEvent;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MessageSort;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -109,6 +111,7 @@ import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.ValuePin;
@@ -123,8 +126,6 @@ public class UML22UMLResourceHandler
 
 	protected static final boolean DEBUG = false;
 
-	protected boolean resolveProxies = true;
-	
 	protected static final String STEREOTYPE__ACTION = "Action"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__ACTIVITY = "Activity"; //$NON-NLS-1$
@@ -132,8 +133,6 @@ public class UML22UMLResourceHandler
 	protected static final String STEREOTYPE__COMMENT = "Comment"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__EXPRESSION = "Expression"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE__MESSAGE = "Message"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__OPAQUE_EXPRESSION = "OpaqueExpression"; //$NON-NLS-1$
 
@@ -144,6 +143,10 @@ public class UML22UMLResourceHandler
 	protected static final String STEREOTYPE__TEMPLATEABLE_ELEMENT = "TemplateableElement"; //$NON-NLS-1$
 
 	protected static final String STEREOTYPE__CLASSIFIER_TEMPLATE_PARAMETER = "ClassifierTemplateParameter"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__INTERACTION_USE = "InteractionUse"; //$NON-NLS-1$
+
+	protected static final String STEREOTYPE__BEHAVIORED_CLASSIFIER = "BehavioredClassifier"; //$NON-NLS-1$
 
 	protected static final String TAG_DEFINITION__BEHAVIOR = "behavior"; //$NON-NLS-1$
 
@@ -161,8 +164,6 @@ public class UML22UMLResourceHandler
 
 	protected static final String TAG_DEFINITION__OPERAND = "operand"; //$NON-NLS-1$
 
-	protected static final String TAG_DEFINITION__SIGNATURE = "signature"; //$NON-NLS-1$
-
 	protected static final String TAG_DEFINITION__SYMBOL = "symbol"; //$NON-NLS-1$
 	
 	protected static final String TAG_DEFINITION__WHEN = "when"; //$NON-NLS-1$
@@ -173,7 +174,15 @@ public class UML22UMLResourceHandler
 
 	protected static final String TAG_DEFINITION__OWNED_TEMPLATE_SIGNATURE = "ownedTemplateSignature"; //$NON-NLS-1$
 
+	protected static final String TAG_DEFINITION__ARGUMENT = "argument"; //$NON-NLS-1$
+
+	protected static final String TAG_DEFINITION__OWNED_TRIGGER = "ownedTrigger"; //$NON-NLS-1$
+
 	protected static final String UML2_UML_PACKAGE_2_0_NS_URI = "http://www.eclipse.org/uml2/2.0.0/UML"; //$NON-NLS-1$
+
+	protected boolean resolveProxies = true;
+	
+	protected String xmiVersion = null;
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return resource.getEObjectToExtensionMap().get(eObject);
@@ -297,15 +306,27 @@ public class UML22UMLResourceHandler
 
 		if (internalEObject != null && internalEObject.eIsProxy()) {
 			URI eProxyURI = internalEObject.eProxyURI();
-			URI uri = UML22UMLExtendedMetaData.getURIMap().get(
-				eProxyURI.trimFragment());
+
+			Map<URI, URI> uriMap = UML22UMLExtendedMetaData.getURIMap();
+			URI uri = uriMap.get(eProxyURI);
 
 			if (uri != null) {
-				String fragment = UML22UMLExtendedMetaData.getFragmentMap()
-					.get(eProxyURI.fragment());
+				internalEObject.eSetProxyURI(uri);
+			} else {
+				uri = uriMap.get(
+					eProxyURI.trimFragment());
+				
+				if (uri != null) {
+					String eProxyURIFragment = eProxyURI.fragment();
+					String fragment = UML22UMLExtendedMetaData.getFragmentMap()
+							.get(eProxyURIFragment);
 
-				if (fragment != null) {
-					internalEObject.eSetProxyURI(uri.appendFragment(fragment));
+						if (fragment != null) {
+							internalEObject.eSetProxyURI(uri.appendFragment(fragment));
+						}
+						else {
+							internalEObject.eSetProxyURI(uri.appendFragment(eProxyURIFragment));							
+						}
 				}
 			}
 		}
@@ -378,20 +399,24 @@ public class UML22UMLResourceHandler
 		return reincarnate(eObject, eClass, null);
 	}
 
-	protected Profile getUML2Profile(Element element) {
+	protected Profile getProfile(Element element, String uri) {
 		Resource eResource = element.eResource();
 
 		if (eResource != null) {
 			ResourceSet resourceSet = eResource.getResourceSet();
 
 			if (resourceSet != null) {
-				return UML2Util.load(resourceSet, URI
-					.createURI(UML22UMLResource.UML2_PROFILE_URI),
+				return UML2Util.load(resourceSet,
+					URI.createURI(uri),
 					UMLPackage.Literals.PROFILE);
 			}
 		}
 
 		return null;
+	}
+
+	protected Profile getUML2Profile(Element element) {
+		return getProfile(element, UML22UMLResource.UML2_PROFILE_URI);
 	}
 
 	protected Stereotype getUML2Stereotype(Element element, String name) {
@@ -402,18 +427,26 @@ public class UML22UMLResourceHandler
 			: null;
 	}
 
+	protected Profile getStandardL2Profile(Element element) {
+		return getProfile(element, UML22UMLResource.STANDARD_L2_PROFILE_URI);
+	}
+
+	protected Profile getStandardL3Profile(Element element) {
+		return getProfile(element, UML22UMLResource.STANDARD_L3_PROFILE_URI);
+	}
+
+	@Override
+	public void preLoad(XMLResource resource, InputStream inputStream,
+			Map<?, ?> options) {
+		xmiVersion = ((XMIResource)resource).getXMIVersion();
+	}
+
 	@Override
 	public void postLoad(final XMLResource resource, InputStream inputStream,
 			Map<?, ?> options) {
 		final EList<EObject> resourceContents = resource.getContents();
 
 		final List<EAnnotation> annotationsToRemove = new ArrayList<EAnnotation>();
-
-// FIXME
-//		final Map<org.eclipse.uml2.uml.Package, DestructionEvent> destructionEvents = new HashMap<org.eclipse.uml2.uml.Package, DestructionEvent>();
-//		final Map<org.eclipse.uml2.uml.Package, ExecutionEvent> executionEvents = new HashMap<org.eclipse.uml2.uml.Package, ExecutionEvent>();
-		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> sendEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
-		final Map<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>> receiveEvents = new HashMap<org.eclipse.uml2.uml.Package, Map<NamedElement, MessageEvent>>();
 
 		final List<org.eclipse.uml2.uml.Package> packagesRequiringStereotypes = new ArrayList<org.eclipse.uml2.uml.Package>();
 
@@ -490,6 +523,16 @@ public class UML22UMLResourceHandler
 			}
 
 			@Override
+			public Object caseBehavior(Behavior behavior) {
+
+				if (!behavior.isSetIsReentrant()) {
+					behavior.setIsReentrant(false);
+				}
+
+				return super.caseBehavior(behavior);
+			}
+
+			@Override
 			public Object caseBehavioralFeature(
 					BehavioralFeature behavioralFeature) {
 				AnyType extension = getExtension(resource, behavioralFeature);
@@ -539,6 +582,17 @@ public class UML22UMLResourceHandler
 							ownedBehaviors.add((StateMachine) eObject);
 						}
 					}
+
+					Collection<EObject> ownedTriggers = getEObjects(extension,
+						resource, TAG_DEFINITION__OWNED_TRIGGER, true);
+
+					if (!ownedTriggers.isEmpty()) {
+						UMLUtil.setTaggedValue(
+							behavioredClassifier,
+							getUML2Stereotype(behavioredClassifier,
+								STEREOTYPE__BEHAVIORED_CLASSIFIER),
+							TAG_DEFINITION__OWNED_TRIGGER, ownedTriggers);
+					}
 				}
 
 				return super.caseBehavioredClassifier(behavioredClassifier);
@@ -580,6 +634,59 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseComment(comment);
+			}
+
+			@Override
+			public Object caseConnector(Connector connector) {
+				AnyType extension = getExtension(resource, connector);
+
+				if (extension != null) {
+					getValue(extension.getAnyAttribute(), "kind", true);
+				}	
+				
+				return super.caseConnector(connector);
+			}
+
+			@Override
+			public Object caseDependency(Dependency dependency) {
+				AnyType extension = getExtension(resource, dependency);
+
+				if (extension != null) {
+					Collection<EObject> clients = getEObjects(extension,
+						resource, "client", true);
+
+					InternalEList<NamedElement> dependencyClients = (InternalEList<NamedElement>) (dependency instanceof ComponentRealization
+						? dependency.getSuppliers()
+						: dependency.getClients());
+
+					for (EObject client : clients) {
+
+						if (client instanceof NamedElement
+							&& !dependencyClients.contains(client)) {
+
+							dependencyClients.addUnique((NamedElement) client);
+						}
+					}
+
+					Collection<EObject> suppliers = getEObjects(extension,
+						resource, "supplier", true);
+
+					InternalEList<NamedElement> dependencySuppliers = (InternalEList<NamedElement>) (dependency instanceof ComponentRealization
+						? dependency.getClients()
+						: dependency.getSuppliers());
+
+					for (EObject supplier : suppliers) {
+
+						if (supplier instanceof NamedElement
+							&& !dependencySuppliers.contains(supplier)) {
+
+							dependencySuppliers
+								.addUnique((NamedElement) supplier);
+						}
+					}
+				}
+
+				return super.caseDependency(dependency);
 			}
 
 			@Override
@@ -649,32 +756,6 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseElement(element);
-			}
-
-			@Override
-			public Object caseExecutionOccurrenceSpecification(
-					ExecutionOccurrenceSpecification executionOccurrenceSpecification) {
-// FIXME
-//				org.eclipse.uml2.uml.Package nearestPackage = executionOccurrenceSpecification
-//					.getNearestPackage();
-//
-//				if (nearestPackage != null) {
-//					ExecutionEvent executionEvent = executionEvents
-//						.get(nearestPackage);
-//
-//					if (executionEvent == null) {
-//						executionEvents.put(nearestPackage,
-//							executionEvent = (ExecutionEvent) nearestPackage
-//								.createPackagedElement(null,
-//									UMLPackage.Literals.EXECUTION_EVENT));
-//					}
-//
-//					executionOccurrenceSpecification.setEvent(executionEvent);
-//				}
-//
-//				defaultCase(executionOccurrenceSpecification);
-
-				return executionOccurrenceSpecification;
 			}
 
 			@Override
@@ -749,21 +830,26 @@ public class UML22UMLResourceHandler
 
 			@Override
 			public Object caseInteractionUse(InteractionUse interactionUse) {
-// FIXME
-//				AnyType extension = getExtension(resource, interactionUse);
-//
-//				if (extension != null) {
-//					EObject eObject = getEObject(extension, resource,
-//						"argument", true); //$NON-NLS-1$
-//
-//					if (eObject instanceof InputPin) {
-//						InputPin inputValue = (InputPin) eObject;
-//						((OpaqueAction) interactionUse.createArgument(
-//							inputValue.getName(),
-//							UMLPackage.Literals.OPAQUE_ACTION))
-//							.getInputValues().add(inputValue);
-//					}
-//				}
+				AnyType extension = getExtension(resource, interactionUse);
+
+				if (extension != null) {
+					EObject eObject = getEObject(extension, resource,
+						"argument", true); //$NON-NLS-1$
+
+					if (eObject instanceof InputPin) {
+						InputPin inputValue = (InputPin) eObject;
+						
+						OpaqueAction argument = UMLFactory.eINSTANCE.createOpaqueAction();
+						argument.setName(inputValue.getName());
+						argument.getInputValues().add(inputValue);
+						
+						UMLUtil.setTaggedValue(
+							interactionUse,
+							getUML2Stereotype(interactionUse,
+								STEREOTYPE__INTERACTION_USE),
+							TAG_DEFINITION__ARGUMENT, Collections.singletonList(argument));
+					}
+				}
 
 				return super.caseInteractionUse(interactionUse);
 			}
@@ -799,15 +885,6 @@ public class UML22UMLResourceHandler
 							.equals(value)
 								? MessageSort.ASYNCH_SIGNAL_LITERAL
 								: MessageSort.get((String) value));
-					}
-
-					EObject eObject = getEObject(extension, resource,
-						"signature", true); //$NON-NLS-1$
-
-					if (eObject instanceof NamedElement) {
-						UMLUtil.setTaggedValue(message, getUML2Stereotype(
-							message, STEREOTYPE__MESSAGE),
-							TAG_DEFINITION__SIGNATURE, eObject);
 					}
 				}
 
@@ -864,9 +941,9 @@ public class UML22UMLResourceHandler
 					}
 
 					if (eObjects.isEmpty()) {
-						return caseOccurrenceSpecification((OccurrenceSpecification) reincarnate(
+						return caseExecutionOccurrenceSpecification((ExecutionOccurrenceSpecification) reincarnate(
 							messageOccurrenceSpecification,
-							UMLPackage.Literals.OCCURRENCE_SPECIFICATION,
+							UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION,
 							resource));
 					} else {
 
@@ -900,173 +977,6 @@ public class UML22UMLResourceHandler
 						}
 					}
 				} else {
-					org.eclipse.uml2.uml.Package nearestPackage = messageOccurrenceSpecification
-						.getNearestPackage();
-
-					if (nearestPackage != null) {
-						doSwitch(message);
-
-						Stereotype stereotype = getUML2Stereotype(message,
-							STEREOTYPE__MESSAGE);
-
-						NamedElement signature = message.hasValue(stereotype,
-							TAG_DEFINITION__SIGNATURE)
-							? (NamedElement) message.getValue(stereotype,
-								TAG_DEFINITION__SIGNATURE)
-							: null;
-
-						if (message.getSendEvent() == messageOccurrenceSpecification) {
-							Map<NamedElement, MessageEvent> nearestSendEvents = sendEvents
-								.get(nearestPackage);
-
-							switch (message.getMessageSort().getValue()) {
-								case MessageSort.SYNCH_CALL :
-								case MessageSort.ASYNCH_CALL :
-// FIXME
-//									SendOperationEvent sendOperationEvent = signature instanceof Operation
-//										? (nearestSendEvents == null
-//											? null
-//											: (SendOperationEvent) nearestSendEvents
-//												.get(signature))
-//										: null;
-//
-//									if (sendOperationEvent == null) {
-//										sendOperationEvent = (SendOperationEvent) nearestPackage
-//											.createPackagedElement(
-//												null,
-//												UMLPackage.Literals.SEND_OPERATION_EVENT);
-//
-//										if (signature instanceof Operation) {
-//											sendOperationEvent
-//												.setOperation((Operation) signature);
-//
-//											if (nearestSendEvents == null) {
-//												sendEvents
-//													.put(
-//														nearestPackage,
-//														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
-//											}
-//
-//											nearestSendEvents.put(signature,
-//												sendOperationEvent);
-//										}
-//									}
-//
-//									messageOccurrenceSpecification
-//										.setEvent(sendOperationEvent);
-									break;
-								case MessageSort.ASYNCH_SIGNAL :
-// FIXME
-//									SendSignalEvent sendSignalEvent = signature instanceof Signal
-//										? (nearestSendEvents == null
-//											? null
-//											: (SendSignalEvent) nearestSendEvents
-//												.get(signature))
-//										: null;
-//
-//									if (sendSignalEvent == null) {
-//										sendSignalEvent = (SendSignalEvent) nearestPackage
-//											.createPackagedElement(
-//												null,
-//												UMLPackage.Literals.SEND_SIGNAL_EVENT);
-//
-//										if (signature instanceof Signal) {
-//											sendSignalEvent
-//												.setSignal((Signal) signature);
-//
-//											if (nearestSendEvents == null) {
-//												sendEvents
-//													.put(
-//														nearestPackage,
-//														nearestSendEvents = new HashMap<NamedElement, MessageEvent>());
-//											}
-//
-//											nearestSendEvents.put(signature,
-//												sendSignalEvent);
-//										}
-//									}
-//
-//									messageOccurrenceSpecification
-//										.setEvent(sendSignalEvent);
-									break;
-							}
-						} else if (message.getReceiveEvent() == messageOccurrenceSpecification) {
-							Map<NamedElement, MessageEvent> nearestReceiveEvents = receiveEvents
-								.get(nearestPackage);
-
-							switch (message.getMessageSort().getValue()) {
-								case MessageSort.SYNCH_CALL :
-								case MessageSort.ASYNCH_CALL :
-// FIXME
-//									ReceiveOperationEvent receiveOperationEvent = signature instanceof Operation
-//										? (nearestReceiveEvents == null
-//											? null
-//											: (ReceiveOperationEvent) nearestReceiveEvents
-//												.get(signature))
-//										: null;
-//
-//									if (receiveOperationEvent == null) {
-//										receiveOperationEvent = (ReceiveOperationEvent) nearestPackage
-//											.createPackagedElement(
-//												null,
-//												UMLPackage.Literals.RECEIVE_OPERATION_EVENT);
-//
-//										if (signature instanceof Operation) {
-//											receiveOperationEvent
-//												.setOperation((Operation) signature);
-//
-//											if (nearestReceiveEvents == null) {
-//												receiveEvents
-//													.put(
-//														nearestPackage,
-//														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
-//											}
-//
-//											nearestReceiveEvents.put(signature,
-//												receiveOperationEvent);
-//										}
-//									}
-//
-//									messageOccurrenceSpecification
-//										.setEvent(receiveOperationEvent);
-									break;
-								case MessageSort.ASYNCH_SIGNAL :
-// FIXME
-//									ReceiveSignalEvent receiveSignalEvent = signature instanceof Signal
-//										? (nearestReceiveEvents == null
-//											? null
-//											: (ReceiveSignalEvent) nearestReceiveEvents
-//												.get(signature))
-//										: null;
-//
-//									if (receiveSignalEvent == null) {
-//										receiveSignalEvent = (ReceiveSignalEvent) nearestPackage
-//											.createPackagedElement(
-//												null,
-//												UMLPackage.Literals.RECEIVE_SIGNAL_EVENT);
-//
-//										if (signature instanceof Signal) {
-//											receiveSignalEvent
-//												.setSignal((Signal) signature);
-//
-//											if (nearestReceiveEvents == null) {
-//												receiveEvents
-//													.put(
-//														nearestPackage,
-//														nearestReceiveEvents = new HashMap<NamedElement, MessageEvent>());
-//											}
-//
-//											nearestReceiveEvents.put(signature,
-//												receiveSignalEvent);
-//										}
-//									}
-//
-//									messageOccurrenceSpecification
-//										.setEvent(receiveSignalEvent);
-									break;
-							}
-						}
-					}
 
 					if (extension != null) {
 						Collection<EObject> eObjects = getEObjects(extension,
@@ -1113,6 +1023,17 @@ public class UML22UMLResourceHandler
 			}
 
 			@Override
+			public Object caseNamedElement(NamedElement namedElement) {
+				AnyType extension = getExtension(resource, namedElement);
+
+				if (extension != null) {
+					getValue(extension.getAnyAttribute(), "clientDependency", true);
+				}	
+				
+				return super.caseNamedElement(namedElement);
+			}
+
+			@Override
 			public Object caseNamespace(Namespace namespace) {
 				AnyType extension = getExtension(resource, namespace);
 
@@ -1130,37 +1051,6 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseNamespace(namespace);
-			}
-
-			@Override
-			public Object caseOccurrenceSpecification(
-					OccurrenceSpecification occurrenceSpecification) {
-// FIXME
-//				if (occurrenceSpecification.getEvent() == null) {
-//					org.eclipse.uml2.uml.Package nearestPackage = occurrenceSpecification
-//						.getNearestPackage();
-//
-//					if (nearestPackage != null) {
-//						DestructionEvent destructionEvent = destructionEvents
-//							.get(nearestPackage);
-//
-//						if (destructionEvent == null) {
-//							destructionEvents
-//								.put(
-//									nearestPackage,
-//									destructionEvent = (DestructionEvent) nearestPackage
-//										.createPackagedElement(
-//											null,
-//											UMLPackage.Literals.DESTRUCTION_EVENT));
-//						}
-//
-//						occurrenceSpecification.setEvent(destructionEvent);
-//					}
-//				}
-//
-//				defaultCase(occurrenceSpecification);
-
-				return occurrenceSpecification;
 			}
 
 			@Override
@@ -1255,6 +1145,35 @@ public class UML22UMLResourceHandler
 				}
 
 				return super.caseOperation(operation);
+			}
+
+			@Override
+			public Object casePackage(org.eclipse.uml2.uml.Package package_) {
+
+				for (ProfileApplication profileApplication : package_
+					.getProfileApplications()) {
+
+					defaultCase(profileApplication);
+				}
+
+				Profile standardL3Profile = getStandardL3Profile(package_);
+
+				if (package_.isProfileApplied(getStandardL2Profile(package_))
+					&& !package_.isProfileApplied(standardL3Profile)) {
+
+					package_.applyProfile(standardL3Profile);
+				}
+
+				Object nsURI = UMLUtil.getTaggedValue(package_,
+					UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
+						+ UMLUtil.STEREOTYPE__E_PACKAGE,
+					UMLUtil.TAG_DEFINITION__NS_URI);
+
+				if (nsURI instanceof String) {
+					package_.setURI((String) nsURI);
+				}
+
+				return super.casePackage(package_);
 			}
 
 			@Override
@@ -1549,6 +1468,7 @@ public class UML22UMLResourceHandler
 				}
 				
 				AnyType extension = getExtension(resource, property);
+
 				if (extension != null) {
 
 					EObject ownedTemplateSignature = getEObject(extension,
@@ -1568,7 +1488,16 @@ public class UML22UMLResourceHandler
 							TAG_DEFINITION__TEMPLATE_BINDING, templateBindings);
 					}
 				}
-				
+
+				Object isID = UMLUtil.getTaggedValue(property,
+					UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
+						+ UMLUtil.STEREOTYPE__E_ATTRIBUTE,
+					UMLUtil.TAG_DEFINITION__IS_ID);
+
+				if (isID instanceof Boolean) {
+					property.setIsID((Boolean) isID);
+				}
+
 				return super.caseProperty(property);
 			}
 					
@@ -1956,6 +1885,8 @@ public class UML22UMLResourceHandler
 		for (org.eclipse.uml2.uml.Package package_ : packagesRequiringStereotypes) {
 			ElementOperations.applyAllRequiredStereotypes(package_);
 		}
+		
+		((XMIResource)resource).setXMIVersion(xmiVersion);
 	}
 
 }

@@ -9,7 +9,6 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: UMLResourceFactoryImpl.java,v 1.10 2008/12/09 16:13:50 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -65,9 +64,7 @@ public class UMLResourceFactoryImpl
 	public Resource createResource(URI uri) {
 		UMLResource resource = (UMLResource) createResourceGen(uri);
 
-		resource.setXMIVersion("2.1"); //$NON-NLS-1$
-		// TODO
-		//resource.setXMIVersion("20100901"); //$NON-NLS-1$
+		resource.setXMIVersion("20100901"); //$NON-NLS-1$
 
 		Map<Object, Object> defaultLoadOptions = resource.getDefaultLoadOptions();
 

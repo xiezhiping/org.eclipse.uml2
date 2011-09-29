@@ -963,7 +963,7 @@ public class ProtocolStateMachineImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1124,7 +1124,7 @@ public class ProtocolStateMachineImpl
 			case UMLPackage.PROTOCOL_STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.PROTOCOL_STATE_MACHINE__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.PROTOCOL_STATE_MACHINE__OWNED_PARAMETER_SET :

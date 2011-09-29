@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
+  <nested>
+    <inputs href="UML30.ecore#//Integer"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//Boolean"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//String"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//UnlimitedNatural"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Package/URI"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//Profile/ownedStereotype"/>
+    <outputs href="UML.ecore#//Package/ownedStereotype"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/isFinalSpecialization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/isID"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//BehavioredClassifier/ownedTrigger"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Port/isConjugated"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Stereotype/profile"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InstanceSpecification/classifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LiteralReal"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Action/isLocallyReentrant"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuredActivityNode/structuredNodeInput"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//StructuredActivityNode/structuredNodeOutput"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionUse/argument"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionUse/returnValue"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionUse/returnValueRecipient"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//ExecutionEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//CreationEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//DestructionEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//SendOperationEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//SendSignalEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//ReceiveOperationEvent"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//ReceiveSignalEvent"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DestructionOccurrenceSpecification"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//Pin"/>
+    <outputs href="UML.ecore#//InputPin"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Connector/kind"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//InteractionUse/argument"/>
+  </nested>
+  <nested>
+    <inputs href="UML30.ecore#//OccurrenceSpecification/event"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Dependency/client"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Dependency/supplier"/>
+  </nested>
+  <inputs href="UML30.ecore#/"/>
+  <outputs href="UML.ecore#/"/>
+</ecore2ecore:Ecore2EcoreMappingRoot>

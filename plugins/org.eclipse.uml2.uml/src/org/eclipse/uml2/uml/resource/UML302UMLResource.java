@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * UML resource required for model migration.
- * OMG:  UML 2.2 and UML 2.4 
- * API:  UML2 3.x and UML2 4.0 
+ * OMG:  UML 2.2 and UML 2.4
+ * API:  UML2 3.x and UML2 4.0
  * 
  * @since 4.0
  */
@@ -32,5 +32,9 @@ public interface UML302UMLResource
 	}
 
 	String UML_METAMODEL_NS_URI = "http://www.eclipse.org/uml2/3.0.0/UML"; //$NON-NLS-1$
+
+	String STANDARD_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Standard/1"; //$NON-NLS-1$
+
+	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 }

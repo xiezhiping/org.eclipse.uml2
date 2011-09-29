@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,8 +7,8 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
- * $Id: UML212UMLResource.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -32,5 +32,9 @@ public interface UML212UMLResource
 	}
 
 	String UML_METAMODEL_NS_URI = "http://www.eclipse.org/uml2/2.1.0/UML"; //$NON-NLS-1$
-	
+
+	String STANDARD_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/Standard/1"; //$NON-NLS-1$
+
+	String STANDARD_PROFILE_URI = PROFILES_PATHMAP + "Standard." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
+
 }

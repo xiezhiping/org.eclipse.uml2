@@ -1504,7 +1504,7 @@ public class InteractionImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1677,7 +1677,7 @@ public class InteractionImpl
 			case UMLPackage.INTERACTION__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.INTERACTION__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.INTERACTION__OWNED_PARAMETER_SET :

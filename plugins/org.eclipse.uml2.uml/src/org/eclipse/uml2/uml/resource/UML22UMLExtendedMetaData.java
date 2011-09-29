@@ -9,7 +9,6 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
  * 
- * $Id: UML22UMLExtendedMetaData.java,v 1.6 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -40,10 +39,33 @@ public class UML22UMLExtendedMetaData
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_METAMODEL_URI), URI.createURI(UMLResource.ECORE_METAMODEL_URI));
 			uriMap.put(URI.createURI(UML22UMLResource.UML2_METAMODEL_URI), URI.createURI(UMLResource.UML_METAMODEL_URI));
 
-			// FIXME
+			// Basic.profile.uml2#BuildComponent -> StandardL3.profile.uml#BuildComponent
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGw686Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGyK86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent-base_Component"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxa86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent"));
+			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI).appendFragment("_9vsGxq86Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent-extension_BuildComponent"));
+
+			// Complete.profile.uml2#Metamodel -> StandardL3.profile.uml#Metamodel
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_Ox98AK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5VK87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel-base_Model"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Ua87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Uq87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel-extension_Metamodel"));
+
+			// Complete.profile.uml2#SystemModel -> StandardL3.profile.uml#SystemModel
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O1-5Va87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8687Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel-base_Model"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8K87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel"));
+			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI).appendFragment("_O2E_8a87Edih9-GG5afQ0g"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel-extension_SystemModel"));
+
+			// Basic.profile.uml2 -> StandardL2.profile.uml
 			uriMap.put(URI.createURI(UML22UMLResource.BASIC_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+
+			// Intermediate.profile.uml2 -> StandardL2.profile.uml
 			uriMap.put(URI.createURI(UML22UMLResource.INTERMEDIATE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+
+			// Complete.profile.uml2 -> StandardL2.profile.uml
 			uriMap.put(URI.createURI(UML22UMLResource.COMPLETE_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+
 			uriMap.put(URI.createURI(UML22UMLResource.ECORE_PROFILE_URI), URI.createURI(UMLResource.ECORE_PROFILE_URI));
 		}
 
@@ -2088,10 +2110,10 @@ public class UML22UMLExtendedMetaData
 			fragmentMap.put("_9vsGwq86Edih9-GG5afQ0g", "Auxiliary-base_Class"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_9vNloK86Edih9-GG5afQ0g", "Class_Auxiliary"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_9vsGwK86Edih9-GG5afQ0g", "Class_Auxiliary-extension_Auxiliary"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_9vsGw686Edih9-GG5afQ0g", "BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_9vsGyK86Edih9-GG5afQ0g", "BuildComponent-base_Component"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_9vsGxa86Edih9-GG5afQ0g", "Component_BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_9vsGxq86Edih9-GG5afQ0g", "Component_BuildComponent-extension_BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_9vsGw686Edih9-GG5afQ0g", "BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_9vsGyK86Edih9-GG5afQ0g", "BuildComponent-base_Component"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_9vsGxa86Edih9-GG5afQ0g", "Component_BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_9vsGxq86Edih9-GG5afQ0g", "Component_BuildComponent-extension_BuildComponent"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_9v4UBK86Edih9-GG5afQ0g", "Create"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_9v4UA686Edih9-GG5afQ0g", "Create-base_BehavioralFeature"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_9v-ao686Edih9-GG5afQ0g", "Create-base_Usage"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -2211,14 +2233,14 @@ public class UML22UMLExtendedMetaData
 			fragmentMap.put("_FyLWiK87Edih9-GG5afQ0g", "Subsystem-base_Component"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_FyLWha87Edih9-GG5afQ0g", "Component_Subsystem"); //$NON-NLS-1$ //$NON-NLS-2$
 			fragmentMap.put("_FyLWhq87Edih9-GG5afQ0g", "Component_Subsystem-extension_Subsystem"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_Ox98AK87Edih9-GG5afQ0g", "Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O1-5VK87Edih9-GG5afQ0g", "Metamodel-base_Model"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O1-5Ua87Edih9-GG5afQ0g", "Model_Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O1-5Uq87Edih9-GG5afQ0g", "Model_Metamodel-extension_Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O1-5Va87Edih9-GG5afQ0g", "SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O2E_8687Edih9-GG5afQ0g", "SystemModel-base_Model"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O2E_8K87Edih9-GG5afQ0g", "Model_SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
-			fragmentMap.put("_O2E_8a87Edih9-GG5afQ0g", "Model_SystemModel-extension_SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_Ox98AK87Edih9-GG5afQ0g", "Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O1-5VK87Edih9-GG5afQ0g", "Metamodel-base_Model"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O1-5Ua87Edih9-GG5afQ0g", "Model_Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O1-5Uq87Edih9-GG5afQ0g", "Model_Metamodel-extension_Metamodel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O1-5Va87Edih9-GG5afQ0g", "SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O2E_8687Edih9-GG5afQ0g", "SystemModel-base_Model"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O2E_8K87Edih9-GG5afQ0g", "Model_SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
+//			fragmentMap.put("_O2E_8a87Edih9-GG5afQ0g", "Model_SystemModel-extension_SystemModel"); //$NON-NLS-1$ //$NON-NLS-2$
 
 			// Ecore.profile.uml2 -> Ecore.profile.uml
 

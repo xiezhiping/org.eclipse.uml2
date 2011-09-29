@@ -129,6 +129,15 @@ public abstract class BehaviorImpl
 	protected static final int IS_REENTRANT_EFLAG = 1 << 16;
 
 	/**
+	 * The flag representing whether the Is Reentrant attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int IS_REENTRANT_ESETFLAG = 1 << 17;
+
+	/**
 	 * The cached value of the '{@link #getOwnedParameters() <em>Owned Parameter</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,10 +298,40 @@ public abstract class BehaviorImpl
 			eFlags |= IS_REENTRANT_EFLAG;
 		else
 			eFlags &= ~IS_REENTRANT_EFLAG;
+		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
+		eFlags |= IS_REENTRANT_ESETFLAG;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
-				newIsReentrant));
+				newIsReentrant, !oldIsReentrantESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetIsReentrant() {
+		boolean oldIsReentrant = (eFlags & IS_REENTRANT_EFLAG) != 0;
+		boolean oldIsReentrantESet = (eFlags & IS_REENTRANT_ESETFLAG) != 0;
+		if (IS_REENTRANT_EDEFAULT)
+			eFlags |= IS_REENTRANT_EFLAG;
+		else
+			eFlags &= ~IS_REENTRANT_EFLAG;
+		eFlags &= ~IS_REENTRANT_ESETFLAG;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET,
+				UMLPackage.BEHAVIOR__IS_REENTRANT, oldIsReentrant,
+				IS_REENTRANT_EDEFAULT, oldIsReentrantESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetIsReentrant() {
+		return (eFlags & IS_REENTRANT_ESETFLAG) != 0;
 	}
 
 	/**
@@ -1252,7 +1291,7 @@ public abstract class BehaviorImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1398,7 +1437,7 @@ public abstract class BehaviorImpl
 			case UMLPackage.BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.BEHAVIOR__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.BEHAVIOR__OWNED_PARAMETER_SET :
@@ -1730,7 +1769,10 @@ public abstract class BehaviorImpl
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isReentrant: "); //$NON-NLS-1$
-		result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
+		if ((eFlags & IS_REENTRANT_ESETFLAG) != 0)
+			result.append((eFlags & IS_REENTRANT_EFLAG) != 0);
+		else
+			result.append("<unset>"); //$NON-NLS-1$
 		result.append(')');
 		return result.toString();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008 IBM Corporation and others.
+ * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,14 +7,15 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
+ *   Kenn Hussey (CEA) - 327039
  *
- * $Id: UML212UMLExtendedMetaData.java,v 1.2 2008/11/04 14:29:52 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
@@ -30,6 +31,38 @@ import org.eclipse.uml2.uml.UMLPackage;
  */
 public class UML212UMLExtendedMetaData
 		extends Ecore2XMLExtendedMetaData {
+
+	protected static Map<URI, URI> uriMap = null;
+
+	public static Map<URI, URI> getURIMap() {
+
+		if (uriMap == null) {
+			uriMap = new HashMap<URI, URI>();
+
+			// Standard.profile.uml#BuildComponent -> StandardL3.profile.uml#BuildComponent
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("BuildComponent"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("BuildComponent-base_Component"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("BuildComponent-base_Component"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Component_BuildComponent"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Component_BuildComponent-extension_BuildComponent"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Component_BuildComponent-extension_BuildComponent"));
+
+			// Standard.profile.uml#Metamodel -> StandardL3.profile.uml#Metamodel
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Metamodel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Metamodel-base_Model"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Metamodel-base_Model"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_Metamodel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_Metamodel-extension_Metamodel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_Metamodel-extension_Metamodel"));
+
+			// Standard.profile.uml#SystemModel -> StandardL3.profile.uml#SystemModel
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("SystemModel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("SystemModel-base_Model"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("SystemModel-base_Model"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_SystemModel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel"));
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI).appendFragment("Model_SystemModel-extension_SystemModel"), URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI).appendFragment("Model_SystemModel-extension_SystemModel"));
+
+			// Standard.profile.uml -> StandardL2.profile.uml
+			uriMap.put(URI.createURI(UML212UMLResource.STANDARD_PROFILE_URI), URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
+		}
+
+		return uriMap;
+	}
 
 	protected static Map<String, Map<EClassifier, String>> featureToTypeMap = null;
 
@@ -56,12 +89,10 @@ public class UML212UMLExtendedMetaData
 
 		return featureToTypeMap;
 	}
-	
-	
+
 	public UML212UMLExtendedMetaData(EPackage.Registry ePackageRegistry,
 			Ecore2XMLRegistry ecore2xmlRegistry) {
 		super(ePackageRegistry, ecore2xmlRegistry);
 	}
-	
-	
+
 }

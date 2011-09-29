@@ -172,7 +172,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_READ_ONLY_EFLAG = 1 << 17;
+	protected static final int IS_READ_ONLY_EFLAG = 1 << 18;
 
 	/**
 	 * The default value of the '{@link #isSingleExecution() <em>Is Single Execution</em>}' attribute.
@@ -192,7 +192,7 @@ public class ActivityImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 18;
+	protected static final int IS_SINGLE_EXECUTION_EFLAG = 1 << 19;
 
 	/**
 	 * The cached value of the '{@link #getPartitions() <em>Partition</em>}' reference list.
@@ -1299,7 +1299,7 @@ public class ActivityImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1466,7 +1466,7 @@ public class ActivityImpl
 			case UMLPackage.ACTIVITY__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.ACTIVITY__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.ACTIVITY__OWNED_PARAMETER_SET :

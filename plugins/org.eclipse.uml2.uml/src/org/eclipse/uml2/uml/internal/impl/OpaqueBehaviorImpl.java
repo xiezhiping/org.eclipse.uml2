@@ -653,7 +653,7 @@ public class OpaqueBehaviorImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -805,7 +805,7 @@ public class OpaqueBehaviorImpl
 			case UMLPackage.OPAQUE_BEHAVIOR__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.OPAQUE_BEHAVIOR__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.OPAQUE_BEHAVIOR__OWNED_PARAMETER_SET :

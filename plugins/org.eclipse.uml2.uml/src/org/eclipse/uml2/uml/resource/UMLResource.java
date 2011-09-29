@@ -10,7 +10,6 @@
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 204200
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: UMLResource.java,v 1.10 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -107,5 +106,9 @@ public interface UMLResource
 	String UML_4_0_0_CONTENT_TYPE_IDENTIFIER = "org.eclipse.uml2.uml_4_0_0"; //$NON-NLS-1$
 
 	String UML_CONTENT_TYPE_IDENTIFIER = UML_4_0_0_CONTENT_TYPE_IDENTIFIER;
+
+	String UML2_PROFILE_NS_URI = "http://www.eclipse.org/uml2/schemas/UML2/2"; //$NON-NLS-1$
+
+	String UML2_PROFILE_URI = PROFILES_PATHMAP + "UML2." + PROFILE_FILE_EXTENSION; //$NON-NLS-1$
 
 } // UMLResource

@@ -1155,7 +1155,7 @@ public class StateMachineImpl
 				getSuperClasses().clear();
 				return;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				setIsReentrant(IS_REENTRANT_EDEFAULT);
+				unsetIsReentrant();
 				return;
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				getOwnedParameters().clear();
@@ -1313,7 +1313,7 @@ public class StateMachineImpl
 			case UMLPackage.STATE_MACHINE__CONTEXT :
 				return basicGetContext() != null;
 			case UMLPackage.STATE_MACHINE__IS_REENTRANT :
-				return ((eFlags & IS_REENTRANT_EFLAG) != 0) != IS_REENTRANT_EDEFAULT;
+				return isSetIsReentrant();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER :
 				return ownedParameters != null && !ownedParameters.isEmpty();
 			case UMLPackage.STATE_MACHINE__OWNED_PARAMETER_SET :

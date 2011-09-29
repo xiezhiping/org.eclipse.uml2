@@ -18,6 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -28,9 +29,11 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.uml2.common.util.CacheAdapter;
@@ -224,7 +227,30 @@ public class RedefinableTemplateSignatureImpl
 	 * @generated NOT
 	 */
 	public void setTemplate(TemplateableElement newTemplate) {
-		throw new UnsupportedOperationException();
+
+		if (newTemplate != null && !(newTemplate instanceof Classifier)) {
+			throw new IllegalArgumentException(newTemplate.toString());
+		}
+
+		if (newTemplate != eInternalContainer()
+			|| (eContainerFeatureID() != UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE && newTemplate != null)) {
+			if (EcoreUtil.isAncestor(this, newTemplate))
+				throw new IllegalArgumentException(
+					"Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTemplate != null)
+				msgs = ((InternalEObject) newTemplate).eInverseAdd(this,
+					UMLPackage.TEMPLATEABLE_ELEMENT__OWNED_TEMPLATE_SIGNATURE,
+					TemplateableElement.class, msgs);
+			msgs = basicSetTemplate(newTemplate, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				UMLPackage.REDEFINABLE_TEMPLATE_SIGNATURE__TEMPLATE,
+				newTemplate, newTemplate));
 	}
 
 	/**

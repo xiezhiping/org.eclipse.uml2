@@ -1,18 +1,20 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   CEA - initial API and implementation
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
+
+import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML302UMLResource;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EFactory;
@@ -22,17 +24,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
-import org.eclipse.uml2.uml.resource.UML302UMLResource;
 
-/**
- * Handler that converts .uml models.
- * OMG:  UML 2.1.x and UML 2.2 
- * API:  UML2 2.2.x and UML2 3.0.x 
- * 
- * @since 3.0
- */
-public class UML212UMLHandler
+public class UML302UMLHandler
 		extends UMLHandler {
 
 	protected static final String STANDARD_L3_PROFILE_NS_PREFIX = "l3"; //$NON-NLS-1$
@@ -45,7 +38,7 @@ public class UML212UMLHandler
 
 	protected static final String STEREOTYPE__SYSTEM_MODEL = "SystemModel"; //$NON-NLS-1$
 
-	public UML212UMLHandler(XMLResource xmiResource, XMLHelper helper,
+	public UML302UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
@@ -57,7 +50,7 @@ public class UML212UMLHandler
 			String xsiType = getXSIType();
 
 			Map<String, Map<EClassifier, String>> featureToTypeMap = xsiType == null
-				? UML212UMLExtendedMetaData.getFeatureToTypeMap()
+				? UML302UMLExtendedMetaData.getFeatureToTypeMap()
 				: null;
 
 			Map<EClassifier, String> typeMap = featureToTypeMap == null
