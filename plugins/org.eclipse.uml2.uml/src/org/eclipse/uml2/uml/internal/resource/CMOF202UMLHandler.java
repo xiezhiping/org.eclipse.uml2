@@ -21,11 +21,12 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.resource.UML212UMLResource;
+import org.eclipse.uml2.uml.resource.UML302UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
-public class CMOF2UMLHandler
+public class CMOF202UMLHandler
 		extends XMI2UMLHandler {
 
 	protected static final String UML_EXTENSION_TYPE = "umlExtension"; //$NON-NLS-1$
@@ -35,19 +36,21 @@ public class CMOF2UMLHandler
 	protected static final String IDREF_ATTRIB = XMIResource.XMI_NS + ':'
 		+ XMI_IDREF;
 
-	public CMOF2UMLHandler(XMLResource xmiResource, XMLHelper helper,
+	public CMOF202UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
 
 	@Override
 	protected void processElement(String name, String prefix, String localName) {
+		String extender = attribs
+			.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE);
 
 		if (EMOFExtendedMetaData.EXTENSION.equals(localName)
-			&& XMI2UMLResource.XMI_NS_URI.equals(helper.getURI(prefix))
+			&& XMI2UMLResource.XMI_2_1_NS_URI.equals(helper.getURI(prefix))
 			&& attribs != null
-			&& UMLPackage.eNS_URI.equals(attribs
-				.getValue(EMOFExtendedMetaData.XMI_EXTENDER_ATTRIBUTE))) {
+			&& (UML212UMLResource.UML_METAMODEL_NS_URI.equals(extender) || UML302UMLResource.UML_METAMODEL_NS_URI
+				.equals(extender))) {
 
 			types.push(UML_EXTENSION_TYPE);
 		} else {
@@ -84,14 +87,12 @@ public class CMOF2UMLHandler
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
 		if (uriLiteral
-			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+			.startsWith(CMOF2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_2_0_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_INTEGER)) {
 				uriLiteral = PRIMITIVE_TYPE_INTEGER_URI;
-			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_REAL)) {
-				uriLiteral = PRIMITIVE_TYPE_REAL_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_STRING)) {
 				uriLiteral = PRIMITIVE_TYPE_STRING_URI;
 			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {

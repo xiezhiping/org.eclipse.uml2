@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213903, 226178
+ *   Kenn Hussey (CEA) - 327039
  *
- * $Id: CMOF2UMLSaveImpl.java,v 1.3 2008/04/21 13:25:05 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -267,31 +267,6 @@ public class CMOF2UMLSaveImpl
 							doc.endEmptyElement();
 						}
 					}
-
-					if (qualifiedStereotypeName
-						.endsWith(UMLUtil.STEREOTYPE__E_ATTRIBUTE)) {
-
-						Object isID = UMLUtil.getTaggedValue(property,
-							qualifiedStereotypeName,
-							UMLUtil.TAG_DEFINITION__IS_ID);
-
-						if (isID instanceof Boolean
-							&& ((Boolean) isID).booleanValue()) {
-
-							doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
-							doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
-							doc.addAttribute(
-								CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
-								CMOF2UMLExtendedMetaData.XMI_TAG__ID_PROPERTY);
-							doc.addAttribute(
-								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-								Boolean.TRUE.toString());
-							doc.addAttribute(
-								CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
-								helper.getIDREF(property));
-							doc.endEmptyElement();
-						}
-					}
 				} else if (eObject instanceof org.eclipse.uml2.uml.Class
 					|| eObject instanceof Association) {
 
@@ -344,6 +319,19 @@ public class CMOF2UMLSaveImpl
 							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
 								.getIDREF(eObject));
 						doc.endEmptyElement();
+					} else if (name.equalsIgnoreCase("Real")) { //$NON-NLS-1$
+						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
+						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
+							CMOF2UMLExtendedMetaData.XMI_TAG__SCHEMA_TYPE);
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
+							"http://www.w3.org/2001/XMLSchema#double"); //$NON-NLS-1$
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
+								.getIDREF(eObject));
+						doc.endEmptyElement();
 					}
 				} else if (eObject instanceof org.eclipse.uml2.uml.Package) {
 					org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) eObject;
@@ -352,6 +340,10 @@ public class CMOF2UMLSaveImpl
 						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
 							+ UMLUtil.STEREOTYPE__E_PACKAGE,
 						UMLUtil.TAG_DEFINITION__NS_PREFIX);
+					
+					if (nsPrefix == null) {
+						nsPrefix = package_.getName();
+					}
 
 					if (nsPrefix instanceof String) {
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
@@ -372,6 +364,10 @@ public class CMOF2UMLSaveImpl
 						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
 							+ UMLUtil.STEREOTYPE__E_PACKAGE,
 						UMLUtil.TAG_DEFINITION__NS_URI);
+					
+					if (nsURI == null) {
+						nsURI = package_.getURI();
+					}
 
 					if (nsURI instanceof String) {
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
