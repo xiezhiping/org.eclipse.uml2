@@ -12,6 +12,7 @@
  */
 package org.eclipse.uml2.uml.internal.resource;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +29,12 @@ import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
 
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
+import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class XMI2UMLSaveImpl
 		extends UMLSaveImpl {
@@ -57,8 +61,24 @@ public class XMI2UMLSaveImpl
 
 	}
 
+	protected static final String CMOF_XMLNS = XMLResource.XML_NS + ':'
+		+ CMOF2UMLResource.CMOF_METAMODEL_NS_PREFIX;
+
+	protected static final String CMOF_URI = CMOF2UMLResource.CMOF_METAMODEL_NS_URI;
+	
+	protected boolean declareCMOF = false;
+
 	public XMI2UMLSaveImpl(XMLHelper helper) {
 		super(helper);
+	}
+
+	@Override
+	public void addNamespaceDeclarations() {
+		super.addNamespaceDeclarations();
+
+		if (declareCMOF) {
+			doc.addAttribute(CMOF_XMLNS, CMOF_URI);
+		}
 	}
 
 	@Override
@@ -81,6 +101,11 @@ public class XMI2UMLSaveImpl
 		} else {
 			super.saveContainedMany(eObject, eStructuralFeature);
 		}
+	}
+
+	@Override
+	protected Object writeTopObject(EObject top) {
+		return writeTopObjects(Collections.singletonList(top));
 	}
 
 	@Override
@@ -120,37 +145,53 @@ public class XMI2UMLSaveImpl
 				if (eObject instanceof Profile) {
 					Profile profile = (Profile) eObject;
 
-					String nsPrefix = profile.getName();
+					String nsPrefix = (String) UMLUtil.getTaggedValue(profile,
+						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
+							+ UMLUtil.STEREOTYPE__E_PACKAGE,
+						UMLUtil.TAG_DEFINITION__NS_PREFIX);
+
+					if (nsPrefix == null) {
+						nsPrefix = profile.getName();
+					}
 
 					if (!UML2Util.isEmpty(nsPrefix)) {
+						declareCMOF = true;
+
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
 						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
 						doc.addAttribute(
 							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
 							CMOF2UMLExtendedMetaData.XMI_TAG__NS_PREFIX);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-							nsPrefix);
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE, nsPrefix);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
-								.getIDREF(profile));
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+							helper.getIDREF(profile));
 						doc.endEmptyElement();
 					}
 
-					String nsURI = profile.getName();
+					String nsURI = (String) UMLUtil.getTaggedValue(profile,
+						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
+							+ UMLUtil.STEREOTYPE__E_PACKAGE,
+						UMLUtil.TAG_DEFINITION__NS_URI);
+
+					if (nsURI == null) {
+						nsURI = profile.getURI();
+					}
 
 					if (!UML2Util.isEmpty(nsURI)) {
+						declareCMOF = true;
+
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
 						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
 						doc.addAttribute(
 							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
 							CMOF2UMLExtendedMetaData.XMI_TAG__NS_URI);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-							nsURI);
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE, nsURI);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
-								.getIDREF(profile));
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+							helper.getIDREF(profile));
 						doc.endEmptyElement();
 					}
 				}

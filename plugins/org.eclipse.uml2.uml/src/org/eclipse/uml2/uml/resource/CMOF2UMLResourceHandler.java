@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2007, 2008 IBM Corporation, Embarcadero Technologies, and others.
+ * Copyright (c) 2007, 2011 IBM Corporation, Embarcadero Technologies, CEA, and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,8 +8,8 @@
  * Contributors:
  *   Kenn Hussey (IBM Corporation, Embarcadero Technologies) - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 213903
+ *   Kenn Hussey (CEA) - 327039
  * 
- * $Id: CMOF2UMLResourceHandler.java,v 1.2 2008/03/06 04:30:02 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -357,9 +357,21 @@ public class CMOF2UMLResourceHandler
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
 					if (element instanceof org.eclipse.uml2.uml.Package) {
-						((org.eclipse.uml2.uml.Package) element)
-							.setURI((String) getValue(tag.getAnyAttribute(),
-								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
+						org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) element;
+						String packageURI = package_.getURI();
+
+						String nsURI = (String) getValue(tag.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE);
+
+						if (packageURI == null) {
+							package_.setURI(nsURI);
+						} else if (!packageURI.equals(nsURI)) {
+							UMLUtil.setTaggedValue(
+								package_,
+								getEcoreStereotype(package_,
+									UMLUtil.STEREOTYPE__E_PACKAGE),
+								UMLUtil.TAG_DEFINITION__NS_URI, nsURI);
+						}
 					}
 
 					tagsToRemove.add(tag);
@@ -370,12 +382,22 @@ public class CMOF2UMLResourceHandler
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
 					if (element instanceof org.eclipse.uml2.uml.Package) {
-						UMLUtil.setTaggedValue((Element) element,
-							getEcoreStereotype(element,
-								UMLUtil.STEREOTYPE__E_PACKAGE),
-							UMLUtil.TAG_DEFINITION__NS_PREFIX, getValue(tag
-								.getAnyAttribute(),
-								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
+						org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) element;
+						String packageName = package_.getName();
+
+						String nsPrefix = (String) getValue(
+							tag.getAnyAttribute(),
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE);
+
+						if (packageName == null) {
+							package_.setName(nsPrefix);
+						} else if (!packageName.equals(nsPrefix)) {
+							UMLUtil.setTaggedValue(
+								package_,
+								getEcoreStereotype(package_,
+									UMLUtil.STEREOTYPE__E_PACKAGE),
+								UMLUtil.TAG_DEFINITION__NS_PREFIX, nsPrefix);
+						}
 					}
 
 					tagsToRemove.add(tag);

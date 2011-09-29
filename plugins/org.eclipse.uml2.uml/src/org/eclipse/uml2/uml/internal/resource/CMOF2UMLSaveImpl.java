@@ -13,6 +13,7 @@
  */
 package org.eclipse.uml2.uml.internal.resource;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,8 @@ import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
+
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -156,6 +159,11 @@ public class CMOF2UMLSaveImpl
 
 			super.saveDataTypeSingle(eObject, eStructuralFeature);
 		}
+	}
+
+	@Override
+	protected Object writeTopObject(EObject top) {
+		return writeTopObjects(Collections.singletonList(top));
 	}
 
 	@Override
@@ -336,51 +344,49 @@ public class CMOF2UMLSaveImpl
 				} else if (eObject instanceof org.eclipse.uml2.uml.Package) {
 					org.eclipse.uml2.uml.Package package_ = (org.eclipse.uml2.uml.Package) eObject;
 
-					Object nsPrefix = UMLUtil.getTaggedValue(package_,
+					String nsPrefix = (String) UMLUtil.getTaggedValue(package_,
 						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
 							+ UMLUtil.STEREOTYPE__E_PACKAGE,
 						UMLUtil.TAG_DEFINITION__NS_PREFIX);
-					
+
 					if (nsPrefix == null) {
 						nsPrefix = package_.getName();
 					}
 
-					if (nsPrefix instanceof String) {
+					if (!UML2Util.isEmpty(nsPrefix)) {
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
 						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
 						doc.addAttribute(
 							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
 							CMOF2UMLExtendedMetaData.XMI_TAG__NS_PREFIX);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-							(String) nsPrefix);
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE, nsPrefix);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
-								.getIDREF(package_));
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+							helper.getIDREF(package_));
 						doc.endEmptyElement();
 					}
 
-					Object nsURI = UMLUtil.getTaggedValue(package_,
+					String nsURI = (String) UMLUtil.getTaggedValue(package_,
 						UMLUtil.PROFILE__ECORE + NamedElement.SEPARATOR
 							+ UMLUtil.STEREOTYPE__E_PACKAGE,
 						UMLUtil.TAG_DEFINITION__NS_URI);
-					
+
 					if (nsURI == null) {
 						nsURI = package_.getURI();
 					}
 
-					if (nsURI instanceof String) {
+					if (!UML2Util.isEmpty(nsURI)) {
 						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
 						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
 						doc.addAttribute(
 							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
 							CMOF2UMLExtendedMetaData.XMI_TAG__NS_URI);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
-							(String) nsURI);
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE, nsURI);
 						doc.addAttribute(
-							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
-								.getIDREF(package_));
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT,
+							helper.getIDREF(package_));
 						doc.endEmptyElement();
 					}
 				}
