@@ -10,10 +10,9 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 184249, 204406, 208125, 204200, 213218, 213903, 220669, 208016, 226396, 271470
  *   Nicolas Rouquette (JPL) - 260120, 313837
  *   Kenn Hussey - 286329, 313601, 314971, 344907, 236184
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 358792
  *   Yann Tanguy (CEA) - 350402
  *
- * $Id: UMLUtil.java,v 1.89 2011/05/06 01:42:10 khussey Exp $
  */
 package org.eclipse.uml2.uml.util;
 
@@ -2549,6 +2548,9 @@ public class UMLUtil
 						.startsWith("EcorePrimitiveTypes::")) { //$NON-NLS-1$
 
 						eType = EcorePackage.eINSTANCE.getEClassifier(type
+							.getName());
+					} else if (qualifiedName.startsWith("PrimitiveTypes::")) { //$NON-NLS-1$
+						eType = TypesPackage.eINSTANCE.getEClassifier(type
 							.getName());
 					} else if (qualifiedName.startsWith("XMLPrimitiveTypes::")) { //$NON-NLS-1$
 						eType = XMLTypePackage.eINSTANCE.getEClassifier(type
@@ -6225,6 +6227,18 @@ public class UMLUtil
 			return null;
 		}
 
+		protected Model getUMLPrimitiveTypesLibrary(EModelElement eModelElement) {
+			ResourceSet resourceSet = getResourceSet(eModelElement);
+
+			if (resourceSet != null) {
+				return load(resourceSet,
+					URI.createURI(UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI),
+					UMLPackage.Literals.MODEL);
+			}
+
+			return null;
+		}
+
 		protected Model getXMLPrimitiveTypesLibrary(EModelElement eModelElement) {
 			ResourceSet resourceSet = getResourceSet(eModelElement);
 
@@ -6243,6 +6257,15 @@ public class UMLUtil
 
 			return ecorePrimitiveTypesLibrary != null
 				? (PrimitiveType) ecorePrimitiveTypesLibrary.getOwnedType(name)
+				: null;
+		}
+
+		protected PrimitiveType getUMLPrimitiveType(
+				EModelElement eModelElement, String name) {
+			Model umlPrimitiveTypesLibrary = getUMLPrimitiveTypesLibrary(eModelElement);
+
+			return umlPrimitiveTypesLibrary != null
+				? (PrimitiveType) umlPrimitiveTypesLibrary.getOwnedType(name)
 				: null;
 		}
 
@@ -6273,6 +6296,8 @@ public class UMLUtil
 
 						if (XMLTypePackage.eNS_URI.equals(nsURI)) {
 							type = getXMLPrimitiveType(eModelElement, name);
+						} else if (TypesPackage.eNS_URI.equals(nsURI)) {
+							type = getUMLPrimitiveType(eModelElement, name);
 						} else if (EcorePackage.eNS_URI.equals(nsURI)) {
 							type = getEcorePrimitiveType(eModelElement, name);
 						}
