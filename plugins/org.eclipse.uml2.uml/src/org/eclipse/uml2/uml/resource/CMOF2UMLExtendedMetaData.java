@@ -42,6 +42,8 @@ public class CMOF2UMLExtendedMetaData
 
 	public static final String CMOF_TAG_ELEMENT = EMOFExtendedMetaData.EMOF_TAG_ELEMENT;
 
+	public static final String EMOF_TAG__OPPOSITE_ROLE_NAME = "org.omg.emof.oppositeRoleName"; //$NON-NLS-1$
+
 	public static final String XMI_TAG__ATTRIBUTE = "org.omg.xmi.attribute"; //$NON-NLS-1$
 
 	public static final String XMI_TAG__ELEMENT = "org.omg.xmi.element"; //$NON-NLS-1$

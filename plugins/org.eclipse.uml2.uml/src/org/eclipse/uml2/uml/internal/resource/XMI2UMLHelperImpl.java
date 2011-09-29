@@ -9,7 +9,6 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: XMI2UMLHelperImpl.java,v 1.2 2006/12/14 15:49:34 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 

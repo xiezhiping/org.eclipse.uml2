@@ -9,21 +9,28 @@
  *   IBM - initial API and implementation
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: XMI2UMLSaveImpl.java,v 1.4 2007/05/04 20:35:32 khussey Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.impl.XMISaveImpl;
+
+import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
 
 public class XMI2UMLSaveImpl
 		extends UMLSaveImpl {
@@ -73,6 +80,86 @@ public class XMI2UMLSaveImpl
 			doc.endElement();
 		} else {
 			super.saveContainedMany(eObject, eStructuralFeature);
+		}
+	}
+
+	@Override
+	public Object writeTopObjects(List<? extends EObject> contents) {
+
+		if (!toDOM) {
+			doc.startElement(XMI_TAG_NS);
+			Object mark = doc.mark();
+
+			for (int i = 0, size = contents.size(); i < size; i++) {
+				EObject top = contents.get(i);
+				EClass eClass = top.eClass();
+
+				if (extendedMetaData == null
+					|| featureTable.getDocumentRoot(eClass.getEPackage()) != eClass) {
+
+					String name = helper.getQName(eClass);
+					doc.startElement(name);
+					root = top;
+					saveElementID(top);
+				} else {
+					doc.startElement(null);
+					root = top;
+					saveFeatures(top);
+					doc.addLine();
+				}
+			}
+
+			int index = contents.size();
+
+			for (Iterator<EObject> properContents = EcoreUtil
+				.getAllProperContents(contents, false); properContents
+				.hasNext();) {
+
+				EObject eObject = properContents.next();
+
+				if (eObject instanceof Profile) {
+					Profile profile = (Profile) eObject;
+
+					String nsPrefix = profile.getName();
+
+					if (!UML2Util.isEmpty(nsPrefix)) {
+						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
+						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
+							CMOF2UMLExtendedMetaData.XMI_TAG__NS_PREFIX);
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
+							nsPrefix);
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
+								.getIDREF(profile));
+						doc.endEmptyElement();
+					}
+
+					String nsURI = profile.getName();
+
+					if (!UML2Util.isEmpty(nsURI)) {
+						doc.startElement(CMOF2UMLExtendedMetaData.CMOF_TAG);
+						doc.addAttribute(idAttributeName, "_" + index++); //$NON-NLS-1$
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_NAME,
+							CMOF2UMLExtendedMetaData.XMI_TAG__NS_URI);
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE,
+							nsURI);
+						doc.addAttribute(
+							CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, helper
+								.getIDREF(profile));
+						doc.endEmptyElement();
+					}
+				}
+			}
+
+			doc.endElement();
+			return mark;
+		} else {
+			return super.writeTopObjects(contents);
 		}
 	}
 

@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   CEA - initial API and implementation
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -30,12 +29,12 @@ import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 /**
  * Handler that converts .xmi models.
- * OMG:  UML 2.1.x and UML 2.2 
- * API:  UML2 2.2.x and UML2 3.0.x 
+ * OMG:  UML 2.2 and UML 2.4 
+ * API:  UML2 3.x and UML2 4.0.x 
  * 
- * @since 3.0
+ * @since 4.0
  */
-public class XMI212UMLHandler
+public class XMI222UMLHandler
 		extends UMLHandler {
 
 	protected static final String PRIMITIVE_TYPE_BOOLEAN = "Boolean"; //$NON-NLS-1$
@@ -59,8 +58,8 @@ public class XMI212UMLHandler
 	protected static final String XMI_IDREF = "idref"; //$NON-NLS-1$
 
 	protected static final String IDREF_ATTRIB = XMIResource.XMI_NS + ':' + XMI_IDREF;
-	
-	public XMI212UMLHandler(XMLResource xmiResource, XMLHelper helper,
+
+	public XMI222UMLHandler(XMLResource xmiResource, XMLHelper helper,
 			Map<?, ?> options) {
 		super(xmiResource, helper, options);
 	}
@@ -100,13 +99,11 @@ public class XMI212UMLHandler
 			}
 		}
 	}
-	
 
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_2_URI)) {
 
 			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
 				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
@@ -123,18 +120,14 @@ public class XMI212UMLHandler
 					: uriLiteral.substring(index));
 			}
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
 
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1

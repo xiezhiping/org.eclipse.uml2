@@ -14,6 +14,7 @@
 package org.eclipse.uml2.uml.resource;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -45,6 +46,18 @@ public class CMOF2UMLResourceHandler
 		extends BasicResourceHandler {
 
 	protected static final boolean DEBUG = false;
+
+	protected final XMLResource.ResourceHandler delegate;
+
+	public CMOF2UMLResourceHandler() {
+		this(null);
+	}
+
+	public CMOF2UMLResourceHandler(XMLResource.ResourceHandler delegate) {
+		super();
+		
+		this.delegate = delegate;
+	}
 
 	protected AnyType getExtension(XMLResource resource, EObject eObject) {
 		return resource.getEObjectToExtensionMap().get(eObject);
@@ -188,9 +201,22 @@ public class CMOF2UMLResourceHandler
 			: null;
 	}
 
+	public void preLoad(XMLResource resource, InputStream inputStream,
+			Map<?, ?> options) {
+
+		if (delegate != null) {
+			delegate.preLoad(resource, inputStream, options);
+		}
+	}
+
 	@Override
 	public void postLoad(XMLResource resource, InputStream inputStream,
 			Map<?, ?> options) {
+		
+		if (delegate != null) {
+			delegate.postLoad(resource, inputStream, options);
+		}
+
 		EList<EObject> resourceContents = resource.getContents();
 
 		List<AnyType> tagsToRemove = new ArrayList<AnyType>();
@@ -206,7 +232,11 @@ public class CMOF2UMLResourceHandler
 				Object name = getValue(tag.getAnyAttribute(),
 					CMOF2UMLExtendedMetaData.CMOF_TAG_NAME);
 
-				if (CMOF2UMLExtendedMetaData.XMI_TAG__XMI_NAME.equals(name)) {
+				if (CMOF2UMLExtendedMetaData.EMOF_TAG__OPPOSITE_ROLE_NAME
+					.equals(name)) {
+
+					tagsToRemove.add(tag);
+				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__XMI_NAME.equals(name)) {
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -239,6 +269,7 @@ public class CMOF2UMLResourceHandler
 					tagsToRemove.add(tag);
 				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ATTRIBUTE
 					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -269,6 +300,7 @@ public class CMOF2UMLResourceHandler
 					tagsToRemove.add(tag);
 				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ELEMENT
 					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -303,40 +335,37 @@ public class CMOF2UMLResourceHandler
 					tagsToRemove.add(tag);
 				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__ID_PROPERTY
 					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
 					if (element instanceof Property
-						&& Boolean.getBoolean(String.valueOf(getValue(tag
-							.getAnyAttribute(),
+						&& Boolean.getBoolean(String.valueOf(getValue(
+							tag.getAnyAttribute(),
 							CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE)))
 						&& UMLUtil.UML2EcoreConverter
 							.isEDataType(((Property) element).getNamespace())) {
 
-						UMLUtil.setTaggedValue((Element) element,
-							getEcoreStereotype(element,
-								UMLUtil.STEREOTYPE__E_ATTRIBUTE),
-							UMLUtil.TAG_DEFINITION__IS_ID, Boolean.TRUE);
+						((Property) element).setIsID(true);
 					}
 
 					tagsToRemove.add(tag);
 				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__NS_URI
 					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
 					if (element instanceof org.eclipse.uml2.uml.Package) {
-						UMLUtil.setTaggedValue((Element) element,
-							getEcoreStereotype(element,
-								UMLUtil.STEREOTYPE__E_PACKAGE),
-							UMLUtil.TAG_DEFINITION__NS_URI, getValue(tag
-								.getAnyAttribute(),
+						((org.eclipse.uml2.uml.Package) element)
+							.setURI((String) getValue(tag.getAnyAttribute(),
 								CMOF2UMLExtendedMetaData.CMOF_TAG_VALUE));
 					}
 
 					tagsToRemove.add(tag);
 				} else if (CMOF2UMLExtendedMetaData.XMI_TAG__NS_PREFIX
 					.equals(name)) {
+
 					EObject element = getEObject(tag, resource,
 						CMOF2UMLExtendedMetaData.CMOF_TAG_ELEMENT, false);
 
@@ -356,6 +385,22 @@ public class CMOF2UMLResourceHandler
 
 		for (AnyType tag : tagsToRemove) {
 			resourceContents.remove(tag);
+		}
+	}
+
+	public void preSave(XMLResource resource, OutputStream outputStream,
+			Map<?, ?> options) {
+		
+		if (delegate != null) {
+			delegate.preSave(resource, outputStream, options);
+		}
+	}
+
+	public void postSave(XMLResource resource, OutputStream outputStream,
+			Map<?, ?> options) {
+		
+		if (delegate != null) {
+			delegate.postSave(resource, outputStream, options);
 		}
 	}
 

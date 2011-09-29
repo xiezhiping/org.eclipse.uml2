@@ -10,7 +10,6 @@
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: XMI2UMLHandler.java,v 1.9 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.internal.resource;
 
@@ -49,12 +48,6 @@ public class XMI2UMLHandler
 
 	protected static final String PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI = UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI + '#' + PRIMITIVE_TYPE_UNLIMITED_NATURAL;
 
-	protected static final String STEREOTYPE_BUILD_COMPONENT = "BuildComponent"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE_METAMODEL = "Metamodel"; //$NON-NLS-1$
-
-	protected static final String STEREOTYPE_SYSTEM_MODEL = "SystemModel"; //$NON-NLS-1$
-
 	protected static final String ECORE_EXTENSION_TYPE = "ecoreExtension"; //$NON-NLS-1$
 
 	protected static final String XMI_IDREF = "idref"; //$NON-NLS-1$
@@ -68,54 +61,21 @@ public class XMI2UMLHandler
 	@Override
 	protected void handleProxy(InternalEObject proxy, String uriLiteral) {
 
-		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_3_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_2_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_2_1_URI)) {
-
-			if (uriLiteral.endsWith(PRIMITIVE_TYPE_BOOLEAN)) {
-				uriLiteral = PRIMITIVE_TYPE_BOOLEAN_URI;
-			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_INTEGER)) {
-				uriLiteral = PRIMITIVE_TYPE_INTEGER_URI;
-			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_STRING)) {
-				uriLiteral = PRIMITIVE_TYPE_STRING_URI;
-			} else if (uriLiteral.endsWith(PRIMITIVE_TYPE_UNLIMITED_NATURAL)) {
-				uriLiteral = PRIMITIVE_TYPE_UNLIMITED_NATURAL_URI;
-			} else {
-				int index = uriLiteral.indexOf('#');
-				uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
-					? "#_0" //$NON-NLS-1$
-					: uriLiteral.substring(index));
-			}
-		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_3_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_2_URI)
-			|| uriLiteral
-				.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI)
-			|| uriLiteral.startsWith(XMI2UMLResource.STANDARD_PROFILE_2_1_URI)) {
-
-			int index = uriLiteral.indexOf('#');
-			uriLiteral = (uriLiteral.endsWith(STEREOTYPE_BUILD_COMPONENT)
-				|| uriLiteral.endsWith(STEREOTYPE_METAMODEL)
-				|| uriLiteral.endsWith(STEREOTYPE_SYSTEM_MODEL)
-				? UMLResource.STANDARD_L3_PROFILE_URI
-				: UMLResource.STANDARD_L2_PROFILE_URI)
-				+ (index == -1
-					? "#_0" //$NON-NLS-1$
-					: uriLiteral.substring(index));
-		} else if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+		if (uriLiteral.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.UML_METAMODEL_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_URI) || uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L2_PROFILE_URI + (index == -1
 				? "#_0" //$NON-NLS-1$
 				: uriLiteral.substring(index));
 		} else if (uriLiteral
-			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)) {
+			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_URI)  || uriLiteral
+			.startsWith(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI)) {
 			int index = uriLiteral.indexOf('#');
 			uriLiteral = UMLResource.STANDARD_L3_PROFILE_URI + (index == -1
 				? "#_0" //$NON-NLS-1$

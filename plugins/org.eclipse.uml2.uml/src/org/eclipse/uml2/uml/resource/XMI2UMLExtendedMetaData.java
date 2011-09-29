@@ -10,7 +10,6 @@
  *   Kenn Hussey (Embarcadero Technologies) - 204202
  *   Kenn Hussey (CEA) - 327039
  * 
- * $Id: XMI2UMLExtendedMetaData.java,v 1.6 2008/10/03 20:50:37 jbruck Exp $
  */
 package org.eclipse.uml2.uml.resource;
 
@@ -32,18 +31,30 @@ public class XMI2UMLExtendedMetaData
 		if (uriMap == null) {
 			uriMap = new HashMap<URI, URI>();
 
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_URI), URI
-				.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_URI), URI
-				.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
-			// FIXME
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_3_URI),
+			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_URI),
+				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_URI),
 				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_2_URI),
+
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_2_URI),
+				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_2_URI),
 				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_1_1_URI),
+
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_URI),
+				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_URI),
 				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
-			uriMap.put(URI.createURI(XMI2UMLResource.STANDARD_PROFILE_2_1_URI),
+
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L3_PROFILE_2_1_URI),
+				URI.createURI(UMLResource.STANDARD_L3_PROFILE_URI));
+			uriMap.put(
+				URI.createURI(XMI2UMLResource.STANDARD_L2_PROFILE_2_1_URI),
 				URI.createURI(UMLResource.STANDARD_L2_PROFILE_URI));
 		}
 
@@ -72,25 +83,27 @@ public class XMI2UMLExtendedMetaData
 	@Override
 	public EPackage getPackage(String namespace) {
 
-		// FIXME
 		return XMI2UMLResource.UML_METAMODEL_NS_URI.equals(namespace)
-			|| XMI2UMLResource.UML_METAMODEL_2_3_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_2_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI.equals(namespace)
 			|| XMI2UMLResource.UML_METAMODEL_2_1_NS_URI.equals(namespace)
 			? UMLPackage.eINSTANCE
 			: super.getPackage(XMI2UMLResource.STANDARD_L2_PROFILE_NS_URI
 				.equals(namespace)
-				|| XMI2UMLResource.STANDARD_PROFILE_2_3_NS_URI
+				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_2_NS_URI
 					.equals(namespace)
-				|| XMI2UMLResource.STANDARD_PROFILE_2_2_NS_URI
+				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_1_1_NS_URI
 					.equals(namespace)
-				|| XMI2UMLResource.STANDARD_PROFILE_2_1_1_NS_URI
-					.equals(namespace)
-				|| XMI2UMLResource.STANDARD_PROFILE_2_1_NS_URI
+				|| XMI2UMLResource.STANDARD_L2_PROFILE_2_1_NS_URI
 					.equals(namespace)
 				? UMLResource.STANDARD_L2_PROFILE_NS_URI
 				: (XMI2UMLResource.STANDARD_L3_PROFILE_NS_URI.equals(namespace)
+					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_2_NS_URI
+						.equals(namespace)
+					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_1_NS_URI
+						.equals(namespace)
+					|| XMI2UMLResource.STANDARD_L3_PROFILE_2_1_NS_URI
+						.equals(namespace)
 					? UMLResource.STANDARD_L3_PROFILE_NS_URI
 					: namespace));
 	}

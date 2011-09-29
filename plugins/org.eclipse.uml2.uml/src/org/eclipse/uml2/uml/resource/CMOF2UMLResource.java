@@ -10,7 +10,6 @@
  *   Kenn Hussey (Embarcadero Technologies) - 156879, 218388
  *   Kenn Hussey (CEA) - 327039
  *
- * $Id: CMOF2UMLResource.java,v 1.4 2008/04/21 13:28:47 khussey Exp $
  */
 package org.eclipse.uml2.uml.resource;
 

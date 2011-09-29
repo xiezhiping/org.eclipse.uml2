@@ -1,18 +1,26 @@
 /*
- * Copyright (c) 2008, 2011 IBM Corporation, CEA, and others.
+ * Copyright (c) 2011 CEA and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   CEA - initial API and implementation
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
+
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
+import org.eclipse.uml2.uml.resource.UML302UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.UML302UMLResource;
+import org.eclipse.uml2.uml.resource.UML302UMLResourceHandler;
+import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
+import org.eclipse.uml2.uml.resource.XMI2UMLResource;
+import org.eclipse.uml2.uml.resource.XMI222UMLResource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -26,40 +34,32 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLPackage;
 import org.eclipse.emf.mapping.ecore2xml.Ecore2XMLRegistry;
 import org.eclipse.emf.mapping.ecore2xml.impl.Ecore2XMLRegistryImpl;
-import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
-import org.eclipse.uml2.uml.resource.UML212UMLResourceHandler;
-import org.eclipse.uml2.uml.resource.UML212UMLExtendedMetaData;
-import org.eclipse.uml2.uml.resource.UML212UMLResource;
-import org.eclipse.uml2.uml.resource.XMI212UMLResource;
-import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
-import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
 /**
  * Resource factory that converts .xmi models.
- * OMG:  UML 2.1.x and UML 2.2 
- * API:  UML2 2.2.x and UML2 3.0.x 
+ * OMG:  UML 2.2 and UML 2.4
+ * API:  UML2 3.x and UML2 4.0.x
  * 
- * @since 3.0
+ * @since 4.0
  */
-public class XMI212UMLResourceFactoryImpl
+public class XMI222UMLResourceFactoryImpl
 		extends UMLResourceFactoryImpl
-		implements XMI212UMLResource.Factory {
+		implements XMI222UMLResource.Factory {
 
-	public XMI212UMLResourceFactoryImpl() {
+	public XMI222UMLResourceFactoryImpl() {
 		super();
 	}
 
 	@Override
 	public Resource createResourceGen(URI uri) {
-		XMI212UMLResource result = new XMI212UMLResourceImpl(uri);
+		XMI222UMLResource result = new XMI222UMLResourceImpl(uri);
 		result.setEncoding(XMI2UMLResource.DEFAULT_ENCODING);
 		return result;
 	}
 
 	@Override
 	public Resource createResource(URI uri) {
-		XMI212UMLResource resource = (XMI212UMLResource) super
+		XMI222UMLResource resource = (XMI222UMLResource) super
 			.createResource(uri);
 
 		ExtendedMetaData xmiExtendedMetaData = new XMI2UMLExtendedMetaData(
@@ -76,10 +76,7 @@ public class XMI212UMLResourceFactoryImpl
 		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
 
-		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_NS_URI,
-			UMLPackage.eINSTANCE);
-
-		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_1_1_NS_URI,
+		ePackageRegistry.put(XMI2UMLResource.UML_METAMODEL_2_2_NS_URI,
 			UMLPackage.eINSTANCE);
 
 		ePackageRegistry
@@ -93,15 +90,15 @@ public class XMI212UMLResourceFactoryImpl
 			Ecore2XMLRegistry.INSTANCE);
 		ecore2xmlRegistry
 			.put(
-				UML212UMLResource.UML_METAMODEL_NS_URI,
+				UML302UMLResource.UML_METAMODEL_NS_URI,
 				EcoreUtil.getObjectByType(
 					resourceSet
 						.getResource(
-							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/UML21_2_UML.ecore2xml"), //$NON-NLS-1$
+							URI.createURI("platform:/plugin/org.eclipse.uml2.uml/model/UML30_2_UML.ecore2xml"), //$NON-NLS-1$
 							true).getContents(),
 					Ecore2XMLPackage.Literals.XML_MAP));
 
-		ExtendedMetaData extendedMetaData = new UML212UMLExtendedMetaData(
+		ExtendedMetaData extendedMetaData = new UML302UMLExtendedMetaData(
 			ePackageRegistry, ecore2xmlRegistry);
 
 		Map<Object, Object> defaultLoadOptions = resource
@@ -112,7 +109,7 @@ public class XMI212UMLResourceFactoryImpl
 		defaultLoadOptions.put(XMLResource.OPTION_LAX_FEATURE_PROCESSING,
 			Boolean.FALSE);
 		defaultLoadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER,
-			new CMOF2UMLResourceHandler(new UML212UMLResourceHandler()));
+			new CMOF2UMLResourceHandler(new UML302UMLResourceHandler()));
 
 		return resource;
 	}
