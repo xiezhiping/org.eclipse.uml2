@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 #_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 #_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Profile xmi:id="_0" name="Ecore" metamodelReference="_packageImport.0">
     <eAnnotations xmi:id="_v9DA0K87Edi5QpYeY_yIpg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <contents xmi:type="ecore:EPackage" xmi:id="_z1OFcHjqEdy8S4Cr8Rc_NA" name="Ecore" nsURI="http://www.eclipse.org/uml2/schemas/Ecore/5" nsPrefix="Ecore">
@@ -1088,10 +1088,10 @@
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_elementImport.0">
-      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
     </elementImport>
     <elementImport xmi:id="_elementImport.1">
-      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
     </elementImport>
     <packageImport xmi:id="_packageImport.0">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
@@ -1101,32 +1101,32 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-packageName" name="packageName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-packageName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-packageName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-nsPrefix" name="nsPrefix">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-nsPrefix-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-nsPrefix-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-nsURI" name="nsURI">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-nsURI-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-nsURI-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-basePackage" name="basePackage">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-basePackage-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-basePackage-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-prefix" name="prefix">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-prefix-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-prefix-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EPackage-annotations" name="annotations">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EPackage-annotations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EPackage-annotations-_upperValue" value="*"/>
       </ownedAttribute>
@@ -1139,12 +1139,12 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="ENamedElement" name="ENamedElement" isAbstract="true">
       <ownedAttribute xmi:id="ENamedElement-xmlName" name="xmlName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ENamedElement-xmlName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ENamedElement-xmlName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="ENamedElement-annotations" name="annotations">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="ENamedElement-annotations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="ENamedElement-annotations-_upperValue" value="*"/>
       </ownedAttribute>
@@ -1152,7 +1152,7 @@
     <packagedElement xmi:type="uml:Stereotype" xmi:id="EClassifier" name="EClassifier" isAbstract="true">
       <generalization xmi:id="EClassifier-_generalization.0" general="ENamedElement"/>
       <ownedAttribute xmi:id="EClassifier-instanceClassName" name="instanceClassName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClassifier-instanceClassName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClassifier-instanceClassName-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1185,7 +1185,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-base_Interface-_lowerValue"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EClass-className" name="className">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EClass-className-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EClass-className-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1219,7 +1219,7 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#PrimitiveType"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EDataType-dataTypeName" name="dataTypeName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EDataType-dataTypeName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EDataType-dataTypeName-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1236,7 +1236,7 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Enumeration"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EEnum-enumName" name="enumName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnum-enumName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnum-enumName-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1253,12 +1253,12 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#EnumerationLiteral"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EEnumLiteral-enumLiteralName" name="enumLiteralName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-enumLiteralName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnumLiteral-enumLiteralName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EEnumLiteral-literal" name="literal">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EEnumLiteral-literal-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EEnumLiteral-literal-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1274,12 +1274,12 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Operation"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EOperation-operationName" name="operationName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-operationName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-operationName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EOperation-annotations" name="annotations">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EOperation-annotations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EOperation-annotations-_upperValue" value="*"/>
       </ownedAttribute>
@@ -1299,12 +1299,12 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EParameter-parameterName" name="parameterName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EParameter-parameterName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EParameter-parameterName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EParameter-annotations" name="annotations">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EParameter-annotations-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EParameter-annotations-_upperValue" value="*"/>
       </ownedAttribute>
@@ -1327,22 +1327,22 @@
     <packagedElement xmi:type="uml:Stereotype" xmi:id="EStructuralFeature" name="EStructuralFeature" isAbstract="true">
       <generalization xmi:id="EStructuralFeature-_generalization.0" general="ENamedElement"/>
       <ownedAttribute xmi:id="EStructuralFeature-isTransient" name="isTransient">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EStructuralFeature-isTransient-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EStructuralFeature-isTransient-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EStructuralFeature-isVolatile" name="isVolatile">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EStructuralFeature-isVolatile-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EStructuralFeature-isVolatile-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EStructuralFeature-isUnsettable" name="isUnsettable">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EStructuralFeature-isUnsettable-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EStructuralFeature-isUnsettable-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EStructuralFeature-xmlNamespace" name="xmlNamespace">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EStructuralFeature-xmlNamespace-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EStructuralFeature-xmlNamespace-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1361,12 +1361,12 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EAttribute-attributeName" name="attributeName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAttribute-attributeName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAttribute-attributeName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EAttribute-isID" name="isID">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAttribute-isID-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAttribute-isID-_upperValue" value="1"/>
       </ownedAttribute>
@@ -1383,12 +1383,12 @@
         <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EReference-referenceName" name="referenceName">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EReference-referenceName-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EReference-referenceName-_upperValue" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="EReference-isResolveProxies" name="isResolveProxies">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="EReference-isResolveProxies-_lowerValue"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EReference-isResolveProxies-_upperValue" value="1"/>
         <defaultValue xmi:type="uml:LiteralBoolean" xmi:id="EReference-isResolveProxies-_defaultValue" value="true"/>

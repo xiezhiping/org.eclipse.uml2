@@ -16,6 +16,12 @@
 <plugin>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/uml2/schemas/Standard/1" 
+       class = "org.eclipse.uml2.uml.profile.l2.L2Package" /> 
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
     <package
        uri="http://www.eclipse.org/uml2/4.0.0/UML/Profile/L2"
        class="org.eclipse.uml2.uml.profile.l2.L2Package"

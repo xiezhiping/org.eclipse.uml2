@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+<xmi:XMI xmi:version="20100901" xmlns:xmi="http://www.omg.org/spec/XMI/20100901" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
   <uml:Model xmi:id="_o8I_sGvaEdq4DLWZOhbdEA" name="UML">
     <packageImport xmi:id="__as3cGvaEdq4DLWZOhbdEA">
       <importedPackage xmi:type="uml:Model" href="Ecore.uml#_SeWiQMX_EduPJbEsMYXjUQ"/>
@@ -131,6 +131,10 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_TUPtYGveEdq4DLWZOhbdEA" name="Behavior" isAbstract="true">
+      <ownedAttribute xmi:id="_Q1JqkNwaEeCT5O2F6sGn5g" name="isReentrant">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_bZmgwNwaEeCT5O2F6sGn5g" value="true"/>
+      </ownedAttribute>
       <ownedOperation xmi:id="_Zp2iwFYgEdqB6vblk3tuMA" name="context" visibility="protected" isQuery="true">
         <ownedParameter xmi:id="_flYtEFYgEdqB6vblk3tuMA" name="result" type="_iY7sMGvsEdqG6fBIPwe-mw" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FIHcsFYjEdqB6vblk3tuMA"/>
@@ -2612,4 +2616,5 @@
   <Ecore:EOperation xmi:id="_0SoRYLL9EeCBifIhhuFqZA" base_Operation="_ZdMVcLL8EeCBifIhhuFqZA" operationName="getIncomings" visibility="None"/>
   <Ecore:EOperation xmi:id="_BI5ZMLL-EeCBifIhhuFqZA" base_Operation="_982T8LL9EeCBifIhhuFqZA" operationName="getOutgoings" visibility="None"/>
   <Ecore:EOperation xmi:id="_dy4cULNJEeCT16-4OmDs9g" base_Operation="_WlaJALNJEeCT16-4OmDs9g" visibility="None"/>
+  <Ecore:EAttribute xmi:id="_dFQKQNwaEeCT5O2F6sGn5g" isUnsettable="true" base_Property="_Q1JqkNwaEeCT5O2F6sGn5g"/>
 </xmi:XMI>
