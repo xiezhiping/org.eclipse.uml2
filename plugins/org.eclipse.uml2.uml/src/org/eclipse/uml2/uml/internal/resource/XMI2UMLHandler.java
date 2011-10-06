@@ -8,20 +8,29 @@
  * Contributors:
  *   IBM - initial API and implementation
  *   Kenn Hussey (Embarcadero Technologies) - 199624, 204202
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 359964
  *
  */
 package org.eclipse.uml2.uml.internal.resource;
 
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EMOFExtendedMetaData;
+
+import org.eclipse.uml2.types.TypesPackage;
+import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
 
@@ -130,6 +139,69 @@ public class XMI2UMLHandler
 		} else {
 			super.setAttribValue(object, name, value);
 		}
+	}
+
+	@Override
+	protected void setFeatureValue(EObject object, EStructuralFeature feature,
+			Object value, int position) {
+		
+		if (feature == UMLPackage.Literals.INSTANCE_SPECIFICATION__CLASSIFIER && object instanceof EnumerationLiteral) {
+			return;
+		}
+
+		super.setFeatureValue(object, feature, value, position);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	protected EObject validateCreateObjectFromFactory(EFactory factory,
+			String typeName, EObject newObject, EStructuralFeature feature) {
+
+		if (newObject == null
+			&& feature == UMLPackage.Literals.TYPED_ELEMENT__TYPE) {
+
+			if (attribs != null) {
+
+				for (int i = 0, size = attribs.getLength(); i < size; ++i) {
+
+					if (attribs.getQName(i).equals(hrefAttribute)) {
+						String uriLiteral = attribs.getValue(i);
+
+						if (uriLiteral
+							.startsWith(XMI2UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI)) {
+
+							int index = uriLiteral.indexOf('#');
+
+							if (index != -1
+								&& TypesPackage.eINSTANCE
+									.getEClassifier(uriLiteral.substring(index + 1)) instanceof EDataType) {
+								factory = UMLFactory.eINSTANCE;
+								newObject = createObjectFromFactory(factory,
+									UMLPackage.Literals.PRIMITIVE_TYPE
+										.getName());
+							}
+						} else if (uriLiteral
+							.startsWith(XMI2UMLResource.UML_METAMODEL_URI)) {
+
+							int index = uriLiteral.indexOf('#');
+
+							if (index != -1
+								&& UMLPackage.eINSTANCE
+									.getEClassifier(uriLiteral.substring(index + 1)) instanceof EClass) {
+								factory = UMLFactory.eINSTANCE;
+								newObject = createObjectFromFactory(factory,
+									UMLPackage.Literals.CLASS.getName());
+							}
+						}
+
+						break;
+					}
+				}
+			}
+		}
+
+		return super.validateCreateObjectFromFactory(factory, typeName,
+			newObject, feature);
 	}
 
 }

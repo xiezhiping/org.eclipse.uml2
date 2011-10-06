@@ -164,7 +164,7 @@
         <body>A class that supports another more central or fundamental class, typically by implementing secondary logic or control flow. The class that the auxiliary supports may be defined explicitly using a Focus class or implicitly as the supplier of dependency relationship whose client is an auxiliary class. Auxiliary classes are typically used together with Focus classes, and are particularly useful for specifying the secondary business logic or control flow of components during design. See also: «Focus».</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Auxiliary-base_Class" name="base_Class" visibility="public" association="Class_Auxiliary">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Call" name="Call">
@@ -178,7 +178,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Call-base_Usage" name="base_Usage" visibility="public" association="Usage_Call">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Create" name="Create">
@@ -192,10 +192,10 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Create-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Create">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#BehavioralFeature"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#BehavioralFeature"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Create-base_Usage" name="base_Usage" visibility="public" association="Usage_Create">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Derive" name="Derive">
@@ -203,13 +203,13 @@
         <body>Specifies a derivation relationship among model elements that are usually, but not necessarily, of the same type. A derived dependency specifies that the client may be computed from the supplier. The mapping specifies the computation. The client may be implemented for design reasons, such as efficiency, even though it is logically redundant.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Derive-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Derive">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Derive-computation" name="computation" visibility="public" aggregation="composite">
         <ownedComment xmi:type="uml:Comment" xmi:id="Derive-computation-_ownedComment.0" annotatedElement="Derive-computation">
           <body>The specification for computing the derived client element from the derivation supplier element.</body>
         </ownedComment>
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#ValueSpecification"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#ValueSpecification"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="Derive-computation-_upperValue" value="1"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="Derive-computation-_lowerValue" value="1"/>
       </ownedAttribute>
@@ -219,7 +219,7 @@
         <body>Specifies that the designated feature destroys an instance of the classifier to which the feature is attached.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Destroy-base_BehavioralFeature" name="base_BehavioralFeature" visibility="public" association="BehavioralFeature_Destroy">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#BehavioralFeature"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#BehavioralFeature"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Document" name="Document">
@@ -228,7 +228,7 @@
       </ownedComment>
       <generalization xmi:type="uml:Generalization" xmi:id="Document-_generalization.0" general="File"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Document-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Document">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Entity" name="Entity">
@@ -236,7 +236,7 @@
         <body>A persistent information component representing a business concept.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Entity-base_Component" name="base_Component" visibility="public" association="Component_Entity">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Executable" name="Executable">
@@ -245,7 +245,7 @@
       </ownedComment>
       <generalization xmi:type="uml:Generalization" xmi:id="Executable-_generalization.0" general="File"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Executable-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Executable">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="File" name="File" isAbstract="true">
@@ -253,7 +253,7 @@
         <body>A physical file in the context of the system developed.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="File-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_File">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Focus" name="Focus">
@@ -261,7 +261,7 @@
         <body>A class that defines the core logic or control flow for one or more auxiliary classes that support it. Support classes may be defined explicitly using Auxiliary classes or implicitly as clients of dependency relationships whose supplier is a focus class. Focus classes are typically used together with one or more Auxiliary classes, and are particularly useful for specifying the core business logic or control flow of components during design. See also: «Auxiliary».</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Focus-base_Class" name="base_Class" visibility="public" association="Class_Focus">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Framework" name="Framework">
@@ -269,7 +269,7 @@
         <body>A package that contains model elements that specify a reusable architecture for all or part of a system. Frameworks typically include classes, patterns, or templates. When frameworks are specialized for an application domain they are sometimes referred to as application frameworks.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Framework-base_Package" name="base_Package" visibility="public" association="Package_Framework">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Package"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Package"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Implement" name="Implement">
@@ -283,7 +283,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Implement-base_Component" name="base_Component" visibility="public" association="Component_Implement">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="ImplementationClass" name="ImplementationClass">
@@ -297,7 +297,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="ImplementationClass-base_Class" name="base_Class" visibility="public" association="Class_ImplementationClass">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Instantiate" name="Instantiate">
@@ -311,7 +311,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Instantiate-base_Usage" name="base_Usage" visibility="public" association="Usage_Instantiate">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Library" name="Library">
@@ -320,7 +320,7 @@
       </ownedComment>
       <generalization xmi:type="uml:Generalization" xmi:id="Library-_generalization.0" general="File"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Library-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Library">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Metaclass" name="Metaclass">
@@ -328,7 +328,7 @@
         <body>A class whose instances are also classes.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Metaclass-base_Class" name="base_Class" visibility="public" association="Class_Metaclass">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="ModelLibrary" name="ModelLibrary">
@@ -336,7 +336,7 @@
         <body>A package that contains model elements that are intended to be reused by other packages. Model libraries are frequently used in conjunction with applied profiles. This is expressed by defining a dependency between a profile and a model library package, or by defining a model library as contained in a profile package. The classes in a model library are not stereotypes and tagged definitions extending the metamodel. A model library is analogous to a class library in some programming languages. When a model library is defined as a part of a profile, it is imported or deleted with the application or removal of the profile. The profile is implicitly applied to its model library. In the other case, when the model library is defined as an external package imported by a profile, the profile requires that the model library be there in the model at the stage of the profile application. The application or the removal of the profile does not affect the presence of the model library elements.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="ModelLibrary-base_Package" name="base_Package" visibility="public" association="Package_ModelLibrary">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Package"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Package"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Process" name="Process">
@@ -344,7 +344,7 @@
         <body>A transaction based component.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Process-base_Component" name="base_Component" visibility="public" association="Component_Process">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Realization" name="Realization">
@@ -358,7 +358,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Realization-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Realization">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classifier"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classifier"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Refine" name="Refine">
@@ -366,7 +366,7 @@
         <body>Specifies a refinement relationship between model elements at different semantic levels, such as analysis and design. The mapping specifies the relationship between the two elements or sets of elements. The mapping may or may not be computable, and it may be unidirectional or bidirectional. Refinement can be used to model transformations from analysis to design and other such changes.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Refine-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Refine">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Responsibility" name="Responsibility">
@@ -374,7 +374,7 @@
         <body>A contract or an obligation of an element in its relationship to other elements.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Responsibility-base_Usage" name="base_Usage" visibility="public" association="Usage_Responsibility">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Script" name="Script">
@@ -383,7 +383,7 @@
       </ownedComment>
       <generalization xmi:type="uml:Generalization" xmi:id="Script-_generalization.0" general="File"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Script-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Script">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Send" name="Send">
@@ -397,7 +397,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Send-base_Usage" name="base_Usage" visibility="public" association="Usage_Send">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Usage"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Service" name="Service">
@@ -405,7 +405,7 @@
         <body>A stateless, functional component (computes a value).</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Service-base_Component" name="base_Component" visibility="public" association="Component_Service">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Source" name="Source">
@@ -414,7 +414,7 @@
       </ownedComment>
       <generalization xmi:type="uml:Generalization" xmi:id="Source-_generalization.0" general="File"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Source-base_Artifact" name="base_Artifact" visibility="public" association="Artifact_Source">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Artifact"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Specification" name="Specification">
@@ -428,7 +428,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Specification-base_Classifier" name="base_Classifier" visibility="public" association="Classifier_Specification">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classifier"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Classifier"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Subsystem" name="Subsystem">
@@ -436,7 +436,7 @@
         <body>A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: «Specification» and «Realization».</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Subsystem-base_Component" name="base_Component" visibility="public" association="Component_Subsystem">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Trace" name="Trace">
@@ -444,7 +444,7 @@
         <body>Specifies a trace relationship between model elements or sets of model elements that represent the same concept in different models. Traces are mainly used for tracking requirements and changes across models. Since model changes can occur in both directions, the directionality of the dependency can often be ignored. The mapping specifies the relationship between the two, but it is rarely computable and is usually informal.</body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Trace-base_Abstraction" name="base_Abstraction" visibility="public" association="Abstraction_Trace">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Abstraction"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Type" name="Type">
@@ -458,7 +458,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Type-base_Class" name="base_Class" visibility="public" association="Class_Type">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Utility" name="Utility">
@@ -472,7 +472,7 @@
         </specification>
       </ownedRule>
       <ownedAttribute xmi:type="uml:Property" xmi:id="Utility-base_Class" name="base_Class" visibility="public" association="Class_Utility">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Class"/>
       </ownedAttribute>
     </packagedElement>
   </uml:Profile>

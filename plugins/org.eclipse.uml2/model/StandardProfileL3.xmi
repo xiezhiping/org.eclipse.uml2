@@ -21,17 +21,17 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="BuildComponent" name="BuildComponent">
       <ownedAttribute xmi:type="uml:Property" xmi:id="BuildComponent-base_Component" name="base_Component" visibility="public" association="Component_BuildComponent">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Component"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="Metamodel" name="Metamodel">
       <ownedAttribute xmi:type="uml:Property" xmi:id="Metamodel-base_Model" name="base_Model" visibility="public" association="Model_Metamodel">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Stereotype" xmi:id="SystemModel" name="SystemModel">
       <ownedAttribute xmi:type="uml:Property" xmi:id="SystemModel-base_Model" name="base_Model" visibility="public" association="Model_SystemModel">
-        <type xmi:type="uml:Class" href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
+        <type href="http://www.omg.org/spec/UML/20100901/UML.xmi#Model"/>
       </ownedAttribute>
     </packagedElement>
   </uml:Profile>
