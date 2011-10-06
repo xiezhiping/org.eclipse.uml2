@@ -30,7 +30,7 @@ public interface CMOF2UMLResource
 
 	String CMOF_2_0_METAMODEL_NS_URI = CMOF_2_0_METAMODEL_URI;
 
-	String CMOF_2_4_METAMODEL_URI = "http://www.omg.org/spec/MOF/20100901/cmof.xml"; //$NON-NLS-1$
+	String CMOF_2_4_METAMODEL_URI = "http://www.omg.org/spec/MOF/20100901/cmof.xmi"; //$NON-NLS-1$
 
 	String CMOF_2_4_METAMODEL_NS_URI = "http://www.omg.org/spec/MOF/20100901"; //$NON-NLS-1$
 

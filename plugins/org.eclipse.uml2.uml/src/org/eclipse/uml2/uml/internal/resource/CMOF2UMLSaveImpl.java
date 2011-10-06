@@ -42,7 +42,7 @@ import org.eclipse.uml2.uml.resource.CMOF2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 public class CMOF2UMLSaveImpl
-		extends XMISaveImpl {
+		extends UMLSaveImpl {
 
 	protected static class Lookup
 			extends XMISaveImpl.Lookup {

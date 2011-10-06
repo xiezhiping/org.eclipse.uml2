@@ -1,13 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore2ecore:Ecore2EcoreMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore2ecore="http://www.eclipse.org/emf/2004/Ecore2Ecore" topToBottom="true">
   <nested>
+    <outputs href="UML.ecore#//Classifier/collaborationUse"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/generalization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/powertypeExtent"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Class/isAbstract"/>
+    <outputs href="UML.ecore#//Classifier/isAbstract"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/isFinalSpecialization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/ownedUseCase"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/useCase"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/redefinedClassifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/representation"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Classifier/substitution"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateableElement/ownedTemplateSignature"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//TemplateableElement/templateBinding"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Namespace/ownedMember"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/nameExpression"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/namespace"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//NamedElement/qualifiedName"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/extension"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/isActive"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/nestedClassifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Class/ownedReception"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//EncapsulatedClassifier/ownedPort"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/classifierBehavior"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/interfaceRealization"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//BehavioredClassifier/ownedBehavior"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//Property/interface"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/aggregation"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Property/associationEnd"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Property/qualifier"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//Property/defaultValue"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//ConnectableElement/end"/>
@@ -25,70 +107,33 @@
     <outputs href="UML.ecore#//DeploymentTarget/deployment"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//NamedElement/clientDependency"/>
+    <outputs href="UML.ecore#//StructuralFeature/isReadOnly"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//NamedElement/nameExpression"/>
+    <outputs href="UML.ecore#//Feature/isStatic"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//Class/extension"/>
+    <outputs href="UML.ecore#//RedefinableElement/isLeaf"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//Class/isActive"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Class/ownedReception"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//StructuredClassifier/part"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//StructuredClassifier/role"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//BehavioredClassifier/classifierBehavior"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//BehavioredClassifier/interfaceRealization"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//BehavioredClassifier/ownedBehavior"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/collaborationUse"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/powertypeExtent"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/ownedUseCase"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/useCase"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/representation"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//Classifier/substitution"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//TemplateableElement/ownedTemplateSignature"/>
-  </nested>
-  <nested>
-    <outputs href="UML.ecore#//TemplateableElement/templateBinding"/>
+    <inputs href="CMOF20.ecore#//Package/uRI"/>
+    <outputs href="UML.ecore#//Package/URI"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Package/ownedStereotype"/>
   </nested>
   <nested>
+    <inputs href="CMOF20.ecore#//Package/ownedMember"/>
+    <outputs href="UML.ecore#//Package/packagedElement"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//Package/profileApplication"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//Generalization/generalizationSet"/>
+    <outputs href="UML.ecore#//MultiplicityElement/lowerValue"/>
   </nested>
   <nested>
-    <outputs href="UML.ecore#//Operation/interface"/>
+    <outputs href="UML.ecore#//MultiplicityElement/upperValue"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//BehavioralFeature/concurrency"/>
@@ -103,6 +148,9 @@
     <outputs href="UML.ecore#//BehavioralFeature/ownedParameterSet"/>
   </nested>
   <nested>
+    <outputs href="UML.ecore#//Parameter/defaultValue"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//Parameter/effect"/>
   </nested>
   <nested>
@@ -115,37 +163,59 @@
     <outputs href="UML.ecore#//Parameter/parameterSet"/>
   </nested>
   <nested>
+    <inputs href="CMOF20.ecore#//Constraint/namespace"/>
+    <outputs href="UML.ecore#//Constraint/context"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//OpaqueExpression/behavior"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//OpaqueExpression/result"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//ReflectiveSequence"/>
+    <outputs href="UML.ecore#//Expression/symbol"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//ReflectiveCollection"/>
+    <outputs href="UML.ecore#//InstanceSpecification/classifier"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Object"/>
+    <outputs href="UML.ecore#//InstanceSpecification/slot"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//URIExtent"/>
+    <outputs href="UML.ecore#//InstanceSpecification/specification"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Extent"/>
+    <outputs href="UML.ecore#//Slot"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Link"/>
+    <inputs href="CMOF20.ecore#//Object"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Factory"/>
+    <inputs href="CMOF20.ecore#//Argument"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Exception"/>
+    <inputs href="CMOF20.ecore#//ReflectiveCollection"/>
   </nested>
   <nested>
-    <inputs href="CMOF.ecore#//Tag"/>
+    <inputs href="CMOF20.ecore#//ReflectiveSequence"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//URIExtent"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Exception"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Factory"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Link"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Extent"/>
+  </nested>
+  <nested>
+    <inputs href="CMOF20.ecore#//Tag"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Abstraction"/>
@@ -194,6 +264,9 @@
   </nested>
   <nested>
     <outputs href="UML.ecore#//Artifact"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//DeployedArtifact"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Manifestation"/>
@@ -286,6 +359,9 @@
     <outputs href="UML.ecore#//ConnectorKind"/>
   </nested>
   <nested>
+    <outputs href="UML.ecore#//Generalization"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//GeneralizationSet"/>
   </nested>
   <nested>
@@ -314,12 +390,6 @@
   </nested>
   <nested>
     <outputs href="UML.ecore#//InterfaceRealization"/>
-  </nested>
-  <nested>
-    <nested>
-      <outputs href="UML.ecore#//EncapsulatedClassifier/ownedPort"/>
-    </nested>
-    <outputs href="UML.ecore#//EncapsulatedClassifier"/>
   </nested>
   <nested>
     <outputs href="UML.ecore#//Image"/>
@@ -655,6 +725,12 @@
     <outputs href="UML.ecore#//InstanceValue"/>
   </nested>
   <nested>
+    <outputs href="UML.ecore#//JoinNode"/>
+  </nested>
+  <nested>
+    <outputs href="UML.ecore#//LiteralReal"/>
+  </nested>
+  <nested>
     <outputs href="UML.ecore#//LoopNode"/>
   </nested>
   <nested>
@@ -756,6 +832,6 @@
   <nested>
     <outputs href="UML.ecore#//ValueSpecificationAction"/>
   </nested>
-  <inputs href="CMOF.ecore#/"/>
+  <inputs href="CMOF20.ecore#/"/>
   <outputs href="UML.ecore#/"/>
 </ecore2ecore:Ecore2EcoreMappingRoot>
