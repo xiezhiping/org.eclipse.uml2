@@ -7,7 +7,7 @@
  *
  * Contributors:
  *   IBM - initial API and implementation
- *   Kenn Hussey (CEA) - 327039
+ *   Kenn Hussey (CEA) - 327039, 359983
  * 
  */
 package org.eclipse.uml2.uml.internal.resource;
@@ -16,10 +16,13 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.resource.CMOF2UMLResource;
 import org.eclipse.uml2.uml.resource.CMOF2UMLResourceHandler;
 import org.eclipse.uml2.uml.resource.XMI2UMLExtendedMetaData;
 import org.eclipse.uml2.uml.resource.XMI2UMLResource;
@@ -43,8 +46,13 @@ public class XMI2UMLResourceFactoryImpl
 	public Resource createResource(URI uri) {
 		XMI2UMLResource resource = (XMI2UMLResource) super.createResource(uri);
 
-		ExtendedMetaData extendedMetaData = new XMI2UMLExtendedMetaData(
+		EPackage.Registry ePackageRegistry = new EPackageRegistryImpl(
 			EPackage.Registry.INSTANCE);
+		ePackageRegistry.put(CMOF2UMLResource.CMOF_METAMODEL_NS_URI,
+			UMLPackage.eINSTANCE);
+
+		ExtendedMetaData extendedMetaData = new XMI2UMLExtendedMetaData(
+			ePackageRegistry);
 
 		Map<Object, Object> defaultSaveOptions = resource
 			.getDefaultSaveOptions();
