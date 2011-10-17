@@ -21,7 +21,7 @@
 <toc label="UML2 Developer Guide">
 	<topic label="Getting Started">
 		<topic label="Getting Started With UML2" href="http://wiki.eclipse.org/MDT/UML2/Getting_Started_with_UML2" />
-		<topic label="Introduction to UML2 Profiles" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Introduction_to_UML2_Profiles/article.html" />
+		<topic label="Introduction to UML2 Profiles" href="http://wiki.eclipse.org/MDT/UML2/Introduction_to_UML2_Profiles" />
 	</topic>
 	<topic label="Tutorials">
 		<topic label="Creating DSLs using UML2" href="http://www.eclipse.org/modeling/mdt/uml2/docs/tutorials/EclipseCon2008_Tutorial_Creating_Robust_Scalable_DSL_with_UML_files/frame.html" />
