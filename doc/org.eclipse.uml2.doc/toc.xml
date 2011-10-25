@@ -30,16 +30,8 @@
 		<topic label="Defining Generics with UML Templates" href="http://www.eclipse.org/articles/article.php?file=Article-Defining-Generics-with-UML-Templates/index.html" />
 		<topic label="Customizing UML: Which Technique is Right for You?" href="http://www.eclipse.org/modeling/mdt/uml2/docs/articles/Customizing_UML2_Which_Technique_is_Right_For_You/article.html" />
 	</topic>
-	<topic label="Presentations">
-		<topic label="New Features of UML2" href="http://www.eclipse.org/modeling/mdt/uml2/docs/presentations/EclipseCon2008_LongTalk_NewFeaturesOfUML2_files/frame.htm" />
-	</topic>
 	<topic label="Online Docs">
-			<topic label="UML2 2.1 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_2.1_Migration_Guide/guide.html" />
-			<topic label="UML2 3.0 Migration Guide" href="http://www.eclipse.org/modeling/mdt/uml2/docs/guides/UML2_3.0_Migration_Guide/guide.html" />
-			<topic label="Release Notes">
-			<topic label="What&apos;s New in v3.1" href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=3.1.x" />		
-			<topic label="Previous Releases"  href="http://www.eclipse.org/modeling/mdt/news/relnotes.php?project=uml2&amp;version=2.2.x" />
-		</topic>
+		<topic label="UML2 4.0 Migration Guide" href="http://wiki.eclipse.org/MDT/UML2/UML2_4.0_Migration_Guide" />
 		<topic label="UML2 FAQ" href="http://wiki.eclipse.org/MDT-UML2-FAQ" />
 	</topic>
 </toc>
