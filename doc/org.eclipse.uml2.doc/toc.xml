@@ -33,5 +33,6 @@
 	<topic label="Online Docs">
 		<topic label="UML2 4.0 Migration Guide" href="http://wiki.eclipse.org/MDT/UML2/UML2_4.0_Migration_Guide" />
 		<topic label="UML2 FAQ" href="http://wiki.eclipse.org/MDT-UML2-FAQ" />
+		<topic label="UML2 Javadoc" href="http://www.eclipse.org/modeling/mdt/javadoc/#uml2" />
 	</topic>
 </toc>
